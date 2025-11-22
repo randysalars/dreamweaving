@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+
+<!-- ================================================================ -->
+<!-- SHORT SESSION TEMPLATE (10-15 minutes)                           -->
+<!-- Quick, focused hypnosis for specific goals                       -->
+<!-- ================================================================ -->
+
+<prosody rate="slow" pitch="-2st">
+<break time="1s"/>
+
+<!-- SECTION 1: BRIEF INTRODUCTION (30 seconds) -->
+Welcome. I am The Sacred Digital Dreamweaver, and in the next 12 minutes, you're invited to experience a focused journey of [TRANSFORMATION GOAL].
+<break time="1s"/>
+
+You remain fully in control. Find a comfortable position, close your eyes, and let's begin.
+<break time="2s"/>
+
+<!-- SECTION 2: RAPID INDUCTION (2 minutes) -->
+<prosody rate="x-slow" pitch="-3st">
+Take a deep breath in<break time="500ms"/> and let it go<break time="1s"/>
+
+With each breath, you sink deeper<break time="1s"/> more relaxed<break time="1s"/> more open<break time="2s"/>
+
+Counting down now<break time="1s"/> 5<break time="1s"/> deeper<break time="1s"/> 4<break time="1s"/> letting go<break time="1s"/> 3<break time="1s"/> drifting down<break time="1s"/> 2<break time="1s"/> almost there<break time="1s"/> 1<break time="2s"/> deeply relaxed<break time="3s"/>
+
+<!-- SECTION 3: FOCUSED VISUALIZATION (8 minutes) -->
+[CREATE A SINGLE, FOCUSED SCENE - One powerful metaphor that addresses the goal]
+<break time="2s"/>
+
+[Include sensory details: sight, sound, touch, smell]
+<break time="2s"/>
+
+[Embed therapeutic suggestions naturally within the journey]
+<break time="2s"/>
+
+[Create a symbolic moment of transformation]
+<break time="3s"/>
+
+<!-- SECTION 4: QUICK RETURN (1 minute) -->
+And now<break time="1s"/> beginning to return<break time="1s"/>
+
+1<break time="500ms"/> becoming aware<break time="1s"/>
+2<break time="500ms"/> feeling refreshed<break time="1s"/>
+3<break time="500ms"/> bringing this feeling with you<break time="1s"/>
+4<break time="500ms"/> ready to open your eyes<break time="1s"/>
+5<break time="1s"/> fully awake and present<break time="2s"/>
+
+<!-- SECTION 5: BRIEF ANCHOR (30 seconds) -->
+In the days ahead, whenever you [TRIGGER], you'll remember this feeling of [DESIRED STATE].
+<break time="2s"/>
+
+Thank you for this journey.
+<break time="2s"/>
+
+</prosody>
+</prosody>
+
+</speak>

@@ -1,0 +1,11 @@
+# Google Cloud Text-to-Speech
+google-cloud-texttospeech==2.16.3
+
+# Audio processing and manipulation
+pydub==0.25.1
+
+# Audio metadata
+mutagen==1.47.0
+
+# Optional: for progress bars
+tqdm==4.66.1

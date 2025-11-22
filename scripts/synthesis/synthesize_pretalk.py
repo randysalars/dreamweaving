@@ -1,0 +1,172 @@
+#!/usr/bin/env python3
+from google.cloud import texttospeech
+import os
+
+def create_pretalk_chunks():
+    """Split pretalk into 2 chunks under 5000 bytes each"""
+    
+    chunks = [
+        # Chunk 1: Introduction and explanation
+        '''<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.1" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+
+<prosody rate="105%" pitch="+1st" volume="medium">
+Welcome to this special Dreamweaving and Pathworking session.<break time="400ms"/> My name is Randy Sayl-ers, and I'm so glad to have you here with me today.<break time="500ms"/> I'll be your guide on this transformative journey into the depths of your mind and spirit.<break time="400ms"/> You're ready to explore something meaningful today, aren't you?<break time="600ms"/>
+
+In today's session, we'll be connecting with your inner self, helping you find clarity, inspiration, or simply a moment of deep relaxation.<break time="400ms"/> Whatever your intention, this experience is designed just for you.
+</prosody>
+
+<break time="800ms"/>
+
+<prosody rate="102%" pitch="medium">
+Before we begin, let me assure you that hypnosis is a completely natural process.<break time="400ms"/> It's simply a state of deep relaxation and focused awareness—very similar to what you might feel when you're absorbed in a great book or lost in a daydream.<break time="400ms"/> You've experienced moments like that before, haven't you?<break time="600ms"/>
+
+You'll remain fully aware and in control the entire time.<break time="400ms"/> You can't get "stuck" in hypnosis, and your subconscious mind will only accept suggestions that align with your values and goals.<break time="400ms"/> You're always in charge.
+</prosody>
+
+<break time="800ms"/>
+
+<prosody rate="104%" pitch="+0.5st" volume="medium">
+Now, let's talk about Pathworking and Dreamweaving, the heart of today's journey.<break time="500ms"/>
+
+Pathworking is a powerful mental journey where we use guided imagery to walk along a symbolic path.<break time="400ms"/> Each step evokes inner wisdom, healing, and insight, helping you connect deeply with your mind and spirit.<break time="400ms"/> It's like traveling through a dreamscape tailored to unlock your potential.<break time="600ms"/>
+
+Dreamweaving builds on this by encouraging you to blend imagination and intuition—crafting vivid experiences that merge creativity and transformation.<break time="400ms"/> Through this, you'll weave a new vision for your future or resolve challenges from the past.<break time="400ms"/> That sounds like a journey worth taking, doesn't it?
+</prosody>
+
+</speak>''',
+        
+        # Chunk 2: Instructions and closing
+        '''<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.1" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+
+<prosody rate="100%" pitch="medium">
+To make the most of this session, it's very important to use headphones.<break time="500ms"/> I've designed this experience with stereo audio, meaning different sounds and suggestions are fed into each ear to guide your mind into a deeply relaxed state.<break time="600ms"/>
+
+You'll also hear subtle binaural beats throughout the session.<break time="400ms"/> These are special tones created by playing slightly different frequencies in each ear, and your brain processes the difference as a kind of "internal rhythm."<break time="500ms"/> You don't need to do anything other than listen—they will naturally guide your brain to a state of deep relaxation.<break time="400ms"/> You're ready to let that happen, right?
+</prosody>
+
+<break time="800ms"/>
+
+<prosody rate="102%" pitch="medium" volume="medium">
+To prepare for this experience, find a quiet, comfortable space where you won't be disturbed.<break time="400ms"/> Feel free to sit or lie down—whatever makes you feel most at ease.<break time="500ms"/>
+
+Once you're settled, simply close your eyes, let my voice guide you, and allow the experience to unfold naturally.<break time="600ms"/>
+
+Remember, you're always in control during hypnosis.<break time="400ms"/> At any moment, if needed, you can simply open your eyes and return to full awareness.<break time="400ms"/> There's no right or wrong way to experience it—just allow yourself to participate in a way that feels natural.<break time="600ms"/>
+
+If this is your first time, take things at your own pace.<break time="400ms"/> And know that every time you practice, it gets easier and more powerful.<break time="500ms"/> In fact, the more you listen to my videos and my voice, the deeper you'll go each time.<break time="400ms"/> Each session builds on the last, guiding you into even deeper states of relaxation and discovery.<break time="400ms"/> Practice makes perfect.<break time="400ms"/> You'd like to experience that deepening effect, wouldn't you?
+</prosody>
+
+<break time="800ms"/>
+
+<prosody rate="105%" pitch="+1st" volume="medium">
+Today's journey is about walking a tranquil path to uncover the insights and inspiration waiting within you.<break time="500ms"/> I'll guide you every step of the way as we explore this inner landscape together.<break time="600ms"/>
+
+So, take a moment to relax your body<break time="300ms"/>… notice your breath<break time="300ms"/>… and allow yourself to become curious about what you might discover in this session.<break time="600ms"/> When you're ready, we'll begin.
+</prosody>
+
+<break time="1s"/>
+
+<prosody rate="108%" pitch="+1.5st" volume="medium">
+Lastly, if you enjoy this content, feel free to like, share, or subscribe to my channel.<break time="400ms"/> It helps support future videos and builds a community of explorers like you who value transformation and growth.
+</prosody>
+
+</speak>'''
+    ]
+    
+    return chunks
+
+def synthesize_chunk(client, chunk_num, ssml, output_file):
+    """Synthesize a single chunk"""
+    
+    print(f"\nChunk {chunk_num}:")
+    print(f"  Size: {len(ssml.encode('utf-8'))} bytes")
+    
+    synthesis_input = texttospeech.SynthesisInput(ssml=ssml)
+    
+    voice = texttospeech.VoiceSelectionParams(
+        language_code="en-US",
+        name="en-US-Neural2-I"
+    )
+    
+    audio_config = texttospeech.AudioConfig(
+        audio_encoding=texttospeech.AudioEncoding.MP3,
+        speaking_rate=1.0,
+        pitch=0.0,
+        volume_gain_db=0.0,
+        sample_rate_hertz=24000,
+        effects_profile_id=["headphone-class-device"]
+    )
+    
+    try:
+        print(f"  Synthesizing...")
+        response = client.synthesize_speech(
+            input=synthesis_input,
+            voice=voice,
+            audio_config=audio_config
+        )
+        
+        with open(output_file, 'wb') as out:
+            out.write(response.audio_content)
+        
+        print(f"  ✓ Saved {len(response.audio_content) / 1024:.1f} KB")
+        return True
+        
+    except Exception as e:
+        print(f"  ❌ Error: {e}")
+        return False
+
+def main():
+    print("="*60)
+    print("Hypnosis Pretalk - Conversational Style")
+    print("="*60)
+    print("\nVoice: en-US-Neural2-I (warm male)")
+    print("Style: Conversational, engaging, friendly")
+    print("Working directory: ~/Projects/dreamweaving")
+    print("="*60)
+    
+    chunks = create_pretalk_chunks()
+    print(f"\nSplit into {len(chunks)} chunks")
+    
+    client = texttospeech.TextToSpeechClient()
+    
+    chunk_files = []
+    for i, chunk in enumerate(chunks, 1):
+        output_file = f"pretalk_{i:02d}.mp3"
+        if synthesize_chunk(client, i, chunk, output_file):
+            chunk_files.append(output_file)
+        else:
+            return
+    
+    print(f"\n{'='*60}")
+    print("Combining chunks...")
+    
+    # Create filelist
+    with open('filelist.txt', 'w') as f:
+        for cf in chunk_files:
+            f.write(f"file '{cf}'\n")
+    
+    # Combine with ffmpeg
+    os.system("ffmpeg -f concat -safe 0 -i filelist.txt -c copy hypnosis_pretalk.mp3 -y 2>/dev/null")
+    
+    if os.path.exists('hypnosis_pretalk.mp3'):
+        print("\n✓ SUCCESS!")
+        print(f"  File: hypnosis_pretalk.mp3")
+        size_mb = os.path.getsize('hypnosis_pretalk.mp3') / (1024 * 1024)
+        print(f"  Size: {size_mb:.2f} MB")
+        print(f"  Duration: ~3-4 minutes")
+        
+        # Cleanup
+        for cf in chunk_files:
+            os.remove(cf)
+        os.remove('filelist.txt')
+        
+        print("\n" + "="*60)
+        print("Play with: mpv hypnosis_pretalk.mp3")
+        print("="*60)
+    else:
+        print("Chunks saved separately:", chunk_files)
+
+if __name__ == "__main__":
+    main()
