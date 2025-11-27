@@ -120,6 +120,8 @@ __pycache__/
 output/
 sessions/*/output/
 resources/background_audio/
+sessions/*/video_frames/
+sessions/*/final_export/
 
 # Large or temporary files
 *.wav
@@ -140,6 +142,7 @@ sessions/*/output/*.wav
 temp_chunk_*.mp3
 *.mp3
 *.wav
+*.mp4
 
 # Google Cloud credentials
 *.json

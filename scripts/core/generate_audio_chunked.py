@@ -40,8 +40,8 @@ def split_ssml_into_chunks(ssml_content, max_bytes=4500):
     speak_opening = ssml_content[:speak_match.start(1)]
     speak_closing = '</speak>'
     
-    # Split on major section boundaries (comments with SECTION)
-    section_pattern = r'(<!-- SECTION \d:.*?-->)'
+    # Split on major section boundaries (comments with SECTION or subsection markers like THE)
+    section_pattern = r'(<!-- (?:SECTION \d|THE ).*?-->)'
     sections = re.split(section_pattern, content)
     
     chunks = []
@@ -81,25 +81,53 @@ def split_large_chunk(chunk, speak_opening, speak_closing, max_bytes):
     """Split a chunk that's still too large by prosody boundaries"""
     # Extract content
     content = chunk.replace(speak_opening, '').replace(speak_closing, '')
-    
-    # Split on break tags with long pauses
-    parts = re.split(r'(<break time="[23]s"/>)', content)
-    
-    sub_chunks = []
-    current = ""
-    
-    for part in parts:
-        test = speak_opening + current + part + speak_closing
-        if len(test.encode('utf-8')) > max_bytes and current:
+
+    # Check if content is wrapped in prosody tags
+    prosody_match = re.match(r'^(\s*<prosody[^>]*>)(.*)(</prosody>\s*)$', content, re.DOTALL)
+
+    if prosody_match:
+        # We have a prosody wrapper - split the inner content and re-wrap each piece
+        prosody_open = prosody_match.group(1)
+        inner_content = prosody_match.group(2)
+        prosody_close = prosody_match.group(3)
+
+        # Split on break tags with long pauses
+        parts = re.split(r'(<break time="[23]s"/>)', inner_content)
+
+        sub_chunks = []
+        current = ""
+
+        for part in parts:
+            test = speak_opening + prosody_open + current + part + prosody_close + speak_closing
+            if len(test.encode('utf-8')) > max_bytes and current:
+                sub_chunks.append(speak_opening + prosody_open + current + prosody_close + speak_closing)
+                current = part
+            else:
+                current += part
+
+        if current:
+            sub_chunks.append(speak_opening + prosody_open + current + prosody_close + speak_closing)
+
+        return sub_chunks
+    else:
+        # No prosody wrapper - split as before
+        parts = re.split(r'(<break time="[23]s"/>)', content)
+
+        sub_chunks = []
+        current = ""
+
+        for part in parts:
+            test = speak_opening + current + part + speak_closing
+            if len(test.encode('utf-8')) > max_bytes and current:
+                sub_chunks.append(speak_opening + current + speak_closing)
+                current = part
+            else:
+                current += part
+
+        if current:
             sub_chunks.append(speak_opening + current + speak_closing)
-            current = part
-        else:
-            current += part
-    
-    if current:
-        sub_chunks.append(speak_opening + current + speak_closing)
-    
-    return sub_chunks
+
+        return sub_chunks
 
 def synthesize_chunk(client, ssml_text, voice_name, chunk_num, total_chunks):
     """Synthesize a single chunk of SSML"""
