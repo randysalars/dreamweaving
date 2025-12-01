@@ -1,0 +1,108 @@
+# Lessons Learned - Dreamweaving Production
+# This file is automatically updated by the Learning Agent
+# Manual entries are also welcome
+
+metadata:
+  version: 1.1
+  last_updated: 2024-12-01
+  total_lessons: 7
+  sessions_analyzed: 1
+
+lessons:
+  # Session: neural-network-navigator-v3 (2024-12-01)
+  - id: L001
+    date: 2024-12-01
+    session: neural-network-navigator-v3
+    category: audio
+    finding: "Static binaural frequencies miss the hypnotic arc - dynamic progressions are essential"
+    evidence: "Compared v3 (static 6 Hz) with original (12→8→7→6→40→7→10 Hz progression)"
+    action: "Implement dynamic binaural generation that reads frequency maps from manifest"
+    confidence: high
+    tags: [binaural, effectiveness, critical]
+    priority: critical
+    applied_to: []
+
+  - id: L002
+    date: 2024-12-01
+    session: neural-network-navigator-v3
+    category: audio
+    finding: "Gamma bursts (40 Hz, 3 seconds) synchronized with script insight moments dramatically enhance integration"
+    evidence: "Original neural-network-navigator binaural_frequency_map.json includes gamma burst at 18:45"
+    action: "Add gamma burst support to binaural generator; synchronize with script timestamps"
+    confidence: high
+    tags: [binaural, gamma, integration]
+    priority: high
+    applied_to: []
+
+  - id: L003
+    date: 2024-12-01
+    session: neural-network-navigator-v3
+    category: audio
+    finding: "Micro-modulation (±0.3 Hz at 0.05 Hz rate) during theta sections enhances entrainment"
+    evidence: "Original frequency map specifies subtle 20-second oscillation cycle"
+    action: "Add micro-modulation option to binaural generator for journey sections"
+    confidence: medium
+    tags: [binaural, modulation, enhancement]
+    priority: medium
+    applied_to: []
+
+  - id: L004
+    date: 2024-12-01
+    session: neural-network-navigator-v3
+    category: content
+    finding: "Duration estimation needed BEFORE voice generation - v3 was 28% short of target"
+    evidence: "Target: 30 min, Actual: 21.7 min"
+    action: "Add duration estimator using word count (100 words/min at 0.88x) + pause calculation"
+    confidence: high
+    tags: [planning, duration, workflow]
+    priority: high
+    applied_to: []
+
+  - id: L005
+    date: 2024-12-01
+    session: neural-network-navigator-v3
+    category: audio
+    finding: "Voice Neural2-A is male, not female as commonly assumed"
+    evidence: "API error: 'Requested female voice, but en-US-Neural2-A is male'"
+    action: "Document voice genders explicitly: Neural2-A/D/I/J = male; Neural2-C/E/F = female"
+    confidence: high
+    tags: [voice, documentation]
+    priority: low
+    applied_to: []
+
+  - id: L006
+    date: 2024-12-01
+    session: neural-network-navigator-v3
+    category: workflow
+    finding: "binaural_frequency_map.json format from original session is excellent template"
+    evidence: "Comprehensive JSON with timestamps, sync_points, modulation, gamma_burst definitions"
+    action: "Create frequency map template generator; add to session creation workflow"
+    confidence: high
+    tags: [workflow, template, binaural]
+    priority: high
+    applied_to: []
+
+  - id: L007
+    date: 2024-12-01
+    session: neural-network-navigator-v3
+    category: workflow
+    finding: "Sidechain ducking with voice threshold -30 dB and 50% ratio works well"
+    evidence: "Successfully mixed voice + binaural + pink noise without masking"
+    action: "Document as standard mixing practice; no changes needed"
+    confidence: high
+    tags: [mixing, audio, success]
+    priority: low
+    applied_to: []
+
+# Patterns observed:
+patterns:
+  - pattern: "Audio effectiveness depends on frequency synchronization with script sections"
+    confidence: high
+    sessions_supporting: [neural-network-navigator, neural-network-navigator-v3]
+
+# Categories:
+# - content: Topics, themes, script patterns
+# - audio: Voice settings, binaural, mixing
+# - feedback: Viewer comments, preferences
+# - code: Code quality improvements, best practices
+# - workflow: Process improvements

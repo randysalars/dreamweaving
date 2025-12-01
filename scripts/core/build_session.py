@@ -30,6 +30,29 @@ try:
 except ImportError:
     yaml = None
 
+# Import validation utilities
+try:
+    script_dir = Path(__file__).parent.parent
+    sys.path.insert(0, str(script_dir))
+    from utilities.validation import (
+        validate_dir_exists,
+        validate_file_exists,
+        validate_speaking_rate,
+        validate_pitch,
+        validate_binaural_offset,
+        validate_frequency,
+        validate_volume_db,
+    )
+except ImportError:
+    # Fallback to basic validation
+    validate_dir_exists = str
+    validate_file_exists = str
+    validate_speaking_rate = float
+    validate_pitch = float
+    validate_binaural_offset = float
+    validate_frequency = float
+    validate_volume_db = float
+
 
 def load_manifest_defaults(session_dir: Path):
     defaults = {}
@@ -135,17 +158,17 @@ def run_video(args, session_dir: Path, audio_path: Path):
 
 def main():
     parser = argparse.ArgumentParser(description="One-command build for session audio+video.")
-    parser.add_argument("--session", required=True, help="Session directory.")
-    parser.add_argument("--ssml", required=True, help="Path to SSML file.")
+    parser.add_argument("--session", type=validate_dir_exists, required=True, help="Session directory.")
+    parser.add_argument("--ssml", type=validate_file_exists, required=True, help="Path to SSML file.")
     parser.add_argument("--voice", default="en-US-Neural2-D", help="Voice name (default: Google Neural2-D).")
     parser.add_argument("--tts-provider", choices=["google"], default="google", help="TTS provider (Google Cloud TTS only).")
     parser.add_argument("--target-minutes", type=float, default=None, help="Target duration (minutes).")
     parser.add_argument("--match-mode", choices=["bed_to_voice", "voice_to_target"], default="voice_to_target")
-    parser.add_argument("--beat-hz", type=float, default=7.83)
-    parser.add_argument("--carrier-hz", type=float, default=432.0)
-    parser.add_argument("--bed-gain-db", type=float, default=-10.0)
-    parser.add_argument("--voice-gain-db", type=float, default=0.0)
-    parser.add_argument("--sample-rate", type=int, default=24000)
+    parser.add_argument("--beat-hz", type=validate_binaural_offset, default=7.83, help="Binaural beat frequency (0.5-100 Hz).")
+    parser.add_argument("--carrier-hz", type=validate_frequency, default=432.0, help="Carrier frequency (0.1-20000 Hz).")
+    parser.add_argument("--bed-gain-db", type=validate_volume_db, default=-10.0, help="Bed gain (-40 to +10 dB).")
+    parser.add_argument("--voice-gain-db", type=validate_volume_db, default=0.0, help="Voice gain (-40 to +10 dB).")
+    parser.add_argument("--sample-rate", type=int, default=24000, choices=[16000, 22050, 24000, 44100, 48000], help="Sample rate Hz.")
     parser.add_argument("--max-bytes", type=int, default=5000)
     parser.add_argument("--output-dir", help="Override audio output dir (default: <ssml_dir>/output).")
     parser.add_argument("--mix-name", default=None, help="Final mixed audio filename (default: final_mix.mp3).")
@@ -156,11 +179,9 @@ def main():
     parser.add_argument("--auto-package", action="store_true", help="Auto-generate YouTube package and cleanup")
     args = parser.parse_args()
 
+    # args.session and args.ssml are already validated by validate_dir_exists/validate_file_exists
     session_dir = Path(args.session).resolve()
     ssml_path = Path(args.ssml).resolve()
-    if not session_dir.exists() or not ssml_path.exists():
-        print("❌ Session or SSML not found.")
-        sys.exit(1)
 
     manifest_defaults = load_manifest_defaults(session_dir)
     manifest_data = manifest_defaults.get("manifest_data")

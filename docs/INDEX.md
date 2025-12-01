@@ -55,9 +55,16 @@ For complete details, see: [CANONICAL_WORKFLOW.md](CANONICAL_WORKFLOW.md)
 - **[WORKFLOW_MAINTENANCE_GUIDE.md](WORKFLOW_MAINTENANCE_GUIDE.md)** - Maintaining workflow consistency
 
 ### Technical Guides
-- **[AUDIO_GENERATION.md](AUDIO_GENERATION.md)** - Audio generation deep dive
-- **[SSML_REFERENCE.md](SSML_REFERENCE.md)** - SSML formatting guide
+- **[MANIFEST_DRIVEN_AUDIO.md](MANIFEST_DRIVEN_AUDIO.md)** - Manifest-based audio generation
+- **[HYPNOTIC_VOICE_ENHANCEMENT.md](HYPNOTIC_VOICE_ENHANCEMENT.md)** - Voice enhancement processing
+- **[HYPNOTIC_PACING.md](HYPNOTIC_PACING.md)** - Timing and pacing techniques
+- **[BINAURAL_FREQUENCY_GUIDE.md](BINAURAL_FREQUENCY_GUIDE.md)** - Comprehensive binaural beats reference
 - `../config/` - Configuration and settings reference
+
+### AI & Self-Learning System
+- **[SELF_IMPROVEMENT_WORKFLOW.md](SELF_IMPROVEMENT_WORKFLOW.md)** - Pillar 3: Self-evolutive systems
+- `../knowledge/` - Knowledge base and lessons learned
+- `../scripts/ai/learning/` - Feedback analyzer, lessons manager
 
 ### Archives
 - `.archive/old_docs/` - Previous documentation (preserved for reference)
@@ -330,7 +337,7 @@ python scripts/utilities/validate_ssml.py \
 
 ### Documentation
 1. Check: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
-2. Review: [WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)
+2. Review: [CANONICAL_WORKFLOW.md](CANONICAL_WORKFLOW.md)
 3. Read script docs: `scripts/README.md`
 
 ### Common Issues
@@ -466,6 +473,6 @@ mv sessions/*/output/*.mp3 .archive/old_audio/
 ---
 
 **Quick Navigation:**
-- [Quick Start](QUICK_START.md) | [Workflow Guide](WORKFLOW_GUIDE.md) | [Troubleshooting](TROUBLESHOOTING.md)
-- [Audio Generation](AUDIO_GENERATION.md) | [SSML Reference](SSML_REFERENCE.md)
+- [Quick Start](QUICK_START.md) | [Canonical Workflow](CANONICAL_WORKFLOW.md) | [Troubleshooting](TROUBLESHOOTING.md)
+- [Voice Enhancement](HYPNOTIC_VOICE_ENHANCEMENT.md) | [Production Workflow](PRODUCTION_WORKFLOW.md)
 - [Project Root](../README.md) | [Scripts](../scripts/README.md) | [Templates](../templates/)

@@ -1,0 +1,85 @@
+# Cosmic Voyage Session Template
+# A template for expansive, space-themed hypnotic sessions
+#
+# Usage:
+#   cp templates/sessions/cosmic-voyage.yaml sessions/{new-session}/manifest.yaml
+#   Then customize the values for your specific session
+
+title: "Journey Through the Cosmic Void"  # Change this
+description: |
+  Embark on an extraordinary voyage through the cosmos,
+  where infinite stars and nebulae reveal the vastness within you.
+
+theme: cosmic
+duration: 35  # minutes - cosmic journeys can be longer
+
+voice:
+  id: en-US-Neural2-E  # Deep, resonant female voice
+  speaking_rate: 0.82  # Slower for expansive feel
+  pitch: -2  # Deeper pitch for cosmic gravitas
+
+audio:
+  binaural:
+    enabled: true
+    base_frequency: 220
+    beat_frequency: 3  # Deep theta for cosmic consciousness
+    volume: 0.32
+
+  pink_noise:
+    enabled: true
+    volume: 0.15
+
+  background:
+    enabled: true
+    path: resources/background_audio/space_ambient.mp3  # Update with your file
+    volume: 0.20
+    loop: true
+    fade_in: 10
+    fade_out: 20
+
+  voice_enhancement:
+    warmth: true
+    de_essing: true
+    compression: true
+    reverb:
+      enabled: true
+      room_size: 0.50  # Large space for cosmic vastness
+      wet_level: 0.22
+
+  mastering:
+    target_lufs: -16
+    true_peak: -1
+
+video:
+  enabled: true
+  resolution: 1080p
+  fps: 30
+  transition_duration: 5  # Slower transitions for space travel feel
+  image_duration: 30
+
+visual_style: cosmic
+
+youtube:
+  tags:
+    - hypnosis
+    - meditation
+    - space meditation
+    - cosmic journey
+    - astral projection
+    - deep relaxation
+    - universe
+    - consciousness expansion
+  category: People & Blogs
+  privacy: unlisted
+
+metadata:
+  template: cosmic-voyage
+  version: "1.0.0"
+  notes: |
+    Key elements for cosmic sessions:
+    - Stars, galaxies, nebulae
+    - Floating/weightlessness
+    - Vast infinite spaces
+    - Light speed travel
+    - Connection to universe
+    - Expansion of consciousness

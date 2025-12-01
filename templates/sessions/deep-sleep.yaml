@@ -1,0 +1,90 @@
+# Deep Sleep Session Template
+# A template for sleep-inducing hypnotic sessions
+#
+# Usage:
+#   cp templates/sessions/deep-sleep.yaml sessions/{new-session}/manifest.yaml
+#   Then customize the values for your specific session
+
+title: "Descent into Peaceful Sleep"  # Change this
+description: |
+  Drift effortlessly into the deepest, most restorative sleep,
+  as gentle waves of relaxation carry you into dreamland.
+
+theme: dreamscape
+duration: 45  # minutes - longer for sleep sessions
+
+voice:
+  id: en-US-Neural2-A  # Warm, calming female voice
+  speaking_rate: 0.78  # Very slow for sleep induction
+  pitch: -2  # Lower pitch is more sleep-inducing
+
+audio:
+  binaural:
+    enabled: true
+    base_frequency: 160  # Lower base frequency
+    beat_frequency: 2    # Delta waves for deep sleep
+    volume: 0.28
+
+  pink_noise:
+    enabled: true
+    volume: 0.18  # Slightly higher for sleep masking
+
+  background:
+    enabled: true
+    path: resources/background_audio/soft_rain.mp3  # Update with your file
+    volume: 0.15
+    loop: true
+    fade_in: 8
+    fade_out: 30  # Long fade out as listener falls asleep
+
+  voice_enhancement:
+    warmth: true
+    de_essing: true
+    compression: true
+    reverb:
+      enabled: true
+      room_size: 0.40
+      wet_level: 0.20
+
+  mastering:
+    target_lufs: -18  # Slightly quieter for sleep
+    true_peak: -1.5
+
+video:
+  enabled: true
+  resolution: 1080p
+  fps: 24  # Lower fps for calmer feel
+  transition_duration: 6  # Very slow transitions
+  image_duration: 40
+
+visual_style: dreamscape
+
+youtube:
+  tags:
+    - sleep hypnosis
+    - deep sleep
+    - insomnia help
+    - sleep meditation
+    - relaxation for sleep
+    - fall asleep fast
+    - guided sleep
+    - bedtime meditation
+  category: People & Blogs
+  privacy: unlisted
+
+metadata:
+  template: deep-sleep
+  version: "1.0.0"
+  notes: |
+    Key elements for sleep sessions:
+    - Counting down/deepening
+    - Body scan relaxation
+    - Heavy/sinking sensations
+    - Soft, dreamy imagery
+    - Progressive muscle relaxation
+    - Breath focus
+    - Let go of thoughts
+
+    Important: Voice should gradually
+    become quieter and slower toward
+    the end of the session.

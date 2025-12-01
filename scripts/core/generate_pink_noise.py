@@ -11,11 +11,25 @@ import argparse
 import sys
 import os
 import subprocess
+from pathlib import Path
 
 # Add parent directory to path so we can import audio modules
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from core.audio.pink_noise import generate, save_stem
+
+# Import validation utilities
+try:
+    from utilities.validation import (
+        validate_duration,
+        validate_output_path,
+        validate_percentage,
+    )
+except ImportError:
+    # Fallback to basic validation
+    validate_duration = lambda x: int(float(x))
+    validate_output_path = str
+    validate_percentage = float
 
 
 def get_project_root():
@@ -76,11 +90,11 @@ def trim_audio(input_path, output_path, duration_sec):
 
 def main():
     parser = argparse.ArgumentParser(description='Generate pink noise ambient pad')
-    parser.add_argument('--duration', type=float, required=True,
-                       help='Duration in seconds')
-    parser.add_argument('--output', type=str, required=True,
+    parser.add_argument('--duration', type=validate_duration, required=True,
+                       help='Duration in seconds (30-10800)')
+    parser.add_argument('--output', type=validate_output_path, required=True,
                        help='Output WAV file path')
-    parser.add_argument('--amplitude', type=float, default=0.15,
+    parser.add_argument('--amplitude', type=validate_percentage, default=0.15,
                        help='Amplitude 0.0-1.0 (default: 0.15)')
     parser.add_argument('--stereo-variation', action='store_true', default=True,
                        help='Enable stereo variation (default: True)')

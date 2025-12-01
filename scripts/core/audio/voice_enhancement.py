@@ -667,7 +667,7 @@ def enhance_voice(
                         input_path]
             result = subprocess.run(probe_cmd, capture_output=True, text=True)
             duration = float(result.stdout.strip())
-        except:
+        except (ValueError, AttributeError, subprocess.SubprocessError):
             duration = 1800  # Default 30 minutes
 
         # Step 1: De-essing (do this first to prevent artifacts)

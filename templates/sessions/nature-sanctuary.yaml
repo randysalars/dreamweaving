@@ -1,0 +1,85 @@
+# Nature Sanctuary Session Template
+# A template for grounding, nature-based hypnotic sessions
+#
+# Usage:
+#   cp templates/sessions/nature-sanctuary.yaml sessions/{new-session}/manifest.yaml
+#   Then customize the values for your specific session
+
+title: "Enchanted Forest Sanctuary"  # Change this
+description: |
+  Discover a hidden sanctuary deep within an ancient forest,
+  where nature's healing embrace awaits to restore your spirit.
+
+theme: nature
+duration: 25  # minutes
+
+voice:
+  id: en-US-Neural2-C  # Soft, gentle female voice
+  speaking_rate: 0.88
+  pitch: 0
+
+audio:
+  binaural:
+    enabled: true
+    base_frequency: 180
+    beat_frequency: 6  # Alpha-theta border for relaxed awareness
+    volume: 0.25
+
+  pink_noise:
+    enabled: true
+    volume: 0.10
+
+  background:
+    enabled: true
+    path: resources/background_audio/forest_ambience.mp3  # Update with your file
+    volume: 0.22  # Nature sounds can be slightly louder
+    loop: true
+    fade_in: 5
+    fade_out: 12
+
+  voice_enhancement:
+    warmth: true
+    de_essing: true
+    compression: true
+    reverb:
+      enabled: true
+      room_size: 0.25  # Smaller room - more intimate outdoor feel
+      wet_level: 0.12
+
+  mastering:
+    target_lufs: -16
+    true_peak: -1
+
+video:
+  enabled: true
+  resolution: 1080p
+  fps: 30
+  transition_duration: 3
+  image_duration: 20
+
+visual_style: nature
+
+youtube:
+  tags:
+    - hypnosis
+    - meditation
+    - nature sounds
+    - forest meditation
+    - grounding
+    - relaxation
+    - nature healing
+    - guided visualization
+  category: People & Blogs
+  privacy: unlisted
+
+metadata:
+  template: nature-sanctuary
+  version: "1.0.0"
+  notes: |
+    Key elements for nature sessions:
+    - Forest/garden imagery
+    - Water features (streams, lakes)
+    - Wildlife (birds, gentle animals)
+    - Earth connection/grounding
+    - Seasonal elements
+    - Tree wisdom themes

@@ -4,10 +4,16 @@
 
 set -e
 
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Project root is two levels up from sessions/neural-network-navigator/
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+SESSION_DIR="$SCRIPT_DIR"
+
 DURATION=1421  # 23:41 in seconds
 SAMPLE_RATE=48000
 
-cd /home/rsalars/Projects/dreamweaving
+cd "$PROJECT_ROOT"
 
 echo "=========================================="
 echo "NEURAL NETWORK NAVIGATOR - ULTIMATE AUDIO"
@@ -61,16 +67,16 @@ python3 scripts/core/generate_binaural.py --frequency 10 --duration 21 --output 
 echo ""
 echo "=== CONCATENATING BINAURAL BEATS ==="
 
-# Create concat list with absolute paths
+# Create concat list with absolute paths (dynamically generated)
 cat > temp_audio/binaural_concat.txt << EOF
-file '/home/rsalars/Projects/dreamweaving/temp_audio/01_pretalk_binaural.wav'
-file '/home/rsalars/Projects/dreamweaving/temp_audio/02_induction_binaural.wav'
-file '/home/rsalars/Projects/dreamweaving/temp_audio/03_garden_binaural.wav'
-file '/home/rsalars/Projects/dreamweaving/temp_audio/04_pathfinder_binaural.wav'
-file '/home/rsalars/Projects/dreamweaving/temp_audio/05_weaver_binaural.wav'
-file '/home/rsalars/Projects/dreamweaving/temp_audio/06_gamma_binaural.wav'
-file '/home/rsalars/Projects/dreamweaving/temp_audio/07_consolidation_binaural.wav'
-file '/home/rsalars/Projects/dreamweaving/temp_audio/08_awakening_binaural.wav'
+file '${PROJECT_ROOT}/temp_audio/01_pretalk_binaural.wav'
+file '${PROJECT_ROOT}/temp_audio/02_induction_binaural.wav'
+file '${PROJECT_ROOT}/temp_audio/03_garden_binaural.wav'
+file '${PROJECT_ROOT}/temp_audio/04_pathfinder_binaural.wav'
+file '${PROJECT_ROOT}/temp_audio/05_weaver_binaural.wav'
+file '${PROJECT_ROOT}/temp_audio/06_gamma_binaural.wav'
+file '${PROJECT_ROOT}/temp_audio/07_consolidation_binaural.wav'
+file '${PROJECT_ROOT}/temp_audio/08_awakening_binaural.wav'
 EOF
 
 # Concatenate all binaural sections

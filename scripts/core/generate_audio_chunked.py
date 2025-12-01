@@ -12,11 +12,16 @@ Usage:
     python3 generate_audio_chunked.py input.ssml output.mp3 --voice en-US-Neural2-A
 """
 
-from google.cloud import texttospeech
-import sys
 import os
 import re
+import shutil
+import sys
+import tempfile
+from pathlib import Path
+
+from google.cloud import texttospeech
 from pydub import AudioSegment
+from pydub.exceptions import CouldntDecodeError
 
 def print_header():
     """Print a simple header"""
@@ -158,22 +163,23 @@ def synthesize_chunk(client, ssml_text, voice_name, chunk_num, total_chunks, spe
     return response.audio_content
 
 def concatenate_audio_chunks(chunk_files, output_file):
-    """Concatenate multiple MP3 files into one"""
+    """Concatenate multiple MP3 files into one.
+
+    Note: Temp file cleanup is handled by tempfile.TemporaryDirectory context manager.
+    """
     print(f"\n🔗 Concatenating {len(chunk_files)} audio chunks...")
-    
+
     combined = AudioSegment.empty()
-    
+
     for i, chunk_file in enumerate(chunk_files, 1):
         print(f"   Adding chunk {i}/{len(chunk_files)}...")
         audio = AudioSegment.from_mp3(chunk_file)
         combined += audio
-        # Clean up temporary file
-        os.remove(chunk_file)
-    
+
     # Export final file
     print(f"💾 Exporting final audio to: {output_file}")
     combined.export(output_file, format="mp3", bitrate="128k")
-    
+
     return combined
 
 def synthesize_ssml_file_chunked(
@@ -237,44 +243,44 @@ def synthesize_ssml_file_chunked(
     print(f"   Pitch: {pitch:.1f} semitones")
     print(f"\n⏳ Synthesizing {len(chunks)} chunk(s)... (this may take 1-2 minutes)")
     print()
-    
-    chunk_files = []
-    
-    try:
-        for i, chunk in enumerate(chunks, 1):
-            audio_content = synthesize_chunk(
-                client,
-                chunk,
-                voice_name,
-                i,
-                len(chunks),
-                speaking_rate,
-                pitch,
-                sample_rate_hz,
-                effects_profile_id,
-            )
-            
-            # Save chunk to temporary file
-            chunk_file = f"temp_chunk_{i:03d}.mp3"
-            with open(chunk_file, 'wb') as out:
-                out.write(audio_content)
-            chunk_files.append(chunk_file)
-            
-    except Exception as e:
-        print(f"\n❌ Error during synthesis: {e}")
-        # Clean up any temporary files
-        for chunk_file in chunk_files:
-            if os.path.exists(chunk_file):
-                os.remove(chunk_file)
-        sys.exit(1)
-    
-    # Concatenate all chunks if more than one
-    if len(chunk_files) == 1:
-        # Just rename the single file
-        os.rename(chunk_files[0], output_filepath)
-    else:
-        # Concatenate multiple files
-        combined = concatenate_audio_chunks(chunk_files, output_filepath)
+
+    # Use temporary directory for chunk files (auto-cleaned on exit)
+    with tempfile.TemporaryDirectory(prefix="dreamweaving_chunks_") as tmpdir:
+        tmpdir_path = Path(tmpdir)
+        chunk_files = []
+
+        try:
+            for i, chunk in enumerate(chunks, 1):
+                audio_content = synthesize_chunk(
+                    client,
+                    chunk,
+                    voice_name,
+                    i,
+                    len(chunks),
+                    speaking_rate,
+                    pitch,
+                    sample_rate_hz,
+                    effects_profile_id,
+                )
+
+                # Save chunk to temporary file in temp directory
+                chunk_file = tmpdir_path / f"chunk_{i:03d}.mp3"
+                with open(chunk_file, 'wb') as out:
+                    out.write(audio_content)
+                chunk_files.append(str(chunk_file))
+
+        except Exception as e:
+            print(f"\n❌ Error during synthesis: {e}")
+            # Temp directory is auto-cleaned by context manager
+            sys.exit(1)
+
+        # Concatenate all chunks if more than one
+        if len(chunk_files) == 1:
+            # Copy single file (can't rename across filesystems)
+            shutil.copy2(chunk_files[0], output_filepath)
+        else:
+            # Concatenate multiple files
+            concatenate_audio_chunks(chunk_files, output_filepath)
     
     # Calculate file size and duration
     file_size_mb = os.path.getsize(output_filepath) / (1024 * 1024)
@@ -284,7 +290,7 @@ def synthesize_ssml_file_chunked(
         audio = AudioSegment.from_mp3(output_filepath)
         duration_minutes = len(audio) / 1000 / 60
         duration_str = f"{duration_minutes:.1f} minutes"
-    except:
+    except (OSError, IOError, CouldntDecodeError):
         duration_str = "~25-30 minutes (estimated)"
     
     print()
@@ -308,16 +314,42 @@ def main():
     """Main execution function"""
     import argparse
 
+    # Import validation utilities
+    try:
+        from scripts.utilities.validation import (
+            validate_file_exists,
+            validate_output_path,
+            validate_speaking_rate,
+            validate_pitch,
+        )
+    except ImportError:
+        # Fallback if not installed as package
+        import sys
+        sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+        try:
+            from scripts.utilities.validation import (
+                validate_file_exists,
+                validate_output_path,
+                validate_speaking_rate,
+                validate_pitch,
+            )
+        except ImportError:
+            # Use basic validation if module not available
+            validate_file_exists = str
+            validate_output_path = str
+            validate_speaking_rate = float
+            validate_pitch = float
+
     print_header()
 
     parser = argparse.ArgumentParser(description="Chunked SSML → audio generator")
-    parser.add_argument("ssml_file", help="Path to input SSML file")
-    parser.add_argument("output_file", help="Path to output MP3 file")
+    parser.add_argument("ssml_file", type=validate_file_exists, help="Path to input SSML file")
+    parser.add_argument("output_file", type=validate_output_path, help="Path to output MP3 file")
     parser.add_argument("--voice", default="en-US-Neural2-A", help="Voice name (default: en-US-Neural2-A)")
-    parser.add_argument("--speaking-rate", type=float, default=0.85, help="Speaking rate multiplier (e.g., 0.9 faster, 0.8 slower)")
-    parser.add_argument("--pitch", type=float, default=-2.0, help="Pitch shift in semitones (default: -2.0)")
+    parser.add_argument("--speaking-rate", type=validate_speaking_rate, default=0.85, help="Speaking rate multiplier (0.25-4.0, default: 0.85)")
+    parser.add_argument("--pitch", type=validate_pitch, default=-2.0, help="Pitch shift in semitones (-20 to +20, default: -2.0)")
     parser.add_argument("--max-bytes", type=int, default=5000, help="Max bytes per chunk before splitting (default: 5000)")
-    parser.add_argument("--sample-rate", type=int, default=24000, help="Sample rate in Hz for TTS output (default: 24000)")
+    parser.add_argument("--sample-rate", type=int, default=24000, choices=[16000, 22050, 24000, 44100, 48000], help="Sample rate in Hz (default: 24000)")
     parser.add_argument("--effects-profile", default=None, nargs="*", help="Effects profile IDs (default: headphone-class-device)")
 
     args = parser.parse_args()
@@ -338,8 +370,8 @@ def main():
         sys.exit(1)
 
     synthesize_ssml_file_chunked(
-        args.ssml_file,
-        args.output_file,
+        str(args.ssml_file),
+        str(args.output_file),
         voice_name=args.voice,
         speaking_rate=args.speaking_rate,
         pitch=args.pitch,

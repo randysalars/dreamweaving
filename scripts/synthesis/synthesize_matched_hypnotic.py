@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from google.cloud import texttospeech
 import os
+import subprocess
 
 def create_matched_hypnotic_chunks():
     """Create hypnotic opening matched to reference voice"""
@@ -453,9 +454,12 @@ def main():
         for cf in chunk_files:
             f.write(f"file '{cf}'\n")
     
-    result = os.system("ffmpeg -f concat -safe 0 -i filelist.txt -c copy hypnotic_opening_matched.mp3 -y 2>/dev/null")
-    
-    if result == 0 and os.path.exists('hypnotic_opening_matched.mp3'):
+    result = subprocess.run(
+        ['ffmpeg', '-f', 'concat', '-safe', '0', '-i', 'filelist.txt', '-c', 'copy', 'hypnotic_opening_matched.mp3', '-y'],
+        capture_output=True
+    )
+
+    if result.returncode == 0 and os.path.exists('hypnotic_opening_matched.mp3'):
         print("\n" + "="*60)
         print("✓ SUCCESS - MATCHED TO YOUR REFERENCE!")
         print("="*60)

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from google.cloud import texttospeech
 import os
+import subprocess
 
 def create_pretalk_chunks():
     """Split pretalk into 2 chunks under 5000 bytes each"""
@@ -148,7 +149,10 @@ def main():
             f.write(f"file '{cf}'\n")
     
     # Combine with ffmpeg
-    os.system("ffmpeg -f concat -safe 0 -i filelist.txt -c copy hypnosis_pretalk.mp3 -y 2>/dev/null")
+    result = subprocess.run(
+        ['ffmpeg', '-f', 'concat', '-safe', '0', '-i', 'filelist.txt', '-c', 'copy', 'hypnosis_pretalk.mp3', '-y'],
+        capture_output=True
+    )
     
     if os.path.exists('hypnosis_pretalk.mp3'):
         print("\n✓ SUCCESS!")

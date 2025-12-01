@@ -46,7 +46,7 @@ def get_audio_duration(audio_path):
     result = subprocess.run(cmd, capture_output=True, text=True)
     try:
         return float(result.stdout.strip())
-    except:
+    except (ValueError, AttributeError):
         return 1800
 
 

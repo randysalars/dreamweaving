@@ -31,6 +31,31 @@ from pydub import AudioSegment
 from audio.binaural import generate as generate_binaural, save_stem
 from generate_audio_chunked import synthesize_ssml_file_chunked
 
+# Import validation utilities
+try:
+    script_dir = Path(__file__).parent.parent
+    sys.path.insert(0, str(script_dir))
+    from utilities.validation import (
+        validate_file_exists,
+        validate_output_path,
+        validate_speaking_rate,
+        validate_pitch,
+        validate_binaural_offset,
+        validate_frequency,
+        validate_volume_db,
+        validate_percentage,
+    )
+except ImportError:
+    # Fallback to basic validation
+    validate_file_exists = str
+    validate_output_path = str
+    validate_speaking_rate = float
+    validate_pitch = float
+    validate_binaural_offset = float
+    validate_frequency = float
+    validate_volume_db = float
+    validate_percentage = float
+
 
 def _ensure_dir(path: Path):
     path.mkdir(parents=True, exist_ok=True)
@@ -152,10 +177,10 @@ def _synthesize_edge_tts(ssml_path: Path, out_path: Path, voice_name: str, speak
 
 def main():
     parser = argparse.ArgumentParser(description="Generate voice + binaural audio for any session topic.")
-    parser.add_argument("--ssml", required=True, help="Path to SSML file.")
+    parser.add_argument("--ssml", type=validate_file_exists, required=True, help="Path to SSML file.")
     parser.add_argument("--voice", default="en-US-Neural2-D", help="Voice name (default: Google Neural2-D).")
-    parser.add_argument("--speaking-rate", type=float, default=0.75, help="Initial speaking rate multiplier (default: 0.75 for meditation).")
-    parser.add_argument("--pitch", type=float, default=-2.5, help="Pitch in semitones (default: -2.5st).")
+    parser.add_argument("--speaking-rate", type=validate_speaking_rate, default=0.75, help="Initial speaking rate multiplier (0.25-4.0, default: 0.75 for meditation).")
+    parser.add_argument("--pitch", type=validate_pitch, default=-2.5, help="Pitch in semitones (-20 to +20, default: -2.5st).")
     parser.add_argument(
         "--tts-provider",
         choices=["google"],
@@ -169,7 +194,7 @@ def main():
         default="bed_to_voice",
         help="Whether to stretch the bed to the voice (default) or adjust voice rate toward target length.",
     )
-    parser.add_argument("--beat-hz", type=float, default=7.83, help="Binaural beat frequency (Hz).")
+    parser.add_argument("--beat-hz", type=validate_binaural_offset, default=7.83, help="Binaural beat frequency (0.5-100 Hz).")
     parser.add_argument(
         "--beat-schedule",
         default=None,
@@ -179,17 +204,17 @@ def main():
             "If provided, overrides --beat-hz."
         ),
     )
-    parser.add_argument("--carrier-hz", type=float, default=432.0, help="Carrier frequency (Hz).")
-    parser.add_argument("--bed-amplitude", type=float, default=0.3, help="Bed amplitude (0.0-1.0, before dB gain).")
-    parser.add_argument("--bed-gain-db", type=float, default=-10.0, help="Bed gain applied in final mix (dB).")
-    parser.add_argument("--voice-gain-db", type=float, default=0.0, help="Voice gain applied in final mix (dB).")
+    parser.add_argument("--carrier-hz", type=validate_frequency, default=432.0, help="Carrier frequency (0.1-20000 Hz).")
+    parser.add_argument("--bed-amplitude", type=validate_percentage, default=0.3, help="Bed amplitude (0.0-1.0, before dB gain).")
+    parser.add_argument("--bed-gain-db", type=validate_volume_db, default=-10.0, help="Bed gain applied in final mix (-40 to +10 dB).")
+    parser.add_argument("--voice-gain-db", type=validate_volume_db, default=0.0, help="Voice gain applied in final mix (-40 to +10 dB).")
     parser.add_argument("--output-dir", default=None, help="Output directory (default: <ssml_dir>/output).")
-    parser.add_argument("--voice-out", default=None, help="Override voice output path.")
-    parser.add_argument("--bed-out", default=None, help="Override binaural bed output path.")
-    parser.add_argument("--mix-out", default=None, help="If set, export final mix MP3 to this path.")
+    parser.add_argument("--voice-out", type=validate_output_path, default=None, help="Override voice output path.")
+    parser.add_argument("--bed-out", type=validate_output_path, default=None, help="Override binaural bed output path.")
+    parser.add_argument("--mix-out", type=validate_output_path, default=None, help="If set, export final mix MP3 to this path.")
     parser.add_argument("--sfx-path", default=None, help="Optional sound-effect file to overlay onto the bed.")
     parser.add_argument("--sfx-at-sec", type=float, default=0.0, help="Position for the sfx in seconds.")
-    parser.add_argument("--sfx-gain-db", type=float, default=0.0, help="Gain (dB) applied to the sfx before overlay.")
+    parser.add_argument("--sfx-gain-db", type=validate_volume_db, default=0.0, help="Gain (-40 to +10 dB) applied to the sfx before overlay.")
     parser.add_argument(
         "--sfx-config",
         default=None,
@@ -199,14 +224,12 @@ def main():
         ),
     )
     parser.add_argument("--max-bytes", type=int, default=5000, help="Max SSML bytes per chunk (default: 5000).")
-    parser.add_argument("--sample-rate", type=int, default=24000, help="TTS sample rate Hz (default: 24000).")
+    parser.add_argument("--sample-rate", type=int, default=24000, choices=[16000, 22050, 24000, 44100, 48000], help="TTS sample rate Hz (default: 24000).")
 
     args = parser.parse_args()
 
+    # args.ssml is already a Path from validate_file_exists
     ssml_path = Path(args.ssml).resolve()
-    if not ssml_path.exists():
-        print(f"❌ SSML file not found: {ssml_path}")
-        sys.exit(1)
 
     out_dir = Path(args.output_dir) if args.output_dir else ssml_path.parent / "output"
     _ensure_dir(out_dir)

@@ -552,16 +552,41 @@ def master_voice_from_manifest(manifest, session_dir):
 if __name__ == '__main__':
     import sys
     import argparse
+    from pathlib import Path
+
+    # Import validation utilities
+    try:
+        # Try relative import first
+        script_dir = Path(__file__).parent.parent.parent
+        sys.path.insert(0, str(script_dir))
+        from utilities.validation import validate_file_exists, validate_output_path
+    except ImportError:
+        # Fallback to basic validation
+        validate_file_exists = str
+        validate_output_path = str
+
+    def validate_lufs(value: str) -> float:
+        """Validate LUFS target (-40 to 0)."""
+        try:
+            lufs = float(value)
+        except ValueError:
+            raise argparse.ArgumentTypeError(f"'{value}' is not a valid number")
+        if not (-40 <= lufs <= 0):
+            raise argparse.ArgumentTypeError(
+                f"LUFS must be between -40 and 0, got {lufs}"
+            )
+        return lufs
 
     parser = argparse.ArgumentParser(
         description='Professional audio mastering with optional hypnotic voice enhancement'
     )
-    parser.add_argument('input', help='Input WAV file')
-    parser.add_argument('-o', '--output', help='Output WAV file (default: <input>_MASTERED.wav)')
+    parser.add_argument('input', type=validate_file_exists, help='Input WAV file')
+    parser.add_argument('-o', '--output', type=validate_output_path,
+                        help='Output WAV file (default: <input>_MASTERED.wav)')
     parser.add_argument('--enhance', action='store_true',
                         help='Apply hypnotic voice enhancement (tape warmth, whisper overlay, etc.)')
-    parser.add_argument('--lufs', type=float, default=-14,
-                        help='Target LUFS (default: -14)')
+    parser.add_argument('--lufs', type=validate_lufs, default=-14,
+                        help='Target LUFS (-40 to 0, default: -14)')
     parser.add_argument('--no-whisper', action='store_true',
                         help='Disable whisper overlay')
     parser.add_argument('--no-double', action='store_true',
@@ -569,8 +594,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    input_file = args.input
-    output_file = args.output or input_file.replace('.wav', '_MASTERED.wav')
+    input_file = str(args.input)
+    output_file = str(args.output) if args.output else input_file.replace('.wav', '_MASTERED.wav')
 
     print(f"Mastering: {input_file}")
 

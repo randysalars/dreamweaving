@@ -104,7 +104,7 @@ class ImageGenerator:
                     try:
                         self.pipe.enable_xformers_memory_efficient_attention()
                         logger.info("✅ xformers acceleration enabled")
-                    except:
+                    except (ImportError, ModuleNotFoundError, RuntimeError):
                         logger.info("ℹ️  xformers not available (install with: pip install xformers)")
 
             logger.info("✅ Model loaded successfully")

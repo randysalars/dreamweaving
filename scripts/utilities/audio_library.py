@@ -87,12 +87,36 @@ class AudioLibrary:
         return None
 
     def copy_to_session(self, asset_name: str, dest_path: str):
-        """Copy asset to session directory"""
+        """
+        Copy asset to session directory.
+
+        For security, destination must be within the project's sessions directory.
+
+        Args:
+            asset_name: Name of the asset to copy
+            dest_path: Destination path (must be within sessions/)
+
+        Raises:
+            FileNotFoundError: If asset doesn't exist
+            ValueError: If destination is outside safe directory
+        """
         src_path = self.get_asset_path(asset_name)
         if not src_path or not src_path.exists():
             raise FileNotFoundError(f"Asset not found: {asset_name}")
 
-        dest = Path(dest_path)
+        # Validate destination is within safe directory (sessions/)
+        dest = Path(dest_path).resolve()
+        safe_dir = (self.project_root / "sessions").resolve()
+
+        # Check that dest is within safe_dir (prevent path traversal)
+        try:
+            dest.relative_to(safe_dir)
+        except ValueError:
+            raise ValueError(
+                f"Destination must be within {safe_dir}. "
+                f"Got: {dest}"
+            )
+
         dest.parent.mkdir(parents=True, exist_ok=True)
 
         subprocess.run(['cp', str(src_path), str(dest)], check=True)

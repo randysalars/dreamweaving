@@ -1,69 +1,151 @@
-# Dreamweaving Voice Configuration
-# This file specifies the default voice settings for all sessions
+# Dreamweaving Voice Configuration (Consolidated)
+# ================================================
+# This is the single source of truth for all voice settings.
+# Consolidates voice_config.yaml and voice_profiles.json.
+#
+# Provider: Google Cloud Text-to-Speech (Neural2 voices)
+# Note: Edge TTS is deprecated - use Google Cloud for production
 
-# Primary Voice Settings
-primary_voice:
-  engine: "edge-tts"
-  voice_name: "en-US-AvaNeural"
-  description: "Natural, warm female voice - Ava Neural (Microsoft Edge TTS)"
+# =============================================================================
+# VOICE PROFILES
+# =============================================================================
+# All available voices for session generation
 
-  # Voice characteristics
-  characteristics:
-    - "Calming and soothing"
-    - "Professional quality"
-    - "Excellent for meditation and hypnosis"
-    - "Clear articulation"
+profiles:
+  # Female Voices
+  default:
+    name: "en-US-Neural2-A"
+    gender: "female"
+    description: "Warm, calming female voice - ideal for most hypnosis sessions"
+    recommended_for: ["general", "healing", "relaxation", "sleep"]
+    characteristics:
+      - "Calming and soothing"
+      - "Professional quality"
+      - "Excellent for meditation and hypnosis"
+      - "Clear articulation"
 
-  # Default prosody settings
-  default_prosody:
-    rate: "1.0"     # Normal speaking rate
-    pitch: "0st"    # Normal pitch
+  soft_female:
+    name: "en-US-Neural2-C"
+    gender: "female"
+    description: "Soft, nurturing female voice"
+    recommended_for: ["healing", "inner_child", "emotional_release"]
 
-  # Section-specific prosody (can be overridden per session)
-  sections:
-    pretalk:
-      rate: "1.0"
-      pitch: "+0Hz"
+  clear_female:
+    name: "en-US-Neural2-F"
+    gender: "female"
+    description: "Clear, serene female voice"
+    recommended_for: ["confidence", "clarity", "empowerment"]
 
-    induction:
-      rate: "0.85"   # 15% slower for deeper trance
-      pitch: "-2Hz"
+  deeper_female:
+    name: "en-US-Neural2-E"
+    gender: "female"
+    description: "Deeper, more relaxing female voice"
+    recommended_for: ["deep_trance", "sleep", "meditation"]
 
-    journey:
-      rate: "0.91"   # 9% slower for immersion
-      pitch: "-1Hz"
+  # Male Voices
+  deep_male:
+    name: "en-US-Neural2-D"
+    gender: "male"
+    description: "Deep, resonant male voice"
+    recommended_for: ["grounding", "power", "masculine_healing"]
 
-    awakening:
-      rate: "0.95"   # 5% slower, gentle return
-      pitch: "+0Hz"
+  warm_male:
+    name: "en-US-Neural2-I"
+    gender: "male"
+    description: "Warm, compassionate male voice"
+    recommended_for: ["general", "healing", "guidance"]
 
-    closing:
-      rate: "1.0"
-      pitch: "+0Hz"
+  mature_male:
+    name: "en-US-Neural2-J"
+    gender: "male"
+    description: "Rich, mature male voice"
+    recommended_for: ["wisdom", "authority", "transformation"]
 
-# Fallback voices (if primary not available)
-fallback_voices:
-  - engine: "edge-tts"
-    voice_name: "en-US-JennyNeural"
-    description: "Alternative friendly female voice"
+# =============================================================================
+# SESSION TYPE RECOMMENDATIONS
+# =============================================================================
+# Suggested voices for different session types (in order of preference)
 
-  - engine: "google-cloud"
-    voice_name: "en-US-Neural2-A"
-    description: "Google Cloud Neural2 (used in V2 before voice change)"
+session_recommendations:
+  healing: ["default", "soft_female", "warm_male"]
+  confidence: ["clear_female", "deep_male", "mature_male"]
+  sleep: ["deeper_female", "default", "deep_male"]
+  abundance: ["clear_female", "mature_male", "default"]
+  spiritual: ["default", "warm_male", "deeper_female"]
+  inner_child: ["soft_female", "warm_male", "default"]
+  empowerment: ["clear_female", "deep_male", "mature_male"]
+  deep_journey: ["default", "deeper_female", "warm_male"]
+  relaxation: ["default", "soft_female", "deeper_female"]
 
-# Audio Processing Pipeline
-audio_processing:
-  tts_output_format:
-    sample_rate: 48000
-    channels: 2  # Stereo
-    bit_depth: 16  # Edge TTS outputs 16-bit
+# =============================================================================
+# DEFAULT PROSODY SETTINGS
+# =============================================================================
+# Standard speech settings for hypnotic delivery
 
-  mastering_settings:
+prosody_defaults:
+  speaking_rate: 0.85      # 15% slower than normal
+  pitch_semitones: -2.0    # Slightly lower for warmth
+  volume_gain_db: 0.0      # No adjustment
+
+# Section-specific prosody overrides
+section_prosody:
+  pretalk:
+    speaking_rate: 1.0     # Normal pace for information
+    pitch_semitones: 0.0
+
+  induction:
+    speaking_rate: 0.85    # Slower for trance induction
+    pitch_semitones: -2.0
+
+  journey:
+    speaking_rate: 0.80    # Slowest for deep immersion
+    pitch_semitones: -2.5
+
+  deepening:
+    speaking_rate: 0.75    # Very slow for deep trance
+    pitch_semitones: -3.0
+
+  awakening:
+    speaking_rate: 0.90    # Gradually faster
+    pitch_semitones: -1.0
+
+  closing:
+    speaking_rate: 1.0     # Normal pace
+    pitch_semitones: 0.0
+
+# =============================================================================
+# AUDIO SETTINGS
+# =============================================================================
+
+audio:
+  # TTS output settings
+  tts:
+    audio_encoding: "MP3"
+    sample_rate_hz: 24000
+    effects_profile: ["headphone-class-device"]
+
+  # Quality presets
+  presets:
+    standard:
+      sample_rate_hz: 24000
+      description: "Standard quality for most uses"
+
+    high_quality:
+      sample_rate_hz: 48000
+      description: "High quality for final production"
+
+    small_file:
+      sample_rate_hz: 16000
+      effects_profile: ["medium-bluetooth-speaker-class-device"]
+      description: "Smaller files for testing"
+
+  # Mastering settings
+  mastering:
     target_lufs: -14
     true_peak_dbtp: -1.5
     target_lra: 11
     sample_rate_hz: 48000
-    bit_depth: 24  # Mastered output is 24-bit
+    bit_depth: 24
 
     eq:
       warmth_boost_hz: 250
@@ -79,25 +161,47 @@ audio_processing:
       side_level: 1.05
 
     limiting:
-      ceiling_linear: 0.95  # ~-0.45 dB
+      ceiling_linear: 0.95
       attack_ms: 5
       release_ms: 50
 
-# Usage Notes
-usage_notes: |
-  IMPORTANT: Always use en-US-AvaNeural for consistency across all sessions.
+# =============================================================================
+# PROVIDER CONFIGURATION
+# =============================================================================
 
-  This is the preferred voice because:
-  - User specifically requested this voice
-  - Warm, professional quality suitable for meditation/hypnosis
-  - Consistent tone across all Dreamweaving content
-  - Free via Edge TTS (no API costs)
+provider:
+  name: "google"
+  service: "Google Cloud Text-to-Speech"
+  api_version: "v1"
+  language_code: "en-US"
 
-  To generate voice for a session:
-  1. Create SSML script with appropriate prosody tags
-  2. Run voice generation script with Ava voice
-  3. Apply professional mastering chain
-  4. Combine with binaural/sound bed stems
+  # Deprecated providers (for reference only)
+  deprecated:
+    - name: "edge-tts"
+      reason: "Removed from codebase - use Google Cloud instead"
+      migration_date: "2025-01"
 
-  Example command:
-    python3 generate_voice_v2_ava.py
+# =============================================================================
+# USAGE NOTES
+# =============================================================================
+
+notes: |
+  VOICE SELECTION GUIDE:
+
+  For most sessions, use the 'default' profile (en-US-Neural2-A).
+
+  To select a voice programmatically:
+    from scripts.config.voice_config import get_voice_profile
+    profile = get_voice_profile('warm_male')
+    voice_name = profile['name']
+
+  Voice characteristics by type:
+    - Female voices: Better for nurturing, healing, emotional work
+    - Male voices: Better for grounding, authority, transformation
+    - Deeper voices: Better for deep trance states
+    - Clearer voices: Better for confidence, empowerment
+
+  IMPORTANT:
+    - Always use Google Cloud TTS for production
+    - Edge TTS is deprecated and should not be used
+    - Test voices before full session generation

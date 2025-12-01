@@ -9,7 +9,8 @@ echo "ATLAS Starship Session Cleanup - Removing Intermediate Files"
 echo "======================================================================"
 echo ""
 
-SESSION_DIR="/home/rsalars/Projects/dreamweaving/sessions/atlas-starship-ancient-future"
+# Get the directory where this script is located (the session directory)
+SESSION_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SESSION_DIR"
 
 # Show current disk usage before cleanup

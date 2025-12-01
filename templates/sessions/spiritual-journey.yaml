@@ -1,0 +1,84 @@
+# Spiritual Journey Session Template
+# A template for creating transformative spiritual hypnotic sessions
+#
+# Usage:
+#   cp templates/sessions/spiritual-journey.yaml sessions/{new-session}/manifest.yaml
+#   Then customize the values for your specific session
+
+title: "Sacred Temple of Inner Light"  # Change this
+description: |
+  A transformative journey into the sacred temple within,
+  where ancient wisdom and healing light await your presence.
+
+theme: spiritual
+duration: 30  # minutes
+
+voice:
+  id: en-US-Neural2-A  # Warm, calming female voice
+  speaking_rate: 0.85  # Slower for hypnotic effect
+  pitch: -1  # Slightly lower pitch
+
+audio:
+  binaural:
+    enabled: true
+    base_frequency: 200  # Hz - carrier frequency
+    beat_frequency: 4    # Hz - theta waves for deep relaxation
+    volume: 0.3
+
+  pink_noise:
+    enabled: true
+    volume: 0.12
+
+  background:
+    enabled: true
+    path: resources/background_audio/ambient_spiritual.mp3  # Update with your file
+    volume: 0.18
+    loop: true
+    fade_in: 8
+    fade_out: 15
+
+  voice_enhancement:
+    warmth: true
+    de_essing: true
+    compression: true
+    reverb:
+      enabled: true
+      room_size: 0.35  # Medium room for sacred space feel
+      wet_level: 0.18
+
+  mastering:
+    target_lufs: -16
+    true_peak: -1
+
+video:
+  enabled: true
+  resolution: 1080p
+  fps: 30
+  transition_duration: 4  # Slower transitions for spiritual content
+  image_duration: 25
+
+visual_style: spiritual  # Midjourney prompt style
+
+youtube:
+  tags:
+    - hypnosis
+    - meditation
+    - spiritual journey
+    - guided meditation
+    - inner temple
+    - healing
+    - relaxation
+    - spiritual awakening
+  category: People & Blogs
+  privacy: unlisted
+
+metadata:
+  template: spiritual-journey
+  version: "1.0.0"
+  notes: |
+    Key elements for spiritual journeys:
+    - Temple/sacred space imagery
+    - Divine light and golden rays
+    - Healing energy concepts
+    - Connection to higher self
+    - Ancient wisdom themes

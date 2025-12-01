@@ -7,24 +7,42 @@ Used by bash scripts for creating individual binaural sections
 import argparse
 import sys
 import os
+from pathlib import Path
 
 # Add parent directory to path so we can import audio modules
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from core.audio.binaural import generate, save_stem
 
+# Import validation utilities
+try:
+    from utilities.validation import (
+        validate_binaural_offset,
+        validate_duration,
+        validate_frequency,
+        validate_output_path,
+        validate_percentage,
+    )
+except ImportError:
+    # Fallback to basic validation
+    validate_binaural_offset = float
+    validate_duration = lambda x: int(float(x))
+    validate_frequency = float
+    validate_output_path = str
+    validate_percentage = float
+
 
 def main():
     parser = argparse.ArgumentParser(description='Generate binaural beat audio')
-    parser.add_argument('--frequency', type=float, required=True,
-                       help='Binaural beat frequency in Hz (e.g., 10 for alpha, 5 for theta, 40 for gamma)')
-    parser.add_argument('--duration', type=float, required=True,
-                       help='Duration in seconds')
-    parser.add_argument('--output', type=str, required=True,
+    parser.add_argument('--frequency', type=validate_binaural_offset, required=True,
+                       help='Binaural beat frequency in Hz (0.5-100, e.g., 10 for alpha, 5 for theta, 40 for gamma)')
+    parser.add_argument('--duration', type=validate_duration, required=True,
+                       help='Duration in seconds (30-10800)')
+    parser.add_argument('--output', type=validate_output_path, required=True,
                        help='Output WAV file path')
-    parser.add_argument('--carrier', type=float, default=200,
+    parser.add_argument('--carrier', type=validate_frequency, default=200,
                        help='Carrier frequency in Hz (default: 200)')
-    parser.add_argument('--amplitude', type=float, default=0.3,
+    parser.add_argument('--amplitude', type=validate_percentage, default=0.3,
                        help='Amplitude 0.0-1.0 (default: 0.3)')
 
     args = parser.parse_args()

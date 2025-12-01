@@ -4,21 +4,46 @@ Universal Audio Mixer
 Combines multiple audio stems with level control and sidechain ducking
 """
 
-import numpy as np
-from scipy.io import wavfile
+from __future__ import annotations
+
 import os
+from typing import Any, Dict, List, Optional, TypedDict, Union
+
+import numpy as np
+from numpy.typing import NDArray
+from scipy.io import wavfile
+
+# Type aliases
+StereoAudio = NDArray[np.float32]  # Shape: (samples, 2)
+
+
+class StemConfigAudio(TypedDict, total=False):
+    """Stem configuration with audio data."""
+    audio: StereoAudio
+    gain_db: float
+
+
+class StemConfigPath(TypedDict, total=False):
+    """Stem configuration with file path."""
+    path: str
+    gain_db: float
+
+
+StemConfig = Union[StemConfigAudio, StemConfigPath]
+StemsDict = Dict[str, StemConfig]
+
 
 def mix_stems(
-    stems,
-    duration_sec,
-    sample_rate=48000,
-    sidechain_enabled=True,
-    sidechain_targets=None,
-    sidechain_threshold=-30,
-    sidechain_ratio=0.5
-):
+    stems: StemsDict,
+    duration_sec: float,
+    sample_rate: int = 48000,
+    sidechain_enabled: bool = True,
+    sidechain_targets: Optional[List[str]] = None,
+    sidechain_threshold: float = -30,
+    sidechain_ratio: float = 0.5
+) -> StereoAudio:
     """
-    Mix multiple audio stems into final track
+    Mix multiple audio stems into final track.
 
     Args:
         stems: Dict of {name: {'audio': numpy_array, 'gain_db': float}}
@@ -31,7 +56,7 @@ def mix_stems(
         sidechain_ratio: Ducking amount (0.0-1.0, where 1.0 = full duck)
 
     Returns:
-        numpy array of mixed stereo audio (float32)
+        numpy array of mixed stereo audio (float32), shape (samples, 2)
     """
 
     print("\n" + "="*70)
@@ -165,9 +190,14 @@ def mix_stems(
     return mixed
 
 
-def _calculate_envelope(audio, sample_rate, window_ms=100, smoothing_ms=50):
+def _calculate_envelope(
+    audio: StereoAudio,
+    sample_rate: int,
+    window_ms: float = 100,
+    smoothing_ms: float = 50
+) -> StereoAudio:
     """
-    Calculate RMS envelope of audio signal
+    Calculate RMS envelope of audio signal.
 
     Args:
         audio: Stereo audio (numpy array)
@@ -203,11 +233,15 @@ def _calculate_envelope(audio, sample_rate, window_ms=100, smoothing_ms=50):
     return envelope
 
 
-def _calculate_ducking_gain(voice_envelope, threshold, ratio):
+def _calculate_ducking_gain(
+    voice_envelope: StereoAudio,
+    threshold: float,
+    ratio: float
+) -> StereoAudio:
     """
-    Calculate ducking gain curve based on voice envelope
+    Calculate ducking gain curve based on voice envelope.
 
-    When voice is present (above threshold), reduce background stems
+    When voice is present (above threshold), reduce background stems.
 
     Args:
         voice_envelope: Voice RMS envelope (stereo)
@@ -234,9 +268,13 @@ def _calculate_ducking_gain(voice_envelope, threshold, ratio):
     return gain
 
 
-def save_mix(audio, path, sample_rate=48000):
+def save_mix(
+    audio: StereoAudio,
+    path: Union[str, os.PathLike],
+    sample_rate: int = 48000
+) -> None:
     """
-    Save mixed audio as WAV file
+    Save mixed audio as WAV file.
 
     Args:
         audio: numpy array (stereo, float32)
@@ -256,9 +294,12 @@ def save_mix(audio, path, sample_rate=48000):
     print(f"\n✓ Saved mix: {path} ({file_size:.1f} MB)")
 
 
-def mix_from_manifest(manifest, session_dir):
+def mix_from_manifest(
+    manifest: Dict[str, Any],
+    session_dir: Union[str, os.PathLike]
+) -> str:
     """
-    Mix stems based on session manifest
+    Mix stems based on session manifest.
 
     Args:
         manifest: Session manifest dict

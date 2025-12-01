@@ -1,0 +1,282 @@
+# Session Learning Report: neural-network-navigator-v3
+# Date: 2024-12-01
+# Purpose: Document lessons learned for self-improvement workflow
+
+session:
+  name: neural-network-navigator-v3
+  date: 2024-12-01
+  duration_actual: 21.7  # minutes
+  duration_target: 30    # minutes
+  status: completed
+
+## ISSUES DISCOVERED ##
+issues:
+  - id: ISSUE-001
+    category: binaural_implementation
+    severity: high
+    description: "Static 6 Hz binaural used instead of dynamic frequency progression"
+    expected: "Alpha (12 Hz) → Theta (7 Hz) → Deep Theta (6 Hz) → Gamma Burst (40 Hz) → Alpha (10 Hz)"
+    actual: "Static 6 Hz theta throughout entire session"
+    impact: "Reduced effectiveness - missing state transitions synchronized with script sections"
+    root_cause: "binaural_frequency_map.json exists but pipeline doesn't read/implement dynamic frequencies"
+    recommendation: |
+      Implement dynamic binaural generation that:
+      1. Reads frequency_events from manifest or JSON map
+      2. Generates smooth transitions between frequencies
+      3. Supports gamma bursts at specific timestamps
+      4. Synchronizes with script sections
+
+  - id: ISSUE-002
+    category: duration_mismatch
+    severity: medium
+    description: "Session duration 21.7 min vs target 30 min (28% short)"
+    expected: "30 minutes"
+    actual: "21.7 minutes"
+    impact: "Shorter experience than intended"
+    root_cause: "SSML script adapted from original but pauses/content not extended proportionally"
+    recommendation: |
+      When targeting specific duration:
+      1. Calculate word count needed (approx 100 words/minute at 0.88x rate)
+      2. Add longer pauses in integration/journey sections
+      3. Use duration estimator before generation
+
+  - id: ISSUE-003
+    category: voice_selection
+    severity: low
+    description: "Initial voice selection error - Neural2-A is male, not female"
+    expected: "Female voice (Neural2-F or similar)"
+    actual: "Attempted Neural2-A which is male"
+    impact: "Required regeneration with correct voice"
+    root_cause: "CLAUDE.md lists Neural2-A as 'warm' but doesn't specify gender"
+    recommendation: |
+      Update voice documentation with explicit gender:
+      - Neural2-A: Male (warm)
+      - Neural2-C: Female (soft)
+      - Neural2-E: Female (deep)
+      - Neural2-F: Female (clear) ← Used for this session
+      - Neural2-D: Male (deep)
+
+  - id: ISSUE-004
+    category: manifest_validation
+    severity: low
+    description: "validate_manifest.py had path handling issues with relative paths"
+    impact: "Validation skipped, potential manifest errors not caught"
+    root_cause: "Path.relative_to() fails when given already-relative path"
+    recommendation: "Path handling was fixed during session - verify fix is complete"
+
+## WHAT WORKED WELL ##
+successes:
+  - category: audio_pipeline
+    description: "Complete audio pipeline executed successfully"
+    details:
+      - "Voice generation with chunking handled large SSML"
+      - "Binaural generation produced clean 48kHz stereo"
+      - "Pink noise generation with caching"
+      - "Sidechain ducking applied correctly"
+      - "MP3 export at quality 2"
+
+  - category: vtt_generation
+    description: "Subtitle generation worked perfectly"
+    details:
+      - "84 captions generated"
+      - "Timing scaled correctly to actual audio duration"
+      - "Clean sentence boundaries"
+
+  - category: video_assembly
+    description: "Video created successfully with ffmpeg concat"
+    details:
+      - "1920x1080 @ 30fps"
+      - "5 scene images distributed evenly"
+      - "H.264 encoding with AAC audio"
+      - "141 MB final file"
+
+## LESSONS FOR FUTURE SESSIONS ##
+lessons_learned:
+  - id: LESSON-001
+    category: binaural
+    importance: critical
+    lesson: "Implement dynamic binaural frequency progressions - static frequencies miss the hypnotic arc"
+    tags: [binaural, audio, effectiveness]
+    action_required: true
+    action: "Create generate_dynamic_binaural.py that reads frequency maps"
+
+  - id: LESSON-002
+    category: workflow
+    importance: high
+    lesson: "The original neural-network-navigator has a comprehensive binaural_frequency_map.json that should be template for all sessions"
+    tags: [template, binaural, workflow]
+    action_required: true
+    action: "Add frequency map generation to session creation workflow"
+
+  - id: LESSON-003
+    category: duration
+    importance: medium
+    lesson: "Estimate duration BEFORE voice generation using word count + pause time calculation"
+    tags: [planning, duration, efficiency]
+    action_required: true
+    action: "Add duration estimator to validation step"
+
+  - id: LESSON-004
+    category: documentation
+    importance: medium
+    lesson: "Voice documentation should include gender and recommended use cases"
+    tags: [documentation, voice]
+    action_required: true
+    action: "Update CLAUDE.md and voice_config.yaml with complete voice metadata"
+
+## BINAURAL FREQUENCY REFERENCE ##
+# This is what SHOULD have been implemented:
+binaural_reference:
+  brainwave_states:
+    delta:
+      range: "0.5-4 Hz"
+      state: "Deep sleep, healing, regeneration"
+      use_case: "Sleep sessions, deep healing"
+
+    theta:
+      range: "4-8 Hz"
+      state: "Deep meditation, vivid imagery, neuroplasticity"
+      use_case: "Hypnotic journeys, visualization, learning"
+      common_frequencies:
+        - freq: 4
+          description: "Deep theta - profound meditation"
+        - freq: 6
+          description: "Mid theta - optimal visualization"
+        - freq: 7
+          description: "High theta - vivid imagery, gateway state"
+
+    alpha:
+      range: "8-14 Hz"
+      state: "Relaxed alertness, light meditation"
+      use_case: "Induction, awakening, integration"
+      common_frequencies:
+        - freq: 8
+          description: "Low alpha - relaxed focus"
+        - freq: 10
+          description: "Mid alpha - calm alertness"
+        - freq: 12
+          description: "High alpha - engaged relaxation"
+
+    beta:
+      range: "14-30 Hz"
+      state: "Active thinking, focus, alertness"
+      use_case: "Pre-talk, full awakening"
+      common_frequencies:
+        - freq: 14
+          description: "Low beta - focused attention"
+        - freq: 18
+          description: "Mid beta - active concentration"
+
+    gamma:
+      range: "30-100 Hz"
+      state: "Peak insight, integration, binding"
+      use_case: "Insight moments, integration pulses"
+      common_frequencies:
+        - freq: 40
+          description: "Classic gamma - insight/integration"
+
+  recommended_progressions:
+    standard_hypnotic:
+      description: "Standard hypnotic session arc"
+      stages:
+        - name: pretalk
+          freq: 12-14
+          duration_pct: 10
+        - name: induction
+          freq: "12 → 8"
+          duration_pct: 15
+        - name: deepening
+          freq: "8 → 6"
+          duration_pct: 10
+        - name: journey
+          freq: "6-7"
+          duration_pct: 40
+        - name: integration
+          freq: "7 → 10"
+          duration_pct: 15
+        - name: awakening
+          freq: 10-12
+          duration_pct: 10
+
+    neuroplasticity_enhanced:
+      description: "With gamma burst for insight (used in original neural-network-navigator)"
+      stages:
+        - name: pretalk
+          freq: 12
+          duration_pct: 9
+        - name: induction
+          freq: "12 → 8 → 7"
+          duration_pct: 16
+        - name: exploration
+          freq: 7
+          duration_pct: 16
+          modulation: "+/- 0.3 Hz at 0.05 Hz"
+        - name: deepening
+          freq: "7 → 6"
+          duration_pct: 16
+        - name: integration_with_burst
+          freq: "6 → 40 → 7"
+          duration_pct: 16
+          gamma_burst:
+            timestamp_pct: 67
+            duration_sec: 3
+            frequency: 40
+        - name: consolidation
+          freq: "7 → 10"
+          duration_pct: 13
+        - name: awakening
+          freq: 10
+          duration_pct: 14
+
+    sleep_induction:
+      description: "For deep sleep sessions"
+      stages:
+        - name: relaxation
+          freq: 10
+          duration_pct: 15
+        - name: deepening
+          freq: "10 → 6"
+          duration_pct: 25
+        - name: sleep_transition
+          freq: "6 → 3"
+          duration_pct: 30
+        - name: deep_sleep
+          freq: "3 → 1.5"
+          duration_pct: 30
+
+## SELF-IMPROVEMENT WORKFLOW ##
+workflow_improvements_needed:
+  - area: "Pre-generation validation"
+    current: "Basic SSML validation only"
+    proposed: |
+      1. Estimate duration from SSML word count + pauses
+      2. Validate binaural frequency map exists or generate default
+      3. Check voice gender matches intent
+      4. Verify all sections have appropriate frequencies
+
+  - area: "Binaural generation"
+    current: "Static single frequency for entire session"
+    proposed: |
+      1. Read frequency_events from manifest.audio.binaural.progression
+      2. Generate smooth transitions between frequencies
+      3. Support micro-modulation (subtle wobble)
+      4. Support gamma burst insertion
+      5. Synchronize with script section timestamps
+
+  - area: "Post-generation analysis"
+    current: "Manual review"
+    proposed: |
+      1. Compare actual vs target duration
+      2. Verify loudness standards met
+      3. Check for audio artifacts
+      4. Generate quality score
+      5. Auto-record lessons learned
+
+  - area: "Feedback loop"
+    current: "Manual lesson entry"
+    proposed: |
+      1. After each session, prompt for issues discovered
+      2. Auto-analyze session metrics
+      3. Compare with previous sessions
+      4. Update best_practices.md automatically
+      5. Suggest improvements for next session

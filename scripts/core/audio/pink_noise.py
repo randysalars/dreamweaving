@@ -6,20 +6,30 @@ Pink noise (1/f noise) has equal energy per octave - natural, relaxing sound
 Often combined with binaural beats for enhanced relaxation
 """
 
-import numpy as np
-from scipy.io import wavfile
+from __future__ import annotations
+
 import os
+from typing import Any, Dict, Optional, Union
+
+import numpy as np
+from numpy.typing import NDArray
+from scipy.io import wavfile
+
+# Type aliases
+StereoAudio = NDArray[np.float32]  # Shape: (samples, 2)
+MonoAudio = NDArray[np.float64]    # Shape: (samples,)
+
 
 def generate(
-    duration_sec,
-    sample_rate=48000,
-    amplitude=0.15,
-    fade_in_sec=5.0,
-    fade_out_sec=8.0,
-    stereo_variation=True
-):
+    duration_sec: float,
+    sample_rate: int = 48000,
+    amplitude: float = 0.15,
+    fade_in_sec: float = 5.0,
+    fade_out_sec: float = 8.0,
+    stereo_variation: bool = True
+) -> StereoAudio:
     """
-    Generate pink noise audio
+    Generate pink noise audio.
 
     Args:
         duration_sec: Total duration in seconds
@@ -30,7 +40,7 @@ def generate(
         stereo_variation: If True, generate slightly different L/R channels
 
     Returns:
-        numpy array of stereo audio samples (float32)
+        numpy array of stereo audio samples (float32), shape (samples, 2)
     """
 
     print(f"Generating pink noise: {duration_sec/60:.1f} min")
@@ -73,12 +83,18 @@ def generate(
     return pink_noise
 
 
-def _generate_pink_noise_channel(num_samples):
+def _generate_pink_noise_channel(num_samples: int) -> MonoAudio:
     """
-    Generate pink noise using Voss-McCartney algorithm
+    Generate pink noise using Voss-McCartney algorithm.
 
     This method maintains N generators that are randomly updated at
-    different rates, creating 1/f spectrum
+    different rates, creating 1/f spectrum.
+
+    Args:
+        num_samples: Number of samples to generate
+
+    Returns:
+        Normalized mono audio samples (float64)
     """
     # Number of random sources (more = better pink noise quality)
     num_sources = 16
@@ -105,9 +121,9 @@ def _generate_pink_noise_channel(num_samples):
     return output
 
 
-def save_stem(audio, path, sample_rate=48000):
+def save_stem(audio: StereoAudio, path: Union[str, os.PathLike], sample_rate: int = 48000) -> None:
     """
-    Save pink noise as WAV file
+    Save pink noise as WAV file.
 
     Args:
         audio: numpy array (stereo, float32)
@@ -127,16 +143,19 @@ def save_stem(audio, path, sample_rate=48000):
     print(f"✓ Saved pink noise stem: {path} ({file_size:.1f} MB)")
 
 
-def generate_from_manifest(manifest, session_dir):
+def generate_from_manifest(
+    manifest: Dict[str, Any],
+    session_dir: Union[str, os.PathLike]
+) -> Optional[str]:
     """
-    Generate pink noise from session manifest
+    Generate pink noise from session manifest.
 
     Args:
         manifest: Session manifest dict
         session_dir: Session directory path
 
     Returns:
-        Path to generated stem file
+        Path to generated stem file, or None if disabled
     """
     if not manifest['sound_bed']['pink_noise'].get('enabled', False):
         print("Pink noise disabled in manifest")
