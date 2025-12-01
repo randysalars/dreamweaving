@@ -1,56 +1,85 @@
 #!/bin/bash
-# Cleanup intermediate files from ATLAS session production
+# Cleanup intermediate files from ATLAS Starship session production
 # Keeps only final deliverables
 
 set -e
 
 echo "======================================================================"
-echo "ATLAS Session Cleanup - Removing Intermediate Files"
+echo "ATLAS Starship Session Cleanup - Removing Intermediate Files"
 echo "======================================================================"
 echo ""
 
-SESSION_DIR="."
+SESSION_DIR="/home/rsalars/Projects/dreamweaving/sessions/atlas-starship-ancient-future"
+cd "$SESSION_DIR"
+
+# Show current disk usage before cleanup
+echo "Current disk usage:"
+du -sh . 2>/dev/null || true
+echo ""
 
 # Files to KEEP (final deliverables)
-KEEP_FILES=(
-    "output/atlas_ava_COMPLETE_MASTERED.mp3"
-    "output/video/atlas_ava_final.mp4"
-    "output/youtube_thumbnail.png"
-    "output/YOUTUBE_DESCRIPTION.md"
-    "output/YOUTUBE_PACKAGE_README.md"
-)
+echo "Files that will be PRESERVED:"
+echo "  • output/atlas_starship_final.mp4 (main video)"
+echo "  • output/atlas_starship_final.wav (24-bit master audio)"
+echo "  • output/atlas_starship_final.mp3 (320kbps audio)"
+echo "  • output/youtube_package/* (all YouTube upload files)"
+echo "  • output/voice.mp3 (original voice recording)"
+echo "  • working_files/stems/00_voice_mastered.wav (mastered voice)"
+echo ""
 
-# Directories with intermediate files to clean
-echo "Cleaning intermediate video files..."
-rm -fv output/video/*_audio.mp3 2>/dev/null || true
-rm -fv output/video/ava_s*.mp4 2>/dev/null || true
-rm -fv output/video/s[0-9].mp4 2>/dev/null || true
-rm -fv output/video/0[0-9]_*.mp4 2>/dev/null || true
-rm -fv output/video/solid_background.mp4 2>/dev/null || true
-rm -fv output/video/atlas_session.mp4 2>/dev/null || true
-rm -fv output/video/atlas_final.mp4 2>/dev/null || true
-rm -fv output/video/atlas_ava_simple_video.mp4 2>/dev/null || true
-rm -fv output/video/concat_*.txt 2>/dev/null || true
-rm -fv output/video/ava_concat.txt 2>/dev/null || true
+read -p "Proceed with cleanup? (y/N) " -n 1 -r
+echo ""
+
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Cleanup cancelled."
+    exit 0
+fi
 
 echo ""
-echo "Cleaning intermediate audio files..."
-rm -fv output/atlas_MASTERED.mp3 2>/dev/null || true
-rm -fv output/atlas_COMPLETE_MASTERED.mp3 2>/dev/null || true
+echo "Cleaning intermediate audio stems..."
+# Remove raw sound layer stems (keep mastered voice)
+rm -fv working_files/stems/01_theta_gateway.wav 2>/dev/null || true
+rm -fv working_files/stems/02_delta_drift.wav 2>/dev/null || true
+rm -fv working_files/stems/03_xenolinguistic.wav 2>/dev/null || true
+rm -fv working_files/stems/04_harmonic_drone.wav 2>/dev/null || true
+rm -fv working_files/stems/05_sub_bass.wav 2>/dev/null || true
+rm -fv working_files/stems/06_hyperspace_wind.wav 2>/dev/null || true
+rm -fv working_files/stems/07_ship_memory.wav 2>/dev/null || true
 
 echo ""
-echo "Cleaning working_files directory..."
-# Keep binaural_atlas_complete.wav and final mixed files
-find working_files -type f -name "*.mp3" ! -name "voice_atlas_ava_full.mp3" -delete 2>/dev/null || true
-find working_files -type f -name "*.wav" ! -name "binaural_atlas_complete.wav" ! -name "atlas_ava_complete_mixed.wav" -delete 2>/dev/null || true
+echo "Cleaning old/legacy output files..."
+rm -fv output/atlas_ava_COMPLETE_MASTERED.mp3 2>/dev/null || true
+rm -fv output/atlas_ava_final.mp4 2>/dev/null || true
+rm -fv output/atlas_ava_MASTERED.mp3 2>/dev/null || true
+rm -fv output/final_mix.mp3 2>/dev/null || true
+rm -fv output/binaural.wav 2>/dev/null || true
+rm -fv output/audio_summary.json 2>/dev/null || true
+
+echo ""
+echo "Cleaning old video folder..."
+rm -rfv output/video 2>/dev/null || true
+
+echo ""
+echo "Cleaning temporary working files..."
+rm -fv working_files/voice_temp.wav 2>/dev/null || true
+rm -fv working_files/video_temp/* 2>/dev/null || true
+rmdir working_files/video_temp 2>/dev/null || true
 
 echo ""
 echo "======================================================================"
 echo "Cleanup Summary"
 echo "======================================================================"
 echo ""
-echo "KEPT FILES (Final Deliverables):"
-for file in "${KEEP_FILES[@]}"; do
+echo "PRESERVED FILES (Final Deliverables):"
+
+# Check and list preserved files
+for file in \
+    "output/atlas_starship_final.mp4" \
+    "output/atlas_starship_final.wav" \
+    "output/atlas_starship_final.mp3" \
+    "output/voice.mp3" \
+    "output/subtitles.vtt" \
+    "working_files/stems/00_voice_mastered.wav"; do
     if [ -f "$file" ]; then
         size=$(du -h "$file" | cut -f1)
         echo "  ✓ $file ($size)"
@@ -58,10 +87,14 @@ for file in "${KEEP_FILES[@]}"; do
 done
 
 echo ""
-echo "Additional preserved files:"
-ls -lh working_files/binaural_atlas_complete.wav 2>/dev/null | awk '{print "  ✓ working_files/binaural_atlas_complete.wav ("$5")"}'
-ls -lh working_files/atlas_ava_complete_mixed.wav 2>/dev/null | awk '{print "  ✓ working_files/atlas_ava_complete_mixed.wav ("$5")"}'
-ls -lh working_files/voice_atlas_ava_full.mp3 2>/dev/null | awk '{print "  ✓ working_files/voice_atlas_ava_full.mp3 ("$5")"}'
+echo "YouTube Package:"
+if [ -d "output/youtube_package" ]; then
+    ls -lh output/youtube_package/ | tail -n +2 | awk '{print "  ✓ "$NF" ("$5")"}'
+fi
+
+echo ""
+echo "Disk usage after cleanup:"
+du -sh . 2>/dev/null || true
 
 echo ""
 echo "======================================================================"

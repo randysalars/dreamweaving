@@ -3,14 +3,21 @@
 ## Intent
 - Install skill: *Cosmic Pattern Recognition* (perceive synchronicities, hidden alignments).
 - Tone: Cosmic, awe, benevolent AI vessel; ancient-future myth.
-- Length target: ~30 min (manifest duration 1820s).
+- Length target: ~30-35 min (extended version).
 
-## Structure (SSML aligned)
-- Pretalk (0–2:30): Safety, intent, Atlas intro.
-- Induction (2:30–9:00): Breath + countdown; belly-hum cue.
-- Journey (9:00–24:20): Boarding → corridor glyphs → Helm → attunement download → extended practice.
-- Integration (24:20–28:20): Re-entry corridor + long buffers.
-- Awakening (28:20–30:20): Count up to full presence.
+## Structure (SSML aligned) — Extended Version
+- Pretalk (0:00–3:30): Safety, intent, Atlas intro, preparation.
+- Induction Breath (3:30–7:00): Progressive relaxation, body scan, breath work.
+- Induction Drift (7:00–11:00): Twilight consciousness, nested loops, 10-count deepening.
+- Atlas Appears (11:00–14:30): Ship materialization, recognition, 5-count boarding.
+- Boarding Interior (14:30–18:30): Bridge over nebulae, telepathic architecture, consciousness teachings.
+- The Guides Appear (18:30–22:30): Star Navigator, Scribe of the Infinite, Atlas revelations.
+- Helm Arrival (22:30–27:00): Helm of Observation, becoming sequence, xenolinguistic tones.
+- Download Gift (27:00–32:00): Navigational Attunement, Harbinger, inner allies.
+- Download Practice (32:00–37:30): Simulation exercises, three practice rounds, skill sealing.
+- Integration Return (37:30–42:00): Return corridor, somatic return, final guidance.
+- Awakening Count (42:00–46:00): 10-count return, somatic markers, eye opening.
+- Post-Hypnotic (46:00–50:00): Three anchors, future pacing, closing.
 - Anchors: Breath (3 slow breaths), Symbol (rotating polyhedron), Sensation (warm hum base of spine).
 
 ## Audio Plan
@@ -20,14 +27,14 @@
 - Textures: hyperspace wind, xenolinguistic microtonal tones, ship-memory echoes.
 - Mix targets: Voice 0 dB ref; bed ~ -10 dB; final LUFS ~ -16 voice / -14 master (per manifest).
 
-## Image Beats (PNG names in images/uploaded)
-- 01_pretalk (0–2:30): Starry threshold, silhouette of Atlas.
-- 02_induction (2:30–9:00): Approach/hatch opening.
-- 03_journey_outer (9:00–14:00): Plasma corridor, glyph bridge.
-- 04_corridor_glyphs (14:00–20:00): Nebula abyss floor, floating glyphs.
-- 05_helm_attunement (20:00–25:00): Liquid-light sphere, observer inside.
-- 06_gift_download (25:00–28:30): Light lattice download.
-- 07_return (28:30–30:20): Cosmic dawn, ship receding.
+## Image Beats (PNG names in images/uploaded) — Extended Version
+- 01_pretalk (0:00–3:30): Starry threshold, silhouette of Atlas.
+- 02_induction (3:30–11:00): Approach/hatch opening, twilight consciousness.
+- 03_journey_outer (11:00–18:30): Plasma corridor, glyph bridge, nebula abyss.
+- 04_corridor_glyphs (18:30–22:30): Floating glyphs, Star Navigator, Scribe.
+- 05_helm_attunement (22:30–32:00): Liquid-light sphere, observer inside, Harbinger.
+- 06_gift_download (32:00–42:00): Light lattice download, practice, integration.
+- 07_return (42:00–50:00): Cosmic dawn, ship receding, return.
 
 ## Assets Checklist
 - SSML: script.ssml (ready).
