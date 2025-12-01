@@ -10,8 +10,8 @@ A complete Python environment for creating transformational hypnotic path-workin
 ## 📖 **START HERE: [Complete Documentation](docs/INDEX.md)**
 
 **Everything you need is organized and accessible:**
+- ⭐ **[CANONICAL WORKFLOW](docs/CANONICAL_WORKFLOW.md)** ← **Official production workflow**
 - 🚀 [5-Minute Quick Start](docs/QUICK_START.md)
-- 📚 [Complete Workflow Guide](docs/WORKFLOW_GUIDE.md)
 - 🔧 [Troubleshooting](docs/TROUBLESHOOTING.md)
 - 🎯 [Master Prompt Guide](prompts/hypnotic_dreamweaving_instructions.md)
 
@@ -76,12 +76,13 @@ cd ~/Projects/dreamweaving && source venv/bin/activate
 ./scripts/utilities/create_new_session.sh "my-session"
 
 # 3. Generate audio (after editing script.ssml)
-python scripts/core/generate_audio_chunked.py \
+python3 scripts/core/generate_audio_chunked.py \
     sessions/my-session/script.ssml \
-    sessions/my-session/output/audio.mp3
+    sessions/my-session/output/audio.mp3 \
+    en-US-Neural2-A
 ```
 
-**For complete instructions:** See [docs/QUICK_START.md](docs/QUICK_START.md)
+**For complete instructions:** See [docs/CANONICAL_WORKFLOW.md](docs/CANONICAL_WORKFLOW.md)
 
 ---
 
@@ -150,7 +151,7 @@ Male Voices:
 
 To use different voice:
 ```bash
-python scripts/generate_audio_chunked.py \
+python3 scripts/core/generate_audio_chunked.py \
     sessions/my-session/script.ssml \
     sessions/my-session/output/audio.mp3 \
     en-US-Neural2-D

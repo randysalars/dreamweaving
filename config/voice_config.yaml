@@ -1,0 +1,103 @@
+# Dreamweaving Voice Configuration
+# This file specifies the default voice settings for all sessions
+
+# Primary Voice Settings
+primary_voice:
+  engine: "edge-tts"
+  voice_name: "en-US-AvaNeural"
+  description: "Natural, warm female voice - Ava Neural (Microsoft Edge TTS)"
+
+  # Voice characteristics
+  characteristics:
+    - "Calming and soothing"
+    - "Professional quality"
+    - "Excellent for meditation and hypnosis"
+    - "Clear articulation"
+
+  # Default prosody settings
+  default_prosody:
+    rate: "1.0"     # Normal speaking rate
+    pitch: "0st"    # Normal pitch
+
+  # Section-specific prosody (can be overridden per session)
+  sections:
+    pretalk:
+      rate: "1.0"
+      pitch: "+0Hz"
+
+    induction:
+      rate: "0.85"   # 15% slower for deeper trance
+      pitch: "-2Hz"
+
+    journey:
+      rate: "0.91"   # 9% slower for immersion
+      pitch: "-1Hz"
+
+    awakening:
+      rate: "0.95"   # 5% slower, gentle return
+      pitch: "+0Hz"
+
+    closing:
+      rate: "1.0"
+      pitch: "+0Hz"
+
+# Fallback voices (if primary not available)
+fallback_voices:
+  - engine: "edge-tts"
+    voice_name: "en-US-JennyNeural"
+    description: "Alternative friendly female voice"
+
+  - engine: "google-cloud"
+    voice_name: "en-US-Neural2-A"
+    description: "Google Cloud Neural2 (used in V2 before voice change)"
+
+# Audio Processing Pipeline
+audio_processing:
+  tts_output_format:
+    sample_rate: 48000
+    channels: 2  # Stereo
+    bit_depth: 16  # Edge TTS outputs 16-bit
+
+  mastering_settings:
+    target_lufs: -14
+    true_peak_dbtp: -1.5
+    target_lra: 11
+    sample_rate_hz: 48000
+    bit_depth: 24  # Mastered output is 24-bit
+
+    eq:
+      warmth_boost_hz: 250
+      warmth_boost_db: 1.5
+      presence_boost_hz: 3000
+      presence_boost_db: 1.0
+      high_shelf_hz: 10000
+      high_shelf_db: -0.5
+
+    stereo_enhancement:
+      enabled: true
+      mid_level: 0.95
+      side_level: 1.05
+
+    limiting:
+      ceiling_linear: 0.95  # ~-0.45 dB
+      attack_ms: 5
+      release_ms: 50
+
+# Usage Notes
+usage_notes: |
+  IMPORTANT: Always use en-US-AvaNeural for consistency across all sessions.
+
+  This is the preferred voice because:
+  - User specifically requested this voice
+  - Warm, professional quality suitable for meditation/hypnosis
+  - Consistent tone across all Dreamweaving content
+  - Free via Edge TTS (no API costs)
+
+  To generate voice for a session:
+  1. Create SSML script with appropriate prosody tags
+  2. Run voice generation script with Ava voice
+  3. Apply professional mastering chain
+  4. Combine with binaural/sound bed stems
+
+  Example command:
+    python3 generate_voice_v2_ava.py

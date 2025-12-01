@@ -1,0 +1,31 @@
+# Workflow Version Registry
+#
+# This file tracks workflow versions across the project.
+# Format: workflow_name=version:last_updated:status
+#
+# Status codes:
+#   CURRENT - Active and maintained
+#   DEPRECATED - Do not use, see canonical
+#   FUTURE - Planning/vision document
+#
+# DO NOT edit manually unless you know what you're doing.
+# Use scripts/utilities/update_workflow_version.py instead.
+
+# Universal Workflows
+canonical_workflow=1.0:2025-11-28:CURRENT
+quick_start=1.0:2025-11-28:CURRENT
+workflow_decision_tree=1.0:2025-11-28:CURRENT
+terminology_guide=1.0:2025-11-28:CURRENT
+workflow_maintenance_guide=1.0:2025-11-28:CURRENT
+
+# Session-Specific Workflows
+neural_network_navigator_workflow=1.0:2025-11-28:CURRENT
+neural_network_navigator_manual_v1=1.0:2025-11-28:CURRENT
+neural_network_navigator_manual_v2=2.0:2025-11-28:CURRENT
+garden_of_eden_manual=1.0:2025-11-28:CURRENT
+garden_of_eden_audio_readme=1.0:2025-11-28:CURRENT
+
+# Deprecated Workflows
+audio_video_workflow=1.0:2025-11-28:DEPRECATED
+voice_workflow=1.0:2025-11-28:DEPRECATED
+session_automation_plan=1.0:2025-11-28:FUTURE

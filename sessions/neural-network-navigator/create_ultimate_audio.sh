@@ -1,166 +1,164 @@
 #!/bin/bash
-#
-# Master orchestration script for Neural Network Navigator production
-# Option B: Simplified Production (8-9 hours)
-#
-# This script runs all production steps in order:
-# 1. SSML voice script creation ✓ COMPLETE
-# 2. Voice generation ✓ COMPLETE
-# 3. Binaural beats generation ✓ COMPLETE
-# 4. Image generation (running in background)
-# 5. Essential sound effects ✓ COMPLETE
-# 6. 3-layer audio mixing (NEXT)
-# 7. Gradient backgrounds (NEXT)
-# 8. Final video composition (WAITING FOR IMAGES)
-# 9. Quality check
+# Create Ultimate Neural Network Navigator Audio
+# Complete sound design with dynamic binaural beats and sound effects
 
-set -e  # Exit on error
+set -e
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "$SCRIPT_DIR"
+DURATION=1421  # 23:41 in seconds
+SAMPLE_RATE=48000
 
-# Activate virtual environment
-source ../../venv/bin/activate
+cd /home/rsalars/Projects/dreamweaving
 
-echo "======================================================================"
-echo "NEURAL NETWORK NAVIGATOR - Ultimate Production Pipeline"
-echo "Option B: Simplified Production"
-echo "======================================================================"
+echo "=========================================="
+echo "NEURAL NETWORK NAVIGATOR - ULTIMATE AUDIO"
+echo "=========================================="
+echo ""
+echo "Creating comprehensive soundscape with:"
+echo "  - Dynamic binaural beats (alpha/theta/gamma)"
+echo "  - Sound effects at key moments"
+echo "  - Ambient pad"
+echo "  - Professional mixing"
 echo ""
 
-# Check what's already complete
-echo "Checking production status..."
-echo ""
+# Create temp directory
+mkdir -p temp_audio
 
-# Phase 1-2: Setup (already complete)
-echo "✓ Phase 1: Setup complete (Edge TTS, SDXL installed)"
-echo "✓ Phase 2: SSML voice script created"
+# Generate binaural beat sections using our automation system
+echo "=== GENERATING BINAURAL BEATS ==="
 
-# Phase 3: Voice (already complete)
-if [ -f "working_files/voice_neural_navigator.mp3" ]; then
-    VOICE_SIZE=$(du -h working_files/voice_neural_navigator.mp3 | cut -f1)
-    echo "✓ Phase 3: Voice generated ($VOICE_SIZE)"
-else
-    echo "✗ Phase 3: Voice missing - run generate_voice_v2.py"
-    exit 1
-fi
+# Section 1: Pretalk (0-145s) - Alpha 10 Hz
+echo "1. Pretalk - Alpha 10 Hz (0-145s)"
+python3 scripts/core/generate_binaural.py --frequency 10 --duration 145 --output temp_audio/01_pretalk_binaural.wav
 
-# Phase 4: Binaural beats (already complete)
-if [ -f "working_files/binaural_beats_neural_navigator.wav" ]; then
-    BINAURAL_SIZE=$(du -h working_files/binaural_beats_neural_navigator.wav | cut -f1)
-    echo "✓ Phase 4: Binaural beats generated ($BINAURAL_SIZE)"
-else
-    echo "✗ Phase 4: Binaural beats missing - run generate_binaural_neural.py"
-    exit 1
-fi
+# Section 2: Induction (145-290s = 145s) - Theta 5 Hz
+echo "2. Induction - Theta 5 Hz (145-290s)"
+python3 scripts/core/generate_binaural.py --frequency 5 --duration 145 --output temp_audio/02_induction_binaural.wav
 
-# Phase 5: Images (check if running or complete)
-IMAGE_COUNT=$(ls images/scene_*_FINAL.png 2>/dev/null | wc -l)
-if [ "$IMAGE_COUNT" -eq 8 ]; then
-    echo "✓ Phase 5: All 8 images generated"
-    IMAGES_COMPLETE=true
-else
-    echo "⏳ Phase 5: Images generating ($IMAGE_COUNT/8 complete)"
-    echo "   (Images are generating in background - continuing with audio)"
-    IMAGES_COMPLETE=false
-fi
+# Section 3: Neural Garden (290-580s = 290s) - Theta 5 Hz
+echo "3. Neural Garden - Theta 5 Hz (290-580s)"
+python3 scripts/core/generate_binaural.py --frequency 5 --duration 290 --output temp_audio/03_garden_binaural.wav
 
-# Phase 6: Sound effects (already complete)
-if [ -d "sound_effects" ] && [ $(ls sound_effects/*.wav 2>/dev/null | wc -l) -ge 5 ]; then
-    echo "✓ Phase 6: Essential sound effects generated (5 files)"
-else
-    echo "⚠️  Phase 6: Sound effects incomplete - generating now..."
-    python3 generate_essential_sounds.py
-fi
+# Section 4: Pathfinder (580-870s = 290s) - Theta 5 Hz
+echo "4. Pathfinder - Theta 5 Hz (580-870s)"
+python3 scripts/core/generate_binaural.py --frequency 5 --duration 290 --output temp_audio/04_pathfinder_binaural.wav
+
+# Section 5: Weaver (870-1160s = 290s) - Theta 6 Hz
+echo "5. Weaver - Theta 6 Hz (870-1160s)"
+python3 scripts/core/generate_binaural.py --frequency 6 --duration 290 --output temp_audio/05_weaver_binaural.wav
+
+# Section 6: Gamma Burst (1160-1255s = 95s) - Gamma 40 Hz!!!
+echo "6. GAMMA BURST - 40 Hz (1160-1255s) *** CRITICAL ***"
+python3 scripts/core/generate_binaural.py --frequency 40 --duration 95 --output temp_audio/06_gamma_binaural.wav
+
+# Section 7: Consolidation (1255-1400s = 145s) - Alpha 10 Hz
+echo "7. Consolidation - Alpha 10 Hz (1255-1400s)"
+python3 scripts/core/generate_binaural.py --frequency 10 --duration 145 --output temp_audio/07_consolidation_binaural.wav
+
+# Section 8: Awakening (1400-1421s = 21s) - Alpha 10 Hz
+echo "8. Awakening - Alpha 10 Hz (1400-1421s)"
+python3 scripts/core/generate_binaural.py --frequency 10 --duration 21 --output temp_audio/08_awakening_binaural.wav
 
 echo ""
-echo "======================================================================"
+echo "=== CONCATENATING BINAURAL BEATS ==="
 
-# Phase 7: Audio mixing
-echo ""
-echo "Phase 7: 3-Layer Audio Mixing"
-echo "======================================================================"
-if [ -f "working_files/audio_mix_master.wav" ]; then
-    AUDIO_SIZE=$(du -h working_files/audio_mix_master.wav | cut -f1)
-    echo "✓ Master audio mix already exists ($AUDIO_SIZE)"
-    echo "  Skipping remix (delete file to regenerate)"
-else
-    echo "Mixing voice + binaural + effects..."
-    python3 mix_audio_simple.py
-    if [ $? -ne 0 ]; then
-        echo "✗ Audio mixing failed"
-        exit 1
-    fi
-fi
+# Create concat list with absolute paths
+cat > temp_audio/binaural_concat.txt << EOF
+file '/home/rsalars/Projects/dreamweaving/temp_audio/01_pretalk_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/02_induction_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/03_garden_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/04_pathfinder_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/05_weaver_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/06_gamma_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/07_consolidation_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/08_awakening_binaural.wav'
+EOF
 
-# Phase 8: Gradient backgrounds
-echo ""
-echo "Phase 8: Gradient Background Generation"
-echo "======================================================================"
-if [ -d "gradients" ] && [ $(ls gradients/*.png 2>/dev/null | wc -l) -ge 8 ]; then
-    echo "✓ Gradients already generated"
-else
-    echo "Generating gradient backgrounds..."
-    python3 generate_gradient_backgrounds.py
-    if [ $? -ne 0 ]; then
-        echo "✗ Gradient generation failed"
-        exit 1
-    fi
-fi
+# Concatenate all binaural sections
+ffmpeg -f concat -safe 0 -i temp_audio/binaural_concat.txt -c copy -y temp_audio/binaural_complete.wav
 
-# Phase 9: Final video composition
 echo ""
-echo "Phase 9: Final Video Composition"
-echo "======================================================================"
+echo "=== GENERATING SOUND EFFECTS ==="
 
-if [ "$IMAGES_COMPLETE" = false ]; then
-    echo "⏸️  WAITING: Image generation must complete before video composition"
-    echo ""
-    echo "Current status: $IMAGE_COUNT/8 images complete"
-    echo ""
-    echo "When images are done, run:"
-    echo "  python3 composite_final_video.py"
-    echo ""
-    echo "Or re-run this script to complete the pipeline"
-    exit 0
-fi
+# Generate ambient pad for full duration
+echo "Generating ambient pad..."
+python3 scripts/core/generate_pink_noise.py --duration $DURATION --output temp_audio/ambient_pad.wav
 
-# Images are complete - proceed with video composition
-if [ -f "final_export/neural_network_navigator.mp4" ]; then
-    FINAL_SIZE=$(du -h final_export/neural_network_navigator.mp4 | cut -f1)
-    echo "✓ Final video already exists ($FINAL_SIZE)"
-    echo "  Delete to regenerate"
-else
-    echo "Compositing final video..."
-    echo "⚠️  This will take 15-30 minutes (FFmpeg encoding)"
-    python3 composite_final_video.py
-    if [ $? -ne 0 ]; then
-        echo "✗ Video composition failed"
-        exit 1
-    fi
-fi
+# Place sound effects at specific moments
+# Singing bowl at anchor moments (in closing section ~1410s)
+echo "Placing singing bowl at anchor moments..."
+ffmpeg -i sessions/neural-network-navigator/sound_effects/singing_bowl.wav -af "adelay=1410000|1410000" -t $DURATION -y temp_audio/singing_bowl_timed.wav
 
-# Phase 10: Quality check
+# Crystal bell at major transitions (290s, 580s, 870s)
+echo "Placing crystal bells at transitions..."
+ffmpeg -i sessions/neural-network-navigator/sound_effects/crystal_bell.wav \
+  -af "adelay=290000|290000" -t $DURATION -y temp_audio/bell_1.wav
+
+ffmpeg -i sessions/neural-network-navigator/sound_effects/crystal_bell.wav \
+  -af "adelay=580000|580000" -t $DURATION -y temp_audio/bell_2.wav
+
+ffmpeg -i sessions/neural-network-navigator/sound_effects/crystal_bell.wav \
+  -af "adelay=870000|870000" -t $DURATION -y temp_audio/bell_3.wav
+
+# Wind chime at awakening (1400s)
+echo "Placing wind chime at awakening..."
+ffmpeg -i sessions/neural-network-navigator/sound_effects/wind_chime.wav \
+  -af "adelay=1400000|1400000" -t $DURATION -y temp_audio/wind_chime_timed.wav
+
+# Gamma burst noise (1160s)
+echo "Placing gamma burst noise..."
+ffmpeg -i sessions/neural-network-navigator/sound_effects/gamma_burst_noise.wav \
+  -af "adelay=1160000|1160000" -t $DURATION -y temp_audio/gamma_noise_timed.wav
+
 echo ""
-echo "======================================================================"
-echo "Phase 10: Quality Check"
-echo "======================================================================"
+echo "=== MIXING ALL ELEMENTS ==="
+
+# Mix everything together with proper levels
+# Voice: -16 LUFS (already mastered, will add -2 dB)
+# Binaural: -28 LUFS
+# Ambient pad: -32 LUFS
+# Sound effects: -30 LUFS
+
+VOICE_FILE="sessions/neural-network-navigator/working_files/neural_navigator_v2_ava_MASTERED_FIXED.wav"
+
+ffmpeg -i "$VOICE_FILE" \
+  -i temp_audio/binaural_complete.wav \
+  -i temp_audio/ambient_pad.wav \
+  -i temp_audio/singing_bowl_timed.wav \
+  -i temp_audio/bell_1.wav \
+  -i temp_audio/bell_2.wav \
+  -i temp_audio/bell_3.wav \
+  -i temp_audio/wind_chime_timed.wav \
+  -i temp_audio/gamma_noise_timed.wav \
+  -filter_complex "\
+    [0:a]volume=-2dB[voice];\
+    [1:a]volume=-14dB[binaural];\
+    [2:a]volume=-18dB[pad];\
+    [3:a]volume=-16dB[bowl];\
+    [4:a]volume=-16dB[bell1];\
+    [5:a]volume=-16dB[bell2];\
+    [6:a]volume=-16dB[bell3];\
+    [7:a]volume=-16dB[chime];\
+    [8:a]volume=-12dB[gamma];\
+    [voice][binaural][pad][bowl][bell1][bell2][bell3][chime][gamma]amix=inputs=9:duration=first:normalize=0[mixed]" \
+  -map "[mixed]" \
+  -c:a pcm_s24le -ar 48000 \
+  -y sessions/neural-network-navigator/working_files/neural_navigator_ULTIMATE_MIX.wav
+
 echo ""
-echo "Manual quality check required:"
+echo "=== CLEANUP ==="
+# rm -rf temp_audio
+
 echo ""
-echo "1. Play final video: final_export/neural_network_navigator.mp4"
-echo "2. Verify duration: 28:00 minutes"
-echo "3. Check voice clarity throughout"
-echo "4. ⚠️  CRITICAL: Verify gamma burst sync at 18:45 (1125 seconds)"
-echo "   - White flash should sync with voice 'FLASH' moment"
-echo "   - Binaural should jump to 40 Hz gamma for 3 seconds"
-echo "   - Visual should show brilliant white scene"
-echo "5. Test with headphones for binaural effect"
-echo "6. Check all image transitions are smooth (2-second crossfades)"
+echo "=========================================="
+echo "✅ ULTIMATE AUDIO COMPLETE!"
+echo "=========================================="
 echo ""
-echo "======================================================================"
-echo "✓ PRODUCTION PIPELINE COMPLETE!"
-echo "======================================================================"
+echo "Output: sessions/neural-network-navigator/working_files/neural_navigator_ULTIMATE_MIX.wav"
 echo ""
-echo "Final output: final_export/neural_network_navigator.mp4"
+echo "Features:"
+echo "  ✓ Dynamic binaural beats (Alpha → Theta → 40Hz Gamma → Alpha)"
+echo "  ✓ Sound effects at key moments"
+echo "  ✓ Ambient pad throughout"
+echo "  ✓ Professional mixing levels"
+echo "  ✓ Duration: 23:41 (1421 seconds)"
 echo ""

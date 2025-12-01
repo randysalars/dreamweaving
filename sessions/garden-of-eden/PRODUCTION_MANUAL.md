@@ -1,4 +1,14 @@
-# Guided Meditation Video Production Manual
+# Garden of Eden: Production Manual
+
+**VERSION:** 1.0 (Session-Specific)
+**LAST UPDATED:** 2025-11-28
+**SESSION DURATION:** 25 minutes (1500 seconds)
+**STATUS:** ✅ Current and Valid
+
+> **📖 For universal workflow:** See [../../docs/CANONICAL_WORKFLOW.md](../../docs/CANONICAL_WORKFLOW.md)
+> This document covers **session-specific** video production details.
+
+---
 
 **Complete Workflow for AI-Assisted Hypnotic Video Creation**
 

@@ -2,15 +2,30 @@
 """
 Composite multiple images onto video with proper timing and fade effects
 FINAL VERSION: Uses geq filter for time-based alpha fading
+
+Updated workflow:
+- User supplies images (downloaded from prompt-based generators) into
+  sessions/garden-of-eden/images/uploaded
+- Expected filenames (per section): 01_pretalk.png, 02_induction.png,
+  03_meadow.png, 04_serpent.png, 05_tree.png, 06_divine.png, 07_return.png
+- Legacy filenames (eden_XX_*.png) still supported as fallback
 """
 
 import subprocess
 import sys
 from pathlib import Path
 
+
+def _find_first_existing(candidates):
+    """Return first existing Path from a list of Paths, else None."""
+    for path in candidates:
+        if path.exists():
+            return path
+    return None
+
 def composite_images(base_video, output_video, images_config):
     """
-    Composite images onto base video with smooth fades
+    Composite images onto base video with smooth fades.
 
     images_config: list of (image_path, start_time, end_time) tuples
     """
@@ -112,48 +127,47 @@ def composite_images(base_video, output_video, images_config):
 
 
 if __name__ == "__main__":
-    # Define image configuration
     session_dir = Path(__file__).parent
     output_dir = session_dir / "output" / "video"
-
     base_video = output_dir / "background_gradient.mp4"
     output_video = output_dir / "composite_with_images.mp4"
 
-    # Image timings (path, start_sec, end_sec)
+    uploaded_dir = session_dir / "images" / "uploaded"
+    uploaded_dir.mkdir(parents=True, exist_ok=True)
+
+    # Section timing map (seconds) with preferred filenames
+    sections = [
+        ("pretalk", 0, 150, ["01_pretalk.png", "eden_01_pretalk.png"]),
+        ("induction", 150, 480, ["02_induction.png", "eden_02_induction.png"]),
+        ("meadow", 480, 810, ["03_meadow.png", "eden_03_meadow.png"]),
+        ("serpent", 810, 1020, ["04_serpent.png", "eden_04_serpent.png"]),
+        ("tree", 1020, 1200, ["05_tree.png", "eden_05_tree.png"]),
+        ("divine", 1200, 1380, ["06_divine.png", "eden_06_divine.png"]),
+        ("return", 1380, 1500, ["07_return.png", "eden_07_return.png"]),
+    ]
+
     images = []
+    missing = []
 
-    if (session_dir / "eden_01_pretalk.png").exists():
-        images.append((str(session_dir / "eden_01_pretalk.png"), 0, 150))
-        print("✓ eden_01_pretalk.png (0:00-2:30)")
+    for key, start, end, names in sections:
+        candidates = []
+        for name in names:
+            candidates.append(uploaded_dir / name)      # preferred location
+            candidates.append(session_dir / name)       # legacy root
+        chosen = _find_first_existing(candidates)
+        if chosen:
+            images.append((str(chosen), start, end))
+            print(f"✓ {key}: {chosen.name} ({start//60}:{start%60:02d}-{end//60}:{end%60:02d})")
+        else:
+            missing.append(key)
 
-    if (session_dir / "eden_02_induction.png").exists():
-        images.append((str(session_dir / "eden_02_induction.png"), 150, 480))
-        print("✓ eden_02_induction.png (2:30-8:00)")
-
-    if (session_dir / "eden_03_meadow.png").exists():
-        images.append((str(session_dir / "eden_03_meadow.png"), 480, 810))
-        print("✓ eden_03_meadow.png (8:00-13:30)")
-
-    if (session_dir / "eden_04_serpent.png").exists():
-        images.append((str(session_dir / "eden_04_serpent.png"), 810, 1020))
-        print("✓ eden_04_serpent.png (13:30-17:00)")
-
-    if (session_dir / "eden_05_tree.png").exists():
-        images.append((str(session_dir / "eden_05_tree.png"), 1020, 1200))
-        print("✓ eden_05_tree.png (17:00-20:00)")
-
-    if (session_dir / "eden_06_divine.png").exists():
-        images.append((str(session_dir / "eden_06_divine.png"), 1200, 1380))
-        print("✓ eden_06_divine.png (20:00-23:00)")
-
-    if (session_dir / "eden_07_return.png").exists():
-        images.append((str(session_dir / "eden_07_return.png"), 1380, 1500))
-        print("✓ eden_07_return.png (23:00-25:00)")
+    if missing:
+        print(f"\n⚠️ Missing images for sections: {', '.join(missing)}")
+        print(f"   Add PNGs to {uploaded_dir} using names like 01_pretalk.png, 02_induction.png, etc.")
 
     if not images:
-        print("❌ No images found")
+        print("❌ No images found; composite will be skipped")
         sys.exit(1)
 
     success = composite_images(str(base_video), str(output_video), images)
-
     sys.exit(0 if success else 1)

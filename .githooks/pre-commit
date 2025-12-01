@@ -1,0 +1,46 @@
+#!/bin/bash
+# Git pre-commit hook for workflow validation
+#
+# This hook validates workflow documentation before allowing commits.
+# To install: ln -s ../../.githooks/pre-commit .git/hooks/pre-commit
+# To bypass (emergency only): git commit --no-verify
+
+set -e
+
+echo "🔍 Running workflow validation checks..."
+
+# Change to project root
+cd "$(git rev-parse --show-toplevel)"
+
+# Check if Python 3 is available
+if ! command -v python3 &> /dev/null; then
+    echo "⚠️  Warning: python3 not found, skipping workflow validation"
+    exit 0
+fi
+
+# Get list of modified markdown files in docs/ and sessions/
+MODIFIED_DOCS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(md|sh|py)$' | grep -E '(docs/|sessions/|README)' || true)
+
+if [ -z "$MODIFIED_DOCS" ]; then
+    echo "✓ No workflow documentation modified, skipping validation"
+    exit 0
+fi
+
+echo "📝 Modified workflow files:"
+echo "$MODIFIED_DOCS" | sed 's/^/  - /'
+echo ""
+
+# Run workflow validator
+if python3 scripts/utilities/validate_workflows.py; then
+    echo ""
+    echo "✅ Workflow validation passed!"
+    exit 0
+else
+    echo ""
+    echo "❌ Workflow validation failed!"
+    echo ""
+    echo "Please fix the issues above before committing."
+    echo "Or use 'git commit --no-verify' to bypass (not recommended)."
+    echo ""
+    exit 1
+fi

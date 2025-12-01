@@ -1,5 +1,14 @@
 # Audio Enhancement System
 
+**VERSION:** 1.0 (Session-Specific)
+**LAST UPDATED:** 2025-11-28
+**SESSION:** Neural Network Navigator
+**STATUS:** ✅ Current and Valid
+
+> **📖 For universal workflow:** See [../../docs/CANONICAL_WORKFLOW.md](../../docs/CANONICAL_WORKFLOW.md)
+
+---
+
 ## 🎯 Purpose
 
 Transform the Neural Network Navigator audio meditation by:

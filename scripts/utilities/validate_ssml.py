@@ -9,8 +9,13 @@ Usage:
 
 import sys
 import os
+import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
+
+def strip_ns(tag):
+    """Return tag name without namespace."""
+    return tag.split('}', 1)[-1] if '}' in tag else tag
 
 def validate_ssml(file_path):
     """Validate SSML file and provide detailed feedback"""
@@ -57,12 +62,12 @@ def validate_ssml(file_path):
         print(f"❌ Error: {e}")
         return False
 
-    # Check for <speak> root element
-    if root.tag != 'speak':
+    # Check for <speak> root element (allow namespace)
+    tag_name = strip_ns(root.tag)
+    if tag_name != 'speak':
         print(f"❌ Error: Root element should be <speak>, found <{root.tag}>")
         return False
-    else:
-        print("✅ Root <speak> element present")
+    print("✅ Root <speak> element present")
 
     # Check for required attributes
     if 'version' not in root.attrib:
@@ -70,10 +75,11 @@ def validate_ssml(file_path):
     else:
         print(f"✅ Version: {root.attrib['version']}")
 
-    if 'xml:lang' not in root.attrib:
+    lang_value = root.attrib.get('xml:lang') or root.attrib.get('{http://www.w3.org/XML/1998/namespace}lang')
+    if not lang_value:
         print("⚠️  Warning: <speak> missing 'xml:lang' attribute")
     else:
-        print(f"✅ Language: {root.attrib['xml:lang']}")
+        print(f"✅ Language: {lang_value}")
 
     print()
 
@@ -82,10 +88,10 @@ def validate_ssml(file_path):
     print()
 
     # Count elements
-    prosody_count = len(root.findall('.//prosody'))
-    break_count = len(root.findall('.//break'))
-    phoneme_count = len(root.findall('.//phoneme'))
-    emphasis_count = len(root.findall('.//emphasis'))
+    prosody_count = sum(1 for elem in root.iter() if strip_ns(elem.tag) == 'prosody')
+    break_count = sum(1 for elem in root.iter() if strip_ns(elem.tag) == 'break')
+    phoneme_count = sum(1 for elem in root.iter() if strip_ns(elem.tag) == 'phoneme')
+    emphasis_count = sum(1 for elem in root.iter() if strip_ns(elem.tag) == 'emphasis')
 
     print(f"   <prosody> tags: {prosody_count}")
     print(f"   <break> tags: {break_count}")
@@ -125,21 +131,39 @@ def validate_ssml(file_path):
         print(f"   Recommend: ~{word_count // 50} breaks")
         issues_found = True
 
-    # Check for sections marked with [PLACEHOLDER]
+    # Check for sections marked with [PLACEHOLDER] or text markers (CRITICAL - will be read aloud!)
     if '[' in text_content and ']' in text_content:
-        import re
         placeholders = re.findall(r'\[([^\]]+)\]', text_content)
         if placeholders:
-            print(f"⚠️  Warning: Found {len(placeholders)} placeholder(s):")
+            print(f"❌ CRITICAL: Found {len(placeholders)} square bracket markers (WILL BE READ ALOUD!):")
             for ph in placeholders[:5]:  # Show first 5
                 print(f"   - [{ph}]")
             if len(placeholders) > 5:
                 print(f"   ... and {len(placeholders) - 5} more")
+            print()
+            print("   🔧 FIX: Replace with proper SSML tags:")
+            print("      [pause] → <break time=\"2s\"/>")
+            print("      [breathe] → <break time=\"3s\"/>")
+            print("      [PAUSE 2s] → <break time=\"2s\"/>")
+            issues_found = True
+
+    # Check for common text markers that will be vocalized
+    text_markers = [
+        ('pause', r'\bpause\b(?![^<]*>)'),  # 'pause' not inside tag
+        ('breathe', r'\bbreathe\b(?![^<]*>)'),
+        ('silence', r'\bsilence\b(?![^<]*>)'),
+    ]
+    for name, pattern in text_markers:
+        matches = re.findall(pattern, content, re.IGNORECASE)
+        if matches:
+            print(f"⚠️  Warning: Found '{name}' as plain text (verify it's intentional)")
             issues_found = True
 
     # Check for special characters that might need escaping
-    if '&' in content and '&lt;' not in content and '&gt;' not in content:
-        if content.count('&') != content.count('&amp;'):
+    content_no_comments = re.sub(r'<!--.*?-->', '', content, flags=re.DOTALL)
+    ampersands = [c for c in content_no_comments if c == '&']
+    if ampersands:
+        if content_no_comments.count('&') != content_no_comments.count('&amp;'):
             print("⚠️  Warning: Found unescaped '&' characters")
             print("   Use &amp; instead of & in text content")
             issues_found = True

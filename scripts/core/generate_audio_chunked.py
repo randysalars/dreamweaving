@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Garden of Eden Path-Working: Chunked Audio Generator
-Handles large SSML files by splitting into chunks under 5000 bytes
+Universal Dreamweaving: Chunked Audio Generator
+
+Turns large SSML files into audio by chunking under the provider byte limits.
+Keep imports light so it can be reused as a module by other workflows.
 
 Requirements:
     pip install google-cloud-texttospeech pydub
 
 Usage:
-    python3 generate_audio_chunked.py garden_of_eden_hypnosis.ssml output.mp3
-
-Author: The Sacred Digital Dreamweaver - Randy Sailer's Autonomous AI Clone
+    python3 generate_audio_chunked.py input.ssml output.mp3 --voice en-US-Neural2-A
 """
 
 from google.cloud import texttospeech
@@ -19,10 +19,10 @@ import re
 from pydub import AudioSegment
 
 def print_header():
-    """Print a nice header"""
+    """Print a simple header"""
     print("=" * 70)
-    print("   Garden of Eden Path-Working: Chunked Audio Generator")
-    print("   Hypnotic SSML → Professional Audio (Large File Support)")
+    print("   Dreamweaving: Chunked Audio Generator")
+    print("   SSML → Audio (Large File Support)")
     print("=" * 70)
     print()
 
@@ -129,7 +129,7 @@ def split_large_chunk(chunk, speak_opening, speak_closing, max_bytes):
 
         return sub_chunks
 
-def synthesize_chunk(client, ssml_text, voice_name, chunk_num, total_chunks):
+def synthesize_chunk(client, ssml_text, voice_name, chunk_num, total_chunks, speaking_rate, pitch, sample_rate_hz, effects_profile_id):
     """Synthesize a single chunk of SSML"""
     print(f"   🎙️  Chunk {chunk_num}/{total_chunks}: {len(ssml_text.encode('utf-8'))} bytes")
     
@@ -140,13 +140,13 @@ def synthesize_chunk(client, ssml_text, voice_name, chunk_num, total_chunks):
         name=voice_name,
         ssml_gender=texttospeech.SsmlVoiceGender.FEMALE if "A" in voice_name or "C" in voice_name or "E" in voice_name or "F" in voice_name else texttospeech.SsmlVoiceGender.MALE
     )
-    
+
     audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3,
-        speaking_rate=0.85,
-        pitch=-2.0,
-        effects_profile_id=["headphone-class-device"],
-        sample_rate_hertz=24000
+        speaking_rate=speaking_rate,
+        pitch=pitch,
+        effects_profile_id=effects_profile_id or ["headphone-class-device"],
+        sample_rate_hertz=sample_rate_hz
     )
     
     response = client.synthesize_speech(
@@ -176,7 +176,16 @@ def concatenate_audio_chunks(chunk_files, output_file):
     
     return combined
 
-def synthesize_ssml_file_chunked(ssml_filepath, output_filepath, voice_name="en-US-Neural2-A"):
+def synthesize_ssml_file_chunked(
+    ssml_filepath,
+    output_filepath,
+    voice_name="en-US-Neural2-A",
+    speaking_rate=0.85,
+    pitch=-2.0,
+    max_bytes=5000,
+    sample_rate_hz=24000,
+    effects_profile_id=None
+):
     """
     Synthesizes speech from large SSML file by chunking it.
     """
@@ -207,13 +216,13 @@ def synthesize_ssml_file_chunked(ssml_filepath, output_filepath, voice_name="en-
     print(f"   Byte count: {byte_count:,}")
     
     # Check if chunking is needed
-    if byte_count <= 5000:
+    if byte_count <= max_bytes:
         print(f"   ✓ File is under 5000 bytes, no chunking needed")
         chunks = [ssml_content]
     else:
         print(f"   ⚠️  File exceeds 5000 byte limit, chunking required")
         print(f"📦 Splitting into manageable chunks...")
-        chunks = split_ssml_into_chunks(ssml_content)
+        chunks = split_ssml_into_chunks(ssml_content, max_bytes=max_bytes)
         print(f"   ✓ Created {len(chunks)} chunks")
         
         # Validate chunk sizes
@@ -224,8 +233,8 @@ def synthesize_ssml_file_chunked(ssml_filepath, output_filepath, voice_name="en-
     
     # Synthesize each chunk
     print(f"\n🎙️  Generating audio with voice: {voice_name}")
-    print(f"   Speaking rate: 0.85x (hypnotic pace)")
-    print(f"   Pitch: -2.0 semitones (calming)")
+    print(f"   Speaking rate: {speaking_rate:.2f}x")
+    print(f"   Pitch: {pitch:.1f} semitones")
     print(f"\n⏳ Synthesizing {len(chunks)} chunk(s)... (this may take 1-2 minutes)")
     print()
     
@@ -233,7 +242,17 @@ def synthesize_ssml_file_chunked(ssml_filepath, output_filepath, voice_name="en-
     
     try:
         for i, chunk in enumerate(chunks, 1):
-            audio_content = synthesize_chunk(client, chunk, voice_name, i, len(chunks))
+            audio_content = synthesize_chunk(
+                client,
+                chunk,
+                voice_name,
+                i,
+                len(chunks),
+                speaking_rate,
+                pitch,
+                sample_rate_hz,
+                effects_profile_id,
+            )
             
             # Save chunk to temporary file
             chunk_file = f"temp_chunk_{i:03d}.mp3"
@@ -287,31 +306,25 @@ def synthesize_ssml_file_chunked(ssml_filepath, output_filepath, voice_name="en-
 
 def main():
     """Main execution function"""
+    import argparse
+
     print_header()
-    
-    # Parse command line arguments
-    if len(sys.argv) < 3:
-        print("❌ Error: Missing required arguments")
-        print()
-        print("Usage:")
-        print("   python3 generate_audio_chunked.py <input.ssml> <output.mp3> [voice_name]")
-        print()
-        print("Example:")
-        print("   python3 generate_audio_chunked.py garden_of_eden_hypnosis.ssml output.mp3")
-        print()
-        print("Optional voice_name (default: en-US-Neural2-A):")
-        print("   Female voices: en-US-Neural2-A, en-US-Neural2-C, en-US-Neural2-E, en-US-Neural2-F")
-        print("   Male voices: en-US-Neural2-D, en-US-Neural2-I, en-US-Neural2-J")
-        print()
-        sys.exit(1)
-    
-    ssml_file = sys.argv[1]
-    output_file = sys.argv[2]
-    voice_name = sys.argv[3] if len(sys.argv) > 3 else "en-US-Neural2-A"
-    
+
+    parser = argparse.ArgumentParser(description="Chunked SSML → audio generator")
+    parser.add_argument("ssml_file", help="Path to input SSML file")
+    parser.add_argument("output_file", help="Path to output MP3 file")
+    parser.add_argument("--voice", default="en-US-Neural2-A", help="Voice name (default: en-US-Neural2-A)")
+    parser.add_argument("--speaking-rate", type=float, default=0.85, help="Speaking rate multiplier (e.g., 0.9 faster, 0.8 slower)")
+    parser.add_argument("--pitch", type=float, default=-2.0, help="Pitch shift in semitones (default: -2.0)")
+    parser.add_argument("--max-bytes", type=int, default=5000, help="Max bytes per chunk before splitting (default: 5000)")
+    parser.add_argument("--sample-rate", type=int, default=24000, help="Sample rate in Hz for TTS output (default: 24000)")
+    parser.add_argument("--effects-profile", default=None, nargs="*", help="Effects profile IDs (default: headphone-class-device)")
+
+    args = parser.parse_args()
+
     # Check for pydub
     try:
-        import pydub
+        import pydub  # noqa: F401
     except ImportError:
         print("❌ Error: pydub is required for concatenating audio chunks")
         print()
@@ -323,9 +336,17 @@ def main():
         print("   Mac: brew install ffmpeg")
         print()
         sys.exit(1)
-    
-    # Generate the audio
-    synthesize_ssml_file_chunked(ssml_file, output_file, voice_name)
+
+    synthesize_ssml_file_chunked(
+        args.ssml_file,
+        args.output_file,
+        voice_name=args.voice,
+        speaking_rate=args.speaking_rate,
+        pitch=args.pitch,
+        max_bytes=args.max_bytes,
+        sample_rate_hz=args.sample_rate,
+        effects_profile_id=args.effects_profile,
+    )
 
 if __name__ == "__main__":
     main()

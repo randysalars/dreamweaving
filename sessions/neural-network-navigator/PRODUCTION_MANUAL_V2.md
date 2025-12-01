@@ -1,10 +1,18 @@
 # Neural Network Navigator: Production Manual V2
 
+**VERSION:** 2.0 (Session-Specific, Professional Format)
+**LAST UPDATED:** 2025-11-28
+**SESSION DURATION:** 28.7 minutes (1722 seconds)
+**STATUS:** ✅ Current and Valid
+
+> **📖 For universal workflow:** See [../../docs/CANONICAL_WORKFLOW.md](../../docs/CANONICAL_WORKFLOW.md)
+> This document covers **V2 session-specific** production (full professional format with pretalk/closing).
+
+---
+
 **Complete Guide for Video Production - Professional Format**
 
 **Session**: Neural Network Navigator: Expanding Mind's Pathways
-**Version**: 2.0 (Complete Professional Format)
-**Duration**: 28.7 minutes
 **Created**: 2025-11-27
 **Format**: Dreamweaving Professional Standard
 

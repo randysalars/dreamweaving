@@ -2,6 +2,8 @@
 
 Get your first hypnotic audio session generated in 5 minutes flat.
 
+> **📖 For complete workflow details:** See [CANONICAL_WORKFLOW.md](CANONICAL_WORKFLOW.md)
+
 ---
 
 ## Prerequisites Check (30 seconds)
@@ -17,7 +19,7 @@ Make sure you have:
 python3 --version
 ffmpeg -version
 gcloud auth application-default print-access-token
-which python  # Should show venv path
+which python3  # Should show venv path
 ```
 
 ---
@@ -90,9 +92,10 @@ code sessions/my-first-session/script.ssml
 ## Step 4: Generate Audio (2 minutes)
 
 ```bash
-python scripts/core/generate_audio_chunked.py \
+python3 scripts/core/generate_audio_chunked.py \
     sessions/my-first-session/script.ssml \
-    sessions/my-first-session/output/audio.mp3
+    sessions/my-first-session/output/audio.mp3 \
+    en-US-Neural2-A
 ```
 
 **What happens:**
@@ -137,8 +140,23 @@ xdg-open sessions/my-first-session/output/
 
 **Need adjustments?**
 1. Edit `sessions/my-first-session/script.ssml`
-2. Regenerate: `python scripts/core/generate_audio_chunked.py ...`
+2. Regenerate: `python3 scripts/core/generate_audio_chunked.py ...`
 3. Listen again
+
+---
+
+## 🔍 Component Validation (Ava + Binaural + SFX)
+
+Before long renders, run the short smoke test to ensure the core stack is healthy:
+```bash
+./tests/audio_component_smoke.sh
+```
+Outputs appear in `test_output/`:
+- `voice_smoke.mp3` (Ava voice, 6 Hz bed, SFX at 2s)
+- `binaural_smoke.wav` (10s, 6 Hz beat)
+- `output/audio_summary.json` (confirms `tts_provider: edge-tts` and SFX metadata)
+
+Success criteria: files render without errors; Ava voice is audible, a 6 Hz pulse is present, and the SFX is audible near 2 seconds.
 
 ---
 
@@ -158,13 +176,13 @@ You now have:
 Try different voices:
 ```bash
 # Deep male voice
-python scripts/core/generate_audio_chunked.py \
+python3 scripts/core/generate_audio_chunked.py \
     sessions/my-first-session/script.ssml \
     sessions/my-first-session/output/audio_male.mp3 \
     en-US-Neural2-D
 
 # Soft female voice
-python scripts/core/generate_audio_chunked.py \
+python3 scripts/core/generate_audio_chunked.py \
     sessions/my-first-session/script.ssml \
     sessions/my-first-session/output/audio_soft.mp3 \
     en-US-Neural2-C
@@ -189,16 +207,8 @@ cp templates/themes/abundance_activation.ssml \
 ### Learn Advanced Techniques
 
 - **SSML Formatting:** [docs/SSML_REFERENCE.md](SSML_REFERENCE.md)
-- **Complete Workflow:** [docs/WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)
-- **Audio Settings:** `scripts/core/audio_config.py`
+- **Complete Workflow:** [docs/CANONICAL_WORKFLOW.md](CANONICAL_WORKFLOW.md)
 - **Master Prompt:** `prompts/hypnotic_dreamweaving_instructions.md`
-
-### Batch Generate
-
-Generate multiple sessions at once:
-```bash
-python scripts/utilities/batch_generate.py sessions/*/script.ssml
-```
 
 ---
 
@@ -241,13 +251,13 @@ cd ~/Projects/dreamweaving && source venv/bin/activate
 
 **Generate audio:**
 ```bash
-python scripts/core/generate_audio_chunked.py INPUT.ssml OUTPUT.mp3
+python3 scripts/core/generate_audio_chunked.py INPUT.ssml OUTPUT.mp3 VOICE_NAME
 ```
 
-**Change voice:**
-```bash
-python scripts/core/generate_audio_chunked.py INPUT.ssml OUTPUT.mp3 VOICE_NAME
-```
+**Example voices:**
+- `en-US-Neural2-A` (default warm female)
+- `en-US-Neural2-D` (deep male)
+- `en-US-Neural2-C` (soft female)
 
 **Find templates:**
 ```bash

@@ -1,0 +1,241 @@
+#!/usr/bin/env python3
+"""
+One-command session builder: audio + video.
+
+Steps:
+1) Generate voice (chunked TTS) with optional rate targeting duration
+2) Generate simple binaural bed matched to voice
+3) Mix voice + bed into a final MP3
+4) Assemble video (background autodetect/fallback; overlays from images/uploaded)
+5) Report output paths
+
+Usage:
+    python3 scripts/core/build_session.py \
+        --session sessions/garden-of-eden \
+        --ssml sessions/garden-of-eden/script.ssml \
+        --voice en-US-Neural2-D \
+        --target-minutes 25 \
+        --title "Garden of Eden" --subtitle "Guided Meditation"
+"""
+
+import argparse
+import sys
+from pathlib import Path
+
+from generate_session_audio import main as audio_main  # reuse CLI
+from assemble_session_video import main as video_main  # reuse CLI
+
+try:
+    import yaml  # type: ignore
+except ImportError:
+    yaml = None
+
+
+def load_manifest_defaults(session_dir: Path):
+    defaults = {}
+    manifest_path = session_dir / "manifest.yaml"
+    if not manifest_path.exists() or yaml is None:
+        return defaults
+    try:
+        with open(manifest_path, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+        session = data.get("session", {})
+        voice = data.get("voice", {}).get("voice_name")
+        provider = data.get("voice", {}).get("provider")
+        duration_sec = session.get("duration")
+
+        # Load binaural configuration
+        sound_bed = data.get("sound_bed", {})
+        binaural = sound_bed.get("binaural", {})
+        carrier_hz = binaural.get("base_hz")
+
+        # Store full manifest data for beat schedule generation
+        defaults["manifest_data"] = data
+
+        if voice:
+            defaults["voice"] = voice
+        if provider:
+            defaults["tts_provider"] = provider
+        if duration_sec:
+            defaults["target_minutes"] = float(duration_sec) / 60.0
+        if carrier_hz:
+            defaults["carrier_hz"] = float(carrier_hz)
+    except Exception:
+        return defaults
+    return defaults
+
+
+def run_audio(args, manifest_data=None):
+    audio_args = [
+        "--ssml",
+        str(args.ssml),
+        "--voice",
+        args.voice,
+        "--tts-provider",
+        args.tts_provider,
+        "--target-minutes",
+        str(args.target_minutes),
+        "--match-mode",
+        args.match_mode,
+        "--beat-hz",
+        str(args.beat_hz),
+        "--carrier-hz",
+        str(args.carrier_hz),
+        "--bed-gain-db",
+        str(args.bed_gain_db),
+        "--voice-gain-db",
+        str(args.voice_gain_db),
+        "--sample-rate",
+        str(args.sample_rate),
+        "--max-bytes",
+        str(args.max_bytes),
+    ]
+    if args.output_dir:
+        audio_args += ["--output-dir", str(args.output_dir)]
+    if args.mix_name:
+        audio_args += ["--mix-out", str((Path(args.output_dir) if args.output_dir else Path(args.ssml).parent / "output") / args.mix_name)]
+
+    # Pass manifest as beat schedule if available
+    if manifest_data:
+        import json
+        import tempfile
+        # Create temporary JSON file with manifest data
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            json.dump(manifest_data, f)
+            temp_schedule_path = f.name
+        audio_args += ["--beat-schedule", temp_schedule_path]
+
+    sys.argv = ["generate_session_audio"] + audio_args
+    audio_main()
+
+    # Clean up temp file
+    if manifest_data:
+        import os
+        os.unlink(temp_schedule_path)
+
+
+def run_video(args, session_dir: Path, audio_path: Path):
+    video_args = [
+        "--session",
+        str(session_dir),
+        "--audio",
+        str(audio_path),
+        "--fade",
+        str(args.fade),
+    ]
+    if args.title:
+        video_args += ["--title", args.title]
+    if args.subtitle:
+        video_args += ["--subtitle", args.subtitle]
+    if args.background:
+        video_args += ["--background", str(args.background)]
+    sys.argv = ["assemble_session_video"] + video_args
+    video_main()
+
+
+def main():
+    parser = argparse.ArgumentParser(description="One-command build for session audio+video.")
+    parser.add_argument("--session", required=True, help="Session directory.")
+    parser.add_argument("--ssml", required=True, help="Path to SSML file.")
+    parser.add_argument("--voice", default="en-US-Neural2-D", help="Voice name (default: Google Neural2-D).")
+    parser.add_argument("--tts-provider", choices=["google"], default="google", help="TTS provider (Google Cloud TTS only).")
+    parser.add_argument("--target-minutes", type=float, default=None, help="Target duration (minutes).")
+    parser.add_argument("--match-mode", choices=["bed_to_voice", "voice_to_target"], default="voice_to_target")
+    parser.add_argument("--beat-hz", type=float, default=7.83)
+    parser.add_argument("--carrier-hz", type=float, default=432.0)
+    parser.add_argument("--bed-gain-db", type=float, default=-10.0)
+    parser.add_argument("--voice-gain-db", type=float, default=0.0)
+    parser.add_argument("--sample-rate", type=int, default=24000)
+    parser.add_argument("--max-bytes", type=int, default=5000)
+    parser.add_argument("--output-dir", help="Override audio output dir (default: <ssml_dir>/output).")
+    parser.add_argument("--mix-name", default=None, help="Final mixed audio filename (default: final_mix.mp3).")
+    parser.add_argument("--title", default="", help="Video title text.")
+    parser.add_argument("--subtitle", default="", help="Video subtitle text.")
+    parser.add_argument("--background", help="Optional background video path.")
+    parser.add_argument("--fade", type=float, default=2.0, help="Fade for stills (seconds).")
+    parser.add_argument("--auto-package", action="store_true", help="Auto-generate YouTube package and cleanup")
+    args = parser.parse_args()
+
+    session_dir = Path(args.session).resolve()
+    ssml_path = Path(args.ssml).resolve()
+    if not session_dir.exists() or not ssml_path.exists():
+        print("❌ Session or SSML not found.")
+        sys.exit(1)
+
+    manifest_defaults = load_manifest_defaults(session_dir)
+    manifest_data = manifest_defaults.get("manifest_data")
+
+    # Apply manifest defaults
+    if manifest_defaults and args.target_minutes is None:
+        args.target_minutes = manifest_defaults.get("target_minutes", None)
+    if manifest_defaults and args.voice == parser.get_default("voice") and manifest_defaults.get("voice"):
+        args.voice = manifest_defaults["voice"]
+    if manifest_defaults and args.tts_provider == parser.get_default("tts_provider") and manifest_defaults.get("tts_provider"):
+        args.tts_provider = manifest_defaults["tts_provider"]
+    if manifest_defaults and args.carrier_hz == parser.get_default("carrier_hz") and manifest_defaults.get("carrier_hz"):
+        args.carrier_hz = manifest_defaults["carrier_hz"]
+
+    if args.target_minutes is None:
+        args.target_minutes = 25.0
+    if args.mix_name is None:
+        args.mix_name = "final_mix.mp3"
+    if (session_dir / "manifest.yaml").exists() and yaml is None:
+        print("ℹ️ manifest.yaml present but PyYAML not installed; defaults may not be auto-applied.")
+
+    # Run audio with manifest data for beat schedule
+    run_audio(args, manifest_data)
+
+    # Locate mixed audio
+    output_dir = Path(args.output_dir) if args.output_dir else ssml_path.parent / "output"
+    preferred_mix = output_dir / args.mix_name
+    if preferred_mix.exists():
+        mixed_candidates = [preferred_mix]
+    else:
+        mixed_candidates = sorted(output_dir.glob("*.mp3"), key=lambda p: p.stat().st_mtime, reverse=True)
+    if not mixed_candidates:
+        print("❌ Mixed audio not found in output/.")
+        sys.exit(1)
+    audio_path = mixed_candidates[0]
+
+    # Run video assembly
+    run_video(args, session_dir, audio_path)
+
+    video_path = session_dir / 'output' / 'video' / 'session_final.mp4'
+
+    # Optional: Auto-package for YouTube
+    if args.auto_package:
+        print("\n=== AUTO-PACKAGING FOR YOUTUBE ===")
+        try:
+            import subprocess
+            subprocess.run([
+                "python3", "scripts/core/package_youtube.py",
+                "--session", str(session_dir),
+                "--audio", str(audio_path)
+            ], check=True)
+            print("✅ YouTube package created")
+        except Exception as e:
+            print(f"⚠️  YouTube packaging failed: {e}")
+
+        # Run cleanup
+        print("\n=== RUNNING CLEANUP ===")
+        try:
+            subprocess.run([
+                "bash", "scripts/core/cleanup_session_assets.sh",
+                str(session_dir)
+            ], check=True)
+            print("✅ Cleanup complete")
+        except Exception as e:
+            print(f"⚠️  Cleanup failed: {e}")
+
+    print("\n" + "=" * 70)
+    print("✅ BUILD COMPLETE")
+    print("=" * 70)
+    print(f"Audio: {audio_path}")
+    print(f"Video: {video_path}")
+    if args.auto_package:
+        print(f"YouTube Package: {session_dir / 'output' / 'YOUTUBE_PACKAGE_README.md'}")
+    print("=" * 70)
+
+
+if __name__ == "__main__":
+    main()

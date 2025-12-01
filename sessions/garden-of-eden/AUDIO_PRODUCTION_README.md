@@ -1,5 +1,15 @@
 # Garden of Eden - Audio Production Guide
 
+**VERSION:** 1.0 (Session-Specific)
+**LAST UPDATED:** 2025-11-28
+**SESSION DURATION:** ~25-27 minutes
+**STATUS:** ✅ Current and Valid
+
+> **📖 For universal workflow:** See [../../docs/CANONICAL_WORKFLOW.md](../../docs/CANONICAL_WORKFLOW.md)
+> This document covers **session-specific** audio enhancement (binaural beats, nature sounds).
+
+---
+
 Complete guide for generating the final audio with voice, binaural beats, and optional nature sounds.
 
 ---
@@ -282,6 +292,7 @@ Before uploading `garden_of_eden_complete.mp3`:
 - **License:** Standard YouTube License
 - **Comments:** Enabled (moderated)
 - **Age Restriction:** No (but include disclaimer)
+- **Assets to include:** `output/video/garden_of_eden_FINAL.mp4`, `output/video/thumbnail_final.jpg`, `YOUTUBE_DESCRIPTION.md` (description/tags)
 
 ---
 

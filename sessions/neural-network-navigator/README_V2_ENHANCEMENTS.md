@@ -1,5 +1,14 @@
 # Version 2: Complete Professional Format
 
+**VERSION:** 2.0 (Session-Specific)
+**LAST UPDATED:** 2025-11-28
+**SESSION:** Neural Network Navigator V2
+**STATUS:** ✅ Current and Valid
+
+> **📖 For universal workflow:** See [../../docs/CANONICAL_WORKFLOW.md](../../docs/CANONICAL_WORKFLOW.md)
+
+---
+
 ## What's New in V2
 
 Version 2 represents a complete rewrite following the professional Dreamweaving hypnotic audio format. It includes proper pretalk, closing, and post-hypnotic anchors.

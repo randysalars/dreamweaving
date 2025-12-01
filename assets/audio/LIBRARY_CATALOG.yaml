@@ -1,0 +1,153 @@
+# Dreamweaving Audio Library Catalog
+# This file documents all reusable audio assets
+# Each asset includes metadata for easy discovery and reuse
+
+version: 1.0
+
+# ==============================================================================
+# AMBIENT SOUNDS - Background atmospheres and noise
+# ==============================================================================
+ambient:
+  pink_noise_24min:
+    file: ambient/pink_noise_24min.wav
+    duration: 1422  # seconds (23.7 minutes)
+    sample_rate: 48000
+    channels: 2
+    description: Pink noise for ambient background pad
+    use_cases:
+      - Meditation background
+      - Focus sessions
+      - Sleep tracks
+    tags: [noise, pink, ambient, background]
+    generated: 2025-11-28
+
+  ambient_pad:
+    file: effects/ambient_pad.wav
+    duration: 1705  # ~28 minutes
+    sample_rate: 48000
+    channels: 2
+    description: Full ambient pad (may be duplicate of pink noise)
+    use_cases:
+      - Long meditation sessions
+      - Extended focus work
+    tags: [ambient, pad, background]
+    generated: 2025-11-26
+
+# ==============================================================================
+# SOUND EFFECTS - Transition markers, bells, chimes
+# ==============================================================================
+effects:
+  crystal_bell:
+    file: effects/crystal_bell.wav
+    duration: 2  # seconds
+    sample_rate: 44100
+    channels: 2
+    description: Clear crystal bell tone for transitions
+    use_cases:
+      - Section transitions
+      - Awakening markers
+      - Attention anchors
+    tags: [bell, crystal, transition, short]
+    generated: 2025-11-26
+    typical_timing: [290, 580, 870]  # Common placement times in seconds
+
+  singing_bowl:
+    file: effects/singing_bowl.wav
+    duration: 8  # seconds
+    sample_rate: 44100
+    channels: 2
+    description: Tibetan singing bowl with rich harmonics
+    use_cases:
+      - Anchor moments
+      - Deep relaxation cues
+      - Closing transitions
+    tags: [bowl, singing-bowl, tibetan, resonant]
+    generated: 2025-11-26
+    typical_timing: [1410]  # Late in session
+
+  wind_chime:
+    file: effects/wind_chime.wav
+    duration: 3  # seconds
+    sample_rate: 44100
+    channels: 2
+    description: Gentle wind chime for awakening
+    use_cases:
+      - Return to awareness
+      - Awakening sequences
+      - Gentle transitions
+    tags: [chime, wind, awakening, gentle]
+    generated: 2025-11-26
+    typical_timing: [1400]  # Awakening section
+
+  gamma_burst_noise:
+    file: effects/gamma_burst_noise.wav
+    duration: 4  # seconds (estimated)
+    sample_rate: 44100
+    channels: 2
+    description: High-energy noise burst for gamma brainwave state
+    use_cases:
+      - Peak focus moments
+      - Gamma brainwave activation (40Hz)
+      - Insight catalysts
+    tags: [gamma, burst, noise, high-energy]
+    generated: 2025-11-26
+    typical_timing: [1160]  # Gamma burst section
+
+# ==============================================================================
+# BINAURAL BEATS - Brainwave entrainment patterns
+# ==============================================================================
+binaural:
+  # Currently generated on-demand
+  # Future: Cache common patterns here
+  # Examples:
+  # alpha_10hz_5min:
+  #   file: binaural/alpha_10hz_5min.wav
+  #   duration: 300
+  #   frequency: 10
+  #   description: Alpha waves for relaxed alertness
+
+# ==============================================================================
+# USAGE PATTERNS - Common combinations
+# ==============================================================================
+patterns:
+  standard_meditation_28min:
+    description: Standard Dreamweaving meditation format
+    components:
+      - ambient: pink_noise_24min (trimmed to session length)
+      - binaural: Dynamic progression (alpha → theta → gamma → alpha)
+      - effects:
+          - crystal_bell: [290s, 580s, 870s]  # Section transitions
+          - singing_bowl: [1410s]  # Closing
+          - wind_chime: [1400s]  # Awakening
+          - gamma_burst_noise: [1160s]  # Peak moment
+
+  focus_session_20min:
+    description: Concentrated focus session
+    components:
+      - ambient: pink_noise_24min (trimmed to 1200s)
+      - binaural: Alpha → Gamma transition
+      - effects:
+          - crystal_bell: Minimal transitions
+          - gamma_burst_noise: Peak focus moment
+
+# ==============================================================================
+# ASSET DISCOVERY - Search by attributes
+# ==============================================================================
+by_tag:
+  transition: [crystal_bell, singing_bowl, wind_chime]
+  awakening: [wind_chime]
+  background: [pink_noise_24min, ambient_pad]
+  short: [crystal_bell, wind_chime]
+  resonant: [singing_bowl, crystal_bell]
+  high-energy: [gamma_burst_noise]
+
+by_duration:
+  very_short: [crystal_bell]  # < 5s
+  short: [wind_chime, gamma_burst_noise, singing_bowl]  # 5-10s
+  long: [pink_noise_24min, ambient_pad]  # > 10min
+
+by_use_case:
+  meditation: [pink_noise_24min, singing_bowl, crystal_bell]
+  focus: [pink_noise_24min, gamma_burst_noise]
+  sleep: [pink_noise_24min, singing_bowl]
+  awakening: [wind_chime, crystal_bell]

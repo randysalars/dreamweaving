@@ -28,23 +28,31 @@ This is your complete guide to creating professional hypnotic audio sessions. Ev
 
 4. **Generate audio:**
    ```bash
-   python scripts/core/generate_audio_chunked.py \
+   python3 scripts/core/generate_audio_chunked.py \
        sessions/my-first-session/script.ssml \
-       sessions/my-first-session/output/audio.mp3
+       sessions/my-first-session/output/audio.mp3 \
+       en-US-Neural2-A
    ```
 
 **Done!** You now have professional hypnotic audio.
 
-For complete details, see: [QUICK_START.md](QUICK_START.md)
+For complete details, see: [CANONICAL_WORKFLOW.md](CANONICAL_WORKFLOW.md)
 
 ---
 
 ## 📚 Documentation Hub
 
+### ⭐ Official Workflow (START HERE)
+- **[CANONICAL_WORKFLOW.md](CANONICAL_WORKFLOW.md)** ← **OFFICIAL PRODUCTION WORKFLOW**
+
 ### Getting Started
 - **[QUICK_START.md](QUICK_START.md)** - Get up and running in 5 minutes
-- **[WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)** - Complete step-by-step workflow
+- **[WORKFLOW_DECISION_TREE.md](WORKFLOW_DECISION_TREE.md)** - Which workflow should I use?
 - **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Common issues and solutions
+
+### Reference Guides
+- **[TERMINOLOGY_GUIDE.md](TERMINOLOGY_GUIDE.md)** - Standard terminology and naming conventions
+- **[WORKFLOW_MAINTENANCE_GUIDE.md](WORKFLOW_MAINTENANCE_GUIDE.md)** - Maintaining workflow consistency
 
 ### Technical Guides
 - **[AUDIO_GENERATION.md](AUDIO_GENERATION.md)** - Audio generation deep dive

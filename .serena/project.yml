@@ -1,0 +1,49 @@
+# Dreamweaving Project Configuration for Serena
+# Hypnotic audio/video session production workflow
+
+# Languages for which language servers are started
+# Python for the audio/video scripts, bash for shell scripts, yaml for manifests
+languages: ["python", "bash", "yaml"]
+
+# Text file encoding
+encoding: "utf-8"
+
+# Use gitignore to ignore files
+ignore_all_files_in_gitignore: true
+
+# Additional paths to ignore
+ignored_paths:
+  - "temp_audio/**"
+  - "test_output/**"
+  - "**/*.wav"
+  - "**/*.mp3"
+  - "**/*.mp4"
+  - "**/*.aac"
+  - "**/*.png"
+  - "**/*.jpg"
+  - "**/*.jpeg"
+
+# Not read-only - we want to edit files
+read_only: false
+
+# No tools excluded
+excluded_tools: []
+
+# Initial prompt for this project
+initial_prompt: |
+  This is the Dreamweaving project - a workflow for producing hypnotic audio/video sessions.
+
+  Key directories:
+  - scripts/core/ - Main production scripts (audio generation, mastering, video assembly)
+  - scripts/utilities/ - Helper scripts (validation, environment setup)
+  - sessions/ - Individual session content (manifests, scripts, images, audio)
+  - docs/ - Documentation
+  - prompts/ - Hypnotic technique guidelines
+
+  Key concepts:
+  - Sessions are defined by manifest.yaml files
+  - Voice scripts use SSML format
+  - Audio layers include binaural beats, pink noise, nature sounds, and voice
+  - Voice enhancement applies psychoacoustic processing (warmth, de-essing, whisper overlay, etc.)
+
+project_name: "dreamweaving"

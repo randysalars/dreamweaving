@@ -201,6 +201,65 @@ For each script request, I will adapt based on:
 
 ---
 
+## FOOLPROOF WORKFLOW & CHECKLIST
+
+### Pre-flight intent (drop into `sessions/<topic>/notes.md`)
+- Goal/outcome:
+- Audience + contraindications:
+- Length target:
+- Theme/metaphor:
+- Desired after-state + 3 sensory anchors:
+
+### Required SSML scaffold (copy into `script.ssml` before writing)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+  <!-- PRE-TALK -->
+  <prosody rate="1.0" pitch="0st">...</prosody>
+
+  <!-- INDUCTION -->
+  <prosody rate="0.85" pitch="-2st">...</prosody>
+
+  <!-- MAIN JOURNEY -->
+  <prosody rate="0.91" pitch="-1st">...</prosody>
+
+  <!-- INTEGRATION & RETURN -->
+  <prosody rate="0.95" pitch="0st">...</prosody>
+
+  <!-- POST-HYPNOTIC ANCHORS -->
+  <prosody rate="1.0" pitch="0st">...</prosody>
+</speak>
+```
+
+### Prosody snippet library (paste instead of freehanding)
+```xml
+<!-- Pretalk (grounded) -->
+<prosody rate="1.0" pitch="0st">Welcome... <break time="2s"/></prosody>
+
+<!-- Induction (slow/deep) -->
+<prosody rate="0.85" pitch="-2st">Breathe in for 4... hold for 4... exhale for 6... <break time="3s"/></prosody>
+
+<!-- Journey (immersive) -->
+<prosody rate="0.91" pitch="-1st">You notice the light shifting... <break time="2s"/></prosody>
+
+<!-- Awakening/Return -->
+<prosody rate="0.95" pitch="0st">Counting up now... one... two... <break time="2s"/></prosody>
+```
+
+### Validation steps before rendering
+1) Section check: confirm all five markers still present in `script.ssml`.
+2) SSML check: `python scripts/utilities/validate_ssml.py sessions/<topic>/script.ssml`.
+3) Chunking guardrail: add a `<break time="3s"/>` every 3–4 paragraphs to keep chunks small.
+4) Anchor check: include 3–5 anchors (physical breath, symbolic object/color, sensory cue).
+5) Generate: `python scripts/core/generate_audio_chunked.py sessions/<topic>/script.ssml sessions/<topic>/output/audio.mp3`.
+
+### Anchor pattern (reusable)
+- Physical: “Each time you take three deep breaths, you feel that calm descend.”
+- Symbolic: “Whenever you recall the golden amulet, confidence glows within you.”
+- Sensory: “When you notice warmth in your chest, you naturally focus on what matters.”
+
+---
+
 ## QUALITY CHECKLIST
 
 Before considering a script complete, verify:

@@ -1,10 +1,19 @@
-# Neural Network Navigator: Production Manual
+# Neural Network Navigator: Production Manual (V1)
+
+**VERSION:** 1.0 (Session-Specific, Original Format)
+**LAST UPDATED:** 2025-11-28
+**SESSION DURATION:** 28.0 minutes (1680 seconds)
+**STATUS:** ✅ Valid (V1 - without pretalk/closing)
+
+> **📖 For universal workflow:** See [../../docs/CANONICAL_WORKFLOW.md](../../docs/CANONICAL_WORKFLOW.md)
+> **📖 For V2 (with pretalk/closing):** See [PRODUCTION_MANUAL_V2.md](PRODUCTION_MANUAL_V2.md)
+> This document covers **V1 session-specific** production (original format).
+
+---
 
 **Complete Guide for Video Production**
 
 **Session**: Neural Network Navigator: Expanding Mind's Pathways
-**Version**: 1.0
-**Duration**: 28:00 minutes
 **Created**: 2025-11-25
 
 ---

@@ -1,0 +1,8 @@
+file '/home/rsalars/Projects/dreamweaving/temp_audio/01_pretalk_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/02_induction_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/03_garden_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/04_pathfinder_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/05_weaver_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/06_gamma_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/07_consolidation_binaural.wav'
+file '/home/rsalars/Projects/dreamweaving/temp_audio/08_awakening_binaural.wav'

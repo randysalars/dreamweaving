@@ -37,6 +37,8 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "STEP 2: Compositing Garden images (if available)"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
+echo "Images should live in: $SESSION_DIR/images/uploaded (see images/prompts.md)"
+
 # Use Python script for reliable image compositing
 if python3 "$SESSION_DIR/composite_images.py"; then
     COMPOSITE_FILE="$OUTPUT_DIR/composite_with_images.mp4"

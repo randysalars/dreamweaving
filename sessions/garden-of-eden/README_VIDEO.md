@@ -1,43 +1,64 @@
 # Garden of Eden Video Production
 
+**VERSION:** 1.0 (Session-Specific)
+**LAST UPDATED:** 2025-11-28
+**SESSION:** Garden of Eden
+**STATUS:** ✅ Current and Valid
+
+> **📖 For universal workflow:** See [../../docs/CANONICAL_WORKFLOW.md](../../docs/CANONICAL_WORKFLOW.md)
+
+---
+
 Quick guide to creating your 25-minute meditation video using 100% free tools.
 
 ## Quick Start
 
 ```bash
-# 1. Generate background video (30-60 min)
+# 1. Generate or download stills from prompts
+#    - Use sessions/garden-of-eden/images/prompts.md
+#    - Save PNGs to sessions/garden-of-eden/images/uploaded/
+
+# 2. Generate background video (30-60 min)
 python3 generate_video_background.py
 
-# 2. Compile frames to video (5-15 min)
+# 3. Compile frames to video (5-15 min)
 python3 compile_video.py video_frames output/video/background_gradient.mp4
 
-# 3. Create final video with audio (2-5 min)
+# 4. Create final video with audio (2-5 min)
 ./create_final_video.sh
 
-# 4. Create thumbnail
+# 5. Create thumbnail
 ./create_thumbnail.sh
+
+# 6. Prepare YouTube package
+#    - Video: output/video/garden_of_eden_FINAL.mp4
+#    - Thumbnail: output/video/thumbnail_final.jpg
+#    - Description/Tags: YOUTUBE_DESCRIPTION.md (and youtube-description.md)
+#    - Copy/paste checklist from AUDIO_PRODUCTION_README.md
+
+# One-command build (audio+video) then package
+python3 scripts/core/build_session.py \
+  --session sessions/garden-of-eden \
+  --ssml sessions/garden-of-eden/script.ssml \
+  --voice en-US-Neural2-D \
+  --title "Garden of Eden" --subtitle "Guided Meditation"
+./scripts/core/package_youtube.sh sessions/garden-of-eden
 ```
 
 ## Optional: Add Custom Garden Images
 
-To add beautiful opening imagery:
-
-1. Go to https://huggingface.co/spaces/stabilityai/stable-diffusion
-2. Use this prompt:
-   ```
-   mystical garden archway made of living emerald vines,
-   golden sunlight streaming through, paradise garden beyond,
-   ethereal sacred atmosphere, glowing light particles,
-   cinematic lighting, highly detailed, spiritual art
-   ```
-3. Download best result and save as: `eden_opening.png`
-4. Run `./create_final_video.sh` again
+1. Open the prompts at `sessions/garden-of-eden/images/prompts.md`
+2. Generate each image (any SD/DALL·E-like tool) and save PNGs as:
+   `01_pretalk.png, 02_induction.png, 03_meadow.png, 04_serpent.png, 05_tree.png, 06_divine.png, 07_return.png`
+   into `sessions/garden-of-eden/images/uploaded/`
+3. Run `./create_final_video.sh` (the script auto-detects these files with fades)
 
 ## Files You'll Get
 
 - `output/video/background_gradient.mp4` - Chakra gradient background
 - `output/video/garden_of_eden_FINAL.mp4` - Complete video with audio ⭐
 - `output/video/thumbnail_final.jpg` - YouTube thumbnail
+- `YOUTUBE_DESCRIPTION.md` (and youtube-description.md) - Description/tags for upload
 
 ## What's Included
 

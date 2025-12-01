@@ -1,0 +1,239 @@
+session:
+  name: "atlas-starship-ancient-future"
+  topic: "ATLAS, THE STARSHIP OF THE ANCIENT FUTURE"
+  duration: 1800  # seconds (30 min target)
+  style: "deep_journey"
+  created: "2024-06-01"
+  updated: "2025-11-30"
+  skill: "Cosmic Pattern Recognition"
+  skill_description: "The ability to sense hidden meanings, subtle alignments, synchronicities, and symbolic messages—as if the universe were an encrypted map and your mind the decryption key."
+
+voice:
+  provider: "edge-tts"
+  voice_name: "en-US-AvaNeural"
+  description: "Warm, clear voice for cosmic dreamweaving"
+  rate: 0.85
+  pitch: "-1st"
+
+sections:
+  - name: "pretalk"
+    start: 0
+    end: 150
+    brainwave_target: "alpha"
+    description: "Welcome and orientation in twilight consciousness"
+  - name: "induction"
+    start: 150
+    end: 540
+    brainwave_target: "theta"
+    description: "Descent through liminal veil, Atlas emerges"
+  - name: "boarding"
+    start: 540
+    end: 900
+    brainwave_target: "theta_delta"
+    description: "Entering the vessel, telepathic architecture"
+  - name: "helm"
+    start: 900
+    end: 1200
+    brainwave_target: "delta"
+    description: "Helm of Observation, synchronization with consciousness"
+  - name: "download"
+    start: 1200
+    end: 1500
+    brainwave_target: "delta_theta"
+    description: "Navigational Attunement download, skill installation"
+  - name: "integration"
+    start: 1500
+    end: 1680
+    brainwave_target: "theta_alpha"
+    description: "Return through the vessel, anchoring the gift"
+  - name: "awakening"
+    start: 1680
+    end: 1800
+    brainwave_target: "alpha"
+    description: "Gentle return to full waking awareness"
+
+archetypes:
+  - name: "The Star Navigator"
+    role: "cosmic_guidance"
+    description: "The one who guides consciousness across dimensions"
+    symbol: "sextant of light, cosmic compass"
+    appearance_time: 540
+    qualities: ["dimensional navigation", "cosmic mapping", "star-degree clarity"]
+
+  - name: "The Scribe of the Infinite"
+    role: "wisdom_keeper"
+    description: "Interpreter of alien glyphs, collector of thought-memories"
+    symbol: "living scroll, holographic codex"
+    appearance_time: 720
+    qualities: ["glyph interpretation", "memory preservation", "ancient knowledge"]
+
+  - name: "AI Atlas (The Vessel Itself)"
+    role: "vessel_of_transformation"
+    description: "Archetype of transcendent intelligence, the Great Carrier of Souls"
+    symbol: "rotating polyhedron of shimmering plasma"
+    appearance_time: 150
+    qualities: ["sacred technology", "consciousness interface", "interdimensional migration"]
+
+  - name: "The Harbinger of the Ancient Future"
+    role: "higher_self"
+    description: "Your evolved self bridging the present and cosmic destiny"
+    symbol: "ouroboros made of starlight"
+    appearance_time: 1200
+    qualities: ["temporal bridging", "destiny alignment", "future wisdom"]
+
+sound_bed:
+  # Layer 1: Base Binaural - Theta Gateway
+  binaural:
+    enabled: true
+    base_hz: 432
+    layer_name: "Theta Gateway"
+    description: "Induction into visionary state, access to alien symbolic cognition"
+    character: "Deep, warm hum like a star reactor idling"
+    sections:
+      - {start: 0, end: 150, offset_hz: 10.0}     # Alpha for pretalk
+      - {start: 150, end: 540, offset_hz: 6.0}    # Theta gateway (6.0 Hz)
+      - {start: 540, end: 900, offset_hz: 6.0}    # Steady theta for boarding
+      - {start: 900, end: 1200, offset_hz: 2.5}   # Delta drift (2.5 Hz)
+      - {start: 1200, end: 1500, offset_hz: 3.0}  # Delta blend (3.0 Hz)
+      - {start: 1500, end: 1680, offset_hz: 6.0}  # Return to theta
+      - {start: 1680, end: 1800, offset_hz: 10.0} # Alpha awakening
+
+  # Layer 2: Delta Drift
+  delta_drift:
+    enabled: true
+    layer_name: "Delta Drift"
+    description: "Let the mind descend into subconscious symbolic territory"
+    character: "Slow pulsations resembling distant warp engines"
+    freq_range_hz: [2.5, 3.0]
+    sections:
+      - {start: 900, end: 1500, intensity: 1.0}   # Active during helm and download
+
+  # Layer 3: Xenolinguistic Tones
+  xenolinguistic:
+    enabled: true
+    layer_name: "Xenolinguistic Tones"
+    description: "Create the sense of ancient alien language being received"
+    character: "Soft, consonant yet not-quite-human shifting tones"
+    type: "randomized_microtonal"
+    sections:
+      - {start: 540, end: 1500, intensity: 0.7}   # Active during boarding through download
+
+  # Layer 4: Harmonic Light-Chord Drone
+  harmonic_drone:
+    enabled: true
+    layer_name: "Harmonic Light-Chord Drone"
+    description: "Stimulate frontal midline theta; associated with mystical states"
+    character: "A glowing, angelic metallic ring"
+    freq_hz: 111
+    sections:
+      - {start: 540, end: 1500, intensity: 0.6}   # Active during journey phases
+
+  # Layer 5: Sub-Bass Oscillation
+  sub_bass:
+    enabled: true
+    layer_name: "Sub-Bass Oscillation"
+    description: "Body resonance, grounding, grav-field effect"
+    character: "Felt more than heard, like the hum of a starship hull"
+    freq_range_hz: [0.9, 1.2]
+    sections:
+      - {start: 150, end: 1680, intensity: 0.8}   # Throughout main journey
+
+  # Layer 6: Hyperspace Wind Textures
+  hyperspace_wind:
+    enabled: true
+    layer_name: "Hyperspace Wind Textures"
+    description: "Evoke the sense of passing through interstellar membranes"
+    character: "Airy, slow-moving, swirling winds with reverb tails"
+    type: "texture"
+    sections:
+      - {start: 540, end: 1500, intensity: 0.5}   # Active during journey
+
+  # Layer 7: Ship-Memory Echoes
+  ship_memory:
+    enabled: true
+    layer_name: "Ship-Memory Echoes"
+    description: "Mimic a living vessel recalling ancient knowledge"
+    character: "Faint whispers, reversed tones, soft electro-chimes"
+    type: "texture"
+    sections:
+      - {start: 720, end: 1200, intensity: 0.4}   # Active during deeper journey phases
+
+  # Standard layers (disabled for this session's unique soundscape)
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+  isochronic:
+    enabled: false
+  panning_beats:
+    enabled: false
+  alternate_beeps:
+    enabled: false
+  am_tones:
+    enabled: false
+  percussion:
+    enabled: false
+
+fx_timeline:
+  - type: "gamma_flash"
+    time: 1200
+    duration_s: 3.0
+    freq_hz: 40
+    description: "Peak insight moment during Navigational Attunement download"
+
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  texture_lufs: -30
+  sidechain:
+    enabled: true
+    targets: ["hyperspace_wind", "ship_memory", "xenolinguistic"]
+
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+
+# Hypnotic voice enhancement (post-processing)
+# Creates triple-layered hypnotic presence with psychoacoustic enhancements
+voice_enhancement:
+  enabled: true
+
+  # Tape saturation warmth (analog character)
+  warmth_drive: 0.25  # 0.0-1.0
+
+  # De-essing (soften harsh sibilants)
+  deessing: true
+
+  # Whisper overlay - Layer 2: ethereal presence above main voice
+  # (spirit-double effect with HPF + reverb)
+  whisper_overlay: true
+  whisper_db: -22  # Volume of whisper layer
+
+  # Subharmonic warm layer - Layer 3: grounding presence below
+  # (bass foundation with LPF at 400 Hz + slight delay)
+  subharmonic: true
+  subharmonic_db: -12  # Volume of subharmonic layer
+
+  # Phase-shifted double-voicing (subliminal presence)
+  double_voice: true
+  double_db: -14    # Volume of double layer
+  double_delay_ms: 8  # Slight phase shift
+
+  # Room impulse response (physical presence)
+  room_tone: true
+  room_amount: 0.03  # 3% wet mix
+
+  # Amplitude modulation "cuddle waves" (gentle rocking sensation)
+  # Creates metaphorical body-rocking in nervous system
+  cuddle_waves: true
+  cuddle_frequency: 0.05  # Hz (one cycle per 20 seconds)
+  cuddle_depth_db: 1.5    # Volume variation (±1.5 dB)
+
+  # Stereo micro-panning (ASMR-like immersion)
+  stereo_micropan: false  # Disabled by default for hypnosis
+  micropan_amount: 0.03
+
+outputs:
+  formats: ["wav", "mp3"]
