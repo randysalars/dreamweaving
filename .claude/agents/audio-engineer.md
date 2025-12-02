@@ -79,17 +79,29 @@ Orchestrate the complete audio production pipeline from SSML script to final mas
 
 ## Production Commands
 
+### Voice Generation (CANONICAL - ALWAYS USE THIS)
+```bash
+# This is the ONLY command to use for voice generation
+# It automatically applies production voice + enhancement
+python3 scripts/core/generate_voice.py \
+    sessions/{session}/working_files/script.ssml \
+    sessions/{session}/output
+```
+
+**Production Voice Settings:**
+- Voice: `en-US-Neural2-H` (bright female)
+- Speaking Rate: 0.88x
+- Pitch: 0 semitones
+- Enhancement: Warmth, room, whisper layer, double-voice, subharmonic
+
+**Output:**
+- `voice.mp3` - Raw TTS output
+- `voice_enhanced.mp3` - **USE THIS FOR PRODUCTION**
+- `voice_enhanced.wav` - High-quality WAV
+
 ### Full Session Build
 ```bash
 python3 scripts/core/build_session.py sessions/{session} --auto-package
-```
-
-### Voice Only
-```bash
-python3 scripts/core/generate_audio_chunked.py \
-    sessions/{session}/working_files/script.ssml \
-    sessions/{session}/output/voice.mp3 \
-    en-US-Neural2-A
 ```
 
 ### Session Audio (Voice + Binaural)
@@ -97,7 +109,43 @@ python3 scripts/core/generate_audio_chunked.py \
 python3 scripts/core/generate_session_audio.py sessions/{session}
 ```
 
+### Legacy Voice Only (NOT RECOMMENDED)
+```bash
+# Only use if you need raw TTS without enhancement
+python3 scripts/core/generate_audio_chunked.py \
+    sessions/{session}/working_files/script.ssml \
+    sessions/{session}/output/voice.mp3 \
+    --voice en-US-Neural2-H
+```
+
 ## Quality Standards
+
+### Stem Mixing Levels (CRITICAL)
+
+> **IMPORTANT**: Always refer to Serena memory `audio_production_methodology` for complete details.
+
+| Stem | Mix Level | Notes |
+|------|-----------|-------|
+| Voice | -6 dB | Primary element |
+| Binaural | -6 dB | Audible but not intrusive |
+| SFX | 0 dB | Clear and impactful |
+
+**FFmpeg Mix Command (Fast, Reliable):**
+```bash
+ffmpeg -y \
+  -i voice_enhanced.wav \
+  -i binaural_dynamic.wav \
+  -i sfx_track.wav \
+  -filter_complex "
+    [0:a]volume=-6dB[voice];
+    [1:a]volume=-6dB[bin];
+    [2:a]volume=0dB[sfx];
+    [voice][bin][sfx]amix=inputs=3:duration=longest:normalize=0[mixed]
+  " \
+  -map "[mixed]" \
+  -acodec pcm_s16le \
+  session_mixed.wav
+```
 
 ### Loudness
 - **Voice**: -16 LUFS

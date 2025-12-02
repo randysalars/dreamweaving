@@ -155,11 +155,68 @@ All images should maintain:
 
 ## Thumbnail Best Practices
 
-- **Text Space**: Leave room for title overlay
-- **Focal Point**: Clear central subject
-- **Contrast**: High enough for small display
-- **Emotion**: Convey session benefit visually
-- **Curiosity**: Create desire to click
+> **Full Guide**: See [docs/THUMBNAIL_DESIGN_GUIDE.md](docs/THUMBNAIL_DESIGN_GUIDE.md) for comprehensive documentation.
+
+### Core Principle: 200x112 Pixel Clarity
+
+Design for recognition within 0.2 seconds at mobile preview size.
+
+### The 10 Commandments of High-CTR Thumbnails
+
+1. **Strong Visual Hierarchy** - Face → Text → Symbol → Background
+2. **Big Emotions Win** - Exaggerated expressions or luminous focal points
+3. **Curiosity Gap** - Raise a question but don't answer it
+4. **High Contrast Color Blocking** - Hot accents on cold backgrounds
+5. **Short Text, Big Font** - 2-5 words max, bold sans-serif
+6. **Mobile-First** - Subject fills 40-60% of frame, no thin fonts
+7. **Pattern Disruption** - Look different from surrounding videos
+8. **Pose Language** - Serene, receptive, transcendent gestures
+9. **Consistent Branding** - Same colors, fonts, glow style
+10. **A/B Testing Mindset** - Always iterate
+
+### Template Selection
+
+| Template | Best For | Key Feature |
+|----------|----------|-------------|
+| Portal Gateway | Eden pathworkings, cosmic journeys | Luminous center, dark edges |
+| Sacred Symbol | Tree of Life, chakras, geometry | Central glowing symbol |
+| Journey Scene | Gardens, temples, vistas | Full-frame scene with text overlay |
+| Abstract Energy | Neural themes, brainwaves | Flowing energy patterns |
+
+### Color Palettes
+
+| Palette | Primary | Secondary | Background |
+|---------|---------|-----------|------------|
+| Sacred Light | Gold #FFD700 | Cream #F4E4BC | Cosmic #0A0A1A |
+| Cosmic Journey | Purple #9B6DFF | Blue #64B5F6 | Space #0D0221 |
+| Garden/Eden | Emerald #50C878 | Gold #FFD700 | Forest #0F2818 |
+| Ancient Temple | Antique Gold #D4AF37 | Bronze #8B4513 | Shadow #1A0F0A |
+
+### Technical Specs
+
+- **Dimensions**: 1280 x 720 pixels (16:9)
+- **Format**: PNG or JPEG (quality=95)
+- **File Size**: Under 2MB
+- **Title Font**: 80-120px, bold, white with glow
+- **Badge Font**: 28-35px, semi-transparent background
+
+### Zone Layout
+
+```
+TOP 30%: Title Zone (main text)
+CENTER 40%: Focal Zone (visual element, highest contrast)
+BOTTOM 15%: Badge Zone (duration right, features left)
+OUTER 10%: Safe margin (avoid critical content)
+```
+
+### Thumbnail Generation Command
+
+```bash
+python3 scripts/core/generate_thumbnail.py \
+    sessions/{session}/ \
+    --template portal_gateway \
+    --palette sacred_light
+```
 
 ## Lessons Integration
 

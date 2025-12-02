@@ -61,10 +61,17 @@ def synthesize_ssml_file(ssml_filepath, output_filepath, voice_name="en-US-Neura
     synthesis_input = texttospeech.SynthesisInput(ssml=ssml_content)
 
     # Configure voice parameters (optimized for hypnosis)
+    # Correct gender mapping for Neural2 voices:
+    # Female: C, E, F, G, H
+    # Male: A, D, I, J
+    voice_letter = voice_name.split('-')[-1] if '-' in voice_name else voice_name[-1]
+    female_voices = {'C', 'E', 'F', 'G', 'H'}
+    is_female = voice_letter in female_voices
+
     voice = texttospeech.VoiceSelectionParams(
         language_code="en-US",
         name=voice_name,
-        ssml_gender=texttospeech.SsmlVoiceGender.FEMALE if "A" in voice_name or "C" in voice_name or "E" in voice_name or "F" in voice_name else texttospeech.SsmlVoiceGender.MALE
+        ssml_gender=texttospeech.SsmlVoiceGender.FEMALE if is_female else texttospeech.SsmlVoiceGender.MALE
     )
 
     # Configure audio output (optimized for hypnotic delivery)

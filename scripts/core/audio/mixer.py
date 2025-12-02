@@ -78,12 +78,14 @@ def mix_stems(
                 print(f"Loading: {name} from {config['path']}")
                 sr, audio = wavfile.read(config['path'])
 
-                # Convert to float32 stereo
-                audio = audio.astype(np.float32)
-                if audio.dtype == np.int16:
-                    audio = audio / 32768.0
-                elif audio.dtype == np.int32:
-                    audio = audio / 2147483648.0
+                # Normalize based on original dtype BEFORE converting to float32
+                original_dtype = audio.dtype
+                if original_dtype == np.int16:
+                    audio = audio.astype(np.float32) / 32768.0
+                elif original_dtype == np.int32:
+                    audio = audio.astype(np.float32) / 2147483648.0
+                else:
+                    audio = audio.astype(np.float32)
 
                 if len(audio.shape) == 1:
                     # Mono to stereo

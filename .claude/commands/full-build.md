@@ -47,11 +47,19 @@ Run the complete production pipeline from topic to YouTube-ready package.
 9. **USER**: Resume build
 
 ### Stage 4: Audio Production
-10. Generate voice audio
-11. Generate binaural bed
-12. Mix stems
-13. Apply voice enhancement
-14. Master audio
+10. **Generate voice audio (CANONICAL METHOD)**
+    ```bash
+    python3 scripts/core/generate_voice.py \
+        sessions/{session}/working_files/script.ssml \
+        sessions/{session}/output
+    ```
+    - Uses production voice: `en-US-Neural2-H` (bright female)
+    - Automatically applies enhancement (warmth, room, layers)
+    - Output: `voice_enhanced.mp3` (USE THIS for mixing)
+
+11. Generate binaural bed (match to voice_enhanced.mp3 duration)
+12. Mix stems (use voice_enhanced.mp3, NOT voice.mp3)
+13. Master audio
 
 ### Stage 5: Video Production
 15. Generate VTT subtitles
@@ -87,7 +95,9 @@ sessions/{session}/
 ├── images/uploaded/
 │   └── [user images]
 └── output/
-    ├── voice.mp3
+    ├── voice.mp3              # Raw TTS (backup)
+    ├── voice_enhanced.mp3     # Enhanced voice (USE THIS)
+    ├── voice_enhanced.wav     # High-quality enhanced
     ├── binaural.wav
     ├── mixed.mp3
     ├── final.mp3

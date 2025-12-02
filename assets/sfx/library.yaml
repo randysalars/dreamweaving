@@ -1,0 +1,738 @@
+# SFX Library Registry
+# Shared sound effects library for all dreamweaving sessions
+# Each effect has: name, file, duration, tags, generator, and params
+#
+# Lookup Logic:
+#   1. Parse [SFX: description] from script
+#   2. Search by tags/keywords for matching effect
+#   3. If found -> use cached file
+#   4. If not found -> generate procedurally and save to library
+
+version: "1.0"
+sample_rate: 48000
+
+# =============================================================================
+# BELLS & GONGS
+# =============================================================================
+bells:
+  - name: ceremonial_bell_deep
+    file: bells/ceremonial_bell_deep.wav
+    duration: 4.0
+    tags: [bell, ceremonial, deep, sacred, resonant]
+    keywords: ["deep ceremonial bell", "ceremonial bell"]
+    generator: bell
+    params:
+      frequency: 120
+      decay: 4.0
+      harmonics: [1.0, 0.6, 0.3, 0.15]
+      reverb: 0.4
+
+  - name: ceremonial_bell_bright
+    file: bells/ceremonial_bell_bright.wav
+    duration: 3.0
+    tags: [bell, ceremonial, bright, clear, awakening]
+    keywords: ["gentle bell chime", "bright bell", "bell chime"]
+    generator: bell
+    params:
+      frequency: 440
+      decay: 3.0
+      harmonics: [1.0, 0.5, 0.25]
+      reverb: 0.3
+
+  - name: gong_resonant
+    file: bells/gong_resonant.wav
+    duration: 5.0
+    tags: [gong, resonant, arrival, transition, deep]
+    keywords: ["grand ceremonial gong", "gong", "resonant gong"]
+    generator: bell
+    params:
+      frequency: 80
+      decay: 5.0
+      harmonics: [1.0, 0.8, 0.6, 0.4, 0.2]
+      reverb: 0.55
+
+  - name: gong_soft
+    file: bells/gong_soft.wav
+    duration: 4.0
+    tags: [gong, soft, gentle, closing]
+    keywords: ["final ceremonial gong", "soft gong"]
+    generator: bell
+    params:
+      frequency: 100
+      decay: 4.0
+      amplitude: 0.6
+      reverb: 0.5
+
+  - name: singing_bowl
+    file: bells/singing_bowl.wav
+    duration: 3.0
+    tags: [singing bowl, metallic, resonance, meditation]
+    keywords: ["singing bowl", "metallic resonance"]
+    generator: bell
+    params:
+      frequency: 220
+      decay: 3.0
+      harmonics: [1.0, 0.7, 0.5, 0.3]
+      modulation_rate: 0.5
+
+  - name: single_bell_tone
+    file: bells/single_bell_tone.wav
+    duration: 3.0
+    tags: [bell, single, tone, deep]
+    keywords: ["single deep bell tone", "bell tone"]
+    generator: bell
+    params:
+      frequency: 150
+      decay: 3.0
+      reverb: 0.4
+
+  - name: final_bell_fade
+    file: bells/final_bell_fade.wav
+    duration: 4.0
+    tags: [bell, final, fade, silence, closing]
+    keywords: ["final bell tone", "fading into silence"]
+    generator: bell
+    params:
+      frequency: 180
+      decay: 4.0
+      fade_out: 3.0
+
+# =============================================================================
+# IMPACTS (Hammer Strikes)
+# =============================================================================
+impacts:
+  - name: hammer_strike_massive_1
+    file: impacts/hammer_strike_massive_1.wav
+    duration: 3.0
+    tags: [hammer, massive, metal, impact, forge, discipline]
+    keywords: ["MASSIVE hammer strike", "hammer strike on metal"]
+    generator: impact
+    params:
+      low_freq: 60
+      mid_freq: 180
+      high_freq: 800
+      resonance: 0.8
+      reverb: 0.55
+      decay: 3.0
+    gain_db: -10
+
+  - name: hammer_strike_massive_2
+    file: impacts/hammer_strike_massive_2.wav
+    duration: 3.0
+    tags: [hammer, massive, metal, impact, forge, focus]
+    keywords: ["MASSIVE hammer strike", "different tone"]
+    generator: impact
+    params:
+      low_freq: 70
+      mid_freq: 200
+      high_freq: 900
+      resonance: 0.75
+      reverb: 0.55
+      decay: 3.0
+    gain_db: -9
+
+  - name: hammer_strike_massive_3
+    file: impacts/hammer_strike_massive_3.wav
+    duration: 3.0
+    tags: [hammer, massive, metal, impact, forge, endurance, ringing]
+    keywords: ["MASSIVE hammer strike", "higher pitch", "ringing"]
+    generator: impact
+    params:
+      low_freq: 80
+      mid_freq: 250
+      high_freq: 1200
+      resonance: 0.85
+      reverb: 0.55
+      decay: 3.5
+    gain_db: -8
+
+  - name: hammer_strike_massive_4
+    file: impacts/hammer_strike_massive_4.wav
+    duration: 4.0
+    tags: [hammer, massive, metal, impact, forge, will, deepest, powerful]
+    keywords: ["MASSIVE hammer strike", "deepest", "earth-shaking"]
+    generator: impact
+    params:
+      low_freq: 50
+      mid_freq: 150
+      high_freq: 600
+      resonance: 0.9
+      reverb: 0.6
+      decay: 4.0
+      sub_bass: true
+    gain_db: -7
+
+  - name: distant_hammer_strike
+    file: impacts/distant_hammer_strike.wav
+    duration: 2.0
+    tags: [hammer, distant, metal, reverberant]
+    keywords: ["distant hammer strike", "distant hammering"]
+    generator: impact
+    params:
+      low_freq: 100
+      resonance: 0.5
+      reverb: 0.7
+      decay: 2.0
+      distant: true
+    gain_db: -15
+
+  - name: rhythmic_hammering
+    file: impacts/rhythmic_hammering.wav
+    duration: 3.0
+    tags: [hammer, rhythmic, distant, multiple]
+    keywords: ["distant rhythmic hammering", "rhythmic hammering"]
+    generator: impact_sequence
+    params:
+      count: 4
+      interval: 0.7
+      decay: 0.5
+      reverb: 0.6
+
+  - name: metallic_afterglow
+    file: impacts/metallic_afterglow.wav
+    duration: 2.0
+    tags: [metal, afterglow, resonant, humming]
+    keywords: ["metallic afterglow", "resonant metallic", "afterglow humming"]
+    generator: resonance
+    params:
+      frequency: 150
+      decay: 2.0
+      modulation: 0.1
+
+# =============================================================================
+# AMBIENT LOOPS
+# =============================================================================
+ambient:
+  - name: volcanic_cavern
+    file: ambient/volcanic_cavern.wav
+    duration: 30.0
+    loop: true
+    tags: [volcanic, cavern, rumble, ambient, continuous]
+    keywords: ["volcanic cavern ambience", "bubbling magma", "distant fire", "low rumbling"]
+    generator: ambient_volcanic
+    params:
+      rumble_freq: 40
+      bubble_rate: 0.3
+      fire_intensity: 0.2
+    gain_db: -22
+
+  - name: volcanic_rumble
+    file: ambient/volcanic_rumble.wav
+    duration: 5.0
+    tags: [volcanic, rumble, distant, deep]
+    keywords: ["distant volcanic rumble", "volcanic rumble"]
+    generator: noise
+    params:
+      filter: lowpass
+      cutoff: 80
+      envelope: fade_in
+      fade_duration: 3.0
+
+  - name: fire_crackle
+    file: ambient/fire_crackle.wav
+    duration: 15.0
+    loop: true
+    tags: [fire, crackle, soft, ambient]
+    keywords: ["soft crackling fire", "fire crackling", "crackling fire"]
+    generator: noise
+    params:
+      filter: bandpass
+      low_cutoff: 200
+      high_cutoff: 2000
+      modulation_rate: 5
+      intensity: 0.3
+    gain_db: -25
+
+  - name: bubbling_magma
+    file: ambient/bubbling_magma.wav
+    duration: 3.0
+    tags: [magma, bubbling, molten, rising]
+    keywords: ["bubbling magma", "molten metal", "bubbling molten"]
+    generator: noise
+    params:
+      filter: lowpass
+      cutoff: 400
+      envelope: swell
+      bubble_rate: 2.0
+
+  - name: room_tone_peaceful
+    file: ambient/room_tone_peaceful.wav
+    duration: 10.0
+    loop: true
+    tags: [room, peaceful, ambient, grounding, subtle]
+    keywords: ["ambient room tone", "peaceful", "grounding"]
+    generator: noise
+    params:
+      filter: lowpass
+      cutoff: 200
+      intensity: 0.05
+    gain_db: -30
+
+# =============================================================================
+# FOOTSTEPS
+# =============================================================================
+footsteps:
+  - name: stone_step_reverb
+    file: footsteps/stone_step_reverb.wav
+    duration: 1.0
+    tags: [footstep, stone, reverb, cave]
+    keywords: ["footstep on stone", "stone steps"]
+    generator: footstep
+    params:
+      material: stone
+      reverb: 0.5
+      decay: 0.8
+
+  - name: stone_step_heavy
+    file: footsteps/stone_step_heavy.wav
+    duration: 1.0
+    tags: [footstep, stone, heavy, final]
+    keywords: ["final footstep", "heavier", "heavy footstep"]
+    generator: footstep
+    params:
+      material: stone
+      weight: heavy
+      reverb: 0.55
+
+  - name: metallic_footsteps
+    file: footsteps/metallic_footsteps.wav
+    duration: 3.0
+    tags: [footstep, metallic, multiple, spirit]
+    keywords: ["metallic footsteps", "hammer spirits"]
+    generator: footstep_sequence
+    params:
+      material: metal
+      count: 3
+      interval: 0.8
+      reverb: 0.4
+
+  - name: heavy_stone_footsteps
+    file: footsteps/heavy_stone_footsteps.wav
+    duration: 4.0
+    tags: [footstep, stone, heavy, slow, forge-father]
+    keywords: ["heavy footsteps on stone", "slow footsteps", "forge-father"]
+    generator: footstep_sequence
+    params:
+      material: stone
+      weight: heavy
+      count: 3
+      interval: 1.2
+      reverb: 0.55
+
+  - name: soft_footsteps_warm
+    file: footsteps/soft_footsteps_warm.wav
+    duration: 3.0
+    tags: [footstep, soft, warm, approaching]
+    keywords: ["soft footsteps", "warm stone"]
+    generator: footstep_sequence
+    params:
+      material: stone
+      weight: light
+      count: 4
+      interval: 0.6
+      reverb: 0.4
+
+  - name: footstep_ascending
+    file: footsteps/footstep_ascending.wav
+    duration: 1.0
+    tags: [footstep, ascending, return, stone]
+    keywords: ["footstep ascending", "ascending stone"]
+    generator: footstep
+    params:
+      material: stone
+      reverb: 0.45
+      pitch_shift: 1.05
+
+  - name: single_metallic_footstep
+    file: footsteps/single_metallic_footstep.wav
+    duration: 1.0
+    tags: [footstep, metallic, single, hero]
+    keywords: ["metallic footstep single", "hero footstep"]
+    generator: footstep
+    params:
+      material: metal
+      reverb: 0.4
+
+# =============================================================================
+# FIRE EFFECTS
+# =============================================================================
+fire:
+  - name: fire_whoosh
+    file: fire/fire_whoosh.wav
+    duration: 3.0
+    tags: [fire, whoosh, internal, spiritual]
+    keywords: ["fire whooshing", "internal fire"]
+    generator: whoosh
+    params:
+      filter: bandpass
+      low_cutoff: 100
+      high_cutoff: 3000
+      envelope: swell
+      modulation: 0.3
+
+  - name: fire_consuming
+    file: fire/fire_consuming.wav
+    duration: 4.0
+    tags: [fire, consuming, intense, crackling]
+    keywords: ["fire consuming", "crackling intensely"]
+    generator: noise
+    params:
+      filter: bandpass
+      low_cutoff: 150
+      high_cutoff: 4000
+      intensity: 0.8
+      crackling: true
+
+  - name: flame_burst
+    file: fire/flame_burst.wav
+    duration: 1.0
+    tags: [flame, burst, quick, fear]
+    keywords: ["flame burst", "quick flame"]
+    generator: noise
+    params:
+      envelope: burst
+      attack: 0.05
+      decay: 0.8
+      filter: highpass
+      cutoff: 300
+
+  - name: fire_settling
+    file: fire/fire_settling.wav
+    duration: 3.0
+    tags: [fire, settling, gentle, crackling]
+    keywords: ["fire crackling", "settling", "gentle fire"]
+    generator: noise
+    params:
+      filter: bandpass
+      low_cutoff: 200
+      high_cutoff: 2000
+      intensity: 0.4
+      fade_out: 1.5
+
+# =============================================================================
+# METAL / FORGE SOUNDS
+# =============================================================================
+metal:
+  - name: metallic_hum
+    file: metal/metallic_hum.wav
+    duration: 4.0
+    tags: [metal, hum, ethereal, anvil]
+    keywords: ["low metallic hum", "metallic hum ethereal"]
+    generator: resonance
+    params:
+      frequency: 80
+      harmonics: [1.0, 0.5, 0.25]
+      modulation_rate: 0.2
+
+  - name: metallic_resonance
+    file: metal/metallic_resonance.wav
+    duration: 3.0
+    tags: [metal, resonance, singing bowl, near]
+    keywords: ["metallic resonance", "singing bowl", "near anvil"]
+    generator: resonance
+    params:
+      frequency: 220
+      harmonics: [1.0, 0.6, 0.4]
+      decay: 3.0
+
+  - name: metallic_shifting
+    file: metal/metallic_shifting.wav
+    duration: 2.0
+    tags: [metal, shifting, plates, spirits]
+    keywords: ["metallic shifting", "metal plates moving"]
+    generator: noise
+    params:
+      filter: bandpass
+      low_cutoff: 300
+      high_cutoff: 2000
+      modulation_rate: 3
+      duration: 2.0
+
+  - name: deep_resonant_tone
+    file: metal/deep_resonant_tone.wav
+    duration: 4.0
+    tags: [metal, resonant, deep, building, hands]
+    keywords: ["deep resonant tone", "building tone", "hands on anvil"]
+    generator: resonance
+    params:
+      frequency: 100
+      envelope: swell
+      swell_duration: 2.0
+      decay: 2.0
+
+  - name: metallic_crystallization
+    file: metal/metallic_crystallization.wav
+    duration: 3.0
+    tags: [metal, crystallization, forming, hero]
+    keywords: ["metallic crystallization", "forming", "crystallizing"]
+    generator: resonance
+    params:
+      frequency: 300
+      harmonics: [1.0, 1.5, 2.0, 2.5]
+      sparkle: true
+      decay: 2.5
+
+  - name: skin_touching_metal
+    file: metal/skin_touching_metal.wav
+    duration: 2.0
+    tags: [metal, touch, sizzle, resonance, contact]
+    keywords: ["skin touching metal", "touching cool metal", "subtle sizzle"]
+    generator: impact
+    params:
+      frequency: 400
+      sizzle: true
+      decay: 1.5
+      amplitude: 0.3
+
+  - name: hands_releasing_metal
+    file: metal/hands_releasing_metal.wav
+    duration: 1.0
+    tags: [metal, release, subtle]
+    keywords: ["hands releasing metal", "releasing metal"]
+    generator: noise
+    params:
+      envelope: reverse
+      filter: highpass
+      cutoff: 500
+      duration: 0.8
+
+  - name: sealing_sound
+    file: metal/sealing_sound.wav
+    duration: 3.0
+    tags: [metal, sealing, cooling, crystallizing]
+    keywords: ["sealing sound", "metal cooling", "crystallizing"]
+    generator: resonance
+    params:
+      frequency: 200
+      envelope: decay
+      sparkle: true
+      crackle: true
+
+  - name: metallic_hum_standing
+    file: metal/metallic_hum_standing.wav
+    duration: 3.0
+    tags: [metal, hum, standing, figure, living]
+    keywords: ["soft metallic humming", "standing figure", "living metal"]
+    generator: resonance
+    params:
+      frequency: 150
+      harmonics: [1.0, 0.7, 0.4]
+      modulation_rate: 0.3
+      gentle: true
+
+  - name: metallic_hum_intensify
+    file: metal/metallic_hum_intensify.wav
+    duration: 2.0
+    tags: [metal, hum, intensify, brief]
+    keywords: ["metallic hum intensifies", "intensifies briefly"]
+    generator: resonance
+    params:
+      frequency: 100
+      envelope: swell_decay
+      peak_time: 0.7
+
+# =============================================================================
+# MYSTICAL / ETHEREAL
+# =============================================================================
+mystical:
+  - name: ethereal_transition
+    file: mystical/ethereal_transition.wav
+    duration: 3.0
+    tags: [ethereal, transition, rising, gentle]
+    keywords: ["transition sound", "gentle rising tone", "ethereal"]
+    generator: sweep
+    params:
+      start_freq: 200
+      end_freq: 600
+      duration: 3.0
+      envelope: fade_in_out
+
+  - name: ancient_whisper
+    file: mystical/ancient_whisper.wav
+    duration: 4.0
+    tags: [ancient, whisper, voices, ethereal, language]
+    keywords: ["ancient language whisper", "multiple voices", "ethereal whisper"]
+    generator: whisper
+    params:
+      voices: 3
+      reverb: 0.6
+      modulation: 0.2
+      filter: bandpass
+
+  - name: rising_magical_tone
+    file: mystical/rising_magical_tone.wav
+    duration: 4.0
+    tags: [rising, magical, transformative, hero]
+    keywords: ["rising tone", "magical", "transformative"]
+    generator: sweep
+    params:
+      start_freq: 150
+      end_freq: 800
+      harmonics: [1.0, 0.5, 0.3]
+      sparkle: true
+
+  - name: harmonic_merge
+    file: mystical/harmonic_merge.wav
+    duration: 4.0
+    tags: [harmonic, merge, resonant, integration]
+    keywords: ["merging sound", "resonant harmonic", "integration"]
+    generator: resonance
+    params:
+      frequency: 180
+      harmonics: [1.0, 1.5, 2.0, 2.5, 3.0]
+      envelope: swell_hold
+      decay: 1.5
+
+  - name: subtle_strength_tone
+    file: mystical/subtle_strength_tone.wav
+    duration: 2.0
+    tags: [strength, tone, subtle, brief]
+    keywords: ["subtle strength tone", "strength tone brief"]
+    generator: resonance
+    params:
+      frequency: 250
+      duration: 2.0
+      envelope: gentle
+
+  - name: final_resonant_grounding
+    file: mystical/final_resonant_grounding.wav
+    duration: 3.0
+    tags: [resonant, grounding, final, closing]
+    keywords: ["final resonant tone", "grounding tone"]
+    generator: resonance
+    params:
+      frequency: 120
+      harmonics: [1.0, 0.5]
+      decay: 3.0
+
+  - name: heavy_stone_movement
+    file: mystical/heavy_stone_movement.wav
+    duration: 2.0
+    tags: [stone, heavy, movement, throne]
+    keywords: ["heavy stone movement", "throne shifting"]
+    generator: noise
+    params:
+      filter: lowpass
+      cutoff: 300
+      envelope: scrape
+      duration: 2.0
+
+# =============================================================================
+# ENVIRONMENTAL
+# =============================================================================
+environmental:
+  - name: heartbeat_60bpm
+    file: environmental/heartbeat_60bpm.wav
+    duration: 10.0
+    loop: true
+    tags: [heartbeat, rhythm, 60bpm, subtle]
+    keywords: ["slow heartbeat rhythm", "heartbeat", "60 BPM"]
+    generator: heartbeat
+    params:
+      bpm: 60
+      intensity: 0.5
+
+  - name: heartbeat_strong
+    file: environmental/heartbeat_strong.wav
+    duration: 4.0
+    tags: [heartbeat, strong, steady, integration]
+    keywords: ["heartbeat sound", "strong and steady"]
+    generator: heartbeat
+    params:
+      bpm: 60
+      beats: 4
+      intensity: 0.8
+
+  - name: deep_drum_60bpm
+    file: environmental/deep_drum_60bpm.wav
+    duration: 15.0
+    loop: true
+    tags: [drum, deep, ceremonial, 60bpm, rhythm]
+    keywords: ["deep ceremonial drums", "deep drum", "60 BPM drums"]
+    generator: heartbeat
+    params:
+      bpm: 60
+      drum_mode: true
+      intensity: 0.7
+
+  - name: deep_drum_single
+    file: environmental/deep_drum_single.wav
+    duration: 2.0
+    tags: [drum, single, deep, resonant]
+    keywords: ["deep drum beat", "single drum"]
+    generator: heartbeat
+    params:
+      beats: 1
+      drum_mode: true
+      reverb: 0.5
+
+  - name: soft_wind
+    file: environmental/soft_wind.wav
+    duration: 3.0
+    tags: [wind, soft, movement, breath]
+    keywords: ["soft wind movement", "wind"]
+    generator: whoosh
+    params:
+      intensity: 0.3
+      filter: lowpass
+      cutoff: 1000
+      duration: 3.0
+
+  - name: rumbling_pulse
+    file: environmental/rumbling_pulse.wav
+    duration: 3.0
+    tags: [rumble, pulse, synchronized, earth]
+    keywords: ["low rumbling pulse", "synchronized", "heartbeat of earth"]
+    generator: noise
+    params:
+      filter: lowpass
+      cutoff: 60
+      modulation_rate: 1.0
+      envelope: pulse
+
+  - name: furnace_bellows
+    file: environmental/furnace_bellows.wav
+    duration: 3.0
+    tags: [furnace, bellows, breath, deep, resonant]
+    keywords: ["furnace bellows", "deep resonant breath"]
+    generator: whoosh
+    params:
+      envelope: bellows
+      filter: lowpass
+      cutoff: 400
+      duration: 3.0
+
+  - name: drums_crescendo_pause
+    file: environmental/drums_crescendo_pause.wav
+    duration: 4.0
+    tags: [drums, crescendo, building, pause]
+    keywords: ["drums reach crescendo", "drums building", "then pause"]
+    generator: heartbeat_sequence
+    params:
+      start_intensity: 0.5
+      end_intensity: 1.0
+      fade_out: 0.5
+      bpm: 60
+
+  - name: drums_settle
+    file: environmental/drums_settle.wav
+    duration: 3.0
+    tags: [drums, settle, slow, steady, heartbeat]
+    keywords: ["drums settle", "slow steady rhythm", "like heartbeat"]
+    generator: heartbeat
+    params:
+      bpm: 60
+      intensity: 0.4
+      fade_in: 1.0
+
+  - name: drums_fading
+    file: environmental/drums_fading.wav
+    duration: 3.0
+    tags: [drums, distant, fading]
+    keywords: ["distant drums fading"]
+    generator: heartbeat
+    params:
+      bpm: 60
+      fade_out: 3.0
+      reverb: 0.6
+      distant: true

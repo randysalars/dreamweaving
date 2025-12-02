@@ -1,5 +1,5 @@
 # Dreamweaving Project Configuration for Serena
-# Hypnotic audio/video session production workflow
+# Sacred Digital Dreamweaver - Hypnotic audio/video session production workflow
 
 # Languages for which language servers are started
 # Python for the audio/video scripts, bash for shell scripts, yaml for manifests
@@ -47,3 +47,88 @@ initial_prompt: |
   - Voice enhancement applies psychoacoustic processing (warmth, de-essing, whisper overlay, etc.)
 
 project_name: "dreamweaving"
+
+# ==============================================================================
+# Dreamweaver-Specific Memories
+# ==============================================================================
+# These memories contain critical workflows and methodologies for the project.
+# Claude should read relevant memories before starting work on specific tasks.
+#
+# Available memories:
+#   - dreamweaver_journey_design: Complete methodology for designing hypnotic journeys
+#   - audio_production_methodology: Mixing levels, mastering, stem handling
+#   - script_production_workflow: SSML writing, section structure, voice pacing
+#   - voice_pacing_guidelines: Quick reference for prosody and breaks
+#   - session_learnings_system: Lessons learned from past sessions
+#   - dreamweaving_project_overview: Complete project architecture overview
+#   - ai_os_implementation_complete: AI agent and command system documentation
+#   - ai_creative_os_integration_plan: Future integration roadmap
+#
+# Memory reading priority by task type:
+#   New Session:       dreamweaver_journey_design, session_learnings_system
+#   Script Writing:    script_production_workflow, voice_pacing_guidelines
+#   Audio Production:  audio_production_methodology
+#   Code Changes:      dreamweaving_project_overview
+#   Planning:          ai_creative_os_integration_plan
+
+# ==============================================================================
+# Dreamweaver Tool Workflows
+# ==============================================================================
+# The following workflow patterns are documented in CLAUDE.md under
+# "Sacred Digital Dreamweaver – Serena MCP Framework":
+#
+# dreamweaver.generate_journey_outline:
+#   - Use when starting a new session from a theme
+#   - Generates structured sections with archetypes
+#   - Saves to sessions/<slug>/outline.json
+#
+# dreamweaver.generate_ssml_section:
+#   - Use when generating or revising SSML for a specific section
+#   - Applies speech profiles (pitch, breaks) per section type
+#   - ALWAYS use rate="1.0", never slow the rate
+#
+# dreamweaver.suggest_audio_bed:
+#   - Use when designing binaural + ambience + SFX plan
+#   - Generates frequency curves based on target state
+#   - Saves to working_files/audio_plan.json
+#
+# dreamweaver.generate_youtube_package:
+#   - Use when preparing session for YouTube publication
+#   - Generates title, description, tags, chapters, thumbnail prompts
+#   - Saves to youtube_package.md
+#
+# Python implementations in: scripts/ai/dreamweaver_tools.py
+
+# ==============================================================================
+# Session File Structure Reference
+# ==============================================================================
+# Each session follows this structure:
+#
+# sessions/<session-slug>/
+# ├── manifest.yaml              # Session configuration
+# ├── outline.json               # Structured journey outline
+# ├── notes.md                   # Design notes and changelog
+# ├── midjourney-prompts.md      # Image generation prompts
+# ├── youtube_package.md         # Publication package
+# ├── working_files/
+# │   ├── script_production.ssml # Full SSML with SFX markers
+# │   ├── script_voice_clean.ssml# TTS-ready script (no SFX)
+# │   ├── script_sections/       # Per-section SSML files
+# │   └── audio_plan.json        # Binaural + FX timeline
+# ├── images/uploaded/           # User-provided PNGs
+# └── output/
+#     ├── voice_enhanced.mp3     # USE THIS for production
+#     ├── binaural_dynamic.wav
+#     ├── sfx_track.wav
+#     ├── session_mixed.wav
+#     └── final_master.mp3
+
+# ==============================================================================
+# Critical Production Rules
+# ==============================================================================
+# 1. SSML: Always use rate="1.0" - achieve pacing through <break> tags
+# 2. Audio Levels: Voice -6dB, Binaural -6dB, SFX 0dB
+# 3. Always use voice_enhanced.mp3, never raw voice.mp3
+# 4. Validate SSML before TTS generation
+# 5. Check venv is activated before running Python scripts
+# 6. Read relevant Serena memories before starting work

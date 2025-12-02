@@ -54,6 +54,11 @@ For complete details, see: [CANONICAL_WORKFLOW.md](CANONICAL_WORKFLOW.md)
 - **[TERMINOLOGY_GUIDE.md](TERMINOLOGY_GUIDE.md)** - Standard terminology and naming conventions
 - **[WORKFLOW_MAINTENANCE_GUIDE.md](WORKFLOW_MAINTENANCE_GUIDE.md)** - Maintaining workflow consistency
 
+### YouTube Publishing
+- **[YOUTUBE_PACKAGING_SOP.md](YOUTUBE_PACKAGING_SOP.md)** - Complete YouTube packaging workflow (thumbnails, titles, descriptions, VTT)
+- **[THUMBNAIL_DESIGN_GUIDE.md](THUMBNAIL_DESIGN_GUIDE.md)** - Expert thumbnail design principles (10 commandments)
+- **[YOUTUBE_TITLE_GUIDE.md](YOUTUBE_TITLE_GUIDE.md)** - High-CTR title optimization (templates, power words)
+
 ### Technical Guides
 - **[MANIFEST_DRIVEN_AUDIO.md](MANIFEST_DRIVEN_AUDIO.md)** - Manifest-based audio generation
 - **[HYPNOTIC_VOICE_ENHANCEMENT.md](HYPNOTIC_VOICE_ENHANCEMENT.md)** - Voice enhancement processing

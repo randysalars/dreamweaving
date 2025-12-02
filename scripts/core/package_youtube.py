@@ -28,6 +28,54 @@ def load_manifest(session_dir):
         return yaml.safe_load(f)
 
 
+# =============================================================================
+# TITLE GENERATION
+# =============================================================================
+# Based on expert CTR optimization principles:
+# 1. Single clear promise (not multiple)
+# 2. Keyword anchor in first 3 words
+# 3. Emotional trigger present
+# 4. Specific, not vague
+# 5. 4-11 words (ideal: 5-7)
+# 6. Power verb included
+# 7. Creates curiosity without confusion
+# 8. Sounds like story beginning, not label
+# 9. Pattern interrupt (different from typical titles)
+#
+# See docs/YOUTUBE_TITLE_GUIDE.md for full documentation
+
+def generate_optimized_title(manifest):
+    """
+    Generate an optimized YouTube title from manifest data.
+    Uses title templates and power words for high CTR.
+
+    Title Formula Priority:
+    1. youtube.optimized_title (if set manually)
+    2. youtube.title (legacy field)
+    3. Generated from manifest title + theme
+    """
+    youtube_config = manifest.get("youtube", {})
+
+    # Check for manually set optimized title first
+    if youtube_config.get("optimized_title"):
+        return youtube_config["optimized_title"]
+
+    # Check for legacy title field
+    if youtube_config.get("title"):
+        return youtube_config["title"]
+
+    # Generate from manifest data
+    base_title = manifest.get("title", "")
+
+    # If we have a good base title, use it
+    if base_title and len(base_title.split()) <= 10:
+        return base_title
+
+    # Otherwise, try to extract a shorter, punchier title
+    # This is a fallback - manual optimized_title is preferred
+    return base_title.split(" - ")[0] if " - " in base_title else base_title
+
+
 def format_timestamp(seconds):
     minutes = int(seconds // 60)
     secs = int(seconds % 60)
@@ -80,9 +128,7 @@ def create_thumbnail(session_dir, manifest, output_dir):
     
     output_file = output_dir / "youtube_thumbnail.png"
     output_file.parent.mkdir(parents=True, exist_ok=True)
-    
-    title = youtube_config.get("title", manifest.get("session", {}).get("topic", "Meditation"))
-    
+
     # Simple thumbnail without text overlay (to avoid escaping issues)
     cmd = [
         "ffmpeg", "-y", "-i", str(source_image),
@@ -103,11 +149,16 @@ def create_thumbnail(session_dir, manifest, output_dir):
 def create_description(session_dir, manifest, output_dir, audio_duration):
     print("\n=== Creating YouTube Description ===")
 
-    session = manifest.get("session", {})
     youtube_config = manifest.get("youtube", {})
 
-    title = youtube_config.get("title", session.get("topic", "Meditation Session"))
-    desc = f"# {title}\n\n"
+    # Use optimized title generator
+    title = generate_optimized_title(manifest)
+    print(f"   Title: {title}")
+
+    # Start with channel promo
+    desc = "🌟 Visit https://www.salars.net/dreamweavings for more guided hypnosis journeys by Salars\n\n"
+    desc += "---\n\n"
+    desc += f"# {title}\n\n"
 
     if youtube_config.get("description"):
         desc += youtube_config["description"] + "\n\n"
@@ -160,9 +211,10 @@ def create_description(session_dir, manifest, output_dir, audio_duration):
     desc += "\n⚠️ Use headphones for binaural effectiveness\n"
     desc += "Do not use while driving or operating machinery\n\n"
 
-    # Tags
+    # Tags (comma-separated for easy copy/paste into YouTube)
     tags = youtube_config.get("tags", ["meditation", "binaural beats"])
-    desc += "#" + " #".join(tags) + "\n"
+    desc += "## 🏷️ Tags\n\n"
+    desc += ", ".join(tags) + "\n"
 
     desc_file = output_dir / "YOUTUBE_DESCRIPTION.md"
     desc_file.write_text(desc)

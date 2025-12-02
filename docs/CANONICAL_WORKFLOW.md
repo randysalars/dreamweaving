@@ -263,15 +263,64 @@ Should show approximately -14 LUFS.
 
 Video production is **optional** but recommended for YouTube distribution.
 
-### Basic Video Workflow
+### Step 1: Generate Video Images (REQUIRED)
+
+Before assembling video, generate all supporting imagery:
+
+```bash
+# Generate ALL video images for a session (recommended)
+python3 scripts/core/generate_video_images.py sessions/session-name/ --all
+
+# Or generate specific types
+python3 scripts/core/generate_video_images.py sessions/session-name/ \
+    --title-card --section-slides --outro --social-preview
+```
+
+**This generates:**
+| Image Type | Dimensions | Purpose |
+|------------|------------|---------|
+| Title Card | 1920×1080 | Video intro screen (5-10 sec) |
+| Section Slides | 1920×1080 | Chapter transitions |
+| Outro | 1920×1080 | End screen with CTA zones |
+| Lower Thirds | 1920×1080 | Transparent overlay bars |
+| Chapter Markers | 1920×1080 | Numbered chapter cards |
+| Social Preview | 1080×1080 | Instagram/social sharing |
+| Scene Backgrounds | 1920×1080 | Base images for video |
+
+**Output location:** `sessions/session-name/output/video_images/`
+
+**Color palettes available:**
+- `sacred_light` - Gold/cream on cosmic dark (default)
+- `cosmic_journey` - Purple/blue on deep space
+- `garden_eden` - Emerald/gold on forest shadow
+- `ancient_temple` - Antique gold on temple shadow
+- `neural_network` - Cyan/purple on digital void
+- `volcanic_forge` - Red-gold on volcanic shadow
+- `celestial_blue` - Royal blue on night sky
+
+### Step 2: Generate Thumbnail
+
+```bash
+python3 scripts/core/generate_thumbnail.py sessions/session-name/ \
+    --palette sacred_light
+```
+
+### Step 3: Prepare Scene Images
 
 For sessions with still images:
 
 ```bash
 # 1. Prepare images (1920x1080, one per section)
-# Place in: sessions/session-name/images/
+# Place in: sessions/session-name/images/uploaded/
 
-# 2. Use session-specific video script
+# 2. Or use generated scene backgrounds
+# Located in: sessions/session-name/output/video_images/backgrounds/
+```
+
+### Step 4: Assemble Video
+
+```bash
+# Use session-specific video script
 # See session README for video creation commands
 ```
 

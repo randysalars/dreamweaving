@@ -238,17 +238,100 @@ def get_tts_settings() -> Dict[str, Any]:
 
 
 # =============================================================================
+# VOICE GENDER VERIFICATION
+# =============================================================================
+
+# Correct Neural2 voice gender mapping
+FEMALE_VOICES = {'C', 'E', 'F', 'G', 'H'}
+MALE_VOICES = {'A', 'D', 'I', 'J'}
+
+
+def get_voice_gender(voice_name: str) -> str:
+    """
+    Correctly determine the gender for any Neural2 voice.
+
+    Args:
+        voice_name: Full voice name (e.g., 'en-US-Neural2-E')
+
+    Returns:
+        'female' or 'male'
+
+    Raises:
+        ValueError: If voice cannot be classified
+    """
+    # Extract the letter from the voice name
+    voice_letter = voice_name.split('-')[-1] if '-' in voice_name else voice_name[-1]
+
+    if voice_letter in FEMALE_VOICES:
+        return 'female'
+    elif voice_letter in MALE_VOICES:
+        return 'male'
+    else:
+        raise ValueError(f"Unknown voice gender for: {voice_name}")
+
+
+def verify_voice_is_female(voice_name: str) -> bool:
+    """Check if a voice is female."""
+    return get_voice_gender(voice_name) == 'female'
+
+
+def verify_voice_is_male(voice_name: str) -> bool:
+    """Check if a voice is male."""
+    return get_voice_gender(voice_name) == 'male'
+
+
+# =============================================================================
+# PRODUCTION VOICE LOCK
+# =============================================================================
+
+# The locked production voice profile - ensures consistency across all sessions
+# This MUST match the settings in scripts/core/generate_voice.py
+LOCKED_PRODUCTION_PROFILE = {
+    'name': 'en-US-Neural2-H',
+    'gender': 'female',
+    'profile_key': 'bright_female',
+    'speaking_rate': 0.88,
+    'pitch_semitones': 0.0,
+    'description': 'Bright, clear female voice with natural enhancement - production standard',
+    'locked': True,
+    'version': 'bright_female_v2',
+    'enhancement': {
+        'warmth': True,
+        'whisper_overlay': True,
+        'double_voice': True,
+        'room_presence': True,
+        'subharmonic': True,
+    }
+}
+
+
+def get_production_voice() -> Dict[str, Any]:
+    """
+    Returns the locked production voice profile.
+
+    This is the canonical voice to use for all production sessions.
+    Using this function ensures consistency across all sessions.
+    """
+    return LOCKED_PRODUCTION_PROFILE.copy()
+
+
+def get_production_voice_name() -> str:
+    """Get the production voice name."""
+    return LOCKED_PRODUCTION_PROFILE['name']
+
+
+# =============================================================================
 # CONVENIENCE EXPORTS
 # =============================================================================
 
 # Quick access to all profiles
 VOICES = _config.get('profiles', {})
 
-# Default voice name
-DEFAULT_VOICE = VOICES.get('default', {}).get('name', 'en-US-Neural2-A')
+# Default voice name (production standard)
+DEFAULT_VOICE = LOCKED_PRODUCTION_PROFILE['name']
 
 # Default profile key
-DEFAULT_PROFILE = 'default'
+DEFAULT_PROFILE = 'bright_female'
 
 # Provider info
 PROVIDER = _config.get('provider', {}).get('name', 'google')

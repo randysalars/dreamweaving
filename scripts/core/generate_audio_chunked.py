@@ -34,105 +34,91 @@ def print_header():
 def split_ssml_into_chunks(ssml_content, max_bytes=4500):
     """
     Split SSML content into chunks that are under max_bytes.
-    Splits at sentence boundaries to maintain natural flow.
+    Splits at prosody boundaries first, then at break tags within prosody sections.
+    Each chunk is a complete, valid SSML document.
     """
     # Extract the content between <speak> tags
     speak_match = re.search(r'<speak[^>]*>(.*)</speak>', ssml_content, re.DOTALL)
     if not speak_match:
         raise ValueError("Invalid SSML: No <speak> tags found")
-    
+
     content = speak_match.group(1)
     speak_opening = ssml_content[:speak_match.start(1)]
     speak_closing = '</speak>'
-    
-    # Split on major section boundaries (comments with SECTION or subsection markers like THE)
-    section_pattern = r'(<!-- (?:SECTION \d|THE ).*?-->)'
-    sections = re.split(section_pattern, content)
-    
-    chunks = []
-    current_chunk = ""
-    
-    for section in sections:
-        if not section.strip():
-            continue
-            
-        # Calculate size with SSML wrapper
-        test_chunk = speak_opening + current_chunk + section + speak_closing
-        
-        if len(test_chunk.encode('utf-8')) > max_bytes:
-            # Current chunk is full, save it
-            if current_chunk:
-                chunks.append(speak_opening + current_chunk + speak_closing)
-            current_chunk = section
-        else:
-            current_chunk += section
-    
-    # Add the last chunk
-    if current_chunk:
-        chunks.append(speak_opening + current_chunk + speak_closing)
-    
-    # If we still have chunks that are too large, split by prosody tags
+
+    # First, split by prosody sections (each prosody block becomes a separate unit)
+    # Pattern captures: optional leading content, prosody open tag, content, prosody close tag
+    prosody_pattern = r'(<prosody[^>]*>)(.*?)(</prosody>)'
+    prosody_sections = []
+
+    last_end = 0
+    for match in re.finditer(prosody_pattern, content, re.DOTALL):
+        # Capture any content before this prosody (like comments)
+        before = content[last_end:match.start()].strip()
+        if before:
+            prosody_sections.append(('comment', before, None, None))
+
+        prosody_sections.append(('prosody', match.group(2), match.group(1), match.group(3)))
+        last_end = match.end()
+
+    # Capture any trailing content
+    after = content[last_end:].strip()
+    if after:
+        prosody_sections.append(('comment', after, None, None))
+
+    # Now process each section
     final_chunks = []
-    for chunk in chunks:
-        if len(chunk.encode('utf-8')) <= max_bytes:
-            final_chunks.append(chunk)
+
+    for section_type, inner_content, prosody_open, prosody_close in prosody_sections:
+        if section_type == 'comment':
+            # Comments alone - skip or attach to next chunk
+            continue
+
+        # Build a test chunk with this prosody section
+        test_chunk = speak_opening + prosody_open + inner_content + prosody_close + speak_closing
+
+        if len(test_chunk.encode('utf-8')) <= max_bytes:
+            # Fits in one chunk
+            final_chunks.append(test_chunk)
         else:
-            # Split this chunk further by prosody sections
-            final_chunks.extend(split_large_chunk(chunk, speak_opening, speak_closing, max_bytes))
-    
+            # Need to split this prosody section at break points
+            sub_chunks = split_prosody_section(
+                inner_content, prosody_open, prosody_close,
+                speak_opening, speak_closing, max_bytes
+            )
+            final_chunks.extend(sub_chunks)
+
     return final_chunks
 
-def split_large_chunk(chunk, speak_opening, speak_closing, max_bytes):
-    """Split a chunk that's still too large by prosody boundaries"""
-    # Extract content
-    content = chunk.replace(speak_opening, '').replace(speak_closing, '')
 
-    # Check if content is wrapped in prosody tags
-    prosody_match = re.match(r'^(\s*<prosody[^>]*>)(.*)(</prosody>\s*)$', content, re.DOTALL)
+def split_prosody_section(inner_content, prosody_open, prosody_close, speak_opening, speak_closing, max_bytes):
+    """Split a prosody section that's too large by break tag boundaries"""
 
-    if prosody_match:
-        # We have a prosody wrapper - split the inner content and re-wrap each piece
-        prosody_open = prosody_match.group(1)
-        inner_content = prosody_match.group(2)
-        prosody_close = prosody_match.group(3)
+    # Split on break tags with pauses of 2s or more (including decimals like 2.5s, 3.0s, 4.0s)
+    # Keep the break tags with the content before them
+    parts = re.split(r'(<break time="[2-9](?:\.\d)?s"/>)', inner_content)
 
-        # Split on break tags with long pauses
-        parts = re.split(r'(<break time="[23]s"/>)', inner_content)
+    sub_chunks = []
+    current = ""
 
-        sub_chunks = []
-        current = ""
+    for i, part in enumerate(parts):
+        # Test if adding this part would exceed the limit
+        test = speak_opening + prosody_open + current + part + prosody_close + speak_closing
 
-        for part in parts:
-            test = speak_opening + prosody_open + current + part + prosody_close + speak_closing
-            if len(test.encode('utf-8')) > max_bytes and current:
-                sub_chunks.append(speak_opening + prosody_open + current + prosody_close + speak_closing)
-                current = part
-            else:
-                current += part
+        if len(test.encode('utf-8')) > max_bytes and current.strip():
+            # Save current chunk and start a new one
+            chunk = speak_opening + prosody_open + current + prosody_close + speak_closing
+            sub_chunks.append(chunk)
+            current = part
+        else:
+            current += part
 
-        if current:
-            sub_chunks.append(speak_opening + prosody_open + current + prosody_close + speak_closing)
+    # Add the final chunk
+    if current.strip():
+        chunk = speak_opening + prosody_open + current + prosody_close + speak_closing
+        sub_chunks.append(chunk)
 
-        return sub_chunks
-    else:
-        # No prosody wrapper - split as before
-        parts = re.split(r'(<break time="[23]s"/>)', content)
-
-        sub_chunks = []
-        current = ""
-
-        for part in parts:
-            test = speak_opening + current + part + speak_closing
-            if len(test.encode('utf-8')) > max_bytes and current:
-                sub_chunks.append(speak_opening + current + speak_closing)
-                current = part
-            else:
-                current += part
-
-        if current:
-            sub_chunks.append(speak_opening + current + speak_closing)
-
-        return sub_chunks
+    return sub_chunks
 
 def synthesize_chunk(client, ssml_text, voice_name, chunk_num, total_chunks, speaking_rate, pitch, sample_rate_hz, effects_profile_id):
     """Synthesize a single chunk of SSML"""
@@ -140,10 +126,17 @@ def synthesize_chunk(client, ssml_text, voice_name, chunk_num, total_chunks, spe
     
     synthesis_input = texttospeech.SynthesisInput(ssml=ssml_text)
     
+    # Correct gender mapping for Neural2 voices:
+    # Female: C, E, F, G, H
+    # Male: A, D, I, J
+    voice_letter = voice_name.split('-')[-1] if '-' in voice_name else voice_name[-1]
+    female_voices = {'C', 'E', 'F', 'G', 'H'}
+    is_female = voice_letter in female_voices
+
     voice = texttospeech.VoiceSelectionParams(
         language_code="en-US",
         name=voice_name,
-        ssml_gender=texttospeech.SsmlVoiceGender.FEMALE if "A" in voice_name or "C" in voice_name or "E" in voice_name or "F" in voice_name else texttospeech.SsmlVoiceGender.MALE
+        ssml_gender=texttospeech.SsmlVoiceGender.FEMALE if is_female else texttospeech.SsmlVoiceGender.MALE
     )
 
     audio_config = texttospeech.AudioConfig(

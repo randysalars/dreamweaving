@@ -9,7 +9,7 @@ description: |
   endurance, and unwavering will become part of your tempered soul.
 
 theme: elemental-fire
-duration: 25  # minutes
+duration: 30  # minutes (actual voice duration ~29.7 min)
 
 voice:
   id: en-US-Neural2-D  # Deep, resonant male voice for warrior energy
@@ -20,8 +20,78 @@ audio:
   binaural:
     enabled: true
     base_frequency: 150  # Hz - lower carrier for grounding/power
-    beat_frequency: 2.5  # Hz - deep delta for fearlessness
     volume: 0.30
+
+    # Dynamic binaural progression following the hypnotic arc
+    # Replaces static beat_frequency with section-based progression
+    # Scaled for 30 minute session (1800 seconds)
+    progression:
+      # Pre-Talk (0:00-3:00) - Alert alpha, preparing for journey
+      - timestamp: 0
+        frequency: 12
+        transition: hold
+      - timestamp: 36
+        frequency: 10
+        transition: linear
+        duration: 144
+
+      # Induction (3:00-8:30) - Descent into theta
+      - timestamp: 180
+        frequency: 6
+        transition: logarithmic
+        duration: 324
+
+      # Journey Part 1 (8:30-14:30) - Deep theta with micro-modulation
+      - timestamp: 504
+        frequency: 6
+        transition: hold
+        modulation:
+          enabled: true
+          range: 0.3      # ±0.3 Hz oscillation
+          rate: 0.05      # 20-second cycle
+
+      # Journey Part 2 (14:30-21:30) - Deep delta during forging
+      - timestamp: 864
+        frequency: 1.5
+        transition: linear
+        duration: 432
+
+      # Journey Part 3 (21:30-22:00) - Hold deep delta before gamma
+      - timestamp: 1296
+        frequency: 1.5
+        transition: hold
+
+      # GAMMA BURST at hero emergence (~22:10)
+      - timestamp: 1332
+        frequency: 40
+        transition: burst
+        duration: 3
+        fade_in: 0.2
+        fade_out: 0.5
+
+      # Return to delta after burst
+      - timestamp: 1335
+        frequency: 1.5
+        transition: hold
+
+      # Return (24:00-27:00) - Ascending back to alpha
+      - timestamp: 1440
+        frequency: 8
+        transition: linear
+        duration: 180
+
+      # Anchors/Closing (27:00-30:00) - Return to alert awareness
+      - timestamp: 1620
+        frequency: 12
+        transition: linear
+        duration: 180
+
+    # Gamma flash effect for peak insight moment
+    fx_timeline:
+      - type: gamma_flash
+        time: 1332
+        duration_s: 3.0
+        freq_hz: 40
 
   pink_noise:
     enabled: true
@@ -97,31 +167,146 @@ journey_elements:
   transformation: "Fear burns out, courage forged in"
   emergence: "Aura feels like tempered steel"
 
+# Section timestamps for VTT generation and YouTube chapters
+sections:
+  - name: "pre_talk"
+    description: "Welcome & Preparation"
+    start: 0
+    end: 180
+    brainwave_target: "alpha"
+
+  - name: "induction"
+    description: "Descent into the Forge"
+    start: 180
+    end: 510
+    brainwave_target: "alpha_to_theta"
+
+  - name: "journey_cavern"
+    description: "Entering the Volcanic Cavern"
+    start: 510
+    end: 600
+    brainwave_target: "theta"
+
+  - name: "journey_forge_father"
+    description: "Meeting the Forge-Father"
+    start: 600
+    end: 720
+    brainwave_target: "theta"
+
+  - name: "journey_hammer_spirits"
+    description: "The Hammer Spirits"
+    start: 720
+    end: 840
+    brainwave_target: "theta"
+
+  - name: "journey_anvil"
+    description: "Hands Upon the Anvil"
+    start: 840
+    end: 930
+    brainwave_target: "theta_to_delta"
+
+  - name: "journey_release_fear"
+    description: "Releasing Fear"
+    start: 930
+    end: 1020
+    brainwave_target: "delta"
+
+  - name: "forging_discipline"
+    description: "First Strike: DISCIPLINE"
+    start: 1020
+    end: 1110
+    brainwave_target: "delta"
+
+  - name: "forging_focus"
+    description: "Second Strike: FOCUS"
+    start: 1110
+    end: 1200
+    brainwave_target: "delta"
+
+  - name: "forging_endurance"
+    description: "Third Strike: ENDURANCE"
+    start: 1200
+    end: 1290
+    brainwave_target: "delta"
+
+  - name: "forging_will"
+    description: "Fourth Strike: UNWAVERING WILL"
+    start: 1290
+    end: 1332
+    brainwave_target: "deep_delta"
+
+  - name: "gamma_burst"
+    description: "⚡ GAMMA ACTIVATION ⚡"
+    start: 1332
+    end: 1335
+    brainwave_target: "gamma"
+
+  - name: "emergence"
+    description: "The Iron-Willed Hero Emerges"
+    start: 1335
+    end: 1440
+    brainwave_target: "delta_to_theta"
+
+  - name: "return"
+    description: "Ascending from the Forge"
+    start: 1440
+    end: 1620
+    brainwave_target: "theta_to_alpha"
+
+  - name: "anchors_closing"
+    description: "Anchors & Closing"
+    start: 1620
+    end: 1800
+    brainwave_target: "alpha"
+
 youtube:
+  # Optimized title following CTR principles (see docs/YOUTUBE_TITLE_GUIDE.md)
+  # Formula: Power Verb + Transformation | Feature
+  # - "Forge" = power verb creating movement
+  # - "Unbreakable Courage" = specific transformation promise
+  # - "Deep Hypnosis Journey" = keyword anchor + intrigue
+  optimized_title: "Forge Unbreakable Courage | Deep Hypnosis Journey"
   tags:
-    - hypnosis
-    - courage
-    - warrior spirit
-    - fearlessness
-    - inner strength
-    - confidence
-    - discipline
-    - willpower
-    - guided meditation
-    - transformation
-    - delta waves
+    - guided hypnosis
+    - courage meditation
+    - warrior mindset
+    - fearlessness hypnosis
+    - inner strength meditation
+    - confidence hypnosis
+    - discipline meditation
+    - willpower training
+    - guided meditation for courage
+    - transformation hypnosis
+    - delta waves meditation
     - forge meditation
+    - binaural beats courage
+    - overcome fear hypnosis
+    - mental strength
+    - resilience meditation
+    - iron will
+    - warrior spirit meditation
+    - deep trance
+    - self empowerment
+    - 432Hz meditation
+    - theta waves
+    - gamma burst
+    - hypnotherapy courage
+    - build confidence
   category: People & Blogs
   privacy: unlisted
 
 metadata:
-  version: "1.0.0"
+  version: "2.0.0"
   template: elemental-fire
   notes: |
     Key elements:
     - Volcanic forge setting with anvil of black star-metal
     - Three archetypes: Forge-Father, Hammer Spirits, Iron-Willed Hero
-    - 2.5 Hz delta binaural for fearlessness/deep trance
+    - DYNAMIC binaural progression: 12Hz alpha → 6Hz theta → 1.5Hz deep delta → 40Hz gamma burst → 12Hz return
+    - Gamma burst (40Hz, 3s) synchronized with Iron-Willed Hero emergence
+    - Micro-modulation (±0.3Hz @ 0.05Hz) during theta journey phase
+    - 150Hz carrier frequency for grounding/warrior energy
     - Rhythmic hammer strikes + molten metal + deep drums
     - Focus on forging warrior virtues: discipline, focus, endurance, will
     - Male voice (Neural2-D) for warrior gravitas
+    - 84 SFX markers with 50 unique sound effects
