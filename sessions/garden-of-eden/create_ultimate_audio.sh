@@ -61,7 +61,9 @@ echo ""
 python3 ../../scripts/core/generate_audio_chunked.py \
     "$SCRIPT_SSML" \
     "$OUTPUT_DIR/voice_only.mp3" \
-    "$VOICE_NAME"
+    --voice "$VOICE_NAME" \
+    --speaking-rate 0.85 \
+    --pitch -2.0
 
 echo ""
 echo "✅ Voice audio generated: $OUTPUT_DIR/voice_only.mp3"

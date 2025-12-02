@@ -1,0 +1,127 @@
+# The Iron Soul Forge - 25 Minute Session
+# A warrior's journey to forge unbreakable courage and iron will
+
+title: "The Iron Soul Forge - Forging Unbreakable Courage Within"
+description: |
+  Enter the volcanic cavern where the Soul Forge awaits. Place your hands upon
+  the anvil of black star-metal as ancient hammer spirits forge warrior virtues
+  into your being. Fear burns away as courage is hammered in—discipline, focus,
+  endurance, and unwavering will become part of your tempered soul.
+
+theme: elemental-fire
+duration: 25  # minutes
+
+voice:
+  id: en-US-Neural2-D  # Deep, resonant male voice for warrior energy
+  speaking_rate: 0.92  # Slightly slower for power and gravitas
+  pitch: -2  # Lower pitch for depth and authority
+
+audio:
+  binaural:
+    enabled: true
+    base_frequency: 150  # Hz - lower carrier for grounding/power
+    beat_frequency: 2.5  # Hz - deep delta for fearlessness
+    volume: 0.30
+
+  pink_noise:
+    enabled: true
+    volume: 0.10
+
+  background:
+    enabled: true
+    type: custom_soundscape
+    layers:
+      - name: hammer_strikes
+        description: "Heavy hammer clangs in slow rhythmic intervals"
+        volume: 0.25
+        timing: "every 8-12 seconds, varying"
+      - name: molten_metal
+        description: "Bubbling, hissing molten metal ambience"
+        volume: 0.15
+        continuous: true
+      - name: deep_drums
+        description: "Deep drum pulses matching resting heart rate (~60 BPM)"
+        volume: 0.20
+        bpm: 60
+      - name: fire_crackle
+        description: "Volcanic fire crackling and whooshing"
+        volume: 0.12
+        continuous: true
+    fade_in: 10
+    fade_out: 20
+
+  voice_enhancement:
+    warmth: true
+    de_essing: true
+    compression: true
+    reverb:
+      enabled: true
+      room_size: 0.55  # Large cavernous space
+      wet_level: 0.22  # More reverb for volcanic cave feel
+
+  mastering:
+    target_lufs: -14
+    true_peak: -1.5
+
+video:
+  enabled: true
+  resolution: 1080p
+  fps: 30
+  transition_duration: 5
+  image_duration: 30
+
+visual_style: volcanic-forge  # Red-gold volcanic cavern aesthetic
+
+archetypes:
+  - name: "The Forge-Father"
+    role: "Smith of warrior souls"
+    description: "Ancient being of living metal and flame who hammers courage into souls"
+  - name: "The Hammer Spirits"
+    role: "Elemental beings that shape courage"
+    description: "Spirits of iron and fire that rhythmically forge warrior virtues"
+  - name: "The Iron-Willed Hero"
+    role: "Your awakened warrior self"
+    description: "The part of you that cannot break, forged from your own soul-metal"
+
+warrior_virtues:
+  - discipline
+  - focus
+  - endurance
+  - unwavering_will
+  - courage
+  - resilience
+
+journey_elements:
+  entrance: "Volcanic cavern glowing red-gold"
+  sacred_object: "Anvil of black star-metal"
+  transformation: "Fear burns out, courage forged in"
+  emergence: "Aura feels like tempered steel"
+
+youtube:
+  tags:
+    - hypnosis
+    - courage
+    - warrior spirit
+    - fearlessness
+    - inner strength
+    - confidence
+    - discipline
+    - willpower
+    - guided meditation
+    - transformation
+    - delta waves
+    - forge meditation
+  category: People & Blogs
+  privacy: unlisted
+
+metadata:
+  version: "1.0.0"
+  template: elemental-fire
+  notes: |
+    Key elements:
+    - Volcanic forge setting with anvil of black star-metal
+    - Three archetypes: Forge-Father, Hammer Spirits, Iron-Willed Hero
+    - 2.5 Hz delta binaural for fearlessness/deep trance
+    - Rhythmic hammer strikes + molten metal + deep drums
+    - Focus on forging warrior virtues: discipline, focus, endurance, will
+    - Male voice (Neural2-D) for warrior gravitas

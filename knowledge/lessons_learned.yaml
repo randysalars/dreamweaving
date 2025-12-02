@@ -3,10 +3,10 @@
 # Manual entries are also welcome
 
 metadata:
-  version: 1.1
-  last_updated: 2024-12-01
-  total_lessons: 7
-  sessions_analyzed: 1
+  version: 1.4
+  last_updated: 2025-12-01
+  total_lessons: 19
+  sessions_analyzed: 3
 
 lessons:
   # Session: neural-network-navigator-v3 (2024-12-01)
@@ -94,11 +94,198 @@ lessons:
     priority: low
     applied_to: []
 
+  # Session: garden-of-eden (2025-12-01)
+  - id: L008
+    date: 2025-12-01
+    session: garden-of-eden
+    category: video
+    finding: "FFmpeg geq alpha filter for time-based image fading is fragile - concat+fade is more reliable"
+    evidence: "assemble_session_video.py failed with exit code 8; custom build_final_video.py using concat+fade succeeded"
+    action: "Use FFmpeg concat filter with separate fade in/out instead of geq alpha expressions for slideshow creation"
+    confidence: high
+    tags: [video, ffmpeg, reliability]
+    priority: critical
+    applied_to: [garden-of-eden]
+
+  - id: L009
+    date: 2025-12-01
+    session: garden-of-eden
+    category: workflow
+    finding: "manifest.yaml MUST exist before any production step - it defines section timing for all workflows"
+    evidence: "Garden of Eden had no manifest, causing video assembly to fail on section lookup"
+    action: "Add manifest.yaml existence check to all production scripts; fail early with clear message"
+    confidence: high
+    tags: [workflow, manifest, validation]
+    priority: critical
+    applied_to: [garden-of-eden]
+
+  - id: L010
+    date: 2025-12-01
+    session: garden-of-eden
+    category: workflow
+    finding: "cleanup_session_assets.sh is too aggressive - deletes final video during running build"
+    evidence: "Cleanup ran while build was in progress, deleted garden_of_eden_FINAL.mp4"
+    action: "Add check for running ffmpeg processes or lockfile before cleanup; preserve *_FINAL.* pattern explicitly"
+    confidence: high
+    tags: [workflow, cleanup, race-condition]
+    priority: high
+    applied_to: []
+
+  - id: L011
+    date: 2025-12-01
+    session: garden-of-eden
+    category: video
+    finding: "VTT subtitles from package_youtube.py only show 7 section markers, not actual speech"
+    evidence: "Generated VTT has 7 cues (one per section) vs vtt_generator.py creates 131 speech segments"
+    action: "Use scripts/ai/vtt_generator.py for full speech subtitles; package_youtube.py VTT is chapter markers only"
+    confidence: high
+    tags: [video, subtitles, vtt]
+    priority: medium
+    applied_to: [garden-of-eden]
+
+  - id: L012
+    date: 2025-12-01
+    session: garden-of-eden
+    category: video
+    finding: "Image scale/pad filter sequence: scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,setsar=1 handles non-16:9 images correctly"
+    evidence: "1536x768 Midjourney images (2:1 aspect) rendered correctly with letterboxing"
+    action: "Document this filter chain as standard for handling arbitrary aspect ratio images"
+    confidence: high
+    tags: [video, ffmpeg, image-scaling]
+    priority: low
+    applied_to: [garden-of-eden]
+
+  - id: L013
+    date: 2025-12-01
+    session: garden-of-eden
+    category: audio
+    finding: "Voice config incorrectly documented Neural2-A as female - verified Google docs confirm it's male"
+    evidence: "Google Cloud TTS docs: Neural2-A/D/I/J = MALE; Neural2-C/E/F/G/H = FEMALE"
+    action: "Updated voice_config.yaml with verified gender information and changed default to Neural2-E (actual female)"
+    confidence: high
+    tags: [voice, documentation, critical]
+    priority: critical
+    applied_to: [garden-of-eden, voice_config.yaml]
+
+  - id: L014
+    date: 2025-12-01
+    session: garden-of-eden
+    category: audio
+    finding: "Neural2-E is the recommended female voice for deep trance/meditation sessions"
+    evidence: "Compared against Neural2-C (soft) and Neural2-F (clear) - E has deeper, more relaxing tone"
+    action: "Set Neural2-E as default voice for all dreamweaving sessions"
+    confidence: high
+    tags: [voice, recommendation, best-practice]
+    priority: high
+    applied_to: [garden-of-eden, voice_config.yaml]
+
+  # Session: temple-of-a-thousand-steps (2025-12-01)
+  - id: L015
+    date: 2025-12-01
+    session: temple-of-a-thousand-steps
+    category: audio
+    finding: "Speaking rate 1.0x with SSML breaks produces more natural hypnotic pacing than slow speech rates"
+    evidence: "0.75x rate sounded unnatural and robotic; 1.0x with 700-1200ms breaks sounds natural yet hypnotic"
+    action: "Updated voice_config.yaml: Use 1.0x speaking rate, control pacing via SSML breaks only"
+    confidence: high
+    tags: [voice, pacing, critical, best-practice]
+    priority: critical
+    applied_to: [temple-of-a-thousand-steps, voice_config.yaml]
+
+  - id: L016
+    date: 2025-12-01
+    session: temple-of-a-thousand-steps
+    category: audio
+    finding: "SSML breaks require punctuation before them to prevent word cutoff artifacts"
+    evidence: "Words before <break> tags were cut off abruptly; adding commas before breaks fixed the issue"
+    action: "SSML best practice: Always add comma or ellipsis before break tags (e.g., 'word, <break time=\"700ms\"/>')"
+    confidence: high
+    tags: [ssml, voice, quality, critical]
+    priority: critical
+    applied_to: [temple-of-a-thousand-steps]
+
+  - id: L017
+    date: 2025-12-01
+    session: temple-of-a-thousand-steps
+    category: audio
+    finding: "Optimal SSML break timing hierarchy: 700ms (phrase), 900ms (idea), 1200ms+ (section)"
+    evidence: "500ms was too short causing rushed feeling; 700ms minimum feels natural without dragging"
+    action: "Documented in voice_config.yaml as standard break timing guide"
+    confidence: high
+    tags: [ssml, timing, best-practice]
+    priority: high
+    applied_to: [temple-of-a-thousand-steps, voice_config.yaml]
+
+  - id: L018
+    date: 2025-12-01
+    session: temple-of-a-thousand-steps
+    category: audio
+    finding: "Neural2-F is optimal for empowerment/confidence sessions; Neural2-E better for deep trance/sleep"
+    evidence: "User preferred Neural2-F over Neural2-E for consistency/habit session; voice is clearer and more action-oriented"
+    action: "Updated voice_config.yaml: Neural2-F is new default; Neural2-E renamed to 'deep_female' for sleep/meditation"
+    confidence: high
+    tags: [voice, recommendation, best-practice]
+    priority: high
+    applied_to: [temple-of-a-thousand-steps, voice_config.yaml]
+
+  - id: L019
+    date: 2025-12-01
+    session: temple-of-a-thousand-steps
+    category: audio
+    finding: "Use ellipsis (...) for breath counts and countdown numbers to smooth transitions"
+    evidence: "Numbers like 'two' were cut off; 'two...' followed by break sounds natural"
+    action: "SSML best practice: Use ellipsis after countdown numbers (e.g., 'two... <break time=\"700ms\"/>')"
+    confidence: high
+    tags: [ssml, voice, quality]
+    priority: medium
+    applied_to: [temple-of-a-thousand-steps]
+
 # Patterns observed:
 patterns:
   - pattern: "Audio effectiveness depends on frequency synchronization with script sections"
     confidence: high
     sessions_supporting: [neural-network-navigator, neural-network-navigator-v3]
+
+  - pattern: "Simple FFmpeg filter chains are more reliable than complex expressions"
+    confidence: high
+    sessions_supporting: [garden-of-eden]
+
+  - pattern: "Manifest-first workflow prevents downstream failures"
+    confidence: high
+    sessions_supporting: [garden-of-eden]
+
+  - pattern: "SSML breaks are superior to slow speaking rates for hypnotic pacing"
+    confidence: high
+    sessions_supporting: [temple-of-a-thousand-steps]
+    details: "1.0x rate + strategic breaks sounds more natural than 0.75-0.85x rate"
+
+  - pattern: "Voice selection should match session intent (clear=empowerment, deep=trance)"
+    confidence: high
+    sessions_supporting: [garden-of-eden, temple-of-a-thousand-steps]
+    details: "Neural2-F for action/confidence, Neural2-E for deep relaxation/sleep"
+
+  - pattern: "Punctuation before SSML breaks prevents audio artifacts"
+    confidence: high
+    sessions_supporting: [temple-of-a-thousand-steps]
+    details: "Commas and ellipses create natural sentence endings before pauses"
+
+# Best Practices Summary (consolidated):
+best_practices:
+  voice:
+    default: "en-US-Neural2-F"
+    deep_trance: "en-US-Neural2-E"
+    speaking_rate: 1.0
+    pitch: "-1st"
+
+  ssml_breaks:
+    minimum: "700ms"
+    medium: "900ms"
+    section: "1200ms+"
+    rule: "Always add comma or ellipsis before break tags"
+
+  workflow:
+    order: ["manifest", "script", "images", "voice", "binaural", "mix", "video"]
+    validation: "Run before each major step"
 
 # Categories:
 # - content: Topics, themes, script patterns

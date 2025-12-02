@@ -298,8 +298,14 @@ def main():
                     })
                     print(f"   Detected gamma burst: {fx.get('freq_hz', 40)}Hz at {fx.get('time')}s")
 
-            # If schedule is a dict, extract sections from it
-            schedule = schedule.get('sections', schedule.get('beat_schedule', []))
+            # If schedule is a dict, extract binaural sections from it
+            # Check for manifest format: sound_bed.binaural.sections
+            if 'sound_bed' in schedule and 'binaural' in schedule.get('sound_bed', {}):
+                binaural_config = schedule['sound_bed']['binaural']
+                schedule = binaural_config.get('sections', [])
+            else:
+                # Fallback to old format
+                schedule = schedule.get('sections', schedule.get('beat_schedule', []))
 
         for entry in schedule:
             start = entry.get("start_sec")
@@ -316,7 +322,7 @@ def main():
                 end = float(entry["end_min"]) * 60
             end = float(end if end is not None else target_bed_duration)
 
-            freq_start = float(entry.get("freq_start", entry.get("beat_hz", args.beat_hz)))
+            freq_start = float(entry.get("freq_start", entry.get("offset_hz", entry.get("beat_hz", args.beat_hz))))
             freq_end = float(entry.get("freq_end", freq_start))
             transition = entry.get("transition", "linear")
 

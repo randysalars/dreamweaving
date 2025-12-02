@@ -12,17 +12,33 @@
 # All available voices for session generation
 
 profiles:
-  # Female Voices
+  # Female Voices (VERIFIED against Google Cloud TTS documentation)
+  # Female Neural2: C, E, F, G, H
+  # Male Neural2: A, D, I, J
+
   default:
-    name: "en-US-Neural2-A"
+    name: "en-US-Neural2-F"
     gender: "female"
-    description: "Warm, calming female voice - ideal for most hypnosis sessions"
-    recommended_for: ["general", "healing", "relaxation", "sleep"]
+    description: "Clear, articulate female voice - ideal for empowerment and confidence"
+    recommended_for: ["empowerment", "confidence", "consistency", "motivation", "habits"]
     characteristics:
-      - "Calming and soothing"
+      - "Clear and articulate"
+      - "Empowering presence"
       - "Professional quality"
-      - "Excellent for meditation and hypnosis"
-      - "Clear articulation"
+      - "Excellent for action-oriented hypnosis"
+      - "Natural pacing with hypnotic breaks"
+
+  deep_female:
+    name: "en-US-Neural2-E"
+    gender: "female"
+    description: "Deeper, resonant female voice - ideal for deep trance and meditation"
+    recommended_for: ["deep_trance", "sleep", "meditation", "spiritual", "healing"]
+    characteristics:
+      - "Deep and resonant"
+      - "Deeply relaxing"
+      - "Professional quality"
+      - "Excellent for hypnosis and pathworking"
+      - "Clear articulation with warmth"
 
   soft_female:
     name: "en-US-Neural2-C"
@@ -33,16 +49,28 @@ profiles:
   clear_female:
     name: "en-US-Neural2-F"
     gender: "female"
-    description: "Clear, serene female voice"
+    description: "Clear, articulate female voice (same as default)"
     recommended_for: ["confidence", "clarity", "empowerment"]
 
-  deeper_female:
-    name: "en-US-Neural2-E"
+  warm_female:
+    name: "en-US-Neural2-G"
     gender: "female"
-    description: "Deeper, more relaxing female voice"
-    recommended_for: ["deep_trance", "sleep", "meditation"]
+    description: "Warm, approachable female voice"
+    recommended_for: ["general", "relaxation", "guidance"]
 
-  # Male Voices
+  bright_female:
+    name: "en-US-Neural2-H"
+    gender: "female"
+    description: "Bright, clear female voice"
+    recommended_for: ["affirmations", "energy", "motivation"]
+
+  # Male Voices (VERIFIED against Google Cloud TTS documentation)
+  calm_male:
+    name: "en-US-Neural2-A"
+    gender: "male"
+    description: "Calm, neutral male voice"
+    recommended_for: ["general", "narration", "guidance"]
+
   deep_male:
     name: "en-US-Neural2-D"
     gender: "male"
@@ -69,13 +97,15 @@ profiles:
 session_recommendations:
   healing: ["default", "soft_female", "warm_male"]
   confidence: ["clear_female", "deep_male", "mature_male"]
-  sleep: ["deeper_female", "default", "deep_male"]
+  sleep: ["default", "soft_female", "deep_male"]
   abundance: ["clear_female", "mature_male", "default"]
-  spiritual: ["default", "warm_male", "deeper_female"]
-  inner_child: ["soft_female", "warm_male", "default"]
+  spiritual: ["default", "warm_male", "soft_female"]
+  inner_child: ["soft_female", "warm_male", "warm_female"]
   empowerment: ["clear_female", "deep_male", "mature_male"]
-  deep_journey: ["default", "deeper_female", "warm_male"]
-  relaxation: ["default", "soft_female", "deeper_female"]
+  deep_journey: ["default", "soft_female", "warm_male"]
+  relaxation: ["default", "soft_female", "warm_female"]
+  pathworking: ["default", "soft_female", "warm_male"]
+  meditation: ["default", "soft_female", "deep_male"]
 
 # =============================================================================
 # DEFAULT PROSODY SETTINGS
@@ -83,9 +113,16 @@ session_recommendations:
 # Standard speech settings for hypnotic delivery
 
 prosody_defaults:
-  speaking_rate: 0.85      # 15% slower than normal
-  pitch_semitones: -2.0    # Slightly lower for warmth
+  speaking_rate: 1.0       # Normal speed - hypnotic pacing via SSML breaks
+  pitch_semitones: -1.0    # Slightly lower for warmth
   volume_gain_db: 0.0      # No adjustment
+
+# SSML Break Guidelines (use these instead of slow speaking rates)
+# - Minimum break: 700ms (after phrases)
+# - Medium break: 900ms (between ideas)
+# - Long break: 1200ms (between sections)
+# - Add commas before breaks for natural sentence endings
+# - Use ellipsis (...) for breath counts and countdowns
 
 # Section-specific prosody overrides
 section_prosody:
@@ -94,19 +131,19 @@ section_prosody:
     pitch_semitones: 0.0
 
   induction:
-    speaking_rate: 0.85    # Slower for trance induction
-    pitch_semitones: -2.0
+    speaking_rate: 1.0     # Normal speed, pacing via SSML breaks
+    pitch_semitones: -1.0
 
   journey:
-    speaking_rate: 0.80    # Slowest for deep immersion
-    pitch_semitones: -2.5
+    speaking_rate: 1.0     # Normal speed, pacing via SSML breaks
+    pitch_semitones: -1.0
 
   deepening:
-    speaking_rate: 0.75    # Very slow for deep trance
-    pitch_semitones: -3.0
+    speaking_rate: 1.0     # Normal speed, pacing via SSML breaks
+    pitch_semitones: -1.0
 
   awakening:
-    speaking_rate: 0.90    # Gradually faster
+    speaking_rate: 1.0     # Normal speed
     pitch_semitones: -1.0
 
   closing:
@@ -188,7 +225,8 @@ provider:
 notes: |
   VOICE SELECTION GUIDE:
 
-  For most sessions, use the 'default' profile (en-US-Neural2-A).
+  For most sessions, use the 'default' profile (en-US-Neural2-F).
+  For deep trance/sleep, use 'deep_female' profile (en-US-Neural2-E).
 
   To select a voice programmatically:
     from scripts.config.voice_config import get_voice_profile
@@ -200,6 +238,15 @@ notes: |
     - Male voices: Better for grounding, authority, transformation
     - Deeper voices: Better for deep trance states
     - Clearer voices: Better for confidence, empowerment
+
+  HYPNOTIC PACING APPROACH:
+    - Use 1.0x speaking rate (normal speed)
+    - Control pacing through SSML breaks, NOT slow speech
+    - Minimum break: 700ms (after phrases)
+    - Medium break: 900ms (between ideas)
+    - Long break: 1200ms+ (between sections)
+    - Add commas before breaks for natural endings
+    - Use ellipsis (...) for breath counts and countdowns
 
   IMPORTANT:
     - Always use Google Cloud TTS for production
