@@ -55,6 +55,11 @@ This documents the actual production workflow as practiced, with clear stages an
 │  ├── Archive working files                                              │
 │  ├── Remove temporary files                                             │
 │  └── Update session status                                              │
+├─────────────────────────────────────────────────────────────────────────┤
+│  STAGE 9: WEBSITE UPLOAD                                     (OPTIONAL) │
+│  ├── Upload media to Vercel Blob                                        │
+│  ├── Create database record via upload_to_website.py                    │
+│  └── Session live at salars.net/dreamweavings/{slug}                    │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -173,23 +178,45 @@ ffmpeg -y \
 
 ---
 
-### STAGE 5: HYPNOTIC POST-PROCESSING
-**Purpose:** Apply psychoacoustic mastering for hypnotic effect
+### STAGE 5: HYPNOTIC POST-PROCESSING (MANDATORY)
+**Purpose:** Apply psychoacoustic mastering for maximum hypnotic effect
 
 **Inputs:**
 - `session_mixed.wav`
 
 **Process:**
-1. Apply loudnorm to -14 LUFS (YouTube standard)
-2. True peak limiting to -1.5 dBTP
-3. Optional enhancements:
-   - Subtle low-frequency warmth
-   - Gentle high-frequency roll-off
-   - Stereo widening for immersion
+Run the unified hypnotic post-processing script:
+```bash
+python3 scripts/core/hypnotic_post_process.py --session sessions/{session}/
+```
+
+**Enhancements Applied (Triple-Layer Hypnotic Presence):**
+| Enhancement | Description | Default |
+|-------------|-------------|---------|
+| **Tape Warmth** | Analog saturation | 25% drive |
+| **De-essing** | Sibilance reduction (4-8 kHz) | Always on |
+| **Whisper Overlay** | Layer 2: ethereal presence | -22 dB |
+| **Subharmonic** | Layer 3: grounding presence | -12 dB |
+| **Double-Voice** | Subliminal presence | -14 dB, 8ms delay |
+| **Room Tone** | Gentle reverb | 4% wet |
+| **Cuddle Waves** | Amplitude modulation | 0.05 Hz, ±1.5 dB |
+| **Echo** | Subtle depth | 180ms, 25% decay |
+
+**Mastering:**
+- Target LUFS: -14 (YouTube optimized)
+- True Peak: -1.5 dBTP (broadcast safe)
+- EQ: Warmth @250Hz, presence @3kHz
+- Stereo: +5% width enhancement
+
+**Custom Settings (Optional):**
+```bash
+python3 scripts/core/hypnotic_post_process.py --session sessions/{session}/ \
+    --warmth 0.3 --echo-delay 200 --no-cuddle
+```
 
 **Outputs:**
-- `output/final_master.mp3` - Production-ready audio
-- `output/final_master.wav` - Lossless version
+- `output/{session}_MASTER.mp3` - Production-ready audio (320 kbps)
+- `output/{session}_MASTER.wav` - Lossless version (24-bit)
 
 **User Checkpoint:** ✓ Review final mastered audio
 
@@ -299,21 +326,137 @@ ffmpeg -y \
 
 ---
 
-### STAGE 8: CLEANUP
-**Purpose:** Archive and clean session
+### STAGE 8: CLEANUP (MANDATORY)
+**Purpose:** Remove intermediate files, preserve deliverables, save disk space
 
 **Inputs:**
-- All working files
+- Completed session with all outputs generated
 
 **Process:**
-1. Archive working files if needed
-2. Remove temporary/intermediate files
-3. Update manifest status to "published"
-4. Log completion in session notes
+Run the cleanup script:
+```bash
+python3 scripts/core/cleanup_session.py sessions/{session}/
+
+# Dry run to preview (recommended first):
+python3 scripts/core/cleanup_session.py sessions/{session}/ --dry-run
+```
+
+**What Gets REMOVED:**
+| File | Reason |
+|------|--------|
+| `output/*.wav` | All WAV intermediates (includes MASTER.wav if MP3 exists) |
+| `output/voice.mp3` | Raw TTS (enhanced version exists) |
+| `output/voice_enhanced.mp3` | Pre-master (MASTER version exists) |
+| `output/YOUTUBE_*.md` | Duplicates (kept in youtube_package/) |
+| `output/video/solid_background.mp4` | Generated fallback background |
+| `output/video/video_summary.json` | Metadata (not needed for delivery) |
+| `working_files/*.wav`, `working_files/*.mp3` | Audio intermediates |
+
+**What Gets PRESERVED:**
+| File | Reason |
+|------|--------|
+| `output/*_MASTER.mp3` | Final deliverable audio |
+| `output/youtube_package/*` | Complete YouTube package |
+| `output/video/session_final.mp4` | Final video |
+| `output/youtube_thumbnail.png` | Thumbnail |
+| `manifest.yaml` | Session config |
+| `working_files/script*.ssml` | Source scripts |
+| `images/uploaded/*` | Source images |
+
+**Typical Space Savings:**
+- Before: ~900-1000 MB per session
+- After: ~100-150 MB per session
+- Savings: **~85% reduction**
 
 **Outputs:**
-- Clean session directory
-- Updated `manifest.yaml` with status
+- Clean session directory with only deliverables
+- Console report of files removed and space freed
+
+---
+
+### STAGE 9: WEBSITE UPLOAD (OPTIONAL)
+**Purpose:** Publish completed session to https://www.salars.net/dreamweavings
+
+**Inputs:**
+- Completed session with all outputs
+- `manifest.yaml` (for metadata)
+- `output/*_MASTER.mp3` or `output/*_final.mp3` (audio)
+- `output/youtube_package/final_video.mp4` or `output/*_final.mp4` (video, optional)
+- `output/youtube_thumbnail.png` or `output/youtube_package/thumbnail.png`
+- `output/youtube_package/subtitles.vtt` (optional)
+
+**Environment Setup:**
+Set these environment variables in `.env`:
+```bash
+# Required for uploads
+SALARSU_API_TOKEN=your-api-token
+BLOB_READ_WRITE_TOKEN=your-vercel-blob-token
+```
+
+**Process:**
+1. Dry run to validate session (recommended first):
+   ```bash
+   source .env && python3 scripts/core/upload_to_website.py \
+       --session sessions/{session}/ \
+       --dry-run
+   ```
+
+2. Upload to production:
+   ```bash
+   source .env && python3 scripts/core/upload_to_website.py \
+       --session sessions/{session}/ \
+       --no-git
+   ```
+
+**What Gets Uploaded:**
+| File Type | Destination | Max Size |
+|-----------|-------------|----------|
+| Audio (.mp3) | Vercel Blob | 100 MB |
+| Video (.mp4) | Vercel Blob | 500 MB |
+| Thumbnail (.png) | Vercel Blob | 10 MB |
+| Subtitles (.vtt) | Vercel Blob | 1 MB |
+
+**Category Auto-Detection:**
+The upload script auto-detects category from session content:
+| Keywords | Category |
+|----------|----------|
+| forest, nature, garden | `nature-forest` |
+| cosmic, space, star, astral | `cosmic-space` |
+| healing, restore | `healing` |
+| shadow, dark | `shadow-work` |
+| archetype, journey | `archetypal` |
+| sacred, divine | `sacred-spiritual` |
+| confidence, power, strength | `confidence` |
+| relax, sleep, calm | `relaxation` |
+
+Override with: `--category cosmic-space`
+
+**Database Record Created:**
+- Slug (from session name)
+- Title, subtitle, description
+- Media URLs (audio, video, thumbnail, subtitles)
+- Duration, category
+- Archetypes array
+- Chapters array
+- Tags (comma-separated)
+- Status: published
+
+**Outputs:**
+- Media files uploaded to Vercel Blob
+- Database record created in Neon PostgreSQL
+- Session available at: `https://www.salars.net/dreamweavings/{slug}`
+
+**Troubleshooting:**
+If API returns 401 Unauthorized:
+1. Check `DREAMWEAVING_API_TOKEN` matches in both `.env` and Vercel environment
+2. Alternative: Insert via Prisma directly (see manual fallback below)
+
+**Manual Fallback (if API auth fails):**
+```javascript
+// Run from salarsu project directory
+cd /media/rsalars/elements/Projects/salarsu
+node insert_session.mjs
+```
 
 ---
 
@@ -329,7 +472,8 @@ ffmpeg -y \
 | 5.5 | **Video Images** | `output/video_images/` | - (automatic) |
 | 6 | Video Production | `final_video.mp4` | ✓ User review |
 | 7 | YouTube Packaging | `youtube_package/` | ✓ User uploads |
-| 8 | Cleanup | Clean directory | - |
+| 8 | **Cleanup** | `cleanup_session.py` | - (run after upload) |
+| 9 | **Website Upload** | salars.net/dreamweavings/{slug} | - (optional) |
 
 ---
 

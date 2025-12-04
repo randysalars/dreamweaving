@@ -54,3 +54,19 @@ from .quality_scorer import (
     score_audio,
     generate_full_report,
 )
+
+__all__ = [
+    # VTT Generation
+    'parse_ssml_to_segments',
+    'generate_vtt',
+    'get_audio_duration',
+    # Prompt Generation
+    'generate_thumbnail_prompt',
+    'generate_scene_prompts',
+    'STYLE_PRESETS',
+    # Quality Scoring
+    'score_ssml',
+    'score_manifest',
+    'score_audio',
+    'generate_full_report',
+]

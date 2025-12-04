@@ -125,7 +125,52 @@ else:
 
 ---
 
-## 5. File Formats and Specifications
+## 5. Hypnotic Post-Processing (MANDATORY)
+
+After mixing, apply the unified hypnotic post-processing script. This is a **required step** for all sessions.
+
+### Command
+```bash
+python3 scripts/core/hypnotic_post_process.py --session sessions/{session}/
+```
+
+### Triple-Layer Hypnotic Presence
+| Layer | Purpose | Default Level |
+|-------|---------|---------------|
+| Layer 1: Main Voice | Warmth + de-essing | Base |
+| Layer 2: Whisper Overlay | Ethereal presence | -22 dB |
+| Layer 3: Subharmonic | Grounding presence | -12 dB |
+
+### Enhancement Chain
+| Enhancement | Description | Default |
+|-------------|-------------|---------|
+| **Tape Warmth** | Analog saturation for richness | 25% drive |
+| **De-essing** | Sibilance reduction (4-8 kHz) | Always on |
+| **Whisper Overlay** | Ethereal HPF + reverb layer | -22 dB |
+| **Subharmonic** | LPF + delay for grounding | -12 dB, 15ms |
+| **Double-Voice** | Subliminal presence | -14 dB, 8ms delay |
+| **Room Tone** | Gentle reverb for space | 4% wet |
+| **Cuddle Waves** | Amplitude modulation | 0.05 Hz, ±1.5 dB |
+| **Echo** | Subtle depth enhancement | 180ms, 25% decay |
+
+### Custom Settings (Optional)
+```bash
+# Adjust warmth and echo
+python3 scripts/core/hypnotic_post_process.py --session sessions/{session}/ \
+    --warmth 0.3 --echo-delay 200
+
+# Disable specific effects
+python3 scripts/core/hypnotic_post_process.py --session sessions/{session}/ \
+    --no-echo --no-cuddle
+```
+
+### Output Files
+- `{session}_MASTER.wav` - 24-bit WAV (lossless)
+- `{session}_MASTER.mp3` - 320 kbps MP3 (distribution)
+
+---
+
+## 7. File Formats and Specifications
 
 ### Audio Specifications
 - Sample Rate: 48000 Hz (all stems)
@@ -140,7 +185,7 @@ else:
 
 ---
 
-## 6. Testing and Validation
+## 8. Testing and Validation
 
 ### Level Analysis Script
 ```python
@@ -164,7 +209,7 @@ When verifying a mix, check these specific moments:
 
 ---
 
-## 7. Workflow Checklist
+## 9. Workflow Checklist
 
 ### Pre-Mix Validation
 - [ ] All stems at 48000 Hz sample rate

@@ -38,6 +38,7 @@ The system uses 8 specialized AI agents that work together:
 | `/build-audio <session>` | Build audio only |
 | `/build-video <session>` | Build video (requires audio) |
 | `/full-build <session>` | Complete pipeline: manifest → script → prompts → audio → video |
+| `/auto-generate <topic>` | **NEW:** Fully automated topic → YouTube package (see below) |
 | `/validate <session>` | Validate SSML and manifest |
 
 ### Learning & Improvement
@@ -47,6 +48,94 @@ The system uses 8 specialized AI agents that work together:
 | `/learn-comments <session>` | Analyze viewer comments |
 | `/review-code` | Review and improve codebase |
 | `/show-lessons` | Display accumulated learnings |
+
+---
+
+## Automated Video Generation (NEW)
+
+### Single Command: Topic → YouTube Package
+
+The `/auto-generate` command produces a complete YouTube-ready video from just a topic:
+
+```bash
+/auto-generate "Finding Inner Peace Through Nature" --mode standard
+```
+
+**Output:** Complete `sessions/{name}/output/youtube_package/` with:
+- `final_video.mp4` (1920x1080, H.264)
+- `thumbnail.png` (1280x720)
+- `metadata.yaml` (title, description, tags, chapters)
+- `subtitles.vtt` (timed captions)
+- `cost_report.json` (actual costs tracked)
+
+### Cost Optimization Modes
+
+| Mode | AI Cost | Total | Use Case |
+|------|---------|-------|----------|
+| `budget` | ~$0.55 | ~$0.70 | Bulk production, testing |
+| `standard` | ~$0.91 | ~$1.06 | **Production (recommended)** |
+| `premium` | ~$1.36 | ~$1.51 | High-stakes releases |
+
+### Tiered Model Allocation
+
+The system uses 3 AI model tiers strategically:
+
+| Tier | Model | Cost | Used For |
+|------|-------|------|----------|
+| **Haiku** | claude-3-haiku | $0.25-1.25/M tok | Structured data, assembly |
+| **Sonnet** | claude-sonnet-4 | $3-15/M tok | Script sections, metadata |
+| **Opus** | claude-opus-4 | $15-75/M tok | Creative concept, main journey |
+
+### 14 Discrete Prompts
+
+The pipeline executes 14 prompts in phases:
+
+| Phase | Prompts | Purpose |
+|-------|---------|---------|
+| **1. Init** | P1.1 (Haiku), P1.2 (Opus) | Manifest + journey concept |
+| **2. Script** | P2.1-P2.3 (Sonnet/Opus) | SSML generation |
+| **3. Audio** | P3.1-P3.2 (Haiku) | Binaural + SFX config |
+| **4. Images** | P4.1 (Sonnet) | SD scene prompts |
+| **5. Video** | P5.1-P5.3 (Haiku/Sonnet) | VTT, YouTube metadata |
+| **6. QA** | P6.1-P6.2 (Haiku/Opus) | Validation |
+
+### Batch Generation
+
+For scheduled/cron operation:
+
+```bash
+# Create topics file
+python3 scripts/ai/batch_generate.py --create-sample
+
+# Run batch
+python3 scripts/ai/batch_generate.py --topics-file topics.yaml --mode standard
+
+# Parallel execution
+python3 scripts/ai/batch_generate.py --topics-file topics.yaml --parallel 2
+```
+
+**Topics file format:**
+```yaml
+sessions:
+  - topic: "Finding Inner Peace Through Nature"
+    duration: 25
+    style: healing
+  - topic: "Building Confidence"
+    duration: 30
+    style: confidence
+```
+
+### Key Files
+
+| File | Purpose |
+|------|---------|
+| `scripts/ai/auto_generate.py` | Main orchestrator |
+| `scripts/ai/batch_generate.py` | Batch/scheduled generation |
+| `scripts/ai/prompt_executor.py` | Prompt template execution |
+| `scripts/ai/model_router.py` | Routes to API endpoints |
+| `scripts/ai/cost_tracker.py` | Token/cost tracking |
+| `scripts/ai/prompts/*.yaml` | 14 prompt templates |
+| `config/model_tiers.yaml` | Tier definitions |
 
 ---
 
@@ -112,7 +201,9 @@ Midjourney Prompts (AI) → [User creates images on Midjourney]
     ↓
 Audio Generation (Google Cloud TTS)
     ↓
-Audio Mixing & Mastering
+Audio Mixing
+    ↓
+Hypnotic Post-Processing (MANDATORY)
     ↓
 VTT Subtitle Generation
     ↓
@@ -132,7 +223,9 @@ Analytics & Comments → Learning Agent → Knowledge Base → Next Session
 | Production script (with SFX cues) | `sessions/{name}/working_files/script_production.ssml` |
 | Voice-only script (for TTS) | `sessions/{name}/working_files/script_voice_clean.ssml` |
 | Midjourney prompts | `sessions/{name}/midjourney-prompts.md` |
-| Enhanced voice (USE THIS) | `sessions/{name}/output/voice_enhanced.mp3` |
+| Enhanced voice | `sessions/{name}/output/voice_enhanced.mp3` |
+| Mixed audio | `sessions/{name}/output/session_mixed.wav` |
+| **Final master (USE THIS)** | `sessions/{name}/output/{name}_MASTER.mp3` |
 | Output files | `sessions/{name}/output/` |
 | YouTube package | `sessions/{name}/output/youtube_package/` |
 
@@ -148,15 +241,25 @@ Analytics & Comments → Learning Agent → Knowledge Base → Next Session
 | 2 | Voice Script | `script_voice_clean.ssml` | ✓ |
 | 3 | Audio Generation | voice, binaural, SFX | ✓ |
 | 4 | Audio Mixing | `session_mixed.wav` | ✓ |
-| 5 | Post-Processing | `final_master.mp3` | ✓ |
+| 5 | **Hypnotic Post-Processing** | `{name}_MASTER.mp3` | ✓ |
 | 5.5 | **Video Images** | `output/video_images/` | - |
 | 6 | Video Production | `final_video.mp4` | ✓ |
 | 7 | YouTube Packaging | `youtube_package/` | ✓ |
 | 8 | Cleanup | - | - |
+| 9 | **Website Upload** | salars.net/dreamweavings/{slug} | - |
 
-**Stage 5.5 Command:**
+**Stage 5 Command (MANDATORY):**
 ```bash
-python3 scripts/core/generate_video_images.py sessions/{session}/ --all
+python3 scripts/core/hypnotic_post_process.py --session sessions/{session}/
+```
+
+**Stage 5.5 Command (Scene Images - SD Default):**
+```bash
+# Generate scene images using Stable Diffusion (default)
+python3 scripts/core/generate_scene_images.py sessions/{session}/
+
+# Or generate Midjourney prompts instead
+python3 scripts/core/generate_scene_images.py sessions/{session}/ --midjourney-only
 ```
 
 ### Stage Flow
@@ -164,9 +267,9 @@ python3 scripts/core/generate_video_images.py sessions/{session}/ --all
 ```
 TOPIC → [1] Brainstorm & Script → ✓ [2] Voice Script Review
                                            ↓
-         [8] Cleanup ← ✓ [7] YouTube ← ✓ [6] Video ← [5.5] Images ← ✓ [5] Master
-                                                                         ↑
-                                                   ✓ [4] Mix ← ✓ [3] Audio Gen
+         [8] Cleanup ← ✓ [7] YouTube ← ✓ [6] Video ← [5.5] Images ← ✓ [5] Hypnotic Post-Process
+                                                                              ↑
+                                                        ✓ [4] Mix ← ✓ [3] Audio Gen
 ```
 
 ### Claude Stage Tracking
@@ -1173,6 +1276,37 @@ ffmpeg -y \
   sessions/{session}/output/session_mixed.wav
 ```
 
+## Hypnotic Post-Processing (REQUIRED FOR ALL SESSIONS)
+
+Apply psychoacoustic mastering after mixing. This is **mandatory** for all sessions.
+
+```bash
+# Standard hypnotic post-processing (uses session_mixed.wav automatically)
+python3 scripts/core/hypnotic_post_process.py --session sessions/{session}/
+
+# With custom settings
+python3 scripts/core/hypnotic_post_process.py --session sessions/{session}/ \
+    --warmth 0.3 --echo-delay 200
+
+# Disable specific effects
+python3 scripts/core/hypnotic_post_process.py --session sessions/{session}/ \
+    --no-echo --no-cuddle
+```
+
+**Enhancements Applied (Triple-Layer Hypnotic Presence):**
+| Enhancement | Description | Default |
+|-------------|-------------|---------|
+| Tape Warmth | Analog saturation | 25% drive |
+| De-essing | Sibilance reduction (4-8 kHz) | Always on |
+| Whisper Overlay | Layer 2: ethereal presence | -22 dB |
+| Subharmonic | Layer 3: grounding presence | -12 dB |
+| Double-Voice | Subliminal presence | -14 dB, 8ms delay |
+| Room Tone | Gentle reverb | 4% wet |
+| Cuddle Waves | Amplitude modulation | 0.05 Hz, ±1.5 dB |
+| Echo | Subtle depth | 180ms, 25% decay |
+
+**Output:** `{session}_MASTER.mp3` (320 kbps) + `{session}_MASTER.wav` (24-bit)
+
 ## Validation
 
 ```bash
@@ -1204,12 +1338,142 @@ python3 scripts/core/generate_thumbnail.py sessions/{session}/ \
     --features "432Hz" "Theta"
 ```
 
-## Video Image Generation (REQUIRED FOR ALL SESSIONS)
+## Scene Image Generation (DEFAULT: Stable Diffusion)
 
-Generate all video images for a session before video assembly:
+Generate scene images for video using local Stable Diffusion AI (default) or Midjourney prompts.
+
+### Primary Method: Stable Diffusion (Default)
 
 ```bash
-# Generate ALL video images (recommended - do this for every session)
+# Generate all scene images using SD (default, recommended)
+python3 scripts/core/generate_scene_images.py sessions/{session}/
+
+# With more steps for better quality (slower)
+python3 scripts/core/generate_scene_images.py sessions/{session}/ --steps 20
+
+# Force regenerate existing images
+python3 scripts/core/generate_scene_images.py sessions/{session}/ --force
+
+# Generate both SD images AND Midjourney prompts
+python3 scripts/core/generate_scene_images.py sessions/{session}/ --with-prompts
+
+# Custom style preset
+python3 scripts/core/generate_scene_images.py sessions/{session}/ --style cosmic_journey
+```
+
+### Alternative: Midjourney Prompts Only
+
+```bash
+# Generate Midjourney prompts (no local generation)
+python3 scripts/core/generate_scene_images.py sessions/{session}/ --midjourney-only
+```
+
+This creates `midjourney-prompts.md` with copy-paste prompts for Midjourney.
+
+### Style Presets
+
+| Preset | Best For | Key Elements |
+|--------|----------|--------------|
+| `neural_network` | Neural/tech themes | Cyan/magenta glow, sacred geometry |
+| `sacred_light` | Divine/spiritual | Golden light, ethereal atmosphere |
+| `cosmic_journey` | Space/astral | Nebula, starfields, purple/blue |
+| `garden_eden` | Nature/paradise | Lush green, golden light, water |
+| `ancient_temple` | Historical/mystical | Torchlight, carved stone, sacred symbols |
+| `celestial_blue` | Heavenly/peaceful | Soft blue light, clouds, ethereal |
+
+Style is auto-detected from session name if not specified.
+
+### Performance Notes
+
+- **SD generation**: ~50-60 seconds per image on CPU at 15 steps
+- **Resolution**: 512×288 base, upscaled to 1920×1080 via Lanczos
+- **Model**: SD 1.5 pruned (~4GB, auto-downloaded if not present)
+- **Local model path**: `~/sd-webui/models/Stable-diffusion/sd-v1-5-pruned-emaonly.safetensors`
+
+### Output Locations
+
+| Output | Location |
+|--------|----------|
+| Scene images for video | `sessions/{session}/images/uploaded/` |
+| Midjourney prompts | `sessions/{session}/midjourney-prompts.md` |
+
+---
+
+## Session Cleanup (Stage 8 - Run After YouTube Upload)
+
+Remove intermediate files and free disk space while preserving deliverables.
+
+```bash
+# Dry run first (see what will be removed)
+python3 scripts/core/cleanup_session.py sessions/{session}/ --dry-run
+
+# Run actual cleanup
+python3 scripts/core/cleanup_session.py sessions/{session}/
+```
+
+**Preserved:** `*_MASTER.mp3`, `youtube_package/`, `video/session_final.mp4`, `manifest.yaml`, scripts, source images
+
+**Removed:** All `.wav` files, `voice.mp3`, `voice_enhanced.mp3`, duplicate markdowns, `solid_background.mp4`
+
+**Typical savings:** ~85% reduction (900MB → 115MB per session)
+
+---
+
+## Website Upload (Stage 9 - Optional)
+
+Upload completed sessions to https://www.salars.net/dreamweavings for public access.
+
+**Environment Setup:**
+```bash
+# Add to .env file
+SALARSU_API_TOKEN=your-api-token
+BLOB_READ_WRITE_TOKEN=your-vercel-blob-token
+```
+
+**Commands:**
+```bash
+# Dry run first (validate without uploading)
+python3 scripts/core/upload_to_website.py --session sessions/{session}/ --dry-run
+
+# Upload to production
+python3 scripts/core/upload_to_website.py --session sessions/{session}/ --no-git
+
+# Override category detection
+python3 scripts/core/upload_to_website.py --session sessions/{session}/ --category cosmic-space
+```
+
+**What Gets Uploaded:**
+| File Type | Max Size | Destination |
+|-----------|----------|-------------|
+| Audio (.mp3) | 100 MB | Vercel Blob |
+| Video (.mp4) | 500 MB | Vercel Blob |
+| Thumbnail (.png) | 10 MB | Vercel Blob |
+| Subtitles (.vtt) | 1 MB | Vercel Blob |
+
+**Category Auto-Detection:**
+Categories are auto-detected from session keywords:
+- `nature-forest`: forest, nature, garden, eden
+- `cosmic-space`: cosmic, space, star, astral
+- `healing`: healing, restore, repair
+- `shadow-work`: shadow, dark, unconscious
+- `archetypal`: archetype, journey, guide
+- `sacred-spiritual`: sacred, divine, spiritual
+- `confidence`: confidence, power, strength, courage
+- `relaxation`: relax, sleep, calm
+
+**Output:**
+- Session available at: `https://www.salars.net/dreamweavings/{slug}`
+- Media stored in Vercel Blob
+- Database record in Neon PostgreSQL
+
+---
+
+## Video Image Generation (Overlays, Titles, etc.)
+
+Generate supporting video images (title cards, overlays, etc.) using procedural PIL generation:
+
+```bash
+# Generate ALL video overlay images
 python3 scripts/core/generate_video_images.py sessions/{session}/ --all
 
 # Generate specific image types only
@@ -1230,7 +1494,6 @@ python3 scripts/core/generate_video_images.py sessions/{session}/ \
 | `lower_thirds/*.png` | 1920×1080 | Transparent overlay bars |
 | `chapters/chapter_*.png` | 1920×1080 | Numbered chapter cards |
 | `social_preview.png` | 1080×1080 | Instagram/social sharing |
-| `backgrounds/scene_*.png` | 1920×1080 | Base images for video |
 
 **Available palettes:** `sacred_light`, `cosmic_journey`, `garden_eden`, `ancient_temple`, `neural_network`, `volcanic_forge`, `celestial_blue`
 

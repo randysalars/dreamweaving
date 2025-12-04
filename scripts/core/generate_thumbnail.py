@@ -211,6 +211,23 @@ def get_font(font_name: str, size: int) -> ImageFont.FreeTypeFont:
     return ImageFont.load_default()
 
 
+def get_scaled_font(font_name: str, text: str, max_width: int, max_size: int = 100, min_size: int = 40) -> ImageFont.FreeTypeFont:
+    """Get a font scaled to fit text within max_width."""
+    # Create a temporary image for measuring
+    temp_img = Image.new('RGB', (1, 1))
+    temp_draw = ImageDraw.Draw(temp_img)
+
+    for size in range(max_size, min_size - 1, -5):
+        font = get_font(font_name, size)
+        bbox = temp_draw.textbbox((0, 0), text, font=font)
+        text_width = bbox[2] - bbox[0]
+        if text_width <= max_width:
+            return font
+
+    # Return minimum size if nothing fits
+    return get_font(font_name, min_size)
+
+
 # =============================================================================
 # IMAGE PROCESSING
 # =============================================================================
@@ -519,8 +536,10 @@ def generate_thumbnail(
     if template["center_glow"]:
         img = apply_center_glow(img, palette, intensity=0.25)
 
-    # Load fonts
-    title_font = get_font("DejaVuSans-Bold", 100)
+    # Load fonts with auto-scaling for title
+    # Leave 120px margin on each side (60px safe zone * 2)
+    max_title_width = width - 120
+    title_font = get_scaled_font("DejaVuSans-Bold", title, max_title_width, max_size=100, min_size=50)
     subtitle_font = get_font("DejaVuSans", 42)
     badge_font = get_font("DejaVuSans-Bold", 32)
 
