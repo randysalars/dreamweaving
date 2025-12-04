@@ -346,6 +346,7 @@ dreamweaving/
 | [docs/QUICK_START.md](docs/QUICK_START.md) | 5-minute quick start |
 | [prompts/hypnotic_dreamweaving_instructions.md](prompts/hypnotic_dreamweaving_instructions.md) | Master script prompt |
 | [docs/INDEX.md](docs/INDEX.md) | Complete documentation index |
+| [docs/MCP_PLUGINS_GUIDE.md](docs/MCP_PLUGINS_GUIDE.md) | MCP servers & plugins integration guide |
 
 ---
 
@@ -676,6 +677,9 @@ Claude should read these memories for detailed information:
 | `voice_pacing_guidelines` | Quick voice pacing reference |
 | `dreamweaving_project_overview` | Understanding project architecture |
 | `session_learnings_system` | Before generating new sessions |
+| `production_workflow_stages` | Full stage-by-stage production workflow |
+| `website_upload_deployment` | Uploading to salars.net, Vercel, R2 storage |
+| `mcp_plugins_integration` | MCP servers, plugins, context window management |
 
 **Usage Pattern:**
 ```
@@ -1465,6 +1469,33 @@ Categories are auto-detected from session keywords:
 - Session available at: `https://www.salars.net/dreamweavings/{slug}`
 - Media stored in Vercel Blob
 - Database record in Neon PostgreSQL
+
+**Batch Upload Pattern:**
+```bash
+# Upload multiple sessions
+for session in atlas-starship iron-soul-forge forest-of-lost-instincts; do
+  echo "=== Uploading $session ==="
+  python3 scripts/core/upload_to_website.py --session sessions/$session/ --no-git
+done
+```
+
+**Required Files for Upload:**
+| File | Required | Fallback Paths |
+|------|----------|----------------|
+| Audio | Yes | `*_MASTER.mp3` → `*_final.mp3` → `final.mp3` |
+| Video | No | `youtube_package/final_video.mp4` → `video/session_final.mp4` |
+| Thumbnail | Yes | `youtube_thumbnail.png` → `youtube_package/thumbnail.png` |
+| Subtitles | No | `youtube_package/subtitles.vtt` → `output/subtitles.vtt` |
+
+**Troubleshooting:**
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| "Missing master audio" | Non-standard naming | `cp final.mp3 {session}_MASTER.mp3` |
+| 404 on page | Missing dynamic route | Need `/dreamweavings/[slug]/page.tsx` in frontend |
+| API 401 Unauthorized | Token mismatch | Check `DREAMWEAVING_API_TOKEN` in both envs |
+| Client crash on archetypes | JSONB objects vs strings | Frontend handles both types now |
+
+**Serena Memory:** See `website_upload_deployment` for complete architecture and troubleshooting guide.
 
 ---
 

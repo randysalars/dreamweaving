@@ -1,0 +1,478 @@
+- title: 'Within: A Grief Voyage'
+  theme: Inner Peace Meditation
+  metaphor: a sacred chamber where tears become stars
+  therapeutic_goal: grief
+  setting: in the garden of your subconscious mind
+  key_transformation: releasing with love and finding peace within the memories
+  archetypes:
+  - name: The Healer
+    role: healing
+    description: Compassionate presence of restoration
+    symbol: healing hands of light
+    qualities:
+    - restoration
+    - compassion
+    - wholeness
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Scribe
+    role: wisdom_keeper
+    description: Keeper of ancient records and memories
+    symbol: living scroll
+    qualities:
+    - memory
+    - recording
+    - truth
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Inner Light
+    role: higher_self
+    description: The divine spark within
+    symbol: radiant core
+    qualities:
+    - divinity
+    - truth
+    - essence
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  target_duration_minutes: 30
+  voice_recommendation: soft_female
+  imagery_style: inner
+  score: 0.96
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Initiation into Grief
+  theme: Inner Peace Meditation
+  metaphor: a sacred journey through mystical realms toward grief
+  therapeutic_goal: grief
+  setting: inside a sacred geometric pattern come alive
+  key_transformation: releasing with love and finding peace within the memories
+  archetypes:
+  - name: The Water Bearer
+    role: healing
+    description: Bringer of emotional cleansing
+    symbol: sacred vessel
+    qualities:
+    - purification
+    - flow
+    - release
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Scribe
+    role: wisdom_keeper
+    description: Keeper of ancient records and memories
+    symbol: living scroll
+    qualities:
+    - memory
+    - recording
+    - truth
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Future Self
+    role: higher_self
+    description: Your evolved presence from beyond time
+    symbol: mirror of light
+    qualities:
+    - potential
+    - guidance
+    - love
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Angelic Choir
+    type: texture
+    description: Ethereal voices
+    character: wordless harmony
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
+  - name: Singing Bowls
+    type: tone
+    description: Tibetan bowl harmonics
+    character: rich overtones
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  target_duration_minutes: 30
+  voice_recommendation: soft_female
+  imagery_style: mystical
+  score: 0.96
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Waters of Grief
+  theme: Inner Peace Meditation
+  metaphor: a garden where memories become seeds of peace
+  therapeutic_goal: grief
+  setting: in a garden that exists between sleeping and waking
+  key_transformation: releasing with love and finding peace within the memories
+  archetypes:
+  - name: The Garden Tender
+    role: healing
+    description: Nurturer of growth and renewal
+    symbol: seeds of light
+    qualities:
+    - nurturing
+    - patience
+    - cultivation
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Scribe
+    role: wisdom_keeper
+    description: Keeper of ancient records and memories
+    symbol: living scroll
+    qualities:
+    - memory
+    - recording
+    - truth
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Inner Light
+    role: higher_self
+    description: The divine spark within
+    symbol: radiant core
+    qualities:
+    - divinity
+    - truth
+    - essence
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Ocean Waves
+    type: nature
+    description: Rhythmic surf on shore
+    character: rolling waves
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Forest Rain
+    type: nature
+    description: Gentle rainfall through leaves
+    character: soft patter
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Wind Through Trees
+    type: nature
+    description: Gentle breeze in canopy
+    character: rustling leaves
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: soft_female
+  imagery_style: nature
+  score: 0.9299999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 0.8
+    duration: 1.0
+- title: Waters of Grief
+  theme: Inner Peace Meditation
+  metaphor: a garden where memories become seeds of peace
+  therapeutic_goal: grief
+  setting: atop a mountain where the veil between worlds is thin
+  key_transformation: releasing with love and finding peace within the memories
+  archetypes:
+  - name: The Healer
+    role: healing
+    description: Compassionate presence of restoration
+    symbol: healing hands of light
+    qualities:
+    - restoration
+    - compassion
+    - wholeness
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Oracle
+    role: wisdom_keeper
+    description: Seer of past, present, and future
+    symbol: crystal pool
+    qualities:
+    - prophecy
+    - insight
+    - connection
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Soul Star
+    role: higher_self
+    description: Your eternal presence above the crown
+    symbol: star above
+    qualities:
+    - eternity
+    - purpose
+    - connection
+    appearance_section: integration
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Ocean Waves
+    type: nature
+    description: Rhythmic surf on shore
+    character: rolling waves
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Wind Through Trees
+    type: nature
+    description: Gentle breeze in canopy
+    character: rustling leaves
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Forest Rain
+    type: nature
+    description: Gentle rainfall through leaves
+    character: soft patter
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  target_duration_minutes: 30
+  voice_recommendation: soft_female
+  imagery_style: nature
+  score: 0.9299999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 0.8
+    duration: 1.0
+- title: Voyage to the Grief Star
+  theme: Inner Peace Meditation
+  metaphor: a sacred journey through cosmic realms toward grief
+  therapeutic_goal: grief
+  setting: sitting in the observation deck of an ancient alien vessel
+  key_transformation: releasing with love and finding peace within the memories
+  archetypes:
+  - name: The Healer
+    role: healing
+    description: Compassionate presence of restoration
+    symbol: healing hands of light
+    qualities:
+    - restoration
+    - compassion
+    - wholeness
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Oracle
+    role: wisdom_keeper
+    description: Seer of past, present, and future
+    symbol: crystal pool
+    qualities:
+    - prophecy
+    - insight
+    - connection
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Future Self
+    role: higher_self
+    description: Your evolved presence from beyond time
+    symbol: mirror of light
+    qualities:
+    - potential
+    - guidance
+    - love
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  target_duration_minutes: 30
+  voice_recommendation: soft_female
+  imagery_style: cosmic
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0

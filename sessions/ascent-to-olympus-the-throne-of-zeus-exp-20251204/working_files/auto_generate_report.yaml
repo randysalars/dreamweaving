@@ -1,0 +1,67 @@
+session_name: ascent-to-olympus-the-throne-of-zeus-exp-20251204
+topic: "Ascent to Olympus: The Throne of Zeus | Explore Zeus\u2019 sky-realm of thunder,\
+  \ divine law, and sovereignty | Journey: Rise through storm clouds toward a vast\
+  \ marble citadel, receive lightning-wisdom, and learn the power of decisive authority\
+  \ | Archetypes: The Sovereign, The Sky Father, The Judge | Binaural Beats: ~4\u2013\
+  6 Hz (theta) for awe + steady low-frequency rumble | Sound Effects: Thunder rolls,\
+  \ wind currents, distant eagle calls"
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2025-12-04T07:59:38.358044'
+  ended: '2025-12-04T08:33:39.843582'
+  duration_seconds: 2041.5
+stages:
+  completed:
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - package_youtube
+  - upload_website
+  - cleanup
+  - self_improvement
+  failed: []
+  total: 15
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-04T07:59:38.359780'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2025-12-04T07:59:38.379311'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2025-12-04T08:01:28.727760'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2025-12-04T08:01:28.788429'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-04T08:06:46.992834'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/ascent-to-olympus-the-throne-of-zeus-exp-20251204
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/ascent-to-olympus-the-throne-of-zeus-exp-20251204/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/ascent-to-olympus-the-throne-of-zeus-exp-20251204/working_files/script.ssml
+  files:
+  - output/ascent_to_olympus_the_throne_of_zeus_exp_20251204_MASTER.mp3
+  - output/subtitles.vtt
+  - output/youtube_thumbnail.png

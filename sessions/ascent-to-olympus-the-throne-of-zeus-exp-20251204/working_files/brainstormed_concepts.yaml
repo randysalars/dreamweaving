@@ -1,0 +1,502 @@
+- title: The Cosmic Confidence Gateway
+  theme: "Ascent to Olympus: The Throne of Zeus | Explore Zeus\u2019 sky-realm of\
+    \ thunder, divine law, and sovereignty | Journey: Rise through storm clouds toward\
+    \ a vast marble citadel, receive lightning-wisdom, and learn the power of decisive\
+    \ authority | Archetypes: The Sovereign, The Sky Father, The Judge | Binaural\
+    \ Beats: ~4\u20136 Hz (theta) for awe + steady low-frequency rumble | Sound Effects:\
+    \ Thunder rolls, wind currents, distant eagle calls"
+  metaphor: a starship powered by your inner fire
+  therapeutic_goal: confidence
+  setting: sitting in the observation deck of an ancient alien vessel
+  key_transformation: standing in your full power, voice clear and presence magnetic
+  archetypes:
+  - name: The Inner Light
+    role: higher_self
+    description: The divine spark within
+    symbol: radiant core
+    qualities:
+    - divinity
+    - truth
+    - essence
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Phoenix
+    role: transformation
+    description: Symbol of rebirth through fire
+    symbol: flames of renewal
+    qualities:
+    - rebirth
+    - release
+    - new beginnings
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Wise Elder
+    role: guidance
+    description: Ancient keeper of timeless knowledge
+    symbol: glowing staff
+    qualities:
+    - patience
+    - understanding
+    - acceptance
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Empowerment Arc
+    description: Alpha-dominant with theta depths and gamma peaks
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.0
+        duration_ratio: 0.12
+      foundation:
+        offset_hz: 6.0
+        duration_ratio: 0.15
+      empowerment:
+        offset_hz: 10.0
+        duration_ratio: 0.25
+      integration:
+        offset_hz: 12.0
+        duration_ratio: 0.2
+      awakening:
+        offset_hz: 10.0
+        duration_ratio: 0.2
+    base_hz: 432
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6
+  sound_effects:
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: clear_female
+  imagery_style: cosmic
+  score: 0.9999999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.9999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: The Sacred Confidence Chamber
+  theme: "Ascent to Olympus: The Throne of Zeus | Explore Zeus\u2019 sky-realm of\
+    \ thunder, divine law, and sovereignty | Journey: Rise through storm clouds toward\
+    \ a vast marble citadel, receive lightning-wisdom, and learn the power of decisive\
+    \ authority | Archetypes: The Sovereign, The Sky Father, The Judge | Binaural\
+    \ Beats: ~4\u20136 Hz (theta) for awe + steady low-frequency rumble | Sound Effects:\
+    \ Thunder rolls, wind currents, distant eagle calls"
+  metaphor: a temple where your true voice echoes eternal
+  therapeutic_goal: confidence
+  setting: at the threshold of a doorway between realms
+  key_transformation: standing in your full power, voice clear and presence magnetic
+  archetypes:
+  - name: The Soul Star
+    role: higher_self
+    description: Your eternal presence above the crown
+    symbol: star above
+    qualities:
+    - eternity
+    - purpose
+    - connection
+    appearance_section: integration
+    suggested_voice_tone: warm
+  - name: The Alchemist
+    role: transformation
+    description: Master of inner transmutation
+    symbol: philosopher's stone
+    qualities:
+    - transformation
+    - gold from lead
+    - potential
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Star Guide
+    role: guidance
+    description: Celestial being of cosmic navigation
+    symbol: constellation map
+    qualities:
+    - cosmic awareness
+    - pathfinding
+    - clarity
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Empowerment Arc
+    description: Alpha-dominant with theta depths and gamma peaks
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.0
+        duration_ratio: 0.12
+      foundation:
+        offset_hz: 6.0
+        duration_ratio: 0.15
+      empowerment:
+        offset_hz: 10.0
+        duration_ratio: 0.25
+      integration:
+        offset_hz: 12.0
+        duration_ratio: 0.2
+      awakening:
+        offset_hz: 10.0
+        duration_ratio: 0.2
+    base_hz: 432
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6
+  sound_effects:
+  - name: Angelic Choir
+    type: texture
+    description: Ethereal voices
+    character: wordless harmony
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
+  - name: Singing Bowls
+    type: tone
+    description: Tibetan bowl harmonics
+    character: rich overtones
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  target_duration_minutes: 30
+  voice_recommendation: clear_female
+  imagery_style: mystical
+  score: 0.9999999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.9999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Voyage to the Confidence Star
+  theme: "Ascent to Olympus: The Throne of Zeus | Explore Zeus\u2019 sky-realm of\
+    \ thunder, divine law, and sovereignty | Journey: Rise through storm clouds toward\
+    \ a vast marble citadel, receive lightning-wisdom, and learn the power of decisive\
+    \ authority | Archetypes: The Sovereign, The Sky Father, The Judge | Binaural\
+    \ Beats: ~4\u20136 Hz (theta) for awe + steady low-frequency rumble | Sound Effects:\
+    \ Thunder rolls, wind currents, distant eagle calls"
+  metaphor: a starship powered by your inner fire
+  therapeutic_goal: confidence
+  setting: sitting in the observation deck of an ancient alien vessel
+  key_transformation: standing in your full power, voice clear and presence magnetic
+  archetypes:
+  - name: The Future Self
+    role: higher_self
+    description: Your evolved presence from beyond time
+    symbol: mirror of light
+    qualities:
+    - potential
+    - guidance
+    - love
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Butterfly
+    role: transformation
+    description: Embodiment of metamorphosis
+    symbol: chrysalis
+    qualities:
+    - patience
+    - emergence
+    - beauty
+    appearance_section: integration
+    suggested_voice_tone: warm
+  - name: The Star Guide
+    role: guidance
+    description: Celestial being of cosmic navigation
+    symbol: constellation map
+    qualities:
+    - cosmic awareness
+    - pathfinding
+    - clarity
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Empowerment Arc
+    description: Alpha-dominant with theta depths and gamma peaks
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.0
+        duration_ratio: 0.12
+      foundation:
+        offset_hz: 6.0
+        duration_ratio: 0.15
+      empowerment:
+        offset_hz: 10.0
+        duration_ratio: 0.25
+      integration:
+        offset_hz: 12.0
+        duration_ratio: 0.2
+      awakening:
+        offset_hz: 10.0
+        duration_ratio: 0.2
+    base_hz: 432
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6
+  sound_effects:
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: clear_female
+  imagery_style: cosmic
+  score: 0.9999999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.9999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Gateway to Confidence
+  theme: "Ascent to Olympus: The Throne of Zeus | Explore Zeus\u2019 sky-realm of\
+    \ thunder, divine law, and sovereignty | Journey: Rise through storm clouds toward\
+    \ a vast marble citadel, receive lightning-wisdom, and learn the power of decisive\
+    \ authority | Archetypes: The Sovereign, The Sky Father, The Judge | Binaural\
+    \ Beats: ~4\u20136 Hz (theta) for awe + steady low-frequency rumble | Sound Effects:\
+    \ Thunder rolls, wind currents, distant eagle calls"
+  metaphor: a temple where your true voice echoes eternal
+  therapeutic_goal: confidence
+  setting: inside a sacred geometric pattern come alive
+  key_transformation: standing in your full power, voice clear and presence magnetic
+  archetypes:
+  - name: The Soul Star
+    role: higher_self
+    description: Your eternal presence above the crown
+    symbol: star above
+    qualities:
+    - eternity
+    - purpose
+    - connection
+    appearance_section: integration
+    suggested_voice_tone: warm
+  - name: The Alchemist
+    role: transformation
+    description: Master of inner transmutation
+    symbol: philosopher's stone
+    qualities:
+    - transformation
+    - gold from lead
+    - potential
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Star Guide
+    role: guidance
+    description: Celestial being of cosmic navigation
+    symbol: constellation map
+    qualities:
+    - cosmic awareness
+    - pathfinding
+    - clarity
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Empowerment Arc
+    description: Alpha-dominant with theta depths and gamma peaks
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.0
+        duration_ratio: 0.12
+      foundation:
+        offset_hz: 6.0
+        duration_ratio: 0.15
+      empowerment:
+        offset_hz: 10.0
+        duration_ratio: 0.25
+      integration:
+        offset_hz: 12.0
+        duration_ratio: 0.2
+      awakening:
+        offset_hz: 10.0
+        duration_ratio: 0.2
+    base_hz: 432
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6
+  sound_effects:
+  - name: Singing Bowls
+    type: tone
+    description: Tibetan bowl harmonics
+    character: rich overtones
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Angelic Choir
+    type: texture
+    description: Ethereal voices
+    character: wordless harmony
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: clear_female
+  imagery_style: mystical
+  score: 0.9999999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.9999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: The Confidence Within
+  theme: "Ascent to Olympus: The Throne of Zeus | Explore Zeus\u2019 sky-realm of\
+    \ thunder, divine law, and sovereignty | Journey: Rise through storm clouds toward\
+    \ a vast marble citadel, receive lightning-wisdom, and learn the power of decisive\
+    \ authority | Archetypes: The Sovereign, The Sky Father, The Judge | Binaural\
+    \ Beats: ~4\u20136 Hz (theta) for awe + steady low-frequency rumble | Sound Effects:\
+    \ Thunder rolls, wind currents, distant eagle calls"
+  metaphor: a sacred journey through inner realms toward confidence
+  therapeutic_goal: confidence
+  setting: deep within the landscape of your own heart
+  key_transformation: standing in your full power, voice clear and presence magnetic
+  archetypes:
+  - name: The Future Self
+    role: higher_self
+    description: Your evolved presence from beyond time
+    symbol: mirror of light
+    qualities:
+    - potential
+    - guidance
+    - love
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Phoenix
+    role: transformation
+    description: Symbol of rebirth through fire
+    symbol: flames of renewal
+    qualities:
+    - rebirth
+    - release
+    - new beginnings
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Star Guide
+    role: guidance
+    description: Celestial being of cosmic navigation
+    symbol: constellation map
+    qualities:
+    - cosmic awareness
+    - pathfinding
+    - clarity
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Empowerment Arc
+    description: Alpha-dominant with theta depths and gamma peaks
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.0
+        duration_ratio: 0.12
+      foundation:
+        offset_hz: 6.0
+        duration_ratio: 0.15
+      empowerment:
+        offset_hz: 10.0
+        duration_ratio: 0.25
+      integration:
+        offset_hz: 12.0
+        duration_ratio: 0.2
+      awakening:
+        offset_hz: 10.0
+        duration_ratio: 0.2
+    base_hz: 432
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6
+  sound_effects:
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  target_duration_minutes: 30
+  voice_recommendation: clear_female
+  imagery_style: inner
+  score: 0.94
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.9999999999999999
+    sound_design: 1.0
+    duration: 1.0

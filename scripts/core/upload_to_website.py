@@ -59,64 +59,92 @@ DEFAULT_API_URL = "https://www.salars.net"
 SALARSU_PROJECT_PATH = "/media/rsalars/elements/Projects/salarsu"
 
 # Category mapping based on session themes/keywords
-CATEGORY_MAPPING = {
-    # Nature & Forest
-    "forest": "nature-forest",
-    "nature": "nature-forest",
-    "garden": "nature-forest",
-    "eden": "nature-forest",
-    "tree": "nature-forest",
-    "meadow": "nature-forest",
-    "river": "nature-forest",
-    "mountain": "nature-forest",
-    # Cosmic & Space
-    "cosmic": "cosmic-space",
-    "space": "cosmic-space",
-    "star": "cosmic-space",
-    "astral": "cosmic-space",
-    "galaxy": "cosmic-space",
-    "universe": "cosmic-space",
-    "celestial": "cosmic-space",
-    # Healing & Restoration
-    "healing": "healing",
-    "restore": "healing",
-    "repair": "healing",
-    "recover": "healing",
-    "therapy": "healing",
-    "wellness": "healing",
-    # Shadow Work
-    "shadow": "shadow-work",
-    "dark": "shadow-work",
-    "unconscious": "shadow-work",
-    "integration": "shadow-work",
-    # Archetypal Journey
-    "archetype": "archetypal",
-    "journey": "archetypal",
-    "guide": "archetypal",
-    "animal": "archetypal",
-    "totem": "archetypal",
-    "spirit": "archetypal",
-    # Sacred & Spiritual
-    "sacred": "sacred-spiritual",
-    "divine": "sacred-spiritual",
-    "spiritual": "sacred-spiritual",
-    "holy": "sacred-spiritual",
-    "temple": "sacred-spiritual",
-    "altar": "sacred-spiritual",
-    # Confidence & Empowerment
-    "confidence": "confidence",
-    "power": "confidence",
-    "strength": "confidence",
-    "courage": "confidence",
-    "empowerment": "confidence",
-    # Deep Relaxation
-    "relax": "relaxation",
-    "sleep": "relaxation",
-    "calm": "relaxation",
-    "peaceful": "relaxation",
-    "rest": "relaxation",
-    "tranquil": "relaxation",
-}
+def extract_display_title(topic: str, slug: str) -> str:
+    """
+    Extract a clean display title from the topic string or slug.
+
+    Examples:
+        "Ascent to Olympus: The Throne of Zeus | Explore Zeus'..." -> "Ascent to Olympus: The Throne of Zeus"
+        "Journey to Tír na nÓg — The Land of Eternal Youth | ..." -> "Journey to Tír na nÓg: The Land of Eternal Youth"
+        "ascent-to-olympus-the-throne-of-zeus-exp-20251204" -> "Ascent to Olympus: The Throne of Zeus"
+    """
+    import re
+
+    if topic:
+        title = _extract_title_from_topic(topic)
+        # Normalize em-dashes to colons for consistency
+        title = title.replace(" — ", ": ").replace(" – ", ": ")
+        return title
+
+    # Fallback: Convert slug to title
+    return _convert_slug_to_title(slug)
+
+
+def _extract_title_from_topic(topic: str) -> str:
+    """Extract title portion from a topic string."""
+    # Split on pipe first (most common delimiter)
+    if " | " in topic:
+        return topic.split(" | ")[0].strip()
+
+    # Handle em-dash subtitles
+    if " — " in topic:
+        parts = topic.split(" — ")
+        if len(parts) >= 2 and len(parts[1]) < 50:
+            return f"{parts[0]}: {parts[1]}".strip()
+        return parts[0].strip()
+
+    return topic.strip()
+
+
+def _convert_slug_to_title(slug: str) -> str:
+    """Convert a kebab-case slug to a proper title."""
+    import re
+
+    # Remove date suffixes
+    clean_slug = re.sub(r'-exp-\d{8}$', '', slug)
+    clean_slug = re.sub(r'-\d{8}$', '', clean_slug)
+
+    # Convert kebab-case to words
+    words = clean_slug.split('-')
+
+    # Smart capitalization
+    small_words = {'a', 'an', 'the', 'and', 'but', 'or', 'for', 'nor', 'on', 'at', 'to', 'by', 'of', 'in'}
+    result = [
+        word.capitalize() if (i == 0 or word not in small_words) else word
+        for i, word in enumerate(words)
+    ]
+
+    return ' '.join(result)
+
+
+# Import the enhanced categorization system
+try:
+    from categorization import ContentAnalyzer, categorize_session, get_available_categories
+    ENHANCED_CATEGORIZATION = True
+except ImportError:
+    ENHANCED_CATEGORIZATION = False
+    # Fallback simple mapping (used only if categorization module unavailable)
+    CATEGORY_MAPPING = {
+        "forest": "nature-elements", "nature": "nature-elements", "garden": "nature-elements",
+        "eden": "nature-elements", "tree": "nature-elements",
+        "cosmic": "microscopic-cosmic", "space": "microscopic-cosmic", "star": "microscopic-cosmic",
+        "astral": "paranormal-esoteric", "galaxy": "microscopic-cosmic",
+        "healing": "healing-journeys", "restore": "healing-journeys", "heal": "healing-journeys",
+        "shadow": "shadow-depths", "dark": "shadow-depths", "unconscious": "shadow-depths",
+        "archetype": "archetypal-encounters", "journey": "guided-visualization",
+        "guide": "guided-visualization", "animal": "shamanic-journeying",
+        "sacred": "spiritual-religious", "divine": "spiritual-religious",
+        "spiritual": "spiritual-religious", "holy": "spiritual-religious",
+        "confidence": "personal-development", "power": "personal-development",
+        "strength": "personal-development", "courage": "personal-development",
+        "relax": "mindfulness-pathworkings", "sleep": "mindfulness-pathworkings",
+        "calm": "mindfulness-pathworkings", "meditation": "mindfulness-pathworkings",
+        "creative": "creative-inspiration", "inspiration": "creative-inspiration",
+        "lucid": "lucid-dream-induction", "dream": "lucid-dream-induction",
+        "mythic": "mythic-storywork", "myth": "mythic-storywork", "legend": "mythic-storywork",
+        "quantum": "scientific-dimensional", "physics": "scientific-dimensional",
+        "ai": "scientific-dimensional", "neural": "scientific-dimensional",
+    }
 
 
 class RollbackManager:
@@ -178,7 +206,7 @@ class RollbackManager:
 # =============================================================================
 
 class R2Storage:
-    """Upload files to Cloudflare R2 using S3-compatible API."""
+    """Upload files to Cloudflare R2 using boto3 (S3-compatible API)."""
 
     def __init__(self):
         self.account_id = os.environ.get("R2_ACCOUNT_ID")
@@ -192,6 +220,33 @@ class R2Storage:
             self.endpoint = f"https://{self.account_id}.r2.cloudflarestorage.com"
         else:
             self.endpoint = None
+
+        # Initialize boto3 client for reliable uploads
+        self._s3_client = None
+
+    def _get_s3_client(self):
+        """Get boto3 S3 client configured for R2."""
+        if self._s3_client is None:
+            try:
+                import boto3
+                from botocore.config import Config
+
+                self._s3_client = boto3.client(
+                    's3',
+                    endpoint_url=self.endpoint,
+                    aws_access_key_id=self.access_key_id,
+                    aws_secret_access_key=self.secret_access_key,
+                    config=Config(
+                        signature_version='s3v4',
+                        retries={'max_attempts': 3, 'mode': 'adaptive'},
+                        connect_timeout=30,
+                        read_timeout=600,
+                    ),
+                    region_name='auto',  # R2 uses 'auto'
+                )
+            except ImportError:
+                return None
+        return self._s3_client
 
     def is_configured(self) -> bool:
         """Check if R2 is properly configured."""
@@ -301,6 +356,40 @@ class R2Storage:
         extension = extensions.get(file_type, "bin")
         object_key = f"dreamweavings/{slug}/{file_type}.{extension}"
 
+        # Try boto3 first (handles multipart uploads for large files)
+        s3_client = self._get_s3_client()
+        if s3_client:
+            return self._upload_with_boto3(s3_client, file_path, object_key, content_type)
+
+        # Fallback to manual upload with requests
+        return self._upload_with_requests(file_path, object_key, content_type)
+
+    def _upload_with_boto3(self, s3_client, file_path: Path, object_key: str, content_type: str) -> str:
+        """Upload using boto3 with automatic multipart for large files."""
+        from boto3.s3.transfer import TransferConfig
+
+        # Configure multipart: 8MB chunks, multipart for files > 25MB
+        config = TransferConfig(
+            multipart_threshold=25 * 1024 * 1024,  # 25MB
+            multipart_chunksize=8 * 1024 * 1024,   # 8MB chunks
+            max_concurrency=4,
+            use_threads=True,
+        )
+
+        extra_args = {'ContentType': content_type}
+
+        s3_client.upload_file(
+            str(file_path),
+            self.bucket_name,
+            object_key,
+            ExtraArgs=extra_args,
+            Config=config,
+        )
+
+        return f"{self.public_url}/{object_key}"
+
+    def _upload_with_requests(self, file_path: Path, object_key: str, content_type: str) -> str:
+        """Fallback upload using requests (for small files or when boto3 unavailable)."""
         # Read file content
         with open(file_path, "rb") as f:
             file_content = f.read()
@@ -321,19 +410,32 @@ class R2Storage:
         auth_headers = self._sign_request("PUT", path, headers.copy(), payload_hash)
         headers.update(auth_headers)
 
-        # Upload
-        response = requests.put(
-            url,
-            data=file_content,
-            headers=headers,
-            timeout=600,  # 10 min for large files
-        )
+        # Upload with retry logic
+        import time
+        max_retries = 3
+        retry_delay = 5
 
-        if response.status_code not in [200, 201]:
-            raise Exception(f"R2 upload failed: {response.status_code} - {response.text}")
+        for attempt in range(max_retries):
+            try:
+                response = requests.put(
+                    url,
+                    data=file_content,
+                    headers=headers,
+                    timeout=600,
+                )
 
-        # Return public URL
-        return f"{self.public_url}/{object_key}"
+                if response.status_code in [200, 201]:
+                    return f"{self.public_url}/{object_key}"
+                else:
+                    last_error = f"R2 upload failed: {response.status_code} - {response.text}"
+
+            except (requests.exceptions.SSLError, requests.exceptions.ConnectionError) as e:
+                last_error = f"Connection error: {e}"
+
+            if attempt < max_retries - 1:
+                time.sleep(retry_delay * (attempt + 1))
+
+        raise RuntimeError(last_error)
 
     def delete_file(self, url: str) -> bool:
         """Delete a file from R2."""
@@ -537,43 +639,94 @@ class DreamweavingUploader:
 
         return data
 
-    def detect_category(self, data: dict) -> str:
-        """Auto-detect category from session content."""
-        # Build searchable text from various sources
-        search_text = ""
+    def detect_category(self, data: dict) -> dict:
+        """
+        Auto-detect category from session content using enhanced multi-signal analysis.
 
+        Returns:
+            dict with keys:
+                - category: The selected category slug
+                - confidence: Confidence score (0-1)
+                - auto: Whether auto-categorized
+                - alternatives: List of alternative categories
+                - review_suggested: Whether manual review is recommended
+        """
         manifest = data.get("manifest", {})
         session_info = manifest.get("session", {})
-        # theme can be a string or dict - handle both
         theme_raw = manifest.get("theme", {})
         theme_info = theme_raw if isinstance(theme_raw, dict) else {}
-        # If theme is a string, add it to search text directly
-        if isinstance(theme_raw, str):
-            search_text += theme_raw.lower() + " "
-
-        search_text += session_info.get("name", "").lower() + " "
-        search_text += session_info.get("title", "").lower() + " "
-        # Also add manifest-level title for iron-soul-forge style
-        search_text += manifest.get("title", "").lower() + " "
-        search_text += str(theme_info.get("primary", "")).lower() + " "
-        search_text += str(theme_info.get("environment", "")).lower() + " "
-
         concept = data.get("journey_concept", {})
-        search_text += str(concept.get("theme", "")).lower() + " "
-
         youtube = data.get("youtube_metadata", {})
-        title = youtube.get("title", {})
-        if isinstance(title, dict):
-            search_text += str(title.get("primary", "")).lower() + " "
-        else:
-            search_text += str(title).lower() + " "
+        binaural = data.get("binaural_config", {})
 
-        # Find best matching category
+        # Build session data dict for analyzer
+        session_data = {
+            "title": session_info.get("title", "") or manifest.get("title", "") or session_info.get("name", ""),
+            "description": session_info.get("description", "") or manifest.get("description", ""),
+            "topic": session_info.get("topic", ""),
+            "theme": theme_info.get("primary", "") if isinstance(theme_info, dict) else str(theme_raw),
+            "tags": manifest.get("youtube", {}).get("tags", []) or youtube.get("tags", []),
+            "archetypes": [],
+            "binaural_frequency": None,
+        }
+
+        # Extract archetypes from multiple sources
+        if manifest.get("archetypes"):
+            archs = manifest["archetypes"]
+            if isinstance(archs, list):
+                session_data["archetypes"] = [
+                    a.get("name", a) if isinstance(a, dict) else a
+                    for a in archs
+                ]
+        elif theme_info.get("archetypes"):
+            session_data["archetypes"] = theme_info["archetypes"]
+        elif concept.get("archetypes"):
+            archs = concept["archetypes"]
+            if isinstance(archs, dict):
+                session_data["archetypes"] = list(archs.keys())
+            elif isinstance(archs, list):
+                session_data["archetypes"] = archs
+
+        # Extract binaural frequency if available
+        if binaural:
+            freq = binaural.get("beat_frequency") or binaural.get("target_frequency")
+            if freq:
+                session_data["binaural_frequency"] = freq
+
+        # Use enhanced categorization if available
+        if ENHANCED_CATEGORIZATION:
+            result = categorize_session(session_data)
+            return result
+
+        # Fallback to simple keyword matching
+        search_text = " ".join([
+            str(session_data["title"]).lower(),
+            str(session_data["description"]).lower(),
+            str(session_data["topic"]).lower(),
+            str(session_data["theme"]).lower(),
+            " ".join(str(t).lower() for t in session_data.get("tags", [])),
+        ])
+
         for keyword, category in CATEGORY_MAPPING.items():
             if keyword in search_text:
-                return category
+                return {
+                    "category": category,
+                    "confidence": 0.5,
+                    "auto": True,
+                    "alternatives": [],
+                    "review_suggested": True,
+                    "message": f"Simple keyword match: {keyword}",
+                }
 
-        return "archetypal"  # Default fallback
+        return {
+            "category": "guided-visualization",  # Safe default
+            "confidence": 0.0,
+            "auto": False,
+            "alternatives": [],
+            "review_suggested": True,
+            "needs_review": True,
+            "message": "No keywords matched. Using default category.",
+        }
 
     def get_media_files(self) -> dict:
         """Locate all required media files."""
@@ -695,26 +848,11 @@ class DreamweavingUploader:
             or self.session_path.name
         )
 
-        # Get title from multiple possible locations
-        title_text = None
-        # Try youtube metadata first
-        yt_title = youtube_meta.get("title", {})
-        if isinstance(yt_title, dict):
-            title_text = yt_title.get("primary")
-        elif yt_title:
-            title_text = str(yt_title)
-        # Try session info
-        if not title_text:
-            title_text = session_info.get("title")
-        # Try manifest root (iron-soul-forge style)
-        if not title_text:
-            title_text = manifest.get("title")
-        # Try youtube optimized_title
-        if not title_text:
-            title_text = manifest.get("youtube", {}).get("optimized_title")
-        # Fallback to slug
-        if not title_text:
-            title_text = slug
+        # Get topic for title extraction (this is the primary source of truth)
+        topic = session_info.get("topic", "")
+
+        # Extract clean display title from topic or slug
+        title_text = extract_display_title(topic, slug)
 
         # Build archetypes array from multiple possible structures
         archetypes = []
@@ -900,13 +1038,26 @@ class DreamweavingUploader:
             print("  Validation passed")
 
             # Step 4: Detect category
-            category = category_override or self.detect_category(data)
             print(f"\n=== Category Detection ===")
-            print(f"  Detected: {category}")
+            if category_override:
+                category_slug = category_override
+                print(f"  Override: {category_slug}")
+            else:
+                cat_result = self.detect_category(data)
+                category_slug = cat_result["category"]
+                confidence = cat_result.get("confidence", 0)
+                print(f"  Detected: {category_slug}")
+                print(f"  Confidence: {confidence:.0%}")
+                if cat_result.get("alternatives"):
+                    print(f"  Alternatives: {', '.join(cat_result['alternatives'][:3])}")
+                if cat_result.get("review_suggested"):
+                    print("  Note: Manual review suggested")
+                if cat_result.get("message"):
+                    print(f"  {cat_result['message']}")
 
             # Step 5: Build payload
             print("\n=== Building API Payload ===")
-            payload = self.build_payload(data, category)
+            payload = self.build_payload(data, category_slug)
             print(f"  Slug: {payload['slug']}")
             print(f"  Title: {payload['title'][:60]}...")
             print(f"  Duration: {payload['duration_minutes']} min")
@@ -961,7 +1112,8 @@ Environment Variables for Vercel Blob:
         """,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument("--session", required=True, help="Path to session directory")
+    parser.add_argument("--session", help="Path to session directory")
+    parser.add_argument("--list-categories", action="store_true", help="List available categories and exit")
     parser.add_argument("--dry-run", action="store_true", help="Validate without uploading")
     parser.add_argument("--no-git", action="store_true", help="Skip git operations")
     parser.add_argument("--api-url", default=DEFAULT_API_URL, help="API base URL")
@@ -974,6 +1126,48 @@ Environment Variables for Vercel Blob:
     )
 
     args = parser.parse_args()
+
+    # Handle --list-categories
+    if args.list_categories:
+        print("=" * 60)
+        print("AVAILABLE CATEGORIES")
+        print("=" * 60)
+        if ENHANCED_CATEGORIZATION:
+            categories = get_available_categories()
+            # Group by priority ranges
+            core = [c for c in categories if c["priority"] < 100]
+            extended = [c for c in categories if 100 <= c["priority"] < 200]
+            theme = [c for c in categories if 200 <= c["priority"] < 400]
+            growth = [c for c in categories if c["priority"] >= 400]
+
+            if core:
+                print("\nCore Categories (from /types):")
+                for cat in core:
+                    print(f"  {cat['slug']:<35} {cat['name']}")
+            if extended:
+                print("\nExtended Categories (from /more):")
+                for cat in extended:
+                    print(f"  {cat['slug']:<35} {cat['name']}")
+            if theme:
+                print("\nTheme Categories:")
+                for cat in theme:
+                    print(f"  {cat['slug']:<35} {cat['name']}")
+            if growth:
+                print("\nGrowth Experience Categories:")
+                for cat in growth:
+                    print(f"  {cat['slug']:<35} {cat['name']}")
+        else:
+            print("\nSimple category mapping (enhanced categorization not available):")
+            seen = set()
+            for _, category in sorted(CATEGORY_MAPPING.items(), key=lambda x: x[1]):
+                if category not in seen:
+                    print(f"  {category}")
+                    seen.add(category)
+        sys.exit(0)
+
+    # Require session for upload
+    if not args.session:
+        parser.error("--session is required (unless using --list-categories)")
 
     session_path = Path(args.session).resolve()
     if not session_path.exists():

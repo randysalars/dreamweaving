@@ -1,0 +1,32 @@
+Generate a complete SSML hypnotic script for the following session:
+
+**Topic:** Journey to Tír na nÓg — The Land of Eternal Youth | Journey: You pass through an ancient hazel grove and into the shimmering youth-realm where time flows like mist. You meet radiant beings who dissolve aging, fear, and inertia | Archetypes: The Shining Ones, Eternal Child, The Hazel Maiden | Audio: 4 Hz theta; soft fae chimes; reversed harp glissandos; distant ocean-wind
+**Target Duration:** 30 minutes
+**Session Name:** journey-to-tír-na-nóg-the-land-of-eterna-20251204
+
+**Archetypes to incorporate:** The Soul Star, The Alchemist, The Navigator
+
+**Section Timing:**
+- pretalk: 0 minutes
+- induction: 0 minutes
+- journey: 0 minutes
+- integration: 0 minutes
+- awakening: 0 minutes
+
+**CRITICAL REQUIREMENTS:**
+1. The script MUST follow the exact structure from the master prompt:
+   - PRE-TALK (2-3 minutes): Welcome, safety, preparation
+   - INDUCTION (4-5 minutes): Progressive relaxation, breathing, countdown
+   - MAIN JOURNEY (14-16 minutes): The full hypnotic experience with rich sensory detail
+   - INTEGRATION (2-3 minutes): Return to awareness
+   - CLOSING (2-3 minutes): Post-hypnotic anchors, gratitude
+
+2. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
+3. Use <break time="Xs"/> tags liberally for hypnotic pacing
+4. Include rich sensory language engaging all 5 senses
+5. Embed hypnotic suggestions naturally throughout
+6. Include 3-5 post-hypnotic anchors in the closing
+
+**OUTPUT FORMAT:**
+Output ONLY the SSML script, starting with <?xml version="1.0" encoding="UTF-8"?>
+Do NOT include any explanation or commentary before or after the SSML.

@@ -1,0 +1,797 @@
+# Master Category Configuration for Dreamweavings
+# This file defines all categories, their keywords for auto-detection, and metadata
+
+# Core Categories (from /dreamweavings/types)
+core_categories:
+  - id: guided-visualization
+    name: Guided Visualization
+    slug: guided-visualization
+    description: Narrated journeys that use imagery and suggestion to evoke relaxation, insight, or transformation.
+    color: "#8B5CF6"
+    icon: eye
+    priority: 10
+    page_source: types
+    keywords:
+      primary:
+        - visualization
+        - guided
+        - imagery
+        - imagine
+        - picture
+        - visualize
+        - envision
+      secondary:
+        - scene
+        - landscape
+        - vision
+        - see
+        - observe
+        - inner eye
+        - mental image
+
+  - id: shamanic-journeying
+    name: Shamanic Journeying
+    slug: shamanic-journeying
+    description: Drum- or sound-driven explorations for meeting spirit guides, animal allies, or exploring the subconscious.
+    color: "#DC2626"
+    icon: drum
+    priority: 20
+    page_source: types
+    keywords:
+      primary:
+        - shamanic
+        - shaman
+        - drum
+        - drumming
+        - spirit guide
+        - animal ally
+        - totem
+        - power animal
+      secondary:
+        - journey
+        - spirit
+        - realm
+        - lower world
+        - upper world
+        - middle world
+        - soul retrieval
+
+  - id: active-imagination
+    name: Active Imagination
+    slug: active-imagination
+    description: Jungian-inspired techniques for dialoguing with inner figures, archetypes, or dream symbols.
+    color: "#7C3AED"
+    icon: brain
+    priority: 30
+    page_source: types
+    keywords:
+      primary:
+        - active imagination
+        - jungian
+        - jung
+        - dialogue
+        - inner figure
+        - dream symbol
+        - psyche
+      secondary:
+        - unconscious
+        - personification
+        - anima
+        - animus
+        - persona
+        - complex
+        - individuation
+
+  - id: mindfulness-pathworkings
+    name: Mindfulness Pathworkings
+    slug: mindfulness-pathworkings
+    description: Meditative journeys focused on present-moment awareness, body scanning, or breath.
+    color: "#0EA5E9"
+    icon: lotus
+    priority: 40
+    page_source: types
+    keywords:
+      primary:
+        - mindfulness
+        - mindful
+        - meditation
+        - meditative
+        - breath
+        - breathing
+        - present moment
+      secondary:
+        - awareness
+        - body scan
+        - sensation
+        - grounding
+        - centered
+        - stillness
+        - calm
+
+  - id: archetypal-encounters
+    name: Archetypal Encounters
+    slug: archetypal-encounters
+    description: Visualizations for meeting and integrating archetypes such as the Hero, Sage, or Shadow.
+    color: "#F59E0B"
+    icon: mask
+    priority: 50
+    page_source: types
+    keywords:
+      primary:
+        - archetype
+        - archetypal
+        - hero
+        - sage
+        - shadow
+        - warrior
+        - lover
+        - magician
+      secondary:
+        - king
+        - queen
+        - fool
+        - trickster
+        - mother
+        - father
+        - wise old man
+        - great mother
+
+  - id: healing-journeys
+    name: Healing Journeys
+    slug: healing-journeys
+    description: Inner explorations for emotional release, energy balancing, or self-compassion.
+    color: "#10B981"
+    icon: heart
+    priority: 60
+    page_source: types
+    keywords:
+      primary:
+        - healing
+        - heal
+        - restore
+        - repair
+        - recover
+        - wellness
+        - therapy
+      secondary:
+        - emotional release
+        - energy balance
+        - self-compassion
+        - trauma
+        - integration
+        - wholeness
+        - renewal
+
+  - id: creative-inspiration
+    name: Creative Inspiration
+    slug: creative-inspiration
+    description: Dreamweavings designed to unlock creativity, solve problems, or spark new ideas.
+    color: "#EC4899"
+    icon: lightbulb
+    priority: 70
+    page_source: types
+    keywords:
+      primary:
+        - creative
+        - creativity
+        - inspiration
+        - inspire
+        - imagination
+        - artistic
+        - innovation
+      secondary:
+        - muse
+        - ideas
+        - problem solving
+        - brainstorm
+        - vision
+        - expression
+        - art
+
+  - id: lucid-dream-induction
+    name: Lucid Dream Induction
+    slug: lucid-dream-induction
+    description: Techniques to increase awareness within dreams and explore dream worlds consciously.
+    color: "#6366F1"
+    icon: moon
+    priority: 80
+    page_source: types
+    keywords:
+      primary:
+        - lucid dream
+        - lucid dreaming
+        - dream awareness
+        - conscious dreaming
+        - dream control
+      secondary:
+        - reality check
+        - dream state
+        - sleep
+        - REM
+        - hypnagogia
+        - dream recall
+        - oneironautics
+
+# Extended Categories (from /dreamweavings/more - featured)
+extended_categories:
+  - id: elemental-journeys
+    name: Elemental Journeys
+    slug: elemental-journeys
+    description: Visualizations focused on connecting with earth, water, fire, air, or ether for grounding, inspiration, or healing.
+    color: "#78716C"
+    icon: globe
+    priority: 100
+    page_source: more
+    keywords:
+      primary:
+        - element
+        - elemental
+        - earth
+        - water
+        - fire
+        - air
+        - ether
+      secondary:
+        - grounding
+        - flow
+        - transformation
+        - breath
+        - spirit
+        - nature force
+        - primal
+
+  - id: mythic-storywork
+    name: Mythic Storywork
+    slug: mythic-storywork
+    description: Entering mythological landscapes or stories to gain wisdom, guidance, or transformation.
+    color: "#B45309"
+    icon: book
+    priority: 110
+    page_source: more
+    keywords:
+      primary:
+        - myth
+        - mythic
+        - mythology
+        - legend
+        - epic
+        - saga
+        - tale
+      secondary:
+        - hero's journey
+        - quest
+        - odyssey
+        - fairy tale
+        - folklore
+        - story
+        - narrative
+
+  - id: soundscapes
+    name: Soundscapes
+    slug: soundscapes
+    description: Immersive journeys using music, binaural beats, or nature sounds to evoke altered states.
+    color: "#0891B2"
+    icon: music
+    priority: 120
+    page_source: more
+    keywords:
+      primary:
+        - soundscape
+        - binaural
+        - sound healing
+        - frequency
+        - tone
+        - vibration
+        - sonic
+      secondary:
+        - music
+        - ambient
+        - nature sounds
+        - isochronic
+        - solfeggio
+        - 432hz
+        - theta
+
+  - id: collective-dreamweavings
+    name: Collective Dreamweavings
+    slug: collective-dreamweavings
+    description: Group visualizations or shared journeys for collective healing, intention-setting, or creative collaboration.
+    color: "#9333EA"
+    icon: users
+    priority: 130
+    page_source: more
+    keywords:
+      primary:
+        - collective
+        - group
+        - shared
+        - community
+        - together
+        - we
+        - unified
+      secondary:
+        - mass consciousness
+        - hive mind
+        - group soul
+        - collective unconscious
+        - morphic field
+
+  - id: future-self-encounters
+    name: Future Self Encounters
+    slug: future-self-encounters
+    description: Meeting and dialoguing with your future self for insight, encouragement, or direction.
+    color: "#4F46E5"
+    icon: hourglass
+    priority: 140
+    page_source: more
+    keywords:
+      primary:
+        - future self
+        - future version
+        - older self
+        - wiser self
+        - destiny
+        - potential
+      secondary:
+        - timeline
+        - possibilities
+        - direction
+        - guidance
+        - vision
+        - purpose
+
+  - id: integration-pathworkings
+    name: Integration Pathworkings
+    slug: integration-pathworkings
+    description: Guided processes for integrating insights, healing, or archetypal energies from previous journeys into daily life.
+    color: "#16A34A"
+    icon: puzzle
+    priority: 150
+    page_source: more
+    keywords:
+      primary:
+        - integration
+        - integrate
+        - embody
+        - ground
+        - anchor
+        - consolidate
+      secondary:
+        - apply
+        - daily life
+        - practical
+        - real world
+        - sustainable
+        - lasting
+
+# Theme-based Sub-Categories (consolidated from /more's 95+ items)
+theme_categories:
+  - id: cultural-traditions
+    name: Cultural Traditions
+    slug: cultural-traditions
+    description: Journey through the wisdom, myths, and practices of different world cultures.
+    color: "#EA580C"
+    icon: globe-alt
+    priority: 200
+    page_source: more
+    keywords:
+      primary:
+        - cultural
+        - tradition
+        - native american
+        - indigenous
+        - japanese
+        - celtic
+        - egyptian
+        - apache
+      secondary:
+        - ancestral
+        - heritage
+        - customs
+        - ritual
+        - ceremony
+        - lineage
+
+  - id: spiritual-religious
+    name: Spiritual & Religious
+    slug: spiritual-religious
+    description: Explorations rooted in Christian, Biblical, Gnostic, or other spiritual traditions.
+    color: "#A855F7"
+    icon: church
+    priority: 210
+    page_source: more
+    keywords:
+      primary:
+        - christian
+        - biblical
+        - gnostic
+        - spiritual
+        - sacred
+        - divine
+        - holy
+        - religious
+      secondary:
+        - saints
+        - virtues
+        - temple
+        - altar
+        - prayer
+        - devotion
+        - grace
+        - masonic
+        - wiccan
+
+  - id: nature-elements
+    name: Nature & Elements
+    slug: nature-elements
+    description: Connect with animal guides, plants, minerals, and the natural world.
+    color: "#22C55E"
+    icon: tree
+    priority: 220
+    page_source: more
+    keywords:
+      primary:
+        - nature
+        - forest
+        - garden
+        - tree
+        - plant
+        - animal
+        - mineral
+        - crystal
+      secondary:
+        - eden
+        - meadow
+        - river
+        - mountain
+        - herb
+        - seed
+        - wildlife
+        - ecosystem
+
+  - id: mythology-archetypes
+    name: Mythology & Archetypes
+    slug: mythology-archetypes
+    description: Encounter gods, deities, mythical creatures, and universal symbols.
+    color: "#F97316"
+    icon: sparkles
+    priority: 230
+    page_source: more
+    keywords:
+      primary:
+        - god
+        - goddess
+        - deity
+        - mythical creature
+        - dragon
+        - unicorn
+        - tarot
+        - tree of life
+      secondary:
+        - pantheon
+        - olympus
+        - asgard
+        - kabbalah
+        - symbol
+        - oracle
+
+  - id: healing-wellness
+    name: Healing & Wellness
+    slug: healing-wellness
+    description: Journeys for trauma healing, addiction recovery, and energy work.
+    color: "#14B8A6"
+    icon: heartbeat
+    priority: 240
+    page_source: more
+    keywords:
+      primary:
+        - trauma
+        - addiction
+        - recovery
+        - energy healing
+        - chakra
+        - negativity
+        - release
+      secondary:
+        - forgiveness
+        - letting go
+        - peace
+        - balance
+        - harmony
+        - restoration
+
+  - id: personal-development
+    name: Personal Development
+    slug: personal-development
+    description: Build confidence, cultivate wealth consciousness, and strengthen relationships.
+    color: "#F43F5E"
+    icon: trending-up
+    priority: 250
+    page_source: more
+    keywords:
+      primary:
+        - confidence
+        - power
+        - strength
+        - courage
+        - wealth
+        - abundance
+        - success
+      secondary:
+        - motivation
+        - achievement
+        - empowerment
+        - relationship
+        - connection
+        - purpose
+
+  - id: creative-arts
+    name: Creative Arts
+    slug: creative-arts
+    description: Inspiration for poetry, art, music, and writing.
+    color: "#D946EF"
+    icon: palette
+    priority: 260
+    page_source: more
+    keywords:
+      primary:
+        - poetry
+        - artistic
+        - musical
+        - writing
+        - creative arts
+        - expression
+      secondary:
+        - muse
+        - composition
+        - performance
+        - dance
+        - theater
+
+  - id: science-exploration
+    name: Science Exploration
+    slug: science-exploration
+    description: Visualize physics, mathematics, and cognitive enhancement concepts.
+    color: "#3B82F6"
+    icon: beaker
+    priority: 270
+    page_source: more
+    keywords:
+      primary:
+        - physics
+        - math
+        - chemistry
+        - science
+        - cognitive
+        - quantum
+        - electric
+      secondary:
+        - elements
+        - periodic table
+        - formula
+        - experiment
+        - discovery
+
+  - id: paranormal-esoteric
+    name: Paranormal & Esoteric
+    slug: paranormal-esoteric
+    description: Explore UFOs, parallel realities, third eye awakening, and astral travel.
+    color: "#8B5CF6"
+    icon: star
+    priority: 280
+    page_source: more
+    keywords:
+      primary:
+        - ufo
+        - alien
+        - parallel reality
+        - third eye
+        - astral
+        - paranormal
+        - psychic
+      secondary:
+        - telepathy
+        - clairvoyance
+        - extraterrestrial
+        - dimension
+        - portal
+
+  - id: historical-journeys
+    name: Historical Journeys
+    slug: historical-journeys
+    description: Experience key moments from history and learn from great leaders.
+    color: "#78716C"
+    icon: landmark
+    priority: 290
+    page_source: more
+    keywords:
+      primary:
+        - history
+        - historical
+        - president
+        - civil war
+        - independence
+        - ancient
+        - medieval
+      secondary:
+        - era
+        - period
+        - famous
+        - leader
+        - founding fathers
+
+  - id: entertainment-inspired
+    name: Entertainment Inspired
+    slug: entertainment-inspired
+    description: Adventures inspired by Lord of the Rings, The Matrix, and beloved stories.
+    color: "#EF4444"
+    icon: film
+    priority: 300
+    page_source: more
+    keywords:
+      primary:
+        - lord of the rings
+        - matrix
+        - book character
+        - movie
+        - film
+        - story
+        - adventure
+      secondary:
+        - tolkien
+        - middle earth
+        - neo
+        - fictional
+        - fantasy world
+
+  - id: sensory-body
+    name: Sensory & Body
+    slug: sensory-body
+    description: Explore the five senses, sensuality, beauty, and body wisdom.
+    color: "#FB923C"
+    icon: hand
+    priority: 310
+    page_source: more
+    keywords:
+      primary:
+        - senses
+        - sensory
+        - sensuality
+        - beauty
+        - body
+        - touch
+        - pleasure
+      secondary:
+        - taste
+        - smell
+        - sight
+        - hearing
+        - kinesthetic
+        - somatic
+
+  - id: shadow-depths
+    name: Shadow & Depths
+    slug: shadow-depths
+    description: Descent journeys into the underworld, darkness integration, and shadow work.
+    color: "#1F2937"
+    icon: moon-stars
+    priority: 320
+    page_source: more
+    keywords:
+      primary:
+        - shadow
+        - dark
+        - underworld
+        - descent
+        - unconscious
+        - depth
+      secondary:
+        - hell
+        - abyss
+        - void
+        - monster
+        - fear
+        - integration
+
+  - id: higher-realms
+    name: Higher Realms
+    slug: higher-realms
+    description: Ascent journeys to heavenly realms, light, angels, and spiritual guides.
+    color: "#FCD34D"
+    icon: sun
+    priority: 330
+    page_source: more
+    keywords:
+      primary:
+        - ascent
+        - heaven
+        - heavenly
+        - light
+        - angel
+        - higher
+        - divine
+      secondary:
+        - guide
+        - helper
+        - celestial
+        - luminous
+        - radiant
+        - enlightenment
+
+# Growth Experience Categories (from /most-insightful-growth-experiences)
+growth_categories:
+  - id: consciousness-exploration
+    name: Consciousness Exploration
+    slug: consciousness-exploration
+    description: Explore infant consciousness, non-human perspectives, collective awareness, and forces of nature.
+    color: "#06B6D4"
+    icon: brain
+    priority: 400
+    page_source: growth
+    keywords:
+      primary:
+        - consciousness
+        - awareness
+        - perception
+        - mind
+        - being
+        - existence
+        - perspective
+      secondary:
+        - infant
+        - newborn
+        - animal mind
+        - plant consciousness
+        - hive mind
+        - collective
+
+  - id: scientific-dimensional
+    name: Scientific & Dimensional
+    slug: scientific-dimensional
+    description: Quantum physics, AI perspectives, time travel, and evolutionary journeys.
+    color: "#0284C7"
+    icon: atom
+    priority: 410
+    page_source: growth
+    keywords:
+      primary:
+        - quantum
+        - physics
+        - ai
+        - artificial intelligence
+        - time travel
+        - evolution
+        - dimension
+      secondary:
+        - particle
+        - wave
+        - observer
+        - relativity
+        - multiverse
+        - paradox
+
+  - id: microscopic-cosmic
+    name: Microscopic & Cosmic
+    slug: microscopic-cosmic
+    description: Nanoparticle voyages, black hole journeys, and universal perspectives.
+    color: "#7C3AED"
+    icon: galaxy
+    priority: 420
+    page_source: growth
+    keywords:
+      primary:
+        - microscopic
+        - cosmic
+        - nanoparticle
+        - black hole
+        - universe
+        - galaxy
+        - star
+      secondary:
+        - cell
+        - molecule
+        - atom
+        - space
+        - nebula
+        - big bang
+        - radiation
