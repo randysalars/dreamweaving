@@ -172,3 +172,6 @@ desktop.ini
 *.swp
 *.swo
 *~
+
+# Accidental ffmpeg output files
+--output
