@@ -191,8 +191,13 @@ class Pipeline:
 
         # Skip video if no images
         if stage.name == "video":
-            images_dir = self.session_path / "images_uploaded"
-            if not images_dir.exists() or not list(images_dir.glob("*.png")):
+            # Support both canonical sessions/images/uploaded and legacy images_uploaded
+            candidate_dirs = [
+                self.session_path / "images" / "uploaded",
+                self.session_path / "images_uploaded",
+            ]
+            images_dir = next((d for d in candidate_dirs if d.exists()), None)
+            if not images_dir or not list(images_dir.glob("*.png")):
                 stage.skip("No images available")
                 return True
 
