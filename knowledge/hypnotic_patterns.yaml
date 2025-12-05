@@ -1,0 +1,3318 @@
+# Hypnotic Pattern Library for SSML Script Production
+# Version: 2.0
+# Last Updated: 2025-12-04
+# Source: Extracted from Luminous Being Pathworking Review + Codebase Standards + Phase 2 Enhancements
+
+metadata:
+  version: "2.0"
+  created: "2025-12-04"
+  purpose: "Comprehensive hypnotic compiler with depth stages, families, and distribution validation"
+  constraint: "All patterns use rate='1.0' - achieve pacing through breaks, not slow speech"
+
+# =============================================================================
+# SECTION 0: DEPTH STAGES (First-Class Constructs)
+# =============================================================================
+# Stages represent the listener's trance depth throughout the session.
+# Each stage has specific prosody, pacing, and pattern requirements.
+
+stages:
+  pre_talk:
+    description: "Safety, consent, framing, expectations"
+    pitch: "0st"
+    volume: "0dB"
+    max_words_between_breaks: 80
+    break_range: "700ms-1.5s"
+    required_patterns:
+      - "safety_clause"
+      - "yes_set"
+    mood: "grounded, warm, reassuring"
+    listener_state: "alert, curious, preparing"
+
+  induction:
+    description: "Pacing, yes-set, physical relaxation, breath pacing"
+    pitch: "-2st"
+    volume: "-1dB"
+    max_words_between_breaks: 60
+    break_range: "1.0s-2.5s"
+    required_patterns:
+      - "breath_pacing"
+      - "progressive_relaxation"
+      - "embedded_commands"
+    mood: "calming, deepening, trusting"
+    listener_state: "relaxing, following, settling"
+
+  deepening:
+    description: "Fractionation, double-binds, time distortion begins"
+    pitch: "-2st"
+    volume: "-2dB"
+    max_words_between_breaks: 50
+    break_range: "1.5s-3.0s"
+    required_patterns:
+      - "fractionation_loop"
+    mood: "deeper, slower, more spacious"
+    listener_state: "drifting, letting go, trusting"
+
+  journey:
+    description: "Rich VAK imagery, mythic/archetypal content, symbolic encounters"
+    pitch: "-1st"
+    volume: "-1dB"
+    max_words_between_breaks: 60
+    break_range: "1.5s-3.5s"
+    required_patterns:
+      - "vak_rotation"
+      - "archetypal_encounter"
+      - "embedded_commands"
+    mood: "immersive, vivid, transformative"
+    listener_state: "deep experience, receptive, engaged"
+
+  helm_deep_trance:
+    description: "Maximal stillness, slow rhythm, deep loops, identity shifts"
+    pitch: "-4st"
+    volume: "-3dB"
+    max_words_between_breaks: 40
+    break_range: "2.5s-5.0s"
+    required_patterns:
+      - "fractionation_loop"
+      - "double_bind"
+      - "temporal_dissociation"
+    mood: "profound, sacred, timeless"
+    listener_state: "deepest trance, dissolved boundaries, peak experience"
+
+  integration:
+    description: "Temporal dissociation, resource anchoring, future pacing"
+    pitch: "-1st"
+    volume: "-1dB"
+    max_words_between_breaks: 60
+    break_range: "1.5s-3.0s"
+    required_patterns:
+      - "temporal_dissociation"
+      - "future_pacing"
+      - "anchoring"
+    mood: "gently rising, consolidating, meaningful"
+    listener_state: "processing, integrating, appreciating"
+
+  reorientation:
+    description: "Counting up, energy returning, grounding, safety"
+    pitch: "0st"
+    volume: "0dB"
+    max_words_between_breaks: 80
+    break_range: "700ms-1.5s"
+    required_patterns:
+      - "ascending_count"
+      - "grounding"
+      - "safety_reassurance"
+    mood: "brightening, energizing, present"
+    listener_state: "returning, alert, refreshed"
+
+# Stage transition map (recommended flow)
+stage_flow:
+  default_sequence:
+    - pre_talk
+    - induction
+    - deepening
+    - journey
+    - helm_deep_trance
+    - journey  # return from helm
+    - integration
+    - reorientation
+
+  transitions:
+    pre_talk_to_induction:
+      bridge_pattern: "And now, as you settle in more deeply..."
+      break_before: "2s"
+    induction_to_deepening:
+      bridge_pattern: "Going deeper now, with each breath..."
+      break_before: "3s"
+    deepening_to_journey:
+      bridge_pattern: "And as you arrive in this place..."
+      break_before: "4s"
+    journey_to_helm:
+      bridge_pattern: "Into the very heart of this experience..."
+      break_before: "5s"
+    helm_to_integration:
+      bridge_pattern: "And gently now, beginning to bring these gifts back..."
+      break_before: "4s"
+    integration_to_reorientation:
+      bridge_pattern: "Beginning to return, refreshed and renewed..."
+      break_before: "3s"
+
+# =============================================================================
+# PROSODY STANDARDS BY STAGE
+# =============================================================================
+
+prosody_standards:
+  # Per-stage defaults
+  stage_defaults:
+    pre_talk:
+      pitch: "0st"
+      volume: "0dB"
+      note: "Normal, grounded, establishing rapport"
+    induction:
+      pitch: "-2st"
+      volume: "-1dB"
+      note: "Deeper pitch for calming"
+    deepening:
+      pitch: "-2st"
+      volume: "-2dB"
+      note: "Quieter, slower cadence"
+    journey:
+      pitch: "-1st"
+      volume: "-1dB"
+      note: "Immersive but engaged"
+    helm_deep_trance:
+      pitch: "-4st"
+      volume: "-3dB"
+      note: "Deepest, most sacred tone"
+    integration:
+      pitch: "-1st"
+      volume: "-1dB"
+      note: "Gently rising"
+    reorientation:
+      pitch: "0st"
+      volume: "0dB"
+      note: "Bright, present, alert"
+
+  # Inline emphasis words (deeper pitch drops on key terms)
+  deepening_keywords:
+    words:
+      - deeper
+      - down
+      - relax
+      - release
+      - rest
+      - let go
+      - drift
+      - sink
+      - float
+      - melt
+    inline_pitch: "-4st"
+    template: '<prosody pitch="-4st">{word}</prosody>'
+    usage: "Apply to deepening commands for emphasis"
+
+  # Volume shaping for key moments
+  volume_shapes:
+    whisper_moment:
+      volume: "-4dB"
+      usage: "For intimate, powerful suggestions"
+      example: '<prosody volume="-4dB">and something shifts...</prosody>'
+
+    crescendo_return:
+      volume: "+1dB"
+      usage: "Building energy during reorientation"
+      example: '<prosody volume="+1dB">feeling more alert, more present</prosody>'
+
+    sacred_pause:
+      volume: "-2dB"
+      usage: "Before revealing something important"
+      example: '<prosody volume="-2dB">and here, you discover...</prosody>'
+
+# =============================================================================
+# REQUIRED SAFETY PATTERN (HARD FAIL IF MISSING)
+# =============================================================================
+
+required_patterns:
+  safety_and_autonomy_clause:
+    stages: [pre_talk]
+    required: true  # HARD FAIL if missing
+    position: "within first 500 words"
+    template: |
+      <prosody rate="1.0" pitch="0st">
+      You remain fully in control throughout this experience...<break time="1.5s"/>
+      and at any time, you can simply choose to return
+      to your usual waking awareness...<break time="1.5s"/>
+      feeling clear and grounded...<break time="2s"/>
+      </prosody>
+    validation_phrases:
+      - "remain.*in control"
+      - "return to.*awareness"
+      - "at any time.*choose"
+      - "completely safe"
+      - "fully aware.*in control"
+    note: "Validator will HARD FAIL without safety language in first 500 words"
+
+# =============================================================================
+# SECTION 1: EMBEDDED COMMAND PATTERNS
+# =============================================================================
+
+embedded_commands:
+  description: >
+    Embed hypnotic suggestions within flowing sentences using <emphasis> tags.
+    The unconscious mind responds to emphasized words as direct instructions.
+
+  # Pattern metadata
+  granularity: micro  # Used within sentences
+  stages: [induction, deepening, journey, helm_deep_trance, integration]
+
+  # Distribution requirements
+  minimum_per_script: 10
+  max_per_sentence: 2
+  max_per_100_words: 8
+  min_per_100_words: 2
+  distribution: "3-5 in induction, 5-7 in journey, 2-3 in integration"
+  min_spacing_sentences: 1  # Don't cluster more than 2 in adjacent sentences
+
+  patterns:
+    permission:
+      template: >
+        You can <emphasis level="moderate">allow</emphasis> this experience to deepen...<break time="2.5s"/>
+      usage: "When inviting listener to accept suggestions"
+      examples:
+        - "You can <emphasis level=\"moderate\">allow</emphasis> yourself to drift..."
+        - "You may <emphasis level=\"moderate\">permit</emphasis> this feeling to grow..."
+        - "It's perfectly safe to <emphasis level=\"moderate\">let go</emphasis>..."
+
+    noticing:
+      template: >
+        You may begin to <emphasis level="moderate">notice</emphasis> how easily you <emphasis level="moderate">relax</emphasis>...<break time="2s"/>
+      usage: "Drawing attention to internal experience"
+      examples:
+        - "You might <emphasis level=\"moderate\">notice</emphasis> a warmth spreading..."
+        - "Perhaps you begin to <emphasis level=\"moderate\">sense</emphasis> a lightness..."
+        - "You may <emphasis level=\"moderate\">become aware</emphasis> of something shifting..."
+
+    release:
+      template: >
+        Your mind naturally begins to <emphasis level="moderate">release</emphasis> what no longer serves...<break time="2.5s"/>
+      usage: "For letting go of tension, worry, old patterns"
+      examples:
+        - "Simply <emphasis level=\"moderate\">release</emphasis> any remaining tension..."
+        - "You can <emphasis level=\"moderate\">let go</emphasis> of that weight now..."
+        - "<emphasis level=\"moderate\">Dissolving</emphasis> anything that no longer serves..."
+
+    opening:
+      template: >
+        Something within you <emphasis level="moderate">opens</emphasis> to receive...<break time="2s"/>
+      usage: "For receptivity to new insights/healing"
+      examples:
+        - "Your heart gently <emphasis level=\"moderate\">opens</emphasis>..."
+        - "A door within <emphasis level=\"moderate\">opens</emphasis>..."
+        - "You find yourself <emphasis level=\"moderate\">ready</emphasis> to receive..."
+
+    deepening:
+      template: >
+        And you go <emphasis level="strong">deeper</emphasis> now...<break time="3s"/>
+      usage: "Direct trance deepening commands"
+      emphasis_level: "strong"
+      examples:
+        - "Going <emphasis level=\"strong\">deeper</emphasis> with each breath..."
+        - "Sinking <emphasis level=\"strong\">down</emphasis> even further..."
+        - "<emphasis level=\"strong\">Deeper</emphasis> and <emphasis level=\"strong\">deeper</emphasis>..."
+
+# =============================================================================
+# SECTION 2: FRACTIONATION LOOP PATTERNS
+# =============================================================================
+
+fractionation_loops:
+  description: >
+    Circular deepening patterns that create self-reinforcing trance spirals.
+    Each iteration compounds the suggestion's effect.
+
+  # Pattern metadata
+  granularity: macro  # Spans multiple sentences
+  stages: [deepening, helm_deep_trance]
+
+  # Distribution requirements
+  minimum_per_script: 2
+  min_spacing_sentences: 5  # At least 5 sentences between loops
+  placement:
+    loop_1_position: "15-25%"  # In induction/deepening area
+    loop_2_position: "50-75%"  # At journey/helm peak
+
+  patterns:
+    standard_loop:
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And the deeper you go...<break time="1.5s"/>
+        the more natural it feels...<break time="1.5s"/>
+        and the more natural it feels...<break time="1.5s"/>
+        the deeper you <emphasis level="moderate">allow</emphasis> yourself to go...<break time="4s"/>
+        </prosody>
+      usage: "Primary deepening pattern"
+      variations:
+        - "deeper → comfortable → comfortable → deeper"
+        - "relaxed → safe → safe → relaxed"
+        - "open → trusting → trusting → open"
+
+    double_bind_loop:
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        You can choose to go <emphasis level="strong">deeper</emphasis> now...<break time="2s"/>
+        or you can wait...<break time="1.5s"/>
+        and notice that you are already going deeper...<break time="1.5s"/>
+        simply by listening...<break time="4s"/>
+        </prosody>
+      usage: "When more resistance is present"
+      note: "Both options lead to deepening"
+
+    curiosity_loop:
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And as you become curious about what happens next...<break time="1.5s"/>
+        that curiosity itself becomes the doorway...<break time="1.5s"/>
+        and the more curious you become...<break time="1.5s"/>
+        the more that doorway <emphasis level="moderate">opens</emphasis>...<break time="3s"/>
+        </prosody>
+      usage: "For journey/exploration sections"
+
+# =============================================================================
+# SECTION 3: MILTON MODEL PATTERNS
+# =============================================================================
+
+milton_model:
+  description: >
+    Ericksonian language patterns that bypass conscious resistance.
+    Named after Milton H. Erickson, founder of modern hypnotherapy.
+
+  # Pattern metadata
+  granularity: micro  # Language techniques used throughout
+  stages: [pre_talk, induction, deepening, journey, helm_deep_trance, integration, reorientation]
+
+  patterns:
+    yes_sets:
+      description: "Series of undeniable truths that create agreement momentum"
+      minimum: 3
+      placement: "Opening of pre-talk and induction"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        You're here...<break time="700ms"/>
+        you're listening...<break time="700ms"/>
+        and already beginning to settle in...<break time="1.5s"/>
+        </prosody>
+      examples:
+        - "You can hear my voice... you can feel your body... you're breathing..."
+        - "You found this moment... you chose to be here... and something brought you..."
+        - "The day has happened... time has passed... and now you rest..."
+
+    presuppositions:
+      description: "Statements that assume the desired outcome is already occurring"
+      template: "As you continue to deepen..."
+      examples:
+        - "As you continue to relax..." (assumes relaxation)
+        - "While you drift deeper..." (assumes deepening)
+        - "The more you allow this..." (assumes allowance)
+        - "When you notice that shift..." (assumes shift will occur)
+
+    modal_operators:
+      description: "Words that create possibility rather than command"
+      words: ["may", "might", "can", "could", "perhaps", "possibly"]
+      template: "You may begin to notice..."
+      contrast:
+        commanding: "Relax now" # Resistance-inducing
+        permissive: "You may find yourself relaxing..." # Acceptance-inducing
+
+    double_binds:
+      description: "Choices where both options lead to the desired outcome"
+      template: |
+        You can choose to go deeper now...<break time="1.5s"/>
+        or allow yourself to drift into depth slowly...<break time="2s"/>
+      examples:
+        - "You can relax quickly or slowly, whichever feels right..."
+        - "You might notice this in your body first, or perhaps in your mind..."
+        - "Whether you go deeper now or in a moment, the journey continues..."
+
+    truisms:
+      description: "Universal statements that are impossible to disagree with"
+      examples:
+        - "Everyone knows how to breathe naturally..."
+        - "The body knows how to heal itself..."
+        - "Sometimes the mind needs rest..."
+        - "Change happens in its own time..."
+
+# =============================================================================
+# SECTION 4: BREATH PACING PATTERNS
+# =============================================================================
+
+breath_pacing:
+  description: >
+    Synchronize language with breath rhythm to create physiological entrainment.
+    Activates parasympathetic nervous system, deepening relaxation.
+
+  # Pattern metadata
+  granularity: macro  # Spans multiple sentences with rhythm
+  stages: [induction, deepening, journey]
+
+  patterns:
+    synchronized_visualization:
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        Colors breathing with your inhale...<break time="2s"/>
+        light shimmering with your exhale...<break time="2s"/>
+        shapes softening into view...<break time="3s"/>
+        </prosody>
+      usage: "Journey visualization sections"
+
+    breath_counting:
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        Breathe in for four...<break time="4s"/>
+        hold gently...<break time="4s"/>
+        and exhale slowly for six...<break time="6s"/>
+        </prosody>
+      usage: "Induction breath work"
+      note: "Use ellipsis after numbers to prevent cutoff (L019)"
+
+    wave_rhythm:
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        Like gentle waves...<break time="1.5s"/>
+        rising with each inhale...<break time="2s"/>
+        and falling with each exhale...<break time="2s"/>
+        a rhythm as natural as the sea...<break time="3s"/>
+        </prosody>
+      usage: "Establishing natural rhythm"
+
+    body_scan_breath:
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        Breathing relaxation into your [body part]...<break time="2s"/>
+        and as you exhale, any tension simply releases...<break time="2.5s"/>
+        </prosody>
+      usage: "Progressive relaxation induction"
+
+# =============================================================================
+# SECTION 5: SENSORY STACKING (VAK) PATTERNS
+# =============================================================================
+
+sensory_stacking:
+  description: >
+    Layer Visual, Auditory, and Kinesthetic descriptions to engage all
+    representational systems. Creates vivid, memorable experiences.
+
+  # Pattern metadata
+  granularity: macro  # Spans multiple sentences
+  stages: [journey, helm_deep_trance, integration]
+  minimum_vak_cycles: 3
+
+  rotation_pattern: "V → A → K → V → K → A (vary to maintain engagement)"
+
+  templates:
+    visual:
+      descriptors: ["see", "notice", "observe", "imagine", "picture", "envision"]
+      elements: ["colors", "shapes", "light", "textures", "movement", "patterns"]
+      example: >
+        You may begin to see... or sense... a landscape forming...<break time="2s"/>
+        shapes softening into view...<break time="2s"/>
+
+    auditory:
+      descriptors: ["hear", "listen", "notice the sound of", "the quality of silence"]
+      elements: ["sounds", "silence", "rhythm", "tone", "whispers", "music"]
+      example: >
+        Perhaps you notice any sounds... or the deep quality of silence...<break time="2s"/>
+        a gentle hum... or crystalline tones...<break time="2.5s"/>
+
+    kinesthetic:
+      descriptors: ["feel", "sense", "notice the sensation of", "experience"]
+      elements: ["warmth", "lightness", "heaviness", "tingling", "expansion", "softness"]
+      example: >
+        And you might feel a warmth spreading through your chest...<break time="2s"/>
+        or perhaps a lightness... as if floating...<break time="2.5s"/>
+
+  full_stack_example: |
+    <prosody rate="1.0" pitch="-1st">
+    <!-- Visual -->
+    A golden light begins to appear before you...<break time="2s"/>
+    soft and warm, like sunrise...<break time="2s"/>
+    <!-- Auditory -->
+    Perhaps you notice a gentle tone... or the quality of deep silence...<break time="2s"/>
+    <!-- Kinesthetic -->
+    And a warmth spreads through your body...<break time="2s"/>
+    comfortable... safe... expansive...<break time="3s"/>
+    </prosody>
+
+# =============================================================================
+# SECTION 6: TEMPORAL DISSOCIATION PATTERNS
+# =============================================================================
+
+temporal_dissociation:
+  description: >
+    Language that disrupts normal time perception, deepening trance
+    and extending the subjective experience.
+
+  # Pattern metadata
+  granularity: macro
+  stages: [helm_deep_trance, integration]
+  required_in: [integration]  # Must appear in integration section
+
+  patterns:
+    time_distortion:
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        Moments may feel like they stretch...<break time="2s"/>
+        or shorten...<break time="1.5s"/>
+        as you drift...<break time="3s"/>
+        </prosody>
+      usage: "During deep journey sections"
+
+    future_pacing:
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And in the minutes...<break time="1s"/>
+        hours...<break time="1s"/>
+        even days ahead...<break time="1.5s"/>
+        insights continue unfolding...<break time="3s"/>
+        as your mind gently reorganizes around what serves you most...<break time="4s"/>
+        </prosody>
+      usage: "Integration section - extends benefits beyond session"
+      placement: "Always in integration, before return"
+
+    eternal_moment:
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        Here, in this timeless space...<break time="2s"/>
+        where moments expand...<break time="2s"/>
+        and all that exists is this peaceful now...<break time="3.5s"/>
+        </prosody>
+      usage: "Peak journey moments"
+
+# =============================================================================
+# SECTION 7: BREAK TIMING STANDARDS
+# =============================================================================
+
+break_timing:
+  critical_rule: "ALWAYS add punctuation before break tags (L016)"
+
+  durations:
+    phrase:
+      time: "700ms-1.0s"
+      usage: "Between phrases within a sentence"
+      ssml: "word,<break time=\"700ms\"/>"
+
+    sentence:
+      time: "1.0s-1.7s"
+      usage: "After complete sentences"
+      ssml: "sentence.<break time=\"1.3s\"/>"
+
+    embedded_command:
+      time: "2.0s-2.5s"
+      usage: "After emphasized embedded commands"
+      ssml: "<emphasis level=\"moderate\">allow</emphasis>.<break time=\"2.5s\"/>"
+
+    breathing_cue:
+      time: "2.5s-3.5s"
+      usage: "During breathing instructions"
+      ssml: "inhale...<break time=\"3s\"/>"
+
+    visualization:
+      time: "3.0s-4.0s"
+      usage: "After visualization prompts"
+      ssml: "See it clearly.<break time=\"3.5s\"/>"
+
+    transition:
+      time: "4.0s-5.5s"
+      usage: "Major section transitions"
+      ssml: "You have arrived.<break time=\"5s\"/>"
+
+    trance_drop:
+      time: "3.5s-4.5s"
+      usage: "After deepening commands"
+      ssml: "<emphasis level=\"strong\">deeper</emphasis>...<break time=\"4s\"/>"
+
+  punctuation_rules:
+    - "Comma before short breaks: word,<break time=\"700ms\"/>"
+    - "Ellipsis for trailing thoughts: deeper...<break time=\"2s\"/>"
+    - "Period for complete statements: rest.<break time=\"1.5s\"/>"
+    - "Numbers need ellipsis: two...<break time=\"700ms\"/> (L019)"
+
+# =============================================================================
+# SECTION 8: PROSODY STANDARDS
+# =============================================================================
+
+prosody:
+  critical_rule: "ALWAYS use rate='1.0' - NEVER use slower rates (L015)"
+  reasoning: >
+    Neural2 voices sound robotic at slow rates. Achieve hypnotic pacing
+    through strategic break placement instead.
+
+  section_settings:
+    pre_talk:
+      rate: "1.0"
+      pitch: "0st"
+      purpose: "Grounded, normal, establishing rapport"
+
+    induction:
+      rate: "1.0"
+      pitch: "-2st"
+      purpose: "Deeper pitch for calming, trance induction"
+
+    journey:
+      rate: "1.0"
+      pitch: "-1st"
+      purpose: "Slightly deeper for immersion"
+
+    integration:
+      rate: "1.0"
+      pitch: "-1st"
+      purpose: "Maintaining depth during return"
+
+    closing:
+      rate: "1.0"
+      pitch: "0st"
+      purpose: "Return to grounded, alert state"
+
+  inline_pitch_drops:
+    description: "Use for emphasis on deepening keywords"
+    template: "You may go <prosody pitch=\"-4st\">deeper</prosody> now..."
+    words_to_emphasize: ["deeper", "down", "relax", "release", "rest"]
+
+# =============================================================================
+# SECTION 9: QUALITY METRICS
+# =============================================================================
+
+quality_metrics:
+  embedded_commands:
+    minimum: 10
+    distribution: "3-5 induction, 5-7 journey, 2-3 integration"
+    validation: "Count <emphasis> tags"
+
+  fractionation_loops:
+    minimum: 2
+    placement: "One in induction, one in journey peak"
+
+  sensory_stacking:
+    requirement: "VAK rotation in all visualization sections"
+    minimum_vak_cycles: 3
+
+  yes_sets:
+    minimum: 1
+    placement: "Opening of pre-talk or induction"
+    elements: "3+ truisms in sequence"
+
+  temporal_dissociation:
+    required: true
+    placement: "Integration section"
+
+  breaks:
+    validation: "No breaks without preceding punctuation"
+    minimum_2s_breaks: 10
+
+  word_count:
+    target_25min: 3750
+    tolerance: "10%"
+    calculation: "~150 words/minute at 1.0x rate"
+
+# =============================================================================
+# SECTION 10: SECTION-SPECIFIC REQUIREMENTS
+# =============================================================================
+
+section_requirements:
+  pre_talk:
+    duration: "2-3 minutes"
+    words: "~300-450"
+    requirements:
+      - "Yes-set opening (3+ truisms)"
+      - "Safety reassurance"
+      - "Preparation instructions"
+      - "Modal operators (may, can)"
+    pattern_usage:
+      - "yes_sets"
+      - "modal_operators"
+
+  induction:
+    duration: "4-5 minutes"
+    words: "~600-750"
+    requirements:
+      - "Progressive relaxation"
+      - "Breath pacing"
+      - "Countdown with embedded commands"
+      - "First fractionation loop"
+      - "3-5 embedded commands"
+    pattern_usage:
+      - "breath_pacing"
+      - "embedded_commands"
+      - "fractionation_loops.standard_loop"
+      - "sensory_stacking"
+
+  journey:
+    duration: "14-16 minutes"
+    words: "~2100-2400"
+    requirements:
+      - "Environment establishment (all 5 senses)"
+      - "Archetypal figure introduction"
+      - "Discovery moments"
+      - "Therapeutic metaphor"
+      - "Peak experience with double-bind"
+      - "Second fractionation loop"
+      - "5-7 embedded commands"
+      - "Full VAK sensory rotation"
+    pattern_usage:
+      - "sensory_stacking"
+      - "embedded_commands"
+      - "double_binds"
+      - "fractionation_loops"
+      - "temporal_dissociation.eternal_moment"
+
+  integration:
+    duration: "2-3 minutes"
+    words: "~300-450"
+    requirements:
+      - "Gentle return language"
+      - "Temporal dissociation/future pacing"
+      - "Insight consolidation"
+      - "Ascending count"
+      - "2-3 embedded commands"
+    pattern_usage:
+      - "temporal_dissociation.future_pacing"
+      - "embedded_commands"
+      - "presuppositions"
+
+  closing:
+    duration: "2-3 minutes"
+    words: "~300-450"
+    requirements:
+      - "3-5 post-hypnotic anchors"
+      - "Future pacing"
+      - "Grounding"
+      - "Call-to-action"
+    pattern_usage:
+      - "anchors (physical, symbolic, sensory)"
+      - "presuppositions"
+      - "truisms"
+
+# =============================================================================
+# SECTION 11: ARCHETYPAL JOURNEY FAMILIES
+# =============================================================================
+# Families provide consistent theming, imagery, and archetypes for related journeys.
+# Select a family to establish tone, vocabulary, and suggested archetypes.
+
+families:
+  celestial_journey:
+    description: "Cosmic, stellar, galactic experiences of expansion and light"
+    tone: luminous, expansive, awe-inspiring
+    pitch_bias: "-1st"
+    color_palette:
+      - "violet and indigo depths"
+      - "silver starlight"
+      - "golden nebula glow"
+      - "crystalline white"
+      - "cosmic purple"
+    common_images:
+      - starfields and galaxies
+      - luminous paths of light
+      - radiant celestial beings
+      - cosmic void and infinite space
+      - spiraling nebulae
+      - crystalline star chambers
+    soundscape:
+      base: "cosmic_ambient"
+      layers: ["crystalline_tones", "deep_space_hum", "ethereal_choir"]
+    suggested_archetypes:
+      - Star Guide
+      - Cosmic Being
+      - Light Keeper
+      - Celestial Guardian
+      - Astral Navigator
+    entry_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And as you drift upward...<break time="2s"/>
+      through layers of light...<break time="1.5s"/>
+      you may begin to notice stars appearing...<break time="2s"/>
+      countless points of radiance...<break time="2s"/>
+      as if the entire cosmos <emphasis level="moderate">opens</emphasis> before you...<break time="3s"/>
+      </prosody>
+    exit_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And gently now...<break time="1.5s"/>
+      bringing the starlight with you...<break time="2s"/>
+      that cosmic radiance settling into your heart...<break time="2s"/>
+      as you begin your descent...<break time="2s"/>
+      back through the layers of light...<break time="3s"/>
+      </prosody>
+
+  eden_garden:
+    description: "Paradise garden, Tree of Life, sacred nature, divine abundance"
+    tone: nurturing, sacred, abundant
+    pitch_bias: "0st"
+    color_palette:
+      - "emerald and jade green"
+      - "golden sunlight"
+      - "sapphire blue waters"
+      - "rose and pearl blossoms"
+      - "amber and honey tones"
+    common_images:
+      - sacred garden paths
+      - Tree of Life glowing with light
+      - living waters and crystalline streams
+      - sacred fruit and flowers
+      - golden light filtering through leaves
+      - divine presence in nature
+    soundscape:
+      base: "garden_ambient"
+      layers: ["birdsong_distant", "water_stream", "gentle_wind"]
+    suggested_archetypes:
+      - Garden Keeper
+      - Divine Presence
+      - Nature Spirit
+      - Tree of Life Guardian
+      - Sacred Gardener
+    entry_template: |
+      <prosody rate="1.0" pitch="0st">
+      And as you step through the gate...<break time="2s"/>
+      you may notice the quality of light changing...<break time="1.5s"/>
+      softer now...<break time="1s"/>
+      golden and warm...<break time="1.5s"/>
+      as if the sun itself <emphasis level="moderate">welcomes</emphasis> you home...<break time="3s"/>
+      A garden begins to reveal itself...<break time="2s"/>
+      </prosody>
+    exit_template: |
+      <prosody rate="1.0" pitch="0st">
+      And now, carrying the fragrance of the garden...<break time="1.5s"/>
+      that golden light held within your heart...<break time="2s"/>
+      you turn gently toward the gate...<break time="2s"/>
+      knowing you can <emphasis level="moderate">return</emphasis> here...<break time="1.5s"/>
+      whenever you need...<break time="3s"/>
+      </prosody>
+
+  underworld_descent:
+    description: "Shadow work, depth, cave journeys, transformation through darkness"
+    tone: shadow, depth, transformation
+    pitch_bias: "-2st"
+    color_palette:
+      - "deep obsidian black"
+      - "warm amber torchlight"
+      - "phosphorescent glow"
+      - "silver moonlight"
+      - "deep earth browns"
+    common_images:
+      - spiral staircases descending
+      - cave openings and passages
+      - roots and ancient stone
+      - underground rivers
+      - torchlight and shadow
+      - treasure hidden in darkness
+    soundscape:
+      base: "cave_ambient"
+      layers: ["dripping_water", "distant_echo", "deep_earth_hum"]
+    suggested_archetypes:
+      - Shadow Guide
+      - Psychopomp
+      - Ancient One
+      - Cave Guardian
+      - Depth Keeper
+    entry_template: |
+      <prosody rate="1.0" pitch="-2st">
+      And as you begin your descent...<break time="2s"/>
+      step by step...<break time="1.5s"/>
+      you notice how the light softens...<break time="2s"/>
+      becoming a gentle glow that guides your way...<break time="2s"/>
+      <emphasis level="moderate">deeper</emphasis>...<break time="2s"/>
+      into the welcoming darkness...<break time="3s"/>
+      </prosody>
+    exit_template: |
+      <prosody rate="1.0" pitch="-2st">
+      And now, carrying what you've found in the depths...<break time="2s"/>
+      that treasure of insight...<break time="1.5s"/>
+      you begin to ascend...<break time="2s"/>
+      step by step...<break time="1.5s"/>
+      the light gradually returning...<break time="2s"/>
+      as you rise <emphasis level="moderate">upward</emphasis>...<break time="3s"/>
+      </prosody>
+
+  temple_initiation:
+    description: "Sacred ceremonies, mystery schools, spiritual initiation"
+    tone: sacred, structured, ceremonial
+    pitch_bias: "-1st"
+    color_palette:
+      - "antique gold"
+      - "lapis lazuli blue"
+      - "warm candlelight"
+      - "white marble"
+      - "deep purple robes"
+    common_images:
+      - towering pillars and columns
+      - sacred altars with flame
+      - circles of light
+      - sacred geometry patterns
+      - robed ceremonial figures
+      - ancient inscriptions
+    soundscape:
+      base: "temple_ambient"
+      layers: ["ceremonial_bells", "choral_drone", "sacred_silence"]
+    suggested_archetypes:
+      - High Priest/Priestess
+      - Temple Guardian
+      - Initiator
+      - Keeper of Mysteries
+      - Sacred Teacher
+    entry_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And before you now...<break time="1.5s"/>
+      great doors begin to open...<break time="2s"/>
+      revealing a sacred space...<break time="2s"/>
+      pillars rising toward infinity...<break time="1.5s"/>
+      candlelight flickering gently...<break time="2s"/>
+      as you step into this <emphasis level="moderate">temple</emphasis> of transformation...<break time="3s"/>
+      </prosody>
+    exit_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now, having received the blessing of this temple...<break time="2s"/>
+      the wisdom placed within your keeping...<break time="1.5s"/>
+      you bow in gratitude...<break time="2s"/>
+      and turn toward the great doors...<break time="1.5s"/>
+      carrying the <emphasis level="moderate">light</emphasis> with you...<break time="3s"/>
+      </prosody>
+
+  cosmic_forge:
+    description: "Volcanic transformation, divine smithing, fire alchemy"
+    tone: transformative, powerful, alchemical
+    pitch_bias: "-2st"
+    color_palette:
+      - "molten gold and copper"
+      - "deep volcanic red"
+      - "obsidian black"
+      - "white-hot flame"
+      - "ember orange"
+    common_images:
+      - volcanic chambers
+      - sacred anvils and forge
+      - molten metal flowing
+      - fire transforming substance
+      - hammers shaping destiny
+      - sparks rising upward
+    soundscape:
+      base: "volcanic_ambient"
+      layers: ["forge_rhythms", "fire_crackle", "metallic_resonance"]
+    suggested_archetypes:
+      - Divine Smith
+      - Fire Keeper
+      - Transformer
+      - Hephaestus/Vulcan
+      - Alchemist
+    entry_template: |
+      <prosody rate="1.0" pitch="-2st">
+      And as you descend into the heart of the mountain...<break time="2s"/>
+      you may notice warmth increasing...<break time="1.5s"/>
+      a deep glow appearing ahead...<break time="2s"/>
+      the sacred forge awaits...<break time="2s"/>
+      where what no longer serves is <emphasis level="moderate">burned</emphasis> away...<break time="2s"/>
+      and something new is <emphasis level="moderate">forged</emphasis>...<break time="3s"/>
+      </prosody>
+    exit_template: |
+      <prosody rate="1.0" pitch="-2st">
+      And now, carrying what has been forged within you...<break time="2s"/>
+      tempered by sacred fire...<break time="1.5s"/>
+      you ascend from the forge...<break time="2s"/>
+      stronger...<break time="1s"/>
+      <emphasis level="moderate">transformed</emphasis>...<break time="2s"/>
+      ready to meet the world anew...<break time="3s"/>
+      </prosody>
+
+  ocean_depths:
+    description: "Deep ocean, underwater temples, cleansing waters, mystery"
+    tone: fluid, mysterious, cleansing
+    pitch_bias: "-1st"
+    color_palette:
+      - "deep sapphire blue"
+      - "bioluminescent green"
+      - "pearl white"
+      - "coral pink and orange"
+      - "silver moonlight on water"
+    common_images:
+      - deep ocean waters
+      - bioluminescent creatures
+      - coral temples and structures
+      - underwater passages
+      - ancient submerged wisdom
+      - whales and sea creatures as guides
+    soundscape:
+      base: "ocean_ambient"
+      layers: ["whale_song", "underwater_movement", "bubble_streams"]
+    suggested_archetypes:
+      - Ocean Guide
+      - Water Spirit
+      - Depths Keeper
+      - Coral Temple Priestess
+      - Ancient Mer-Being
+    entry_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And as you step into the water...<break time="2s"/>
+      you discover that here, you can breathe...<break time="1.5s"/>
+      moving easily through the depths...<break time="2s"/>
+      as the ocean <emphasis level="moderate">welcomes</emphasis> you...<break time="2s"/>
+      deeper into its mysteries...<break time="3s"/>
+      </prosody>
+    exit_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now, like a pearl rising from the depths...<break time="2s"/>
+      you begin your ascent...<break time="1.5s"/>
+      carrying the ocean's wisdom within you...<break time="2s"/>
+      the waters parting gently...<break time="1.5s"/>
+      as you <emphasis level="moderate">rise</emphasis> toward the light...<break time="3s"/>
+      </prosody>
+
+# =============================================================================
+# SECTION 12: RHYTHM AND CADENCE STANDARDS
+# =============================================================================
+# Guidelines for maintaining hypnotic flow and preventing monotony.
+
+rhythm_standards:
+  sentence_length:
+    target_average: "12-28 words"
+    short_sentences: "5-10 words for emphasis (at least 20% of sentences)"
+    medium_sentences: "15-25 words for flow"
+    long_sentences_max: 45  # Run-on warning threshold
+    variation: "Mix lengths to maintain engagement"
+
+  breath_chunks:
+    description: "Think in breath-sized chunks"
+    guideline: "Each paragraph should feel like 2-3 calm breaths"
+    max_clauses_between_breaks: 3
+    example: >
+      After 2-3 clauses of content, insert a <break>.
+      This creates natural rhythm that matches relaxed breathing.
+
+  stage_cadence:
+    pre_talk:
+      rhythm: "conversational, natural"
+      breaks_per_paragraph: 2-3
+    induction:
+      rhythm: "slowing, calming"
+      breaks_per_paragraph: 3-4
+    deepening:
+      rhythm: "very slow, spacious"
+      breaks_per_paragraph: 4-5
+    journey:
+      rhythm: "flowing, immersive"
+      breaks_per_paragraph: 3-4
+    helm_deep_trance:
+      rhythm: "minimal words, maximum space"
+      breaks_per_paragraph: 5-6
+    integration:
+      rhythm: "gently rising"
+      breaks_per_paragraph: 3-4
+    reorientation:
+      rhythm: "brightening, energizing"
+      breaks_per_paragraph: 2-3
+
+# =============================================================================
+# SECTION 13: DISTRIBUTION VALIDATION RULES
+# =============================================================================
+# Rules for validators to check proper distribution of patterns.
+
+distribution_rules:
+  embedded_commands:
+    min_total: 10
+    max_per_sentence: 2
+    max_per_100_words: 8
+    min_per_100_words: 2
+    cluster_warning: "More than 3 in 2 consecutive sentences is clumping"
+
+  fractionation_loops:
+    min_total: 2
+    min_spacing_sentences: 5
+    expected_positions:
+      - range: "15-25%"
+        description: "First loop in induction/deepening"
+      - range: "50-75%"
+        description: "Second loop at journey/helm peak"
+
+  yes_sets:
+    min_total: 1
+    position: "within first 15% of script"
+    elements_min: 3  # 3+ truisms in sequence
+
+  temporal_dissociation:
+    required: true
+    position: "integration section (last 20% before closing)"
+
+  safety_clause:
+    required: true  # HARD FAIL
+    position: "within first 500 words"
+
+  vak_cycles:
+    min_total: 3
+    section: "journey and helm sections"
+    pattern: "V-A-K rotation maintained"
+
+# =============================================================================
+# SECTION 14: VAGAL TONE ACTIVATION PATTERNS
+# =============================================================================
+# Subtle parasympathetic triggers that activate the vagus nerve for deep
+# physiological relaxation. These bypass conscious resistance by working
+# directly with the autonomic nervous system.
+
+vagal_activation:
+  description: >
+    Subtle parasympathetic triggers for deep physiological relaxation.
+    These patterns activate the vagus nerve through specific somatic cues,
+    creating genuine physiological calm rather than just mental relaxation.
+
+  granularity: micro
+  stages: [induction, deepening]
+  minimum_per_script: 2
+  max_per_section: 3
+  placement: "Distribute across induction and deepening, not clustered"
+
+  patterns:
+    jaw_release:
+      description: "Releases tension in masseter muscles, activates vagal tone"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And you might allow your jaw to soften...<break time="1.5s"/>
+        letting the teeth part slightly...<break time="1.5s"/>
+        the muscles of the face relaxing...<break time="2.5s"/>
+        </prosody>
+      usage: "Early induction, after initial breath work"
+      examples:
+        - "Let your jaw hang loose, heavy, relaxed..."
+        - "The jaw unclenches, softening..."
+        - "Teeth gently parting, no effort..."
+
+    tongue_relaxation:
+      description: "Relaxing the tongue releases the throat and activates swallow reflex"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And perhaps you notice the back of your tongue...<break time="1.5s"/>
+        allowing it to relax completely...<break time="2s"/>
+        softening at the root...<break time="1.5s"/>
+        as the throat opens gently...<break time="2.5s"/>
+        </prosody>
+      usage: "Deepening section, after jaw release"
+
+    belly_softening:
+      description: "Releasing belly tension activates diaphragmatic breathing"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And as you breathe...<break time="1.5s"/>
+        notice the belly softening...<break time="2s"/>
+        releasing any holding there...<break time="2s"/>
+        just letting it be completely loose...<break time="2s"/>
+        no need to hold anything in...<break time="3s"/>
+        </prosody>
+      usage: "Induction, during breath awareness phase"
+
+    swallow_deepener:
+      description: "Natural swallow reflex linked to deepening suggestion"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        You may notice the urge to swallow gently...<break time="2s"/>
+        and when you do...<break time="1.5s"/>
+        you go even <emphasis level="moderate">deeper</emphasis>...<break time="3s"/>
+        </prosody>
+      usage: "Transitional deepener, between sections"
+      note: "Very powerful - use once per session maximum"
+
+    eye_softening:
+      description: "Releasing eye tension reduces sympathetic activation"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And behind your closed eyes...<break time="1.5s"/>
+        there's nothing you need to see...<break time="2s"/>
+        the muscles around the eyes soften...<break time="2s"/>
+        forehead smoothing...<break time="1.5s"/>
+        brow releasing...<break time="2.5s"/>
+        </prosody>
+      usage: "Early induction, after eye closure"
+
+    shoulder_drop:
+      description: "Classic tension release point, activates relaxation cascade"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And the shoulders...<break time="1.5s"/>
+        you can let them drop now...<break time="2s"/>
+        really <emphasis level="moderate">drop</emphasis>...<break time="1.5s"/>
+        further than you thought possible...<break time="2s"/>
+        melting downward...<break time="3s"/>
+        </prosody>
+      usage: "Induction, progressive relaxation phase"
+
+  combination_sequence:
+    description: "Optimal sequence for maximum vagal activation"
+    order:
+      - eye_softening
+      - jaw_release
+      - tongue_relaxation
+      - shoulder_drop
+      - belly_softening
+      - swallow_deepener
+    note: "Use 2-3 in sequence, not all 6. Swallow deepener always last if used."
+
+# =============================================================================
+# SECTION 15: EMOTIONAL CALIBRATION PATTERNS
+# =============================================================================
+# IFS-inspired gentle self-inquiry questions that create space for
+# personalized emotional processing without being prescriptive.
+
+emotional_calibration:
+  description: >
+    IFS-inspired parts work questions for gentle self-inquiry.
+    These create space for the listener's own emotional process
+    without being prescriptive about what they should feel or release.
+
+  granularity: macro
+  stages: [journey, helm_deep_trance, integration]
+  maximum_per_script: 2
+  placement: "At natural transition points - entering journey or beginning integration"
+  timing_note: "Allow 5-8 seconds of silence after each question"
+
+  patterns:
+    feeling_inquiry:
+      description: "Open invitation to notice what's present"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And as you rest here...<break time="2s"/>
+        you might notice...<break time="1.5s"/>
+        what feeling is ready to soften today...<break time="5s"/>
+        whatever arises is welcome...<break time="3s"/>
+        </prosody>
+      usage: "Early journey section, after environment established"
+
+    part_acknowledgment:
+      description: "Gentle parts-work acknowledgment"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        Perhaps there is a part of you...<break time="2s"/>
+        that has been waiting for this rest...<break time="2s"/>
+        and you can simply <emphasis level="moderate">acknowledge</emphasis> it...<break time="2s"/>
+        without needing to fix or change anything...<break time="4s"/>
+        </prosody>
+      usage: "Journey or integration, at moments of stillness"
+
+    readiness_check:
+      description: "Invitation to release what's ready"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And if something is ready to release...<break time="2s"/>
+        you can let it go now...<break time="2s"/>
+        and if nothing is ready...<break time="1.5s"/>
+        that's perfectly fine too...<break time="3s"/>
+        your wisdom knows...<break time="3s"/>
+        </prosody>
+      usage: "Helm or integration, before ascending"
+
+    burden_inquiry:
+      description: "Gentle inquiry about what weighs heavy"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        You might notice...<break time="1.5s"/>
+        if there's something you've been carrying...<break time="2s"/>
+        that you didn't realize was heavy...<break time="2.5s"/>
+        until now...<break time="2s"/>
+        when you finally set it down...<break time="4s"/>
+        </prosody>
+      usage: "Journey section, during transformative moment"
+
+    protector_acknowledgment:
+      description: "IFS-style protector appreciation"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And perhaps there's a part of you...<break time="2s"/>
+        that has been protecting you...<break time="2s"/>
+        working so hard...<break time="1.5s"/>
+        and you can thank it now...<break time="2s"/>
+        for everything it's done...<break time="2s"/>
+        and let it know... it can rest here too...<break time="4s"/>
+        </prosody>
+      usage: "Journey peak, before integration"
+
+  safety_note: >
+    These patterns create space for emotional processing.
+    Always follow with grounding and never leave the listener
+    in an unresolved emotional state. Integration must follow.
+
+# =============================================================================
+# SECTION 16: REAL-WORLD INTEGRATION ACTIONS
+# =============================================================================
+# Small, concrete actions that anchor the hypnotic experience
+# into everyday life, creating lasting behavioral change.
+
+integration_actions:
+  description: >
+    Small real-world actions to anchor the experience.
+    These create behavioral bridges between the trance state
+    and waking life, making the transformation sticky.
+
+  granularity: macro
+  stages: [reorientation]
+  placement: "Final 2 minutes, after counting up but before closing"
+  minimum_per_script: 1
+  maximum_per_script: 2
+
+  patterns:
+    hydration_anchor:
+      description: "Links water drinking to integration"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        And in the minutes ahead...<break time="1.5s"/>
+        you might choose to drink a glass of water...<break time="2s"/>
+        and as you do...<break time="1s"/>
+        notice how the body integrates...<break time="2s"/>
+        everything you've received today...<break time="3s"/>
+        </prosody>
+      usage: "Standard integration action, widely applicable"
+
+    beauty_noticing:
+      description: "Creates gratitude anchor in daily life"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        Perhaps today...<break time="1.5s"/>
+        you'll notice one beautiful thing...<break time="2s"/>
+        something small, ordinary, perfect...<break time="2s"/>
+        and let it remind you of this feeling...<break time="3s"/>
+        </prosody>
+      usage: "Gentle integration for peaceful journeys"
+
+    breath_trigger:
+      description: "Creates portable re-access anchor"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        And anytime you take three deep breaths...<break time="2s"/>
+        slowly, intentionally...<break time="1.5s"/>
+        you'll feel this calm returning...<break time="2s"/>
+        naturally, easily...<break time="2s"/>
+        your body remembers...<break time="3s"/>
+        </prosody>
+      usage: "Universal - works for any session type"
+
+    threshold_anchor:
+      description: "Links doorways to state change"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        And you may find...<break time="1.5s"/>
+        that when you pass through doorways today...<break time="2s"/>
+        there's a moment of remembering...<break time="2s"/>
+        a brief return to this centered place...<break time="2s"/>
+        as natural as breathing...<break time="3s"/>
+        </prosody>
+      usage: "For grounding and presence-focused journeys"
+
+    morning_connection:
+      description: "Links morning routine to journey benefits"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        And tomorrow morning...<break time="1.5s"/>
+        in those first moments of waking...<break time="2s"/>
+        you may notice something different...<break time="2s"/>
+        a quiet knowing...<break time="1.5s"/>
+        that carries through the day...<break time="3s"/>
+        </prosody>
+      usage: "For transformation and new-beginning journeys"
+
+    hand_heart_anchor:
+      description: "Physical gesture creates somatic anchor"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        And if you like...<break time="1.5s"/>
+        you can place your hand over your heart now...<break time="2s"/>
+        feeling the warmth there...<break time="2s"/>
+        and know that anytime you do this...<break time="2s"/>
+        this peace returns...<break time="3s"/>
+        </prosody>
+      usage: "For heart-centered and self-compassion journeys"
+
+  combination_guidance: >
+    Choose 1-2 actions that match the journey theme:
+    - Healing journeys: hydration_anchor + breath_trigger
+    - Transformation: threshold_anchor + morning_connection
+    - Self-love: hand_heart_anchor + beauty_noticing
+    - General: breath_trigger (universal)
+
+# =============================================================================
+# SECTION 17: SIGNATURE CLOSING RITUAL
+# =============================================================================
+# Consistent closing phrase for brand recognition and neurological
+# anchoring. This phrase becomes associated with the trance state
+# over repeated listenings.
+
+closing_ritual:
+  description: >
+    Consistent closing phrase for brand recognition.
+    This phrase should end EVERY session, creating a neurological
+    anchor that deepens with each listening. The familiarity
+    becomes part of the trance induction over time.
+
+  stages: [reorientation]
+  position: "Absolute final spoken words before music outro"
+  required: true
+
+  signature_phrase:
+    text: "Until we journey again... rest well, dream deep."
+    ssml: |
+      <prosody rate="1.0" pitch="0st">
+      Until we journey again...<break time="2.5s"/>
+      rest well...<break time="1.5s"/>
+      dream deep...<break time="5s"/>
+      </prosody>
+    notes:
+      - "Speak with warmth and genuine care"
+      - "The final 'dream deep' should have slight downward inflection"
+      - "Allow 5 seconds of silence after before any music fade"
+
+  alternatives:
+    short_version:
+      text: "Dream deep."
+      ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Dream deep...<break time="5s"/>
+        </prosody>
+      usage: "For shorter sessions or quick returns"
+
+    extended_version:
+      text: "Until we journey again, in this world or the spaces between... rest well, dream deep, and carry the light."
+      ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Until we journey again...<break time="2s"/>
+        in this world...<break time="1s"/>
+        or the spaces between...<break time="2s"/>
+        rest well...<break time="1.5s"/>
+        dream deep...<break time="1.5s"/>
+        and carry the light...<break time="5s"/>
+        </prosody>
+      usage: "For epic, cosmic, or deeply transformative journeys"
+
+  brand_consistency: >
+    The signature phrase "rest well, dream deep" should appear
+    in ALL session closings. It becomes a conditioned anchor
+    that, over time, will induce relaxation on its own.
+
+# =============================================================================
+# SECTION 18: SYMBOLIC OBJECTS OF POWER
+# =============================================================================
+# Archetypal gifts and objects received during journeys that become
+# powerful anchors for transformation. These follow mythic patterns
+# of receiving magical items during quests.
+
+symbolic_objects:
+  description: >
+    Archetypal gifts and objects received during journeys.
+    These follow the universal mythic pattern of the hero receiving
+    magical items. They become internal anchors the listener can
+    visualize anytime to re-access the journey's gifts.
+
+  granularity: macro
+  stages: [journey, helm_deep_trance]
+  placement: "Journey peak or helm section, during encounter with guide/source"
+  minimum_per_script: 1
+  maximum_per_script: 2
+
+  receiving_frame:
+    description: "Standard frame for receiving any object"
+    template: |
+      <prosody rate="1.0" pitch="-1st">
+      And here, something is offered to you...<break time="2s"/>
+      [OBJECT DESCRIPTION]...<break time="2.5s"/>
+      [SENSORY DETAILS]...<break time="2s"/>
+      and you know this is yours now...<break time="2s"/>
+      a gift to carry with you...<break time="3s"/>
+      </prosody>
+
+  objects:
+    glowing_stone:
+      name: "Stone of Light"
+      description: "A stone that pulses with inner radiance"
+      themes: [healing, self-worth, inner light, guidance]
+      sensory:
+        visual: "soft golden light pulsing within"
+        tactile: "warm, smooth, fitting perfectly in your palm"
+        energetic: "pulsing gently with your heartbeat"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, something is offered to you...<break time="2s"/>
+        a stone... that glows with soft light...<break time="2.5s"/>
+        warm, smooth, fitting perfectly in your palm...<break time="2s"/>
+        pulsing gently with your own heartbeat...<break time="2.5s"/>
+        and you know this light is yours now...<break time="2s"/>
+        always was...<break time="3s"/>
+        </prosody>
+      anchor_recall: "Anytime you imagine this stone in your palm..."
+
+    golden_key:
+      name: "Key of Opening"
+      description: "An ancient key that opens inner doors"
+      themes: [unlocking potential, access, secrets, initiation]
+      sensory:
+        visual: "intricate golden design, ancient symbols"
+        tactile: "solid, warm metal, surprisingly light"
+        energetic: "humming with quiet power"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        A key is placed in your hand...<break time="2s"/>
+        golden, ancient, warm to the touch...<break time="2s"/>
+        intricate symbols you almost recognize...<break time="2s"/>
+        and you know it opens something within you...<break time="2s"/>
+        that has been waiting...<break time="2s"/>
+        for exactly this moment...<break time="3.5s"/>
+        </prosody>
+      anchor_recall: "This key is always with you now..."
+
+    luminous_feather:
+      name: "Feather of Release"
+      description: "A feather of impossible lightness"
+      themes: [release, letting go, freedom, flight, grace]
+      sensory:
+        visual: "iridescent, catching light in rainbow patterns"
+        tactile: "impossibly soft, weightless"
+        energetic: "lifting sensation, buoyancy"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        A feather drifts toward you...<break time="2s"/>
+        soft, luminous, catching the light...<break time="2s"/>
+        impossibly light in your hands...<break time="2s"/>
+        and as you receive it...<break time="1.5s"/>
+        something heavy simply <emphasis level="moderate">releases</emphasis>...<break time="2s"/>
+        lifted away on invisible wings...<break time="3.5s"/>
+        </prosody>
+      anchor_recall: "And anytime you need to let go..."
+
+    crystal_vial:
+      name: "Vial of Essence"
+      description: "A crystal vessel containing luminous liquid"
+      themes: [healing, restoration, essence, medicine, alchemy]
+      sensory:
+        visual: "crystal clear, liquid light within"
+        tactile: "cool, smooth crystal, liquid warmth within"
+        energetic: "healing warmth spreading through you"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And into your hands...<break time="1.5s"/>
+        a crystal vial is placed...<break time="2s"/>
+        filled with liquid light...<break time="2s"/>
+        and as you hold it to your heart...<break time="2s"/>
+        its warmth spreads through you...<break time="2.5s"/>
+        healing what needs to be healed...<break time="2s"/>
+        in its own perfect way...<break time="3.5s"/>
+        </prosody>
+      anchor_recall: "This medicine is always within you..."
+
+    mirror_of_truth:
+      name: "Mirror of Seeing"
+      description: "A mirror that shows your true self"
+      themes: [self-knowledge, truth, identity, clarity, shadow work]
+      sensory:
+        visual: "silver frame, surface like liquid mercury"
+        tactile: "cool, smooth, ancient"
+        energetic: "deep recognition, coming home"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        Before you now...<break time="1.5s"/>
+        a mirror appears...<break time="2s"/>
+        and in its silver depths...<break time="2s"/>
+        you see yourself...<break time="1.5s"/>
+        not as the world sees you...<break time="2s"/>
+        but as you truly are...<break time="2.5s"/>
+        and it is beautiful...<break time="3.5s"/>
+        </prosody>
+      anchor_recall: "And this seeing stays with you..."
+
+    flame_of_will:
+      name: "Flame of Power"
+      description: "A living flame that cannot burn"
+      themes: [power, will, transformation, courage, passion]
+      sensory:
+        visual: "golden-white flame, dancing with life"
+        tactile: "warm but cannot burn, alive in your hand"
+        energetic: "strength, determination, fire within"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, a flame is offered...<break time="2s"/>
+        dancing, alive, golden-white...<break time="2s"/>
+        and as you take it in your hand...<break time="2s"/>
+        you find it cannot burn you...<break time="2s"/>
+        because this fire is yours...<break time="2s"/>
+        your own sacred power...<break time="2s"/>
+        remembered...<break time="3.5s"/>
+        </prosody>
+      anchor_recall: "This flame burns always within..."
+
+    seed_of_becoming:
+      name: "Seed of Potential"
+      description: "A seed containing infinite possibility"
+      themes: [growth, potential, new beginnings, patience, trust]
+      sensory:
+        visual: "small, perfect, glowing faintly from within"
+        tactile: "smooth, warm, vibrating with life"
+        energetic: "infinite potential compressed into smallness"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And placed in your palm...<break time="2s"/>
+        a seed...<break time="1.5s"/>
+        small, perfect, glowing faintly...<break time="2s"/>
+        containing everything you're becoming...<break time="2.5s"/>
+        all the growth yet to unfold...<break time="2s"/>
+        you need only plant it...<break time="1.5s"/>
+        and trust...<break time="3.5s"/>
+        </prosody>
+      anchor_recall: "This seed grows within you now..."
+
+  theme_matching:
+    healing: [glowing_stone, crystal_vial]
+    transformation: [flame_of_will, seed_of_becoming]
+    self_knowledge: [mirror_of_truth, glowing_stone]
+    release: [luminous_feather, crystal_vial]
+    power: [flame_of_will, golden_key]
+    new_beginnings: [seed_of_becoming, golden_key]
+    guidance: [glowing_stone, mirror_of_truth]
+
+  usage_guidelines: >
+    1. Choose ONE primary object per journey (two maximum)
+    2. Match object to journey theme using theme_matching
+    3. Build anticipation before the receiving moment
+    4. Use full sensory description (visual, tactile, energetic)
+    5. Connect object to listener's personal journey
+    6. Reference object again in integration section
+    7. Include anchor_recall phrase in post-hypnotic suggestions
+
+# =============================================================================
+# SECTION 19: IDENTITY SHIFT PATTERNS (Future Self & Identity Transformation)
+# =============================================================================
+# Patterns for creating explicit identity-level shifts, including meeting
+# the future self and stepping into new identity embodiment.
+
+identity_shift_patterns:
+  description: >
+    Patterns for creating explicit identity-level transformations.
+    These go beyond archetype work to directly address the listener's
+    sense of self and facilitate identity-level shifts.
+
+  granularity: macro
+  stages: [journey, helm_deep_trance, integration]
+  placement: "Journey peak (future self encounter) or integration (step-in)"
+  minimum_per_script: 0
+  recommended_for: [transformation, confidence, empowerment, self_knowledge]
+
+  patterns:
+    future_self_encounter:
+      description: "Meet yourself having already achieved the transformation"
+      placement: "journey peak or early integration"
+      usage: "For outcome-focused sessions where listener needs to SEE the result"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, in this sacred space...<break time="2s"/>
+        a figure approaches...<break time="2s"/>
+        and as they draw closer...<break time="2s"/>
+        you begin to recognize...<break time="2s"/>
+        yourself...<break time="2s"/>
+        but not as you are now...<break time="2.5s"/>
+        this is you...<break time="1.5s"/>
+        as you are becoming...<break time="2s"/>
+        already whole...<break time="2s"/>
+        already transformed...<break time="2.5s"/>
+        radiating what you've been seeking...<break time="3s"/>
+        and as you meet their eyes...<break time="2s"/>
+        you see they've been waiting...<break time="2s"/>
+        waiting to show you...<break time="2s"/>
+        what was always possible...<break time="4s"/>
+        </prosody>
+      variations:
+        brief: |
+          <prosody rate="1.0" pitch="-1st">
+          And here you see yourself...<break time="2s"/>
+          not as you were...<break time="1.5s"/>
+          but as you're becoming...<break time="2.5s"/>
+          already transformed...<break time="3s"/>
+          </prosody>
+        detailed: |
+          <prosody rate="1.0" pitch="-1st">
+          And from the mist, a figure emerges...<break time="2s"/>
+          walking toward you with peaceful certainty...<break time="2.5s"/>
+          and something about their posture...<break time="2s"/>
+          their presence...<break time="1.5s"/>
+          feels deeply familiar...<break time="2.5s"/>
+          you realize...<break time="2s"/>
+          this is you...<break time="2s"/>
+          the you who has already completed this journey...<break time="3s"/>
+          who already knows the ending...<break time="2s"/>
+          and has come back...<break time="2s"/>
+          to show you the way...<break time="4s"/>
+          </prosody>
+
+    identity_step_in:
+      description: "Step into new identity embodiment"
+      placement: "integration, after transformation"
+      usage: "After journey peak, to consolidate the new identity"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And now, if it feels right...<break time="2s"/>
+        you can step forward...<break time="2s"/>
+        into this new way of being...<break time="2.5s"/>
+        not putting it on like a costume...<break time="2s"/>
+        but remembering it...<break time="2s"/>
+        as something that was always yours...<break time="2.5s"/>
+        letting it settle into your bones...<break time="2s"/>
+        into your breath...<break time="2s"/>
+        into the way you hold yourself...<break time="3s"/>
+        this is not becoming someone new...<break time="2s"/>
+        this is becoming more fully...<break time="2s"/>
+        who you already are...<break time="4s"/>
+        </prosody>
+
+    identity_merge:
+      description: "Merge with future self or transformed aspect"
+      placement: "journey peak or helm"
+      usage: "When the future self encounter needs completion"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And now...<break time="2s"/>
+        your future self opens their arms...<break time="2.5s"/>
+        and you step forward...<break time="2s"/>
+        stepping into them...<break time="2s"/>
+        feeling the boundaries dissolve...<break time="2.5s"/>
+        as you merge...<break time="2s"/>
+        becoming one...<break time="2.5s"/>
+        their strength is your strength now...<break time="2s"/>
+        their knowing is your knowing...<break time="2s"/>
+        their peace is your peace...<break time="3s"/>
+        you are not two...<break time="2s"/>
+        you never were...<break time="4s"/>
+        </prosody>
+
+    identity_affirmation:
+      description: "First-person identity statements for deep anchoring"
+      placement: "integration or closing"
+      usage: "After identity shift, to reinforce with I-statements"
+      note: "Use sparingly - 1-2 statements maximum"
+      examples:
+        - "I am [quality]..."
+        - "I have always been [quality]..."
+        - "This is who I truly am..."
+        - "I carry this with me now..."
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And you might notice a knowing arise...<break time="2s"/>
+        a simple truth...<break time="2.5s"/>
+        'I am [QUALITY]...'<break time="2s"/>
+        not something you need to become...<break time="2s"/>
+        but something you've always been...<break time="2s"/>
+        now remembered...<break time="3s"/>
+        </prosody>
+
+  combination_sequence:
+    recommended_order:
+      - future_self_encounter  # Meet the transformed self
+      - identity_merge         # Merge with them
+      - identity_step_in       # Embody the new way
+      - identity_affirmation   # Anchor with I-statement
+    note: "Use 1-2 patterns per session, not all four"
+
+  theme_matching:
+    transformation: [future_self_encounter, identity_merge]
+    confidence: [identity_step_in, identity_affirmation]
+    empowerment: [future_self_encounter, identity_step_in]
+    self_knowledge: [identity_merge, identity_affirmation]
+    healing: [identity_step_in, identity_affirmation]
+
+# =============================================================================
+# SECTION 20: NONDUAL POINTERS
+# =============================================================================
+# Patterns that point to awareness itself, stillness, and nondual experience.
+# These access the deepest mystical states available in contemplative traditions.
+
+nondual_pointers:
+  description: >
+    Language patterns that point to awareness itself, the stillness beneath
+    all experience, and nondual recognition. These create space for mystical
+    experience without prescribing content.
+
+  granularity: macro
+  stages: [helm_deep_trance, integration]
+  placement: "Journey peak (helm) or deep moments in integration"
+  maximum_per_script: 2
+  recommended_for: [spiritual_growth, transformation, self_knowledge]
+  caution: "Use sparingly - these are potent and can be disorienting if overused"
+
+  patterns:
+    witness_consciousness:
+      description: "Point to the awareness that is aware of experience"
+      placement: "helm_deep_trance"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And notice now...<break time="2.5s"/>
+        that which is aware...<break time="2s"/>
+        of all of this...<break time="2.5s"/>
+        the one who is listening...<break time="2s"/>
+        watching these images...<break time="2s"/>
+        feeling these sensations...<break time="3s"/>
+        that awareness itself...<break time="2.5s"/>
+        has it changed?<break time="3s"/>
+        or has it always been...<break time="2s"/>
+        exactly this...<break time="2s"/>
+        still...<break time="2s"/>
+        open...<break time="2s"/>
+        here...<break time="5s"/>
+        </prosody>
+      note: "Points to unchanging awareness behind all changing content"
+
+    stillness_beneath:
+      description: "Point to the stillness underneath all sensation"
+      placement: "helm or integration"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        Beneath every sensation...<break time="2s"/>
+        beneath every thought...<break time="2s"/>
+        beneath every feeling...<break time="2.5s"/>
+        there is stillness...<break time="3s"/>
+        and you can rest there now...<break time="3s"/>
+        not doing anything...<break time="2s"/>
+        not becoming anything...<break time="2s"/>
+        just...<break time="1.5s"/>
+        being...<break time="5s"/>
+        </prosody>
+
+    self_inquiry:
+      description: "Who am I? pointer in the style of Ramana Maharshi"
+      placement: "helm_deep_trance"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And you might wonder...<break time="2.5s"/>
+        who is aware of this wondering...<break time="3s"/>
+        who am I...<break time="2s"/>
+        beyond the name...<break time="2s"/>
+        beyond the story...<break time="2s"/>
+        beyond the body...<break time="3s"/>
+        what remains...<break time="2s"/>
+        when all of that falls away...<break time="4s"/>
+        </prosody>
+      note: "Opens space for direct self-inquiry without answering the question"
+
+    awareness_of_awareness:
+      description: "Turn attention to attention itself"
+      placement: "helm"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And for a moment...<break time="2s"/>
+        let awareness turn...<break time="2s"/>
+        toward itself...<break time="3s"/>
+        awareness aware of awareness...<break time="3s"/>
+        resting in its own nature...<break time="3s"/>
+        nothing to do...<break time="2s"/>
+        nothing to achieve...<break time="2s"/>
+        just this...<break time="2s"/>
+        just here...<break time="5s"/>
+        </prosody>
+
+    space_that_holds:
+      description: "Point to consciousness as the space holding all experience"
+      placement: "journey or helm"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And notice...<break time="2s"/>
+        the space in which all of this is happening...<break time="2.5s"/>
+        thoughts arise and pass...<break time="2s"/>
+        feelings come and go...<break time="2s"/>
+        images form and dissolve...<break time="2.5s"/>
+        but the space...<break time="2s"/>
+        remains...<break time="3s"/>
+        vast...<break time="2s"/>
+        open...<break time="2s"/>
+        undisturbed...<break time="4s"/>
+        and you are that space...<break time="4s"/>
+        </prosody>
+
+    no_separation:
+      description: "Point to nondual recognition of no separation"
+      placement: "helm peak"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And here, something may become clear...<break time="2.5s"/>
+        the one who is looking...<break time="2s"/>
+        and the one who is looked at...<break time="2s"/>
+        are not two...<break time="3s"/>
+        the seeker...<break time="2s"/>
+        and the sought...<break time="2s"/>
+        have always been...<break time="2s"/>
+        the same...<break time="4s"/>
+        </prosody>
+
+  usage_guidelines: >
+    1. Use maximum 2 nondual pointers per session
+    2. Place in deepest trance states (helm or deep integration)
+    3. Always follow with grounding before return
+    4. These are not suggestions - they are invitations to look
+    5. Don't explain or interpret - let the pointer do the work
+    6. Best for spiritual_growth and self_knowledge outcomes
+
+  safety_note: >
+    Nondual experiences can be disorienting. Always ensure:
+    - Strong grounding in pre-talk and reorientation
+    - Clear return path established
+    - Listener has established trance relationship first
+    - Not overused (can become conceptual rather than direct)
+
+# =============================================================================
+# SECTION 21: EXTENDED SENSORY CHANNELS
+# =============================================================================
+# Beyond VAK (Visual-Auditory-Kinesthetic) to include gustatory (taste),
+# olfactory (smell), and temporal-spatial synesthesia.
+
+extended_sensory:
+  description: >
+    Extended sensory engagement beyond traditional VAK to create
+    complete multisensory immersion. Includes taste, smell, and
+    temporal-spatial cross-wiring.
+
+  granularity: micro
+  stages: [journey, helm_deep_trance]
+  usage: "Sprinkle throughout journey for richer immersion"
+
+  channels:
+    gustatory:
+      description: "Taste sensory engagement"
+      when_to_use: "Transformation moments, receiving gifts, entering sacred spaces"
+      examples:
+        - "sweet, like honey on the tongue"
+        - "fresh, like mountain spring water"
+        - "rich, like the first taste of ripe fruit"
+        - "clear and pure, like morning dew"
+        - "warm, like spiced wine"
+        - "crisp, like autumn air"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And perhaps you notice...<break time="1.5s"/>
+        a taste arising...<break time="2s"/>
+        [GUSTATORY DESCRIPTION]...<break time="2s"/>
+        as if this moment could be tasted...<break time="3s"/>
+        </prosody>
+      journey_family_examples:
+        eden_garden: "sweet nectar of sacred fruit"
+        ocean_depths: "salt and mineral, ancient and pure"
+        cosmic_forge: "metallic warmth, like liquid gold"
+        temple_initiation: "sacred incense on the tongue"
+        celestial_journey: "starlight, crystalline and clear"
+
+    olfactory:
+      description: "Smell sensory engagement"
+      when_to_use: "Environment establishment, emotional anchoring, sacred spaces"
+      examples:
+        - "fragrance of sacred incense rising"
+        - "scent of forest after rain"
+        - "perfume of night-blooming flowers"
+        - "ancient stone and candlewax"
+        - "crisp mountain air"
+        - "warm earth and growing things"
+        - "salt spray and deep ocean"
+        - "smoke from sacred fire"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And perhaps a scent reaches you...<break time="2s"/>
+        [OLFACTORY DESCRIPTION]...<break time="2s"/>
+        carrying you deeper into this place...<break time="3s"/>
+        </prosody>
+      journey_family_examples:
+        eden_garden: "fragrance of countless flowers, honey and green growth"
+        underworld_descent: "ancient stone, earth, hints of torch smoke"
+        ocean_depths: "salt and mineral, seaweed and depth"
+        cosmic_forge: "hot metal and sacred smoke"
+        temple_initiation: "frankincense, myrrh, ancient sanctity"
+        celestial_journey: "clean, crystalline, like starlight made scent"
+
+    temporal_spatial:
+      description: "Time as location, movement through time-space"
+      when_to_use: "Transitions, temporal dissociation, identity work"
+      examples:
+        - "stepping forward in time"
+        - "the past behind you, growing distant"
+        - "future opening before you like a path"
+        - "time stretching like warm honey"
+        - "floating between moments"
+        - "the present expanding in all directions"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And you might sense...<break time="2s"/>
+        time itself shifting...<break time="2s"/>
+        [TEMPORAL-SPATIAL DESCRIPTION]...<break time="3s"/>
+        as if the past and future...<break time="2s"/>
+        are places you can move through...<break time="3s"/>
+        </prosody>
+      patterns:
+        past_release: |
+          <prosody rate="1.0" pitch="-1st">
+          And the past now...<break time="2s"/>
+          takes its place behind you...<break time="2s"/>
+          not gone, but settled...<break time="2s"/>
+          becoming distant...<break time="2s"/>
+          as you move forward...<break time="3s"/>
+          </prosody>
+        future_opening: |
+          <prosody rate="1.0" pitch="-1st">
+          And ahead of you...<break time="2s"/>
+          the future opens...<break time="2s"/>
+          like a path through golden light...<break time="2s"/>
+          inviting you forward...<break time="3s"/>
+          </prosody>
+        eternal_present: |
+          <prosody rate="1.0" pitch="-2st">
+          And here, time stretches...<break time="2s"/>
+          past and future falling away...<break time="2s"/>
+          until only this moment remains...<break time="2.5s"/>
+          infinite...<break time="2s"/>
+          eternal...<break time="2s"/>
+          now...<break time="4s"/>
+          </prosody>
+
+    interoceptive:
+      description: "Internal body sensation awareness"
+      when_to_use: "Deepening, grounding, somatic anchoring"
+      examples:
+        - "the rhythm of your heartbeat"
+        - "warmth flowing through your veins"
+        - "subtle tingling in your fingertips"
+        - "expansion with each breath"
+        - "weight settling into the earth"
+        - "energy rising along your spine"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And turning attention inward...<break time="2s"/>
+        you might notice...<break time="2s"/>
+        [INTEROCEPTIVE DESCRIPTION]...<break time="2.5s"/>
+        the body holding its own wisdom...<break time="3s"/>
+        </prosody>
+
+  synesthetic_combinations:
+    description: "Cross-wiring senses for deeper immersion"
+    examples:
+      - "seeing the warmth as golden light"
+      - "hearing colors shimmer"
+      - "tasting the sweetness of the melody"
+      - "feeling the texture of silence"
+      - "smelling the color of dawn"
+    usage: "Use sparingly for peak moments - 1-2 per journey maximum"
+    template: |
+      <prosody rate="1.0" pitch="-1st">
+      And here, the senses begin to blend...<break time="2s"/>
+      [SYNESTHETIC DESCRIPTION]...<break time="2.5s"/>
+      as boundaries between senses dissolve...<break time="3s"/>
+      </prosody>
+
+  distribution_guidelines: >
+    Standard VAK rotation remains primary (40% V, 20% A, 40% K).
+    Extended channels are additions, not replacements:
+    - Olfactory: 1-3 mentions per journey (environment, peak)
+    - Gustatory: 0-2 mentions (receiving gifts, transformation)
+    - Temporal-spatial: 1-2 mentions (transitions, integration)
+    - Interoceptive: 2-4 mentions (deepening, grounding, peak)
+    - Synesthetic: 0-2 mentions (peak moments only)
+
+# =============================================================================
+# SECTION 22: NLP SUBMODALITY SHIFTS (PHASE 1 - CRITICAL)
+# =============================================================================
+# Transform mental representations by altering sensory qualities (brightness,
+# size, distance, color, weight, texture). One of the most powerful NLP tools
+# for rapidly changing emotional responses to memories, beliefs, and states.
+
+submodality_shifts:
+  description: >
+    NLP submodality shifts transform mental representations by altering their
+    sensory qualities. This creates immediate changes in emotional meaning
+    and nervous system responses. Extremely powerful for anxiety reduction,
+    trauma softening, confidence building, and releasing shame/guilt.
+
+  granularity: macro
+  stages: [journey, helm_deep_trance, integration]
+  minimum_per_script: 1
+  recommended_for: [transformation, healing, release, confidence]
+  placement: "Journey peak or integration when transformation occurs"
+
+  theory: >
+    Submodalities are the building blocks of internal experience:
+    - Visual: brightness, size, distance, color, focus, movement
+    - Auditory: volume, pitch, tempo, location, tone
+    - Kinesthetic: weight, temperature, pressure, texture, location
+    Changing these qualities changes emotional meaning instantly.
+
+  patterns:
+    shrink_and_distance:
+      description: "Reduce emotional intensity of negative patterns/memories/feelings"
+      usage: "For anxiety, fear, shame, guilt, painful memories"
+      mechanism: "Small/distant = less threatening to nervous system"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And now imagine that old [pattern/feeling/weight]...<break time="2s"/>
+        notice where it seems to be...<break time="2s"/>
+        and as you watch...<break time="2s"/>
+        it begins to shrink...<break time="2s"/>
+        growing smaller...<break time="1.5s"/>
+        and smaller...<break time="2s"/>
+        as if moving further away...<break time="2s"/>
+        fading into the distance...<break time="2s"/>
+        until it's just a tiny point...<break time="2s"/>
+        barely visible...<break time="2s"/>
+        hardly worth noticing anymore...<break time="4s"/>
+        </prosody>
+      variations:
+        brief: |
+          <prosody rate="1.0" pitch="-1st">
+          And that old feeling begins to shrink...<break time="2s"/>
+          growing distant...<break time="2s"/>
+          fading away...<break time="3s"/>
+          </prosody>
+        detailed: |
+          <prosody rate="1.0" pitch="-1st">
+          And as you observe that [old pattern]...<break time="2s"/>
+          notice its shape, its weight, its presence...<break time="2s"/>
+          and now watch as it begins to change...<break time="2s"/>
+          shrinking...<break time="1.5s"/>
+          like a balloon slowly deflating...<break time="2s"/>
+          growing smaller with each breath...<break time="2s"/>
+          moving further and further away...<break time="2.5s"/>
+          until it's just a speck on the horizon...<break time="2s"/>
+          a memory of something that once felt large...<break time="2s"/>
+          now so small it hardly matters...<break time="4s"/>
+          </prosody>
+
+    brighten_and_expand:
+      description: "Amplify positive states, resources, and desired feelings"
+      usage: "For confidence, peace, joy, self-love, inner resources"
+      mechanism: "Bright/large/close = important and real to nervous system"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And this [positive feeling/resource]...<break time="2s"/>
+        notice it now...<break time="2s"/>
+        and as you do...<break time="2s"/>
+        allow it to brighten...<break time="2s"/>
+        growing more vivid...<break time="2s"/>
+        more radiant...<break time="2s"/>
+        expanding...<break time="2s"/>
+        filling your entire awareness...<break time="2.5s"/>
+        glowing with warmth and light...<break time="2s"/>
+        becoming more real...<break time="2s"/>
+        more present...<break time="2s"/>
+        more <emphasis level="moderate">yours</emphasis>...<break time="4s"/>
+        </prosody>
+      variations:
+        brief: |
+          <prosody rate="1.0" pitch="-1st">
+          And this feeling begins to brighten...<break time="2s"/>
+          expanding...<break time="2s"/>
+          filling you with light...<break time="3s"/>
+          </prosody>
+
+    color_transform:
+      description: "Change emotional valence through color shift"
+      usage: "Transform dark/heavy emotions to light/peaceful ones"
+      mechanism: "Colors carry emotional associations - shifting color shifts feeling"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And notice the color of that [feeling]...<break time="2s"/>
+        whatever color it seems to be...<break time="2s"/>
+        and watch as it slowly transforms...<break time="2.5s"/>
+        shifting...<break time="1.5s"/>
+        changing...<break time="2s"/>
+        into a color that feels [calmer/lighter/warmer/more peaceful]...<break time="2.5s"/>
+        perhaps golden...<break time="1.5s"/>
+        or soft blue...<break time="1.5s"/>
+        or gentle green...<break time="2s"/>
+        whatever color brings <emphasis level="moderate">relief</emphasis>...<break time="4s"/>
+        </prosody>
+
+    weight_to_lightness:
+      description: "Transform heaviness into lightness"
+      usage: "For depression, burden, grief, feeling weighed down"
+      mechanism: "Physical weight metaphor directly affects emotional experience"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And that heaviness you've been carrying...<break time="2s"/>
+        feel its weight for a moment...<break time="2.5s"/>
+        and now notice...<break time="2s"/>
+        it begins to lighten...<break time="2s"/>
+        as if someone is gently lifting it...<break time="2s"/>
+        becoming lighter...<break time="2s"/>
+        and lighter still...<break time="2s"/>
+        until it's almost weightless...<break time="2s"/>
+        floating...<break time="2s"/>
+        no longer yours to carry...<break time="3s"/>
+        <emphasis level="moderate">released</emphasis>...<break time="4s"/>
+        </prosody>
+
+    solid_to_dissolving:
+      description: "Dissolve rigid patterns or stuck feelings"
+      usage: "For stuck emotions, rigid beliefs, frozen states"
+      mechanism: "Solid feels permanent; dissolving feels changeable"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And that [stuck pattern/rigid feeling]...<break time="2s"/>
+        which may have felt so solid...<break time="2.5s"/>
+        notice now how it begins to soften...<break time="2s"/>
+        like ice in warm water...<break time="2s"/>
+        edges becoming less defined...<break time="2s"/>
+        slowly dissolving...<break time="2s"/>
+        melting away...<break time="2s"/>
+        becoming fluid...<break time="2s"/>
+        able to <emphasis level="moderate">transform</emphasis>...<break time="2s"/>
+        able to change...<break time="3s"/>
+        </prosody>
+
+    loud_to_quiet:
+      description: "Reduce volume of internal critical voice or anxious thoughts"
+      usage: "For inner critic, anxiety, racing thoughts, rumination"
+      mechanism: "Quieter = less urgent, less threatening, easier to ignore"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And those [thoughts/that voice]...<break time="2s"/>
+        notice how loud they seem...<break time="2.5s"/>
+        and now...<break time="2s"/>
+        imagine turning down the volume...<break time="2s"/>
+        like a dial...<break time="1.5s"/>
+        slowly...<break time="1.5s"/>
+        quieter...<break time="2s"/>
+        and quieter...<break time="2s"/>
+        until they're just a whisper...<break time="2s"/>
+        barely audible...<break time="2s"/>
+        fading into <emphasis level="moderate">silence</emphasis>...<break time="4s"/>
+        </prosody>
+
+    fuzzy_to_clear:
+      description: "Clarify positive outcomes and desired states"
+      usage: "For goals, vision, desired future, clarity"
+      mechanism: "Clear images feel more achievable and real"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And that vision of [desired outcome]...<break time="2s"/>
+        perhaps it seems fuzzy at first...<break time="2s"/>
+        unclear...<break time="2s"/>
+        but as you focus...<break time="2s"/>
+        it begins to sharpen...<break time="2s"/>
+        coming into focus...<break time="2s"/>
+        clearer...<break time="2s"/>
+        more defined...<break time="2s"/>
+        until you can see it perfectly...<break time="2.5s"/>
+        real and <emphasis level="moderate">possible</emphasis>...<break time="4s"/>
+        </prosody>
+
+  combination_sequences:
+    release_and_resource:
+      description: "Shrink negative, then brighten positive"
+      usage: "Complete transformation sequence"
+      sequence:
+        - shrink_and_distance  # Release old pattern
+        - brighten_and_expand  # Install new resource
+      note: "Most powerful when used together"
+
+    full_transformation:
+      description: "Complete submodality transformation"
+      sequence:
+        - solid_to_dissolving  # Unstick the pattern
+        - shrink_and_distance  # Reduce its power
+        - color_transform      # Change its nature
+        - brighten_and_expand  # Amplify the new
+      note: "Use for deep transformation work"
+
+  theme_matching:
+    healing: [solid_to_dissolving, color_transform, weight_to_lightness]
+    transformation: [shrink_and_distance, brighten_and_expand]
+    release: [weight_to_lightness, solid_to_dissolving]
+    confidence: [brighten_and_expand, fuzzy_to_clear]
+    anxiety: [shrink_and_distance, loud_to_quiet]
+    self_knowledge: [fuzzy_to_clear, brighten_and_expand]
+
+  validation_patterns:
+    - "shrink.*small|grow.*small|becoming.*smaller"
+    - "bright.*expand|grow.*vivid|fill.*awareness"
+    - "color.*transform|shift.*color|chang.*color"
+    - "weight.*light|heavy.*lift|no longer.*carry"
+    - "dissolv|melt|soften.*solid"
+    - "volume.*down|quiet.*whisper|fading.*silence"
+
+# =============================================================================
+# SECTION 23: EXPECTANCY PRIMING (PHASE 1 - HIGH IMPACT)
+# =============================================================================
+# Placebo amplification through positive expectation language. One of the
+# strongest psychological effects - transformation occurs more deeply when
+# people expect transformation. Used in psychotherapy, religious ritual,
+# meditation, and psychedelic therapy.
+
+expectancy_priming:
+  description: >
+    Amplify transformation through positive expectation language. This leverages
+    the placebo effect - humans transform more deeply when they expect to.
+    Must appear early in the session to set the frame for all that follows.
+
+  granularity: micro
+  stages: [pre_talk]
+  minimum_per_script: 2
+  placement: "Within first 300 words of pre-talk"
+  required: true  # Should be checked in validation
+
+  theory: >
+    Expectation + ritual + guided experience = exponential effect.
+    This is how psychotherapy, religion, meditation, and even
+    psychedelics amplify their transformative power. The mind
+    prepares for and creates the expected outcome.
+
+  patterns:
+    collective_validation:
+      description: "Reference others' positive experiences"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        Many people find this experience deeply [relaxing/transformative/healing]...<break time="1.5s"/>
+        </prosody>
+      examples:
+        - "Most people feel a powerful shift during this journey..."
+        - "Many have experienced profound peace here..."
+        - "Others have found deep healing in this space..."
+        - "Those who've traveled this path before speak of transformation..."
+      usage: "Pre-talk opening, first 200 words"
+
+    innate_capacity:
+      description: "Affirm listener's natural ability"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        Your mind already knows how to [heal/change/grow/transform]...<break time="2s"/>
+        this is simply creating the space for that natural process...<break time="2s"/>
+        </prosody>
+      examples:
+        - "Your unconscious mind has a natural wisdom..."
+        - "Deep within, you already know the way..."
+        - "The capacity for this shift lives within you..."
+        - "Your body knows how to heal itself..."
+      usage: "Pre-talk, after safety clause"
+
+    imminent_shift:
+      description: "Suggest something powerful is about to occur"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        Something is about to shift...<break time="2s"/>
+        you may not know exactly what...<break time="2s"/>
+        but something within you is <emphasis level="moderate">ready</emphasis>...<break time="3s"/>
+        </prosody>
+      examples:
+        - "Something powerful is about to unfold..."
+        - "A doorway is opening..."
+        - "The change you're seeking is already beginning..."
+        - "Even now, something is shifting..."
+      usage: "End of pre-talk, transition to induction"
+
+    natural_response:
+      description: "Frame response as natural and inevitable"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        And it's perfectly natural to begin feeling more [relaxed/open/peaceful]...<break time="2s"/>
+        that's just what happens here...<break time="2s"/>
+        </prosody>
+      examples:
+        - "It's natural for the body to begin relaxing now..."
+        - "The mind naturally opens in this space..."
+        - "This is just what happens when you allow yourself..."
+        - "You may notice changes beginning already..."
+      usage: "Transition from pre-talk to induction"
+
+    permission_to_transform:
+      description: "Explicit permission for deep change"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        And you have full permission...<break time="1.5s"/>
+        to let this go as deep as it wants to go...<break time="2s"/>
+        to receive whatever you're ready to receive...<break time="2s"/>
+        </prosody>
+      examples:
+        - "You can let yourself be changed by this..."
+        - "It's safe to let this work deeply..."
+        - "Give yourself permission to transform..."
+        - "Allow this to affect you as much as it wants to..."
+      usage: "Pre-talk or early induction"
+
+  pre_talk_sequence:
+    description: "Recommended expectancy priming sequence"
+    order:
+      - collective_validation     # "Many people find..."
+      - innate_capacity          # "Your mind knows how..."
+      - permission_to_transform  # "You have permission..."
+      - imminent_shift          # "Something is about to shift..."
+    note: "Use at least 2 of these in pre-talk, ideally 3-4"
+
+  validation_patterns:
+    - "many (people|have|find)|most (people|feel)"
+    - "your (mind|body|unconscious).*knows"
+    - "something.*(shift|chang|open|ready)"
+    - "natural to (feel|begin|notice)"
+    - "permission to"
+
+# =============================================================================
+# SECTION 24: PARTS INTEGRATION PROTOCOL (PHASE 2 - HIGH IMPACT)
+# =============================================================================
+# IFS-inspired internal dialogue and integration work. Creates space for
+# different parts of self to be acknowledged, dialogue, and integrate.
+# Powerful for internal conflict, ambivalence, self-rejection.
+
+parts_integration:
+  description: >
+    IFS (Internal Family Systems) inspired patterns for working with different
+    parts of the psyche. Creates space for internal dialogue, acknowledgment,
+    and integration. Extremely powerful for internal conflict, ambivalence,
+    and healing self-rejection.
+
+  granularity: macro
+  stages: [journey, helm_deep_trance, integration]
+  minimum_per_script: 0
+  recommended_for: [healing, self_knowledge, transformation]
+  placement: "Journey or integration when addressing internal conflict"
+
+  theory: >
+    The psyche contains many 'parts' with different motives. Internal conflict
+    stagnates transformation. IFS-style work helps parts dialogue and integrate,
+    reducing inner conflict, dissolving self-rejection, and increasing emotional
+    coherence.
+
+  safety_note: >
+    Parts work can access vulnerable material. Always:
+    - Establish safety first (Self-energy present)
+    - Move at the listener's pace (invitation, not command)
+    - Follow with integration and grounding
+    - Never force parts to interact
+
+  patterns:
+    parts_meeting:
+      description: "Acknowledge and meet a part"
+      stages:
+        - "Notice a part"
+        - "Turn toward it with curiosity"
+        - "Acknowledge its presence"
+        - "Thank it for its intention"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And perhaps there is a part of you...<break time="2s"/>
+        that has been holding something...<break time="2.5s"/>
+        and if it feels right...<break time="2s"/>
+        you can turn toward this part now...<break time="2s"/>
+        with curiosity...<break time="2s"/>
+        not to fix or change...<break time="2s"/>
+        just to see...<break time="2s"/>
+        just to <emphasis level="moderate">acknowledge</emphasis>...<break time="3s"/>
+        what has it been carrying?<break time="4s"/>
+        </prosody>
+      usage: "When addressing internal conflict or resistance"
+
+    protector_appreciation:
+      description: "Thank a protective part for its service"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And there may be a part of you...<break time="2s"/>
+        that has been protecting you...<break time="2.5s"/>
+        working so hard...<break time="2s"/>
+        for so long...<break time="2s"/>
+        and you can thank it now...<break time="2s"/>
+        for everything it's done...<break time="2s"/>
+        all the ways it's tried to keep you safe...<break time="2.5s"/>
+        and let it know...<break time="2s"/>
+        it can rest here...<break time="2s"/>
+        you're safe now...<break time="4s"/>
+        </prosody>
+      usage: "When encountering resistance or defense"
+
+    inner_child_meeting:
+      description: "Meet and comfort the younger self"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And somewhere within you...<break time="2s"/>
+        there may be a younger part...<break time="2.5s"/>
+        perhaps the child you once were...<break time="2s"/>
+        and from this place of wisdom...<break time="2s"/>
+        you can approach them gently...<break time="2s"/>
+        with all the love you've gathered since...<break time="2.5s"/>
+        and simply be with them...<break time="2s"/>
+        letting them know...<break time="2s"/>
+        they are not alone anymore...<break time="2s"/>
+        they never were...<break time="4s"/>
+        </prosody>
+      usage: "Healing journey, inner child work"
+
+    parts_dialogue:
+      description: "Create dialogue between conflicting parts"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And perhaps there are two parts here...<break time="2s"/>
+        each with its own wisdom...<break time="2.5s"/>
+        its own perspective...<break time="2s"/>
+        and from this centered place...<break time="2s"/>
+        you can listen to each...<break time="2s"/>
+        without choosing sides...<break time="2.5s"/>
+        letting each speak...<break time="2s"/>
+        letting each be heard...<break time="2s"/>
+        discovering what each one needs...<break time="3s"/>
+        to feel safe enough...<break time="2s"/>
+        to come together...<break time="4s"/>
+        </prosody>
+      usage: "Internal conflict resolution"
+
+    inner_council:
+      description: "Gather multiple aspects for wisdom"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, in this sacred space...<break time="2s"/>
+        you find yourself in a circular hall...<break time="2.5s"/>
+        and seated around you...<break time="2s"/>
+        are aspects of yourself...<break time="2.5s"/>
+        the Warrior... present and alert...<break time="2s"/>
+        the Healer... gentle and wise...<break time="2s"/>
+        the Child... open and curious...<break time="2s"/>
+        the Sage... knowing and still...<break time="3s"/>
+        each has something to offer...<break time="2s"/>
+        about this question you carry...<break time="2.5s"/>
+        listen as each speaks in turn...<break time="5s"/>
+        </prosody>
+      usage: "Gathering internal wisdom, decision points"
+
+    parts_integration_ritual:
+      description: "Symbolic integration of parts"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2s"/>
+        these parts that seemed so separate...<break time="2.5s"/>
+        begin to move toward each other...<break time="2s"/>
+        slowly...<break time="2s"/>
+        gently...<break time="2.5s"/>
+        and as they come together...<break time="2s"/>
+        something new emerges...<break time="2.5s"/>
+        not the parts at war...<break time="2s"/>
+        but something <emphasis level="moderate">whole</emphasis>...<break time="2s"/>
+        something that was always you...<break time="2s"/>
+        now remembered...<break time="2s"/>
+        now <emphasis level="moderate">integrated</emphasis>...<break time="4s"/>
+        </prosody>
+      usage: "Completion of parts work, integration phase"
+
+  theme_matching:
+    healing: [inner_child_meeting, protector_appreciation, parts_integration_ritual]
+    self_knowledge: [parts_meeting, inner_council]
+    transformation: [parts_dialogue, parts_integration_ritual]
+    release: [protector_appreciation, parts_integration_ritual]
+
+  validation_patterns:
+    - "part of you"
+    - "younger (part|self|you)"
+    - "protector|protecting|protect you"
+    - "aspects of (yourself|you)"
+    - "come together|integrate|whole"
+
+# =============================================================================
+# SECTION 25: PREDICTIVE PROCESSING DISRUPTION (PHASE 2 - HIGH IMPACT)
+# =============================================================================
+# Patterns that disrupt the brain's prediction engine, increasing neural
+# flexibility and suggestibility. Based on psychedelic therapy research
+# on how transformation occurs when mental models become temporarily flexible.
+
+predictive_processing_disruption:
+  description: >
+    Disrupt the brain's prediction engine to increase suggestibility and
+    enable deep rewiring. Modern neuroscience shows transformation occurs
+    when predictions break and the brain must rewrite its internal model.
+    This mimics how psychedelic therapy works - without the drugs.
+
+  granularity: macro
+  stages: [deepening, journey, helm_deep_trance]
+  minimum_per_script: 0
+  recommended_for: [transformation, spiritual_growth]
+  placement: "Deepening or journey peak when maximum flexibility needed"
+
+  theory: >
+    The brain is a prediction machine. When predictions consistently break
+    (safely), the brain enters a state of increased flexibility where identity,
+    beliefs, and emotional patterns become rewritable. This is the core
+    mechanism of psychedelic-assisted therapy.
+
+  patterns:
+    reality_morphing:
+      description: "Surreal imagery that breaks perceptual expectations"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And the space around you begins to shift...<break time="2.5s"/>
+        walls dissolving into mist...<break time="2s"/>
+        the floor becoming water...<break time="2s"/>
+        or perhaps sky...<break time="2s"/>
+        as the ordinary rules soften...<break time="2.5s"/>
+        and something new becomes possible...<break time="3s"/>
+        here, where things can be different...<break time="2s"/>
+        where change happens easily...<break time="4s"/>
+        </prosody>
+      usage: "Journey peak when deep change is occurring"
+
+    temporal_dislocation:
+      description: "Break time-sense for deeper trance"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And you might notice...<break time="2s"/>
+        that time has begun to flow differently here...<break time="2.5s"/>
+        a minute lasting hours...<break time="2s"/>
+        or hours passing in moments...<break time="2.5s"/>
+        and that's perfectly right...<break time="2s"/>
+        in this timeless place...<break time="2s"/>
+        where nothing needs to hurry...<break time="2s"/>
+        and nothing needs to wait...<break time="4s"/>
+        </prosody>
+      usage: "Deepening or helm"
+
+    impossible_geometry:
+      description: "Non-Euclidean spaces that confuse the prediction engine"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And the path you're on...<break time="2s"/>
+        seems to curve in ways that shouldn't be possible...<break time="2.5s"/>
+        going up and down at once...<break time="2s"/>
+        leading inward while moving outward...<break time="2.5s"/>
+        and your mind simply accepts...<break time="2s"/>
+        that here, different rules apply...<break time="2s"/>
+        and that's exactly right...<break time="3s"/>
+        </prosody>
+      usage: "Journey, especially in cosmic/temple families"
+
+    identity_blur:
+      description: "Soften ego boundaries temporarily"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And you may notice...<break time="2s"/>
+        the edges of who you are...<break time="2.5s"/>
+        beginning to soften...<break time="2s"/>
+        where you end and the space begins...<break time="2s"/>
+        becoming less defined...<break time="2.5s"/>
+        not dissolving...<break time="2s"/>
+        just expanding...<break time="2s"/>
+        including more...<break time="2s"/>
+        becoming less limited...<break time="3s"/>
+        </prosody>
+      usage: "Helm, spiritual growth journeys"
+      note: "Use with care - always re-establish boundaries in return"
+
+    perspective_shift:
+      description: "Multiple simultaneous viewpoints"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And from here...<break time="2s"/>
+        you can see yourself...<break time="2s"/>
+        as if from above...<break time="2s"/>
+        and from within...<break time="2s"/>
+        both at once...<break time="2.5s"/>
+        the one experiencing...<break time="2s"/>
+        and the one observing...<break time="2s"/>
+        two perspectives held easily...<break time="2s"/>
+        in this expanded awareness...<break time="4s"/>
+        </prosody>
+      usage: "Journey, especially for self-knowledge outcomes"
+
+    synesthetic_blending:
+      description: "Cross-wire senses to break categorical thinking"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, the senses begin to merge...<break time="2s"/>
+        you can see the music...<break time="2s"/>
+        hear the colors...<break time="2s"/>
+        taste the warmth of light...<break time="2.5s"/>
+        as boundaries between senses dissolve...<break time="2s"/>
+        into something new...<break time="2s"/>
+        something the ordinary mind doesn't have words for...<break time="3s"/>
+        </prosody>
+      usage: "Peak moments, cosmic journeys"
+
+  safety_requirements:
+    - "Always establish safety and control first"
+    - "Follow any ego-softening with clear re-grounding"
+    - "Use sparingly - 1-2 patterns per session maximum"
+    - "Not recommended for anxious listeners without preparation"
+    - "Always have clear return pathway established"
+
+  validation_patterns:
+    - "shift.*morph|dissolv.*mist|rules.*soften"
+    - "time.*(flow|different|stretch)"
+    - "impossible|shouldn't.*possible|different rules"
+    - "edges.*soften|boundaries.*dissolv"
+    - "senses.*(blend|merge|dissolve)"
+
+# =============================================================================
+# SECTION 26: SCHEMA REWRITING PROTOCOL (PHASE 2 - HIGH IMPACT)
+# =============================================================================
+# Deep belief system transformation. Schemas are early-formed mental frameworks
+# ("I'm not enough", "The world is unsafe"). These patterns safely soften old
+# schemas and install new, healthier belief structures.
+
+schema_rewriting:
+  description: >
+    Transform deep core beliefs and schemas. Schemas are mental frameworks
+    formed early in life that shape how we interpret all experience. This
+    protocol safely softens limiting schemas and installs empowering ones.
+
+  granularity: macro
+  stages: [journey, helm_deep_trance, integration]
+  minimum_per_script: 0
+  recommended_for: [transformation, healing, confidence]
+  placement: "Journey peak or helm when deep transformation occurring"
+
+  theory: >
+    Core beliefs like "I'm not enough," "The world is unsafe," "Love must
+    be earned" shape all experience. These are not facts but learned
+    interpretations that became automatic. In deep trance, they become
+    accessible for gentle updating.
+
+  safety_note: >
+    Schema work touches core identity. Always:
+    - Establish safety first
+    - Use softening language, not attacking
+    - Offer new beliefs as possibilities, not commands
+    - Follow with integration and anchoring
+    - Never force - always invite
+
+  patterns:
+    schema_softening:
+      description: "Gently loosen rigid old beliefs"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And somewhere deep within...<break time="2s"/>
+        there may be an old belief...<break time="2.5s"/>
+        something you learned long ago...<break time="2s"/>
+        perhaps "I am not enough"...<break time="2s"/>
+        or "the world is unsafe"...<break time="2.5s"/>
+        and you can notice now...<break time="2s"/>
+        how that belief has been trying to protect you...<break time="2s"/>
+        in its own way...<break time="2.5s"/>
+        and thank it...<break time="2s"/>
+        even as it begins to soften...<break time="2s"/>
+        to loosen its grip...<break time="2s"/>
+        making room for something new...<break time="4s"/>
+        </prosody>
+      usage: "Journey, when addressing core wounds"
+
+    new_schema_installation:
+      description: "Install empowering new belief"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And in this place of deep safety...<break time="2s"/>
+        a new truth begins to form...<break time="2.5s"/>
+        not something you need to create...<break time="2s"/>
+        but something you're <emphasis level="moderate">remembering</emphasis>...<break time="2s"/>
+        "I am worthy exactly as I am..."<break time="3s"/>
+        feel it settling into your cells...<break time="2s"/>
+        into your bones...<break time="2s"/>
+        becoming part of you...<break time="2s"/>
+        as if it was always there...<break time="2s"/>
+        waiting to be remembered...<break time="4s"/>
+        </prosody>
+      usage: "After schema softening, in integration"
+      common_new_schemas:
+        - "I am enough, exactly as I am"
+        - "I am safe and supported"
+        - "I am worthy of love"
+        - "My needs matter"
+        - "I belong here"
+        - "I can trust myself"
+        - "Change is possible for me"
+
+    relational_reparenting:
+      description: "Install healthy relational template"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, in this sacred space...<break time="2s"/>
+        you may sense a presence...<break time="2.5s"/>
+        one who sees you completely...<break time="2s"/>
+        and loves you anyway...<break time="2.5s"/>
+        not because of what you do...<break time="2s"/>
+        but simply because you exist...<break time="2.5s"/>
+        unconditional...<break time="2s"/>
+        unwavering...<break time="2s"/>
+        this is what you deserved all along...<break time="2s"/>
+        and this love is <emphasis level="moderate">available</emphasis> to you now...<break time="4s"/>
+        </prosody>
+      usage: "Healing journeys, attachment wounds"
+
+    safety_schema:
+      description: "Install core safety belief"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And deeper than fear...<break time="2s"/>
+        deeper than worry...<break time="2.5s"/>
+        there is a place in you...<break time="2s"/>
+        that has always been <emphasis level="moderate">safe</emphasis>...<break time="2.5s"/>
+        untouched by whatever happened...<break time="2s"/>
+        whole...<break time="2s"/>
+        intact...<break time="2s"/>
+        this part of you cannot be harmed...<break time="2.5s"/>
+        and from here, you can witness everything...<break time="2s"/>
+        without being destroyed by it...<break time="4s"/>
+        </prosody>
+      usage: "Anxiety, trauma-softening (light)"
+
+    worthiness_schema:
+      description: "Install inherent worthiness"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And what if there was nothing you needed to do...<break time="2.5s"/>
+        to be worthy...<break time="2.5s"/>
+        what if the striving...<break time="2s"/>
+        the proving...<break time="2s"/>
+        was never necessary...<break time="2.5s"/>
+        because worthiness isn't earned...<break time="2s"/>
+        it simply is...<break time="2s"/>
+        it was given when you were given breath...<break time="2.5s"/>
+        and no one can take it away...<break time="3s"/>
+        not even you...<break time="4s"/>
+        </prosody>
+      usage: "Confidence, self-worth journeys"
+
+  schema_pairs:
+    description: "Match old schemas with healing alternatives"
+    pairs:
+      not_enough: "I am enough exactly as I am"
+      unsafe_world: "I am safe and supported"
+      unlovable: "I am worthy of love"
+      must_be_perfect: "I am allowed to be human"
+      must_earn_love: "I am loved for who I am"
+      dont_belong: "I belong here"
+      cant_trust_self: "I can trust my inner wisdom"
+      broken: "I am whole"
+
+  validation_patterns:
+    - "old belief|learned long ago|deep within"
+    - "soften.*grip|loosen.*hold"
+    - "new truth|remember|worthy|enough"
+    - "unconditional|simply because you exist"
+    - "cannot be harmed|always.*safe|whole"
+
+# =============================================================================
+# SECTION 27: MEMORY RECONSOLIDATION LIGHT (PHASE 3 - MEDIUM)
+# =============================================================================
+# Safely update emotional tone of memories without reliving trauma.
+# Based on the science that retrieved memories become temporarily malleable
+# and can be updated with new emotional context before reconsolidation.
+
+memory_reconsolidation_light:
+  description: >
+    Safely update emotional tone of memories. Based on memory reconsolidation
+    science - when memories are retrieved in a safe state, they become
+    temporarily malleable and can be updated with new emotional context.
+    This is the "light" version for mild-moderate content only.
+
+  granularity: macro
+  stages: [journey, integration]
+  minimum_per_script: 0
+  recommended_for: [healing, release, transformation]
+  placement: "Journey or integration, after deep safety established"
+
+  theory: >
+    When a memory is recalled, it enters a "reconsolidation window" where
+    its emotional charge can be updated before being re-stored. By recalling
+    in a safe, resourced state, we can soften the emotional intensity
+    without changing the factual content.
+
+  safety_note: >
+    This is the LIGHT protocol for mild-moderate content only.
+    NOT suitable for:
+    - Severe trauma
+    - PTSD symptoms
+    - Dissociative responses
+    - Content that overwhelms the listener
+    Always follow with grounding and integration.
+
+  patterns:
+    safe_distance_viewing:
+      description: "View memory from safe observer position"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And from this completely safe place...<break time="2s"/>
+        you can allow a memory to arise...<break time="2.5s"/>
+        something that once felt uncomfortable...<break time="2s"/>
+        and watch it from a distance...<break time="2.5s"/>
+        as if on a movie screen far away...<break time="2s"/>
+        you are not in it...<break time="2s"/>
+        you are watching it...<break time="2.5s"/>
+        safe and separate...<break time="2s"/>
+        surrounded by everything you've learned since...<break time="3s"/>
+        </prosody>
+      usage: "Initial memory access, establishes safety"
+
+    wisdom_reframe:
+      description: "View past with present wisdom"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And as you watch this younger you...<break time="2s"/>
+        you can see them now...<break time="2.5s"/>
+        with the eyes of compassion...<break time="2s"/>
+        understanding what they couldn't understand then...<break time="2.5s"/>
+        seeing how they did the best they could...<break time="2s"/>
+        with what they knew...<break time="2s"/>
+        with what they had...<break time="2.5s"/>
+        and from here, you can send them something...<break time="2s"/>
+        perhaps comfort...<break time="2s"/>
+        or knowing...<break time="2s"/>
+        that they will be okay...<break time="3s"/>
+        </prosody>
+      usage: "After distance established, reframe meaning"
+
+    emotional_softening:
+      description: "Gently reduce emotional charge"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And as you watch from this safe place...<break time="2s"/>
+        notice how the edges of that memory soften...<break time="2.5s"/>
+        the charge beginning to fade...<break time="2s"/>
+        like an old photograph slowly lightening...<break time="2.5s"/>
+        the facts remain...<break time="2s"/>
+        but the intensity...<break time="2s"/>
+        gently releases...<break time="2.5s"/>
+        as if the pain has served its purpose...<break time="2s"/>
+        and can rest now...<break time="4s"/>
+        </prosody>
+      usage: "Core reconsolidation moment"
+
+    resource_injection:
+      description: "Add resources to the memory"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And now, from this place of wisdom...<break time="2s"/>
+        you can send something back...<break time="2.5s"/>
+        into that memory...<break time="2s"/>
+        perhaps light...<break time="2s"/>
+        or warmth...<break time="2s"/>
+        or the presence of someone who cares...<break time="2.5s"/>
+        letting the younger you know...<break time="2s"/>
+        they were never as alone as they thought...<break time="2.5s"/>
+        and the <emphasis level="moderate">love</emphasis> you feel now...<break time="2s"/>
+        reaches back through time...<break time="4s"/>
+        </prosody>
+      usage: "After softening, add positive resource"
+
+    memory_filing:
+      description: "Place memory in its proper place - past"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And now this memory...<break time="2s"/>
+        softened, understood...<break time="2.5s"/>
+        can take its rightful place...<break time="2s"/>
+        in the past...<break time="2s"/>
+        where it belongs...<break time="2.5s"/>
+        not forgotten...<break time="2s"/>
+        but no longer intruding...<break time="2s"/>
+        filed away in the library of your life...<break time="2.5s"/>
+        where you can visit if you choose...<break time="2s"/>
+        but where it no longer visits you uninvited...<break time="4s"/>
+        </prosody>
+      usage: "Completion of reconsolidation sequence"
+
+  sequence:
+    description: "Recommended memory work sequence"
+    order:
+      - safe_distance_viewing   # Establish safety
+      - wisdom_reframe          # Add perspective
+      - emotional_softening     # Reduce charge
+      - resource_injection      # Add resources
+      - memory_filing          # Complete the work
+    note: "Use 2-3 patterns per sequence, not all 5"
+
+  validation_patterns:
+    - "safe (place|distance)|watch.*from"
+    - "younger (you|self)|they (did|couldn't)"
+    - "edges.*soften|charge.*fade"
+    - "send.*back|resource|light|warmth"
+    - "past.*belongs|filed away"
+
+# =============================================================================
+# SECTION 28: ASSOCIATION/DISSOCIATION CYCLES (PHASE 3 - MEDIUM)
+# =============================================================================
+# Deliberate state switching between associated (inside experience) and
+# dissociated (watching from outside) states. One of the most clinically
+# validated hypnotic patterns for therapeutic change.
+
+association_dissociation:
+  description: >
+    Deliberately cycle between associated (fully in experience) and
+    dissociated (watching from outside) states. Use dissociation to reduce
+    emotional intensity, association to increase embodiment of positive states.
+    One of the most clinically validated hypnotic techniques.
+
+  granularity: macro
+  stages: [journey, helm_deep_trance, integration]
+  minimum_per_script: 0
+  recommended_for: [healing, release, transformation, empowerment]
+  placement: "Journey for processing, integration for embodiment"
+
+  theory: >
+    Associated = inside experience, feeling it fully
+    Dissociated = watching from outside, observing
+    We can deliberately shift between these states to:
+    - Reduce intensity of difficult content (dissociate out)
+    - Increase embodiment of positive content (associate in)
+    This gives the listener control over their experience.
+
+  patterns:
+    dissociate_out:
+      description: "Step outside difficult experience"
+      usage: "Reduce emotional intensity of challenging content"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And now, if you like...<break time="2s"/>
+        you can step back...<break time="2s"/>
+        outside of this experience...<break time="2.5s"/>
+        as if floating up and back...<break time="2s"/>
+        watching yourself there...<break time="2s"/>
+        from a comfortable distance...<break time="2.5s"/>
+        seeing yourself from the outside...<break time="2s"/>
+        observing with compassion...<break time="2s"/>
+        but not inside the feeling...<break time="2s"/>
+        just watching...<break time="2s"/>
+        safe...<break time="2s"/>
+        separate...<break time="4s"/>
+        </prosody>
+
+    associate_in:
+      description: "Step fully into positive experience"
+      usage: "Increase embodiment of positive states"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2s"/>
+        step fully into this <emphasis level="moderate">feeling</emphasis>...<break time="2s"/>
+        letting it surround you...<break time="2.5s"/>
+        fill you...<break time="2s"/>
+        become you...<break time="2.5s"/>
+        feeling it in your body...<break time="2s"/>
+        in your chest...<break time="2s"/>
+        in your hands...<break time="2s"/>
+        in your heart...<break time="2.5s"/>
+        this is not something you're watching anymore...<break time="2s"/>
+        this is something you <emphasis level="moderate">are</emphasis>...<break time="4s"/>
+        </prosody>
+
+    observer_position:
+      description: "Establish neutral observer stance"
+      usage: "Create witness position for processing"
+      template: |
+        <prosody rate="1.0" pitch="-2st">
+        And from here...<break time="2s"/>
+        you can simply observe...<break time="2.5s"/>
+        without judgment...<break time="2s"/>
+        without needing to change anything...<break time="2s"/>
+        just watching...<break time="2.5s"/>
+        the one who observes...<break time="2s"/>
+        is always safe...<break time="2s"/>
+        always still...<break time="2s"/>
+        always present...<break time="4s"/>
+        </prosody>
+
+    state_switching:
+      description: "Deliberate cycling between states"
+      usage: "For processing and then embodying transformation"
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And you can move between these perspectives...<break time="2s"/>
+        stepping back when you need distance...<break time="2.5s"/>
+        stepping in when you're ready to feel...<break time="2s"/>
+        this is your <emphasis level="moderate">choice</emphasis>...<break time="2s"/>
+        your control...<break time="2.5s"/>
+        and you can use it anytime...<break time="2s"/>
+        anywhere...<break time="2s"/>
+        to regulate your experience...<break time="4s"/>
+        </prosody>
+
+  therapeutic_sequence:
+    for_difficult_content:
+      - dissociate_out      # Step back for safety
+      - observer_position   # Establish witness
+      - # [process content]
+      - associate_in        # Embody resolution
+    for_positive_content:
+      - associate_in        # Full embodiment
+      - # [anchor the state]
+      - observer_position   # Integration
+
+  validation_patterns:
+    - "step back|float.*back|outside"
+    - "watching.*from|observe|see yourself"
+    - "step.*(into|fully)|fill.*become"
+    - "move between|choice|control"
+
+# =============================================================================
+# SECTION 29: SYMBOLIC CATHARSIS (PHASE 4)
+# =============================================================================
+# Emotional release through pure symbolism without explicit processing.
+# Safer than explicit release work as it operates symbolically.
+
+symbolic_catharsis:
+  description: >
+    Enable emotional release through pure symbolic actions. Instead of
+    revisiting painful content, use universal symbols of release (fire,
+    water, wind, earth) to process and discharge emotional energy safely.
+
+  granularity: macro
+  stages: [journey, integration]
+  minimum_per_script: 0
+  recommended_for: [release, healing, transformation]
+  placement: "Journey peak or integration when release is needed"
+
+  patterns:
+    fire_release:
+      description: "Burn away what no longer serves"
+      element: fire
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here before you...<break time="2s"/>
+        a sacred flame burns...<break time="2.5s"/>
+        and you may have something to offer it...<break time="2s"/>
+        something that no longer serves...<break time="2.5s"/>
+        you don't need to name it...<break time="2s"/>
+        just feel it...<break time="2s"/>
+        and when you're ready...<break time="2s"/>
+        cast it into the flames...<break time="3s"/>
+        watch it transform...<break time="2.5s"/>
+        smoke rising upward...<break time="2s"/>
+        <emphasis level="moderate">released</emphasis>...<break time="4s"/>
+        </prosody>
+
+    water_dissolve:
+      description: "Let waters wash it away"
+      element: water
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And these crystalline waters...<break time="2s"/>
+        have a gift...<break time="2.5s"/>
+        whatever you place in them...<break time="2s"/>
+        dissolves...<break time="2s"/>
+        washes away...<break time="2.5s"/>
+        and you may have something...<break time="2s"/>
+        that's ready to dissolve...<break time="2.5s"/>
+        let the water receive it...<break time="2s"/>
+        watch it soften...<break time="2s"/>
+        <emphasis level="moderate">release</emphasis>...<break time="2s"/>
+        wash clean...<break time="4s"/>
+        </prosody>
+
+    wind_scatter:
+      description: "Let the wind carry it away"
+      element: air
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And a gentle wind begins to blow...<break time="2s"/>
+        carrying away what's ready to go...<break time="2.5s"/>
+        you don't have to hold on anymore...<break time="2s"/>
+        let the wind take it...<break time="2.5s"/>
+        fragments scattering...<break time="2s"/>
+        dissolving into the sky...<break time="2s"/>
+        carried far, far away...<break time="2.5s"/>
+        until only <emphasis level="moderate">lightness</emphasis> remains...<break time="4s"/>
+        </prosody>
+
+    earth_burial:
+      description: "Return it to the earth"
+      element: earth
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And the earth opens gently...<break time="2s"/>
+        ready to receive...<break time="2.5s"/>
+        what you're ready to let go...<break time="2s"/>
+        place it in the ground...<break time="2.5s"/>
+        and watch the earth close around it...<break time="2s"/>
+        composting into wisdom...<break time="2s"/>
+        returning to source...<break time="2.5s"/>
+        feeding new growth...<break time="2s"/>
+        nothing is lost...<break time="2s"/>
+        only <emphasis level="moderate">transformed</emphasis>...<break time="4s"/>
+        </prosody>
+
+    light_absorption:
+      description: "Light transforms the darkness"
+      element: light
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And this light that surrounds you...<break time="2s"/>
+        has a special quality...<break time="2.5s"/>
+        it absorbs anything dark...<break time="2s"/>
+        transforms it...<break time="2.5s"/>
+        and you may have something dark to offer...<break time="2s"/>
+        let the light touch it...<break time="2.5s"/>
+        watch it brighten...<break time="2s"/>
+        transmute...<break time="2s"/>
+        become <emphasis level="moderate">light</emphasis> itself...<break time="4s"/>
+        </prosody>
+
+  journey_family_matching:
+    eden_garden: [water_dissolve, earth_burial]
+    cosmic_forge: [fire_release]
+    ocean_depths: [water_dissolve]
+    celestial_journey: [light_absorption, wind_scatter]
+    underworld_descent: [earth_burial, fire_release]
+    temple_initiation: [fire_release, light_absorption]
+
+  validation_patterns:
+    - "flame|burn|fire|smoke"
+    - "water.*dissolve|wash.*away|wash.*clean"
+    - "wind.*carry|scatter|sky"
+    - "earth.*receive|bury|compost"
+    - "light.*absorb|transform.*dark"
+
+# =============================================================================
+# SECTION 30: MULTI-EPISODE ARC FRAMEWORK (PHASE 4 - STRATEGIC)
+# =============================================================================
+# Framework for creating series of sessions that build on each other,
+# with evolving symbols, recurring locations, and cumulative transformation.
+
+multi_episode_arc:
+  description: >
+    Framework for sessions that reference previous journeys, creating
+    cumulative transformation over multiple listenings. Sessions become
+    part of a larger story, with evolving symbols and deepening work.
+
+  structure:
+    series_callbacks:
+      description: "References to previous sessions"
+      examples:
+        - "The [object] you received last time still glows within you..."
+        - "Return to the [place] you've visited before..."
+        - "That [quality] you awakened is even stronger now..."
+        - "The [guide] greets you as an old friend..."
+      template: |
+        <prosody rate="1.0" pitch="-1st">
+        And as you arrive...<break time="2s"/>
+        you notice something familiar...<break time="2.5s"/>
+        the [symbol] from your last journey...<break time="2s"/>
+        still present...<break time="2s"/>
+        still working within you...<break time="2.5s"/>
+        and now, even stronger...<break time="3s"/>
+        </prosody>
+
+    evolving_symbols:
+      description: "Symbols that transform across sessions"
+      examples:
+        seed_sequence:
+          episode_1: "receive a seed"
+          episode_2: "the seed has sprouted"
+          episode_3: "the plant is flowering"
+          episode_4: "the tree is full grown"
+        flame_sequence:
+          episode_1: "a spark ignites"
+          episode_2: "the flame grows stronger"
+          episode_3: "the fire burns bright"
+          episode_4: "you become the fire"
+        water_sequence:
+          episode_1: "standing at the shore"
+          episode_2: "wading into the shallows"
+          episode_3: "swimming in the depths"
+          episode_4: "becoming one with the ocean"
+
+    cumulative_anchoring:
+      description: "Anchors that strengthen across sessions"
+      template: |
+        <prosody rate="1.0" pitch="0st">
+        And this anchor...<break time="2s"/>
+        grows stronger each time...<break time="2.5s"/>
+        layering...<break time="2s"/>
+        deepening...<break time="2s"/>
+        until it becomes automatic...<break time="2.5s"/>
+        a <emphasis level="moderate">permanent</emphasis> part of you...<break time="4s"/>
+        </prosody>
+
+    progressive_depth:
+      description: "Sessions go progressively deeper"
+      progression:
+        episode_1: "Introduction to the journey space"
+        episode_2: "Deeper exploration, first challenges"
+        episode_3: "Core transformation work"
+        episode_4: "Integration and embodiment"
+        episode_5: "Mastery and teaching"
+
+  manifest_fields:
+    description: "Fields to add to manifest.yaml for series"
+    example: |
+      series:
+        name: "Garden of Eden Transformation"
+        episode: 2
+        total_episodes: 5
+        previous_session: "garden-of-eden-awakening"
+        callbacks:
+          - symbol: "golden fruit"
+            status: "received"
+          - location: "Tree of Life"
+            visited: true
+        evolving_symbol:
+          name: "seed_of_wisdom"
+          current_state: "sprouted"
+          next_state: "flowering"
+
+  usage_guidelines: >
+    1. Plan the full arc before creating episode 1
+    2. Document symbols, locations, and guides consistently
+    3. Reference previous sessions explicitly
+    4. Track symbol evolution in manifest
+    5. Each episode should stand alone but reward serial listening
+    6. Final episode should bring full integration

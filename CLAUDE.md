@@ -181,9 +181,53 @@ The system maintains a self-improving knowledge base in `knowledge/`:
 | File | Purpose |
 |------|---------|
 | `lessons_learned.yaml` | Accumulated insights with timestamps |
+| `hypnotic_patterns.yaml` | Phase 3 patterns: vagal activation, emotional calibration, integration actions |
+| `archetypes.yaml` | Shadow/gift transformations, archetypal guides, family mappings |
+| `outcome_registry.yaml` | **NEW:** Outcome → patterns/archetypes/objects mapping |
 | `best_practices.md` | Evolving best practices |
 | `analytics_history/` | Historical YouTube performance |
 | `code_improvements/` | Code quality tracking |
+
+---
+
+## Outcome Engineering (NEW)
+
+Ensures scripts deliver their stated transformations through systematic pattern inclusion.
+
+### Quick Reference
+
+| Outcome | Required Patterns | Key Focus |
+|---------|-------------------|-----------|
+| `healing` | vagal (2+), emotional_calibration (1+) | Safety, somatic release |
+| `transformation` | fractionation (2+), temporal_dissociation (1+) | Deep trance, identity |
+| `empowerment` | embedded_commands (10+), fractionation (2+) | Power words |
+| `confidence` | embedded_commands (12+), fractionation (2+) | Worth affirmations |
+| `relaxation` | vagal (3+), breath_pacing (3+) | Parasympathetic |
+| `spiritual_growth` | temporal_dissociation (1+), sensory_stacking (3+) | Timelessness |
+
+### Manifest Fields
+
+```yaml
+session:
+  desired_outcome: "healing"  # Required for outcome validation
+  outcome_subcategory: "trauma_integration"  # Optional
+  target_transformation: "From fragmentation → wholeness"
+  success_metrics:
+    - "Somatic shift in chest/heart area"
+    - "Sense of emotional release"
+```
+
+### Validation
+
+```bash
+# Full validation (includes outcome check)
+python scripts/utilities/validate_ssml.py sessions/{session}/working_files/script.ssml
+
+# Detailed outcome validation
+python scripts/utilities/validate_outcome.py sessions/{session}/ -v
+```
+
+**Reference:** `knowledge/outcome_registry.yaml` for complete outcome specifications.
 
 ---
 
@@ -347,6 +391,7 @@ dreamweaving/
 | [prompts/hypnotic_dreamweaving_instructions.md](prompts/hypnotic_dreamweaving_instructions.md) | Master script prompt |
 | [docs/INDEX.md](docs/INDEX.md) | Complete documentation index |
 | [docs/MCP_PLUGINS_GUIDE.md](docs/MCP_PLUGINS_GUIDE.md) | MCP servers & plugins integration guide |
+| [docs/STOCK_IMAGE_SOP.md](docs/STOCK_IMAGE_SOP.md) | Stock image sourcing and licensing |
 
 ---
 
@@ -1322,6 +1367,10 @@ python3 scripts/utilities/validate_nlp.py sessions/{session}/working_files/scrip
 
 # Check audio levels
 ffprobe -v error -show_format sessions/{session}/output/voice_enhanced.mp3
+
+# Validate stock image licenses
+python3 scripts/utilities/validate_image_licenses.py sessions/{session}/
+python3 scripts/utilities/validate_image_licenses.py --all  # Check all sessions
 ```
 
 ## Thumbnail Generation
@@ -1374,6 +1423,37 @@ python3 scripts/core/generate_scene_images.py sessions/{session}/ --midjourney-o
 
 This creates `midjourney-prompts.md` with copy-paste prompts for Midjourney.
 
+### Alternative: Stock Images (Unsplash/Pexels/Pixabay)
+
+Source images from free stock photo platforms with built-in license tracking.
+
+```bash
+# Interactive mode: walks through each scene, opens browser, guides documentation
+python3 scripts/core/generate_scene_images.py sessions/{session}/ --method stock
+
+# Use specific platform (default: unsplash)
+python3 scripts/core/generate_scene_images.py sessions/{session}/ --method stock --platform pexels
+
+# Non-interactive: generate search guide markdown only
+python3 scripts/core/generate_scene_images.py sessions/{session}/ --method stock --stock-guide
+```
+
+**Interactive mode features:**
+- Opens search URLs in browser for each scene
+- Suggests search queries based on scene content
+- Guides through download and license documentation
+- Automatically processes images to 1920x1080
+- Creates/updates `license_manifest.yaml`
+
+**Platforms supported:**
+| Platform | Best For | Commercial Use |
+|----------|----------|----------------|
+| Unsplash | Nature, landscapes | YES (no attribution required) |
+| Pexels | General stock | YES (no attribution required) |
+| Pixabay | AI-generated, abstract | YES (no attribution required) |
+
+**See also:** [docs/STOCK_IMAGE_SOP.md](docs/STOCK_IMAGE_SOP.md) for complete sourcing workflow.
+
 ### Style Presets
 
 | Preset | Best For | Key Elements |
@@ -1400,6 +1480,9 @@ Style is auto-detected from session name if not specified.
 |--------|----------|
 | Scene images for video | `sessions/{session}/images/uploaded/` |
 | Midjourney prompts | `sessions/{session}/midjourney-prompts.md` |
+| Stock image cache | `sessions/{session}/images/stock_cache/` |
+| License manifest | `sessions/{session}/images/license_manifest.yaml` |
+| Stock search guide | `sessions/{session}/stock-image-guide.md` |
 
 ---
 

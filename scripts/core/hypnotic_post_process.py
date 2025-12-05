@@ -45,6 +45,19 @@ import argparse
 import gc
 import traceback
 from pathlib import Path
+from typing import Optional, List, Dict
+
+# Local imports for adaptive processing
+try:
+    from core.audio.adaptive_processing import (
+        apply_full_adaptive_processing,
+        stages_from_manifest,
+        create_anchoring_layer,
+        STAGE_PRESETS,
+    )
+    ADAPTIVE_AVAILABLE = True
+except ImportError:
+    ADAPTIVE_AVAILABLE = False
 
 # Memory management for large files
 import warnings
@@ -89,6 +102,28 @@ DEFAULTS = {
     'echo_delay_ms': 180,         # Primary echo delay
     'echo_decay': 0.25,           # Echo volume (25% of original)
     'echo_feedback': 0.15,        # Feedback for secondary echoes
+
+    # NEW: Dual reverb system (short room + long hall)
+    'dual_reverb_enabled': True,
+    'short_reverb_time': 0.3,     # 300ms room reverb
+    'short_reverb_wet': 0.12,     # 12% wet mix
+    'long_reverb_time': 8.0,      # 8 second hall reverb
+    'long_reverb_wet': 0.06,      # 6% wet mix (very subtle)
+    'long_reverb_predelay': 0.05, # 50ms predelay for clarity
+
+    # NEW: High-frequency whisper aura (subliminal presence)
+    'hf_aura_enabled': True,
+    'hf_aura_db': -40,            # Very quiet (-40 dB)
+    'hf_aura_cutoff': 4000,       # HPF cutoff in Hz
+
+    # NEW: Adaptive processing (stage-aware enhancements)
+    'adaptive_enabled': True,
+    'spectral_motion_enabled': True,  # Slow EQ sweeps for "living" sound
+    'hdra_enabled': True,             # Hypnotic Dynamic Range Architecture
+    'spatial_animation_enabled': True,  # Stage-aware stereo field
+    'breath_sync_enabled': True,      # Breath-synchronized modulation
+    'anchoring_enabled': True,        # Final minute subliminal anchor
+    'anchoring_duration': 60,         # Anchor duration in seconds
 
     # Mastering
     'target_lufs': -14,           # YouTube standard
@@ -402,6 +437,311 @@ def apply_echo(audio, sample_rate, delay_ms=180, decay=0.25, feedback=0.15):
 
 
 # =============================================================================
+# NEW: DUAL REVERB SYSTEM
+# =============================================================================
+
+def _create_enhancement_layers(audio, sample_rate, cfg):
+    """Create whisper, subharmonic, and double-voice layers."""
+    layers = []
+
+    if cfg['whisper_enabled']:
+        whisper = create_whisper_layer(audio, sample_rate, cfg['whisper_db'])
+        layers.append(('whisper', whisper))
+
+    if cfg['subharmonic_enabled']:
+        subharmonic = create_subharmonic_layer(audio, sample_rate, cfg['subharmonic_db'])
+        layers.append(('subharmonic', subharmonic))
+
+    if cfg['double_enabled']:
+        double = create_double_voice(audio, sample_rate, cfg['double_db'], cfg['double_delay_ms'])
+        layers.append(('double', double))
+
+    return layers
+
+
+def _apply_spatial_effects(enhanced, sample_rate, duration, cfg):
+    """Apply room tone, cuddle waves, echo, dual reverb, and HF aura."""
+    # Room tone
+    if cfg['room_enabled']:
+        enhanced = add_room_tone(enhanced, sample_rate, cfg['room_amount'])
+
+    # Cuddle waves
+    if cfg['cuddle_enabled']:
+        enhanced = apply_cuddle_waves(
+            enhanced, sample_rate, duration,
+            cfg['cuddle_freq'], cfg['cuddle_depth_db']
+        )
+
+    # Echo
+    if cfg['echo_enabled']:
+        enhanced = apply_echo(
+            enhanced, sample_rate,
+            cfg['echo_delay_ms'], cfg['echo_decay'], cfg['echo_feedback']
+        )
+
+    # Dual reverb (short room + long hall)
+    if cfg.get('dual_reverb_enabled', True):
+        enhanced = apply_dual_reverb(enhanced, sample_rate, cfg)
+
+    # High-frequency whisper aura (subliminal presence)
+    if cfg.get('hf_aura_enabled', True):
+        hf_aura = create_hf_whisper_aura(
+            enhanced, sample_rate,
+            cfg.get('hf_aura_db', -40),
+            cfg.get('hf_aura_cutoff', 4000)
+        )
+        enhanced = enhanced + hf_aura
+
+    return enhanced
+
+
+def _apply_adaptive_processing(enhanced, sample_rate, duration, cfg, manifest=None):
+    """Apply intelligent adaptive processing based on hypnosis stages."""
+    if not ADAPTIVE_AVAILABLE:
+        print("  ⚠ Adaptive processing not available (import failed)")
+        return enhanced
+
+    if not cfg.get('adaptive_enabled', True):
+        return enhanced
+
+    print("\n  🧠 ADAPTIVE PROCESSING")
+    print("  " + "=" * 40)
+
+    # Extract stages from manifest if available
+    stages = []
+    if manifest and 'sections' in manifest:
+        stages = stages_from_manifest(manifest)
+        print(f"    Detected {len(stages)} hypnosis stages from manifest")
+    else:
+        # Create default stages based on duration
+        print("    Using default stage timing (no manifest)")
+        # Standard 30-minute session timing
+        stages = _create_default_stages(duration)
+
+    # Apply full adaptive processing
+    enhanced = apply_full_adaptive_processing(
+        enhanced, sample_rate, stages,
+        voice_track=None,  # Could be added if voice is available separately
+        enable_spectral_motion=cfg.get('spectral_motion_enabled', True),
+        enable_masking=False,  # Requires separate voice track
+        enable_hdra=cfg.get('hdra_enabled', True),
+        enable_spatial=cfg.get('spatial_animation_enabled', True),
+        enable_breath_sync=cfg.get('breath_sync_enabled', True),
+    )
+
+    # Add anchoring layer in final minute
+    if cfg.get('anchoring_enabled', True):
+        anchor_duration = min(cfg.get('anchoring_duration', 60), duration * 0.1)
+        anchor_start = duration - anchor_duration
+
+        print(f"    Adding anchoring layer (last {anchor_duration:.0f}s)")
+        anchor_layer = create_anchoring_layer(anchor_duration, sample_rate)
+
+        # Mix anchoring layer into final portion
+        anchor_start_sample = int(anchor_start * sample_rate)
+        anchor_samples = len(anchor_layer)
+
+        if anchor_start_sample + anchor_samples <= len(enhanced):
+            enhanced[anchor_start_sample:anchor_start_sample + anchor_samples] += anchor_layer
+
+    return enhanced
+
+
+def _create_default_stages(duration: float) -> List[Dict]:
+    """Create default hypnosis stages based on duration."""
+    # Standard distribution: 10% pretalk, 15% induction, 50% journey, 15% integration, 10% awakening
+    stages = [
+        {'name': 'pretalk', 'start': 0, 'end': duration * 0.10, **STAGE_PRESETS['pretalk']},
+        {'name': 'induction', 'start': duration * 0.10, 'end': duration * 0.25, **STAGE_PRESETS['induction']},
+        {'name': 'journey', 'start': duration * 0.25, 'end': duration * 0.75, **STAGE_PRESETS['journey']},
+        {'name': 'integration', 'start': duration * 0.75, 'end': duration * 0.90, **STAGE_PRESETS['integration']},
+        {'name': 'awakening', 'start': duration * 0.90, 'end': duration, **STAGE_PRESETS['awakening']},
+    ]
+    return stages
+
+
+def _print_core_enhancements(cfg):
+    """Print core audio enhancement summary."""
+    enhancements = [
+        (True, f"Tape warmth ({cfg['warmth_drive']*100:.0f}%)"),
+        (cfg['deess_enabled'], "De-essing (4-8 kHz)"),
+        (cfg['whisper_enabled'], f"Whisper overlay ({cfg['whisper_db']} dB)"),
+        (cfg['subharmonic_enabled'], f"Subharmonic ({cfg['subharmonic_db']} dB)"),
+        (cfg['double_enabled'], f"Double-voice ({cfg['double_db']} dB, {cfg['double_delay_ms']}ms)"),
+        (cfg['room_enabled'], f"Room tone ({cfg['room_amount']*100:.0f}%)"),
+        (cfg['cuddle_enabled'], f"Cuddle waves ({cfg['cuddle_freq']} Hz, ±{cfg['cuddle_depth_db']} dB)"),
+        (cfg['echo_enabled'], f"Echo ({cfg['echo_delay_ms']}ms, {cfg['echo_decay']*100:.0f}%)"),
+        (cfg.get('dual_reverb_enabled', True),
+         f"Dual reverb (short: {cfg.get('short_reverb_time', 0.3)*1000:.0f}ms, "
+         f"long: {cfg.get('long_reverb_time', 8.0):.1f}s)"),
+        (cfg.get('hf_aura_enabled', True), f"HF whisper aura ({cfg.get('hf_aura_db', -40)} dB)"),
+    ]
+    for enabled, desc in enhancements:
+        if enabled:
+            print(f"   ✓ {desc}")
+
+
+def _print_adaptive_summary(cfg):
+    """Print adaptive processing summary."""
+    if not cfg.get('adaptive_enabled', True):
+        return
+    print("\n🧠 Adaptive Processing (Stage-Aware):")
+    features = [
+        (cfg.get('spectral_motion_enabled', True), "Spectral motion (living EQ sweep)"),
+        (cfg.get('hdra_enabled', True), "HDR-A (hypnotic dynamic range architecture)"),
+        (cfg.get('spatial_animation_enabled', True), "Spatial animation (stage-aware stereo field)"),
+        (cfg.get('breath_sync_enabled', True), "Breath synchronization (0.15 Hz modulation)"),
+        (cfg.get('anchoring_enabled', True), f"Post-hypnotic anchoring ({cfg.get('anchoring_duration', 60)}s)"),
+    ]
+    for enabled, desc in features:
+        if enabled:
+            print(f"   ✓ {desc}")
+
+
+def _print_enhancement_summary(cfg, duration, sample_rate):
+    """Print summary of applied enhancements."""
+    print("\n📋 Output Summary:")
+    print(f"   Duration: {duration/60:.1f} minutes")
+    print(f"   Sample rate: {sample_rate} Hz")
+
+    print("\n🎧 Enhancements Applied:")
+    _print_core_enhancements(cfg)
+    _print_adaptive_summary(cfg)
+
+    print("\n🎚️ Mastering:")
+    print(f"   ✓ LUFS: {cfg['target_lufs']} LUFS")
+    print(f"   ✓ True peak: {cfg['true_peak_dbtp']} dBTP")
+    print("   ✓ Warmth & presence EQ")
+    print("   ✓ Stereo enhancement (5%)")
+
+
+def apply_dual_reverb(audio, sample_rate, cfg):
+    """
+    Apply professional dual-reverb system for depth and presence.
+
+    Creates two reverb layers:
+    - Short reverb (room): Physical presence, 0.2-0.4 seconds
+    - Long reverb (hall): Ethereal depth, 6-12 seconds
+
+    This combination provides both intimacy and spaciousness,
+    ideal for hypnotic dreamweaving content.
+
+    Args:
+        audio: Input stereo audio array
+        sample_rate: Sample rate in Hz
+        cfg: Configuration dict with reverb parameters
+
+    Returns:
+        Audio with dual reverb applied
+    """
+    print("  🏛️ Applying dual reverb system...")
+
+    output = audio.copy()
+
+    # Short room reverb (physical presence)
+    short_time = cfg.get('short_reverb_time', 0.3)
+    short_wet = cfg.get('short_reverb_wet', 0.12)
+
+    if short_wet > 0:
+        room_samples = int(short_time * sample_rate)
+        # Create room impulse response with early reflections
+        t_room = np.linspace(0, short_time, room_samples)
+        room_ir = np.exp(-t_room * (5 / short_time))  # Exponential decay
+        # Add randomness for natural diffusion
+        rng = np.random.default_rng(42)  # Seeded for consistency
+        room_ir *= rng.standard_normal(room_samples) * 0.1
+
+        room_reverb = np.zeros_like(audio)
+        for ch in range(2):
+            room_reverb[:, ch] = signal.fftconvolve(audio[:, ch], room_ir, mode='same')
+
+        # Blend with dry signal
+        output = output * (1 - short_wet) + room_reverb * short_wet
+        print(f"      Short reverb: {short_time*1000:.0f}ms, {short_wet*100:.0f}% wet")
+
+    # Long hall reverb (ethereal depth)
+    long_time = cfg.get('long_reverb_time', 8.0)
+    long_wet = cfg.get('long_reverb_wet', 0.06)
+    predelay = cfg.get('long_reverb_predelay', 0.05)
+    predelay_samples = int(predelay * sample_rate)
+
+    if long_wet > 0:
+        hall_samples = int(long_time * sample_rate)
+        t_hall = np.linspace(0, long_time, hall_samples)
+
+        # Create hall impulse response with modulated diffusion
+        hall_decay = np.exp(-t_hall * (0.5))  # Slower decay for hall
+        rng = np.random.default_rng(123)  # Different seed for variation
+        hall_ir = hall_decay * rng.standard_normal(hall_samples) * 0.05
+
+        # Add subtle modulation for shimmer effect
+        shimmer_mod = 1 + 0.1 * np.sin(2 * np.pi * 2 * t_hall)
+        hall_ir *= shimmer_mod
+
+        hall_reverb = np.zeros_like(audio)
+        for ch in range(2):
+            convolved = signal.fftconvolve(audio[:, ch], hall_ir, mode='same')
+            # Apply predelay
+            if predelay_samples > 0 and predelay_samples < len(convolved):
+                hall_reverb[predelay_samples:, ch] = convolved[:-predelay_samples]
+            else:
+                hall_reverb[:, ch] = convolved
+
+        # Add hall reverb (don't subtract from dry, just add)
+        output = output + hall_reverb * long_wet
+        print(f"      Long reverb: {long_time:.1f}s, {long_wet*100:.0f}% wet, {predelay*1000:.0f}ms predelay")
+
+    return output
+
+
+def create_hf_whisper_aura(audio, sample_rate, level_db=-40, cutoff_hz=4000):
+    """
+    Create extremely subtle high-frequency presence layer.
+
+    This creates a subliminal "aura" around the voice by:
+    1. High-pass filtering to extract only high frequencies
+    2. Adding shimmer reverb for ethereal quality
+    3. Mixing at very low level (-35 to -45 dB)
+
+    The result is felt more than heard, creating an angelic presence.
+
+    Args:
+        audio: Input stereo audio array
+        sample_rate: Sample rate in Hz
+        level_db: Output level in dB (default -40, very quiet)
+        cutoff_hz: High-pass filter cutoff (default 4000 Hz)
+
+    Returns:
+        HF aura layer (to be added to main mix)
+    """
+    print("  ✨ Creating high-frequency whisper aura...")
+
+    nyq = sample_rate / 2
+
+    # High-pass filter to extract only high frequencies
+    b_hp, a_hp = signal.butter(3, cutoff_hz / nyq, btype='high')
+
+    hf_layer = np.zeros_like(audio)
+    for ch in range(2):
+        hf_layer[:, ch] = signal.filtfilt(b_hp, a_hp, audio[:, ch])
+
+    # Add shimmer reverb (1.5 second ethereal tail)
+    reverb_length = int(1.5 * sample_rate)
+    t_reverb = np.linspace(0, 1.5, reverb_length)
+    rng = np.random.default_rng(777)
+    reverb_ir = np.exp(-t_reverb * 3) * rng.standard_normal(reverb_length) * 0.05
+
+    for ch in range(2):
+        hf_layer[:, ch] = signal.fftconvolve(hf_layer[:, ch], reverb_ir, mode='same')
+
+    # Apply level
+    hf_layer *= db_to_linear(level_db)
+
+    print(f"      Cutoff: {cutoff_hz} Hz, Level: {level_db} dB")
+    return hf_layer
+
+
+# =============================================================================
 # MASTERING CHAIN
 # =============================================================================
 
@@ -509,12 +849,12 @@ def process_audio(
     print("  Layer 1: Main voice (warmth + de-essing)")
     print("  Layer 2: Whisper overlay (ethereal)")
     print("  Layer 3: Subharmonic warm (grounding)")
-    print("  + Double-voice, room tone, cuddle waves, echo")
+    print("  + Double-voice, room tone, cuddle waves, echo, dual reverb")
 
     # Load audio
     audio, sample_rate, duration = load_audio(input_path)
 
-    print(f"\n✨ HYPNOTIC ENHANCEMENT")
+    print("\n✨ HYPNOTIC ENHANCEMENT")
     print("=" * 60)
 
     # Step 1: Tape warmth
@@ -524,51 +864,24 @@ def process_audio(
     if cfg['deess_enabled']:
         audio = apply_deessing(audio, sample_rate)
 
-    # Step 3: Create enhancement layers
-    layers = []
-
-    if cfg['whisper_enabled']:
-        whisper = create_whisper_layer(audio, sample_rate, cfg['whisper_db'])
-        layers.append(('whisper', whisper))
-
-    if cfg['subharmonic_enabled']:
-        subharmonic = create_subharmonic_layer(audio, sample_rate, cfg['subharmonic_db'])
-        layers.append(('subharmonic', subharmonic))
-
-    if cfg['double_enabled']:
-        double = create_double_voice(audio, sample_rate, cfg['double_db'], cfg['double_delay_ms'])
-        layers.append(('double', double))
-
-    # Step 4: Combine all layers
+    # Step 3: Create and combine enhancement layers
+    layers = _create_enhancement_layers(audio, sample_rate, cfg)
     print("\n  🎚️ Combining triple-layer presence...")
     enhanced = audio.copy()
     for name, layer in layers:
         enhanced += layer
-    print(f"      Main voice + {' + '.join([l[0] for l in layers])}")
+    print(f"      Main voice + {' + '.join([name for name, _ in layers])}")
 
-    # Step 5: Room tone
-    if cfg['room_enabled']:
-        enhanced = add_room_tone(enhanced, sample_rate, cfg['room_amount'])
+    # Step 4: Apply spatial effects (room, cuddle, echo, dual reverb, HF aura)
+    enhanced = _apply_spatial_effects(enhanced, sample_rate, duration, cfg)
 
-    # Step 6: Cuddle waves
-    if cfg['cuddle_enabled']:
-        enhanced = apply_cuddle_waves(
-            enhanced, sample_rate, duration,
-            cfg['cuddle_freq'], cfg['cuddle_depth_db']
-        )
+    # Step 5: Apply adaptive processing (stage-aware enhancements)
+    if cfg.get('adaptive_enabled', True) and ADAPTIVE_AVAILABLE:
+        enhanced = _apply_adaptive_processing(enhanced, sample_rate, duration, cfg)
 
-    # Step 7: Echo
-    if cfg['echo_enabled']:
-        enhanced = apply_echo(
-            enhanced, sample_rate,
-            cfg['echo_delay_ms'], cfg['echo_decay'], cfg['echo_feedback']
-        )
-
-    # Step 8: Normalize
+    # Step 6: Normalize and prevent clipping
     print("\n  📊 Pre-master normalization...")
     enhanced = normalize_rms(enhanced, -16)
-
-    # Prevent clipping
     peak = np.max(np.abs(enhanced))
     if peak > 0.95:
         enhanced = enhanced * (0.95 / peak)
@@ -597,41 +910,14 @@ def process_audio(
         print("\n" + "=" * 70)
         print("✅ HYPNOTIC POST-PROCESSING COMPLETE!")
         print("=" * 70)
-        print(f"\n📋 Output Summary:")
-        print(f"   Duration: {duration/60:.1f} minutes")
-        print(f"   Sample rate: {sample_rate} Hz")
-
-        print(f"\n🎧 Enhancements Applied:")
-        print(f"   ✓ Tape warmth ({cfg['warmth_drive']*100:.0f}%)")
-        if cfg['deess_enabled']:
-            print(f"   ✓ De-essing (4-8 kHz)")
-        if cfg['whisper_enabled']:
-            print(f"   ✓ Whisper overlay ({cfg['whisper_db']} dB)")
-        if cfg['subharmonic_enabled']:
-            print(f"   ✓ Subharmonic ({cfg['subharmonic_db']} dB)")
-        if cfg['double_enabled']:
-            print(f"   ✓ Double-voice ({cfg['double_db']} dB, {cfg['double_delay_ms']}ms)")
-        if cfg['room_enabled']:
-            print(f"   ✓ Room tone ({cfg['room_amount']*100:.0f}%)")
-        if cfg['cuddle_enabled']:
-            print(f"   ✓ Cuddle waves ({cfg['cuddle_freq']} Hz, ±{cfg['cuddle_depth_db']} dB)")
-        if cfg['echo_enabled']:
-            print(f"   ✓ Echo ({cfg['echo_delay_ms']}ms, {cfg['echo_decay']*100:.0f}%)")
-
-        print(f"\n🎚️ Mastering:")
-        print(f"   ✓ LUFS: {cfg['target_lufs']} LUFS")
-        print(f"   ✓ True peak: {cfg['true_peak_dbtp']} dBTP")
-        print(f"   ✓ Warmth & presence EQ")
-        print(f"   ✓ Stereo enhancement (5%)")
-
-        print(f"\n📁 Output Files:")
+        _print_enhancement_summary(cfg, duration, sample_rate)
+        print("\n📁 Output Files:")
         print(f"   {output_wav}")
         print(f"   {output_mp3}")
-
         return output_wav, output_mp3
-    else:
-        print("\n✗ Post-processing failed!")
-        return None
+
+    print("\n✗ Post-processing failed!")
+    return None
 
 
 # =============================================================================
@@ -786,6 +1072,88 @@ def process_audio_ffmpeg_only(input_path, output_name, output_dir, settings=None
 # CLI INTERFACE
 # =============================================================================
 
+def _resolve_io_paths(args):
+    """Resolve input file, output name, and output directory from args."""
+    if args.session:
+        session_dir = Path(args.session)
+        input_file = session_dir / 'output' / 'session_mixed.wav'
+        if not input_file.exists():
+            print(f"Error: {input_file} not found")
+            sys.exit(1)
+        session_name = session_dir.name.replace('-', '_')
+        output_name = f"{session_name}_MASTER"
+        output_dir = session_dir / 'output'
+        return input_file, output_name, output_dir
+
+    if args.input:
+        input_file = Path(args.input)
+        if not input_file.exists():
+            print(f"Error: {input_file} not found")
+            sys.exit(1)
+        output_name = args.output or input_file.stem + '_MASTER'
+        output_dir = Path(args.output_dir) if args.output_dir else input_file.parent
+        return input_file, output_name, output_dir
+
+    return None, None, None
+
+
+def _build_settings_from_args(args):
+    """Build settings dictionary from parsed CLI arguments."""
+    settings = {}
+
+    # Toggle mappings: (arg_name, setting_key)
+    toggles = [
+        ('no_deess', 'deess_enabled'),
+        ('no_whisper', 'whisper_enabled'),
+        ('no_subharmonic', 'subharmonic_enabled'),
+        ('no_double', 'double_enabled'),
+        ('no_room', 'room_enabled'),
+        ('no_cuddle', 'cuddle_enabled'),
+        ('no_echo', 'echo_enabled'),
+        ('no_dual_reverb', 'dual_reverb_enabled'),
+        ('no_hf_aura', 'hf_aura_enabled'),
+        ('no_adaptive', 'adaptive_enabled'),
+        ('no_spectral_motion', 'spectral_motion_enabled'),
+        ('no_hdra', 'hdra_enabled'),
+        ('no_spatial_animation', 'spatial_animation_enabled'),
+        ('no_breath_sync', 'breath_sync_enabled'),
+        ('no_anchoring', 'anchoring_enabled'),
+    ]
+    for arg_name, setting_key in toggles:
+        if getattr(args, arg_name, False):
+            settings[setting_key] = False
+
+    # Parameter mappings: (arg_name, setting_key)
+    params = [
+        ('warmth', 'warmth_drive'),
+        ('whisper_db', 'whisper_db'),
+        ('sub_db', 'subharmonic_db'),
+        ('double_db', 'double_db'),
+        ('double_delay', 'double_delay_ms'),
+        ('room', 'room_amount'),
+        ('cuddle_freq', 'cuddle_freq'),
+        ('cuddle_depth', 'cuddle_depth_db'),
+        ('echo_delay', 'echo_delay_ms'),
+        ('echo_decay', 'echo_decay'),
+        ('echo_feedback', 'echo_feedback'),
+        ('short_reverb_time', 'short_reverb_time'),
+        ('short_reverb_wet', 'short_reverb_wet'),
+        ('long_reverb_time', 'long_reverb_time'),
+        ('long_reverb_wet', 'long_reverb_wet'),
+        ('long_reverb_predelay', 'long_reverb_predelay'),
+        ('hf_aura_db', 'hf_aura_db'),
+        ('hf_aura_cutoff', 'hf_aura_cutoff'),
+        ('lufs', 'target_lufs'),
+        ('peak', 'true_peak_dbtp'),
+    ]
+    for arg_name, setting_key in params:
+        value = getattr(args, arg_name, None)
+        if value is not None:
+            settings[setting_key] = value
+
+    return settings
+
+
 def main():
     parser = argparse.ArgumentParser(
         description='Dreamweaving Hypnotic Post-Processing & Mastering',
@@ -820,6 +1188,14 @@ Examples:
     parser.add_argument('--no-room', action='store_true', help='Disable room tone')
     parser.add_argument('--no-cuddle', action='store_true', help='Disable cuddle waves')
     parser.add_argument('--no-echo', action='store_true', help='Disable echo')
+    parser.add_argument('--no-dual-reverb', action='store_true', help='Disable dual reverb system')
+    parser.add_argument('--no-hf-aura', action='store_true', help='Disable high-frequency whisper aura')
+    parser.add_argument('--no-adaptive', action='store_true', help='Disable adaptive processing')
+    parser.add_argument('--no-spectral-motion', action='store_true', help='Disable spectral motion')
+    parser.add_argument('--no-hdra', action='store_true', help='Disable dynamic range architecture')
+    parser.add_argument('--no-spatial-animation', action='store_true', help='Disable spatial animation')
+    parser.add_argument('--no-breath-sync', action='store_true', help='Disable breath synchronization')
+    parser.add_argument('--no-anchoring', action='store_true', help='Disable final anchoring layer')
 
     # Enhancement parameters
     parser.add_argument('--warmth', type=float, help=f'Warmth drive 0-1 (default: {DEFAULTS["warmth_drive"]})')
@@ -834,6 +1210,24 @@ Examples:
     parser.add_argument('--echo-decay', type=float, help=f'Echo decay 0-1 (default: {DEFAULTS["echo_decay"]})')
     parser.add_argument('--echo-feedback', type=float, help=f'Echo feedback 0-1 (default: {DEFAULTS["echo_feedback"]})')
 
+    # Dual reverb parameters (NEW)
+    parser.add_argument('--short-reverb-time', type=float,
+                       help=f'Short reverb time in seconds (default: {DEFAULTS["short_reverb_time"]})')
+    parser.add_argument('--short-reverb-wet', type=float,
+                       help=f'Short reverb wet mix 0-1 (default: {DEFAULTS["short_reverb_wet"]})')
+    parser.add_argument('--long-reverb-time', type=float,
+                       help=f'Long reverb time in seconds (default: {DEFAULTS["long_reverb_time"]})')
+    parser.add_argument('--long-reverb-wet', type=float,
+                       help=f'Long reverb wet mix 0-1 (default: {DEFAULTS["long_reverb_wet"]})')
+    parser.add_argument('--long-reverb-predelay', type=float,
+                       help=f'Long reverb predelay in seconds (default: {DEFAULTS["long_reverb_predelay"]})')
+
+    # HF aura parameters (NEW)
+    parser.add_argument('--hf-aura-db', type=float,
+                       help=f'HF aura level in dB (default: {DEFAULTS["hf_aura_db"]})')
+    parser.add_argument('--hf-aura-cutoff', type=float,
+                       help=f'HF aura HPF cutoff in Hz (default: {DEFAULTS["hf_aura_cutoff"]})')
+
     # Mastering
     parser.add_argument('--lufs', type=float, help=f'Target LUFS (default: {DEFAULTS["target_lufs"]})')
     parser.add_argument('--peak', type=float, help=f'True peak dBTP (default: {DEFAULTS["true_peak_dbtp"]})')
@@ -844,77 +1238,14 @@ Examples:
 
     args = parser.parse_args()
 
-    # Handle session mode
-    if args.session:
-        session_dir = Path(args.session)
-        input_file = session_dir / 'output' / 'session_mixed.wav'
-        if not input_file.exists():
-            print(f"Error: {input_file} not found")
-            sys.exit(1)
-
-        # Extract session name from directory
-        session_name = session_dir.name.replace('-', '_')
-        output_name = f"{session_name}_MASTER"
-        output_dir = session_dir / 'output'
-
-    elif args.input:
-        input_file = Path(args.input)
-        if not input_file.exists():
-            print(f"Error: {input_file} not found")
-            sys.exit(1)
-
-        output_name = args.output or input_file.stem + '_MASTER'
-        output_dir = Path(args.output_dir) if args.output_dir else input_file.parent
-    else:
+    # Resolve input/output paths
+    input_file, output_name, output_dir = _resolve_io_paths(args)
+    if input_file is None:
         parser.print_help()
         sys.exit(1)
 
-    # Build settings
-    settings = {}
-
-    # Toggles
-    if args.no_deess:
-        settings['deess_enabled'] = False
-    if args.no_whisper:
-        settings['whisper_enabled'] = False
-    if args.no_subharmonic:
-        settings['subharmonic_enabled'] = False
-    if args.no_double:
-        settings['double_enabled'] = False
-    if args.no_room:
-        settings['room_enabled'] = False
-    if args.no_cuddle:
-        settings['cuddle_enabled'] = False
-    if args.no_echo:
-        settings['echo_enabled'] = False
-
-    # Parameters
-    if args.warmth is not None:
-        settings['warmth_drive'] = args.warmth
-    if args.whisper_db is not None:
-        settings['whisper_db'] = args.whisper_db
-    if args.sub_db is not None:
-        settings['subharmonic_db'] = args.sub_db
-    if args.double_db is not None:
-        settings['double_db'] = args.double_db
-    if args.double_delay is not None:
-        settings['double_delay_ms'] = args.double_delay
-    if args.room is not None:
-        settings['room_amount'] = args.room
-    if args.cuddle_freq is not None:
-        settings['cuddle_freq'] = args.cuddle_freq
-    if args.cuddle_depth is not None:
-        settings['cuddle_depth_db'] = args.cuddle_depth
-    if args.echo_delay is not None:
-        settings['echo_delay_ms'] = args.echo_delay
-    if args.echo_decay is not None:
-        settings['echo_decay'] = args.echo_decay
-    if args.echo_feedback is not None:
-        settings['echo_feedback'] = args.echo_feedback
-    if args.lufs is not None:
-        settings['target_lufs'] = args.lufs
-    if args.peak is not None:
-        settings['true_peak_dbtp'] = args.peak
+    # Build settings from CLI arguments
+    settings = _build_settings_from_args(args)
 
     # Process - choose mode based on --ffmpeg-only flag
     try:

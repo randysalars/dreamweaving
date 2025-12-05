@@ -1,0 +1,1160 @@
+# =============================================================================
+# OUTCOME REGISTRY - Outcome Engineering Framework
+# =============================================================================
+# Central registry mapping desired outcomes to required patterns, archetypes,
+# symbolic objects, journey families, and success metrics.
+#
+# Usage: Consult this registry when designing sessions to ensure all required
+# components are included for the stated outcome.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-04"
+purpose: "Systematic outcome-to-component mapping for session design"
+
+# =============================================================================
+# OUTCOME CATEGORIES
+# =============================================================================
+# Each outcome category defines what patterns, archetypes, objects, and actions
+# are required or suggested to reliably achieve that transformation.
+
+outcomes:
+
+  # ---------------------------------------------------------------------------
+  # HEALING - Emotional/somatic healing, trauma integration
+  # ---------------------------------------------------------------------------
+  healing:
+    description: "Emotional and somatic healing, trauma integration, restoration"
+    subcategories:
+      - trauma_integration
+      - emotional_healing
+      - grief_processing
+      - inner_child_work
+      - somatic_release
+
+    # Required patterns (must include these)
+    required_patterns:
+      vagal_activation:
+        minimum: 2
+        maximum: 3
+        placement: "induction, deepening"
+        rationale: "Creates physiological safety for emotional processing"
+      emotional_calibration:
+        minimum: 1
+        maximum: 2
+        placement: "journey entry, integration"
+        rationale: "Opens space for personalized emotional processing"
+
+    # Suggested patterns (strongly recommended)
+    suggested_patterns:
+      - fractionation_loops
+      - temporal_dissociation
+      - breath_pacing
+      - parts_integration        # Phase 4: IFS-inspired for healing
+      - association_dissociation # Phase 4: State switching for processing
+      - memory_reconsolidation   # Phase 4: Light protocol for emotional update
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      submodality_shifts:
+        recommended: true
+        usage: "Shrink/distance for painful memories, brighten/expand for resources"
+      symbolic_catharsis:
+        recommended: true
+        usage: "Water dissolution for emotional cleansing"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    # Archetypes that support this outcome
+    suggested_archetypes:
+      primary:
+        - wounded_healer
+        - inner_child
+        - divine_beloved
+      secondary:
+        - orpheus
+        - persephone
+
+    # Journey families that work best
+    suggested_journey_families:
+      primary:
+        - eden_garden
+        - ocean_depths
+      secondary:
+        - temple_initiation
+
+    # Symbolic objects for this outcome
+    suggested_objects:
+      primary:
+        - crystal_vial      # Healing medicine
+        - glowing_stone     # Inner light, guidance
+      secondary:
+        - luminous_feather  # Release, lightness
+
+    # Integration actions to anchor the transformation
+    integration_actions:
+      primary:
+        - hydration_anchor
+        - hand_heart_anchor
+      secondary:
+        - beauty_noticing
+        - breath_trigger
+
+    # How to know the outcome was achieved
+    success_metrics:
+      physiological:
+        - "Somatic shift in chest/heart area"
+        - "Reduced muscle tension"
+        - "Deeper, slower breathing"
+      emotional:
+        - "Sense of emotional release or relief"
+        - "Integration of difficult feelings"
+        - "Increased self-compassion"
+      behavioral:
+        - "Listener uses hydration/breath anchor after session"
+        - "Reports feeling 'lighter' or 'cleaner'"
+
+    # Consciousness progression
+    brainwave_arc:
+      start: alpha
+      journey_peak: delta
+      return: alpha
+      note: "Deep delta for emotional processing, gentle return"
+
+  # ---------------------------------------------------------------------------
+  # TRANSFORMATION - Deep change, death/rebirth, alchemical shift
+  # ---------------------------------------------------------------------------
+  transformation:
+    description: "Fundamental identity shift, death/rebirth, alchemical transformation"
+    subcategories:
+      - identity_transformation
+      - letting_go
+      - rebirth
+      - life_transition
+      - shadow_integration
+
+    required_patterns:
+      fractionation_loops:
+        minimum: 2
+        placement: "induction (15-25%), journey peak (50-75%)"
+        rationale: "Creates deep trance needed for identity work"
+      temporal_dissociation:
+        minimum: 1
+        placement: "integration"
+        rationale: "Extends transformation beyond session"
+
+    suggested_patterns:
+      - double_binds
+      - embedded_commands
+      - vagal_activation
+      - schema_rewriting           # Phase 4: Core belief transformation
+      - predictive_processing_disruption  # Phase 4: Reality morphing
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      submodality_shifts:
+        required: true
+        minimum: 1
+        usage: "Shrink old identity, expand new self"
+      identity_reframing:
+        required: true
+        minimum: 1
+        usage: "Future self embodiment, archetypal identification"
+      symbolic_catharsis:
+        recommended: true
+        usage: "Fire release for transformation"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - phoenix
+        - persephone
+        - shadow_self
+      secondary:
+        - atlas
+        - prometheus
+
+    suggested_journey_families:
+      primary:
+        - cosmic_forge
+        - underworld_descent
+      secondary:
+        - temple_initiation
+
+    suggested_objects:
+      primary:
+        - flame_of_will     # Power, transformation
+        - seed_of_becoming  # New growth, potential
+      secondary:
+        - mirror_of_truth   # Self-knowledge
+
+    integration_actions:
+      primary:
+        - threshold_anchor
+        - morning_connection
+      secondary:
+        - breath_trigger
+
+    success_metrics:
+      physiological:
+        - "Deep relaxation achieved (theta/delta)"
+        - "Sense of energy shift in body"
+      emotional:
+        - "Feeling of being 'remade' or 'renewed'"
+        - "Old identity patterns feel distant"
+        - "New sense of possibility"
+      behavioral:
+        - "Notices transformation when crossing thresholds"
+        - "Different response to previously triggering situations"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: delta_with_gamma_burst
+      return: theta_to_alpha
+      note: "Gamma burst at transformation apex for insight"
+
+  # ---------------------------------------------------------------------------
+  # EMPOWERMENT - Personal power, confidence, courage
+  # ---------------------------------------------------------------------------
+  empowerment:
+    description: "Reclaiming personal power, building confidence, courage activation"
+    subcategories:
+      - confidence_building
+      - courage_activation
+      - boundary_setting
+      - personal_power
+      - warrior_awakening
+
+    required_patterns:
+      embedded_commands:
+        minimum: 10
+        distribution: "3-5 induction, 5-7 journey, 2-3 integration"
+        emphasis_words: ["power", "strength", "claim", "rise", "own"]
+        rationale: "Plants power suggestions throughout"
+      fractionation_loops:
+        minimum: 2
+        placement: "deepening, journey peak"
+        rationale: "Deepens receptivity to empowerment suggestions"
+
+    suggested_patterns:
+      - double_binds
+      - breath_pacing
+      - sensory_stacking
+      - compounded_anchoring  # Phase 4: Multi-modal reinforcement
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      identity_reframing:
+        required: true
+        minimum: 1
+        usage: "Archetypal identification with power figures"
+      submodality_shifts:
+        recommended: true
+        usage: "Brighten/expand feelings of strength and capability"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - atlas
+        - prometheus
+        - poseidon
+      secondary:
+        - phoenix
+        - shadow_self
+
+    suggested_journey_families:
+      primary:
+        - cosmic_forge
+        - temple_initiation
+      secondary:
+        - celestial_journey
+
+    suggested_objects:
+      primary:
+        - flame_of_will
+        - golden_key
+      secondary:
+        - glowing_stone
+
+    integration_actions:
+      primary:
+        - breath_trigger
+        - threshold_anchor
+      secondary:
+        - morning_connection
+
+    success_metrics:
+      physiological:
+        - "Expanded posture, open chest"
+        - "Deeper, fuller breathing"
+        - "Sense of internal heat/energy"
+      emotional:
+        - "Feeling of groundedness and strength"
+        - "Reduced fear or hesitation"
+        - "Sense of rightful ownership of power"
+      behavioral:
+        - "More assertive communication"
+        - "Clearer boundaries"
+        - "Action on previously avoided tasks"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta_with_gamma
+      return: alpha
+      note: "Maintain some alertness for empowerment; gamma at peak activation"
+
+  # ---------------------------------------------------------------------------
+  # SELF-KNOWLEDGE - Clarity, insight, shadow awareness
+  # ---------------------------------------------------------------------------
+  self_knowledge:
+    description: "Deep self-understanding, clarity, shadow awareness, truth-seeing"
+    subcategories:
+      - shadow_work
+      - self_discovery
+      - clarity_seeking
+      - pattern_recognition
+      - authentic_self
+
+    required_patterns:
+      emotional_calibration:
+        minimum: 2
+        placement: "journey entry, helm"
+        rationale: "Opens inquiry into hidden aspects"
+      temporal_dissociation:
+        minimum: 1
+        placement: "integration"
+        rationale: "Allows insights to unfold over time"
+
+    suggested_patterns:
+      - sensory_stacking
+      - fractionation_loops
+      - double_binds
+      - parts_integration          # Phase 4: IFS for self-discovery
+      - association_dissociation   # Phase 4: Perspective shifting
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      parts_integration:
+        required: true
+        minimum: 1
+        usage: "Inner council, parts dialogue for self-understanding"
+      submodality_shifts:
+        recommended: true
+        usage: "Observe internal representations from different angles"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - shadow_self
+        - seeker
+        - inner_critic
+      secondary:
+        - persephone
+        - wounded_healer
+
+    suggested_journey_families:
+      primary:
+        - underworld_descent
+        - temple_initiation
+      secondary:
+        - ocean_depths
+
+    suggested_objects:
+      primary:
+        - mirror_of_truth
+        - glowing_stone
+      secondary:
+        - golden_key
+
+    integration_actions:
+      primary:
+        - beauty_noticing
+        - morning_connection
+      secondary:
+        - threshold_anchor
+
+    success_metrics:
+      physiological:
+        - "Sense of stillness, groundedness"
+        - "Open, receptive body posture"
+      emotional:
+        - "Recognition of previously hidden patterns"
+        - "Compassion for shadow aspects"
+        - "Sense of coming home to self"
+      behavioral:
+        - "Journaling or reflection after session"
+        - "New awareness in daily interactions"
+        - "Different relationship with inner critic"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta_delta_blend
+      return: alpha
+      note: "Theta-delta blend for deep insight access"
+
+  # ---------------------------------------------------------------------------
+  # RELEASE - Letting go, freedom, unburdening
+  # ---------------------------------------------------------------------------
+  release:
+    description: "Letting go of old patterns, beliefs, burdens; gaining freedom"
+    subcategories:
+      - pattern_release
+      - belief_clearing
+      - emotional_release
+      - grief_release
+      - burden_lifting
+
+    required_patterns:
+      vagal_activation:
+        minimum: 2
+        placement: "induction, deepening"
+        rationale: "Creates safety for release"
+      temporal_dissociation:
+        minimum: 1
+        placement: "integration"
+        rationale: "Extends release into future"
+
+    suggested_patterns:
+      - breath_pacing
+      - embedded_commands
+      - fractionation_loops
+      - association_dissociation   # Phase 4: Dissociate from burden
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      symbolic_catharsis:
+        required: true
+        minimum: 1
+        usage: "Fire/water/wind/earth release of burdens"
+      submodality_shifts:
+        required: true
+        minimum: 1
+        usage: "Shrink/distance burdens, lighten weight"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - orpheus
+        - phoenix
+        - atlas
+      secondary:
+        - persephone
+        - inner_child
+
+    suggested_journey_families:
+      primary:
+        - ocean_depths
+        - celestial_journey
+      secondary:
+        - eden_garden
+
+    suggested_objects:
+      primary:
+        - luminous_feather
+        - crystal_vial
+      secondary:
+        - seed_of_becoming
+
+    integration_actions:
+      primary:
+        - hydration_anchor
+        - breath_trigger
+      secondary:
+        - beauty_noticing
+
+    success_metrics:
+      physiological:
+        - "Deep sighing or yawning during session"
+        - "Sensation of lightness"
+        - "Reduced tension in shoulders/jaw"
+      emotional:
+        - "Sense of weight lifting"
+        - "Feeling of freedom or spaciousness"
+        - "Completion or closure"
+      behavioral:
+        - "Letting go of items, habits, or relationships"
+        - "More ease in daily activities"
+        - "Less mental rumination"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: delta
+      return: alpha
+      note: "Deep delta for release; lighter return for refreshment"
+
+  # ---------------------------------------------------------------------------
+  # SPIRITUAL GROWTH - Connection, meaning, transcendence
+  # ---------------------------------------------------------------------------
+  spiritual_growth:
+    description: "Deepening spiritual connection, finding meaning, transcendence"
+    subcategories:
+      - divine_connection
+      - meaning_seeking
+      - presence_cultivation
+      - transcendent_experience
+      - mystical_encounter
+
+    required_patterns:
+      temporal_dissociation:
+        minimum: 1
+        placement: "helm, integration"
+        rationale: "Creates timeless quality for spiritual experience"
+      sensory_stacking:
+        minimum: 3
+        placement: "journey"
+        rationale: "Full sensory immersion in sacred space"
+
+    suggested_patterns:
+      - fractionation_loops
+      - embedded_commands
+      - breath_pacing
+      - predictive_processing_disruption  # Phase 4: Transcendent state access
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      predictive_processing_disruption:
+        recommended: true
+        usage: "Ego-softening, nondual pointers, reality morphing"
+      submodality_shifts:
+        recommended: true
+        usage: "Expand awareness, dissolve boundaries"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - divine_beloved
+        - seeker
+        - wounded_healer
+      secondary:
+        - prometheus
+        - inner_child
+
+    suggested_journey_families:
+      primary:
+        - celestial_journey
+        - temple_initiation
+      secondary:
+        - eden_garden
+
+    suggested_objects:
+      primary:
+        - glowing_stone
+        - golden_key
+      secondary:
+        - flame_of_will
+
+    integration_actions:
+      primary:
+        - beauty_noticing
+        - morning_connection
+      secondary:
+        - hand_heart_anchor
+
+    success_metrics:
+      physiological:
+        - "Deep stillness, slow breathing"
+        - "Sense of expansion beyond body"
+        - "Tingling or warmth sensations"
+      emotional:
+        - "Feeling of awe or wonder"
+        - "Sense of being loved/held"
+        - "Peace beyond understanding"
+      behavioral:
+        - "Increased gratitude practice"
+        - "More present-moment awareness"
+        - "Sense of meaning in daily life"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta_delta
+      return: alpha
+      note: "Deep theta-delta for transcendent states"
+
+  # ---------------------------------------------------------------------------
+  # CREATIVITY - Inspiration, innovation, creative flow
+  # ---------------------------------------------------------------------------
+  creativity:
+    description: "Unlocking creative potential, accessing inspiration, flow states"
+    subcategories:
+      - creative_block_release
+      - inspiration_access
+      - flow_state
+      - imaginative_expansion
+      - artistic_connection
+
+    required_patterns:
+      sensory_stacking:
+        minimum: 4
+        placement: "journey, helm"
+        rationale: "Rich sensory input fuels creative imagination"
+      breath_pacing:
+        minimum: 2
+        placement: "induction, deepening"
+        rationale: "Establishes creative rhythm"
+
+    suggested_patterns:
+      - temporal_dissociation
+      - embedded_commands
+      - fractionation_loops
+      - predictive_processing_disruption  # Phase 4: Creative surreal imagery
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      submodality_shifts:
+        recommended: true
+        usage: "Brighten/expand creative visions"
+      predictive_processing_disruption:
+        recommended: true
+        usage: "Surreal imagery, impossible colors to unlock creativity"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - hermes
+        - inner_child
+        - prometheus
+      secondary:
+        - seeker
+        - phoenix
+
+    suggested_journey_families:
+      primary:
+        - celestial_journey
+        - eden_garden
+      secondary:
+        - ocean_depths
+
+    suggested_objects:
+      primary:
+        - seed_of_becoming
+        - golden_key
+      secondary:
+        - glowing_stone
+
+    integration_actions:
+      primary:
+        - morning_connection
+        - beauty_noticing
+      secondary:
+        - breath_trigger
+
+    success_metrics:
+      physiological:
+        - "Light, alert trance state"
+        - "Open, receptive posture"
+        - "Sense of energy and possibility"
+      emotional:
+        - "Excitement about ideas"
+        - "Playful, curious mood"
+        - "Reduced creative anxiety"
+      behavioral:
+        - "Immediate desire to create"
+        - "New ideas emerging after session"
+        - "Easier access to flow state"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta_alpha_bridge
+      return: alpha
+      note: "Theta-alpha border for creative hypnagogia"
+
+  # ---------------------------------------------------------------------------
+  # RELAXATION - Deep rest, stress relief, calm
+  # ---------------------------------------------------------------------------
+  relaxation:
+    description: "Deep relaxation, stress relief, nervous system regulation"
+    subcategories:
+      - stress_relief
+      - anxiety_reduction
+      - sleep_preparation
+      - nervous_system_reset
+      - deep_rest
+
+    required_patterns:
+      vagal_activation:
+        minimum: 3
+        placement: "induction, deepening, journey"
+        rationale: "Maximum parasympathetic activation"
+      breath_pacing:
+        minimum: 3
+        placement: "throughout"
+        rationale: "Establishes calm, regulated breathing"
+
+    suggested_patterns:
+      - fractionation_loops
+      - sensory_stacking
+      - embedded_commands
+      - compounded_anchoring  # Phase 4: Build relaxation anchors
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      submodality_shifts:
+        recommended: true
+        usage: "Soften/dim worries, expand calm"
+      compounded_anchoring:
+        recommended: true
+        usage: "Multi-modal relaxation anchors"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - poseidon
+        - divine_beloved
+        - inner_child
+      secondary:
+        - atlas
+        - hermes
+
+    suggested_journey_families:
+      primary:
+        - ocean_depths
+        - eden_garden
+      secondary:
+        - celestial_journey
+
+    suggested_objects:
+      primary:
+        - crystal_vial
+        - glowing_stone
+      secondary:
+        - luminous_feather
+
+    integration_actions:
+      primary:
+        - breath_trigger
+        - hand_heart_anchor
+      secondary:
+        - hydration_anchor
+
+    success_metrics:
+      physiological:
+        - "Significantly reduced heart rate"
+        - "Deep, diaphragmatic breathing"
+        - "Muscle tension release"
+        - "Possible sleep during session"
+      emotional:
+        - "Profound calm"
+        - "Worry dissolution"
+        - "Sense of safety and peace"
+      behavioral:
+        - "Improved sleep quality"
+        - "Reduced reactivity to stress"
+        - "Regular use of breath anchor"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: delta
+      return: alpha_or_sleep
+      note: "Deep delta; may transition to natural sleep"
+
+  # ---------------------------------------------------------------------------
+  # FOCUS - Concentration, clarity, mental sharpness
+  # ---------------------------------------------------------------------------
+  focus:
+    description: "Enhanced concentration, mental clarity, sustained attention"
+    subcategories:
+      - concentration_enhancement
+      - mental_clarity
+      - distraction_reduction
+      - flow_activation
+      - cognitive_optimization
+
+    required_patterns:
+      breath_pacing:
+        minimum: 2
+        placement: "induction, return"
+        rationale: "Establishes regulated, focused breathing"
+      embedded_commands:
+        minimum: 8
+        emphasis_words: ["focus", "clear", "sharp", "present", "aware"]
+        rationale: "Plants focus suggestions"
+
+    suggested_patterns:
+      - sensory_stacking
+      - temporal_dissociation
+      - fractionation_loops
+      - compounded_anchoring  # Phase 4: Focus state anchors
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      submodality_shifts:
+        recommended: true
+        usage: "Sharpen/clarify mental imagery, dim distractions"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - hermes
+        - seeker
+        - prometheus
+      secondary:
+        - atlas
+        - wounded_healer
+
+    suggested_journey_families:
+      primary:
+        - temple_initiation
+        - celestial_journey
+      secondary:
+        - cosmic_forge
+
+    suggested_objects:
+      primary:
+        - golden_key
+        - glowing_stone
+      secondary:
+        - flame_of_will
+
+    integration_actions:
+      primary:
+        - breath_trigger
+        - threshold_anchor
+      secondary:
+        - morning_connection
+
+    success_metrics:
+      physiological:
+        - "Alert but calm state"
+        - "Steady, even breathing"
+        - "Reduced physical restlessness"
+      emotional:
+        - "Mental clarity"
+        - "Reduced anxiety about tasks"
+        - "Sense of capability"
+      behavioral:
+        - "Longer periods of sustained attention"
+        - "Easier task initiation"
+        - "Reduced procrastination"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta
+      return: alpha_beta_border
+      note: "Return to alert but calm state; slight beta for task readiness"
+
+  # ---------------------------------------------------------------------------
+  # CONFIDENCE - Self-esteem, self-worth, inner strength
+  # ---------------------------------------------------------------------------
+  confidence:
+    description: "Building self-esteem, self-worth, and unshakeable inner strength"
+    subcategories:
+      - self_esteem_building
+      - imposter_syndrome_healing
+      - public_speaking
+      - social_confidence
+      - performance_confidence
+
+    required_patterns:
+      embedded_commands:
+        minimum: 12
+        emphasis_words: ["worthy", "capable", "confident", "strong", "enough"]
+        rationale: "High density of worth-affirming suggestions"
+      fractionation_loops:
+        minimum: 2
+        placement: "induction, journey peak"
+        rationale: "Deep receptivity for self-concept work"
+
+    suggested_patterns:
+      - double_binds
+      - vagal_activation
+      - sensory_stacking
+      - schema_rewriting         # Phase 4: Core worthiness beliefs
+      - compounded_anchoring     # Phase 4: Build confidence anchors
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      identity_reframing:
+        required: true
+        minimum: 1
+        usage: "Embody confident future self, archetypal power"
+      schema_rewriting:
+        required: true
+        minimum: 1
+        usage: "Clear core unworthiness beliefs"
+      submodality_shifts:
+        recommended: true
+        usage: "Shrink imposter feelings, expand worthiness"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - divine_beloved
+        - inner_critic
+        - atlas
+      secondary:
+        - phoenix
+        - prometheus
+
+    suggested_journey_families:
+      primary:
+        - temple_initiation
+        - cosmic_forge
+      secondary:
+        - celestial_journey
+
+    suggested_objects:
+      primary:
+        - flame_of_will
+        - mirror_of_truth
+      secondary:
+        - glowing_stone
+
+    integration_actions:
+      primary:
+        - breath_trigger
+        - hand_heart_anchor
+      secondary:
+        - morning_connection
+
+    success_metrics:
+      physiological:
+        - "Open, expanded posture"
+        - "Steady eye contact comfort"
+        - "Grounded, stable feeling"
+      emotional:
+        - "Sense of inherent worth"
+        - "Reduced comparison to others"
+        - "Inner validation independent of external"
+      behavioral:
+        - "Speaking up more often"
+        - "Taking on new challenges"
+        - "Less need for external approval"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta
+      return: alpha
+      note: "Deep theta for self-concept work; alert return"
+
+
+# =============================================================================
+# PATTERN REFERENCE INDEX
+# =============================================================================
+# Quick reference for which patterns support which outcomes
+
+pattern_outcome_index:
+  vagal_activation:
+    primary: [healing, release, relaxation]
+    secondary: [transformation, empowerment, confidence]
+  emotional_calibration:
+    primary: [healing, self_knowledge]
+    secondary: [release, transformation]
+  fractionation_loops:
+    primary: [transformation, empowerment, confidence]
+    secondary: [healing, self_knowledge, relaxation]
+  temporal_dissociation:
+    primary: [transformation, spiritual_growth]
+    secondary: [healing, self_knowledge, release, creativity]
+  sensory_stacking:
+    primary: [creativity, spiritual_growth]
+    secondary: [relaxation, self_knowledge, focus]
+  breath_pacing:
+    primary: [relaxation, focus]
+    secondary: [healing, creativity, empowerment]
+  embedded_commands:
+    primary: [empowerment, confidence, focus]
+    secondary: [all]
+  double_binds:
+    primary: [transformation, empowerment, confidence]
+    secondary: [self_knowledge]
+
+  # Phase 4 Advanced Patterns
+  submodality_shifts:
+    primary: [transformation, healing, release]
+    secondary: [confidence, empowerment, creativity, relaxation, focus]
+    note: "NLP technique for changing mental representation qualities"
+  expectancy_priming:
+    primary: [all]
+    note: "Required for ALL outcomes - placebo amplification"
+  identity_reframing:
+    primary: [transformation, empowerment, confidence]
+    secondary: [spiritual_growth]
+    note: "Identity-level change vs behavior change"
+  parts_integration:
+    primary: [healing, self_knowledge]
+    secondary: [transformation, release]
+    note: "IFS-inspired internal dialogue"
+  schema_rewriting:
+    primary: [transformation, confidence]
+    secondary: [healing, self_knowledge]
+    note: "Core belief transformation"
+  predictive_processing_disruption:
+    primary: [transformation, spiritual_growth]
+    secondary: [creativity]
+    note: "Reality morphing, ego-softening"
+  memory_reconsolidation:
+    primary: [healing]
+    secondary: [release, transformation]
+    note: "Light protocol for emotional memory update"
+  association_dissociation:
+    primary: [healing, release]
+    secondary: [self_knowledge, transformation]
+    note: "Perspective switching for processing"
+  symbolic_catharsis:
+    primary: [release, transformation]
+    secondary: [healing]
+    note: "Elemental release (fire/water/wind/earth)"
+  compounded_anchoring:
+    primary: [relaxation, empowerment, confidence]
+    secondary: [focus, healing]
+    note: "Multi-modal anchor reinforcement"
+  multi_episode_arc:
+    primary: [spiritual_growth]
+    secondary: [transformation, healing]
+    note: "Series callbacks and evolving symbols"
+
+
+# =============================================================================
+# ARCHETYPE REFERENCE INDEX
+# =============================================================================
+# Quick reference for which archetypes support which outcomes
+
+archetype_outcome_index:
+  wounded_healer:
+    primary: [healing, spiritual_growth]
+    secondary: [self_knowledge]
+  inner_child:
+    primary: [healing, creativity]
+    secondary: [relaxation, confidence]
+  divine_beloved:
+    primary: [healing, spiritual_growth, confidence]
+    secondary: [relaxation]
+  phoenix:
+    primary: [transformation, release]
+    secondary: [empowerment]
+  persephone:
+    primary: [transformation, self_knowledge]
+    secondary: [release]
+  atlas:
+    primary: [empowerment, release]
+    secondary: [transformation, relaxation, focus]
+  prometheus:
+    primary: [empowerment, creativity]
+    secondary: [transformation, spiritual_growth, focus]
+  poseidon:
+    primary: [empowerment, relaxation]
+    secondary: [release]
+  shadow_self:
+    primary: [self_knowledge, transformation]
+    secondary: [empowerment]
+  seeker:
+    primary: [spiritual_growth, self_knowledge]
+    secondary: [creativity, focus]
+  hermes:
+    primary: [creativity, focus]
+    secondary: [transformation]
+  orpheus:
+    primary: [release, healing]
+    secondary: [self_knowledge]
+  inner_critic:
+    primary: [self_knowledge, confidence]
+    secondary: [healing]
+
+
+# =============================================================================
+# OBJECT REFERENCE INDEX
+# =============================================================================
+# Quick reference for which objects support which outcomes
+
+object_outcome_index:
+  glowing_stone:
+    primary: [healing, spiritual_growth]
+    secondary: [relaxation, self_knowledge, creativity, confidence]
+  crystal_vial:
+    primary: [healing, relaxation]
+    secondary: [release]
+  flame_of_will:
+    primary: [transformation, empowerment, confidence]
+    secondary: [spiritual_growth, focus]
+  seed_of_becoming:
+    primary: [transformation, creativity]
+    secondary: [release]
+  mirror_of_truth:
+    primary: [self_knowledge, confidence]
+    secondary: [transformation]
+  golden_key:
+    primary: [empowerment, focus, creativity]
+    secondary: [spiritual_growth, self_knowledge]
+  luminous_feather:
+    primary: [release]
+    secondary: [healing, relaxation]
+
+
+# =============================================================================
+# JOURNEY FAMILY REFERENCE INDEX
+# =============================================================================
+
+family_outcome_index:
+  eden_garden:
+    primary: [healing, relaxation, creativity]
+    secondary: [release, spiritual_growth]
+  ocean_depths:
+    primary: [healing, release, relaxation]
+    secondary: [self_knowledge]
+  underworld_descent:
+    primary: [transformation, self_knowledge]
+    secondary: [release]
+  cosmic_forge:
+    primary: [transformation, empowerment]
+    secondary: [confidence, focus]
+  temple_initiation:
+    primary: [spiritual_growth, confidence, focus]
+    secondary: [transformation, empowerment, self_knowledge]
+  celestial_journey:
+    primary: [spiritual_growth, creativity]
+    secondary: [release, focus]
+
+
+# =============================================================================
+# VALIDATION RULES
+# =============================================================================
+# Rules for validate_outcome.py to check script compliance
+
+validation_rules:
+  required_pattern_check:
+    description: "Script MUST contain minimum count of each required pattern"
+    severity: "FAIL"
+  suggested_archetype_check:
+    description: "Script SHOULD use archetypes from suggested list"
+    severity: "WARNING"
+  journey_family_check:
+    description: "Session SHOULD use suggested journey family"
+    severity: "WARNING"
+  object_theme_match:
+    description: "Symbolic objects SHOULD match outcome theme"
+    severity: "WARNING"
+  integration_action_check:
+    description: "Script MUST include at least 1 integration action"
+    severity: "FAIL"
+  brainwave_arc_check:
+    description: "Binaural progression SHOULD match recommended arc"
+    severity: "WARNING"

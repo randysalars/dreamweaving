@@ -583,3 +583,48 @@ lessons:
   - Voice generation successful with Neural2-H
   - Hypnotic post-processing applied successfully
   applied: false
+- id: L034
+  date: '2025-12-04'
+  session: luminous-being-pathworking-envision-your-20251204
+  category: automation
+  source: auto_generate
+  summary: 'Auto-generated session from topic: Luminous Being Pathworking: Envision
+    your body transforming into a being of pure, white light, energizing and purifying
+    your physical and mental state'
+  details:
+    topic: 'Luminous Being Pathworking: Envision your body transforming into a being
+      of pure, white light, energizing and purifying your physical and mental state'
+    mode: standard
+    duration_target: 30
+    stages_completed: 14
+    stages_failed: 0
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  applied: false
+- id: L035
+  date: '2025-12-04'
+  session: carnegies-steel-empire-dreamweaving-step-20251204
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: Carnegie''s Steel Empire Dreamweaving:
+    Step into the shoes of Andrew Carnegie, a Scottish immigrant who became one of
+    the wealthiest people in world history by building the U.S steel industry. This
+    journey fosters an entrepreneurial spirit, persistence, and a better understanding
+    of wealth creation'
+  details:
+    topic: 'Carnegie''s Steel Empire Dreamweaving: Step into the shoes of Andrew Carnegie,
+      a Scottish immigrant who became one of the wealthiest people in world history
+      by building the U.S steel industry. This journey fosters an entrepreneurial
+      spirit, persistence, and a better understanding of wealth creation'
+    mode: standard
+    duration_target: 30
+    stages_completed: 7
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - 'Failed stages: generate_script'
+  applied: false

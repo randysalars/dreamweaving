@@ -1,0 +1,338 @@
+# Stock Image Search Queries
+# Proven search terms organized by session theme
+# Updated as we discover what works well
+
+version: "1.0"
+last_updated: "2025-12-04"
+
+# Template for adding new queries:
+# theme_name:
+#   description: "Brief description of the theme"
+#   best_platforms: ["unsplash", "pexels", "pixabay"]
+#   queries:
+#     scene_type:
+#       primary: "main search term"
+#       alternatives: ["alt1", "alt2", "alt3"]
+#       notes: "What works, what to avoid"
+
+themes:
+  eden_garden:
+    description: "Edenic paradise, lush gardens, paradise imagery"
+    best_platforms: ["unsplash", "pexels"]
+    color_palette: "emerald green, golden sunlight, sapphire water"
+    queries:
+      entrance:
+        primary: "enchanted forest path mist"
+        alternatives:
+          - "garden gate sunlight"
+          - "paradise entrance nature"
+          - "mystical forest doorway"
+        notes: "Look for soft morning light, avoid harsh shadows"
+      main_garden:
+        primary: "lush garden paradise sunlight"
+        alternatives:
+          - "botanical garden tropical"
+          - "secret garden flowers"
+          - "eden paradise nature"
+        notes: "Pixabay has AI-generated garden scenes"
+      water_feature:
+        primary: "crystal clear stream forest"
+        alternatives:
+          - "waterfall garden peaceful"
+          - "pond lily pads serene"
+          - "river garden sunlight"
+        notes: "Avoid busy scenes with too many elements"
+      tree_of_life:
+        primary: "ancient tree sunlight mystical"
+        alternatives:
+          - "giant tree forest light rays"
+          - "sacred tree golden light"
+          - "lone tree meadow sunset"
+        notes: "Silhouette trees work well for symbolic imagery"
+
+  cosmic_journey:
+    description: "Space, nebulae, astral travel, cosmic consciousness"
+    best_platforms: ["pixabay", "unsplash"]
+    color_palette: "deep purple, electric blue, gold accents"
+    queries:
+      nebula_background:
+        primary: "nebula abstract colorful"
+        alternatives:
+          - "galaxy stars purple blue"
+          - "cosmic dust space"
+          - "interstellar cloud"
+        notes: "Pixabay has excellent AI-generated cosmic imagery"
+      starfield:
+        primary: "starfield deep space"
+        alternatives:
+          - "milky way stars"
+          - "night sky stars clear"
+          - "universe stars infinite"
+        notes: "Pure starfields work better than busy galaxy scenes"
+      cosmic_portal:
+        primary: "portal light cosmic"
+        alternatives:
+          - "wormhole space abstract"
+          - "dimensional gateway light"
+          - "vortex cosmic energy"
+        notes: "AI-generated works well here (Pixabay)"
+      astral_scene:
+        primary: "astral projection space"
+        alternatives:
+          - "floating space ethereal"
+          - "cosmic being light"
+          - "spiritual space universe"
+        notes: "Avoid recognizable human figures"
+
+  atlantean_temple:
+    description: "Underwater ruins, ancient technology, Atlantis"
+    best_platforms: ["pixabay"]
+    color_palette: "aquamarine, teal, gold metallic, crystal"
+    queries:
+      underwater_ruins:
+        primary: "underwater ancient ruins"
+        alternatives:
+          - "submerged city temple"
+          - "sunken temple columns"
+          - "underwater palace"
+        notes: "Pixabay AI content works well for impossible scenes"
+      crystal_chamber:
+        primary: "crystal cave blue light"
+        alternatives:
+          - "geode cave interior"
+          - "ice cave blue crystal"
+          - "mineral cave glowing"
+        notes: "Real cave photos often better than AI for realism"
+      ancient_technology:
+        primary: "ancient technology glowing"
+        alternatives:
+          - "sacred geometry technology"
+          - "mystical device crystal"
+          - "alien artifact ancient"
+        notes: "Abstract works better than specific machinery"
+
+  sacred_temple:
+    description: "Ancient temples, spiritual sanctuaries, holy places"
+    best_platforms: ["unsplash", "pexels"]
+    color_palette: "gold, amber, deep stone, candlelight"
+    queries:
+      temple_entrance:
+        primary: "ancient temple doorway mist"
+        alternatives:
+          - "stone temple entrance light"
+          - "sacred doorway columns"
+          - "mystical temple gate"
+        notes: "Real temples (Angkor Wat, etc.) work well"
+      temple_interior:
+        primary: "temple interior candlelight"
+        alternatives:
+          - "sacred space altar"
+          - "church cathedral light rays"
+          - "sanctuary peaceful light"
+        notes: "Avoid specific religious iconography"
+      corridor:
+        primary: "ancient corridor torch light"
+        alternatives:
+          - "stone hallway mysterious"
+          - "temple passage torchlit"
+          - "underground corridor ancient"
+        notes: "Long perspectives create depth/journey feeling"
+      sacred_chamber:
+        primary: "sacred chamber golden light"
+        alternatives:
+          - "holy of holies light"
+          - "inner sanctum glow"
+          - "meditation chamber peaceful"
+        notes: "Centered compositions work best"
+
+  healing_nature:
+    description: "Peaceful nature, healing environments, calm scenes"
+    best_platforms: ["unsplash", "pexels"]
+    color_palette: "soft greens, gentle blues, warm golden hour"
+    queries:
+      calm_water:
+        primary: "calm lake sunset peaceful"
+        alternatives:
+          - "still water reflection"
+          - "serene pond morning"
+          - "quiet lake mist"
+        notes: "Best theme for stock - abundant high quality"
+      meadow:
+        primary: "peaceful meadow golden hour"
+        alternatives:
+          - "flower field sunset"
+          - "grass field morning light"
+          - "wildflower meadow soft"
+        notes: "Avoid images with people"
+      forest_clearing:
+        primary: "forest clearing light rays"
+        alternatives:
+          - "sunbeam forest floor"
+          - "peaceful woods morning"
+          - "enchanted forest light"
+        notes: "God rays/light beams very effective"
+      mountain_view:
+        primary: "mountain vista peaceful"
+        alternatives:
+          - "mountains mist serene"
+          - "alpine meadow calm"
+          - "mountain lake reflection"
+        notes: "Distant views create expansive feeling"
+
+  desert_journey:
+    description: "Desert landscapes, steppe, nomadic imagery"
+    best_platforms: ["unsplash"]
+    color_palette: "warm ochre, sand gold, sunset orange, deep blue sky"
+    queries:
+      desert_sunset:
+        primary: "desert sunset dramatic"
+        alternatives:
+          - "sand dunes golden hour"
+          - "sahara sunset orange"
+          - "desert landscape sunset"
+        notes: "Unsplash excels at desert photography"
+      steppe_landscape:
+        primary: "steppe landscape endless"
+        alternatives:
+          - "mongolian plains sky"
+          - "grassland horizon vast"
+          - "prairie sunset wide"
+        notes: "Emphasize vastness and sky"
+      horseman_silhouette:
+        primary: "horseman silhouette sunset"
+        alternatives:
+          - "rider horse sunset"
+          - "nomad silhouette horizon"
+          - "lone rider desert"
+        notes: "Silhouettes avoid model release issues"
+      ancient_path:
+        primary: "desert path ancient"
+        alternatives:
+          - "caravan route sunset"
+          - "silk road landscape"
+          - "desert trail distant"
+        notes: "Leading lines create journey feeling"
+
+  sacred_geometry:
+    description: "Geometric patterns, mandalas, mathematical beauty"
+    best_platforms: ["pixabay"]
+    color_palette: "gold on dark, white light, rainbow spectrum"
+    queries:
+      mandala:
+        primary: "mandala abstract golden"
+        alternatives:
+          - "sacred pattern radial"
+          - "geometric mandala light"
+          - "spiritual geometry"
+        notes: "AI-generated mandalas often very good"
+      golden_spiral:
+        primary: "golden ratio spiral"
+        alternatives:
+          - "fibonacci nature"
+          - "nautilus shell golden"
+          - "spiral galaxy abstract"
+        notes: "Natural examples (shells, plants) add organic feel"
+      flower_of_life:
+        primary: "flower of life pattern"
+        alternatives:
+          - "sacred geometry circles"
+          - "geometric pattern spiritual"
+          - "metatron cube light"
+        notes: "Pure geometry on dark background works well"
+      fractal:
+        primary: "fractal abstract colorful"
+        alternatives:
+          - "infinite pattern abstract"
+          - "mathematical art spiral"
+          - "psychedelic pattern"
+        notes: "Avoid overly busy/chaotic fractals"
+
+# Section-specific queries (any theme)
+sections:
+  pretalk:
+    description: "Grounding, welcoming, safe entrance"
+    queries:
+      - "peaceful entrance nature"
+      - "welcoming path light"
+      - "safe haven peaceful"
+      - "threshold doorway light"
+    notes: "Warm, inviting, not too dramatic"
+
+  induction:
+    description: "Relaxation, deepening, letting go"
+    queries:
+      - "soft light peaceful"
+      - "calm water reflection"
+      - "clouds soft dreamy"
+      - "gentle mist morning"
+    notes: "Soft focus, minimal contrast"
+
+  deepening:
+    description: "Going deeper, descending, interior"
+    queries:
+      - "stairway descending light"
+      - "tunnel light end"
+      - "deep cave beautiful"
+      - "underwater descent light"
+    notes: "Downward movement, increasing intimacy"
+
+  journey_climax:
+    description: "Peak experience, revelation, gift"
+    queries:
+      - "light burst dramatic"
+      - "revelation light rays"
+      - "sacred moment glow"
+      - "breakthrough light"
+    notes: "Maximum visual impact"
+
+  integration:
+    description: "Returning, processing, gentle ascent"
+    queries:
+      - "ascending light"
+      - "dawn breaking horizon"
+      - "emerging light"
+      - "path returning"
+    notes: "Upward movement, increasing brightness"
+
+  awakening:
+    description: "Returning to normal awareness"
+    queries:
+      - "morning light peaceful"
+      - "sunrise gentle"
+      - "awakening nature"
+      - "fresh start morning"
+    notes: "Alert but calm, grounded feeling"
+
+# Search tips
+tips:
+  general:
+    - "Add 'peaceful' or 'serene' to filter out busy images"
+    - "Use '-people' in some platforms to exclude faces"
+    - "Filter by landscape orientation for 16:9"
+    - "Check photographer's other work for consistency"
+
+  platforms:
+    unsplash:
+      - "Best for nature, landscapes, real photography"
+      - "High resolution, professional quality"
+      - "Strong editorial curation"
+    pexels:
+      - "Good variety, easy downloading"
+      - "Similar quality to Unsplash"
+      - "More stock-photo feel sometimes"
+    pixabay:
+      - "Allows AI-generated content (good for impossible scenes)"
+      - "Wider variety, more abstract"
+      - "Quality varies more - inspect carefully"
+    openverse:
+      - "Aggregates CC-licensed content"
+      - "Filter for 'commercial' license"
+      - "Check original source for quality"
+
+  avoid:
+    - "Images with watermarks (shouldn't exist on approved platforms)"
+    - "Overly processed/HDR photography"
+    - "Stock photo clichés (business handshake, etc.)"
+    - "Images with visible brands, text, or advertisements"
+    - "Crowded, busy compositions"
+    - "High contrast, jarring colors"

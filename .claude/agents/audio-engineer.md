@@ -60,11 +60,124 @@ Orchestrate the complete audio production pipeline from SSML script to final mas
 | Layer | Script | Purpose |
 |-------|--------|---------|
 | Binaural Beats | `scripts/core/audio/binaural.py` | Brainwave entrainment |
+| Dual-Layer Binaural | `scripts/core/audio/binaural.py` | Primary + delta sublayer for deep floating |
+| Signature Tone | `scripts/core/audio/signature_tone.py` | **NEW** Session intro/outro branding |
 | Pink Noise | `scripts/core/audio/pink_noise.py` | Frequency masking |
 | Nature Sounds | `scripts/core/audio/nature.py` | Ambient texture |
 | Isochronic Tones | `scripts/core/audio/isochronic.py` | Rhythmic entrainment |
 | Panning Beats | `scripts/core/audio/panning_beats.py` | Stereo movement |
 | AM Tones | `scripts/core/audio/am_tones.py` | Amplitude modulation |
+
+### Signature Tone (NEW - Session Branding)
+
+The signature tone creates neurological association with the trance state, so returning listeners immediately begin to relax upon hearing it.
+
+**Design:**
+- 432 Hz base (natural harmony tuning)
+- 7 Hz binaural beat (theta state)
+- Subtle shimmer envelope for ethereal quality
+- 5 seconds duration with fade in/out
+
+**Usage:**
+```bash
+# Generate standalone signature files
+python3 scripts/core/audio/signature_tone.py --output signatures/
+
+# Embed signature in a session
+python3 scripts/core/audio/signature_tone.py --embed session_audio.wav
+
+# Custom settings
+python3 scripts/core/audio/signature_tone.py --output sig.wav --base-freq 440 --duration 7
+```
+
+### Dual-Layer Binaural (NEW - Enhanced Depth)
+
+Adds a constant delta sublayer beneath the primary binaural to create a "floating on calm water" sensation:
+
+```python
+from scripts.core.audio.binaural import generate_dual_layer
+
+# Enable via dual_layer parameter
+audio = generate_dual_layer(
+    sections=sections,
+    duration_sec=1800,
+    dual_layer={
+        'enabled': True,
+        'sublayer_freq': 1.5,       # Constant delta Hz
+        'sublayer_level_db': -6,     # Relative to primary
+        'sublayer_carrier_offset': 50,  # Carrier offset Hz
+    }
+)
+```
+
+### Adaptive Processing (NEW - Stage-Aware Audio)
+
+Apply hypnosis-stage-aware processing that adjusts in real-time:
+
+```python
+from scripts.core.audio.adaptive_processing import (
+    apply_full_adaptive_processing,
+    stages_from_manifest,
+    STAGE_PRESETS,
+)
+
+# Get stages from manifest
+stages = stages_from_manifest(manifest)
+
+# Apply comprehensive processing
+processed = apply_full_adaptive_processing(
+    audio, sample_rate, stages,
+    enable_spectral_motion=True,   # Slow EQ sweeps for "living" sound
+    enable_hdra=True,              # Stage-based gain curves
+    enable_spatial=True,           # Stage-aware stereo width
+    enable_breath_sync=True,       # Breath-aligned amplitude
+)
+```
+
+**Stage-Aware Features:**
+| Feature | What It Does |
+|---------|--------------|
+| Spectral Motion | Slow EQ sweeps create organic "living" sound |
+| HDR-A | Dynamic range follows emotional arc |
+| Spatial Animation | Stereo width narrows in induction, expands in journey |
+| Breath Sync | Subtle amplitude modulation at breathing rate |
+| Masking Correction | Dynamic EQ dips around voice formants |
+
+### Luminous SFX Generator (NEW - Mystical Sounds)
+
+Generate procedural ethereal sound effects:
+
+```python
+from scripts.core.audio.luminous_sfx import (
+    generate_crystal_shimmer,
+    generate_halo_reverb,
+    generate_golden_bell,
+    generate_sacred_drone,
+    generate_starfield_sparkle,
+    generate_oceanic_whisper,
+)
+
+# Generate ceremonial bell
+bell = generate_golden_bell(duration=4.0, base_freq=432)
+
+# Generate cosmic sparkles
+sparkle = generate_starfield_sparkle(duration=30, density=0.5)
+
+# Generate deep grounding drone
+drone = generate_sacred_drone(duration=60, base_freq=60, warmth=0.5)
+```
+
+**Available SFX Types:**
+| Type | Description | Best For |
+|------|-------------|----------|
+| `shimmer` | Crystal sparkle (2-6 kHz) | Transformation moments |
+| `ascending` | Rising ethereal pad | Transcendence, ascent |
+| `halo` | Long angelic reverb | Divine presence |
+| `choir` | Subtle vocal harmonics | Sacred atmosphere |
+| `bell` | Ceremonial golden bell | Transitions, initiations |
+| `drone` | Deep grounding tone | Power, grounding |
+| `sparkle` | Cosmic particles | Starfield, cosmic themes |
+| `oceanic` | Wave/breath texture | Induction, ocean themes |
 
 ## Voice Enhancement Techniques
 

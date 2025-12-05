@@ -1,0 +1,540 @@
+# =============================================================================
+# ARCHETYPES.YAML - Shadow/Gift Transformations & Archetypal Patterns
+# =============================================================================
+# This file contains archetypal transformation patterns for Dreamweaving
+# hypnotic journeys. Each archetype has a shadow aspect and a gift that
+# emerges through the journey's transformative process.
+#
+# Usage: Match journey theme to archetype, use shadow->gift arc in helm section
+# =============================================================================
+
+version: "1.0"
+last_updated: "2025-12-04"
+
+# =============================================================================
+# SECTION 1: SHADOW TO GIFT TRANSFORMATIONS
+# =============================================================================
+# Every archetype carries both shadow and gift. The journey transforms
+# the shadow into its corresponding gift through symbolic experience.
+
+shadow_gift_transformations:
+  description: >
+    Shadow polarity transformations for journey peaks (helm section).
+    The shadow is not destroyed but integrated - transformed into its
+    corresponding gift through awareness and acceptance.
+
+  granularity: macro
+  stages: [journey, helm_deep_trance]
+  placement: "Peak transformation moment in helm section"
+  minimum_per_script: 1
+
+  # ---------------------------------------------------------------------------
+  # ELEMENTAL ARCHETYPES
+  # ---------------------------------------------------------------------------
+
+  transformations:
+    # Water/Ocean Archetypes
+    poseidon:
+      name: "Poseidon/Ocean King"
+      domain: "Emotional depths, the unconscious, primal power"
+      shadow:
+        quality: "chaos, overwhelm, drowning in emotion"
+        manifestation: "Feeling swept away by feelings, loss of control"
+        inner_voice: "I am drowning. I cannot control this."
+      gift:
+        quality: "emotional sovereignty, depth without fear"
+        manifestation: "Moving through emotions with grace and power"
+        inner_voice: "I am the ocean. I hold all feelings."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-2st">
+        And here, what once felt like chaos...<break time="2s"/>
+        begins to settle...<break time="1.5s"/>
+        into deep water that holds you...<break time="2.5s"/>
+        and you discover you can <emphasis level="moderate">breathe</emphasis> here...<break time="2s"/>
+        that these depths are yours...<break time="2s"/>
+        not to drown in...<break time="1.5s"/>
+        but to rule...<break time="3.5s"/>
+        </prosody>
+      themes: [emotional_healing, overwhelm, anxiety, grief]
+      journey_families: [ocean_depths, underworld_descent]
+
+    # Earth/Strength Archetypes
+    atlas:
+      name: "Atlas/The Burden Bearer"
+      domain: "Responsibility, strength, endurance"
+      shadow:
+        quality: "burden, exhaustion, carrying too much"
+        manifestation: "Taking on weight that isn't yours, collapse"
+        inner_voice: "I must carry everything. I cannot rest."
+      gift:
+        quality: "strength, capacity, choosing what to hold"
+        manifestation: "Conscious stewardship, appropriate boundaries"
+        inner_voice: "I choose what I carry. My strength is infinite when wisely used."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-2st">
+        And the weight you've carried...<break time="2s"/>
+        for so long...<break time="1.5s"/>
+        begins to redistribute itself...<break time="2.5s"/>
+        not gone, but transformed...<break time="2s"/>
+        into strength you didn't know you had...<break time="2.5s"/>
+        you realize...<break time="1.5s"/>
+        you can set down what was never yours to carry...<break time="3.5s"/>
+        </prosody>
+      themes: [burnout, responsibility, boundaries, strength]
+      journey_families: [cosmic_forge, temple_initiation]
+
+    # Fire/Transformation Archetypes
+    phoenix:
+      name: "Phoenix/The Reborn"
+      domain: "Destruction, renewal, transformation"
+      shadow:
+        quality: "destruction, burning, loss of identity"
+        manifestation: "Fear of change, clinging to what must end"
+        inner_voice: "If I change, I will be destroyed."
+      gift:
+        quality: "renewal, rebirth, eternal becoming"
+        manifestation: "Embracing transformation as natural cycle"
+        inner_voice: "I am always becoming. Death is doorway."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-2st">
+        And here in the flames...<break time="2s"/>
+        you discover something unexpected...<break time="2s"/>
+        the fire does not consume you...<break time="2s"/>
+        it <emphasis level="moderate">reveals</emphasis> you...<break time="2.5s"/>
+        burning away only what was never truly yours...<break time="2s"/>
+        and from these ashes...<break time="1.5s"/>
+        something new rises...<break time="2s"/>
+        more you than you've ever been...<break time="3.5s"/>
+        </prosody>
+      themes: [transformation, letting_go, identity, new_beginnings]
+      journey_families: [cosmic_forge, underworld_descent]
+
+    # Air/Mind Archetypes
+    hermes:
+      name: "Hermes/The Messenger"
+      domain: "Communication, connection, boundaries between worlds"
+      shadow:
+        quality: "scattered, ungrounded, lost between worlds"
+        manifestation: "Inability to land, constant mental chatter"
+        inner_voice: "I cannot stop. I must keep moving."
+      gift:
+        quality: "fluent passage, clear communication, bridges"
+        manifestation: "Moving between states with grace, clear expression"
+        inner_voice: "I move freely. I connect all things."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, the restless motion begins to slow...<break time="2s"/>
+        not stopping...<break time="1.5s"/>
+        but finding its natural rhythm...<break time="2.5s"/>
+        you realize you don't need to keep running...<break time="2s"/>
+        because you can move between any worlds...<break time="2s"/>
+        anytime you choose...<break time="2s"/>
+        with perfect ease...<break time="3.5s"/>
+        </prosody>
+      themes: [anxiety, overthinking, communication, transitions]
+      journey_families: [celestial_journey, temple_initiation]
+
+    # ---------------------------------------------------------------------------
+    # MYTHIC ARCHETYPES
+    # ---------------------------------------------------------------------------
+
+    orpheus:
+      name: "Orpheus/The One Who Looked Back"
+      domain: "Loss, grief, the pull of the past"
+      shadow:
+        quality: "loss, grief, looking back, unable to release"
+        manifestation: "Attachment to what is gone, living in the past"
+        inner_voice: "I cannot let go. I must hold on."
+      gift:
+        quality: "recovered wisdom, integration, forward vision"
+        manifestation: "Carrying the gifts of the past into the future"
+        inner_voice: "What was loved is woven into me forever."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-2st">
+        And here you understand...<break time="2s"/>
+        what was lost...<break time="1.5s"/>
+        is not gone...<break time="2s"/>
+        but woven now into the fabric of who you've become...<break time="3s"/>
+        you carry it forward...<break time="2s"/>
+        not as weight...<break time="1.5s"/>
+        but as wisdom...<break time="2s"/>
+        as love that lives in you...<break time="3.5s"/>
+        </prosody>
+      themes: [grief, loss, letting_go, memory, moving_on]
+      journey_families: [underworld_descent, eden_garden]
+
+    persephone:
+      name: "Persephone/Queen of Two Worlds"
+      domain: "Duality, cycles, embracing darkness"
+      shadow:
+        quality: "victimhood, powerlessness, torn between worlds"
+        manifestation: "Feeling trapped, unable to choose"
+        inner_voice: "I am a victim of forces beyond my control."
+      gift:
+        quality: "sovereignty in all realms, integration of light and dark"
+        manifestation: "Ruling both day and night aspects of self"
+        inner_voice: "I am queen wherever I stand."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-2st">
+        And here you see clearly...<break time="2s"/>
+        you were never a prisoner...<break time="2s"/>
+        but a queen in training...<break time="2.5s"/>
+        learning to rule both kingdoms...<break time="2s"/>
+        the light and the dark...<break time="2s"/>
+        above and below...<break time="2s"/>
+        both are yours now...<break time="3.5s"/>
+        </prosody>
+      themes: [shadow_work, duality, empowerment, cycles]
+      journey_families: [underworld_descent, eden_garden]
+
+    prometheus:
+      name: "Prometheus/The Fire Bringer"
+      domain: "Rebellion, sacrifice, bringing light to darkness"
+      shadow:
+        quality: "punishment, suffering for gifts given, martyrdom"
+        manifestation: "Being punished for authenticity, endless sacrifice"
+        inner_voice: "I suffer because I dared. I am punished for my gifts."
+      gift:
+        quality: "liberation through truth, sacred rebellion, light-bringing"
+        manifestation: "Bringing light regardless of cost, freedom in truth"
+        inner_voice: "My light cannot be bound. My truth sets all free."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-2st">
+        And here the chains begin to dissolve...<break time="2s"/>
+        not broken by force...<break time="1.5s"/>
+        but released by truth...<break time="2.5s"/>
+        you remember why you brought the fire...<break time="2s"/>
+        and you would do it again...<break time="2s"/>
+        because the light you carry...<break time="2s"/>
+        was always meant to be shared...<break time="3.5s"/>
+        </prosody>
+      themes: [authenticity, persecution, truth, rebellion, purpose]
+      journey_families: [cosmic_forge, celestial_journey]
+
+    # ---------------------------------------------------------------------------
+    # PSYCHOLOGICAL ARCHETYPES
+    # ---------------------------------------------------------------------------
+
+    inner_child:
+      name: "The Inner Child"
+      domain: "Innocence, play, original wound, authentic self"
+      shadow:
+        quality: "wounded, abandoned, frozen in time"
+        manifestation: "Carrying childhood pain, fear of vulnerability"
+        inner_voice: "I was hurt. I must protect myself. It's not safe to be seen."
+      gift:
+        quality: "wonder, spontaneity, authentic joy, creative freedom"
+        manifestation: "Access to play, creativity, genuine expression"
+        inner_voice: "I am safe to be myself. Wonder is my birthright."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, in this safe place...<break time="2s"/>
+        you find them...<break time="1.5s"/>
+        the small one who has been waiting...<break time="2.5s"/>
+        waiting for you to come back...<break time="2s"/>
+        you kneel down...<break time="2s"/>
+        and gently, tenderly...<break time="2s"/>
+        you take them into your arms...<break time="2.5s"/>
+        I'm here now...<break time="2s"/>
+        you're safe...<break time="2s"/>
+        I will never leave you again...<break time="4s"/>
+        </prosody>
+      themes: [inner_child_work, healing, safety, self_love]
+      journey_families: [eden_garden, temple_initiation]
+
+    inner_critic:
+      name: "The Inner Critic"
+      domain: "Judgment, protection through harsh standards"
+      shadow:
+        quality: "harsh judgment, never good enough, self-attack"
+        manifestation: "Constant criticism, impossible standards"
+        inner_voice: "You are not good enough. You never will be."
+      gift:
+        quality: "discernment, healthy standards, protective wisdom"
+        manifestation: "Constructive feedback, growth-oriented awareness"
+        inner_voice: "I help you grow. I want you to succeed."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here you meet the voice...<break time="2s"/>
+        that has been so harsh...<break time="1.5s"/>
+        and you see, perhaps for the first time...<break time="2.5s"/>
+        that behind the criticism...<break time="2s"/>
+        was only fear...<break time="2s"/>
+        trying to protect you...<break time="2s"/>
+        in the only way it knew...<break time="2.5s"/>
+        and you can thank it now...<break time="2s"/>
+        and show it a gentler way...<break time="3.5s"/>
+        </prosody>
+      themes: [self_compassion, perfectionism, judgment, healing]
+      journey_families: [temple_initiation, underworld_descent]
+
+    shadow_self:
+      name: "The Shadow Self"
+      domain: "Rejected aspects, hidden power, denied truth"
+      shadow:
+        quality: "exile, denial, projection onto others"
+        manifestation: "Rejecting parts of self, seeing faults only in others"
+        inner_voice: "That is not me. I am not like that."
+      gift:
+        quality: "wholeness, integrated power, authentic presence"
+        manifestation: "Embracing all aspects, reclaiming projected power"
+        inner_voice: "I am all of it. My wholeness is my power."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-2st">
+        And here in the darkness...<break time="2s"/>
+        a figure approaches...<break time="2s"/>
+        and as it draws nearer...<break time="2s"/>
+        you recognize...<break time="1.5s"/>
+        yourself...<break time="2.5s"/>
+        the parts you've hidden...<break time="2s"/>
+        the parts you've denied...<break time="2s"/>
+        and instead of running...<break time="1.5s"/>
+        you open your arms...<break time="2s"/>
+        welcoming yourself home...<break time="3.5s"/>
+        </prosody>
+      themes: [shadow_work, integration, wholeness, self_acceptance]
+      journey_families: [underworld_descent, temple_initiation]
+
+    # ---------------------------------------------------------------------------
+    # SPIRITUAL ARCHETYPES
+    # ---------------------------------------------------------------------------
+
+    seeker:
+      name: "The Eternal Seeker"
+      domain: "Quest, longing, the search for meaning"
+      shadow:
+        quality: "endless seeking, never arriving, spiritual bypassing"
+        manifestation: "Always looking elsewhere, missing the present"
+        inner_voice: "It's not here. I must keep searching."
+      gift:
+        quality: "presence, recognition of the sacred here, arrival"
+        manifestation: "Finding the destination in the journey itself"
+        inner_voice: "What I seek is here. What I seek is me."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, at last...<break time="2s"/>
+        the seeking stops...<break time="2s"/>
+        not because you've given up...<break time="2s"/>
+        but because you've <emphasis level="moderate">found</emphasis>...<break time="2.5s"/>
+        what you were looking for...<break time="2s"/>
+        was never somewhere else...<break time="2s"/>
+        it was waiting here...<break time="2s"/>
+        inside you...<break time="2s"/>
+        all along...<break time="3.5s"/>
+        </prosody>
+      themes: [spiritual_seeking, presence, meaning, purpose]
+      journey_families: [celestial_journey, temple_initiation]
+
+    wounded_healer:
+      name: "The Wounded Healer"
+      domain: "Healing through understanding suffering"
+      shadow:
+        quality: "using wounds to avoid healing, identity as wounded"
+        manifestation: "Defining self by wounds, resistance to healing"
+        inner_voice: "My wound is who I am. If I heal, who am I?"
+      gift:
+        quality: "medicine born from experience, compassionate wisdom"
+        manifestation: "Wounds become source of healing for self and others"
+        inner_voice: "My wound is my medicine. My healing helps all."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-1st">
+        And here you see something remarkable...<break time="2s"/>
+        the very wound you've carried...<break time="2.5s"/>
+        begins to glow...<break time="2s"/>
+        transforming before your eyes...<break time="2s"/>
+        into medicine...<break time="2s"/>
+        into wisdom...<break time="2s"/>
+        into a gift...<break time="2s"/>
+        that only you can offer the world...<break time="3.5s"/>
+        </prosody>
+      themes: [healing, purpose, transformation, wisdom]
+      journey_families: [temple_initiation, eden_garden]
+
+    divine_beloved:
+      name: "The Divine Beloved"
+      domain: "Sacred love, union, divine relationship"
+      shadow:
+        quality: "unworthiness, separation from love, abandoned by the divine"
+        manifestation: "Feeling unlovable, cut off from grace"
+        inner_voice: "I am not worthy of love. God has abandoned me."
+      gift:
+        quality: "union, beloved of the divine, sacred worthiness"
+        manifestation: "Knowing oneself as eternally loved"
+        inner_voice: "I am the beloved. I was never separate."
+      transformation_template: |
+        <prosody rate="1.0" pitch="-2st">
+        And here, a presence draws near...<break time="2s"/>
+        vast, tender, infinite...<break time="2.5s"/>
+        and you feel...<break time="1.5s"/>
+        perhaps for the first time...<break time="2s"/>
+        truly <emphasis level="moderate">seen</emphasis>...<break time="2s"/>
+        truly <emphasis level="moderate">known</emphasis>...<break time="2s"/>
+        and utterly, completely <emphasis level="moderate">loved</emphasis>...<break time="3s"/>
+        exactly as you are...<break time="3.5s"/>
+        </prosody>
+      themes: [divine_love, worthiness, spiritual_connection, grace]
+      journey_families: [celestial_journey, eden_garden, temple_initiation]
+
+  # ---------------------------------------------------------------------------
+  # USAGE GUIDELINES
+  # ---------------------------------------------------------------------------
+
+  usage_guidelines:
+    selection: >
+      1. Identify the core emotional theme of the journey
+      2. Match to 1-2 relevant archetypes from the list
+      3. Use the shadow aspect to name what the listener may be experiencing
+      4. Use the transformation template at the journey peak (helm)
+      5. Reference the gift in the integration section
+
+    integration: >
+      After the transformation moment, always ground the gift:
+      - "And you carry this knowing with you now..."
+      - "This truth lives in you..."
+      - "Whenever you need to remember..."
+
+    safety: >
+      Shadow work can be intense. Always:
+      - Establish safety in pre-talk
+      - Move gently into shadow content
+      - Ensure transformation happens (never leave in shadow)
+      - Ground thoroughly in integration and closing
+      - Use breath anchors to stabilize
+
+  # ---------------------------------------------------------------------------
+  # THEME MATCHING REFERENCE
+  # ---------------------------------------------------------------------------
+
+  theme_matching:
+    anxiety: [hermes, inner_child, seeker]
+    grief: [orpheus, inner_child, divine_beloved]
+    burnout: [atlas, prometheus, wounded_healer]
+    self_worth: [inner_critic, shadow_self, divine_beloved]
+    transformation: [phoenix, persephone, shadow_self]
+    empowerment: [poseidon, prometheus, persephone]
+    healing: [wounded_healer, inner_child, divine_beloved]
+    letting_go: [orpheus, phoenix, luminous_feather]
+    shadow_work: [shadow_self, persephone, inner_critic]
+    spiritual_growth: [seeker, wounded_healer, divine_beloved]
+    boundaries: [atlas, poseidon, inner_critic]
+    authenticity: [prometheus, shadow_self, inner_child]
+
+
+# =============================================================================
+# SECTION 2: ARCHETYPAL GUIDES
+# =============================================================================
+# Recurring guide figures that can appear across multiple sessions,
+# building familiarity and deepening the therapeutic relationship.
+
+archetypal_guides:
+  description: >
+    Recurring guide figures for Dreamweaving journeys. These can appear
+    across multiple sessions, creating continuity and deepening the
+    listener's relationship with their inner wisdom.
+
+  the_guide:
+    name: "The Guide"
+    aliases: ["The Wise One", "The Keeper"]
+    appearance: "Robed figure, face obscured by soft light, ageless"
+    voice: "Warm, wise, genderless, ancient yet familiar"
+    role: "Leads through thresholds, provides safety, holds space"
+    first_encounter: |
+      <prosody rate="1.0" pitch="-1st">
+      And here, you sense a presence...<break time="2s"/>
+      neither male nor female...<break time="2s"/>
+      but wise, ancient, kind...<break time="2.5s"/>
+      The Guide has been waiting for you...<break time="2s"/>
+      has always been waiting...<break time="3s"/>
+      </prosody>
+    return_encounter: |
+      <prosody rate="1.0" pitch="-1st">
+      And here, The Guide appears again...<break time="2s"/>
+      that familiar presence you remember...<break time="2s"/>
+      welcoming you back to the sacred space...<break time="2s"/>
+      as if no time has passed at all...<break time="3s"/>
+      </prosody>
+
+  the_guardian:
+    name: "The Guardian"
+    aliases: ["The Protector", "The Sentinel"]
+    appearance: "Tall, strong, armored in light, steady gaze"
+    voice: "Deep, calm, reassuring, unwavering"
+    role: "Protects the threshold, ensures safety, stands watch"
+    first_encounter: |
+      <prosody rate="1.0" pitch="-2st">
+      Before the threshold stands a figure...<break time="2s"/>
+      tall, calm, radiating strength...<break time="2s"/>
+      The Guardian...<break time="1.5s"/>
+      who keeps this space safe...<break time="2s"/>
+      for all who enter...<break time="3s"/>
+      </prosody>
+    use_cases: [shadow_work, fear, protection, boundaries]
+
+  the_healer:
+    name: "The Healer"
+    aliases: ["The Medicine Keeper", "The Tender One"]
+    appearance: "Gentle presence, hands that glow with soft warmth"
+    voice: "Soft, tender, infinitely patient"
+    role: "Attends to wounds, offers comfort, facilitates healing"
+    first_encounter: |
+      <prosody rate="1.0" pitch="-1st">
+      And here, gentle hands reach toward you...<break time="2s"/>
+      The Healer...<break time="1.5s"/>
+      whose touch carries medicine...<break time="2s"/>
+      for wounds you didn't know could heal...<break time="3s"/>
+      </prosody>
+    use_cases: [healing, trauma, self_compassion, restoration]
+
+  the_wise_elder:
+    name: "The Wise Elder"
+    aliases: ["The Ancient One", "Grandmother/Grandfather"]
+    appearance: "Aged but vital, eyes holding millennia of wisdom"
+    voice: "Cracked with age but rich with knowing"
+    role: "Shares wisdom, tells stories, reveals truth"
+    first_encounter: |
+      <prosody rate="1.0" pitch="-1st">
+      Seated by the fire...<break time="2s"/>
+      is one who has seen ages pass...<break time="2s"/>
+      The Elder...<break time="1.5s"/>
+      whose eyes hold stories older than memory...<break time="2s"/>
+      and who has been waiting...<break time="1.5s"/>
+      to share them with you...<break time="3s"/>
+      </prosody>
+    use_cases: [wisdom_seeking, life_transitions, ancestry, meaning]
+
+
+# =============================================================================
+# SECTION 3: JOURNEY FAMILY ARCHETYPE MAPPINGS
+# =============================================================================
+# Which archetypes work best with which journey families
+
+family_archetype_mappings:
+  celestial_journey:
+    primary: [seeker, hermes, divine_beloved]
+    guides: [the_guide, the_wise_elder]
+    objects: [glowing_stone, golden_key]
+
+  eden_garden:
+    primary: [inner_child, orpheus, divine_beloved, wounded_healer]
+    guides: [the_healer, the_guide]
+    objects: [seed_of_becoming, crystal_vial, luminous_feather]
+
+  underworld_descent:
+    primary: [persephone, shadow_self, orpheus, phoenix]
+    guides: [the_guardian, the_guide]
+    objects: [mirror_of_truth, flame_of_will]
+
+  temple_initiation:
+    primary: [seeker, wounded_healer, inner_critic, prometheus]
+    guides: [the_wise_elder, the_guardian]
+    objects: [golden_key, flame_of_will]
+
+  cosmic_forge:
+    primary: [phoenix, atlas, prometheus]
+    guides: [the_guardian, the_guide]
+    objects: [flame_of_will, golden_key]
+
+  ocean_depths:
+    primary: [poseidon, persephone, shadow_self]
+    guides: [the_guide, the_healer]
+    objects: [crystal_vial, mirror_of_truth]

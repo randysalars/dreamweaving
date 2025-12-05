@@ -5,8 +5,8 @@ Auto-Generate: Complete Topic-to-YouTube Pipeline
 Orchestrates the complete session production from just a topic:
 1. Create session directory structure
 2. Generate manifest from topic using CreativeWorkflow
-3. Generate SSML script (placeholder - requires AI integration)
-4. Generate Midjourney/SD prompts
+3. Generate SSML script (via Claude CLI)
+4. Generate stock image search guide (or SD/Midjourney prompts)
 5. Generate voice audio
 6. Generate binaural beats
 7. Mix and master audio
@@ -18,18 +18,33 @@ Orchestrates the complete session production from just a topic:
 13. Cleanup intermediate files
 14. Self-improvement/learning (record lessons learned)
 
+Requirements:
+    - Claude Code extension for VS Code (uses your Claude subscription)
+    - Google Cloud TTS credentials for voice generation
+
 Usage:
-    # Standard generation
+    # Standard generation (stock images from Unsplash)
     python3 scripts/ai/auto_generate.py --topic "Finding Inner Peace" --mode standard
 
     # With custom duration
     python3 scripts/ai/auto_generate.py --topic "Deep Sleep Journey" --duration 45 --mode budget
+
+    # Use Stable Diffusion for local image generation
+    python3 scripts/ai/auto_generate.py --topic "Cosmic Journey" --image-method sd
+
+    # Use different stock platform
+    python3 scripts/ai/auto_generate.py --topic "Nature Walk" --stock-platform pexels
 
     # Audio only (skip video)
     python3 scripts/ai/auto_generate.py --topic "Confidence Builder" --audio-only
 
     # Dry run (just generate manifest and show plan)
     python3 scripts/ai/auto_generate.py --topic "Healing from Grief" --dry-run
+
+Image Methods:
+    - stock:     Source from Unsplash/Pexels/Pixabay (default, generates search guide)
+    - sd:        Generate locally with Stable Diffusion
+    - midjourney: Generate prompts for Midjourney
 
 Cost Optimization Modes:
     - budget:   Minimal AI usage, ~$0.70 total
@@ -48,7 +63,6 @@ from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 import re
 import time
-import anthropic
 from dotenv import load_dotenv
 
 # Add project root to path
@@ -124,6 +138,8 @@ class AutoGenerator:
         skip_upload: bool = False,
         no_cleanup: bool = False,
         no_learning: bool = False,
+        image_method: str = 'stock',
+        stock_platform: str = 'unsplash',
     ):
         self.topic = topic
         self.mode = mode
@@ -134,6 +150,8 @@ class AutoGenerator:
         self.skip_upload = skip_upload
         self.no_cleanup = no_cleanup
         self.no_learning = no_learning
+        self.image_method = image_method
+        self.stock_platform = stock_platform
 
         # Generate session name from topic if not provided
         if session_name:
@@ -398,79 +416,71 @@ Output ONLY the SSML script, starting with <?xml version="1.0" encoding="UTF-8"?
 Do NOT include any explanation or commentary before or after the SSML.
 """
 
-        # Check for API key - support both direct API and Claude Code environment
-        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        # Write system prompt to temp file (avoids command line length limits)
+        system_prompt_file = self.session_path / "working_files" / "system_prompt.txt"
+        system_prompt_file.write_text(master_prompt)
 
-        if api_key:
-            # Use direct Anthropic API if key is available
-            self.log("Using Anthropic API for script generation...", "info")
-            try:
-                client = anthropic.Anthropic(api_key=api_key)
-                response = client.messages.create(
-                    model="claude-sonnet-4-20250514",
-                    max_tokens=16000,
-                    system=master_prompt,
-                    messages=[{"role": "user", "content": user_prompt}]
-                )
-                script_content = response.content[0].text
-            except anthropic.APIError as e:
-                self.log(f"Claude API error: {e}", "error")
+        # Also save user prompt for reference
+        user_prompt_file = self.session_path / "working_files" / "script_prompt.txt"
+        user_prompt_file.write_text(user_prompt)
+
+        # Use Claude CLI (works with VS Code subscription, no API key needed)
+        self.log("Using Claude CLI for script generation...", "info")
+
+        try:
+            result = subprocess.run(
+                [
+                    'claude',
+                    '-p',
+                    '--system-prompt-file', str(system_prompt_file),
+                    '--output-format', 'json',
+                    '--max-turns', '1',
+                    user_prompt
+                ],
+                capture_output=True,
+                text=True,
+                timeout=300,
+                cwd=str(self.project_root)
+            )
+
+            if result.returncode != 0:
+                error_msg = result.stderr[:200] if result.stderr else 'Unknown error'
+                self.log(f"Claude CLI error: {error_msg}", "error")
+                self.log(f"Run manually: /generate-script {self.session_name}", "info")
                 self.stages_failed.append("generate_script")
                 return
-            except Exception as e:
-                self.log(f"API call failed: {e}", "error")
+
+            # Parse JSON response
+            response_data = json.loads(result.stdout)
+            script_content = response_data.get('result', '')
+
+            if not script_content:
+                self.log("Claude returned empty response", "error")
                 self.stages_failed.append("generate_script")
                 return
-        else:
-            # No API key - use claude CLI if available (for Claude Code subscription users)
-            self.log("No ANTHROPIC_API_KEY found, trying claude CLI...", "info")
 
-            # Save the prompt for reference
-            prompt_file = self.session_path / "working_files" / "script_prompt.txt"
-            prompt_file.write_text(user_prompt)
-
-            # Save master prompt separately
-            system_prompt_file = self.session_path / "working_files" / "system_prompt.txt"
-            system_prompt_file.write_text(master_prompt)
-
-            try:
-                # Use claude CLI with --print and --system-prompt
-                # Pass the user prompt via stdin to avoid command line length limits
-                result = subprocess.run(
-                    [
-                        "claude", "-p",
-                        "--system-prompt", master_prompt,
-                        "--output-format", "text",
-                        user_prompt
-                    ],
-                    capture_output=True,
-                    text=True,
-                    timeout=300,
-                    cwd=str(self.project_root)
-                )
-
-                if result.returncode != 0:
-                    self.log(f"Claude CLI error: {result.stderr[:200] if result.stderr else 'Unknown error'}", "warning")
-                    self.log("Script generation requires manual step", "info")
-                    self.log(f"Run: /generate-script {self.session_name}", "info")
-                    self.stages_failed.append("generate_script")
-                    return
-
+        except FileNotFoundError:
+            self.log("Claude CLI not found - install Claude Code extension", "error")
+            self.log("Visit: https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code", "info")
+            self.stages_failed.append("generate_script")
+            return
+        except json.JSONDecodeError as e:
+            self.log(f"Failed to parse Claude response: {e}", "error")
+            # Try to use raw stdout if JSON parsing fails
+            if result.stdout and result.stdout.strip():
                 script_content = result.stdout
-            except FileNotFoundError:
-                self.log("Claude CLI not found", "error")
-                self.log(f"Run: /generate-script {self.session_name}", "info")
+                self.log("Using raw response (JSON parse failed)", "warning")
+            else:
                 self.stages_failed.append("generate_script")
                 return
-            except subprocess.TimeoutExpired:
-                self.log("Script generation timed out (5 min limit)", "error")
-                self.stages_failed.append("generate_script")
-                return
-            except Exception as e:
-                self.log(f"Script generation failed: {e}", "error")
-                self.log(f"Run: /generate-script {self.session_name}", "info")
-                self.stages_failed.append("generate_script")
-                return
+        except subprocess.TimeoutExpired:
+            self.log("Script generation timed out (5 min limit)", "error")
+            self.stages_failed.append("generate_script")
+            return
+        except Exception as e:
+            self.log(f"Script generation failed: {e}", "error")
+            self.stages_failed.append("generate_script")
+            return
 
         # Clean up the response - ensure it starts with XML declaration
         if not script_content.strip().startswith('<?xml'):
@@ -761,15 +771,29 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.log(f"VTT generation skipped: {e}", "warning")
 
     def _stage_generate_images(self):
-        """Generate scene images using Stable Diffusion."""
+        """Generate scene images using configured method (stock, sd, or midjourney)."""
         self.log("Generating scene images", "stage")
+        self.log(f"Image method: {self.image_method}", "info")
 
         try:
+            # Build command based on image method
+            cmd = [
+                "python3", "scripts/core/generate_scene_images.py",
+                str(self.session_path) + "/",
+                "--method", self.image_method,
+            ]
+
+            # Add method-specific arguments
+            if self.image_method == "stock":
+                cmd.extend(["--platform", self.stock_platform, "--stock-guide"])
+                self.log(f"Using stock images from {self.stock_platform} (non-interactive)", "info")
+            elif self.image_method == "sd":
+                self.log("Using Stable Diffusion for local image generation", "info")
+            elif self.image_method == "midjourney":
+                self.log("Generating Midjourney prompts only", "info")
+
             result = subprocess.run(
-                [
-                    "python3", "scripts/core/generate_scene_images.py",
-                    str(self.session_path) + "/"
-                ],
+                cmd,
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
@@ -777,10 +801,17 @@ Do NOT include any explanation or commentary before or after the SSML.
             )
 
             if result.returncode == 0:
-                self.log("Generated scene images", "success")
+                if self.image_method == "stock":
+                    self.log("Generated stock image search guide", "success")
+                    self.log(f"Manual step: Source images using {self.session_path}/stock-image-guide.md", "info")
+                elif self.image_method == "midjourney":
+                    self.log("Generated Midjourney prompts", "success")
+                    self.log("Manual step: Create images in Midjourney, place in images/uploaded/", "info")
+                else:
+                    self.log("Generated scene images", "success")
                 self.stages_completed.append("generate_images")
             else:
-                self.log(f"Image generation skipped: {result.stderr[:100]}", "warning")
+                self.log(f"Image generation issue: {result.stderr[:200] if result.stderr else 'Unknown'}", "warning")
 
         except Exception as e:
             self.log(f"Image generation skipped: {e}", "warning")
@@ -1089,8 +1120,12 @@ def main():
 Examples:
     python3 scripts/ai/auto_generate.py --topic "Finding Inner Peace"
     python3 scripts/ai/auto_generate.py --topic "Deep Sleep" --duration 45 --mode budget
+    python3 scripts/ai/auto_generate.py --topic "Cosmic Journey" --image-method sd
+    python3 scripts/ai/auto_generate.py --topic "Nature Walk" --stock-platform pexels
     python3 scripts/ai/auto_generate.py --topic "Confidence" --audio-only
     python3 scripts/ai/auto_generate.py --topic "Healing" --dry-run
+
+Note: Requires Claude Code extension for VS Code (uses your Claude subscription).
         """
     )
 
@@ -1117,6 +1152,12 @@ Examples:
                        help='Minimal output')
     parser.add_argument('--json', action='store_true',
                        help='Output report as JSON')
+    parser.add_argument('--image-method', default='stock',
+                       choices=['stock', 'sd', 'midjourney'],
+                       help='Image sourcing method: stock (default), sd (Stable Diffusion), midjourney (prompts only)')
+    parser.add_argument('--stock-platform', default='unsplash',
+                       choices=['unsplash', 'pexels', 'pixabay'],
+                       help='Stock image platform (default: unsplash)')
 
     args = parser.parse_args()
 
@@ -1131,6 +1172,8 @@ Examples:
         skip_upload=args.skip_upload,
         no_cleanup=args.no_cleanup,
         no_learning=args.no_learning,
+        image_method=args.image_method,
+        stock_platform=args.stock_platform,
     )
 
     report = generator.run()

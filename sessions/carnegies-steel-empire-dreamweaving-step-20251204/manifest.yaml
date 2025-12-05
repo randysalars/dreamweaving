@@ -1,0 +1,133 @@
+session:
+  name: carnegies-steel-empire-dreamweaving-step-20251204
+  topic: 'Carnegie''s Steel Empire Dreamweaving: Step into the shoes of Andrew Carnegie,
+    a Scottish immigrant who became one of the wealthiest people in world history
+    by building the U.S steel industry. This journey fosters an entrepreneurial spirit,
+    persistence, and a better understanding of wealth creation'
+  duration: 1800
+  style: abundance
+  created: '2025-12-04'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: Starlight Journey of Abundance
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: 'Welcome and introduction to Carnegie''s Steel Empire Dreamweaving:
+    Step into the shoes of Andrew Carnegie, a Scottish immigrant who became one of
+    the wealthiest people in world history by building the U.S steel industry. This
+    journey fosters an entrepreneurial spirit, persistence, and a better understanding
+    of wealth creation'
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into sitting in the observation deck of an ancient
+    alien vessel
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a sacred journey through cosmic realms toward abundance'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: opening fully to receive the universe''s infinite gifts'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Soul Star
+  role: higher_self
+  description: Your eternal presence above the crown
+  symbol: star above
+  qualities:
+  - eternity
+  - purpose
+  - connection
+  appearance_section: integration
+- name: The Butterfly
+  role: transformation
+  description: Embodiment of metamorphosis
+  symbol: chrysalis
+  qualities:
+  - patience
+  - emergence
+  - beauty
+  appearance_section: integration
+- name: The Wise Elder
+  role: guidance
+  description: Ancient keeper of timeless knowledge
+  symbol: glowing staff
+  qualities:
+  - patience
+  - understanding
+  - acceptance
+  appearance_section: journey
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 432
+    sections:
+    - start: 0
+      end: 144
+      offset_hz: 10.0
+    - start: 144
+      end: 360
+      offset_hz: 8.0
+    - start: 360
+      end: 630
+      offset_hz: 6.0
+    - start: 630
+      end: 1080
+      offset_hz: 10.0
+    - start: 1080
+      end: 1440
+      offset_hz: 12.0
+    - start: 1440
+      end: 1800
+      offset_hz: 10.0
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: Starlight Journey of Abundance | Binaural Beats Meditation
+  subtitle: "432Hz \u2022 Abundance"
+  description: 'A transformational journey: opening fully to receive the universe''s
+    infinite gifts'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - abundance
+  - cosmic
+fx_timeline:
+- type: gamma_flash
+  time: 1080
+  duration_s: 3.0
+  freq_hz: 40
+  description: Peak insight moment

@@ -1,0 +1,58 @@
+session_name: carnegies-steel-empire-dreamweaving-step-20251204
+topic: 'Carnegie''s Steel Empire Dreamweaving: Step into the shoes of Andrew Carnegie,
+  a Scottish immigrant who became one of the wealthiest people in world history by
+  building the U.S steel industry. This journey fosters an entrepreneurial spirit,
+  persistence, and a better understanding of wealth creation'
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2025-12-04T20:23:19.734705'
+  ended: '2025-12-04T20:27:18.889503'
+  duration_seconds: 239.2
+stages:
+  completed:
+  - create_session
+  - generate_manifest
+  - generate_prompts
+  - generate_binaural
+  - generate_images
+  - package_youtube
+  - cleanup
+  - self_improvement
+  failed:
+  - generate_script
+  total: 9
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-04T20:23:19.735152'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2025-12-04T20:23:19.754827'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2025-12-04T20:23:23.870430'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2025-12-04T20:23:23.924720'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-04T20:23:28.944214'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/carnegies-steel-empire-dreamweaving-step-20251204
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/carnegies-steel-empire-dreamweaving-step-20251204/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/carnegies-steel-empire-dreamweaving-step-20251204/working_files/script.ssml
+  files:
+  - output/subtitles.vtt
+  - output/youtube_thumbnail.png

@@ -35,7 +35,11 @@ import yaml
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from core.audio.binaural import generate, save_stem, SectionDict, GammaBurstDict
+from core.audio.binaural import (
+    generate, save_stem, SectionDict, GammaBurstDict,
+    HarmonicConfig, MicroModConfig, SpatialConfig,
+    DEFAULT_HARMONICS, DEFAULT_MICRO_MOD, DEFAULT_SPATIAL
+)
 
 
 # ============================================================================
@@ -113,6 +117,94 @@ PRESETS = {
             {"name": "theta", "pct": 100, "freq_start": 6, "freq_end": 6},
         ]
     },
+
+    # ========================================================================
+    # NEW RESEARCH-OPTIMIZED PRESETS (2025-12)
+    # ========================================================================
+
+    "theta_journey": {
+        "description": "Extended theta for deep trance and visualization",
+        "carrier_freq": 200,
+        "stages": [
+            {"name": "entry", "pct": 10, "freq_start": 10, "freq_end": 7, "transition": "logarithmic"},
+            {"name": "theta_deep", "pct": 70, "freq_start": 7, "freq_end": 4,
+             "transition": "logarithmic", "modulation": {"range": 0.5, "rate": 0.03}},
+            {"name": "return", "pct": 20, "freq_start": 4, "freq_end": 10, "transition": "logarithmic"},
+        ],
+        "enhancements": {
+            "breath_sync": {"enabled": True, "breath_rate_hz": 0.1},
+        }
+    },
+
+    "gamma_focus": {
+        "description": "40 Hz gamma for cognition, mood, and insight binding",
+        "carrier_freq": 250,
+        "stages": [
+            {"name": "warmup", "pct": 20, "freq_start": 10, "freq_end": 20, "transition": "linear"},
+            {"name": "gamma_sustained", "pct": 60, "freq_start": 40, "freq_end": 40,
+             "modulation": {"range": 1.0, "rate": 0.02}},
+            {"name": "cooldown", "pct": 20, "freq_start": 20, "freq_end": 10, "transition": "linear"},
+        ]
+    },
+
+    "alpha_calm": {
+        "description": "Alpha-dominant relaxation without deep trance",
+        "carrier_freq": 220,
+        "stages": [
+            {"name": "settle", "pct": 15, "freq_start": 12, "freq_end": 10, "transition": "linear"},
+            {"name": "alpha_hold", "pct": 70, "freq_start": 10, "freq_end": 10,
+             "modulation": {"range": 0.3, "rate": 0.05}},
+            {"name": "gentle_return", "pct": 15, "freq_start": 10, "freq_end": 12, "transition": "linear"},
+        ]
+    },
+
+    "delta_sleep": {
+        "description": "Ultra-deep delta for sleep and body restoration",
+        "carrier_freq": 150,
+        "stages": [
+            {"name": "alpha_entry", "pct": 10, "freq_start": 10, "freq_end": 8},
+            {"name": "theta_bridge", "pct": 15, "freq_start": 8, "freq_end": 4, "transition": "logarithmic"},
+            {"name": "delta_descent", "pct": 25, "freq_start": 4, "freq_end": 2, "transition": "logarithmic"},
+            {"name": "deep_delta", "pct": 50, "freq_start": 2, "freq_end": 1,
+             "transition": "logarithmic", "modulation": {"range": 0.3, "rate": 0.02}},
+        ],
+        "enhancements": {
+            "breath_sync": {"enabled": True, "breath_rate_hz": 0.083},  # ~5 breaths/min
+        }
+    },
+
+    "transformation": {
+        "description": "Deep transformation with gamma insight burst",
+        "carrier_freq": 200,
+        "stages": [
+            {"name": "grounding", "pct": 8, "freq_start": 12, "freq_end": 10},
+            {"name": "descent", "pct": 12, "freq_start": 10, "freq_end": 6, "transition": "logarithmic"},
+            {"name": "deep_work", "pct": 35, "freq_start": 6, "freq_end": 4,
+             "transition": "logarithmic", "modulation": {"range": 0.4, "rate": 0.03}},
+            {"name": "transformation_peak", "pct": 15, "freq_start": 4, "freq_end": 4,
+             "gamma_burst": {"pct": 50, "duration": 4, "freq": 40}},
+            {"name": "integration", "pct": 20, "freq_start": 4, "freq_end": 8, "transition": "logarithmic"},
+            {"name": "awakening", "pct": 10, "freq_start": 8, "freq_end": 12},
+        ]
+    },
+
+    "spiritual_growth": {
+        "description": "Theta journey with delta foundation for spiritual exploration",
+        "carrier_freq": 200,
+        "stages": [
+            {"name": "opening", "pct": 10, "freq_start": 10, "freq_end": 7, "transition": "logarithmic"},
+            {"name": "theta_space", "pct": 50, "freq_start": 7, "freq_end": 5,
+             "transition": "logarithmic", "modulation": {"range": 0.5, "rate": 0.025}},
+            {"name": "timeless_delta", "pct": 20, "freq_start": 5, "freq_end": 2,
+             "transition": "logarithmic"},
+            {"name": "return", "pct": 20, "freq_start": 2, "freq_end": 10, "transition": "logarithmic"},
+        ],
+        "dual_layer": {
+            "enabled": True,
+            "sublayer_freq": 1.5,
+            "sublayer_level_db": -6,
+        }
+    },
 }
 
 
@@ -128,7 +220,7 @@ def load_frequency_map(path: Path) -> Dict[str, Any]:
 
 def frequency_map_to_sections(
     freq_map: Dict[str, Any],
-    duration_sec: float
+    duration_sec: float  # noqa: ARG001 - kept for API consistency
 ) -> tuple[List[SectionDict], List[GammaBurstDict], float]:
     """
     Convert a frequency map to sections and gamma bursts.
@@ -164,6 +256,56 @@ def frequency_map_to_sections(
     return sections, gamma_bursts, carrier_freq
 
 
+def _parse_sections_format(
+    binaural_sections: List[Dict[str, Any]]
+) -> List[SectionDict]:
+    """Parse newer sections format (start/end/offset_hz)."""
+    sections: List[SectionDict] = []
+    for sec in binaural_sections:
+        section: SectionDict = {
+            'start': sec['start'],
+            'end': sec['end'],
+            'freq_start': sec.get('offset_hz', sec.get('freq_start', 6)),
+            'freq_end': sec.get('offset_hz', sec.get('freq_end', 6)),
+            'transition': sec.get('transition', 'linear'),
+        }
+        sections.append(section)
+    return sections
+
+
+def _parse_progression_format(
+    progression: List[Dict[str, Any]],
+    duration_sec: float
+) -> tuple[List[SectionDict], List[GammaBurstDict]]:
+    """Parse older progression format (timestamp/frequency)."""
+    sections: List[SectionDict] = []
+    gamma_bursts: List[GammaBurstDict] = []
+
+    for i, stage in enumerate(progression):
+        # Get end time from next stage or duration
+        end_time = (progression[i + 1].get('timestamp', duration_sec)
+                    if i + 1 < len(progression) else duration_sec)
+
+        section: SectionDict = {
+            'start': stage['timestamp'],
+            'end': end_time,
+            'freq_start': stage['frequency'],
+            'freq_end': stage.get('frequency_end', stage['frequency']),
+            'transition': stage.get('transition', 'linear'),
+        }
+        sections.append(section)
+
+        # Check for gamma burst
+        if stage.get('transition') == 'burst':
+            gamma_bursts.append({
+                'time': stage['timestamp'],
+                'duration': stage.get('duration', 3),
+                'frequency': stage['frequency'],
+            })
+
+    return sections, gamma_bursts
+
+
 def manifest_to_sections(
     manifest: Dict[str, Any],
     duration_sec: float
@@ -172,55 +314,43 @@ def manifest_to_sections(
     Convert manifest binaural config to sections.
 
     Supports both simple beat_frequency and progression definitions.
+    Checks multiple possible manifest structures for binaural config.
     """
-    sections: List[SectionDict] = []
-    gamma_bursts: List[GammaBurstDict] = []
-
-    binaural_config = manifest.get('audio', {}).get('binaural', {})
+    # Check multiple possible locations for binaural config
+    binaural_config = (
+        manifest.get('sound_bed', {}).get('binaural', {}) or
+        manifest.get('audio', {}).get('binaural', {})
+    )
 
     if not binaural_config.get('enabled', True):
         return [], [], 200
 
-    carrier_freq = binaural_config.get('base_frequency', 200)
+    # Support multiple key names for carrier frequency
+    carrier_freq = binaural_config.get('base_hz',
+                   binaural_config.get('base_frequency', 200))
 
-    # Check for progression definition
+    # Check for sections definition (newer format with start/end/offset_hz)
+    if 'sections' in binaural_config:
+        sections = _parse_sections_format(binaural_config['sections'])
+        return sections, [], carrier_freq
+
+    # Check for progression definition (older format with timestamp/frequency)
     if 'progression' in binaural_config:
-        progression = binaural_config['progression']
-        for i, stage in enumerate(progression):
-            # Get end time from next stage or duration
-            if i + 1 < len(progression):
-                end_time = progression[i + 1].get('timestamp', duration_sec)
-            else:
-                end_time = duration_sec
+        sections, gamma_bursts = _parse_progression_format(
+            binaural_config['progression'], duration_sec
+        )
+        return sections, gamma_bursts, carrier_freq
 
-            section: SectionDict = {
-                'start': stage['timestamp'],
-                'end': end_time,
-                'freq_start': stage['frequency'],
-                'freq_end': stage.get('frequency_end', stage['frequency']),
-                'transition': stage.get('transition', 'linear'),
-            }
-            sections.append(section)
-
-            # Check for gamma burst
-            if stage.get('transition') == 'burst':
-                gamma_bursts.append({
-                    'time': stage['timestamp'],
-                    'duration': stage.get('duration', 3),
-                    'frequency': stage['frequency'],
-                })
-    else:
-        # Simple static frequency
-        beat_freq = binaural_config.get('beat_frequency', 6)
-        sections.append({
-            'start': 0,
-            'end': duration_sec,
-            'freq_start': beat_freq,
-            'freq_end': beat_freq,
-            'transition': 'hold',
-        })
-
-    return sections, gamma_bursts, carrier_freq
+    # Simple static frequency
+    beat_freq = binaural_config.get('beat_frequency', 6)
+    sections: List[SectionDict] = [{
+        'start': 0,
+        'end': duration_sec,
+        'freq_start': beat_freq,
+        'freq_end': beat_freq,
+        'transition': 'hold',
+    }]
+    return sections, [], carrier_freq
 
 
 def preset_to_sections(
@@ -284,7 +414,6 @@ def generate_frequency_map_template(
     preset = PRESETS[preset_name]
 
     frequency_events = []
-    current_time = 0
 
     for i, (section, stage) in enumerate(zip(sections, preset['stages'])):
         event = {
@@ -312,7 +441,7 @@ def generate_frequency_map_template(
                 "enabled": True,
                 "range": stage['modulation']['range'],
                 "frequency_hz": stage['modulation']['rate'],
-                "description": f"Subtle oscillation for enhanced entrainment"
+                "description": "Subtle oscillation for enhanced entrainment"
             }
 
         # Add gamma burst if present
@@ -398,6 +527,156 @@ def _generate_description(stage: Dict) -> str:
 
 
 # ============================================================================
+# CLI HELPER FUNCTIONS
+# ============================================================================
+
+def _build_enhancement_configs(args) -> tuple[
+    Optional[HarmonicConfig],
+    Optional[MicroModConfig],
+    Optional[SpatialConfig]
+]:
+    """Build enhancement configuration dicts from CLI arguments."""
+    harmonics_cfg: Optional[HarmonicConfig] = None
+    micro_mod_cfg: Optional[MicroModConfig] = None
+    spatial_cfg: Optional[SpatialConfig] = None
+
+    if args.harmonics:
+        harmonics_cfg = {
+            'enabled': True,
+            'second_harmonic': args.second_harmonic,
+            'third_harmonic': args.third_harmonic,
+            'sub_harmonic': args.sub_harmonic,
+            'air_shimmer': args.air_shimmer,
+        }
+
+    if args.micro_mod:
+        micro_mod_cfg = {
+            'enabled': True,
+            'pitch_drift_cents': args.pitch_drift,
+            'pitch_mod_rate_hz': args.pitch_rate,
+            'amp_mod_depth': args.amp_mod_depth,
+            'amp_mod_rate_hz': args.amp_mod_rate,
+        }
+
+    if args.spatial:
+        spatial_cfg = {
+            'enabled': True,
+            'pan_rate_hz': args.spatial_rate,
+            'pan_depth': args.spatial_depth,
+        }
+
+    return harmonics_cfg, micro_mod_cfg, spatial_cfg
+
+
+def _get_manifest_duration(manifest: Dict[str, Any], fallback: Optional[float]) -> Optional[float]:
+    """Extract duration from manifest, checking multiple possible locations."""
+    # session.duration is in seconds, top-level duration may be in minutes
+    if 'session' in manifest and 'duration' in manifest['session']:
+        return manifest['session']['duration']  # Already in seconds
+    if 'duration' in manifest:
+        return manifest['duration'] * 60  # Convert minutes to seconds
+    return fallback  # CLI arg is in seconds
+
+
+def _get_sections_from_input(
+    args,
+    parser
+) -> tuple[List[SectionDict], List[GammaBurstDict], float, float]:
+    """Parse input source and return sections, gamma bursts, carrier freq, and duration."""
+    if args.frequency_map:
+        freq_map = load_frequency_map(args.frequency_map)
+        duration = freq_map.get('duration_seconds', args.duration)
+        if not duration:
+            parser.error("Duration not found in frequency map; use --duration")
+        sections, gamma_bursts, carrier_freq = frequency_map_to_sections(freq_map, duration)
+
+    elif args.manifest:
+        with open(args.manifest, 'r') as f:
+            manifest = yaml.safe_load(f)
+        duration = _get_manifest_duration(manifest, args.duration)
+        if not duration:
+            parser.error("Duration not found in manifest; use --duration")
+        sections, gamma_bursts, carrier_freq = manifest_to_sections(manifest, duration)
+
+    elif args.preset:
+        if not args.duration:
+            parser.error("--duration is required with --preset")
+        duration = args.duration
+        sections, gamma_bursts, carrier_freq = preset_to_sections(args.preset, duration)
+
+    else:
+        parser.error("No input source specified")
+        return [], [], 200.0, 0.0  # unreachable but satisfies type checker
+
+    # Override carrier if specified
+    if args.carrier:
+        carrier_freq = args.carrier
+
+    return sections, gamma_bursts, carrier_freq, duration
+
+
+def _print_generation_summary(
+    duration: float,
+    carrier_freq: float,
+    sections: List[SectionDict],
+    gamma_bursts: List[GammaBurstDict],
+    harmonics_cfg: Optional[HarmonicConfig],
+    micro_mod_cfg: Optional[MicroModConfig],
+    spatial_cfg: Optional[SpatialConfig],
+) -> None:
+    """Print generation parameters summary."""
+    print("=" * 70)
+    print("DYNAMIC BINAURAL GENERATOR")
+    print("=" * 70)
+    print(f"\nDuration: {duration/60:.1f} minutes")
+    print(f"Carrier: {carrier_freq} Hz")
+    print(f"Sections: {len(sections)}")
+    if gamma_bursts:
+        print(f"Gamma bursts: {len(gamma_bursts)}")
+
+    print("\nEnhancements:")
+    print(f"  Harmonics: {'ON' if harmonics_cfg else 'OFF'}")
+    if harmonics_cfg:
+        print(f"    2nd: {harmonics_cfg['second_harmonic']}, "
+              f"3rd: {harmonics_cfg['third_harmonic']}, "
+              f"sub: {harmonics_cfg['sub_harmonic']}, "
+              f"air: {harmonics_cfg['air_shimmer']}")
+    print(f"  Micro-modulation: {'ON' if micro_mod_cfg else 'OFF'}")
+    if micro_mod_cfg:
+        print(f"    Pitch: ±{micro_mod_cfg['pitch_drift_cents']}¢ @ "
+              f"{micro_mod_cfg['pitch_mod_rate_hz']}Hz, "
+              f"Amp: ±{micro_mod_cfg['amp_mod_depth']*100:.0f}% @ "
+              f"{micro_mod_cfg['amp_mod_rate_hz']}Hz")
+    print(f"  Spatial panning: {'ON' if spatial_cfg else 'OFF'}")
+    if spatial_cfg:
+        print(f"    Depth: {spatial_cfg['pan_depth']*100:.0f}% @ "
+              f"{spatial_cfg['pan_rate_hz']}Hz")
+    print()
+
+
+def _handle_template_generation(args, parser) -> int:
+    """Handle --generate-template mode."""
+    if not args.duration:
+        parser.error("--duration is required with --generate-template")
+
+    preset = args.template_preset
+    template = generate_frequency_map_template(
+        args.duration,
+        preset,
+        args.session_name
+    )
+
+    with open(args.output, 'w') as f:
+        json.dump(template, f, indent=2)
+
+    print(f"✓ Generated frequency map template: {args.output}")
+    print(f"  Preset: {preset}")
+    print(f"  Duration: {args.duration/60:.1f} minutes")
+    print(f"  Stages: {len(template['frequency_events'])}")
+    return 0
+
+
+# ============================================================================
 # MAIN
 # ============================================================================
 
@@ -452,74 +731,78 @@ Available presets: """ + ", ".join(PRESETS.keys())
                        default='standard_hypnotic',
                        help='Preset to use for template generation (default: standard_hypnotic)')
 
+    # Harmonic stacking options
+    harmonic_group = parser.add_argument_group('harmonic stacking',
+                                               'Add harmonic richness to carrier tones')
+    harmonic_group.add_argument('--harmonics', action='store_true', default=True,
+                                help='Enable harmonic stacking (default: enabled)')
+    harmonic_group.add_argument('--no-harmonics', action='store_false', dest='harmonics',
+                                help='Disable harmonic stacking')
+    harmonic_group.add_argument('--second-harmonic', type=float, default=0.3,
+                                help='2nd harmonic amplitude (default: 0.3)')
+    harmonic_group.add_argument('--third-harmonic', type=float, default=0.15,
+                                help='3rd harmonic amplitude (default: 0.15)')
+    harmonic_group.add_argument('--sub-harmonic', type=float, default=0.2,
+                                help='Sub-harmonic amplitude (default: 0.2)')
+    harmonic_group.add_argument('--air-shimmer', type=float, default=0.05,
+                                help='8x shimmer amplitude (default: 0.05)')
+
+    # Micro-modulation options
+    micromod_group = parser.add_argument_group('micro-modulation',
+                                               'Add organic movement to carrier')
+    micromod_group.add_argument('--micro-mod', action='store_true', default=True,
+                                help='Enable micro-modulation (default: enabled)')
+    micromod_group.add_argument('--no-micro-mod', action='store_false', dest='micro_mod',
+                                help='Disable micro-modulation')
+    micromod_group.add_argument('--pitch-drift', type=float, default=20.0,
+                                help='Pitch drift in cents (default: 20)')
+    micromod_group.add_argument('--pitch-rate', type=float, default=0.02,
+                                help='Pitch modulation rate Hz (default: 0.02)')
+    micromod_group.add_argument('--amp-mod-depth', type=float, default=0.10,
+                                help='Amplitude modulation depth (default: 0.10)')
+    micromod_group.add_argument('--amp-mod-rate', type=float, default=0.08,
+                                help='Amplitude modulation rate Hz (default: 0.08)')
+
+    # Spatial panning options
+    spatial_group = parser.add_argument_group('spatial panning',
+                                              'Add slow stereo movement')
+    spatial_group.add_argument('--spatial', action='store_true', default=True,
+                               help='Enable spatial panning (default: enabled)')
+    spatial_group.add_argument('--no-spatial', action='store_false', dest='spatial',
+                               help='Disable spatial panning')
+    spatial_group.add_argument('--spatial-rate', type=float, default=0.02,
+                               help='Panning rate Hz (default: 0.02)')
+    spatial_group.add_argument('--spatial-depth', type=float, default=0.15,
+                               help='Panning depth 0-1 (default: 0.15)')
+
     args = parser.parse_args()
 
-    # Generate template
+    # Handle template generation mode
     if args.generate_template:
-        if not args.duration:
-            parser.error("--duration is required with --generate-template")
-
-        preset = args.template_preset
-        template = generate_frequency_map_template(
-            args.duration,
-            preset,
-            args.session_name
-        )
-
-        with open(args.output, 'w') as f:
-            json.dump(template, f, indent=2)
-
-        print(f"✓ Generated frequency map template: {args.output}")
-        print(f"  Preset: {preset}")
-        print(f"  Duration: {args.duration/60:.1f} minutes")
-        print(f"  Stages: {len(template['frequency_events'])}")
-        return 0
+        return _handle_template_generation(args, parser)
 
     # Get sections from input source
-    if args.frequency_map:
-        freq_map = load_frequency_map(args.frequency_map)
-        duration = freq_map.get('duration_seconds', args.duration)
-        if not duration:
-            parser.error("Duration not found in frequency map; use --duration")
-        sections, gamma_bursts, carrier_freq = frequency_map_to_sections(freq_map, duration)
+    sections, gamma_bursts, carrier_freq, duration = _get_sections_from_input(args, parser)
 
-    elif args.manifest:
-        with open(args.manifest, 'r') as f:
-            manifest = yaml.safe_load(f)
-        duration = manifest.get('duration', args.duration)
-        if duration:
-            duration = duration * 60  # Convert minutes to seconds
-        if not duration:
-            parser.error("Duration not found in manifest; use --duration")
-        sections, gamma_bursts, carrier_freq = manifest_to_sections(manifest, duration)
+    # Build enhancement configs
+    harmonics_cfg, micro_mod_cfg, spatial_cfg = _build_enhancement_configs(args)
 
-    elif args.preset:
-        if not args.duration:
-            parser.error("--duration is required with --preset")
-        duration = args.duration
-        sections, gamma_bursts, carrier_freq = preset_to_sections(args.preset, duration)
-
-    # Override carrier if specified
-    if args.carrier:
-        carrier_freq = args.carrier
+    # Print summary
+    _print_generation_summary(
+        duration, carrier_freq, sections, gamma_bursts,
+        harmonics_cfg, micro_mod_cfg, spatial_cfg
+    )
 
     # Generate audio
-    print("=" * 70)
-    print("DYNAMIC BINAURAL GENERATOR")
-    print("=" * 70)
-    print(f"\nDuration: {duration/60:.1f} minutes")
-    print(f"Carrier: {carrier_freq} Hz")
-    print(f"Sections: {len(sections)}")
-    if gamma_bursts:
-        print(f"Gamma bursts: {len(gamma_bursts)}")
-    print()
-
     audio = generate(
         sections=sections,
         duration_sec=duration,
         carrier_freq=carrier_freq,
         amplitude=args.amplitude,
-        gamma_bursts=gamma_bursts if gamma_bursts else None
+        gamma_bursts=gamma_bursts if gamma_bursts else None,
+        harmonics=harmonics_cfg,
+        micro_mod=micro_mod_cfg,
+        spatial=spatial_cfg,
     )
 
     # Save

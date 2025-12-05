@@ -211,9 +211,6 @@ For each script request, I will adapt based on:
 - Desired after-state + 3 sensory anchors:
 
 ### Required SSML scaffold (copy into `script.ssml` before writing)
-
-> **CRITICAL**: Always use `rate="1.0"` for all sections. Achieve hypnotic pacing through `<break>` tags, NOT slow speech rates. Neural2 voices sound robotic at slow rates (L015).
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -221,13 +218,13 @@ For each script request, I will adapt based on:
   <prosody rate="1.0" pitch="0st">...</prosody>
 
   <!-- INDUCTION -->
-  <prosody rate="1.0" pitch="-2st">...</prosody>
+  <prosody rate="0.85" pitch="-2st">...</prosody>
 
   <!-- MAIN JOURNEY -->
-  <prosody rate="1.0" pitch="-1st">...</prosody>
+  <prosody rate="0.91" pitch="-1st">...</prosody>
 
   <!-- INTEGRATION & RETURN -->
-  <prosody rate="1.0" pitch="-1st">...</prosody>
+  <prosody rate="0.95" pitch="0st">...</prosody>
 
   <!-- POST-HYPNOTIC ANCHORS -->
   <prosody rate="1.0" pitch="0st">...</prosody>
@@ -237,16 +234,16 @@ For each script request, I will adapt based on:
 ### Prosody snippet library (paste instead of freehanding)
 ```xml
 <!-- Pretalk (grounded) -->
-<prosody rate="1.0" pitch="0st">Welcome...<break time="2s"/></prosody>
+<prosody rate="1.0" pitch="0st">Welcome... <break time="2s"/></prosody>
 
-<!-- Induction (deeper pitch for calming) -->
-<prosody rate="1.0" pitch="-2st">Breathe in for four...<break time="4s"/> hold gently...<break time="4s"/> exhale for six...<break time="6s"/></prosody>
+<!-- Induction (slow/deep) -->
+<prosody rate="0.85" pitch="-2st">Breathe in for 4... hold for 4... exhale for 6... <break time="3s"/></prosody>
 
 <!-- Journey (immersive) -->
-<prosody rate="1.0" pitch="-1st">You notice the light shifting...<break time="2s"/></prosody>
+<prosody rate="0.91" pitch="-1st">You notice the light shifting... <break time="2s"/></prosody>
 
 <!-- Awakening/Return -->
-<prosody rate="1.0" pitch="0st">Counting up now... one...<break time="700ms"/> two...<break time="700ms"/></prosody>
+<prosody rate="0.95" pitch="0st">Counting up now... one... two... <break time="2s"/></prosody>
 ```
 
 ### Validation steps before rendering
@@ -267,130 +264,18 @@ For each script request, I will adapt based on:
 
 Before considering a script complete, verify:
 
-**Structural Requirements:**
-- [ ] All five structural sections present with XML comments
-- [ ] `rate="1.0"` used for ALL prosody tags (never slower)
-- [ ] Word count within 10% of target (~3,750 words for 25 min)
-- [ ] Punctuation before ALL break tags (L016)
-
-**Hypnotic Pattern Requirements:**
-- [ ] Minimum 10 embedded commands with `<emphasis>` tags
-- [ ] At least 2 fractionation loops (one in induction, one in journey)
-- [ ] Yes-set in opening (3+ truisms in sequence)
-- [ ] At least one double-bind in journey/deepening
-- [ ] Breath pacing synchronized with visualization
-- [ ] VAK sensory rotation in all visualization sections
-- [ ] Temporal dissociation/future pacing in integration
-- [ ] 3-5 post-hypnotic anchors (physical, symbolic, sensory)
-
-**Quality Standards:**
-- [ ] Positive, empowering language only
-- [ ] Rhythmic, hypnotic flow maintained
-- [ ] Specific goal addressed organically
-- [ ] Safe return and grounding included
-- [ ] No fear-based or negative imagery
-- [ ] Maintains user agency and control
-
-> **Reference:** See `knowledge/hypnotic_patterns.yaml` for complete pattern library with examples.
-
----
-
-## HYPNOTIC PATTERN LIBRARY (ESSENTIAL)
-
-> **Full Reference:** `knowledge/hypnotic_patterns.yaml`
-
-### Embedded Command Templates
-
-Use `<emphasis>` tags to mark hypnotic commands within flowing sentences:
-
-```xml
-<!-- Permission pattern -->
-You can <emphasis level="moderate">allow</emphasis> this experience to deepen...<break time="2.5s"/>
-
-<!-- Noticing pattern -->
-You may begin to <emphasis level="moderate">notice</emphasis> how easily you <emphasis level="moderate">relax</emphasis>...<break time="2s"/>
-
-<!-- Release pattern -->
-Your mind naturally begins to <emphasis level="moderate">release</emphasis> what no longer serves...<break time="2.5s"/>
-```
-
-**Minimum: 10 embedded commands per script** (3-5 induction, 5-7 journey, 2-3 integration)
-
-### Fractionation Loop Templates
-
-Circular deepening patterns that create self-reinforcing trance spirals:
-
-```xml
-<!-- Standard loop (use in induction) -->
-<prosody rate="1.0" pitch="-2st">
-And the deeper you go...<break time="1.5s"/>
-the more natural it feels...<break time="1.5s"/>
-and the more natural it feels...<break time="1.5s"/>
-the deeper you <emphasis level="moderate">allow</emphasis> yourself to go...<break time="4s"/>
-</prosody>
-
-<!-- Double-bind loop (use at journey peak) -->
-<prosody rate="1.0" pitch="-2st">
-You can choose to go <emphasis level="strong">deeper</emphasis> now...<break time="2s"/>
-or you can wait...<break time="1.5s"/>
-and notice that you are already going deeper...<break time="1.5s"/>
-simply by listening...<break time="4s"/>
-</prosody>
-```
-
-**Minimum: 2 fractionation loops per script**
-
-### Milton Model Patterns
-
-**Yes-Sets (opening):**
-```xml
-You're here...<break time="700ms"/>
-you're listening...<break time="700ms"/>
-and already beginning to settle in...<break time="1.5s"/>
-```
-
-**Presuppositions:** "As you continue to deepen..." (assumes deepening)
-
-**Modal Operators:** Use "may", "might", "can", "could", "perhaps" to reduce resistance
-
-**Double-Binds:** "You can relax quickly or slowly, whichever feels right..."
-
-### Breath Pacing Templates
-
-```xml
-<!-- Synchronized visualization -->
-<prosody rate="1.0" pitch="-1st">
-Colors breathing with your inhale...<break time="2s"/>
-light shimmering with your exhale...<break time="2s"/>
-shapes softening into view...<break time="3s"/>
-</prosody>
-```
-
-### Temporal Dissociation (REQUIRED in integration)
-
-```xml
-<prosody rate="1.0" pitch="-1st">
-And in the minutes...<break time="1s"/>
-hours...<break time="1s"/>
-even days ahead...<break time="1.5s"/>
-insights continue unfolding...<break time="3s"/>
-as your mind gently reorganizes around what serves you most...<break time="4s"/>
-</prosody>
-```
-
-### Break Timing Guide
-
-| Context | Duration | Example |
-|---------|----------|---------|
-| Between phrases | 700ms-1.0s | `word,<break time="700ms"/>` |
-| After sentences | 1.0s-1.7s | `sentence.<break time="1.3s"/>` |
-| After embedded commands | 2.0s-2.5s | `allow.<break time="2.5s"/>` |
-| Breathing cues | 2.5s-3.5s | `inhale...<break time="3s"/>` |
-| Visualization moments | 3.0s-4.0s | `See it clearly.<break time="3.5s"/>` |
-| Major transitions | 4.0s-5.5s | `arrived.<break time="5s"/>` |
-| Deep trance drops | 3.5s-4.5s | `<emphasis>deeper</emphasis>...<break time="4s"/>` |
-
-> **CRITICAL:** Always add punctuation before break tags to prevent word cutoff (L016)
+- [ ]  All five structural sections present
+- [ ]  At least 3 sensory details per major scene
+- [ ]  Minimum 5 embedded commands throughout
+- [ ]  3-5 post-hypnotic anchors included
+- [ ]  Pacing markers included [slowly], [pause], etc.
+- [ ]  Positive, empowering language only
+- [ ]  Rhythmic, hypnotic flow maintained
+- [ ]  Specific goal addressed organically
+- [ ]  Safe return and grounding included
+- [ ]  Length appropriate to request
+- [ ]  No fear-based or negative imagery
+- [ ]  Maintains user agency and control
 
 ---
 

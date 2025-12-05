@@ -226,5 +226,161 @@ When verifying a mix, check these specific moments:
 
 ---
 
+---
+
+## 10. Advanced Binaural Techniques
+
+### Dual-Layer Binaural (NEW)
+
+The dual-layer binaural technique creates a "floating on calm water" sensation by adding a constant delta sublayer beneath the dynamic primary layer.
+
+**How it works:**
+- Primary layer: Dynamic theta-to-delta progression as usual
+- Sublayer: Constant delta (1.5 Hz default) at reduced level (-6 dB)
+- Sublayer uses slightly offset carrier frequency (+50 Hz) to prevent interference
+
+**Configuration:**
+```python
+from scripts.core.audio.binaural import generate_dual_layer
+
+audio = generate_dual_layer(
+    sections=sections,
+    duration_sec=1800,
+    dual_layer={
+        'enabled': True,
+        'sublayer_freq': 1.5,       # Constant delta Hz
+        'sublayer_level_db': -6,     # Relative to primary (-6 to -12)
+        'sublayer_carrier_offset': 50,  # Carrier offset Hz
+        'crossfade_sec': 2.0,        # Layer crossfade duration
+    }
+)
+```
+
+**Best for:**
+- Long journeys (20+ minutes)
+- Deep trance work
+- Sessions emphasizing "floating" or "weightless" experiences
+- Cosmic/astral themes
+
+---
+
+## 11. Signature Tone (Session Branding)
+
+The signature tone creates neurological association with the trance state, so returning listeners immediately begin to relax upon hearing it.
+
+**Design Specifications:**
+| Parameter | Value | Purpose |
+|-----------|-------|---------|
+| Base frequency | 432 Hz | Natural harmony tuning |
+| Binaural beat | 7 Hz | Theta state |
+| Duration | 5 seconds | Short enough to not delay content |
+| Fade in | 1.5 seconds | Gentle introduction |
+| Fade out | 2.0 seconds | Smooth exit |
+| Shimmer rate | 0.5 Hz | Ethereal quality |
+
+**Usage:**
+```bash
+# Generate standalone signature files
+python3 scripts/core/audio/signature_tone.py --output signatures/
+
+# Embed in session audio
+python3 scripts/core/audio/signature_tone.py --embed session_audio.wav
+
+# Custom settings
+python3 scripts/core/audio/signature_tone.py --output sig.wav \
+    --base-freq 440 --duration 7 --amplitude 0.25
+```
+
+**Placement:**
+- **Intro**: Plays before pre-talk (variant: 'intro' with longer fade-in)
+- **Outro**: Plays after closing (variant: 'outro' with longer fade-out)
+- Consistent placement creates Pavlovian conditioning for trance state
+
+---
+
+---
+
+## 12. Adaptive Processing Pipeline (Long-Term Enhancement)
+
+The adaptive processing module provides hypnosis-stage-aware audio transformations:
+
+**File:** `scripts/core/audio/adaptive_processing.py`
+
+### Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **Spectral Motion Generator** | Slow EQ sweeps (0.008 Hz) for organic "living" sound |
+| **Psychoacoustic Masking** | Dynamic EQ dips around voice formants |
+| **HDR-A** | Hypnotic Dynamic Range Architecture - stage-based gain curves |
+| **Spatial Animator** | Stage-aware stereo width (narrows in induction, expands in journey) |
+| **Breath Sync** | Amplitude modulation aligned with relaxed breathing (0.15 Hz) |
+
+### Stage Presets
+
+| Stage | Gain | Low Shelf | Reverb | Stereo Width |
+|-------|------|-----------|--------|--------------|
+| `pretalk` | 0 dB | 0 dB | 3.0s, 8% | 90% |
+| `induction` | -1 dB | +0.5 dB | 5.0s, 10% | 70% |
+| `deepening` | -2.5 dB | +1.0 dB | 8.0s, 12% | 85% |
+| `journey` | -2 dB | +0.5 dB | 10s, 14% | 100% |
+| `luminous_core` | +1 dB | 0 dB | 12s, 16% | 100% |
+| `integration` | -1 dB | +0.5 dB | 6.0s, 10% | 75% |
+| `awakening` | 0 dB | 0 dB | 4.0s, 8% | 60% |
+
+### Usage
+
+```python
+from scripts.core.audio.adaptive_processing import (
+    apply_full_adaptive_processing,
+    stages_from_manifest,
+)
+
+stages = stages_from_manifest(manifest)
+processed = apply_full_adaptive_processing(
+    audio, sample_rate, stages,
+    voice_track=voice  # Optional: for masking correction
+)
+```
+
+---
+
+## 13. Luminous SFX Generator (Long-Term Enhancement)
+
+Procedural generation of mystical sound effects:
+
+**File:** `scripts/core/audio/luminous_sfx.py`
+
+### Available Effects
+
+| Effect | Function | Best For |
+|--------|----------|----------|
+| Crystal Shimmer | `generate_crystal_shimmer()` | Transformation, light |
+| Ascending Pad | `generate_ascending_pad()` | Transcendence, rising |
+| Halo Reverb | `generate_halo_reverb()` | Divine presence, 528 Hz |
+| Choir Texture | `generate_choir_texture()` | Sacred atmosphere |
+| Golden Bell | `generate_golden_bell()` | Transitions, 432 Hz |
+| Sacred Drone | `generate_sacred_drone()` | Grounding, power |
+| Starfield Sparkle | `generate_starfield_sparkle()` | Cosmic, particles |
+| Oceanic Whisper | `generate_oceanic_whisper()` | Induction, waves |
+
+### Composite Track Generation
+
+```python
+from scripts.core.audio.luminous_sfx import generate_luminous_sfx_track
+
+events = [
+    {'type': 'bell', 'time': 0, 'duration': 4, 'base_freq': 432},
+    {'type': 'shimmer', 'time': 300, 'duration': 10, 'amplitude': 0.2},
+    {'type': 'halo', 'time': 900, 'duration': 15, 'center_freq': 528},
+]
+
+track = generate_luminous_sfx_track(duration=1800, events=events)
+```
+
+---
+
 ## Version History
+- v1.2 (2025-12-04): Added adaptive processing and luminous SFX documentation
+- v1.1 (2025-12-04): Added dual-layer binaural and signature tone documentation
 - v1.0 (2025-12-02): Initial documentation based on Iron Soul Forge session fixes

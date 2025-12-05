@@ -8,6 +8,15 @@ session:
   style: "deep_journey"  # deep_journey, healing, confidence, etc.
   created: "2025-01-01"
 
+  # Outcome Engineering Fields (see knowledge/outcome_registry.yaml)
+  desired_outcome: "transformation"  # healing, transformation, empowerment, self_knowledge, release, spiritual_growth, creativity, relaxation, focus, confidence
+  outcome_subcategory: ""  # Optional: trauma_integration, shadow_work, identity_transformation, etc.
+  target_transformation: "From X → Y"  # e.g., "From fear → courage", "From fragmentation → wholeness"
+  success_metrics:
+    - "Listener experiences [specific shift]"
+    - "Integration of [specific material]"
+    - "Behavioral change in [specific area]"
+
 voice:
   provider: "google"  # Google Cloud TTS (production standard)
   voice_name: "en-US-Neural2-D"  # Female, warm, soothing (recommended)
