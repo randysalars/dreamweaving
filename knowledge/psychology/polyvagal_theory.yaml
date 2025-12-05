@@ -1,0 +1,567 @@
+# =============================================================================
+# POLYVAGAL THEORY - Autonomic States and Safety for Hypnotic Work
+# =============================================================================
+# Stephen Porges' polyvagal theory provides the neurobiological foundation
+# for safe, effective hypnotic work. Understanding autonomic states enables
+# precise regulation of listener states for optimal transformation.
+#
+# Usage: Apply vagal activation patterns for safety; recognize state shifts.
+#        Use cues to facilitate ventral vagal engagement.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "psychology"
+category: "neurophysiology"
+purpose: "Autonomic nervous system framework for safe hypnotic facilitation"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Polyvagal Theory"
+  source: "Stephen Porges - The Polyvagal Theory (2011)"
+
+  definition:
+    brief: "Theory of the hierarchical autonomic nervous system and its role in safety, connection, and survival"
+    extended: |
+      Polyvagal theory describes three evolutionary stages of the autonomic
+      nervous system that mediate our responses to safety and threat.
+      The ventral vagal system enables social engagement and feelings of
+      safety; the sympathetic system mobilizes fight/flight; the dorsal
+      vagal system immobilizes (freeze/shutdown). Effective hypnotic work
+      requires establishing ventral vagal safety before deep exploration.
+    essence: "Safety is the foundation of all healing"
+
+  three_circuits:
+    ventral_vagal:
+      name: "Social Engagement System"
+      function: "Safety, connection, calm presence"
+      evolutionary: "Most recent (mammals)"
+    sympathetic:
+      name: "Mobilization System"
+      function: "Fight, flight, action"
+      evolutionary: "Middle (vertebrates)"
+    dorsal_vagal:
+      name: "Immobilization System"
+      function: "Freeze, shutdown, conservation"
+      evolutionary: "Oldest (reptilian)"
+
+  dreamweaving_relevance: |
+    Polyvagal theory explains why safety must precede depth in hypnotic work.
+    The ventral vagal state enables the receptivity required for transformation.
+    Sympathetic activation blocks trance; dorsal collapse is dangerous.
+    All vagal_activation patterns in hypnotic_patterns.yaml work by
+    engaging the ventral vagal system.
+
+# =============================================================================
+# VENTRAL VAGAL STATE
+# =============================================================================
+
+ventral_vagal:
+  entry_id: "psychology.polyvagal.ventral_vagal"
+  name: "Ventral Vagal State (Social Engagement)"
+  circuit: "ventral_vagal"
+
+  definition:
+    brief: "State of safety, calm, and social connection mediated by the myelinated vagus"
+    extended: |
+      The ventral vagal state is our optimal state for healing and growth.
+      When we feel safe, the ventral vagal complex allows for calm alertness,
+      social engagement, and openness to experience. Heart rate is regulated,
+      breathing is smooth, facial muscles are relaxed, voice is melodic.
+      This state is necessary for hypnotic receptivity.
+
+  attributes:
+    energy_quality: balanced
+    brainwave: alpha
+    heart_rate: "60-80 bpm, high HRV"
+    breathing: "Slow, diaphragmatic, 5-7 breaths/min"
+    muscle_tone: "Relaxed but not collapsed"
+
+  physiological_markers:
+    - Heart rate variability high
+    - Slow, regular breathing
+    - Relaxed facial muscles
+    - Soft eye gaze
+    - Musical prosody in voice
+    - Ability to listen and respond
+    - Presence and engagement
+
+  psychological_experience:
+    - Feeling safe
+    - Open and curious
+    - Connected to self and environment
+    - Calm but alert
+    - Receptive to new information
+    - Able to reflect
+
+  applications:
+    journey_phases: [pre_talk, induction, integration, reorientation]
+    outcome_alignment: [all_outcomes]
+    use_cases:
+      - "Establishing baseline safety"
+      - "Creating rapport and trust"
+      - "Integration and return"
+      - "Anchoring resources"
+
+  cues_to_activate:
+    vocal:
+      - Warm, melodic voice tone
+      - Slow, rhythmic speech
+      - Gentle prosody variations
+      - Soft landing at phrase ends
+    environmental:
+      - Consistent, predictable soundscape
+      - Gentle background sounds
+      - No sudden changes
+      - Warm, soft tones
+    somatic:
+      - Orienting to safety ("You are safe here")
+      - Grounding language ("Feel the support beneath you")
+      - Breath awareness (slow exhale emphasis)
+      - Facial relaxation cues
+
+  templates:
+    ssml_ventral_activation: |
+      <prosody rate="1.0" pitch="-1st">
+      And as you settle here...<break time="2s"/>
+      you can notice how safe this space is...<break time="2s"/>
+      nothing to do...<break time="1.5s"/>
+      nothing to fix...<break time="1.5s"/>
+      just this gentle presence...<break time="2s"/>
+      your body knowing how to be here...<break time="2.5s"/>
+      </prosody>
+
+    ssml_safety_cues: |
+      <prosody rate="1.0" pitch="-1st">
+      Your body is supported...<break time="2s"/>
+      held by the ground beneath you...<break time="2s"/>
+      and you are safe...<break time="2.5s"/>
+      completely safe...<break time="2s"/>
+      to rest...<break time="2s"/>
+      to receive...<break time="3s"/>
+      </prosody>
+
+  relationships:
+    synergies:
+      - embodiment.pranayama.calming_breath
+      - symbols.colors.green
+      - symbols.colors.blue
+    enables:
+      - theta_trance_states
+      - deep_emotional_processing
+      - receptive_transformation
+    related_patterns:
+      - vagal_activation
+      - breath_pacing
+      - embedded_commands
+
+# =============================================================================
+# SYMPATHETIC STATE
+# =============================================================================
+
+sympathetic:
+  entry_id: "psychology.polyvagal.sympathetic"
+  name: "Sympathetic State (Fight/Flight)"
+  circuit: "sympathetic"
+
+  definition:
+    brief: "State of mobilization for action - fight, flight, or effortful activity"
+    extended: |
+      The sympathetic state prepares the body for action in response to
+      perceived threat or challenge. Heart rate increases, breathing
+      becomes rapid and shallow, muscles tense for action. While
+      necessary for survival, sustained sympathetic activation blocks
+      hypnotic receptivity and prevents healing.
+
+  attributes:
+    energy_quality: active
+    brainwave: beta
+    heart_rate: "80-120+ bpm, low HRV"
+    breathing: "Rapid, shallow, chest-dominant"
+    muscle_tone: "Tense, ready for action"
+
+  physiological_markers:
+    - Elevated heart rate
+    - Rapid, shallow breathing
+    - Muscle tension (jaw, shoulders, belly)
+    - Wide, scanning eyes
+    - Restlessness, fidgeting
+    - Racing thoughts
+
+  psychological_experience:
+    - Anxiety or agitation
+    - Hypervigilance
+    - Difficulty settling
+    - Racing thoughts
+    - Urge to escape or act
+    - Difficulty receiving
+
+  in_hypnotic_work:
+    recognition: |
+      Listener may report feeling anxious, restless, or unable to relax.
+      May have racing thoughts or physical tension. This state must be
+      regulated before proceeding with deeper work.
+    response: |
+      - Slow voice pace
+      - Extend exhales
+      - Grounding imagery
+      - Permission language
+      - Do NOT proceed to deep trance
+
+  templates:
+    ssml_regulation: |
+      <prosody rate="1.0" pitch="0st">
+      If you notice any tension...<break time="2s"/>
+      any restlessness...<break time="2s"/>
+      that's perfectly okay...<break time="2s"/>
+      just let your exhale be a little longer...<break time="2.5s"/>
+      releasing...<break time="2s"/>
+      letting the ground hold you...<break time="2.5s"/>
+      there's nothing you need to do...<break time="3s"/>
+      </prosody>
+
+  regulation_techniques:
+    - Extended exhale breathing
+    - Grounding through sensation
+    - Slow, predictable voice
+    - Permission to feel and release
+    - Physical orientation cues
+
+# =============================================================================
+# DORSAL VAGAL STATE
+# =============================================================================
+
+dorsal_vagal:
+  entry_id: "psychology.polyvagal.dorsal_vagal"
+  name: "Dorsal Vagal State (Freeze/Shutdown)"
+  circuit: "dorsal_vagal"
+
+  definition:
+    brief: "State of immobilization - freeze, shutdown, or collapse"
+    extended: |
+      The dorsal vagal state is the oldest survival response, involving
+      immobilization and conservation of resources. It manifests as
+      numbness, dissociation, or collapse. While sometimes protective,
+      this state is not therapeutic and can be dangerous in hypnotic
+      work if it represents dissociation.
+
+  attributes:
+    energy_quality: collapsed
+    brainwave: "delta (non-therapeutic)"
+    heart_rate: "Below 60 bpm, very low HRV"
+    breathing: "Shallow, minimal"
+    muscle_tone: "Flaccid, collapsed"
+
+  physiological_markers:
+    - Very slow heart rate
+    - Shallow, minimal breathing
+    - Muscle collapse
+    - Flat affect
+    - Glazed eyes
+    - Pale color
+    - Numbness
+
+  psychological_experience:
+    - Numbness, disconnection
+    - Dissociation
+    - Hopelessness
+    - Inability to respond
+    - Feeling frozen or stuck
+    - Checked out sensation
+
+  in_hypnotic_work:
+    recognition: |
+      Listener becomes unresponsive, may appear "too relaxed," or reports
+      feeling numb, disconnected, or "gone." This is NOT therapeutic
+      depth - it is a protective shutdown that must be addressed.
+    response: |
+      - Gentle physical activation cues
+      - Increase voice energy slightly
+      - Grounding to sensation
+      - Movement suggestions (wiggle fingers/toes)
+      - Orient to present environment
+      - Do NOT proceed deeper
+
+  contraindications:
+    - Never mistake dorsal shutdown for deep trance
+    - Dissociative clients may easily shift to dorsal
+    - Always maintain gentle engagement
+    - Return to ventral before continuing
+
+  templates:
+    ssml_gentle_activation: |
+      <prosody rate="1.0" pitch="0st">
+      And now...<break time="1.5s"/>
+      very gently...<break time="1.5s"/>
+      notice your fingers...<break time="2s"/>
+      perhaps wiggle them slightly...<break time="2s"/>
+      feeling that movement...<break time="2s"/>
+      feeling yourself here...<break time="2s"/>
+      present...<break time="2s"/>
+      safe...<break time="2.5s"/>
+      </prosody>
+
+  regulation_techniques:
+    - Gentle physical activation
+    - Orienting to sensation
+    - Slightly increased voice energy
+    - Movement cues (small, peripheral)
+    - Environmental grounding
+    - Eye contact cues (if in person)
+
+# =============================================================================
+# STATE TRANSITIONS
+# =============================================================================
+
+state_transitions:
+
+  ventral_to_sympathetic:
+    trigger: "Perceived threat, overwhelm, moving too fast"
+    signs: "Increased tension, faster breathing, restlessness"
+    response: "Slow down, ground, reassure safety"
+
+  sympathetic_to_dorsal:
+    trigger: "Overwhelm exceeds capacity, helplessness"
+    signs: "Sudden stillness, numbness, disconnection"
+    response: "Gentle activation, orient to present, do not continue"
+
+  dorsal_to_sympathetic:
+    trigger: "Beginning to mobilize out of freeze"
+    signs: "Agitation, anger, trembling as energy returns"
+    response: "Allow discharge, support movement, then ground"
+
+  sympathetic_to_ventral:
+    trigger: "Successful regulation, safety established"
+    signs: "Slowing breath, relaxing muscles, settling"
+    response: "Reinforce safety, proceed gently"
+
+  dorsal_to_ventral:
+    trigger: "Must pass through sympathetic - pendulation"
+    signs: "Gradual return of feeling, engagement"
+    response: "Very gentle, allow organic return, do not rush"
+
+# =============================================================================
+# VAGAL ACTIVATION TECHNIQUES
+# =============================================================================
+# These correspond to vagal_activation patterns in hypnotic_patterns.yaml
+
+vagal_activation_techniques:
+
+  # ---------------------------------------------------------------------------
+  # BREATH-BASED
+  # ---------------------------------------------------------------------------
+  extended_exhale:
+    entry_id: "psychology.polyvagal.techniques.extended_exhale"
+    name: "Extended Exhale Breathing"
+    type: "breath"
+
+    mechanism: |
+      Long exhales activate the vagal brake, stimulating parasympathetic
+      response. The 4-7-8 or similar patterns ensure exhale dominance.
+
+    template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="1.5s"/>
+      take a gentle breath in...<break time="3s"/>
+      and let it go...<break time="1s"/>
+      slowly...<break time="4s"/>
+      allowing the exhale to be longer than the inhale...<break time="2s"/>
+      releasing...<break time="3s"/>
+      </prosody>
+
+    timing:
+      inhale: 4 counts
+      hold: 0-7 counts
+      exhale: 8 counts
+
+  # ---------------------------------------------------------------------------
+  # VOCAL-BASED
+  # ---------------------------------------------------------------------------
+  humming_toning:
+    entry_id: "psychology.polyvagal.techniques.humming"
+    name: "Humming / Vocal Toning"
+    type: "vocal"
+
+    mechanism: |
+      Vocalization stimulates the vagus nerve through laryngeal muscles.
+      Humming creates vibration that directly activates vagal pathways.
+
+    template: |
+      <prosody rate="1.0" pitch="-1st">
+      And if it feels right...<break time="2s"/>
+      you might let a gentle humming sound arise...<break time="2s"/>
+      feeling the vibration in your throat...<break time="2s"/>
+      in your chest...<break time="2s"/>
+      soothing the nervous system...<break time="3s"/>
+      </prosody>
+
+    note: "Cue only; listener does silently or aloud"
+
+  # ---------------------------------------------------------------------------
+  # PHYSICAL-BASED
+  # ---------------------------------------------------------------------------
+  jaw_release:
+    entry_id: "psychology.polyvagal.techniques.jaw_release"
+    name: "Jaw and Facial Release"
+    type: "physical"
+
+    mechanism: |
+      Facial muscles connect to the vagal system. Releasing jaw tension
+      signals safety to the nervous system.
+
+    template: |
+      <prosody rate="1.0" pitch="-1st">
+      And you can let your jaw soften...<break time="2s"/>
+      perhaps letting your lips part slightly...<break time="2s"/>
+      releasing any holding there...<break time="2s"/>
+      feeling your whole face soften...<break time="2.5s"/>
+      </prosody>
+
+  swallow_deepener:
+    entry_id: "psychology.polyvagal.techniques.swallow"
+    name: "Swallow Deepener"
+    type: "physical"
+
+    mechanism: |
+      Swallowing activates the vagus nerve directly. Gentle swallowing
+      cues deepen relaxation and signal safety.
+
+    template: |
+      <prosody rate="1.0" pitch="-2st">
+      And you might notice yourself swallowing...<break time="2s"/>
+      naturally...<break time="1.5s"/>
+      each swallow taking you deeper...<break time="2.5s"/>
+      deeper into relaxation...<break time="2.5s"/>
+      </prosody>
+
+  # ---------------------------------------------------------------------------
+  # ORIENTATION-BASED
+  # ---------------------------------------------------------------------------
+  orienting_response:
+    entry_id: "psychology.polyvagal.techniques.orienting"
+    name: "Orienting to Safety"
+    type: "orientation"
+
+    mechanism: |
+      Orienting to the environment and confirming safety activates
+      the social engagement system. The nervous system relaxes when
+      it has checked for and found no threat.
+
+    template: |
+      <prosody rate="1.0" pitch="-1st">
+      And in your imagination...<break time="2s"/>
+      you can look around this safe space...<break time="2s"/>
+      noticing how protected you are...<break time="2s"/>
+      how held...<break time="2s"/>
+      nothing here but peace...<break time="2.5s"/>
+      </prosody>
+
+# =============================================================================
+# APPLICATION TO JOURNEY PHASES
+# =============================================================================
+
+phase_applications:
+
+  pre_talk:
+    primary_state: ventral_vagal
+    goal: "Establish baseline safety and rapport"
+    techniques: [orienting_response, vocal_warmth]
+    indicators_of_success: "Listener appears calm, engaged, receptive"
+
+  induction:
+    primary_state: "ventral_vagal deepening to alpha"
+    goal: "Deepen safety, begin relaxation"
+    techniques: [extended_exhale, jaw_release, swallow_deepener]
+    indicators_of_success: "Visible relaxation, slowed breathing"
+
+  deepening:
+    primary_state: "Maintained ventral vagal in theta"
+    goal: "Deepen trance while maintaining safety"
+    techniques: [continued_breath_pacing, grounding_cues]
+    indicators_of_success: "Deep relaxation without dissociation"
+
+  journey:
+    primary_state: "Ventral vagal with theta immersion"
+    goal: "Safe exploration of deep material"
+    techniques: [intermittent_safety_cues, gentle_voice_tone]
+    note: "Monitor for sympathetic spikes or dorsal collapse"
+
+  helm_deep_trance:
+    primary_state: "Supported ventral/dorsal blend"
+    goal: "Deepest transformation with safety net"
+    techniques: [maintained_gentle_contact, recovery_cues_ready]
+    note: "Watch carefully for dissociative collapse"
+
+  integration:
+    primary_state: "Return to ventral vagal alpha"
+    goal: "Reintegrate with nervous system regulation"
+    techniques: [gentle_activation, grounding, orienting]
+    indicators_of_success: "Smooth return, maintained calm"
+
+  reorientation:
+    primary_state: "Full ventral vagal engagement"
+    goal: "Complete return to social engagement"
+    techniques: [full_orientation, movement_cues, sensory_grounding]
+    indicators_of_success: "Alert, calm, present, integrated"
+
+# =============================================================================
+# SAFETY MARKERS
+# =============================================================================
+
+safety_markers:
+  safe_to_proceed:
+    - Slow, regular breathing
+    - Relaxed facial muscles
+    - Responsive to voice (even minimally)
+    - No visible distress
+    - Stable posture/position
+
+  pause_and_regulate:
+    - Rapid breathing
+    - Visible muscle tension
+    - Restlessness
+    - Facial grimacing
+    - Signs of distress
+
+  stop_and_ground:
+    - Unresponsiveness
+    - Very shallow breathing
+    - Pallor
+    - Flat affect
+    - Dissociative signs
+    - Expressed overwhelm
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - embodiment.pranayama
+    - embodiment.grounding_techniques
+    - ritual.sacred_space
+    - symbols.colors.green
+    - symbols.colors.blue
+
+  enables:
+    - All deep trance work
+    - Emotional processing
+    - Shadow integration
+    - Trauma resolution
+
+  related_patterns:
+    - vagal_activation
+    - breath_pacing
+    - emotional_calibration
+    - parts_integration
+
+  source_references:
+    - author: "Stephen Porges"
+      text: "The Polyvagal Theory"
+      year: 2011
+    - author: "Deb Dana"
+      text: "The Polyvagal Theory in Therapy"
+      year: 2018

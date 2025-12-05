@@ -1,0 +1,521 @@
+# =============================================================================
+# HERMETICISM - Hermetic Principles for Dreamweaving
+# =============================================================================
+# The Hermetic tradition provides foundational principles for understanding
+# consciousness, transformation, and the relationship between mind and matter.
+# These principles inform the metaphysical framework of many Dreamweaving journeys.
+#
+# Usage: Apply Hermetic principles to frame transformation experiences.
+#        Use correspondence tables for symbolic coherence.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "traditions"
+category: "western_esoteric"
+purpose: "Hermetic philosophical framework for transformational hypnotic work"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Hermeticism"
+  source: "Corpus Hermeticum, Emerald Tablet, Kybalion"
+
+  definition:
+    brief: "Ancient philosophical and spiritual tradition based on the teachings attributed to Hermes Trismegistus"
+    extended: |
+      Hermeticism is a spiritual, philosophical, and magical tradition based on
+      writings attributed to Hermes Trismegistus ("Thrice-Great Hermes"),
+      a syncretism of the Greek god Hermes and the Egyptian god Thoth.
+      The tradition encompasses cosmology, alchemy, astrology, and theurgy,
+      united by the principle "As above, so below" - the correspondence
+      between macrocosm and microcosm.
+    essence: "The universe and the self are mirrors of each other"
+
+  core_texts:
+    - name: "Corpus Hermeticum"
+      description: "Collection of Greek texts on philosophy and cosmology"
+    - name: "The Emerald Tablet"
+      description: "Short cryptic text of alchemical and spiritual transformation"
+    - name: "The Kybalion"
+      description: "1908 text articulating Seven Hermetic Principles"
+
+  relevance_to_dreamweaving: |
+    Hermetic principles provide a philosophical framework for understanding
+    how hypnotic transformation works. The principle of correspondence
+    explains why symbolic work creates real change; the principle of
+    mentalism explains why mind can reshape experience; the principle
+    of vibration explains brainwave entrainment and tonal effects.
+
+# =============================================================================
+# THE SEVEN HERMETIC PRINCIPLES
+# =============================================================================
+
+seven_principles:
+
+  # ---------------------------------------------------------------------------
+  # 1. THE PRINCIPLE OF MENTALISM
+  # ---------------------------------------------------------------------------
+  mentalism:
+    entry_id: "traditions.hermeticism.mentalism"
+    name: "The Principle of Mentalism"
+    number: 1
+
+    definition:
+      brief: "THE ALL is Mind; the Universe is Mental"
+      extended: |
+        The foundational principle - consciousness is primary, matter is
+        secondary. The universe exists within the mind of THE ALL, and
+        all creation is mental in nature. This explains why mental/imaginal
+        work can create real transformation - mind shapes reality.
+
+    axiom: "THE ALL is MIND; The Universe is Mental."
+
+    implications:
+      - Reality is fundamentally consciousness-based
+      - Mental states create physical conditions
+      - Imagination is a creative power
+      - Thought precedes manifestation
+      - Inner work creates outer change
+
+    applications_to_dreamweaving:
+      - Visualization creates real neurological change
+      - Imaginal experiences shape beliefs and behavior
+      - The journey space is as real as waking reality
+      - Mental rehearsal builds capacity
+
+    templates:
+      ssml_principle: |
+        <prosody rate="1.0" pitch="-2st">
+        And in this space...<break time="2s"/>
+        what you imagine is real...<break time="2.5s"/>
+        the mind is the shaper of worlds...<break time="2.5s"/>
+        and what you experience here...<break time="2s"/>
+        creates change that echoes...<break time="2s"/>
+        into every part of your life...<break time="3.5s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # 2. THE PRINCIPLE OF CORRESPONDENCE
+  # ---------------------------------------------------------------------------
+  correspondence:
+    entry_id: "traditions.hermeticism.correspondence"
+    name: "The Principle of Correspondence"
+    number: 2
+
+    definition:
+      brief: "As above, so below; as below, so above"
+      extended: |
+        There is correspondence between all planes of existence - the
+        physical, mental, and spiritual mirror each other. What happens
+        on one level reflects on others. The microcosm (individual)
+        mirrors the macrocosm (universe). This is why symbolic work
+        is effective - symbols correspond to realities.
+
+    axiom: "As above, so below; as below, so above."
+
+    implications:
+      - Symbolic work creates real change
+      - Individual transformation reflects universal patterns
+      - The body mirrors the mind; the mind mirrors the cosmos
+      - Archetypal symbols access universal truths
+      - Personal healing participates in cosmic healing
+
+    applications_to_dreamweaving:
+      - Journey imagery corresponds to psychological reality
+      - Working with archetypes accesses universal patterns
+      - Symbolic transformation creates actual transformation
+      - The special world mirrors the ordinary world
+
+    templates:
+      ssml_principle: |
+        <prosody rate="1.0" pitch="-2st">
+        As within, so without...<break time="2.5s"/>
+        as above, so below...<break time="2.5s"/>
+        what transforms here...<break time="2s"/>
+        transforms everywhere...<break time="3s"/>
+        </prosody>
+
+    correspondence_tables:
+      note: "See knowledge/symbols/ for detailed correspondence tables"
+
+  # ---------------------------------------------------------------------------
+  # 3. THE PRINCIPLE OF VIBRATION
+  # ---------------------------------------------------------------------------
+  vibration:
+    entry_id: "traditions.hermeticism.vibration"
+    name: "The Principle of Vibration"
+    number: 3
+
+    definition:
+      brief: "Nothing rests; everything moves; everything vibrates"
+      extended: |
+        Everything is in constant motion and vibration. The differences
+        between matter, energy, mind, and spirit are differences in
+        rate of vibration. Higher vibrations correspond to higher states
+        of consciousness. This explains why sound, rhythm, and frequency
+        affect consciousness.
+
+    axiom: "Nothing rests; everything moves; everything vibrates."
+
+    implications:
+      - States of consciousness are vibrational states
+      - Sound and frequency influence mind and body
+      - Entrainment is possible through resonance
+      - Raising vibration raises consciousness
+      - Dense states can be transmuted to lighter ones
+
+    applications_to_dreamweaving:
+      - Binaural beats work through vibration entrainment
+      - Voice tone carries vibrational information
+      - Sound design creates energetic environment
+      - Rhythm induces trance states
+      - Brainwave states are vibrational patterns
+
+    templates:
+      ssml_principle: |
+        <prosody rate="1.0" pitch="-2st">
+        Everything is vibration...<break time="2.5s"/>
+        and as these sounds wash through you...<break time="2s"/>
+        they raise your vibration...<break time="2s"/>
+        lifting you into higher states...<break time="2.5s"/>
+        of being...<break time="3s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # 4. THE PRINCIPLE OF POLARITY
+  # ---------------------------------------------------------------------------
+  polarity:
+    entry_id: "traditions.hermeticism.polarity"
+    name: "The Principle of Polarity"
+    number: 4
+
+    definition:
+      brief: "Everything is dual; opposites are identical in nature, different in degree"
+      extended: |
+        Everything has its pair of opposites - hot and cold, light and dark,
+        love and hate. But these are not absolute opposites; they are
+        the same thing at different degrees on a spectrum. This allows
+        for transmutation - moving along the spectrum from one pole
+        toward the other.
+
+    axiom: "Everything is Dual; opposites are identical in nature, but different in degree."
+
+    implications:
+      - Shadow and gift are poles of the same spectrum
+      - Fear and love are degrees of the same emotion
+      - Transformation is movement along the polarity spectrum
+      - Integration unites polarities
+      - No quality is absolute; all can be transmuted
+
+    applications_to_dreamweaving:
+      - Shadow integration moves along polarity spectrum
+      - Transformation shifts position between poles
+      - Emotional alchemy transmutes negative to positive
+      - Opposites can be reconciled through understanding
+      - Healing is often movement toward the opposite pole
+
+    templates:
+      ssml_principle: |
+        <prosody rate="1.0" pitch="-2st">
+        And what you felt as darkness...<break time="2.5s"/>
+        you begin to recognize...<break time="2s"/>
+        as light not yet awakened...<break time="2.5s"/>
+        the same energy...<break time="2s"/>
+        waiting to transform...<break time="3s"/>
+        </prosody>
+
+    shadow_gift_connection: |
+      The Principle of Polarity is the foundation of shadow/gift work.
+      Each shadow quality has its corresponding gift at the other pole.
+      Transformation doesn't eliminate the energy but redirects it.
+
+  # ---------------------------------------------------------------------------
+  # 5. THE PRINCIPLE OF RHYTHM
+  # ---------------------------------------------------------------------------
+  rhythm:
+    entry_id: "traditions.hermeticism.rhythm"
+    name: "The Principle of Rhythm"
+    number: 5
+
+    definition:
+      brief: "Everything flows, out and in; everything has its tides"
+      extended: |
+        Everything has rhythm - cycles of rise and fall, advance and
+        retreat, inhale and exhale. The pendulum swings in everything.
+        Understanding rhythm allows one to work with cycles rather than
+        against them, and eventually to transcend them.
+
+    axiom: "Everything flows, out and in; the pendulum-swing manifests in everything."
+
+    implications:
+      - Life moves in cycles and rhythms
+      - Trance has natural rhythms of depth
+      - Breath follows rhythmic patterns
+      - Moods and states naturally cycle
+      - Working with rhythm enhances effectiveness
+
+    applications_to_dreamweaving:
+      - Session structure follows rhythmic arc
+      - Breath pacing uses rhythm for induction
+      - Fractionation uses rhythm of depth oscillation
+      - Return from trance follows natural rhythm
+      - Music and sound create rhythmic entrainment
+
+    templates:
+      ssml_principle: |
+        <prosody rate="1.0" pitch="-2st">
+        Like the tides...<break time="2s"/>
+        like the breath...<break time="2s"/>
+        consciousness rises and falls...<break time="2.5s"/>
+        and you flow with it now...<break time="2s"/>
+        deeper on the outflow...<break time="2.5s"/>
+        resting in the depths...<break time="3s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # 6. THE PRINCIPLE OF CAUSE AND EFFECT
+  # ---------------------------------------------------------------------------
+  cause_effect:
+    entry_id: "traditions.hermeticism.cause_effect"
+    name: "The Principle of Cause and Effect"
+    number: 6
+
+    definition:
+      brief: "Every cause has its effect; every effect has its cause"
+      extended: |
+        Nothing happens by chance - every effect has a cause, and
+        every cause creates effects. Most people are effects, moved by
+        external causes. The Master becomes a cause, consciously creating
+        effects rather than merely experiencing them.
+
+    axiom: "Every Cause has its Effect; every Effect has its Cause."
+
+    implications:
+      - Present states have past causes
+      - Present actions create future effects
+      - Unconscious patterns create unconscious effects
+      - Becoming conscious allows intentional causation
+      - Transformation changes future effects by changing present causes
+
+    applications_to_dreamweaving:
+      - Past patterns cause present limitations
+      - Changing patterns changes future outcomes
+      - Setting intention creates causation
+      - Unconscious beliefs cause unconscious results
+      - The journey is a cause creating transformation effects
+
+    templates:
+      ssml_principle: |
+        <prosody rate="1.0" pitch="-2st">
+        What you plant now...<break time="2s"/>
+        in this fertile ground...<break time="2.5s"/>
+        will grow into your future...<break time="2.5s"/>
+        choose well...<break time="2s"/>
+        what seeds you carry from here...<break time="3s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # 7. THE PRINCIPLE OF GENDER
+  # ---------------------------------------------------------------------------
+  gender:
+    entry_id: "traditions.hermeticism.gender"
+    name: "The Principle of Gender"
+    number: 7
+
+    definition:
+      brief: "Gender is in everything; everything has its masculine and feminine principles"
+      extended: |
+        Gender manifests on all planes - not as biological sex but as
+        the dual principles of generation. The Masculine principle is
+        projective, active, initiating. The Feminine principle is
+        receptive, nurturing, gestating. Both are necessary for creation.
+
+    axiom: "Gender is in everything; everything has its Masculine and Feminine Principles."
+
+    implications:
+      - Creation requires both active and receptive
+      - Transformation needs both initiation and gestation
+      - Consciousness has projective and receptive modes
+      - Balance of principles creates wholeness
+      - Neither principle alone can create
+
+    applications_to_dreamweaving:
+      - Voice carries both active guidance and receptive holding
+      - Suggestion (masculine) and allowance (feminine) are both needed
+      - Journey structure balances action and rest
+      - Integration requires receiving, not just doing
+      - Wholeness includes both principles
+
+    templates:
+      ssml_principle: |
+        <prosody rate="1.0" pitch="-2st">
+        And here...<break time="2s"/>
+        both giving and receiving...<break time="2s"/>
+        both doing and being...<break time="2s"/>
+        find their union...<break time="2.5s"/>
+        in you...<break time="2s"/>
+        whole...<break time="3s"/>
+        </prosody>
+
+# =============================================================================
+# THE EMERALD TABLET
+# =============================================================================
+
+emerald_tablet:
+  entry_id: "traditions.hermeticism.emerald_tablet"
+  name: "The Emerald Tablet (Tabula Smaragdina)"
+
+  definition:
+    brief: "Cryptic alchemical text containing the essence of Hermetic wisdom"
+    extended: |
+      The Emerald Tablet is a short but profound text of unknown origin,
+      attributed to Hermes Trismegistus. It contains the core of
+      alchemical and Hermetic teaching in condensed form. Its most
+      famous axiom, "As above, so below," encapsulates the principle
+      of correspondence.
+
+  key_passages:
+    correspondence: "That which is above is like to that which is below, and that which is below is like to that which is above, to accomplish the miracles of one thing."
+    source: "Its father is the Sun; its mother the Moon."
+    process: "Separate the earth from the fire, the subtle from the gross, gently and with great judgment."
+    completion: "Thus the splendor of the whole world will be thine, and all darkness will flee from thee."
+
+  applications_to_dreamweaving:
+    - The transformation process follows alchemical stages
+    - Separation and purification precede integration
+    - The Great Work mirrors individual transformation
+    - The journey from darkness to light follows the Tablet's pattern
+
+  templates:
+    ssml_tablet_theme: |
+      <prosody rate="1.0" pitch="-2st">
+      As above, so below...<break time="3s"/>
+      as within, so without...<break time="3s"/>
+      what transforms here...<break time="2s"/>
+      transforms everywhere...<break time="2.5s"/>
+      and darkness flees before light...<break time="3.5s"/>
+      </prosody>
+
+# =============================================================================
+# CORRESPONDENCE TABLES
+# =============================================================================
+
+correspondence_overview:
+  note: |
+    Detailed correspondence tables are in knowledge/symbols/.
+    This section provides quick reference for Hermetic correspondences.
+
+  planetary_correspondences:
+    sun:
+      metal: gold
+      day: sunday
+      chakra: solar_plexus
+      color: gold
+      quality: "Will, vitality, self"
+    moon:
+      metal: silver
+      day: monday
+      chakra: sacral
+      color: silver
+      quality: "Emotion, intuition, receptivity"
+    mercury:
+      metal: mercury
+      day: wednesday
+      chakra: throat
+      color: yellow
+      quality: "Mind, communication, connection"
+    venus:
+      metal: copper
+      day: friday
+      chakra: heart
+      color: green
+      quality: "Love, beauty, harmony"
+    mars:
+      metal: iron
+      day: tuesday
+      chakra: root
+      color: red
+      quality: "Action, courage, will"
+    jupiter:
+      metal: tin
+      day: thursday
+      chakra: third_eye
+      color: blue
+      quality: "Expansion, wisdom, abundance"
+    saturn:
+      metal: lead
+      day: saturday
+      chakra: crown
+      color: black
+      quality: "Structure, limitation, time"
+
+  elemental_correspondences:
+    note: "See knowledge/symbols/elemental_attributions.yaml for full details"
+
+# =============================================================================
+# APPLICATIONS TO SESSION DESIGN
+# =============================================================================
+
+session_design_applications:
+
+  transformation_as_alchemy:
+    principle: "The Great Work of alchemy is transformation of base to gold"
+    application: |
+      Session structure can follow alchemical stages:
+      - Nigredo (blackening): Confronting shadow, dissolution of old form
+      - Albedo (whitening): Purification, washing away impurities
+      - Citrinitas (yellowing): Awakening of solar consciousness
+      - Rubedo (reddening): Integration, the Philosopher's Stone
+
+  mentalism_in_visualization:
+    principle: "Mind creates reality"
+    application: |
+      Emphasize that imaginal experiences are real experiences.
+      The brain doesn't distinguish between vividly imagined
+      and actually experienced. What happens in journey creates
+      real neurological and psychological change.
+
+  correspondence_in_symbolism:
+    principle: "As above, so below"
+    application: |
+      Use consistent symbolism that corresponds across levels.
+      Water symbols should consistently represent emotion.
+      Fire symbols should consistently represent transformation.
+      This creates coherent symbolic language.
+
+  polarity_in_shadow_work:
+    principle: "Opposites are degrees of the same thing"
+    application: |
+      Frame shadow integration as shifting along a polarity
+      rather than eliminating something. Fear and courage
+      are the same energy at different poles. Transform
+      rather than remove.
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - traditions.qabalah
+    - traditions.alchemy
+    - symbols.elemental_attributions
+    - symbols.color_correspondences
+    - mythology.descent_ascent
+
+  related_archetypes:
+    - hermes
+    - magician
+    - alchemist
+
+  source_references:
+    - text: "The Kybalion"
+      author: "Three Initiates"
+      year: 1908
+    - text: "Corpus Hermeticum"
+      translation: "Brian Copenhaver"
+    - text: "The Emerald Tablet"
+      source: "Various translations"

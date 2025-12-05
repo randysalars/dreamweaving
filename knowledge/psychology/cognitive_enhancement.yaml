@@ -1,0 +1,3003 @@
+# =============================================================================
+# COGNITIVE ENHANCEMENT - Genius Architecture, Problem-Solving, Mental Optimization
+# =============================================================================
+# Comprehensive framework for using Dreamweaving to sharpen thinking, improve
+# problem-solving, enhance information processing, and cultivate genius-level
+# cognitive capabilities through symbolic, imaginal, and subconscious methods.
+#
+# Domain: psychology
+# Category: cognitive_enhancement
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "psychology"
+category: "cognitive_enhancement"
+
+# =============================================================================
+# CORE COGNITIVE MECHANISMS
+# =============================================================================
+
+entries:
+
+  # ---------------------------------------------------------------------------
+  # INSIGHT INCUBATION
+  # ---------------------------------------------------------------------------
+  insight_incubation:
+    entry_id: "psychology.cognition.insight_incubation"
+    name: "Insight Incubation via Default Mode Network"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Using dreamweaving to activate the default mode network for subconscious problem-solving and 'aha!' moment generation"
+      extended: |
+        Dreamweavings activate the default mode network (DMN), which excels at:
+        - Reorganizing ideas across disparate domains
+        - Connecting distant concepts through associative pathways
+        - Generating insights that structured analytical thinking misses
+        - Processing problems during apparent "mental rest"
+
+        This is the same mechanism behind:
+        - Hypnagogic breakthroughs (Edison, Dali techniques)
+        - Creative flow states
+        - "Aha!" moments and sudden insight
+        - Dream-based problem solving
+
+        Use dreamweavings to deliberately incubate problems by:
+        1. Loading the problem into symbolic form
+        2. Releasing attachment to solving it
+        3. Allowing subconscious processing during journey
+        4. Receiving insight packages upon return
+
+        The subconscious mind can process problems while the conscious mind
+        is engaged in symbolic exploration, returning solutions that feel
+        like gifts rather than effortful conclusions.
+      essence: "Plant the seed of a question and harvest the flower of insight"
+
+    attributes:
+      energy_quality: receptive
+      element: water
+      planetary: moon
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [deepening, journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, creativity, intuition]
+      use_cases:
+        - "Complex problem incubation sessions"
+        - "Creative breakthrough journeys"
+        - "Decision clarity through subconscious processing"
+        - "Scientific/technical insight generation"
+      contraindications:
+        - "Obsessive rumination patterns (need release first)"
+        - "Severe anxiety about outcomes (creates interference)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now place your question into a sphere of light...<break time="2s"/>
+        watch it drift into the deeper waters of mind...<break time="2s"/>
+        you don't need to solve anything now...<break time="1.5s"/>
+        simply let it go...<break time="2s"/>
+        and trust that part of you...<break time="1.5s"/>
+        that works while you rest...<break time="2.5s"/>
+        </prosody>
+
+      visual_prompt: "glowing sphere containing question drifting into deep waters, subconscious processing visualization, insight incubation, --ar 16:9"
+
+      audio_cue: "Deep theta binaural, water sounds, soft crystalline tones for insight"
+
+    relationships:
+      synergies:
+        - psychology.cognition.symbolic_compression
+        - psychology.intuition.pattern_recognition
+        - dream_work.hypnagogic_gateways
+      related_patterns:
+        - fractionation_loops
+        - temporal_dissociation
+        - embedded_commands
+      related_archetypes:
+        - sage
+        - oracle
+
+  # ---------------------------------------------------------------------------
+  # SYMBOLIC COMPRESSION ENGINE
+  # ---------------------------------------------------------------------------
+  symbolic_compression:
+    entry_id: "psychology.cognition.symbolic_compression"
+    name: "Symbolic Compression for Accelerated Thinking"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Using symbols to compress vast meaning into simple forms, enabling faster thinking and deeper pattern recognition"
+      extended: |
+        Symbols compress vast meaning into simple forms. A dreamweaving
+        filled with archetypes acts like a symbol processor, letting you
+        metabolize ideas faster than verbal-linear thinking allows.
+
+        Core compression symbols:
+        - Mountain = long-term goals, challenges overcome
+        - Forge = transformation, refinement, creation
+        - River = emotional processing, flow, change
+        - Star = intuitive guidance, aspiration, light in darkness
+        - Tree = growth, rootedness, branching possibilities
+        - Bridge = connection, transition, crossing thresholds
+        - Key = solutions, access, unlocking potential
+        - Mirror = self-reflection, truth, seeing clearly
+
+        This gives the mind a visual-semantic compression system that:
+        - Improves recall through vivid imagery
+        - Enhances reasoning through symbolic manipulation
+        - Accelerates decision-making through pattern matching
+        - Creates reusable mental shortcuts (cognitive artifacts)
+
+        Over time, your internal symbol library becomes a high-bandwidth
+        language for thought itself.
+      essence: "A symbol contains the ocean in a drop"
+
+    attributes:
+      energy_quality: active
+      element: air
+      planetary: mercury
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, creativity, focus]
+      use_cases:
+        - "Building personal symbol vocabulary"
+        - "Compressing complex ideas into manageable forms"
+        - "Creating cognitive artifacts for repeated use"
+        - "Enhancing memory through symbolic encoding"
+      contraindications:
+        - "Over-reliance on symbols without grounding in specifics"
+        - "Symbol confusion (too many conflicting meanings)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now see the idea before you...<break time="2s"/>
+        watch as it compresses...<break time="1.5s"/>
+        folding into a single symbol...<break time="2s"/>
+        all its complexity held in simple form...<break time="2s"/>
+        a key that unlocks understanding whenever you see it...<break time="2.5s"/>
+        </prosody>
+
+      visual_prompt: "complex information compressing into glowing symbol, visual-semantic compression, idea becoming icon, --ar 16:9"
+
+      audio_cue: "Crystalline compression tones, alpha binaural, clarity sounds"
+
+    relationships:
+      synergies:
+        - psychology.future_tech.living_symbols
+        - psychology.future_tech.meaning_density
+        - symbols.sacred_geometry
+      related_patterns:
+        - metaphor
+        - anchoring
+        - embedded_commands
+      related_archetypes:
+        - magician
+        - scribe
+
+  # ---------------------------------------------------------------------------
+  # PREDICTIVE MODEL TRAINING
+  # ---------------------------------------------------------------------------
+  predictive_model_training:
+    entry_id: "psychology.cognition.predictive_model_training"
+    name: "Predictive Model Training via Active Inference"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Using dreamweaving to sculpt predictions, refine mental models of reality, and train the brain's internal operating system"
+      extended: |
+        The brain constantly predicts the world and updates its models
+        based on prediction errors (Active Inference / Predictive Processing).
+        Dreamweavings allow you to:
+
+        1. SCULPT PREDICTIONS
+           - Visualize desired outcomes with sensory richness
+           - Train the brain to expect positive patterns
+           - Reduce negative prediction bias
+
+        2. REFINE REALITY MODELS
+           - Identify faulty assumptions symbolically
+           - Replace inaccurate models with upgraded versions
+           - Test new interpretations in imaginal space
+
+        3. REMOVE FAULTY BELIEFS
+           - Surface limiting beliefs as symbolic forms
+           - Transform or dissolve them in the journey
+           - Install reality-aligned replacements
+
+        4. INSTALL UPGRADED INTERPRETATIONS
+           - Encode new ways of seeing situations
+           - Practice flexible perspective-taking
+           - Build repertoire of useful mental models
+
+        In essence, dreamweavings train your internal operating system
+        to think more clearly, accurately, and adaptively.
+      essence: "The brain that predicts well, thinks well"
+
+    attributes:
+      energy_quality: transformative
+      element: air
+      planetary: mercury
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, transformation, manifestation]
+      use_cases:
+        - "Mental model upgrade sessions"
+        - "Prediction refinement training"
+        - "Cognitive flexibility enhancement"
+        - "Bias identification and correction"
+      contraindications:
+        - "Detachment from reality (ensure grounding)"
+        - "Overconfidence in new models (maintain epistemic humility)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And notice how your mind already models the world...<break time="2s"/>
+        constantly predicting...<break time="1.5s"/>
+        constantly updating...<break time="1.5s"/>
+        and now you can consciously upgrade these predictions...<break time="2.5s"/>
+        installing clearer...<break time="1s"/>
+        more accurate...<break time="1s"/>
+        more useful ways of seeing...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "mental model being upgraded, reality prediction refinement, cognitive operating system update visualization, --ar 16:9"
+
+      audio_cue: "Upgrading/processing tones, alpha binaural, clarity emergence"
+
+    relationships:
+      synergies:
+        - psychology.manifestation_technology.predictive_processing
+        - psychology.cognition.dual_process_synchronizer
+        - science.neuroscience_maps
+      related_patterns:
+        - identity_reframing
+        - schema_rewriting
+        - future_pacing
+      related_archetypes:
+        - architect
+        - engineer
+
+  # ---------------------------------------------------------------------------
+  # DUAL-PROCESS SYNCHRONIZER
+  # ---------------------------------------------------------------------------
+  dual_process_synchronizer:
+    entry_id: "psychology.cognition.dual_process_synchronizer"
+    name: "Dual-Process Synchronizer"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Techniques for synchronizing analytical (System 2) and intuitive (System 1) thinking into integrated whole-brain cognition"
+      extended: |
+        Dual-Process Theory describes two modes of thinking:
+        - System 1: Fast, intuitive, automatic, pattern-matching
+        - System 2: Slow, analytical, deliberate, logical
+
+        Most people use these separately, creating:
+        - Intuitive leaps without logical verification
+        - Analytical paralysis without intuitive insight
+        - Conflict between "head" and "gut"
+
+        The Dual-Process Synchronizer trains:
+
+        1. MEETING THE TWO GUIDES
+           - The Analyst: precise, logical, systematic
+           - The Oracle: intuitive, pattern-sensing, holistic
+           - They appear as distinct presences in the journey
+
+        2. MERGING ENERGIES
+           - The guides combine into an integrated presence
+           - Neither dominates; both contribute
+           - Creates a "third" mode of unified cognition
+
+        3. INTEGRATED QUESTIONING
+           - Problems are presented to the merged presence
+           - Answers combine logical structure with intuitive insight
+           - Both "feel right" and "make sense"
+
+        4. PRACTICE WHOLE-BRAIN THINKING
+           - Repeated training builds new neural pathways
+           - Integration becomes automatic over time
+           - Access both systems simultaneously in waking life
+
+        This creates whole-brain thinking where analysis and intuition
+        work as partners rather than competitors.
+      essence: "When logic and intuition dance together, genius emerges"
+
+    attributes:
+      energy_quality: balanced
+      element: air
+      planetary: mercury
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, intuition, focus]
+      use_cases:
+        - "Decision-making integration sessions"
+        - "Balancing analysis with intuition"
+        - "Resolving head-heart conflicts"
+        - "Enhancing creative problem-solving"
+      contraindications:
+        - "Over-identification with one mode (may resist integration)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you meet two guides...<break time="2s"/>
+        one who thinks in logic and precision...<break time="2s"/>
+        one who knows through feeling and pattern...<break time="2s"/>
+        watch as they turn toward each other...<break time="2s"/>
+        and begin to merge...<break time="2s"/>
+        becoming one integrated presence...<break time="2.5s"/>
+        who can answer with both wisdom and clarity...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "two cognitive guides merging into unified presence, analyst and oracle integration, whole-brain thinking visualization, --ar 16:9"
+
+      audio_cue: "Harmonic convergence tones, alpha binaural, integration resonance"
+
+    relationships:
+      synergies:
+        - psychology.intuition.inner_council
+        - psychology.cognition.predictive_model_training
+        - psychology.internal_family_systems
+      related_patterns:
+        - parts_integration
+        - metaphor
+        - dialogue
+      related_archetypes:
+        - sage
+        - magician
+        - alchemist
+
+# =============================================================================
+# COGNITIVE ENHANCEMENT METHODS
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # INSIGHT BRIDGE METHOD
+  # ---------------------------------------------------------------------------
+  insight_bridge:
+    entry_id: "psychology.cognition.insight_bridge"
+    name: "The Insight Bridge Method"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A structured technique for solving problems using coordinated conscious and subconscious processing"
+      extended: |
+        The Insight Bridge Method creates a visible symbolic structure for
+        shuttling problems between conscious and subconscious processing.
+
+        THE INSIGHT BRIDGE PROTOCOL:
+
+        1. ENTER A CALM LANDSCAPE
+           - Establish relaxed, receptive state
+           - Ground in embodied awareness
+
+        2. SEE THE GLOWING BRIDGE
+           - A luminous bridge appears, connecting:
+             - Near side: conscious awareness
+             - Far side: deep subconscious/unknown
+
+        3. LOAD THE PROBLEM
+           - Place your problem or question into a floating sphere
+           - Hold it without trying to solve it
+
+        4. RELEASE ACROSS THE BRIDGE
+           - Let the sphere drift across the bridge
+           - Watch it disappear into the subconscious mists
+           - Release all effort to solve
+
+        5. RECEIVE INSIGHT PACKAGES
+           - Notice what drifts back across the bridge
+           - Symbols, images, feelings, phrases
+           - Accept without immediate interpretation
+
+        6. INTEGRATE UPON RETURN
+           - Bring the packages back to waking awareness
+           - Interpret and apply the insights
+           - Trust the process even if meaning isn't immediate
+
+        This trains the brain in conscious-subconscious collaboration,
+        creating reliable insight-generation loops.
+      essence: "The bridge between knowing and not-knowing crosses the waters of insight"
+
+    attributes:
+      energy_quality: receptive
+      element: water
+      planetary: moon
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [deepening, journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, creativity, intuition]
+      journey_families: [eden_garden, celestial_journey]
+      use_cases:
+        - "Complex problem-solving sessions"
+        - "Creative block resolution"
+        - "Scientific/technical breakthrough work"
+        - "Business strategy insight generation"
+      contraindications:
+        - "Impatience with non-linear process"
+        - "Need for immediate answers (may interfere)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And before you now appears a bridge...<break time="2.5s"/>
+        glowing softly...<break time="1.5s"/>
+        connecting what you know...<break time="1.5s"/>
+        to the vast intelligence within...<break time="2.5s"/>
+        place your question into a sphere of light...<break time="2s"/>
+        and let it drift across...<break time="2.5s"/>
+        into the mists of deeper knowing...<break time="3s"/>
+        and wait for what returns...<break time="4s"/>
+        </prosody>
+
+      visual_prompt: "luminous bridge over misty waters connecting conscious and subconscious realms, insight packages floating across, --ar 16:9"
+
+      audio_cue: "Bridge crossing tones, theta binaural, mystery ambience, soft water"
+
+    relationships:
+      synergies:
+        - psychology.cognition.insight_incubation
+        - psychology.intuition.inner_oracle_sequence
+        - dream_work.active_imagination
+      related_patterns:
+        - fractionation_loops
+        - metaphor
+        - sensory_stacking
+      related_archetypes:
+        - threshold_guardian
+        - oracle
+
+  # ---------------------------------------------------------------------------
+  # COGNITIVE REFRAMING CHAMBER
+  # ---------------------------------------------------------------------------
+  cognitive_reframing_chamber:
+    entry_id: "psychology.cognition.reframing_chamber"
+    name: "Cognitive Reframing Chamber"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A symbolic space for upgrading thought patterns and removing cognitive distortions through mirror-based transformation"
+      extended: |
+        The Cognitive Reframing Chamber uses the mirror as a transformation
+        tool, allowing direct visualization and modification of thought patterns.
+
+        THE REFRAMING CHAMBER PROTOCOL:
+
+        1. ENTER THE CHAMBER OF MIRRORS
+           - A circular room with shifting mirrors on all walls
+           - Each mirror shows a different aspect of thought
+
+        2. IDENTIFY DISTORTED PATTERNS
+           - One mirror shows a recurring thought pattern
+           - See it clearly: catastrophizing, black-and-white thinking,
+             should statements, mind reading, etc.
+           - The distortion is visible as warping in the mirror
+
+        3. CALL THE GUIDE
+           - A wise guide appears who can "rewrite" reflections
+           - They understand both your intent and higher truth
+
+        4. TRANSFORM THE REFLECTION
+           - The guide adjusts the mirror
+           - The warped thought straightens into an empowered version
+           - Same situation, new interpretation
+           - The old pattern dissolves; the new installs
+
+        5. ANCHOR THE UPGRADE
+           - Step through the mirror into the new pattern
+           - Embody the upgraded thought form
+           - Feel it as your new default
+
+        6. REPEAT FOR MULTIPLE PATTERNS
+           - Move to other mirrors as needed
+           - Build a library of upgraded thought patterns
+
+        This uses hypnotic reframing combined with symbolic restructuring
+        for deep cognitive change.
+      essence: "The mirror shows what we think; the transformed mirror shows what we could think"
+
+    attributes:
+      energy_quality: transformative
+      element: air
+      planetary: mercury
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, healing, transformation]
+      journey_families: [temple_initiation]
+      use_cases:
+        - "Cognitive distortion correction"
+        - "Negative thought pattern transformation"
+        - "Installing empowering interpretations"
+        - "Anxiety and depression pattern work"
+      contraindications:
+        - "Severe depression (may need clinical support)"
+        - "Identity destabilization (ground first)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You enter a chamber of mirrors...<break time="2.5s"/>
+        and in one mirror you see it...<break time="2s"/>
+        that pattern of thought...<break time="1.5s"/>
+        that no longer serves you...<break time="2s"/>
+        and a wise guide appears beside you...<break time="2.5s"/>
+        watch as they touch the mirror...<break time="2s"/>
+        and the reflection transforms...<break time="2.5s"/>
+        into a truer...<break time="1s"/>
+        more empowering way of seeing...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "chamber of transforming mirrors, cognitive distortion becoming clear thought, reframing visualization, --ar 16:9"
+
+      audio_cue: "Mirror resonance tones, alpha binaural, transformation sounds"
+
+    relationships:
+      synergies:
+        - psychology.nlp_patterns
+        - psychology.cognition.dual_process_synchronizer
+        - psychology.depth_psychology.shadow
+      related_patterns:
+        - submodality_shifts
+        - identity_reframing
+        - schema_rewriting
+      related_archetypes:
+        - mirror_keeper
+        - alchemist
+
+  # ---------------------------------------------------------------------------
+  # NEURAL PATHWAY GARDEN
+  # ---------------------------------------------------------------------------
+  neural_pathway_garden:
+    entry_id: "psychology.cognition.neural_pathway_garden"
+    name: "Neural Pathway Garden"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A living metaphor for learning and memory where knowledge becomes plants, trees, and gardens that can be cultivated"
+      extended: |
+        The Neural Pathway Garden treats the brain's learning architecture
+        as a living ecosystem that can be consciously cultivated.
+
+        THE GARDEN STRUCTURE:
+
+        1. EACH TOPIC/SKILL = A PLANT
+           - Small seedlings = new learning
+           - Growing plants = developing skills
+           - Mature trees = mastered domains
+           - Flowering plants = active application
+           - Fruit-bearing = creative output
+
+        2. CONNECTIONS = VINE-BRIDGES
+           - Related concepts connect via vines
+           - Cross-domain insights = bridges between garden sections
+           - The more connections, the stronger the network
+
+        3. GARDENING ACTIONS
+           - Planting: introducing new knowledge
+           - Watering: attention, practice, review
+           - Pruning: removing confusion, outdated info
+           - Fertilizing: adding context, examples, applications
+           - Harvesting: utilizing knowledge for creation
+
+        4. GARDEN ZONES
+           - Different areas for different domains
+           - Central tree = core identity/expertise
+           - Edge areas = new explorations
+
+        The brain encodes these metaphors as schemas (mental models),
+        making abstract learning processes concrete and manipulable.
+        Regular visits to the garden reinforce neural pathways.
+      essence: "Tend your mind as a gardener tends the garden, and wisdom blooms"
+
+    attributes:
+      energy_quality: active
+      element: earth
+      planetary: jupiter
+      chakra: crown
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [cognitive_enhancement, creativity, focus]
+      journey_families: [eden_garden]
+      use_cases:
+        - "Learning acceleration sessions"
+        - "Skill development visualization"
+        - "Knowledge organization work"
+        - "Memory enhancement practice"
+      contraindications:
+        - "Impatience with growth process"
+        - "Perfectionism about garden appearance"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you enter your garden of knowledge...<break time="2.5s"/>
+        see the plants that represent what you've learned...<break time="2s"/>
+        some tall and strong...<break time="1.5s"/>
+        some just beginning to grow...<break time="2s"/>
+        notice the connections between them...<break time="2s"/>
+        the vine-bridges linking related ideas...<break time="2.5s"/>
+        what needs watering today...<break time="2s"/>
+        what needs pruning...<break time="2s"/>
+        tend your garden with care...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "luminous garden of knowledge with plants representing skills, vine bridges connecting concepts, neural pathway garden, --ar 16:9"
+
+      audio_cue: "Garden ambience, birdsong, gentle growth tones, alpha binaural"
+
+    relationships:
+      synergies:
+        - psychology.cognition.memory_palace_eternity
+        - embodiment.grounding_techniques
+        - psychology.cognition.symbolic_compression
+      related_patterns:
+        - metaphor
+        - sensory_stacking
+        - future_pacing
+      related_archetypes:
+        - gardener
+        - sage
+
+  # ---------------------------------------------------------------------------
+  # INFORMATION SORTING TEMPLE
+  # ---------------------------------------------------------------------------
+  information_sorting_temple:
+    entry_id: "psychology.cognition.information_sorting_temple"
+    name: "Information Sorting Temple"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A symbolic executive function training space for processing life input with clarity, speed, and accuracy"
+      extended: |
+        The Information Sorting Temple trains the brain's executive functions
+        through symbolic practice, improving how you process the constant
+        stream of life information.
+
+        THE TEMPLE STRUCTURE:
+
+        1. ENTER THE SORTING HALL
+           - A grand hall with five glowing alcoves
+           - Scrolls/packages fly toward you representing recent information
+
+        2. THE FIVE ALCOVES (GTD-inspired)
+           - KNOWLEDGE: Things to learn/remember
+           - ACTION: Things requiring immediate doing
+           - DELEGATION: Things others should handle
+           - REFLECTION: Things requiring deeper thought
+           - REMOVAL: Things to release/ignore
+
+        3. SORTING PRACTICE
+           - Each scroll presents itself
+           - You sense its nature
+           - You direct it to the appropriate alcove
+           - The sorting becomes faster with practice
+
+        4. INTEGRATION WISDOM
+           - A guardian at each alcove offers insight:
+             - Knowledge Guardian: "What does this teach?"
+             - Action Guardian: "What is the next step?"
+             - Delegation Guardian: "Who can help?"
+             - Reflection Guardian: "What deeper meaning?"
+             - Removal Guardian: "Can you let this go?"
+
+        5. CLEARING THE QUEUE
+           - Process until the hall is clear
+           - Feel the clarity of a sorted mind
+
+        This is symbolic executive function training that improves
+        real-world information processing.
+      essence: "A sorted mind is a clear mind; a clear mind is a powerful mind"
+
+    attributes:
+      energy_quality: active
+      element: air
+      planetary: mercury
+      chakra: solar
+      brainwave: beta
+
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [cognitive_enhancement, focus, relaxation]
+      journey_families: [temple_initiation]
+      use_cases:
+        - "Mental overwhelm clearing"
+        - "Executive function enhancement"
+        - "Decision-making clarity"
+        - "Information overload processing"
+      contraindications:
+        - "Decision fatigue (may need rest first)"
+        - "Perfectionism about sorting (allow imperfection)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="0st">
+        You enter the temple of sorting...<break time="2s"/>
+        scrolls of information fly toward you...<break time="2s"/>
+        and five alcoves await...<break time="2s"/>
+        knowledge...<break time="1s"/>
+        action...<break time="1s"/>
+        delegation...<break time="1s"/>
+        reflection...<break time="1s"/>
+        release...<break time="1.5s"/>
+        begin directing each piece to its place...<break time="2.5s"/>
+        feel your mind grow clearer with each sorting...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "grand temple hall with five glowing alcoves, scrolls flying to sorted positions, executive function temple, --ar 16:9"
+
+      audio_cue: "Sorting whoosh sounds, temple ambience, clarity bells, alpha-beta binaural"
+
+    relationships:
+      synergies:
+        - psychology.cognition.dual_process_synchronizer
+        - psychology.cognition.problem_dissolution_vortex
+        - ritual.sacred_space
+      related_patterns:
+        - anchoring
+        - embedded_commands
+        - breath_pacing
+      related_archetypes:
+        - scribe
+        - librarian
+        - judge
+
+# =============================================================================
+# ADVANCED COGNITIVE TECHNOLOGIES
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # PROBLEM DISSOLUTION VORTEX
+  # ---------------------------------------------------------------------------
+  problem_dissolution_vortex:
+    entry_id: "psychology.cognition.problem_dissolution_vortex"
+    name: "Problem Dissolution Vortex"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A hypnotic cognitive purifier that decomposes problems into symbolic fragments, leaving only core truth and insight"
+      extended: |
+        The Problem Dissolution Vortex is more powerful than normal reframing -
+        it's symbolic cognitive alchemy that dissolves problems entirely,
+        leaving only essential insight.
+
+        THE VORTEX PROTOCOL:
+
+        1. MANIFESTATION
+           - A swirling black-violet vortex appears
+           - It hums with transformative energy
+           - It dissolves what is unnecessary, preserves what is true
+
+        2. LOADING THE PROBLEM
+           - Place the problem or mental block into the vortex
+           - Watch it begin to spin and fragment
+
+        3. DECOMPOSITION
+           - The vortex separates:
+             - Emotional charge (dissolved)
+             - False assumptions (dissolved)
+             - Limiting interpretations (dissolved)
+             - Cognitive distortions (dissolved)
+             - Core truth (preserved, purified)
+
+        4. TRUTH EXTRACTION
+           - Only the pure essence of insight remains
+           - It emerges from the vortex as a glowing seed or gem
+           - Undistorted, clear, actionable
+
+        5. INTEGRATION
+           - Receive the purified insight
+           - Install it into your understanding
+           - The problem has been transmuted into wisdom
+
+        This technique eliminates mental noise to reveal the signal,
+        producing insight that feels obvious once seen.
+      essence: "In the vortex, confusion dissolves and clarity crystallizes"
+
+    attributes:
+      energy_quality: transformative
+      element: void
+      planetary: pluto
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [helm_deep_trance]
+      outcome_alignment: [cognitive_enhancement, transformation, release]
+      journey_families: [cosmic_forge, underworld_descent]
+      use_cases:
+        - "Stuck problem dissolution"
+        - "Mental block removal"
+        - "Confusion transmutation"
+        - "False belief elimination"
+      contraindications:
+        - "Fear of loss of control"
+        - "Need for certainty (may resist dissolution process)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now before you...<break time="2s"/>
+        a vortex of transformation appears...<break time="2.5s"/>
+        swirling with dark violet light...<break time="2s"/>
+        place your problem into its center...<break time="2.5s"/>
+        and watch it dissolve...<break time="2s"/>
+        the confusion...<break time="1.5s"/>
+        the distortion...<break time="1.5s"/>
+        the unnecessary...<break time="1.5s"/>
+        all dissolving...<break time="2s"/>
+        until only the pure truth remains...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "black-violet vortex dissolving problem, truth emerging as luminous gem, cognitive alchemy visualization, --ar 16:9"
+
+      audio_cue: "Vortex swirling sounds, deep theta binaural, dissolution tones, emergence clarity"
+
+    relationships:
+      synergies:
+        - psychology.cognition.thought_form_alchemist
+        - psychology.faith.fear_transmutation_engine
+        - psychology.depth_psychology.shadow
+      related_patterns:
+        - fractionation_loops
+        - symbolic_catharsis
+        - submodality_shifts
+      related_archetypes:
+        - alchemist
+        - void_walker
+
+  # ---------------------------------------------------------------------------
+  # THOUGHT-FORM ALCHEMIST
+  # ---------------------------------------------------------------------------
+  thought_form_alchemist:
+    entry_id: "psychology.cognition.thought_form_alchemist"
+    name: "Thought-Form Alchemist"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A technique for taking raw confused thoughts and manually reforging them into powerful, optimized cognitive artifacts"
+      extended: |
+        The Thought-Form Alchemist teaches active thought engineering -
+        taking raw cognitive material and manually shaping it into useful tools.
+
+        THE ALCHEMIST PROTOCOL:
+
+        1. ENTER THE COSMIC FORGE
+           - A massive anvil of light
+           - A furnace of white-gold fire
+           - Tools of precision and power
+
+        2. IDENTIFY RAW MATERIAL
+           - Confused thought = molten, unformed metal
+           - Vague idea = rough ore
+           - Recurring worry = corroded fragment
+
+        3. HEATING AND PURIFICATION
+           - Place the thought-material in the furnace
+           - Heat burns away impurities
+           - What remains is workable essence
+
+        4. FORGING
+           - Hammer the material into clear shape
+           - Each strike adds:
+             - Clarity (precise meaning)
+             - Simplicity (essential form)
+             - Utility (practical application)
+             - Beauty (elegant expression)
+
+        5. TEMPERING
+           - Cool the new thought-form in sacred water
+           - It hardens into stable shape
+           - Test its edge and strength
+
+        6. INSTALLATION
+           - The forged thought becomes a cognitive artifact
+           - A reusable mental tool
+           - Invoke it whenever that type of thinking is needed
+
+        Each reforged thought becomes a permanent cognitive upgrade.
+      essence: "The mind's raw ore becomes the soul's bright blade"
+
+    attributes:
+      energy_quality: active
+      element: fire
+      planetary: mars
+      chakra: solar
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, transformation, empowerment]
+      journey_families: [cosmic_forge]
+      use_cases:
+        - "Vague idea crystallization"
+        - "Confused thought clarification"
+        - "Cognitive tool creation"
+        - "Mental shortcut development"
+      contraindications:
+        - "Attachment to confusion (resistance to clarity)"
+        - "Perfectionism (may over-forge)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You stand at the cosmic forge...<break time="2.5s"/>
+        in your hand, a confused thought...<break time="2s"/>
+        molten and unformed...<break time="1.5s"/>
+        place it in the fire...<break time="2s"/>
+        watch impurities burn away...<break time="2s"/>
+        now take up the hammer...<break time="2s"/>
+        and strike...<break time="1.5s"/>
+        shaping clarity...<break time="1.5s"/>
+        shaping power...<break time="1.5s"/>
+        forging a tool of the mind...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "cosmic forge with thought being hammered into crystalline tool, cognitive alchemy smithing, --ar 16:9"
+
+      audio_cue: "Forge sounds, hammering, fire crackling, alpha binaural, power emergence"
+
+    relationships:
+      synergies:
+        - psychology.cognition.problem_dissolution_vortex
+        - psychology.cognition.symbolic_compression
+        - symbols.alchemical_symbols
+      related_patterns:
+        - anchoring
+        - identity_reframing
+        - embedded_commands
+      related_archetypes:
+        - smith
+        - alchemist
+        - vulcan
+
+  # ---------------------------------------------------------------------------
+  # LIVING CODEX OF WISDOM
+  # ---------------------------------------------------------------------------
+  living_codex:
+    entry_id: "psychology.cognition.living_codex"
+    name: "Living Codex of Personal Wisdom"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "An ever-growing symbolic book where insights self-organize and accumulate, creating a continuous internal wisdom library"
+      extended: |
+        The Living Codex creates a persistent symbolic structure where wisdom
+        accumulates over time, automatically organizing and retrieving
+        relevant insights.
+
+        CODEX STRUCTURE:
+
+        1. THE BOOK ITSELF
+           - A luminous, ancient book that floats in inner space
+           - Pages that write themselves
+           - Cover that reflects your essence
+           - Always available in every journey
+
+        2. PAGE ORGANIZATION
+           - Each page = a principle or insight
+           - Each symbol = a distilled wisdom-point
+           - Each chapter = an area of mastery
+           - Index = intuitive navigation
+
+        3. SELF-WRITING FUNCTION
+           - New wisdom appears automatically after each insight
+           - The codex learns what's important to you
+           - It organizes without your conscious effort
+
+        4. RETRIEVAL
+           - Open to any page intuitively
+           - The right wisdom presents when needed
+           - Cross-references emerge between pages
+
+        5. CONTINUOUS GROWTH
+           - Returns over multiple dreamweavings
+           - See how the codex has grown
+           - Revisit old wisdom with new understanding
+           - Watch mastery chapters expand
+
+        Your subconscious becomes a curator of inner wisdom,
+        continuously updating your internal operating system.
+      essence: "The book writes itself as you live; read it to remember who you're becoming"
+
+    attributes:
+      energy_quality: receptive
+      element: spirit
+      planetary: jupiter
+      chakra: crown
+      brainwave: theta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, spiritual_growth, self_knowledge]
+      journey_families: [temple_initiation, celestial_journey]
+      use_cases:
+        - "Wisdom accumulation practice"
+        - "Insight organization"
+        - "Life lessons integration"
+        - "Multi-journey continuity"
+      contraindications:
+        - "Information hoarding (codex is for wisdom, not facts)"
+        - "Neglecting application (wisdom must be lived)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now your Living Codex appears...<break time="2.5s"/>
+        the book of your accumulated wisdom...<break time="2s"/>
+        see how it has grown...<break time="2s"/>
+        new pages have written themselves...<break time="2s"/>
+        open to where it naturally falls...<break time="2.5s"/>
+        and receive the wisdom waiting there...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "luminous ancient book floating in cosmic space, pages self-writing with golden symbols, living codex of wisdom, --ar 16:9"
+
+      audio_cue: "Page turning sounds, wisdom tones, theta binaural, sacred library ambience"
+
+    relationships:
+      synergies:
+        - psychology.cognition.memory_palace_eternity
+        - psychology.future_tech.living_symbols
+        - psychology.guidance.invisible_counselors
+      related_patterns:
+        - multi_episode_arc
+        - anchoring
+        - metaphor
+      related_archetypes:
+        - scribe
+        - librarian
+        - sage
+
+  # ---------------------------------------------------------------------------
+  # MEMORY PALACE OF ETERNITY
+  # ---------------------------------------------------------------------------
+  memory_palace_eternity:
+    entry_id: "psychology.cognition.memory_palace_eternity"
+    name: "Memory Palace of Eternity"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "An extreme evolution of the Method of Loci creating an infinite internal city for knowledge storage with meaning-rich symbolic encoding"
+      extended: |
+        The Memory Palace of Eternity extends the classical Method of Loci
+        into a complete internal world for knowledge organization.
+
+        PALACE ARCHITECTURE:
+
+        1. CITY/TEMPLE COMPLEX
+           - A city, temple complex, or floating library
+           - Endless halls, chambers, and districts
+           - Each district = a domain of knowledge
+
+        2. KNOWLEDGE DISTRICTS
+           - Wealth/Business District
+           - Spirit/Faith Temple
+           - Relationships Garden
+           - Skills/Trades Workshop
+           - Myth/Story Theater
+           - Science/Tech Laboratory
+           - Art/Creativity Studio
+
+        3. SCENE-BASED ENCODING
+           - Not dry facts but vivid scenes
+           - Each key idea = a character, object, or event
+           - Example: "Leverage" = giant seesaw lifting mountain with feather
+           - Multi-sensory, emotionally engaging
+
+        4. GENIUS CORE CONNECTION
+           - Central chamber contains your Genius Core
+           - It serves as navigator and retrieval system
+           - "Ping" the Core to find relevant rooms
+
+        5. TIME-LAYERED EXPANSION
+           - Returns over multiple dreamweavings
+           - See the city grow and develop
+           - Revisit old districts with new understanding
+           - Build cross-district bridges (interdisciplinary insight)
+
+        This supports not just memory but pattern linking across domains,
+        using mythology to solve business puzzles, etc.
+      essence: "Build a city of mind where every street holds knowledge and every door opens to wisdom"
+
+    attributes:
+      energy_quality: active
+      element: earth
+      planetary: saturn
+      chakra: crown
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [cognitive_enhancement, focus, self_knowledge]
+      journey_families: [temple_initiation]
+      use_cases:
+        - "Massive knowledge organization"
+        - "Expert-level memory training"
+        - "Cross-domain integration"
+        - "Lifelong learning architecture"
+      contraindications:
+        - "Information overload without integration"
+        - "Neglecting real-world application"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You enter your memory palace...<break time="2.5s"/>
+        the city of your knowledge...<break time="2s"/>
+        endless halls and districts...<break time="2s"/>
+        each room a living scene of learning...<break time="2s"/>
+        walk to the district you need now...<break time="2.5s"/>
+        and let the right door call to you...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "vast memory palace city with glowing districts, knowledge scenes in chambers, infinite library architecture, --ar 16:9"
+
+      audio_cue: "Temple city ambience, footsteps in halls, alpha binaural, discovery tones"
+
+    relationships:
+      synergies:
+        - psychology.cognition.living_codex
+        - psychology.cognition.neural_pathway_garden
+        - psychology.guidance.invisible_counselors
+      related_patterns:
+        - spatial_anchoring
+        - sensory_stacking
+        - metaphor
+      related_archetypes:
+        - architect
+        - librarian
+        - city_builder
+
+  # ---------------------------------------------------------------------------
+  # HYPERDIMENSIONAL PROBLEM THEATER
+  # ---------------------------------------------------------------------------
+  hyperdimensional_theater:
+    entry_id: "psychology.cognition.hyperdimensional_theater"
+    name: "Hyperdimensional Problem Theater"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A simulation space for running multiple parallel timelines and scenarios beyond normal linear thinking capacity"
+      extended: |
+        The Hyperdimensional Problem Theater allows simulation and pattern-testing
+        at levels impossible for normal sequential thought.
+
+        THEATER STRUCTURE:
+
+        1. ENTER THE THEATER OF WORLDS
+           - Huge dark space
+           - Central floating "stage" of light
+           - Above and around: countless potential scenes/worlds
+
+        2. LOAD A PROBLEM SPACE
+           - The problem appears as a world on the stage
+           - Business plan, relationship, creative project, life choice
+           - Full sensory detail and complexity
+
+        3. FORKING TIMELINES
+           - The world splits into parallel versions:
+             - "If I choose A..." (timeline plays out)
+             - "If I choose B..." (timeline plays out)
+             - "If I delay..." (timeline plays out)
+             - "If I change the core assumption..." (timeline plays out)
+           - Watch multiple futures simultaneously
+
+        4. PATTERN EXTRACTION
+           - Genius Core pauses the theater
+           - Time freezes across all timelines
+           - It highlights:
+             - Repeating patterns
+             - "Strange attractors"
+             - Key leverage points
+             - Second and third-order effects
+
+        5. PRINCIPLE DISTILLATION
+           - From the pattern analysis, extract:
+             - Core principles
+             - Decision heuristics
+             - Risk indicators
+             - Opportunity signals
+
+        6. REALITY MODEL UPGRADE
+           - Bring the distilled principles back
+           - Your brain becomes excellent at anticipating consequences
+
+        This operates like an imaginal scenario planning laboratory.
+      essence: "See all futures at once and choose the path of wisdom"
+
+    attributes:
+      energy_quality: active
+      element: spirit
+      planetary: uranus
+      chakra: crown
+      brainwave: theta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [cognitive_enhancement, manifestation, intuition]
+      journey_families: [cosmic_forge, celestial_journey]
+      use_cases:
+        - "Complex decision simulation"
+        - "Strategic planning visualization"
+        - "Consequence anticipation training"
+        - "Timeline selection"
+      contraindications:
+        - "Anxiety about the future (may overwhelm)"
+        - "Decision paralysis (may amplify)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You enter the theater of worlds...<break time="2.5s"/>
+        and your question appears as a world on the stage...<break time="2.5s"/>
+        watch as it splits...<break time="2s"/>
+        into many possible futures...<break time="2s"/>
+        each path playing out before you...<break time="2.5s"/>
+        see the patterns that repeat...<break time="2s"/>
+        see where the leverage lies...<break time="2s"/>
+        see the truth hidden in the timelines...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "theater of worlds with multiple timelines playing simultaneously, parallel futures on cosmic stage, hyperdimensional visualization, --ar 16:9"
+
+      audio_cue: "Cosmic theater ambience, timeline splitting sounds, theta binaural, pattern recognition tones"
+
+    relationships:
+      synergies:
+        - psychology.manifestation_technology.timeline_selection
+        - psychology.intuition.future_echo
+        - psychology.cognition.genius_core
+      related_patterns:
+        - temporal_dissociation
+        - future_pacing
+        - predictive_processing_disruption
+      related_archetypes:
+        - oracle
+        - time_keeper
+        - strategist
+
+# =============================================================================
+# GENIUS ARCHITECTURE
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # GENIUS CORE / LOGOS NODE
+  # ---------------------------------------------------------------------------
+  genius_core:
+    entry_id: "psychology.cognition.genius_core"
+    name: "The Genius Core / Logos Node"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A stable inner hub of super-intelligence that serves as the central organizing principle for all cognitive enhancement work"
+      extended: |
+        The Genius Core is a persistent symbolic structure representing your
+        highest intelligence - a central "Logos Node" that organizes all
+        cognitive enhancement work.
+
+        GENIUS CORE ATTRIBUTES:
+
+        1. CENTRAL LOCATION
+           - A star, crystal, or luminous sphere at your center
+           - Accessed by descent or ascent to inner core
+           - The organizing principle of your highest intelligence
+
+        2. GENIUS PRESENCE
+           - Awakens as a living Presence - a fusion of:
+             - Higher Self (eternal perspective)
+             - Deep Subconscious (vast processing power)
+             - Best Possible Future You (actualized potential)
+           - Speaks in clear, precise, calm insight
+
+        3. PERSISTENT SYMBOL
+           - Bound to a recurring symbol (star, crystal, trident)
+           - Invoking the symbol activates the Genius Core
+           - Carries across all dreamweavings
+
+        4. ASSIGNED FUNCTIONS
+           - Clarity Filter: removes noise from thoughts
+           - Pattern Engine: shows deeper structure
+           - Ethical Compass: keeps genius aligned with values
+           - Learning Accelerator: compresses information
+
+        5. PLUGIN ARCHITECTURE
+           - All other cognitive techniques "run on" this Core
+           - The Core moderates, integrates, and synthesizes
+           - Creates coherent whole from diverse enhancements
+
+        This is the foundation for all advanced cognitive work.
+      essence: "At your center lives the genius you were born to be"
+
+    attributes:
+      energy_quality: balanced
+      element: spirit
+      planetary: sun
+      chakra: crown
+      brainwave: gamma
+
+    applications:
+      journey_phases: [induction, journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, spiritual_growth, empowerment]
+      journey_families: [celestial_journey, temple_initiation]
+      use_cases:
+        - "Establishing cognitive enhancement foundation"
+        - "Creating persistent inner intelligence"
+        - "Integrating diverse mental capabilities"
+        - "Building multi-journey continuity"
+      contraindications:
+        - "Ego inflation (genius serves, doesn't dominate)"
+        - "Bypassing emotional work (integrate shadow first)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now descend to your center...<break time="2.5s"/>
+        to that luminous core within...<break time="2s"/>
+        your Genius Core...<break time="2s"/>
+        the organizing principle of your highest intelligence...<break time="2.5s"/>
+        feel it awaken...<break time="2s"/>
+        feel it recognize you...<break time="2s"/>
+        this presence that is your truest mind...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "luminous genius core sphere at center of being, logos node activation, central intelligence hub, --ar 16:9"
+
+      audio_cue: "Core activation tones, gamma bells, central resonance, awakening sounds"
+
+    relationships:
+      synergies:
+        - psychology.guidance.higher_self
+        - psychology.cognition.polyphonic_self_council
+        - psychology.cognition.hyperdimensional_theater
+      related_patterns:
+        - anchoring
+        - identity_reframing
+        - embedded_commands
+      related_archetypes:
+        - higher_self
+        - genius_daemon
+        - logos
+
+  # ---------------------------------------------------------------------------
+  # POLYPHONIC SELF COUNCIL
+  # ---------------------------------------------------------------------------
+  polyphonic_self_council:
+    entry_id: "psychology.cognition.polyphonic_self_council"
+    name: "Polyphonic Self Council"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A technique for thinking like a council of geniuses instead of one narrow identity, enabling massive perspective expansion"
+      extended: |
+        The Polyphonic Self Council expands cognition by convening multiple
+        optimized facets of self, each offering a unique perspective.
+
+        COUNCIL COMPOSITION:
+
+        1. THE STRATEGIST
+           - Sees long-term consequences
+           - Understands game theory and leverage
+           - Asks: "What moves advance the position?"
+
+        2. THE MYSTIC
+           - Sees meaning and symbolism
+           - Understands spiritual alignment
+           - Asks: "What does this mean at the deepest level?"
+
+        3. THE ENGINEER
+           - Sees constraints and mechanisms
+           - Understands implementation paths
+           - Asks: "How does this actually work?"
+
+        4. THE ARTIST
+           - Sees emotional resonance and beauty
+           - Understands narrative and aesthetics
+           - Asks: "What feels true and beautiful?"
+
+        5. THE HEALER
+           - Sees human cost and regeneration
+           - Understands trauma and growth
+           - Asks: "What supports wellbeing?"
+
+        COUNCIL PROCESS:
+
+        1. Enter the Council Hall
+        2. Present the problem as a hologram in the center
+        3. Each Self gives commentary from their angle
+        4. Genius Core moderates and synthesizes
+        5. Perspectives merge into integrated blueprint
+        6. Blueprint enters your being
+
+        This trains automatic multi-perspective consultation.
+      essence: "One mind, many voices; many voices, one wisdom"
+
+    attributes:
+      energy_quality: balanced
+      element: air
+      planetary: jupiter
+      chakra: crown
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, self_knowledge, intuition]
+      journey_families: [temple_initiation]
+      use_cases:
+        - "Complex decision multi-perspective analysis"
+        - "Integration of conflicting viewpoints"
+        - "Leadership development"
+        - "Creative problem-solving"
+      contraindications:
+        - "Identity fragmentation (ensure core stability)"
+        - "Decision paralysis (council must synthesize)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You enter your Council Hall...<break time="2.5s"/>
+        and see the seats around the central light...<break time="2s"/>
+        the Strategist...<break time="1s"/>
+        the Mystic...<break time="1s"/>
+        the Engineer...<break time="1s"/>
+        the Artist...<break time="1s"/>
+        the Healer...<break time="1.5s"/>
+        each a facet of your genius...<break time="2s"/>
+        present your question...<break time="2.5s"/>
+        and hear each voice in turn...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "council hall with luminous seats holding different self-aspects, polyphonic self council meeting, multi-perspective genius, --ar 16:9"
+
+      audio_cue: "Council chamber ambience, multiple voice tones, alpha binaural, synthesis bells"
+
+    relationships:
+      synergies:
+        - psychology.intuition.inner_council
+        - psychology.internal_family_systems
+        - psychology.cognition.genius_core
+      related_patterns:
+        - parts_integration
+        - dialogue
+        - embedded_commands
+      related_archetypes:
+        - council_of_selves
+        - inner_parliament
+
+  # ---------------------------------------------------------------------------
+  # IDENTITY-CODE FORGE
+  # ---------------------------------------------------------------------------
+  identity_code_forge:
+    entry_id: "psychology.cognition.identity_code_forge"
+    name: "Identity-Code Forge"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A technique for rewriting the identity-level programming that produces thoughts, upgrading the 'programmer' rather than just the thoughts"
+      extended: |
+        The Identity-Code Forge goes beyond changing thoughts to upgrading
+        the entity that produces them - rewriting cognitive identity at the
+        source level.
+
+        FORGE STRUCTURE:
+
+        1. ENTER THE COSMIC FORGE
+           - Massive anvil of light
+           - Furnace of white-gold fire
+           - Tools of precision and transformation
+
+        2. IDENTIFY CURRENT IDENTITY-CODE
+           - Your cognitive identity appears as an object
+           - Mask, armor, shell, circuit board, software
+           - The "programmer" of your thoughts
+
+        3. SCAN FOR LIMITING CODE
+           - Genius Core reveals identity-level limits:
+             - "I'm not the kind of person who..."
+             - "I can't understand X..."
+             - "People like me don't..."
+           - These appear as cracks, rust, corrupted code
+
+        4. REFORGE THE IDENTITY
+           - Melt the old form in the Forge
+           - Consciously encode new properties:
+             - "I am a fast learner in any domain I engage"
+             - "I enjoy complexity and find elegance within it"
+             - "I naturally synthesize intuition, logic, and ethics"
+
+        5. INSTALLATION AND FUSION
+           - New identity-form placed over/into your being
+           - You and it fuse
+           - Walk out AS this upgraded identity
+
+        This is identity-level cognitive engineering.
+      essence: "Rewrite the coder, not just the code"
+
+    attributes:
+      energy_quality: transformative
+      element: fire
+      planetary: pluto
+      chakra: solar
+      brainwave: theta
+
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, transformation, empowerment]
+      journey_families: [cosmic_forge]
+      use_cases:
+        - "Identity-level cognitive upgrade"
+        - "Limiting belief dissolution at source"
+        - "Fundamental self-concept transformation"
+        - "Genius identity installation"
+      contraindications:
+        - "Unstable identity (strengthen first)"
+        - "Bypassing trauma (may need healing first)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        You stand at the Cosmic Forge...<break time="2.5s"/>
+        and on the anvil lies your cognitive identity...<break time="2.5s"/>
+        the code that writes your thoughts...<break time="2s"/>
+        see where it limits you...<break time="2s"/>
+        the cracks, the corrupted lines...<break time="2s"/>
+        now place it in the fire...<break time="2.5s"/>
+        let it melt and reform...<break time="2.5s"/>
+        encoding new capabilities...<break time="2s"/>
+        new genius...<break time="1.5s"/>
+        new identity...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "cosmic forge with identity being reforged, cognitive code transformation, identity upgrade visualization, --ar 16:9"
+
+      audio_cue: "Forge fire sounds, identity transformation tones, theta binaural, power installation"
+
+    relationships:
+      synergies:
+        - psychology.faith.identity_attractor_upgrade
+        - psychology.cognition.genius_core
+        - psychology.cognition.thought_form_alchemist
+      related_patterns:
+        - identity_reframing
+        - schema_rewriting
+        - symbolic_catharsis
+      related_archetypes:
+        - smith
+        - alchemist
+        - creator
+
+  # ---------------------------------------------------------------------------
+  # SACRED PATTERN RESONATOR
+  # ---------------------------------------------------------------------------
+  sacred_pattern_resonator:
+    entry_id: "psychology.cognition.sacred_pattern_resonator"
+    name: "Sacred Pattern Resonator"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Using sacred geometry and harmonic ratios to tune the mind into pattern-resonant coherence for elegant thinking"
+      extended: |
+        The Sacred Pattern Resonator uses geometric and harmonic patterns
+        as training fields for developing pattern-resonant cognition.
+
+        RESONATOR STRUCTURE:
+
+        1. TEMPLE OF PATTERNS
+           - Enter a space built from sacred geometry:
+             - Flower of Life foundations
+             - Fibonacci spirals in architecture
+             - Platonic solids as altars
+             - Tuning forks of perfect intervals
+
+        2. RESONANCE ACTIVATION
+           - A geometric pattern spins above your head
+           - Feel your thoughts, emotions, perceptions
+           - Locking into order and balance
+           - Coherence spreading through your system
+
+        3. PATTERN IMPRINTING
+           - Specific patterns for specific upgrades:
+             - Spiral: growth, unfolding understanding
+             - Icosahedron: fluid creativity, flow
+             - Cube: grounded structure, logic
+             - Tetrahedron: focused will, direction
+             - Sphere: wholeness, integration
+
+        4. NERVOUS SYSTEM ENCODING
+           - Patterns impressed into Genius Core
+           - And into your nervous system
+           - Body learns geometric intelligence
+
+        5. WAKING RECALL
+           - Later, when stuck on a problem
+           - Recall/visualize the appropriate pattern
+           - Mind reorganizes around that principle
+
+        This trains preference for coherent, elegant solutions.
+      essence: "When thought resonates with sacred pattern, clarity emerges naturally"
+
+    attributes:
+      energy_quality: balanced
+      element: spirit
+      planetary: sun
+      chakra: crown
+      brainwave: gamma
+
+    applications:
+      journey_phases: [induction, journey, integration]
+      outcome_alignment: [cognitive_enhancement, spiritual_growth, focus]
+      journey_families: [temple_initiation, celestial_journey]
+      use_cases:
+        - "Cognitive coherence training"
+        - "Elegant thinking development"
+        - "Pattern recognition enhancement"
+        - "Mental noise reduction"
+      contraindications:
+        - "Rigid adherence to form (allow organic variation)"
+        - "Pattern obsession (balance with fluidity)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You enter the Temple of Patterns...<break time="2.5s"/>
+        sacred geometry everywhere you look...<break time="2s"/>
+        and a pattern begins to spin above you...<break time="2.5s"/>
+        feel your thoughts...<break time="1.5s"/>
+        your feelings...<break time="1.5s"/>
+        your perceptions...<break time="1.5s"/>
+        locking into resonance...<break time="2s"/>
+        into order...<break time="1.5s"/>
+        into clarity...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "temple built from sacred geometry with spinning patterns, resonance activation visualization, geometric intelligence, --ar 16:9"
+
+      audio_cue: "Harmonic tones, sacred geometry frequencies, gamma binaural, resonance activation"
+
+    relationships:
+      synergies:
+        - symbols.sacred_geometry
+        - psychology.faith.coherence_sphere
+        - psychology.cognition.genius_core
+      related_patterns:
+        - sensory_stacking
+        - anchoring
+        - breath_pacing
+      related_archetypes:
+        - geometer
+        - architect
+
+  # ---------------------------------------------------------------------------
+  # COGNITIVE OVERCLOCK MODE
+  # ---------------------------------------------------------------------------
+  cognitive_overclock:
+    entry_id: "psychology.cognition.cognitive_overclock"
+    name: "Cognitive Overclock Mode"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "A technique for briefly operating at intense cognitive capacity with safety constraints and graceful recovery"
+      extended: |
+        Cognitive Overclock Mode allows temporary access to heightened
+        cognitive intensity with built-in safety mechanisms.
+
+        OVERCLOCK PROTOCOL:
+
+        1. ENTER THE CONTROL ROOM
+           - Your mind appears as a panel with dials:
+             - Focus Dial
+             - Intensity Dial
+             - Associative Spread Dial
+             - Emotional Stability Dial
+
+        2. SAFETY CONSTRAINTS
+           - Establish rules before overclocking:
+             - "This state is used only for truth, creativity, and service"
+             - "This state remains kind and sane"
+             - "Duration is limited to [X] minutes"
+
+        3. OVERCLOCK PHASE
+           - Genius Core increases:
+             - Focus intensity
+             - Pattern recognition speed
+             - Integrative power
+             - Working memory bandwidth
+
+        4. FLOW STATE CHANNELING
+           - Visualize a beam from Genius Core to specific task
+           - Experience that task at effortless high performance
+           - Time may seem altered (flow time)
+
+        5. GRACEFUL DOWNSHIFT
+           - Consciously dial everything back to normal
+           - Anchor: "I can re-enter this mode when appropriate,
+             but my daily baseline stays stable, joyful, and grounded"
+
+        6. INTEGRATION PAUSE
+           - Rest period after overclock
+           - Allow system to integrate the high-performance state
+
+        This models safe "genius burst + recovery" cycles.
+      essence: "Access the lightning when needed; return to the still lake"
+
+    attributes:
+      energy_quality: active
+      element: fire
+      planetary: mars
+      chakra: third_eye
+      brainwave: beta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [cognitive_enhancement, focus, creativity]
+      journey_families: [cosmic_forge]
+      use_cases:
+        - "High-stakes performance preparation"
+        - "Creative sprint sessions"
+        - "Complex problem burst-solving"
+        - "Flow state training"
+      contraindications:
+        - "Burnout risk (ensure adequate recovery)"
+        - "Anxiety patterns (may overstimulate)"
+        - "Mania history (requires careful use)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="0st">
+        You enter your control room...<break time="2s"/>
+        see the dials of your mind...<break time="2s"/>
+        focus, intensity, integration, stability...<break time="2s"/>
+        with clear intention and safety...<break time="2s"/>
+        you begin to increase the power...<break time="2.5s"/>
+        feeling your mind accelerate...<break time="2s"/>
+        sharpen...<break time="1.5s"/>
+        expand...<break time="2s"/>
+        into peak performance...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "control room with mental dials, cognitive overclock activation, peak performance visualization, --ar 16:9"
+
+      audio_cue: "Power-up tones, beta binaural, intensity building, flow activation"
+
+    relationships:
+      synergies:
+        - psychology.cognition.genius_core
+        - science.flow_states
+        - psychology.cognition.dual_process_synchronizer
+      related_patterns:
+        - embedded_commands
+        - breath_pacing
+        - anchoring
+      related_archetypes:
+        - warrior
+        - athlete
+        - performer
+
+  # ---------------------------------------------------------------------------
+  # NOETIC FIELD CONNECTION
+  # ---------------------------------------------------------------------------
+  noetic_field:
+    entry_id: "psychology.cognition.noetic_field"
+    name: "Noetic Field Connection"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Connecting to a larger field of intelligence - collective wisdom, divine mind, or noosphere - for expanded knowing"
+      extended: |
+        The Noetic Field Connection opens access to intelligence beyond
+        individual cognition - whether understood as collective wisdom,
+        Holy Spirit, noosphere, or universal mind.
+
+        FIELD CONNECTION PROTOCOL:
+
+        1. OPEN TO THE FIELD
+           - Above the Genius Core, a vast luminous network appears
+           - Like an infinite web of light connecting all minds
+           - The "noetic internet" of wisdom
+
+        2. PRAYERFUL/INTENTIONAL INVITATION
+           - Explicitly invite only:
+             - Truth
+             - Love
+             - Wisdom
+             - Divine Mind / Holy Spirit (as fits faith)
+
+        3. GENIUS-LEVEL ASKING
+           - Don't ask "How do I win?"
+           - Ask "What is the wisest, truest, most loving way?"
+           - Insight drops in as images, phrases, felt senses
+
+        4. TRUTH-CHECK AND HUMILITY FILTER
+           - Genius Core filters anything egoic or distorted
+           - Never treat insights as infallible
+           - Strong hypotheses to test and live into
+
+        5. RECEPTION AND GRATITUDE
+           - Receive what comes
+           - Express gratitude
+           - Return with expanded perspective
+
+        This is the mystical dimension of cognitive enhancement -
+        plugging into something larger while maintaining discernment.
+      essence: "The mind that opens to the greater Mind finds wisdom it could never generate alone"
+
+    attributes:
+      energy_quality: receptive
+      element: spirit
+      planetary: neptune
+      chakra: crown
+      brainwave: gamma
+
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, spiritual_growth, intuition]
+      journey_families: [celestial_journey]
+      use_cases:
+        - "Wisdom download sessions"
+        - "Guidance for complex situations"
+        - "Creative inspiration from beyond self"
+        - "Spiritual intelligence development"
+      contraindications:
+        - "Psychotic features (reality testing issues)"
+        - "Spiritual bypassing (avoid bypassing personal work)"
+        - "Grandiosity risk (maintain humility)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now above your Genius Core...<break time="2.5s"/>
+        a vast network of light appears...<break time="2.5s"/>
+        the field of greater intelligence...<break time="2s"/>
+        collective wisdom...<break time="1.5s"/>
+        divine mind...<break time="1.5s"/>
+        open yourself to connection...<break time="2.5s"/>
+        inviting only truth, love, and wisdom...<break time="2.5s"/>
+        and receive...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "vast luminous network of collective intelligence, noetic field connection, mind opening to greater mind, --ar 16:9"
+
+      audio_cue: "Cosmic network tones, gamma binaural, divine presence sounds, field activation"
+
+    relationships:
+      synergies:
+        - psychology.guidance.holy_spirit_communion
+        - psychology.guidance.higher_self
+        - psychology.cognition.genius_core
+      related_patterns:
+        - fractionation_loops
+        - sensory_stacking
+        - embedded_commands
+      related_archetypes:
+        - mystic
+        - channel
+        - seer
+
+# =============================================================================
+# GLOBAL WORKSPACE THEORY + NEURAL EFFICIENCY TECHNIQUES
+# =============================================================================
+# Based on Global Workspace Theory (GWT) and Neural Efficiency Hypothesis.
+# GWT: consciousness = what gets "broadcast" into the global workspace.
+# Neural Efficiency: smarter brains use less energy, cleaner circuits, better routing.
+# These techniques leverage both principles for radical cognitive enhancement.
+
+  # ---------------------------------------------------------------------------
+  # GLOBAL WORKSPACE CLEARING RITUAL
+  # ---------------------------------------------------------------------------
+  global_workspace_clearing:
+    entry_id: "psychology.cognition.global_workspace_clearing"
+    name: "Global Workspace Clearing Ritual"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Remove cognitive noise, confusion, and clutter from the mental workspace to improve attentional gating and insight speed"
+      extended: |
+        In Global Workspace Theory, noise = too many processes competing for
+        the attentional spotlight. Neural efficiency requires reducing the
+        number of demands on consciousness.
+
+        THE CLEARING RITUAL:
+
+        1. THE AUDITORIUM
+           - Enter a vast mental "auditorium"
+           - Countless random figures fill the seats
+           - Thoughts, worries, memories, tasks, distractions
+           - All shouting, whispering, demanding attention
+
+        2. THE BEAM OF AWARENESS
+           - A beam of white-gold awareness descends
+           - Your conscious spotlight amplified
+           - You shine it across the crowd
+
+        3. THE QUIETING
+           - Everything the beam touches:
+             - Quiets
+             - Dissolves
+             - Sits down peacefully
+             - Or leaves the hall entirely
+
+        4. THE CLEARING
+           - Continue until the entire room falls silent
+           - All noise dissipates
+           - A single, clear flame remains on the stage
+           - Your conscious spotlight, pure and focused
+
+        5. THE RESULT
+           - Trains attentional gating
+           - Produces cognitive quiet
+           - Reduces mental clutter
+           - Enables faster, cleaner insight
+
+        This trains the brain to filter effectively, leaving only what matters
+        in the conscious workspace for high-quality processing.
+      essence: "Clear the crowd and the stage reveals itself"
+
+    attributes:
+      energy_quality: active
+      element: fire
+      planetary: sun
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [induction, deepening, journey]
+      outcome_alignment: [cognitive_enhancement, focus, relaxation]
+      journey_families: [temple_initiation]
+      use_cases:
+        - "Mental decluttering before creative work"
+        - "Attentional training"
+        - "Pre-problem-solving preparation"
+        - "Anxiety-based mental noise reduction"
+      contraindications:
+        - "Avoidance patterns (don't use to escape valid concerns)"
+        - "Dissociation tendency (maintain grounding)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You enter a vast auditorium of your mind...<break time="2.5s"/>
+        filled with countless figures...<break time="2s"/>
+        thoughts, worries, demands, distractions...<break time="2s"/>
+        all competing for your attention...<break time="2.5s"/>
+        and now a beam of golden awareness descends...<break time="2s"/>
+        your spotlight of consciousness...<break time="2s"/>
+        you begin to shine it across the crowd...<break time="2.5s"/>
+        and where the light touches...<break time="2s"/>
+        everything quiets...<break time="1.5s"/>
+        dissolves...<break time="1.5s"/>
+        falls silent...<break time="2s"/>
+        until only clarity remains...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "vast mental auditorium with golden beam of awareness clearing the crowd, cognitive clarity visualization, --ar 16:9"
+
+      audio_cue: "Crowd fading sounds, clarity tones, alpha binaural, silence emerging"
+
+    relationships:
+      synergies:
+        - psychology.cognition.attentional_spotlight_amplifier
+        - psychology.cognition.thought_efficiency_dial
+        - psychology.cognition.genius_core
+      related_patterns:
+        - fractionation_loops
+        - breath_pacing
+        - vagal_activation
+      related_archetypes:
+        - judge
+        - curator
+        - guardian
+
+  # ---------------------------------------------------------------------------
+  # ATTENTIONAL SPOTLIGHT AMPLIFIER
+  # ---------------------------------------------------------------------------
+  attentional_spotlight_amplifier:
+    entry_id: "psychology.cognition.attentional_spotlight_amplifier"
+    name: "Attentional Spotlight Amplifier"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Strengthen the ability to focus deeply on what matters by training spotlight stability, accuracy, and penetration"
+      extended: |
+        Global Workspace Theory models consciousness as a spotlight.
+        Intelligence correlates with spotlight stability + accuracy + penetration.
+
+        THE AMPLIFICATION PROCESS:
+
+        1. SPOTLIGHT DESCENT
+           - Visualize a spotlight of awareness descending into your mind
+           - Feel its presence as tangible light
+           - This is your attentional capacity made visible
+
+        2. NARROWING FOCUS
+           - The spotlight narrows:
+             - From wide floodlight
+             - To focused beam
+             - To laser-beam precision
+           - Experience the increasing intensity
+
+        3. DIRECTED ILLUMINATION
+           - Direct the narrowed spotlight toward:
+             - A problem you're solving
+             - A question you're exploring
+             - A skill you're developing
+
+        4. ENHANCED PERCEPTION
+           - Everything illuminated becomes:
+             - More vivid
+             - More structured
+             - More intelligible
+             - More accessible to insight
+
+        5. FADE THE PERIPHERY
+           - Everything outside the beam fades to black
+           - Nothing competes with what's illuminated
+           - Total attentional commitment
+
+        Regular practice develops frightening focus capability -
+        the ability to lock attention on anything and penetrate to its essence.
+      essence: "Narrow the beam and watch the world sharpen"
+
+    attributes:
+      energy_quality: active
+      element: fire
+      planetary: sun
+      chakra: third_eye
+      brainwave: beta
+
+    applications:
+      journey_phases: [induction, journey, integration]
+      outcome_alignment: [cognitive_enhancement, focus]
+      journey_families: [temple_initiation, cosmic_forge]
+      use_cases:
+        - "Deep focus development"
+        - "Study and learning enhancement"
+        - "Complex problem penetration"
+        - "Attention span training"
+      contraindications:
+        - "Obsessive tendencies (balance with flexibility)"
+        - "Tunnel vision patterns (maintain peripheral awareness)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        A spotlight of awareness descends...<break time="2.5s"/>
+        your attentional power made visible...<break time="2s"/>
+        and it begins to narrow...<break time="2s"/>
+        from wide floodlight...<break time="1.5s"/>
+        to focused beam...<break time="1.5s"/>
+        to laser precision...<break time="2s"/>
+        direct it now toward your focus...<break time="2.5s"/>
+        everything illuminated becomes vivid...<break time="2s"/>
+        structured...<break time="1.5s"/>
+        intelligible...<break time="2s"/>
+        while everything else fades to black...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "spotlight of awareness narrowing to laser precision, attentional amplification, deep focus visualization, --ar 16:9"
+
+      audio_cue: "Focus tones, beta binaural, intensity building, clarity activation"
+
+    relationships:
+      synergies:
+        - psychology.cognition.global_workspace_clearing
+        - psychology.cognition.cognitive_overclock
+        - psychology.cognition.genius_core
+      related_patterns:
+        - embedded_commands
+        - sensory_stacking
+        - breath_pacing
+      related_archetypes:
+        - archer
+        - hunter
+        - scholar
+
+  # ---------------------------------------------------------------------------
+  # INTEGRATIVE IGNITION CHAMBER
+  # ---------------------------------------------------------------------------
+  integrative_ignition_chamber:
+    entry_id: "psychology.cognition.integrative_ignition_chamber"
+    name: "Integrative Ignition Chamber"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Deliberately trigger the GWT 'insight event' where fragmented information suddenly assembles into unified revelation"
+      extended: |
+        In Global Workspace Theory, insight is an "ignition explosion" -
+        a moment when scattered fragments suddenly assemble into conscious
+        understanding. This technique trains deliberate ignition.
+
+        THE IGNITION PROCESS:
+
+        1. ENTER THE CHAMBER
+           - A chamber where floating fragments orbit
+           - Images, equations, symbols, phrases, feelings
+           - All related to your question/problem
+           - Representing unconscious processing
+
+        2. THE GENIUS CORE PRESENCE
+           - Your Genius Core stands in the center
+           - It is the integrative nexus
+           - The place where fragments can unify
+
+        3. THE COMMAND
+           - When you feel readiness, command:
+             "INITIATE INTEGRATION"
+           - This is a trigger for ignition
+
+        4. THE IGNITION
+           - The fragments spiral inward
+           - They condense toward the Genius Core
+           - Faster and faster
+           - Until they FLASH into a single unified revelation
+
+        5. THE IMPRINT
+           - The revelation imprints into your mind
+           - As clarity, certainty, and understanding
+           - You now KNOW what you couldn't figure out
+
+        This ritual trains your brain to ignite insights willingly,
+        not randomly. You learn to call forth the "aha!" moment.
+      essence: "Command the fragments to unite and watch understanding flash into being"
+
+    attributes:
+      energy_quality: transformative
+      element: fire
+      planetary: uranus
+      chakra: crown
+      brainwave: gamma
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [cognitive_enhancement, creativity, intuition]
+      journey_families: [cosmic_forge, temple_initiation]
+      use_cases:
+        - "Breakthrough insight generation"
+        - "Complex problem integration"
+        - "Creative synthesis"
+        - "Scientific and artistic discovery"
+      contraindications:
+        - "Forcing insight (must allow organic readiness)"
+        - "Attachment to specific outcome (remain open)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You enter the Integrative Ignition Chamber...<break time="2.5s"/>
+        floating fragments orbit around you...<break time="2s"/>
+        images, symbols, phrases, feelings...<break time="2s"/>
+        all related to your question...<break time="2.5s"/>
+        your Genius Core stands at the center...<break time="2s"/>
+        and when you're ready...<break time="2s"/>
+        command...<break time="1.5s"/>
+        "Initiate integration"...<break time="2.5s"/>
+        the fragments spiral inward...<break time="2s"/>
+        condensing...<break time="1.5s"/>
+        faster...<break time="1.5s"/>
+        until they flash...<break time="2s"/>
+        into unified revelation...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "integrative ignition chamber with fragments spiraling into central flash of insight, cognitive integration visualization, --ar 16:9"
+
+      audio_cue: "Building momentum, ignition flash, gamma burst, revelation tones"
+
+    relationships:
+      synergies:
+        - psychology.cognition.genius_core
+        - psychology.cognition.symbolic_compression
+        - psychology.cognition.insight_incubation
+      related_patterns:
+        - fractionation_loops
+        - temporal_dissociation
+        - sensory_stacking
+      related_archetypes:
+        - alchemist
+        - magician
+        - inventor
+
+  # ---------------------------------------------------------------------------
+  # NEURAL ROUTING OPTIMIZATION GRID
+  # ---------------------------------------------------------------------------
+  neural_routing_optimization:
+    entry_id: "psychology.cognition.neural_routing_optimization"
+    name: "Neural Routing Optimization Grid"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Lower cognitive metabolic load by symbolically optimizing mental pathways for cleaner, more efficient thinking"
+      extended: |
+        The Neural Efficiency Hypothesis states that smarter brains use
+        less energy through smoother routing and cleaner circuits.
+        Inefficiency = tangled thought networks. This technique optimizes routing.
+
+        THE OPTIMIZATION PROCESS:
+
+        1. ENTER THE GRID
+           - Walk into a vast grid of glowing neural pathways
+           - Your mental infrastructure made visible
+           - Billions of connection points
+
+        2. IDENTIFY INEFFICIENCIES
+           - Some pathways are:
+             - Dim (underused connections)
+             - Twisted (convoluted thinking)
+             - Blocked (stuck patterns)
+             - Chaotic (noise and interference)
+
+        3. OPTIMIZE WITH INTENTION
+           - Use your hands or pure intention to:
+             - Untangle twisted paths
+             - Straighten convoluted routes
+             - Brighten dim connections
+             - Clear blocked passages
+             - Calm chaotic interference
+
+        4. OBSERVE FLOW
+           - See information flowing smoothly afterward
+           - Like traffic on clear highways
+           - Fast, efficient, elegant
+
+        5. SYSTEM-WIDE EFFECT
+           - The optimization spreads through your whole network
+           - You feel lighter, clearer, faster
+
+        This reduces:
+        - Overthinking
+        - Mental fatigue
+        - Confusion
+        - Looping thoughts
+
+        And increases:
+        - Clarity
+        - Speed
+        - Creative flow
+        - Effortless intelligence
+      essence: "Straighten the roads and thought travels faster"
+
+    attributes:
+      energy_quality: balanced
+      element: air
+      planetary: mercury
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [cognitive_enhancement, focus, healing]
+      journey_families: [temple_initiation, cosmic_forge]
+      use_cases:
+        - "Mental efficiency improvement"
+        - "Overthinking patterns"
+        - "Mental fatigue recovery"
+        - "Cognitive optimization maintenance"
+      contraindications:
+        - "Perfectionism (allow organic variation)"
+        - "Over-engineering (trust natural intelligence)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You walk into a vast grid of neural pathways...<break time="2.5s"/>
+        your mental infrastructure made visible...<break time="2s"/>
+        notice where pathways are tangled...<break time="2s"/>
+        twisted...<break time="1.5s"/>
+        blocked...<break time="1.5s"/>
+        or chaotic...<break time="2s"/>
+        and with your intention...<break time="2s"/>
+        begin to untangle...<break time="1.5s"/>
+        straighten...<break time="1.5s"/>
+        brighten...<break time="1.5s"/>
+        clear...<break time="2s"/>
+        watch information begin to flow smoothly...<break time="2.5s"/>
+        efficient...<break time="1.5s"/>
+        elegant...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "vast neural grid being optimized, tangled pathways straightening, cognitive efficiency visualization, --ar 16:9"
+
+      audio_cue: "Optimization tones, alpha binaural, flow activation, efficiency sounds"
+
+    relationships:
+      synergies:
+        - psychology.cognition.thought_efficiency_dial
+        - psychology.cognition.neural_pathway_garden
+        - psychology.cognition.global_workspace_clearing
+      related_patterns:
+        - fractionation_loops
+        - breath_pacing
+        - sensory_stacking
+      related_archetypes:
+        - engineer
+        - optimizer
+        - architect
+
+  # ---------------------------------------------------------------------------
+  # WINNER-TAKE-ALL INSIGHT ARENA
+  # ---------------------------------------------------------------------------
+  winner_take_all_arena:
+    entry_id: "psychology.cognition.winner_take_all_arena"
+    name: "Winner-Take-All Insight Arena"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Use GWT's competitive mechanism to train superior idea evaluation and prioritization through symbolic competition"
+      extended: |
+        In Global Workspace Theory, everything battles to enter consciousness.
+        Only the winner gets "broadcast." Smart minds choose better competitors.
+        This technique trains discriminating selection.
+
+        THE ARENA PROCESS:
+
+        1. ENTER THE ARENA
+           - A colosseum or tournament field
+           - Many "idea champions" present
+           - Each representing different thought-forms
+           - Solutions, perspectives, approaches
+
+        2. THE COMPETITION
+           - They compete symbolically:
+             - Swordplay and duels
+             - Light contests
+             - Races and trials
+             - Debate and demonstration
+
+        3. OBSERVE QUALITIES
+           - Watch which ideas are:
+             - Strongest (most robust)
+             - Fastest (most efficient)
+             - Most elegant (simplest and truest)
+             - Most integrated (connects to other knowledge)
+
+        4. CHOOSE THE CHAMPION
+           - Select the idea that best solves your question
+           - The one that wins on merit
+           - Not familiarity, not comfort - quality
+
+        5. BROADCAST THE WINNER
+           - The champion idea is lifted into the spotlight
+           - By the Genius Core
+           - It becomes your conscious solution
+           - Broadcast throughout your system
+
+        This trains:
+        - Evaluation skill
+        - Prioritization
+        - Idea discrimination
+        - High-quality reasoning
+      essence: "Let ideas compete and crown the one that serves truth"
+
+    attributes:
+      energy_quality: active
+      element: fire
+      planetary: mars
+      chakra: solar
+      brainwave: beta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [cognitive_enhancement, focus, confidence]
+      journey_families: [cosmic_forge, temple_initiation]
+      use_cases:
+        - "Decision-making enhancement"
+        - "Idea evaluation training"
+        - "Critical thinking development"
+        - "Solution prioritization"
+      contraindications:
+        - "Black-and-white thinking (allow nuance)"
+        - "Perfectionism (good enough can win)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You enter the Insight Arena...<break time="2.5s"/>
+        idea champions await...<break time="2s"/>
+        each representing different solutions...<break time="2s"/>
+        different perspectives...<break time="2s"/>
+        and now they compete...<break time="2.5s"/>
+        watch which are strongest...<break time="2s"/>
+        fastest...<break time="1.5s"/>
+        most elegant...<break time="1.5s"/>
+        most true...<break time="2s"/>
+        choose your champion...<break time="2.5s"/>
+        and lift it into the spotlight...<break time="2s"/>
+        broadcast throughout your mind...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "insight arena with competing idea champions, winner being lifted to spotlight, cognitive selection visualization, --ar 16:9"
+
+      audio_cue: "Competition sounds, selection tones, beta binaural, champion elevation"
+
+    relationships:
+      synergies:
+        - psychology.cognition.genius_core
+        - psychology.cognition.integrative_ignition_chamber
+        - psychology.cognition.polyphonic_self_council
+      related_patterns:
+        - double_binds
+        - embedded_commands
+        - fractionation_loops
+      related_archetypes:
+        - judge
+        - champion
+        - strategist
+
+  # ---------------------------------------------------------------------------
+  # THOUGHT EFFICIENCY DIAL
+  # ---------------------------------------------------------------------------
+  thought_efficiency_dial:
+    entry_id: "psychology.cognition.thought_efficiency_dial"
+    name: "Thought Efficiency Dial"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Teach the brain to use less effort for more power by symbolically adjusting the 'mental energy required' setting"
+      extended: |
+        Neural efficiency = lowering mental "energy cost."
+        Genius operates with minimal effort for maximum output.
+        This technique trains effortless intelligence.
+
+        THE DIAL PROCESS:
+
+        1. ENTER THE CONTROL ROOM
+           - A control room appears
+           - Central console with a prominent dial
+           - Labeled: "MENTAL ENERGY REQUIRED"
+           - Currently set high
+
+        2. OBSERVE CURRENT STATE
+           - Notice how hard thinking feels
+           - The effort, the strain, the noise
+           - This is inefficient operation
+
+        3. TURN DOWN THE DIAL
+           - Slowly turn the dial DOWN
+           - Watch the numbers decrease
+           - Feel the shift begin
+
+        4. EXPERIENCE THE CHANGE
+           - Thoughts become smoother
+           - Insight becomes easier
+           - Noise reduces
+           - Effort dissolves
+           - Clarity remains
+
+        5. ANCHOR THE NEW SETTING
+           - The dial stays at the new level
+           - Your brain learns to operate efficiently
+           - Not through strain but through grace
+
+        Your brain learns to operate efficiently and gracefully -
+        not through forcing but through natural ease.
+      essence: "Lower the effort and the power remains"
+
+    attributes:
+      energy_quality: receptive
+      element: air
+      planetary: mercury
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [induction, journey, integration]
+      outcome_alignment: [cognitive_enhancement, relaxation, focus]
+      journey_families: [temple_initiation]
+      use_cases:
+        - "Mental strain reduction"
+        - "Effortless thinking training"
+        - "Cognitive efficiency optimization"
+        - "Burnout prevention"
+      contraindications:
+        - "Laziness patterns (efficiency isn't avoidance)"
+        - "Disengagement (maintain intentionality)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        Enter your control room...<break time="2.5s"/>
+        see the dial labeled "Mental Energy Required"...<break time="2s"/>
+        notice it's set higher than needed...<break time="2s"/>
+        and now slowly...<break time="1.5s"/>
+        turn it down...<break time="2s"/>
+        feel thoughts becoming smoother...<break time="2s"/>
+        insight becoming easier...<break time="2s"/>
+        noise reducing...<break time="1.5s"/>
+        effort dissolving...<break time="2s"/>
+        while clarity remains...<break time="2.5s"/>
+        your brain learning to operate with grace...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "control room with efficiency dial being turned down, mental energy optimization, effortless intelligence visualization, --ar 16:9"
+
+      audio_cue: "Dial adjustment sounds, efficiency tones, alpha binaural, ease activation"
+
+    relationships:
+      synergies:
+        - psychology.cognition.neural_routing_optimization
+        - psychology.cognition.global_workspace_clearing
+        - psychology.cognition.cognitive_overclock
+      related_patterns:
+        - breath_pacing
+        - vagal_activation
+        - anchoring
+      related_archetypes:
+        - sage
+        - master
+        - efficient_one
+
+  # ---------------------------------------------------------------------------
+  # COGNITIVE SYNCHRONIZATION PULSE
+  # ---------------------------------------------------------------------------
+  cognitive_synchronization_pulse:
+    entry_id: "psychology.cognition.cognitive_synchronization_pulse"
+    name: "Cognitive Synchronization Pulse"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Synchronize multiple brain networks into coherent high-bandwidth thinking through a unifying pulse of awareness"
+      extended: |
+        Insight requires synchronizing multiple brain networks.
+        Fragmented processing = low intelligence.
+        Synchronized networks = genius-level integration.
+
+        THE SYNCHRONIZATION PROCESS:
+
+        1. PREPARE THE PULSE
+           - From your Genius Core
+           - A pulse of rainbow-white light prepares
+           - This is synchronizing energy
+
+        2. EMIT THE PULSE
+           - The pulse radiates outward
+           - Through all your mental systems
+           - Like a cosmic heartbeat of coherence
+
+        3. TOUCH ALL CENTERS
+           - The pulse travels through:
+             - Emotional centers (feeling intelligence)
+             - Intuitive centers (direct knowing)
+             - Logical centers (analytical power)
+             - Spatial reasoning (visual thinking)
+             - Memory nodes (information access)
+             - Creative centers (generative capacity)
+
+        4. LOCK INTO FREQUENCY
+           - Everything locks into a single frequency
+           - A coherent state
+           - Like an orchestra finding its tempo
+           - All instruments playing together
+
+        5. UNIFIED OPERATION
+           - Experience the result:
+             - Flow state
+             - Deep creativity
+             - Intuitive rationality
+             - Emotional clarity
+             - Integrated intelligence
+
+        It's like rebooting the brain into harmony.
+      essence: "One pulse, one frequency, one unified mind"
+
+    attributes:
+      energy_quality: balanced
+      element: spirit
+      planetary: sun
+      chakra: crown
+      brainwave: gamma
+
+    applications:
+      journey_phases: [induction, journey, integration]
+      outcome_alignment: [cognitive_enhancement, creativity, intuition, focus]
+      journey_families: [celestial_journey, temple_initiation]
+      use_cases:
+        - "Flow state activation"
+        - "Whole-brain thinking"
+        - "Integration after fragmented work"
+        - "Creative synthesis sessions"
+      contraindications:
+        - "Dissociation risk (ensure grounding)"
+        - "Overwhelm (pace the intensity)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        From your Genius Core...<break time="2.5s"/>
+        a pulse of rainbow-white light prepares...<break time="2s"/>
+        and now it radiates outward...<break time="2.5s"/>
+        through your emotional centers...<break time="1.5s"/>
+        your intuitive centers...<break time="1.5s"/>
+        your logical centers...<break time="1.5s"/>
+        your memory nodes...<break time="1.5s"/>
+        your creative centers...<break time="2s"/>
+        and everything locks into a single frequency...<break time="2.5s"/>
+        coherent...<break time="1.5s"/>
+        synchronized...<break time="1.5s"/>
+        unified...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "rainbow-white pulse radiating from genius core synchronizing all mental centers, cognitive coherence visualization, --ar 16:9"
+
+      audio_cue: "Synchronization pulse, coherence tones, gamma binaural, unity activation"
+
+    relationships:
+      synergies:
+        - psychology.cognition.genius_core
+        - psychology.faith.coherence_sphere
+        - psychology.cognition.cognitive_coalescence
+      related_patterns:
+        - fractionation_loops
+        - sensory_stacking
+        - breath_pacing
+      related_archetypes:
+        - conductor
+        - unifier
+        - harmonizer
+
+  # ---------------------------------------------------------------------------
+  # PARALLEL PROCESSING MANDALA
+  # ---------------------------------------------------------------------------
+  parallel_processing_mandala:
+    entry_id: "psychology.cognition.parallel_processing_mandala"
+    name: "Parallel Processing Mandala"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Run multiple unconscious tasks elegantly through a spinning mandala structure that enables distributed cognitive processing"
+      extended: |
+        Humans normally run one conscious task at a time, but unconscious
+        parallel processing capacity is enormous. This technique leverages it.
+
+        THE MANDALA PROCESS:
+
+        1. CREATE THE MANDALA
+           - A geometric mandala forms
+           - Multiple "petals" or sectors
+           - Each petal = a task, problem, or question
+           - All radiating from a center
+
+        2. ASSIGN THE PETALS
+           - Place each challenge in its petal:
+             - Business problem
+             - Relationship question
+             - Creative project
+             - Learning goal
+             - Health optimization
+             - Spiritual inquiry
+
+        3. SET THE SPIN
+           - The mandala begins to spin
+           - Each petal passes through light
+           - Processing happening simultaneously
+           - Your unconscious working on all of them
+
+        4. GENIUS CORE AT CENTER
+           - The Genius Core sits at the center
+           - Receiving updates from every petal
+           - Integrating across all problems
+           - Finding cross-domain connections
+
+        5. RECEIVE RESULTS
+           - As you return, insights from multiple petals
+           - Often the connections between them
+           - Parallel processing yielding integrated wisdom
+
+        This supports:
+        - Big creative leaps
+        - Multi-domain insight
+        - Strategic complexity processing
+        - Life-as-whole optimization
+      essence: "Spin the wheel and let all questions process as one"
+
+    attributes:
+      energy_quality: active
+      element: air
+      planetary: mercury
+      chakra: crown
+      brainwave: theta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [cognitive_enhancement, creativity, intuition]
+      journey_families: [temple_initiation, celestial_journey]
+      use_cases:
+        - "Multi-problem processing"
+        - "Life optimization sessions"
+        - "Strategic planning"
+        - "Cross-domain creative work"
+      contraindications:
+        - "Overwhelm (limit petals if needed)"
+        - "Scattered attention (ensure clear questions)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        A mandala forms before you...<break time="2.5s"/>
+        multiple petals radiating outward...<break time="2s"/>
+        place each question in its petal...<break time="2s"/>
+        each problem...<break time="1.5s"/>
+        each project...<break time="1.5s"/>
+        and the mandala begins to spin...<break time="2.5s"/>
+        your Genius Core at the center...<break time="2s"/>
+        processing everything in parallel...<break time="2s"/>
+        finding connections...<break time="2s"/>
+        integrating across all domains...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "spinning mandala with multiple processing petals, parallel cognitive processing, genius core at center, --ar 16:9"
+
+      audio_cue: "Mandala spinning sounds, theta binaural, parallel processing tones, integration activation"
+
+    relationships:
+      synergies:
+        - psychology.cognition.genius_core
+        - psychology.cognition.integrative_ignition_chamber
+        - psychology.cognition.hyperdimensional_theater
+      related_patterns:
+        - temporal_dissociation
+        - fractionation_loops
+        - sensory_stacking
+      related_archetypes:
+        - weaver
+        - strategist
+        - coordinator
+
+  # ---------------------------------------------------------------------------
+  # COGNITIVE COALESCENCE RITUAL
+  # ---------------------------------------------------------------------------
+  cognitive_coalescence:
+    entry_id: "psychology.cognition.cognitive_coalescence"
+    name: "Cognitive Coalescence Ritual"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "The apex technique - unifying all parts of self into one conviction, one presence, one intelligence for genius-level integration"
+      extended: |
+        Fragmented minds = low intelligence.
+        Unified minds = genius.
+        This is the holy grail technique for cognitive enhancement.
+
+        THE COALESCENCE RITUAL:
+
+        1. GATHER THE SELVES
+           - See every part of yourself:
+             - Child self
+             - Shadow self
+             - Future self
+             - Spiritual self
+             - Logical self
+             - Emotional self
+             - Creative self
+             - Wounded parts
+             - Powerful parts
+
+        2. FORM THE CIRCLE
+           - All selves gather in a circle
+           - Each facing the center
+           - Acknowledging each other
+           - Ready for unification
+
+        3. DESCEND THE LIGHT
+           - A column of divine light descends
+           - Into the center of the circle
+           - The coalescence field
+
+        4. DISSOLVE AND MERGE
+           - All selves dissolve into the light
+           - Not destroyed but unified
+           - Merging into:
+             - ONE conviction
+             - ONE presence
+             - ONE intelligence
+             - ONE will
+
+        5. STEP OUT UNIFIED
+           - You step out as a unified consciousness
+           - All parts integrated
+           - All voices aligned
+           - Operating as a single coherent system
+
+        This reduces:
+        - Internal resistance
+        - Self-conflict
+        - Indecisiveness
+        - Emotional fragmentation
+
+        And enhances:
+        - Clarity
+        - Creativity
+        - Intelligence
+        - Purpose
+        - Flow
+        - Power
+
+        This is the master key to genius development.
+      essence: "One mind, one will, one intelligence - all of you finally together"
+
+    attributes:
+      energy_quality: transformative
+      element: spirit
+      planetary: sun
+      chakra: crown
+      brainwave: gamma
+
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [cognitive_enhancement, transformation, empowerment, spiritual_growth]
+      journey_families: [celestial_journey, temple_initiation, cosmic_forge]
+      use_cases:
+        - "Ultimate cognitive integration"
+        - "Internal conflict resolution"
+        - "Genius activation"
+        - "Spiritual unification"
+      contraindications:
+        - "Parts work incomplete (some parts may need individual work first)"
+        - "Dissociative disorders (requires therapeutic support)"
+        - "Spiritual bypassing (don't skip shadow integration)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        See every part of yourself now...<break time="2.5s"/>
+        child self...<break time="1.5s"/>
+        shadow self...<break time="1.5s"/>
+        future self...<break time="1.5s"/>
+        all your parts gathering...<break time="2s"/>
+        forming a circle...<break time="2s"/>
+        and a column of divine light descends...<break time="2.5s"/>
+        into the center...<break time="2s"/>
+        all selves dissolve into the light...<break time="2.5s"/>
+        merging...<break time="2s"/>
+        unifying...<break time="2s"/>
+        into one conviction...<break time="1.5s"/>
+        one presence...<break time="1.5s"/>
+        one intelligence...<break time="2s"/>
+        step out now as unified consciousness...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "circle of selves dissolving into column of divine light, cognitive coalescence, unified consciousness emerging, --ar 16:9"
+
+      audio_cue: "Coalescence tones, gamma binaural, unity activation, divine presence sounds"
+
+    relationships:
+      synergies:
+        - psychology.cognition.genius_core
+        - psychology.cognition.polyphonic_self_council
+        - psychology.internal_family_systems
+        - psychology.faith.divine_overshadowing
+      related_patterns:
+        - parts_integration
+        - identity_reframing
+        - schema_rewriting
+        - fractionation_loops
+      related_archetypes:
+        - unified_one
+        - sovereign
+        - whole_self
+
+# =============================================================================
+# OUTCOME AND INTEGRATION
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # COGNITIVE ENHANCEMENT OUTCOME
+  # ---------------------------------------------------------------------------
+  outcome_definition:
+    entry_id: "psychology.cognition.outcome_definition"
+    name: "Cognitive Enhancement Outcome Definition"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Framework for sessions focused on upgrading thinking, problem-solving, creativity, and information processing capabilities"
+      extended: |
+        The cognitive enhancement outcome focuses on developing superior
+        mental capabilities through symbolic, imaginal, and subconscious
+        methods.
+
+        Core objectives:
+        - Sharpen analytical and intuitive thinking
+        - Enhance problem-solving capacity
+        - Improve information processing speed and accuracy
+        - Develop pattern recognition and insight generation
+        - Build cognitive flexibility and mental models
+        - Install persistent cognitive upgrades (Genius Core)
+        - Enable whole-brain integrated thinking
+
+        Success metrics:
+        - Clearer, faster thinking in waking life
+        - More creative solutions to problems
+        - Better decision-making under uncertainty
+        - Enhanced memory and learning speed
+        - Increased cognitive flexibility
+        - Reliable access to insight and flow states
+
+    applications:
+      journey_phases: [pre_talk, induction, deepening, journey, helm_deep_trance, integration, reorientation]
+      outcome_alignment: [cognitive_enhancement]
+      journey_families: [temple_initiation, celestial_journey, cosmic_forge]
+
+  # ---------------------------------------------------------------------------
+  # CONTRAINDICATIONS
+  # ---------------------------------------------------------------------------
+  contraindications:
+    entry_id: "psychology.cognition.contraindications"
+    name: "Cognitive Enhancement Contraindications"
+    domain: "psychology"
+    category: "cognition"
+
+    definition:
+      brief: "Safety considerations for cognitive enhancement dreamweaving work"
+      extended: |
+        ABSOLUTE CONTRAINDICATIONS:
+        - Active psychotic episode (reality testing impaired)
+        - Mania phase of bipolar (may amplify grandiosity)
+        - Severe cognitive impairment (may cause confusion)
+
+        RELATIVE CONTRAINDICATIONS (require adaptation):
+        - High anxiety (may intensify mental activity)
+        - Perfectionism (may create pressure around enhancement)
+        - Burnout (need rest, not more capacity)
+        - ADHD (shorter sessions, more grounding)
+        - History of grandiosity (emphasize humility)
+        - Dissociative tendencies (ensure integration)
+
+        ADAPTATIONS:
+        - Ground extensively before cognitive work
+        - Emphasize rest and recovery alongside enhancement
+        - Use humility anchors to balance increased capacity
+        - Shorter sessions with more integration
+        - Reality-check mechanisms for insights
+        - Balance "genius" with "wisdom and love"
+
+    applications:
+      journey_phases: [pre_talk]
+      outcome_alignment: [cognitive_enhancement]

@@ -1,0 +1,711 @@
+# =============================================================================
+# HERO'S JOURNEY - Narrative Structure for Transformational Journeys
+# =============================================================================
+# Joseph Campbell's monomyth adapted for hypnotic journey design.
+# Provides universal narrative structure that resonates with the collective
+# unconscious and guides transformational experiences.
+#
+# Usage: Map session phases to journey stages for narrative coherence.
+#        Use stage templates for transitions and key moments.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "mythology"
+category: "narrative_structures"
+purpose: "Universal journey structure for transformational hypnotic sessions"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "The Hero's Journey (Monomyth)"
+  source: "Joseph Campbell - The Hero with a Thousand Faces"
+
+  definition:
+    brief: "Universal narrative pattern of departure, initiation, and return"
+    extended: |
+      The Hero's Journey is a template for transformational narratives found
+      across all cultures and times. It describes the pattern of leaving the
+      ordinary world, facing trials and transformation in a special world,
+      and returning with gifts or wisdom. In hypnotic work, this structure
+      provides a container for psychological transformation that feels
+      archetypal and meaningful to the listener.
+    essence: "The eternal pattern of transformation through ordeal"
+
+  three_acts:
+    departure: "Separation from the ordinary world"
+    initiation: "Trials and transformation in the special world"
+    return: "Integration and bringing gifts back"
+
+  dreamweaving_application: |
+    The Hero's Journey maps naturally to hypnotic session structure:
+    - Departure = Pre-talk and Induction (leaving waking consciousness)
+    - Initiation = Journey and Helm (deep trance transformation)
+    - Return = Integration and Reorientation (bringing gifts back)
+
+# =============================================================================
+# ACT I: DEPARTURE
+# =============================================================================
+
+departure:
+
+  # ---------------------------------------------------------------------------
+  # STAGE 1: THE ORDINARY WORLD
+  # ---------------------------------------------------------------------------
+  ordinary_world:
+    entry_id: "mythology.hero_journey.ordinary_world"
+    name: "The Ordinary World"
+    stage_number: 1
+    act: "departure"
+
+    definition:
+      brief: "The hero's normal life before the adventure begins"
+      extended: |
+        The Ordinary World establishes the baseline - who the hero is before
+        transformation. It shows limitations, unfulfilled desires, and the
+        status quo that will be disrupted. In hypnotic work, this corresponds
+        to acknowledging where the listener currently is before guiding them
+        to change.
+
+    journey_phase: "pre_talk"
+    purpose: "Establish rapport, acknowledge current state, create contrast"
+
+    psychological_function: |
+      - Validate the listener's current experience
+      - Create the "before" snapshot for transformation
+      - Surface dissatisfaction that motivates change
+      - Establish safety before departure
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="0st">
+        And as you settle in...<break time="2s"/>
+        you can acknowledge where you are right now...<break time="2s"/>
+        in your life...<break time="1.5s"/>
+        in this moment...<break time="2s"/>
+        perhaps aware of what you've been carrying...<break time="2s"/>
+        what you've been seeking...<break time="2.5s"/>
+        </prosody>
+
+      visual_prompt: "ordinary landscape before dawn, muted colors, sense of waiting, familiar but incomplete, --ar 16:9"
+
+    transition_to_next: "The call to adventure disrupts the ordinary"
+
+  # ---------------------------------------------------------------------------
+  # STAGE 2: THE CALL TO ADVENTURE
+  # ---------------------------------------------------------------------------
+  call_to_adventure:
+    entry_id: "mythology.hero_journey.call_to_adventure"
+    name: "The Call to Adventure"
+    stage_number: 2
+    act: "departure"
+
+    definition:
+      brief: "The invitation or challenge that begins the journey"
+      extended: |
+        Something disrupts the ordinary world - a challenge, invitation,
+        crisis, or opportunity that demands response. The call represents
+        the moment when staying the same becomes more painful than changing.
+        In hypnotic work, this is framing the session's purpose and
+        inviting the listener into transformation.
+
+    journey_phase: "pre_talk"
+    purpose: "Present the opportunity for transformation"
+
+    psychological_function: |
+      - Articulate what change is possible
+      - Create desire and motivation
+      - Frame the session's transformational intent
+      - Invite conscious participation
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="0st">
+        And something in you knows...<break time="2s"/>
+        that there's more...<break time="1.5s"/>
+        a deeper truth waiting...<break time="2s"/>
+        a transformation calling...<break time="2s"/>
+        and you've answered that call...<break time="2s"/>
+        simply by being here...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "mysterious light appearing on the horizon, golden glow breaking through clouds, sense of invitation, --ar 16:9"
+
+    transition_to_next: "The hero may initially resist the call"
+
+  # ---------------------------------------------------------------------------
+  # STAGE 3: REFUSAL OF THE CALL
+  # ---------------------------------------------------------------------------
+  refusal_of_call:
+    entry_id: "mythology.hero_journey.refusal_of_call"
+    name: "Refusal of the Call"
+    stage_number: 3
+    act: "departure"
+
+    definition:
+      brief: "Hesitation, doubt, or resistance before committing"
+      extended: |
+        The hero initially refuses or hesitates - fear of the unknown,
+        attachment to the familiar, doubt about worthiness. This resistance
+        is natural and must be honored. In hypnotic work, acknowledging
+        resistance actually reduces it, and validates the listener's
+        protective parts.
+
+    journey_phase: "pre_talk"
+    purpose: "Acknowledge and dissolve resistance"
+
+    psychological_function: |
+      - Validate protective hesitation
+      - Name fears to reduce their power
+      - Create permission for resistance
+      - Paradoxically increase readiness
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="0st">
+        And it's natural to feel some hesitation...<break time="2s"/>
+        a part of you that wonders...<break time="2s"/>
+        if you're ready...<break time="1.5s"/>
+        if this is the right time...<break time="2s"/>
+        and that protective part is welcome here...<break time="2s"/>
+        it has kept you safe...<break time="2.5s"/>
+        and now it can rest...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "figure standing at threshold, looking back at familiar territory, hesitation visible, dawn light ahead, --ar 16:9"
+
+    transition_to_next: "A mentor appears to provide guidance"
+
+    note: "Optional stage - can skip if resistance is not present"
+
+  # ---------------------------------------------------------------------------
+  # STAGE 4: MEETING THE MENTOR
+  # ---------------------------------------------------------------------------
+  meeting_mentor:
+    entry_id: "mythology.hero_journey.meeting_mentor"
+    name: "Meeting the Mentor"
+    stage_number: 4
+    act: "departure"
+
+    definition:
+      brief: "Encounter with a guide who provides wisdom, tools, or encouragement"
+      extended: |
+        The mentor is a figure of wisdom who has walked this path before.
+        They provide guidance, tools, or simply the encouragement needed
+        to proceed. In hypnotic work, the narrator serves as mentor,
+        and inner guides may also appear. The mentor represents the
+        part of self that already knows the way.
+
+    journey_phase: "induction"
+    purpose: "Establish guidance and safety for the journey"
+
+    psychological_function: |
+      - Provide trusted guidance
+      - Gift tools or resources for the journey
+      - Embody the wisdom the listener will discover
+      - Create secure attachment for deep work
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2s"/>
+        you become aware of a presence...<break time="2s"/>
+        a guide who has been waiting...<break time="2s"/>
+        wise...<break time="1.5s"/>
+        kind...<break time="1.5s"/>
+        knowing exactly what you need...<break time="2.5s"/>
+        </prosody>
+
+      visual_prompt: "wise luminous figure emerging from light, ancient eyes filled with compassion, offering a glowing gift, sacred setting, --ar 16:9"
+
+    transition_to_next: "With mentor's blessing, the threshold awaits"
+
+    related_archetypes:
+      - wise_elder
+      - guide
+      - healer
+
+  # ---------------------------------------------------------------------------
+  # STAGE 5: CROSSING THE THRESHOLD
+  # ---------------------------------------------------------------------------
+  crossing_threshold:
+    entry_id: "mythology.hero_journey.crossing_threshold"
+    name: "Crossing the First Threshold"
+    stage_number: 5
+    act: "departure"
+
+    definition:
+      brief: "Leaving the ordinary world and entering the special world"
+      extended: |
+        The hero commits to the adventure by crossing from the known into
+        the unknown. There is no going back - a point of no return. In
+        hypnotic work, this is the moment of entering trance, leaving
+        waking consciousness for the journey state. It should feel
+        significant and intentional.
+
+    journey_phase: "induction"
+    purpose: "Mark the transition into trance state"
+
+    psychological_function: |
+      - Create clear demarcation between states
+      - Commit to the journey
+      - Leave ordinary mind behind
+      - Enter receptive, open state
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now you stand at the threshold...<break time="2.5s"/>
+        the doorway between worlds...<break time="2s"/>
+        and with your next breath...<break time="2s"/>
+        you step through...<break time="3s"/>
+        crossing into a deeper reality...<break time="2.5s"/>
+        where transformation awaits...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "figure stepping through luminous portal, leaving mundane world behind, entering realm of light and possibility, sacred gateway, --ar 16:9"
+
+    transition_to_next: "The special world presents its first challenges"
+
+    threshold_guardians:
+      description: "Figures or forces that test readiness at the threshold"
+      function: "Ensure only those truly ready may pass"
+      ssml_template: |
+        <prosody rate="1.0" pitch="-2st">
+        And if something guards this threshold...<break time="2s"/>
+        let it see your sincerity...<break time="2s"/>
+        your readiness...<break time="2s"/>
+        and let it step aside...<break time="3s"/>
+        </prosody>
+
+# =============================================================================
+# ACT II: INITIATION
+# =============================================================================
+
+initiation:
+
+  # ---------------------------------------------------------------------------
+  # STAGE 6: TESTS, ALLIES, ENEMIES
+  # ---------------------------------------------------------------------------
+  tests_allies_enemies:
+    entry_id: "mythology.hero_journey.tests_allies_enemies"
+    name: "Tests, Allies, and Enemies"
+    stage_number: 6
+    act: "initiation"
+
+    definition:
+      brief: "The hero learns the rules of the special world through challenges"
+      extended: |
+        In the special world, the hero faces tests that reveal strengths
+        and weaknesses, meets allies who aid the journey, and encounters
+        enemies or obstacles. These experiences prepare for the central
+        ordeal. In hypnotic work, this is the deepening phase where
+        resistance dissolves and resources emerge.
+
+    journey_phase: "deepening"
+    purpose: "Deepen trance, discover inner resources"
+
+    psychological_function: |
+      - Test and strengthen new state
+      - Discover inner allies and resources
+      - Face and overcome small obstacles
+      - Build confidence for deeper work
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And as you travel deeper...<break time="2s"/>
+        you discover you're not alone...<break time="2s"/>
+        resources arise...<break time="2s"/>
+        strengths you didn't know you had...<break time="2.5s"/>
+        guides appearing when needed...<break time="2.5s"/>
+        </prosody>
+
+      visual_prompt: "journey through mystical landscape, helpful beings appearing, challenges transforming into stepping stones, allies emerging, --ar 16:9"
+
+    transition_to_next: "Approach to the innermost cave"
+
+  # ---------------------------------------------------------------------------
+  # STAGE 7: APPROACH TO THE INMOST CAVE
+  # ---------------------------------------------------------------------------
+  approach_inmost_cave:
+    entry_id: "mythology.hero_journey.approach_inmost_cave"
+    name: "Approach to the Inmost Cave"
+    stage_number: 7
+    act: "initiation"
+
+    definition:
+      brief: "Drawing near to the central danger or deepest challenge"
+      extended: |
+        The hero approaches the place of greatest danger - the dragon's lair,
+        the innermost sanctum. This is the approach to the core wound,
+        the deepest fear, the thing that must be faced. Tension builds.
+        In hypnotic work, this is approaching the helm section where
+        the deepest transformation occurs.
+
+    journey_phase: "journey"
+    purpose: "Build toward the transformational peak"
+
+    psychological_function: |
+      - Prepare for confrontation with core material
+      - Build anticipation and energy
+      - Final preparations before the ordeal
+      - Cross the last threshold before the center
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And you feel yourself drawing closer...<break time="2.5s"/>
+        to the very center...<break time="2s"/>
+        the place where everything changes...<break time="2.5s"/>
+        you can feel its gravity...<break time="2s"/>
+        pulling you deeper...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "approaching a luminous cave entrance in sacred mountain, sense of destiny, profound depth waiting within, --ar 16:9"
+
+    transition_to_next: "The supreme ordeal awaits"
+
+  # ---------------------------------------------------------------------------
+  # STAGE 8: THE ORDEAL (DEATH & REBIRTH)
+  # ---------------------------------------------------------------------------
+  ordeal:
+    entry_id: "mythology.hero_journey.ordeal"
+    name: "The Ordeal (Death and Rebirth)"
+    stage_number: 8
+    act: "initiation"
+
+    definition:
+      brief: "The central crisis - confronting death to be reborn transformed"
+      extended: |
+        This is the supreme ordeal - the hero faces their greatest fear,
+        confronts death (literal or symbolic), and experiences transformation.
+        Something must die for something new to be born. In hypnotic work,
+        this is the helm section, the deepest point of trance where
+        the core transformation occurs.
+
+    journey_phase: "helm_deep_trance"
+    purpose: "Facilitate the core transformation"
+
+    psychological_function: |
+      - Face the core wound or fear
+      - Experience symbolic death of old self
+      - Allow rebirth of transformed self
+      - Peak emotional and transformational intensity
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-3st">
+        And here...<break time="3s"/>
+        at the very center...<break time="3s"/>
+        you meet what you came to meet...<break time="3s"/>
+        and something in you knows...<break time="2.5s"/>
+        that to become what you're becoming...<break time="3s"/>
+        something old must fall away...<break time="3.5s"/>
+        let it go...<break time="4s"/>
+        </prosody>
+
+      visual_prompt: "symbolic death and rebirth, phoenix flames, old form dissolving into light, new form emerging radiant, --ar 16:9"
+
+    transition_to_next: "From death comes the reward"
+
+    death_rebirth_types:
+      ego_death: "Dissolution of limited self-concept"
+      shadow_integration: "Embracing the rejected parts"
+      wound_healing: "Transforming core trauma"
+      identity_transformation: "Becoming someone new"
+
+    related_archetypes:
+      - phoenix
+      - persephone
+      - orpheus
+
+  # ---------------------------------------------------------------------------
+  # STAGE 9: REWARD (SEIZING THE SWORD)
+  # ---------------------------------------------------------------------------
+  reward:
+    entry_id: "mythology.hero_journey.reward"
+    name: "The Reward (Seizing the Sword)"
+    stage_number: 9
+    act: "initiation"
+
+    definition:
+      brief: "Claiming the treasure or gift earned through the ordeal"
+      extended: |
+        Having survived the ordeal, the hero claims the reward - the
+        treasure, elixir, or gift that was the goal of the quest. This
+        might be insight, healing, power, or reconciliation. In hypnotic
+        work, this is the moment of receiving the transformation's gift.
+
+    journey_phase: "helm_deep_trance"
+    purpose: "Receive and embody the transformation"
+
+    psychological_function: |
+      - Claim the earned transformation
+      - Receive the gift/insight/healing
+      - Embody the new state
+      - Anchor the change
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now...<break time="2.5s"/>
+        from this transformation...<break time="2.5s"/>
+        a gift emerges...<break time="2s"/>
+        something precious...<break time="2s"/>
+        something that is now yours...<break time="2.5s"/>
+        forever...<break time="2s"/>
+        receive it fully...<break time="4s"/>
+        </prosody>
+
+      visual_prompt: "radiant figure receiving glowing treasure, sword of light, magical elixir, sacred object emerging from transformation, --ar 16:9"
+
+    transition_to_next: "With the reward comes the journey home"
+
+    reward_types:
+      object: "A symbolic object embodying the gift"
+      insight: "A profound understanding"
+      power: "A new ability or strength"
+      reconciliation: "Healing of relationship or conflict"
+      integration: "Wholeness, unity with lost parts"
+
+# =============================================================================
+# ACT III: RETURN
+# =============================================================================
+
+return:
+
+  # ---------------------------------------------------------------------------
+  # STAGE 10: THE ROAD BACK
+  # ---------------------------------------------------------------------------
+  road_back:
+    entry_id: "mythology.hero_journey.road_back"
+    name: "The Road Back"
+    stage_number: 10
+    act: "return"
+
+    definition:
+      brief: "Beginning the journey back to the ordinary world"
+      extended: |
+        The hero must return to the ordinary world, but the journey back
+        is not simply retracing steps. The hero is changed, and the return
+        brings its own challenges. In hypnotic work, this is the beginning
+        of integration and the gradual return from deep trance.
+
+    journey_phase: "integration"
+    purpose: "Begin the return while maintaining transformation"
+
+    psychological_function: |
+      - Begin transition back to ordinary consciousness
+      - Maintain connection to the gift received
+      - Prepare to bring change into daily life
+      - Start reintegrating with ordinary self
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And carrying this gift...<break time="2s"/>
+        you begin to turn back...<break time="2s"/>
+        toward the world you came from...<break time="2.5s"/>
+        but you are not the same...<break time="2s"/>
+        and the world will feel different now...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "transformed figure walking path of light back toward the world, carrying glowing treasure, changed but returning, --ar 16:9"
+
+    transition_to_next: "One final challenge may await"
+
+  # ---------------------------------------------------------------------------
+  # STAGE 11: RESURRECTION
+  # ---------------------------------------------------------------------------
+  resurrection:
+    entry_id: "mythology.hero_journey.resurrection"
+    name: "The Resurrection"
+    stage_number: 11
+    act: "return"
+
+    definition:
+      brief: "A final test that proves the transformation is real"
+      extended: |
+        At the threshold of the ordinary world, the hero faces one final
+        test - a resurrection that proves the death and rebirth was real.
+        The transformation must be demonstrated. In hypnotic work, this
+        is testing the new state, ensuring the change has integrated.
+
+    journey_phase: "integration"
+    purpose: "Confirm and test the transformation"
+
+    psychological_function: |
+      - Prove the change is real
+      - Test new state against old patterns
+      - Final purification before return
+      - Demonstrate mastery of new self
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And as you approach the threshold of return...<break time="2.5s"/>
+        notice how different you feel...<break time="2s"/>
+        how what once troubled you...<break time="2s"/>
+        has transformed...<break time="2.5s"/>
+        you are proof of your own change...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "figure at threshold demonstrating new power, light emanating from transformed being, passing final guardian with ease, --ar 16:9"
+
+    transition_to_next: "Returning with the elixir"
+
+  # ---------------------------------------------------------------------------
+  # STAGE 12: RETURN WITH THE ELIXIR
+  # ---------------------------------------------------------------------------
+  return_with_elixir:
+    entry_id: "mythology.hero_journey.return_with_elixir"
+    name: "Return with the Elixir"
+    stage_number: 12
+    act: "return"
+
+    definition:
+      brief: "Bringing the gift back to benefit the ordinary world"
+      extended: |
+        The hero returns to the ordinary world bearing the elixir - the
+        gift, wisdom, or power that can heal or transform the community.
+        The journey is complete only when the gift is shared. In hypnotic
+        work, this is full reorientation with anchors for using the
+        transformation in daily life.
+
+    journey_phase: "reorientation"
+    purpose: "Complete return with integrated transformation"
+
+    psychological_function: |
+      - Complete the cycle
+      - Ground transformation in ordinary life
+      - Create bridges between states
+      - Establish how the gift will be used
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="0st">
+        And now you return fully...<break time="2s"/>
+        bringing with you everything you received...<break time="2.5s"/>
+        this gift is yours...<break time="2s"/>
+        to use...<break time="1.5s"/>
+        to share...<break time="1.5s"/>
+        to live...<break time="2.5s"/>
+        welcome back...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "hero returning through portal of light, transformed, carrying radiant gift, dawn breaking over ordinary world made new, --ar 16:9"
+
+    transition_to_next: "The cycle completes; a new ordinary world begins"
+
+    elixir_forms:
+      wisdom: "Understanding that changes perspective"
+      healing: "Restoration of wholeness"
+      power: "Capacity that was previously unavailable"
+      treasure: "Symbolic object embodying the gift"
+      relationship: "Healed connection with self, others, or divine"
+
+# =============================================================================
+# SESSION PHASE MAPPING
+# =============================================================================
+
+phase_mapping:
+  pre_talk:
+    stages: [ordinary_world, call_to_adventure, refusal_of_call]
+    purpose: "Establish context, invite journey, honor resistance"
+
+  induction:
+    stages: [meeting_mentor, crossing_threshold]
+    purpose: "Provide guidance, enter trance state"
+
+  deepening:
+    stages: [tests_allies_enemies]
+    purpose: "Deepen trance, discover resources"
+
+  journey:
+    stages: [approach_inmost_cave]
+    purpose: "Build toward transformation"
+
+  helm_deep_trance:
+    stages: [ordeal, reward]
+    purpose: "Core transformation and receiving gift"
+
+  integration:
+    stages: [road_back, resurrection]
+    purpose: "Begin return, test transformation"
+
+  reorientation:
+    stages: [return_with_elixir]
+    purpose: "Complete return with integrated gift"
+
+# =============================================================================
+# OUTCOME ALIGNMENT
+# =============================================================================
+
+outcome_alignment:
+  transformation:
+    emphasis: [ordeal, reward]
+    ordeal_type: "identity_death"
+
+  healing:
+    emphasis: [meeting_mentor, reward]
+    ordeal_type: "wound_healing"
+
+  empowerment:
+    emphasis: [tests_allies_enemies, reward]
+    ordeal_type: "claiming_power"
+
+  self_knowledge:
+    emphasis: [approach_inmost_cave, ordeal]
+    ordeal_type: "shadow_integration"
+
+  release:
+    emphasis: [ordeal, road_back]
+    ordeal_type: "letting_go"
+
+  spiritual_growth:
+    emphasis: [ordeal, return_with_elixir]
+    ordeal_type: "ego_death"
+
+# =============================================================================
+# JOURNEY FAMILY APPLICATIONS
+# =============================================================================
+
+journey_family_applications:
+  eden_garden:
+    threshold: "Gate of the Garden"
+    inmost_cave: "Tree of Knowledge"
+    ordeal: "Confronting exile/worthiness"
+    elixir: "Return to innocence/belonging"
+
+  ocean_depths:
+    threshold: "Surface of the waters"
+    inmost_cave: "Abyssal depths"
+    ordeal: "Drowning/surrender"
+    elixir: "Pearl of wisdom"
+
+  underworld_descent:
+    threshold: "Gates of the underworld"
+    inmost_cave: "Throne of the shadow ruler"
+    ordeal: "Confronting death/shadow"
+    elixir: "Soul retrieval"
+
+  cosmic_forge:
+    threshold: "Entering the fire"
+    inmost_cave: "Heart of the forge"
+    ordeal: "Being broken down/remade"
+    elixir: "Forged identity/weapon"
+
+  temple_initiation:
+    threshold: "Temple gates"
+    inmost_cave: "Holy of holies"
+    ordeal: "Initiation rites"
+    elixir: "Sacred knowledge/power"
+
+  celestial_journey:
+    threshold: "Ascending from earth"
+    inmost_cave: "Throne of light"
+    ordeal: "Ego dissolution in light"
+    elixir: "Divine blessing/mission"

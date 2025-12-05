@@ -955,6 +955,589 @@ outcomes:
       return: alpha
       note: "Deep theta for self-concept work; alert return"
 
+  # ---------------------------------------------------------------------------
+  # ABUNDANCE - Prosperity consciousness, wealth attraction
+  # ---------------------------------------------------------------------------
+  abundance:
+    description: "Cultivating prosperity consciousness, wealth attraction, material flourishing"
+    subcategories:
+      - scarcity_deprogramming
+      - prosperity_consciousness
+      - wealth_attraction
+      - financial_freedom
+      - abundance_embodiment
+
+    required_patterns:
+      embedded_commands:
+        minimum: 10
+        emphasis_words: ["abundant", "wealthy", "prosperous", "receive", "overflow", "deserve"]
+        rationale: "High density of abundance-affirming suggestions"
+      sensory_stacking:
+        minimum: 3
+        placement: "journey, helm"
+        rationale: "Full sensory experience of abundance"
+
+    suggested_patterns:
+      - fractionation_loops
+      - temporal_dissociation
+      - breath_pacing
+      - identity_reframing
+      - schema_rewriting
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      schema_rewriting:
+        required: true
+        minimum: 1
+        usage: "Clear scarcity programming, install prosperity beliefs"
+      identity_reframing:
+        required: true
+        minimum: 1
+        usage: "Embody wealthy future self, abundance archetypes"
+      submodality_shifts:
+        required: true
+        minimum: 1
+        usage: "Shrink scarcity, expand abundance feelings"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - prosperous_creator
+        - golden_river
+        - abundance_gardener
+      secondary:
+        - prometheus
+        - divine_beloved
+        - atlas
+
+    suggested_journey_families:
+      primary:
+        - eden_garden
+        - celestial_journey
+      secondary:
+        - temple_initiation
+
+    suggested_objects:
+      primary:
+        - golden_key
+        - seed_of_becoming
+        - crystal_vial
+      secondary:
+        - glowing_stone
+        - flame_of_will
+
+    integration_actions:
+      primary:
+        - breath_trigger
+        - hand_heart_anchor
+        - morning_connection
+      secondary:
+        - beauty_noticing
+        - hydration_anchor
+
+    success_metrics:
+      physiological:
+        - "Heart coherence, expanded chest"
+        - "Relaxed shoulders, open posture"
+        - "Sense of warmth and flow in body"
+      emotional:
+        - "Feeling of deep worthiness"
+        - "Joy at others' success (mudita)"
+        - "Excitement about financial future"
+        - "Release of scarcity anxiety"
+      behavioral:
+        - "Increased generosity"
+        - "Taking abundance-aligned actions"
+        - "Noticing opportunities previously missed"
+        - "Money conversations feel easier"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta
+      return: alpha
+      note: "Theta for deep belief work; alpha return for integration"
+
+  # ---------------------------------------------------------------------------
+  # MANIFESTATION - Reality creation, intention materialization
+  # ---------------------------------------------------------------------------
+  manifestation:
+    description: "Reality creation, intention amplification, outcome materialization"
+    subcategories:
+      - intention_setting
+      - reality_creation
+      - goal_manifestation
+      - vision_activation
+      - quantum_engineering
+
+    required_patterns:
+      sensory_stacking:
+        minimum: 5
+        placement: "journey, helm"
+        rationale: "Rich multisensory experience of desired reality"
+      temporal_dissociation:
+        minimum: 2
+        placement: "journey, integration"
+        rationale: "Future self embodiment, timeline access"
+
+    suggested_patterns:
+      - fractionation_loops
+      - embedded_commands
+      - breath_pacing
+      - double_binds
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      identity_reframing:
+        required: true
+        minimum: 1
+        usage: "Embody the version who already has the outcome"
+      predictive_processing_disruption:
+        required: true
+        minimum: 1
+        usage: "Reality morphing, quantum field access"
+      submodality_shifts:
+        required: true
+        minimum: 1
+        usage: "Brighten/expand desired reality, distance current limitations"
+      expectancy_priming:
+        required: true
+        minimum: 3
+        placement: "pre_talk, first 300 words, journey entry"
+        note: "Higher density for manifestation work"
+
+    suggested_archetypes:
+      primary:
+        - magician
+        - seeker
+        - prometheus
+      secondary:
+        - hermes
+        - divine_beloved
+        - phoenix
+
+    suggested_journey_families:
+      primary:
+        - celestial_journey
+        - temple_initiation
+      secondary:
+        - cosmic_forge
+
+    suggested_objects:
+      primary:
+        - seed_of_becoming
+        - flame_of_will
+        - golden_key
+      secondary:
+        - mirror_of_truth
+        - glowing_stone
+
+    integration_actions:
+      primary:
+        - morning_connection
+        - breath_trigger
+        - threshold_anchor
+      secondary:
+        - beauty_noticing
+        - hand_heart_anchor
+
+    success_metrics:
+      physiological:
+        - "Body feels as if outcome already achieved"
+        - "Heart coherence during visualization"
+        - "Relaxed certainty in nervous system"
+      emotional:
+        - "Knowing beyond hoping"
+        - "Detachment from outcome (allowing)"
+        - "Joy in the process itself"
+        - "Reduced desperation/grasping"
+      behavioral:
+        - "Aligned actions feel effortless"
+        - "Synchronicities begin appearing"
+        - "Inspired action without forcing"
+        - "Reduced attachment to how/when"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta_with_gamma
+      return: alpha
+      note: "Theta for imaginal access; gamma bursts for insight/activation"
+
+  # ---------------------------------------------------------------------------
+  # FAITH - Supreme faith cultivation, fear transmutation
+  # ---------------------------------------------------------------------------
+  faith:
+    description: "Supreme faith cultivation, fear dissolution, unshakeable certainty"
+    subcategories:
+      - fear_transmutation
+      - faith_cultivation
+      - radical_trust
+      - divine_connection
+      - courage_activation
+      - spiritual_resilience
+
+    required_patterns:
+      vagal_activation:
+        minimum: 2
+        placement: "induction, deepening"
+        rationale: "Creates physiological safety for deep fear work"
+      fractionation_loops:
+        minimum: 2
+        placement: "induction (15-25%), journey peak (50-75%)"
+        rationale: "Creates deep trance for identity-level transformation"
+      embedded_commands:
+        minimum: 10
+        distribution: "3-4 induction, 5-6 journey, 2-3 integration"
+        emphasis_words: ["faith", "trust", "certainty", "unshakeable", "know", "safe", "protected"]
+        rationale: "Plants faith-based suggestions throughout"
+
+    suggested_patterns:
+      - temporal_dissociation
+      - double_binds
+      - sensory_stacking
+      - breath_pacing
+      - identity_reframing
+      - schema_rewriting
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      submodality_shifts:
+        required: true
+        minimum: 2
+        usage: "Shrink fear symbols, expand faith core, transform belief geometry"
+      identity_reframing:
+        required: true
+        minimum: 2
+        usage: "Archetypal transfiguration, supreme self installation, faith core rewriting"
+      symbolic_catharsis:
+        required: true
+        minimum: 1
+        usage: "Fire transmutation, serpentine extraction, void baptism"
+      expectancy_priming:
+        required: true
+        minimum: 3
+        placement: "pre_talk, first 300 words, journey entry"
+        note: "High density - faith requires strong expectation setting"
+      schema_rewriting:
+        required: true
+        minimum: 1
+        usage: "Fear core removal, faith core installation"
+
+    suggested_archetypes:
+      primary:
+        - warrior_of_light
+        - divine_guardian
+        - future_victorious_self
+      secondary:
+        - phoenix
+        - ascended_master
+        - seraph
+
+    suggested_journey_families:
+      primary:
+        - temple_initiation
+        - celestial_journey
+      secondary:
+        - cosmic_forge
+
+    suggested_objects:
+      primary:
+        - faith_core
+        - celestial_covenant
+        - golden_sun
+      secondary:
+        - transmutation_furnace
+        - coherence_sphere
+        - flame_of_will
+
+    integration_actions:
+      primary:
+        - hand_heart_anchor
+        - phrase_anchor
+        - breath_trigger
+      secondary:
+        - morning_connection
+        - threshold_anchor
+
+    success_metrics:
+      physiological:
+        - "Deep relaxation with alert presence"
+        - "Heart rate variability improvement"
+        - "Somatic sense of expansion in chest"
+        - "Absence of fear-based contraction"
+      emotional:
+        - "Feeling of unshakeable certainty"
+        - "Sense of divine support or accompaniment"
+        - "Recognition of fear as transmutable energy"
+        - "Deep trust in self and universe"
+      cognitive:
+        - "Shift from fear-based to faith-based thinking"
+        - "Ability to access faith state via anchors"
+        - "Fear seen as fuel rather than threat"
+      behavioral:
+        - "Uses anchors in daily life during stress"
+        - "Reports decreased fear response to triggers"
+        - "Demonstrates courageous action"
+        - "Maintains equanimity under pressure"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: deep_theta
+      return: alpha
+      note: "Deep theta required for identity-level transformation; alpha return for integration"
+
+  # ---------------------------------------------------------------------------
+  # INTUITION - Inner knowing, guide communication, symbolic cognition
+  # ---------------------------------------------------------------------------
+  intuition:
+    description: "Inner oracle access, guide communication, symbolic cognition, direct knowing"
+    subcategories:
+      - inner_oracle
+      - guide_communication
+      - higher_self_connection
+      - symbolic_cognition
+      - divination_integration
+      - somatic_knowing
+      - imaginal_access
+
+    required_patterns:
+      sensory_stacking:
+        minimum: 4
+        placement: "journey, helm"
+        rationale: "Rich multisensory experience for imaginal reception"
+      fractionation_loops:
+        minimum: 2
+        placement: "induction (15-25%), journey peak (50-75%)"
+        rationale: "Creates receptive trance for inner knowing"
+      embedded_commands:
+        minimum: 8
+        distribution: "3 induction, 4 journey, 2 integration"
+        emphasis_words: ["know", "sense", "trust", "receive", "guide", "wisdom", "clear", "answer"]
+        rationale: "Plants intuition-enhancing suggestions"
+
+    suggested_patterns:
+      - temporal_dissociation
+      - breath_pacing
+      - double_binds
+      - vagal_activation
+      - parts_integration
+      - association_dissociation
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      submodality_shifts:
+        recommended: true
+        usage: "Brighten/expand intuitive channels, soften mental noise"
+      identity_reframing:
+        recommended: true
+        usage: "Embody the oracle, become the channel"
+      predictive_processing_disruption:
+        recommended: true
+        usage: "Access non-linear knowing, future echoes"
+      expectancy_priming:
+        required: true
+        minimum: 2
+        placement: "pre_talk, first 300 words"
+
+    suggested_archetypes:
+      primary:
+        - oracle
+        - high_priestess
+        - wise_one
+      secondary:
+        - higher_self
+        - guide
+        - seer
+        - channel
+
+    suggested_journey_families:
+      primary:
+        - temple_initiation
+        - celestial_journey
+      secondary:
+        - eden_garden
+        - ocean_depths
+
+    suggested_objects:
+      primary:
+        - oracle_pool
+        - inner_mirror
+        - crystal_sphere
+      secondary:
+        - glowing_stone
+        - golden_key
+        - living_symbol
+
+    integration_actions:
+      primary:
+        - breath_trigger
+        - hand_heart_anchor
+        - inquiry_anchor
+      secondary:
+        - morning_connection
+        - journal_prompt
+
+    success_metrics:
+      physiological:
+        - "Subtle body awareness increases"
+        - "Gut sensations become clearer"
+        - "Heart coherence during reception"
+        - "Third eye tingling or pressure"
+      emotional:
+        - "Increased trust in inner knowing"
+        - "Reduced anxiety about uncertainty"
+        - "Sense of connection to guidance"
+        - "Confidence in receiving answers"
+      cognitive:
+        - "Clearer intuitive signals"
+        - "Ability to distinguish intuition from fear"
+        - "Enhanced symbolic perception"
+        - "Increased recognition of synchronicities"
+      behavioral:
+        - "Uses intuition in daily decisions"
+        - "Regular guide consultation practice"
+        - "Trusts gut in uncertain situations"
+        - "Acts on intuitive promptings"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta
+      return: alpha
+      note: "Theta for receptive intuition; alpha for integration and grounding"
+
+  # ---------------------------------------------------------------------------
+  # COGNITIVE_ENHANCEMENT - Mental clarity, genius activation, problem-solving
+  # ---------------------------------------------------------------------------
+  cognitive_enhancement:
+    description: "Mental clarity, genius activation, problem-solving mastery, cognitive architecture upgrading"
+    subcategories:
+      - insight_incubation
+      - symbolic_thinking
+      - problem_solving
+      - genius_activation
+      - metacognition
+      - memory_enhancement
+      - cognitive_architecture
+
+    required_patterns:
+      sensory_stacking:
+        minimum: 4
+        placement: "journey, helm"
+        rationale: "Rich multisensory experience for cognitive installation"
+      fractionation_loops:
+        minimum: 2
+        placement: "induction (15-25%), journey peak (50-75%)"
+        rationale: "Creates deep trance for cognitive architecture work"
+      embedded_commands:
+        minimum: 10
+        distribution: "3 induction, 5 journey, 2 integration"
+        emphasis_words: ["understand", "clarity", "insight", "know", "solve", "wisdom", "genius", "pattern"]
+        rationale: "Plants cognitive enhancement suggestions"
+
+    suggested_patterns:
+      - temporal_dissociation
+      - breath_pacing
+      - double_binds
+      - identity_reframing
+      - parts_integration
+      - predictive_processing_disruption
+
+    # Phase 4 advanced patterns (outcome-specific)
+    advanced_patterns:
+      submodality_shifts:
+        required: true
+        minimum: 2
+        usage: "Brighten/expand understanding, compress complex concepts, expand working memory"
+      identity_reframing:
+        required: true
+        minimum: 2
+        usage: "Install genius core, embody the wise one, activate inner architect"
+      predictive_processing_disruption:
+        recommended: true
+        usage: "Pattern breakthrough, insight flash, non-linear thinking"
+      expectancy_priming:
+        required: true
+        minimum: 3
+        placement: "pre_talk, first 300 words, journey entry"
+        note: "High density for cognitive restructuring"
+      schema_rewriting:
+        required: true
+        minimum: 1
+        usage: "Cognitive limitation removal, genius potential installation"
+      parts_integration:
+        recommended: true
+        usage: "Polyphonic self council, multiple perspective integration"
+
+    suggested_archetypes:
+      primary:
+        - wise_one
+        - architect
+        - oracle
+      secondary:
+        - hermes
+        - prometheus
+        - magician
+        - higher_self
+
+    suggested_journey_families:
+      primary:
+        - temple_initiation
+        - celestial_journey
+      secondary:
+        - cosmic_forge
+
+    suggested_objects:
+      primary:
+        - genius_core
+        - living_codex
+        - memory_palace
+      secondary:
+        - crystal_sphere
+        - neural_garden
+        - golden_key
+
+    integration_actions:
+      primary:
+        - breath_trigger
+        - inquiry_anchor
+        - hand_head_anchor
+      secondary:
+        - morning_connection
+        - problem_incubation_ritual
+
+    success_metrics:
+      physiological:
+        - "Subtle body awareness increases"
+        - "Frontal lobe activation sense"
+        - "Alert, clear mental state"
+        - "Relaxed focus without strain"
+      emotional:
+        - "Confidence in cognitive abilities"
+        - "Curiosity and mental play"
+        - "Reduced cognitive anxiety"
+        - "Sense of expanded capacity"
+      cognitive:
+        - "Faster pattern recognition"
+        - "Deeper insight access"
+        - "Improved symbolic thinking"
+        - "Enhanced problem-solving"
+        - "Clearer metacognition"
+        - "Better memory encoding/retrieval"
+      behavioral:
+        - "Uses incubation technique for problems"
+        - "Reports breakthrough insights"
+        - "Improved creative output quality"
+        - "More effective decision-making"
+        - "Regular cognitive enhancement practice"
+
+    brainwave_arc:
+      start: alpha
+      journey_peak: theta_with_gamma
+      return: beta_alpha
+      note: "Theta for incubation and deep restructuring; gamma bursts for insight; return to alert alpha-beta for integration"
+
 
 # =============================================================================
 # PATTERN REFERENCE INDEX
@@ -963,74 +1546,74 @@ outcomes:
 
 pattern_outcome_index:
   vagal_activation:
-    primary: [healing, release, relaxation]
-    secondary: [transformation, empowerment, confidence]
+    primary: [healing, release, relaxation, faith]
+    secondary: [transformation, empowerment, confidence, intuition, cognitive_enhancement]
   emotional_calibration:
     primary: [healing, self_knowledge]
-    secondary: [release, transformation]
+    secondary: [release, transformation, faith, intuition]
   fractionation_loops:
-    primary: [transformation, empowerment, confidence]
-    secondary: [healing, self_knowledge, relaxation]
+    primary: [transformation, empowerment, confidence, faith, intuition, cognitive_enhancement]
+    secondary: [healing, self_knowledge, relaxation, abundance, manifestation]
   temporal_dissociation:
-    primary: [transformation, spiritual_growth]
-    secondary: [healing, self_knowledge, release, creativity]
+    primary: [transformation, spiritual_growth, manifestation, intuition, cognitive_enhancement]
+    secondary: [healing, self_knowledge, release, creativity, abundance, faith]
   sensory_stacking:
-    primary: [creativity, spiritual_growth]
-    secondary: [relaxation, self_knowledge, focus]
+    primary: [creativity, spiritual_growth, abundance, manifestation, intuition, cognitive_enhancement]
+    secondary: [relaxation, self_knowledge, focus, faith]
   breath_pacing:
-    primary: [relaxation, focus]
-    secondary: [healing, creativity, empowerment]
+    primary: [relaxation, focus, intuition, cognitive_enhancement]
+    secondary: [healing, creativity, empowerment, abundance, manifestation, faith]
   embedded_commands:
-    primary: [empowerment, confidence, focus]
+    primary: [empowerment, confidence, focus, abundance, faith, intuition, cognitive_enhancement]
     secondary: [all]
   double_binds:
-    primary: [transformation, empowerment, confidence]
-    secondary: [self_knowledge]
+    primary: [transformation, empowerment, confidence, cognitive_enhancement]
+    secondary: [self_knowledge, manifestation, faith, intuition]
 
   # Phase 4 Advanced Patterns
   submodality_shifts:
-    primary: [transformation, healing, release]
+    primary: [transformation, healing, release, abundance, manifestation, faith, intuition, cognitive_enhancement]
     secondary: [confidence, empowerment, creativity, relaxation, focus]
     note: "NLP technique for changing mental representation qualities"
   expectancy_priming:
     primary: [all]
-    note: "Required for ALL outcomes - placebo amplification"
+    note: "Required for ALL outcomes - placebo amplification; higher density for manifestation, faith, intuition, and cognitive_enhancement"
   identity_reframing:
-    primary: [transformation, empowerment, confidence]
+    primary: [transformation, empowerment, confidence, abundance, manifestation, faith, intuition, cognitive_enhancement]
     secondary: [spiritual_growth]
-    note: "Identity-level change vs behavior change"
+    note: "Identity-level change vs behavior change; embody the oracle; install genius core"
   parts_integration:
-    primary: [healing, self_knowledge]
-    secondary: [transformation, release]
-    note: "IFS-inspired internal dialogue"
+    primary: [healing, self_knowledge, intuition, cognitive_enhancement]
+    secondary: [transformation, release, faith]
+    note: "IFS-inspired internal dialogue; inner council work; polyphonic self council"
   schema_rewriting:
-    primary: [transformation, confidence]
-    secondary: [healing, self_knowledge]
-    note: "Core belief transformation"
+    primary: [transformation, confidence, abundance, faith, cognitive_enhancement]
+    secondary: [healing, self_knowledge, intuition]
+    note: "Core belief transformation - fear/scarcity/limitation programming removal"
   predictive_processing_disruption:
-    primary: [transformation, spiritual_growth]
+    primary: [transformation, spiritual_growth, manifestation, faith, intuition, cognitive_enhancement]
     secondary: [creativity]
-    note: "Reality morphing, ego-softening"
+    note: "Reality morphing, quantum field access, ego-softening, non-linear knowing, insight breakthrough"
   memory_reconsolidation:
-    primary: [healing]
-    secondary: [release, transformation]
-    note: "Light protocol for emotional memory update"
+    primary: [healing, cognitive_enhancement]
+    secondary: [release, transformation, faith]
+    note: "Light protocol for emotional memory update; memory palace work"
   association_dissociation:
-    primary: [healing, release]
-    secondary: [self_knowledge, transformation]
-    note: "Perspective switching for processing"
+    primary: [healing, release, intuition, cognitive_enhancement]
+    secondary: [self_knowledge, transformation, faith]
+    note: "Perspective switching for processing; observer position for guidance; multiple viewpoint analysis"
   symbolic_catharsis:
-    primary: [release, transformation]
-    secondary: [healing]
-    note: "Elemental release (fire/water/wind/earth)"
+    primary: [release, transformation, faith]
+    secondary: [healing, intuition, cognitive_enhancement]
+    note: "Elemental release (fire/water/wind/earth); fear transmutation; cognitive block dissolution"
   compounded_anchoring:
-    primary: [relaxation, empowerment, confidence]
-    secondary: [focus, healing]
-    note: "Multi-modal anchor reinforcement"
+    primary: [relaxation, empowerment, confidence, faith, intuition, cognitive_enhancement]
+    secondary: [focus, healing, abundance]
+    note: "Multi-modal anchor reinforcement; inquiry anchors; genius state anchors"
   multi_episode_arc:
-    primary: [spiritual_growth]
-    secondary: [transformation, healing]
-    note: "Series callbacks and evolving symbols"
+    primary: [spiritual_growth, intuition, cognitive_enhancement]
+    secondary: [transformation, healing, faith]
+    note: "Series callbacks and evolving symbols; guide relationship development; progressive genius installation"
 
 
 # =============================================================================
@@ -1047,19 +1630,20 @@ archetype_outcome_index:
     secondary: [relaxation, confidence]
   divine_beloved:
     primary: [healing, spiritual_growth, confidence]
-    secondary: [relaxation]
+    secondary: [relaxation, abundance, manifestation]
   phoenix:
     primary: [transformation, release]
-    secondary: [empowerment]
+    secondary: [empowerment, manifestation, faith]
   persephone:
     primary: [transformation, self_knowledge]
     secondary: [release]
   atlas:
     primary: [empowerment, release]
-    secondary: [transformation, relaxation, focus]
+    secondary: [transformation, relaxation, focus, abundance]
   prometheus:
-    primary: [empowerment, creativity]
-    secondary: [transformation, spiritual_growth, focus]
+    primary: [empowerment, creativity, manifestation, cognitive_enhancement]
+    secondary: [transformation, spiritual_growth, focus, abundance]
+    note: "Fire-bringer, knowledge liberator, pattern-breaker"
   poseidon:
     primary: [empowerment, relaxation]
     secondary: [release]
@@ -1067,17 +1651,106 @@ archetype_outcome_index:
     primary: [self_knowledge, transformation]
     secondary: [empowerment]
   seeker:
-    primary: [spiritual_growth, self_knowledge]
+    primary: [spiritual_growth, self_knowledge, manifestation]
     secondary: [creativity, focus]
   hermes:
-    primary: [creativity, focus]
-    secondary: [transformation]
+    primary: [creativity, focus, cognitive_enhancement]
+    secondary: [transformation, manifestation]
+    note: "Messenger, quick-minded, connector of realms"
   orpheus:
     primary: [release, healing]
     secondary: [self_knowledge]
   inner_critic:
     primary: [self_knowledge, confidence]
     secondary: [healing]
+  # Abundance-specific archetypes
+  prosperous_creator:
+    primary: [abundance]
+    secondary: [manifestation, empowerment]
+    note: "Archetype of effortless creation and receiving"
+  golden_river:
+    primary: [abundance]
+    secondary: [relaxation, release]
+    note: "Flow state of wealth and resources"
+  abundance_gardener:
+    primary: [abundance]
+    secondary: [creativity, spiritual_growth]
+    note: "Patient cultivation of prosperity"
+  magician:
+    primary: [manifestation, cognitive_enhancement]
+    secondary: [transformation, empowerment]
+    note: "Reality-shaping consciousness, symbolic operator"
+  # Faith-specific archetypes
+  warrior_of_light:
+    primary: [faith, empowerment]
+    secondary: [transformation, confidence]
+    note: "Guardian who transmutes fear with sacred fire"
+  divine_guardian:
+    primary: [faith, spiritual_growth]
+    secondary: [healing, confidence]
+    note: "Protector archetype providing divine backing"
+  future_victorious_self:
+    primary: [faith, manifestation]
+    secondary: [transformation, confidence]
+    note: "The version who has already won, already transcended fear"
+  ascended_master:
+    primary: [faith, spiritual_growth]
+    secondary: [transformation]
+    note: "Realized being who embodies fearless presence"
+  seraph:
+    primary: [faith, spiritual_growth]
+    secondary: [healing, transformation]
+    note: "Angelic presence for divine overshadowing"
+  # Intuition-specific archetypes
+  oracle:
+    primary: [intuition, spiritual_growth, cognitive_enhancement]
+    secondary: [self_knowledge]
+    note: "The inner seer who perceives beyond the ordinary; pattern recognizer"
+  high_priestess:
+    primary: [intuition, spiritual_growth]
+    secondary: [self_knowledge, creativity]
+    note: "Guardian of mysteries, keeper of hidden knowledge"
+  wise_one:
+    primary: [intuition, self_knowledge, cognitive_enhancement]
+    secondary: [spiritual_growth, healing]
+    note: "Accumulated wisdom speaking through inner knowing; cognitive synthesis"
+  higher_self:
+    primary: [intuition, spiritual_growth, cognitive_enhancement]
+    secondary: [transformation, manifestation]
+    note: "The eternal perspective of one's true nature; noetic field access"
+  guide:
+    primary: [intuition, spiritual_growth]
+    secondary: [healing, transformation]
+    note: "Helpful presence offering wisdom and direction"
+  seer:
+    primary: [intuition, manifestation]
+    secondary: [spiritual_growth]
+    note: "One who perceives future echoes and hidden patterns"
+  channel:
+    primary: [intuition, creativity]
+    secondary: [spiritual_growth]
+    note: "Open vessel for wisdom transmission"
+  # Cognitive enhancement-specific archetypes
+  architect:
+    primary: [cognitive_enhancement, manifestation]
+    secondary: [focus, creativity]
+    note: "Designer of mental structures, cognitive system builder"
+  genius_core:
+    primary: [cognitive_enhancement]
+    secondary: [confidence, empowerment]
+    note: "The persistent inner hub of super-intelligence"
+  inner_council:
+    primary: [cognitive_enhancement, intuition]
+    secondary: [self_knowledge, creativity]
+    note: "Multiple perspectives speaking through polyphonic self"
+  memory_keeper:
+    primary: [cognitive_enhancement]
+    secondary: [spiritual_growth, self_knowledge]
+    note: "Guardian of the memory palace, information curator"
+  pattern_master:
+    primary: [cognitive_enhancement, intuition]
+    secondary: [focus, creativity]
+    note: "One who perceives and manipulates underlying patterns"
 
 
 # =============================================================================
@@ -1087,26 +1760,89 @@ archetype_outcome_index:
 
 object_outcome_index:
   glowing_stone:
-    primary: [healing, spiritual_growth]
-    secondary: [relaxation, self_knowledge, creativity, confidence]
+    primary: [healing, spiritual_growth, intuition]
+    secondary: [relaxation, self_knowledge, creativity, confidence, manifestation, faith, cognitive_enhancement]
   crystal_vial:
-    primary: [healing, relaxation]
-    secondary: [release]
+    primary: [healing, relaxation, abundance]
+    secondary: [release, intuition]
   flame_of_will:
-    primary: [transformation, empowerment, confidence]
+    primary: [transformation, empowerment, confidence, manifestation, faith]
     secondary: [spiritual_growth, focus]
   seed_of_becoming:
-    primary: [transformation, creativity]
-    secondary: [release]
+    primary: [transformation, creativity, abundance, manifestation]
+    secondary: [release, faith, intuition]
   mirror_of_truth:
-    primary: [self_knowledge, confidence]
-    secondary: [transformation]
+    primary: [self_knowledge, confidence, intuition]
+    secondary: [transformation, manifestation]
   golden_key:
-    primary: [empowerment, focus, creativity]
-    secondary: [spiritual_growth, self_knowledge]
+    primary: [empowerment, focus, creativity, abundance, intuition, cognitive_enhancement]
+    secondary: [spiritual_growth, self_knowledge, manifestation]
   luminous_feather:
     primary: [release]
-    secondary: [healing, relaxation]
+    secondary: [healing, relaxation, intuition]
+  # Faith-specific objects
+  faith_core:
+    primary: [faith]
+    secondary: [transformation, empowerment, confidence]
+    note: "Radiant sphere/torus replacing fear core in identity engine"
+  celestial_covenant:
+    primary: [faith, spiritual_growth]
+    secondary: [confidence]
+    note: "Divine contract/scroll of unbreakable guidance"
+  golden_sun:
+    primary: [faith, empowerment]
+    secondary: [healing, confidence]
+    note: "Expanding solar heart for courage activation"
+  transmutation_furnace:
+    primary: [faith, transformation]
+    secondary: [release, empowerment]
+    note: "Alchemical chamber converting fear to power"
+  coherence_sphere:
+    primary: [faith, relaxation]
+    secondary: [healing, spiritual_growth]
+    note: "Field of unified vibration canceling chaos"
+  # Intuition-specific objects
+  oracle_pool:
+    primary: [intuition, self_knowledge]
+    secondary: [spiritual_growth]
+    note: "Still water surface for scrying and receiving visions"
+  inner_mirror:
+    primary: [intuition, self_knowledge]
+    secondary: [transformation]
+    note: "Reflective surface revealing inner truth and guidance"
+  crystal_sphere:
+    primary: [intuition, manifestation, cognitive_enhancement]
+    secondary: [spiritual_growth, focus]
+    note: "Crystal ball for future sight, pattern recognition, and cognitive clarity"
+  living_symbol:
+    primary: [intuition, transformation, cognitive_enhancement]
+    secondary: [spiritual_growth, creativity]
+    note: "Self-evolving symbolic construct for ongoing guidance and cognitive operation"
+  # Cognitive enhancement-specific objects
+  genius_core_orb:
+    primary: [cognitive_enhancement]
+    secondary: [confidence, empowerment]
+    note: "Radiant sphere representing persistent super-intelligence hub"
+  living_codex:
+    primary: [cognitive_enhancement]
+    secondary: [intuition, spiritual_growth]
+    note: "Self-updating book containing all knowledge needed"
+  memory_palace:
+    primary: [cognitive_enhancement]
+    secondary: [creativity, spiritual_growth]
+    note: "Infinite architectural space for memory and cognition"
+  neural_garden:
+    primary: [cognitive_enhancement]
+    secondary: [healing, creativity]
+    note: "Living garden of neural pathways for cognitive cultivation"
+  thought_crystal:
+    primary: [cognitive_enhancement, focus]
+    secondary: [intuition]
+    note: "Multi-faceted gem for perspective multiplication and clarity"
+  insight_flame:
+    primary: [cognitive_enhancement, creativity]
+    secondary: [transformation]
+    note: "Sacred fire for burning through cognitive blocks"
 
 
 # =============================================================================
@@ -1115,23 +1851,29 @@ object_outcome_index:
 
 family_outcome_index:
   eden_garden:
-    primary: [healing, relaxation, creativity]
-    secondary: [release, spiritual_growth]
+    primary: [healing, relaxation, creativity, abundance]
+    secondary: [release, spiritual_growth, intuition, cognitive_enhancement]
+    note: "Neural pathway garden variant excellent for cognitive cultivation"
   ocean_depths:
-    primary: [healing, release, relaxation]
-    secondary: [self_knowledge]
+    primary: [healing, release, relaxation, intuition]
+    secondary: [self_knowledge, cognitive_enhancement]
+    note: "Ocean depths for insight incubation, symbol drift, and deep knowing"
   underworld_descent:
     primary: [transformation, self_knowledge]
-    secondary: [release]
+    secondary: [release, faith, intuition, cognitive_enhancement]
+    note: "Descent journeys access shadow wisdom, oracle consultation, deep restructuring"
   cosmic_forge:
-    primary: [transformation, empowerment]
-    secondary: [confidence, focus]
+    primary: [transformation, empowerment, manifestation, faith, cognitive_enhancement]
+    secondary: [confidence, focus, intuition]
+    note: "Cosmic forge for cognitive architecture rebuilding"
   temple_initiation:
-    primary: [spiritual_growth, confidence, focus]
+    primary: [spiritual_growth, confidence, focus, abundance, manifestation, faith, intuition, cognitive_enhancement]
     secondary: [transformation, empowerment, self_knowledge]
+    note: "Temple initiation ideal for oracle protocols, Higher Self meeting, genius installation"
   celestial_journey:
-    primary: [spiritual_growth, creativity]
+    primary: [spiritual_growth, creativity, abundance, manifestation, faith, intuition, cognitive_enhancement]
     secondary: [release, focus]
+    note: "Celestial journeys for Higher Self communion, cosmic guidance, noetic field access"
 
 
 # =============================================================================

@@ -1,0 +1,453 @@
+# =============================================================================
+# OUTCOME INDEX - Outcome to Knowledge Domain Mapping
+# =============================================================================
+# Maps each outcome to relevant knowledge domains and entry types.
+# Use this index to quickly identify which knowledge supports each outcome.
+#
+# Cross-references with outcome_registry.yaml for pattern requirements.
+# =============================================================================
+
+version: "1.0"
+last_updated: "2025-12-05"
+purpose: "Map outcomes to supporting knowledge domains"
+
+# =============================================================================
+# OUTCOME → DOMAIN MAPPINGS
+# =============================================================================
+# Each outcome specifies which domains are primary (required), secondary
+# (recommended), and tertiary (optional enrichment).
+
+outcomes:
+
+  healing:
+    description: "Emotional and somatic healing, trauma integration"
+    primary_domains:
+      - psychology      # Polyvagal, somatic experiencing, IFS
+      - embodiment      # Grounding, breath work, subtle body
+      - symbols         # Water, moon, heart colors
+    secondary_domains:
+      - ritual          # Prayer, blessing, sacred space
+      - mythology       # Wounded healer archetype
+    tertiary_domains:
+      - audio           # Solfeggio 528 Hz, gentle soundscapes
+      - science         # Neuroscience of healing
+    key_entries:
+      - psychology.polyvagal_theory.ventral_vagal
+      - embodiment.pranayama.calming_breath
+      - symbols.elements.water
+      - symbols.colors.green
+      - symbols.colors.blue
+      - ritual.prayer_modalities.contemplative
+    element_emphasis: water
+    chakra_emphasis: heart
+    brainwave_target: delta
+
+  transformation:
+    description: "Fundamental change, death/rebirth, alchemical shift"
+    primary_domains:
+      - symbols         # Fire, alchemy, phoenix
+      - mythology       # Death/rebirth, descent/ascent
+      - traditions      # Alchemy, shamanic death
+    secondary_domains:
+      - ritual          # Initiation, threshold crossing
+      - psychology      # Depth psychology, shadow
+    tertiary_domains:
+      - consciousness_maps  # Stage transitions
+      - audio           # Dramatic frequency shifts
+    key_entries:
+      - symbols.elements.fire
+      - symbols.alchemy.calcination
+      - mythology.hero_journey.death_rebirth
+      - mythology.descent_ascent.katabasis
+      - traditions.shamanic.initiatory_death
+    element_emphasis: fire
+    chakra_emphasis: solar
+    brainwave_target: theta
+
+  empowerment:
+    description: "Personal power, confidence, agency"
+    primary_domains:
+      - symbols         # Fire, gold, solar
+      - mythology       # Hero, warrior, sovereign
+      - embodiment      # Power poses, breath of fire
+    secondary_domains:
+      - psychology      # Self-efficacy, parts integration
+      - ritual          # Invocation, power calling
+    tertiary_domains:
+      - traditions      # Warrior traditions
+      - audio           # Empowering frequencies
+    key_entries:
+      - symbols.elements.fire
+      - symbols.colors.gold
+      - mythology.archetypes.warrior
+      - embodiment.pranayama.breath_of_fire
+      - ritual.invocation_patterns.power_calling
+    element_emphasis: fire
+    chakra_emphasis: solar
+    brainwave_target: alpha
+
+  self_knowledge:
+    description: "Self-understanding, shadow integration, inner wisdom"
+    primary_domains:
+      - psychology      # Depth psychology, IFS, shadow
+      - dream_work      # Active imagination, symbol amplification
+      - mythology       # Descent myths, oracle figures
+    secondary_domains:
+      - consciousness_maps  # Self-inquiry methods
+      - symbols         # Mirror, depths, dark colors
+    tertiary_domains:
+      - traditions      # Gnostic self-knowledge
+      - embodiment      # Body wisdom practices
+    key_entries:
+      - psychology.depth_psychology.shadow
+      - dream_work.active_imagination.dialogue
+      - mythology.descent_ascent.underworld
+      - symbols.elements.water
+      - consciousness_maps.advaita.self_inquiry
+    element_emphasis: water
+    chakra_emphasis: third_eye
+    brainwave_target: theta
+
+  release:
+    description: "Letting go, forgiveness, unburdening"
+    primary_domains:
+      - symbols         # Water, wind, releasing colors
+      - embodiment      # Breath release, somatic discharge
+      - ritual          # Release ceremonies, cord cutting
+    secondary_domains:
+      - psychology      # Somatic experiencing, completion
+      - mythology       # Leaving behind, threshold crossing
+    tertiary_domains:
+      - traditions      # Purification rites
+      - audio           # Dissolving frequencies
+    key_entries:
+      - symbols.elements.air
+      - symbols.elements.water
+      - embodiment.pranayama.releasing_breath
+      - ritual.ceremonial_sequences.release
+      - psychology.somatic_experiencing.discharge
+    element_emphasis: air
+    chakra_emphasis: throat
+    brainwave_target: alpha
+
+  spiritual_growth:
+    description: "Spiritual development, transcendence, unity"
+    primary_domains:
+      - consciousness_maps  # Enlightenment frameworks
+      - traditions      # Mystical traditions
+      - symbols         # Light, crown, violet
+    secondary_domains:
+      - ritual          # Prayer, devotional practices
+      - mythology       # Ascent myths, divine encounter
+    tertiary_domains:
+      - dream_work      # Lucid awareness, dream yoga
+      - audio           # Sacred frequencies
+    key_entries:
+      - consciousness_maps.kundalini_stages.crown
+      - traditions.christian_mystical.theosis
+      - symbols.colors.violet
+      - symbols.colors.white
+      - ritual.prayer_modalities.contemplative
+      - mythology.descent_ascent.anabasis
+    element_emphasis: spirit
+    chakra_emphasis: crown
+    brainwave_target: gamma
+
+  creativity:
+    description: "Creative flow, inspiration, artistic expression"
+    primary_domains:
+      - dream_work      # Hypnagogic, imagination, symbols
+      - mythology       # Muse, divine inspiration
+      - psychology      # Flow states, subconscious access
+    secondary_domains:
+      - symbols         # Colors, creative elements
+      - embodiment      # Movement, breath for creativity
+    tertiary_domains:
+      - science         # Flow state research
+      - audio           # Alpha entrainment
+    key_entries:
+      - dream_work.hypnagogic_gateways.creative_insight
+      - mythology.greek_pantheon.muses
+      - psychology.flow_states.triggers
+      - symbols.colors.orange
+      - symbols.elements.air
+    element_emphasis: air
+    chakra_emphasis: sacral
+    brainwave_target: alpha
+
+  relaxation:
+    description: "Deep relaxation, stress relief, calm"
+    primary_domains:
+      - embodiment      # Progressive relaxation, breath
+      - audio           # Binaural beats, calming sounds
+      - psychology      # Polyvagal, parasympathetic
+    secondary_domains:
+      - symbols         # Blue, water, moon
+      - ritual          # Evening rituals, winding down
+    tertiary_domains:
+      - science         # Relaxation research
+      - dream_work      # Sleep onset practices
+    key_entries:
+      - embodiment.relaxation_sequences.progressive
+      - embodiment.pranayama.four_seven_eight
+      - audio.binaural_presets.deep_relaxation
+      - psychology.polyvagal_theory.ventral_vagal
+      - symbols.colors.blue
+    element_emphasis: water
+    chakra_emphasis: heart
+    brainwave_target: delta
+
+  focus:
+    description: "Mental clarity, concentration, presence"
+    primary_domains:
+      - embodiment      # Breath techniques, centering
+      - psychology      # Attention training, flow
+      - audio           # Beta/gamma entrainment
+    secondary_domains:
+      - symbols         # Yellow, clarity symbols
+      - consciousness_maps  # Mindfulness, presence
+    tertiary_domains:
+      - science         # Attention research
+      - traditions      # Concentration practices
+    key_entries:
+      - embodiment.pranayama.alternate_nostril
+      - psychology.flow_states.concentration
+      - audio.binaural_presets.focus
+      - symbols.colors.yellow
+      - consciousness_maps.buddhist_stages.samadhi
+    element_emphasis: air
+    chakra_emphasis: third_eye
+    brainwave_target: beta
+
+  confidence:
+    description: "Self-assurance, worth, inner strength"
+    primary_domains:
+      - psychology      # Self-concept, IFS, inner critic
+      - symbols         # Gold, solar, strength symbols
+      - embodiment      # Power postures, breath
+    secondary_domains:
+      - mythology       # Hero, sovereign archetypes
+      - ritual          # Affirmation, claiming space
+    tertiary_domains:
+      - audio           # Empowering frequencies
+      - traditions      # Warrior practices
+    key_entries:
+      - psychology.internal_family_systems.exiles
+      - symbols.colors.gold
+      - symbols.elements.fire
+      - embodiment.mudras_positions.power
+      - mythology.archetypes.sovereign
+    element_emphasis: fire
+    chakra_emphasis: solar
+    brainwave_target: alpha
+
+  abundance:
+    description: "Prosperity consciousness, wealth attraction, material flourishing"
+    primary_domains:
+      - psychology      # Abundance mindset, scarcity deprogramming, worthiness work
+      - symbols         # Gold, flowing water, expansion symbols
+      - embodiment      # Heart coherence, somatic activation
+    secondary_domains:
+      - ritual          # Prosperity rituals, gratitude practices
+      - mythology       # Abundance archetypes, golden river
+    tertiary_domains:
+      - science         # Neuroplasticity, RAS tuning
+      - traditions      # Prosperity consciousness traditions
+    key_entries:
+      - psychology.abundance_mindset.scarcity_deprogramming
+      - psychology.abundance_mindset.abundance_archetypes
+      - psychology.abundance_mindset.worthiness_work
+      - psychology.abundance_mindset.energetic_frameworks
+      - psychology.abundance_mindset.advanced_techniques
+      - symbols.colors.gold
+      - symbols.elements.water
+      - embodiment.heart_coherence
+    element_emphasis: earth
+    chakra_emphasis: root
+    brainwave_target: alpha
+
+  manifestation:
+    description: "Reality creation, intention amplification, outcome materialization"
+    primary_domains:
+      - psychology      # Manifestation technology, predictive processing, self-image theory
+      - ritual          # Ritual magick, prayer, intention setting
+      - dream_work      # Imaginal realm, future memory encoding
+    secondary_domains:
+      - science         # Quantum metaphors, placebo architecture
+      - embodiment      # Somatic encoding, felt sense
+    tertiary_domains:
+      - traditions      # Chaos magick, hermetic principles
+      - symbols         # Sigils, activation anchors
+    key_entries:
+      - psychology.manifestation_technology.predictive_processing
+      - psychology.manifestation_technology.ras_tuning
+      - psychology.manifestation_technology.imaginal_rehearsal
+      - psychology.manifestation_technology.self_image_theory
+      - psychology.manifestation_technology.somatic_encoding
+      - psychology.manifestation_technology.quantum_field
+      - psychology.manifestation_technology.manifestation_protocol
+      - ritual.invocation_patterns.intention_setting
+      - dream_work.active_imagination.future_self
+    element_emphasis: spirit
+    chakra_emphasis: third_eye
+    brainwave_target: theta
+
+  faith:
+    description: "Supreme faith cultivation, fear transmutation, unshakeable certainty"
+    primary_domains:
+      - psychology      # Faith cultivation, fear transmutation, identity transformation
+      - embodiment      # Somatic anchoring, breath work, heart coherence
+      - ritual          # Divine contracts, ritual transmutation, sacred space
+    secondary_domains:
+      - traditions      # Mystical absorption, divine indwelling, fana
+      - consciousness_maps  # Mystical states, ego dissolution
+    tertiary_domains:
+      - science         # Neurotheology, fear extinction pathways
+      - symbols         # Fire (transmutation), light (faith), sacred geometry
+    key_entries:
+      - psychology.faith.fear_faith_architecture
+      - psychology.faith.coherence_sphere
+      - psychology.faith.harmonic_heart_core
+      - psychology.faith.belief_geometry_sculptor
+      - psychology.faith.fear_transmutation_engine
+      - psychology.faith.quantum_override_layer
+      - psychology.faith.faith_core_rewriting
+      - psychology.faith.divine_overshadowing
+      - psychology.faith.archetypal_transfiguration
+      - psychology.faith.celestial_contract
+      - psychology.faith.multi_layer_installation
+      - psychology.faith.faith_anchoring_system
+    element_emphasis: spirit
+    chakra_emphasis: heart
+    brainwave_target: theta
+
+  intuition:
+    description: "Inner oracle access, guide communication, symbolic cognition, and direct knowing"
+    primary_domains:
+      - psychology      # Intuition patterns, guide communication, inner oracle, symbolic cognition
+      - dream_work      # Imaginal realm, active imagination, hypnagogic access
+      - consciousness_maps  # Expanded awareness, non-ordinary states
+    secondary_domains:
+      - embodiment      # Somatic intelligence, breath techniques for knowing
+      - ritual          # Sacred space, invocation, divination protocols
+    tertiary_domains:
+      - symbols         # Symbol systems, tarot, sacred geometry
+      - traditions      # Divinatory traditions, oracular practices
+    key_entries:
+      - psychology.intuition.pattern_recognition
+      - psychology.intuition.somatic_intelligence
+      - psychology.intuition.imaginal_symbolic
+      - psychology.intuition.predictive_processing
+      - psychology.intuition.inner_oracle_sequence
+      - psychology.intuition.liminal_aperture
+      - psychology.intuition.future_echo
+      - psychology.intuition.inner_council
+      - psychology.guidance.guide_communication
+      - psychology.guidance.higher_self
+      - psychology.guidance.holy_spirit
+      - psychology.guidance.invisible_counselors
+      - psychology.guidance.dreamweaving_oracle_protocol
+      - psychology.future_tech.living_symbols
+      - psychology.future_tech.semantic_fractals
+      - psychology.future_tech.archetypal_coprocessors
+    element_emphasis: water
+    chakra_emphasis: third_eye
+    brainwave_target: theta
+
+  cognitive_enhancement:
+    description: "Mental clarity, genius activation, problem-solving mastery, and cognitive architecture upgrading"
+    primary_domains:
+      - psychology      # Cognitive mechanisms, dual-process theory, insight incubation
+      - embodiment      # Breath techniques, somatic anchoring for mental clarity
+      - dream_work      # Default mode network, hypnagogic insight capture
+    secondary_domains:
+      - consciousness_maps  # Higher-order thinking, metacognition
+      - symbols         # Sacred geometry for pattern recognition
+    tertiary_domains:
+      - science         # Neuroscience of cognition, DMN research
+      - traditions      # Memory palace, method of loci
+    key_entries:
+      - psychology.cognition.insight_incubation
+      - psychology.cognition.symbolic_compression
+      - psychology.cognition.predictive_model_training
+      - psychology.cognition.dual_process_synchronizer
+      - psychology.cognition.insight_bridge
+      - psychology.cognition.cognitive_reframing_chamber
+      - psychology.cognition.neural_pathway_garden
+      - psychology.cognition.information_sorting_temple
+      - psychology.cognition.genius_core
+      - psychology.cognition.polyphonic_self_council
+      - psychology.cognition.memory_palace_eternity
+      - psychology.cognition.hyperdimensional_theater
+      - psychology.cognition.cognitive_overclock
+      - psychology.cognition.noetic_field
+    element_emphasis: air
+    chakra_emphasis: third_eye
+    brainwave_target: gamma
+
+# =============================================================================
+# ELEMENT → OUTCOME REVERSE INDEX
+# =============================================================================
+
+element_outcomes:
+  fire:
+    primary: [transformation, empowerment, confidence]
+    secondary: [creativity, release, faith]
+  water:
+    primary: [healing, self_knowledge, relaxation, intuition]
+    secondary: [release, spiritual_growth, abundance]
+  air:
+    primary: [release, creativity, focus, cognitive_enhancement]
+    secondary: [transformation, spiritual_growth, intuition]
+  earth:
+    primary: [abundance]
+    secondary: [healing, confidence, focus]
+  spirit:
+    primary: [spiritual_growth, manifestation, faith]
+    secondary: [transformation, self_knowledge, intuition, cognitive_enhancement]
+
+# =============================================================================
+# CHAKRA → OUTCOME REVERSE INDEX
+# =============================================================================
+
+chakra_outcomes:
+  root:
+    outcomes: [abundance]
+    note: "Grounding support for all outcomes, primary for abundance"
+  sacral:
+    outcomes: [creativity, intuition]
+    note: "Sacral for somatic intelligence and gut knowing aspects of intuition"
+  solar:
+    outcomes: [transformation, empowerment, confidence]
+  heart:
+    outcomes: [healing, relaxation, faith]
+    note: "Heart is the seat of faith and divine connection"
+  throat:
+    outcomes: [release]
+  third_eye:
+    outcomes: [self_knowledge, focus, manifestation, intuition, cognitive_enhancement]
+    note: "Third eye is primary for intuition, inner vision, symbolic cognition, and cognitive enhancement"
+  crown:
+    outcomes: [spiritual_growth, faith, intuition, cognitive_enhancement]
+    note: "Crown for divine overshadowing, Higher Self communion, transcendent knowing, and genius activation"
+
+# =============================================================================
+# BRAINWAVE → OUTCOME REVERSE INDEX
+# =============================================================================
+
+brainwave_outcomes:
+  gamma:
+    outcomes: [spiritual_growth, intuition, cognitive_enhancement]
+    note: "Peak experiences, insight, mystical intuition, genius activation, hypercognition"
+  beta:
+    outcomes: [focus, cognitive_enhancement]
+    note: "Active concentration, analytical thinking, problem-solving"
+  alpha:
+    outcomes: [empowerment, release, creativity, confidence, abundance, intuition, cognitive_enhancement]
+    note: "Relaxed alertness, light trance, receptive intuition, insight incubation"
+  theta:
+    outcomes: [transformation, self_knowledge, manifestation, faith, intuition, cognitive_enhancement]
+    note: "Deep trance, journey state, identity-level work, guide communication, deep cognitive restructuring"
+  delta:
+    outcomes: [healing, relaxation]
+    note: "Deep rest, integration"

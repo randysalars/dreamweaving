@@ -1,0 +1,137 @@
+session:
+  name: the-market-of-infinite-ideas-journey-wal-20251205
+  topic: 'The Market of Infinite Ideas | Journey: Walk through an infinite marketplace
+    of creative concepts; archetypes assist in recognizing innovative solutions and
+    unlocking latent talents'
+  duration: 1800
+  style: creativity
+  created: '2025-12-05'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-G
+  description: 'The Market of Infinite Ideas | Journey: Walk Through an Infinite Marketplace
+    of Creative Concepts; Archetypes Assist in Recognizing Innovative Solutions and
+    Unlocking Latent Talents'
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: 'Welcome and introduction to The Market of Infinite Ideas | Journey:
+    Walk through an infinite marketplace of creative concepts; archetypes assist in
+    recognizing innovative solutions and unlocking latent talents'
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into on a sacred path that winds through realms
+    of transformation, where each step brings you closer to your truest self
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a sacred journey through cosmic realms toward creativity'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: becoming a clear channel for inspiration to flow through'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Butterfly
+  role: transformation
+  description: Embodiment of metamorphosis
+  symbol: chrysalis
+  qualities:
+  - patience
+  - emergence
+  - beauty
+  appearance_section: integration
+- name: The Oracle
+  role: wisdom_keeper
+  description: Seer of past, present, and future
+  symbol: crystal pool
+  qualities:
+  - prophecy
+  - insight
+  - connection
+  appearance_section: journey
+- name: The Navigator
+  role: guidance
+  description: Wise guide through unknown territories
+  symbol: compass of light
+  qualities:
+  - wisdom
+  - direction
+  - trust
+  appearance_section: induction
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 432
+    sections:
+    - start: 0
+      end: 144
+      offset_hz: 10.0
+    - start: 144
+      end: 360
+      offset_hz: 7.83
+    - start: 360
+      end: 630
+      offset_hz: 6.0
+    - start: 630
+      end: 1080
+      offset_hz: 4.0
+    - start: 1080
+      end: 1350
+      offset_hz: 3.0
+    - start: 1350
+      end: 1566
+      offset_hz: 6.0
+    - start: 1566
+      end: 1800
+      offset_hz: 10.0
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: 'The Market of Infinite Ideas | Journey: Walk Through an Infinite Marketplace
+    of Creative Concepts; Archetypes Assist in Recognizing Innovative Solutions and
+    Unlocking Latent Talents | Binaural Beats Meditation'
+  subtitle: "432Hz \u2022 Creativity"
+  description: 'A transformational journey: becoming a clear channel for inspiration
+    to flow through'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - creativity
+  - cosmic
+fx_timeline:
+- type: gamma_flash
+  time: 990
+  duration_s: 3.0
+  freq_hz: 40
+  description: Peak insight moment

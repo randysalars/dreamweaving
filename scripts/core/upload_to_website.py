@@ -993,7 +993,32 @@ class DreamweavingUploader:
         self.rollback.set_db_record(payload["slug"])
         return result
 
-    def run(self, category_override: str = None) -> dict:
+    def update_dreamweaving(self, payload: dict) -> dict:
+        """Update existing dreamweaving record via API (PUT)."""
+        if self.dry_run:
+            print("  [DRY RUN] Would update dreamweaving:")
+            print(f"    Slug: {payload['slug']}")
+            print(f"    Title: {payload['title'][:60]}...")
+            return {"id": 0, "slug": payload["slug"]}
+
+        api_url = f"{self.api_url}/api/dreamweavings/{payload['slug']}"
+
+        response = requests.put(
+            api_url,
+            json=payload,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.api_token}",
+            },
+            timeout=30,
+        )
+
+        if response.status_code not in [200, 201]:
+            raise Exception(f"API error: {response.status_code} - {response.text}")
+
+        return response.json()
+
+    def run(self, category_override: str = None, update_mode: bool = False) -> dict:
         """Execute the complete upload workflow."""
         print("=" * 70)
         print("DREAMWEAVING WEBSITE UPLOAD")
@@ -1003,6 +1028,7 @@ class DreamweavingUploader:
         print(f"Storage:  {self.storage_backend.upper()}")
         print(f"Dry Run:  {self.dry_run}")
         print(f"No Git:   {self.no_git}")
+        print(f"Update:   {update_mode}")
         print()
 
         try:
@@ -1069,10 +1095,15 @@ class DreamweavingUploader:
             urls = self.upload_files(files, payload["slug"])
             payload.update(urls)
 
-            # Step 7: Create database record
-            print("\n=== Creating Database Record ===")
-            result = self.create_dreamweaving(payload)
-            print(f"  Created ID: {result.get('id')}")
+            # Step 7: Create or update database record
+            if update_mode:
+                print("\n=== Updating Database Record ===")
+                result = self.update_dreamweaving(payload)
+                print(f"  Updated ID: {result.get('id')}")
+            else:
+                print("\n=== Creating Database Record ===")
+                result = self.create_dreamweaving(payload)
+                print(f"  Created ID: {result.get('id')}")
 
             # Success!
             print("\n" + "=" * 70)
@@ -1118,6 +1149,7 @@ Environment Variables for Vercel Blob:
     parser.add_argument("--no-git", action="store_true", help="Skip git operations")
     parser.add_argument("--api-url", default=DEFAULT_API_URL, help="API base URL")
     parser.add_argument("--category", help="Override auto-detected category")
+    parser.add_argument("--update", action="store_true", help="Update existing record (PUT instead of POST)")
     parser.add_argument(
         "--storage",
         choices=["r2", "vercel"],
@@ -1183,7 +1215,7 @@ Environment Variables for Vercel Blob:
     )
 
     try:
-        result = uploader.run(category_override=args.category)
+        result = uploader.run(category_override=args.category, update_mode=args.update)
         sys.exit(0)
     except Exception as e:
         print(f"\nFATAL: {e}")

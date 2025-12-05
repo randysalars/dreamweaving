@@ -1,0 +1,509 @@
+# =============================================================================
+# SCHEMA.YAML - Master Knowledge Base Schema Definition
+# =============================================================================
+# This file defines the standard structure for all knowledge entries in the
+# Dreamweaving Knowledge System. All domain files should follow this schema
+# to ensure consistent retrieval, cross-referencing, and agent integration.
+#
+# Usage: Reference this schema when creating new knowledge entries.
+#        Validation scripts use this to verify entry completeness.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+purpose: "Define standard entry structure for Dreamweaving knowledge base"
+
+# =============================================================================
+# DOMAIN TAXONOMY
+# =============================================================================
+# The knowledge base is organized into 11 primary domain clusters.
+# Each domain contains multiple files with related entries.
+
+domains:
+  traditions:
+    description: "Mystical, esoteric, and spiritual traditions"
+    files:
+      - ceremonial_magick
+      - hermeticism
+      - qabalah
+      - sufism
+      - gnosticism
+      - taoist_alchemy
+      - shamanic_practices
+
+  dream_work:
+    description: "Dream sciences and liminal state practices"
+    files:
+      - tibetan_dream_yoga
+      - active_imagination
+      - lucid_dream_triggers
+      - hypnagogic_gateways
+      - symbol_amplification
+      - dream_incubation
+
+  consciousness_maps:
+    description: "Enlightenment frameworks and stage models"
+    files:
+      - advaita_nonduality
+      - buddhist_stages
+      - christian_mystical
+      - kundalini_stages
+      - integral_stages
+      - state_trait_map
+
+  psychology:
+    description: "Psychology, hypnosis, and therapeutic modalities"
+    files:
+      - ericksonian_hypnosis
+      - nlp_patterns
+      - somatic_experiencing
+      - internal_family_systems
+      - depth_psychology
+      - polyvagal_theory
+      - attachment_styles
+
+  ritual:
+    description: "Ritual, liturgy, and prayer sciences"
+    files:
+      - invocation_patterns
+      - evocation_patterns
+      - prayer_modalities
+      - sacred_space
+      - ceremonial_sequences
+      - sacramental_actions
+
+  mythology:
+    description: "Mythology, pantheons, and narrative structures"
+    files:
+      - greek_pantheon
+      - norse_cosmology
+      - celtic_otherworld
+      - vedic_deities
+      - egyptian_neteru
+      - sumerian_anunnaki
+      - hero_journey
+      - descent_ascent
+      - archetype_catalog
+
+  symbols:
+    description: "Symbol systems and correspondences"
+    files:
+      - sacred_geometry
+      - color_correspondences
+      - planetary_influences
+      - elemental_attributions
+      - numerology
+      - gematria
+      - tarot_symbols
+      - alchemical_symbols
+
+  audio:
+    description: "Sound, frequency, and entrainment"
+    files:
+      - binaural_presets
+      - solfeggio_tones
+      - harmonic_resonance
+      - drum_cadence
+      - voice_archetypes
+      - soundscape_presets
+
+  embodiment:
+    description: "Somatic practices and breath work"
+    files:
+      - pranayama
+      - kundalini_kriyas
+      - grounding_techniques
+      - relaxation_sequences
+      - mudras_positions
+      - subtle_body_map
+
+  science:
+    description: "Scientific frameworks and research-based models"
+    files:
+      - quantum_metaphors
+      - neuroscience_maps
+      - psychedelics_research
+      - psi_research
+      - placebo_nocebo
+      - flow_states
+
+  distribution:
+    description: "YouTube optimization, SEO, and content distribution"
+    files:
+      - youtube_optimization
+      - metadata_templates
+      - audience_targeting
+      - channel_strategy
+
+# =============================================================================
+# STANDARD ENTRY SCHEMA
+# =============================================================================
+# Every knowledge entry should follow this structure.
+# Required fields are marked with [REQUIRED].
+# Optional fields provide additional context for specialized use cases.
+
+entry_schema:
+
+  # ---------------------------------------------------------------------------
+  # IDENTIFICATION [REQUIRED]
+  # ---------------------------------------------------------------------------
+  identification:
+    entry_id:
+      type: string
+      format: "domain.category.name"
+      example: "symbols.elements.fire"
+      description: "Unique identifier for cross-referencing"
+
+    name:
+      type: string
+      example: "Fire Element"
+      description: "[REQUIRED] Human-readable name"
+
+    domain:
+      type: string
+      enum: [traditions, dream_work, consciousness_maps, psychology, ritual, mythology, symbols, audio, embodiment, science]
+      description: "[REQUIRED] Parent domain cluster"
+
+    category:
+      type: string
+      example: "elements"
+      description: "[REQUIRED] Subcategory within domain"
+
+  # ---------------------------------------------------------------------------
+  # DEFINITION [REQUIRED]
+  # ---------------------------------------------------------------------------
+  definition:
+    brief:
+      type: string
+      max_length: 150
+      description: "[REQUIRED] One-sentence definition"
+
+    extended:
+      type: string
+      description: "Detailed explanation (2-5 paragraphs)"
+
+    essence:
+      type: string
+      description: "Core principle or truth in poetic form"
+
+  # ---------------------------------------------------------------------------
+  # ATTRIBUTES (Symbolic Correspondences)
+  # ---------------------------------------------------------------------------
+  attributes:
+    energy_quality:
+      type: string
+      enum: [active, receptive, balanced, transformative, stabilizing]
+      description: "Energetic nature of this entry"
+
+    element:
+      type: string
+      enum: [fire, water, air, earth, spirit, void]
+      description: "Elemental correspondence"
+
+    planetary:
+      type: string
+      enum: [sun, moon, mercury, venus, mars, jupiter, saturn, uranus, neptune, pluto]
+      description: "Planetary influence"
+
+    chakra:
+      type: string
+      enum: [root, sacral, solar, heart, throat, third_eye, crown, transpersonal]
+      description: "Primary chakra association"
+
+    brainwave:
+      type: string
+      enum: [gamma, beta, alpha, theta, delta]
+      description: "Optimal brainwave state"
+
+    color:
+      type: string
+      description: "Associated color(s)"
+
+    number:
+      type: integer
+      description: "Numerological correspondence"
+
+    direction:
+      type: string
+      enum: [north, south, east, west, above, below, center]
+      description: "Directional correspondence"
+
+  # ---------------------------------------------------------------------------
+  # APPLICATIONS (How to Use in Dreamweaving)
+  # ---------------------------------------------------------------------------
+  applications:
+    journey_phases:
+      type: array
+      items: [pre_talk, induction, deepening, journey, helm_deep_trance, integration, reorientation]
+      description: "[REQUIRED] Which journey phases this applies to"
+
+    outcome_alignment:
+      type: array
+      items: [healing, transformation, empowerment, self_knowledge, release, spiritual_growth, creativity, relaxation, focus, confidence]
+      description: "[REQUIRED] Which outcomes this supports"
+
+    journey_families:
+      type: array
+      items: [eden_garden, ocean_depths, underworld_descent, cosmic_forge, temple_initiation, celestial_journey]
+      description: "Compatible journey families"
+
+    use_cases:
+      type: array
+      description: "Specific scenarios where this entry applies"
+
+    contraindications:
+      type: array
+      description: "Populations or contexts where this should be avoided"
+
+  # ---------------------------------------------------------------------------
+  # TEMPLATES (Ready-to-Use Content)
+  # ---------------------------------------------------------------------------
+  templates:
+    ssml_snippet:
+      type: string
+      format: xml
+      description: "SSML template for voice generation (rate='1.0', proper prosody)"
+
+    visual_prompt:
+      type: string
+      description: "Midjourney/SD prompt fragment for imagery"
+
+    audio_cue:
+      type: string
+      description: "Sound design suggestion for mixing"
+
+    invocation_text:
+      type: string
+      description: "Ritual/prayer language for invoking this energy"
+
+    sensory_description:
+      type: string
+      description: "Multi-sensory description (VAK) for visualization"
+
+  # ---------------------------------------------------------------------------
+  # RELATIONSHIPS (Cross-References)
+  # ---------------------------------------------------------------------------
+  relationships:
+    synergies:
+      type: array
+      items: entry_id
+      description: "Entries that enhance or complement this one"
+
+    opposites:
+      type: array
+      items: entry_id
+      description: "Entries with contrary or balancing energy"
+
+    prerequisites:
+      type: array
+      items: entry_id
+      description: "Entries that should be established first"
+
+    progressions:
+      type: array
+      items: entry_id
+      description: "More advanced entries to progress to"
+
+    related_patterns:
+      type: array
+      items: pattern_id
+      description: "Hypnotic patterns that work well with this entry"
+
+    related_archetypes:
+      type: array
+      items: archetype_id
+      description: "Archetypes from archetypes.yaml that align"
+
+  # ---------------------------------------------------------------------------
+  # SOURCE REFERENCES
+  # ---------------------------------------------------------------------------
+  source_references:
+    type: array
+    items:
+      tradition:
+        type: string
+        description: "Source tradition or school"
+      text:
+        type: string
+        description: "Primary text or source"
+      author:
+        type: string
+        description: "Key teacher or author"
+
+# =============================================================================
+# EXAMPLE ENTRY
+# =============================================================================
+# This demonstrates a complete knowledge entry following the schema.
+
+example_entry:
+  entry_id: "symbols.elements.fire"
+  name: "Fire Element"
+  domain: "symbols"
+  category: "elements"
+
+  definition:
+    brief: "The transformative principle of heat, light, will, and purification"
+    extended: |
+      Fire is the element of transformation, will, and spiritual aspiration.
+      It represents the power to consume what no longer serves, transmute base
+      material into refined essence, and illuminate darkness with conscious awareness.
+      In the psyche, fire corresponds to passion, courage, anger, and the will to act.
+      Fire purifies through destruction of form, releasing energy for new creation.
+    essence: "That which transforms what was into what shall be"
+
+  attributes:
+    energy_quality: active
+    element: fire
+    planetary: sun
+    chakra: solar
+    brainwave: beta
+    color: red, orange, gold
+    number: 1
+    direction: south
+
+  applications:
+    journey_phases: [journey, helm_deep_trance]
+    outcome_alignment: [transformation, empowerment, release, confidence]
+    journey_families: [cosmic_forge, underworld_descent]
+    use_cases:
+      - "Burning away old patterns or beliefs"
+      - "Igniting passion and motivation"
+      - "Phoenix/rebirth transformation sequences"
+      - "Alchemical transmutation imagery"
+    contraindications:
+      - "Acute anxiety or panic (too activating)"
+      - "Trauma work without grounding (destabilizing)"
+
+  templates:
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-1st">
+      And now you feel a warmth beginning to grow...<break time="2s"/>
+      perhaps in your heart...<break time="1.5s"/>
+      or deep in your core...<break time="2s"/>
+      a fire that knows exactly what must be transformed...<break time="2.5s"/>
+      what must be released into light...<break time="3s"/>
+      </prosody>
+
+    visual_prompt: "sacred fire burning in a ceremonial bowl, golden flames dancing, sparks rising into darkness, warm amber light, --ar 16:9"
+
+    audio_cue: "Crackling fire ambience, rising warmth, subtle percussion building"
+
+    invocation_text: "I call upon the sacred fire, the flame that purifies and transforms, the light that reveals truth"
+
+    sensory_description: |
+      See the dancing flames, golden and orange, casting shadows that move like
+      ancient memories. Feel the warmth spreading through your body, loosening
+      what was tight, softening what was hard. Hear the soft crackle and hiss,
+      the whisper of transformation. Smell the sacred smoke carrying prayers upward.
+
+  relationships:
+    synergies:
+      - symbols.elements.air        # Fans flames, carries smoke
+      - mythology.phoenix           # Fire rebirth archetype
+      - traditions.alchemy.calcination
+    opposites:
+      - symbols.elements.water      # Balancing, cooling
+    prerequisites:
+      - embodiment.grounding        # Establish container first
+    progressions:
+      - symbols.alchemy.conjunction # Advanced fire work
+    related_patterns:
+      - fractionation_loops         # Intensification
+      - temporal_dissociation       # Time manipulation
+    related_archetypes:
+      - phoenix
+
+  source_references:
+    - tradition: "Western Hermeticism"
+      text: "The Emerald Tablet"
+    - tradition: "Alchemy"
+      text: "Aurora Consurgens"
+    - tradition: "Yoga"
+      text: "Agni - digestive fire, tapas"
+
+# =============================================================================
+# VALIDATION RULES
+# =============================================================================
+# Rules for validate_knowledge.py to check entry completeness.
+
+validation_rules:
+  required_fields:
+    - entry_id
+    - name
+    - domain
+    - category
+    - definition.brief
+    - applications.journey_phases
+    - applications.outcome_alignment
+
+  recommended_fields:
+    - definition.extended
+    - attributes.element
+    - attributes.brainwave
+    - templates.ssml_snippet
+    - relationships.synergies
+
+  format_checks:
+    entry_id: "^[a-z_]+\\.[a-z_]+\\.[a-z_]+$"
+    ssml_snippet: "must contain <prosody rate=\"1.0\""
+    journey_phases: "must be array with valid phase names"
+
+  cross_reference_checks:
+    - "All synergies must reference existing entry_ids"
+    - "All related_patterns must exist in hypnotic_patterns.yaml"
+    - "All related_archetypes must exist in archetypes.yaml"
+
+# =============================================================================
+# RETRIEVAL PROTOCOL
+# =============================================================================
+# How agents should query and use the knowledge base.
+
+retrieval_protocol:
+  steps:
+    1: "Parse session manifest for desired_outcome and theme"
+    2: "Look up outcome in outcome_registry.yaml for domain hints"
+    3: "Query relevant domain index files for matching entries"
+    4: "Filter by journey_phases that will be used"
+    5: "Check contraindications against listener profile"
+    6: "Select 3-5 synergistic entries based on relationships"
+    7: "Extract templates for SSML, imagery, audio"
+    8: "Compose session elements using templates"
+    9: "Validate pattern distribution per outcome_registry"
+
+  selection_criteria:
+    primary: "Entries where outcome_alignment includes session outcome"
+    secondary: "Entries where journey_families matches session family"
+    tertiary: "Entries with synergies to already-selected entries"
+
+  quantity_guidelines:
+    elements: "1-2 primary elements per session"
+    archetypes: "1-3 archetypes (1 primary, 1-2 secondary)"
+    traditions: "1-2 tradition references (avoid mixing incompatible)"
+    techniques: "3-5 specific techniques from relevant domains"
+
+# =============================================================================
+# CONTRIBUTION GUIDELINES
+# =============================================================================
+# Instructions for adding new knowledge entries.
+
+contribution_guidelines:
+  process:
+    1: "Identify the appropriate domain and category"
+    2: "Copy the example_entry as a template"
+    3: "Fill in all required fields"
+    4: "Add recommended fields where applicable"
+    5: "Define relationships to existing entries"
+    6: "Run validation: python scripts/utilities/validate_knowledge.py"
+    7: "Submit for review"
+
+  quality_standards:
+    - "SSML templates must use rate='1.0' (never slow rates)"
+    - "Visual prompts should include aspect ratio"
+    - "Contraindications should be specific, not vague"
+    - "Source references should be verifiable traditions"
+    - "Relationships should be bidirectional (add to related entries)"
+
+  naming_conventions:
+    entry_id: "lowercase_with_underscores, dot-separated hierarchy"
+    files: "lowercase_with_underscores.yaml"
+    categories: "Plural nouns (elements, stages, patterns)"

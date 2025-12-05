@@ -176,17 +176,91 @@ Skills are located in `.claude/skills/` and provide standard operating procedure
 
 ## Knowledge Base
 
-The system maintains a self-improving knowledge base in `knowledge/`:
+The system maintains a self-improving, hierarchical knowledge base in `knowledge/`:
+
+### Core Knowledge Files (Original)
 
 | File | Purpose |
 |------|---------|
 | `lessons_learned.yaml` | Accumulated insights with timestamps |
-| `hypnotic_patterns.yaml` | Phase 3 patterns: vagal activation, emotional calibration, integration actions |
-| `archetypes.yaml` | Shadow/gift transformations, archetypal guides, family mappings |
-| `outcome_registry.yaml` | **NEW:** Outcome → patterns/archetypes/objects mapping |
-| `best_practices.md` | Evolving best practices |
-| `analytics_history/` | Historical YouTube performance |
-| `code_improvements/` | Code quality tracking |
+| `hypnotic_patterns.yaml` | 30+ patterns with distribution rules, SSML templates |
+| `archetypes.yaml` | Shadow/gift transformations, archetypal guides |
+| `outcome_registry.yaml` | Outcome → patterns/archetypes/objects mapping |
+| `best_practices.md` | Evolving production best practices |
+| `stock_image_queries.yaml` | Platform-specific image search terms |
+
+### Expanded Knowledge Architecture
+
+The knowledge base is organized into **10 domain clusters** with specialized files:
+
+| Domain | Directory | Key Files |
+|--------|-----------|-----------|
+| **Symbols** | `knowledge/symbols/` | `elemental_attributions.yaml`, `color_correspondences.yaml` |
+| **Audio** | `knowledge/audio/` | `binaural_presets.yaml`, `soundscape_presets.yaml` |
+| **Traditions** | `knowledge/traditions/` | `hermeticism.yaml`, `qabalah.yaml`, `shamanic_practices.yaml` |
+| **Psychology** | `knowledge/psychology/` | `polyvagal_theory.yaml`, `nlp_patterns.yaml` |
+| **Mythology** | `knowledge/mythology/` | `hero_journey.yaml`, `descent_ascent.yaml` |
+| **Ritual** | `knowledge/ritual/` | `invocation_patterns.yaml`, `prayer_modalities.yaml` |
+| **Embodiment** | `knowledge/embodiment/` | `pranayama.yaml`, `grounding_techniques.yaml` |
+| **Consciousness** | `knowledge/consciousness_maps/` | `kundalini_stages.yaml`, `buddhist_stages.yaml` |
+| **Dream Work** | `knowledge/dream_work/` | `lucid_dream_triggers.yaml`, `active_imagination.yaml` |
+| **Science** | `knowledge/science/` | `quantum_metaphors.yaml`, `neuroscience_maps.yaml` |
+
+### Knowledge Indexes
+
+Cross-reference indexes in `knowledge/indexes/`:
+
+| Index | Purpose |
+|-------|---------|
+| `domain_index.yaml` | Master registry of all domains and files |
+| `outcome_index.yaml` | Maps outcomes to supporting knowledge domains |
+| `contraindication_index.yaml` | Safety matrix for populations/conditions |
+
+### Schema Reference
+
+All knowledge entries follow the schema defined in `knowledge/schema.yaml`:
+
+```yaml
+entry_id: "symbols.elements.fire"
+name: "Fire Element"
+domain: "symbols"
+category: "elements"
+
+definition:
+  brief: "One-line definition"
+  extended: "Detailed explanation"
+
+attributes:
+  element: fire
+  chakra: solar
+  brainwave: beta
+
+applications:
+  journey_phases: [journey, helm_deep_trance]
+  outcome_alignment: [transformation, empowerment]
+  contraindications: ["anxiety states", "trauma without grounding"]
+
+templates:
+  ssml_snippet: "<prosody rate='1.0'...>"
+  visual_prompt: "sacred fire imagery..."
+  audio_cue: "crackling fire ambience"
+
+relationships:
+  synergies: [symbols.colors.gold, mythology.phoenix]
+  related_patterns: [fractionation_loops, embedded_commands]
+```
+
+### Knowledge Retrieval Protocol
+
+When generating sessions, agents follow this protocol:
+
+1. **Parse manifest** for `desired_outcome` and theme
+2. **Query `outcome_index.yaml`** for supporting domains
+3. **Retrieve entries** from relevant domain files
+4. **Check `contraindication_index.yaml`** for safety
+5. **Select synergistic entries** based on relationships
+6. **Extract templates** for SSML, imagery, audio
+7. **Validate** against outcome_registry requirements
 
 ---
 
@@ -392,6 +466,7 @@ dreamweaving/
 | [docs/INDEX.md](docs/INDEX.md) | Complete documentation index |
 | [docs/MCP_PLUGINS_GUIDE.md](docs/MCP_PLUGINS_GUIDE.md) | MCP servers & plugins integration guide |
 | [docs/STOCK_IMAGE_SOP.md](docs/STOCK_IMAGE_SOP.md) | Stock image sourcing and licensing |
+| [docs/KNOWLEDGE_BASE_SOP.md](docs/KNOWLEDGE_BASE_SOP.md) | **Adding knowledge entries procedure** |
 
 ---
 
@@ -725,6 +800,7 @@ Claude should read these memories for detailed information:
 | `production_workflow_stages` | Full stage-by-stage production workflow |
 | `website_upload_deployment` | Uploading to salars.net, Vercel, R2 storage |
 | `mcp_plugins_integration` | MCP servers, plugins, context window management |
+| `knowledge_base_procedure` | **Adding new knowledge entries to the system** |
 
 **Usage Pattern:**
 ```

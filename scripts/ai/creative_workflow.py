@@ -497,9 +497,8 @@ class CreativeWorkflow:
     ) -> JourneyConcept:
         """Generate a single journey concept."""
 
-        # Select setting
-        settings = SETTING_TEMPLATES.get(setting_style, SETTING_TEMPLATES['cosmic'])
-        setting = random.choice(settings)
+        # Select setting - derive from topic if descriptive enough
+        setting = self._generate_setting(topic, setting_style)
 
         # Create title based on setting and focus
         title = self._generate_title(topic, therapeutic_focus, setting_style, concept_num)
@@ -538,7 +537,18 @@ class CreativeWorkflow:
         return concept
 
     def _generate_title(self, topic: str, focus: str, style: str, num: int) -> str:
-        """Generate a compelling title for the journey."""
+        """Generate a compelling title for the journey.
+
+        If the user provided a descriptive topic (3+ words), use it directly
+        with proper title case. Otherwise, fall back to template-based generation.
+        """
+        # Check if topic is descriptive enough to use directly
+        topic_words = topic.strip().split()
+        if len(topic_words) >= 3:
+            # Topic is descriptive - use it directly with enhancement
+            return self._enhance_topic_title(topic)
+
+        # Fall back to template-based generation for generic topics
         title_templates = {
             'cosmic': [
                 "Voyage to the {focus} Star",
@@ -577,6 +587,101 @@ class CreativeWorkflow:
 
         focus_word = focus.replace('_', ' ').title()
         return template.format(focus=focus_word)
+
+    def _enhance_topic_title(self, topic: str) -> str:
+        """Enhance a user-provided topic into a polished title.
+
+        Applies proper title case while preserving special words like
+        articles, prepositions, and proper nouns.
+        """
+        # Words that should remain lowercase (unless first word)
+        lowercase_words = {'to', 'the', 'a', 'an', 'of', 'in', 'for', 'and', 'or', 'but', 'with', 'from'}
+
+        title = topic.strip()
+        words = title.split()
+        result = []
+
+        for i, word in enumerate(words):
+            # First word is always capitalized
+            if i == 0:
+                result.append(word.capitalize())
+            # Check if word is already all caps (might be acronym or proper noun like "MASTER")
+            elif word.isupper() and len(word) > 1:
+                result.append(word)
+            # Lowercase words stay lowercase
+            elif word.lower() in lowercase_words:
+                result.append(word.lower())
+            # Everything else gets title case
+            else:
+                result.append(word.capitalize())
+
+        return ' '.join(result)
+
+    def _generate_setting(self, topic: str, style: str) -> str:
+        """Generate setting based on topic or fall back to templates.
+
+        If the topic is descriptive (3+ words), derive the setting from it.
+        Otherwise, randomly select from style-based templates.
+        """
+        topic_words = topic.strip().split()
+
+        if len(topic_words) >= 3:
+            # Derive setting from the topic
+            return self._derive_setting_from_topic(topic)
+
+        # Fall back to template-based setting
+        settings = SETTING_TEMPLATES.get(style, SETTING_TEMPLATES['cosmic'])
+        return random.choice(settings)
+
+    def _derive_setting_from_topic(self, topic: str) -> str:
+        """Derive a setting description from a descriptive topic.
+
+        Transforms topic into an immersive setting description.
+        """
+        topic_lower = topic.lower()
+
+        # Check for specific mythological/geographical references
+        if any(term in topic_lower for term in ['tír na nóg', 'tir na nog', 'land of eternal', 'otherworld']):
+            return "on the mystical shores of Tír na nÓg, the Celtic Otherworld where time stands still and eternal youth flows through every breath"
+
+        if any(term in topic_lower for term in ['eden', 'garden of']):
+            return "within the luminous Garden of Eden, where the Tree of Life glows with sacred light and rivers of living water flow"
+
+        if any(term in topic_lower for term in ['atlantis', 'atlantean']):
+            return "in the crystal halls of ancient Atlantis, where advanced wisdom merges with sacred technology"
+
+        if any(term in topic_lower for term in ['egypt', 'pyramid', 'pharaoh', 'nile']):
+            return "within an ancient Egyptian temple, where hieroglyphs glow with golden light and the wisdom of ages awaits"
+
+        if any(term in topic_lower for term in ['celtic', 'druid', 'stonehenge']):
+            return "in a sacred Celtic grove, where ancient oaks whisper secrets and the veil between worlds grows thin"
+
+        if any(term in topic_lower for term in ['forest', 'woods', 'tree']):
+            return "deep within an enchanted forest, where ancient trees hold timeless wisdom and paths of light guide your way"
+
+        if any(term in topic_lower for term in ['ocean', 'sea', 'water', 'underwater']):
+            return "in the luminous depths of a sacred ocean, where crystalline waters hold healing energy and ancient mysteries"
+
+        if any(term in topic_lower for term in ['mountain', 'peak', 'summit']):
+            return "atop a sacred mountain where the veil between earth and sky dissolves into infinite possibility"
+
+        if any(term in topic_lower for term in ['temple', 'shrine', 'sanctuary']):
+            return "within an ancient temple of light, where sacred geometry resonates with cosmic harmony"
+
+        if any(term in topic_lower for term in ['star', 'cosmic', 'galaxy', 'universe', 'space']):
+            return "aboard a vessel of light traveling through the cosmic tapestry, where stars sing and nebulae pulse with creative energy"
+
+        if any(term in topic_lower for term in ['dream', 'sleep', 'night']):
+            return "in the realm between waking and dreaming, where consciousness drifts through landscapes of infinite possibility"
+
+        if any(term in topic_lower for term in ['heart', 'love', 'soul']):
+            return "deep within the sacred chamber of your heart, where your truest essence radiates with eternal light"
+
+        if any(term in topic_lower for term in ['journey', 'path', 'quest']):
+            return "on a sacred path that winds through realms of transformation, where each step brings you closer to your truest self"
+
+        # Default: create a setting based on the topic itself
+        return f"in a sacred realm where the essence of {topic.lower()} surrounds you with transformative energy"
 
     def _generate_metaphor(self, focus: str, style: str) -> str:
         """Generate the core metaphor for the journey."""

@@ -1,0 +1,688 @@
+# =============================================================================
+# LUCID DREAM TRIGGERS - Dream Induction for Dreamweaving
+# =============================================================================
+# Techniques for inducing lucid awareness within the hypnotic journey space.
+# These patterns help listeners recognize they are in a dream-like state
+# while maintaining the depth and richness of the experience.
+#
+# Usage: Apply triggers during journey phases to enhance listener agency.
+#        Use recognition cues to deepen engagement without breaking trance.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "dream_work"
+category: "lucid_dream_triggers"
+purpose: "Dream-like awareness techniques for hypnotic journeys"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Lucid Dream Triggers"
+
+  definition:
+    brief: "Techniques to induce conscious awareness within dream-like altered states"
+    extended: |
+      Lucid dreaming is the state of being aware that one is dreaming while
+      the dream continues. In Dreamweaving, we adapt lucid dream induction
+      techniques to help listeners recognize they are in a special state
+      while maintaining immersion. This creates a unique blend of conscious
+      participation and deep trance experience.
+
+      The goal is not to wake the listener from trance, but to give them
+      a sense of agency and co-creation within the journey space.
+
+  relevance_to_dreamweaving: |
+    Lucid dream techniques enhance Dreamweaving by:
+    - Giving listeners sense of agency and choice
+    - Deepening engagement through active participation
+    - Creating memorable, transformative experiences
+    - Allowing conscious interaction with journey elements
+    - Supporting integration by maintaining witness awareness
+
+  core_principles:
+    - "Awareness enhances, not interrupts, the experience"
+    - "Recognition leads to deeper engagement"
+    - "Agency within the journey accelerates transformation"
+    - "Dream logic remains valid even with awareness"
+    - "The observer and the observed become one"
+
+# =============================================================================
+# RECOGNITION CUES
+# =============================================================================
+
+recognition_cues:
+  note: "Embedded cues that help listener recognize dream-like state"
+
+  # ---------------------------------------------------------------------------
+  # REALITY CHECK ADAPTATIONS
+  # ---------------------------------------------------------------------------
+  reality_checks:
+    entry_id: "dream_work.lucid_triggers.reality_checks"
+    name: "Reality Check Adaptations"
+    description: "Modified reality checks suitable for hypnotic trance"
+
+    techniques:
+
+      awareness_affirmation:
+        name: "Awareness Affirmation"
+        description: "Gentle reminder of the journey state"
+        timing: "Early journey phase"
+
+        templates:
+          ssml_recognition: |
+            <prosody rate="1.0" pitch="-1st">
+            And you know, part of you knows...<break time="2.5s"/>
+            that this is a journey...<break time="2.5s"/>
+            a special kind of dream...<break time="2.5s"/>
+            where you are both the dreamer...<break time="2.5s"/>
+            and the one who watches the dream...<break time="3s"/>
+            And knowing this...<break time="2s"/>
+            makes the experience even more vivid...<break time="2.5s"/>
+            even more meaningful...<break time="3s"/>
+            </prosody>
+
+      hand_awareness:
+        name: "Hand Awareness Check"
+        description: "Classic lucid dream reality check adapted for trance"
+        timing: "Deepening or journey"
+
+        templates:
+          ssml_hands: |
+            <prosody rate="1.0" pitch="-1st">
+            And if you like...<break time="2s"/>
+            you might become aware...<break time="2.5s"/>
+            of your hands...<break time="2.5s"/>
+            in this place...<break time="2.5s"/>
+            Maybe they look different here...<break time="2.5s"/>
+            Maybe they glow...<break time="2s"/>
+            or shimmer...<break time="2.5s"/>
+            Notice them...<break time="2.5s"/>
+            and know you are here...<break time="2.5s"/>
+            conscious...<break time="2s"/>
+            aware...<break time="2s"/>
+            in this special place...<break time="3.5s"/>
+            </prosody>
+
+      impossibility_recognition:
+        name: "Impossibility Recognition"
+        description: "Noticing dream-logic elements confirms altered state"
+        timing: "During surreal imagery"
+
+        templates:
+          ssml_impossibility: |
+            <prosody rate="1.0" pitch="-1st">
+            And here...<break time="2s"/>
+            things that couldn't happen...<break time="2.5s"/>
+            in ordinary life...<break time="2.5s"/>
+            happen easily...<break time="2.5s"/>
+            You can fly...<break time="2s"/>
+            or breathe underwater...<break time="2.5s"/>
+            or move through solid walls...<break time="2.5s"/>
+            And because you can...<break time="2.5s"/>
+            you know...<break time="2.5s"/>
+            you are in the dream space...<break time="2.5s"/>
+            where all things are possible...<break time="3.5s"/>
+            </prosody>
+
+  # ---------------------------------------------------------------------------
+  # ENVIRONMENTAL CUES
+  # ---------------------------------------------------------------------------
+  environmental_cues:
+    entry_id: "dream_work.lucid_triggers.environmental_cues"
+    name: "Environmental Recognition Cues"
+    description: "Dream-like qualities in the journey environment"
+
+    techniques:
+
+      light_quality:
+        name: "Dream Light Quality"
+        description: "Light behaves differently in dreams"
+
+        templates:
+          ssml_light: |
+            <prosody rate="1.0" pitch="-1st">
+            Notice the light here...<break time="2.5s"/>
+            It doesn't behave like ordinary light...<break time="2.5s"/>
+            It seems to come from everywhere...<break time="2.5s"/>
+            and nowhere...<break time="2.5s"/>
+            Things glow from within...<break time="2.5s"/>
+            shadows move differently...<break time="2.5s"/>
+            This is dream light...<break time="2.5s"/>
+            the light of the inner world...<break time="3s"/>
+            </prosody>
+
+      color_intensity:
+        name: "Hyper-Real Colors"
+        description: "Colors more vivid than waking life"
+
+        templates:
+          ssml_colors: |
+            <prosody rate="1.0" pitch="-1st">
+            And the colors here...<break time="2.5s"/>
+            are more vivid...<break time="2s"/>
+            more alive...<break time="2.5s"/>
+            than anything you've seen...<break time="2.5s"/>
+            with waking eyes...<break time="2.5s"/>
+            Greens that pulse with life...<break time="2.5s"/>
+            blues deeper than the sky...<break time="2.5s"/>
+            golds that seem to sing...<break time="3s"/>
+            </prosody>
+
+      spatial_fluidity:
+        name: "Space Fluidity"
+        description: "Dream spaces shift and flow"
+
+        templates:
+          ssml_space: |
+            <prosody rate="1.0" pitch="-1st">
+            And you might notice...<break time="2.5s"/>
+            how space works differently here...<break time="2.5s"/>
+            A door that wasn't there before...<break time="2.5s"/>
+            appears when you need it...<break time="2.5s"/>
+            Distances stretch and compress...<break time="2.5s"/>
+            according to your intention...<break time="2.5s"/>
+            This is how dream space works...<break time="3s"/>
+            </prosody>
+
+# =============================================================================
+# STABILIZATION TECHNIQUES
+# =============================================================================
+
+stabilization:
+  note: "Techniques to maintain lucid awareness without losing depth"
+
+  # ---------------------------------------------------------------------------
+  # GROUNDING IN DREAM
+  # ---------------------------------------------------------------------------
+  grounding_techniques:
+    entry_id: "dream_work.lucid_triggers.grounding"
+    name: "Dream State Grounding"
+    description: "Maintaining stability in the journey space"
+
+    techniques:
+
+      sensory_engagement:
+        name: "Sensory Anchoring"
+        description: "Engaging senses deepens and stabilizes"
+        purpose: "Prevents fading out or losing the experience"
+
+        templates:
+          ssml_sensory: |
+            <prosody rate="1.0" pitch="-1st">
+            To stay here...<break time="2s"/>
+            to remain in this place...<break time="2.5s"/>
+            engage your senses...<break time="2.5s"/>
+            Reach out and touch something...<break time="2.5s"/>
+            Feel its texture...<break time="2.5s"/>
+            Notice the temperature...<break time="2s"/>
+            of the air on your skin...<break time="2.5s"/>
+            Smell the atmosphere...<break time="2.5s"/>
+            Each sensation...<break time="2s"/>
+            anchors you here...<break time="2.5s"/>
+            makes it more real...<break time="3s"/>
+            </prosody>
+
+      spinning_stabilization:
+        name: "Spinning Technique"
+        description: "Classic lucid dream stabilizer adapted"
+        purpose: "Prevents premature awakening from journey"
+
+        templates:
+          ssml_spinning: |
+            <prosody rate="1.0" pitch="-1st">
+            If you feel yourself drifting...<break time="2.5s"/>
+            or fading from this place...<break time="2.5s"/>
+            simply spin...<break time="2.5s"/>
+            like a child playing...<break time="2.5s"/>
+            Spin in the dream...<break time="2s"/>
+            and as you spin...<break time="2.5s"/>
+            everything becomes more solid...<break time="2.5s"/>
+            more vivid...<break time="2.5s"/>
+            more present...<break time="3s"/>
+            </prosody>
+
+      verbal_anchoring:
+        name: "Verbal Declaration"
+        description: "Speaking in dream strengthens presence"
+        purpose: "Activates voice centers, deepens engagement"
+
+        templates:
+          ssml_declaration: |
+            <prosody rate="1.0" pitch="-1st">
+            And if you wish...<break time="2.5s"/>
+            you can speak here...<break time="2.5s"/>
+            in this inner place...<break time="2.5s"/>
+            Say, silently or aloud...<break time="2.5s"/>
+            <emphasis level="moderate">"I am here"</emphasis>...<break time="2.5s"/>
+            <emphasis level="moderate">"I am aware"</emphasis>...<break time="2.5s"/>
+            <emphasis level="moderate">"I am present"</emphasis>...<break time="3s"/>
+            </prosody>
+
+  # ---------------------------------------------------------------------------
+  # CLARITY ENHANCEMENT
+  # ---------------------------------------------------------------------------
+  clarity_enhancement:
+    entry_id: "dream_work.lucid_triggers.clarity"
+    name: "Clarity Enhancement"
+    description: "Increasing vividness and detail"
+
+    techniques:
+
+      demand_clarity:
+        name: "Demanding Clarity"
+        description: "Assertive request for increased vividness"
+
+        templates:
+          ssml_clarity: |
+            <prosody rate="1.0" pitch="-1st">
+            And now...<break time="2s"/>
+            if you want to see more clearly...<break time="2.5s"/>
+            simply intend it...<break time="2.5s"/>
+            Command it...<break time="2.5s"/>
+            <emphasis level="moderate">"Clarity now"</emphasis>...<break time="3s"/>
+            And watch...<break time="2.5s"/>
+            as everything sharpens...<break time="2.5s"/>
+            becomes more detailed...<break time="2.5s"/>
+            more vivid...<break time="2.5s"/>
+            more real than real...<break time="3.5s"/>
+            </prosody>
+
+      focus_narrowing:
+        name: "Focus Narrowing"
+        description: "Concentrate on details to enhance"
+
+        templates:
+          ssml_focus: |
+            <prosody rate="1.0" pitch="-1st">
+            Pick one thing...<break time="2.5s"/>
+            something in this place...<break time="2.5s"/>
+            and look at it closely...<break time="2.5s"/>
+            Study its details...<break time="2.5s"/>
+            Notice textures...<break time="2s"/>
+            patterns...<break time="2s"/>
+            colors...<break time="2.5s"/>
+            As you focus...<break time="2.5s"/>
+            the whole dream...<break time="2s"/>
+            becomes clearer...<break time="3s"/>
+            </prosody>
+
+# =============================================================================
+# CONTROL TECHNIQUES
+# =============================================================================
+
+control_techniques:
+  note: "Methods for exercising agency within the journey"
+
+  # ---------------------------------------------------------------------------
+  # EXPECTATION CONTROL
+  # ---------------------------------------------------------------------------
+  expectation:
+    entry_id: "dream_work.lucid_triggers.expectation"
+    name: "Expectation-Based Control"
+    description: "What you expect tends to manifest"
+
+    techniques:
+
+      door_technique:
+        name: "Door Technique"
+        description: "Doors lead to expected destinations"
+
+        templates:
+          ssml_door: |
+            <prosody rate="1.0" pitch="-1st">
+            And when you see a door...<break time="2.5s"/>
+            in this place...<break time="2.5s"/>
+            you can decide...<break time="2.5s"/>
+            what's on the other side...<break time="2.5s"/>
+            Before you open it...<break time="2.5s"/>
+            know what you'll find...<break time="2.5s"/>
+            and it will be there...<break time="2.5s"/>
+            waiting for you...<break time="3s"/>
+            </prosody>
+
+      summoning_technique:
+        name: "Summoning Guides"
+        description: "Calling forth helpers or guides"
+
+        templates:
+          ssml_summoning: |
+            <prosody rate="1.0" pitch="-1st">
+            If you need guidance...<break time="2.5s"/>
+            or a helper...<break time="2.5s"/>
+            simply call out...<break time="2.5s"/>
+            in your mind...<break time="2.5s"/>
+            or with your dream voice...<break time="2.5s"/>
+            Ask for who you need...<break time="2.5s"/>
+            and turn around...<break time="2.5s"/>
+            They will be there...<break time="3s"/>
+            </prosody>
+
+      transformation_intent:
+        name: "Intentional Transformation"
+        description: "Changing elements through will"
+
+        templates:
+          ssml_transform: |
+            <prosody rate="1.0" pitch="-1st">
+            And here...<break time="2.5s"/>
+            you have the power...<break time="2.5s"/>
+            to change things...<break time="2.5s"/>
+            Simply decide...<break time="2.5s"/>
+            what you want to see...<break time="2.5s"/>
+            or experience...<break time="2.5s"/>
+            Hold that intention...<break time="2.5s"/>
+            and watch it manifest...<break time="3s"/>
+            </prosody>
+
+  # ---------------------------------------------------------------------------
+  # MOVEMENT CONTROL
+  # ---------------------------------------------------------------------------
+  movement:
+    entry_id: "dream_work.lucid_triggers.movement"
+    name: "Movement Techniques"
+    description: "Ways to move through dream space"
+
+    techniques:
+
+      flying:
+        name: "Dream Flight"
+        description: "Leaving ground, soaring"
+
+        templates:
+          ssml_flying: |
+            <prosody rate="1.0" pitch="-1st">
+            And if you want to fly...<break time="2.5s"/>
+            simply lift off...<break time="2.5s"/>
+            Feel yourself becoming lighter...<break time="2.5s"/>
+            lighter than air...<break time="2.5s"/>
+            Your feet leave the ground...<break time="2.5s"/>
+            and you rise...<break time="2.5s"/>
+            effortlessly...<break time="2.5s"/>
+            into the sky...<break time="3s"/>
+            </prosody>
+
+      teleportation:
+        name: "Instant Travel"
+        description: "Moving instantly to new locations"
+
+        templates:
+          ssml_teleport: |
+            <prosody rate="1.0" pitch="-1st">
+            And here...<break time="2.5s"/>
+            you don't have to travel...<break time="2.5s"/>
+            through space...<break time="2.5s"/>
+            Simply close your dream eyes...<break time="2.5s"/>
+            picture where you want to be...<break time="2.5s"/>
+            and open them...<break time="2.5s"/>
+            You are already there...<break time="3s"/>
+            </prosody>
+
+      phasing:
+        name: "Moving Through Matter"
+        description: "Passing through solid objects"
+
+        templates:
+          ssml_phasing: |
+            <prosody rate="1.0" pitch="-1st">
+            And if a wall blocks your path...<break time="2.5s"/>
+            know that here...<break time="2.5s"/>
+            matter is not solid...<break time="2.5s"/>
+            it is made of light...<break time="2.5s"/>
+            and thought...<break time="2.5s"/>
+            Walk through it...<break time="2.5s"/>
+            as easily as walking through mist...<break time="3s"/>
+            </prosody>
+
+# =============================================================================
+# INDUCTION METHODS
+# =============================================================================
+
+induction_methods:
+  note: "Techniques for inducing lucid awareness during journey"
+
+  # ---------------------------------------------------------------------------
+  # WAKE-INITIATED (WILD ADAPTATION)
+  # ---------------------------------------------------------------------------
+  wake_initiated:
+    entry_id: "dream_work.lucid_triggers.wake_initiated"
+    name: "Wake-Initiated Lucid Transition"
+    description: "Maintaining awareness through trance transition"
+
+    technique:
+      name: "Conscious Trance Entry"
+      description: "Keeping witness awareness during induction"
+      phase: "Induction"
+
+      templates:
+        ssml_conscious_entry: |
+          <prosody rate="1.0" pitch="-2st">
+          And as you relax deeper...<break time="2.5s"/>
+          and your body becomes heavy...<break time="2.5s"/>
+          and warm...<break time="2.5s"/>
+          keep a small spark...<break time="2.5s"/>
+          of awareness...<break time="2.5s"/>
+          alive...<break time="2.5s"/>
+          Like a candle flame...<break time="2.5s"/>
+          that remains lit...<break time="2.5s"/>
+          even as everything else...<break time="2s"/>
+          drifts into dream...<break time="3s"/>
+          This part of you...<break time="2s"/>
+          watches...<break time="2.5s"/>
+          witnesses...<break time="2.5s"/>
+          remains aware...<break time="3.5s"/>
+          </prosody>
+
+  # ---------------------------------------------------------------------------
+  # DREAM-INITIATED (DILD ADAPTATION)
+  # ---------------------------------------------------------------------------
+  dream_initiated:
+    entry_id: "dream_work.lucid_triggers.dream_initiated"
+    name: "Dream-Initiated Lucid Awareness"
+    description: "Recognition during the journey"
+
+    technique:
+      name: "Mid-Journey Recognition"
+      description: "Becoming lucid within established journey"
+      phase: "Journey"
+
+      templates:
+        ssml_mid_journey: |
+          <prosody rate="1.0" pitch="-1st">
+          And somewhere in this journey...<break time="2.5s"/>
+          perhaps right now...<break time="2.5s"/>
+          you might suddenly realize...<break time="2.5s"/>
+          with a spark of recognition...<break time="2.5s"/>
+          <emphasis level="moderate">This is a dream</emphasis>...<break time="3s"/>
+          And instead of waking...<break time="2.5s"/>
+          this knowledge...<break time="2s"/>
+          deepens everything...<break time="2.5s"/>
+          makes it more vivid...<break time="2.5s"/>
+          more meaningful...<break time="2.5s"/>
+          more real...<break time="3.5s"/>
+          </prosody>
+
+  # ---------------------------------------------------------------------------
+  # MNEMONIC INDUCTION
+  # ---------------------------------------------------------------------------
+  mnemonic:
+    entry_id: "dream_work.lucid_triggers.mnemonic"
+    name: "Mnemonic Induction"
+    description: "Using intention and memory"
+
+    technique:
+      name: "Pre-Set Intention"
+      description: "Setting intention before journey begins"
+      phase: "Pre-talk"
+
+      templates:
+        ssml_intention: |
+          <prosody rate="1.0" pitch="0st">
+          Before we begin this journey...<break time="2.5s"/>
+          I invite you to set an intention...<break time="2.5s"/>
+          Tell yourself now...<break time="2.5s"/>
+          that during this experience...<break time="2.5s"/>
+          you will remain aware...<break time="2.5s"/>
+          You will know you are journeying...<break time="2.5s"/>
+          and this knowing...<break time="2.5s"/>
+          will enhance everything you experience...<break time="3s"/>
+          </prosody>
+
+# =============================================================================
+# PHASE APPLICATIONS
+# =============================================================================
+
+phase_applications:
+
+  pre_talk:
+    techniques:
+      - mnemonic (intention setting)
+    purpose: "Prepare listener for conscious journey"
+    emphasis: "Light touch, don't over-explain"
+
+  induction:
+    techniques:
+      - wake_initiated (conscious entry)
+      - awareness_affirmation
+    purpose: "Maintain witness while inducing trance"
+    emphasis: "Gentle awareness, not forced attention"
+
+  deepening:
+    techniques:
+      - sensory_engagement
+      - environmental_cues
+    purpose: "Stabilize and enrich the journey space"
+    emphasis: "Use cues to deepen, not awaken"
+
+  journey:
+    techniques:
+      - reality_checks (adapted)
+      - control_techniques
+      - clarity_enhancement
+    purpose: "Enable active participation"
+    emphasis: "Agency and co-creation"
+
+  helm_deep_trance:
+    techniques:
+      - stabilization only
+    purpose: "Maintain depth without distraction"
+    emphasis: "Less is more - let the experience speak"
+    note: "Avoid too many lucid triggers here - can break depth"
+
+  integration:
+    techniques:
+      - verbal_anchoring
+      - memory consolidation
+    purpose: "Bring insights back with awareness"
+    emphasis: "Remember and embody"
+
+# =============================================================================
+# OUTCOME ALIGNMENT
+# =============================================================================
+
+outcome_alignment:
+
+  transformation:
+    techniques_emphasis: [control_techniques, transformation_intent]
+    purpose: "Enable conscious participation in transformation"
+
+  self_knowledge:
+    techniques_emphasis: [recognition_cues, dream_initiated]
+    purpose: "Witness inner patterns with awareness"
+
+  empowerment:
+    techniques_emphasis: [control_techniques, movement]
+    purpose: "Experience agency and power in dream"
+
+  creativity:
+    techniques_emphasis: [expectation, summoning_technique]
+    purpose: "Consciously create in dream space"
+
+  spiritual_growth:
+    techniques_emphasis: [awareness_affirmation, clarity_enhancement]
+    purpose: "Maintain presence in transcendent states"
+
+  healing:
+    techniques_emphasis: [sensory_engagement, stabilization]
+    purpose: "Stay present with healing process"
+    note: "Avoid too much control - allow healing to unfold"
+
+# =============================================================================
+# INTEGRATION WITH OTHER SYSTEMS
+# =============================================================================
+
+integration:
+
+  with_hero_journey:
+    note: "Lucid awareness enhances Hero's Journey elements"
+    applications:
+      - "Call to Adventure: Recognize the dream-call"
+      - "Crossing Threshold: Conscious transition"
+      - "Tests/Allies: Summon help intentionally"
+      - "Ordeal: Face challenge with awareness"
+      - "Return: Bring back gifts consciously"
+
+  with_chakras:
+    note: "Lucid awareness can be anchored at specific centers"
+    applications:
+      - "Third Eye: Seat of lucid awareness"
+      - "Crown: Expanded consciousness"
+      - "Heart: Compassionate witness"
+
+  with_polyvagal:
+    note: "Safety supports lucid awareness"
+    applications:
+      - "Ventral vagal state supports clear awareness"
+      - "Sympathetic activation can trigger lucidity"
+      - "Grounding prevents dissociation"
+
+# =============================================================================
+# CONTRAINDICATIONS
+# =============================================================================
+
+contraindications:
+  note: "When to minimize lucid dream techniques"
+
+  populations:
+    - condition: "Dissociative disorders"
+      caution: "May increase dissociation - use grounding instead"
+
+    - condition: "Psychotic conditions"
+      caution: "May blur reality testing - avoid or minimize"
+
+    - condition: "High anxiety"
+      caution: "May increase hypervigilance - use sparingly"
+
+  situations:
+    - "First-time listeners: Keep it simple"
+    - "Deep healing work: Let process unfold naturally"
+    - "Trauma processing: Prioritize safety over awareness"
+    - "Purely relaxation sessions: Less control, more surrender"
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - mythology.hero_journey
+    - consciousness_maps.kundalini_stages
+    - psychology.polyvagal_theory
+    - traditions.hermeticism
+
+  source_references:
+    - text: "Exploring the World of Lucid Dreaming"
+      author: "Stephen LaBerge"
+    - text: "Lucid Dreaming: Gateway to the Inner Self"
+      author: "Robert Waggoner"
+    - text: "The Tibetan Yogas of Dream and Sleep"
+      author: "Tenzin Wangyal Rinpoche"
+    - text: "Dream Yoga"
+      author: "Andrew Holecek"
+
+  related_domains:
+    - dream_work.tibetan_dream_yoga
+    - dream_work.active_imagination
+    - psychology.ericksonian_hypnosis

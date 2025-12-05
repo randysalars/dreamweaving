@@ -1,0 +1,639 @@
+# =============================================================================
+# INTERNAL FAMILY SYSTEMS (IFS) - Parts Work for Dreamweaving
+# =============================================================================
+# IFS provides a framework for understanding the psyche as a system of
+# sub-personalities or "parts." This approach offers powerful tools for
+# healing, integration, and self-understanding within hypnotic journeys.
+#
+# Usage: Apply IFS concepts for inner dialogue, healing wounded parts,
+#        and integrating conflicting aspects of self.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "psychology"
+category: "internal_family_systems"
+purpose: "Parts-based psychology for inner healing and integration journeys"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Internal Family Systems (IFS)"
+  founder: "Richard C. Schwartz, PhD"
+  origin: "1980s-1990s"
+
+  definition:
+    brief: "A therapeutic model that views the psyche as a system of protective and wounded sub-personalities or 'parts'"
+    extended: |
+      Internal Family Systems (IFS) is an evidence-based psychotherapy model
+      that understands the mind as naturally multiple - composed of many
+      sub-personalities or "parts" that interact like members of a family.
+      These parts take on different roles: some protect (Managers, Firefighters),
+      some carry pain (Exiles). Beneath all parts is the Self - a core of
+      calm, compassion, and clarity that can heal and lead the internal system.
+
+      IFS assumes:
+      - All parts have good intentions (even destructive ones)
+      - Parts are not to be eliminated but befriended and healed
+      - The Self can lead the system with compassion
+      - Healing happens through relationship, not force
+
+  core_concepts:
+    - "The psyche is naturally multiple, composed of parts"
+    - "All parts have positive intentions, even if behaviors are destructive"
+    - "Parts can be wounded and carry 'burdens' from the past"
+    - "The Self is the core essence - calm, compassionate, connected"
+    - "Healing happens when Self witnesses and unbinds parts"
+
+  relevance_to_dreamweaving: |
+    IFS provides:
+    - Framework for inner dialogue journeys
+    - Method for meeting and healing wounded aspects
+    - Structure for integration work
+    - Non-pathologizing approach to inner conflict
+    - Clear process for transformation
+
+# =============================================================================
+# THE SELF
+# =============================================================================
+
+self:
+  entry_id: "psychology.ifs.self"
+  name: "The Self"
+
+  definition:
+    brief: "The core essence of a person - calm, compassionate, curious, and connected"
+    extended: |
+      In IFS, the Self is not a part but the essential core of every person.
+      When parts relax and step back, the Self naturally emerges. The Self
+      has inherent qualities of compassion, clarity, curiosity, creativity,
+      courage, calmness, connectedness, and confidence. The Self can witness
+      parts without becoming them, and can heal them through relationship.
+
+  qualities:
+    the_eight_cs:
+      - calm: "Centered, peaceful, not reactive"
+      - compassion: "Caring presence for all parts"
+      - curiosity: "Open interest in parts without judgment"
+      - clarity: "Clear seeing, not confused"
+      - courage: "Willing to face difficult material"
+      - creativity: "Spontaneous, resourceful responses"
+      - connectedness: "Sense of connection to all things"
+      - confidence: "Trust in the process and in Self"
+
+  experience:
+    physical: "Open chest, relaxed body, present"
+    emotional: "Calm, loving, interested"
+    mental: "Clear, spacious, non-judgmental"
+
+  journey_applications:
+    phase_alignment: ["induction", "journey", "integration"]
+    role: "The healer, the witness, the guide"
+    when_to_access:
+      - "Beginning of parts work"
+      - "Before approaching wounded parts"
+      - "When parts are reactive"
+      - "For integration and blessing"
+
+  templates:
+    ssml_access_self: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2.5s"/>
+      letting all the parts of you...<break time="2.5s"/>
+      relax...<break time="2.5s"/>
+      step back...<break time="2.5s"/>
+      just a little...<break time="2.5s"/>
+      So that you can sense...<break time="2.5s"/>
+      beneath and behind all parts...<break time="2.5s"/>
+      a presence...<break time="2.5s"/>
+      calm...<break time="2s"/>
+      curious...<break time="2s"/>
+      compassionate...<break time="2.5s"/>
+      This is your Self...<break time="2.5s"/>
+      your essential core...<break time="2.5s"/>
+      always here...<break time="2.5s"/>
+      always whole...<break time="3.5s"/>
+      </prosody>
+
+    ssml_self_qualities: |
+      <prosody rate="1.0" pitch="-1st">
+      From this place...<break time="2.5s"/>
+      you feel calm...<break time="2s"/>
+      centered...<break time="2.5s"/>
+      You feel curious...<break time="2s"/>
+      interested in what you'll discover...<break time="2.5s"/>
+      You feel compassion...<break time="2s"/>
+      for yourself and all your parts...<break time="2.5s"/>
+      This is Self energy...<break time="2.5s"/>
+      the healer within...<break time="3s"/>
+      </prosody>
+
+    visual_prompt: "Calm, radiant presence at center, golden light of Self, spacious awareness holding all parts"
+
+# =============================================================================
+# PART CATEGORIES
+# =============================================================================
+
+part_categories:
+
+  # ---------------------------------------------------------------------------
+  # MANAGERS
+  # ---------------------------------------------------------------------------
+  managers:
+    entry_id: "psychology.ifs.managers"
+    name: "Managers"
+
+    definition:
+      brief: "Protective parts that try to prevent pain by controlling life"
+      extended: |
+        Managers are proactive protective parts that try to keep the person
+        safe by controlling their life, relationships, and behavior. They
+        work to prevent exiled feelings from emerging by maintaining order,
+        achievement, perfectionism, people-pleasing, or other controlling
+        strategies.
+
+    common_types:
+      - name: "The Perfectionist"
+        behavior: "Demands flawlessness to prevent criticism"
+        fear: "Being seen as defective or unworthy"
+
+      - name: "The People-Pleaser"
+        behavior: "Puts others first, avoids conflict"
+        fear: "Abandonment, rejection"
+
+      - name: "The Controller"
+        behavior: "Tries to control everything"
+        fear: "Chaos, vulnerability"
+
+      - name: "The Critic"
+        behavior: "Harshly judges self to motivate improvement"
+        fear: "Failure, shame"
+
+      - name: "The Achiever"
+        behavior: "Pushes for success and accomplishment"
+        fear: "Worthlessness"
+
+      - name: "The Caretaker"
+        behavior: "Focuses on others' needs"
+        fear: "Being unnecessary, unloved"
+
+    positive_intent: |
+      All managers are trying to protect the person from pain.
+      They are not enemies but overworked protectors.
+
+    journey_applications:
+      phase_alignment: ["journey"]
+      when_to_work_with:
+        - "Identifying protective patterns"
+        - "Understanding internal control"
+        - "Appreciating protector's service"
+        - "Asking permission to go deeper"
+
+    templates:
+      ssml_meet_manager: |
+        <prosody rate="1.0" pitch="-1st">
+        And there is a part of you...<break time="2.5s"/>
+        that works so hard...<break time="2.5s"/>
+        to keep everything in control...<break time="2.5s"/>
+        to keep you safe...<break time="2.5s"/>
+        Can you sense this part?<break time="3s"/>
+        It has been protecting you...<break time="2.5s"/>
+        for a long time...<break time="2.5s"/>
+        doing its best...<break time="2.5s"/>
+        even if its methods are tiring...<break time="3s"/>
+        </prosody>
+
+      ssml_appreciate_manager: |
+        <prosody rate="1.0" pitch="-1st">
+        And from your Self...<break time="2.5s"/>
+        can you appreciate...<break time="2.5s"/>
+        what this part has been trying to do for you?<break time="3s"/>
+        All those years...<break time="2.5s"/>
+        working so hard...<break time="2.5s"/>
+        trying to keep you safe...<break time="2.5s"/>
+        Let it know you see it...<break time="2.5s"/>
+        you appreciate its effort...<break time="3s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # FIREFIGHTERS
+  # ---------------------------------------------------------------------------
+  firefighters:
+    entry_id: "psychology.ifs.firefighters"
+    name: "Firefighters"
+
+    definition:
+      brief: "Reactive protective parts that put out emotional fires when pain breaks through"
+      extended: |
+        Firefighters are reactive protective parts that spring into action
+        when exile pain threatens to overwhelm the system. They use urgent,
+        often destructive behaviors to distract from or numb the pain -
+        including addictions, dissociation, rage, self-harm, or other
+        extreme measures. They are emergency responders, not calculated
+        planners.
+
+    common_types:
+      - name: "The Addict"
+        behavior: "Uses substances/behaviors to numb pain"
+        fear: "Being overwhelmed by feelings"
+
+      - name: "The Rager"
+        behavior: "Explodes with anger to push away vulnerability"
+        fear: "Being hurt, powerless"
+
+      - name: "The Dissociator"
+        behavior: "Checks out, spaces out, leaves body"
+        fear: "Present-moment pain"
+
+      - name: "The Self-Harmer"
+        behavior: "Uses physical pain to distract from emotional"
+        fear: "Unbearable emotional pain"
+
+      - name: "The Binger"
+        behavior: "Overconsumes food, media, shopping"
+        fear: "Emptiness, pain"
+
+    positive_intent: |
+      Firefighters are desperately trying to protect from overwhelming pain.
+      Their methods may be destructive, but their intention is survival.
+      They need compassion, not condemnation.
+
+    journey_applications:
+      phase_alignment: ["journey"]
+      when_to_work_with:
+        - "Understanding reactive patterns"
+        - "Showing compassion for desperate protectors"
+        - "Building internal resources before exile work"
+      caution: "Don't try to bypass firefighters - work with them first"
+
+    templates:
+      ssml_meet_firefighter: |
+        <prosody rate="1.0" pitch="-1st">
+        And there may be a part of you...<break time="2.5s"/>
+        that steps in when the pain gets too much...<break time="2.5s"/>
+        a part that will do anything...<break time="2.5s"/>
+        to make the feeling stop...<break time="2.5s"/>
+        This part may use methods...<break time="2.5s"/>
+        you're not proud of...<break time="2.5s"/>
+        but it's trying to save you...<break time="2.5s"/>
+        in the only way it knows...<break time="3s"/>
+        </prosody>
+
+      ssml_compassion_firefighter: |
+        <prosody rate="1.0" pitch="-1st">
+        Can your Self...<break time="2.5s"/>
+        offer compassion...<break time="2.5s"/>
+        to this desperate protector?<break time="3s"/>
+        It has been working so hard...<break time="2.5s"/>
+        in emergency mode...<break time="2.5s"/>
+        for so long...<break time="2.5s"/>
+        What if it could rest?<break time="3s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # EXILES
+  # ---------------------------------------------------------------------------
+  exiles:
+    entry_id: "psychology.ifs.exiles"
+    name: "Exiles"
+
+    definition:
+      brief: "Wounded parts carrying pain from the past, kept hidden by protectors"
+      extended: |
+        Exiles are young parts of us that were overwhelmed by painful
+        experiences and carry the "burdens" of those experiences - beliefs
+        like "I'm worthless," feelings like terror or shame, sensations
+        frozen in the body. They are locked away by protectors because
+        their pain is seen as dangerous to the system. They desperately
+        want to be seen, heard, and healed.
+
+    common_burdens:
+      beliefs:
+        - "I am worthless"
+        - "I am unlovable"
+        - "I am bad"
+        - "I am alone"
+        - "The world is dangerous"
+        - "I have to be perfect to be loved"
+
+      feelings:
+        - "Shame"
+        - "Terror"
+        - "Grief"
+        - "Abandonment"
+        - "Helplessness"
+        - "Despair"
+
+    characteristics:
+      - "Often appear as younger versions of self"
+      - "Carry intense emotions frozen in time"
+      - "Want to be witnessed and healed"
+      - "Hold memories protectors avoid"
+
+    positive_intent: |
+      Exiles don't want to harm - they want to be healed.
+      They carry the pain so the rest of the system can function.
+      They are frozen in time, waiting for rescue.
+
+    journey_applications:
+      phase_alignment: ["helm_deep_trance"]
+      when_to_work_with:
+        - "After establishing Self leadership"
+        - "After getting protector permission"
+        - "For deep healing work"
+      caution: "Never approach exiles without protector permission and Self energy"
+
+    templates:
+      ssml_approach_exile: |
+        <prosody rate="1.0" pitch="-2st">
+        And now...<break time="2.5s"/>
+        with the permission of your protectors...<break time="2.5s"/>
+        you begin to sense...<break time="2.5s"/>
+        a younger part...<break time="2.5s"/>
+        carrying old pain...<break time="3s"/>
+        This part has waited...<break time="2.5s"/>
+        so long...<break time="2.5s"/>
+        to be seen...<break time="2.5s"/>
+        to be heard...<break time="2.5s"/>
+        to be held...<break time="3.5s"/>
+        </prosody>
+
+      ssml_witness_exile: |
+        <prosody rate="1.0" pitch="-2st">
+        And from your Self...<break time="2.5s"/>
+        with all the compassion...<break time="2.5s"/>
+        you can feel...<break time="2.5s"/>
+        simply witness...<break time="2.5s"/>
+        this wounded part...<break time="3s"/>
+        Let it show you...<break time="2.5s"/>
+        what it has carried...<break time="2.5s"/>
+        all these years...<break time="3s"/>
+        You can handle this now...<break time="2.5s"/>
+        You are here...<break time="3.5s"/>
+        </prosody>
+
+# =============================================================================
+# THE HEALING PROCESS
+# =============================================================================
+
+healing_process:
+
+  # ---------------------------------------------------------------------------
+  # SIX F'S OF IFS
+  # ---------------------------------------------------------------------------
+  six_fs:
+    entry_id: "psychology.ifs.six_fs"
+    name: "The 6 F's of IFS"
+    description: "Core steps for working with parts"
+
+    steps:
+      find:
+        name: "Find"
+        description: "Locate the part in or around the body"
+        question: "Where do you sense this part?"
+        templates:
+          ssml_find: |
+            <prosody rate="1.0" pitch="-1st">
+            And as you turn your attention inward...<break time="2.5s"/>
+            where do you sense this part?<break time="3s"/>
+            In your body...<break time="2.5s"/>
+            around your body...<break time="2.5s"/>
+            Notice where it lives...<break time="3s"/>
+            </prosody>
+
+      focus:
+        name: "Focus"
+        description: "Turn attention toward the part with interest"
+        question: "Can you focus on it?"
+        templates:
+          ssml_focus: |
+            <prosody rate="1.0" pitch="-1st">
+            And now...<break time="2.5s"/>
+            gently focus...<break time="2.5s"/>
+            on this part...<break time="2.5s"/>
+            with curiosity...<break time="2.5s"/>
+            with openness...<break time="3s"/>
+            </prosody>
+
+      flesh_out:
+        name: "Flesh Out"
+        description: "Learn more about the part's appearance and qualities"
+        question: "What do you notice about it?"
+        templates:
+          ssml_flesh_out: |
+            <prosody rate="1.0" pitch="-1st">
+            And as you focus...<break time="2.5s"/>
+            what do you notice?<break time="3s"/>
+            Does it have a shape...<break time="2.5s"/>
+            a color...<break time="2.5s"/>
+            an age...<break time="2.5s"/>
+            an image?<break time="3s"/>
+            </prosody>
+
+      feel_toward:
+        name: "Feel Toward"
+        description: "Notice how you feel toward the part (checking for Self energy)"
+        question: "How do you feel toward this part?"
+        templates:
+          ssml_feel_toward: |
+            <prosody rate="1.0" pitch="-1st">
+            And how do you feel...<break time="2.5s"/>
+            toward this part?<break time="3s"/>
+            Is there compassion?<break time="2.5s"/>
+            Curiosity?<break time="2.5s"/>
+            Or does another part have feelings about it?<break time="3s"/>
+            </prosody>
+
+      befriend:
+        name: "Befriend"
+        description: "Develop a relationship with the part"
+        question: "Can you let it know you're here with it?"
+        templates:
+          ssml_befriend: |
+            <prosody rate="1.0" pitch="-1st">
+            And can you let this part know...<break time="2.5s"/>
+            that you're here with it?<break time="3s"/>
+            That you see it...<break time="2.5s"/>
+            that you're interested...<break time="2.5s"/>
+            that you appreciate...<break time="2.5s"/>
+            what it's been doing for you?<break time="3.5s"/>
+            </prosody>
+
+      fears:
+        name: "Fears"
+        description: "Explore what the part fears would happen without it"
+        question: "What is it afraid would happen if it stopped doing its job?"
+        templates:
+          ssml_fears: |
+            <prosody rate="1.0" pitch="-1st">
+            And ask this part...<break time="2.5s"/>
+            what is it afraid would happen...<break time="3s"/>
+            if it stopped doing its job?<break time="3s"/>
+            What does it fear?<break time="3s"/>
+            </prosody>
+
+  # ---------------------------------------------------------------------------
+  # UNBURDENING
+  # ---------------------------------------------------------------------------
+  unburdening:
+    entry_id: "psychology.ifs.unburdening"
+    name: "Unburdening"
+    description: "The healing process for releasing what parts carry"
+
+    process:
+      witnessing:
+        description: "Self witnesses what the exile experienced and feels"
+        note: "Don't skip - exiles need to be truly seen"
+
+      retrieval:
+        description: "Self goes back to the past and retrieves the exile"
+        note: "Taking the young part out of the old situation"
+
+      unburdening:
+        description: "The part releases burdens to elements (earth, water, fire, air, light)"
+        note: "The core healing moment"
+
+      invitation:
+        description: "Part receives positive qualities to replace burdens"
+        note: "Not empty - filled with what was always true"
+
+    templates:
+      ssml_unburden: |
+        <prosody rate="1.0" pitch="-2st">
+        And this part...<break time="2.5s"/>
+        that has carried this burden...<break time="2.5s"/>
+        for so long...<break time="3s"/>
+        would it like to release it now?<break time="3s"/>
+        If so...<break time="2.5s"/>
+        where would it like to release it to?<break time="3s"/>
+        To the earth...<break time="2s"/>
+        to water...<break time="2s"/>
+        to fire...<break time="2s"/>
+        to wind...<break time="2s"/>
+        or to light?<break time="3.5s"/>
+        </prosody>
+
+      ssml_release: |
+        <prosody rate="1.0" pitch="-2st">
+        And now...<break time="2.5s"/>
+        let the burden leave...<break time="2.5s"/>
+        flowing out...<break time="2.5s"/>
+        into [element]...<break time="3s"/>
+        until there is nothing left...<break time="2.5s"/>
+        of what was never yours to carry...<break time="3.5s"/>
+        </prosody>
+
+      ssml_invite_qualities: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2.5s"/>
+        with the burden released...<break time="2.5s"/>
+        what quality would this part like...<break time="2.5s"/>
+        to receive in its place?<break time="3s"/>
+        What was always true...<break time="2.5s"/>
+        that it couldn't feel before?<break time="3s"/>
+        </prosody>
+
+# =============================================================================
+# JOURNEY STRUCTURES
+# =============================================================================
+
+journey_structures:
+
+  protector_appreciation:
+    name: "Protector Appreciation Journey"
+    description: "Meeting and appreciating a protective part"
+    suitable_for: "First-time IFS work, building internal relationship"
+    structure:
+      - "Establish Self energy"
+      - "Identify protective pattern"
+      - "Find the part in the body"
+      - "Approach with curiosity"
+      - "Learn its story and fears"
+      - "Appreciate its service"
+      - "Ask what it needs"
+    outcome_alignment: ["self_knowledge", "healing"]
+
+  exile_rescue:
+    name: "Exile Healing Journey"
+    description: "Witnessing, retrieving, and unburdening an exile"
+    suitable_for: "Deeper healing work, experienced listeners"
+    structure:
+      - "Establish strong Self energy"
+      - "Get protector permission"
+      - "Approach exile carefully"
+      - "Witness its experience"
+      - "Retrieve from past"
+      - "Unburden to element"
+      - "Invite positive qualities"
+      - "Integrate and update protectors"
+    outcome_alignment: ["healing", "transformation", "release"]
+    caution: "Requires careful pacing and safety"
+
+  inner_council:
+    name: "Inner Council Journey"
+    description: "Meeting multiple parts in council"
+    suitable_for: "Integration, self-understanding"
+    structure:
+      - "Establish Self as leader"
+      - "Create council space"
+      - "Invite parts to appear"
+      - "Let each speak"
+      - "Facilitate understanding between parts"
+      - "Seek harmony"
+    outcome_alignment: ["self_knowledge", "healing"]
+
+# =============================================================================
+# CONTRAINDICATIONS
+# =============================================================================
+
+contraindications:
+  note: "When to use caution with IFS-style parts work"
+
+  populations:
+    - condition: "Active dissociative disorder (DID, DDNOS)"
+      caution: "Requires specialized adaptation - parts may be more separated"
+      approach: "Work with professional, adapt pacing"
+
+    - condition: "Acute trauma"
+      caution: "May be too activating without proper containment"
+      approach: "Focus on resource-building first"
+
+    - condition: "Psychosis"
+      caution: "Parts work may confuse reality testing"
+      approach: "Avoid or use only with professional guidance"
+
+  situations:
+    - "Never approach exiles without protector permission"
+    - "Don't push through protector resistance"
+    - "Ensure Self energy before exile work"
+    - "Have return/grounding protocols ready"
+    - "Don't leave exile work incomplete"
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - psychology.polyvagal_theory
+    - consciousness_maps.kundalini_stages
+    - mythology.hero_journey
+    - symbols.elemental_attributions (for unburdening)
+
+  complementary_approaches:
+    - "Shadow work (archetypal psychology)"
+    - "Voice dialogue"
+    - "Ego state therapy"
+    - "Gestalt empty chair"
+
+  source_references:
+    - text: "Internal Family Systems Therapy"
+      author: "Richard C. Schwartz"
+    - text: "No Bad Parts"
+      author: "Richard C. Schwartz"
+    - text: "Self-Therapy"
+      author: "Jay Earley"
+    - text: "IFS Skills Training Manual"
+      author: "Frank Anderson, Martha Sweezy, Richard Schwartz"

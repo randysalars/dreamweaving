@@ -1,0 +1,846 @@
+# =============================================================================
+# SACRED GEOMETRY - Geometric Forms for Dreamweaving
+# =============================================================================
+# Sacred geometric forms carry deep symbolic meaning and appear across cultures.
+# These shapes provide visual anchors, structural frameworks, and transformative
+# symbols for hypnotic journeys.
+#
+# Usage: Apply forms for visual imagery, journey structure, and energetic work.
+#        Combine with color correspondences for enhanced effect.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "symbols"
+category: "sacred_geometry"
+purpose: "Geometric symbolic framework for visual and structural elements"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Sacred Geometry"
+
+  definition:
+    brief: "Universal geometric patterns that reflect the fundamental order of creation"
+    extended: |
+      Sacred geometry is the study of geometric patterns, shapes, and proportions
+      that appear throughout nature, art, architecture, and spiritual symbolism
+      across cultures. These forms are considered "sacred" because they reveal
+      the underlying mathematical harmony of creation - from atoms to galaxies,
+      from DNA to nautilus shells.
+
+      For Dreamweaving, sacred geometry provides:
+      - Universal visual symbols that resonate across cultures
+      - Structural templates for journey design
+      - Energetic frameworks for transformation
+      - Contemplation objects for trance deepening
+      - Integration of left-brain (mathematical) and right-brain (symbolic)
+
+  core_principles:
+    - "As above, so below - patterns repeat at all scales"
+    - "Form follows frequency - geometry is frozen music"
+    - "Nature builds using these fundamental forms"
+    - "Consciousness recognizes these patterns instinctively"
+    - "Geometry provides container for transformation"
+
+  relevance_to_dreamweaving: |
+    Sacred geometric forms serve as:
+    - Visual anchors during visualization
+    - Portals and gateways for transition
+    - Containers for energy work
+    - Structural templates for session design
+    - Universal symbols transcending cultural specificity
+
+# =============================================================================
+# FUNDAMENTAL FORMS
+# =============================================================================
+
+fundamental_forms:
+
+  # ---------------------------------------------------------------------------
+  # THE POINT - SEED
+  # ---------------------------------------------------------------------------
+  point:
+    entry_id: "symbols.sacred_geometry.point"
+    name: "The Point (Bindu)"
+    alternate_names: ["Bindu", "Seed", "Origin"]
+
+    definition:
+      brief: "The dimensionless origin from which all form emerges"
+      extended: |
+        The point represents pure potential before manifestation - the
+        seed of creation, the singularity, the first mark on blank space.
+        It is simultaneously nothing (dimensionless) and everything (containing
+        all possibility). In meditation, it serves as a focus point.
+
+    attributes:
+      dimension: 0
+      element: "Spirit/Ether"
+      number: 1
+      quality: "Unity, origin, potential"
+
+    psychology:
+      themes:
+        - Pure awareness before thought
+        - The witness, the observer
+        - Beginning, origin
+        - Focus, concentration
+        - The self before identity
+
+    journey_applications:
+      phase_alignment: ["induction", "helm_deep_trance"]
+      outcome_alignment: ["spiritual_growth", "focus", "self_knowledge"]
+      when_to_use:
+        - "Focus point for meditation"
+        - "Origin of journey"
+        - "Return to center"
+        - "Pre-creation void"
+
+    templates:
+      ssml_point: |
+        <prosody rate="1.0" pitch="-2st">
+        And there is a point...<break time="2.5s"/>
+        a single point of light...<break time="2.5s"/>
+        in the darkness...<break time="2.5s"/>
+        containing everything...<break time="2.5s"/>
+        before it becomes anything...<break time="3s"/>
+        Focus here...<break time="2.5s"/>
+        at the origin...<break time="2.5s"/>
+        at the seed...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Single brilliant point of white light in infinite darkness, seed of creation, origin of all"
+
+  # ---------------------------------------------------------------------------
+  # THE CIRCLE - WHOLENESS
+  # ---------------------------------------------------------------------------
+  circle:
+    entry_id: "symbols.sacred_geometry.circle"
+    name: "The Circle"
+    alternate_names: ["Cycle", "Wheel", "Ring"]
+
+    definition:
+      brief: "Unity, wholeness, cycles, and the infinite"
+      extended: |
+        The circle is the most fundamental sacred form - having no beginning
+        or end, it represents eternity, wholeness, and the divine. It is the
+        shape traced by the first movement from the point, creating boundary
+        while remaining infinite. All points on the circumference are
+        equidistant from center, representing equality and balance.
+
+    attributes:
+      dimension: 2
+      element: "Spirit, Water"
+      number: "0, 1, Infinity"
+      quality: "Wholeness, eternity, cycles"
+      ratio: "Pi (π) - transcendental number"
+
+    psychology:
+      themes:
+        - Wholeness and completion
+        - Cycles and return
+        - Protection and containment
+        - The self as whole
+        - Unity without division
+
+    journey_applications:
+      phase_alignment: ["induction", "journey", "integration"]
+      outcome_alignment: ["healing", "spiritual_growth", "relaxation"]
+      when_to_use:
+        - "Creating sacred space"
+        - "Containment and protection"
+        - "Wholeness meditation"
+        - "Cycle completion work"
+
+    templates:
+      ssml_circle: |
+        <prosody rate="1.0" pitch="-1st">
+        And around you now...<break time="2.5s"/>
+        a circle forms...<break time="2.5s"/>
+        perfect...<break time="2s"/>
+        unbroken...<break time="2.5s"/>
+        without beginning...<break time="2s"/>
+        without end...<break time="2.5s"/>
+        Within this circle...<break time="2.5s"/>
+        you are whole...<break time="2.5s"/>
+        you are safe...<break time="2.5s"/>
+        you are complete...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Perfect golden circle of light, sacred protective boundary, wholeness and eternity, no beginning no end"
+
+  # ---------------------------------------------------------------------------
+  # THE VESICA PISCIS - CREATION
+  # ---------------------------------------------------------------------------
+  vesica_piscis:
+    entry_id: "symbols.sacred_geometry.vesica_piscis"
+    name: "Vesica Piscis"
+    translation: "Vessel of the Fish"
+    alternate_names: ["Mandorla", "Almond", "Womb of Creation"]
+
+    definition:
+      brief: "The intersection of two circles - birth, creation, and the portal between worlds"
+      extended: |
+        When two circles of equal radius overlap so that the center of each
+        lies on the circumference of the other, the almond-shaped space
+        in the middle is the Vesica Piscis. This shape is the first step
+        from unity to duality, representing creation, birth, the yoni,
+        and the portal between realms. The √3 ratio emerges here.
+
+    attributes:
+      dimension: 2
+      element: "Water, Spirit"
+      number: 2
+      quality: "Creation, birth, portal, duality emerging from unity"
+      ratio: "√3 (1.732...)"
+
+    psychology:
+      themes:
+        - Birth and creation
+        - Portal between worlds
+        - Sacred feminine, womb
+        - Emergence of duality
+        - Threshold, doorway
+
+    journey_applications:
+      phase_alignment: ["induction", "journey"]
+      outcome_alignment: ["transformation", "creativity", "spiritual_growth"]
+      when_to_use:
+        - "Entering journey space (portal)"
+        - "Birth/rebirth imagery"
+        - "Threshold crossing"
+        - "Creative emergence"
+
+    templates:
+      ssml_vesica: |
+        <prosody rate="1.0" pitch="-1st">
+        And before you...<break time="2.5s"/>
+        two circles meet...<break time="2.5s"/>
+        overlapping...<break time="2.5s"/>
+        creating a doorway...<break time="2.5s"/>
+        in the shape of a flame...<break time="2.5s"/>
+        or an eye...<break time="2.5s"/>
+        or a sacred vessel...<break time="2.5s"/>
+        This is the portal...<break time="2.5s"/>
+        between worlds...<break time="2.5s"/>
+        Step through...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Glowing vesica piscis portal, two overlapping golden circles, almond-shaped doorway between realms"
+
+  # ---------------------------------------------------------------------------
+  # THE TRIANGLE - TRINITY
+  # ---------------------------------------------------------------------------
+  triangle:
+    entry_id: "symbols.sacred_geometry.triangle"
+    name: "The Triangle"
+    alternate_names: ["Trinity", "Triad", "Delta"]
+
+    definition:
+      brief: "First stable form - trinity, direction, and transformation"
+      extended: |
+        The triangle is the first enclosed shape possible in two dimensions,
+        representing stability and the number three. Pointing upward (△), it
+        symbolizes aspiration, fire, masculine principle, and ascent. Pointing
+        downward (▽), it represents receptivity, water, feminine principle,
+        and descent. Together they form the hexagram.
+
+    attributes:
+      dimension: 2
+      element: "Fire (△), Water (▽)"
+      number: 3
+      quality: "Stability, trinity, direction"
+      angles: "180° total"
+
+    variants:
+      upward_triangle:
+        meaning: "Fire, masculine, ascent, aspiration"
+        element: "Fire"
+        direction: "Rising energy"
+
+      downward_triangle:
+        meaning: "Water, feminine, descent, receptivity"
+        element: "Water"
+        direction: "Descending energy"
+
+      equilateral:
+        meaning: "Perfect balance of three forces"
+        quality: "Harmony, stability"
+
+    psychology:
+      themes:
+        - Trinity (body-mind-spirit, etc.)
+        - Direction and purpose
+        - Stability through balance
+        - Transformation (alchemical)
+        - Resolution of duality
+
+    journey_applications:
+      phase_alignment: ["journey", "integration"]
+      outcome_alignment: ["transformation", "empowerment", "spiritual_growth"]
+      when_to_use:
+        - "Directional energy work"
+        - "Trinity meditations"
+        - "Transformation symbols"
+        - "Stability anchoring"
+
+    templates:
+      ssml_upward_triangle: |
+        <prosody rate="1.0" pitch="-1st">
+        And rising before you...<break time="2.5s"/>
+        a triangle of light...<break time="2.5s"/>
+        pointing upward...<break time="2.5s"/>
+        like a flame...<break time="2.5s"/>
+        Drawing your energy...<break time="2s"/>
+        up...<break time="2.5s"/>
+        toward the highest...<break time="3s"/>
+        </prosody>
+
+      ssml_downward_triangle: |
+        <prosody rate="1.0" pitch="-1st">
+        And descending...<break time="2.5s"/>
+        a triangle of silver light...<break time="2.5s"/>
+        pointing downward...<break time="2.5s"/>
+        like water...<break time="2.5s"/>
+        Grounding...<break time="2s"/>
+        receiving...<break time="2.5s"/>
+        embodying...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Glowing equilateral triangle, golden upward-pointing flame or silver downward-pointing water, trinity symbol"
+
+  # ---------------------------------------------------------------------------
+  # THE SQUARE - FOUNDATION
+  # ---------------------------------------------------------------------------
+  square:
+    entry_id: "symbols.sacred_geometry.square"
+    name: "The Square"
+    alternate_names: ["Quadrant", "Foundation", "Four Directions"]
+
+    definition:
+      brief: "Earth, stability, the four directions, and material foundation"
+      extended: |
+        The square represents the earth plane, the four directions, the four
+        elements, and material stability. With four equal sides and four
+        right angles, it is the symbol of order, law, and solid foundation.
+        The square grounds spiritual energy into physical form.
+
+    attributes:
+      dimension: 2
+      element: "Earth"
+      number: 4
+      quality: "Foundation, stability, order, material world"
+      angles: "360° total, 90° each"
+
+    psychology:
+      themes:
+        - Foundation and grounding
+        - The four directions
+        - Material reality
+        - Order and structure
+        - Security and containment
+
+    journey_applications:
+      phase_alignment: ["induction", "reorientation"]
+      outcome_alignment: ["healing", "confidence", "relaxation"]
+      when_to_use:
+        - "Grounding and stability"
+        - "Four directions invocation"
+        - "Creating solid container"
+        - "Material manifestation"
+
+    templates:
+      ssml_square: |
+        <prosody rate="1.0" pitch="-1st">
+        And beneath you...<break time="2.5s"/>
+        a square of light...<break time="2.5s"/>
+        marking the four directions...<break time="2.5s"/>
+        North...<break time="2s"/>
+        South...<break time="2s"/>
+        East...<break time="2s"/>
+        West...<break time="2.5s"/>
+        A foundation...<break time="2s"/>
+        solid...<break time="2s"/>
+        stable...<break time="2.5s"/>
+        supporting you...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Glowing square foundation, four directions marked, earth element stability, solid platform of golden light"
+
+  # ---------------------------------------------------------------------------
+  # THE PENTAGON/PENTAGRAM - HUMAN/DIVINE
+  # ---------------------------------------------------------------------------
+  pentagon:
+    entry_id: "symbols.sacred_geometry.pentagon"
+    name: "The Pentagon and Pentagram"
+    alternate_names: ["Five-pointed Star", "Pentacle"]
+
+    definition:
+      brief: "The human form, divine proportion, and protection"
+      extended: |
+        The pentagon contains the golden ratio (φ) in its proportions. The
+        pentagram (five-pointed star) represents the human form with arms
+        and legs extended - the microcosm. It symbolizes the five elements,
+        the five senses, and humanity as the synthesis of the four elements
+        plus spirit. Upright, it represents spirit dominating matter.
+
+    attributes:
+      dimension: 2
+      element: "Spirit over Four Elements"
+      number: 5
+      quality: "Human, microcosm, protection, golden ratio"
+      ratio: "Phi (φ) - Golden Ratio (1.618...)"
+
+    psychology:
+      themes:
+        - The human being
+        - Divine proportion in nature
+        - Protection and warding
+        - Wholeness of five elements
+        - Spirit incarnate in matter
+
+    journey_applications:
+      phase_alignment: ["journey"]
+      outcome_alignment: ["empowerment", "self_knowledge", "spiritual_growth"]
+      when_to_use:
+        - "Human wholeness imagery"
+        - "Protection work"
+        - "Five elements balance"
+        - "Golden ratio contemplation"
+
+    templates:
+      ssml_pentagram: |
+        <prosody rate="1.0" pitch="-1st">
+        And you see yourself...<break time="2.5s"/>
+        as the five-pointed star...<break time="2.5s"/>
+        arms outstretched...<break time="2.5s"/>
+        legs grounded...<break time="2.5s"/>
+        head reaching toward heaven...<break time="2.5s"/>
+        Spirit...<break time="2s"/>
+        Air...<break time="2s"/>
+        Fire...<break time="2s"/>
+        Water...<break time="2s"/>
+        Earth...<break time="2.5s"/>
+        All unified...<break time="2s"/>
+        in you...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Glowing five-pointed star, human figure in pentagram pose, golden ratio spirals, five elements balanced"
+
+  # ---------------------------------------------------------------------------
+  # THE HEXAGRAM - UNION
+  # ---------------------------------------------------------------------------
+  hexagram:
+    entry_id: "symbols.sacred_geometry.hexagram"
+    name: "The Hexagram"
+    alternate_names: ["Star of David", "Seal of Solomon", "As Above So Below"]
+
+    definition:
+      brief: "Union of opposites - fire and water, heaven and earth, masculine and feminine"
+      extended: |
+        The hexagram is formed by two interlocking triangles - one pointing
+        up (fire/masculine/heaven) and one pointing down (water/feminine/earth).
+        Their union represents the marriage of opposites, the Hermetic axiom
+        "as above, so below," and perfect balance. It is the symbol of
+        integration and wholeness through union of polarities.
+
+    attributes:
+      dimension: 2
+      element: "Fire and Water united"
+      number: 6
+      quality: "Union of opposites, integration, as above so below"
+      angles: "Twelve points of 30° each"
+
+    psychology:
+      themes:
+        - Union of opposites
+        - Integration of masculine/feminine
+        - Heaven-earth connection
+        - Balance and harmony
+        - Sacred marriage
+
+    journey_applications:
+      phase_alignment: ["journey", "helm_deep_trance", "integration"]
+      outcome_alignment: ["transformation", "healing", "spiritual_growth"]
+      when_to_use:
+        - "Integration work"
+        - "Balancing polarities"
+        - "Sacred union imagery"
+        - "As above so below meditations"
+
+    templates:
+      ssml_hexagram: |
+        <prosody rate="1.0" pitch="-1st">
+        And before you now...<break time="2.5s"/>
+        two triangles merge...<break time="2.5s"/>
+        fire and water...<break time="2.5s"/>
+        heaven and earth...<break time="2.5s"/>
+        ascending and descending...<break time="2.5s"/>
+        becoming one...<break time="2.5s"/>
+        As above...<break time="2s"/>
+        so below...<break time="2.5s"/>
+        As within...<break time="2s"/>
+        so without...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Interlocking triangles forming hexagram, fire and water colors merging, Star of David glowing, unity of opposites"
+
+# =============================================================================
+# COMPLEX SACRED FORMS
+# =============================================================================
+
+complex_forms:
+
+  # ---------------------------------------------------------------------------
+  # FLOWER OF LIFE
+  # ---------------------------------------------------------------------------
+  flower_of_life:
+    entry_id: "symbols.sacred_geometry.flower_of_life"
+    name: "Flower of Life"
+    description: "Nineteen interlocking circles forming a flower pattern"
+
+    definition:
+      brief: "The blueprint of creation containing all geometric forms"
+      extended: |
+        The Flower of Life consists of multiple evenly-spaced, overlapping
+        circles arranged to form a flower-like pattern. Within this pattern
+        are encoded all the Platonic solids, the Seed of Life, the Fruit
+        of Life, and Metatron's Cube. It is considered the visual expression
+        of the connections between all living beings.
+
+    attributes:
+      element: "All elements"
+      quality: "Creation blueprint, interconnection, all forms"
+      contains: ["Seed of Life", "Fruit of Life", "Metatron's Cube"]
+
+    journey_applications:
+      outcome_alignment: ["spiritual_growth", "self_knowledge", "healing"]
+      when_to_use:
+        - "Universal connection meditations"
+        - "Creation contemplation"
+        - "DNA/cellular healing imagery"
+        - "Interconnection themes"
+
+    templates:
+      ssml_flower: |
+        <prosody rate="1.0" pitch="-1st">
+        And before you unfolds...<break time="2.5s"/>
+        the flower of life...<break time="2.5s"/>
+        circle upon circle...<break time="2.5s"/>
+        overlapping...<break time="2.5s"/>
+        interconnected...<break time="2.5s"/>
+        Within this pattern...<break time="2.5s"/>
+        all forms are hidden...<break time="2.5s"/>
+        all life connected...<break time="2.5s"/>
+        including you...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Flower of Life pattern glowing gold, nineteen interlocking circles, blueprint of creation, sacred geometry"
+
+  # ---------------------------------------------------------------------------
+  # SEED OF LIFE
+  # ---------------------------------------------------------------------------
+  seed_of_life:
+    entry_id: "symbols.sacred_geometry.seed_of_life"
+    name: "Seed of Life"
+    description: "Seven circles forming the seed pattern"
+
+    definition:
+      brief: "The seven days of creation, the genesis pattern"
+      extended: |
+        The Seed of Life consists of seven circles arranged in sixfold
+        symmetry, forming a pattern of six circles surrounding one central
+        circle. It represents the seven days of creation and is the core
+        pattern from which the Flower of Life grows.
+
+    attributes:
+      element: "Spirit"
+      number: 7
+      quality: "Genesis, creation, beginnings"
+
+    journey_applications:
+      outcome_alignment: ["creativity", "transformation", "spiritual_growth"]
+      when_to_use:
+        - "New beginning imagery"
+        - "Creative inspiration"
+        - "Seven-stage processes"
+
+    templates:
+      ssml_seed: |
+        <prosody rate="1.0" pitch="-1st">
+        And in the center...<break time="2.5s"/>
+        the seed of life...<break time="2.5s"/>
+        Seven circles...<break time="2.5s"/>
+        like the seven days...<break time="2.5s"/>
+        of creation...<break time="2.5s"/>
+        From this seed...<break time="2.5s"/>
+        everything grows...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Seed of Life pattern, seven interlocking circles, genesis geometry, golden light on dark background"
+
+  # ---------------------------------------------------------------------------
+  # METATRON'S CUBE
+  # ---------------------------------------------------------------------------
+  metatrons_cube:
+    entry_id: "symbols.sacred_geometry.metatrons_cube"
+    name: "Metatron's Cube"
+    description: "All five Platonic solids encoded in one pattern"
+
+    definition:
+      brief: "The archangel's geometric key containing all building blocks of matter"
+      extended: |
+        Metatron's Cube is derived from the Fruit of Life (13 circles) by
+        connecting the centers of all circles with straight lines. Within
+        this pattern are encoded all five Platonic solids - the fundamental
+        forms that build all physical matter. It is associated with the
+        archangel Metatron, keeper of sacred geometry.
+
+    attributes:
+      element: "All elements"
+      archangel: "Metatron"
+      quality: "Divine structure, all forms, cosmic organization"
+      contains: "All five Platonic solids"
+
+    journey_applications:
+      outcome_alignment: ["transformation", "spiritual_growth", "self_knowledge"]
+      when_to_use:
+        - "Archangelic connection"
+        - "Understanding cosmic order"
+        - "Deep structural meditation"
+        - "Matter/spirit integration"
+
+    templates:
+      ssml_metatron: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2.5s"/>
+        the cube of Metatron...<break time="2.5s"/>
+        appears before you...<break time="2.5s"/>
+        Lines connecting...<break time="2.5s"/>
+        all to all...<break time="2.5s"/>
+        Within this pattern...<break time="2.5s"/>
+        the building blocks...<break time="2s"/>
+        of all creation...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Metatron's Cube, complex geometric pattern with all Platonic solids visible, archangelic light, cosmic order"
+
+  # ---------------------------------------------------------------------------
+  # GOLDEN SPIRAL
+  # ---------------------------------------------------------------------------
+  golden_spiral:
+    entry_id: "symbols.sacred_geometry.golden_spiral"
+    name: "Golden Spiral"
+    alternate_names: ["Fibonacci Spiral", "Phi Spiral"]
+
+    definition:
+      brief: "The spiral of growth and evolution found throughout nature"
+      extended: |
+        The golden spiral is a logarithmic spiral whose growth factor is
+        the golden ratio (φ ≈ 1.618). It appears in nautilus shells,
+        hurricanes, galaxies, and DNA. It represents organic growth,
+        evolution, and the path of expanding consciousness.
+
+    attributes:
+      element: "Spirit, Air"
+      ratio: "Phi (φ)"
+      quality: "Growth, evolution, expansion, natural unfoldment"
+
+    journey_applications:
+      outcome_alignment: ["transformation", "spiritual_growth", "creativity"]
+      when_to_use:
+        - "Journey progression"
+        - "Growth and evolution themes"
+        - "Cosmic journey imagery"
+        - "DNA/cellular work"
+
+    templates:
+      ssml_spiral: |
+        <prosody rate="1.0" pitch="-1st">
+        And you begin to spiral...<break time="2.5s"/>
+        like the nautilus shell...<break time="2.5s"/>
+        like the galaxy...<break time="2.5s"/>
+        like DNA itself...<break time="2.5s"/>
+        Expanding outward...<break time="2.5s"/>
+        and inward...<break time="2s"/>
+        at the same time...<break time="2.5s"/>
+        Following the path...<break time="2.5s"/>
+        of natural growth...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Golden spiral expanding from center, nautilus shell, galaxy arms, DNA helix, natural growth pattern"
+
+# =============================================================================
+# PLATONIC SOLIDS
+# =============================================================================
+
+platonic_solids:
+  note: "Five perfect 3D forms - the building blocks of matter"
+
+  tetrahedron:
+    entry_id: "symbols.sacred_geometry.tetrahedron"
+    name: "Tetrahedron"
+    faces: 4
+    element: "Fire"
+    quality: "Transformation, will, action"
+    chakra: "Solar plexus"
+    color: "Red, yellow"
+
+    templates:
+      ssml_tetrahedron: |
+        <prosody rate="1.0" pitch="-1st">
+        A tetrahedron of fire...<break time="2.5s"/>
+        four triangular faces...<break time="2.5s"/>
+        the shape of transformation...<break time="2.5s"/>
+        spinning at your solar plexus...<break time="2.5s"/>
+        activating your will...<break time="3s"/>
+        </prosody>
+
+  cube:
+    entry_id: "symbols.sacred_geometry.cube"
+    name: "Cube (Hexahedron)"
+    faces: 6
+    element: "Earth"
+    quality: "Foundation, stability, grounding"
+    chakra: "Root"
+    color: "Green, brown"
+
+    templates:
+      ssml_cube: |
+        <prosody rate="1.0" pitch="-1st">
+        A cube of emerald light...<break time="2.5s"/>
+        six perfect squares...<break time="2.5s"/>
+        the shape of earth...<break time="2.5s"/>
+        grounding you...<break time="2.5s"/>
+        stabilizing you...<break time="3s"/>
+        </prosody>
+
+  octahedron:
+    entry_id: "symbols.sacred_geometry.octahedron"
+    name: "Octahedron"
+    faces: 8
+    element: "Air"
+    quality: "Mind, thought, communication"
+    chakra: "Heart, Throat"
+    color: "Yellow, light blue"
+
+    templates:
+      ssml_octahedron: |
+        <prosody rate="1.0" pitch="-1st">
+        An octahedron of air...<break time="2.5s"/>
+        eight triangular faces...<break time="2.5s"/>
+        spinning at your heart...<break time="2.5s"/>
+        opening communication...<break time="2.5s"/>
+        between worlds...<break time="3s"/>
+        </prosody>
+
+  icosahedron:
+    entry_id: "symbols.sacred_geometry.icosahedron"
+    name: "Icosahedron"
+    faces: 20
+    element: "Water"
+    quality: "Emotion, flow, transformation"
+    chakra: "Sacral"
+    color: "Blue, orange"
+
+    templates:
+      ssml_icosahedron: |
+        <prosody rate="1.0" pitch="-1st">
+        An icosahedron of water...<break time="2.5s"/>
+        twenty faces flowing...<break time="2.5s"/>
+        like a living crystal...<break time="2.5s"/>
+        at your creative center...<break time="2.5s"/>
+        emotions in motion...<break time="3s"/>
+        </prosody>
+
+  dodecahedron:
+    entry_id: "symbols.sacred_geometry.dodecahedron"
+    name: "Dodecahedron"
+    faces: 12
+    element: "Spirit/Ether"
+    quality: "Cosmos, universe, fifth element"
+    chakra: "Third eye, Crown"
+    color: "Violet, gold"
+
+    templates:
+      ssml_dodecahedron: |
+        <prosody rate="1.0" pitch="-1st">
+        A dodecahedron of spirit...<break time="2.5s"/>
+        twelve pentagonal faces...<break time="2.5s"/>
+        the shape of the cosmos...<break time="2.5s"/>
+        surrounding your consciousness...<break time="2.5s"/>
+        connecting you to all...<break time="3s"/>
+        </prosody>
+
+# =============================================================================
+# JOURNEY APPLICATIONS
+# =============================================================================
+
+journey_applications:
+
+  portal_forms:
+    note: "Best shapes for transition imagery"
+    recommended:
+      - vesica_piscis
+      - circle
+      - golden_spiral
+    templates:
+      ssml_geometric_portal: |
+        <prosody rate="1.0" pitch="-1st">
+        And before you...<break time="2.5s"/>
+        a doorway of light...<break time="2.5s"/>
+        in the shape of...<break time="2.5s"/>
+        [FORM NAME]...<break time="2.5s"/>
+        Step through...<break time="3s"/>
+        </prosody>
+
+  container_forms:
+    note: "Best shapes for creating sacred space"
+    recommended:
+      - circle
+      - hexagram
+      - cube
+    templates:
+      ssml_container: |
+        <prosody rate="1.0" pitch="-1st">
+        And surrounding you...<break time="2.5s"/>
+        a [FORM NAME] of protection...<break time="2.5s"/>
+        holding sacred space...<break time="2.5s"/>
+        safe...<break time="2s"/>
+        contained...<break time="3s"/>
+        </prosody>
+
+  energy_forms:
+    note: "Best shapes for energy work visualization"
+    recommended:
+      - tetrahedron
+      - octahedron
+      - golden_spiral
+
+  meditation_forms:
+    note: "Best shapes for focus and contemplation"
+    recommended:
+      - point
+      - circle
+      - flower_of_life
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - symbols.color_correspondences
+    - symbols.elemental_attributions
+    - traditions.qabalah
+    - consciousness_maps.kundalini_stages
+
+  source_references:
+    - text: "Sacred Geometry: Philosophy and Practice"
+      author: "Robert Lawlor"
+    - text: "The Ancient Secret of the Flower of Life"
+      author: "Drunvalo Melchizedek"
+    - text: "A Beginner's Guide to Constructing the Universe"
+      author: "Michael S. Schneider"

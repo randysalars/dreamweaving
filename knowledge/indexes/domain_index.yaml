@@ -1,0 +1,441 @@
+# =============================================================================
+# DOMAIN INDEX - Master Index of All Knowledge Domains
+# =============================================================================
+# Central registry mapping domains to their files and entries.
+# Use this index to discover available knowledge and navigate the system.
+#
+# Auto-updated when new entries are added.
+# =============================================================================
+
+version: "1.0"
+last_updated: "2025-12-05"
+purpose: "Master index for knowledge domain discovery and navigation"
+
+# =============================================================================
+# DOMAIN REGISTRY
+# =============================================================================
+
+domains:
+
+  # ---------------------------------------------------------------------------
+  # SYMBOLS - Correspondence systems and symbolic languages
+  # ---------------------------------------------------------------------------
+  symbols:
+    description: "Symbol systems, correspondences, and sacred languages"
+    status: "active"
+    files:
+      elemental_attributions:
+        path: "symbols/elemental_attributions.yaml"
+        entries: [fire, water, air, earth, spirit]
+        status: "active"
+      color_correspondences:
+        path: "symbols/color_correspondences.yaml"
+        entries: []
+        status: "pending"
+      sacred_geometry:
+        path: "symbols/sacred_geometry.yaml"
+        entries: []
+        status: "pending"
+      planetary_influences:
+        path: "symbols/planetary_influences.yaml"
+        entries: []
+        status: "pending"
+      numerology:
+        path: "symbols/numerology.yaml"
+        entries: []
+        status: "pending"
+      gematria:
+        path: "symbols/gematria.yaml"
+        entries: []
+        status: "pending"
+      tarot_symbols:
+        path: "symbols/tarot_symbols.yaml"
+        entries: []
+        status: "pending"
+      alchemical_symbols:
+        path: "symbols/alchemical_symbols.yaml"
+        entries: []
+        status: "pending"
+
+  # ---------------------------------------------------------------------------
+  # AUDIO - Sound, frequency, and entrainment
+  # ---------------------------------------------------------------------------
+  audio:
+    description: "Sound design, frequency science, and auditory entrainment"
+    status: "active"
+    files:
+      binaural_presets:
+        path: "audio/binaural_presets.yaml"
+        entries: []
+        status: "pending"
+      solfeggio_tones:
+        path: "audio/solfeggio_tones.yaml"
+        entries: []
+        status: "pending"
+      harmonic_resonance:
+        path: "audio/harmonic_resonance.yaml"
+        entries: []
+        status: "pending"
+      drum_cadence:
+        path: "audio/drum_cadence.yaml"
+        entries: []
+        status: "pending"
+      voice_archetypes:
+        path: "audio/voice_archetypes.yaml"
+        entries: []
+        status: "pending"
+      soundscape_presets:
+        path: "audio/soundscape_presets.yaml"
+        entries: []
+        status: "pending"
+
+  # ---------------------------------------------------------------------------
+  # TRADITIONS - Mystical and esoteric traditions
+  # ---------------------------------------------------------------------------
+  traditions:
+    description: "Mystical, esoteric, and spiritual traditions"
+    status: "pending"
+    files:
+      ceremonial_magick:
+        path: "traditions/ceremonial_magick.yaml"
+        entries: []
+        status: "pending"
+      hermeticism:
+        path: "traditions/hermeticism.yaml"
+        entries: []
+        status: "pending"
+      qabalah:
+        path: "traditions/qabalah.yaml"
+        entries: []
+        status: "pending"
+      sufism:
+        path: "traditions/sufism.yaml"
+        entries: []
+        status: "pending"
+      gnosticism:
+        path: "traditions/gnosticism.yaml"
+        entries: []
+        status: "pending"
+      taoist_alchemy:
+        path: "traditions/taoist_alchemy.yaml"
+        entries: []
+        status: "pending"
+      shamanic_practices:
+        path: "traditions/shamanic_practices.yaml"
+        entries: []
+        status: "pending"
+
+  # ---------------------------------------------------------------------------
+  # DREAM WORK - Dream sciences and liminal states
+  # ---------------------------------------------------------------------------
+  dream_work:
+    description: "Dream sciences and liminal state practices"
+    status: "active"
+    files:
+      tibetan_dream_yoga:
+        path: "dream_work/tibetan_dream_yoga.yaml"
+        entries: []
+        status: "pending"
+      active_imagination:
+        path: "dream_work/active_imagination.yaml"
+        entries: []
+        status: "pending"
+      lucid_dream_triggers:
+        path: "dream_work/lucid_dream_triggers.yaml"
+        entries: []
+        status: "pending"
+      hypnagogic_gateways:
+        path: "dream_work/hypnagogic_gateways.yaml"
+        entries: []
+        status: "pending"
+      symbol_amplification:
+        path: "dream_work/symbol_amplification.yaml"
+        entries: []
+        status: "pending"
+      dream_incubation:
+        path: "dream_work/dream_incubation.yaml"
+        entries: []
+        status: "pending"
+      dream_interaction_system:
+        path: "dream_work/dream_interaction_system.yaml"
+        entries: [lucid_triggers, interaction_techniques, character_dialogue, dream_symbolism, consolidation, continuity_techniques]
+        status: "active"
+
+  # ---------------------------------------------------------------------------
+  # CONSCIOUSNESS MAPS - Enlightenment frameworks
+  # ---------------------------------------------------------------------------
+  consciousness_maps:
+    description: "Enlightenment frameworks and stage models"
+    status: "active"
+    files:
+      advaita_nonduality:
+        path: "consciousness_maps/advaita_nonduality.yaml"
+        entries: []
+        status: "pending"
+      buddhist_stages:
+        path: "consciousness_maps/buddhist_stages.yaml"
+        entries: []
+        status: "pending"
+      christian_mystical:
+        path: "consciousness_maps/christian_mystical.yaml"
+        entries: []
+        status: "pending"
+      kundalini_stages:
+        path: "consciousness_maps/kundalini_stages.yaml"
+        entries: []
+        status: "pending"
+      integral_stages:
+        path: "consciousness_maps/integral_stages.yaml"
+        entries: []
+        status: "pending"
+      state_trait_map:
+        path: "consciousness_maps/state_trait_map.yaml"
+        entries: []
+        status: "pending"
+      enlightenment_traditions:
+        path: "consciousness_maps/enlightenment_traditions.yaml"
+        entries: [buddhism, advaita, christian_mysticism, sufism, daoism, common_threads, mechanisms, dreamweaving_methods, dream_enlightenment, white_light, future_technologies]
+        status: "active"
+
+  # ---------------------------------------------------------------------------
+  # PSYCHOLOGY - Psychological and therapeutic modalities
+  # ---------------------------------------------------------------------------
+  psychology:
+    description: "Psychology, hypnosis, and therapeutic modalities"
+    status: "active"
+    files:
+      ericksonian_hypnosis:
+        path: "psychology/ericksonian_hypnosis.yaml"
+        entries: []
+        status: "pending"
+      nlp_patterns:
+        path: "psychology/nlp_patterns.yaml"
+        entries: []
+        status: "pending"
+      somatic_experiencing:
+        path: "psychology/somatic_experiencing.yaml"
+        entries: []
+        status: "pending"
+      internal_family_systems:
+        path: "psychology/internal_family_systems.yaml"
+        entries: []
+        status: "pending"
+      depth_psychology:
+        path: "psychology/depth_psychology.yaml"
+        entries: []
+        status: "pending"
+      polyvagal_theory:
+        path: "psychology/polyvagal_theory.yaml"
+        entries: []
+        status: "pending"
+      attachment_styles:
+        path: "psychology/attachment_styles.yaml"
+        entries: []
+        status: "pending"
+      manifestation_technology:
+        path: "psychology/manifestation_technology.yaml"
+        entries: [predictive_processing, ras_tuning, neuroplasticity, imaginal_rehearsal, self_image_theory, somatic_encoding, placebo_architecture, quantum_field, observer_effect, field_resonance, timeline_selection, ritual_magick, prayer_miracles, chaos_magick, manifestation_protocol, future_technologies]
+        status: "active"
+      abundance_mindset:
+        path: "psychology/abundance_mindset.yaml"
+        entries: [scarcity_deprogramming, abundance_archetypes, abundance_symbols, worthiness_work, energetic_frameworks, advanced_techniques, ritual_elements, dream_incubation, somatic_activation]
+        status: "active"
+      faith_cultivation:
+        path: "psychology/faith_cultivation.yaml"
+        entries: [fear_faith_architecture, coherence_sphere, harmonic_heart_core, belief_geometry_sculptor, identity_attractor_upgrade, fear_transmutation_engine, quantum_override_layer, symbolic_fear_encounter, transmutation_ritual, serpentine_extraction, void_baptism, timeline_reconciliation, faith_core_rewriting, divine_overshadowing, solar_heart_expansion, archetypal_transfiguration, celestial_contract, multi_layer_installation, faith_anchoring_system, journey_formula, outcome_definition, contraindications]
+        status: "active"
+      intuition_guidance:
+        path: "psychology/intuition_guidance.yaml"
+        entries: [pattern_recognition, somatic_intelligence, imaginal_symbolic, predictive_processing, inner_oracle_sequence, liminal_aperture, symbol_drift, breath_of_knowing, future_echo, inner_council, guide_communication, higher_self_communion, holy_spirit_communion, image_streaming, automatic_writing, tarot_symbol_engine, skrying_divination, pendulum_adaptation, invisible_counselors, dreamweaving_oracle_protocol, living_symbols, semantic_fractals, symbolic_operators, archetypal_coprocessors, holographic_symbolism, symbolic_entanglement, meaning_density, future_symbol_engine, outcome_definition, contraindications]
+        status: "active"
+      cognitive_enhancement:
+        path: "psychology/cognitive_enhancement.yaml"
+        entries: [insight_incubation, symbolic_compression, predictive_model_training, dual_process_synchronizer, insight_bridge, cognitive_reframing_chamber, neural_pathway_garden, information_sorting_temple, problem_dissolution_vortex, thought_form_alchemist, living_codex, memory_palace_eternity, hyperdimensional_theater, genius_core, polyphonic_self_council, identity_code_forge, sacred_pattern_resonator, cognitive_overclock, noetic_field, outcome_definition, contraindications]
+        status: "active"
+
+  # ---------------------------------------------------------------------------
+  # RITUAL - Ritual, liturgy, and prayer
+  # ---------------------------------------------------------------------------
+  ritual:
+    description: "Ritual, liturgy, and prayer sciences"
+    status: "pending"
+    files:
+      invocation_patterns:
+        path: "ritual/invocation_patterns.yaml"
+        entries: []
+        status: "pending"
+      evocation_patterns:
+        path: "ritual/evocation_patterns.yaml"
+        entries: []
+        status: "pending"
+      prayer_modalities:
+        path: "ritual/prayer_modalities.yaml"
+        entries: []
+        status: "pending"
+      sacred_space:
+        path: "ritual/sacred_space.yaml"
+        entries: []
+        status: "pending"
+      ceremonial_sequences:
+        path: "ritual/ceremonial_sequences.yaml"
+        entries: []
+        status: "pending"
+      sacramental_actions:
+        path: "ritual/sacramental_actions.yaml"
+        entries: []
+        status: "pending"
+
+  # ---------------------------------------------------------------------------
+  # MYTHOLOGY - Mythological systems and narrative structures
+  # ---------------------------------------------------------------------------
+  mythology:
+    description: "Mythology, pantheons, and narrative structures"
+    status: "pending"
+    files:
+      greek_pantheon:
+        path: "mythology/greek_pantheon.yaml"
+        entries: []
+        status: "pending"
+      norse_cosmology:
+        path: "mythology/norse_cosmology.yaml"
+        entries: []
+        status: "pending"
+      celtic_otherworld:
+        path: "mythology/celtic_otherworld.yaml"
+        entries: []
+        status: "pending"
+      vedic_deities:
+        path: "mythology/vedic_deities.yaml"
+        entries: []
+        status: "pending"
+      egyptian_neteru:
+        path: "mythology/egyptian_neteru.yaml"
+        entries: []
+        status: "pending"
+      sumerian_anunnaki:
+        path: "mythology/sumerian_anunnaki.yaml"
+        entries: []
+        status: "pending"
+      hero_journey:
+        path: "mythology/hero_journey.yaml"
+        entries: []
+        status: "pending"
+      descent_ascent:
+        path: "mythology/descent_ascent.yaml"
+        entries: []
+        status: "pending"
+      archetype_catalog:
+        path: "mythology/archetype_catalog.yaml"
+        entries: []
+        status: "pending"
+
+  # ---------------------------------------------------------------------------
+  # EMBODIMENT - Somatic practices and breath work
+  # ---------------------------------------------------------------------------
+  embodiment:
+    description: "Somatic practices, breath work, and energy anatomy"
+    status: "pending"
+    files:
+      pranayama:
+        path: "embodiment/pranayama.yaml"
+        entries: []
+        status: "pending"
+      kundalini_kriyas:
+        path: "embodiment/kundalini_kriyas.yaml"
+        entries: []
+        status: "pending"
+      grounding_techniques:
+        path: "embodiment/grounding_techniques.yaml"
+        entries: []
+        status: "pending"
+      relaxation_sequences:
+        path: "embodiment/relaxation_sequences.yaml"
+        entries: []
+        status: "pending"
+      mudras_positions:
+        path: "embodiment/mudras_positions.yaml"
+        entries: []
+        status: "pending"
+      subtle_body_map:
+        path: "embodiment/subtle_body_map.yaml"
+        entries: []
+        status: "pending"
+
+  # ---------------------------------------------------------------------------
+  # SCIENCE - Scientific frameworks and research
+  # ---------------------------------------------------------------------------
+  science:
+    description: "Scientific frameworks and research-based models"
+    status: "pending"
+    files:
+      quantum_metaphors:
+        path: "science/quantum_metaphors.yaml"
+        entries: []
+        status: "pending"
+      neuroscience_maps:
+        path: "science/neuroscience_maps.yaml"
+        entries: []
+        status: "pending"
+      psychedelics_research:
+        path: "science/psychedelics_research.yaml"
+        entries: []
+        status: "pending"
+      psi_research:
+        path: "science/psi_research.yaml"
+        entries: []
+        status: "pending"
+      placebo_nocebo:
+        path: "science/placebo_nocebo.yaml"
+        entries: []
+        status: "pending"
+      flow_states:
+        path: "science/flow_states.yaml"
+        entries: []
+        status: "pending"
+
+  # ---------------------------------------------------------------------------
+  # DISTRIBUTION - YouTube optimization and content distribution
+  # ---------------------------------------------------------------------------
+  distribution:
+    description: "YouTube optimization, SEO, metadata, and content distribution strategies"
+    status: "active"
+    files:
+      youtube_optimization:
+        path: "distribution/youtube_optimization.yaml"
+        entries: [category_selection, category_alternatives, adjacent_niches, retention_optimization, title_optimization, description_optimization, tag_optimization, thumbnail_seo, scheduling, audience, authority, analytics]
+        status: "active"
+
+  # ---------------------------------------------------------------------------
+  # SESSION LEARNINGS - Learnings from production sessions (meta)
+  # ---------------------------------------------------------------------------
+  session_learnings:
+    description: "Accumulated learnings from production sessions"
+    status: "active"
+    files:
+      neural_network_navigator_v3:
+        path: "session_learnings/neural_network_navigator_v3_2024-12-01.yaml"
+        entries: []
+        status: "active"
+
+  # ---------------------------------------------------------------------------
+  # CODE IMPROVEMENTS - Code quality and system improvements (meta)
+  # ---------------------------------------------------------------------------
+  code_improvements:
+    description: "Tracked code improvements and technical debt"
+    status: "active"
+    files:
+      improvements:
+        path: "code_improvements/improvements.yaml"
+        entries: []
+        status: "active"
+
+# =============================================================================
+# STATISTICS
+# =============================================================================
+
+statistics:
+  total_domains: 13
+  total_files: 78
+  files_active: 12
+  files_pending: 66
+  last_entry_added: "2025-12-05"

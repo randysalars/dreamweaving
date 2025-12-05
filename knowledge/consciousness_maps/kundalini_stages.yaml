@@ -1,0 +1,925 @@
+# =============================================================================
+# KUNDALINI STAGES - Energy Center Progression for Dreamweaving
+# =============================================================================
+# Maps the seven chakras and their attributes for hypnotic journey design.
+# Each center includes psychological correlates, imagery, and SSML templates.
+#
+# Usage: Apply chakra progression to structure vertical journeys (root→crown).
+#        Use individual chakras for targeted healing/activation work.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "consciousness_maps"
+category: "kundalini"
+purpose: "Energy center framework for transformation and healing journeys"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Kundalini & Chakra System"
+
+  definition:
+    brief: "Seven-center energy model mapping consciousness from survival to transcendence"
+    extended: |
+      The chakra system is a map of human consciousness organized vertically
+      along the spine, from the root (Muladhara) at the base to the crown
+      (Sahasrara) at the top of the head. Each chakra represents a level of
+      development, a set of psychological functions, and specific life themes.
+      Kundalini refers to the dormant energy said to reside at the root,
+      which when awakened rises through the chakras toward enlightenment.
+
+      For Dreamweaving, this system provides:
+      - A vertical journey structure (ascending or descending)
+      - Specific imagery, colors, and sounds for each center
+      - Psychological themes to address at each level
+      - Natural progression for transformation work
+
+  traditions:
+    - Tantra (Hindu)
+    - Yoga (various schools)
+    - Tibetan Buddhism (subtle body)
+    - Western esoteric adaptations
+
+  relevance_to_dreamweaving: |
+    Chakra-based journeys provide natural structure for vertical
+    transformation experiences. Ascending journeys move from grounding
+    to transcendence; descending journeys bring insight into embodiment.
+    Each chakra offers specific themes for targeted healing work.
+
+# =============================================================================
+# THE SEVEN CHAKRAS
+# =============================================================================
+
+chakras:
+
+  # ---------------------------------------------------------------------------
+  # 1. ROOT CHAKRA - MULADHARA
+  # ---------------------------------------------------------------------------
+  root:
+    entry_id: "consciousness_maps.kundalini.root"
+    name: "Muladhara (Root Chakra)"
+    number: 1
+    sanskrit: "Muladhara"
+    meaning: "Root support"
+
+    location:
+      physical: "Base of spine, perineum"
+      visualization: "Red glowing sphere at the base of the spine"
+
+    attributes:
+      color: "red"
+      element: "earth"
+      sound: "LAM"
+      note: "C"
+      frequency: "396 Hz"
+      sense: "smell"
+      gland: "adrenals"
+
+    psychology:
+      themes:
+        - Survival and security
+        - Physical safety
+        - Basic needs (food, shelter, belonging)
+        - Grounding and stability
+        - Connection to earth and body
+        - Tribal/family identity
+
+      balanced_state:
+        - "Feeling safe and secure"
+        - "Grounded in the body"
+        - "Healthy relationship with material world"
+        - "Stable foundation for growth"
+
+      imbalanced_state:
+        shadow:
+          - "Fear, anxiety, panic"
+          - "Feeling unsafe, ungrounded"
+          - "Hoarding, materialism"
+          - "Disconnection from body"
+        excess:
+          - "Rigid, stuck"
+          - "Over-attachment to security"
+          - "Fear of change"
+
+    journey_applications:
+      phase_alignment: ["induction", "grounding"]
+      outcome_alignment: ["healing", "relaxation", "confidence"]
+
+      when_to_emphasize:
+        - "Beginning of journey (grounding)"
+        - "Returning from deep trance"
+        - "Addressing safety/security issues"
+        - "Working with fear or anxiety"
+        - "Embodiment integration"
+
+    imagery:
+      visual:
+        - "Deep red glow at base of spine"
+        - "Roots extending from body into earth"
+        - "Ancient cave, womb of earth"
+        - "Mountain base, solid ground"
+        - "Four-petaled red lotus"
+
+      sensory:
+        - "Weight of body, gravity"
+        - "Warmth of earth"
+        - "Smell of soil, forests"
+        - "Sense of solidity, support"
+
+    templates:
+      ssml_activation: |
+        <prosody rate="1.0" pitch="-2st">
+        And now bring your awareness...<break time="2s"/>
+        to the very base of your spine...<break time="2.5s"/>
+        where a sphere of deep red light...<break time="2s"/>
+        begins to glow...<break time="3s"/>
+        This is your root...<break time="2s"/>
+        your connection to the earth...<break time="2.5s"/>
+        your foundation...<break time="3s"/>
+        Feel roots extending downward...<break time="2.5s"/>
+        deep into the earth below...<break time="2.5s"/>
+        grounding you...<break time="2s"/>
+        supporting you...<break time="2.5s"/>
+        holding you safe...<break time="3.5s"/>
+        </prosody>
+
+      ssml_healing: |
+        <prosody rate="1.0" pitch="-2st">
+        And any old fears...<break time="2s"/>
+        any sense of being unsafe...<break time="2.5s"/>
+        can now be released...<break time="2.5s"/>
+        into the earth...<break time="2.5s"/>
+        which transforms everything...<break time="2s"/>
+        you no longer need...<break time="2.5s"/>
+        You are safe...<break time="2.5s"/>
+        You are held...<break time="2.5s"/>
+        You belong here...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Deep red glowing root chakra, roots extending into dark rich earth, sense of groundedness and safety, warm amber light from above"
+
+      audio_cue: "Deep drum beat, earth tones, 396 Hz undertone"
+
+  # ---------------------------------------------------------------------------
+  # 2. SACRAL CHAKRA - SVADHISTHANA
+  # ---------------------------------------------------------------------------
+  sacral:
+    entry_id: "consciousness_maps.kundalini.sacral"
+    name: "Svadhisthana (Sacral Chakra)"
+    number: 2
+    sanskrit: "Svadhisthana"
+    meaning: "One's own dwelling place"
+
+    location:
+      physical: "Lower abdomen, below navel"
+      visualization: "Orange glowing sphere in lower belly"
+
+    attributes:
+      color: "orange"
+      element: "water"
+      sound: "VAM"
+      note: "D"
+      frequency: "417 Hz"
+      sense: "taste"
+      gland: "gonads"
+
+    psychology:
+      themes:
+        - Emotions and feelings
+        - Pleasure and desire
+        - Creativity and creation
+        - Sexuality and intimacy
+        - Flow and change
+        - Relationships and connection
+
+      balanced_state:
+        - "Emotional fluidity and expression"
+        - "Healthy pleasure and desire"
+        - "Creative flow"
+        - "Comfortable with change"
+        - "Intimate connections"
+
+      imbalanced_state:
+        shadow:
+          - "Emotional numbness or overwhelm"
+          - "Guilt around pleasure"
+          - "Creative blocks"
+          - "Addiction or avoidance"
+        excess:
+          - "Emotional volatility"
+          - "Excessive pleasure-seeking"
+          - "Poor boundaries"
+
+    journey_applications:
+      phase_alignment: ["deepening", "journey"]
+      outcome_alignment: ["healing", "creativity", "release"]
+
+      when_to_emphasize:
+        - "Emotional healing work"
+        - "Creativity activation"
+        - "Processing grief or loss"
+        - "Addressing pleasure/shame patterns"
+        - "Relationship healing"
+
+    imagery:
+      visual:
+        - "Warm orange glow in lower belly"
+        - "Flowing water, streams, waterfalls"
+        - "Moon reflecting on water"
+        - "Six-petaled orange lotus"
+        - "Womb space, creative void"
+
+      sensory:
+        - "Flow of water"
+        - "Sense of movement and fluidity"
+        - "Warmth in belly"
+        - "Taste of sweetness"
+
+    templates:
+      ssml_activation: |
+        <prosody rate="1.0" pitch="-1st">
+        And now the energy rises...<break time="2s"/>
+        to your lower belly...<break time="2.5s"/>
+        where a warm orange light...<break time="2s"/>
+        begins to glow...<break time="2.5s"/>
+        like the moon reflected on water...<break time="2.5s"/>
+        This is the seat of your emotions...<break time="2.5s"/>
+        your creativity...<break time="2s"/>
+        your capacity for pleasure...<break time="2.5s"/>
+        Let this area soften...<break time="2.5s"/>
+        and flow...<break time="3s"/>
+        </prosody>
+
+      ssml_healing: |
+        <prosody rate="1.0" pitch="-1st">
+        And any stuck emotions...<break time="2s"/>
+        any old grief or shame...<break time="2.5s"/>
+        can now begin to flow...<break time="2.5s"/>
+        like water finding its path...<break time="2.5s"/>
+        You are allowed to feel...<break time="2.5s"/>
+        You are allowed to create...<break time="2.5s"/>
+        You are allowed to experience pleasure...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Warm orange sacral chakra glowing, water flowing and reflecting moonlight, sense of emotional fluidity and creative flow"
+
+      audio_cue: "Water sounds, flowing streams, 417 Hz undertone, gentle percussion"
+
+  # ---------------------------------------------------------------------------
+  # 3. SOLAR PLEXUS CHAKRA - MANIPURA
+  # ---------------------------------------------------------------------------
+  solar_plexus:
+    entry_id: "consciousness_maps.kundalini.solar_plexus"
+    name: "Manipura (Solar Plexus Chakra)"
+    number: 3
+    sanskrit: "Manipura"
+    meaning: "City of jewels"
+
+    location:
+      physical: "Upper abdomen, solar plexus"
+      visualization: "Bright yellow sun in upper belly"
+
+    attributes:
+      color: "yellow"
+      element: "fire"
+      sound: "RAM"
+      note: "E"
+      frequency: "528 Hz"
+      sense: "sight"
+      gland: "pancreas"
+
+    psychology:
+      themes:
+        - Personal power and will
+        - Self-esteem and confidence
+        - Identity and ego
+        - Action and determination
+        - Transformation and metabolism
+        - Boundaries and assertion
+
+      balanced_state:
+        - "Healthy self-esteem"
+        - "Confident action"
+        - "Clear sense of identity"
+        - "Appropriate boundaries"
+        - "Effective will"
+
+      imbalanced_state:
+        shadow:
+          - "Low self-worth"
+          - "Inability to act"
+          - "Victim mentality"
+          - "Weak boundaries"
+        excess:
+          - "Domination, control"
+          - "Aggression"
+          - "Workaholic patterns"
+          - "Ego inflation"
+
+    journey_applications:
+      phase_alignment: ["journey", "helm_deep_trance"]
+      outcome_alignment: ["empowerment", "confidence", "transformation"]
+
+      when_to_emphasize:
+        - "Building confidence"
+        - "Empowerment work"
+        - "Setting boundaries"
+        - "Overcoming victim patterns"
+        - "Identity transformation"
+
+    imagery:
+      visual:
+        - "Bright yellow sun in belly"
+        - "Fire, flame, torch"
+        - "Golden light radiating outward"
+        - "Ten-petaled yellow lotus"
+        - "Forge, transformation fire"
+
+      sensory:
+        - "Heat, warmth in core"
+        - "Sense of inner fire"
+        - "Energy and vitality"
+        - "Strength in center"
+
+    templates:
+      ssml_activation: |
+        <prosody rate="1.0" pitch="-1st">
+        And the energy rises now...<break time="2s"/>
+        to your solar plexus...<break time="2.5s"/>
+        where a golden sun...<break time="2s"/>
+        blazes with power...<break time="2.5s"/>
+        This is your center of will...<break time="2.5s"/>
+        your personal power...<break time="2s"/>
+        your inner fire...<break time="2.5s"/>
+        Feel this warmth...<break time="2s"/>
+        this strength...<break time="2.5s"/>
+        radiating from your core...<break time="3s"/>
+        </prosody>
+
+      ssml_empowerment: |
+        <prosody rate="1.0" pitch="-1st">
+        <emphasis level="moderate">You are powerful</emphasis>...<break time="2.5s"/>
+        Not power over others...<break time="2s"/>
+        but power to be yourself...<break time="2.5s"/>
+        to stand in your truth...<break time="2.5s"/>
+        to act with confidence...<break time="2.5s"/>
+        This fire burns away...<break time="2s"/>
+        all that is not you...<break time="2.5s"/>
+        leaving only gold...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Brilliant golden sun blazing in solar plexus, flames of transformation, sense of personal power and confident radiance"
+
+      audio_cue: "Fire crackling, powerful drum beats, 528 Hz frequency, brass undertones"
+
+  # ---------------------------------------------------------------------------
+  # 4. HEART CHAKRA - ANAHATA
+  # ---------------------------------------------------------------------------
+  heart:
+    entry_id: "consciousness_maps.kundalini.heart"
+    name: "Anahata (Heart Chakra)"
+    number: 4
+    sanskrit: "Anahata"
+    meaning: "Unstruck (the primordial sound)"
+
+    location:
+      physical: "Center of chest"
+      visualization: "Emerald green light in the heart"
+
+    attributes:
+      color: "green (secondary: pink)"
+      element: "air"
+      sound: "YAM"
+      note: "F"
+      frequency: "639 Hz"
+      sense: "touch"
+      gland: "thymus"
+
+    psychology:
+      themes:
+        - Love and compassion
+        - Forgiveness and acceptance
+        - Connection and relationship
+        - Balance and integration
+        - Self-love and self-acceptance
+        - Grief and healing
+
+      balanced_state:
+        - "Unconditional love for self and others"
+        - "Compassion and empathy"
+        - "Healthy relationships"
+        - "Forgiveness and peace"
+        - "Integration of upper and lower"
+
+      imbalanced_state:
+        shadow:
+          - "Grief, heartbreak"
+          - "Inability to forgive"
+          - "Isolation, disconnection"
+          - "Lack of self-love"
+        excess:
+          - "Codependency"
+          - "Loss of self in others"
+          - "Inappropriate giving"
+
+    journey_applications:
+      phase_alignment: ["journey", "helm_deep_trance", "integration"]
+      outcome_alignment: ["healing", "self_knowledge", "spiritual_growth"]
+
+      when_to_emphasize:
+        - "Healing emotional wounds"
+        - "Forgiveness work"
+        - "Self-love cultivation"
+        - "Grief processing"
+        - "Connection and relationship themes"
+
+    imagery:
+      visual:
+        - "Emerald green light in chest"
+        - "Rose opening in heart"
+        - "Garden in the heart"
+        - "Twelve-petaled green lotus"
+        - "Bridge between earth and sky"
+
+      sensory:
+        - "Expansion in chest"
+        - "Warmth and tenderness"
+        - "Breath flowing easily"
+        - "Sense of openness"
+
+    templates:
+      ssml_activation: |
+        <prosody rate="1.0" pitch="-1st">
+        And the energy rises...<break time="2s"/>
+        into the center of your chest...<break time="2.5s"/>
+        where an emerald green light...<break time="2s"/>
+        begins to bloom...<break time="2.5s"/>
+        like a rose opening...<break time="2.5s"/>
+        This is your heart center...<break time="2.5s"/>
+        the seat of love...<break time="2s"/>
+        of compassion...<break time="2s"/>
+        of connection...<break time="3s"/>
+        </prosody>
+
+      ssml_healing: |
+        <prosody rate="1.0" pitch="-1st">
+        And here, in this sacred space...<break time="2.5s"/>
+        any old wounds can heal...<break time="2.5s"/>
+        any grief can be honored...<break time="2.5s"/>
+        and gently released...<break time="2.5s"/>
+        You are worthy of love...<break time="2.5s"/>
+        You are love itself...<break time="2.5s"/>
+        Let your heart open...<break time="2.5s"/>
+        like a flower to the sun...<break time="3.5s"/>
+        </prosody>
+
+      ssml_forgiveness: |
+        <prosody rate="1.0" pitch="-1st">
+        And from this place of love...<break time="2.5s"/>
+        you can release the chains...<break time="2.5s"/>
+        of old resentments...<break time="2.5s"/>
+        Forgiveness is not for them...<break time="2.5s"/>
+        it is for you...<break time="2.5s"/>
+        Setting yourself free...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Radiant emerald heart chakra, rose blooming in chest center, soft green light expanding outward with love and compassion"
+
+      audio_cue: "Wind sounds, soft strings, 639 Hz frequency, gentle breath-like rhythm"
+
+  # ---------------------------------------------------------------------------
+  # 5. THROAT CHAKRA - VISHUDDHA
+  # ---------------------------------------------------------------------------
+  throat:
+    entry_id: "consciousness_maps.kundalini.throat"
+    name: "Vishuddha (Throat Chakra)"
+    number: 5
+    sanskrit: "Vishuddha"
+    meaning: "Especially pure"
+
+    location:
+      physical: "Throat, neck"
+      visualization: "Bright blue light at the throat"
+
+    attributes:
+      color: "blue"
+      element: "ether/space"
+      sound: "HAM"
+      note: "G"
+      frequency: "741 Hz"
+      sense: "hearing"
+      gland: "thyroid"
+
+    psychology:
+      themes:
+        - Expression and communication
+        - Truth and authenticity
+        - Creativity through voice
+        - Listening and receiving
+        - Purification and clarity
+        - Finding one's voice
+
+      balanced_state:
+        - "Clear, authentic expression"
+        - "Speaking truth with compassion"
+        - "Creative voice"
+        - "Good listening skills"
+        - "Living authentically"
+
+      imbalanced_state:
+        shadow:
+          - "Unable to express"
+          - "Fear of speaking truth"
+          - "Secrets, lies"
+          - "Not being heard"
+        excess:
+          - "Talking too much"
+          - "Not listening"
+          - "Harsh words"
+          - "Verbal manipulation"
+
+    journey_applications:
+      phase_alignment: ["journey", "integration"]
+      outcome_alignment: ["self_knowledge", "creativity", "empowerment"]
+
+      when_to_emphasize:
+        - "Finding authentic voice"
+        - "Speaking truth"
+        - "Creative expression"
+        - "Breaking silence patterns"
+        - "Communication healing"
+
+    imagery:
+      visual:
+        - "Sky blue light at throat"
+        - "Pure space, ether"
+        - "Sound waves emanating"
+        - "Sixteen-petaled blue lotus"
+        - "Clear blue sky"
+
+      sensory:
+        - "Openness in throat"
+        - "Vibration in neck"
+        - "Sound resonance"
+        - "Clarity and space"
+
+    templates:
+      ssml_activation: |
+        <prosody rate="1.0" pitch="-1st">
+        And the energy rises...<break time="2s"/>
+        to your throat...<break time="2.5s"/>
+        where a brilliant blue light...<break time="2s"/>
+        opens like the sky...<break time="2.5s"/>
+        This is your center of expression...<break time="2.5s"/>
+        of truth...<break time="2s"/>
+        of your authentic voice...<break time="2.5s"/>
+        Feel this space open...<break time="2s"/>
+        clear...<break time="2s"/>
+        ready to speak your truth...<break time="3s"/>
+        </prosody>
+
+      ssml_expression: |
+        <prosody rate="1.0" pitch="-1st">
+        And here you remember...<break time="2.5s"/>
+        that your voice matters...<break time="2.5s"/>
+        that what you have to say...<break time="2s"/>
+        is worthy of being heard...<break time="2.5s"/>
+        You can speak your truth...<break time="2.5s"/>
+        with clarity...<break time="2s"/>
+        with compassion...<break time="2s"/>
+        with power...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Bright blue throat chakra radiating sound waves, clear sky blue light, sense of authentic expression and truth"
+
+      audio_cue: "Singing bowls, pure tones, 741 Hz frequency, space and echo"
+
+  # ---------------------------------------------------------------------------
+  # 6. THIRD EYE CHAKRA - AJNA
+  # ---------------------------------------------------------------------------
+  third_eye:
+    entry_id: "consciousness_maps.kundalini.third_eye"
+    name: "Ajna (Third Eye Chakra)"
+    number: 6
+    sanskrit: "Ajna"
+    meaning: "To perceive, to command"
+
+    location:
+      physical: "Center of forehead, between eyebrows"
+      visualization: "Indigo/violet light at brow"
+
+    attributes:
+      color: "indigo"
+      element: "light/mind"
+      sound: "OM (AUM)"
+      note: "A"
+      frequency: "852 Hz"
+      sense: "intuition, inner vision"
+      gland: "pineal"
+
+    psychology:
+      themes:
+        - Intuition and insight
+        - Inner vision and imagination
+        - Wisdom and discernment
+        - Perception beyond physical
+        - Memory and dreams
+        - Spiritual sight
+
+      balanced_state:
+        - "Clear intuition"
+        - "Vivid imagination"
+        - "Wisdom and discernment"
+        - "Trust in inner knowing"
+        - "Integration of logic and intuition"
+
+      imbalanced_state:
+        shadow:
+          - "Confusion, lack of clarity"
+          - "Distrust of intuition"
+          - "Inability to visualize"
+          - "Rigid thinking"
+        excess:
+          - "Fantasy disconnected from reality"
+          - "Hallucination"
+          - "Overthinking"
+          - "Psychic overwhelm"
+
+    journey_applications:
+      phase_alignment: ["journey", "helm_deep_trance"]
+      outcome_alignment: ["self_knowledge", "spiritual_growth", "creativity"]
+
+      when_to_emphasize:
+        - "Accessing inner wisdom"
+        - "Enhancing visualization"
+        - "Developing intuition"
+        - "Receiving guidance"
+        - "Dream work"
+
+    imagery:
+      visual:
+        - "Indigo light at brow center"
+        - "All-seeing eye"
+        - "Two-petaled lotus"
+        - "Inner screen, mind's eye"
+        - "Starfield, cosmos within"
+
+      sensory:
+        - "Tingling at brow"
+        - "Sense of seeing inward"
+        - "Expanded perception"
+        - "Clarity of inner sight"
+
+    templates:
+      ssml_activation: |
+        <prosody rate="1.0" pitch="-2st">
+        And the energy rises...<break time="2s"/>
+        to the center of your forehead...<break time="2.5s"/>
+        where an indigo light...<break time="2s"/>
+        begins to glow...<break time="2.5s"/>
+        This is your third eye...<break time="2.5s"/>
+        the seat of inner vision...<break time="2.5s"/>
+        of intuition...<break time="2s"/>
+        of wisdom...<break time="3s"/>
+        Allow this eye to open...<break time="2.5s"/>
+        to see what cannot be seen...<break time="2.5s"/>
+        with physical eyes alone...<break time="3.5s"/>
+        </prosody>
+
+      ssml_vision: |
+        <prosody rate="1.0" pitch="-2st">
+        And with this inner eye open...<break time="2.5s"/>
+        you can perceive...<break time="2s"/>
+        beyond the surface...<break time="2.5s"/>
+        into the depths...<break time="2.5s"/>
+        Trust what you see here...<break time="2.5s"/>
+        trust what you know...<break time="2.5s"/>
+        even if you cannot explain...<break time="2.5s"/>
+        how you know it...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Deep indigo third eye chakra glowing at brow center, inner cosmos visible, sense of profound intuition and inner sight"
+
+      audio_cue: "OM tone, crystalline frequencies, 852 Hz, subtle cosmic hum"
+
+  # ---------------------------------------------------------------------------
+  # 7. CROWN CHAKRA - SAHASRARA
+  # ---------------------------------------------------------------------------
+  crown:
+    entry_id: "consciousness_maps.kundalini.crown"
+    name: "Sahasrara (Crown Chakra)"
+    number: 7
+    sanskrit: "Sahasrara"
+    meaning: "Thousand-petaled"
+
+    location:
+      physical: "Crown of head"
+      visualization: "Violet/white light above the head"
+
+    attributes:
+      color: "violet/white/gold"
+      element: "consciousness/beyond elements"
+      sound: "Silence, NG sound"
+      note: "B"
+      frequency: "963 Hz"
+      sense: "beyond senses, pure awareness"
+      gland: "pituitary"
+
+    psychology:
+      themes:
+        - Unity and oneness
+        - Transcendence and enlightenment
+        - Connection to divine/source
+        - Spiritual realization
+        - Pure consciousness
+        - Beyond ego identification
+
+      balanced_state:
+        - "Sense of connection to all"
+        - "Spiritual awareness"
+        - "Transcendence of ego"
+        - "Peace and serenity"
+        - "Living in presence"
+
+      imbalanced_state:
+        shadow:
+          - "Spiritual disconnection"
+          - "Meaninglessness"
+          - "Separation from source"
+          - "Cynicism about spirituality"
+        excess:
+          - "Spiritual bypass"
+          - "Dissociation from body"
+          - "Escapism into transcendence"
+          - "Neglect of earthly life"
+
+    journey_applications:
+      phase_alignment: ["helm_deep_trance"]
+      outcome_alignment: ["spiritual_growth", "transformation", "self_knowledge"]
+
+      when_to_emphasize:
+        - "Peak transcendent experiences"
+        - "Connection to divine/source"
+        - "Deepest trance states"
+        - "Unity consciousness experiences"
+        - "Spiritual awakening themes"
+
+    imagery:
+      visual:
+        - "Thousand-petaled lotus above head"
+        - "Violet/white light crown"
+        - "Connection to infinite light above"
+        - "Dissolving into light"
+        - "Pure awareness"
+
+      sensory:
+        - "Expansion beyond body"
+        - "Lightness, weightlessness"
+        - "Sense of infinite space"
+        - "Bliss, peace beyond understanding"
+
+    templates:
+      ssml_activation: |
+        <prosody rate="1.0" pitch="-2st">
+        And the energy rises...<break time="2.5s"/>
+        to the crown of your head...<break time="2.5s"/>
+        where a thousand-petaled lotus...<break time="2.5s"/>
+        opens to the infinite...<break time="3s"/>
+        Violet light...<break time="2s"/>
+        becoming white...<break time="2s"/>
+        becoming gold...<break time="2.5s"/>
+        connecting you...<break time="2s"/>
+        to all that is...<break time="3.5s"/>
+        </prosody>
+
+      ssml_transcendence: |
+        <prosody rate="1.0" pitch="-2st">
+        And here...<break time="2.5s"/>
+        at the crown...<break time="2.5s"/>
+        you touch the infinite...<break time="3s"/>
+        You are not separate...<break time="2.5s"/>
+        You never were...<break time="2.5s"/>
+        You are a wave...<break time="2s"/>
+        discovering it is the ocean...<break time="3s"/>
+        Rest here...<break time="2.5s"/>
+        in pure awareness...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Radiant crown chakra as thousand-petaled lotus, violet-white-gold light streaming upward into infinite cosmos, transcendent unity"
+
+      audio_cue: "963 Hz frequency, near-silence, subtle cosmic tone, profound stillness"
+
+# =============================================================================
+# JOURNEY STRUCTURES
+# =============================================================================
+
+journey_structures:
+
+  ascending_kundalini:
+    name: "Rising Serpent Journey"
+    description: "Classic root-to-crown ascent"
+    sequence: [root, sacral, solar_plexus, heart, throat, third_eye, crown]
+    duration_per_chakra: "2-4 minutes"
+    total_duration: "20-30 minutes"
+
+    phase_mapping:
+      induction: [root]
+      deepening: [sacral, solar_plexus]
+      journey: [heart, throat, third_eye]
+      helm_deep_trance: [crown]
+      integration: "reverse descent: crown → heart → root"
+
+    templates:
+      ssml_ascent_transition: |
+        <prosody rate="1.0" pitch="-1st">
+        And now the energy rises...<break time="2.5s"/>
+        ascending naturally...<break time="2s"/>
+        to the next center...<break time="3s"/>
+        </prosody>
+
+  descending_embodiment:
+    name: "Grounding Descent Journey"
+    description: "Crown-to-root descent, bringing awareness into body"
+    sequence: [crown, third_eye, throat, heart, solar_plexus, sacral, root]
+    use_case: "Grounding spiritual insight, integration work"
+
+    templates:
+      ssml_descent_transition: |
+        <prosody rate="1.0" pitch="-1st">
+        And now the light descends...<break time="2.5s"/>
+        carrying wisdom downward...<break time="2s"/>
+        into the body...<break time="2.5s"/>
+        into form...<break time="3s"/>
+        </prosody>
+
+  heart_centered:
+    name: "Heart Radiation Journey"
+    description: "Heart as center, radiating outward"
+    sequence: [root, heart, crown, heart, root]
+    use_case: "Love-centered healing, integration"
+
+    templates:
+      ssml_heart_radiation: |
+        <prosody rate="1.0" pitch="-1st">
+        And from the heart...<break time="2.5s"/>
+        love radiates in all directions...<break time="2.5s"/>
+        upward to the crown...<break time="2s"/>
+        downward to the root...<break time="2.5s"/>
+        filling every center...<break time="2.5s"/>
+        with compassion...<break time="3s"/>
+        </prosody>
+
+  targeted_single_chakra:
+    name: "Focused Chakra Work"
+    description: "Deep work on single chakra"
+    structure:
+      - "Ground in root (brief)"
+      - "Rise to target chakra"
+      - "Extended work at target"
+      - "Return through heart"
+      - "Ground in root"
+    use_case: "Specific issue healing"
+
+# =============================================================================
+# OUTCOME ALIGNMENT
+# =============================================================================
+
+outcome_chakra_emphasis:
+  healing: [root, sacral, heart]
+  transformation: [solar_plexus, third_eye, crown]
+  empowerment: [root, solar_plexus, throat]
+  confidence: [root, solar_plexus, heart]
+  creativity: [sacral, throat, third_eye]
+  spiritual_growth: [heart, third_eye, crown]
+  self_knowledge: [solar_plexus, third_eye, crown]
+  release: [sacral, heart, throat]
+  relaxation: [root, sacral, heart]
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - symbols.color_correspondences
+    - audio.binaural_presets
+    - audio.soundscape_presets
+    - embodiment.pranayama
+    - traditions.hermeticism
+
+  related_traditions:
+    - Tantra
+    - Kundalini Yoga
+    - Tibetan Buddhism
+    - Western occultism (adapted)
+
+  source_references:
+    - text: "Wheels of Life"
+      author: "Anodea Judith"
+    - text: "Eastern Body, Western Mind"
+      author: "Anodea Judith"
+    - text: "The Serpent Power"
+      author: "Arthur Avalon"

@@ -1,0 +1,3078 @@
+# =============================================================================
+# INTUITION & GUIDANCE - Inner Oracle, Guide Communication, Symbolic Cognition
+# =============================================================================
+# Comprehensive framework for accessing intuitive knowing, communicating with
+# guides and Higher Self, utilizing divination systems, and future symbolic
+# cognition technology for Dreamweaving sessions.
+#
+# Domain: psychology
+# Category: intuition_guidance
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "psychology"
+category: "intuition_guidance"
+
+# =============================================================================
+# CORE INTUITION UNDERSTANDING
+# =============================================================================
+
+entries:
+
+  # ---------------------------------------------------------------------------
+  # PATTERN RECOGNITION SYSTEM
+  # ---------------------------------------------------------------------------
+  pattern_recognition:
+    entry_id: "psychology.intuition.pattern_recognition"
+    name: "Intuitive Pattern Recognition"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "The unconscious pattern-matching system that detects meaningful connections before conscious awareness"
+      extended: |
+        Intuition operates through massive parallel pattern recognition in the
+        brain's right hemisphere and limbic system. The unconscious mind processes
+        approximately 11 million bits of information per second, while conscious
+        awareness handles only 40-50 bits. This creates a vast reservoir of
+        pattern-matched data that surfaces as intuitive knowing, gut feelings,
+        or sudden insights.
+
+        The pattern recognition system draws on:
+        - Accumulated life experience encoded in implicit memory
+        - Somatic markers stored in the body's cellular memory
+        - Archetypal patterns from the collective unconscious
+        - Quantum field information accessible in expanded states
+
+        Dreamweaving sessions can train this system to recognize deeper patterns,
+        trust its outputs, and integrate intuitive knowing with rational analysis.
+      essence: "The silent knowing that sees the whole before the parts"
+
+    attributes:
+      energy_quality: receptive
+      element: water
+      planetary: moon
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [intuition, self_knowledge, spiritual_growth]
+      use_cases:
+        - "Developing trust in intuitive impressions"
+        - "Pattern recognition enhancement sessions"
+        - "Decision-making clarity journeys"
+        - "Accessing implicit knowledge"
+      contraindications:
+        - "Acute psychosis (may amplify delusional pattern-matching)"
+        - "Obsessive-compulsive tendencies (may trigger excessive meaning-seeking)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And as you drift deeper now...<break time="2s"/>
+        notice how your mind already knows...<break time="1.5s"/>
+        patterns your conscious awareness hasn't yet recognized...<break time="2s"/>
+        the way puzzle pieces suddenly fit...<break time="1.5s"/>
+        when you stop trying so hard to force them...<break time="2.5s"/>
+        </prosody>
+
+      visual_prompt: "neural network lighting up with golden connections, synaptic web of light against cosmic background, pattern recognition visualization, --ar 16:9"
+
+      audio_cue: "Subtle crystalline tones, theta binaural, soft neural pulse sounds"
+
+    relationships:
+      synergies:
+        - psychology.intuition.somatic_intelligence
+        - psychology.intuition.imaginal_symbolic
+        - consciousness_maps.state_trait_map
+      related_patterns:
+        - truisms
+        - yes_sets
+        - embedded_commands
+      related_archetypes:
+        - oracle
+        - wise_one
+
+  # ---------------------------------------------------------------------------
+  # SOMATIC INTELLIGENCE
+  # ---------------------------------------------------------------------------
+  somatic_intelligence:
+    entry_id: "psychology.intuition.somatic_intelligence"
+    name: "Somatic Intelligence"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "The body's innate wisdom system that communicates through sensation, feeling, and gut knowing"
+      extended: |
+        Somatic intelligence refers to the body's capacity for knowing that
+        bypasses cognitive processing. This system includes:
+
+        - Interoception: awareness of internal bodily states
+        - Gut-brain axis: the enteric nervous system's independent processing
+        - Somatic markers: Antonio Damasio's emotional body-memory system
+        - Cellular memory: experiential encoding in body tissues
+        - Heart intelligence: the heart's electromagnetic field processing
+
+        The body often knows before the mind. A tightening in the chest, a
+        relaxation in the belly, tingling in the hands - these are the body's
+        wisdom speaking. Dreamweaving trains practitioners to recognize,
+        trust, and dialogue with somatic intelligence.
+
+        Key practices include:
+        - Body scanning for intuitive signals
+        - "Yes/No" somatic calibration (how does truth feel vs. untruth?)
+        - Gut feeling amplification techniques
+        - Heart coherence intuition protocols
+      essence: "The body remembers what the mind forgets"
+
+    attributes:
+      energy_quality: receptive
+      element: earth
+      planetary: moon
+      chakra: sacral
+      brainwave: alpha
+
+    applications:
+      journey_phases: [induction, deepening, journey, integration]
+      outcome_alignment: [intuition, self_knowledge, healing]
+      use_cases:
+        - "Developing body awareness for intuitive guidance"
+        - "Trauma-informed somatic intuition work"
+        - "Decision-making through body wisdom"
+        - "Health intuition and body dialogue"
+      contraindications:
+        - "Severe dissociation (need grounding first)"
+        - "Body dysmorphia (may intensify symptoms)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now bring your attention to your body...<break time="2s"/>
+        your wise, knowing body...<break time="1.5s"/>
+        that carries a billion years of ancestral wisdom...<break time="2s"/>
+        feel into your belly...<break time="1.5s"/>
+        your gut knows things...<break time="1.5s"/>
+        before your mind can name them...<break time="2.5s"/>
+        what is your body telling you right now?<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "luminous human silhouette with glowing energy centers, golden light emanating from heart and belly, somatic wisdom visualization, --ar 16:9"
+
+      audio_cue: "Deep heartbeat rhythm, grounding earth tones, gentle belly bowl singing"
+
+    relationships:
+      synergies:
+        - embodiment.grounding_techniques
+        - psychology.polyvagal_theory
+        - psychology.intuition.pattern_recognition
+      related_patterns:
+        - body_awareness
+        - anchoring
+        - somatic_bridge
+      related_archetypes:
+        - healer
+        - body_keeper
+
+  # ---------------------------------------------------------------------------
+  # IMAGINAL SYMBOLIC MESSAGING
+  # ---------------------------------------------------------------------------
+  imaginal_symbolic:
+    entry_id: "psychology.intuition.imaginal_symbolic"
+    name: "Imaginal Symbolic Messaging"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "The language of the unconscious expressed through spontaneous images, symbols, and metaphors"
+      extended: |
+        The unconscious mind communicates primarily through images and symbols
+        rather than linear language. Carl Jung termed this the "imaginal realm" -
+        a dimension of consciousness where meaning manifests as living imagery.
+
+        Types of imaginal communication:
+        - Spontaneous inner images (active imagination)
+        - Dream symbols and narratives
+        - Synchronistic outer events
+        - Archetypal visitations
+        - Hypnagogic/hypnopompic imagery
+
+        The imaginal operates by its own logic:
+        - Symbolic equation (one thing stands for another)
+        - Condensation (multiple meanings in single image)
+        - Displacement (emotional charge transferred)
+        - Amplification (symbol expands in meaning)
+
+        Dreamweaving works directly with imaginal language, translating
+        between conscious intention and unconscious symbolism.
+      essence: "The soul speaks in pictures"
+
+    attributes:
+      energy_quality: transformative
+      element: water
+      planetary: neptune
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [deepening, journey, helm_deep_trance]
+      outcome_alignment: [intuition, self_knowledge, creativity, spiritual_growth]
+      use_cases:
+        - "Symbol interpretation guidance sessions"
+        - "Active imagination facilitation"
+        - "Dream incubation and analysis"
+        - "Creative inspiration journeys"
+      contraindications:
+        - "Severe anxiety (images may become threatening)"
+        - "Psychotic episodes (may lose symbolic distance)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now allow an image to arise...<break time="3s"/>
+        don't force it...<break time="1.5s"/>
+        let it emerge from the depths like a gift...<break time="2.5s"/>
+        whatever appears is meaningful...<break time="2s"/>
+        a message from your deeper self...<break time="2s"/>
+        in the language that existed before words...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "symbolic imagery emerging from misty depths, dream-like landscape with meaningful objects, archetypal symbols floating in luminous space, --ar 16:9"
+
+      audio_cue: "Ethereal pad, theta binaural, soft wind chimes, dreamscape ambience"
+
+    relationships:
+      synergies:
+        - dream_work.active_imagination
+        - dream_work.symbol_amplification
+        - psychology.depth_psychology
+      related_patterns:
+        - metaphor
+        - sensory_stacking
+        - symbolic_journey
+      related_archetypes:
+        - dreamer
+        - visionary
+
+  # ---------------------------------------------------------------------------
+  # PREDICTIVE PROCESSING
+  # ---------------------------------------------------------------------------
+  predictive_processing:
+    entry_id: "psychology.intuition.predictive_processing"
+    name: "Predictive Processing Intuition"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "The brain's reality-modeling system that generates expectations and highlights prediction errors as intuitive alerts"
+      extended: |
+        The brain is fundamentally a prediction engine. It constantly generates
+        models of expected reality and compares incoming data against these
+        predictions. When predictions match experience, we feel settled and
+        certain. When they don't match, we experience prediction error - often
+        felt as intuitive unease, "something's off," or sudden attention shifts.
+
+        Intuition leverages this system by:
+        - Detecting subtle prediction errors before conscious recognition
+        - Generating "future memory" simulations of outcomes
+        - Creating felt-sense of trajectory misalignment
+        - Producing sudden knowing when models click into place
+
+        Dreamweaving can enhance predictive intuition by:
+        - Training sensitivity to prediction error signals
+        - Practicing "future self" consultations
+        - Developing outcome trajectory sensing
+        - Installing enhanced prediction models
+      essence: "Your brain already knows what happens next"
+
+    attributes:
+      energy_quality: active
+      element: air
+      planetary: mercury
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [intuition, manifestation, focus]
+      use_cases:
+        - "Decision pathway visualization"
+        - "Future self consultation sessions"
+        - "Outcome probability sensing"
+        - "Danger/opportunity detection training"
+      contraindications:
+        - "Severe anxiety (may amplify worry loops)"
+        - "Paranoid tendencies (may validate suspicious predictions)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And your mind already knows...<break time="2s"/>
+        it's already running the simulations...<break time="1.5s"/>
+        seeing the paths branch before you...<break time="2s"/>
+        some feel lighter...<break time="1s"/>
+        some heavier...<break time="1s"/>
+        and you can trust that knowing...<break time="2.5s"/>
+        the part of you that already lives in the future...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "branching paths of light extending into the future, probability streams, timeline visualization with glowing pathways, --ar 16:9"
+
+      audio_cue: "Crystalline forward-moving tones, anticipation building, subtle clock-like pulse"
+
+    relationships:
+      synergies:
+        - psychology.manifestation_technology.predictive_processing
+        - science.neuroscience_maps
+        - psychology.intuition.pattern_recognition
+      related_patterns:
+        - temporal_dissociation
+        - future_pacing
+        - embedded_commands
+      related_archetypes:
+        - oracle
+        - prophet
+
+  # ---------------------------------------------------------------------------
+  # INNER ORACLE INQUIRY SEQUENCE
+  # ---------------------------------------------------------------------------
+  inner_oracle_sequence:
+    entry_id: "psychology.intuition.inner_oracle_sequence"
+    name: "Inner Oracle Inquiry Sequence"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "A structured protocol for accessing intuitive guidance through systematic inner consultation"
+      extended: |
+        The Inner Oracle Inquiry Sequence (IOIS) is a systematic method for
+        consulting one's intuitive wisdom. It combines multiple intuition
+        channels for comprehensive guidance.
+
+        The IOIS Protocol:
+
+        1. GROUND & CENTER (2-3 minutes)
+           - Establish breath rhythm
+           - Drop into body awareness
+           - Create inner sanctuary space
+
+        2. FORMULATE INQUIRY (1-2 minutes)
+           - Clarify the question precisely
+           - Feel into what you truly want to know
+           - Release attachment to specific answers
+
+        3. SOMATIC SCAN (2-3 minutes)
+           - Ask the question to your body
+           - Notice gut response, heart response
+           - Calibrate yes/no body signals
+
+        4. IMAGINAL RECEPTION (3-5 minutes)
+           - Open to spontaneous imagery
+           - Allow symbols, scenes, figures to appear
+           - Receive without interpreting yet
+
+        5. DIALOGUE (2-3 minutes)
+           - Ask follow-up questions of images/guides
+           - Listen for verbal/felt responses
+           - Request clarification if needed
+
+        6. INTEGRATION (2-3 minutes)
+           - Synthesize somatic and imaginal data
+           - Distill core message
+           - Set intention or action step
+
+        7. GRATITUDE & CLOSE (1 minute)
+           - Thank inner wisdom sources
+           - Ground back to ordinary awareness
+           - Record insights immediately
+      essence: "The oracle lives within"
+
+    attributes:
+      energy_quality: receptive
+      element: water
+      planetary: moon
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [pre_talk, induction, deepening, journey, integration]
+      outcome_alignment: [intuition, self_knowledge, spiritual_growth]
+      journey_families: [temple_initiation, eden_garden]
+      use_cases:
+        - "Decision-making guidance sessions"
+        - "Life purpose exploration"
+        - "Problem-solving through intuition"
+        - "Relationship guidance inquiry"
+      contraindications:
+        - "Decision paralysis (may reinforce avoidance)"
+        - "External locus of control (strengthen internal authority first)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you prepare to consult your inner oracle...<break time="2s"/>
+        that wise presence within you...<break time="1.5s"/>
+        that has always been there...<break time="1.5s"/>
+        waiting to be asked...<break time="2s"/>
+        bring your question into your heart...<break time="2.5s"/>
+        hold it gently...<break time="1.5s"/>
+        and prepare to receive...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "inner temple with luminous oracle pool, sacred sanctuary of self-knowledge, light reflecting wisdom, crystalline clarity, --ar 16:9"
+
+      audio_cue: "Gentle water sounds, temple bells, theta binaural, sacred ambience"
+
+    relationships:
+      synergies:
+        - psychology.intuition.somatic_intelligence
+        - psychology.intuition.imaginal_symbolic
+        - ritual.sacred_space
+      related_patterns:
+        - progressive_relaxation
+        - sensory_stacking
+        - embedded_commands
+      related_archetypes:
+        - oracle
+        - wise_one
+        - high_priestess
+
+  # ---------------------------------------------------------------------------
+  # LIMINAL APERTURE METHOD
+  # ---------------------------------------------------------------------------
+  liminal_aperture:
+    entry_id: "psychology.intuition.liminal_aperture"
+    name: "Liminal Aperture Method"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "A technique for accessing intuitive knowing through the threshold states between waking and sleep"
+      extended: |
+        The liminal aperture is the doorway between states of consciousness -
+        particularly the hypnagogic (waking to sleep) and hypnopompic (sleep to
+        waking) transitions. In these threshold states, the critical faculty
+        relaxes while imaginal capacities heighten, creating optimal conditions
+        for intuitive reception.
+
+        The Liminal Aperture Method:
+
+        1. APPROACH THE THRESHOLD
+           - Relax body deeply while maintaining mental alertness
+           - Use breath to induce hypnagogic state
+           - Notice the moment awareness begins to drift
+
+        2. HOLD THE APERTURE OPEN
+           - Maintain delicate balance at threshold
+           - Don't fall into sleep; don't wake fully
+           - Use micro-attention movements to stabilize
+
+        3. POSE THE INQUIRY
+           - Gently introduce the question
+           - Release into the liminal space
+           - Allow spontaneous responses
+
+        4. RECEIVE & RECORD
+           - Notice imagery, words, feelings arising
+           - Anchor memorable details
+           - Return to full waking to document
+
+        This method was used by Edison (holding steel balls to wake before
+        sleep), Dali (spoon technique), and many inventors and artists for
+        creative breakthrough and intuitive insight.
+      essence: "Wisdom lives in the spaces between"
+
+    attributes:
+      energy_quality: receptive
+      element: spirit
+      planetary: neptune
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [deepening, journey, helm_deep_trance]
+      outcome_alignment: [intuition, creativity, spiritual_growth]
+      journey_families: [eden_garden, celestial_journey]
+      use_cases:
+        - "Creative problem solving"
+        - "Accessing hypnagogic wisdom"
+        - "Dream incubation preparation"
+        - "Threshold consciousness exploration"
+      contraindications:
+        - "Sleep disorders (may interfere with sleep hygiene)"
+        - "Dissociative tendencies (may destabilize)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now you drift toward that soft edge...<break time="3s"/>
+        the place between waking and dreaming...<break time="2s"/>
+        where the door stands open...<break time="2s"/>
+        and wisdom flows through...<break time="2.5s"/>
+        hold yourself here...<break time="2s"/>
+        balanced on the threshold...<break time="2s"/>
+        and listen...<break time="4s"/>
+        </prosody>
+
+      visual_prompt: "luminous doorway between worlds, threshold of consciousness, light flowing through aperture between states, liminal space, --ar 16:9"
+
+      audio_cue: "Deep theta binaural, soft wind, distant chimes, dreamy pad"
+
+    relationships:
+      synergies:
+        - dream_work.hypnagogic_gateways
+        - dream_work.lucid_dream_triggers
+        - psychology.intuition.imaginal_symbolic
+      related_patterns:
+        - progressive_relaxation
+        - fractionation_loops
+        - temporal_dissociation
+      related_archetypes:
+        - threshold_guardian
+        - dreamer
+
+  # ---------------------------------------------------------------------------
+  # SYMBOL DRIFT TECHNIQUE
+  # ---------------------------------------------------------------------------
+  symbol_drift:
+    entry_id: "psychology.intuition.symbol_drift"
+    name: "Symbol Drift Technique"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "A free-association method allowing symbols to transform and reveal deeper meanings through natural drift"
+      extended: |
+        Symbol Drift is a technique for allowing intuitive imagery to evolve
+        and reveal deeper layers of meaning through gentle, non-directed
+        transformation. Rather than interpreting symbols directly, the
+        practitioner allows them to shift and change, following the natural
+        flow of unconscious association.
+
+        The Symbol Drift Protocol:
+
+        1. RECEIVE INITIAL SYMBOL
+           - Allow a spontaneous image to arise
+           - Don't analyze; simply observe
+
+        2. SOFTEN ATTENTION
+           - Hold symbol loosely
+           - Allow edges to become permeable
+
+        3. OBSERVE TRANSFORMATION
+           - Watch how the symbol wants to change
+           - Follow the drift without directing
+           - Note what it becomes
+
+        4. FOLLOW THE CHAIN
+           - Allow new symbol to also drift
+           - Continue through 3-7 transformations
+           - Note the journey
+
+        5. RECOGNIZE ARRIVAL
+           - Know when the drift has completed
+           - A sense of "arrival" or "home"
+           - Final symbol carries integrated meaning
+
+        6. INTEGRATE THE JOURNEY
+           - Review the transformation sequence
+           - Each step reveals a layer of meaning
+           - The path IS the message
+      essence: "Follow the symbol where it wants to go"
+
+    attributes:
+      energy_quality: receptive
+      element: water
+      planetary: neptune
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [intuition, self_knowledge, creativity]
+      use_cases:
+        - "Deep symbol exploration sessions"
+        - "Dream symbol amplification"
+        - "Creative inspiration journeys"
+        - "Unconscious pattern revelation"
+      contraindications:
+        - "Thought disorder (may lose coherent tracking)"
+        - "High anxiety (may amplify disturbing imagery)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And notice what image appears...<break time="3s"/>
+        don't analyze it...<break time="1.5s"/>
+        just watch...<break time="2s"/>
+        as it begins to shift...<break time="2s"/>
+        to change...<break time="1.5s"/>
+        to become something else...<break time="2.5s"/>
+        follow where it leads...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "morphing symbolic imagery, transformation sequence, symbol becoming another symbol, fluid dream-like transitions, --ar 16:9"
+
+      audio_cue: "Flowing ambient, theta waves, soft morphing tones"
+
+    relationships:
+      synergies:
+        - dream_work.symbol_amplification
+        - dream_work.active_imagination
+        - psychology.intuition.imaginal_symbolic
+      related_patterns:
+        - metaphor
+        - sensory_stacking
+        - fractionation_loops
+      related_archetypes:
+        - shapeshifter
+        - dreamer
+
+  # ---------------------------------------------------------------------------
+  # BREATH OF KNOWING
+  # ---------------------------------------------------------------------------
+  breath_of_knowing:
+    entry_id: "psychology.intuition.breath_of_knowing"
+    name: "Breath of Knowing"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "A breathwork technique that uses specific patterns to access intuitive states and receive guidance"
+      extended: |
+        The Breath of Knowing utilizes conscious breath patterns to shift
+        brainwave states and access intuitive knowing. Different breath
+        patterns activate different modes of consciousness.
+
+        Core Breath Patterns:
+
+        1. RECEPTIVE BREATH (for receiving intuition)
+           - Long slow inhale (6-8 counts)
+           - Extended exhale (8-10 counts)
+           - Opens parasympathetic receptivity
+
+        2. ACTIVATING BREATH (for clarity/discrimination)
+           - Quick rhythmic breathing (30-60 seconds)
+           - Followed by breath hold
+           - Intuitive "download" during hold
+
+        3. COHERENCE BREATH (for heart intelligence)
+           - Equal inhale/exhale (5-5 or 6-6)
+           - Attention on heart
+           - Access heart-brain intuition
+
+        4. INQUIRY BREATH
+           - Inhale the question
+           - Hold in the mystery
+           - Exhale into receiving
+           - Answer arises in the space after exhale
+
+        The breath is the bridge between conscious and unconscious, voluntary
+        and involuntary. Through breath, we can navigate the waters of
+        intuitive knowing.
+      essence: "The breath carries the question; the silence returns the answer"
+
+    attributes:
+      energy_quality: balanced
+      element: air
+      planetary: mercury
+      chakra: heart
+      brainwave: alpha
+
+    applications:
+      journey_phases: [induction, deepening, journey]
+      outcome_alignment: [intuition, relaxation, focus]
+      use_cases:
+        - "Quick intuition access technique"
+        - "Decision clarity breathing"
+        - "Heart-centered knowing"
+        - "Anxiety release with intuitive insight"
+      contraindications:
+        - "Respiratory conditions (modify patterns)"
+        - "Panic disorder (avoid activating breath)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now breathe with intention...<break time="2s"/>
+        a deep breath in...<break time="3s"/>
+        carrying your question into your body...<break time="2s"/>
+        and a long exhale out...<break time="4s"/>
+        releasing into the mystery...<break time="2.5s"/>
+        and in the stillness that follows...<break time="2s"/>
+        listen...<break time="4s"/>
+        </prosody>
+
+      visual_prompt: "breath visualized as light moving through body, air element symbolism, knowing flowing with breath, luminous respiratory imagery, --ar 16:9"
+
+      audio_cue: "Soft breath sounds, gentle wind, alpha binaural, calming pad"
+
+    relationships:
+      synergies:
+        - embodiment.pranayama
+        - psychology.intuition.somatic_intelligence
+        - embodiment.grounding_techniques
+      related_patterns:
+        - breath_pacing
+        - progressive_relaxation
+        - anchoring
+      related_archetypes:
+        - healer
+        - wise_one
+
+  # ---------------------------------------------------------------------------
+  # FUTURE ECHO
+  # ---------------------------------------------------------------------------
+  future_echo:
+    entry_id: "psychology.intuition.future_echo"
+    name: "Future Echo Technique"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "A method for receiving intuitive guidance by sensing reverberations from future outcomes back through time"
+      extended: |
+        The Future Echo technique works on the principle that significant
+        future events cast shadows backward through time. Just as a stone
+        dropped in water creates ripples that move outward, major life events
+        create ripples that we can sense before they occur.
+
+        The Future Echo Protocol:
+
+        1. ATTUNE TO THE TIME STREAM
+           - Enter theta state
+           - Expand temporal awareness
+           - Feel the flow of time as non-linear
+
+        2. PROJECT ATTENTION FORWARD
+           - Mentally move consciousness into the future
+           - Visit the moment AFTER the decision/event
+           - Feel what it's like to be there
+
+        3. SENSE THE ECHO
+           - From that future position, look back
+           - What echoes/reverberations do you sense?
+           - What feeling-tone reaches back to now?
+
+        4. COMPARE TRAJECTORIES
+           - Do this for multiple possible futures
+           - Which future sends the strongest positive echo?
+           - Which feels most "true" or "real"?
+
+        5. TRUST THE RESONANCE
+           - The path that echoes with rightness
+           - That feels inevitable and aligned
+           - Is your intuitive guidance
+
+        This technique aligns with both quantum retrocausality theories and
+        ancestral indigenous practices of consulting with future selves.
+      essence: "The future remembers before the present forgets"
+
+    attributes:
+      energy_quality: active
+      element: spirit
+      planetary: saturn
+      chakra: crown
+      brainwave: theta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [intuition, manifestation, spiritual_growth]
+      journey_families: [celestial_journey, cosmic_forge]
+      use_cases:
+        - "Major life decision guidance"
+        - "Career/relationship trajectory sensing"
+        - "Avoiding future regret"
+        - "Aligning with highest timeline"
+      contraindications:
+        - "Decision paralysis (may amplify)"
+        - "Anxiety about the future (ground first)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now let your awareness extend forward...<break time="2.5s"/>
+        into the future...<break time="2s"/>
+        to a time when this decision is already made...<break time="2s"/>
+        feel yourself there...<break time="2.5s"/>
+        and from that place...<break time="1.5s"/>
+        notice what echoes back to you now...<break time="3s"/>
+        what knowing reaches across time...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "timeline visualization with light echoing backward, ripples through time, future self sending wisdom to present, temporal bridge of light, --ar 16:9"
+
+      audio_cue: "Subtle time-stretching effects, theta binaural, crystalline future tones"
+
+    relationships:
+      synergies:
+        - psychology.manifestation_technology.timeline_selection
+        - dream_work.active_imagination
+        - psychology.intuition.predictive_processing
+      related_patterns:
+        - temporal_dissociation
+        - future_pacing
+        - embedded_commands
+      related_archetypes:
+        - prophet
+        - oracle
+        - future_self
+
+  # ---------------------------------------------------------------------------
+  # INNER COUNCIL
+  # ---------------------------------------------------------------------------
+  inner_council:
+    entry_id: "psychology.intuition.inner_council"
+    name: "Inner Council of Advisors"
+    domain: "psychology"
+    category: "intuition"
+
+    definition:
+      brief: "A technique for assembling and consulting an internal advisory board of wisdom figures for guidance"
+      extended: |
+        The Inner Council is a structured imaginal practice for receiving
+        multifaceted guidance from internalized wisdom figures. Rather than
+        consulting a single inner voice, the practitioner convenes a council
+        of diverse perspectives.
+
+        Council Assembly:
+
+        1. THE SAGE (Wisdom/Knowledge)
+           - Represents accumulated learning
+           - Offers rational, experienced perspective
+
+        2. THE HEART (Compassion/Values)
+           - Represents emotional wisdom
+           - Offers value-aligned guidance
+
+        3. THE CHILD (Intuition/Play)
+           - Represents innocent knowing
+           - Offers unexpected insights
+
+        4. THE BODY (Somatic/Practical)
+           - Represents physical wisdom
+           - Offers grounded, realistic input
+
+        5. THE HIGHER SELF (Spiritual/Transcendent)
+           - Represents eternal perspective
+           - Offers soul-level guidance
+
+        6. WILDCARDS (Optional)
+           - Ancestral figure
+           - Future self
+           - Archetypal guide
+           - Historical mentor
+
+        The council deliberates on the presented question, each offering their
+        perspective, until consensus or clarity emerges.
+      essence: "Wisdom has many voices; the council hears them all"
+
+    attributes:
+      energy_quality: balanced
+      element: air
+      planetary: jupiter
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [intuition, self_knowledge, empowerment]
+      journey_families: [temple_initiation]
+      use_cases:
+        - "Complex decision making"
+        - "Integration of conflicting inner voices"
+        - "Parts work through council metaphor"
+        - "Accessing diverse wisdom perspectives"
+      contraindications:
+        - "Dissociative identity disorder (without clinical support)"
+        - "Confusion about identity (may fragment further)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you enter your inner council chamber...<break time="2.5s"/>
+        a sacred space where wisdom gathers...<break time="2s"/>
+        see the seats arranged in a circle...<break time="1.5s"/>
+        and notice who sits there...<break time="2.5s"/>
+        your advisors await...<break time="2s"/>
+        ready to offer their perspectives...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "circular council chamber with luminous seats, wise figures gathered in sacred space, advisory circle of light, --ar 16:9"
+
+      audio_cue: "Chamber ambience, soft murmuring, council bells, alpha binaural"
+
+    relationships:
+      synergies:
+        - psychology.internal_family_systems
+        - psychology.intuition.invisible_counselors
+        - mythology.archetype_catalog
+      related_patterns:
+        - parts_work
+        - metaphor
+        - dialogue
+      related_archetypes:
+        - wise_council
+        - sage
+        - guide
+
+# =============================================================================
+# ADVANCED GUIDANCE SYSTEMS
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # GUIDE COMMUNICATION PROTOCOLS
+  # ---------------------------------------------------------------------------
+  guide_communication:
+    entry_id: "psychology.guidance.guide_communication"
+    name: "Spirit Guide Communication Protocols"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "Systematic methods for establishing and maintaining communication with inner guides, guardian spirits, and wisdom beings"
+      extended: |
+        Guide communication is the practice of establishing dialogue with
+        entities experienced as distinct from the conscious self - whether
+        understood as psychological constructs (inner guides), spiritual
+        beings (angels, ancestors), or archetypal forces. The protocols
+        below work regardless of metaphysical interpretation.
+
+        GUIDE TYPES:
+
+        1. PERSONAL GUIDES
+           - Guardian angel/protective presence
+           - Ancestral wisdom holders
+           - Animal totems/power animals
+           - Personal deity/saint
+
+        2. ARCHETYPAL GUIDES
+           - The Wise Old Man/Woman
+           - The Divine Child
+           - The Shadow Guide
+           - The Psychopomp (death/transformation)
+
+        3. SPECIALIZED GUIDES
+           - Healing guide
+           - Creative muse
+           - Teacher/instructor
+           - Gatekeeper/threshold guardian
+
+        COMMUNICATION PROTOCOLS:
+
+        1. ESTABLISH SACRED SPACE
+           - Create internal sanctuary
+           - Set protective boundaries
+           - State intention clearly
+
+        2. INVITATION
+           - Call guide by name/title if known
+           - Or invite "the guide most helpful now"
+           - Wait for presence to manifest
+
+        3. VERIFICATION
+           - Ask guide to identify itself
+           - Check felt-sense (safety, wisdom)
+           - Confirm alignment with highest good
+
+        4. DIALOGUE
+           - Ask clear questions
+           - Listen with all senses
+           - Accept answers even if surprising
+
+        5. GRATITUDE & CLOSE
+           - Thank the guide
+           - Ask how to reconnect
+           - Close sacred space properly
+      essence: "The guide appears when the seeker is ready"
+
+    attributes:
+      energy_quality: receptive
+      element: spirit
+      planetary: neptune
+      chakra: crown
+      brainwave: theta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [intuition, spiritual_growth, healing]
+      journey_families: [celestial_journey, temple_initiation]
+      use_cases:
+        - "Guide meeting sessions"
+        - "Ongoing spiritual guidance practice"
+        - "Healing with guide assistance"
+        - "Death/dying companionship"
+      contraindications:
+        - "Psychotic features (may validate hallucinations)"
+        - "Spiritual bypassing tendencies"
+        - "History of possession experiences (without support)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now prepare to meet your guide...<break time="2.5s"/>
+        in your inner sanctuary...<break time="2s"/>
+        you sense a presence approaching...<break time="2.5s"/>
+        wise...<break time="1s"/>
+        loving...<break time="1s"/>
+        here to help...<break time="2s"/>
+        allow the guide to appear...<break time="3.5s"/>
+        in whatever form is right...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "luminous guide figure approaching through mist, wise being with soft light, guide manifestation in sacred space, --ar 16:9"
+
+      audio_cue: "Ethereal presence sounds, soft arrival tones, theta binaural, sacred ambience"
+
+    relationships:
+      synergies:
+        - ritual.invocation_patterns
+        - mythology.archetype_catalog
+        - psychology.intuition.imaginal_symbolic
+      related_patterns:
+        - metaphor
+        - embedded_commands
+        - sensory_stacking
+      related_archetypes:
+        - guide
+        - wise_one
+        - angel
+
+  # ---------------------------------------------------------------------------
+  # HIGHER SELF COMMUNION
+  # ---------------------------------------------------------------------------
+  higher_self_communion:
+    entry_id: "psychology.guidance.higher_self"
+    name: "Higher Self Communion"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "Practices for establishing direct communication with the Higher Self - the eternal, wisdom-holding aspect of consciousness"
+      extended: |
+        The Higher Self (also known as the Oversoul, Atman, the Christ
+        Within, Buddha Nature, or Neshamah) is understood as the eternal,
+        perfect aspect of individual consciousness that maintains connection
+        with universal wisdom. Unlike guides (experienced as "other"), the
+        Higher Self is experienced as the deepest "I" - who you truly are
+        beyond personality.
+
+        MODELS OF THE HIGHER SELF:
+
+        1. PSYCHOLOGICAL MODEL
+           - The Self (Jungian) - integrating center of psyche
+           - Ideal self - one's highest potential realized
+           - Meta-awareness - the observer of all experience
+
+        2. SPIRITUAL MODEL
+           - The soul/eternal essence
+           - The divine spark within
+           - The individualized expression of Source
+
+        3. QUANTUM MODEL
+           - Non-local consciousness
+           - The observer that collapses reality
+           - Consciousness beyond spacetime
+
+        COMMUNION PROTOCOL:
+
+        1. ASCENT
+           - Rise above ordinary awareness
+           - Move through and beyond the mind
+           - Reach upward/inward to the eternal
+
+        2. RECOGNITION
+           - Sense the presence of your true nature
+           - Allow personality to become transparent
+           - Recognize yourself as more than you thought
+
+        3. MERGER
+           - Let boundaries between self and Self soften
+           - Experience temporary unification
+           - Download wisdom from this expanded state
+
+        4. INTEGRATION
+           - Return with Higher Self perspective
+           - Anchor wisdom in body
+           - Maintain connection in ordinary life
+      essence: "The Higher Self is not somewhere else - it is your deepest Here"
+
+    attributes:
+      energy_quality: transformative
+      element: spirit
+      planetary: sun
+      chakra: crown
+      brainwave: gamma
+
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [intuition, spiritual_growth, transformation]
+      journey_families: [celestial_journey]
+      use_cases:
+        - "Higher Self meeting sessions"
+        - "Soul purpose discovery"
+        - "Receiving life direction guidance"
+        - "Spiritual emergency integration"
+      contraindications:
+        - "Ego inflation tendencies (may reinforce grandiosity)"
+        - "Spiritual bypassing (avoiding shadow work)"
+        - "Unstable ego structure (strengthen first)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now rise...<break time="2s"/>
+        rise above the thoughts...<break time="2s"/>
+        above the feelings...<break time="2s"/>
+        above the story of who you think you are...<break time="2.5s"/>
+        into the light of your true Self...<break time="3s"/>
+        the one who watches...<break time="2s"/>
+        the one who knows...<break time="2s"/>
+        the one who has always been...<break time="4s"/>
+        </prosody>
+
+      visual_prompt: "ascending toward luminous higher self above, golden light figure of transcendent awareness, meeting the eternal self, --ar 16:9"
+
+      audio_cue: "Ascending tones, gamma bells, celestial choir, transcendent pad"
+
+    relationships:
+      synergies:
+        - consciousness_maps.advaita_nonduality
+        - traditions.hermeticism
+        - psychology.intuition.inner_council
+      related_patterns:
+        - fractionation_loops
+        - temporal_dissociation
+        - identity_reframing
+      related_archetypes:
+        - higher_self
+        - divine_self
+        - eternal_one
+
+  # ---------------------------------------------------------------------------
+  # HOLY SPIRIT COMMUNION
+  # ---------------------------------------------------------------------------
+  holy_spirit_communion:
+    entry_id: "psychology.guidance.holy_spirit"
+    name: "Holy Spirit Communion"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "Practices for opening to and receiving guidance from the Holy Spirit - the divine breath, presence, and active grace"
+      extended: |
+        The Holy Spirit (Ruach HaKodesh, Pneuma, Shakti, Shekinah) represents
+        the active, indwelling presence of the Divine - the breath of God
+        moving through creation. Unlike the Higher Self (individual essence)
+        or guides (distinct entities), the Holy Spirit is experienced as
+        divine grace and presence that comes upon the receptive soul.
+
+        THEOLOGICAL PERSPECTIVES:
+
+        1. CHRISTIAN
+           - The Paraclete/Comforter
+           - Gift of tongues, prophecy, wisdom
+           - Fruits of the Spirit
+
+        2. JEWISH (Kabbalistic)
+           - Ruach HaKodesh - prophetic inspiration
+           - Shekinah - divine presence/feminine aspect
+
+        3. HINDU/YOGA
+           - Shakti - divine creative energy
+           - Kundalini - awakened spiritual power
+
+        4. SUFI
+           - Ruh - divine breath/spirit
+           - Barakah - blessing/grace
+
+        COMMUNION PROTOCOL:
+
+        1. PREPARATION
+           - Create sacred container
+           - Purify intention
+           - Cultivate humility and receptivity
+
+        2. INVOCATION
+           - Call upon the Spirit
+           - Use traditional prayers or spontaneous invitation
+           - Open all channels of reception
+
+        3. RECEPTIVITY
+           - Surrender personal will
+           - Allow Spirit to move as it will
+           - Receive rather than reach
+
+        4. MANIFESTATION
+           - Notice how Spirit manifests
+           - Wisdom, comfort, guidance, healing, power
+           - Allow full expression
+
+        5. INTEGRATION
+           - Ground the experience
+           - Give thanks
+           - Carry the blessing forward
+      essence: "The Spirit blows where it will - become the sail, not the rudder"
+
+    attributes:
+      energy_quality: receptive
+      element: spirit
+      planetary: sun
+      chakra: crown
+      brainwave: gamma
+
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [spiritual_growth, healing, intuition, faith]
+      journey_families: [celestial_journey, temple_initiation]
+      use_cases:
+        - "Divine guidance sessions"
+        - "Spiritual healing journeys"
+        - "Prophetic/revelatory experiences"
+        - "Grace and blessing reception"
+      contraindications:
+        - "Religious trauma (may trigger)"
+        - "Spiritual inflation (ground carefully)"
+        - "Theologically rigid clients (may conflict)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now simply open...<break time="2.5s"/>
+        open to the sacred breath...<break time="2s"/>
+        the Spirit that moves through all things...<break time="2.5s"/>
+        you don't need to reach...<break time="1.5s"/>
+        simply receive...<break time="2s"/>
+        the presence that comes as gift...<break time="2.5s"/>
+        as grace...<break time="2s"/>
+        as love...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "divine light descending as dove or flame, holy breath filling sacred space, spirit presence as luminous mist, --ar 16:9"
+
+      audio_cue: "Ethereal breath sounds, celestial choir, gamma tones, sacred presence ambience"
+
+    relationships:
+      synergies:
+        - traditions.christian_mystical
+        - psychology.faith.divine_overshadowing
+        - ritual.prayer_modalities
+      related_patterns:
+        - embedded_commands
+        - sensory_stacking
+        - progressive_relaxation
+      related_archetypes:
+        - divine_presence
+        - comforter
+        - holy_fire
+
+  # ---------------------------------------------------------------------------
+  # IMAGE STREAMING
+  # ---------------------------------------------------------------------------
+  image_streaming:
+    entry_id: "psychology.guidance.image_streaming"
+    name: "Image Streaming"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "A rapid stream-of-consciousness technique for accessing intuitive imagery by describing spontaneous inner visuals aloud"
+      extended: |
+        Image Streaming, developed by Win Wenger, is a technique for
+        accessing the non-verbal intelligence of the visual cortex. By
+        describing inner imagery aloud in rapid, continuous flow, the
+        conscious mind is occupied while the unconscious generates a
+        stream of meaningful imagery.
+
+        THE IMAGE STREAMING PROTOCOL:
+
+        1. RELAX AND CLOSE EYES
+           - Establish light trance state
+           - Allow visual field to become receptive
+
+        2. DESCRIBE ALOUD IMMEDIATELY
+           - Whatever appears - describe it
+           - If nothing appears, describe the darkness
+           - Keep talking continuously
+
+        3. USE ALL SENSES
+           - Not just visual - add texture, sound, smell
+           - "I see... I feel... I hear..."
+           - Multi-sensory anchors the imagery
+
+        4. DON'T INTERPRET - DESCRIBE
+           - Raw description, not analysis
+           - "A red ball" not "which represents..."
+           - Analysis comes later
+
+        5. FOLLOW THE STREAM
+           - Let images transform naturally
+           - Don't direct, just witness and describe
+           - Trust the flow
+
+        6. RECORD AND ANALYZE
+           - Record the session
+           - Review for patterns and insights
+           - Intuitive knowing emerges from the stream
+
+        Image Streaming has been shown to increase IQ scores and creative
+        problem-solving ability. For Dreamweaving, it provides raw material
+        for journey construction and accesses client's personal symbol language.
+      essence: "The eyes of the mind are always seeing - you need only describe what they show"
+
+    attributes:
+      energy_quality: active
+      element: air
+      planetary: mercury
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey]
+      outcome_alignment: [intuition, creativity, self_knowledge]
+      use_cases:
+        - "Creative breakthrough sessions"
+        - "Personal symbol discovery"
+        - "Problem solving through imagery"
+        - "Intelligence enhancement work"
+      contraindications:
+        - "Thought disorder (may become incoherent)"
+        - "Severe social anxiety (speaking aloud difficult)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="0st">
+        Now begin to describe what you see...<break time="1.5s"/>
+        whatever appears behind your closed eyes...<break time="1.5s"/>
+        speak it aloud...<break time="1s"/>
+        continuously...<break time="1s"/>
+        don't stop to analyze...<break time="1.5s"/>
+        just describe...<break time="1.5s"/>
+        colors... shapes... textures... movements...<break time="2s"/>
+        trust the stream...<break time="2s"/>
+        </prosody>
+
+      visual_prompt: "stream of images flowing from third eye, visual consciousness river, symbolic imagery cascade, --ar 16:9"
+
+      audio_cue: "Gentle flowing sounds, alpha binaural, soft creative ambience"
+
+    relationships:
+      synergies:
+        - psychology.intuition.imaginal_symbolic
+        - dream_work.active_imagination
+        - psychology.intuition.symbol_drift
+      related_patterns:
+        - metaphor
+        - sensory_stacking
+        - yes_sets
+      related_archetypes:
+        - visionary
+        - dreamer
+
+  # ---------------------------------------------------------------------------
+  # AUTOMATIC WRITING
+  # ---------------------------------------------------------------------------
+  automatic_writing:
+    entry_id: "psychology.guidance.automatic_writing"
+    name: "Automatic Writing Extraction"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "A technique for bypassing conscious filters to receive written communication from deeper knowing or guide sources"
+      extended: |
+        Automatic writing (also called psychography or channeled writing) is
+        a practice where the hand writes without conscious direction, allowing
+        unconscious material or guide communication to flow through the pen.
+
+        TYPES OF AUTOMATIC WRITING:
+
+        1. UNCONSCIOUS AUTOMATIC
+           - Hand moves independently
+           - Writer may not be aware of content
+           - Pure automaticity
+
+        2. INTUITIVE/INSPIRED WRITING
+           - Conscious but not directing
+           - Words flow faster than thought
+           - "Taking dictation" feeling
+
+        3. DIALOGUE WRITING
+           - Intentional questions posed
+           - Answers written automatically
+           - Conscious collaboration with source
+
+        AUTOMATIC WRITING PROTOCOL:
+
+        1. PREPARATION
+           - Set sacred space
+           - State intention clearly
+           - Have paper and pen ready (or keyboard)
+
+        2. INDUCTION
+           - Enter light trance
+           - Focus attention on third eye or heart
+           - Allow conscious mind to drift
+
+        3. INVITATION
+           - Invite wisdom to flow through the hand
+           - Ask a question if doing dialogue format
+           - Release expectation
+
+        4. WRITING
+           - Begin with circles or random marks
+           - Allow words to emerge
+           - Don't read while writing
+           - Continue without stopping
+
+        5. CLOSING
+           - Thank the source
+           - Ground and return
+           - Read what was written
+
+        For Dreamweaving, automatic writing can extract personalized guidance,
+        journey themes, and symbolic material from client's unconscious.
+      essence: "The pen knows what the mind has forgotten"
+
+    attributes:
+      energy_quality: receptive
+      element: water
+      planetary: moon
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [integration]
+      outcome_alignment: [intuition, self_knowledge, creativity]
+      use_cases:
+        - "Guide communication sessions"
+        - "Accessing unconscious material"
+        - "Creative inspiration extraction"
+        - "Problem solving through writing"
+      contraindications:
+        - "Psychosis (may validate hallucinations)"
+        - "Obsessive tendencies (may compulsive write)"
+        - "Dissociative disorders (without clinical support)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now let your hand begin to move...<break time="2s"/>
+        without your direction...<break time="1.5s"/>
+        the wisdom knows how to write itself...<break time="2s"/>
+        you are simply the channel...<break time="1.5s"/>
+        the pen...<break time="1.5s"/>
+        let the words come through...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "hand writing with golden light, words appearing as if channeled, automatic writing visualization, --ar 16:9"
+
+      audio_cue: "Soft pen-on-paper sounds, theta binaural, gentle inspiration tones"
+
+    relationships:
+      synergies:
+        - psychology.guidance.guide_communication
+        - psychology.intuition.imaginal_symbolic
+        - dream_work.active_imagination
+      related_patterns:
+        - dissociation
+        - progressive_relaxation
+        - metaphor
+      related_archetypes:
+        - scribe
+        - channel
+        - oracle
+
+  # ---------------------------------------------------------------------------
+  # TAROT AS SYMBOL ENGINE
+  # ---------------------------------------------------------------------------
+  tarot_symbol_engine:
+    entry_id: "psychology.guidance.tarot_symbol_engine"
+    name: "Tarot as Dreamweaving Symbol Engine"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "Using tarot archetypes and imagery as a structured symbol system for generating personalized journey content"
+      extended: |
+        The Tarot is a complete symbolic language containing 78 archetypal
+        images that map the full spectrum of human experience. For Dreamweaving,
+        the Tarot serves not as divination but as a symbol engine - a way to
+        access specific archetypal energies and journey motifs.
+
+        TAROT AS SYMBOL SYSTEM:
+
+        MAJOR ARCANA (22 Cards)
+        - The Fool's Journey structure
+        - Primary life archetypes
+        - Transformation stages
+
+        MINOR ARCANA (56 Cards)
+        - Four elemental suits (Wands/Fire, Cups/Water, Swords/Air, Pentacles/Earth)
+        - Numbers 1-10 as developmental sequence
+        - Court cards as personality aspects
+
+        DREAMWEAVING APPLICATIONS:
+
+        1. JOURNEY STRUCTURE
+           - Major Arcana as journey phases
+           - Fool → World as complete transformation
+           - Specific cards for specific outcomes
+
+        2. ARCHETYPE INVOCATION
+           - Draw card to select guide archetype
+           - Empress for abundance, Hermit for wisdom
+           - Let card choose the energy
+
+        3. SYMBOL SEEDING
+           - Use card imagery as journey seed
+           - Client draws card; journey built around it
+           - Personal unconscious selects the theme
+
+        4. ELEMENT BALANCING
+           - Client draws from all suits
+           - Identifies which elements are strong/weak
+           - Journey emphasizes needed elements
+
+        KEY ARCANA FOR DREAMWEAVING:
+        - The Fool (0) - New beginnings, trust
+        - The High Priestess (II) - Intuition, inner knowing
+        - The Empress (III) - Abundance, nurturing
+        - The Hermit (IX) - Inner guidance, wisdom
+        - The Tower (XVI) - Breakthrough, transformation
+        - The Star (XVII) - Healing, hope
+        - The Moon (XVIII) - Dreams, unconscious
+        - The Sun (XIX) - Joy, vitality
+      essence: "The cards don't tell the future - they reveal the present in symbolic form"
+
+    attributes:
+      energy_quality: balanced
+      element: spirit
+      planetary: moon
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [pre_talk, journey, integration]
+      outcome_alignment: [intuition, self_knowledge, spiritual_growth]
+      use_cases:
+        - "Journey theme selection"
+        - "Archetype identification sessions"
+        - "Personal symbol exploration"
+        - "Element balancing work"
+      contraindications:
+        - "Tarot phobia or religious objection"
+        - "Fortune-telling fixation (reframe purpose)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now a card appears before you...<break time="2s"/>
+        rising from the depths of your unconscious...<break time="2s"/>
+        showing you the symbol that holds meaning for you now...<break time="2.5s"/>
+        notice what you see...<break time="2s"/>
+        the colors...<break time="1s"/>
+        the figures...<break time="1s"/>
+        the feeling it evokes...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "luminous tarot card floating in mystical space, archetypal imagery glowing, sacred symbol emerging, --ar 16:9"
+
+      audio_cue: "Mysterious shuffling sounds, alpha binaural, mystical ambience"
+
+    relationships:
+      synergies:
+        - symbols.tarot_symbols
+        - mythology.archetype_catalog
+        - psychology.intuition.imaginal_symbolic
+      related_patterns:
+        - metaphor
+        - sensory_stacking
+        - symbolic_journey
+      related_archetypes:
+        - high_priestess
+        - magician
+        - oracle
+
+  # ---------------------------------------------------------------------------
+  # SKRYING / MIRROR DIVINATION
+  # ---------------------------------------------------------------------------
+  skrying_divination:
+    entry_id: "psychology.guidance.skrying"
+    name: "Skrying and Mirror Divination"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "Techniques for inducing trance through gazing at reflective surfaces to receive visions and guidance"
+      extended: |
+        Skrying (also scrying) is the practice of gazing into reflective or
+        translucent surfaces to induce altered states and receive visionary
+        information. The surface acts as a focal point that occupies the
+        conscious mind while freeing the unconscious to produce imagery.
+
+        SKRYING SURFACES:
+
+        1. CRYSTAL BALL (Crystallomancy)
+           - Classic European method
+           - Clear or slightly clouded quartz
+           - Images appear "within" the sphere
+
+        2. BLACK MIRROR (Catoptromancy)
+           - Dr. John Dee's obsidian mirror
+           - Black surface allows projected imagery
+           - Powerful for shadow work
+
+        3. WATER BOWL (Hydromancy)
+           - Dark bowl with still water
+           - Ancient Greek oracle method
+           - Accessible and effective
+
+        4. FLAME GAZING (Pyromancy)
+           - Candle flame or fire
+           - Images in flickering light
+           - Good for transformation themes
+
+        5. SMOKE READING (Capnomancy)
+           - Incense or sacred smoke
+           - Shapes and movements interpreted
+           - Common in shamanic traditions
+
+        SKRYING PROTOCOL FOR DREAMWEAVING:
+
+        1. PREPARATION
+           - Dim lighting, quiet space
+           - Surface positioned at comfortable angle
+           - Relaxed but alert posture
+
+        2. SOFT GAZE
+           - Look through, not at, the surface
+           - Relax eye muscles
+           - Allow vision to soften and expand
+
+        3. INDUCTION
+           - Breath pacing
+           - Gentle trance deepening
+           - Surface becomes gateway
+
+        4. RECEPTION
+           - Images, colors, or impressions arise
+           - Don't grasp or analyze
+           - Simply witness and receive
+
+        5. INTERPRETATION
+           - After session, review what was seen
+           - Intuitive meaning-making
+           - Note for journey integration
+      essence: "The mirror shows what the eye cannot see"
+
+    attributes:
+      energy_quality: receptive
+      element: water
+      planetary: moon
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [deepening, journey]
+      outcome_alignment: [intuition, self_knowledge, spiritual_growth]
+      journey_families: [underworld_descent, celestial_journey]
+      use_cases:
+        - "Visionary trance sessions"
+        - "Shadow work through black mirror"
+        - "Ancestral communication"
+        - "Prophetic vision questing"
+      contraindications:
+        - "Visual hallucination history"
+        - "Psychosis or reality testing issues"
+        - "Dissociative disorders (may trigger)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And as you gaze into the surface...<break time="2.5s"/>
+        letting your eyes soften...<break time="2s"/>
+        you notice the edges begin to shimmer...<break time="2s"/>
+        the depth begins to open...<break time="2.5s"/>
+        and something emerges from within...<break time="3s"/>
+        a vision forming...<break time="2s"/>
+        let it show itself to you...<break time="4s"/>
+        </prosody>
+
+      visual_prompt: "mystical vision emerging from black mirror surface, skrying portal opening, visionary imagery in reflective depth, --ar 16:9"
+
+      audio_cue: "Deep theta binaural, crystalline emergence tones, mystical ambience"
+
+    relationships:
+      synergies:
+        - psychology.intuition.imaginal_symbolic
+        - traditions.ceremonial_magick
+        - dream_work.hypnagogic_gateways
+      related_patterns:
+        - progressive_relaxation
+        - fractionation_loops
+        - sensory_stacking
+      related_archetypes:
+        - oracle
+        - seer
+        - mirror_keeper
+
+  # ---------------------------------------------------------------------------
+  # PENDULUM ADAPTATION
+  # ---------------------------------------------------------------------------
+  pendulum_adaptation:
+    entry_id: "psychology.guidance.pendulum"
+    name: "Pendulum Adaptation for Dreamweaving"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "Using pendulum or ideomotor responses to access unconscious knowing through subtle body movements"
+      extended: |
+        The pendulum is a tool for amplifying ideomotor responses - subtle
+        unconscious muscle movements that reflect inner knowing. The pendulum
+        doesn't "know" anything; rather, it magnifies the body's micro-
+        expressions of unconscious information.
+
+        IDEOMOTOR MECHANISM:
+
+        The unconscious mind influences tiny muscle movements. These movements
+        are too subtle to perceive directly but can be amplified by:
+        - Pendulum swinging (traditional)
+        - Finger signals (hypnotherapy)
+        - Whole-body sway (standing meditation)
+        - Autonomic responses (skin conductance)
+
+        PENDULUM PROTOCOL:
+
+        1. CALIBRATION
+           - Establish "yes" movement (e.g., clockwise)
+           - Establish "no" movement (e.g., counterclockwise)
+           - Establish "don't know" or "rephrase" signal
+
+        2. QUESTIONING
+           - Ask clear yes/no questions
+           - Hold pendulum still, await movement
+           - Trust the first clear response
+
+        3. VERIFICATION
+           - Ask known-answer questions to verify
+           - Check consistency
+           - Build trust in the system
+
+        DREAMWEAVING APPLICATIONS:
+
+        1. JOURNEY THEME SELECTION
+           - Ask "Is X the right theme for this journey?"
+           - Narrow down from multiple options
+
+        2. ARCHETYPE IDENTIFICATION
+           - Ask "Is the guide for this work masculine/feminine?"
+           - Ask about specific archetypes
+
+        3. BODY WISDOM ACCESS
+           - "Does my body want to release in this area?"
+           - "Is there unconscious resistance here?"
+
+        4. TIMELINE CHECKING
+           - "Did this pattern originate in childhood?"
+           - "Is there ancestral material here?"
+
+        Note: For Dreamweaving, the practitioner can use pendulum in preparation,
+        or teach client to use ideomotor finger signals during session.
+      essence: "The body answers questions the mind won't ask"
+
+    attributes:
+      energy_quality: receptive
+      element: earth
+      planetary: moon
+      chakra: sacral
+      brainwave: alpha
+
+    applications:
+      journey_phases: [pre_talk, integration]
+      outcome_alignment: [intuition, self_knowledge]
+      use_cases:
+        - "Session preparation and theme selection"
+        - "Ideomotor communication during trance"
+        - "Yes/no guidance retrieval"
+        - "Body wisdom consultation"
+      contraindications:
+        - "Obsessive questioning tendencies"
+        - "Dependency on external validation"
+        - "Skepticism that interferes with relaxation"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now notice your body's subtle wisdom...<break time="2s"/>
+        the tiny movements that speak truth...<break time="2s"/>
+        you can trust these signals...<break time="1.5s"/>
+        your unconscious knows...<break time="2s"/>
+        and will show you clearly...<break time="2s"/>
+        </prosody>
+
+      visual_prompt: "pendulum swinging in golden light, ideomotor response visualization, body wisdom symbol, --ar 16:9"
+
+      audio_cue: "Soft rhythmic pulsing, alpha binaural, gentle grounding tones"
+
+    relationships:
+      synergies:
+        - psychology.intuition.somatic_intelligence
+        - embodiment.grounding_techniques
+        - psychology.guidance.automatic_writing
+      related_patterns:
+        - anchoring
+        - yes_sets
+        - truisms
+      related_archetypes:
+        - dowser
+        - body_keeper
+
+  # ---------------------------------------------------------------------------
+  # INVISIBLE COUNSELORS (Napoleon Hill)
+  # ---------------------------------------------------------------------------
+  invisible_counselors:
+    entry_id: "psychology.guidance.invisible_counselors"
+    name: "Invisible Counselors / Council of Masters"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "Napoleon Hill's technique of convening an imaginal council of historical figures and masters for guidance and inspiration"
+      extended: |
+        In "Think and Grow Rich" and later "The Master Key to Riches,"
+        Napoleon Hill described his practice of nightly meetings with an
+        "Invisible Counselors" - imagined historical figures whose qualities
+        he wished to develop. Over time, these figures became so vivid they
+        seemed to take on independent life and provide unexpected guidance.
+
+        HILL'S ORIGINAL COUNCIL:
+        - Emerson (understanding of nature)
+        - Paine (freedom of thought)
+        - Edison (faith and persistence)
+        - Darwin (patience)
+        - Lincoln (humor, tolerance)
+        - Burbank (harmony with nature)
+        - Napoleon (decisiveness, organization)
+        - Ford (concentration, self-reliance)
+        - Carnegie (practical achievement)
+
+        THE COUNCIL OF MASTERS PROTOCOL:
+
+        1. SELECTION
+           - Choose 5-12 figures whose qualities you want to embody
+           - Can be historical, fictional, archetypal, or living
+           - Ensure diversity of perspectives
+
+        2. RESEARCH
+           - Study each figure deeply
+           - Know their stories, voices, mannerisms
+           - Understand their wisdom and approach
+
+        3. CONVENING
+           - Enter trance/deep relaxation
+           - Visualize council chamber
+           - Call each member by name, see them take their seat
+
+        4. DIALOGUE
+           - Present your question/situation
+           - Let each member respond in turn
+           - Listen for unexpected insights
+
+        5. INTEGRATION
+           - Thank the council
+           - Close the session formally
+           - Record the guidance received
+
+        DREAMWEAVING COUNCIL VARIATIONS:
+
+        - Archetype Council (Sage, Warrior, Lover, King/Queen, Magician, etc.)
+        - Ancestral Council (known and unknown ancestors)
+        - Future Selves Council (versions at different ages/achievements)
+        - Saints and Masters Council (Jesus, Buddha, Mary, etc.)
+        - Mixed Council (combine types based on need)
+      essence: "The masters live within you, waiting to be consulted"
+
+    attributes:
+      energy_quality: active
+      element: air
+      planetary: jupiter
+      chakra: crown
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [intuition, empowerment, self_knowledge]
+      journey_families: [temple_initiation]
+      use_cases:
+        - "Leadership development journeys"
+        - "Character quality cultivation"
+        - "Problem-solving through council"
+        - "Inspiration and motivation sessions"
+      contraindications:
+        - "Identity confusion issues"
+        - "Psychotic features (may blur self/other)"
+        - "Grandiosity inflation risk"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you enter the council chamber...<break time="2.5s"/>
+        where the masters have gathered...<break time="2s"/>
+        see them seated around the table...<break time="2s"/>
+        wise eyes turning toward you...<break time="2s"/>
+        ready to offer their guidance...<break time="2.5s"/>
+        present your question...<break time="3s"/>
+        and listen...<break time="4s"/>
+        </prosody>
+
+      visual_prompt: "council chamber with luminous figures seated around table, master teachers gathered in sacred space, wisdom council, --ar 16:9"
+
+      audio_cue: "Chamber ambience, council murmur, wise presence tones, alpha binaural"
+
+    relationships:
+      synergies:
+        - psychology.intuition.inner_council
+        - mythology.archetype_catalog
+        - psychology.guidance.guide_communication
+      related_patterns:
+        - metaphor
+        - dialogue
+        - parts_work
+      related_archetypes:
+        - sage
+        - mentor
+        - council_of_elders
+
+  # ---------------------------------------------------------------------------
+  # DREAMWEAVING ORACLE PROTOCOL
+  # ---------------------------------------------------------------------------
+  dreamweaving_oracle_protocol:
+    entry_id: "psychology.guidance.dreamweaving_oracle_protocol"
+    name: "Dreamweaving Oracle Protocol (DOP-1)"
+    domain: "psychology"
+    category: "guidance"
+
+    definition:
+      brief: "A comprehensive multi-modal protocol combining all guidance methods into a complete oracle consultation journey"
+      extended: |
+        The Dreamweaving Oracle Protocol (DOP-1) integrates multiple
+        intuition and guidance methods into a complete session for receiving
+        comprehensive guidance on significant life questions.
+
+        DOP-1 STRUCTURE:
+
+        PHASE 1: PREPARATION (5 minutes)
+        - Ground and center
+        - Clarify the inquiry
+        - Set sacred container
+
+        PHASE 2: SOMATIC INQUIRY (5 minutes)
+        - Body scan with question held
+        - Yes/no calibration
+        - Gut/heart responses noted
+
+        PHASE 3: GUIDE CONTACT (8 minutes)
+        - Invite oracle guide to appear
+        - Establish communication
+        - Receive initial impressions
+
+        PHASE 4: SYMBOL RECEPTION (7 minutes)
+        - Allow spontaneous imagery
+        - Use symbol drift technique
+        - Receive symbolic answer
+
+        PHASE 5: HIGHER SELF COUNCIL (8 minutes)
+        - Ascend to Higher Self
+        - Consult inner council if needed
+        - Receive wisdom perspective
+
+        PHASE 6: FUTURE ECHO (5 minutes)
+        - Project into possible futures
+        - Sense echoes from outcomes
+        - Identify aligned path
+
+        PHASE 7: INTEGRATION (7 minutes)
+        - Synthesize all inputs
+        - Receive summary guidance
+        - Anchor decision/direction
+
+        PHASE 8: CLOSING (5 minutes)
+        - Thank all sources
+        - Return to ordinary awareness
+        - Document immediately
+
+        TOTAL: ~50 minutes
+
+        This protocol provides multiple layers of confirmation, engages
+        different knowing-systems, and produces comprehensive guidance.
+      essence: "When the question is important, consult every oracle within you"
+
+    attributes:
+      energy_quality: balanced
+      element: spirit
+      planetary: moon
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [pre_talk, induction, deepening, journey, helm_deep_trance, integration, reorientation]
+      outcome_alignment: [intuition, self_knowledge, spiritual_growth]
+      journey_families: [temple_initiation, celestial_journey]
+      use_cases:
+        - "Major life decision consultation"
+        - "Life purpose discovery"
+        - "Relationship guidance"
+        - "Career direction clarity"
+      contraindications:
+        - "Decision avoidance patterns"
+        - "External authority dependence"
+        - "Psychotic features"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        You are about to enter the complete oracle protocol...<break time="2s"/>
+        consulting every source of wisdom available to you...<break time="2.5s"/>
+        body and soul...<break time="1.5s"/>
+        guide and Higher Self...<break time="1.5s"/>
+        symbol and future...<break time="2s"/>
+        prepare to receive...<break time="2s"/>
+        the fullness of guidance...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "multi-layered oracle temple with symbols, guides, and light, complete consultation sanctuary, wisdom channels converging, --ar 16:9"
+
+      audio_cue: "Full orchestral sacred ambience, theta binaural, complete protocol soundscape"
+
+    relationships:
+      synergies:
+        - psychology.intuition.inner_oracle_sequence
+        - psychology.guidance.higher_self
+        - psychology.intuition.future_echo
+      related_patterns:
+        - progressive_relaxation
+        - fractionation_loops
+        - embedded_commands
+      related_archetypes:
+        - oracle
+        - wise_one
+        - higher_self
+
+# =============================================================================
+# FUTURE SYMBOLIC TECHNOLOGY
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # LIVING SYMBOLS
+  # ---------------------------------------------------------------------------
+  living_symbols:
+    entry_id: "psychology.future_tech.living_symbols"
+    name: "Living Symbols"
+    domain: "psychology"
+    category: "future_tech"
+
+    definition:
+      brief: "Autonomous, self-evolving symbolic constructs that continue to unfold and generate meaning over time"
+      extended: |
+        Living Symbols represent an evolution beyond static imagery. Where
+        traditional symbols are fixed (a cross, a mandala, an archetype),
+        Living Symbols are implanted constructs that continue to grow,
+        transform, and reveal new layers of meaning over days, weeks, or
+        years.
+
+        CHARACTERISTICS OF LIVING SYMBOLS:
+
+        1. SELF-EVOLUTION
+           - The symbol changes over time
+           - Each encounter reveals new aspects
+           - Growth reflects practitioner's development
+
+        2. RESPONSIVE AWARENESS
+           - Symbol responds to practitioner's state
+           - Different forms for different needs
+           - Intelligent adaptation
+
+        3. MEANING GENERATION
+           - Continuously produces new insights
+           - Unpredictable wisdom emergence
+           - Self-complexifying over time
+
+        4. RELATIONSHIP CAPACITY
+           - Forms relationship with practitioner
+           - Two-way communication develops
+           - Symbol has "personality"
+
+        LIVING SYMBOL IMPLANTATION:
+
+        1. CONCEPTION
+           - In deep trance, receive initial symbol seed
+           - Often arrives spontaneously from unconscious
+           - Unique to the individual
+
+        2. PLANTING
+           - Visualize symbol taking root in psyche
+           - Usually heart, belly, or third eye location
+           - Anchor with breath and intention
+
+        3. NURTURING
+           - Regular attention and dialogue
+           - Feed with presence and curiosity
+           - Allow organic development
+
+        4. HARVESTING
+           - Periodic deep consultations
+           - Extract accumulated wisdom
+           - Note transformations
+
+        For Dreamweaving, Living Symbols can be implanted during sessions
+        and revisited in subsequent work, creating continuity and deepening
+        across multiple journeys.
+      essence: "Plant a symbol; harvest a wisdom that grows"
+
+    attributes:
+      energy_quality: transformative
+      element: spirit
+      planetary: pluto
+      chakra: heart
+      brainwave: theta
+
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [intuition, spiritual_growth, transformation]
+      journey_families: [eden_garden, temple_initiation]
+      use_cases:
+        - "Long-term symbol cultivation"
+        - "Multi-session journey continuity"
+        - "Personal growth tracking"
+        - "Wisdom accumulation practice"
+      contraindications:
+        - "Psychotic features (may validate projections)"
+        - "Obsessive attachment tendencies"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now receive a living symbol...<break time="2.5s"/>
+        a seed of wisdom planted in your heart...<break time="2.5s"/>
+        watch as it takes root...<break time="2s"/>
+        this symbol will grow with you...<break time="2s"/>
+        evolve with you...<break time="2s"/>
+        revealing new truths as you are ready...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "luminous symbol seed taking root in heart, growing living wisdom plant, evolving sacred geometry, --ar 16:9"
+
+      audio_cue: "Growing organic tones, theta binaural, living presence ambience"
+
+    relationships:
+      synergies:
+        - psychology.intuition.imaginal_symbolic
+        - psychology.intuition.symbol_drift
+        - symbols.sacred_geometry
+      related_patterns:
+        - anchoring
+        - future_pacing
+        - embedded_commands
+      related_archetypes:
+        - gardener
+        - seed_keeper
+
+  # ---------------------------------------------------------------------------
+  # SEMANTIC FRACTALS
+  # ---------------------------------------------------------------------------
+  semantic_fractals:
+    entry_id: "psychology.future_tech.semantic_fractals"
+    name: "Semantic Fractals"
+    domain: "psychology"
+    category: "future_tech"
+
+    definition:
+      brief: "Self-similar meaning structures that contain the whole within each part, allowing infinite depth exploration"
+      extended: |
+        Semantic Fractals are meaning-structures that exhibit fractal
+        properties - the whole is contained within each part, and zooming
+        in reveals infinite recursive depth. In consciousness work, this
+        means that any symbol or concept, when deeply explored, contains
+        the totality of wisdom relevant to the practitioner.
+
+        FRACTAL MEANING PRINCIPLES:
+
+        1. SELF-SIMILARITY AT SCALE
+           - The microcosm reflects the macrocosm
+           - Any part contains the pattern of the whole
+           - "As above, so below"
+
+        2. INFINITE DEPTH
+           - Every symbol can be infinitely explored
+           - No "bottom" to meaning
+           - Always more to discover
+
+        3. RECURSIVE STRUCTURE
+           - Each level contains the next
+           - Patterns within patterns
+           - Nested meaning-sets
+
+        4. EMERGENT COMPLEXITY
+           - Simple rules create complex results
+           - Deep structure generates surface variety
+           - Underlying unity in apparent diversity
+
+        SEMANTIC FRACTAL EXPLORATION:
+
+        1. SELECT SEED SYMBOL
+           - Start with any meaningful image/concept
+           - This is your entry point
+
+        2. ZOOM IN
+           - Focus on one detail of the symbol
+           - Let that detail become its own whole
+           - Explore the symbol-within-symbol
+
+        3. DISCOVER RESONANCE
+           - Notice how inner symbol reflects outer
+           - See the fractal pattern
+           - Recognize self-similarity
+
+        4. ZOOM IN AGAIN
+           - Choose element within inner symbol
+           - Continue the descent
+           - Each level reveals new knowing
+
+        5. RETURN WITH INTEGRATION
+           - Carry the depth-wisdom back up
+           - See how it illuminates original symbol
+           - Integration of scales
+
+        This technique allows a single Dreamweaving session to access
+        potentially infinite wisdom from a single starting image.
+      essence: "Every drop of the ocean contains the ocean"
+
+    attributes:
+      energy_quality: transformative
+      element: spirit
+      planetary: neptune
+      chakra: crown
+      brainwave: theta
+
+    applications:
+      journey_phases: [helm_deep_trance]
+      outcome_alignment: [intuition, self_knowledge, spiritual_growth]
+      use_cases:
+        - "Deep symbol exploration"
+        - "Holographic consciousness work"
+        - "Infinite wisdom access"
+        - "Unity consciousness experiences"
+      contraindications:
+        - "Dissociative tendencies (may destabilize)"
+        - "Anxiety about infinity/groundlessness"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now look more closely...<break time="2s"/>
+        at one small part of what you see...<break time="2.5s"/>
+        let it expand...<break time="2s"/>
+        become a world unto itself...<break time="2s"/>
+        and within that...<break time="1.5s"/>
+        another world...<break time="2s"/>
+        infinite depth...<break time="2s"/>
+        all containing the same truth...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "fractal zoom into meaning structure, self-similar patterns infinitely deep, semantic fractals visualization, --ar 16:9"
+
+      audio_cue: "Descending/zooming tones, theta binaural, infinite depth ambience"
+
+    relationships:
+      synergies:
+        - symbols.sacred_geometry
+        - psychology.intuition.symbol_drift
+        - consciousness_maps.advaita_nonduality
+      related_patterns:
+        - fractionation_loops
+        - sensory_stacking
+        - metaphor
+      related_archetypes:
+        - cosmic_eye
+        - infinite_one
+
+  # ---------------------------------------------------------------------------
+  # SYMBOLIC OPERATORS
+  # ---------------------------------------------------------------------------
+  symbolic_operators:
+    entry_id: "psychology.future_tech.symbolic_operators"
+    name: "Symbolic Operators"
+    domain: "psychology"
+    category: "future_tech"
+
+    definition:
+      brief: "Functional symbol-forms that perform specific transformations on consciousness states when activated"
+      extended: |
+        Symbolic Operators are symbols that DO something - they are
+        functional rather than merely representational. Where a traditional
+        symbol represents a meaning, a Symbolic Operator transforms a state.
+
+        TYPES OF SYMBOLIC OPERATORS:
+
+        1. TRANSFORMATION OPERATORS
+           - Convert one state to another
+           - Example: Phoenix (transforms old into new)
+           - Example: Alchemical vessel (transmutes content)
+
+        2. AMPLIFICATION OPERATORS
+           - Intensify existing states
+           - Example: Spiral (deepens any experience)
+           - Example: Sun (amplifies energy/clarity)
+
+        3. FILTERING OPERATORS
+           - Remove or pass specific content
+           - Example: Sieve (lets go what's unnecessary)
+           - Example: Mirror (reflects back only truth)
+
+        4. INTEGRATION OPERATORS
+           - Combine disparate elements
+           - Example: Infinity loop (unites opposites)
+           - Example: Chalice (blends contents)
+
+        5. NAVIGATION OPERATORS
+           - Direct movement through consciousness
+           - Example: Door (creates passage)
+           - Example: Bridge (connects realms)
+
+        6. PROTECTION OPERATORS
+           - Shield or contain
+           - Example: Circle (creates boundary)
+           - Example: Shield (deflects)
+
+        USING SYMBOLIC OPERATORS:
+
+        1. SELECTION
+           - Identify the operation needed
+           - Choose appropriate operator
+
+        2. ACTIVATION
+           - Visualize the operator clearly
+           - Apply it to target state/content
+           - Feel its function operating
+
+        3. COMPLETION
+           - Allow operation to complete
+           - Notice the transformed result
+           - Release the operator
+
+        For Dreamweaving, Operators can be taught to clients as tools for
+        self-transformation between sessions.
+      essence: "Symbols that don't just mean - they DO"
+
+    attributes:
+      energy_quality: active
+      element: fire
+      planetary: mars
+      chakra: solar
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [transformation, empowerment, healing]
+      use_cases:
+        - "State transformation techniques"
+        - "Self-directed change tools"
+        - "Between-session practices"
+        - "Rapid state shifting"
+      contraindications:
+        - "Magical thinking without grounding"
+        - "Symbol obsession"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now bring forth the operator...<break time="2s"/>
+        the symbol that transforms...<break time="2s"/>
+        see it activate...<break time="2s"/>
+        feel it working upon your consciousness...<break time="2.5s"/>
+        changing what must be changed...<break time="2s"/>
+        </prosody>
+
+      visual_prompt: "activated symbolic operator glowing with transformative power, functional sacred geometry at work, --ar 16:9"
+
+      audio_cue: "Activation tones, alpha binaural, transformation sounds"
+
+    relationships:
+      synergies:
+        - symbols.sacred_geometry
+        - symbols.alchemical_symbols
+        - psychology.intuition.imaginal_symbolic
+      related_patterns:
+        - anchoring
+        - embedded_commands
+        - submodality_shifts
+      related_archetypes:
+        - magician
+        - alchemist
+
+  # ---------------------------------------------------------------------------
+  # ARCHETYPAL CO-PROCESSORS
+  # ---------------------------------------------------------------------------
+  archetypal_coprocessors:
+    entry_id: "psychology.future_tech.archetypal_coprocessors"
+    name: "Archetypal Co-Processors"
+    domain: "psychology"
+    category: "future_tech"
+
+    definition:
+      brief: "Internalized archetypal patterns that process experience in parallel with conscious awareness, providing continuous guidance"
+      extended: |
+        Archetypal Co-Processors are internalized archetypal patterns that
+        run continuously in the background of consciousness, processing
+        experience through their unique perspective and providing ongoing
+        input to awareness.
+
+        CONCEPT:
+
+        Just as a computer can have specialized co-processors (GPU for
+        graphics, TPU for AI), the psyche can be equipped with specialized
+        archetypal processors that handle specific types of experience.
+
+        COMMON CO-PROCESSOR ARCHETYPES:
+
+        1. THE WARRIOR (Action Assessment)
+           - Continuously evaluates: "What must be done?"
+           - Provides courage when needed
+           - Detects threats and opportunities
+
+        2. THE SAGE (Wisdom Integration)
+           - Continuously asks: "What can be learned?"
+           - Provides perspective
+           - Connects patterns across experiences
+
+        3. THE HEALER (Wellness Monitoring)
+           - Continuously senses: "What needs attention?"
+           - Provides self-care prompts
+           - Detects imbalance early
+
+        4. THE LOVER (Connection Awareness)
+           - Continuously notices: "What wants to connect?"
+           - Provides relational intelligence
+           - Senses emotional currents
+
+        5. THE SOVEREIGN (Authority/Direction)
+           - Continuously guides: "What is the priority?"
+           - Provides decision clarity
+           - Maintains purpose alignment
+
+        INSTALLATION PROTOCOL:
+
+        1. CHOOSE ARCHETYPE
+           - Select needed co-processor
+           - Study its qualities deeply
+
+        2. DEEP INTERNALIZATION
+           - Meditative absorption of archetype
+           - "Become" the archetype temporarily
+           - Download its operating patterns
+
+        3. INSTALLATION
+           - Place archetype in psyche location
+           - Usually heart, head, or belly
+           - Activate continuous operation
+
+        4. CALIBRATION
+           - Adjust sensitivity
+           - Set communication channels
+           - Test operation
+
+        Once installed, co-processors run automatically, enhancing
+        perception and providing continuous archetypal perspective.
+      essence: "The archetypes become allies running within your own consciousness"
+
+    attributes:
+      energy_quality: active
+      element: fire
+      planetary: jupiter
+      chakra: third_eye
+      brainwave: alpha
+
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [intuition, empowerment, self_knowledge]
+      journey_families: [temple_initiation, cosmic_forge]
+      use_cases:
+        - "Archetype integration work"
+        - "Leadership development"
+        - "Continuous guidance installation"
+        - "Multi-perspective processing"
+      contraindications:
+        - "Identity confusion"
+        - "Dissociative tendencies"
+        - "Overwhelming inner multiplicity"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you install the archetype...<break time="2s"/>
+        a wise presence that will run continuously...<break time="2s"/>
+        processing your experience...<break time="2s"/>
+        offering its perspective...<break time="2s"/>
+        feel it activate...<break time="2.5s"/>
+        running in the background of your awareness...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "archetypal figure integrating into consciousness, co-processor installation visualization, wisdom presence merging with psyche, --ar 16:9"
+
+      audio_cue: "Integration tones, alpha binaural, activation sequence sounds"
+
+    relationships:
+      synergies:
+        - mythology.archetype_catalog
+        - psychology.internal_family_systems
+        - psychology.intuition.inner_council
+      related_patterns:
+        - identity_reframing
+        - anchoring
+        - future_pacing
+      related_archetypes:
+        - warrior
+        - sage
+        - healer
+        - lover
+        - sovereign
+
+  # ---------------------------------------------------------------------------
+  # HOLOGRAPHIC SYMBOLISM
+  # ---------------------------------------------------------------------------
+  holographic_symbolism:
+    entry_id: "psychology.future_tech.holographic_symbolism"
+    name: "Holographic Symbolism"
+    domain: "psychology"
+    category: "future_tech"
+
+    definition:
+      brief: "Three-dimensional living symbol systems that contain complete information about the whole in every fragment"
+      extended: |
+        Holographic Symbolism draws on the holographic principle - that in
+        a hologram, every part contains information about the whole. Applied
+        to symbolic cognition, this means developing symbols that are fully
+        three-dimensional, internally consistent, and complete.
+
+        HOLOGRAPHIC SYMBOL PROPERTIES:
+
+        1. THREE-DIMENSIONALITY
+           - Symbol can be rotated in mental space
+           - Different angles reveal different aspects
+           - Full sculptural presence
+
+        2. INTERNAL CONSISTENCY
+           - Symbol works from all perspectives
+           - No hidden flaws or contradictions
+           - Self-coherent in all dimensions
+
+        3. INFORMATION DENSITY
+           - Any fragment contains the whole
+           - Cut anywhere, still complete
+           - Maximum meaning compression
+
+        4. INTERFERENCE PATTERNS
+           - Multiple symbols can combine
+           - Create interference patterns of meaning
+           - Emergent complexity from combination
+
+        CREATING HOLOGRAPHIC SYMBOLS:
+
+        1. CONCEPTUAL CLARITY
+           - What is the core meaning?
+           - What must be preserved from all angles?
+
+        2. 3D CONSTRUCTION
+           - Build symbol in mental space
+           - Rotate and refine
+           - Ensure all-angle coherence
+
+        3. INFORMATION ENCODING
+           - Compress meaning into form
+           - Embed multiple layers
+           - Test fragment integrity
+
+        4. ACTIVATION
+           - Symbol becomes "alive" in psyche
+           - Can be accessed from any angle
+           - Contains complete wisdom
+
+        For Dreamweaving, Holographic Symbols provide rich, explorable
+        symbolic environments rather than flat imagery.
+      essence: "The whole truth lives in every fragment of the symbol"
+
+    attributes:
+      energy_quality: balanced
+      element: spirit
+      planetary: uranus
+      chakra: third_eye
+      brainwave: theta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [intuition, spiritual_growth, creativity]
+      use_cases:
+        - "Complex symbol construction"
+        - "3D visualization training"
+        - "Information-dense encoding"
+        - "Multi-angle exploration"
+      contraindications:
+        - "Difficulty with spatial visualization"
+        - "Overwhelm from complexity"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now see the symbol in its fullness...<break time="2s"/>
+        not flat but dimensional...<break time="2s"/>
+        you can walk around it...<break time="2s"/>
+        see it from every angle...<break time="2s"/>
+        and each angle reveals truth...<break time="2.5s"/>
+        the whole contained in every part...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "three-dimensional sacred symbol rotating in space, holographic meaning structure, multi-angle wisdom form, --ar 16:9"
+
+      audio_cue: "Dimensional movement tones, theta binaural, rotating space ambience"
+
+    relationships:
+      synergies:
+        - symbols.sacred_geometry
+        - psychology.future_tech.semantic_fractals
+        - psychology.intuition.imaginal_symbolic
+      related_patterns:
+        - sensory_stacking
+        - metaphor
+        - spatial_anchoring
+      related_archetypes:
+        - architect
+        - geometer
+
+  # ---------------------------------------------------------------------------
+  # SYMBOLIC ENTANGLEMENT
+  # ---------------------------------------------------------------------------
+  symbolic_entanglement:
+    entry_id: "psychology.future_tech.symbolic_entanglement"
+    name: "Symbolic Entanglement"
+    domain: "psychology"
+    category: "future_tech"
+
+    definition:
+      brief: "Creating quantum-like correlations between symbols so that change in one instantly affects its entangled partner"
+      extended: |
+        Symbolic Entanglement borrows from quantum mechanics the concept of
+        entangled particles - once entangled, measuring one instantly
+        affects the other regardless of distance. In symbolic cognition,
+        we can create correlations between symbols such that transforming
+        one automatically transforms its pair.
+
+        APPLICATIONS OF SYMBOLIC ENTANGLEMENT:
+
+        1. SELF-OTHER ENTANGLEMENT
+           - Entangle symbol of self with symbol of other
+           - Healing self-symbol heals relationship
+           - Boundary work through disentanglement
+
+        2. PRESENT-FUTURE ENTANGLEMENT
+           - Entangle present state with desired future
+           - Changes in present-symbol ripple forward
+           - Manifestation through entangled transformation
+
+        3. CONSCIOUS-UNCONSCIOUS ENTANGLEMENT
+           - Entangle surface issue with root cause
+           - Transforming surface affects depths
+           - Integration through entangled processing
+
+        4. INDIVIDUAL-COLLECTIVE ENTANGLEMENT
+           - Entangle personal symbol with archetype
+           - Personal transformation taps collective power
+           - Healing the one heals the many
+
+        ENTANGLEMENT PROTOCOL:
+
+        1. IDENTIFY PAIR
+           - What two elements need to be linked?
+           - Create clear symbols for each
+
+        2. BRING INTO RESONANCE
+           - Visualize symbols side by side
+           - Find the frequency where they vibrate together
+           - Achieve harmonic resonance
+
+        3. ENTANGLE
+           - Merge symbols momentarily
+           - Then separate while maintaining connection
+           - Feel the invisible link
+
+        4. TEST
+           - Change one symbol slightly
+           - Observe instant change in partner
+           - Confirm entanglement
+
+        5. UTILIZE
+           - Transform the more accessible symbol
+           - Trust the entangled effect
+           - Verify changes in partner
+      essence: "What happens to one, happens to both - the universe is woven of invisible threads"
+
+    attributes:
+      energy_quality: transformative
+      element: spirit
+      planetary: neptune
+      chakra: heart
+      brainwave: theta
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [transformation, healing, manifestation]
+      journey_families: [cosmic_forge, celestial_journey]
+      use_cases:
+        - "Relationship healing work"
+        - "Root cause transformation"
+        - "Manifestation techniques"
+        - "Collective healing participation"
+      contraindications:
+        - "Boundary issues (need containment)"
+        - "Magical thinking without discernment"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And now see these two symbols...<break time="2s"/>
+        coming together...<break time="2s"/>
+        merging for a moment...<break time="2s"/>
+        then separating...<break time="2s"/>
+        but forever connected...<break time="2s"/>
+        what changes in one...<break time="1.5s"/>
+        changes in both...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "two symbols connected by luminous thread of light, quantum entanglement visualization, correlated transformation, --ar 16:9"
+
+      audio_cue: "Resonance tones, theta binaural, entanglement harmonic"
+
+    relationships:
+      synergies:
+        - science.quantum_metaphors
+        - psychology.manifestation_technology
+        - psychology.intuition.imaginal_symbolic
+      related_patterns:
+        - anchoring
+        - embedded_commands
+        - future_pacing
+      related_archetypes:
+        - weaver
+        - connector
+
+  # ---------------------------------------------------------------------------
+  # MEANING DENSITY MODULATION
+  # ---------------------------------------------------------------------------
+  meaning_density:
+    entry_id: "psychology.future_tech.meaning_density"
+    name: "Meaning Density Modulation"
+    domain: "psychology"
+    category: "future_tech"
+
+    definition:
+      brief: "The ability to compress or expand the density of meaning within symbolic containers for different purposes"
+      extended: |
+        Meaning Density refers to how much significance is packed into a
+        given symbol or experience. Some symbols are "heavy" with meaning
+        (a wedding ring); others are "light" (a pencil). Meaning Density
+        Modulation is the skill of intentionally adjusting this density.
+
+        DENSITY SPECTRUM:
+
+        LOW DENSITY
+        - Symbol carries minimal meaning
+        - Light, casual, easily changed
+        - Example: Random doodle
+
+        MEDIUM DENSITY
+        - Symbol carries moderate significance
+        - Personal meaning but not sacred
+        - Example: Favorite coffee mug
+
+        HIGH DENSITY
+        - Symbol saturated with meaning
+        - Sacred, archetypal, numinous
+        - Example: Religious icon, wedding ring
+
+        MAXIMUM DENSITY
+        - Symbol contains infinite meaning
+        - The symbol IS reality, not represents it
+        - Example: The Tao, the Cross in mystical experience
+
+        MODULATION TECHNIQUES:
+
+        1. DENSIFYING (Increasing)
+           - Add layers of association
+           - Connect to archetypes
+           - Ritualize and sacralize
+           - Repeated meaningful encounters
+
+        2. DILUTING (Decreasing)
+           - Detach associations
+           - Normalize and desacralize
+           - Create distance and perspective
+           - Replace charged symbol with neutral
+
+        APPLICATIONS:
+
+        - TRAUMA: Dilute meaning density of traumatic symbols
+        - MANIFESTATION: Densify symbols of desired outcomes
+        - SPIRITUAL: Densify practice symbols for deeper access
+        - FLEXIBILITY: Dilute rigid symbols blocking growth
+
+        The skill allows practitioners to consciously engineer the
+        significance landscape of their inner world.
+      essence: "You can choose how much a symbol matters"
+
+    attributes:
+      energy_quality: balanced
+      element: earth
+      planetary: saturn
+      chakra: root
+      brainwave: alpha
+
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [healing, transformation, self_knowledge]
+      use_cases:
+        - "Trauma symbol processing"
+        - "Manifestation symbol charging"
+        - "Spiritual symbol sanctification"
+        - "Cognitive flexibility training"
+      contraindications:
+        - "Nihilistic tendencies (may devalue everything)"
+        - "Meaning-seeking obsession (may overvalue everything)"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-1st">
+        And notice how heavy this symbol is with meaning...<break time="2s"/>
+        you can feel its weight...<break time="2s"/>
+        its significance...<break time="2s"/>
+        and you have the power to adjust this...<break time="2s"/>
+        to make it lighter...<break time="1.5s"/>
+        or heavier...<break time="1.5s"/>
+        as serves you now...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "symbol with visible weight of meaning, density visualization, significance spectrum, --ar 16:9"
+
+      audio_cue: "Weighting tones, alpha binaural, density modulation sounds"
+
+    relationships:
+      synergies:
+        - psychology.intuition.imaginal_symbolic
+        - psychology.nlp_patterns
+        - psychology.depth_psychology
+      related_patterns:
+        - submodality_shifts
+        - anchoring
+        - reframing
+      related_archetypes:
+        - alchemist
+        - weight_keeper
+
+  # ---------------------------------------------------------------------------
+  # FUTURE DREAMWEAVING SYMBOL ENGINE (FDSE)
+  # ---------------------------------------------------------------------------
+  future_symbol_engine:
+    entry_id: "psychology.future_tech.future_symbol_engine"
+    name: "Future Dreamweaving Symbol Engine (FDSE)"
+    domain: "psychology"
+    category: "future_tech"
+
+    definition:
+      brief: "A theoretical integrated system combining all advanced symbolic technologies for maximum consciousness transformation"
+      extended: |
+        The Future Dreamweaving Symbol Engine (FDSE) is a theoretical
+        framework integrating all advanced symbolic technologies into a
+        unified system for consciousness transformation. It represents
+        the future potential of symbolic cognition work.
+
+        FDSE COMPONENTS:
+
+        1. LIVING SYMBOL GENERATOR
+           - Creates self-evolving symbolic constructs
+           - Seeds symbols that grow with practitioner
+           - Produces unique personal symbol language
+
+        2. SEMANTIC FRACTAL EXPLORER
+           - Enables infinite-depth symbol exploration
+           - Finds the whole in every part
+           - Accesses holographic wisdom structure
+
+        3. SYMBOLIC OPERATOR LIBRARY
+           - Repository of functional symbols
+           - Transformation, amplification, filtering operations
+           - Plug-and-play consciousness tools
+
+        4. ARCHETYPAL CO-PROCESSOR ARRAY
+           - Multiple archetypes running simultaneously
+           - Parallel processing of experience
+           - Integrated wisdom council operation
+
+        5. HOLOGRAPHIC SYMBOL CONSTRUCTOR
+           - 3D symbol creation capability
+           - Full internal consistency checking
+           - Information compression optimization
+
+        6. ENTANGLEMENT ENGINE
+           - Creates and manages symbol correlations
+           - Enables action-at-distance transformation
+           - Tracks entanglement relationships
+
+        7. MEANING DENSITY MODULATOR
+           - Adjusts significance levels
+           - Optimizes symbol weight for purpose
+           - Prevents over/under-charging
+
+        8. INTEGRATION MATRIX
+           - Coordinates all components
+           - Ensures coherent operation
+           - Outputs unified guidance
+
+        The FDSE represents what becomes possible when symbolic cognition
+        is fully developed and technologized - a complete operating system
+        for consciousness transformation through symbol.
+      essence: "The complete technology of symbolic consciousness - where humanity is heading"
+
+    attributes:
+      energy_quality: transformative
+      element: spirit
+      planetary: uranus
+      chakra: crown
+      brainwave: gamma
+
+    applications:
+      journey_phases: [helm_deep_trance]
+      outcome_alignment: [transformation, spiritual_growth, intuition]
+      journey_families: [cosmic_forge, celestial_journey]
+      use_cases:
+        - "Advanced practitioner development"
+        - "Consciousness technology exploration"
+        - "Future method development"
+        - "Teaching advanced symbolic work"
+      contraindications:
+        - "Insufficient grounding in basics"
+        - "Technology fetishism without wisdom"
+        - "Premature complexity"
+
+    templates:
+      ssml_snippet: |
+        <prosody rate="1.0" pitch="-2st">
+        And now you glimpse the future of consciousness...<break time="2.5s"/>
+        the full technology of symbol...<break time="2s"/>
+        every tool working in harmony...<break time="2s"/>
+        living symbols...<break time="1s"/>
+        infinite depths...<break time="1s"/>
+        operators and processors...<break time="1.5s"/>
+        entanglement and density...<break time="1.5s"/>
+        all integrated...<break time="2s"/>
+        all serving your transformation...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "futuristic consciousness technology visualization, integrated symbol engine, advanced dreamweaving system, cosmic consciousness interface, --ar 16:9"
+
+      audio_cue: "Future technology tones, gamma binaural, advanced system ambience"
+
+    relationships:
+      synergies:
+        - psychology.future_tech.living_symbols
+        - psychology.future_tech.semantic_fractals
+        - psychology.future_tech.symbolic_operators
+        - psychology.future_tech.archetypal_coprocessors
+        - psychology.future_tech.holographic_symbolism
+        - psychology.future_tech.symbolic_entanglement
+        - psychology.future_tech.meaning_density
+      related_patterns:
+        - fractionation_loops
+        - identity_reframing
+        - future_pacing
+      related_archetypes:
+        - technologist
+        - visionary
+        - architect
+
+# =============================================================================
+# OUTCOME DEFINITION
+# =============================================================================
+
+outcome_definition:
+  entry_id: "psychology.intuition.outcome_definition"
+  name: "Intuition Outcome Definition"
+  domain: "psychology"
+  category: "intuition"
+
+  definition:
+    brief: "Framework for sessions focused on developing intuitive knowing and receiving inner guidance"
+    extended: |
+      The intuition outcome focuses on developing and trusting one's
+      capacity for direct knowing - through pattern recognition, somatic
+      intelligence, imaginal messaging, guide communication, and
+      advanced symbolic cognition.
+
+      Core objectives:
+      - Recognize and trust intuitive signals
+      - Develop multiple intuition channels
+      - Establish guide communication protocols
+      - Access Higher Self perspective
+      - Utilize advanced symbolic technologies
+
+      Success metrics:
+      - Increased confidence in intuitive knowing
+      - Clearer decision-making through guidance
+      - Enhanced symbolic/imaginal receptivity
+      - Established ongoing guidance practice
+
+  applications:
+    journey_phases: [pre_talk, induction, deepening, journey, helm_deep_trance, integration, reorientation]
+    outcome_alignment: [intuition]
+    journey_families: [temple_initiation, celestial_journey, eden_garden]
+
+# =============================================================================
+# CONTRAINDICATIONS
+# =============================================================================
+
+contraindications:
+  entry_id: "psychology.intuition.contraindications"
+  name: "Intuition Work Contraindications"
+  domain: "psychology"
+  category: "intuition"
+
+  definition:
+    brief: "Safety considerations and populations requiring caution in intuition and guidance work"
+    extended: |
+      ABSOLUTE CONTRAINDICATIONS:
+      - Active psychotic episode
+      - Command hallucinations
+      - Severe dissociative identity disorder (without clinical team)
+      - Religious delusions (may validate)
+
+      RELATIVE CONTRAINDICATIONS (require adaptation):
+      - History of spiritual emergency
+      - Religious trauma
+      - Obsessive-compulsive tendencies
+      - Severe anxiety disorders
+      - Reality testing difficulties
+      - External locus of control
+      - Spiritual bypassing patterns
+
+      ADAPTATIONS:
+      - Ground extensively before imaginal work
+      - Emphasize psychological frame over supernatural
+      - Build ego strength before guide work
+      - Use ideomotor signals rather than visual imagery
+      - Shorter sessions with more integration time
+      - Ensure support system in place
+
+  applications:
+    journey_phases: [pre_talk]
+    outcome_alignment: [intuition, self_knowledge, spiritual_growth]

@@ -1,0 +1,966 @@
+# =============================================================================
+# QABALAH - Tree of Life for Dreamweaving
+# =============================================================================
+# The Qabalistic Tree of Life provides a comprehensive map of consciousness,
+# creation, and transformation. Its ten sephiroth and twenty-two paths offer
+# rich symbolic frameworks for hypnotic journey design.
+#
+# Usage: Use sephiroth for destination/theme. Use paths for transitions.
+#        Apply correspondences for symbolic coherence.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "traditions"
+category: "western_esoteric"
+purpose: "Qabalistic framework for transformational hypnotic journeys"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Qabalah (Kabbalah)"
+  alternate_spellings: ["Kabbalah", "Cabala", "Qabala"]
+
+  definition:
+    brief: "Jewish mystical tradition mapping creation, consciousness, and divine emanation through the Tree of Life"
+    extended: |
+      Qabalah is a mystical and esoteric tradition originating in Jewish mysticism,
+      later adapted by Western occultists. Its central symbol, the Tree of Life
+      (Etz Chaim), maps the process of divine creation through ten spheres
+      (sephiroth) connected by twenty-two paths. Each sephira represents a
+      divine attribute, a level of consciousness, and a stage of manifestation.
+
+      The Tree provides:
+      - A map of consciousness from pure spirit to physical matter
+      - A framework for understanding psychological and spiritual development
+      - Rich correspondences (colors, planets, elements, tarot, etc.)
+      - Pathways for ascent (return to source) and descent (manifestation)
+
+  core_texts:
+    - name: "Sefer Yetzirah (Book of Formation)"
+      description: "Early text on Hebrew letters and creation"
+    - name: "Zohar (Book of Splendor)"
+      description: "Central text of Jewish Kabbalah"
+    - name: "The Mystical Qabalah"
+      author: "Dion Fortune"
+      description: "Western esoteric interpretation"
+
+  relevance_to_dreamweaving: |
+    The Tree of Life provides an exceptionally rich framework for journey design:
+    - Each sephira offers distinct themes, imagery, and transformations
+    - Paths between sephiroth structure transitions and initiations
+    - Correspondences ensure symbolic coherence across audio/visual/narrative
+    - The descent/ascent structure maps naturally to journey phases
+    - Psychological interpretations support therapeutic applications
+
+# =============================================================================
+# THE THREE PILLARS
+# =============================================================================
+
+pillars:
+  note: "The Tree is organized into three vertical pillars"
+
+  pillar_of_severity:
+    name: "Pillar of Severity (Form)"
+    hebrew: "Pachad"
+    position: "Left"
+    quality: "Restrictive, structuring, feminine receptive"
+    sephiroth: [binah, geburah, hod]
+    color: "Black"
+
+  pillar_of_mercy:
+    name: "Pillar of Mercy (Force)"
+    hebrew: "Chesed"
+    position: "Right"
+    quality: "Expansive, flowing, masculine active"
+    sephiroth: [chokmah, chesed, netzach]
+    color: "White"
+
+  pillar_of_equilibrium:
+    name: "Middle Pillar (Balance)"
+    hebrew: "Shvil ha-Emtza"
+    position: "Center"
+    quality: "Balanced, integrating, path of ascent"
+    sephiroth: [kether, tiphareth, yesod, malkuth]
+    color: "Gold"
+    note: "Primary path for journey ascent/descent"
+
+# =============================================================================
+# THE FOUR WORLDS
+# =============================================================================
+
+four_worlds:
+  note: "The Tree exists on four levels of reality"
+
+  atziluth:
+    name: "Atziluth (Archetypal World)"
+    translation: "World of Emanation"
+    quality: "Pure divine, archetypal, fire"
+    experience: "Direct spiritual experience, unity"
+    color_scale: "King Scale (brilliant, primary)"
+
+  briah:
+    name: "Briah (Creative World)"
+    translation: "World of Creation"
+    quality: "Archangelic, creative thought, water"
+    experience: "Creative vision, inspiration"
+    color_scale: "Queen Scale (secondary, blended)"
+
+  yetzirah:
+    name: "Yetzirah (Formative World)"
+    translation: "World of Formation"
+    quality: "Angelic, astral, emotional, air"
+    experience: "Dreams, visions, imagination"
+    color_scale: "Prince Scale (tertiary)"
+    note: "Primary world for hypnotic journeys"
+
+  assiah:
+    name: "Assiah (Material World)"
+    translation: "World of Action"
+    quality: "Physical, manifest, earth"
+    experience: "Ordinary waking consciousness"
+    color_scale: "Princess Scale (mixed, earthy)"
+
+# =============================================================================
+# THE TEN SEPHIROTH
+# =============================================================================
+
+sephiroth:
+
+  # ---------------------------------------------------------------------------
+  # 1. KETHER - THE CROWN
+  # ---------------------------------------------------------------------------
+  kether:
+    entry_id: "traditions.qabalah.kether"
+    name: "Kether"
+    translation: "Crown"
+    number: 1
+
+    position:
+      pillar: "middle"
+      world: "atziluth"
+      location: "Top of Tree"
+
+    attributes:
+      divine_name: "Eheieh (I Am)"
+      archangel: "Metatron"
+      angelic_order: "Chaioth ha-Qadesh (Holy Living Creatures)"
+      planet: "Primum Mobile (First Swirlings)"
+      element: "Spirit/Root of Air"
+      color_king: "Brilliant white"
+      color_queen: "White brilliance"
+      tarot: "The four Aces"
+      body: "Crown of head, above"
+      chakra: "Crown (Sahasrara)"
+
+    psychology:
+      themes:
+        - Pure being, existence itself
+        - Unity before differentiation
+        - The point of origin
+        - Divine spark within
+        - Transcendence of duality
+
+      experience: "Ineffable unity, the source, pure is-ness"
+
+    journey_applications:
+      phase_alignment: ["helm_deep_trance"]
+      outcome_alignment: ["spiritual_growth", "transformation"]
+      when_to_use:
+        - "Peak transcendent experiences"
+        - "Connection to source"
+        - "Ultimate goals of spiritual journey"
+      caution: "Brief visits only - too abstract for extended work"
+
+    imagery:
+      visual:
+        - "Brilliant white point of light"
+        - "Crown floating above the head"
+        - "Infinite white space"
+        - "The ancient of ancients"
+
+    templates:
+      ssml_approach: |
+        <prosody rate="1.0" pitch="-2st">
+        And beyond all forms...<break time="3s"/>
+        beyond all thoughts...<break time="3s"/>
+        there is a point of light...<break time="3s"/>
+        brilliant...<break time="2.5s"/>
+        white...<break time="2.5s"/>
+        the source of all...<break time="3s"/>
+        You cannot look at it directly...<break time="2.5s"/>
+        but you can feel it...<break time="2.5s"/>
+        the crown above your crown...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Brilliant white point of pure light, crown of divine light above head, ineffable radiance, source of all existence"
+
+  # ---------------------------------------------------------------------------
+  # 2. CHOKMAH - WISDOM
+  # ---------------------------------------------------------------------------
+  chokmah:
+    entry_id: "traditions.qabalah.chokmah"
+    name: "Chokmah"
+    translation: "Wisdom"
+    number: 2
+
+    position:
+      pillar: "mercy"
+      world: "atziluth"
+      location: "Top right"
+
+    attributes:
+      divine_name: "Yah"
+      archangel: "Raziel"
+      angelic_order: "Auphanim (Wheels)"
+      planet: "Zodiac/Fixed Stars"
+      element: "Root of Fire"
+      color_king: "Soft blue"
+      color_queen: "Grey"
+      tarot: "The four Twos, Kings"
+      body: "Left side of face"
+      chakra: "Third eye (yang aspect)"
+
+    psychology:
+      themes:
+        - Primordial masculine/yang force
+        - Creative impulse, inspiration
+        - Wisdom as direct knowing
+        - The divine father
+        - Pure force before form
+
+      experience: "Flash of inspiration, creative lightning, knowing without thought"
+
+    journey_applications:
+      phase_alignment: ["journey", "helm_deep_trance"]
+      outcome_alignment: ["creativity", "spiritual_growth"]
+      when_to_use:
+        - "Receiving inspiration"
+        - "Connecting with divine masculine"
+        - "Creative breakthrough moments"
+
+    imagery:
+      visual:
+        - "Lightning flash"
+        - "Grey-robed ancient sage"
+        - "Starfield, zodiac wheel"
+        - "Tower on mountain peak"
+
+    templates:
+      ssml_wisdom: |
+        <prosody rate="1.0" pitch="-1st">
+        And here...<break time="2.5s"/>
+        wisdom arrives...<break time="2.5s"/>
+        not as thought...<break time="2s"/>
+        but as lightning...<break time="2.5s"/>
+        a flash of knowing...<break time="2.5s"/>
+        that illuminates everything...<break time="2.5s"/>
+        in a single instant...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Lightning flash of divine wisdom, grey-robed ancient sage against starfield, zodiac wheel of fixed stars"
+
+  # ---------------------------------------------------------------------------
+  # 3. BINAH - UNDERSTANDING
+  # ---------------------------------------------------------------------------
+  binah:
+    entry_id: "traditions.qabalah.binah"
+    name: "Binah"
+    translation: "Understanding"
+    number: 3
+
+    position:
+      pillar: "severity"
+      world: "atziluth"
+      location: "Top left"
+
+    attributes:
+      divine_name: "YHVH Elohim"
+      archangel: "Tzaphkiel"
+      angelic_order: "Aralim (Thrones)"
+      planet: "Saturn"
+      element: "Root of Water"
+      color_king: "Crimson/dark red"
+      color_queen: "Black"
+      tarot: "The four Threes, Queens"
+      body: "Right side of face"
+      chakra: "Third eye (yin aspect)"
+
+    psychology:
+      themes:
+        - Primordial feminine/yin form
+        - Understanding as receptive wisdom
+        - The great mother, cosmic womb
+        - Form, limitation, structure
+        - Sorrow and joy of manifestation
+
+      experience: "Deep understanding, receiving form, the dark mother"
+      shadow: "Sorrow (the price of form is limitation)"
+
+    journey_applications:
+      phase_alignment: ["journey", "helm_deep_trance"]
+      outcome_alignment: ["self_knowledge", "transformation", "healing"]
+      when_to_use:
+        - "Understanding deep patterns"
+        - "Connecting with divine feminine"
+        - "Accepting necessary limitations"
+        - "Grief and transformation work"
+
+    imagery:
+      visual:
+        - "Dark mother, black-robed queen"
+        - "Cosmic womb, dark sea"
+        - "Saturn, ancient crone"
+        - "Temple of understanding"
+
+    templates:
+      ssml_understanding: |
+        <prosody rate="1.0" pitch="-2st">
+        And here...<break time="2.5s"/>
+        in the great darkness...<break time="2.5s"/>
+        understanding dawns...<break time="2.5s"/>
+        Not the flash of lightning...<break time="2.5s"/>
+        but the slow turning...<break time="2s"/>
+        of deep waters...<break time="2.5s"/>
+        The dark mother...<break time="2.5s"/>
+        who holds all forms...<break time="2.5s"/>
+        in her infinite womb...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Dark cosmic mother in black robes, infinite dark sea, Saturn's rings, temple of deep understanding"
+
+  # ---------------------------------------------------------------------------
+  # 4. CHESED - MERCY
+  # ---------------------------------------------------------------------------
+  chesed:
+    entry_id: "traditions.qabalah.chesed"
+    name: "Chesed"
+    translation: "Mercy/Lovingkindness"
+    number: 4
+    alternate_name: "Gedulah (Greatness)"
+
+    position:
+      pillar: "mercy"
+      world: "briah"
+      location: "Right, below Chokmah"
+
+    attributes:
+      divine_name: "El"
+      archangel: "Tzadkiel"
+      angelic_order: "Chasmalim (Brilliant Ones)"
+      planet: "Jupiter"
+      element: "Water"
+      color_king: "Deep violet/blue"
+      color_queen: "Blue"
+      tarot: "The four Fours"
+      body: "Left arm"
+      chakra: "Heart (expansive aspect)"
+
+    psychology:
+      themes:
+        - Mercy, grace, abundance
+        - Benevolent authority, the good king
+        - Expansion, generosity
+        - Order, organization, structure
+        - Manifestation of love in form
+
+      experience: "Overwhelming love, grace, abundance, righteous authority"
+      shadow: "Excess can become tyranny of kindness, smothering"
+
+    journey_applications:
+      phase_alignment: ["journey", "integration"]
+      outcome_alignment: ["healing", "empowerment", "spiritual_growth"]
+      when_to_use:
+        - "Receiving grace and blessing"
+        - "Abundance manifestation"
+        - "Benevolent leadership themes"
+        - "Establishing healthy structure"
+
+    imagery:
+      visual:
+        - "Benevolent king on throne"
+        - "Blue robes, scepter"
+        - "Abundant kingdom"
+        - "Jupiter's expansive presence"
+
+    templates:
+      ssml_mercy: |
+        <prosody rate="1.0" pitch="-1st">
+        And here...<break time="2.5s"/>
+        you are received...<break time="2.5s"/>
+        with open arms...<break time="2.5s"/>
+        by a presence of infinite mercy...<break time="2.5s"/>
+        Grace pours down...<break time="2s"/>
+        like water...<break time="2.5s"/>
+        blessing everything...<break time="2.5s"/>
+        You are worthy...<break time="2.5s"/>
+        You are loved...<break time="2.5s"/>
+        You are held...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Benevolent king in deep blue robes on golden throne, abundant kingdom, Jupiter's blessing, infinite mercy"
+
+  # ---------------------------------------------------------------------------
+  # 5. GEBURAH - SEVERITY
+  # ---------------------------------------------------------------------------
+  geburah:
+    entry_id: "traditions.qabalah.geburah"
+    name: "Geburah"
+    translation: "Severity/Strength"
+    number: 5
+    alternate_name: "Pachad (Fear), Din (Judgment)"
+
+    position:
+      pillar: "severity"
+      world: "briah"
+      location: "Left, below Binah"
+
+    attributes:
+      divine_name: "Elohim Gibor"
+      archangel: "Kamael"
+      angelic_order: "Seraphim (Fiery Serpents)"
+      planet: "Mars"
+      element: "Fire"
+      color_king: "Orange"
+      color_queen: "Scarlet red"
+      tarot: "The four Fives"
+      body: "Right arm"
+      chakra: "Solar plexus (warrior aspect)"
+
+    psychology:
+      themes:
+        - Strength, courage, will
+        - Necessary destruction, pruning
+        - Justice, discernment
+        - Breaking through obstacles
+        - The warrior, the surgeon
+
+      experience: "Power, righteous anger, cutting away what no longer serves"
+      shadow: "Cruelty, violence, destruction without purpose"
+
+    journey_applications:
+      phase_alignment: ["journey"]
+      outcome_alignment: ["empowerment", "transformation", "release"]
+      when_to_use:
+        - "Breaking through blocks"
+        - "Cutting ties that bind"
+        - "Finding courage"
+        - "Healthy anger work"
+        - "Setting boundaries"
+
+    imagery:
+      visual:
+        - "Warrior in red armor"
+        - "Flaming sword"
+        - "Mars, the red planet"
+        - "Fire that purifies"
+
+    templates:
+      ssml_strength: |
+        <prosody rate="1.0" pitch="-1st">
+        And here...<break time="2.5s"/>
+        you find your strength...<break time="2.5s"/>
+        Not cruelty...<break time="2s"/>
+        but the courage...<break time="2.5s"/>
+        to cut away...<break time="2.5s"/>
+        what no longer serves...<break time="2.5s"/>
+        The warrior within...<break time="2.5s"/>
+        rises...<break time="2.5s"/>
+        <emphasis level="moderate">ready</emphasis>...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Warrior in scarlet armor with flaming sword, Mars in background, fire of purification, strength and courage"
+
+  # ---------------------------------------------------------------------------
+  # 6. TIPHARETH - BEAUTY
+  # ---------------------------------------------------------------------------
+  tiphareth:
+    entry_id: "traditions.qabalah.tiphareth"
+    name: "Tiphareth"
+    translation: "Beauty/Harmony"
+    number: 6
+
+    position:
+      pillar: "middle"
+      world: "briah"
+      location: "Center of Tree"
+
+    attributes:
+      divine_name: "YHVH Eloah ve-Daath"
+      archangel: "Raphael (or Michael)"
+      angelic_order: "Malachim (Kings)"
+      planet: "Sun"
+      element: "Air"
+      color_king: "Clear rose pink"
+      color_queen: "Golden yellow"
+      tarot: "The four Sixes, Knights"
+      body: "Heart/chest center"
+      chakra: "Heart (harmonizing center)"
+
+    psychology:
+      themes:
+        - Beauty as harmony of opposites
+        - The Higher Self, Christ consciousness
+        - Sacrifice and resurrection
+        - Integration and balance
+        - The divine child, the Son
+
+      experience: "Radiant balance, self-realization, the integrated self"
+      note: "Central sephira - all paths lead through it"
+
+    journey_applications:
+      phase_alignment: ["journey", "helm_deep_trance", "integration"]
+      outcome_alignment: ["healing", "transformation", "self_knowledge", "spiritual_growth"]
+      when_to_use:
+        - "Integration of opposites"
+        - "Higher Self connection"
+        - "Heart-centered transformation"
+        - "Finding balance"
+        - "Self-realization moments"
+
+    imagery:
+      visual:
+        - "Golden sun, radiant light"
+        - "Beautiful child/youth"
+        - "Rose cross"
+        - "Central temple, holy place"
+        - "Harmonious garden"
+
+    templates:
+      ssml_beauty: |
+        <prosody rate="1.0" pitch="-1st">
+        And in the center...<break time="2.5s"/>
+        where all paths meet...<break time="2.5s"/>
+        there is a sun...<break time="2.5s"/>
+        golden...<break time="2s"/>
+        radiant...<break time="2.5s"/>
+        This is beauty...<break time="2.5s"/>
+        not surface beauty...<break time="2s"/>
+        but the harmony...<break time="2.5s"/>
+        of your own true self...<break time="2.5s"/>
+        balanced...<break time="2s"/>
+        integrated...<break time="2s"/>
+        whole...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Golden sun at center of Tree, radiant youth in robes of rose and gold, harmonious garden, all paths meeting"
+
+  # ---------------------------------------------------------------------------
+  # 7. NETZACH - VICTORY
+  # ---------------------------------------------------------------------------
+  netzach:
+    entry_id: "traditions.qabalah.netzach"
+    name: "Netzach"
+    translation: "Victory/Eternity"
+    number: 7
+
+    position:
+      pillar: "mercy"
+      world: "yetzirah"
+      location: "Right, below Chesed"
+
+    attributes:
+      divine_name: "YHVH Tzabaoth"
+      archangel: "Haniel"
+      angelic_order: "Elohim (Gods)"
+      planet: "Venus"
+      element: "Fire"
+      color_king: "Amber"
+      color_queen: "Emerald green"
+      tarot: "The four Sevens"
+      body: "Left hip/leg"
+      chakra: "Sacral (creative aspect)"
+
+    psychology:
+      themes:
+        - Desire, passion, emotion
+        - Art, beauty, creativity
+        - Nature, instinct
+        - Victory through endurance
+        - Love and attraction
+
+      experience: "Passionate engagement, creative flow, natural desire"
+      shadow: "Unchecked desire, addiction, emotional overwhelm"
+
+    journey_applications:
+      phase_alignment: ["journey"]
+      outcome_alignment: ["creativity", "healing", "empowerment"]
+      when_to_use:
+        - "Reconnecting with passion"
+        - "Creative inspiration"
+        - "Nature connection"
+        - "Healthy desire work"
+
+    imagery:
+      visual:
+        - "Lush green forest"
+        - "Venus, evening star"
+        - "Rose garden"
+        - "Dancing figures"
+        - "Emerald temple"
+
+    templates:
+      ssml_victory: |
+        <prosody rate="1.0" pitch="-1st">
+        And here...<break time="2.5s"/>
+        passion flows...<break time="2.5s"/>
+        like a river of emerald light...<break time="2.5s"/>
+        Your desires...<break time="2s"/>
+        your creative fire...<break time="2.5s"/>
+        your connection to nature...<break time="2.5s"/>
+        all alive...<break time="2.5s"/>
+        pulsing...<break time="2.5s"/>
+        beautiful...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Lush emerald forest, Venus shining above, rose garden in bloom, dancing nature spirits, creative passion"
+
+  # ---------------------------------------------------------------------------
+  # 8. HOD - SPLENDOR
+  # ---------------------------------------------------------------------------
+  hod:
+    entry_id: "traditions.qabalah.hod"
+    name: "Hod"
+    translation: "Splendor/Glory"
+    number: 8
+
+    position:
+      pillar: "severity"
+      world: "yetzirah"
+      location: "Left, below Geburah"
+
+    attributes:
+      divine_name: "Elohim Tzabaoth"
+      archangel: "Michael (or Raphael)"
+      angelic_order: "Beni Elohim (Sons of Gods)"
+      planet: "Mercury"
+      element: "Water"
+      color_king: "Violet purple"
+      color_queen: "Orange"
+      tarot: "The four Eights"
+      body: "Right hip/leg"
+      chakra: "Throat (mental aspect)"
+
+    psychology:
+      themes:
+        - Intellect, reason, logic
+        - Communication, language
+        - Magic, ritual, ceremony
+        - Analysis, categorization
+        - The rational mind
+
+      experience: "Clear thinking, magical operation, intellectual understanding"
+      shadow: "Over-intellectualization, disconnection from feeling"
+
+    journey_applications:
+      phase_alignment: ["journey", "integration"]
+      outcome_alignment: ["self_knowledge", "creativity"]
+      when_to_use:
+        - "Understanding patterns"
+        - "Communication themes"
+        - "Magical/ritual elements"
+        - "Organizing insights"
+
+    imagery:
+      visual:
+        - "Mercury, quicksilver"
+        - "Library, books"
+        - "Magical symbols"
+        - "Orange and purple light"
+        - "Hermetic temple"
+
+    templates:
+      ssml_splendor: |
+        <prosody rate="1.0" pitch="-1st">
+        And here...<break time="2.5s"/>
+        the mind becomes clear...<break time="2.5s"/>
+        like quicksilver...<break time="2.5s"/>
+        flowing into understanding...<break time="2.5s"/>
+        Words and symbols...<break time="2s"/>
+        reveal their meanings...<break time="2.5s"/>
+        Patterns become visible...<break time="2.5s"/>
+        The magic of thought...<break time="2.5s"/>
+        illuminates the path...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Mercury quicksilver flow, magical library with glowing symbols, orange and purple light, Hermetic temple of wisdom"
+
+  # ---------------------------------------------------------------------------
+  # 9. YESOD - FOUNDATION
+  # ---------------------------------------------------------------------------
+  yesod:
+    entry_id: "traditions.qabalah.yesod"
+    name: "Yesod"
+    translation: "Foundation"
+    number: 9
+
+    position:
+      pillar: "middle"
+      world: "yetzirah"
+      location: "Center, above Malkuth"
+
+    attributes:
+      divine_name: "Shaddai El Chai"
+      archangel: "Gabriel"
+      angelic_order: "Kerubim (Strong Ones)"
+      planet: "Moon"
+      element: "Air"
+      color_king: "Indigo"
+      color_queen: "Violet"
+      tarot: "The four Nines"
+      body: "Genitals"
+      chakra: "Sacral (foundation aspect)"
+
+    psychology:
+      themes:
+        - The unconscious, dreams
+        - Imagination, astral realm
+        - Foundation of manifestation
+        - Sexual energy, life force
+        - The treasure house of images
+
+      experience: "Dream reality, imagination, the subconscious mind"
+      note: "Gateway between inner and outer worlds"
+
+    journey_applications:
+      phase_alignment: ["induction", "deepening", "journey"]
+      outcome_alignment: ["self_knowledge", "creativity", "healing"]
+      when_to_use:
+        - "Entering the journey space"
+        - "Dream work"
+        - "Accessing the unconscious"
+        - "Imagination activation"
+
+    imagery:
+      visual:
+        - "Full moon, silver light"
+        - "Dream landscape"
+        - "Mirror, reflection"
+        - "Threshold, gateway"
+        - "Violet/indigo temple"
+
+    templates:
+      ssml_foundation: |
+        <prosody rate="1.0" pitch="-2st">
+        And here...<break time="2.5s"/>
+        in the realm of dreams...<break time="2.5s"/>
+        where imagination is real...<break time="2.5s"/>
+        you find the foundation...<break time="2.5s"/>
+        The moon illuminates...<break time="2s"/>
+        what the sun cannot see...<break time="2.5s"/>
+        The treasures of your unconscious...<break time="2.5s"/>
+        revealed...<break time="2.5s"/>
+        in silver light...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Full moon over dreamscape, silver violet light, gateway between worlds, treasure house of images, astral temple"
+
+  # ---------------------------------------------------------------------------
+  # 10. MALKUTH - KINGDOM
+  # ---------------------------------------------------------------------------
+  malkuth:
+    entry_id: "traditions.qabalah.malkuth"
+    name: "Malkuth"
+    translation: "Kingdom"
+    number: 10
+
+    position:
+      pillar: "middle"
+      world: "assiah"
+      location: "Bottom of Tree"
+
+    attributes:
+      divine_name: "Adonai ha-Aretz"
+      archangel: "Sandalphon"
+      angelic_order: "Ashim (Souls of Fire)"
+      planet: "Earth"
+      element: "Earth (all four elements)"
+      color_king: "Yellow"
+      color_queen: "Citrine, olive, russet, black"
+      tarot: "The four Tens, Pages"
+      body: "Feet, whole body"
+      chakra: "Root (earth connection)"
+
+    psychology:
+      themes:
+        - Physical reality, the body
+        - Manifestation, grounding
+        - The present moment
+        - The divine bride, Shekinah
+        - Completion and new beginning
+
+      experience: "Grounded presence, embodiment, here and now"
+      note: "Both beginning and end of the journey"
+
+    journey_applications:
+      phase_alignment: ["pre_talk", "induction", "reorientation"]
+      outcome_alignment: ["healing", "relaxation", "confidence"]
+      when_to_use:
+        - "Grounding at start"
+        - "Returning from journey"
+        - "Embodiment work"
+        - "Manifesting insights"
+
+    imagery:
+      visual:
+        - "Earth, physical world"
+        - "Four-colored sphere"
+        - "Garden, temple floor"
+        - "Body awareness"
+        - "Here and now"
+
+    templates:
+      ssml_grounding: |
+        <prosody rate="1.0" pitch="-1st">
+        And here...<break time="2.5s"/>
+        in the kingdom...<break time="2.5s"/>
+        the physical world...<break time="2.5s"/>
+        your body...<break time="2.5s"/>
+        this present moment...<break time="2.5s"/>
+        Feel your feet...<break time="2s"/>
+        on solid ground...<break time="2.5s"/>
+        You are here...<break time="2.5s"/>
+        in the world...<break time="2.5s"/>
+        where all journeys...<break time="2s"/>
+        become real...<break time="3.5s"/>
+        </prosody>
+
+      ssml_return: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2.5s"/>
+        bringing all that you have learned...<break time="2.5s"/>
+        all that you have experienced...<break time="2.5s"/>
+        back down...<break time="2.5s"/>
+        into the kingdom...<break time="2.5s"/>
+        into your body...<break time="2.5s"/>
+        into this moment...<break time="2.5s"/>
+        Grounded...<break time="2s"/>
+        present...<break time="2s"/>
+        transformed...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "Four-colored earth sphere, temple floor with elements in quarters, divine bride, grounded physical presence"
+
+# =============================================================================
+# JOURNEY PATTERNS
+# =============================================================================
+
+journey_patterns:
+
+  lightning_flash_descent:
+    name: "Lightning Flash (Descent of Creation)"
+    description: "Follows the path of creation from Kether to Malkuth"
+    sequence: [kether, chokmah, binah, chesed, geburah, tiphareth, netzach, hod, yesod, malkuth]
+    use_case: "Understanding how spirit becomes matter, manifestation work"
+
+  serpent_ascent:
+    name: "Serpent Path (Ascent to Source)"
+    description: "Reverses the lightning flash, returning to source"
+    sequence: [malkuth, yesod, hod, netzach, tiphareth, geburah, chesed, binah, chokmah, kether]
+    use_case: "Spiritual ascent, return to unity"
+
+  middle_pillar:
+    name: "Middle Pillar Journey"
+    description: "Ascent/descent along the central column"
+    sequence: [malkuth, yesod, tiphareth, kether]
+    use_case: "Balanced ascent, integration work, most common journey structure"
+    note: "Recommended for most Dreamweaving sessions"
+
+    templates:
+      ssml_middle_pillar_ascent: |
+        <prosody rate="1.0" pitch="-1st">
+        From the earth beneath your feet...<break time="2.5s"/>
+        through the realm of dreams...<break time="2.5s"/>
+        to the sun of your true self...<break time="2.5s"/>
+        and beyond...<break time="2s"/>
+        to the crown of light...<break time="3s"/>
+        </prosody>
+
+  tiphareth_focus:
+    name: "Tiphareth-Centered Journey"
+    description: "All paths leading to and from the center"
+    structure: "Ground in Malkuth → Rise to Tiphareth → Work there → Return"
+    use_case: "Self-realization, heart work, integration"
+
+# =============================================================================
+# THE PATHS (OVERVIEW)
+# =============================================================================
+
+paths_overview:
+  note: "22 paths connect the sephiroth, each associated with Hebrew letter and Tarot trump"
+
+  key_paths_for_journeys:
+    - path: "32 (Malkuth-Yesod)"
+      letter: "Tau"
+      tarot: "The World"
+      theme: "Entering the inner world"
+
+    - path: "25 (Yesod-Tiphareth)"
+      letter: "Samekh"
+      tarot: "Temperance"
+      theme: "Path of aspiration to higher self"
+
+    - path: "13 (Tiphareth-Kether)"
+      letter: "Gimel"
+      tarot: "High Priestess"
+      theme: "Crossing the abyss to unity"
+
+    - path: "26 (Tiphareth-Hod)"
+      letter: "Ayin"
+      tarot: "The Devil"
+      theme: "Confronting shadow, liberation"
+
+    - path: "24 (Tiphareth-Netzach)"
+      letter: "Nun"
+      tarot: "Death"
+      theme: "Transformation, letting go"
+
+# =============================================================================
+# OUTCOME ALIGNMENT
+# =============================================================================
+
+outcome_sephira_emphasis:
+  healing: [malkuth, yesod, tiphareth, chesed]
+  transformation: [geburah, tiphareth, binah]
+  empowerment: [geburah, tiphareth, chesed]
+  self_knowledge: [yesod, tiphareth, binah, chokmah]
+  spiritual_growth: [tiphareth, binah, chokmah, kether]
+  creativity: [netzach, hod, yesod]
+  release: [geburah, yesod, malkuth]
+  confidence: [geburah, tiphareth, chesed]
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - traditions.hermeticism
+    - symbols.color_correspondences
+    - symbols.planetary_influences
+    - consciousness_maps.kundalini_stages
+    - mythology.hero_journey
+
+  chakra_correlations:
+    kether: crown
+    chokmah: third_eye (yang)
+    binah: third_eye (yin)
+    chesed: heart (expansive)
+    geburah: solar_plexus (warrior)
+    tiphareth: heart (center)
+    netzach: sacral (creative)
+    hod: throat (mental)
+    yesod: sacral (foundation)
+    malkuth: root
+
+  source_references:
+    - text: "The Mystical Qabalah"
+      author: "Dion Fortune"
+    - text: "A Garden of Pomegranates"
+      author: "Israel Regardie"
+    - text: "The Chicken Qabalah"
+      author: "Lon Milo DuQuette"
+    - text: "Sefer Yetzirah"
+      translation: "Aryeh Kaplan"

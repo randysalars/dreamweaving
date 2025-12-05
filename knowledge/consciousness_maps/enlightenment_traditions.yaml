@@ -1,0 +1,1427 @@
+# Enlightenment Traditions Knowledge Base
+# Cross-tradition enlightenment framework for Dreamweaving
+# Schema version: 1.0
+
+meta:
+  domain: consciousness_maps
+  category: enlightenment
+  description: |
+    Cross-tradition enlightenment framework synthesizing awakening wisdom from
+    Buddhism, Advaita Vedanta, Christian Mysticism, Sufism, and Daoism.
+    Provides Dreamweaving templates for facilitating enlightenment experiences.
+
+  core_insight: |
+    Enlightenment across traditions is a shift from identifying as a separate self
+    to identifying as spacious awareness itself. The "I" doesn't disappear—it becomes
+    transparent, revealing boundless consciousness that was always present.
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 1: CROSS-TRADITION DEFINITIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+traditions:
+
+  buddhism:
+    entry_id: "consciousness_maps.enlightenment.buddhism"
+    name: "Buddhist Awakening (Bodhi)"
+    tradition: "Buddhism"
+
+    definition:
+      brief: "Recognition that no fixed self exists; liberation from the illusion of separate identity"
+      extended: |
+        In Buddhism, enlightenment (bodhi) is the direct recognition of anatta—no-self.
+        The meditator discovers that what we call "self" is a constantly changing stream
+        of sensations, thoughts, and perceptions with no fixed owner. This isn't nihilism
+        but liberation: consciousness continues, but without the prison of "me" vs "other."
+        The result is the end of suffering (dukkha) because there's no separate self to suffer.
+
+    key_terms:
+      - anatta: "No-self; the absence of a permanent, unchanging self"
+      - bodhi: "Awakening; direct insight into the nature of reality"
+      - nirvana: "Extinguishing of craving and delusion; unconditioned peace"
+      - shunyata: "Emptiness; all phenomena lack inherent existence"
+      - dukkha: "Suffering; unsatisfactoriness arising from clinging"
+
+    stages:
+      stream_entry:
+        description: "First glimpse; doubt in separate self dissolves"
+        signs: ["Unshakeable confidence", "Glimpses of no-self", "Reduced fear of death"]
+      once_returner:
+        description: "Sensory desire and aversion weakened"
+        signs: ["Less reactive", "More equanimous", "Attachment loosening"]
+      non_returner:
+        description: "Sensory craving fully released"
+        signs: ["Profound peace", "No pull toward pleasure/away from pain"]
+      arahant:
+        description: "Complete liberation; no more becoming"
+        signs: ["Unshakeable peace", "Spontaneous compassion", "No self to protect"]
+
+    dreamweaving_methods:
+      - "Guide attention to the space between thoughts—who is aware?"
+      - "Invite search for the 'self' that is supposedly suffering"
+      - "Use body-scanning to reveal the self as process, not thing"
+      - "Employ 'turning attention around' to notice the noticer"
+
+    templates:
+      ssml_anatta_inquiry: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        And now... as you rest here... <break time="2s"/>
+
+        I invite you to notice... a thought arising... <break time="1.5s"/>
+
+        And as that thought floats through... <break time="1s"/>
+        ask yourself... very gently... <break time="1.5s"/>
+
+        Who... is aware... of this thought? <break time="3s"/>
+
+        Don't answer with words... <break time="1s"/>
+        just look... directly... <break time="1.5s"/>
+        at whatever is aware... right now... <break time="4s"/>
+
+        Can you find... a solid "self"... doing the looking? <break time="3s"/>
+
+        Or is there... only... looking itself? <break time="4s"/>
+
+        Awareness... without an owner... <break time="2s"/>
+        seeing... without a seer... <break time="3s"/>
+        </prosody>
+        </speak>
+
+  advaita:
+    entry_id: "consciousness_maps.enlightenment.advaita"
+    name: "Advaita Vedanta (Nonduality)"
+    tradition: "Hinduism - Advaita Vedanta"
+
+    definition:
+      brief: "Recognition that individual consciousness (Atman) is identical with universal consciousness (Brahman)"
+      extended: |
+        Advaita means "not two." The separate self is maya (illusion)—a case of mistaken
+        identity. You are not the body-mind; you are the awareness in which body-mind appears.
+        This awareness is Brahman—infinite, unchanging, the ground of all existence.
+        Enlightenment is simply recognizing what you already are: "I am That" (Tat Tvam Asi).
+
+    key_terms:
+      - atman: "True Self; pure awareness identical with Brahman"
+      - brahman: "Ultimate reality; infinite consciousness"
+      - maya: "Illusion; the apparent separation of self from Self"
+      - moksha: "Liberation; recognition of one's true nature"
+      - aham_brahmasmi: "'I am Brahman'; the great realization"
+      - tat_tvam_asi: "'You are That'; pointing to nondual nature"
+
+    three_bodies:
+      gross_body:
+        description: "Physical form; waking state"
+        transcendence: "I am not the body—I am the awareness of the body"
+      subtle_body:
+        description: "Mind, emotions, dreams; dream state"
+        transcendence: "I am not thoughts—I am the space in which thoughts arise"
+      causal_body:
+        description: "Deep sleep; formless potential"
+        transcendence: "Even in dreamless sleep, 'I' persist—as pure awareness"
+
+    neti_neti:
+      meaning: "Not this, not this"
+      method: |
+        Systematically recognize what you are NOT:
+        - I am not the body (it changes; I remain)
+        - I am not sensations (they come and go; I remain)
+        - I am not emotions (they arise and pass; I remain)
+        - I am not thoughts (they appear and disappear; I remain)
+        What remains when all objects are negated? Pure Subject—awareness itself.
+
+    dreamweaving_methods:
+      - "Guide 'neti neti' process—systematically disidentifying from objects"
+      - "Use 'I am' as anchor, then release the objects of identity"
+      - "Invoke witness consciousness watching the dream of separation"
+      - "Point to the unchanging awareness beneath all changing experience"
+
+    templates:
+      ssml_neti_neti: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        I invite you now... to discover... what you truly are... <break time="2s"/>
+
+        Notice your body... sitting or lying... <break time="1.5s"/>
+        and recognize... I am not this body... <break time="1.5s"/>
+        I am the awareness... that knows the body... <break time="3s"/>
+
+        Notice sensations... tingling... warmth... pressure... <break time="1.5s"/>
+        and recognize... I am not these sensations... <break time="1.5s"/>
+        I am the awareness... in which sensations appear... <break time="3s"/>
+
+        Notice thoughts... floating through... <break time="1.5s"/>
+        and recognize... I am not these thoughts... <break time="1.5s"/>
+        I am the vast space... in which thoughts arise and dissolve... <break time="3s"/>
+
+        Now... what remains... <break time="2s"/>
+        when you are not the body... <break time="1s"/>
+        not the sensations... <break time="1s"/>
+        not the thoughts? <break time="3s"/>
+
+        Only... awareness itself... <break time="2s"/>
+        boundless... <break time="1s"/>
+        unchanging... <break time="1s"/>
+        ever-present... <break time="3s"/>
+
+        You are That... <break time="2s"/>
+        </prosody>
+        </speak>
+
+  christian_mysticism:
+    entry_id: "consciousness_maps.enlightenment.christian_mysticism"
+    name: "Christian Mystical Union (Theosis)"
+    tradition: "Christian Mysticism"
+
+    definition:
+      brief: "Divine union where the soul becomes one with God while retaining personhood"
+      extended: |
+        Christian mysticism speaks of theosis (deification)—becoming one with God's nature
+        through grace while remaining a distinct person. Unlike Eastern nonduality, the self
+        isn't dissolved but transformed, becoming a "partaker of the divine nature" (2 Peter 1:4).
+        The mystic experiences God not as other but as the deepest ground of their own being.
+
+    key_terms:
+      - theosis: "Deification; participation in divine nature"
+      - unio_mystica: "Mystical union; soul's marriage with God"
+      - dark_night: "Purifying passage through spiritual dryness"
+      - infused_contemplation: "God-given awareness beyond effort"
+      - interior_castle: "Teresa's map of the soul's journey inward"
+      - cloud_of_unknowing: "Resting in God beyond concepts"
+
+    stages:
+      purgative:
+        description: "Cleansing; releasing attachments"
+        practices: ["Confession", "Renunciation", "Moral purification"]
+      illuminative:
+        description: "Awakening; divine light enters awareness"
+        practices: ["Contemplative prayer", "Lectio divina", "Inner stillness"]
+      unitive:
+        description: "Divine marriage; soul rests in God"
+        practices: ["Wordless presence", "Surrender", "Being breathed by God"]
+
+    dark_night:
+      night_of_senses:
+        description: "Attachment to spiritual consolations stripped away"
+        purpose: "Purification from seeking God for good feelings"
+      night_of_soul:
+        description: "Deepest purification; feeling abandoned by God"
+        purpose: "Final release of ego-will; total surrender"
+
+    dreamweaving_methods:
+      - "Guide into the 'interior castle'—the innermost chamber where God dwells"
+      - "Use Centering Prayer structure: sacred word → release → rest"
+      - "Invoke divine light filling and transforming from within"
+      - "Create 'Cloud of Unknowing' space—loving attention beyond thought"
+
+    templates:
+      ssml_divine_indwelling: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        And now... I invite you... to journey inward... <break time="2s"/>
+
+        Imagine your soul... as a beautiful castle... <break time="1.5s"/>
+        with many rooms... many chambers... <break time="1.5s"/>
+
+        And at the very center... <break time="1s"/>
+        in the innermost chamber... <break time="1.5s"/>
+        dwells... the Presence... <break time="2s"/>
+
+        You begin to move... deeper... <break time="1s"/>
+        through one room... then another... <break time="1.5s"/>
+        drawn by a light... a warmth... <break time="1.5s"/>
+        coming from the center... <break time="3s"/>
+
+        With each room you pass through... <break time="1s"/>
+        something falls away... <break time="1.5s"/>
+        concerns... worries... the busy surface mind... <break time="2s"/>
+
+        Until you arrive... <break time="1.5s"/>
+        at the innermost place... <break time="2s"/>
+
+        And here... <break time="1s"/>
+        you discover... <break time="1.5s"/>
+        that the Presence... has been waiting... <break time="1.5s"/>
+        has always been here... <break time="2s"/>
+        closer to you... than you are to yourself... <break time="3s"/>
+
+        Rest here now... <break time="1.5s"/>
+        in wordless communion... <break time="1.5s"/>
+        being breathed... by the Divine... <break time="4s"/>
+        </prosody>
+        </speak>
+
+  sufism:
+    entry_id: "consciousness_maps.enlightenment.sufism"
+    name: "Sufi Annihilation (Fana)"
+    tradition: "Sufism (Islamic Mysticism)"
+
+    definition:
+      brief: "Annihilation of the ego-self in divine Reality, followed by subsistence in God"
+      extended: |
+        Fana is the "passing away" of the false self—the nafs—in the overwhelming
+        presence of the Beloved (God). It's not destruction but transformation: the drop
+        realizes it was always the ocean. After fana comes baqa—abiding in God while
+        functioning in the world. The Sufi becomes a "polished mirror" reflecting divine light.
+
+    key_terms:
+      - fana: "Annihilation; ego-death in divine presence"
+      - baqa: "Subsistence; abiding in God after fana"
+      - nafs: "Ego-self; the veil between soul and God"
+      - dhikr: "Remembrance; repetition of divine names"
+      - hal: "State; temporary mystical experience"
+      - maqam: "Station; permanent spiritual attainment"
+
+    stages_of_nafs:
+      nafs_ammara:
+        description: "Commanding self; driven by desires"
+        work: "Discipline, awareness of lower impulses"
+      nafs_lawwama:
+        description: "Self-accusing self; conscience awakens"
+        work: "Repentance, self-examination"
+      nafs_mulhima:
+        description: "Inspired self; divine inspiration enters"
+        work: "Following inner guidance, devotion"
+      nafs_mutmainna:
+        description: "Tranquil self; at peace with God"
+        work: "Surrender, trust, contentment"
+      nafs_radiyya:
+        description: "Pleased self; pleased with God's will"
+        work: "Acceptance of all circumstances"
+      nafs_mardiyya:
+        description: "Pleasing self; God is pleased"
+        work: "Living as divine instrument"
+      nafs_safiyya:
+        description: "Pure self; complete purification"
+        work: "Mirror of divine attributes"
+
+    dreamweaving_methods:
+      - "Guide dhikr meditation—repetition dissolving into presence"
+      - "Invoke the Beloved calling the soul home"
+      - "Use imagery of the moth drawn to flame—ego consumed by light"
+      - "Create the 'polished heart' meditation—becoming clear mirror"
+
+    templates:
+      ssml_fana_journey: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        The Beloved... is calling you home... <break time="2s"/>
+
+        Can you feel it? <break time="1.5s"/>
+        That longing... in your heart... <break time="1.5s"/>
+        the ache... for something you cannot name... <break time="2s"/>
+
+        This longing... is the Beloved's love... <break time="1.5s"/>
+        reaching for you... <break time="1.5s"/>
+        even as you reach... for the Divine... <break time="3s"/>
+
+        Now... let yourself become... the moth... <break time="1.5s"/>
+        drawn to the flame... of infinite love... <break time="2s"/>
+
+        Closer... and closer... <break time="1.5s"/>
+        until there is no distance... <break time="1.5s"/>
+        no separation... <break time="2s"/>
+
+        The moth... dissolves... into light... <break time="2s"/>
+
+        And what remains? <break time="2s"/>
+
+        Only... light... <break time="1.5s"/>
+        only... love... <break time="1.5s"/>
+        only... the Beloved... <break time="3s"/>
+
+        And you discover... <break time="1.5s"/>
+        you were always... only... This... <break time="3s"/>
+        </prosody>
+        </speak>
+
+  daoism:
+    entry_id: "consciousness_maps.enlightenment.daoism"
+    name: "Daoist Naturalness (Wu Wei)"
+    tradition: "Daoism"
+
+    definition:
+      brief: "Alignment with the natural flow of existence; effortless action through non-resistance"
+      extended: |
+        Daoist enlightenment isn't dramatic awakening but return to naturalness (ziran).
+        The sage flows with the Dao like water—yielding, effortless, taking the shape of
+        circumstances without losing essence. Wu wei (non-action) doesn't mean doing nothing
+        but acting without forcing—the archer who releases the arrow without "trying" to hit.
+
+    key_terms:
+      - dao: "The Way; the natural order of existence"
+      - wu_wei: "Non-action; effortless action aligned with Dao"
+      - ziran: "Naturalness; being authentically oneself"
+      - de: "Virtue; the Dao's power manifest in beings"
+      - pu: "Uncarved block; original simplicity before conditioning"
+
+    principles:
+      water_nature:
+        teaching: "Be like water—yield to overcome, flow around obstacles"
+        application: "Release rigidity; adapt without losing essence"
+      empty_vessel:
+        teaching: "Usefulness comes from emptiness—the cup, the room, the wheel hub"
+        application: "Value stillness; create space for Dao to move"
+      return_to_source:
+        teaching: "All things return to their root; in returning is rest"
+        application: "Release striving; trust the natural return"
+      three_treasures:
+        compassion: "Tz'u—motherly love and care"
+        frugality: "Chien—simplicity, not grasping"
+        humility: "Not daring to be first—letting others lead"
+
+    inner_alchemy:
+      jing:
+        description: "Essence; vital energy stored in body"
+        cultivation: "Conserve through temperance; refine through stillness"
+      qi:
+        description: "Energy; breath-force animating life"
+        cultivation: "Circulate through movement; gather through breathing"
+      shen:
+        description: "Spirit; awareness itself"
+        cultivation: "Refine through meditation; unite with Dao"
+
+    dreamweaving_methods:
+      - "Guide 'water meditation'—becoming fluid, yielding, powerful in softness"
+      - "Invoke return to the 'uncarved block'—original nature before conditioning"
+      - "Create 'flowing with Dao' imagery—river carrying without effort"
+      - "Use emptiness meditations—the power of the empty vessel"
+
+    templates:
+      ssml_wu_wei: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        Imagine now... <break time="1.5s"/>
+        that you are becoming... like water... <break time="2s"/>
+
+        Water... that flows effortlessly... <break time="1.5s"/>
+        around every obstacle... <break time="1.5s"/>
+        always finding... the path of least resistance... <break time="2s"/>
+
+        When it meets a rock... <break time="1s"/>
+        it doesn't fight... <break time="1s"/>
+        it simply... flows around... <break time="2s"/>
+
+        And in its softness... <break time="1s"/>
+        it wears away... the hardest stone... <break time="2.5s"/>
+
+        Feel yourself now... <break time="1.5s"/>
+        releasing all resistance... <break time="1.5s"/>
+        all pushing... <break time="1s"/>
+        all forcing... <break time="2s"/>
+
+        Simply... flowing... <break time="1.5s"/>
+        with what is... <break time="2s"/>
+
+        The Dao carries you... <break time="1.5s"/>
+        as a river carries a leaf... <break time="1.5s"/>
+        no effort needed... <break time="1.5s"/>
+        only... surrender... to the flow... <break time="3s"/>
+        </prosody>
+        </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 2: COMMON THREADS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+common_threads:
+  entry_id: "consciousness_maps.enlightenment.common_threads"
+  name: "Universal Patterns in Enlightenment"
+
+  core_shift:
+    from: "Identifying as a separate self (body-mind-ego)"
+    to: "Identifying as spacious awareness in which self appears"
+    note: |
+      The "I" doesn't disappear—it becomes transparent. Like a window:
+      you can see it, but you see through it to boundless sky beyond.
+
+  universal_characteristics:
+    - recognition_not_achievement:
+        description: "Enlightenment is discovered, not constructed"
+        implication: "It's already present; we're removing veils, not building something new"
+
+    - end_of_seeking:
+        description: "The search ends when the seeker is seen through"
+        implication: "The 'one who wants enlightenment' is the last illusion to dissolve"
+
+    - ordinary_extraordinariness:
+        description: "After awakening, chopping wood and carrying water continue"
+        implication: "Life looks the same but is experienced without the overlay of 'me'"
+
+    - compassion_arising:
+        description: "Natural care for all beings emerges"
+        implication: "Without self-protection, the heart opens spontaneously"
+
+    - peace_independent_of_circumstances:
+        description: "Equanimity regardless of outer conditions"
+        implication: "Suffering requires a sufferer; no separate self, no personal suffering"
+
+  where_traditions_converge:
+    ego_dissolution: "All traditions point to the illusory nature of the separate self"
+    awareness_primacy: "Consciousness is recognized as fundamental, not produced by brain"
+    present_moment: "Awakening is always now—past and future are mental constructs"
+    unconditional_love: "When self drops, boundless love for all naturally arises"
+    ineffability: "The experience cannot be fully captured in words"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 3: PSYCHOLOGICAL AND NEURAL MECHANISMS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+mechanisms:
+  entry_id: "consciousness_maps.enlightenment.mechanisms"
+  name: "Psychological and Neural Correlates"
+
+  psychological:
+    default_mode_quieting:
+      description: "The Default Mode Network (DMN) generates the narrative 'self'"
+      enlightenment_effect: "DMN activity decreases; self-referential chatter quiets"
+      dreamweaving_approach: |
+        Guide attention away from self-referential thought toward:
+        - Sensory present moment
+        - Witnessing awareness itself
+        - Boundless space metaphors
+
+    meta_awareness_stabilization:
+      description: "Awareness becomes aware of itself as awareness"
+      enlightenment_effect: "Stable capacity to notice 'noticing' without getting lost in content"
+      dreamweaving_approach: |
+        Repeatedly guide attention to:
+        - "Notice that you are noticing"
+        - "Be aware of awareness itself"
+        - "Rest as the witness, not the witnessed"
+
+    subject_object_collapse:
+      description: "The felt sense of 'observer' separate from 'observed' dissolves"
+      enlightenment_effect: "No more experiencer-experience duality; just experiencing"
+      dreamweaving_approach: |
+        Use paradoxical pointers:
+        - "Who is looking? Look for the looker..."
+        - "Turn attention toward the source of attention"
+        - Let boundaries between inner/outer soften
+
+    boundary_softening:
+      description: "The hard edge between 'self' and 'world' becomes permeable"
+      enlightenment_effect: "Sense of being a localized self in a container body loosens"
+      dreamweaving_approach: |
+        Guide boundary dissolution:
+        - "Feel the edges of your body becoming transparent"
+        - "Sense the space inside and outside as one continuous field"
+        - "Let the skin become a membrane of light"
+
+  neural_correlates:
+    note: |
+      These are correlates, not causes. Consciousness may be fundamental,
+      with brain changes reflecting shifts in awareness rather than generating them.
+
+    observed_changes:
+      - gamma_synchrony: "Increased high-frequency neural synchronization"
+      - dmn_deactivation: "Reduced self-referential processing"
+      - parietal_changes: "Altered activity in regions processing self-location"
+      - anterior_insula: "Increased interoceptive awareness"
+      - prefrontal_integration: "Enhanced executive-emotional integration"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 4: DREAMWEAVING METHODS FOR ENLIGHTENMENT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+dreamweaving_methods:
+  entry_id: "consciousness_maps.enlightenment.dreamweaving_methods"
+  name: "Ten Methods for Enlightenment Cultivation"
+
+  note: |
+    Dreamweaving cannot "cause" enlightenment (it's already present).
+    But it can facilitate glimpses, ripen conditions, and stabilize recognition.
+
+  methods:
+
+    nondual_pointers:
+      entry_id: "consciousness_maps.enlightenment.methods.nondual_pointers"
+      name: "Nondual Pointers"
+      description: "Language that points beyond language to direct recognition"
+
+      technique: |
+        Use questions and paradoxes that short-circuit conceptual mind:
+        - "Who is aware of this thought?"
+        - "Can you find the boundary between inside and outside?"
+        - "Where does 'you' end and 'not-you' begin?"
+
+      templates:
+        ssml_pointer: |
+          <speak>
+          <prosody rate="1.0" pitch="-2st">
+          And now... a simple question... <break time="2s"/>
+
+          You are aware... of sounds... <break time="1.5s"/>
+          You are aware... of sensations... <break time="1.5s"/>
+          You are aware... of thoughts arising... <break time="2s"/>
+
+          But what... is aware? <break time="3s"/>
+
+          Don't answer with a thought... <break time="1.5s"/>
+          just look... directly... <break time="2s"/>
+
+          What is this... awareness... itself? <break time="4s"/>
+
+          Is it limited? <break time="2s"/>
+          Does it have edges? <break time="2s"/>
+          Was it born? <break time="2s"/>
+          Can it die? <break time="3s"/>
+
+          Rest... as this... <break time="2s"/>
+          that cannot be grasped... <break time="1.5s"/>
+          yet is undeniably... here... <break time="4s"/>
+          </prosody>
+          </speak>
+
+    witness_consciousness:
+      entry_id: "consciousness_maps.enlightenment.methods.witness"
+      name: "Witness Consciousness"
+      description: "Stabilizing identification with the aware witness rather than content"
+
+      technique: |
+        Guide listener to become the "screen" on which experience plays:
+        - All thoughts, sensations, emotions arise IN awareness
+        - Awareness itself is unchanged by what arises
+        - "You" are the space, not the objects in the space
+
+      templates:
+        ssml_witness: |
+          <speak>
+          <prosody rate="1.0" pitch="-2st">
+          Imagine now... <break time="1.5s"/>
+          that you are a vast... clear sky... <break time="2s"/>
+
+          Thoughts are clouds... <break time="1s"/>
+          passing through... <break time="1.5s"/>
+          but they are not the sky... <break time="2s"/>
+
+          Emotions are weather... <break time="1s"/>
+          storms that come and go... <break time="1.5s"/>
+          but the sky remains... unchanged... <break time="2.5s"/>
+
+          Sensations are birds... <break time="1s"/>
+          flying through... <break time="1.5s"/>
+          but the sky doesn't move... with the birds... <break time="2.5s"/>
+
+          Rest now... as the sky... <break time="2s"/>
+          vast... <break time="1s"/>
+          unchanging... <break time="1s"/>
+          always present... <break time="2s"/>
+
+          Witnessing all that passes... <break time="1.5s"/>
+          touched by none of it... <break time="3s"/>
+          </prosody>
+          </speak>
+
+    ego_dissolution_imagery:
+      entry_id: "consciousness_maps.enlightenment.methods.ego_dissolution"
+      name: "Ego-Dissolution Imagery"
+      description: "Guided visualization of the sense of self softening or dissolving"
+
+      technique: |
+        Use safe, controlled imagery of self-boundaries becoming transparent:
+        - Melting, dissolving, becoming light
+        - Expanding to fill all space
+        - Merging with vast presence
+        Always with safety anchors and integration guidance.
+
+      caution: |
+        Include safety language: "This is always optional and safe to stop."
+        Some listeners may have trauma or dissociative tendencies—frame as
+        "returning to wholeness" rather than "losing yourself."
+
+      templates:
+        ssml_dissolution: |
+          <speak>
+          <prosody rate="1.0" pitch="-2st">
+          And if it feels right... <break time="1.5s"/>
+          you might begin to notice... <break time="1.5s"/>
+          the edges of your sense of self... <break time="1.5s"/>
+          becoming... softer... <break time="2.5s"/>
+
+          Not disappearing... <break time="1s"/>
+          but becoming... transparent... <break time="2s"/>
+
+          Like a drop of water... <break time="1s"/>
+          at the edge of the ocean... <break time="1.5s"/>
+          beginning to sense... <break time="1s"/>
+          it was always... ocean... <break time="3s"/>
+
+          The boundaries... that seemed so solid... <break time="1.5s"/>
+          revealing themselves... as light... <break time="1.5s"/>
+          as space... <break time="1.5s"/>
+          as the infinite awareness... you truly are... <break time="3s"/>
+
+          You can always return... <break time="1s"/>
+          to your familiar sense of self... <break time="1.5s"/>
+          anytime you wish... <break time="2s"/>
+
+          But for now... <break time="1s"/>
+          rest... in boundlessness... <break time="3s"/>
+          </prosody>
+          </speak>
+
+    archetype_invocation:
+      entry_id: "consciousness_maps.enlightenment.methods.archetypes"
+      name: "Enlightened Being Archetype"
+      description: "Invoking the presence of awakened beings to transmit their quality"
+
+      archetypes:
+        the_buddha:
+          qualities: ["Unshakeable peace", "Clear seeing", "Boundless compassion"]
+          imagery: "Golden light, lotus throne, serene smile, half-closed eyes"
+
+        the_christ:
+          qualities: ["Unconditional love", "Forgiveness", "Sacred heart"]
+          imagery: "Radiant light from heart center, gentle gaze, wounds as light"
+
+        the_mystic:
+          qualities: ["Wonder", "Surrender", "Union with the Divine"]
+          imagery: "Upturned face, hands open, light streaming down"
+
+        the_sage:
+          qualities: ["Wisdom", "Naturalness", "Wu wei"]
+          imagery: "Old master, flowing robes, mist and mountains, knowing smile"
+
+      templates:
+        ssml_archetype: |
+          <speak>
+          <prosody rate="1.0" pitch="-2st">
+          And now... before you... <break time="1.5s"/>
+          there appears... a presence... <break time="2s"/>
+
+          An awakened one... <break time="1.5s"/>
+          radiating peace... <break time="1.5s"/>
+          radiating wisdom... <break time="1.5s"/>
+          radiating love... <break time="2.5s"/>
+
+          You can feel... their transmission... <break time="1.5s"/>
+          not in words... <break time="1s"/>
+          but in presence... <break time="2s"/>
+
+          Simply being near them... <break time="1.5s"/>
+          something in you... begins to recognize... <break time="1.5s"/>
+          the same awakeness... in yourself... <break time="3s"/>
+
+          They are showing you... <break time="1s"/>
+          what you already are... <break time="1.5s"/>
+          a mirror... reflecting your own true nature... <break time="3s"/>
+          </prosody>
+          </speak>
+
+    white_light_experience:
+      entry_id: "consciousness_maps.enlightenment.methods.white_light"
+      name: "White Light Experience"
+      description: "Classic mystical light experience often associated with enlightenment"
+
+      variations:
+        inner_sun_rising:
+          description: "Light dawning from within, illuminating all"
+          imagery: "Sun rising in heart or head, golden-white radiance"
+
+        crown_activation:
+          description: "Light descending through crown, filling being"
+          imagery: "Beam from above, crown opening, light flooding down"
+
+        light_bath_dissolution:
+          description: "Bathing in light until boundaries dissolve"
+          imagery: "Standing in beam, form becoming translucent, merging with light"
+
+        light_body_awakening:
+          description: "Discovering oneself AS light"
+          imagery: "Physical body becoming pure radiance, light seeing light"
+
+      templates:
+        ssml_white_light: |
+          <speak>
+          <prosody rate="1.0" pitch="-2st">
+          And now... <break time="1.5s"/>
+          there is a light... <break time="1.5s"/>
+          beginning to dawn... <break time="2s"/>
+
+          Perhaps from above... <break time="1s"/>
+          perhaps from within... <break time="1s"/>
+          perhaps from everywhere at once... <break time="2.5s"/>
+
+          A light... beyond color... <break time="1.5s"/>
+          pure... <break time="1s"/>
+          radiant... <break time="1s"/>
+          luminous... <break time="2.5s"/>
+
+          And as this light grows... <break time="1.5s"/>
+          it begins to fill... every cell... <break time="1.5s"/>
+          every thought... <break time="1.5s"/>
+          every sensation... <break time="2.5s"/>
+
+          Until you realize... <break time="1.5s"/>
+          you are not just seeing the light... <break time="1.5s"/>
+          you ARE... the light... <break time="3s"/>
+
+          You have always been... this radiance... <break time="2s"/>
+          temporarily wearing... a human form... <break time="2.5s"/>
+
+          Rest now... as luminous awareness... <break time="3s"/>
+          </prosody>
+          </speak>
+
+    timelessness_induction:
+      entry_id: "consciousness_maps.enlightenment.methods.timelessness"
+      name: "Timelessness Induction"
+      description: "Guiding into the eternal present where past/future dissolve"
+
+      technique: |
+        Collapse temporal reference points:
+        - "There is no before... there is no after..."
+        - "Only this... eternal... now..."
+        - Use circular, repetitive phrasing that hypnotically dissolves time-sense
+
+      templates:
+        ssml_timeless: |
+          <speak>
+          <prosody rate="1.0" pitch="-2st">
+          And as you rest here... <break time="1.5s"/>
+          notice... <break time="1.5s"/>
+          there is no past... in this moment... <break time="2s"/>
+
+          The past is only... a thought... arising now... <break time="2s"/>
+
+          And there is no future... in this moment... <break time="2s"/>
+
+          The future is only... a thought... arising now... <break time="2.5s"/>
+
+          There is only... this... <break time="2s"/>
+
+          This... <break time="2s"/>
+
+          This... <break time="3s"/>
+
+          An eternal present... <break time="1.5s"/>
+          that has never begun... <break time="1.5s"/>
+          and will never end... <break time="2.5s"/>
+
+          You are resting... in timelessness... <break time="2s"/>
+          in the infinite now... <break time="2s"/>
+          where nothing was ever lost... <break time="1.5s"/>
+          and nothing can be gained... <break time="2.5s"/>
+
+          Only... presence... <break time="2s"/>
+          only... being... <break time="3s"/>
+          </prosody>
+          </speak>
+
+    space_awareness:
+      entry_id: "consciousness_maps.enlightenment.methods.space"
+      name: "Space-Awareness Meditation"
+      description: "Recognizing awareness as the space in which all experience occurs"
+
+      technique: |
+        Guide attention from objects TO the space containing them:
+        - Notice objects in the room, then the space holding them
+        - Notice thoughts arising, then the mental space containing them
+        - Recognize: "I am the space, not the objects"
+
+      templates:
+        ssml_space: |
+          <speak>
+          <prosody rate="1.0" pitch="-2st">
+          If your eyes were open... <break time="1.5s"/>
+          you would see objects... in a room... <break time="2s"/>
+
+          But notice... <break time="1.5s"/>
+          it is the space... that allows the objects... to exist... <break time="2.5s"/>
+
+          Without space... nothing could be... <break time="2s"/>
+
+          Now... notice thoughts... <break time="1.5s"/>
+          arising in the mind... <break time="2s"/>
+
+          And notice... <break time="1s"/>
+          the vast space... in which they arise... <break time="2.5s"/>
+
+          Thoughts are small... <break time="1s"/>
+          The space is infinite... <break time="2.5s"/>
+
+          You are not... the thoughts... <break time="1.5s"/>
+          You are... the space... <break time="2s"/>
+
+          Boundless... <break time="1s"/>
+          silent... <break time="1s"/>
+          aware... <break time="2s"/>
+
+          Rest as space... <break time="1.5s"/>
+          containing all... <break time="1.5s"/>
+          disturbed by none... <break time="3s"/>
+          </prosody>
+          </speak>
+
+    self_inquiry:
+      entry_id: "consciousness_maps.enlightenment.methods.self_inquiry"
+      name: "Self-Inquiry (Atma Vichara)"
+      description: "Direct investigation into the nature of the 'I'"
+
+      technique: |
+        Guide the classic inquiry: "Who am I?"
+        - Not answered conceptually but investigated directly
+        - Trace the sense of "I" to its source
+        - Discover awareness without an "I-thought"
+
+      templates:
+        ssml_inquiry: |
+          <speak>
+          <prosody rate="1.0" pitch="-2st">
+          I invite you now... <break time="1.5s"/>
+          to ask yourself... the most fundamental question... <break time="2.5s"/>
+
+          Who... am... I? <break time="4s"/>
+
+          Don't answer with a name... <break time="1.5s"/>
+          that's just a label... <break time="2s"/>
+
+          Don't answer with a role... <break time="1.5s"/>
+          parent, worker, seeker... <break time="1.5s"/>
+          those are temporary costumes... <break time="2.5s"/>
+
+          Don't answer with the body... <break time="1.5s"/>
+          it changes every moment... <break time="2s"/>
+
+          Who... is the one... who is aware... of all these? <break time="3s"/>
+
+          Follow the sense of "I"... <break time="1.5s"/>
+          back... to its source... <break time="2.5s"/>
+
+          What do you find? <break time="3s"/>
+
+          Perhaps... <break time="1s"/>
+          no-thing... <break time="1.5s"/>
+          yet everything... <break time="2s"/>
+
+          Awareness... without owner... <break time="1.5s"/>
+          presence... without person... <break time="2.5s"/>
+
+          This... is what you are... <break time="3s"/>
+          </prosody>
+          </speak>
+
+    heart_opening:
+      entry_id: "consciousness_maps.enlightenment.methods.heart"
+      name: "Heart-Opening to Boundless Love"
+      description: "Opening the heart until love becomes boundless and unconditional"
+
+      technique: |
+        Guide expansion of love from personal to universal:
+        - Begin with love for a dear one
+        - Expand to include strangers
+        - Expand to include "enemies" or difficult ones
+        - Expand to include all beings
+        - Expand to include existence itself
+        - Rest as love itself, with no object needed
+
+      templates:
+        ssml_heart: |
+          <speak>
+          <prosody rate="1.0" pitch="-2st">
+          Bring to mind... someone you love easily... <break time="2s"/>
+
+          Feel that love... in your heart... <break time="1.5s"/>
+          warm... tender... genuine... <break time="2.5s"/>
+
+          Now... let that love... begin to expand... <break time="2s"/>
+
+          Including everyone in your life... <break time="2s"/>
+
+          Expanding further... <break time="1.5s"/>
+          to strangers... people you've never met... <break time="2.5s"/>
+
+          Expanding further... <break time="1.5s"/>
+          to all beings everywhere... <break time="2.5s"/>
+
+          And now... something surprising... <break time="2s"/>
+
+          Let go... of the objects of love... <break time="1.5s"/>
+          and rest... as love itself... <break time="3s"/>
+
+          Not love FOR something... <break time="1.5s"/>
+          but love... as your very nature... <break time="2s"/>
+
+          Boundless... <break time="1s"/>
+          unconditional... <break time="1s"/>
+          needing nothing... to love... <break time="2.5s"/>
+
+          You ARE... love... <break time="3s"/>
+          </prosody>
+          </speak>
+
+    integration_grounding:
+      entry_id: "consciousness_maps.enlightenment.methods.integration"
+      name: "Integration and Grounding"
+      description: "Bringing awakening glimpses into ordinary life"
+
+      technique: |
+        After any enlightenment-pointing exercise:
+        - Gently return awareness to body
+        - Anchor recognition to ordinary activities
+        - Emphasize: awakening is here in washing dishes, not just in meditation
+
+      templates:
+        ssml_integration: |
+          <speak>
+          <prosody rate="1.0" pitch="-1st">
+          And now... gently... <break time="1.5s"/>
+          bring this recognition... <break time="1.5s"/>
+          into your ordinary awareness... <break time="2.5s"/>
+
+          Feel your body... <break time="1.5s"/>
+          sitting or lying... <break time="1.5s"/>
+          exactly as it is... <break time="2s"/>
+
+          Notice... <break time="1s"/>
+          that the boundless awareness you touched... <break time="1.5s"/>
+          is still here... <break time="1.5s"/>
+          even with eyes-open ordinary reality... <break time="2.5s"/>
+
+          This awareness... is available... <break time="1.5s"/>
+          while cooking dinner... <break time="1s"/>
+          while driving... <break time="1s"/>
+          while speaking with a friend... <break time="2.5s"/>
+
+          It was never separate... from your ordinary life... <break time="2s"/>
+
+          It IS... your ordinary life... <break time="1.5s"/>
+          seen clearly... <break time="2.5s"/>
+
+          Take your time... <break time="1.5s"/>
+          returning to the room... <break time="1.5s"/>
+          knowing you carry this... with you... always... <break time="3s"/>
+          </prosody>
+          </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 5: DREAM INTERACTION WITH ENLIGHTENMENT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+dream_enlightenment:
+  entry_id: "consciousness_maps.enlightenment.dream_interaction"
+  name: "Dream-Based Enlightenment Cultivation"
+
+  description: |
+    Dreams can seed enlightenment recognition because:
+    - Dreams already demonstrate that "reality" is mind-created
+    - Lucid dreams provide direct experience of awareness creating world
+    - Dream state loosens ego-grip naturally
+    - Morning hypnopompia offers integration opportunities
+
+  methods:
+
+    lucid_dreaming_as_nonduality_lab:
+      description: |
+        In lucid dreams, one directly experiences being the dreamer AND the dream.
+        This is a living metaphor for nondual awakening: you are both the awareness
+        and the content of awareness.
+
+      dreamweaving_priming: |
+        Plant the seed: "In your dreams tonight, you may become lucid...
+        and when you do, ask yourself: Who is dreaming this?
+        Am I in the dream... or is the dream in me?"
+
+    dream_dissolution_practice:
+      description: |
+        In lucid dreams, experiment with dissolving dream scenery:
+        - Release attachment to dream objects
+        - Let dream characters merge back into light
+        - Rest in the luminous void before new dreams form
+
+      dreamweaving_priming: |
+        "When you find yourself lucid... you might experiment...
+        with letting go of the dream... piece by piece...
+        and resting in the pure awareness... that remains..."
+
+    morning_recognition:
+      description: |
+        Use the hypnopompic state (waking from sleep) to notice:
+        - The sense of "I" reforming as you wake
+        - Awareness was present in dreamless sleep (no "I")
+        - The "I" is a construct added to pure awareness
+
+      dreamweaving_anchor: |
+        "And when you wake tomorrow... in those first moments...
+        notice how the sense of 'I' gradually forms...
+        You were aware... before 'you' appeared..."
+
+    persistent_dream_meditation_hall:
+      description: |
+        Establish a meditation space in persistent dream architecture
+        where the dream-self practices self-inquiry, witnessing, or nondual meditation.
+
+      dreamweaving_creation: |
+        "And in your dreams... there is a quiet hall...
+        A space of stillness... where dream-you sits...
+        and asks the eternal question... Who am I?"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 6: WHITE LIGHT EXPERIENCES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+white_light:
+  entry_id: "consciousness_maps.enlightenment.white_light"
+  name: "White Light Phenomenology"
+
+  description: |
+    The "White Light Experience" appears across traditions—NDE, mystical experiences,
+    psychedelic journeys, spontaneous awakenings. It typically involves:
+    - Perception of brilliant, non-physical light
+    - Profound peace and love
+    - Sense of coming home
+    - Loss of separate self in the light
+    - Sometimes contact with presences or voices
+
+  interpretations:
+    neuroscience_view: "Possible DMT release, oxygen deprivation effects"
+    mystical_view: "Direct encounter with divine/ultimate reality"
+    nondual_view: "Recognition of awareness as luminous in nature"
+    buddhist_view: "Clear Light of Mind (rigpa, Buddha-nature)"
+    integral_view: "All interpretations may be partially true at different levels"
+
+  induction_methods:
+    inner_sun_rising:
+      entry_id: "consciousness_maps.enlightenment.white_light.inner_sun"
+      description: "Visualize sun dawning within, filling body with light"
+
+      template: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        Deep within you... <break time="1.5s"/>
+        at the very center... of your being... <break time="2s"/>
+        there is a point... of light... <break time="2s"/>
+
+        Like the first glimmer... before sunrise... <break time="2s"/>
+
+        Watch now... as that light... begins to grow... <break time="2.5s"/>
+
+        Golden... <break time="1s"/>
+        radiant... <break time="1s"/>
+        warm... <break time="2s"/>
+
+        A sun... dawning... within you... <break time="2.5s"/>
+
+        Filling your heart... with light... <break time="2s"/>
+        spreading through your chest... <break time="2s"/>
+        rising... into your throat... your head... <break time="2.5s"/>
+
+        Descending... into your belly... your hips... your legs... <break time="2.5s"/>
+
+        Until every cell... is radiant... <break time="2s"/>
+
+        You are not in the light... <break time="1.5s"/>
+        You ARE... the light... <break time="3s"/>
+        </prosody>
+        </speak>
+
+    crown_descent:
+      entry_id: "consciousness_maps.enlightenment.white_light.crown"
+      description: "Light descending through crown chakra, filling being"
+
+      template: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        And now... from infinitely far above... <break time="2s"/>
+        a beam... of pure white light... <break time="1.5s"/>
+        begins to descend... <break time="2.5s"/>
+
+        Passing through clouds... <break time="1.5s"/>
+        through stars... <break time="1.5s"/>
+        through dimensions... <break time="2s"/>
+
+        Until it reaches... <break time="1.5s"/>
+        the crown of your head... <break time="2s"/>
+
+        And your crown... opens... like a flower... <break time="2.5s"/>
+        receiving this divine light... <break time="2s"/>
+
+        Feel it pouring in... <break time="1.5s"/>
+        filling your skull... with brilliance... <break time="2s"/>
+
+        Flowing down... into your spine... <break time="1.5s"/>
+        illuminating every nerve... <break time="2s"/>
+
+        Flooding your entire body... <break time="1.5s"/>
+        with sacred... healing... awakening light... <break time="3s"/>
+        </prosody>
+        </speak>
+
+    light_bath_dissolution:
+      entry_id: "consciousness_maps.enlightenment.white_light.bath"
+      description: "Bathing in light until form dissolves"
+
+      template: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        Imagine now... <break time="1.5s"/>
+        you are standing... in an infinite field... of light... <break time="2.5s"/>
+
+        Light everywhere... <break time="1.5s"/>
+        in all directions... <break time="1.5s"/>
+        gentle... brilliant... alive... <break time="2.5s"/>
+
+        And as you stand in this light... <break time="1.5s"/>
+        you begin to notice... <break time="1.5s"/>
+        your body... becoming... translucent... <break time="2.5s"/>
+
+        The light shines... through you... <break time="2s"/>
+
+        Your edges... becoming softer... <break time="1.5s"/>
+        your form... less solid... <break time="2s"/>
+
+        Dissolving... gently... <break time="1.5s"/>
+        into the light itself... <break time="2.5s"/>
+
+        There is no body anymore... <break time="2s"/>
+        only light... <break time="2s"/>
+
+        No boundary... between you... and infinite radiance... <break time="3s"/>
+        </prosody>
+        </speak>
+
+    light_body_awakening:
+      entry_id: "consciousness_maps.enlightenment.white_light.body"
+      description: "Discovering oneself as light rather than flesh"
+
+      template: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        And now... a profound recognition... <break time="2s"/>
+
+        You have always believed... <break time="1.5s"/>
+        you were this physical body... <break time="2s"/>
+
+        But look more closely... <break time="2s"/>
+
+        Your body... is made... of light... <break time="2.5s"/>
+
+        Dense light... patterned light... <break time="2s"/>
+        but light nonetheless... <break time="2.5s"/>
+
+        And as this recognition deepens... <break time="2s"/>
+        feel yourself... as radiant presence... <break time="2.5s"/>
+
+        Not a body of flesh... containing light... <break time="2s"/>
+        but a body OF light... <break time="1.5s"/>
+        temporarily wearing... the costume of matter... <break time="3s"/>
+
+        Light... recognizing itself... as light... <break time="2.5s"/>
+        awareness... knowing itself... as luminous... <break time="3s"/>
+        </prosody>
+        </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 7: FUTURE CONSCIOUSNESS TECHNOLOGIES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+future_technologies:
+  entry_id: "consciousness_maps.enlightenment.future_tech"
+  name: "Speculative Consciousness Technologies"
+
+  note: |
+    These represent potential future developments in consciousness facilitation.
+    Some are technically possible now, others are conceptual explorations.
+
+  technologies:
+
+    ego_transparency_training:
+      description: |
+        Gradual training protocol moving from "I have experiences" to
+        "Experiencing is happening" to "There is only This."
+        Multi-session progressive deepening with integration periods.
+
+      protocol_sketch:
+        - session_1: "Notice the witness observing experience"
+        - session_2: "Notice there's no entity 'doing' the witnessing"
+        - session_3: "Rest as witnessing without a witness"
+        - session_4: "Recognize even 'witnessing' is appearing"
+        - session_5: "Simply This—prior to all descriptions"
+
+    nondual_field_induction:
+      description: |
+        Binaural/audio frequencies paired with precise linguistic patterns
+        designed to temporarily reduce DMN activity and facilitate
+        subject-object collapse.
+
+      components:
+        - binaural: "Gamma (40 Hz) for coherence, transitioning to theta (4-7 Hz)"
+        - linguistics: "Paradoxical pointers, self-referential loops"
+        - pacing: "Increasing pause lengths, dissolving sentence structure"
+
+    enlightenment_archetype_library:
+      description: |
+        AI-generated avatars of awakened beings (Buddha, Rumi, Ramana, etc.)
+        that can respond dynamically to listener's questions with tradition-
+        appropriate nondual pointing.
+
+      interaction_model: |
+        Listener asks internal question → AI-avatar responds with appropriate
+        teaching/pointer → Listener integrates in silence → Repeat
+
+    collective_awakening_protocols:
+      description: |
+        Group Dreamweaving sessions where multiple listeners simultaneously
+        enter shared contemplative space, potentially amplifying recognition
+        through collective field effects.
+
+      design_notes:
+        - "Synchronized audio delivery"
+        - "Shared intention setting"
+        - "Post-session integration circles"
+
+    vr_enlightenment_simulations:
+      description: |
+        Virtual reality environments that simulate enlightenment phenomenology:
+        - Body dissolution experiences (avatar becoming transparent)
+        - Infinite space immersion
+        - Light tunnel/NDE simulations
+        - Meeting awakened archetype figures
+
+      ethical_considerations:
+        - "Clear labeling as simulations"
+        - "Integration support required"
+        - "Not a replacement for genuine practice"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 8: SAFETY AND ETHICS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+safety:
+  entry_id: "consciousness_maps.enlightenment.safety"
+  name: "Safety and Ethical Considerations"
+
+  core_principles:
+    - "Enlightenment experiences can be destabilizing for unprepared listeners"
+    - "Some individuals have trauma or dissociative conditions that require special care"
+    - "Always include grounding and integration guidance"
+    - "Never claim Dreamweaving 'causes' enlightenment—it removes obstacles"
+    - "Respect that some listeners are seeking relaxation, not ego dissolution"
+
+  contraindications:
+    absolute:
+      - "Active psychosis or dissociative disorder"
+      - "Recent severe trauma (within 6 months)"
+      - "Suicidal ideation"
+
+    relative:
+      - "History of depersonalization/derealization"
+      - "Severe anxiety disorders"
+      - "Early spiritual emergency"
+
+  safety_language_templates:
+    permission: |
+      "You are always in control...
+      at any time, you can simply return to normal waking awareness...
+      there is nothing here that can harm you..."
+
+    grounding: |
+      "Feel your body... solid and present...
+      feel the surface beneath you...
+      take a deeper breath... feeling yourself fully here..."
+
+    integration: |
+      "Whatever you experienced... integrates gently...
+      at a pace that serves your wellbeing...
+      there is no rush... only unfolding..."
+
+  post_session_guidance:
+    - "Encourage journaling or reflection"
+    - "Recommend nature walks, gentle movement"
+    - "Suggest talking with trusted friend or teacher"
+    - "Advise against major decisions for 24 hours"
+    - "Provide resources for further exploration"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 9: CROSS-REFERENCES AND INDEXES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+cross_references:
+  related_knowledge_domains:
+    - domain: "psychology"
+      files: ["internal_family_systems.yaml", "depth_psychology.yaml"]
+      relevance: "Ego-structures that dissolve in enlightenment"
+
+    - domain: "dream_work"
+      files: ["dream_interaction_system.yaml", "lucid_dream_triggers.yaml"]
+      relevance: "Dream states as nonduality practice grounds"
+
+    - domain: "traditions"
+      files: ["qabalah.yaml", "sufism.yaml", "shamanic_practices.yaml"]
+      relevance: "Tradition-specific enlightenment frameworks"
+
+    - domain: "symbols"
+      files: ["sacred_geometry.yaml", "color_correspondences.yaml"]
+      relevance: "Visual symbols for enlightenment experiences"
+
+    - domain: "audio"
+      files: ["binaural_presets.yaml", "soundscape_presets.yaml"]
+      relevance: "Audio support for enlightenment induction"
+
+  outcome_alignment:
+    primary_outcomes:
+      - spiritual_growth
+      - self_knowledge
+      - transformation
+
+    secondary_outcomes:
+      - healing
+      - release
+      - peace
+
+  journey_phase_applicability:
+    pre_talk: "Introduce enlightenment concepts gently"
+    induction: "Not typically—save for later"
+    deepening: "Begin witness consciousness"
+    journey: "Main enlightenment practices"
+    helm_deep_trance: "Deepest nondual experiences"
+    integration: "Essential—ground the recognition"
+    reorientation: "Bring awareness into ordinary life"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 10: USAGE GUIDELINES FOR SCRIPT WRITERS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+usage_guidelines:
+  when_to_use:
+    - "Sessions explicitly focused on spiritual growth or awakening"
+    - "Advanced practitioners requesting deeper work"
+    - "Integration sections of any deep journey"
+    - "When manifest specifies enlightenment-related outcomes"
+
+  when_not_to_use:
+    - "Simple relaxation or sleep induction sessions"
+    - "First-time listeners unfamiliar with hypnotic work"
+    - "Sessions focused on specific psychological goals (trauma, anxiety)"
+    - "When listener has contraindications noted above"
+
+  dosing:
+    light_touch:
+      description: "Brief witness consciousness or awareness pointers"
+      duration: "30 seconds - 2 minutes"
+      suitable_for: "Any session, any listener"
+
+    moderate:
+      description: "Extended nondual inquiry or light dissolution"
+      duration: "3-5 minutes"
+      suitable_for: "Experienced listeners, spiritual growth sessions"
+
+    deep:
+      description: "Full enlightenment-focused journey sections"
+      duration: "10-20 minutes"
+      suitable_for: "Advanced practitioners, explicit request"
+
+  integration_requirements:
+    - "Always follow enlightenment practices with grounding"
+    - "Minimum 3 minutes integration for moderate doses"
+    - "Minimum 5 minutes integration for deep doses"
+    - "Include body-awareness and ordinary-life anchoring"
+
+  template_selection:
+    nondual_pointers: "For intellectual/inquiry-oriented listeners"
+    witness_consciousness: "For meditation practitioners"
+    white_light: "For devotional/mystical temperaments"
+    heart_opening: "For emotionally-oriented listeners"
+    self_inquiry: "For philosophical seekers"
+    wu_wei: "For nature-oriented listeners"

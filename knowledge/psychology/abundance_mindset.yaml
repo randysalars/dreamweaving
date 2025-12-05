@@ -1,0 +1,1308 @@
+# Abundance Mindset Knowledge Base
+# Comprehensive framework for prosperity consciousness through Dreamweaving
+# Schema version: 1.0
+
+meta:
+  domain: psychology
+  category: abundance
+  description: |
+    Complete abundance mindset framework integrating transpersonal psychology,
+    subconscious reprogramming, archetypal prosperity symbols, quantum field
+    metaphors, and advanced identity transformation techniques. Provides
+    Dreamweaving templates for cultivating wealth consciousness at all levels.
+
+  core_insight: |
+    An abundance mindset is not built through willpower. It is built through
+    identity reconstruction at subconscious depth. You cannot install abundance
+    on top of scarcity wounds. The subconscious only accepts abundance when it
+    feels safe—and when the identity has been rebuilt to hold it.
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 1: SCARCITY DEPROGRAMMING
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scarcity_deprogramming:
+  entry_id: "psychology.abundance.scarcity_release"
+  name: "Scarcity Identity Dissolution"
+
+  principle: |
+    You cannot install abundance on top of scarcity wounds.
+    The old programming must be dissolved before new patterns can take root.
+
+  scarcity_sources:
+    inherited_narratives:
+      description: "Family and cultural stories about money, worth, and limitation"
+      examples:
+        - "Money doesn't grow on trees"
+        - "We can't afford that"
+        - "Rich people are greedy"
+        - "There's never enough"
+        - "You have to work hard for every penny"
+
+    childhood_financial_trauma:
+      description: "Early experiences of lack, loss, or financial stress"
+      examples:
+        - "Parental arguments about money"
+        - "Experiencing poverty or deprivation"
+        - "Seeing parents struggle or fail"
+        - "Being told 'we can't afford it' repeatedly"
+
+    cultural_conditioning:
+      description: "Societal beliefs about wealth, class, and deserving"
+      examples:
+        - "Money is the root of all evil"
+        - "Spiritual people shouldn't want money"
+        - "Success means selling out"
+        - "You can't have it all"
+
+    ancestral_patterns:
+      description: "Multi-generational poverty or scarcity consciousness"
+      examples:
+        - "Famine memory in lineage"
+        - "Immigrant struggle stories"
+        - "Class-based limitations"
+        - "Persecution for wealth"
+
+  dissolution_techniques:
+
+    subconscious_archives:
+      entry_id: "psychology.abundance.technique.archives"
+      name: "Hall of Old Stories"
+      description: "Guided journey to release scarcity narratives"
+
+      method: |
+        Guide the viewer down a staircase into the subconscious archives.
+        Show them a "hall of old stories" where scarcity thoughts appear
+        as brittle, fading structures. Have them release, burn, or transform
+        these artifacts.
+
+      template: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        You are descending now... <break time="1.5s"/>
+        down a spiral staircase... <break time="1.5s"/>
+        into the archives... of your subconscious mind... <break time="2.5s"/>
+
+        With each step down... you go deeper... <break time="2s"/>
+
+        Until you arrive... in a vast hall... <break time="1.5s"/>
+        filled with shelves... of old stories... <break time="2s"/>
+
+        These are the beliefs... you inherited... <break time="1.5s"/>
+        the limitations... you absorbed... <break time="1.5s"/>
+        the scarcity patterns... that were never yours... <break time="2.5s"/>
+
+        Look around... <break time="1.5s"/>
+
+        See how these old stories appear... <break time="1.5s"/>
+        as dusty books... crumbling scrolls... <break time="1.5s"/>
+        brittle and faded... losing their power... <break time="2.5s"/>
+
+        In the center of this hall... <break time="1.5s"/>
+        there is a golden fire... <break time="1.5s"/>
+        a transformative flame... <break time="2s"/>
+
+        One by one... <break time="1s"/>
+        take these old stories... <break time="1.5s"/>
+        and cast them into the fire... <break time="2s"/>
+
+        Watch them transform... <break time="1.5s"/>
+        into golden light... <break time="1.5s"/>
+        into pure energy... <break time="1.5s"/>
+        into possibility... <break time="3s"/>
+
+        With each story released... <break time="1.5s"/>
+        you feel lighter... freer... <break time="1.5s"/>
+        more spacious inside... <break time="3s"/>
+        </prosody>
+        </speak>
+
+    somatic_release:
+      entry_id: "psychology.abundance.technique.somatic_release"
+      name: "Safety-Based Somatic Release"
+      description: "Body-centered scarcity clearing through safety signals"
+
+      principle: |
+        The subconscious only accepts abundance when it feels safe.
+        Use subtle binaural patterns + breath cues that signal safety
+        to release stored scarcity tension from the body.
+
+      body_locations:
+        jaw: "Holding back expression, fear of asking"
+        throat: "Unable to speak needs, swallowed desires"
+        chest: "Heart protection, fear of receiving"
+        solar_plexus: "Power surrendered, worthlessness"
+        belly: "Survival fear, primal lack"
+        lower_back: "Carrying financial burden"
+
+      template: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        And now... bring your awareness... to your body... <break time="2s"/>
+
+        Notice where scarcity lives... in your physical form... <break time="2.5s"/>
+
+        Perhaps a tightness... in your jaw... <break time="1.5s"/>
+        from holding back... from not asking... <break time="2s"/>
+
+        Perhaps a constriction... in your chest... <break time="1.5s"/>
+        from protecting your heart... from receiving... <break time="2s"/>
+
+        Perhaps a heaviness... in your belly... <break time="1.5s"/>
+        from survival fears... primal lack... <break time="2.5s"/>
+
+        Now... with each breath... <break time="1.5s"/>
+        send a message of safety... to these places... <break time="2s"/>
+
+        Breathing in... safety... <break time="2s"/>
+        Breathing out... release... <break time="2.5s"/>
+
+        Your body can let go now... <break time="1.5s"/>
+        It is safe... to receive... <break time="1.5s"/>
+        It is safe... to expand... <break time="1.5s"/>
+        It is safe... to have... <break time="3s"/>
+        </prosody>
+        </speak>
+
+    belief_extinction_shockwave:
+      entry_id: "psychology.abundance.technique.shockwave"
+      name: "Belief Extinction Shockwave"
+      description: "Powerful technique to destroy limiting beliefs so thoroughly they cannot re-form"
+
+      method: |
+        1. Visualize a sphere of compressed energy above the viewer
+        2. The sphere detonates in slow motion
+        3. Shockwaves ripple through the subconscious
+        4. Each shockwave annihilates a belief, clears a pattern,
+           severs an ancestral chain, erases a limitation
+
+      template: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        Above you now... <break time="1.5s"/>
+        a sphere of pure transformative energy... <break time="1.5s"/>
+        compressed... powerful... waiting... <break time="2.5s"/>
+
+        This sphere contains... the power to annihilate... <break time="1.5s"/>
+        every limiting belief... you've ever held... <break time="2s"/>
+
+        Watch now... as it detonates... <break time="2s"/>
+
+        In slow motion... <break time="1.5s"/>
+        a shockwave expands outward... <break time="2s"/>
+
+        As it passes through you... <break time="1.5s"/>
+        feel it dissolving... <break time="1.5s"/>
+        every scarcity pattern... <break time="1.5s"/>
+        every inherited limitation... <break time="1.5s"/>
+        every ancestral wound around money... <break time="2.5s"/>
+
+        Another wave... <break time="1.5s"/>
+        shattering beliefs about worthiness... <break time="2s"/>
+
+        Another wave... <break time="1.5s"/>
+        clearing fears about receiving... <break time="2s"/>
+
+        Another wave... <break time="1.5s"/>
+        erasing doubts about deserving... <break time="2.5s"/>
+
+        Wave after wave... <break time="1.5s"/>
+        until nothing remains... <break time="1.5s"/>
+        but pure... open... possibility... <break time="3s"/>
+        </prosody>
+        </speak>
+
+    total_identity_collapse:
+      entry_id: "psychology.abundance.technique.identity_collapse"
+      name: "Total Identity Collapse Protocol"
+      description: "Advanced technique for burning away the identity that cannot hold wealth"
+
+      principle: |
+        Billionaires aren't made by adding beliefs—they are made by burning
+        away identities that cannot hold wealth. This creates emptiness first,
+        from which a new self can be forged.
+
+      what_dissolves:
+        - "Scarcity stories"
+        - "Childhood financial trauma"
+        - "Inherited poverty archetypes"
+        - "Subconscious guilt about having"
+        - "Fear of being seen"
+        - "Fear of receiving"
+        - "Fear of power"
+        - "Fear of expansion"
+
+      template: |
+        <speak>
+        <prosody rate="1.0" pitch="-2st">
+        You stand now... before a cosmic incinerator... <break time="2s"/>
+
+        A furnace of transformation... <break time="1.5s"/>
+        that burns away... everything that limits you... <break time="2.5s"/>
+
+        Before you can become... who you're meant to be... <break time="2s"/>
+        you must release... who you've been pretending to be... <break time="2.5s"/>
+
+        See now... all your limiting beliefs... <break time="1.5s"/>
+        appearing as masks... shells... husks... <break time="2s"/>
+
+        The mask of "not enough"... <break time="1.5s"/>
+        The shell of "who am I to have this?"... <break time="1.5s"/>
+        The husk of "money is hard"... <break time="2s"/>
+
+        One by one... cast them into the fire... <break time="2s"/>
+
+        Watch your old identity... collapse... <break time="1.5s"/>
+        into golden dust... <break time="2s"/>
+
+        Feel the emptiness... that remains... <break time="2s"/>
+
+        This emptiness is not loss... <break time="1.5s"/>
+        This emptiness is space... <break time="1.5s"/>
+        Space for something new... <break time="1.5s"/>
+        Space for something vast... <break time="2s"/>
+
+        From this void... a new self will be forged... <break time="3s"/>
+        </prosody>
+        </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 2: ABUNDANCE ARCHETYPES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+abundance_archetypes:
+  entry_id: "psychology.abundance.archetypes"
+  name: "Archetypal Abundance Patterns"
+
+  principle: |
+    Abundance isn't a concept—it's an identity pattern. When archetypal images
+    repeat through hypnotic scripting and visuals, the subconscious begins to
+    see abundance as the default pattern of reality.
+
+  core_archetypes:
+
+    the_prosperous_creator:
+      entry_id: "psychology.abundance.archetype.creator"
+      name: "The Prosperous Creator"
+      qualities:
+        - "Brings forth ideas effortlessly"
+        - "Creates value from nothing"
+        - "Transforms thoughts into tangible wealth"
+        - "Generative, fertile, prolific"
+      imagery: "Artist with golden brush painting reality into being"
+      voice_quality: "Inspired, flowing, creative"
+
+    the_golden_river:
+      entry_id: "psychology.abundance.archetype.river"
+      name: "The Golden River"
+      qualities:
+        - "Ongoing flow, unstoppable"
+        - "Finds its way around all obstacles"
+        - "Grows stronger as it moves"
+        - "Nourishes everything it touches"
+      imagery: "Endless river of golden light flowing through life"
+      voice_quality: "Flowing, continuous, unstoppable"
+
+    the_infinite_garden:
+      entry_id: "psychology.abundance.archetype.garden"
+      name: "The Infinite Garden"
+      qualities:
+        - "What you plant multiplies"
+        - "Perpetual harvest"
+        - "Seeds become forests"
+        - "Natural abundance, no effort"
+      imagery: "Lush garden where everything planted bears fruit a hundredfold"
+      voice_quality: "Natural, organic, effortless"
+
+    the_radiant_sun:
+      entry_id: "psychology.abundance.archetype.sun"
+      name: "The Radiant Sun"
+      qualities:
+        - "Source of boundless energy"
+        - "Gives without depletion"
+        - "Illuminates possibility"
+        - "Attracts all toward its warmth"
+      imagery: "Golden sun in the chest, radiating wealth-light outward"
+      voice_quality: "Warm, expansive, generous"
+
+    the_quantum_weaver:
+      entry_id: "psychology.abundance.archetype.weaver"
+      name: "The Quantum Weaver"
+      qualities:
+        - "Shifts probabilities"
+        - "Collapses possibility into reality"
+        - "Operates beyond linear cause-effect"
+        - "Manifests through intention"
+      imagery: "Figure weaving threads of light into patterns of reality"
+      voice_quality: "Mysterious, powerful, precise"
+
+    the_master_receiver:
+      entry_id: "psychology.abundance.archetype.receiver"
+      name: "The Master Receiver"
+      qualities:
+        - "Believes receiving is holy, neutral, natural"
+        - "Open hands, open heart"
+        - "No guilt about having"
+        - "Graceful acceptance"
+      imagery: "Figure with open palms catching golden rain"
+      voice_quality: "Receptive, grateful, allowing"
+
+  billionaire_archetypes:
+    note: "Advanced archetypes for extreme prosperity consciousness"
+
+    the_visionary_time_bender:
+      description: "Builds wealth by sensing future trends early"
+      qualities:
+        - "Sees what others cannot yet see"
+        - "Acts before the world catches up"
+        - "Trusts impossible visions"
+
+    the_reality_author:
+      description: "Doesn't ask 'How?'—asks 'What reality do I prefer?'"
+      qualities:
+        - "Writes the rules of their world"
+        - "Refuses to accept limitations"
+        - "Creates rather than competes"
+
+    the_infinite_creator:
+      description: "Multiplies ideas effortlessly into scalable structures"
+      qualities:
+        - "Ideas flow faster than resistance can block"
+        - "Everything becomes leverage"
+        - "Scale-first thinking"
+
+  templates:
+    ssml_archetype_encounter: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      And now... before you... <break time="1.5s"/>
+      an archetype of abundance appears... <break time="2s"/>
+
+      [THE PROSPEROUS CREATOR]
+
+      A figure... radiant with creative power... <break time="2s"/>
+
+      You see them... painting reality into being... <break time="1.5s"/>
+      A golden brush... touching the void... <break time="1.5s"/>
+      and wherever it touches... <break time="1s"/>
+      wealth... opportunity... beauty... appears... <break time="2.5s"/>
+
+      They turn toward you... <break time="1.5s"/>
+      and in their eyes... you see... <break time="1.5s"/>
+      that this power... is also yours... <break time="2.5s"/>
+
+      They hand you the brush... <break time="2s"/>
+
+      Feel it in your hand... <break time="1.5s"/>
+      Feel the creative power... flowing through you... <break time="2s"/>
+
+      You are the Prosperous Creator... <break time="1.5s"/>
+      Ideas flow through you... effortlessly... <break time="1.5s"/>
+      And everything you touch... turns to gold... <break time="3s"/>
+      </prosody>
+      </speak>
+
+    ssml_archetype_fusion: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      And now... all four archetypes of extreme prosperity... <break time="2s"/>
+      gather before you... <break time="2.5s"/>
+
+      The Visionary Time-Bender... who sees the future... <break time="2s"/>
+      The Reality Author... who writes new worlds... <break time="2s"/>
+      The Master Receiver... who accepts all gifts... <break time="2s"/>
+      The Infinite Creator... who multiplies effortlessly... <break time="2.5s"/>
+
+      They begin to merge... <break time="1.5s"/>
+      into a single figure of radiant power... <break time="2.5s"/>
+
+      And now... this unified archetype... <break time="1.5s"/>
+      steps toward you... <break time="1.5s"/>
+      and merges... with you... <break time="2.5s"/>
+
+      Feel their traits... downloading into your being... <break time="2s"/>
+
+      Vision... becoming yours... <break time="1.5s"/>
+      Creative power... becoming yours... <break time="1.5s"/>
+      Receiving capacity... becoming yours... <break time="1.5s"/>
+      Reality-authoring... becoming yours... <break time="2.5s"/>
+
+      This is now your Billionaire Self-Operating System... <break time="2s"/>
+      Running automatically... beneath conscious awareness... <break time="3s"/>
+      </prosody>
+      </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 3: ABUNDANCE SYMBOLS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+abundance_symbols:
+  entry_id: "psychology.abundance.symbols"
+  name: "Symbolic Triggers for Expansion"
+
+  principle: |
+    Symbols bypass logic and speak directly to the subconscious.
+    When used repeatedly across Dreamweavings, they become internal
+    "codes" that trigger abundance states automatically.
+
+  expansion_symbols:
+    spirals:
+      meaning: "Infinite expansion, growth without limit"
+      use: "Visualize spiraling outward during expansion sequences"
+
+    golden_fractals:
+      meaning: "Infinite multiplication, self-similar prosperity"
+      use: "Show wealth patterns replicating infinitely"
+
+    flowing_water:
+      meaning: "Unstoppable flow, finding the path of least resistance"
+      use: "Represent money and opportunity as flowing streams"
+
+    expanding_circles:
+      meaning: "Rippling influence, growing reach"
+      use: "Show impact and abundance radiating outward"
+
+    radiant_light:
+      meaning: "Source energy, illumination, attraction"
+      use: "Light emanating from heart or crown during abundance work"
+
+    open_hands:
+      meaning: "Receiving mode, non-grasping abundance"
+      use: "Gesture for activating receptivity"
+
+    lotus_blooming:
+      meaning: "Unfolding prosperity, emergence from difficulty"
+      use: "Transformation of struggle into beauty"
+
+    rising_sun:
+      meaning: "New beginnings, upward momentum, warming light"
+      use: "Dawn sequences for fresh starts"
+
+  activation_anchors:
+    description: "Portable triggers for accessing abundance states outside the video"
+
+    golden_sigil:
+      trigger: "Visualizing the sigil"
+      activates: "Gratitude and receiving mode"
+
+    glowing_hand:
+      trigger: "Imagining hands glowing"
+      activates: "Confidence and creative power"
+
+    breath_pattern:
+      trigger: "4-count inhale, 7-count exhale"
+      activates: "Resourcefulness and calm certainty"
+
+    inner_mantra:
+      trigger: "Internal word (e.g., 'Flow', 'Receive', 'Expand')"
+      activates: "Abundance state immediately"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 4: SELF-WORTH AND DESERVINGNESS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+worthiness_work:
+  entry_id: "psychology.abundance.worthiness"
+  name: "Self-Worth and Deservingness Rewiring"
+
+  principle: |
+    Abundance aligns with identity and worthiness, not logic.
+    You never outperform your self-image. You always return to
+    the identity your subconscious believes is true.
+
+  core_wounds:
+    not_enough:
+      belief: "I am not enough as I am"
+      healing: "You are inherently worthy, independent of achievement"
+
+    not_deserving:
+      belief: "I don't deserve good things"
+      healing: "Receiving is natural; guilt is learned"
+
+    wrong_to_have:
+      belief: "It's wrong/selfish to have abundance"
+      healing: "Your prosperity benefits everyone"
+
+    others_first:
+      belief: "Others deserve it more than me"
+      healing: "There is enough for everyone; your portion awaits"
+
+    must_struggle:
+      belief: "I must suffer to earn anything good"
+      healing: "Ease is allowed; grace is real"
+
+  future_self_encounter:
+    entry_id: "psychology.abundance.technique.future_self"
+    name: "Abundant Future Self Encounter"
+    description: "Narrative hypnosis bringing face-to-face with the prosperous future self"
+
+    method: |
+      Use narrative hypnosis to bring them face-to-face with their "Abundant Self."
+      Their future self radiates confidence, shows them what life looks like when
+      abundance is normal, passes them an "energetic gift"—often a glowing emblem
+      or sigil. The viewer receives the feeling of abundance as a direct transmission.
+      This bypasses the critical mind entirely.
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      A path opens before you... <break time="1.5s"/>
+      leading into the future... <break time="1.5s"/>
+      a future where abundance is simply... normal... <break time="2.5s"/>
+
+      Walk this path... <break time="2s"/>
+
+      And there... waiting for you... <break time="1.5s"/>
+      stands a figure you recognize... <break time="2s"/>
+
+      It is you... <break time="1.5s"/>
+      the version of you... who already has everything... <break time="2.5s"/>
+
+      Look at how they stand... <break time="1.5s"/>
+      the ease in their posture... <break time="1.5s"/>
+      the certainty in their eyes... <break time="1.5s"/>
+      the radiance around them... <break time="2.5s"/>
+
+      They smile... <break time="1.5s"/>
+      because they remember... being where you are now... <break time="2s"/>
+      and they know... how the story unfolds... <break time="2.5s"/>
+
+      They reach out... <break time="1.5s"/>
+      and place something in your hands... <break time="2s"/>
+
+      A glowing emblem... of abundance... <break time="2s"/>
+
+      As you receive it... <break time="1.5s"/>
+      feel the transmission... <break time="1.5s"/>
+      their confidence... flowing into you... <break time="1.5s"/>
+      their worthiness... becoming yours... <break time="1.5s"/>
+      their ease with receiving... now yours... <break time="3s"/>
+      </prosody>
+      </speak>
+
+  billionaire_self_hologram:
+    entry_id: "psychology.abundance.technique.hologram"
+    name: "Billionaire Self-Hologram Technique"
+    description: "Far-future psychology technique for total identity replacement"
+
+    method: |
+      Create a holographic projection of the highest possible version—the one
+      who already achieved and surpassed billionaire wealth. Guide viewer to
+      walk around this hologram, see its posture, energy, eyes. Feel its
+      unbreakable certainty. Then merge with it entirely, fusing identity fields.
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      Before you now... <break time="1.5s"/>
+      a hologram... begins to form... <break time="2s"/>
+
+      It is you... <break time="1.5s"/>
+      but the highest possible version... <break time="1.5s"/>
+      the you who has already achieved... <break time="1s"/>
+      and surpassed... unimaginable wealth... <break time="2.5s"/>
+
+      Walk slowly... around this hologram... <break time="2s"/>
+
+      Notice the posture... <break time="1.5s"/>
+      completely relaxed... yet powerful... <break time="2s"/>
+
+      Notice the energy... <break time="1.5s"/>
+      expansive... magnetic... certain... <break time="2s"/>
+
+      Notice the eyes... <break time="1.5s"/>
+      knowing... calm... seeing possibilities everywhere... <break time="2.5s"/>
+
+      Now... step into this hologram... <break time="2s"/>
+
+      Feel your identity fields... merging... <break time="2s"/>
+
+      Your posture... shifting to match... <break time="1.5s"/>
+      Your energy... expanding to match... <break time="1.5s"/>
+      Your certainty... rising to match... <break time="2.5s"/>
+
+      You are no longer looking at your billionaire self... <break time="2s"/>
+      You ARE... your billionaire self... <break time="3s"/>
+      </prosody>
+      </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 5: QUANTUM AND ENERGETIC FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+energetic_frameworks:
+  entry_id: "psychology.abundance.energetic"
+  name: "Quantum and Energetic Abundance Technologies"
+
+  note: |
+    These are metaphorical and psychological frameworks, not literal physics.
+    They work through emotional coherence, symbolic resonance, and identity shift.
+
+  heart_coherence:
+    entry_id: "psychology.abundance.energetic.heart"
+    name: "Heart Coherence for Receiving"
+
+    principle: |
+      An abundant mindset requires alignment between thought → emotion → energy.
+      Heart coherence creates a state where intention becomes energetically "sticky."
+      The heart's electromagnetic field broadcasts intentions into the environment.
+
+    coherence_induction:
+      - "Slow rhythmic breathing"
+      - "Focus attention on heart center"
+      - "Generate feelings of gratitude"
+      - "Visualize heart radiating golden light"
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      Bring your awareness now... to your heart center... <break time="2s"/>
+
+      Begin to breathe... slowly... deeply... <break time="1.5s"/>
+      in rhythm with your heartbeat... <break time="2s"/>
+
+      As you breathe... feel your heart... <break time="1.5s"/>
+      coming into coherence... <break time="2s"/>
+
+      Generate now... a feeling of gratitude... <break time="1.5s"/>
+      for something... anything... in your life... <break time="2.5s"/>
+
+      Feel this gratitude... warming your chest... <break time="2s"/>
+
+      And as your heart becomes coherent... <break time="1.5s"/>
+      it begins to broadcast... <break time="1.5s"/>
+      a clear signal... into the field around you... <break time="2.5s"/>
+
+      This coherent heart... is a receiver... <break time="1.5s"/>
+      attuned to abundance... <break time="1.5s"/>
+      attracting opportunities... people... resources... <break time="2s"/>
+
+      Your heart is now... a prosperity magnet... <break time="3s"/>
+      </prosody>
+      </speak>
+
+  abundance_attractor_state:
+    entry_id: "psychology.abundance.energetic.attractor"
+    name: "Abundance Attractor State"
+
+    principle: |
+      Instead of seeking abundance, create an internal gravitational field for it.
+      Like attractors in complexity theory, you become a mass that abundance orbits.
+
+    method: |
+      Create a psychoenergetic "vortex" that spins around the heart or solar plexus,
+      pulling in opportunities, ideas, people. The viewer doesn't think abundance—
+      they become a mass that abundance orbits.
+
+    imagery:
+      - "A star forming in a nebula"
+      - "A sun pulling planets into alignment"
+      - "A black hole collapsing scarcity into light"
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      Deep within your center... <break time="1.5s"/>
+      something is forming... <break time="2s"/>
+
+      A vortex... of attractive power... <break time="2s"/>
+
+      Feel it beginning to spin... <break time="1.5s"/>
+      slowly at first... <break time="1.5s"/>
+      then faster... <break time="2s"/>
+
+      Like a star forming in a nebula... <break time="1.5s"/>
+      you are becoming... a center of gravity... <break time="2s"/>
+
+      This vortex... pulls... <break time="1.5s"/>
+      opportunities... toward you... <break time="1.5s"/>
+      ideas... toward you... <break time="1.5s"/>
+      resources... toward you... <break time="1.5s"/>
+      people... toward you... <break time="2.5s"/>
+
+      You no longer chase abundance... <break time="2s"/>
+      You ARE... the gravitational center... <break time="1.5s"/>
+      around which abundance orbits... <break time="3s"/>
+      </prosody>
+      </speak>
+
+  quantum_timeline_selection:
+    entry_id: "psychology.abundance.energetic.timeline"
+    name: "Quantum Timeline Selection for Wealth"
+
+    principle: |
+      Present multiple wealth timelines, guide viewer to step into preferred
+      probability stream, seal with symbolic gesture, collapse lesser timelines.
+
+    timeline_levels:
+      - "$10M timeline"
+      - "$100M timeline"
+      - "$1B timeline"
+      - "Legend-level timeline"
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      Before you now... <break time="1.5s"/>
+      multiple timelines... shimmer into visibility... <break time="2.5s"/>
+
+      Each one... a possible future... <break time="2s"/>
+
+      To your left... a comfortable timeline... <break time="1.5s"/>
+      enough... but limited... <break time="2s"/>
+
+      To your right... an extraordinary timeline... <break time="1.5s"/>
+      abundant beyond what you've dared to imagine... <break time="2.5s"/>
+
+      And directly before you... <break time="1.5s"/>
+      the billionaire timeline... <break time="1.5s"/>
+      glowing with golden light... <break time="2s"/>
+
+      In this timeline... wealth is natural... <break time="1.5s"/>
+      Impact is massive... <break time="1.5s"/>
+      Legacy is assured... <break time="2.5s"/>
+
+      Now... choose... <break time="2s"/>
+
+      Step forward... into the timeline... <break time="1.5s"/>
+      that matches your deepest truth... <break time="2.5s"/>
+
+      As you step in... <break time="1.5s"/>
+      feel it imprint... into every cell... <break time="2s"/>
+
+      Place your hand over your heart... <break time="1.5s"/>
+      This gesture... seals the choice... <break time="2.5s"/>
+
+      Behind you... lesser timelines... <break time="1.5s"/>
+      fade... collapse... dissolve into white light... <break time="2.5s"/>
+
+      Only this timeline remains... <break time="2s"/>
+      And you are walking it... <break time="3s"/>
+      </prosody>
+      </speak>
+
+  morphic_wealth_field:
+    entry_id: "psychology.abundance.energetic.morphic"
+    name: "Morphic Wealth Field Synchronization"
+
+    principle: |
+      Based on Sheldrake's morphic field theory as symbolic psychology.
+      Connect to a "Global Wealth Field," synchronize with billionaire-level
+      patterns, absorb emotional signatures of wealth creators.
+
+    effects:
+      - "Instinctive opportunity recognition"
+      - "Intuitive investment sense"
+      - "Natural confidence"
+      - "Boldness and risk tolerance"
+      - "Visionary thinking"
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      Surrounding our world... <break time="1.5s"/>
+      invisible to ordinary perception... <break time="1.5s"/>
+      there exists... a field... <break time="2.5s"/>
+
+      A morphic field... of wealth consciousness... <break time="2s"/>
+
+      Every successful creator... every visionary leader... <break time="1.5s"/>
+      has contributed... their patterns to this field... <break time="2.5s"/>
+
+      Now... you are connecting to it... <break time="2s"/>
+
+      Feel yourself... synchronizing... <break time="1.5s"/>
+      with the frequency of those who have created... <break time="1.5s"/>
+      extraordinary abundance... <break time="2.5s"/>
+
+      Their patterns of thinking... flowing into you... <break time="2s"/>
+      Their boldness... becoming available... <break time="2s"/>
+      Their vision... expanding your own... <break time="2s"/>
+
+      You are now resonating... <break time="1.5s"/>
+      at the frequency of the wealth-creators... <break time="2s"/>
+
+      This field... will guide your decisions... <break time="1.5s"/>
+      highlight opportunities... <break time="1.5s"/>
+      and attract matching circumstances... <break time="3s"/>
+      </prosody>
+      </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 6: ADVANCED TECHNIQUES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+advanced_techniques:
+
+  future_memory_encoding:
+    entry_id: "psychology.abundance.advanced.future_memory"
+    name: "Future-Memory Encoding"
+
+    principle: |
+      More advanced than standard visualization. Make the viewer feel as though
+      the future where they are abundant has already happened—and they are
+      remembering it. The subconscious treats "memories" as identity-defining.
+
+    effects:
+      - "'I did this' → identity certainty"
+      - "'I am this' → self-image shift"
+      - "'This is who I am now' → permanent change"
+      - "Erases doubt because 'I've already lived it'"
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      Something unusual is happening now... <break time="2s"/>
+
+      You are not imagining the future... <break time="1.5s"/>
+      You are remembering it... <break time="2.5s"/>
+
+      Feel the strange familiarity... <break time="1.5s"/>
+      as if this wealthy life... <break time="1.5s"/>
+      is something you've already lived... <break time="2.5s"/>
+
+      Remember... the feeling of your first major success... <break time="2s"/>
+      How natural it felt... how inevitable... <break time="2.5s"/>
+
+      Remember... looking at your accounts... <break time="1.5s"/>
+      and feeling... calm certainty... <break time="2s"/>
+      because abundance has always been normal for you... <break time="2.5s"/>
+
+      Remember... the impact you've made... <break time="1.5s"/>
+      the lives you've changed... <break time="1.5s"/>
+      the legacy you're building... <break time="2.5s"/>
+
+      This is not imagination... <break time="1.5s"/>
+      This is memory... <break time="1.5s"/>
+      Memory of what you've already become... <break time="3s"/>
+      </prosody>
+      </speak>
+
+  prosperity_egregore:
+    entry_id: "psychology.abundance.advanced.egregore"
+    name: "Prosperity Egregore Creation"
+
+    principle: |
+      An egregore is a thought-form or psychic pattern that gains power through
+      attention. Dreamweaving can give form to an Abundance Egregore, connect
+      the viewer to it, let it teach them, merge with them, inhabit their field
+      as a prosperity guardian.
+
+    egregore_qualities:
+      - "Golden, luminous being"
+      - "Wings of flowing currency energy"
+      - "Eyes of infinite opportunity"
+      - "Voice of synchronicity"
+      - "Heart pulsing with creative expansion"
+
+    effects:
+      - "Increased intuition"
+      - "Higher creativity"
+      - "Synchronicity"
+      - "Opportunities aligning"
+      - "Sensation of being guided"
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      A presence... is forming before you... <break time="2s"/>
+
+      Not human... but aware... <break time="1.5s"/>
+      Not physical... but powerful... <break time="2.5s"/>
+
+      An egregore... of prosperity... <break time="2s"/>
+
+      See it taking shape... <break time="1.5s"/>
+
+      A luminous being... of golden light... <break time="2s"/>
+      Wings... made of flowing currency energy... <break time="2s"/>
+      Eyes... that see infinite opportunity... <break time="2s"/>
+      A heart... pulsing with creative expansion... <break time="2.5s"/>
+
+      This is a guardian... a guide... a teacher... <break time="2s"/>
+
+      It has been waiting... for you to call upon it... <break time="2s"/>
+
+      Now... it moves toward you... <break time="1.5s"/>
+      and merges... into your energy field... <break time="2.5s"/>
+
+      Feel it settling... around you... within you... <break time="2s"/>
+
+      From this moment... it guides your steps... <break time="1.5s"/>
+      whispers opportunities... <break time="1.5s"/>
+      arranges synchronicities... <break time="1.5s"/>
+      and protects your prosperity... <break time="3s"/>
+      </prosody>
+      </speak>
+
+  identity_recursion_loop:
+    entry_id: "psychology.abundance.advanced.recursion"
+    name: "Identity Recursion Loop"
+
+    principle: |
+      Create a loop where Present Self meets Future Abundant Self who meets
+      Even Further Future Hyper-Abundant Self. Each passes knowledge, energy,
+      and upgrades backward. The loop collapses inward until all versions
+      merge into a unified identity that has always been abundant.
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      Before you now... <break time="1.5s"/>
+      your Future Self appears... <break time="1.5s"/>
+      abundant... successful... radiant... <break time="2.5s"/>
+
+      But behind them... another figure... <break time="1.5s"/>
+      their Future Self... <break time="1.5s"/>
+      even more expanded... even more prosperous... <break time="2.5s"/>
+
+      And behind that one... yet another... <break time="1.5s"/>
+      and another... <break time="1.5s"/>
+      stretching into infinite futures... <break time="2.5s"/>
+
+      Now... watch... as the most distant future self... <break time="2s"/>
+      passes something... to the one before... <break time="2s"/>
+      who passes it... to the one before... <break time="2s"/>
+      cascading... all the way... to the Future Self before you... <break time="2.5s"/>
+
+      Who now... passes it to you... <break time="2s"/>
+
+      Knowledge... energy... patterns... upgrades... <break time="2s"/>
+      Flowing backward through time... into you now... <break time="2.5s"/>
+
+      And now... all these versions... begin to collapse... <break time="2s"/>
+      Merging... folding... into one... <break time="2.5s"/>
+
+      Into you... <break time="2s"/>
+
+      You are no longer becoming abundant... <break time="1.5s"/>
+      You have always been abundant... <break time="1.5s"/>
+      In all timelines... in all versions... <break time="2s"/>
+      Abundance is your fundamental nature... <break time="3s"/>
+      </prosody>
+      </speak>
+
+  hyperstition_wealth_myth:
+    entry_id: "psychology.abundance.advanced.hyperstition"
+    name: "Hyperstitional Prosperity Myth"
+
+    principle: |
+      Hyperstition = a story that becomes true by being believed, invoked, and
+      acted from. Billionaires use this unconsciously: "This is inevitable,"
+      "This is already mine," "I am chosen," "I cannot fail." Create a prosperity
+      myth where the viewer becomes a chosen figure of destiny.
+
+    mythic_identities:
+      - "The Chosen Architect"
+      - "The Holder of the Golden Current"
+      - "The Weaver of Wealth Timelines"
+      - "The Bearer of Infinite Opportunity"
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      Listen now... to a story that is becoming true... <break time="2s"/>
+
+      Long before you were born... <break time="1.5s"/>
+      you were chosen... <break time="2s"/>
+
+      Chosen to be a bearer... of the golden current... <break time="2s"/>
+      Chosen to channel... infinite abundance... <break time="2s"/>
+      Chosen to weave... new wealth timelines... <break time="2s"/>
+      Into the fabric of this world... <break time="2.5s"/>
+
+      This is not fantasy... <break time="1.5s"/>
+      This is the story... that is writing itself through you... <break time="2.5s"/>
+
+      Feel the truth of it... settling into your bones... <break time="2s"/>
+
+      You are the Chosen Architect... <break time="2s"/>
+      Building something that will outlast you... <break time="2s"/>
+      Creating wealth that will ripple... for generations... <break time="2.5s"/>
+
+      This is not wishful thinking... <break time="1.5s"/>
+      This is destiny... recognizing itself in you... <break time="3s"/>
+      </prosody>
+      </speak>
+
+  billionaire_cognitive_loops:
+    entry_id: "psychology.abundance.advanced.cognitive_loops"
+    name: "Billionaire Cognitive Pattern Loops"
+
+    description: "Mental engines that run automatically in the subconscious after installation"
+
+    loops:
+      hyper_opportunity_awareness:
+        pattern: "Everything is a potential asset"
+        installation: "Your mind now sees opportunity... in everything... everywhere..."
+
+      scale_first_thinking:
+        pattern: "If it doesn't scale, it dies"
+        installation: "You automatically think... in terms of multiplication... leverage... scale..."
+
+      indifference_to_failure:
+        pattern: "Failure is just data"
+        installation: "Failure no longer triggers fear... only curiosity... only learning..."
+
+      decision_velocity:
+        pattern: "Act fast, correct fast, scale fast"
+        installation: "You decide quickly... move boldly... adjust effortlessly..."
+
+      infinite_ideation:
+        pattern: "Ideas flow faster than resistance can block"
+        installation: "Ideas pour through you... an endless river of possibility..."
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 7: RITUAL AND MAGICKAL ELEMENTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ritual_elements:
+  entry_id: "psychology.abundance.ritual"
+  name: "Ritual and Sacred Prosperity Practices"
+
+  note: |
+    For viewers open to spiritual technology, these elements make the
+    experience feel alive, intentional, and sacred.
+
+  ritual_structure:
+    opening:
+      purpose: "Open the abundance field"
+      methods:
+        - "Symbolic gesture (hands opening outward)"
+        - "Breath pattern (inhale possibility, exhale limitation)"
+        - "Spoken invocation"
+
+    prosperity_current:
+      purpose: "Channel abundance energy into the body"
+      method: "Visual stream of golden light entering heart center"
+
+    closing:
+      purpose: "Seal the work and ground into reality"
+      methods:
+        - "Grounding gesture (hands to earth)"
+        - "Breath pattern (drawing energy down)"
+        - "Statement of gratitude and completion"
+
+  prosperity_current_ritual:
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      With hands open... palms facing upward... <break time="2s"/>
+
+      Speak within: "I open to receive"... <break time="2.5s"/>
+
+      Above you now... a current of prosperity... <break time="1.5s"/>
+      golden light... streaming from infinite source... <break time="2.5s"/>
+
+      Watch it descend... <break time="1.5s"/>
+      entering through your crown... <break time="1.5s"/>
+      flowing into your heart... <break time="1.5s"/>
+      filling your solar plexus... <break time="1.5s"/>
+      radiating through your whole being... <break time="2.5s"/>
+
+      This is the prosperity current... <break time="2s"/>
+      The same energy... that flows through all creators... <break time="2s"/>
+      Now flowing... through you... <break time="2.5s"/>
+
+      When you feel full... <break time="1.5s"/>
+      bring your hands together over your heart... <break time="2s"/>
+      sealing this current... within you... <break time="2.5s"/>
+
+      It is done... <break time="3s"/>
+      </prosody>
+      </speak>
+
+  sigil_activation:
+    description: "Insert a sigil that ignites when they speak an affirmation"
+
+    template: |
+      <speak>
+      <prosody rate="1.0" pitch="-2st">
+      Before you now... a sigil appears... <break time="2s"/>
+
+      A unique symbol... of your prosperity... <break time="2s"/>
+
+      It rests dormant... waiting for activation... <break time="2.5s"/>
+
+      When you are ready... speak internally: <break time="1.5s"/>
+      "I am abundance"... <break time="2.5s"/>
+
+      As you speak... watch the sigil ignite... <break time="2s"/>
+      Blazing with golden fire... <break time="1.5s"/>
+      Encoding itself... into your energy field... <break time="2.5s"/>
+
+      This sigil is now part of you... <break time="2s"/>
+      Whenever you recall it... <break time="1.5s"/>
+      your abundance state... activates... instantly... <break time="3s"/>
+      </prosody>
+      </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 8: DREAM INCUBATION FOR ABUNDANCE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+dream_incubation:
+  entry_id: "psychology.abundance.dreams"
+  name: "Dream-State Abundance Programming"
+
+  principle: |
+    Dreamweaving videos can continue programming the viewer during sleep.
+    Dreams become teachers, allies, and rehearsals for abundance.
+
+  incubation_suggestions:
+    - "Tonight, your dreams teach you the ways abundance flows"
+    - "You will receive symbols, insights, and synchronicities in your dreams"
+    - "You awaken knowing exactly what steps to take"
+    - "Your subconscious works for your highest prosperity as you sleep"
+
+  template: |
+    <speak>
+    <prosody rate="1.0" pitch="-1st">
+    As you move toward sleep tonight... <break time="2s"/>
+
+    Know that the work continues... <break time="1.5s"/>
+    in the dream realm... <break time="2.5s"/>
+
+    Tonight... your dreams will teach you... <break time="1.5s"/>
+    the ways abundance flows... <break time="2s"/>
+
+    You may receive symbols... <break time="1.5s"/>
+    You may receive insights... <break time="1.5s"/>
+    You may meet guides who show you the way... <break time="2.5s"/>
+
+    When you wake tomorrow... <break time="1.5s"/>
+    you will know... what steps to take... <break time="2s"/>
+
+    Your subconscious... works for your prosperity... <break time="1.5s"/>
+    every night... while you rest... <break time="2.5s"/>
+
+    Trust the dream wisdom... that is coming... <break time="3s"/>
+    </prosody>
+    </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 9: SOMATIC WEALTH ACTIVATION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+somatic_activation:
+  entry_id: "psychology.abundance.somatic"
+  name: "Somatic Wealth Capacity Building"
+
+  principle: |
+    Build physical-energetic capacity to hold wealth. Billionaires aren't "lucky"—
+    they are built to handle enormous energetic flow.
+
+  energy_centers:
+    solar_plexus:
+      quality: "Power, confidence, will"
+      activation: "Heat, expansion, golden light"
+
+    heart:
+      quality: "Receiving, gratitude, circulation"
+      activation: "Warmth, opening, green/pink light"
+
+    throat:
+      quality: "Expression, asking, claiming"
+      activation: "Vibration, clearing, blue light"
+
+    crown:
+      quality: "Vision, inspiration, connection"
+      activation: "Tingling, expansion, violet/white light"
+
+  template: |
+    <speak>
+    <prosody rate="1.0" pitch="-2st">
+    Now we build... the body's capacity... to hold wealth... <break time="2.5s"/>
+
+    Bring your awareness... to your solar plexus... <break time="2s"/>
+    Feel a heat... beginning to build... <break time="1.5s"/>
+    A golden fire... of personal power... <break time="2s"/>
+    This is your capacity for confidence... for will... <break time="2.5s"/>
+
+    Now... your heart center... <break time="1.5s"/>
+    Feel it warming... opening... <break time="1.5s"/>
+    Expanding its capacity... to receive... <break time="1.5s"/>
+    To circulate abundance... without grasping... <break time="2.5s"/>
+
+    Your throat... <break time="1.5s"/>
+    Feel a vibration... a clearing... <break time="1.5s"/>
+    Building your capacity... to ask... to claim... to speak prosperity... <break time="2.5s"/>
+
+    Your crown... <break time="1.5s"/>
+    Feel a tingling... an expansion... <break time="1.5s"/>
+    Opening to receive... vision... inspiration... guidance... <break time="2.5s"/>
+
+    Your entire body... is now upgraded... <break time="2s"/>
+    Designed to hold... enormous flow... <break time="2s"/>
+    Prosperity moves through you... easily... gracefully... <break time="3s"/>
+    </prosody>
+    </speak>
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECTION 10: USAGE GUIDELINES AND CROSS-REFERENCES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+usage_guidelines:
+  outcome_alignment:
+    primary:
+      - empowerment
+      - abundance
+      - confidence
+      - transformation
+
+    secondary:
+      - self_knowledge
+      - healing
+      - release
+
+  journey_phase_applicability:
+    pre_talk: "Normalize abundance, establish safety"
+    induction: "Theta opening, safety signals"
+    deepening: "Scarcity dissolution, subconscious access"
+    journey: "Archetype work, future self, timeline selection"
+    helm_deep_trance: "Identity collapse, recursion loops, egregore work"
+    integration: "Somatic anchoring, ritual sealing"
+    reorientation: "Dream incubation, portable anchors"
+
+  contraindications:
+    - "Active gambling addiction (avoid 'easy money' framing)"
+    - "Manic episodes (ground before expansion work)"
+    - "Severe financial trauma without therapeutic support"
+    - "Delusional beliefs about money (ensure reality contact)"
+
+  ethical_guidelines:
+    - "Abundance includes more than money—relationships, creativity, health, time"
+    - "Always include agency—inspired action, not passive waiting"
+    - "Avoid get-rich-quick framing; emphasize identity change"
+    - "Balance receiving with giving/circulation"
+    - "Include gratitude for what already exists"
+
+cross_references:
+  related_knowledge_domains:
+    - domain: "psychology"
+      files: ["manifestation_technology.yaml"]
+      relevance: "Core manifestation mechanisms"
+
+    - domain: "psychology"
+      files: ["internal_family_systems.yaml"]
+      relevance: "Parts that block abundance"
+
+    - domain: "consciousness_maps"
+      files: ["enlightenment_traditions.yaml"]
+      relevance: "Non-attachment and flow states"
+
+    - domain: "ritual"
+      files: ["invocation_patterns.yaml", "sacred_space.yaml"]
+      relevance: "Ritual structure for abundance work"
+
+    - domain: "symbols"
+      files: ["color_correspondences.yaml"]
+      relevance: "Gold, green, and prosperity colors"
+
+    - domain: "audio"
+      files: ["binaural_presets.yaml"]
+      relevance: "Theta entrainment for receptivity"
+
+    - domain: "dream_work"
+      files: ["dream_interaction_system.yaml"]
+      relevance: "Dream incubation for abundance"

@@ -1,0 +1,759 @@
+# =============================================================================
+# BINAURAL PRESETS - Frequency Entrainment Curves for Dreamweaving
+# =============================================================================
+# Pre-built binaural beat progression curves optimized for different outcomes
+# and journey types. Each preset includes carrier frequency, beat progression,
+# timing, and production parameters.
+#
+# Usage: Select preset based on outcome, then customize duration as needed.
+#        Use with generate_dynamic_binaural.py for production.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "audio"
+category: "binaural_presets"
+purpose: "Ready-to-use binaural beat progressions for session production"
+
+# =============================================================================
+# BRAINWAVE REFERENCE
+# =============================================================================
+# Quick reference for brainwave frequencies and their effects
+
+brainwave_reference:
+  gamma:
+    range: "30-100 Hz"
+    typical: "40 Hz"
+    state: "Peak consciousness, insight, binding"
+    uses: "Spiritual peak experiences, unity consciousness"
+    caution: "Can be overstimulating; use briefly"
+
+  beta:
+    range: "13-30 Hz"
+    typical: "20 Hz"
+    state: "Alert, focused, analytical"
+    uses: "Focus work, concentration, waking state"
+    caution: "Can increase anxiety if overused"
+
+  alpha:
+    range: "8-13 Hz"
+    typical: "10 Hz"
+    state: "Relaxed alertness, light meditation"
+    uses: "Induction, light trance, creativity"
+    note: "Bridge between waking and trance"
+
+  theta:
+    range: "4-8 Hz"
+    typical: "6 Hz"
+    state: "Deep trance, dreaming, memory"
+    uses: "Journey work, deep imagery, transformation"
+    note: "Primary state for hypnotic journey"
+
+  delta:
+    range: "0.5-4 Hz"
+    typical: "2 Hz"
+    state: "Deep sleep, healing, regeneration"
+    uses: "Deep healing, integration, rest"
+    note: "Use for deepest work only"
+
+# =============================================================================
+# OUTCOME-BASED PRESETS
+# =============================================================================
+
+presets:
+
+  # ---------------------------------------------------------------------------
+  # HEALING - Deep nurturing and restoration
+  # ---------------------------------------------------------------------------
+  healing_deep:
+    name: "Deep Healing Journey"
+    description: "Gentle descent to delta for profound healing and integration"
+    outcome_alignment: [healing, relaxation]
+    journey_family: [eden_garden, ocean_depths]
+    duration_minutes: 25
+
+    carrier_frequency: 200
+    base_volume: -6  # dB relative to voice
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Relaxed alertness for pre-talk"
+      - time: "03:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+        note: "Beginning induction"
+      - time: "06:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Entering trance"
+      - time: "10:00"
+        beat_hz: 4.0
+        state: "low_theta"
+        note: "Deep journey begins"
+      - time: "15:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Deepest healing state"
+      - time: "18:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Sustained healing"
+      - time: "21:00"
+        beat_hz: 4.0
+        state: "theta"
+        note: "Beginning return"
+      - time: "23:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Integration"
+      - time: "25:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Full return"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+    secondary_layer:
+      enabled: true
+      carrier: 220
+      offset_hz: 0.5
+      purpose: "Adds spatial depth"
+
+  # ---------------------------------------------------------------------------
+  healing_gentle:
+    name: "Gentle Healing Flow"
+    description: "Softer curve for sensitive listeners, stays in theta"
+    outcome_alignment: [healing, relaxation]
+    journey_family: [eden_garden]
+    duration_minutes: 20
+
+    carrier_frequency: 180
+    base_volume: -8  # Quieter for gentleness
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "08:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "12:00"
+        beat_hz: 5.0
+        state: "mid_theta"
+        note: "Stays higher for comfort"
+      - time: "15:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "18:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "very_smooth"
+
+  # ---------------------------------------------------------------------------
+  # TRANSFORMATION - Deep alchemical work
+  # ---------------------------------------------------------------------------
+  transformation_alchemical:
+    name: "Alchemical Transformation"
+    description: "Deep theta with delta touch for identity transformation"
+    outcome_alignment: [transformation, self_knowledge]
+    journey_family: [cosmic_forge, underworld_descent]
+    duration_minutes: 30
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "06:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "10:00"
+        beat_hz: 4.5
+        state: "low_theta"
+        note: "Deep trance entry"
+      - time: "14:00"
+        beat_hz: 3.0
+        state: "delta_edge"
+        note: "Peak transformation depth"
+      - time: "18:00"
+        beat_hz: 2.5
+        state: "delta"
+        note: "Helm - deepest point"
+      - time: "21:00"
+        beat_hz: 4.0
+        state: "theta"
+        note: "Integration begins"
+      - time: "25:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "28:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+    gamma_burst:
+      enabled: true
+      time: "18:30"
+      duration_seconds: 15
+      frequency: 40
+      intensity: -12  # dB, subtle
+      purpose: "Peak insight moment"
+
+  # ---------------------------------------------------------------------------
+  transformation_phoenix:
+    name: "Phoenix Rebirth"
+    description: "Dramatic curve with gamma peak for death/rebirth experiences"
+    outcome_alignment: [transformation, release]
+    journey_family: [cosmic_forge, underworld_descent]
+    duration_minutes: 28
+
+    carrier_frequency: 220
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "08:00"
+        beat_hz: 5.0
+        state: "mid_theta"
+      - time: "12:00"
+        beat_hz: 3.5
+        state: "low_theta"
+        note: "Descent into fire"
+      - time: "16:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Death point"
+      - time: "17:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Rebirth flash - brief"
+      - time: "17:30"
+        beat_hz: 6.0
+        state: "theta"
+        note: "New form emerging"
+      - time: "22:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "26:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "28:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+        note: "Energized return"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 30
+    transition_style: "dramatic"
+
+  # ---------------------------------------------------------------------------
+  # EMPOWERMENT - Activating and strengthening
+  # ---------------------------------------------------------------------------
+  empowerment_warrior:
+    name: "Warrior Awakening"
+    description: "Higher frequency curve for power and confidence activation"
+    outcome_alignment: [empowerment, confidence]
+    journey_family: [cosmic_forge, temple_initiation]
+    duration_minutes: 22
+
+    carrier_frequency: 220
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+      - time: "03:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "06:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "09:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Brief deepening for resource access"
+      - time: "12:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+        note: "Rising with power"
+      - time: "15:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "18:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+        note: "Empowered state"
+      - time: "20:00"
+        beat_hz: 14.0
+        state: "low_beta"
+        note: "Action readiness"
+      - time: "22:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+
+    fade_in_seconds: 15
+    fade_out_seconds: 20
+    transition_style: "energetic"
+
+  # ---------------------------------------------------------------------------
+  empowerment_confidence:
+    name: "Confidence Builder"
+    description: "Balanced curve for self-worth and inner strength"
+    outcome_alignment: [empowerment, confidence, self_knowledge]
+    journey_family: [temple_initiation]
+    duration_minutes: 25
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "08:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Accessing subconscious beliefs"
+      - time: "13:00"
+        beat_hz: 5.0
+        state: "mid_theta"
+        note: "Deep reprogramming"
+      - time: "17:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Integrating new patterns"
+      - time: "23:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+      - time: "25:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  # SPIRITUAL GROWTH - Transcendent experiences
+  # ---------------------------------------------------------------------------
+  spiritual_ascent:
+    name: "Spiritual Ascent"
+    description: "Theta-delta-gamma for transcendent spiritual experiences"
+    outcome_alignment: [spiritual_growth, transformation]
+    journey_family: [celestial_journey, temple_initiation]
+    duration_minutes: 30
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "08:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "12:00"
+        beat_hz: 4.0
+        state: "low_theta"
+      - time: "16:00"
+        beat_hz: 2.5
+        state: "delta"
+        note: "Deep spiritual opening"
+      - time: "18:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Peak spiritual experience"
+      - time: "19:00"
+        beat_hz: 4.0
+        state: "theta"
+      - time: "23:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "27:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "ethereal"
+    harmonic_layer:
+      enabled: true
+      type: "432hz_undertone"
+      volume: -18  # Very subtle
+
+  # ---------------------------------------------------------------------------
+  spiritual_meditation:
+    name: "Deep Meditation"
+    description: "Sustained theta for contemplative practice"
+    outcome_alignment: [spiritual_growth, relaxation, focus]
+    journey_family: [celestial_journey]
+    duration_minutes: 20
+
+    carrier_frequency: 180
+    base_volume: -8
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "08:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Sustained meditation state"
+      - time: "14:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Maintained for duration"
+      - time: "17:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 60
+    fade_out_seconds: 90
+    transition_style: "very_smooth"
+
+  # ---------------------------------------------------------------------------
+  # RELAXATION - Deep rest and stress relief
+  # ---------------------------------------------------------------------------
+  relaxation_deep:
+    name: "Deep Relaxation"
+    description: "Gentle delta approach for profound rest"
+    outcome_alignment: [relaxation, healing]
+    journey_family: [eden_garden, ocean_depths]
+    duration_minutes: 25
+
+    carrier_frequency: 160
+    base_volume: -8
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "05:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "10:00"
+        beat_hz: 5.0
+        state: "theta"
+      - time: "15:00"
+        beat_hz: 3.0
+        state: "delta_edge"
+      - time: "18:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Deepest rest"
+      - time: "21:00"
+        beat_hz: 4.0
+        state: "theta"
+      - time: "23:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "25:00"
+        beat_hz: 8.0
+        state: "alpha"
+
+    fade_in_seconds: 60
+    fade_out_seconds: 90
+    transition_style: "very_smooth"
+
+  # ---------------------------------------------------------------------------
+  relaxation_sleep:
+    name: "Sleep Induction"
+    description: "One-way descent to delta for sleep transition"
+    outcome_alignment: [relaxation]
+    journey_family: [eden_garden]
+    duration_minutes: 30
+
+    carrier_frequency: 140
+    base_volume: -10
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "06:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "12:00"
+        beat_hz: 5.0
+        state: "theta"
+      - time: "18:00"
+        beat_hz: 3.0
+        state: "delta_edge"
+      - time: "24:00"
+        beat_hz: 2.0
+        state: "delta"
+      - time: "30:00"
+        beat_hz: 1.5
+        state: "deep_delta"
+        note: "Sleep state - no return"
+
+    fade_in_seconds: 90
+    fade_out_seconds: 0  # Fades to silence naturally
+    transition_style: "very_smooth"
+
+  # ---------------------------------------------------------------------------
+  # SELF KNOWLEDGE - Introspection and insight
+  # ---------------------------------------------------------------------------
+  self_knowledge_deep:
+    name: "Deep Self Inquiry"
+    description: "Theta-dominant for accessing unconscious material"
+    outcome_alignment: [self_knowledge, transformation]
+    journey_family: [underworld_descent, ocean_depths]
+    duration_minutes: 28
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "08:00"
+        beat_hz: 5.0
+        state: "mid_theta"
+        note: "Accessing shadow material"
+      - time: "14:00"
+        beat_hz: 4.0
+        state: "low_theta"
+        note: "Deep unconscious"
+      - time: "18:00"
+        beat_hz: 5.0
+        state: "theta"
+      - time: "22:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Integration"
+      - time: "25:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  # CREATIVITY - Inspiration and flow
+  # ---------------------------------------------------------------------------
+  creativity_flow:
+    name: "Creative Flow State"
+    description: "Alpha-theta border for optimal creative access"
+    outcome_alignment: [creativity, focus]
+    journey_family: [eden_garden, celestial_journey]
+    duration_minutes: 20
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+      - time: "03:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "06:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+        note: "Alpha-theta border - peak creativity"
+      - time: "10:00"
+        beat_hz: 7.5
+        state: "alpha_theta"
+        note: "Sustained creative state"
+      - time: "14:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "17:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "20:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  # FOCUS - Concentration and clarity
+  # ---------------------------------------------------------------------------
+  focus_concentration:
+    name: "Focused Concentration"
+    description: "Higher frequency for mental clarity and attention"
+    outcome_alignment: [focus]
+    journey_family: [temple_initiation]
+    duration_minutes: 15
+
+    carrier_frequency: 250
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 12.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 14.0
+        state: "low_beta"
+      - time: "06:00"
+        beat_hz: 16.0
+        state: "beta"
+        note: "Peak focus"
+      - time: "10:00"
+        beat_hz: 14.0
+        state: "low_beta"
+      - time: "13:00"
+        beat_hz: 12.0
+        state: "alpha"
+      - time: "15:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 15
+    fade_out_seconds: 20
+    transition_style: "smooth"
+
+# =============================================================================
+# TECHNICAL SPECIFICATIONS
+# =============================================================================
+
+technical_specs:
+  carrier_frequency_range:
+    minimum: 100  # Hz
+    maximum: 400  # Hz
+    recommended: 180-220  # Hz
+    note: "Lower carriers feel deeper; higher carriers feel brighter"
+
+  beat_generation:
+    method: "stereo_phase_offset"
+    left_channel: "carrier_frequency"
+    right_channel: "carrier_frequency + beat_frequency"
+    example: "200 Hz left, 206 Hz right = 6 Hz theta beat"
+
+  fade_profiles:
+    very_smooth:
+      curve: "exponential"
+      in_seconds: 60-90
+      out_seconds: 90-120
+    smooth:
+      curve: "exponential"
+      in_seconds: 30-45
+      out_seconds: 45-60
+    energetic:
+      curve: "linear"
+      in_seconds: 15-20
+      out_seconds: 20-30
+    dramatic:
+      curve: "custom"
+      description: "Sharp transitions for effect"
+
+  transition_styles:
+    very_smooth: "Changes over 60+ seconds"
+    smooth: "Changes over 30-45 seconds"
+    standard: "Changes over 15-30 seconds"
+    energetic: "Changes over 5-15 seconds"
+    dramatic: "Sudden shifts for effect"
+
+  mixing_levels:
+    voice: -6  # dB
+    binaural: -6  # dB (was -12, updated per lessons)
+    sfx: 0  # dB
+
+# =============================================================================
+# PRODUCTION COMMAND TEMPLATES
+# =============================================================================
+
+production_commands:
+  generate_binaural: |
+    python3 scripts/core/generate_dynamic_binaural.py \
+      --preset {preset_name} \
+      --duration {duration_minutes} \
+      --output sessions/{session}/output/binaural_dynamic.wav
+
+  custom_generation: |
+    python3 scripts/core/generate_dynamic_binaural.py \
+      --carrier {carrier_frequency} \
+      --progression "{progression_json}" \
+      --duration {duration_minutes} \
+      --fade-in {fade_in_seconds} \
+      --fade-out {fade_out_seconds} \
+      --output sessions/{session}/output/binaural_custom.wav
+
+# =============================================================================
+# SELECTION GUIDE
+# =============================================================================
+
+selection_guide:
+  by_outcome:
+    healing: [healing_deep, healing_gentle]
+    transformation: [transformation_alchemical, transformation_phoenix]
+    empowerment: [empowerment_warrior, empowerment_confidence]
+    self_knowledge: [self_knowledge_deep]
+    release: [healing_deep, transformation_phoenix]
+    spiritual_growth: [spiritual_ascent, spiritual_meditation]
+    creativity: [creativity_flow]
+    relaxation: [relaxation_deep, relaxation_sleep]
+    focus: [focus_concentration]
+    confidence: [empowerment_confidence, empowerment_warrior]
+
+  by_duration:
+    short_15_20: [focus_concentration, creativity_flow, relaxation_gentle]
+    medium_22_25: [empowerment_warrior, empowerment_confidence, healing_gentle, relaxation_deep]
+    long_28_30: [healing_deep, transformation_alchemical, transformation_phoenix, spiritual_ascent, self_knowledge_deep]
+
+  by_intensity:
+    gentle: [healing_gentle, relaxation_deep, spiritual_meditation]
+    moderate: [healing_deep, empowerment_confidence, creativity_flow, self_knowledge_deep]
+    intense: [transformation_alchemical, transformation_phoenix, empowerment_warrior, spiritual_ascent]

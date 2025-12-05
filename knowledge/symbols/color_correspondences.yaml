@@ -1,0 +1,800 @@
+# =============================================================================
+# COLOR CORRESPONDENCES - Sacred Color System for Dreamweaving
+# =============================================================================
+# Colors carry profound psychological, spiritual, and energetic significance.
+# This file maps colors to their meanings, applications, and production uses.
+#
+# Usage: Select colors based on outcome, chakra alignment, and mood.
+#        Use for visual prompts, lighting descriptions, and imagery.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "symbols"
+category: "colors"
+purpose: "Color correspondence system for Dreamweaving imagery and energy work"
+
+# =============================================================================
+# PRIMARY COLORS
+# =============================================================================
+
+red:
+  entry_id: "symbols.colors.red"
+  name: "Red"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of vitality, passion, primal energy, and the life force"
+    extended: |
+      Red is the color of blood, fire, and the root of being. It represents
+      the primal life force, survival instincts, passion, and grounded power.
+      Red activates the sympathetic nervous system, increases heart rate,
+      and stimulates action. In spiritual work, red grounds consciousness
+      in the body and awakens the kundalini at its base.
+    essence: "The pulse of life itself"
+
+  attributes:
+    energy_quality: active
+    element: fire
+    planetary: mars
+    chakra: root
+    brainwave: beta
+    temperature: hot
+    weight: heavy
+    mood: intense
+
+  psychological_effects:
+    positive: [vitality, passion, courage, strength, groundedness]
+    shadow: [anger, aggression, danger, overwhelm]
+    physiological: [increased heart rate, raised blood pressure, alertness]
+
+  applications:
+    outcome_alignment: [empowerment, confidence, transformation]
+    journey_phases: [journey]
+    use_cases:
+      - "Grounding and rooting work"
+      - "Activating life force and passion"
+      - "Courage and warrior energy"
+      - "Physical healing and vitality"
+    contraindications:
+      - "Anxiety states (too activating)"
+      - "Anger issues (may amplify)"
+      - "High blood pressure considerations"
+
+  templates:
+    visual_prompt: "deep crimson red light glowing from within, sacred fire, blood of the earth, warm powerful illumination, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-1st">
+      A warm red glow begins to rise...<break time="2s"/>
+      from the earth beneath you...<break time="2s"/>
+      the color of life itself...<break time="2s"/>
+      awakening your body...<break time="2.5s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.elements.fire, symbols.colors.orange, symbols.colors.gold]
+    opposites: [symbols.colors.blue, symbols.colors.green]
+    related_chakras: [root]
+
+  shades:
+    crimson: "Deep blood red - primal power"
+    scarlet: "Bright red - passion and desire"
+    burgundy: "Dark red - mature strength"
+    coral: "Red-orange - vital warmth"
+
+# =============================================================================
+
+orange:
+  entry_id: "symbols.colors.orange"
+  name: "Orange"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of creativity, pleasure, emotion, and joyful expression"
+    extended: |
+      Orange blends the vitality of red with the brightness of yellow,
+      creating the color of creativity, sensuality, and emotional expression.
+      It represents the sacral energy of pleasure, creative flow, and the
+      joy of embodied experience. Orange stimulates enthusiasm, sociability,
+      and the creative impulse.
+    essence: "Joy expressed through creative flow"
+
+  attributes:
+    energy_quality: active
+    element: fire
+    planetary: sun
+    chakra: sacral
+    brainwave: alpha
+    temperature: warm
+    weight: medium
+    mood: joyful
+
+  psychological_effects:
+    positive: [creativity, enthusiasm, joy, warmth, sociability]
+    shadow: [excess, addiction, scattered energy]
+    physiological: [stimulates appetite, increases oxygen to brain]
+
+  applications:
+    outcome_alignment: [creativity, release, confidence]
+    journey_phases: [journey, integration]
+    use_cases:
+      - "Creative unblocking"
+      - "Emotional healing of pleasure wounds"
+      - "Joy and celebration sequences"
+      - "Sensual awakening"
+
+  templates:
+    visual_prompt: "warm orange sunset light, amber glow, creative fire, sacred flames in orange and gold, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-1st">
+      An orange warmth spreads through you...<break time="2s"/>
+      the color of sunrise...<break time="2s"/>
+      of creative fire...<break time="2s"/>
+      awakening your joy...<break time="2.5s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.red, symbols.colors.yellow, symbols.colors.gold]
+    opposites: [symbols.colors.blue]
+    related_chakras: [sacral]
+
+  shades:
+    tangerine: "Bright orange - vibrant creativity"
+    amber: "Golden orange - sacred warmth"
+    peach: "Soft orange - gentle pleasure"
+    rust: "Deep orange - mature creativity"
+
+# =============================================================================
+
+yellow:
+  entry_id: "symbols.colors.yellow"
+  name: "Yellow"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of intellect, clarity, personal power, and solar energy"
+    extended: |
+      Yellow is the color of the sun, mental clarity, and personal will.
+      It represents the solar plexus energy of confidence, self-esteem,
+      and mental acuity. Yellow stimulates the intellect, promotes optimism,
+      and activates the seat of personal power. It is the color of
+      discernment, analysis, and clear thinking.
+    essence: "The light of clear understanding"
+
+  attributes:
+    energy_quality: active
+    element: fire
+    planetary: sun
+    chakra: solar
+    brainwave: beta
+    temperature: warm
+    weight: light
+    mood: bright
+
+  psychological_effects:
+    positive: [clarity, confidence, optimism, intellect, discernment]
+    shadow: [criticism, anxiety, cowardice]
+    physiological: [mental stimulation, mood elevation]
+
+  applications:
+    outcome_alignment: [focus, empowerment, confidence, self_knowledge]
+    journey_phases: [pre_talk, journey]
+    use_cases:
+      - "Mental clarity work"
+      - "Building self-confidence"
+      - "Discernment and wisdom"
+      - "Power retrieval"
+
+  templates:
+    visual_prompt: "golden yellow sunlight streaming through clouds, illuminating sacred space, clarity of light, radiant warmth, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="0st">
+      A clear yellow light...<break time="2s"/>
+      like morning sun...<break time="2s"/>
+      illuminates your mind...<break time="2s"/>
+      bringing clarity...<break time="2s"/>
+      and confidence...<break time="2.5s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.gold, symbols.colors.orange, symbols.elements.fire]
+    opposites: [symbols.colors.violet, symbols.colors.indigo]
+    related_chakras: [solar]
+
+  shades:
+    lemon: "Bright yellow - sharp clarity"
+    gold: "Rich yellow - mature power"
+    buttercup: "Soft yellow - gentle optimism"
+    mustard: "Deep yellow - grounded wisdom"
+
+# =============================================================================
+
+green:
+  entry_id: "symbols.colors.green"
+  name: "Green"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of heart, healing, growth, and natural harmony"
+    extended: |
+      Green is the color of nature, the heart chakra, and healing.
+      It represents balance, growth, renewal, and unconditional love.
+      Green sits at the center of the spectrum, bridging warm and cool,
+      just as the heart bridges body and spirit. It is profoundly calming
+      and associated with the healing power of nature.
+    essence: "The breath of life and love"
+
+  attributes:
+    energy_quality: balanced
+    element: earth
+    planetary: venus
+    chakra: heart
+    brainwave: alpha
+    temperature: cool
+    weight: balanced
+    mood: harmonious
+
+  psychological_effects:
+    positive: [healing, balance, growth, harmony, love, renewal]
+    shadow: [envy, stagnation, possessiveness]
+    physiological: [relaxation, balance, soothing nervous system]
+
+  applications:
+    outcome_alignment: [healing, relaxation, spiritual_growth]
+    journey_phases: [induction, journey, integration]
+    use_cases:
+      - "Heart healing and opening"
+      - "Nature-based journeys"
+      - "Balance and harmony restoration"
+      - "Growth and renewal sequences"
+
+  templates:
+    visual_prompt: "lush emerald green forest glade, dappled golden light through leaves, healing nature sanctuary, verdant and alive, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-2st">
+      A soft green light surrounds you...<break time="2s"/>
+      the color of new leaves...<break time="2s"/>
+      of healing...<break time="2s"/>
+      of the heart opening...<break time="2.5s"/>
+      to love...<break time="3s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.blue, symbols.colors.pink, symbols.elements.earth]
+    opposites: [symbols.colors.red]
+    related_chakras: [heart]
+
+  shades:
+    emerald: "Deep green - profound healing"
+    jade: "Blue-green - ancient wisdom"
+    mint: "Pale green - gentle renewal"
+    forest: "Dark green - deep nature connection"
+    lime: "Yellow-green - new growth"
+
+# =============================================================================
+
+blue:
+  entry_id: "symbols.colors.blue"
+  name: "Blue"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of truth, communication, peace, and infinite space"
+    extended: |
+      Blue is the color of sky and sea, representing infinite space,
+      truth, and clear communication. It corresponds to the throat chakra
+      and the expression of authentic self. Blue calms the mind, lowers
+      blood pressure, and creates a sense of expansive peace. It is the
+      color of devotion, faith, and the cooling waters of the unconscious.
+    essence: "The infinite depth of truth"
+
+  attributes:
+    energy_quality: receptive
+    element: water
+    planetary: jupiter
+    chakra: throat
+    brainwave: alpha
+    temperature: cool
+    weight: light
+    mood: peaceful
+
+  psychological_effects:
+    positive: [peace, truth, communication, calm, trust, serenity]
+    shadow: [coldness, detachment, sadness]
+    physiological: [lowers blood pressure, slows heart rate, calms]
+
+  applications:
+    outcome_alignment: [relaxation, healing, self_knowledge, release]
+    journey_phases: [induction, deepening, integration]
+    use_cases:
+      - "Deep relaxation inductions"
+      - "Ocean and sky imagery"
+      - "Communication healing"
+      - "Truth and authenticity work"
+
+  templates:
+    visual_prompt: "vast cerulean blue sky meeting deep ocean, infinite peaceful expanse, soft clouds, crystalline clarity, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-2st">
+      A peaceful blue surrounds you...<break time="2s"/>
+      the color of the sky...<break time="2s"/>
+      of calm waters...<break time="2s"/>
+      infinite...<break time="2s"/>
+      serene...<break time="3s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.green, symbols.colors.indigo, symbols.elements.water]
+    opposites: [symbols.colors.orange, symbols.colors.red]
+    related_chakras: [throat]
+
+  shades:
+    sky: "Light blue - infinite peace"
+    cerulean: "Bright blue - clear truth"
+    sapphire: "Deep blue - devotion"
+    navy: "Dark blue - profound depth"
+    turquoise: "Blue-green - healing waters"
+
+# =============================================================================
+
+indigo:
+  entry_id: "symbols.colors.indigo"
+  name: "Indigo"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of intuition, inner vision, and deep knowing"
+    extended: |
+      Indigo is the color of the night sky, the third eye, and intuitive
+      perception. It represents the bridge between conscious and unconscious,
+      the realm of dreams, visions, and inner knowing. Indigo accesses
+      psychic perception, deepens meditation, and opens the inner eye
+      to subtle realms of experience.
+    essence: "The eye that sees beyond seeing"
+
+  attributes:
+    energy_quality: receptive
+    element: water
+    planetary: moon
+    chakra: third_eye
+    brainwave: theta
+    temperature: cool
+    weight: medium
+    mood: mysterious
+
+  psychological_effects:
+    positive: [intuition, insight, vision, wisdom, imagination]
+    shadow: [illusion, delusion, disconnection from reality]
+    physiological: [promotes deep meditation, activates pineal]
+
+  applications:
+    outcome_alignment: [self_knowledge, spiritual_growth, creativity]
+    journey_phases: [deepening, journey, helm_deep_trance]
+    use_cases:
+      - "Deep trance induction"
+      - "Visionary experiences"
+      - "Intuitive development"
+      - "Dream work imagery"
+
+  templates:
+    visual_prompt: "deep indigo night sky filled with stars, cosmic depth, mystical twilight, third eye symbolism, sacred geometry in starlight, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-2st">
+      The deep indigo of night...<break time="2s"/>
+      surrounds you...<break time="2s"/>
+      the color of inner vision...<break time="2.5s"/>
+      where knowing needs no eyes...<break time="3s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.violet, symbols.colors.blue, symbols.colors.silver]
+    opposites: [symbols.colors.yellow, symbols.colors.orange]
+    related_chakras: [third_eye]
+
+  shades:
+    midnight: "Deep indigo - profound mystery"
+    denim: "Medium indigo - accessible intuition"
+    iris: "Purple-indigo - visionary insight"
+
+# =============================================================================
+
+violet:
+  entry_id: "symbols.colors.violet"
+  name: "Violet / Purple"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of spirituality, transformation, and divine connection"
+    extended: |
+      Violet is the highest frequency in the visible spectrum, representing
+      spiritual attainment, transformation, and connection to the divine.
+      It corresponds to the crown chakra and the experience of unity
+      consciousness. Violet transmutes lower energies, facilitates
+      spiritual awakening, and opens the gateway to transcendence.
+    essence: "The flame of spirit made visible"
+
+  attributes:
+    energy_quality: transformative
+    element: spirit
+    planetary: neptune
+    chakra: crown
+    brainwave: gamma
+    temperature: cool
+    weight: light
+    mood: transcendent
+
+  psychological_effects:
+    positive: [spirituality, transformation, wisdom, inspiration, devotion]
+    shadow: [spiritual bypass, escapism, grandiosity]
+    physiological: [promotes deep meditation, spiritual states]
+
+  applications:
+    outcome_alignment: [spiritual_growth, transformation, healing]
+    journey_phases: [helm_deep_trance, integration]
+    use_cases:
+      - "Spiritual peak experiences"
+      - "Transformation and transmutation"
+      - "Divine connection sequences"
+      - "Crown chakra activation"
+
+  templates:
+    visual_prompt: "luminous violet light emanating from sacred source, purple flame of transformation, crown chakra activation, celestial violet glow, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-3st">
+      A violet light descends...<break time="2.5s"/>
+      the color of the highest flame...<break time="2.5s"/>
+      touching the crown of your head...<break time="2.5s"/>
+      awakening...<break time="2s"/>
+      what has always been...<break time="3.5s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.white, symbols.colors.gold, symbols.elements.spirit]
+    opposites: [symbols.colors.yellow]
+    related_chakras: [crown]
+
+  shades:
+    lavender: "Pale violet - gentle spirituality"
+    amethyst: "Rich violet - spiritual protection"
+    purple: "Deep violet - royal wisdom"
+    magenta: "Red-violet - divine love"
+
+# =============================================================================
+# METALLIC / SPECIAL COLORS
+# =============================================================================
+
+gold:
+  entry_id: "symbols.colors.gold"
+  name: "Gold"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of divine light, wisdom, abundance, and solar consciousness"
+    extended: |
+      Gold is the color of the sun, divine light, and spiritual attainment.
+      It represents illumination, wisdom, abundance, and the alchemical
+      goal of transformation. Gold is associated with the highest aspects
+      of the self, Christ consciousness, Buddha nature, and the radiance
+      of enlightened awareness.
+    essence: "The light of divine wisdom made manifest"
+
+  attributes:
+    energy_quality: active
+    element: fire
+    planetary: sun
+    chakra: solar
+    secondary_chakra: crown
+    brainwave: alpha
+    temperature: warm
+    weight: substantial
+    mood: majestic
+
+  psychological_effects:
+    positive: [wisdom, abundance, illumination, success, divine connection]
+    shadow: [greed, materialism, spiritual pride]
+    physiological: [uplifting, energizing, confidence-building]
+
+  applications:
+    outcome_alignment: [spiritual_growth, empowerment, transformation, confidence]
+    journey_phases: [journey, helm_deep_trance, integration]
+    use_cases:
+      - "Divine light experiences"
+      - "Abundance and manifestation"
+      - "Solar/masculine divine"
+      - "Achievement and success sequences"
+
+  templates:
+    visual_prompt: "radiant golden light streaming from celestial source, divine solar illumination, sacred golden glow, alchemical gold, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-2st">
+      A golden light descends...<break time="2.5s"/>
+      the color of the eternal sun...<break time="2.5s"/>
+      filling every cell...<break time="2.5s"/>
+      with divine radiance...<break time="3s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.white, symbols.colors.yellow, symbols.elements.fire]
+    opposites: [symbols.colors.silver]
+    related_chakras: [solar, crown]
+
+# =============================================================================
+
+silver:
+  entry_id: "symbols.colors.silver"
+  name: "Silver"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of moon, intuition, reflection, and feminine divine"
+    extended: |
+      Silver is the color of the moon, representing intuition, receptivity,
+      and the feminine divine. It corresponds to the reflective quality
+      of consciousness, dreams, and the unconscious depths. Silver
+      illuminates the darkness gently, revealing what needs to be seen
+      without the intensity of solar gold.
+    essence: "The gentle light that illuminates dreams"
+
+  attributes:
+    energy_quality: receptive
+    element: water
+    planetary: moon
+    chakra: third_eye
+    secondary_chakra: crown
+    brainwave: theta
+    temperature: cool
+    weight: light
+    mood: mystical
+
+  psychological_effects:
+    positive: [intuition, dreams, reflection, feminine wisdom, mystery]
+    shadow: [illusion, coldness, emotional distance]
+    physiological: [calming, promotes dream states]
+
+  applications:
+    outcome_alignment: [self_knowledge, spiritual_growth, healing]
+    journey_phases: [deepening, journey, helm_deep_trance]
+    use_cases:
+      - "Lunar/feminine divine work"
+      - "Dream and intuition sequences"
+      - "Reflection and insight"
+      - "Goddess/mother imagery"
+
+  templates:
+    visual_prompt: "soft silver moonlight illuminating sacred waters, mystical lunar glow, reflective silver light on still lake, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-2st">
+      A silver light appears...<break time="2s"/>
+      soft as moonlight...<break time="2s"/>
+      illuminating the depths...<break time="2.5s"/>
+      revealing what waits...<break time="2s"/>
+      in the gentle dark...<break time="3s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.blue, symbols.colors.white, symbols.elements.water]
+    opposites: [symbols.colors.gold]
+    related_chakras: [third_eye, crown]
+
+# =============================================================================
+
+white:
+  entry_id: "symbols.colors.white"
+  name: "White"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of purity, unity, all colors combined, and source light"
+    extended: |
+      White contains all colors and represents unity, purity, and the
+      undifferentiated source light. It is the color of the crown chakra
+      at its most open, the blank canvas of infinite potential, and the
+      pure presence before manifestation. White cleanses, purifies, and
+      returns awareness to its essential nature.
+    essence: "The presence that contains all and is beyond all"
+
+  attributes:
+    energy_quality: transcendent
+    element: spirit
+    planetary: none
+    chakra: crown
+    brainwave: gamma
+    temperature: neutral
+    weight: weightless
+    mood: pure
+
+  psychological_effects:
+    positive: [purity, clarity, unity, peace, innocence, new beginnings]
+    shadow: [emptiness, sterility, blinding]
+    physiological: [expansive, clearing, resetting]
+
+  applications:
+    outcome_alignment: [spiritual_growth, healing, release, transformation]
+    journey_phases: [helm_deep_trance, integration]
+    use_cases:
+      - "Peak spiritual experiences"
+      - "Purification and clearing"
+      - "Unity consciousness"
+      - "Light body work"
+
+  templates:
+    visual_prompt: "infinite white light, pure luminous presence, sacred void of white, source light before creation, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-3st">
+      And here...<break time="3s"/>
+      there is only light...<break time="3s"/>
+      white...<break time="2s"/>
+      infinite...<break time="2s"/>
+      the source of all...<break time="3.5s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.gold, symbols.colors.violet, symbols.elements.spirit]
+    opposites: [symbols.colors.black]
+    related_chakras: [crown, all]
+
+# =============================================================================
+
+black:
+  entry_id: "symbols.colors.black"
+  name: "Black"
+  domain: "symbols"
+  category: "colors"
+
+  definition:
+    brief: "The color of the void, mystery, the womb of creation, and deep rest"
+    extended: |
+      Black is the absence of reflected light, representing the void,
+      the cosmic womb, and the fertile darkness from which all emerges.
+      It is the color of deep rest, protection, and the mystery that
+      holds all potential. Black is not empty but infinitely full,
+      the darkness that conceives light.
+    essence: "The pregnant void from which all emerges"
+
+  attributes:
+    energy_quality: receptive
+    element: void
+    planetary: saturn
+    chakra: root
+    secondary_chakra: crown
+    brainwave: delta
+    temperature: cool
+    weight: heavy
+    mood: mysterious
+
+  psychological_effects:
+    positive: [rest, protection, mystery, potential, depth]
+    shadow: [fear, depression, isolation]
+    physiological: [promotes deep rest, releases tension]
+
+  applications:
+    outcome_alignment: [release, self_knowledge, transformation]
+    journey_phases: [deepening, helm_deep_trance]
+    use_cases:
+      - "Void/womb imagery"
+      - "Deep rest and letting go"
+      - "Shadow work"
+      - "Mystery and the unknown"
+    contraindications:
+      - "Depression (may reinforce)"
+      - "Fear of darkness (modify gradually)"
+
+  templates:
+    visual_prompt: "velvet black void of infinite potential, cosmic womb, darkness that holds stars, protective nurturing darkness, --ar 16:9"
+    ssml_snippet: |
+      <prosody rate="1.0" pitch="-3st">
+      And you rest now...<break time="2.5s"/>
+      in the sacred darkness...<break time="2.5s"/>
+      that holds all things...<break time="2.5s"/>
+      the womb of becoming...<break time="3s"/>
+      </prosody>
+
+  relationships:
+    synergies: [symbols.colors.violet, symbols.colors.indigo, symbols.elements.void]
+    opposites: [symbols.colors.white]
+    related_chakras: [root, crown]
+
+# =============================================================================
+# COLOR SELECTION GUIDES
+# =============================================================================
+
+selection_by_outcome:
+  healing: [green, blue, white, pink]
+  transformation: [violet, gold, orange, black]
+  empowerment: [gold, yellow, red, orange]
+  self_knowledge: [indigo, silver, black, violet]
+  release: [blue, white, silver, black]
+  spiritual_growth: [violet, white, gold, indigo]
+  creativity: [orange, yellow, gold, violet]
+  relaxation: [blue, green, silver, white]
+  focus: [yellow, blue, indigo, white]
+  confidence: [gold, yellow, red, orange]
+
+selection_by_phase:
+  pre_talk: [blue, green, white]
+  induction: [blue, green, indigo]
+  deepening: [indigo, violet, silver, black]
+  journey: [varies_by_theme]
+  helm_deep_trance: [gold, white, violet, black]
+  integration: [green, gold, white]
+  reorientation: [green, blue, white, yellow]
+
+selection_by_journey_family:
+  eden_garden: [green, gold, white, emerald]
+  ocean_depths: [blue, turquoise, silver, indigo]
+  underworld_descent: [black, violet, silver, red]
+  cosmic_forge: [gold, orange, red, white]
+  temple_initiation: [gold, violet, white, indigo]
+  celestial_journey: [violet, indigo, gold, white]
+
+# =============================================================================
+# COLOR PALETTE COMBINATIONS
+# =============================================================================
+# Pre-defined palettes for different session types
+
+palettes:
+  sacred_healing:
+    primary: green
+    secondary: blue
+    accent: gold
+    background: white
+    description: "Soft, nurturing healing space"
+
+  deep_transformation:
+    primary: violet
+    secondary: gold
+    accent: black
+    background: indigo
+    description: "Alchemical transformation space"
+
+  solar_empowerment:
+    primary: gold
+    secondary: orange
+    accent: red
+    background: yellow
+    description: "Radiant power activation"
+
+  lunar_intuition:
+    primary: silver
+    secondary: indigo
+    accent: violet
+    background: black
+    description: "Mystical dream space"
+
+  earth_grounding:
+    primary: green
+    secondary: brown
+    accent: gold
+    background: earth_tones
+    description: "Stable, nurturing nature space"
+
+  celestial_ascent:
+    primary: white
+    secondary: gold
+    accent: violet
+    background: light_blue
+    description: "Transcendent spiritual space"
+
+  eden_garden:
+    primary: emerald
+    secondary: gold
+    accent: white
+    background: sky_blue
+    description: "Paradise nature imagery"
+
+  cosmic_depths:
+    primary: indigo
+    secondary: violet
+    accent: silver
+    background: black
+    description: "Vast cosmic space"

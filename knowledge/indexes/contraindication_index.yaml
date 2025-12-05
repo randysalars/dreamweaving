@@ -1,0 +1,376 @@
+# =============================================================================
+# CONTRAINDICATION INDEX - Safety Guidelines for Dreamweaving
+# =============================================================================
+# Maps populations and conditions to knowledge entries that should be avoided
+# or modified. Essential for ethical and safe hypnotic content creation.
+#
+# Usage: Check listener profile against contraindications before session.
+#        Modify or avoid flagged entries as indicated.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+purpose: "Safety matrix for responsible Dreamweaving content"
+
+# =============================================================================
+# GENERAL PRINCIPLES
+# =============================================================================
+
+principles:
+  do_no_harm: "Always prioritize listener safety over depth of experience"
+  informed_consent: "Sessions should include appropriate safety disclaimers"
+  gradual_approach: "Start gentler, deepen only with established rapport"
+  exit_always: "Every session must include ways to return to waking state"
+
+# =============================================================================
+# POPULATION-BASED CONTRAINDICATIONS
+# =============================================================================
+
+populations:
+
+  # ---------------------------------------------------------------------------
+  # TRAUMA HISTORY
+  # ---------------------------------------------------------------------------
+  trauma_survivors:
+    description: "Individuals with known trauma history, PTSD, or complex PTSD"
+    risk_level: "moderate_to_high"
+
+    avoid:
+      entries:
+        - symbols.elements.fire  # Can trigger overwhelm
+        - symbols.colors.red    # Can activate threat response
+        - symbols.colors.black  # Void imagery may trigger dissociation
+      patterns:
+        - temporal_dissociation  # Without proper preparation
+        - deep_fractionation     # Too destabilizing
+      journey_families:
+        - underworld_descent    # Shadow work requires preparation
+
+    modify:
+      symbols.elements.water:
+        concern: "Drowning imagery can trigger"
+        modification: "Use gentle streams, not deep water"
+      mythology.descent_ascent:
+        concern: "Underworld journeys need preparation"
+        modification: "Keep near surface, ensure guide presence"
+
+    require:
+      - Extra grounding at start and end
+      - Explicit safety language
+      - Clear exit cues throughout
+      - Avoid surprise imagery
+      - Shorten duration initially
+
+    recommended_presets:
+      binaural: [healing_gentle]
+      outcome: [healing]
+      journey_family: [eden_garden]
+
+  # ---------------------------------------------------------------------------
+  # DISSOCIATIVE CONDITIONS
+  # ---------------------------------------------------------------------------
+  dissociative_conditions:
+    description: "Individuals with DID, DPDR, or dissociative tendencies"
+    risk_level: "high"
+
+    avoid:
+      entries:
+        - symbols.elements.air     # Can increase ungrounding
+        - symbols.elements.spirit  # Too expansive
+        - symbols.colors.white     # Void/emptiness
+        - symbols.colors.black     # Can trigger dissociation
+      patterns:
+        - temporal_dissociation
+        - deep_trance_fractionation
+        - identity_dissolution
+      phases:
+        - helm_deep_trance  # May go too deep
+
+    modify:
+      all_journeys:
+        concern: "Risk of uncontrolled dissociation"
+        modification: "Stay in lighter alpha states, heavy grounding"
+
+    require:
+      - Frequent grounding anchors
+      - Body awareness cues throughout
+      - Shorter sessions (15 min max initially)
+      - No delta frequencies
+      - Constant connection to present moment
+
+    recommended_presets:
+      binaural: [relaxation_gentle]  # Modified for alpha-only
+      outcome: [relaxation, focus]
+
+  # ---------------------------------------------------------------------------
+  # ANXIETY DISORDERS
+  # ---------------------------------------------------------------------------
+  anxiety_disorders:
+    description: "Generalized anxiety, panic disorder, social anxiety"
+    risk_level: "moderate"
+
+    avoid:
+      entries:
+        - symbols.elements.fire    # Too activating
+        - symbols.colors.red       # Increases arousal
+      patterns:
+        - intensity_building       # Can trigger panic
+        - surprise_elements        # May startle
+      brainwaves:
+        - beta (sustained)         # Increases anxiety
+        - gamma (extended)         # Overstimulating
+
+    modify:
+      symbols.elements.air:
+        concern: "Breath focus may trigger panic"
+        modification: "Make breath cues optional, not directive"
+      all_sessions:
+        concern: "General activation risk"
+        modification: "Slower pace, more predictable progression"
+
+    require:
+      - Very gradual inductions
+      - No sudden changes
+      - Frequent reassurance language
+      - Control/choice emphasis
+      - Shorter initial sessions
+
+    recommended_presets:
+      binaural: [healing_gentle, relaxation_deep]
+      outcome: [relaxation, healing]
+
+  # ---------------------------------------------------------------------------
+  # PSYCHOTIC SPECTRUM
+  # ---------------------------------------------------------------------------
+  psychotic_conditions:
+    description: "Schizophrenia, schizoaffective, psychotic episodes"
+    risk_level: "very_high"
+
+    avoid:
+      entries:
+        - symbols.elements.spirit   # Reality dissolution
+        - symbols.colors.violet     # Spiritual activation
+        - symbols.colors.indigo     # Vision activation
+        - symbols.colors.white      # Ego dissolution
+      patterns:
+        - all_dissociative_patterns
+        - spiritual_emergence
+        - entity_encounter
+      all:
+        - Deep trance states
+        - Hallucinatory imagery
+        - Reality questioning
+        - Past life themes
+
+    require:
+      - Consultation with treating clinician
+      - Grounding-only content if any
+      - Reality orientation throughout
+      - Very short sessions
+      - Avoid during active episodes
+
+    note: "Hypnotic content generally contraindicated for active psychosis"
+
+  # ---------------------------------------------------------------------------
+  # BIPOLAR DISORDER
+  # ---------------------------------------------------------------------------
+  bipolar_disorder:
+    description: "Bipolar I, II, cyclothymia"
+    risk_level: "moderate_to_high"
+
+    avoid_during_mania:
+      entries:
+        - symbols.elements.fire    # Further activation
+        - symbols.colors.red       # Stimulating
+        - symbols.colors.gold      # Grandiosity risk
+        - symbols.colors.orange    # Activation
+      patterns:
+        - empowerment_intense      # May fuel mania
+        - spiritual_activation     # Grandiosity risk
+      brainwaves:
+        - gamma
+        - high_beta
+
+    avoid_during_depression:
+      entries:
+        - symbols.colors.black     # May deepen depression
+        - symbols.elements.water   # Heavy, drowning
+      patterns:
+        - deep_delta               # Too slowing
+
+    require:
+      - Assess current mood state first
+      - Balanced, middle-frequency content
+      - Grounding without activation
+      - Mood monitoring
+
+  # ---------------------------------------------------------------------------
+  # EPILEPSY
+  # ---------------------------------------------------------------------------
+  epilepsy:
+    description: "Photosensitive epilepsy, any seizure disorder"
+    risk_level: "moderate"
+
+    avoid:
+      visual:
+        - Strobe or flashing imagery
+        - Rapid color changes
+        - Geometric patterns that pulse
+      audio:
+        - Rapid frequency changes
+        - Gamma burst patterns
+        - Any rhythmic patterns 15-25 Hz
+
+    modify:
+      binaural_beats:
+        concern: "Rhythmic patterns may trigger"
+        modification: "Use slower transitions, avoid specific frequencies"
+
+    require:
+      - Consultation with neurologist
+      - Avoid known trigger frequencies
+      - Smooth, gradual transitions only
+
+  # ---------------------------------------------------------------------------
+  # HEART CONDITIONS
+  # ---------------------------------------------------------------------------
+  cardiac_conditions:
+    description: "Heart disease, arrhythmia, hypertension"
+    risk_level: "low_to_moderate"
+
+    avoid:
+      entries:
+        - symbols.elements.fire    # Increases heart rate
+        - symbols.colors.red       # Blood pressure effects
+      patterns:
+        - intense_activation
+        - fear_induction
+
+    require:
+      - Calming content only
+      - Monitor for stress response
+      - Shorter sessions if concerned
+
+    recommended_presets:
+      binaural: [relaxation_deep, healing_gentle]
+
+  # ---------------------------------------------------------------------------
+  # PREGNANCY
+  # ---------------------------------------------------------------------------
+  pregnancy:
+    description: "Pregnant individuals"
+    risk_level: "low_to_moderate"
+
+    avoid:
+      entries:
+        - Intense transformation imagery
+        - Death/rebirth themes
+        - Deep underworld journeys
+      patterns:
+        - Deep delta for extended periods
+
+    modify:
+      all_sessions:
+        modification: "Keep lighter, focus on nurturing imagery"
+
+    require:
+      - Gentle, supportive content
+      - Bonding/nurturing themes appropriate
+      - Avoid medical advice
+      - Consultation for high-risk pregnancy
+
+    recommended:
+      - Gentle relaxation
+      - Nature imagery
+      - Heart/love themes
+      - Bonding visualizations
+
+# =============================================================================
+# CONTENT-BASED CONTRAINDICATIONS
+# =============================================================================
+
+content_warnings:
+
+  drowning_imagery:
+    populations: [trauma_survivors, water_trauma_specific]
+    entries: [symbols.elements.water, ocean_depths_family]
+    modification: "Use gentle streams or still pools instead of deep water"
+
+  fire_imagery:
+    populations: [anxiety_disorders, trauma_survivors, bipolar_mania]
+    entries: [symbols.elements.fire, cosmic_forge_family]
+    modification: "Use warm light instead of actual flames"
+
+  darkness_imagery:
+    populations: [depression, dissociative_conditions, trauma_survivors]
+    entries: [symbols.colors.black, underworld_descent_family]
+    modification: "Always provide light source, avoid complete darkness"
+
+  death_themes:
+    populations: [grief_acute, suicidal_history, trauma_survivors]
+    entries: [mythology.death_rebirth, transformation_phoenix]
+    modification: "Reframe as transition/transformation, not death"
+
+  enclosed_spaces:
+    populations: [claustrophobia, trauma_survivors]
+    entries: [cave_imagery, womb_imagery, underworld_descent]
+    modification: "Ensure spaciousness, clear exits"
+
+  entity_encounters:
+    populations: [psychotic_conditions, paranoid_conditions]
+    entries: [all_archetypal_guides, mythological_beings]
+    modification: "Frame as aspects of self, not external beings"
+
+# =============================================================================
+# SAFETY LANGUAGE TEMPLATES
+# =============================================================================
+
+safety_templates:
+
+  pre_session_disclaimer: |
+    This hypnotic journey is for relaxation and personal exploration only.
+    It is not a substitute for medical or psychological treatment.
+    If you have a history of trauma, dissociation, seizures, or psychiatric
+    conditions, please consult a qualified professional before listening.
+    You remain in control throughout and can return to full wakefulness
+    at any time by simply opening your eyes.
+
+  exit_cue_template: |
+    And remember, at any moment, if you need to return to full wakefulness,
+    you can simply open your eyes, take a deep breath, and you'll be fully
+    alert and present, feeling refreshed and well.
+
+  grounding_anchor: |
+    Feel your feet on the ground, or your body supported where you rest.
+    Notice the weight of your body, the solidity beneath you.
+    You are here, present, safe, and grounded.
+
+  distress_exit: |
+    If at any point you feel uncomfortable, simply count from one to five,
+    open your eyes, and you'll return to full waking awareness,
+    feeling calm and centered.
+
+# =============================================================================
+# RISK ASSESSMENT CHECKLIST
+# =============================================================================
+
+pre_session_checklist:
+  questions:
+    - "Any history of trauma or PTSD?"
+    - "Any dissociative experiences?"
+    - "Any diagnosed psychiatric conditions?"
+    - "Any seizure history?"
+    - "Any cardiac conditions?"
+    - "Currently pregnant?"
+    - "Any specific phobias related to session content?"
+    - "Currently in crisis or acute distress?"
+
+  if_yes_to_any:
+    action: "Review specific contraindications above"
+    consider: "Modify content or recommend professional guidance"
+
+  universal_safety:
+    - Include exit cues in every session
+    - Use appropriate disclaimers
+    - Never make medical claims
+    - Encourage professional support where appropriate

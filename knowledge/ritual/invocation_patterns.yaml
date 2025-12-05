@@ -1,0 +1,586 @@
+# =============================================================================
+# INVOCATION PATTERNS - Sacred Opening Structures for Dreamweaving
+# =============================================================================
+# Invocations establish sacred space, call in support, and create the
+# container for transformational work. These patterns draw from mystical
+# traditions but are adapted for hypnotic journey use.
+#
+# Usage: Select invocation based on journey theme and spiritual framework.
+#        Place in pre-talk or early induction phase.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "ritual"
+category: "invocation"
+purpose: "Sacred opening patterns for journey sessions"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  definition:
+    brief: "Ritual speech acts that establish sacred space and invite supportive presence"
+    extended: |
+      Invocation is the practice of calling in - calling sacred space into being,
+      calling supportive presences to witness or guide, calling forth the highest
+      aspects of self. Unlike evocation (calling something external), invocation
+      opens an inner doorway. In hypnotic work, invocations create the psychological
+      container for transformation by signaling to the unconscious that something
+      sacred is about to occur.
+    essence: "Opening the door between worlds"
+
+  function_in_dreamweaving: |
+    - Establish psychological boundary of sacred space
+    - Signal to unconscious that transformation is invited
+    - Create permission structure for deep work
+    - Invoke supportive inner resources
+    - Set tone and intention for the journey
+
+  placement: "Pre-talk or early induction"
+
+  caution: |
+    Invocations should match the listener's spiritual framework or be
+    spiritually neutral. Avoid imposing specific religious content unless
+    the session is explicitly framed within that tradition.
+
+# =============================================================================
+# UNIVERSAL INVOCATIONS
+# =============================================================================
+# Spiritually neutral patterns that work across belief systems
+
+universal:
+
+  # ---------------------------------------------------------------------------
+  # INVOCATION OF SACRED SPACE
+  # ---------------------------------------------------------------------------
+  sacred_space:
+    entry_id: "ritual.invocation.sacred_space"
+    name: "Invocation of Sacred Space"
+    type: "space_creation"
+
+    definition:
+      brief: "Creating a protected container for the journey"
+      extended: |
+        This invocation establishes psychological boundaries that separate
+        the journey space from ordinary reality. It creates safety through
+        the sense of being held in a special, protected environment.
+
+    applications:
+      journey_phases: [pre_talk, induction]
+      outcome_alignment: [all_outcomes]
+      journey_families: [all_families]
+
+    templates:
+      ssml_basic: |
+        <prosody rate="1.0" pitch="0st">
+        As you settle into this space...<break time="2s"/>
+        a circle of protection forms around you...<break time="2s"/>
+        invisible but felt...<break time="2s"/>
+        a sacred boundary...<break time="2.5s"/>
+        within which only what serves your highest good may enter...<break time="3s"/>
+        you are held...<break time="2s"/>
+        you are safe...<break time="2s"/>
+        you are ready...<break time="3s"/>
+        </prosody>
+
+      ssml_light_boundary: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2s"/>
+        imagine a sphere of gentle light...<break time="2s"/>
+        forming around you...<break time="2.5s"/>
+        warm...<break time="1.5s"/>
+        protective...<break time="1.5s"/>
+        allowing only love to enter...<break time="2.5s"/>
+        and within this light...<break time="2s"/>
+        you are completely safe...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "luminous protective sphere surrounding a peaceful figure, soft golden light, sacred boundary visible as shimmer, --ar 16:9"
+
+  # ---------------------------------------------------------------------------
+  # INVOCATION OF THE HIGHEST SELF
+  # ---------------------------------------------------------------------------
+  highest_self:
+    entry_id: "ritual.invocation.highest_self"
+    name: "Invocation of the Highest Self"
+    type: "self_invocation"
+
+    definition:
+      brief: "Calling forth the wisest, most whole aspect of self"
+      extended: |
+        This invocation calls the listener's own highest self to guide
+        the journey. It avoids external deity invocation while still
+        connecting to transcendent wisdom within.
+
+    applications:
+      journey_phases: [pre_talk, induction]
+      outcome_alignment: [all_outcomes, especially spiritual_growth, self_knowledge]
+      journey_families: [all_families]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2s"/>
+        you call forth the highest part of yourself...<break time="2.5s"/>
+        that wise presence within...<break time="2s"/>
+        who knows the way...<break time="2s"/>
+        who has always known...<break time="2.5s"/>
+        let this part of you rise...<break time="2s"/>
+        to guide this journey...<break time="3s"/>
+        </prosody>
+
+      ssml_soul_invocation: |
+        <prosody rate="1.0" pitch="-1st">
+        From the deepest part of you...<break time="2.5s"/>
+        let your soul's wisdom rise...<break time="2.5s"/>
+        that part of you untouched by fear...<break time="2s"/>
+        unbroken by experience...<break time="2s"/>
+        whole...<break time="2s"/>
+        wise...<break time="2s"/>
+        eternally present...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "luminous higher self figure descending to meet earthly self, golden light, sense of reunion, sacred meeting, --ar 16:9"
+
+  # ---------------------------------------------------------------------------
+  # INVOCATION OF INNER GUIDE
+  # ---------------------------------------------------------------------------
+  inner_guide:
+    entry_id: "ritual.invocation.inner_guide"
+    name: "Invocation of the Inner Guide"
+    type: "guide_invocation"
+
+    definition:
+      brief: "Calling forth an internal guiding presence"
+      extended: |
+        This invocation invites the appearance of an inner guide figure -
+        the wise being who knows the territory of the unconscious. The
+        guide may appear in various forms depending on the listener's
+        psyche and the journey theme.
+
+    applications:
+      journey_phases: [induction]
+      outcome_alignment: [all_outcomes]
+      journey_families: [all_families]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="-1st">
+        And as you go deeper...<break time="2s"/>
+        you become aware of a presence...<break time="2.5s"/>
+        a guide waiting for you...<break time="2s"/>
+        someone who knows this territory...<break time="2s"/>
+        wise...<break time="1.5s"/>
+        kind...<break time="1.5s"/>
+        completely trustworthy...<break time="2.5s"/>
+        let this guide appear...<break time="2s"/>
+        in whatever form feels right...<break time="3s"/>
+        </prosody>
+
+      ssml_ancient_guide: |
+        <prosody rate="1.0" pitch="-2st">
+        From beyond time...<break time="2.5s"/>
+        a guide approaches...<break time="2.5s"/>
+        ancient yet timeless...<break time="2s"/>
+        bearing exactly the wisdom you need...<break time="2.5s"/>
+        feel their presence...<break time="2s"/>
+        trust their knowing...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "wise luminous guide figure emerging from light, ageless face filled with compassion, offering guidance, sacred setting, --ar 16:9"
+
+    related_archetypes:
+      - guide
+      - wise_elder
+      - healer
+
+  # ---------------------------------------------------------------------------
+  # INVOCATION OF INTENTION
+  # ---------------------------------------------------------------------------
+  intention:
+    entry_id: "ritual.invocation.intention"
+    name: "Invocation of Intention"
+    type: "intention_setting"
+
+    definition:
+      brief: "Declaring and energizing the purpose of the journey"
+      extended: |
+        This invocation clearly states what the journey is for, planting
+        the seed of intention in the unconscious. It gives direction
+        to the transformational process.
+
+    applications:
+      journey_phases: [pre_talk]
+      outcome_alignment: [all_outcomes]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="0st">
+        And as you begin this journey...<break time="2s"/>
+        let your intention be clear...<break time="2s"/>
+        why are you here...<break time="2.5s"/>
+        what transformation do you seek...<break time="2.5s"/>
+        hold that intention now...<break time="2s"/>
+        like a seed you're planting...<break time="2s"/>
+        in fertile ground...<break time="3s"/>
+        </prosody>
+
+      ssml_specific: |
+        <prosody rate="1.0" pitch="0st">
+        This journey is for [INTENTION]...<break time="2.5s"/>
+        let your whole being know this...<break time="2s"/>
+        your conscious mind...<break time="1.5s"/>
+        your unconscious depths...<break time="2s"/>
+        all parts aligned...<break time="2s"/>
+        toward this purpose...<break time="3s"/>
+        </prosody>
+
+# =============================================================================
+# ELEMENTAL INVOCATIONS
+# =============================================================================
+# Invoking elemental powers for specific purposes
+
+elemental:
+
+  # ---------------------------------------------------------------------------
+  # INVOCATION OF THE FOUR DIRECTIONS
+  # ---------------------------------------------------------------------------
+  four_directions:
+    entry_id: "ritual.invocation.four_directions"
+    name: "Invocation of the Four Directions"
+    type: "directional"
+
+    definition:
+      brief: "Calling the powers of the four cardinal directions"
+      extended: |
+        A universal pattern found across many traditions - calling
+        the powers of East, South, West, North to witness and support
+        the work. Each direction carries elemental and symbolic meaning.
+
+    applications:
+      journey_phases: [pre_talk, induction]
+      outcome_alignment: [transformation, spiritual_growth, empowerment]
+      journey_families: [temple_initiation, cosmic_forge]
+
+    direction_correspondences:
+      east:
+        element: air
+        quality: "New beginnings, clarity, mind"
+        color: yellow
+        time: dawn
+      south:
+        element: fire
+        quality: "Passion, will, transformation"
+        color: red
+        time: noon
+      west:
+        element: water
+        quality: "Emotion, intuition, letting go"
+        color: blue
+        time: dusk
+      north:
+        element: earth
+        quality: "Grounding, wisdom, ancestors"
+        color: green
+        time: midnight
+
+    templates:
+      ssml_full: |
+        <prosody rate="1.0" pitch="-1st">
+        Turning to the East...<break time="2s"/>
+        we call the powers of air and new beginning...<break time="2.5s"/>
+        Turning to the South...<break time="2s"/>
+        we call the powers of fire and transformation...<break time="2.5s"/>
+        Turning to the West...<break time="2s"/>
+        we call the powers of water and release...<break time="2.5s"/>
+        Turning to the North...<break time="2s"/>
+        we call the powers of earth and grounding...<break time="2.5s"/>
+        May all directions support this journey...<break time="3s"/>
+        </prosody>
+
+      ssml_abbreviated: |
+        <prosody rate="1.0" pitch="-1st">
+        From all directions...<break time="2s"/>
+        support gathers...<break time="2s"/>
+        air and fire...<break time="2s"/>
+        water and earth...<break time="2s"/>
+        holding this space...<break time="2s"/>
+        holding you...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "sacred circle with four elemental guardians at cardinal points, glowing symbols, protected central space, --ar 16:9"
+
+  # ---------------------------------------------------------------------------
+  # ELEMENTAL SPECIFIC INVOCATIONS
+  # ---------------------------------------------------------------------------
+  fire_invocation:
+    entry_id: "ritual.invocation.fire"
+    name: "Invocation of Fire"
+    type: "elemental"
+    element: fire
+
+    applications:
+      outcome_alignment: [transformation, empowerment, release]
+      journey_families: [cosmic_forge, underworld_descent]
+
+    template: |
+      <prosody rate="1.0" pitch="-1st">
+      We call the sacred fire...<break time="2s"/>
+      the flame that transforms...<break time="2s"/>
+      the light that illuminates...<break time="2.5s"/>
+      may fire lend its power...<break time="2s"/>
+      to burn away what no longer serves...<break time="3s"/>
+      </prosody>
+
+  water_invocation:
+    entry_id: "ritual.invocation.water"
+    name: "Invocation of Water"
+    type: "elemental"
+    element: water
+
+    applications:
+      outcome_alignment: [healing, release, self_knowledge]
+      journey_families: [ocean_depths, eden_garden]
+
+    template: |
+      <prosody rate="1.0" pitch="-2st">
+      We call the sacred waters...<break time="2s"/>
+      the flow that cleanses...<break time="2s"/>
+      the depths that hold all feeling...<break time="2.5s"/>
+      may water lend its wisdom...<break time="2s"/>
+      to wash through and heal...<break time="3s"/>
+      </prosody>
+
+  earth_invocation:
+    entry_id: "ritual.invocation.earth"
+    name: "Invocation of Earth"
+    type: "elemental"
+    element: earth
+
+    applications:
+      outcome_alignment: [healing, confidence, relaxation]
+      journey_families: [eden_garden, temple_initiation]
+
+    template: |
+      <prosody rate="1.0" pitch="-2st">
+      We call the sacred earth...<break time="2s"/>
+      the ground that holds...<break time="2s"/>
+      the body of the Mother...<break time="2.5s"/>
+      may earth lend its strength...<break time="2s"/>
+      to support and contain...<break time="3s"/>
+      </prosody>
+
+  air_invocation:
+    entry_id: "ritual.invocation.air"
+    name: "Invocation of Air"
+    type: "elemental"
+    element: air
+
+    applications:
+      outcome_alignment: [release, creativity, focus]
+      journey_families: [celestial_journey]
+
+    template: |
+      <prosody rate="1.0" pitch="-1st">
+      We call the sacred winds...<break time="2s"/>
+      the breath of life...<break time="2s"/>
+      the messenger between worlds...<break time="2.5s"/>
+      may air lend its clarity...<break time="2s"/>
+      to carry away what must go...<break time="3s"/>
+      </prosody>
+
+# =============================================================================
+# TRADITION-SPECIFIC INVOCATIONS
+# =============================================================================
+# For sessions explicitly within a spiritual framework
+
+tradition_specific:
+
+  # ---------------------------------------------------------------------------
+  # DIVINE LIGHT INVOCATION
+  # ---------------------------------------------------------------------------
+  divine_light:
+    entry_id: "ritual.invocation.divine_light"
+    name: "Invocation of Divine Light"
+    type: "spiritual"
+    tradition: "Universal mysticism"
+
+    definition:
+      brief: "Calling down divine light for protection and guidance"
+      extended: |
+        A common pattern across mystical traditions - invoking light
+        as the manifestation of divine presence. Works within most
+        spiritual frameworks without specific deity naming.
+
+    applications:
+      outcome_alignment: [spiritual_growth, healing, transformation]
+      journey_families: [celestial_journey, temple_initiation]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="-1st">
+        From the infinite light above...<break time="2.5s"/>
+        a ray of blessing descends...<break time="2.5s"/>
+        touching the crown of your head...<break time="2s"/>
+        filling you with radiance...<break time="2.5s"/>
+        may this light guide and protect...<break time="2s"/>
+        throughout this journey...<break time="3s"/>
+        </prosody>
+
+      visual_prompt: "golden-white light streaming from above, descending onto figure in meditation, divine illumination, sacred blessing, --ar 16:9"
+
+  # ---------------------------------------------------------------------------
+  # ANCESTRAL INVOCATION
+  # ---------------------------------------------------------------------------
+  ancestral:
+    entry_id: "ritual.invocation.ancestral"
+    name: "Invocation of Ancestral Support"
+    type: "ancestral"
+    tradition: "Universal"
+
+    definition:
+      brief: "Calling upon ancestral wisdom and support"
+      extended: |
+        Many traditions honor the ancestors as sources of wisdom and
+        support. This invocation calls upon the helpful ancestors -
+        those who wish the listener well - to lend their strength.
+
+    applications:
+      outcome_alignment: [healing, transformation, self_knowledge]
+      journey_families: [underworld_descent, temple_initiation]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="-1st">
+        And those who came before you...<break time="2.5s"/>
+        the wise and loving ancestors...<break time="2.5s"/>
+        gather now at the edges of this space...<break time="2.5s"/>
+        offering their strength...<break time="2s"/>
+        their wisdom...<break time="2s"/>
+        their blessing...<break time="3s"/>
+        </prosody>
+
+      ssml_safe_version: |
+        <prosody rate="1.0" pitch="-1st">
+        May those who loved you well...<break time="2.5s"/>
+        those whose love still reaches you...<break time="2.5s"/>
+        be present now...<break time="2s"/>
+        supporting this journey...<break time="3s"/>
+        </prosody>
+
+    caution: |
+      Be sensitive to complicated ancestral relationships.
+      Always invoke "helpful" or "loving" ancestors specifically.
+
+  # ---------------------------------------------------------------------------
+  # CHRISTIC INVOCATION
+  # ---------------------------------------------------------------------------
+  christic:
+    entry_id: "ritual.invocation.christic"
+    name: "Christic Light Invocation"
+    type: "christian_mystical"
+    tradition: "Christian mysticism"
+
+    definition:
+      brief: "Invoking the Christ light or presence"
+      extended: |
+        For sessions within a Christian framework, this invocation
+        calls upon Christ consciousness or the indwelling light.
+        Can be adapted for various Christian traditions.
+
+    applications:
+      outcome_alignment: [spiritual_growth, healing, transformation]
+      journey_families: [celestial_journey, temple_initiation]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="-1st">
+        In the name of the Light...<break time="2.5s"/>
+        the living presence...<break time="2.5s"/>
+        that dwells within every heart...<break time="2.5s"/>
+        may Christ consciousness illumine this journey...<break time="3s"/>
+        may love be the guide...<break time="2.5s"/>
+        and truth be revealed...<break time="3.5s"/>
+        </prosody>
+
+    note: "Use only for explicitly Christian-framed sessions"
+
+# =============================================================================
+# CLOSING INVOCATIONS / RELEASE
+# =============================================================================
+
+closing:
+
+  release_sacred_space:
+    entry_id: "ritual.invocation.release_space"
+    name: "Release of Sacred Space"
+    type: "closing"
+
+    definition:
+      brief: "Dissolving the sacred container at journey's end"
+      extended: |
+        Just as sacred space was created, it should be formally released,
+        signaling return to ordinary consciousness while honoring what
+        occurred within the container.
+
+    applications:
+      journey_phases: [reorientation]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="0st">
+        And now...<break time="2s"/>
+        the sacred space that held you...<break time="2s"/>
+        gently dissolves...<break time="2s"/>
+        releasing you back into the world...<break time="2.5s"/>
+        but the gifts remain...<break time="2s"/>
+        forever yours...<break time="3s"/>
+        </prosody>
+
+  gratitude:
+    entry_id: "ritual.invocation.gratitude"
+    name: "Invocation of Gratitude"
+    type: "closing"
+
+    definition:
+      brief: "Expressing thanks for the journey and support received"
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="0st">
+        With gratitude...<break time="2s"/>
+        for the journey you've taken...<break time="2s"/>
+        for the guides who appeared...<break time="2s"/>
+        for the gifts you received...<break time="2.5s"/>
+        you return now...<break time="2s"/>
+        blessed and transformed...<break time="3s"/>
+        </prosody>
+
+# =============================================================================
+# SELECTION GUIDE
+# =============================================================================
+
+selection_guide:
+  by_outcome:
+    healing: [sacred_space, highest_self, inner_guide, water_invocation]
+    transformation: [sacred_space, fire_invocation, four_directions]
+    empowerment: [intention, fire_invocation, highest_self]
+    self_knowledge: [inner_guide, highest_self, ancestral]
+    spiritual_growth: [divine_light, highest_self, four_directions]
+    relaxation: [sacred_space, earth_invocation, water_invocation]
+
+  by_journey_family:
+    eden_garden: [sacred_space, earth_invocation, water_invocation]
+    ocean_depths: [sacred_space, water_invocation, inner_guide]
+    underworld_descent: [sacred_space, fire_invocation, ancestral]
+    cosmic_forge: [fire_invocation, four_directions, intention]
+    temple_initiation: [four_directions, divine_light, ancestral]
+    celestial_journey: [divine_light, air_invocation, highest_self]
+
+  by_listener_framework:
+    secular: [sacred_space, highest_self, inner_guide, intention]
+    spiritual_neutral: [sacred_space, divine_light, inner_guide]
+    christian: [christic, divine_light, ancestral]
+    nature_based: [four_directions, elemental_invocations]

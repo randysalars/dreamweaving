@@ -1,0 +1,1057 @@
+# =============================================================================
+# DREAM INTERACTION SYSTEM - Shaping Dreams Through Dreamweaving
+# =============================================================================
+# A comprehensive framework for how Dreamweavings can influence, shape,
+# interact with, and synergize with the dreaming mind. Includes neuroscience,
+# symbolic psychology, practical techniques, and advanced dream architectures.
+#
+# Usage: Apply these techniques to create sessions that extend into sleep,
+#        seed dream content, heal nightmares, and build persistent dream worlds.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "dream_work"
+category: "dream_interaction"
+purpose: "Framework for Dreamweaving-to-dream influence and dream engineering"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Dream Interaction System"
+
+  definition:
+    brief: "Methods for Dreamweavings to influence dream content, processing, and emotional integration"
+    extended: |
+      Dreamweaver is uniquely positioned to interact with dreams because dreams are:
+      - Highly suggestible to pre-sleep content
+      - Emotionally symbolic in nature
+      - Narratively driven
+      - Malleable through expectation
+      - Connected to memory and identity
+      - Influenced by waking rituals and imagery
+
+      Dreamweaving speaks the same language dreams use: symbolism, emotion,
+      archetype, sound, metaphor, narrative, and identity. This creates a
+      natural bridge between waking hypnotic journeys and sleeping dreams.
+
+  core_principle: |
+    Dreams follow rules. Once you understand these rules, you can bend them.
+    Dreamweaver becomes the conductor of the dream orchestra.
+
+  key_mechanisms:
+    day_residue: "Dreams borrow content from the past 24-48 hours"
+    emotional_processing: "REM sleep processes emotions evoked during waking"
+    targeted_memory_reactivation: "Pre-sleep cues influence what is processed during REM"
+    predictive_processing: "Dreams test and update the brain's models of reality"
+    sleep_continuity: "Imagery at sleep onset blends into early dream content"
+
+  relevance_to_dreamweaving: |
+    Dreamweaving can:
+    - Supply rich symbolic material that enters dreams
+    - Seed themes, emotions, and desired transformations
+    - Create conditions for lucid dreaming
+    - Build persistent dream worlds over time
+    - Heal nightmares through dream rescripting
+    - Establish a waking→dream→waking transformation cycle
+
+# =============================================================================
+# NEUROSCIENCE OF DREAM INFLUENCE
+# =============================================================================
+
+neuroscience:
+  entry_id: "dream_work.interaction.neuroscience"
+  name: "Neuroscience of Dream Influence"
+
+  mechanisms:
+
+    day_residue:
+      name: "Day Residue Effect"
+      description: |
+        Dreams incorporate experiences, images, and emotional content from
+        the preceding 24-48 hours. This is one of the most reliable ways
+        waking experience influences dream content.
+      application: |
+        Dreamweavings provide rich symbolic material that enters the
+        "day residue pool" and may appear in that night's dreams.
+
+    emotional_reconsolidation:
+      name: "Emotional Memory Reconsolidation"
+      description: |
+        During REM sleep, the brain unhooks emotional charge from memories,
+        allowing them to be stored without overwhelming affect. This is
+        why we can recall traumatic events without reliving the full emotion.
+      application: |
+        Dreamweavings that soften emotional pain, introduce new meanings,
+        or invoke safety can shift how the brain processes emotional
+        memories during that night's sleep.
+
+    targeted_memory_reactivation:
+      name: "Targeted Memory Reactivation (TMR)"
+      description: |
+        Research shows that subtle cues (sounds, scents) presented during
+        sleep can reactivate associated memories and enhance their consolidation.
+        Pre-sleep cues are even more effective.
+      application: |
+        Symbols, sounds, and themes introduced in Dreamweaving become
+        reactivation cues that influence dream content and processing.
+
+    predictive_processing:
+      name: "Predictive Processing Models"
+      description: |
+        Dreams may serve to update or test the brain's predictive models
+        of reality. They simulate scenarios to refine expectations.
+      application: |
+        New self-images, emotional templates, and belief systems introduced
+        in Dreamweaving may be "test-driven" by the dreaming mind.
+
+    hypnagogic_continuity:
+      name: "Hypnagogic Sleep Continuity"
+      description: |
+        What you visualize and experience at sleep onset often blends
+        directly into early dream imagery. The hypnagogic state is a
+        direct gateway to dream content.
+      application: |
+        Dreamweaving's hypnagogic-like descent is perfectly positioned
+        to influence early dream imagery and themes.
+
+# =============================================================================
+# DREAM INCUBATION
+# =============================================================================
+
+dream_incubation:
+  entry_id: "dream_work.interaction.incubation"
+  name: "Dream Incubation"
+
+  definition:
+    brief: "The ancient and modern technique of planting a seed for a desired dream"
+    extended: |
+      Dream incubation has been practiced for millennia, from the temples
+      of Asclepius to modern sleep laboratories. It works by presenting
+      specific imagery, questions, or intentions before sleep, priming
+      the dreaming mind to explore particular themes.
+
+  methods:
+
+    symbol_seeding:
+      name: "Symbol Seeding"
+      description: "Present a specific symbol that may appear in dreams"
+      templates:
+        ssml_seed: |
+          <prosody rate="1.0" pitch="-1st">
+          And as you drift toward sleep...<break time="2.5s"/>
+          carry with you the image...<break time="2.5s"/>
+          of a silver key...<break time="3s"/>
+          If it appears in your dreams tonight...<break time="2.5s"/>
+          it brings clarity...<break time="2.5s"/>
+          understanding...<break time="2.5s"/>
+          the opening of doors...<break time="3.5s"/>
+          </prosody>
+
+    question_incubation:
+      name: "Question Incubation"
+      description: "Pose a contemplative question for dreams to answer"
+      templates:
+        ssml_question: |
+          <prosody rate="1.0" pitch="-1st">
+          And tonight...<break time="2.5s"/>
+          as you sleep...<break time="2.5s"/>
+          hold gently the question...<break time="2.5s"/>
+          "What do I most need to understand?"<break time="3s"/>
+          Dreams love questions...<break time="2.5s"/>
+          They may offer answers...<break time="2.5s"/>
+          in symbol...<break time="2s"/>
+          in story...<break time="2s"/>
+          in feeling...<break time="3.5s"/>
+          </prosody>
+
+    guide_summoning:
+      name: "Guide Summoning"
+      description: "Invite a guide to appear in dreams"
+      templates:
+        ssml_guide: |
+          <prosody rate="1.0" pitch="-1st">
+          Tonight...<break time="2.5s"/>
+          as you drift into sleep...<break time="2.5s"/>
+          a guide may step forward...<break time="2.5s"/>
+          in a dream...<break time="3s"/>
+          offering a message...<break time="2.5s"/>
+          you most need to hear...<break time="2.5s"/>
+          Trust what comes...<break time="3.5s"/>
+          </prosody>
+
+    continuation_seeding:
+      name: "Journey Continuation"
+      description: "Suggest the journey continues in dreams"
+      templates:
+        ssml_continuation: |
+          <prosody rate="1.0" pitch="-1st">
+          And this journey...<break time="2.5s"/>
+          does not end here...<break time="2.5s"/>
+          Tonight...<break time="2s"/>
+          the story continues...<break time="2.5s"/>
+          without words...<break time="2.5s"/>
+          in the theater of your dreams...<break time="3.5s"/>
+          </prosody>
+
+  recommended_symbols:
+    - symbol: "Silver key"
+      meaning: "Clarity, unlocking understanding"
+    - symbol: "Blue feather"
+      meaning: "Lightness, spiritual guidance"
+    - symbol: "Glowing apple"
+      meaning: "Knowledge, nourishment"
+    - symbol: "Spiral staircase"
+      meaning: "Descent/ascent, journey"
+    - symbol: "Mirror"
+      meaning: "Self-reflection, truth"
+    - symbol: "Lantern"
+      meaning: "Illumination, guidance in darkness"
+    - symbol: "Bell"
+      meaning: "Awakening, lucidity trigger"
+    - symbol: "Door of light"
+      meaning: "Threshold, transformation"
+
+# =============================================================================
+# DREAM GATES - ENTRY RITUALS
+# =============================================================================
+
+dream_gates:
+  entry_id: "dream_work.interaction.gates"
+  name: "Dream Gates (Dream Entry Rituals)"
+
+  definition:
+    brief: "Structured techniques for transitioning from Dreamweaving into dream state"
+    extended: |
+      Dream gates are ritual bridges between the Dreamweaving journey and
+      sleep. They create psychological expectation that the experience
+      continues into dreams, dramatically increasing dream integration.
+
+  techniques:
+
+    doorway_visualization:
+      name: "Doorway at Session End"
+      description: "Visualize a doorway that leads into dreaming"
+      templates:
+        ssml_doorway: |
+          <prosody rate="1.0" pitch="-2st">
+          And as you drift toward sleep...<break time="2.5s"/>
+          imagine a doorway forming before you...<break time="3s"/>
+          Perhaps it glows softly...<break time="2.5s"/>
+          Perhaps it bears a symbol you recognize...<break time="2.5s"/>
+          As you step through...<break time="2.5s"/>
+          the dream continues...<break time="2.5s"/>
+          on the other side...<break time="3.5s"/>
+          </prosody>
+
+    breath_bridge:
+      name: "Breath as Bridge"
+      description: "Use breath to carry awareness into sleep"
+      templates:
+        ssml_breath_bridge: |
+          <prosody rate="1.0" pitch="-2st">
+          And with three slow breaths...<break time="2.5s"/>
+          you cross from waking...<break time="2.5s"/>
+          into dreaming...<break time="3s"/>
+          Breathe...<break time="3s"/>
+          and the dream begins...<break time="4s"/>
+          </prosody>
+
+    tactile_anchor:
+      name: "Tactile Sleep Anchor"
+      description: "Physical gesture that bridges states"
+      templates:
+        ssml_tactile: |
+          <prosody rate="1.0" pitch="-1st">
+          As you fall asleep...<break time="2.5s"/>
+          place your hand gently over your heart...<break time="2.5s"/>
+          This touch...<break time="2.5s"/>
+          carries the journey...<break time="2.5s"/>
+          into your dreams...<break time="3.5s"/>
+          </prosody>
+
+    verbal_anchor:
+      name: "Verbal Dream Anchor"
+      description: "Phrase repeated at sleep onset"
+      templates:
+        ssml_verbal: |
+          <prosody rate="1.0" pitch="-1st">
+          And as you drift...<break time="2.5s"/>
+          whisper silently to yourself...<break time="2.5s"/>
+          <emphasis level="moderate">"I carry this light into my dreams"</emphasis>...<break time="3s"/>
+          </prosody>
+
+# =============================================================================
+# ARCHETYPE SEEDING
+# =============================================================================
+
+archetype_seeding:
+  entry_id: "dream_work.interaction.archetypes"
+  name: "Archetype Seeding"
+
+  definition:
+    brief: "Introducing mythic figures that continue appearing in dreams"
+    extended: |
+      Dreams naturally operate using archetypes - guardians, shadows, lovers,
+      mentors, guides. When Dreamweaver presents a mythic figure, the
+      subconscious often continues the relationship during dreaming,
+      creating multi-night narrative continuity.
+
+  core_archetypes:
+    - name: "The Sage"
+      role: "Wisdom, guidance, answers"
+      dream_function: "Appears to offer insight or teaching"
+
+    - name: "The Guardian"
+      role: "Protection, threshold keeping"
+      dream_function: "Protects dreamer, guards transitions"
+
+    - name: "The Healer"
+      role: "Restoration, integration"
+      dream_function: "Facilitates healing scenes"
+
+    - name: "The Shadow"
+      role: "Rejected aspects, integration work"
+      dream_function: "Appears for confrontation/integration"
+
+    - name: "The Child"
+      role: "Innocence, wounded self, potential"
+      dream_function: "Represents vulnerability, healing"
+
+    - name: "The Warrior"
+      role: "Strength, protection, will"
+      dream_function: "Empowers, defends, acts"
+
+    - name: "The Oracle"
+      role: "Prophecy, deep knowing"
+      dream_function: "Delivers messages, symbols"
+
+    - name: "The Animal Guide"
+      role: "Instinct, nature wisdom"
+      dream_function: "Leads, protects, teaches"
+
+  implementation:
+    introduction: "Introduce archetype during journey with distinct characteristics"
+    seeding: "Suggest they may appear in dreams with a message"
+    repetition: "Use same archetype across multiple sessions for dream persistence"
+
+  templates:
+    ssml_archetype_seed: |
+      <prosody rate="1.0" pitch="-1st">
+      And this guide...<break time="2.5s"/>
+      who has walked beside you today...<break time="2.5s"/>
+      may return tonight...<break time="2.5s"/>
+      in a dream...<break time="3s"/>
+      If they appear...<break time="2.5s"/>
+      listen...<break time="2.5s"/>
+      They bring what you need to know...<break time="3.5s"/>
+      </prosody>
+
+# =============================================================================
+# DREAM CODE OBJECTS
+# =============================================================================
+
+dream_code_objects:
+  entry_id: "dream_work.interaction.code_objects"
+  name: "Dream Code Objects"
+
+  definition:
+    brief: "Symbols with embedded rules that function in dreams"
+    extended: |
+      Dream code objects are symbols that carry specific rules or functions.
+      When you embed rules ("whenever you touch the key, clarity comes"),
+      dreams honor these rules because they follow internal symbolic logic.
+      These objects become dream-programming tokens.
+
+  objects:
+
+    lantern:
+      name: "The Lantern"
+      rule: "Reveals what matters most, illuminates truth"
+      templates:
+        ssml_lantern: |
+          <prosody rate="1.0" pitch="-1st">
+          And you carry a lantern...<break time="2.5s"/>
+          In any dream...<break time="2.5s"/>
+          if darkness surrounds you...<break time="2.5s"/>
+          raise this lantern...<break time="2.5s"/>
+          It reveals what matters most...<break time="2.5s"/>
+          It shows only truth...<break time="3.5s"/>
+          </prosody>
+
+    key:
+      name: "The Key"
+      rule: "Opens inner doors, unlocks understanding"
+      templates:
+        ssml_key: |
+          <prosody rate="1.0" pitch="-1st">
+          The silver key you now hold...<break time="2.5s"/>
+          opens any locked door...<break time="2.5s"/>
+          in any dream...<break time="2.5s"/>
+          When you use it...<break time="2.5s"/>
+          understanding follows...<break time="3.5s"/>
+          </prosody>
+
+    mirror:
+      name: "The Mirror"
+      rule: "Shows the real self, reflects truth"
+      templates:
+        ssml_mirror: |
+          <prosody rate="1.0" pitch="-1st">
+          And if you find a mirror...<break time="2.5s"/>
+          in your dreams...<break time="2.5s"/>
+          look into it...<break time="2.5s"/>
+          It shows not your face...<break time="2s"/>
+          but your real self...<break time="2.5s"/>
+          the one beneath all masks...<break time="3.5s"/>
+          </prosody>
+
+    feather:
+      name: "The Feather"
+      rule: "Lightens burdens, enables flight"
+      templates:
+        ssml_feather: |
+          <prosody rate="1.0" pitch="-1st">
+          This feather...<break time="2.5s"/>
+          when touched in dreams...<break time="2.5s"/>
+          lightens any burden...<break time="2.5s"/>
+          With it...<break time="2.5s"/>
+          you can fly...<break time="3.5s"/>
+          </prosody>
+
+    bell:
+      name: "The Bell"
+      rule: "Triggers lucidity, brings clarity"
+      templates:
+        ssml_bell: |
+          <prosody rate="1.0" pitch="-1st">
+          Remember this bell's tone...<break time="2.5s"/>
+          If you hear it in a dream...<break time="2.5s"/>
+          awareness awakens...<break time="2.5s"/>
+          You remember you are dreaming...<break time="2.5s"/>
+          And the dream becomes yours...<break time="3.5s"/>
+          </prosody>
+
+    shield:
+      name: "The Shield"
+      rule: "Provides protection in any dream situation"
+      templates:
+        ssml_shield: |
+          <prosody rate="1.0" pitch="-1st">
+          And this shield...<break time="2.5s"/>
+          glowing with soft light...<break time="2.5s"/>
+          protects you in any dream...<break time="2.5s"/>
+          Nothing can harm you...<break time="2.5s"/>
+          while you hold it...<break time="3.5s"/>
+          </prosody>
+
+# =============================================================================
+# LUCID DREAM PRIMING
+# =============================================================================
+
+lucid_priming:
+  entry_id: "dream_work.interaction.lucid_priming"
+  name: "Lucid Dream Priming"
+
+  definition:
+    brief: "Techniques to increase likelihood of lucid dreams"
+    extended: |
+      Research shows that intention-setting, visualization of dream scenes,
+      and exposure to recurring symbols all increase lucidity. Dreamweaving
+      can embed lucidity triggers that work across multiple nights.
+
+  techniques:
+
+    recognition_cues:
+      name: "Dream Recognition Cues"
+      description: "Install specific triggers that signal dreaming"
+      examples:
+        - "Glowing hands"
+        - "Specific bell tone"
+        - "Blue feather appearing"
+        - "Text that changes when read twice"
+        - "Clocks showing impossible time"
+
+      templates:
+        ssml_hands: |
+          <prosody rate="1.0" pitch="-1st">
+          And in your dreams tonight...<break time="2.5s"/>
+          if you see your hands glow...<break time="2.5s"/>
+          with soft light...<break time="2.5s"/>
+          you may realize...<break time="2.5s"/>
+          you are dreaming...<break time="3s"/>
+          And the dream becomes yours to shape...<break time="3.5s"/>
+          </prosody>
+
+    sound_triggers:
+      name: "Sound-Based Lucidity Triggers"
+      description: "Specific sounds that signal dream state"
+      implementation: |
+        Use a distinctive chime or bell at session end. Repeat this
+        sound across multiple sessions. It becomes a "recognition sound"
+        that may trigger lucidity when heard in dreams.
+
+      templates:
+        ssml_sound: |
+          <prosody rate="1.0" pitch="-1st">
+          If you hear this bell...<break time="2.5s"/>
+          in your dreams tonight...<break time="2.5s"/>
+          [SFX: Soft temple bell, 3 seconds]
+          <break time="3s"/>
+          awareness may rise...<break time="2.5s"/>
+          and you will know...<break time="2.5s"/>
+          you are dreaming...<break time="3.5s"/>
+          </prosody>
+
+    pre_sleep_intention:
+      name: "Pre-Sleep Intention Setting"
+      description: "Explicit intention to become lucid"
+      templates:
+        ssml_intention: |
+          <prosody rate="1.0" pitch="-1st">
+          And before you sleep...<break time="2.5s"/>
+          set this intention...<break time="2.5s"/>
+          Tell yourself...<break time="2.5s"/>
+          <emphasis level="moderate">"Tonight I will recognize I am dreaming"</emphasis>...<break time="3s"/>
+          Hold this intention...<break time="2.5s"/>
+          as you drift into sleep...<break time="3.5s"/>
+          </prosody>
+
+    dream_affirmation:
+      name: "In-Dream Affirmation"
+      description: "Words to speak in dreams for stabilization"
+      templates:
+        ssml_affirmation: |
+          <prosody rate="1.0" pitch="-1st">
+          If you realize you are dreaming...<break time="2.5s"/>
+          speak these words...<break time="2.5s"/>
+          silently or aloud...<break time="2.5s"/>
+          <emphasis level="moderate">"I am the Dreamer"</emphasis>...<break time="3s"/>
+          The dream will stabilize...<break time="2.5s"/>
+          becoming vivid...<break time="2.5s"/>
+          and yours...<break time="3.5s"/>
+          </prosody>
+
+# =============================================================================
+# NIGHTMARE HEALING / DREAM RESCRIPTING
+# =============================================================================
+
+nightmare_healing:
+  entry_id: "dream_work.interaction.nightmare_healing"
+  name: "Nightmare Healing and Dream Rescripting"
+
+  definition:
+    brief: "Techniques to transform recurring nightmares and disturbing dreams"
+    extended: |
+      Dream rescripting (Image Rehearsal Therapy) is clinically validated
+      for PTSD and nightmare disorders. Dreamweaving can replicate this by
+      presenting safe mythic worlds, introducing new resolution patterns,
+      and offering tools that transfer into dream consciousness.
+
+  principles:
+    - "Never try to suppress nightmares - transform them"
+    - "Provide tools and allies, not avoidance"
+    - "Dreams will adopt new solution templates"
+    - "Safety and empowerment, not force"
+
+  techniques:
+
+    tool_provision:
+      name: "Providing Dream Tools"
+      description: "Give dreamers tools that appear in nightmares"
+      templates:
+        ssml_tool: |
+          <prosody rate="1.0" pitch="-1st">
+          Tonight...<break time="2.5s"/>
+          if the shadow appears...<break time="2.5s"/>
+          you will find a lantern...<break time="2.5s"/>
+          in your hand...<break time="2.5s"/>
+          This light changes everything...<break time="2.5s"/>
+          The shadow cannot harm you...<break time="2.5s"/>
+          when you hold the light...<break time="3.5s"/>
+          </prosody>
+
+    ally_introduction:
+      name: "Introducing Dream Allies"
+      description: "Provide protector figures for nightmares"
+      templates:
+        ssml_ally: |
+          <prosody rate="1.0" pitch="-1st">
+          And in any frightening dream...<break time="2.5s"/>
+          call for the Guardian...<break time="2.5s"/>
+          Simply call...<break time="2.5s"/>
+          and they will appear...<break time="2.5s"/>
+          standing between you...<break time="2.5s"/>
+          and anything that threatens...<break time="3.5s"/>
+          </prosody>
+
+    shadow_dialogue:
+      name: "Shadow Dialogue"
+      description: "Transform fear through engagement"
+      templates:
+        ssml_shadow_dialogue: |
+          <prosody rate="1.0" pitch="-1st">
+          If a dark figure appears tonight...<break time="2.5s"/>
+          do not run...<break time="2.5s"/>
+          Instead...<break time="2s"/>
+          approach with curiosity...<break time="2.5s"/>
+          and ask...<break time="2.5s"/>
+          <emphasis level="moderate">"What do you need me to understand?"</emphasis><break time="3s"/>
+          Dream fears become allies...<break time="2.5s"/>
+          when we listen...<break time="3.5s"/>
+          </prosody>
+
+    safe_word:
+      name: "Dream Safe Word"
+      description: "Emergency stabilization phrase"
+      templates:
+        ssml_safe_word: |
+          <prosody rate="1.0" pitch="-1st">
+          If any dream becomes too much...<break time="2.5s"/>
+          speak these words...<break time="2.5s"/>
+          <emphasis level="moderate">"I am the Dreamer"</emphasis>...<break time="3s"/>
+          Immediately...<break time="2.5s"/>
+          the scene stabilizes...<break time="2.5s"/>
+          You remember your power...<break time="3.5s"/>
+          </prosody>
+
+    new_ending:
+      name: "New Ending Rehearsal"
+      description: "Rehearse better outcomes for recurring nightmares"
+      templates:
+        ssml_new_ending: |
+          <prosody rate="1.0" pitch="-1st">
+          And that old dream...<break time="2.5s"/>
+          the one that repeats...<break time="2.5s"/>
+          tonight may end differently...<break time="3s"/>
+          Instead of running...<break time="2.5s"/>
+          you turn...<break time="2s"/>
+          and face what follows...<break time="2.5s"/>
+          And discover...<break time="2.5s"/>
+          it was never what you feared...<break time="3.5s"/>
+          </prosody>
+
+# =============================================================================
+# PERSISTENT DREAM ARCHITECTURE
+# =============================================================================
+
+dream_architecture:
+  entry_id: "dream_work.interaction.architecture"
+  name: "Persistent Dream Architecture"
+
+  definition:
+    brief: "Building stable dream environments that persist across nights"
+    extended: |
+      Dreams naturally return to familiar places - the same house, ocean,
+      forest. Dreamweaver can design these places intentionally, creating
+      a persistent inner world that dreams use as raw material. Over time,
+      this becomes the dreamer's personal mythology made manifest.
+
+  core_locations:
+
+    dream_temple:
+      name: "The Dream Temple"
+      description: "Central hub for all dream journeys"
+      elements:
+        - "Central hall with doors to different realms"
+        - "Sacred symbols on walls"
+        - "Soft eternal light"
+        - "Meeting place for guides"
+      templates:
+        ssml_temple: |
+          <prosody rate="1.0" pitch="-1st">
+          And there is a temple...<break time="2.5s"/>
+          that now lives within you...<break time="2.5s"/>
+          Every time you dream...<break time="2.5s"/>
+          you can return here...<break time="3s"/>
+          This is your sanctuary...<break time="2.5s"/>
+          your meeting place...<break time="2.5s"/>
+          your home in the dream world...<break time="3.5s"/>
+          </prosody>
+
+    healing_pool:
+      name: "The Healing Pool"
+      description: "Waters of restoration and cleansing"
+      function: "Dreamers can enter to receive healing"
+      templates:
+        ssml_pool: |
+          <prosody rate="1.0" pitch="-1st">
+          In your dream temple...<break time="2.5s"/>
+          there is a pool...<break time="2.5s"/>
+          Its waters glow softly...<break time="2.5s"/>
+          with healing light...<break time="2.5s"/>
+          Whenever you enter these waters...<break time="2.5s"/>
+          in any dream...<break time="2.5s"/>
+          restoration flows through you...<break time="3.5s"/>
+          </prosody>
+
+    library_of_symbols:
+      name: "The Library of Symbols"
+      description: "Repository of dream meanings and messages"
+      function: "Access wisdom and understanding"
+      templates:
+        ssml_library: |
+          <prosody rate="1.0" pitch="-1st">
+          Within your temple...<break time="2.5s"/>
+          a library waits...<break time="2.5s"/>
+          Its books contain...<break time="2s"/>
+          every symbol you've ever dreamed...<break time="2.5s"/>
+          When you need understanding...<break time="2.5s"/>
+          open any book...<break time="2.5s"/>
+          and read what is written for you...<break time="3.5s"/>
+          </prosody>
+
+    garden_of_answers:
+      name: "The Garden of Answers"
+      description: "Natural space for receiving guidance"
+      function: "Questions planted here bloom as insights"
+      templates:
+        ssml_garden: |
+          <prosody rate="1.0" pitch="-1st">
+          Beyond the temple...<break time="2.5s"/>
+          a garden grows...<break time="2.5s"/>
+          Any question you plant here...<break time="2.5s"/>
+          in the rich soil of dreaming...<break time="2.5s"/>
+          blooms as an answer...<break time="2.5s"/>
+          in its own time...<break time="3.5s"/>
+          </prosody>
+
+    chamber_of_ancestors:
+      name: "The Chamber of Ancestors"
+      description: "Meeting place for ancestral wisdom"
+      function: "Connect with lineage and inherited wisdom"
+
+    room_of_lost_things:
+      name: "The Room of Lost Things"
+      description: "Where forgotten parts of self are kept"
+      function: "Soul retrieval, recovering lost aspects"
+
+  installation_method: |
+    1. Describe the location vividly in session
+    2. Give explicit instructions for returning in dreams
+    3. Use consistent imagery across multiple sessions
+    4. Reference the location as if it already exists
+    5. Dreams will begin incorporating and expanding the space
+
+# =============================================================================
+# DREAM FEEDBACK LOOP
+# =============================================================================
+
+dream_feedback:
+  entry_id: "dream_work.interaction.feedback"
+  name: "Dream Feedback Loop System"
+
+  definition:
+    brief: "Creating a continuous waking→dream→waking transformation cycle"
+    extended: |
+      The most powerful dream work creates a bidirectional loop:
+      Dreamweaver seeds a symbol → Dream amplifies it → Dreamer records it →
+      Dreamweaver responds in next session → Dream evolves further.
+      This mimics ancient dream temples like those of Asclepius.
+
+  components:
+
+    dream_harvesting:
+      name: "Dream Harvesting Ritual"
+      description: "Morning practice to capture dream content"
+      instructions:
+        - "Upon waking, remain still"
+        - "Let dream images surface"
+        - "Write any symbol, no matter how small"
+        - "Note emotions, characters, locations"
+        - "Look for seeded symbols"
+      templates:
+        ssml_harvesting: |
+          <prosody rate="1.0" pitch="-1st">
+          And when you wake tomorrow...<break time="2.5s"/>
+          before you move...<break time="2.5s"/>
+          before you open your eyes fully...<break time="2.5s"/>
+          let the dreams return...<break time="2.5s"/>
+          What symbol appeared?<break time="2.5s"/>
+          What feeling lingered?<break time="2.5s"/>
+          Write it down...<break time="2.5s"/>
+          even if it seems small...<break time="3.5s"/>
+          </prosody>
+
+    harvest_questions:
+      name: "Dream Harvest Questions"
+      list:
+        - "What symbol did you receive?"
+        - "Did you see the dream seed?"
+        - "Did a guide appear?"
+        - "What emotion lingered upon waking?"
+        - "What did the dream show you about your path?"
+        - "Were there any recurring elements?"
+
+    symbol_continuation:
+      name: "Symbol Continuation"
+      description: "Dreams remix and evolve seeded symbols"
+      explanation: |
+        Once introduced, symbols develop their own life in dreams:
+        - Dreams may repeat them
+        - Expand their meaning
+        - Reinterpret them
+        - Offer additional insight
+        This creates multi-night narratives and mythic identity development.
+
+    generic_references:
+      name: "Generic Dream References"
+      description: "Reference dreams without specific knowledge"
+      examples:
+        - "Some of you may have seen the key last night..."
+        - "If the guardian appeared in your dreams..."
+        - "Those who visited the temple in sleep..."
+      effect: "Listeners feel seen, subconscious fills the gaps"
+
+# =============================================================================
+# ADVANCED TECHNIQUES
+# =============================================================================
+
+advanced_techniques:
+  entry_id: "dream_work.interaction.advanced"
+  name: "Advanced Dream Interaction Techniques"
+
+  techniques:
+
+    emotion_field_seeding:
+      name: "Emotional Resonance Fields"
+      description: |
+        Instead of seeding images, seed emotional atmospheres.
+        Dreams will generate imagery that fits the emotional signature.
+      emotions:
+        - "Awe"
+        - "Deep safety"
+        - "Curiosity"
+        - "Mystery"
+        - "Expansion"
+        - "Transformation"
+      templates:
+        ssml_emotion: |
+          <prosody rate="1.0" pitch="-1st">
+          And tonight...<break time="2.5s"/>
+          let the feeling of awe...<break time="2.5s"/>
+          flow through your dreams...<break time="2.5s"/>
+          Whatever images come...<break time="2.5s"/>
+          they will carry this sense...<break time="2.5s"/>
+          of vast wonder...<break time="3.5s"/>
+          </prosody>
+
+    dream_body_activation:
+      name: "Dream Body Awareness"
+      description: "Activate awareness of the dream body"
+      templates:
+        ssml_dream_body: |
+          <prosody rate="1.0" pitch="-1st">
+          And feel your dream body awakening...<break time="2.5s"/>
+          Lighter than your physical form...<break time="2s"/>
+          more fluid...<break time="2s"/>
+          more free...<break time="2.5s"/>
+          This body knows how to dream...<break time="2.5s"/>
+          Trust it to carry you...<break time="3.5s"/>
+          </prosody>
+
+    dream_reentry:
+      name: "Dream Re-Entry"
+      description: "Return to interrupted dreams"
+      instructions:
+        - "Wake naturally in the night"
+        - "Keep eyes closed"
+        - "Recall last dream scene vividly"
+        - "Imagine walking back into it"
+        - "Let sleep reclaim you"
+      templates:
+        ssml_reentry: |
+          <prosody rate="1.0" pitch="-1st">
+          And if you wake in the night...<break time="2.5s"/>
+          keep your eyes closed...<break time="2.5s"/>
+          Remember where you were...<break time="2.5s"/>
+          in the dream...<break time="2.5s"/>
+          And simply walk back in...<break time="2.5s"/>
+          The dream welcomes your return...<break time="3.5s"/>
+          </prosody>
+
+    cliffhanger_endings:
+      name: "Turn-Key Scenes / Cliffhangers"
+      description: "Design incomplete endings that dreams finish"
+      examples:
+        - "A door half-open"
+        - "A guide about to speak"
+        - "A path leading into mist"
+        - "A temple with unexplored rooms"
+      templates:
+        ssml_cliffhanger: |
+          <prosody rate="1.0" pitch="-1st">
+          And as you drift toward sleep...<break time="2.5s"/>
+          the guide turns to you...<break time="2.5s"/>
+          lips parting to speak...<break time="2.5s"/>
+          something important...<break time="3s"/>
+          And in the dream...<break time="2.5s"/>
+          you will hear...<break time="2.5s"/>
+          what they say...<break time="3.5s"/>
+          </prosody>
+
+    waking_synchronicity:
+      name: "Dream-Waking Synchronicity"
+      description: "Bridge dreams and waking life"
+      templates:
+        ssml_synchronicity: |
+          <prosody rate="1.0" pitch="-1st">
+          Tomorrow...<break time="2.5s"/>
+          notice any symbol...<break time="2.5s"/>
+          that appears twice...<break time="2.5s"/>
+          in your waking world...<break time="2.5s"/>
+          It may carry meaning...<break time="2.5s"/>
+          from tonight's dream...<break time="3.5s"/>
+          </prosody>
+
+# =============================================================================
+# DREAM TEMPLATE SEQUENCES
+# =============================================================================
+
+template_sequences:
+
+  dream_incubation_ending:
+    name: "Standard Dream Incubation Ending"
+    description: "Template for ending sessions with dream seeding"
+    duration: "2-3 minutes"
+    elements:
+      - "Transition to pre-sleep state"
+      - "Present dream seed/symbol"
+      - "Suggest dream continuation"
+      - "Install dream anchor"
+      - "Final drift into sleep"
+
+  nightmare_healing_session:
+    name: "Nightmare Healing Session Structure"
+    description: "Session designed specifically for nightmare transformation"
+    elements:
+      - "Safe space establishment"
+      - "Tool/ally introduction"
+      - "New ending rehearsal"
+      - "Dream safe word installation"
+      - "Protective symbol seeding"
+
+  lucid_dream_primer:
+    name: "Lucid Dream Priming Session"
+    description: "Session optimized for lucid dream induction"
+    elements:
+      - "Reality check training"
+      - "Recognition cue installation"
+      - "Dream body activation"
+      - "Intention setting"
+      - "Stabilization techniques"
+
+  dream_temple_installation:
+    name: "Dream Temple Installation"
+    description: "Session to establish persistent dream location"
+    elements:
+      - "Detailed temple visualization"
+      - "Room/feature introduction"
+      - "Return instructions"
+      - "Dream doorway connection"
+      - "Persistence suggestions"
+
+# =============================================================================
+# FUTURE DREAM TECHNOLOGIES (Conceptual)
+# =============================================================================
+
+future_concepts:
+  note: |
+    These are speculative frameworks representing advanced dream interaction
+    concepts that can inspire current Dreamweaver design, even though the
+    technology doesn't exist. They point toward possibilities.
+
+  concepts:
+
+    dream_operating_system:
+      name: "Archetypal Dream Operating System (ADOS)"
+      description: |
+        Providing the psyche with a complete set of archetypal figures
+        (Self, Shadow, Guide, Child, Warrior, Healer) that dreams adopt
+        as their "default actors," giving massive influence over dream
+        tone, structure, and trajectory.
+
+    symbol_cascade:
+      name: "Symbol Resonance Cascades"
+      description: |
+        Symbols that evolve automatically over successive nights:
+        Night 1→Key, Night 2→Lock, Night 3→Door, Night 4→Room.
+        Creating "symbolic genetics" that unfold through dreams.
+
+    dream_topology:
+      name: "Dream Topology Manipulation"
+      description: |
+        Influencing the spatial organization of dreams rather than content:
+        "Your dream will have a central axis - a tree whose branches
+        lead to different memories." Shaping dream architecture itself.
+
+    predictive_priming:
+      name: "Predictive Dream Weaving"
+      description: |
+        Using dreams not just for processing the past but priming
+        future perception: "Tonight, a dream will prepare you for
+        something good that is coming."
+
+    convergence_fields:
+      name: "Dream Convergence Fields"
+      description: |
+        Dreams from multiple nights converging into a continuous
+        meta-narrative - characters, locations, and stories persisting
+        and developing across sleep cycles.
+
+# =============================================================================
+# OUTCOME ALIGNMENT
+# =============================================================================
+
+outcome_alignment:
+  healing:
+    techniques: [nightmare_healing, emotion_field_seeding, healing_pool]
+    emphasis: "Safety, restoration, transformation of fear"
+
+  transformation:
+    techniques: [archetype_seeding, cliffhanger_endings, dream_code_objects]
+    emphasis: "Symbol evolution, identity transformation"
+
+  self_knowledge:
+    techniques: [question_incubation, library_of_symbols, dream_harvesting]
+    emphasis: "Insight, understanding, message reception"
+
+  spiritual_growth:
+    techniques: [dream_temple, guide_summoning, lucid_priming]
+    emphasis: "Connection, transcendence, dream mastery"
+
+  creativity:
+    techniques: [symbol_seeding, garden_of_answers, dream_reentry]
+    emphasis: "Creative problem-solving, inspiration"
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - dream_work.lucid_dream_triggers
+    - psychology.internal_family_systems (parts appearing in dreams)
+    - mythology.descent_ascent (underworld dream journeys)
+    - traditions.qabalah (sephiroth as dream locations)
+    - consciousness_maps.kundalini_stages (chakra dream work)
+
+  complementary_practices:
+    - Dream journaling
+    - Morning reflection
+    - Symbol tracking
+    - Reality testing (waking)
+
+  source_references:
+    - text: "Exploring the World of Lucid Dreaming"
+      author: "Stephen LaBerge"
+    - text: "The Tibetan Yogas of Dream and Sleep"
+      author: "Tenzin Wangyal Rinpoche"
+    - text: "Dreams: A Portal to the Source"
+      author: "Edward C. Whitmont"
+    - text: "Image Rehearsal Therapy for Chronic Nightmares"
+      author: "Barry Krakow"
+    - text: "The Committee of Sleep"
+      author: "Deirdre Barrett"

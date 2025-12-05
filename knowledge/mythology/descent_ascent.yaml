@@ -1,0 +1,774 @@
+# =============================================================================
+# DESCENT & ASCENT - Underworld Journey Patterns for Dreamweaving
+# =============================================================================
+# The descent to the underworld is one of humanity's oldest mythological patterns.
+# This journey into darkness, through transformation, and back with gifts provides
+# a powerful framework for deep healing and transformation work.
+#
+# Usage: Apply descent/ascent structure for shadow work, grief processing,
+#        deep transformation, and retrieving lost parts of self.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "mythology"
+category: "descent_ascent"
+purpose: "Underworld journey framework for deep transformation work"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Descent & Ascent (Katabasis & Anabasis)"
+
+  definition:
+    brief: "The mythological pattern of journeying to the underworld and returning transformed"
+    extended: |
+      The descent to the underworld (katabasis) and return (anabasis) is
+      one of the most universal mythological patterns across human cultures.
+      From Inanna to Orpheus, Persephone to Jesus, Dante to Odin, heroes
+      and goddesses descend into darkness, face trials, and return with
+      gifts or knowledge. This pattern maps the psychological journey of
+      confronting shadow, integrating lost parts, processing grief, and
+      emerging transformed.
+
+  key_examples:
+    - name: "Inanna's Descent"
+      culture: "Sumerian"
+      theme: "Stripping of identity, death and rebirth"
+
+    - name: "Persephone"
+      culture: "Greek"
+      theme: "Abduction, integration of dark and light"
+
+    - name: "Orpheus and Eurydice"
+      culture: "Greek"
+      theme: "Love, loss, the danger of looking back"
+
+    - name: "Dante's Inferno"
+      culture: "Medieval Christian"
+      theme: "Journey through hell toward paradise"
+
+    - name: "Christ's Harrowing of Hell"
+      culture: "Christian"
+      theme: "Descent to free captive souls"
+
+    - name: "Odin at the Well"
+      culture: "Norse"
+      theme: "Sacrifice for wisdom"
+
+    - name: "Jonah in the Whale"
+      culture: "Hebrew"
+      theme: "Swallowed by darkness, spit back transformed"
+
+  psychological_meaning: |
+    The descent represents confrontation with:
+    - The shadow (rejected aspects of self)
+    - Grief and loss
+    - Fear of death/endings
+    - The unconscious depths
+    - Buried trauma or pain
+
+    The ascent represents:
+    - Integration of what was found
+    - Resurrection/renewal
+    - Return with gifts/wisdom
+    - Completion of transformation
+
+  relevance_to_dreamweaving: |
+    Descent/ascent patterns provide:
+    - Structure for deep shadow work
+    - Framework for grief processing
+    - Template for transformation journeys
+    - Mythic container for difficult material
+    - Balance of darkness and return to light
+
+# =============================================================================
+# THE DESCENT PATTERN
+# =============================================================================
+
+descent_pattern:
+
+  # ---------------------------------------------------------------------------
+  # CALL TO THE DEPTHS
+  # ---------------------------------------------------------------------------
+  call_to_depths:
+    entry_id: "mythology.descent.call"
+    name: "The Call to the Depths"
+    stage: 1
+
+    description: |
+      Something calls the journeyer downward - grief, curiosity, necessity,
+      or the loss of something precious. The descent is never casual; there
+      is always a reason compelling enough to enter the darkness.
+
+    common_catalysts:
+      - "Loss of a loved one"
+      - "Personal crisis or breakdown"
+      - "Something precious taken below"
+      - "Calling to retrieve a part of self"
+      - "Initiated descent (mystery schools)"
+      - "Forced descent (betrayal, illness)"
+
+    psychological_correlate:
+      - "Life crisis requiring deep work"
+      - "Depression as invitation downward"
+      - "Loss demanding grief journey"
+      - "Shadow material emerging"
+
+    templates:
+      ssml_call: |
+        <prosody rate="1.0" pitch="-1st">
+        And something calls you now...<break time="2.5s"/>
+        to go deeper...<break time="2.5s"/>
+        than you have gone before...<break time="2.5s"/>
+        Perhaps there is something...<break time="2s"/>
+        you must retrieve...<break time="2.5s"/>
+        something lost...<break time="2s"/>
+        or hidden...<break time="2.5s"/>
+        that waits for you...<break time="2.5s"/>
+        in the depths...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Threshold to darkness, cave mouth, descending stairs, the call to go below"
+
+  # ---------------------------------------------------------------------------
+  # THRESHOLD CROSSING
+  # ---------------------------------------------------------------------------
+  threshold:
+    entry_id: "mythology.descent.threshold"
+    name: "Crossing the Threshold"
+    stage: 2
+
+    description: |
+      The journeyer crosses from the upper world to the underworld.
+      This threshold is often guarded and requires something to cross -
+      payment, password, or sacrifice. The crossing is one-way at first;
+      there is no easy return.
+
+    threshold_elements:
+      - "Gate or doorway"
+      - "River (Styx, Acheron)"
+      - "Guardian (Cerberus, gatekeeper)"
+      - "Payment (coins, offering)"
+      - "Cave mouth, well, or opening in earth"
+      - "Descent into water (drowning, whale)"
+
+    psychological_correlate:
+      - "Committing to the process"
+      - "No turning back"
+      - "Surrendering control"
+      - "Entering altered state"
+
+    templates:
+      ssml_threshold: |
+        <prosody rate="1.0" pitch="-2st">
+        And before you now...<break time="2.5s"/>
+        the threshold...<break time="2.5s"/>
+        between worlds...<break time="3s"/>
+        Perhaps a gate...<break time="2s"/>
+        or a river...<break time="2s"/>
+        or a dark opening...<break time="2.5s"/>
+        in the earth...<break time="2.5s"/>
+        You know...<break time="2s"/>
+        once you cross...<break time="2.5s"/>
+        you cannot simply return...<break time="2.5s"/>
+        You must complete...<break time="2s"/>
+        the journey...<break time="3s"/>
+        Do you choose to cross?<break time="4s"/>
+        </prosody>
+
+      ssml_crossing: |
+        <prosody rate="1.0" pitch="-2st">
+        And now...<break time="2.5s"/>
+        you cross...<break time="2.5s"/>
+        leaving the upper world behind...<break time="2.5s"/>
+        Descending...<break time="2s"/>
+        into darkness...<break time="2.5s"/>
+        into the depths...<break time="2.5s"/>
+        The threshold closes behind you...<break time="2.5s"/>
+        There is only forward now...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Dark gateway, river of forgetfulness, guardian at threshold, passage into underground darkness"
+
+  # ---------------------------------------------------------------------------
+  # STRIPPING / DISMEMBERMENT
+  # ---------------------------------------------------------------------------
+  stripping:
+    entry_id: "mythology.descent.stripping"
+    name: "Stripping and Dismemberment"
+    stage: 3
+
+    description: |
+      As the journeyer descends, they are stripped of their identity,
+      possessions, and defenses. Like Inanna passing through seven gates,
+      each layer is removed until nothing remains. This is symbolic death -
+      the ego dismembered, the false self dissolved.
+
+    forms_of_stripping:
+      - "Gates that remove possessions/symbols"
+      - "Dismemberment (shamanic death)"
+      - "Dissolution, melting, burning"
+      - "Loss of identity markers"
+      - "Forgetting who you were"
+      - "Humiliation, exposure"
+
+    inanna_example: |
+      Inanna passes through seven gates, at each removing:
+      1. Crown (divine authority)
+      2. Lapis necklace (seeing)
+      3. Double strand of beads (feeling)
+      4. Breastplate (protection)
+      5. Gold ring (personal power)
+      6. Lapis measuring rod (judgment)
+      7. Royal robe (identity)
+      She enters naked and bowed.
+
+    psychological_correlate:
+      - "Ego death, identity dissolution"
+      - "Stripping of defenses"
+      - "Losing what you thought you were"
+      - "Humility, vulnerability"
+
+    templates:
+      ssml_stripping: |
+        <prosody rate="1.0" pitch="-2st">
+        And as you descend...<break time="2.5s"/>
+        the depths require...<break time="2.5s"/>
+        that you release...<break time="2.5s"/>
+        what you have carried...<break time="3s"/>
+        Your roles...<break time="2s"/>
+        your masks...<break time="2s"/>
+        your defenses...<break time="2.5s"/>
+        Layer by layer...<break time="2.5s"/>
+        they fall away...<break time="2.5s"/>
+        until only the essential you...<break time="2.5s"/>
+        remains...<break time="3.5s"/>
+        </prosody>
+
+      ssml_seven_gates: |
+        <prosody rate="1.0" pitch="-2st">
+        The first gate takes your crown...<break time="3s"/>
+        your sense of being special...<break time="2.5s"/>
+        The second takes your protection...<break time="3s"/>
+        your armor against the world...<break time="2.5s"/>
+        Gate by gate...<break time="2.5s"/>
+        you are stripped...<break time="2.5s"/>
+        until nothing false...<break time="2.5s"/>
+        remains...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Seven gates descending, items being surrendered at each, stripping of identity, entering naked"
+
+  # ---------------------------------------------------------------------------
+  # THE DEPTHS / CONFRONTATION
+  # ---------------------------------------------------------------------------
+  depths:
+    entry_id: "mythology.descent.depths"
+    name: "The Depths / Confrontation"
+    stage: 4
+
+    description: |
+      At the bottom of the descent, the journeyer confronts what lives there -
+      the Queen of the Underworld, the Shadow King, the monster, the ghost,
+      or simply the darkness itself. This is the nadir, the death point,
+      the moment of greatest vulnerability and potential transformation.
+
+    what_waits_below:
+      - "Ereshkigal (dark queen, sister)"
+      - "Hades/Pluto (lord of the dead)"
+      - "The shadow self"
+      - "The lost beloved"
+      - "The monster/demon"
+      - "Absolute darkness/void"
+      - "The corpse of who you were"
+
+    confrontation_types:
+      death: "Being killed, hung on hook, dismembered"
+      dialogue: "Speaking with underworld ruler"
+      retrieval: "Finding what was lost"
+      recognition: "Seeing the dark twin"
+      surrender: "Giving up completely"
+
+    psychological_correlate:
+      - "Facing the shadow"
+      - "Meeting rejected parts"
+      - "Confronting core fear"
+      - "Experiencing ego death"
+      - "Touching the void"
+
+    templates:
+      ssml_depths: |
+        <prosody rate="1.0" pitch="-2st">
+        And now...<break time="2.5s"/>
+        you have reached...<break time="2.5s"/>
+        the bottom...<break time="3s"/>
+        The deepest place...<break time="2.5s"/>
+        The place you feared...<break time="2.5s"/>
+        And something waits here...<break time="3s"/>
+        In the darkness...<break time="2.5s"/>
+        Turn and face it...<break time="3.5s"/>
+        </prosody>
+
+      ssml_confrontation: |
+        <prosody rate="1.0" pitch="-2st">
+        And there before you...<break time="2.5s"/>
+        is what you came to find...<break time="3s"/>
+        Perhaps it looks like fear itself...<break time="2.5s"/>
+        Perhaps like a part of you...<break time="2.5s"/>
+        long forgotten...<break time="2.5s"/>
+        Perhaps like your own shadow...<break time="2.5s"/>
+        with eyes that know you...<break time="3s"/>
+        What do you see?<break time="4s"/>
+        </prosody>
+
+      ssml_death_point: |
+        <prosody rate="1.0" pitch="-2st">
+        And here...<break time="2.5s"/>
+        you die...<break time="3s"/>
+        Not your body...<break time="2.5s"/>
+        but everything you thought you were...<break time="3s"/>
+        Let it go...<break time="2.5s"/>
+        Let it dissolve...<break time="2.5s"/>
+        into the darkness...<break time="3s"/>
+        There is nothing to hold onto...<break time="2.5s"/>
+        only surrender...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Underworld throne room, dark queen or king, confrontation with shadow, death and dissolution"
+
+  # ---------------------------------------------------------------------------
+  # TRANSFORMATION / BOON
+  # ---------------------------------------------------------------------------
+  transformation:
+    entry_id: "mythology.descent.transformation"
+    name: "Transformation and Boon"
+    stage: 5
+
+    description: |
+      After the death/confrontation, something transforms. The journeyer
+      receives a gift, a boon, a piece of knowledge, or a restored part.
+      The underworld gives something in exchange for the journey. This is
+      not theft but earned through the ordeal.
+
+    types_of_boon:
+      - "Knowledge/wisdom from the dead"
+      - "Retrieval of lost soul part"
+      - "Gift from underworld ruler"
+      - "Power gained through death"
+      - "Healing of what was wounded"
+      - "Integration of shadow"
+
+    transformation_forms:
+      - "Death and resurrection"
+      - "Dismemberment and reconstitution"
+      - "Negotiation and agreement"
+      - "Theft and escape"
+      - "Union with dark aspect"
+
+    psychological_correlate:
+      - "Shadow integration"
+      - "Soul retrieval"
+      - "Gaining wisdom from suffering"
+      - "Transformation through crisis"
+      - "Resurrection of authentic self"
+
+    templates:
+      ssml_gift: |
+        <prosody rate="1.0" pitch="-1st">
+        And from the darkness...<break time="2.5s"/>
+        a gift emerges...<break time="3s"/>
+        Something you came for...<break time="2.5s"/>
+        or something you didn't know you needed...<break time="2.5s"/>
+        The depths give to those...<break time="2.5s"/>
+        who brave the journey...<break time="2.5s"/>
+        What is your gift?<break time="4s"/>
+        </prosody>
+
+      ssml_transformation: |
+        <prosody rate="1.0" pitch="-1st">
+        And what died...<break time="2.5s"/>
+        is now reborn...<break time="3s"/>
+        But not the same...<break time="2.5s"/>
+        You have been changed...<break time="2.5s"/>
+        by the darkness...<break time="2.5s"/>
+        made whole...<break time="2.5s"/>
+        in ways you could not be...<break time="2.5s"/>
+        before you descended...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Receiving gift from underworld, resurrection scene, emerging transformed, carrying the boon"
+
+# =============================================================================
+# THE ASCENT PATTERN
+# =============================================================================
+
+ascent_pattern:
+
+  # ---------------------------------------------------------------------------
+  # THE RETURN
+  # ---------------------------------------------------------------------------
+  return:
+    entry_id: "mythology.ascent.return"
+    name: "The Return / Ascent"
+    stage: 6
+
+    description: |
+      The journeyer must now return to the upper world, carrying what was
+      gained. The ascent is often as difficult as the descent - there may
+      be conditions, prohibitions, or pursuit. Orpheus must not look back;
+      Persephone must return for part of each year.
+
+    return_challenges:
+      - "Not looking back (Orpheus)"
+      - "Substitute required (Inanna/Dumuzi)"
+      - "Time limits (seasonal return)"
+      - "Pursuit by underworld forces"
+      - "Proving worthiness to leave"
+      - "Finding the way back up"
+
+    psychological_correlate:
+      - "Integrating the experience"
+      - "Not regressing"
+      - "Maintaining transformation"
+      - "Re-entering ordinary life"
+      - "Carrying the gift forward"
+
+    templates:
+      ssml_begin_ascent: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2.5s"/>
+        carrying your gift...<break time="2.5s"/>
+        the way opens upward...<break time="3s"/>
+        The ascent begins...<break time="2.5s"/>
+        Step by step...<break time="2s"/>
+        you rise...<break time="2.5s"/>
+        from the depths...<break time="2.5s"/>
+        toward the light...<break time="3s"/>
+        </prosody>
+
+      ssml_not_looking_back: |
+        <prosody rate="1.0" pitch="-1st">
+        And remember...<break time="2.5s"/>
+        as you ascend...<break time="2.5s"/>
+        do not look back...<break time="2.5s"/>
+        What is behind you...<break time="2.5s"/>
+        stays behind...<break time="2.5s"/>
+        Keep moving forward...<break time="2.5s"/>
+        toward the light above...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Climbing upward from darkness, light appearing above, carrying the boon, the ascent stairs"
+
+  # ---------------------------------------------------------------------------
+  # RECONSTITUTION
+  # ---------------------------------------------------------------------------
+  reconstitution:
+    entry_id: "mythology.ascent.reconstitution"
+    name: "Reconstitution"
+    stage: 7
+
+    description: |
+      What was stripped away or dismembered must be reconstituted - but
+      differently. The journeyer is re-dressed, re-assembled, or reborn
+      as a new version of themselves. Like Inanna receiving back her
+      garments, but transformed by the journey.
+
+    psychological_correlate:
+      - "Rebuilding identity on new foundation"
+      - "Integrating shadow qualities"
+      - "New sense of self"
+      - "Embodying the transformation"
+
+    templates:
+      ssml_reconstitution: |
+        <prosody rate="1.0" pitch="-1st">
+        And as you rise...<break time="2.5s"/>
+        you are reformed...<break time="2.5s"/>
+        re-assembled...<break time="2.5s"/>
+        but not the same as before...<break time="3s"/>
+        The old pieces return...<break time="2.5s"/>
+        but they fit differently now...<break time="2.5s"/>
+        You are who you were...<break time="2.5s"/>
+        and something more...<break time="3s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # RE-EMERGENCE
+  # ---------------------------------------------------------------------------
+  emergence:
+    entry_id: "mythology.ascent.emergence"
+    name: "Re-Emergence"
+    stage: 8
+
+    description: |
+      The journeyer emerges from the underworld into the upper world.
+      This is resurrection, rebirth, return. The world may look the same,
+      but the journeyer sees it differently. They bring with them what
+      they found below.
+
+    emergence_elements:
+      - "Crossing back over threshold"
+      - "Seeing light again"
+      - "Feeling body/earth again"
+      - "Reunion with those above"
+      - "Bearing witness to transformation"
+
+    psychological_correlate:
+      - "Returning to ordinary life"
+      - "Integrating journey into daily existence"
+      - "New perspective on old situations"
+      - "Completing the cycle"
+
+    templates:
+      ssml_emergence: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2.5s"/>
+        the light grows stronger...<break time="2.5s"/>
+        You feel the upper world...<break time="2.5s"/>
+        calling you home...<break time="2.5s"/>
+        One final step...<break time="2.5s"/>
+        and you emerge...<break time="2.5s"/>
+        from the depths...<break time="2.5s"/>
+        into the light...<break time="2.5s"/>
+        Reborn...<break time="2.5s"/>
+        transformed...<break time="2.5s"/>
+        carrying the gift...<break time="3.5s"/>
+        </prosody>
+
+      visual_prompt: "Emerging from cave into sunlight, crossing back over threshold, resurrection, return to upper world"
+
+  # ---------------------------------------------------------------------------
+  # INTEGRATION / SHARING THE GIFT
+  # ---------------------------------------------------------------------------
+  integration:
+    entry_id: "mythology.ascent.integration"
+    name: "Integration and Sharing the Gift"
+    stage: 9
+
+    description: |
+      The final stage: integrating the journey's gifts into ordinary life
+      and potentially sharing them with others. The boon is not just for
+      the individual but often has collective significance.
+
+    integration_tasks:
+      - "Living the transformation"
+      - "Teaching what was learned"
+      - "Serving as guide for others"
+      - "Honoring the underworld journey"
+      - "Balancing upper and lower worlds"
+
+    templates:
+      ssml_integration: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2.5s"/>
+        back in the world of light...<break time="2.5s"/>
+        you begin to understand...<break time="2.5s"/>
+        what the journey has given you...<break time="3s"/>
+        This gift is not just for you...<break time="2.5s"/>
+        but for all you touch...<break time="2.5s"/>
+        all you serve...<break time="2.5s"/>
+        all you love...<break time="3s"/>
+        The depths have marked you...<break time="2.5s"/>
+        as one who has been below...<break time="2.5s"/>
+        and returned...<break time="3.5s"/>
+        </prosody>
+
+# =============================================================================
+# SPECIFIC DESCENT MYTHS
+# =============================================================================
+
+specific_myths:
+
+  inanna:
+    name: "Inanna's Descent to the Underworld"
+    culture: "Sumerian"
+    themes: ["identity stripping", "death and rebirth", "sister shadow"]
+
+    structure:
+      - "Inanna decides to visit underworld sister Ereshkigal"
+      - "Passes through seven gates, stripped at each"
+      - "Enters naked, bowed before dark sister"
+      - "Is killed and hung on hook for three days"
+      - "Rescued by creatures carrying water and food of life"
+      - "Must provide substitute (Dumuzi)"
+      - "Returns with underworld knowledge"
+
+    templates:
+      ssml_inanna: |
+        <prosody rate="1.0" pitch="-2st">
+        Like Inanna...<break time="2.5s"/>
+        the great goddess...<break time="2.5s"/>
+        who descended to meet her dark sister...<break time="3s"/>
+        You too journey down...<break time="2.5s"/>
+        surrendering at each gate...<break time="2.5s"/>
+        until nothing remains...<break time="2.5s"/>
+        but your essential self...<break time="3.5s"/>
+        </prosody>
+
+  persephone:
+    name: "Persephone's Abduction and Return"
+    culture: "Greek"
+    themes: ["forced initiation", "integration of dark and light", "cycles"]
+
+    structure:
+      - "Persephone taken by Hades"
+      - "Demeter grieves, earth barren"
+      - "Persephone eats pomegranate seeds"
+      - "Must return to underworld part of year"
+      - "Becomes Queen of the Dead"
+      - "Mediates between worlds"
+
+    templates:
+      ssml_persephone: |
+        <prosody rate="1.0" pitch="-1st">
+        Like Persephone...<break time="2.5s"/>
+        who ate the seeds of the underworld...<break time="3s"/>
+        And found she belonged...<break time="2.5s"/>
+        both in darkness and in light...<break time="2.5s"/>
+        Queen above and below...<break time="2.5s"/>
+        You too learn to walk...<break time="2.5s"/>
+        between worlds...<break time="3.5s"/>
+        </prosody>
+
+  orpheus:
+    name: "Orpheus and Eurydice"
+    culture: "Greek"
+    themes: ["love and loss", "not looking back", "incomplete return"]
+
+    structure:
+      - "Eurydice dies, Orpheus descends to retrieve her"
+      - "His music moves Hades"
+      - "Granted permission with condition: don't look back"
+      - "At threshold, he looks back"
+      - "Loses Eurydice forever"
+      - "Returns alone but forever changed"
+
+    templates:
+      ssml_orpheus_warning: |
+        <prosody rate="1.0" pitch="-1st">
+        And remember Orpheus...<break time="2.5s"/>
+        who looked back at the threshold...<break time="2.5s"/>
+        and lost what he sought...<break time="3s"/>
+        Do not look back...<break time="2.5s"/>
+        Trust that what follows you...<break time="2.5s"/>
+        will emerge...<break time="2.5s"/>
+        when you reach the light...<break time="3.5s"/>
+        </prosody>
+
+  christ_harrowing:
+    name: "Christ's Harrowing of Hell"
+    culture: "Christian"
+    themes: ["redemption", "freeing captives", "victory over death"]
+
+    structure:
+      - "Christ dies on cross"
+      - "Descends to hell/Sheol"
+      - "Breaks gates, binds Satan"
+      - "Frees righteous souls"
+      - "Rises on third day"
+      - "Offers resurrection to all"
+
+    templates:
+      ssml_harrowing: |
+        <prosody rate="1.0" pitch="-1st">
+        And like the One...<break time="2.5s"/>
+        who descended to the depths...<break time="2.5s"/>
+        broke the gates...<break time="2.5s"/>
+        and set the captives free...<break time="3s"/>
+        You too can descend...<break time="2.5s"/>
+        and liberate...<break time="2.5s"/>
+        what has been held in darkness...<break time="3.5s"/>
+        </prosody>
+
+# =============================================================================
+# OUTCOME ALIGNMENT
+# =============================================================================
+
+outcome_alignment:
+  transformation:
+    emphasis: "Full descent/ascent cycle"
+    key_stages: [stripping, depths, transformation]
+
+  healing:
+    emphasis: "Retrieval and return"
+    key_stages: [depths, transformation, reconstitution]
+
+  self_knowledge:
+    emphasis: "Confrontation and gift"
+    key_stages: [depths, transformation, integration]
+
+  release:
+    emphasis: "Stripping and dissolution"
+    key_stages: [stripping, depths]
+
+  spiritual_growth:
+    emphasis: "Death/rebirth, integration"
+    key_stages: [depths, transformation, emergence, integration]
+
+# =============================================================================
+# JOURNEY STRUCTURE TEMPLATE
+# =============================================================================
+
+journey_template:
+  name: "Full Descent and Ascent Journey"
+  duration: "25-35 minutes"
+
+  structure:
+    pre_talk:
+      minutes: 3
+      content: "Prepare for journey to the depths"
+
+    induction:
+      minutes: 5
+      content: "Ground, then begin descent toward threshold"
+
+    descent:
+      minutes: 8-10
+      stages: [call, threshold, stripping]
+      content: "Cross threshold, descend through layers"
+
+    depths:
+      minutes: 6-8
+      stages: [depths, transformation]
+      content: "Confront, die, transform, receive gift"
+
+    ascent:
+      minutes: 5-6
+      stages: [return, reconstitution, emergence]
+      content: "Climb back up, reconstitute, emerge"
+
+    integration:
+      minutes: 3-4
+      stages: [integration]
+      content: "Ground transformation, return fully"
+
+  soundscape_alignment: "underworld_descent"
+  binaural_alignment: "transformation_alchemical"
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - mythology.hero_journey
+    - psychology.internal_family_systems
+    - traditions.qabalah (paths, Geburah)
+    - consciousness_maps.kundalini_stages (descent of energy)
+
+  soundscape_pairing:
+    recommended: "underworld_descent"
+    elements: ["cavern reverb", "dripping water", "deep gong"]
+
+  source_references:
+    - text: "Descent to the Goddess"
+      author: "Sylvia Brinton Perera"
+    - text: "Inanna: Queen of Heaven and Earth"
+      author: "Diane Wolkstein & Samuel Noah Kramer"
+    - text: "Women Who Run with the Wolves"
+      author: "Clarissa Pinkola Estés"
+    - text: "The Hero with a Thousand Faces"
+      author: "Joseph Campbell"

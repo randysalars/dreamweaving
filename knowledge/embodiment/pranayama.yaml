@@ -1,0 +1,610 @@
+# =============================================================================
+# PRANAYAMA - Breath Practices for Dreamweaving
+# =============================================================================
+# Breath is the bridge between conscious and unconscious, body and mind.
+# These pranayama (breath control) practices provide specific techniques
+# for inducing states, regulating the nervous system, and deepening trance.
+#
+# Usage: Select breath patterns based on desired state and outcome.
+#        Integrate breath cues into appropriate journey phases.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "embodiment"
+category: "breath_practices"
+purpose: "Breath-based state induction and regulation for hypnotic work"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  name: "Pranayama"
+  origin: "Sanskrit - prana (life force) + ayama (extension/control)"
+
+  definition:
+    brief: "Conscious regulation of breath to influence mind and energy states"
+    extended: |
+      Pranayama is the yogic science of breath control, recognizing that
+      breath patterns directly influence mental states, nervous system
+      function, and subtle energy. In hypnotic work, breath is the most
+      accessible tool for state change - always available, directly
+      influential, and under voluntary control.
+    essence: "As the breath, so the mind"
+
+  mechanism: |
+    - Slow exhales activate parasympathetic (rest/digest) response
+    - Fast breath activates sympathetic (alertness/energy) response
+    - Breath holds concentrate prana and still the mind
+    - Nasal breathing activates different brain regions than mouth breathing
+    - Rhythm entrains brainwaves and heart rate
+
+  dreamweaving_application: |
+    Breath cues are woven throughout sessions to:
+    - Deepen relaxation during induction
+    - Regulate nervous system during emotional material
+    - Create rhythm for trance deepening
+    - Anchor states to breath patterns
+    - Support return during reorientation
+
+# =============================================================================
+# CALMING / PARASYMPATHETIC PRACTICES
+# =============================================================================
+
+calming:
+
+  # ---------------------------------------------------------------------------
+  # 4-7-8 BREATHING (Relaxing Breath)
+  # ---------------------------------------------------------------------------
+  four_seven_eight:
+    entry_id: "embodiment.pranayama.four_seven_eight"
+    name: "4-7-8 Relaxing Breath"
+    sanskrit_name: "Modified Pranayama"
+    type: "calming"
+
+    definition:
+      brief: "Powerful calming breath with extended exhale and hold"
+      extended: |
+        Popularized by Dr. Andrew Weil, this pattern combines extended
+        exhale with a hold that activates the parasympathetic nervous
+        system. It's considered a "natural tranquilizer" and is excellent
+        for anxiety, sleep induction, and trance deepening.
+
+    pattern:
+      inhale: 4 counts
+      hold: 7 counts
+      exhale: 8 counts
+      rounds: 3-4
+
+    effects:
+      - Rapid parasympathetic activation
+      - Reduces anxiety and stress
+      - Promotes sleep onset
+      - Deepens trance states
+      - Lowers heart rate and blood pressure
+
+    applications:
+      journey_phases: [induction, deepening]
+      outcome_alignment: [relaxation, healing, release]
+      journey_families: [all_families]
+
+    templates:
+      ssml_guided: |
+        <prosody rate="1.0" pitch="-1st">
+        Now take a breath in...<break time="4s"/>
+        and hold...<break time="7s"/>
+        and slowly release...<break time="8s"/>
+        letting everything go...<break time="2s"/>
+        again, breathe in...<break time="4s"/>
+        hold gently...<break time="7s"/>
+        and release completely...<break time="8s"/>
+        </prosody>
+
+      ssml_soft_cue: |
+        <prosody rate="1.0" pitch="-2st">
+        And if it feels right...<break time="2s"/>
+        let your exhale be longer than your inhale...<break time="2s"/>
+        letting go a little more with each breath out...<break time="3s"/>
+        </prosody>
+
+    contraindications:
+      - Respiratory conditions (modify timing)
+      - Panic disorder (start gentler)
+
+  # ---------------------------------------------------------------------------
+  # COHERENT BREATHING
+  # ---------------------------------------------------------------------------
+  coherent_breathing:
+    entry_id: "embodiment.pranayama.coherent"
+    name: "Coherent Breathing"
+    type: "calming"
+
+    definition:
+      brief: "Equal inhale and exhale at ~5 breaths per minute for HRV optimization"
+      extended: |
+        Coherent breathing entrains the cardiovascular system to an
+        optimal rhythm, maximizing heart rate variability (HRV) and
+        promoting calm alertness. The 5-6 second inhale and exhale
+        creates a rhythm that synchronizes heart, brain, and breath.
+
+    pattern:
+      inhale: 5-6 counts
+      exhale: 5-6 counts
+      rate: "5 breaths per minute"
+      rounds: continuous
+
+    effects:
+      - Optimizes HRV
+      - Promotes calm alertness
+      - Balances autonomic nervous system
+      - Excellent for sustained trance
+      - Reduces anxiety without sedation
+
+    applications:
+      journey_phases: [induction, deepening, journey]
+      outcome_alignment: [focus, relaxation, healing]
+      journey_families: [all_families]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="-1st">
+        Let your breathing find its natural rhythm...<break time="2s"/>
+        gentle...<break time="1.5s"/>
+        even...<break time="1.5s"/>
+        inhale flowing into exhale...<break time="2s"/>
+        exhale flowing into inhale...<break time="2s"/>
+        like gentle waves...<break time="2s"/>
+        finding their own perfect tempo...<break time="3s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # EXTENDED EXHALE
+  # ---------------------------------------------------------------------------
+  extended_exhale:
+    entry_id: "embodiment.pranayama.extended_exhale"
+    name: "Extended Exhale Breathing"
+    type: "calming"
+
+    definition:
+      brief: "Simple pattern where exhale is longer than inhale"
+      extended: |
+        The simplest vagal activation technique - any pattern where
+        exhale exceeds inhale activates the parasympathetic response.
+        2:1 ratio (e.g., 4 in, 8 out) is gentle; 1:2 is stronger.
+
+    pattern:
+      inhale: 4 counts
+      exhale: 6-8 counts
+      ratio: "1:1.5 to 1:2"
+      rounds: continuous
+
+    effects:
+      - Reliable parasympathetic activation
+      - Easy to learn and maintain
+      - Promotes relaxation without intense focus required
+
+    applications:
+      journey_phases: [induction, deepening, integration]
+      outcome_alignment: [relaxation, healing, release]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="-1st">
+        With each breath out...<break time="2s"/>
+        let the exhale be a little longer...<break time="2s"/>
+        releasing...<break time="2s"/>
+        letting go...<break time="2.5s"/>
+        allowing your body to soften...<break time="3s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # BELLY BREATHING (Diaphragmatic)
+  # ---------------------------------------------------------------------------
+  belly_breathing:
+    entry_id: "embodiment.pranayama.belly"
+    name: "Diaphragmatic / Belly Breathing"
+    type: "calming"
+
+    definition:
+      brief: "Breathing into the belly using the diaphragm"
+      extended: |
+        Most people breathe shallowly into the chest. Diaphragmatic
+        breathing moves the breath down into the belly, activating
+        the vagus nerve and promoting deep relaxation. Foundation
+        for all pranayama practices.
+
+    instruction: |
+      Breathe so that your belly rises on inhale and falls on exhale.
+      The chest should move minimally. Place a hand on belly to feel
+      the movement.
+
+    effects:
+      - Activates vagus nerve
+      - Promotes relaxation
+      - Increases oxygen exchange
+      - Grounds awareness in body
+
+    applications:
+      journey_phases: [pre_talk, induction, integration, reorientation]
+      outcome_alignment: [relaxation, healing, focus]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="-1st">
+        Let your breath drop down...<break time="2s"/>
+        into your belly...<break time="2s"/>
+        feeling your abdomen rise with each inhale...<break time="2.5s"/>
+        and gently fall with each exhale...<break time="2.5s"/>
+        deep...<break time="1.5s"/>
+        slow...<break time="1.5s"/>
+        natural...<break time="3s"/>
+        </prosody>
+
+# =============================================================================
+# BALANCING PRACTICES
+# =============================================================================
+
+balancing:
+
+  # ---------------------------------------------------------------------------
+  # ALTERNATE NOSTRIL BREATHING (Nadi Shodhana)
+  # ---------------------------------------------------------------------------
+  alternate_nostril:
+    entry_id: "embodiment.pranayama.nadi_shodhana"
+    name: "Alternate Nostril Breathing"
+    sanskrit_name: "Nadi Shodhana"
+    type: "balancing"
+
+    definition:
+      brief: "Alternating breath through left and right nostrils to balance energy"
+      extended: |
+        Nadi Shodhana balances the left and right hemispheres of the brain,
+        corresponding to ida (lunar, cooling) and pingala (solar, heating)
+        nadis. It calms the mind while maintaining alertness - excellent
+        for preparation before deep work.
+
+    pattern:
+      close_right: "Inhale left nostril"
+      close_both: "Hold briefly"
+      close_left: "Exhale right nostril"
+      repeat_reversed: true
+      rounds: 5-10
+
+    effects:
+      - Balances hemispheres
+      - Calms while maintaining alertness
+      - Clears energy channels
+      - Prepares for meditation/trance
+
+    applications:
+      journey_phases: [pre_talk, induction]
+      outcome_alignment: [focus, self_knowledge, spiritual_growth]
+      journey_families: [temple_initiation, celestial_journey]
+
+    templates:
+      ssml_cue_only: |
+        <prosody rate="1.0" pitch="-1st">
+        And if you know this practice...<break time="2s"/>
+        you might now breathe through alternate nostrils...<break time="2s"/>
+        left...<break time="1.5s"/>
+        right...<break time="1.5s"/>
+        balancing the channels...<break time="2s"/>
+        preparing the mind for the journey ahead...<break time="3s"/>
+        </prosody>
+
+    note: "Cannot fully guide in audio-only; cue for those who know it"
+
+  # ---------------------------------------------------------------------------
+  # BOX BREATHING (Sama Vritti)
+  # ---------------------------------------------------------------------------
+  box_breathing:
+    entry_id: "embodiment.pranayama.box"
+    name: "Box Breathing / Square Breathing"
+    sanskrit_name: "Sama Vritti"
+    type: "balancing"
+
+    definition:
+      brief: "Equal duration inhale, hold, exhale, hold - creates stability"
+      extended: |
+        Used by Navy SEALs and other high-performance groups for
+        stress regulation. The equal counts create a stable, balanced
+        state - calm but alert. Excellent for maintaining presence
+        during challenging material.
+
+    pattern:
+      inhale: 4 counts
+      hold_in: 4 counts
+      exhale: 4 counts
+      hold_out: 4 counts
+      rounds: 4-8
+
+    effects:
+      - Balances nervous system
+      - Promotes calm alertness
+      - Reduces stress response
+      - Maintains grounded presence
+
+    applications:
+      journey_phases: [pre_talk, induction, integration]
+      outcome_alignment: [focus, confidence, empowerment]
+
+    templates:
+      ssml_guided: |
+        <prosody rate="1.0" pitch="-1st">
+        Breathe in...<break time="4s"/>
+        hold...<break time="4s"/>
+        breathe out...<break time="4s"/>
+        hold empty...<break time="4s"/>
+        and again...<break time="1s"/>
+        in...<break time="4s"/>
+        hold...<break time="4s"/>
+        out...<break time="4s"/>
+        hold...<break time="4s"/>
+        </prosody>
+
+# =============================================================================
+# ACTIVATING PRACTICES
+# =============================================================================
+
+activating:
+
+  # ---------------------------------------------------------------------------
+  # BREATH OF FIRE (Kapalabhati)
+  # ---------------------------------------------------------------------------
+  breath_of_fire:
+    entry_id: "embodiment.pranayama.kapalabhati"
+    name: "Breath of Fire"
+    sanskrit_name: "Kapalabhati"
+    type: "activating"
+
+    definition:
+      brief: "Rapid rhythmic breathing with active exhale for energy and clarity"
+      extended: |
+        Kapalabhati ("skull shining") involves rapid, rhythmic breaths
+        with emphasis on active exhale. It energizes, clears the mind,
+        and activates solar plexus energy. Use sparingly in hypnotic
+        work for specific energy activation purposes.
+
+    pattern:
+      emphasis: "Active exhale, passive inhale"
+      rate: "1-2 breaths per second"
+      duration: "30 seconds to 1 minute"
+
+    effects:
+      - Energizes and awakens
+      - Clears mental fog
+      - Activates solar plexus
+      - Can precede deep relaxation (contrast)
+
+    applications:
+      journey_phases: [specific_use_only]
+      outcome_alignment: [empowerment, creativity]
+      journey_families: [cosmic_forge]
+
+    templates:
+      ssml_cue: |
+        <prosody rate="1.0" pitch="0st">
+        And now...<break time="2s"/>
+        if you know this practice...<break time="2s"/>
+        you might take several rapid breaths...<break time="2s"/>
+        pumping the belly...<break time="2s"/>
+        awakening your fire...<break time="3s"/>
+        </prosody>
+
+    contraindications:
+      - Anxiety disorders
+      - High blood pressure
+      - Pregnancy
+      - Respiratory conditions
+      - During deep trance (activating)
+
+    note: "Use only in specific activating contexts; not general use"
+
+  # ---------------------------------------------------------------------------
+  # ENERGIZING BREATH
+  # ---------------------------------------------------------------------------
+  energizing_breath:
+    entry_id: "embodiment.pranayama.energizing"
+    name: "Simple Energizing Breath"
+    type: "activating"
+
+    definition:
+      brief: "Gentle activation through inhale emphasis"
+      extended: |
+        A softer alternative to breath of fire - simply emphasizing
+        the inhale over the exhale creates mild activation without
+        intensity. Useful for return phases or gentle awakening.
+
+    pattern:
+      inhale: "Full, intentional"
+      exhale: "Natural release"
+      count: "5-10 breaths"
+
+    effects:
+      - Gentle activation
+      - Increases alertness
+      - Supports return from trance
+      - Energizes without agitation
+
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [focus, confidence]
+
+    templates:
+      ssml_template: |
+        <prosody rate="1.0" pitch="0st">
+        And now...<break time="2s"/>
+        begin to breathe a little more fully...<break time="2s"/>
+        letting each inhale bring energy...<break time="2s"/>
+        life...<break time="1.5s"/>
+        alertness...<break time="2s"/>
+        returning to full wakefulness...<break time="3s"/>
+        </prosody>
+
+# =============================================================================
+# TRANCE-SPECIFIC TECHNIQUES
+# =============================================================================
+
+trance_specific:
+
+  # ---------------------------------------------------------------------------
+  # BREATH AS ANCHOR
+  # ---------------------------------------------------------------------------
+  breath_anchor:
+    entry_id: "embodiment.pranayama.anchor"
+    name: "Breath as Trance Anchor"
+    type: "trance_tool"
+
+    definition:
+      brief: "Using breath rhythm to deepen and maintain trance"
+      extended: |
+        Linking trance depth to breath creates a powerful anchor.
+        "Each breath takes you deeper" becomes self-reinforcing -
+        the natural rhythm of breathing continuously deepens state.
+
+    templates:
+      ssml_deepening: |
+        <prosody rate="1.0" pitch="-2st">
+        And with each breath...<break time="2s"/>
+        you drift deeper...<break time="2s"/>
+        each inhale...<break time="1.5s"/>
+        drawing you in...<break time="2s"/>
+        each exhale...<break time="1.5s"/>
+        releasing you down...<break time="2.5s"/>
+        deeper...<break time="2s"/>
+        and deeper still...<break time="3s"/>
+        </prosody>
+
+      ssml_counting: |
+        <prosody rate="1.0" pitch="-2st">
+        With each breath, going deeper...<break time="2s"/>
+        one...<break time="2s"/>
+        deeper...<break time="2s"/>
+        two...<break time="2s"/>
+        more relaxed...<break time="2s"/>
+        three...<break time="2.5s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # BREATH SYNCHRONIZATION
+  # ---------------------------------------------------------------------------
+  breath_sync:
+    entry_id: "embodiment.pranayama.sync"
+    name: "Breath Synchronization"
+    type: "trance_tool"
+
+    definition:
+      brief: "Synchronizing voice delivery with listener's breathing rhythm"
+      extended: |
+        When the speaker's rhythm matches the listener's breath,
+        rapport deepens and trance enhances. Pause timing can
+        suggest inhale and exhale moments.
+
+    technique: |
+      - Pause on listener's exhale for deepening suggestions
+      - Time key words to fall on exhales
+      - Use phrase length to suggest breath rhythm
+      - Let silence invite natural breathing
+
+    templates:
+      ssml_example: |
+        <prosody rate="1.0" pitch="-2st">
+        Breathing in...<break time="3s"/>
+        breathing out...<break time="4s"/>
+        in...<break time="3s"/>
+        out...<break time="4s"/>
+        each breath perfect...<break time="3s"/>
+        </prosody>
+
+  # ---------------------------------------------------------------------------
+  # BREATH FOR EMOTIONAL PROCESSING
+  # ---------------------------------------------------------------------------
+  breath_emotional:
+    entry_id: "embodiment.pranayama.emotional"
+    name: "Breath for Emotional Processing"
+    type: "processing_tool"
+
+    definition:
+      brief: "Using breath to support movement of emotion"
+      extended: |
+        Breath can help emotions move through the body rather than
+        getting stuck. "Breathe into" instructions direct attention
+        and breath to areas holding emotion.
+
+    templates:
+      ssml_breathe_into: |
+        <prosody rate="1.0" pitch="-2st">
+        And whatever you're feeling now...<break time="2s"/>
+        breathe into it...<break time="2s"/>
+        let your breath touch it...<break time="2.5s"/>
+        not to fix...<break time="2s"/>
+        but to acknowledge...<break time="2s"/>
+        to allow...<break time="3s"/>
+        </prosody>
+
+      ssml_release: |
+        <prosody rate="1.0" pitch="-2st">
+        And on your next exhale...<break time="2s"/>
+        let some of that release...<break time="2.5s"/>
+        breathing out what's ready to go...<break time="2.5s"/>
+        making space...<break time="2.5s"/>
+        </prosody>
+
+# =============================================================================
+# SELECTION GUIDE
+# =============================================================================
+
+selection_guide:
+  by_outcome:
+    healing: [four_seven_eight, extended_exhale, belly_breathing, breath_emotional]
+    transformation: [breath_anchor, coherent_breathing]
+    empowerment: [box_breathing, breath_of_fire]
+    relaxation: [four_seven_eight, extended_exhale, coherent_breathing]
+    focus: [box_breathing, alternate_nostril, coherent_breathing]
+    confidence: [box_breathing, energizing_breath]
+    self_knowledge: [alternate_nostril, breath_emotional]
+    spiritual_growth: [alternate_nostril, breath_anchor]
+    release: [extended_exhale, breath_emotional, four_seven_eight]
+    creativity: [coherent_breathing, energizing_breath]
+
+  by_phase:
+    pre_talk: [belly_breathing, box_breathing]
+    induction: [four_seven_eight, extended_exhale, coherent_breathing]
+    deepening: [breath_anchor, extended_exhale, coherent_breathing]
+    journey: [breath_sync, coherent_breathing]
+    helm_deep_trance: [breath_anchor, breath_emotional]
+    integration: [belly_breathing, extended_exhale, breath_emotional]
+    reorientation: [energizing_breath, belly_breathing]
+
+  by_listener_state:
+    anxious: [extended_exhale, four_seven_eight]
+    agitated: [extended_exhale, belly_breathing]
+    dissociated: [energizing_breath, belly_breathing]
+    resistant: [box_breathing, coherent_breathing]
+    ready: [breath_anchor, coherent_breathing]
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - psychology.polyvagal_theory
+    - ritual.invocation_patterns.sacred_space
+    - symbols.elements.air
+    - audio.soundscape_presets
+
+  related_patterns:
+    - vagal_activation
+    - breath_pacing
+    - fractionation_loops
+    - emotional_calibration
+
+  source_references:
+    - tradition: "Yoga"
+      text: "Yoga Sutras of Patanjali"
+    - author: "Andrew Weil"
+      text: "4-7-8 Breathing Method"
+    - author: "Stephen Elliott"
+      text: "Coherent Breathing"

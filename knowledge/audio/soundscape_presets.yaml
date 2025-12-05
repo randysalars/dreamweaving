@@ -1,0 +1,736 @@
+# =============================================================================
+# SOUNDSCAPE PRESETS - Ambient Environments for Dreamweaving
+# =============================================================================
+# Pre-configured ambient sound palettes mapped to journey families and outcomes.
+# Each preset defines layered audio environments with suggested stems and mixing.
+#
+# Usage: Select preset by journey_family or outcome. Combine with binaural_presets.
+#        Adjust layers based on specific session needs.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "audio"
+category: "soundscapes"
+purpose: "Ambient environment presets for hypnotic audio production"
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+
+overview:
+  definition: |
+    Soundscapes are layered ambient audio environments that establish the
+    journey setting and support trance induction. Each preset combines
+    base atmosphere, environmental layers, accent sounds, and optional
+    musical elements to create immersive sonic spaces.
+
+  layer_structure:
+    base_atmosphere:
+      description: "Continuous foundational tone (drone, pad, room tone)"
+      level: "-18 to -12 dB"
+      purpose: "Establishes sonic space, fills silence"
+
+    environmental_layer:
+      description: "Nature or location sounds (water, wind, birds, etc.)"
+      level: "-15 to -9 dB"
+      purpose: "Creates sense of place"
+
+    accent_sounds:
+      description: "Occasional sounds (chimes, bells, distant thunder)"
+      level: "-12 to -6 dB"
+      purpose: "Marks transitions, maintains interest"
+
+    musical_elements:
+      description: "Optional subtle melodic elements"
+      level: "-18 to -15 dB"
+      purpose: "Emotional support, never dominant"
+
+  mixing_principles:
+    - "Voice always sits above all soundscape elements"
+    - "Binaural beats are separate from soundscape"
+    - "Environmental sounds should never distract"
+    - "Accent sounds mark journey transitions"
+    - "All elements should support trance, not break it"
+
+# =============================================================================
+# JOURNEY FAMILY SOUNDSCAPES
+# =============================================================================
+
+journey_families:
+
+  # ---------------------------------------------------------------------------
+  # EDEN GARDEN
+  # ---------------------------------------------------------------------------
+  eden_garden:
+    entry_id: "audio.soundscapes.eden_garden"
+    name: "Eden Garden Soundscape"
+    description: "Lush paradise garden with water, birds, gentle breeze"
+
+    base_atmosphere:
+      primary: "warm_pad_drone"
+      frequency_center: "150-300 Hz"
+      character: "Warm, enveloping, slightly golden"
+      level: "-15 dB"
+
+    environmental_layers:
+      - name: "gentle_stream"
+        description: "Soft flowing water, babbling brook quality"
+        level: "-12 dB"
+        presence: "continuous"
+
+      - name: "birdsong_distant"
+        description: "Occasional songbirds, not specific species"
+        level: "-15 dB"
+        presence: "intermittent"
+
+      - name: "leaves_rustling"
+        description: "Soft wind through foliage"
+        level: "-18 dB"
+        presence: "continuous_subtle"
+
+    accent_sounds:
+      - name: "crystalline_chimes"
+        timing: "transitions"
+        level: "-9 dB"
+        description: "Clear, bright wind chimes"
+
+      - name: "distant_waterfall"
+        timing: "deepening_phases"
+        level: "-15 dB"
+        description: "Soft roar of falling water"
+
+    musical_elements:
+      style: "Ethereal pads, harp-like tones"
+      key: "C major / A minor (Ionian/Aeolian)"
+      level: "-18 dB"
+
+    color_association: "green, gold, soft blue"
+    element_association: "water, earth"
+
+    outcome_alignment:
+      - healing
+      - relaxation
+      - spiritual_growth
+
+    templates:
+      sfx_cue_opening: "[SFX: Gentle stream begins, birds in distance, 8 seconds fade in]"
+      sfx_cue_transition: "[SFX: Crystalline chimes, single strike, 3 second decay]"
+      sfx_cue_deepening: "[SFX: Distant waterfall joins, subtle, continuous]"
+
+  # ---------------------------------------------------------------------------
+  # OCEAN DEPTHS
+  # ---------------------------------------------------------------------------
+  ocean_depths:
+    entry_id: "audio.soundscapes.ocean_depths"
+    name: "Ocean Depths Soundscape"
+    description: "Deep underwater environment with pressure, movement, mystery"
+
+    base_atmosphere:
+      primary: "deep_oceanic_drone"
+      frequency_center: "60-150 Hz"
+      character: "Deep, pressurized, slightly ominous yet peaceful"
+      level: "-12 dB"
+
+    environmental_layers:
+      - name: "water_movement"
+        description: "Slow underwater currents, whooshing"
+        level: "-12 dB"
+        presence: "continuous"
+
+      - name: "whale_song_distant"
+        description: "Very distant whale calls"
+        level: "-18 dB"
+        presence: "rare"
+
+      - name: "bubble_streams"
+        description: "Occasional rising bubbles"
+        level: "-15 dB"
+        presence: "intermittent"
+
+    accent_sounds:
+      - name: "sonar_ping"
+        timing: "transitions"
+        level: "-12 dB"
+        description: "Single ethereal ping, submarine quality"
+
+      - name: "deep_resonance"
+        timing: "helm_deepest"
+        level: "-9 dB"
+        description: "Low frequency pulse, felt as much as heard"
+
+    musical_elements:
+      style: "Deep pads, sine wave harmonics"
+      key: "D minor / B flat major"
+      level: "-18 dB"
+
+    color_association: "deep blue, teal, black"
+    element_association: "water"
+
+    outcome_alignment:
+      - self_knowledge
+      - release
+      - transformation
+
+    templates:
+      sfx_cue_opening: "[SFX: Descent into water, pressure shift, 6 seconds]"
+      sfx_cue_transition: "[SFX: Sonar ping, single, ethereal, 4 second decay]"
+      sfx_cue_deepening: "[SFX: Deep oceanic pulse, felt in chest, 3 seconds]"
+
+  # ---------------------------------------------------------------------------
+  # UNDERWORLD DESCENT
+  # ---------------------------------------------------------------------------
+  underworld_descent:
+    entry_id: "audio.soundscapes.underworld_descent"
+    name: "Underworld Descent Soundscape"
+    description: "Cavernous depths with echoes, drips, ancient presence"
+
+    base_atmosphere:
+      primary: "cavern_reverb_drone"
+      frequency_center: "80-200 Hz"
+      character: "Hollow, echoing, vast emptiness"
+      level: "-12 dB"
+
+    environmental_layers:
+      - name: "water_drips"
+        description: "Irregular dripping with natural reverb"
+        level: "-15 dB"
+        presence: "intermittent"
+
+      - name: "distant_echoes"
+        description: "Unintelligible whispers, cave echoes"
+        level: "-21 dB"
+        presence: "rare"
+
+      - name: "stone_resonance"
+        description: "Low frequency hum of stone"
+        level: "-18 dB"
+        presence: "continuous_subtle"
+
+    accent_sounds:
+      - name: "gate_opening"
+        timing: "thresholds"
+        level: "-9 dB"
+        description: "Heavy stone grinding, ancient door"
+
+      - name: "torch_ignition"
+        timing: "journey_start"
+        level: "-12 dB"
+        description: "Fire catching, crackling beginning"
+
+      - name: "deep_gong"
+        timing: "helm_deepest"
+        level: "-6 dB"
+        description: "Low ceremonial gong, long decay"
+
+    musical_elements:
+      style: "Dark drones, minor intervals, occasional dissonance"
+      key: "D minor / diminished"
+      level: "-18 dB"
+
+    color_association: "black, deep red, amber (torchlight)"
+    element_association: "earth, fire"
+
+    outcome_alignment:
+      - transformation
+      - release
+      - self_knowledge
+
+    templates:
+      sfx_cue_opening: "[SFX: Stone grinding, ancient gate opens, 5 seconds]"
+      sfx_cue_threshold: "[SFX: Torch ignites, crackling fire begins, 3 seconds]"
+      sfx_cue_deepening: "[SFX: Deep ceremonial gong, resonant, 8 second decay]"
+
+  # ---------------------------------------------------------------------------
+  # COSMIC FORGE
+  # ---------------------------------------------------------------------------
+  cosmic_forge:
+    entry_id: "audio.soundscapes.cosmic_forge"
+    name: "Cosmic Forge Soundscape"
+    description: "Stellar creation space with plasma, energy, cosmic fire"
+
+    base_atmosphere:
+      primary: "stellar_plasma_drone"
+      frequency_center: "100-400 Hz"
+      character: "Crackling energy, vast creative power"
+      level: "-12 dB"
+
+    environmental_layers:
+      - name: "solar_wind"
+        description: "Constant stellar wind, rushing energy"
+        level: "-15 dB"
+        presence: "continuous"
+
+      - name: "plasma_crackle"
+        description: "Electrical discharge, star surface activity"
+        level: "-15 dB"
+        presence: "intermittent"
+
+      - name: "cosmic_hum"
+        description: "Background radiation tone"
+        level: "-21 dB"
+        presence: "continuous_subtle"
+
+    accent_sounds:
+      - name: "nova_burst"
+        timing: "transformation_moments"
+        level: "-6 dB"
+        description: "Explosion of light/energy, brief"
+
+      - name: "forge_strike"
+        timing: "empowerment_anchors"
+        level: "-9 dB"
+        description: "Hammer on cosmic anvil"
+
+      - name: "star_birth"
+        timing: "integration"
+        level: "-12 dB"
+        description: "Rising tone, ignition of new star"
+
+    musical_elements:
+      style: "Powerful pads, brass-like synthesizers, heroic intervals"
+      key: "D major / G major"
+      level: "-15 dB"
+
+    color_association: "gold, white, orange, deep purple"
+    element_association: "fire, spirit"
+
+    outcome_alignment:
+      - empowerment
+      - transformation
+      - confidence
+
+    templates:
+      sfx_cue_opening: "[SFX: Approaching cosmic forge, energy intensifies, 8 seconds]"
+      sfx_cue_transformation: "[SFX: Nova burst, explosion of light, 4 seconds]"
+      sfx_cue_anchoring: "[SFX: Forge strike, hammer on cosmic anvil, 3 seconds]"
+
+  # ---------------------------------------------------------------------------
+  # TEMPLE INITIATION
+  # ---------------------------------------------------------------------------
+  temple_initiation:
+    entry_id: "audio.soundscapes.temple_initiation"
+    name: "Temple Initiation Soundscape"
+    description: "Sacred interior space with incense, ceremony, ancient wisdom"
+
+    base_atmosphere:
+      primary: "temple_reverb_tone"
+      frequency_center: "150-350 Hz"
+      character: "Sacred, hushed, reverent, vast interior"
+      level: "-15 dB"
+
+    environmental_layers:
+      - name: "incense_crackle"
+        description: "Subtle burning incense, occasional pop"
+        level: "-21 dB"
+        presence: "intermittent"
+
+      - name: "flame_flicker"
+        description: "Many candles or torches burning"
+        level: "-18 dB"
+        presence: "continuous_subtle"
+
+      - name: "distant_chanting"
+        description: "Far away voices in unison, wordless"
+        level: "-24 dB"
+        presence: "rare"
+
+    accent_sounds:
+      - name: "temple_bell"
+        timing: "transitions"
+        level: "-9 dB"
+        description: "Clear bronze bell, ceremonial"
+
+      - name: "singing_bowl"
+        timing: "meditation_points"
+        level: "-12 dB"
+        description: "Tibetan singing bowl, sustained tone"
+
+      - name: "staff_strike"
+        timing: "authority_moments"
+        level: "-9 dB"
+        description: "Wooden staff on stone floor"
+
+    musical_elements:
+      style: "Gregorian-inspired pads, modal harmonies"
+      key: "Phrygian / Dorian modes"
+      level: "-18 dB"
+
+    color_association: "gold, deep red, purple, candlelight amber"
+    element_association: "fire, air, spirit"
+
+    outcome_alignment:
+      - spiritual_growth
+      - transformation
+      - self_knowledge
+
+    templates:
+      sfx_cue_opening: "[SFX: Temple bell rings three times, 6 seconds]"
+      sfx_cue_meditation: "[SFX: Singing bowl begins, sustained, 8 seconds]"
+      sfx_cue_authority: "[SFX: Staff strikes stone floor, authoritative, 2 seconds]"
+
+  # ---------------------------------------------------------------------------
+  # CELESTIAL JOURNEY
+  # ---------------------------------------------------------------------------
+  celestial_journey:
+    entry_id: "audio.soundscapes.celestial_journey"
+    name: "Celestial Journey Soundscape"
+    description: "Starfield travel through cosmos, weightless, infinite"
+
+    base_atmosphere:
+      primary: "cosmic_void_drone"
+      frequency_center: "100-250 Hz"
+      character: "Vast, weightless, infinite space, slight sparkle"
+      level: "-15 dB"
+
+    environmental_layers:
+      - name: "stellar_shimmer"
+        description: "High frequency sparkle, stars passing"
+        level: "-18 dB"
+        presence: "continuous"
+
+      - name: "nebula_wash"
+        description: "Slow sweeping sound, gas clouds"
+        level: "-15 dB"
+        presence: "intermittent"
+
+      - name: "cosmic_radiation"
+        description: "Background static, very subtle"
+        level: "-24 dB"
+        presence: "continuous_subtle"
+
+    accent_sounds:
+      - name: "planet_flyby"
+        description: "Doppler whoosh, passing celestial body"
+        timing: "journey_progress"
+        level: "-12 dB"
+
+      - name: "portal_activation"
+        description: "Energy building then release"
+        timing: "transitions"
+        level: "-9 dB"
+
+      - name: "angelic_tone"
+        description: "High crystalline choir-like tone"
+        timing: "revelation_moments"
+        level: "-12 dB"
+
+    musical_elements:
+      style: "Ethereal synths, crystalline arpeggios, choir pads"
+      key: "Lydian mode / floating"
+      level: "-18 dB"
+
+    color_association: "deep purple, silver, white, soft blue"
+    element_association: "air, spirit"
+
+    outcome_alignment:
+      - spiritual_growth
+      - self_knowledge
+      - creativity
+
+    templates:
+      sfx_cue_launch: "[SFX: Ascent into cosmos, rising energy, 6 seconds]"
+      sfx_cue_portal: "[SFX: Portal activates, energy swirl then silence, 4 seconds]"
+      sfx_cue_revelation: "[SFX: Angelic tone rises, crystalline, 5 seconds]"
+
+  # ---------------------------------------------------------------------------
+  # FOREST PRIMEVAL
+  # ---------------------------------------------------------------------------
+  forest_primeval:
+    entry_id: "audio.soundscapes.forest_primeval"
+    name: "Forest Primeval Soundscape"
+    description: "Ancient forest with deep presence, natural wisdom, grounding"
+
+    base_atmosphere:
+      primary: "forest_floor_drone"
+      frequency_center: "80-200 Hz"
+      character: "Deep, earthy, rooted, ancient presence"
+      level: "-15 dB"
+
+    environmental_layers:
+      - name: "wind_through_canopy"
+        description: "Wind moving through high branches"
+        level: "-12 dB"
+        presence: "continuous"
+
+      - name: "forest_creatures"
+        description: "Distant calls, rustling in underbrush"
+        level: "-18 dB"
+        presence: "intermittent"
+
+      - name: "heartbeat_earth"
+        description: "Very low pulse, earth breathing"
+        level: "-21 dB"
+        presence: "continuous_subtle"
+
+    accent_sounds:
+      - name: "owl_call"
+        description: "Distant owl, wisdom symbol"
+        timing: "wisdom_moments"
+        level: "-15 dB"
+
+      - name: "branch_crack"
+        description: "Single branch breaking, presence arrives"
+        timing: "guide_appearance"
+        level: "-12 dB"
+
+      - name: "wolf_howl"
+        description: "Distant wolf, call to instinct"
+        timing: "transformation"
+        level: "-12 dB"
+
+    musical_elements:
+      style: "Organic pads, wooden instrument tones"
+      key: "A minor / natural minor"
+      level: "-18 dB"
+
+    color_association: "deep green, brown, moss, silver moonlight"
+    element_association: "earth, water"
+
+    outcome_alignment:
+      - healing
+      - self_knowledge
+      - release
+
+    templates:
+      sfx_cue_entering: "[SFX: Forest ambience rises, wind, distant creatures, 8 seconds]"
+      sfx_cue_wisdom: "[SFX: Owl calls in distance, three times, 6 seconds]"
+      sfx_cue_guide: "[SFX: Branch cracks, presence sensed, 2 seconds]"
+
+  # ---------------------------------------------------------------------------
+  # MOUNTAIN SUMMIT
+  # ---------------------------------------------------------------------------
+  mountain_summit:
+    entry_id: "audio.soundscapes.mountain_summit"
+    name: "Mountain Summit Soundscape"
+    description: "High altitude clarity with wind, vast views, achievement"
+
+    base_atmosphere:
+      primary: "high_altitude_tone"
+      frequency_center: "200-500 Hz"
+      character: "Clear, thin, crisp, vast openness"
+      level: "-15 dB"
+
+    environmental_layers:
+      - name: "mountain_wind"
+        description: "Strong clean wind, altitude feel"
+        level: "-12 dB"
+        presence: "continuous"
+
+      - name: "distant_eagle"
+        description: "Eagle cry far below"
+        level: "-18 dB"
+        presence: "rare"
+
+      - name: "ice_crystals"
+        description: "Subtle sparkle of ice/snow"
+        level: "-21 dB"
+        presence: "intermittent"
+
+    accent_sounds:
+      - name: "summit_bell"
+        description: "Clear bell at peak, achievement"
+        timing: "achievement_moment"
+        level: "-9 dB"
+
+      - name: "rockfall_distant"
+        description: "Stones falling far away"
+        timing: "release_moments"
+        level: "-15 dB"
+
+      - name: "thunder_distant"
+        description: "Thunder rolling in valleys below"
+        timing: "power_moments"
+        level: "-12 dB"
+
+    musical_elements:
+      style: "Clean, clear tones, triumphant intervals"
+      key: "D major / bright keys"
+      level: "-18 dB"
+
+    color_association: "white, pale blue, gold (sunrise), silver"
+    element_association: "air, earth"
+
+    outcome_alignment:
+      - empowerment
+      - confidence
+      - spiritual_growth
+
+    templates:
+      sfx_cue_ascent: "[SFX: Wind intensifies, altitude increasing, 6 seconds]"
+      sfx_cue_summit: "[SFX: Summit bell rings clear, achievement, 4 seconds]"
+      sfx_cue_power: "[SFX: Distant thunder, power of nature, 5 seconds]"
+
+# =============================================================================
+# OUTCOME-SPECIFIC OVERLAYS
+# =============================================================================
+
+outcome_overlays:
+  note: "Apply these modifications to base family soundscapes based on outcome"
+
+  healing:
+    modifications:
+      - "Emphasize water elements (+3 dB)"
+      - "Add heart-rate resonance layer (60-80 BPM pulse)"
+      - "Soften all accent sounds (-3 dB)"
+      - "Add subtle warmth to base atmosphere"
+    additional_layers:
+      - name: "heartbeat_subtle"
+        level: "-21 dB"
+        character: "Gentle pulse matching relaxed heart rate"
+
+  transformation:
+    modifications:
+      - "Add fire/energy elements"
+      - "Include moment of silence before peak"
+      - "More dramatic accent sounds"
+      - "Allow brief dissonance at transformation point"
+    additional_layers:
+      - name: "energy_building"
+        level: "-15 dB"
+        character: "Rising tension before transformation"
+
+  empowerment:
+    modifications:
+      - "Stronger low-end presence (+3 dB below 150 Hz)"
+      - "More assertive accent sounds"
+      - "Add subtle brass-like harmonics"
+      - "Include victory/achievement sounds"
+    additional_layers:
+      - name: "power_undertone"
+        level: "-18 dB"
+        character: "Grounded, strong presence"
+
+  relaxation:
+    modifications:
+      - "Remove all sudden sounds"
+      - "Slower, gentler environmental movement"
+      - "Reduce accent frequency by 50%"
+      - "Warmer, softer base atmosphere"
+    additional_layers:
+      - name: "breathing_rhythm"
+        level: "-24 dB"
+        character: "Subtle rise/fall matching slow breath"
+
+  spiritual_growth:
+    modifications:
+      - "Add high-frequency shimmer"
+      - "Include angelic/choir elements"
+      - "More reverb on all elements"
+      - "Emphasis on upward movement sounds"
+    additional_layers:
+      - name: "celestial_shimmer"
+        level: "-18 dB"
+        character: "High crystalline presence"
+
+# =============================================================================
+# PHASE-SPECIFIC GUIDELINES
+# =============================================================================
+
+phase_guidelines:
+
+  pre_talk:
+    approach: "Minimal soundscape, focus on voice"
+    elements:
+      - "Base atmosphere only at -21 dB"
+      - "No accent sounds"
+      - "No environmental layers"
+    purpose: "Keep listener grounded in ordinary reality"
+
+  induction:
+    approach: "Gradual introduction of soundscape"
+    elements:
+      - "Slowly fade in base atmosphere to -15 dB"
+      - "Add first environmental layer"
+      - "First accent sound marks trance threshold"
+    purpose: "Support transition into altered state"
+
+  deepening:
+    approach: "Full soundscape engagement"
+    elements:
+      - "All layers active at target levels"
+      - "Environmental sounds fully present"
+      - "Occasional accent sounds"
+    purpose: "Immerse listener in journey environment"
+
+  journey:
+    approach: "Dynamic soundscape responding to narrative"
+    elements:
+      - "Adjust layers to match story beats"
+      - "Use accent sounds to mark transitions"
+      - "Allow musical elements for emotional moments"
+    purpose: "Support narrative arc with sound"
+
+  helm_deep_trance:
+    approach: "Simplified, deeper soundscape"
+    elements:
+      - "Reduce to essential layers"
+      - "Lower frequency emphasis"
+      - "Minimal accent sounds"
+      - "More space, more silence"
+    purpose: "Support deepest trance without distraction"
+
+  integration:
+    approach: "Gradually simplifying soundscape"
+    elements:
+      - "Begin reducing layers"
+      - "Soften environmental sounds"
+      - "Gentle accent sounds only"
+    purpose: "Support return while maintaining space"
+
+  reorientation:
+    approach: "Minimal soundscape, return to ordinary"
+    elements:
+      - "Fade out all layers gradually"
+      - "Return to base atmosphere only"
+      - "Final accent sound marks return"
+    purpose: "Complete return to waking consciousness"
+
+# =============================================================================
+# TECHNICAL SPECIFICATIONS
+# =============================================================================
+
+technical_specs:
+
+  file_formats:
+    stems: "WAV 48kHz 24-bit"
+    delivery: "MP3 320kbps or WAV"
+
+  frequency_considerations:
+    voice_space: "300-3000 Hz - keep soundscape elements low"
+    binaural_space: "150-500 Hz carrier - don't mask"
+    low_end: "Below 100 Hz - use sparingly, can muddy"
+    high_end: "Above 10kHz - shimmer/air, very subtle"
+
+  mixing_levels:
+    base_atmosphere: "-18 to -12 dB"
+    environmental_primary: "-15 to -9 dB"
+    environmental_secondary: "-18 to -15 dB"
+    accent_sounds: "-12 to -6 dB (brief peaks)"
+    musical_elements: "-21 to -15 dB"
+
+  transition_times:
+    fade_in_start: "8-15 seconds"
+    layer_introduction: "4-8 seconds per layer"
+    accent_decay: "2-8 seconds depending on element"
+    fade_out_end: "15-30 seconds"
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+
+relationships:
+  synergies:
+    - audio.binaural_presets
+    - symbols.elemental_attributions
+    - symbols.color_correspondences
+
+  related_indexes:
+    - indexes.outcome_index
+    - indexes.domain_index
+
+  source_categories:
+    - "Field recordings"
+    - "Synthesized atmospheres"
+    - "Foley sound design"
+    - "Ambient music libraries"

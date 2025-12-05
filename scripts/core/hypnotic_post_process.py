@@ -132,6 +132,49 @@ DEFAULTS = {
 
 
 # =============================================================================
+# VOICE-CLEAR MODE SETTINGS
+# =============================================================================
+# Optimized for maximum voice intelligibility while maintaining hypnotic depth.
+# Disables all voice-doubling layers that can cause muddy audio.
+# Approved settings from Carnegie Steel Empire session testing.
+
+VOICE_CLEAR_SETTINGS = {
+    # Tape warmth - subtle analog feel
+    'warmth_drive': 0.20,
+
+    # De-essing - always on for smoothness
+    'deess_enabled': True,
+
+    # Voice-doubling layers - ALL DISABLED for clarity
+    'whisper_enabled': False,
+    'subharmonic_enabled': False,
+    'double_enabled': False,
+    'hf_aura_enabled': False,
+    'dual_reverb_enabled': False,
+    'adaptive_enabled': False,
+
+    # Room tone - minimal spatial context
+    'room_enabled': True,
+    'room_amount': 0.03,
+
+    # Cuddle waves - gentle amplitude modulation
+    'cuddle_enabled': True,
+    'cuddle_freq': 0.05,
+    'cuddle_depth_db': 1.2,
+
+    # Echo - subtle depth (not voice-doubling)
+    'echo_enabled': True,
+    'echo_delay_ms': 250,
+    'echo_decay': 0.12,
+    'echo_feedback': 0.08,
+
+    # Mastering
+    'target_lufs': -14,
+    'true_peak_dbtp': -1.5,
+}
+
+
+# =============================================================================
 # UTILITY FUNCTIONS
 # =============================================================================
 
@@ -1101,6 +1144,12 @@ def _build_settings_from_args(args):
     """Build settings dictionary from parsed CLI arguments."""
     settings = {}
 
+    # Apply voice-clear preset first (can be overridden by explicit flags)
+    if getattr(args, 'voice_clear', False):
+        print("\n🎯 Voice-Clear Mode: Maximum voice intelligibility")
+        settings.update(VOICE_CLEAR_SETTINGS)
+        return settings  # Voice-clear mode ignores other flags for simplicity
+
     # Toggle mappings: (arg_name, setting_key)
     toggles = [
         ('no_deess', 'deess_enabled'),
@@ -1235,6 +1284,10 @@ Examples:
     # Processing mode
     parser.add_argument('--ffmpeg-only', action='store_true',
                        help='Use lightweight FFmpeg-only processing (lower memory, for long sessions)')
+    parser.add_argument('--voice-clear', action='store_true',
+                       help='Voice-first mode: max voice clarity, minimal effects. '
+                            'Disables whisper, subharmonic, double, HF-aura, dual-reverb, adaptive. '
+                            'Keeps warmth(20%%), room(3%%), echo(250ms/12%%), cuddle(1.2dB).')
 
     args = parser.parse_args()
 

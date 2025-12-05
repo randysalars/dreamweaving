@@ -1,0 +1,860 @@
+# =============================================================================
+# ELEMENTAL ATTRIBUTIONS - Five Element Correspondence System
+# =============================================================================
+# The classical five elements form the foundation of symbolic correspondence
+# in Dreamweaving. Each element carries specific energetic qualities, sensory
+# associations, psychological meanings, and transformational potentials.
+#
+# Usage: Select elements based on session outcome and journey theme.
+#        Use templates for SSML, imagery, and audio cues.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-05"
+domain: "symbols"
+category: "elements"
+purpose: "Elemental correspondence system for Dreamweaving sessions"
+
+# =============================================================================
+# FIRE ELEMENT
+# =============================================================================
+
+fire:
+  entry_id: "symbols.elements.fire"
+  name: "Fire Element"
+  domain: "symbols"
+  category: "elements"
+
+  definition:
+    brief: "The transformative principle of heat, light, will, and purification"
+    extended: |
+      Fire is the element of transformation, will, and spiritual aspiration.
+      It represents the power to consume what no longer serves, transmute base
+      material into refined essence, and illuminate darkness with conscious awareness.
+      In the psyche, fire corresponds to passion, courage, anger, and the will to act.
+      Fire purifies through destruction of form, releasing energy for new creation.
+    essence: "That which transforms what was into what shall be"
+
+  attributes:
+    energy_quality: active
+    element: fire
+    planetary: sun
+    secondary_planetary: mars
+    chakra: solar
+    secondary_chakra: root
+    brainwave: beta
+    season: summer
+    time_of_day: noon
+    direction: south
+    colors: [red, orange, gold, yellow]
+    numbers: [1, 3]
+    sense: sight
+    taste: bitter
+    body_system: circulatory
+    psychological_function: will
+    jungian_function: intuition
+
+  correspondences:
+    animals: [phoenix, salamander, lion, dragon, snake]
+    plants: [cinnamon, clove, ginger, nettle, thistle, sunflower]
+    stones: [ruby, garnet, carnelian, fire opal, amber]
+    metals: [gold, iron]
+    incense: [frankincense, cinnamon, dragon's blood]
+    sounds: [crackling, roaring, hissing]
+    textures: [hot, dry, sharp, burning]
+    archetypes: [phoenix, warrior, alchemist, magician]
+    deities: [Agni, Brigid, Prometheus, Ra, Sekhmet]
+    hebrew_letter: shin
+    tarot: [wands_suit, strength, sun, tower]
+
+  applications:
+    journey_phases: [journey, helm_deep_trance]
+    outcome_alignment: [transformation, empowerment, confidence, release]
+    journey_families: [cosmic_forge, underworld_descent]
+    use_cases:
+      - "Burning away old patterns, beliefs, or identities"
+      - "Igniting passion, motivation, and creative drive"
+      - "Phoenix/rebirth transformation sequences"
+      - "Alchemical transmutation and purification"
+      - "Awakening courage and warrior energy"
+      - "Illuminating shadow material"
+    contraindications:
+      - "Acute anxiety or panic (too activating)"
+      - "Trauma work without sufficient grounding"
+      - "Manic states (avoid further activation)"
+      - "Anger issues without containment established"
+
+  templates:
+    ssml_induction: |
+      <prosody rate="1.0" pitch="-1st">
+      And now you feel a warmth beginning to grow...<break time="2s"/>
+      perhaps in your heart...<break time="1.5s"/>
+      or deep in your core...<break time="2s"/>
+      a fire that knows exactly what must be transformed...<break time="2.5s"/>
+      what must be released into light...<break time="3s"/>
+      </prosody>
+
+    ssml_journey: |
+      <prosody rate="1.0" pitch="-2st">
+      The flames rise around you...<break time="2s"/>
+      but you feel no fear...<break time="1.5s"/>
+      because this fire is yours...<break time="2s"/>
+      it knows the difference...<break time="1.5s"/>
+      between what serves you...<break time="1.5s"/>
+      and what must <emphasis level="moderate">burn</emphasis>...<break time="3s"/>
+      </prosody>
+
+    ssml_transformation: |
+      <prosody rate="1.0" pitch="-2st">
+      And here in the flames...<break time="2s"/>
+      you discover something unexpected...<break time="2s"/>
+      the fire does not consume you...<break time="2s"/>
+      it <emphasis level="moderate">reveals</emphasis> you...<break time="2.5s"/>
+      burning away only what was never truly yours...<break time="2s"/>
+      and from these ashes...<break time="1.5s"/>
+      something new rises...<break time="2s"/>
+      more you than you've ever been...<break time="3.5s"/>
+      </prosody>
+
+    visual_prompt: "sacred fire burning in a ceremonial bowl, golden flames dancing upward, sparks rising like stars into darkness, warm amber light illuminating ancient stone, --ar 16:9 --style raw"
+
+    visual_prompt_journey: "walking through a corridor of golden fire that parts respectfully, flames forming sacred patterns, alchemical symbols in the light, warm protective glow, --ar 16:9"
+
+    audio_cue: "Crackling fire ambience, rising warmth, subtle deep percussion, occasional spark sounds"
+
+    invocation_text: |
+      I call upon the sacred fire,
+      The flame that purifies and transforms,
+      The light that reveals truth,
+      The heat that forges new being.
+      May this fire burn away all that no longer serves,
+      And illuminate the path of becoming.
+
+    sensory_description: |
+      See the dancing flames, golden and orange, casting shadows that move like
+      ancient memories. Feel the warmth spreading through your body, loosening
+      what was tight, softening what was hard. Hear the soft crackle and hiss,
+      the whisper of transformation. Smell the sacred smoke carrying prayers upward.
+      Taste the dry heat on your tongue, the essence of change itself.
+
+  relationships:
+    synergies:
+      - symbols.elements.air        # Fans flames, carries smoke upward
+      - mythology.phoenix           # Fire rebirth archetype
+      - traditions.alchemy.calcination
+      - symbols.colors.gold
+      - symbols.colors.red
+    opposites:
+      - symbols.elements.water      # Balancing, cooling, extinguishing
+    prerequisites:
+      - embodiment.grounding        # Establish container before fire work
+    progressions:
+      - symbols.alchemy.conjunction # Advanced fire-water integration
+    related_patterns:
+      - fractionation_loops         # Intensification through heat
+      - temporal_dissociation       # Time manipulation in fire
+      - embedded_commands           # "Burn away", "ignite", "transform"
+    related_archetypes:
+      - phoenix
+      - prometheus
+
+  source_references:
+    - tradition: "Western Hermeticism"
+      text: "The Emerald Tablet"
+    - tradition: "Alchemy"
+      text: "Aurora Consurgens"
+    - tradition: "Yoga"
+      text: "Agni - digestive fire, tapas"
+    - tradition: "Qabalah"
+      text: "Shin - Fire, Spirit descending"
+
+# =============================================================================
+# WATER ELEMENT
+# =============================================================================
+
+water:
+  entry_id: "symbols.elements.water"
+  name: "Water Element"
+  domain: "symbols"
+  category: "elements"
+
+  definition:
+    brief: "The receptive principle of emotion, intuition, purification, and flow"
+    extended: |
+      Water is the element of emotion, intuition, and the unconscious depths.
+      It represents the capacity to feel, to flow, to cleanse, and to dissolve.
+      Water adapts to any container while maintaining its essential nature.
+      In the psyche, water corresponds to the emotional body, dreams, memory,
+      and the vast ocean of the collective unconscious. Water heals through
+      dissolving rigidity and washing away what no longer belongs.
+    essence: "That which feels, flows, and finds its own level"
+
+  attributes:
+    energy_quality: receptive
+    element: water
+    planetary: moon
+    secondary_planetary: neptune
+    chakra: sacral
+    secondary_chakra: heart
+    brainwave: delta
+    season: autumn
+    time_of_day: dusk
+    direction: west
+    colors: [blue, silver, green, aqua, deep purple]
+    numbers: [2, 7]
+    sense: taste
+    taste: salty
+    body_system: lymphatic
+    psychological_function: feeling
+    jungian_function: feeling
+
+  correspondences:
+    animals: [fish, dolphin, whale, seahorse, frog, serpent]
+    plants: [water lily, lotus, seaweed, willow, cucumber]
+    stones: [aquamarine, moonstone, pearl, blue lace agate, larimar]
+    metals: [silver, copper]
+    incense: [jasmine, lotus, myrrh, sandalwood]
+    sounds: [flowing, dripping, waves, rain]
+    textures: [wet, cool, smooth, fluid]
+    archetypes: [poseidon, healer, mystic, dreamer]
+    deities: [Poseidon, Yemaya, Tiamat, Brigid (wells), Aphrodite]
+    hebrew_letter: mem
+    tarot: [cups_suit, moon, high_priestess, star]
+
+  applications:
+    journey_phases: [induction, deepening, journey, integration]
+    outcome_alignment: [healing, self_knowledge, release, relaxation]
+    journey_families: [ocean_depths, eden_garden]
+    use_cases:
+      - "Emotional healing and release"
+      - "Purification and cleansing ceremonies"
+      - "Accessing the unconscious and dreams"
+      - "Dissolving resistance and rigidity"
+      - "Intuitive development"
+      - "Grief processing and letting go"
+    contraindications:
+      - "Drowning trauma (modify imagery carefully)"
+      - "Dissociative states (may deepen dissociation)"
+      - "Depression without grounding (can increase heaviness)"
+
+  templates:
+    ssml_induction: |
+      <prosody rate="1.0" pitch="-2st">
+      And now imagine yourself near water...<break time="2s"/>
+      perhaps the gentle shore of a sacred lake...<break time="2s"/>
+      or beside a flowing stream...<break time="2s"/>
+      feel the coolness in the air...<break time="1.5s"/>
+      the moisture on your skin...<break time="2s"/>
+      as your body begins to soften...<break time="2.5s"/>
+      </prosody>
+
+    ssml_journey: |
+      <prosody rate="1.0" pitch="-2st">
+      You find yourself descending...<break time="2s"/>
+      into the depths...<break time="1.5s"/>
+      but you can breathe here...<break time="2s"/>
+      this water holds you...<break time="2s"/>
+      supports you...<break time="1.5s"/>
+      and begins to dissolve...<break time="2s"/>
+      everything that no longer belongs...<break time="3s"/>
+      </prosody>
+
+    ssml_healing: |
+      <prosody rate="1.0" pitch="-2st">
+      Let the water wash through you...<break time="2.5s"/>
+      through every cell...<break time="2s"/>
+      carrying away...<break time="1.5s"/>
+      what has been held too long...<break time="2.5s"/>
+      feel it dissolving...<break time="2s"/>
+      feel yourself becoming <emphasis level="moderate">clean</emphasis>...<break time="3s"/>
+      clear...<break time="2s"/>
+      renewed...<break time="3.5s"/>
+      </prosody>
+
+    visual_prompt: "sacred pool of luminous turquoise water in a hidden grotto, moonlight streaming through crystal formations above, gentle ripples, bioluminescent particles floating, --ar 16:9 --style raw"
+
+    visual_prompt_depths: "descending into deep ocean depths, beams of light filtering from above, ancient temple structures visible below, schools of luminous fish, sense of profound peace, --ar 16:9"
+
+    audio_cue: "Gentle water flowing, subtle ocean waves, occasional drops, underwater ambience, whale song in distance"
+
+    invocation_text: |
+      I call upon the sacred waters,
+      The flow that cleanses and heals,
+      The depths that hold all memory,
+      The tide that knows when to release.
+      May these waters wash through me,
+      Dissolving all that no longer serves,
+      Returning me to my essential nature.
+
+    sensory_description: |
+      See the water, clear as liquid light, with depths that shift from turquoise
+      to deepest blue. Feel its cool embrace on your skin, supporting you
+      effortlessly, flowing around you like silk. Hear the gentle sounds of
+      movement, droplets, distant waves. Taste the clean, mineral essence.
+      Smell the fresh moisture, the hint of ocean or rain.
+
+  relationships:
+    synergies:
+      - symbols.elements.earth      # Container for water
+      - mythology.poseidon          # Ocean king archetype
+      - symbols.colors.blue
+      - symbols.colors.silver
+      - psychology.somatic_experiencing
+    opposites:
+      - symbols.elements.fire       # Evaporation, steam, conflict
+    prerequisites: []
+    progressions:
+      - symbols.alchemy.dissolution # Advanced water work
+      - consciousness_maps.ocean_of_being
+    related_patterns:
+      - vagal_activation            # Water imagery calms
+      - breath_pacing               # Flow with water
+      - emotional_calibration       # Water holds emotions
+    related_archetypes:
+      - poseidon
+      - divine_beloved
+
+  source_references:
+    - tradition: "Western Hermeticism"
+      text: "Fludd's cosmological waters"
+    - tradition: "Qabalah"
+      text: "Mem - Water, the unconscious"
+    - tradition: "Taoism"
+      text: "Tao Te Ching - nature of water"
+    - tradition: "Psychology"
+      text: "Jung's ocean as collective unconscious"
+
+# =============================================================================
+# AIR ELEMENT
+# =============================================================================
+
+air:
+  entry_id: "symbols.elements.air"
+  name: "Air Element"
+  domain: "symbols"
+  category: "elements"
+
+  definition:
+    brief: "The principle of mind, communication, breath, and freedom"
+    extended: |
+      Air is the element of the mind, thought, communication, and breath.
+      It represents the power of intellect, the freedom of movement, and
+      the invisible force that connects all things. Air carries sound, scent,
+      and the breath of life itself. In the psyche, air corresponds to
+      mental clarity, new ideas, communication, and the ability to see
+      from higher perspectives. Air liberates through offering new viewpoints.
+    essence: "That which moves, connects, and carries life between all things"
+
+  attributes:
+    energy_quality: active
+    element: air
+    planetary: mercury
+    secondary_planetary: uranus
+    chakra: throat
+    secondary_chakra: heart
+    brainwave: alpha
+    season: spring
+    time_of_day: dawn
+    direction: east
+    colors: [yellow, light blue, white, lavender, pale green]
+    numbers: [3, 8]
+    sense: smell
+    taste: sweet
+    body_system: respiratory
+    psychological_function: thinking
+    jungian_function: thinking
+
+  correspondences:
+    animals: [eagle, hawk, butterfly, hummingbird, dragonfly]
+    plants: [lavender, mint, eucalyptus, pine, cedar]
+    stones: [clear quartz, fluorite, citrine, blue topaz]
+    metals: [mercury, aluminum]
+    incense: [lavender, eucalyptus, sage, cedar]
+    sounds: [wind, breath, flute, chimes]
+    textures: [light, cool, dry, moving]
+    archetypes: [hermes, messenger, trickster, oracle]
+    deities: [Hermes, Thoth, Vayu, Arianrhod, Nut]
+    hebrew_letter: aleph
+    tarot: [swords_suit, fool, star, lovers]
+
+  applications:
+    journey_phases: [pre_talk, induction, integration, reorientation]
+    outcome_alignment: [release, creativity, focus, spiritual_growth]
+    journey_families: [celestial_journey, temple_initiation]
+    use_cases:
+      - "Releasing what has been held"
+      - "Gaining new perspectives and clarity"
+      - "Communication with guides or higher self"
+      - "Breathing practices for state change"
+      - "Mental clarity and insight"
+      - "Transitions and threshold crossing"
+    contraindications:
+      - "Severe anxiety (may increase mental activity)"
+      - "Dissociative states (too ungrounding)"
+      - "Panic disorder (breath focus may trigger)"
+
+  templates:
+    ssml_induction: |
+      <prosody rate="1.0" pitch="-1st">
+      And with your next breath...<break time="2s"/>
+      feel the air entering your body...<break time="2s"/>
+      fresh...<break time="1s"/>
+      alive...<break time="1.5s"/>
+      carrying with it...<break time="1.5s"/>
+      everything you need...<break time="2s"/>
+      and as you exhale...<break time="2s"/>
+      releasing what no longer serves...<break time="3s"/>
+      </prosody>
+
+    ssml_journey: |
+      <prosody rate="1.0" pitch="-1st">
+      You find yourself rising...<break time="2s"/>
+      lifted by the wind...<break time="2s"/>
+      effortlessly ascending...<break time="2s"/>
+      able to see further now...<break time="2s"/>
+      with each breath taking you higher...<break time="2.5s"/>
+      to where the air is clear...<break time="2s"/>
+      and everything makes sense...<break time="3s"/>
+      </prosody>
+
+    ssml_release: |
+      <prosody rate="1.0" pitch="-1st">
+      Let the wind carry it away...<break time="2.5s"/>
+      all of it...<break time="1.5s"/>
+      every weight...<break time="1.5s"/>
+      every burden...<break time="1.5s"/>
+      released into the <emphasis level="moderate">vast</emphasis> sky...<break time="2.5s"/>
+      dispersing...<break time="2s"/>
+      dissolving...<break time="2s"/>
+      until you feel light...<break time="2s"/>
+      unburdened...<break time="2s"/>
+      free...<break time="3.5s"/>
+      </prosody>
+
+    visual_prompt: "standing on a mountain peak at dawn, golden light streaming through clouds, eagles circling below, wind-swept hair and robes, vast expanse of sky, sense of infinite possibility, --ar 16:9 --style raw"
+
+    visual_prompt_flight: "flying through luminous clouds at sunrise, golden light breaking through, feathers of light trailing behind, sense of freedom and expansion, sacred geometry in cloud formations, --ar 16:9"
+
+    audio_cue: "Gentle wind, distant chimes, occasional bird calls, soft flute tones, breath sounds"
+
+    invocation_text: |
+      I call upon the sacred winds,
+      The breath that moves through all things,
+      The messenger between worlds,
+      The liberator of what must fly free.
+      May this wind carry away all heaviness,
+      And bring clarity to my mind,
+      And freedom to my spirit.
+
+    sensory_description: |
+      Feel the wind against your skin, gentle but alive, carrying the scent of
+      distant places and possibilities. See the vast expanse of sky, clouds
+      moving like thoughts, light filtering through in golden rays. Hear the
+      whisper of wind through unseen passages, the distant cry of birds.
+      Taste the freshness on your tongue, clean and invigorating.
+
+  relationships:
+    synergies:
+      - symbols.elements.fire       # Air feeds fire, carries smoke
+      - mythology.hermes            # Messenger archetype
+      - embodiment.pranayama        # Breath work
+      - symbols.colors.yellow
+    opposites:
+      - symbols.elements.earth      # Grounding vs. elevating
+    prerequisites: []
+    progressions:
+      - consciousness_maps.witness  # Observer perspective
+    related_patterns:
+      - breath_pacing               # Air is breath
+      - temporal_dissociation       # Timelessness of flight
+      - sensory_stacking            # Multi-sensory air imagery
+    related_archetypes:
+      - hermes
+      - seeker
+
+  source_references:
+    - tradition: "Western Hermeticism"
+      text: "Aleph - first breath"
+    - tradition: "Yoga"
+      text: "Prana - life force in breath"
+    - tradition: "Qabalah"
+      text: "Aleph - Air, the Fool's journey"
+    - tradition: "Taoism"
+      text: "Chi - vital breath"
+
+# =============================================================================
+# EARTH ELEMENT
+# =============================================================================
+
+earth:
+  entry_id: "symbols.elements.earth"
+  name: "Earth Element"
+  domain: "symbols"
+  category: "elements"
+
+  definition:
+    brief: "The stabilizing principle of form, matter, grounding, and abundance"
+    extended: |
+      Earth is the element of stability, manifestation, and physical form.
+      It represents the power to ground, to build, to contain, and to nurture.
+      Earth is the body itself, the vessel that holds consciousness, the
+      foundation upon which all else is built. In the psyche, earth corresponds
+      to security, patience, persistence, and the slow wisdom of time.
+      Earth heals through grounding, containing, and providing solid support.
+    essence: "That which holds, supports, and gives form to all things"
+
+  attributes:
+    energy_quality: receptive
+    element: earth
+    planetary: saturn
+    secondary_planetary: venus
+    chakra: root
+    secondary_chakra: sacral
+    brainwave: theta
+    season: winter
+    time_of_day: midnight
+    direction: north
+    colors: [brown, green, black, ochre, terracotta]
+    numbers: [4, 8]
+    sense: touch
+    taste: savory
+    body_system: skeletal
+    psychological_function: sensation
+    jungian_function: sensation
+
+  correspondences:
+    animals: [bear, bull, stag, snake, tortoise, worm]
+    plants: [oak, wheat, root vegetables, moss, fern]
+    stones: [obsidian, hematite, jasper, smoky quartz, moss agate]
+    metals: [lead, iron]
+    incense: [patchouli, vetiver, cedar, pine]
+    sounds: [deep drums, stones, footsteps, heartbeat]
+    textures: [heavy, solid, rough, dense]
+    archetypes: [atlas, crone, builder, guardian]
+    deities: [Gaia, Demeter, Pan, Cernunnos, Pachamama]
+    hebrew_letter: tav
+    tarot: [pentacles_suit, empress, hierophant, devil]
+
+  applications:
+    journey_phases: [pre_talk, induction, deepening, reorientation]
+    outcome_alignment: [healing, confidence, focus, relaxation]
+    journey_families: [eden_garden, temple_initiation]
+    use_cases:
+      - "Grounding and stabilizing before deep work"
+      - "Building foundations and containers"
+      - "Connecting with body wisdom"
+      - "Manifesting intentions into form"
+      - "Establishing safety and security"
+      - "Returning from journey states"
+    contraindications:
+      - "Feeling stuck or trapped (may reinforce)"
+      - "Need for change and movement (too stabilizing)"
+
+  templates:
+    ssml_induction: |
+      <prosody rate="1.0" pitch="-2st">
+      Feel the solid ground beneath you...<break time="2s"/>
+      supporting you completely...<break time="2s"/>
+      as it has supported countless beings...<break time="2.5s"/>
+      for millions of years...<break time="2s"/>
+      feel that stability...<break time="2s"/>
+      that patient strength...<break time="2.5s"/>
+      becoming your own...<break time="3s"/>
+      </prosody>
+
+    ssml_grounding: |
+      <prosody rate="1.0" pitch="-2st">
+      Imagine roots growing...<break time="2s"/>
+      from the base of your spine...<break time="2s"/>
+      down through your legs...<break time="2s"/>
+      through your feet...<break time="2s"/>
+      deep into the earth...<break time="2.5s"/>
+      anchoring you...<break time="2s"/>
+      connecting you...<break time="2s"/>
+      to the endless support below...<break time="3.5s"/>
+      </prosody>
+
+    ssml_return: |
+      <prosody rate="1.0" pitch="-1st">
+      And now you begin to feel...<break time="2s"/>
+      the weight of your body...<break time="2s"/>
+      returning fully...<break time="2s"/>
+      to your physical form...<break time="2s"/>
+      grounded...<break time="1.5s"/>
+      solid...<break time="1.5s"/>
+      present...<break time="2s"/>
+      here...<break time="3s"/>
+      </prosody>
+
+    visual_prompt: "ancient forest floor covered in soft moss and fallen leaves, massive tree roots creating sacred spaces, dappled golden light, mushrooms glowing softly, sense of timeless stability, --ar 16:9 --style raw"
+
+    visual_prompt_cave: "deep within a crystal cave, gemstones growing from walls, warm golden light from unseen source, ancient carved symbols, sense of being held by the earth, --ar 16:9"
+
+    audio_cue: "Deep bass tones, heartbeat rhythm, subtle earth sounds, distant thunder, forest ambience"
+
+    invocation_text: |
+      I call upon the sacred earth,
+      The ground that holds all things,
+      The body of the Mother,
+      The foundation of all that is.
+      May this earth ground me,
+      Support me, contain me,
+      And remind me of my belonging.
+
+    sensory_description: |
+      Feel the solid ground beneath you, the density and weight of matter.
+      See the rich browns and greens, the textures of bark and stone and soil.
+      Hear the deep silence that earth holds, punctuated by gentle sounds of life.
+      Smell the rich humus, the minerals, the green growth. Taste the mineral
+      essence, the grounding heaviness that reminds you: you belong here.
+
+  relationships:
+    synergies:
+      - symbols.elements.water      # Earth contains water
+      - embodiment.grounding        # Grounding practices
+      - symbols.colors.green
+      - symbols.colors.brown
+    opposites:
+      - symbols.elements.air        # Rising vs. grounding
+    prerequisites: []
+    progressions:
+      - symbols.alchemy.coagulation # Fixed form
+    related_patterns:
+      - vagal_activation            # Safety through grounding
+      - breath_pacing               # Slow earth breath
+    related_archetypes:
+      - atlas
+      - guardian
+
+  source_references:
+    - tradition: "Western Hermeticism"
+      text: "Malkuth - Kingdom, physical realm"
+    - tradition: "Indigenous"
+      text: "Pachamama - Earth Mother"
+    - tradition: "Greek"
+      text: "Gaia - primordial Earth"
+
+# =============================================================================
+# SPIRIT/AETHER ELEMENT
+# =============================================================================
+
+spirit:
+  entry_id: "symbols.elements.spirit"
+  name: "Spirit Element (Aether/Quintessence)"
+  domain: "symbols"
+  category: "elements"
+
+  definition:
+    brief: "The unifying principle that transcends and includes all elements"
+    extended: |
+      Spirit, also called Aether or Quintessence, is the fifth element that
+      permeates and unifies all others. It is the element of pure consciousness,
+      divine presence, and the animating force of the universe. Spirit
+      represents the point where all elements meet and transcend their
+      individual natures. In the psyche, spirit corresponds to the Higher Self,
+      soul, divine spark, and the experience of unity consciousness.
+    essence: "That which is the source and substance of all that is"
+
+  attributes:
+    energy_quality: balanced
+    element: spirit
+    planetary: none
+    chakra: crown
+    secondary_chakra: heart
+    brainwave: gamma
+    season: all
+    time_of_day: all
+    direction: center
+    colors: [white, violet, gold, silver, iridescent]
+    numbers: [0, 5]
+    sense: all
+    body_system: nervous
+    psychological_function: transcendent
+    jungian_function: self
+
+  correspondences:
+    animals: [phoenix, dragon, unicorn, white dove]
+    plants: [lotus, white rose, bodhi tree]
+    stones: [diamond, clear quartz, selenite, moldavite]
+    metals: [platinum, orichalcum]
+    incense: [frankincense, myrrh, white sage]
+    sounds: [om, silence, celestial harmonics]
+    textures: [light, transparent, luminous]
+    archetypes: [divine_beloved, wise_elder, guide]
+    deities: [Brahman, Ein Sof, Logos, Great Spirit]
+    hebrew_letter: shin
+    tarot: [world, judgment, universe]
+
+  applications:
+    journey_phases: [helm_deep_trance, integration]
+    outcome_alignment: [spiritual_growth, transformation, healing]
+    journey_families: [celestial_journey, temple_initiation]
+    use_cases:
+      - "Peak spiritual experiences"
+      - "Connection with divine/higher self"
+      - "Integration of all elements"
+      - "Transcendent states"
+      - "Soul retrieval work"
+      - "Unity consciousness"
+    contraindications:
+      - "Spiritual bypass of shadow work"
+      - "Dissociation from body (may reinforce)"
+      - "Psychosis or mania (too expansive)"
+
+  templates:
+    ssml_helm: |
+      <prosody rate="1.0" pitch="-3st">
+      And here...<break time="3s"/>
+      at the very center...<break time="2.5s"/>
+      where all things meet...<break time="2.5s"/>
+      you feel it...<break time="3s"/>
+      the presence that has always been...<break time="3s"/>
+      the light that needs no source...<break time="3s"/>
+      the love that simply <emphasis level="moderate">is</emphasis>...<break time="4s"/>
+      </prosody>
+
+    ssml_integration: |
+      <prosody rate="1.0" pitch="-2st">
+      All elements within you...<break time="2s"/>
+      fire and water...<break time="2s"/>
+      air and earth...<break time="2s"/>
+      united now...<break time="2s"/>
+      in the one light...<break time="2.5s"/>
+      that you have always been...<break time="3s"/>
+      </prosody>
+
+    visual_prompt: "vast luminous void of pure white light, subtle rainbow iridescence, geometric patterns of light forming and dissolving, sense of infinite peace and presence, --ar 16:9 --style raw"
+
+    audio_cue: "Subtle om drone, crystal singing bowls, celestial harmonics, sacred silence"
+
+    invocation_text: |
+      I call upon the One,
+      The Source of all that is,
+      The Light that dwells within,
+      The presence beyond all names.
+      May I remember what I have always been,
+      And return to the truth of my being.
+
+    sensory_description: |
+      Beyond sensation, yet including all. A light that does not blind but reveals.
+      A sound that is silence yet speaks everything. A presence that is empty
+      yet infinitely full. The knowing that precedes thought. The love that
+      needs no object. The peace that holds all experience.
+
+  relationships:
+    synergies:
+      - all elements
+      - consciousness_maps.nonduality
+      - traditions.all_mystical
+    opposites: []
+    prerequisites:
+      - symbols.elements.earth      # Grounding first
+      - symbols.elements.water      # Emotional clearing
+      - symbols.elements.fire       # Purification
+      - symbols.elements.air        # Mental clarity
+    progressions: []
+    related_patterns:
+      - temporal_dissociation       # Timelessness
+      - sensory_stacking            # All senses transcended
+    related_archetypes:
+      - divine_beloved
+      - wise_elder
+
+  source_references:
+    - tradition: "Hermeticism"
+      text: "Quintessence - fifth element"
+    - tradition: "Hinduism"
+      text: "Akasha - space/ether"
+    - tradition: "Qabalah"
+      text: "Ain Soph - limitless light"
+    - tradition: "Platonism"
+      text: "The Good beyond being"
+
+# =============================================================================
+# ELEMENT COMBINATION PATTERNS
+# =============================================================================
+# How elements interact and can be combined in sessions.
+
+combinations:
+  fire_water:
+    name: "Steam / Alchemy"
+    description: "Transformation through emotional purification"
+    outcome: "Emotional alchemy, releasing through heat"
+    visual: "Mist rising from hot springs, sacred steam"
+    audio: "Hissing steam, bubbling water"
+    use_in: [transformation, release, healing]
+
+  fire_air:
+    name: "Wind and Flame"
+    description: "Inspiration and creative passion"
+    outcome: "Creative breakthrough, inspired action"
+    visual: "Dancing flames, sparks carried on wind"
+    audio: "Crackling fire, wind howling"
+    use_in: [creativity, empowerment, transformation]
+
+  water_air:
+    name: "Mist / Clouds"
+    description: "Dreams, intuition, liminal spaces"
+    outcome: "Visionary states, threshold experiences"
+    visual: "Morning mist, clouds parting"
+    audio: "Soft rain, wind through mist"
+    use_in: [self_knowledge, creativity, spiritual_growth]
+
+  water_earth:
+    name: "Mud / Growth"
+    description: "Fertile ground, gestation, nurturing"
+    outcome: "Slow growth, patient healing, grounded emotion"
+    visual: "River delta, fertile soil, growing plants"
+    audio: "Water flowing over rocks, earth sounds"
+    use_in: [healing, relaxation, confidence]
+
+  fire_earth:
+    name: "Forge / Volcano"
+    description: "Transformation of matter, power"
+    outcome: "Manifest transformation, embodied power"
+    visual: "Volcanic lava, forge fire, glowing metal"
+    audio: "Deep rumbling, smithing sounds"
+    use_in: [empowerment, transformation, confidence]
+
+  air_earth:
+    name: "Mountain Peak"
+    description: "Grounded perspective, stable clarity"
+    outcome: "Clear vision with solid foundation"
+    visual: "Mountain summit, clear sky, vast view"
+    audio: "Wind at altitude, silence, birds"
+    use_in: [focus, self_knowledge, spiritual_growth]
+
+# =============================================================================
+# ELEMENT SELECTION GUIDE
+# =============================================================================
+# Quick reference for choosing elements based on session parameters.
+
+selection_guide:
+  by_outcome:
+    healing: [water, earth]
+    transformation: [fire, spirit]
+    empowerment: [fire, earth]
+    self_knowledge: [water, air]
+    release: [air, fire]
+    spiritual_growth: [spirit, air]
+    creativity: [fire, air]
+    relaxation: [water, earth]
+    focus: [air, earth]
+    confidence: [fire, earth]
+
+  by_phase:
+    pre_talk: [earth, air]
+    induction: [water, earth]
+    deepening: [water, earth]
+    journey: [fire, water, air]
+    helm_deep_trance: [spirit, fire]
+    integration: [earth, spirit]
+    reorientation: [earth, air]
+
+  by_journey_family:
+    eden_garden: [water, earth]
+    ocean_depths: [water]
+    underworld_descent: [fire, water, earth]
+    cosmic_forge: [fire, air]
+    temple_initiation: [all elements]
+    celestial_journey: [air, spirit]
