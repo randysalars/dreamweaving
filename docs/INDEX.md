@@ -53,6 +53,7 @@ For complete details, see: [CANONICAL_WORKFLOW.md](CANONICAL_WORKFLOW.md)
 ### Reference Guides
 - **[TERMINOLOGY_GUIDE.md](TERMINOLOGY_GUIDE.md)** - Standard terminology and naming conventions
 - **[WORKFLOW_MAINTENANCE_GUIDE.md](WORKFLOW_MAINTENANCE_GUIDE.md)** - Maintaining workflow consistency
+- **[SSML_AI_WORKFLOW.md](SSML_AI_WORKFLOW.md)** - VS Code SSML generation with Claude primary and Codex/ChatGPT fallback
 
 ### YouTube Publishing
 - **[YOUTUBE_PACKAGING_SOP.md](YOUTUBE_PACKAGING_SOP.md)** - Complete YouTube packaging workflow (thumbnails, titles, descriptions, VTT)

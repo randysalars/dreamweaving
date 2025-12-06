@@ -1,4 +1,4 @@
-session: the-market-of-infinite-ideas-journey-wal-20251205
+session: the-market-of-infinite-ideas-journey-wal-20251206
 style: abstract
 style_details:
   base_style: flowing forms, energy patterns, consciousness
@@ -20,10 +20,25 @@ thumbnail:
 scenes:
 - scene: opening
   description: Beginning of Hypnotic Journey
-  prompt: 'gateway or threshold, beginning of a journey, flowing forms, energy patterns,
-    consciousness, color palette: prismatic, shifting gradients, mood: inviting, anticipation,
-    safe entry, lighting: inner glow, radiant energy, highly detailed, professional
-    quality, 8k resolution --ar 16:9 --v 6 --style raw --s 250'
+  prompt: 'gateway or threshold, beginning of a journey, panoramas of possibilities
+    unfolding: inventions, stories, solutions, collaborations, flowing forms, energy
+    patterns, consciousness, color palette: prismatic, shifting gradients, mood: inviting,
+    anticipation, safe entry, lighting: inner glow, radiant energy, highly detailed,
+    professional quality, 8k resolution --ar 16:9 --v 6 --style raw --s 250'
+- scene: journey_1
+  description: patterns aligning
+  prompt: 'patterns aligning, flowing forms, energy patterns, consciousness, color
+    palette: prismatic, shifting gradients, mood: meditative, hypnotic, transformative,
+    lighting: inner glow, radiant energy, highly detailed, professional quality, 8k
+    resolution --ar 16:9 --v 6 --style raw --s 250'
+- scene: journey_2
+  description: 'the silver script: visualizing the Scribe''s scroll reminds you to
+    express and share your insights'
+  prompt: 'the silver script: visualizing the Scribe''s scroll reminds you to express
+    and share your insights, flowing forms, energy patterns, consciousness, color
+    palette: prismatic, shifting gradients, mood: meditative, hypnotic, transformative,
+    lighting: inner glow, radiant energy, highly detailed, professional quality, 8k
+    resolution --ar 16:9 --v 6 --style raw --s 250'
 - scene: closing
   description: Completion of Hypnotic Journey
   prompt: 'peaceful return, integration, wholeness, flowing forms, energy patterns,

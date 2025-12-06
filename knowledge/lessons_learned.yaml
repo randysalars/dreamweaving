@@ -647,3 +647,152 @@ lessons:
   - Voice generation successful with Neural2-H
   - Hypnotic post-processing applied successfully
   applied: false
+- id: L037
+  date: '2025-12-06'
+  session: the-market-of-infinite-ideas-journey-wal-20251206
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Market of Infinite Ideas | Journey:
+    Walk through an infinite marketplace of creative concepts; archetypes assist in
+    recognizing innovative solutions and unlocking latent talents'
+  details:
+    topic: 'The Market of Infinite Ideas | Journey: Walk through an infinite marketplace
+      of creative concepts; archetypes assist in recognizing innovative solutions
+      and unlocking latent talents'
+    mode: standard
+    duration_target: 30
+    stages_completed: 6
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - 'Failed stages: generate_script'
+  applied: false
+- id: L038
+  date: '2025-12-06'
+  session: the-market-of-infinite-ideas-journey-wal-20251206
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Market of Infinite Ideas | Journey:
+    Walk through an infinite marketplace of creative concepts; archetypes assist in
+    recognizing innovative solutions and unlocking latent talents'
+  details:
+    topic: 'The Market of Infinite Ideas | Journey: Walk through an infinite marketplace
+      of creative concepts; archetypes assist in recognizing innovative solutions
+      and unlocking latent talents'
+    mode: standard
+    duration_target: 30
+    stages_completed: 7
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - 'Failed stages: generate_script'
+  applied: false
+- id: L039
+  date: '2025-12-06'
+  session: the-market-of-infinite-ideas-journey-wal-20251206
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Market of Infinite Ideas | Journey:
+    Walk through an infinite marketplace of creative concepts; archetypes assist in
+    recognizing innovative solutions and unlocking latent talents'
+  details:
+    topic: 'The Market of Infinite Ideas | Journey: Walk through an infinite marketplace
+      of creative concepts; archetypes assist in recognizing innovative solutions
+      and unlocking latent talents'
+    mode: standard
+    duration_target: 30
+    stages_completed: 8
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - 'Failed stages: generate_voice'
+  applied: false
+- id: L040
+  date: '2025-12-06'
+  session: the-market-of-infinite-ideas-journey-wal-20251206
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Market of Infinite Ideas | Journey:
+    Walk through an infinite marketplace of creative concepts; archetypes assist in
+    recognizing innovative solutions and unlocking latent talents'
+  details:
+    topic: 'The Market of Infinite Ideas | Journey: Walk through an infinite marketplace
+      of creative concepts; archetypes assist in recognizing innovative solutions
+      and unlocking latent talents'
+    mode: standard
+    duration_target: 30
+    stages_completed: 6
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - 'Failed stages: generate_script'
+  applied: false
+- id: L041
+  date: '2025-12-06'
+  session: the-market-of-infinite-ideas-journey-wal-20251206
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Market of Infinite Ideas | Journey:
+    Walk through an infinite marketplace of creative concepts; archetypes assist in
+    recognizing innovative solutions and unlocking latent talents'
+  details:
+    topic: 'The Market of Infinite Ideas | Journey: Walk through an infinite marketplace
+      of creative concepts; archetypes assist in recognizing innovative solutions
+      and unlocking latent talents'
+    mode: standard
+    duration_target: 30
+    stages_completed: 7
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - 'Failed stages: generate_voice'
+  applied: false
+- id: L042
+  date: '2025-12-06'
+  session: the-market-of-infinite-ideas-journey-wal-20251206
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Market of Infinite Ideas | Journey:
+    Walk through an infinite marketplace of creative concepts; archetypes assist in
+    recognizing innovative solutions and unlocking latent talents'
+  details:
+    topic: 'The Market of Infinite Ideas | Journey: Walk through an infinite marketplace
+      of creative concepts; archetypes assist in recognizing innovative solutions
+      and unlocking latent talents'
+    mode: standard
+    duration_target: 30
+    stages_completed: 8
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - 'Failed stages: generate_voice'
+  applied: false
+- id: L043
+  date: '2025-12-06'
+  session: the-market-of-infinite-ideas-journey-wal-20251206
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Market of Infinite Ideas | Journey:
+    Walk through an infinite marketplace of creative concepts; archetypes assist in
+    recognizing innovative solutions and unlocking latent talents'
+  details:
+    topic: 'The Market of Infinite Ideas | Journey: Walk through an infinite marketplace
+      of creative concepts; archetypes assist in recognizing innovative solutions
+      and unlocking latent talents'
+    mode: standard
+    duration_target: 30
+    stages_completed: 13
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  - 'Failed stages: generate_script'
+  applied: false

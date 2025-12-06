@@ -2,9 +2,9 @@ Generate a complete SSML hypnotic script for the following session:
 
 **Topic:** The Market of Infinite Ideas | Journey: Walk through an infinite marketplace of creative concepts; archetypes assist in recognizing innovative solutions and unlocking latent talents
 **Target Duration:** 30 minutes
-**Session Name:** the-market-of-infinite-ideas-journey-wal-20251205
+**Session Name:** the-market-of-infinite-ideas-journey-wal-20251206
 
-**Archetypes to incorporate:** The Butterfly, The Oracle, The Navigator
+**Archetypes to incorporate:** The Butterfly, The Librarian, The Wise Elder
 
 **Section Timing:**
 - pretalk: 0 minutes

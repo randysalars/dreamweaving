@@ -1,11 +1,11 @@
 session:
-  name: the-market-of-infinite-ideas-journey-wal-20251205
+  name: the-market-of-infinite-ideas-journey-wal-20251206
   topic: 'The Market of Infinite Ideas | Journey: Walk through an infinite marketplace
     of creative concepts; archetypes assist in recognizing innovative solutions and
     unlocking latent talents'
   duration: 1800
   style: creativity
-  created: '2025-12-05'
+  created: '2025-12-06'
 voice:
   provider: google
   voice_name: en-US-Neural2-G
@@ -53,24 +53,24 @@ archetypes:
   - emergence
   - beauty
   appearance_section: integration
-- name: The Oracle
+- name: The Librarian
   role: wisdom_keeper
-  description: Seer of past, present, and future
-  symbol: crystal pool
+  description: Guardian of the cosmic archives
+  symbol: infinite library
   qualities:
-  - prophecy
-  - insight
-  - connection
+  - knowledge
+  - access
+  - understanding
   appearance_section: journey
-- name: The Navigator
+- name: The Wise Elder
   role: guidance
-  description: Wise guide through unknown territories
-  symbol: compass of light
+  description: Ancient keeper of timeless knowledge
+  symbol: glowing staff
   qualities:
-  - wisdom
-  - direction
-  - trust
-  appearance_section: induction
+  - patience
+  - understanding
+  - acceptance
+  appearance_section: journey
 sound_bed:
   binaural:
     enabled: true

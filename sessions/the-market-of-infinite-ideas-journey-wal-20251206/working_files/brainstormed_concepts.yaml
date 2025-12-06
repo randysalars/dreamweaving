@@ -20,25 +20,25 @@
     - beauty
     appearance_section: integration
     suggested_voice_tone: warm
-  - name: The Oracle
+  - name: The Librarian
     role: wisdom_keeper
-    description: Seer of past, present, and future
-    symbol: crystal pool
+    description: Guardian of the cosmic archives
+    symbol: infinite library
     qualities:
-    - prophecy
-    - insight
-    - connection
+    - knowledge
+    - access
+    - understanding
     appearance_section: journey
     suggested_voice_tone: warm
-  - name: The Navigator
+  - name: The Wise Elder
     role: guidance
-    description: Wise guide through unknown territories
-    symbol: compass of light
+    description: Ancient keeper of timeless knowledge
+    symbol: glowing staff
     qualities:
-    - wisdom
-    - direction
-    - trust
-    appearance_section: induction
+    - patience
+    - understanding
+    - acceptance
+    appearance_section: journey
     suggested_voice_tone: warm
   binaural_progression:
     name: Transcendence Path
@@ -69,14 +69,6 @@
     gamma_burst_enabled: true
     gamma_burst_time_ratio: 0.55
   sound_effects:
-  - name: Nebula Drift
-    type: texture
-    description: Swirling cosmic gases
-    character: slow movement
-    sections:
-    - induction
-    - journey
-    intensity: 0.5
   - name: Star Whispers
     type: texture
     description: Distant stellar communication
@@ -91,6 +83,14 @@
     sections:
     - journey
     intensity: 0.4
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
   target_duration_minutes: 30
   voice_recommendation: warm_female
   imagery_style: cosmic
@@ -113,24 +113,24 @@
     step brings you closer to your truest self
   key_transformation: becoming a clear channel for inspiration to flow through
   archetypes:
-  - name: The Butterfly
+  - name: The Phoenix
     role: transformation
-    description: Embodiment of metamorphosis
-    symbol: chrysalis
+    description: Symbol of rebirth through fire
+    symbol: flames of renewal
     qualities:
-    - patience
-    - emergence
-    - beauty
-    appearance_section: integration
+    - rebirth
+    - release
+    - new beginnings
+    appearance_section: journey
     suggested_voice_tone: warm
-  - name: The Librarian
+  - name: The Scribe
     role: wisdom_keeper
-    description: Guardian of the cosmic archives
-    symbol: infinite library
+    description: Keeper of ancient records and memories
+    symbol: living scroll
     qualities:
-    - knowledge
-    - access
-    - understanding
+    - memory
+    - recording
+    - truth
     appearance_section: journey
     suggested_voice_tone: warm
   - name: The Star Guide
@@ -172,14 +172,6 @@
     gamma_burst_enabled: true
     gamma_burst_time_ratio: 0.55
   sound_effects:
-  - name: Temple Bells
-    type: special
-    description: Distant sacred resonance
-    character: crystalline tones
-    sections:
-    - journey
-    - integration
-    intensity: 0.3
   - name: Singing Bowls
     type: tone
     description: Tibetan bowl harmonics
@@ -188,6 +180,14 @@
     - induction
     - journey
     intensity: 0.4
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
   - name: Angelic Choir
     type: texture
     description: Ethereal voices
@@ -217,15 +217,15 @@
     step brings you closer to your truest self
   key_transformation: becoming a clear channel for inspiration to flow through
   archetypes:
-  - name: The Butterfly
+  - name: The Alchemist
     role: transformation
-    description: Embodiment of metamorphosis
-    symbol: chrysalis
+    description: Master of inner transmutation
+    symbol: philosopher's stone
     qualities:
-    - patience
-    - emergence
-    - beauty
-    appearance_section: integration
+    - transformation
+    - gold from lead
+    - potential
+    appearance_section: journey
     suggested_voice_tone: warm
   - name: The Scribe
     role: wisdom_keeper
@@ -237,15 +237,15 @@
     - truth
     appearance_section: journey
     suggested_voice_tone: warm
-  - name: The Navigator
+  - name: The Wise Elder
     role: guidance
-    description: Wise guide through unknown territories
-    symbol: compass of light
+    description: Ancient keeper of timeless knowledge
+    symbol: glowing staff
     qualities:
-    - wisdom
-    - direction
-    - trust
-    appearance_section: induction
+    - patience
+    - understanding
+    - acceptance
+    appearance_section: journey
     suggested_voice_tone: warm
   binaural_progression:
     name: Transcendence Path
@@ -283,6 +283,13 @@
     sections:
     - journey
     intensity: 0.4
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
   - name: Nebula Drift
     type: texture
     description: Swirling cosmic gases
@@ -291,13 +298,6 @@
     - induction
     - journey
     intensity: 0.5
-  - name: Star Whispers
-    type: texture
-    description: Distant stellar communication
-    character: shimmering pulses
-    sections:
-    - journey
-    intensity: 0.3
   target_duration_minutes: 30
   voice_recommendation: warm_female
   imagery_style: cosmic
@@ -320,34 +320,34 @@
     step brings you closer to your truest self
   key_transformation: becoming a clear channel for inspiration to flow through
   archetypes:
-  - name: The Butterfly
+  - name: The Alchemist
     role: transformation
-    description: Embodiment of metamorphosis
-    symbol: chrysalis
+    description: Master of inner transmutation
+    symbol: philosopher's stone
     qualities:
-    - patience
-    - emergence
-    - beauty
-    appearance_section: integration
-    suggested_voice_tone: warm
-  - name: The Scribe
-    role: wisdom_keeper
-    description: Keeper of ancient records and memories
-    symbol: living scroll
-    qualities:
-    - memory
-    - recording
-    - truth
+    - transformation
+    - gold from lead
+    - potential
     appearance_section: journey
     suggested_voice_tone: warm
-  - name: The Star Guide
-    role: guidance
-    description: Celestial being of cosmic navigation
-    symbol: constellation map
+  - name: The Oracle
+    role: wisdom_keeper
+    description: Seer of past, present, and future
+    symbol: crystal pool
     qualities:
-    - cosmic awareness
-    - pathfinding
-    - clarity
+    - prophecy
+    - insight
+    - connection
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Wise Elder
+    role: guidance
+    description: Ancient keeper of timeless knowledge
+    symbol: glowing staff
+    qualities:
+    - patience
+    - understanding
+    - acceptance
     appearance_section: journey
     suggested_voice_tone: warm
   binaural_progression:
@@ -379,14 +379,6 @@
     gamma_burst_enabled: true
     gamma_burst_time_ratio: 0.55
   sound_effects:
-  - name: Temple Bells
-    type: special
-    description: Distant sacred resonance
-    character: crystalline tones
-    sections:
-    - journey
-    - integration
-    intensity: 0.3
   - name: Singing Bowls
     type: tone
     description: Tibetan bowl harmonics
@@ -395,6 +387,14 @@
     - induction
     - journey
     intensity: 0.4
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
   - name: Angelic Choir
     type: texture
     description: Ethereal voices
@@ -424,15 +424,15 @@
     step brings you closer to your truest self
   key_transformation: becoming a clear channel for inspiration to flow through
   archetypes:
-  - name: The Butterfly
+  - name: The Alchemist
     role: transformation
-    description: Embodiment of metamorphosis
-    symbol: chrysalis
+    description: Master of inner transmutation
+    symbol: philosopher's stone
     qualities:
-    - patience
-    - emergence
-    - beauty
-    appearance_section: integration
+    - transformation
+    - gold from lead
+    - potential
+    appearance_section: journey
     suggested_voice_tone: warm
   - name: The Scribe
     role: wisdom_keeper
@@ -483,6 +483,13 @@
     gamma_burst_enabled: true
     gamma_burst_time_ratio: 0.55
   sound_effects:
+  - name: Wind Through Trees
+    type: nature
+    description: Gentle breeze in canopy
+    character: rustling leaves
+    sections:
+    - journey
+    intensity: 0.3
   - name: Forest Rain
     type: nature
     description: Gentle rainfall through leaves
@@ -499,13 +506,6 @@
     - induction
     - journey
     intensity: 0.5
-  - name: Wind Through Trees
-    type: nature
-    description: Gentle breeze in canopy
-    character: rustling leaves
-    sections:
-    - journey
-    intensity: 0.3
   target_duration_minutes: 30
   voice_recommendation: warm_female
   imagery_style: nature

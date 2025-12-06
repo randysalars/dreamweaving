@@ -126,6 +126,8 @@ Use the hypnotic script template structure:
 4. Awakening (2-3 minutes)
 5. Post-hypnotic suggestions (optional, 2-3 minutes)
 
+**AI-assisted drafting:** Use the VS Code Claude extension as primary with Codex/ChatGPT fallback as detailed in `docs/SSML_AI_WORKFLOW.md`.
+
 **Template location:** `templates/base/hypnosis_template.ssml`
 
 **SSML Guidelines:**

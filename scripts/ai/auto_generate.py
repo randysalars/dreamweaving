@@ -166,6 +166,9 @@ class AutoGenerator:
         self.workflow = CreativeWorkflow()
         self.start_time = None
         self.end_time = None
+        # Prefer project venv Python if available; fallback to current interpreter
+        venv_python = self.project_root / "venv" / "bin" / "python"
+        self.python_cmd = os.environ.get("PYTHON_CMD") or (str(venv_python) if venv_python.exists() else sys.executable)
 
         # Stage tracking
         self.stages_completed: List[str] = []
@@ -424,9 +427,10 @@ Do NOT include any explanation or commentary before or after the SSML.
         user_prompt_file = self.session_path / "working_files" / "script_prompt.txt"
         user_prompt_file.write_text(user_prompt)
 
-        # Use Claude CLI (works with VS Code subscription, no API key needed)
-        self.log("Using Claude CLI for script generation...", "info")
+        script_content = None
 
+        # 1) Primary attempt: Claude CLI
+        self.log("Using Claude CLI for script generation...", "info")
         try:
             result = subprocess.run(
                 [
@@ -443,44 +447,93 @@ Do NOT include any explanation or commentary before or after the SSML.
                 cwd=str(self.project_root)
             )
 
-            if result.returncode != 0:
+            if result.returncode == 0:
+                response_data = json.loads(result.stdout)
+                script_content = response_data.get('result', '')
+            else:
                 error_msg = result.stderr[:200] if result.stderr else 'Unknown error'
                 self.log(f"Claude CLI error: {error_msg}", "error")
-                self.log(f"Run manually: /generate-script {self.session_name}", "info")
-                self.stages_failed.append("generate_script")
-                return
-
-            # Parse JSON response
-            response_data = json.loads(result.stdout)
-            script_content = response_data.get('result', '')
-
-            if not script_content:
-                self.log("Claude returned empty response", "error")
-                self.stages_failed.append("generate_script")
-                return
-
         except FileNotFoundError:
             self.log("Claude CLI not found - install Claude Code extension", "error")
             self.log("Visit: https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code", "info")
-            self.stages_failed.append("generate_script")
-            return
         except json.JSONDecodeError as e:
             self.log(f"Failed to parse Claude response: {e}", "error")
-            # Try to use raw stdout if JSON parsing fails
             if result.stdout and result.stdout.strip():
                 script_content = result.stdout
-                self.log("Using raw response (JSON parse failed)", "warning")
-            else:
-                self.stages_failed.append("generate_script")
-                return
+                self.log("Using raw response (Claude JSON parse failed)", "warning")
         except subprocess.TimeoutExpired:
             self.log("Script generation timed out (5 min limit)", "error")
-            self.stages_failed.append("generate_script")
-            return
         except Exception as e:
             self.log(f"Script generation failed: {e}", "error")
+
+        # 2) Fallback: Codex/ChatGPT CLI (only if Claude failed)
+        if not script_content:
+            codex_cmd = os.environ.get("CODEX_CLI_CMD", "codex")
+            system_prompt_text = system_prompt_file.read_text()
+            # Enforce JSON output parity with Claude: expect {"result": "<SSML>..."}
+            combined_prompt = (
+                f"{system_prompt_text}\n\n"
+                f"User request:\n{user_prompt}\n\n"
+                f"Return ONLY JSON with a single key \"result\" whose value is the SSML starting "
+                f"with <?xml version=\"1.0\" encoding=\"UTF-8\"?>. No code fences, no comments."
+            )
+            schema_path = self.session_path / "working_files" / "codex_output_schema.json"
+            schema_path.write_text(
+                '{"type":"object","properties":{"result":{"type":"string"}},'
+                '"required":["result"],"additionalProperties":false}'
+            )
+            codex_args = [codex_cmd, "exec", "--output-schema", str(schema_path), combined_prompt]
+            self.log(f"Claude failed; using Codex/ChatGPT CLI fallback: {' '.join(codex_args[:-1])}", "warning")
+            try:
+                codex_result = subprocess.run(
+                    codex_args,
+                    capture_output=True,
+                    text=True,
+                    timeout=300,
+                    cwd=str(self.project_root)
+                )
+                if codex_result.returncode == 0 and codex_result.stdout.strip():
+                    try:
+                        codex_data = json.loads(codex_result.stdout)
+                        script_content = codex_data.get("result", "")
+                        if not script_content and codex_result.stdout.strip():
+                            script_content = codex_result.stdout
+                            self.log("Using raw Codex response (missing result field)", "warning")
+                    except json.JSONDecodeError:
+                        script_content = codex_result.stdout
+                        self.log("Using raw Codex response (JSON parse failed)", "warning")
+                else:
+                    codex_err = codex_result.stderr[:200] if codex_result.stderr else 'Unknown error'
+                    self.log(f"Codex CLI error: {codex_err}", "error")
+            except FileNotFoundError:
+                self.log("Codex CLI not found - set CODEX_CLI_CMD or install the VS Code Codex CLI", "error")
+            except subprocess.TimeoutExpired:
+                self.log("Codex generation timed out (5 min limit)", "error")
+            except Exception as e:
+                self.log(f"Codex generation failed: {e}", "error")
+
+        if not script_content:
+            self.log("No script generated by Claude or Codex", "error")
+            self.log(f"Run manually: /generate-script {self.session_name}", "info")
             self.stages_failed.append("generate_script")
             return
+
+        # If raw output contains a JSON-like "result" field, extract and unescape it
+        if not script_content.strip().startswith("<?xml") or '"result"' in script_content:
+            matches = list(re.finditer(r'"result"\s*:\s*"(?P<content>.*?)"', script_content, re.DOTALL))
+            chosen = None
+            for m in matches:
+                c = m.group("content")
+                if "</speak>" in c or "\\/speak" in c:
+                    chosen = c  # prefer ones containing speak end
+            if not chosen and matches:
+                chosen = matches[-1].group("content")
+            if chosen:
+                try:
+                    # Unescape JSON string content safely
+                    script_content = json.loads(f'"{chosen}"')
+                except Exception:
+                    script_content = chosen
 
         # Clean up the response - ensure it starts with XML declaration
         if not script_content.strip().startswith('<?xml'):
@@ -494,7 +547,16 @@ Do NOT include any explanation or commentary before or after the SSML.
                 self.stages_failed.append("generate_script")
                 return
 
-        # Clean up SSML issues from Claude output
+        # Trim to the last </speak> and drop anything after
+        speak_end = script_content.rfind('</speak>')
+        if speak_end != -1:
+            script_content = script_content[:speak_end + len('</speak>')]
+        else:
+            self.log("SSML missing </speak> end tag", "error")
+            self.stages_failed.append("generate_script")
+            return
+
+        # Clean up SSML issues from model output
         # Remove markdown fences that Claude sometimes adds
         script_content = re.sub(r'```\w*\n?', '', script_content)
 
@@ -536,7 +598,7 @@ Do NOT include any explanation or commentary before or after the SSML.
 
         try:
             result = subprocess.run(
-                ["python3", "scripts/ai/prompt_generator.py", str(self.session_path)],
+                [self.python_cmd, "scripts/ai/prompt_generator.py", str(self.session_path)],
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
@@ -571,7 +633,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         try:
             result = subprocess.run(
                 [
-                    "python3", "scripts/core/generate_voice.py",
+                    self.python_cmd, "scripts/core/generate_voice.py",
                     str(ssml_path),
                     str(output_dir)
                 ],
@@ -729,7 +791,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         try:
             result = subprocess.run(
                 [
-                    "python3", "scripts/core/hypnotic_post_process.py",
+                    self.python_cmd, "scripts/core/hypnotic_post_process.py",
                     "--session", str(self.session_path) + "/"
                 ],
                 capture_output=True,
@@ -754,7 +816,7 @@ Do NOT include any explanation or commentary before or after the SSML.
 
         try:
             result = subprocess.run(
-                ["python3", "scripts/ai/vtt_generator.py", str(self.session_path)],
+                [self.python_cmd, "scripts/ai/vtt_generator.py", str(self.session_path)],
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
@@ -796,7 +858,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         """Attempt image generation with specified method. Returns True on success."""
         try:
             cmd = [
-                "python3", "scripts/core/generate_scene_images.py",
+                self.python_cmd, "scripts/core/generate_scene_images.py",
                 str(self.session_path) + "/",
                 "--method", method,
             ]
@@ -876,7 +938,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         try:
             result = subprocess.run(
                 [
-                    "python3", "scripts/core/assemble_session_video.py",
+                    self.python_cmd, "scripts/core/assemble_session_video.py",
                     "--session", str(self.session_path) + "/",
                     "--audio", str(audio_file)
                 ],
@@ -902,7 +964,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         try:
             result = subprocess.run(
                 [
-                    "python3", "scripts/core/package_youtube.py",
+                    self.python_cmd, "scripts/core/package_youtube.py",
                     "--session", str(self.session_path) + "/"
                 ],
                 capture_output=True,
@@ -937,7 +999,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         try:
             result = subprocess.run(
                 [
-                    "python3", "scripts/core/upload_to_website.py",
+                    self.python_cmd, "scripts/core/upload_to_website.py",
                     "--session", str(self.session_path) + "/",
                     "--no-git"
                 ],
@@ -972,7 +1034,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         try:
             result = subprocess.run(
                 [
-                    "python3", "scripts/core/cleanup_session.py",
+                    self.python_cmd, "scripts/core/cleanup_session.py",
                     str(self.session_path) + "/"
                 ],
                 capture_output=True,
