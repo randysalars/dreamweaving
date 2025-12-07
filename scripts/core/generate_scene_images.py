@@ -48,6 +48,11 @@ from datetime import datetime
 import warnings
 import urllib.parse
 
+# Ensure project root is on path when executed as a script (needed for imports like scripts.core.generate_images_sd)
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -421,100 +426,30 @@ def get_scenes(session_dir: Path) -> Tuple[List[Scene], str]:
 
 
 # =============================================================================
-# STABLE DIFFUSION GENERATION
+# STABLE DIFFUSION GENERATION (SDXL DEFAULT)
 # =============================================================================
-
-def load_sd_pipeline(model_path: str = None):
-    """Load the Stable Diffusion pipeline."""
-    try:
-        import torch
-        from diffusers import StableDiffusionPipeline, DPMSolverMultistepScheduler
-    except ImportError:
-        print("Error: diffusers/torch not installed.")
-        print("Install with: pip install diffusers transformers accelerate torch")
-        return None
-
-    # Try local model first, then HuggingFace
-    if model_path and Path(model_path).exists():
-        print(f"Loading model from: {model_path}")
-        pipe = StableDiffusionPipeline.from_single_file(
-            model_path,
-            torch_dtype=torch.float32,
-            use_safetensors=True
-        )
-    else:
-        print("Downloading model from HuggingFace (this may take a while first time)...")
-        pipe = StableDiffusionPipeline.from_pretrained(
-            "runwayml/stable-diffusion-v1-5",
-            torch_dtype=torch.float32,
-            use_safetensors=True
-        )
-
-    # Use DPM solver for faster inference
-    pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)
-
-    # CPU mode
-    pipe = pipe.to("cpu")
-
-    # Enable memory efficient attention
-    try:
-        pipe.enable_attention_slicing()
-    except:
-        pass
-
-    return pipe
-
-
-def generate_sd_image(
-    pipe,
-    prompt: str,
-    negative_prompt: str,
-    width: int = 512,
-    height: int = 288,
-    steps: int = 15,
-    guidance_scale: float = 7.5,
-    seed: int = -1
-) -> Image.Image:
-    """Generate a single image using Stable Diffusion."""
-    import torch
-
-    if seed >= 0:
-        generator = torch.Generator("cpu").manual_seed(seed)
-    else:
-        generator = None
-
-    with torch.no_grad():
-        result = pipe(
-            prompt=prompt,
-            negative_prompt=negative_prompt,
-            width=width,
-            height=height,
-            num_inference_steps=steps,
-            guidance_scale=guidance_scale,
-            generator=generator
-        )
-
-    return result.images[0]
-
-
-def upscale_image(img: Image.Image, target_width: int = 1920) -> Image.Image:
-    """Upscale image using Lanczos resampling."""
-    aspect_ratio = img.height / img.width
-    new_width = target_width
-    new_height = int(target_width * aspect_ratio)
-    return img.resize((new_width, new_height), Image.LANCZOS)
-
 
 def generate_sd_scenes(
     session_dir: Path,
     scenes: List[Scene],
     style_preset: str = "neural_network",
-    steps: int = 15,
+    steps: int = 32,
+    guidance_scale: float = 6.5,
     upscale: bool = True,
     force: bool = False,
-    model_path: str = None
+    model_path: str = None,
+    use_refiner: bool = True,
+    max_generation_side: int = 1152
 ) -> List[str]:
-    """Generate scene images using Stable Diffusion."""
+    """Generate scene images using SDXL (with optional refiner)."""
+
+    try:
+        from scripts.core.generate_images_sd import ImageGenerator
+    except Exception as e:
+        print("Error: could not import SDXL generator. Install dependencies:")
+        print("  pip install diffusers transformers accelerate torch Pillow")
+        print(f"Reason: {e}")
+        return []
 
     preset = STYLE_PRESETS.get(style_preset, STYLE_PRESETS["neural_network"])
 
@@ -522,18 +457,28 @@ def generate_sd_scenes(
     output_dir = session_dir / "images" / "uploaded"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Load pipeline
-    print("Loading Stable Diffusion pipeline...")
-    pipe = load_sd_pipeline(model_path)
-    if pipe is None:
-        return []
+    # Use SDXL base by default; allow override
+    model_id = model_path or "stabilityai/stable-diffusion-xl-base-1.0"
+
+    print("Loading SDXL pipeline (base" + (" + refiner" if use_refiner else "") + ")...")
+    generator = ImageGenerator(
+        model_id=model_id,
+        use_fp16=True,
+        enable_optimizations=True,
+        use_refiner=use_refiner,
+        max_generation_side=max_generation_side
+    )
     print("Pipeline loaded successfully!")
 
     results = []
 
+    target_width = 1920 if upscale else 1280
+    target_height = 1080 if upscale else 720
+
     print(f"\nGenerating {len(scenes)} scene images...")
     print(f"Output: {output_dir}")
-    print(f"Steps: {steps}, Style: {style_preset}")
+    print(f"Steps: {steps}, Guidance: {guidance_scale}, Style: {style_preset}")
+    print(f"Resolution: {target_width}x{target_height} (native side capped at {max_generation_side}px)")
     print("=" * 60)
 
     for i, scene in enumerate(scenes, 1):
@@ -554,23 +499,19 @@ def generate_sd_scenes(
         print(f"  Generating...", end=" ", flush=True)
 
         try:
-            img = generate_sd_image(
-                pipe=pipe,
+            generator.generate_and_save(
                 prompt=full_prompt,
                 negative_prompt=negative_prompt,
-                width=512,
-                height=288,  # 16:9 ratio
-                steps=steps,
-                guidance_scale=7.5,
-                seed=scene.number * 1000
+                output_path=str(output_file),
+                width=target_width,
+                height=target_height,
+                num_inference_steps=steps,
+                guidance_scale=guidance_scale,
+                seed=scene.number * 1000,
+                num_candidates=1,
+                save_metadata=True
             )
-
-            # Upscale if requested
-            if upscale:
-                img = upscale_image(img, target_width=1920)
-
-            img.save(output_file, quality=95)
-            print(f"Done!")
+            print("Done!")
             results.append(str(output_file))
 
         except Exception as e:
@@ -1058,7 +999,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Generate SD images (default)
+  # Generate SDXL images (default)
   python3 generate_scene_images.py sessions/my-session/
 
   # Generate with upscaling
@@ -1071,7 +1012,7 @@ Examples:
   python3 generate_scene_images.py sessions/my-session/ --with-prompts
 
   # Custom style and steps
-  python3 generate_scene_images.py sessions/my-session/ --style cosmic_journey --steps 20
+  python3 generate_scene_images.py sessions/my-session/ --style cosmic_journey --steps 32 --guidance 6.5
 """
     )
 
@@ -1086,9 +1027,9 @@ Examples:
     )
     parser.add_argument(
         "--method",
-        choices=["sd", "midjourney", "stock", "pil"],
+        choices=["sd", "sdxl", "midjourney", "stock", "pil"],
         default="sd",
-        help="Generation method: sd (Stable Diffusion), midjourney (prompts only), stock (source from Unsplash/Pexels/Pixabay), pil (procedural)"
+        help="Generation method: sd/sdxl (Stable Diffusion XL), midjourney (prompts only), stock (source from Unsplash/Pexels/Pixabay), pil (procedural)"
     )
     parser.add_argument(
         "--platform",
@@ -1125,8 +1066,14 @@ Examples:
     parser.add_argument(
         "--steps",
         type=int,
-        default=15,
-        help="SD inference steps (default: 15, more=better quality but slower)"
+        default=32,
+        help="SDXL inference steps (default: 32, more=better quality but slower)"
+    )
+    parser.add_argument(
+        "--guidance",
+        type=float,
+        default=6.5,
+        help="Classifier-free guidance scale (default: 6.5)"
     )
     parser.add_argument(
         "--force",
@@ -1137,6 +1084,17 @@ Examples:
         "--model",
         type=str,
         help="Path to local SD model file (optional)"
+    )
+    parser.add_argument(
+        "--no-refiner",
+        action="store_true",
+        help="Disable SDXL refiner pass (faster, slightly softer details)"
+    )
+    parser.add_argument(
+        "--max-gen-side",
+        type=int,
+        default=1152,
+        help="Maximum side length to generate natively before upscaling"
     )
 
     args = parser.parse_args()
@@ -1166,28 +1124,36 @@ Examples:
     if args.midjourney_only:
         args.method = "midjourney"
 
-    # Check for local model
+    # Check for local SDXL model if not provided
     model_path = args.model
     if not model_path:
-        local_model = Path.home() / "sd-webui" / "models" / "Stable-diffusion" / "sd-v1-5-pruned-emaonly.safetensors"
-        if local_model.exists():
-            model_path = str(local_model)
-            print(f"Found local model: {model_path}")
+        candidates = [
+            Path.home() / "sd-webui" / "models" / "Stable-diffusion" / "sd_xl_base_1.0.safetensors",
+            Path.home() / "sd-webui" / "models" / "Stable-diffusion" / "sdxl_base_1.0.safetensors"
+        ]
+        for cand in candidates:
+            if cand.exists():
+                model_path = str(cand)
+                print(f"Found local SDXL model: {model_path}")
+                break
 
     # Generate based on method
     if args.method == "midjourney":
         generate_midjourney_prompts(session_dir, scenes, style)
         print("\nMidjourney prompts generated. Create images in Midjourney and place in images/uploaded/")
 
-    elif args.method == "sd":
+    elif args.method in ["sd", "sdxl"]:
         results = generate_sd_scenes(
             session_dir=session_dir,
             scenes=scenes,
             style_preset=style,
             steps=args.steps,
+            guidance_scale=args.guidance,
             upscale=upscale,
             force=args.force,
-            model_path=model_path
+            model_path=model_path,
+            use_refiner=not args.no_refiner,
+            max_generation_side=args.max_gen_side
         )
 
         # Also generate Midjourney prompts if requested

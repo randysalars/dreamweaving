@@ -796,3 +796,99 @@ lessons:
   - Hypnotic post-processing applied successfully
   - 'Failed stages: generate_script'
   applied: false
+- id: L044
+  date: '2025-12-06'
+  session: the-river-of-vital-energy-20251206
+  category: automation
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The River Of Vital Energy'
+  details:
+    topic: The River Of Vital Energy
+    mode: standard
+    duration_target: 30
+    stages_completed: 13
+    stages_failed: 0
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  applied: false
+- id: L045
+  date: '2025-12-06'
+  session: the-crystal-cavern-of-cellular-memory-jo-20251206
+  category: automation
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Crystal Cavern of Cellular Memory-Journey:
+    Explore a cavern where crystals resonate with cellular memory; archetypes facilitate
+    releasing old trauma and embedding vitality. | Archetypes:** The Crystal Keeper,
+    The Healer, The Observer Self'
+  details:
+    topic: 'The Crystal Cavern of Cellular Memory-Journey: Explore a cavern where
+      crystals resonate with cellular memory; archetypes facilitate releasing old
+      trauma and embedding vitality. | Archetypes:** The Crystal Keeper, The Healer,
+      The Observer Self'
+    mode: standard
+    duration_target: 30
+    stages_completed: 12
+    stages_failed: 0
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  applied: false
+- id: L046
+  date: '2025-12-06'
+  session: the-sanctuary-of-pain-release--journey-e-20251206
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Sanctuary of Pain Release- Journey:
+    Enter a sanctuary where pain or discomfort manifests as shadow forms; archetypes
+    guide dissolution and transformation into energy- Archetypes: The Shadow Healer,
+    The Luminary, The Observer Self- Sound: Resonant low-frequency drones, soft harmonic
+    textures, theta-alpha fusion'
+  details:
+    topic: 'The Sanctuary of Pain Release- Journey: Enter a sanctuary where pain or
+      discomfort manifests as shadow forms; archetypes guide dissolution and transformation
+      into energy- Archetypes: The Shadow Healer, The Luminary, The Observer Self-
+      Sound: Resonant low-frequency drones, soft harmonic textures, theta-alpha fusion'
+    mode: standard
+    duration_target: 30
+    stages_completed: 8
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - 'Failed stages: generate_voice'
+  applied: false
+- id: L047
+  date: '2025-12-06'
+  session: the-astral-gate-of-the-adept-journeyyou--20251206
+  category: automation
+  source: auto_generate
+  summary: "Auto-generated session from topic: The Astral Gate of the Adept \u2014\
+    \ Journey:You approach a luminous gate floating in the astral realm, guarded by\
+    \ four elemental angels. Passing through requires attuning your inner vibrations\
+    \ to each element sequentially. Beyond the gate lies a hall of mirrors, each reflecting\
+    \ your past, present, and potential future mastery of magic-Archetypes:- Elemental\
+    \ Guardians, Astral Gatekeeper, Inner Adept- Sound: Harmonic wind, elemental pulses,\
+    \ soft celestial hums synchronizing with theta-gamma frequencies"
+  details:
+    topic: "The Astral Gate of the Adept \u2014 Journey:You approach a luminous gate\
+      \ floating in the astral realm, guarded by four elemental angels. Passing through\
+      \ requires attuning your inner vibrations to each element sequentially. Beyond\
+      \ the gate lies a hall of mirrors, each reflecting your past, present, and potential\
+      \ future mastery of magic-Archetypes:- Elemental Guardians, Astral Gatekeeper,\
+      \ Inner Adept- Sound: Harmonic wind, elemental pulses, soft celestial hums synchronizing\
+      \ with theta-gamma frequencies"
+    mode: standard
+    duration_target: 30
+    stages_completed: 14
+    stages_failed: 0
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  applied: false

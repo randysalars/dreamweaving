@@ -1,10 +1,10 @@
 Generate a complete SSML hypnotic script for the following session:
 
-**Topic:** The Market of Infinite Ideas | Journey: Walk through an infinite marketplace of creative concepts; archetypes assist in recognizing innovative solutions and unlocking latent talents
+**Topic:** The Crystal Cavern of Cellular Memory-Journey: Explore a cavern where crystals resonate with cellular memory; archetypes facilitate releasing old trauma and embedding vitality. | Archetypes:** The Crystal Keeper, The Healer, The Observer Self
 **Target Duration:** 30 minutes
-**Session Name:** the-market-of-infinite-ideas-journey-wal-20251206
+**Session Name:** the-crystal-cavern-of-cellular-memory-jo-20251206
 
-**Archetypes to incorporate:** The Butterfly, The Librarian, The Wise Elder
+**Archetypes to incorporate:** The Garden Tender, The Wise Elder, The Soul Star
 
 **Section Timing:**
 - pretalk: 0 minutes

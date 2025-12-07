@@ -1,0 +1,38 @@
+Generate a complete SSML hypnotic script for the following session:
+
+**Topic:** The Astral Gate of the Adept — Journey:You approach a luminous gate floating in the astral realm, guarded by four elemental angels. Passing through requires attuning your inner vibrations to each element sequentially. Beyond the gate lies a hall of mirrors, each reflecting your past, present, and potential future mastery of magic-Archetypes:- Elemental Guardians, Astral Gatekeeper, Inner Adept- Sound: Harmonic wind, elemental pulses, soft celestial hums synchronizing with theta-gamma frequencies
+**Target Duration:** 30 minutes
+**Session Name:** the-astral-gate-of-the-adept-journeyyou--20251206
+
+**Archetypes to incorporate:** The Star Guide, The Healer, The Temple
+
+**Section Timing:**
+- pretalk: 0 minutes
+- induction: 0 minutes
+- journey: 0 minutes
+- integration: 0 minutes
+- awakening: 0 minutes
+
+**CRITICAL REQUIREMENTS:**
+1. The script MUST follow the exact structure from the master prompt:
+   - PRE-TALK (2-3 minutes): Welcome, safety, preparation
+   - INDUCTION (4-5 minutes): Progressive relaxation, breathing, countdown
+   - MAIN JOURNEY (14-16 minutes): The full hypnotic experience with rich sensory detail
+   - INTEGRATION (2-3 minutes): Return to awareness
+   - CLOSING (2-3 minutes): Post-hypnotic anchors, gratitude
+
+2. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
+3. Use <break time="Xs"/> tags liberally for hypnotic pacing
+4. Include rich sensory language engaging all 5 senses
+5. Embed hypnotic suggestions naturally throughout
+6. Include 3-5 post-hypnotic anchors in the closing
+
+**SFX MARKERS (REQUIRED):**
+- Embed natural language SFX cues using [SFX: ...] (or [[SFX:...]]). Keep each marker concise (<140 chars) and place it exactly where the sound should trigger.
+- Provide at least 5 markers covering the journey arc: opening/entry tone, induction ambience, deepening texture, main journey accent(s), and integration/return chime.
+- Markers must describe sound character and duration (e.g., "Deep bronze bell, warm, 3s decay"), live on their own line, and avoid SSML tags inside the marker.
+- Keep markers within the <speak> body; they'll be stripped for voice synthesis but used to render the SFX track.
+
+**OUTPUT FORMAT:**
+Output ONLY the SSML script, starting with <?xml version="1.0" encoding="UTF-8"?>
+Do NOT include any explanation or commentary before or after the SSML.

@@ -40,15 +40,15 @@ python3 scripts/core/generate_images_sd.py
 ### Quality Options
 
 ```bash
-# Draft mode (30 steps, ~20-30 seconds per image)
-# Good for testing prompts
+# Draft mode (26 steps, ~20-25 seconds per image)
+# Good for testing prompts and checking framing
 python3 scripts/core/generate_images_sd.py --quality draft --candidates 1
 
-# Normal mode (50 steps, ~40-60 seconds per image)
+# Normal mode (32 steps, ~35-50 seconds per image)
 # Recommended balance of quality and speed
 python3 scripts/core/generate_images_sd.py --quality normal
 
-# High quality (80 steps, ~80-120 seconds per image)
+# High quality (40 steps, ~60-90 seconds per image)
 # Best results, takes longer
 python3 scripts/core/generate_images_sd.py --quality high
 ```
@@ -85,7 +85,11 @@ Review and choose the best one, then delete the candidates.
 python3 scripts/core/generate_images_sd.py \
   --session-dir sessions/my-new-session \
   --quality high \
-  --candidates 3
+  --candidates 3 \
+  --max-gen-side 1152            # generate near SDXL native res, upscale to target
+
+# Disable refiner if VRAM is tight
+python3 scripts/core/generate_images_sd.py --no-refiner
 ```
 
 ### Programmatic Usage

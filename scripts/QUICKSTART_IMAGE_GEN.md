@@ -39,7 +39,7 @@ python3 scripts/core/generate_images_sd.py --session-dir sessions/my-session
 
 | Option | Values | Default | Description |
 |--------|--------|---------|-------------|
-| `--quality` | draft, normal, high | normal | Generation quality (30/50/80 steps) |
+| `--quality` | draft, normal, high | normal | Generation quality (26/32/40 steps) |
 | `--candidates` | 1-10 | 3 | Number of variations per image |
 | `--session-dir` | path | sessions/garden-of-eden | Output directory |
 

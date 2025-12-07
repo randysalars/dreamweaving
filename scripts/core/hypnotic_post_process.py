@@ -5,13 +5,12 @@ DREAMWEAVING - Hypnotic Post-Processing & Mastering
 Unified psychoacoustic enhancement pipeline for hypnotic audio sessions.
 Combines techniques from ATLAS Starship, Iron Soul Forge, and Garden of Eden.
 
-TRIPLE-LAYER HYPNOTIC PRESENCE:
+LAYERED HYPNOTIC PRESENCE:
   Layer 1: Main voice (warmth + de-essing)
   Layer 2: Whisper overlay (ethereal high-frequency presence)
-  Layer 3: Subharmonic warm (grounding bass foundation)
+  Layer 3: Subharmonic warm (optional, grounding bass foundation)
 
-ADDITIONAL ENHANCEMENTS:
-  - Double-voice (phase-shifted subliminal layer)
+ADDITIONAL ENHANCEMENTS (CONFIGURABLE):
   - Room tone (intimate space reverb)
   - Cuddle waves (gentle amplitude rocking)
   - Echo (dreamy spatial depth)
@@ -69,42 +68,37 @@ warnings.filterwarnings('ignore', category=RuntimeWarning)
 # =============================================================================
 
 DEFAULTS = {
-    # Tape warmth
-    'warmth_drive': 0.25,         # 0.0-1.0, higher = more saturation
+    # Tape warmth (lowered for clarity)
+    'warmth_drive': 0.15,         # 0.0-1.0, higher = more saturation
 
     # De-essing
     'deess_enabled': True,
 
     # Whisper overlay (Layer 2: ethereal)
     'whisper_enabled': True,
-    'whisper_db': -22,            # Level relative to voice
+    'whisper_db': -24,            # Level relative to voice
 
     # Subharmonic (Layer 3: grounding)
-    'subharmonic_enabled': True,
+    'subharmonic_enabled': False,  # disabled by default for clarity
     'subharmonic_db': -12,        # Level relative to voice
-
-    # Double voice (subliminal)
-    'double_enabled': True,
-    'double_db': -14,             # Level relative to voice
-    'double_delay_ms': 8,         # Phase shift delay
 
     # Room tone
     'room_enabled': True,
-    'room_amount': 0.04,          # 0.0-1.0, wet mix percentage
+    'room_amount': 0.02,          # 0.0-1.0, wet mix percentage
 
     # Cuddle waves (amplitude modulation)
     'cuddle_enabled': True,
     'cuddle_freq': 0.05,          # Hz (one cycle per 20 seconds)
-    'cuddle_depth_db': 1.5,       # Modulation depth
+    'cuddle_depth_db': 1.0,       # Modulation depth
 
     # Echo (dreamy spatial)
-    'echo_enabled': True,
+    'echo_enabled': False,
     'echo_delay_ms': 180,         # Primary echo delay
     'echo_decay': 0.25,           # Echo volume (25% of original)
     'echo_feedback': 0.15,        # Feedback for secondary echoes
 
     # NEW: Dual reverb system (short room + long hall)
-    'dual_reverb_enabled': True,
+    'dual_reverb_enabled': False,
     'short_reverb_time': 0.3,     # 300ms room reverb
     'short_reverb_wet': 0.12,     # 12% wet mix
     'long_reverb_time': 8.0,      # 8 second hall reverb
@@ -112,7 +106,7 @@ DEFAULTS = {
     'long_reverb_predelay': 0.05, # 50ms predelay for clarity
 
     # NEW: High-frequency whisper aura (subliminal presence)
-    'hf_aura_enabled': True,
+    'hf_aura_enabled': False,
     'hf_aura_db': -40,            # Very quiet (-40 dB)
     'hf_aura_cutoff': 4000,       # HPF cutoff in Hz
 
@@ -135,7 +129,7 @@ DEFAULTS = {
 # VOICE-CLEAR MODE SETTINGS
 # =============================================================================
 # Optimized for maximum voice intelligibility while maintaining hypnotic depth.
-# Disables all voice-doubling layers that can cause muddy audio.
+# Disables secondary layers that can cause muddiness.
 # Approved settings from Carnegie Steel Empire session testing.
 
 VOICE_CLEAR_SETTINGS = {
@@ -148,7 +142,6 @@ VOICE_CLEAR_SETTINGS = {
     # Voice-doubling layers - ALL DISABLED for clarity
     'whisper_enabled': False,
     'subharmonic_enabled': False,
-    'double_enabled': False,
     'hf_aura_enabled': False,
     'dual_reverb_enabled': False,
     'adaptive_enabled': False,
@@ -370,30 +363,6 @@ def create_subharmonic_layer(audio, sample_rate, level_db=-12):
     return sub
 
 
-def create_double_voice(audio, sample_rate, level_db=-14, delay_ms=8):
-    """
-    Create phase-shifted subliminal double.
-    Slight delay + stereo offset for hypnotic width.
-    """
-    print("  🎭 Creating double-voice layer (subliminal presence)...")
-
-    delay_samples = int(delay_ms * sample_rate / 1000)
-
-    # Delay the audio
-    double = np.roll(audio, delay_samples, axis=0)
-    double[:delay_samples] = 0
-
-    # Slight stereo offset for width (±5 samples)
-    double[:, 0] = np.roll(double[:, 0], 5)
-    double[:, 1] = np.roll(double[:, 1], -5)
-
-    # Apply level
-    double *= db_to_linear(level_db)
-
-    print(f"      Level: {level_db} dB, Delay: {delay_ms}ms")
-    return double
-
-
 def add_room_tone(audio, sample_rate, amount=0.04):
     """
     Add subtle room impulse response.
@@ -484,7 +453,7 @@ def apply_echo(audio, sample_rate, delay_ms=180, decay=0.25, feedback=0.15):
 # =============================================================================
 
 def _create_enhancement_layers(audio, sample_rate, cfg):
-    """Create whisper, subharmonic, and double-voice layers."""
+    """Create whisper and subharmonic layers."""
     layers = []
 
     if cfg['whisper_enabled']:
@@ -494,10 +463,6 @@ def _create_enhancement_layers(audio, sample_rate, cfg):
     if cfg['subharmonic_enabled']:
         subharmonic = create_subharmonic_layer(audio, sample_rate, cfg['subharmonic_db'])
         layers.append(('subharmonic', subharmonic))
-
-    if cfg['double_enabled']:
-        double = create_double_voice(audio, sample_rate, cfg['double_db'], cfg['double_delay_ms'])
-        layers.append(('double', double))
 
     return layers
 
@@ -610,7 +575,6 @@ def _print_core_enhancements(cfg):
         (cfg['deess_enabled'], "De-essing (4-8 kHz)"),
         (cfg['whisper_enabled'], f"Whisper overlay ({cfg['whisper_db']} dB)"),
         (cfg['subharmonic_enabled'], f"Subharmonic ({cfg['subharmonic_db']} dB)"),
-        (cfg['double_enabled'], f"Double-voice ({cfg['double_db']} dB, {cfg['double_delay_ms']}ms)"),
         (cfg['room_enabled'], f"Room tone ({cfg['room_amount']*100:.0f}%)"),
         (cfg['cuddle_enabled'], f"Cuddle waves ({cfg['cuddle_freq']} Hz, ±{cfg['cuddle_depth_db']} dB)"),
         (cfg['echo_enabled'], f"Echo ({cfg['echo_delay_ms']}ms, {cfg['echo_decay']*100:.0f}%)"),
@@ -888,11 +852,11 @@ def process_audio(
     print("=" * 70)
     print("🧠 DREAMWEAVING - Hypnotic Post-Processing")
     print("=" * 70)
-    print("\nTriple-Layer Hypnotic Presence:")
+    print("\nLayered Hypnotic Presence:")
     print("  Layer 1: Main voice (warmth + de-essing)")
     print("  Layer 2: Whisper overlay (ethereal)")
-    print("  Layer 3: Subharmonic warm (grounding)")
-    print("  + Double-voice, room tone, cuddle waves, echo, dual reverb")
+    print("  Layer 3: Subharmonic warm (optional)")
+    print("  + Room tone, cuddle waves; echo/reverb optional")
 
     # Load audio
     audio, sample_rate, duration = load_audio(input_path)
@@ -1023,17 +987,17 @@ def process_audio_ffmpeg_only(input_path, output_name, output_dir, settings=None
         filters.append(f"chorus=0.5:0.9:50|60:0.4|0.32:0.25|0.4:2|1.3")
         print(f"   ✓ Room tone: {cfg['room_amount']*100:.0f}%")
 
+    # Subharmonic boost (low-end warmth)
+    if cfg['subharmonic_enabled']:
+        filters.append(f"equalizer=f=80:t=h:width=100:g={abs(cfg['subharmonic_db'])/4}")
+        print(f"   ✓ Subharmonic boost")
+
     # Echo
     if cfg['echo_enabled']:
         delay_ms = cfg['echo_delay_ms']
         decay = cfg['echo_decay']
         filters.append(f"aecho=0.8:0.7:{delay_ms}:{decay}")
         print(f"   ✓ Echo: {delay_ms}ms, {decay*100:.0f}%")
-
-    # Subharmonic boost (low-end warmth)
-    if cfg['subharmonic_enabled']:
-        filters.append(f"equalizer=f=80:t=h:width=100:g={abs(cfg['subharmonic_db'])/4}")
-        print(f"   ✓ Subharmonic boost")
 
     # Stereo width
     filters.append("stereotools=mlev=0.95:slev=1.05")
@@ -1155,7 +1119,6 @@ def _build_settings_from_args(args):
         ('no_deess', 'deess_enabled'),
         ('no_whisper', 'whisper_enabled'),
         ('no_subharmonic', 'subharmonic_enabled'),
-        ('no_double', 'double_enabled'),
         ('no_room', 'room_enabled'),
         ('no_cuddle', 'cuddle_enabled'),
         ('no_echo', 'echo_enabled'),
@@ -1177,8 +1140,6 @@ def _build_settings_from_args(args):
         ('warmth', 'warmth_drive'),
         ('whisper_db', 'whisper_db'),
         ('sub_db', 'subharmonic_db'),
-        ('double_db', 'double_db'),
-        ('double_delay', 'double_delay_ms'),
         ('room', 'room_amount'),
         ('cuddle_freq', 'cuddle_freq'),
         ('cuddle_depth', 'cuddle_depth_db'),
@@ -1232,8 +1193,7 @@ Examples:
     # Enhancement toggles
     parser.add_argument('--no-deess', action='store_true', help='Disable de-essing')
     parser.add_argument('--no-whisper', action='store_true', help='Disable whisper layer')
-    parser.add_argument('--no-subharmonic', action='store_true', help='Disable subharmonic')
-    parser.add_argument('--no-double', action='store_true', help='Disable double-voice')
+    parser.add_argument('--no-subharmonic', action='store_true', help='Disable subharmonic layer')
     parser.add_argument('--no-room', action='store_true', help='Disable room tone')
     parser.add_argument('--no-cuddle', action='store_true', help='Disable cuddle waves')
     parser.add_argument('--no-echo', action='store_true', help='Disable echo')
@@ -1250,8 +1210,6 @@ Examples:
     parser.add_argument('--warmth', type=float, help=f'Warmth drive 0-1 (default: {DEFAULTS["warmth_drive"]})')
     parser.add_argument('--whisper-db', type=float, help=f'Whisper level dB (default: {DEFAULTS["whisper_db"]})')
     parser.add_argument('--sub-db', type=float, help=f'Subharmonic level dB (default: {DEFAULTS["subharmonic_db"]})')
-    parser.add_argument('--double-db', type=float, help=f'Double-voice level dB (default: {DEFAULTS["double_db"]})')
-    parser.add_argument('--double-delay', type=float, help=f'Double-voice delay ms (default: {DEFAULTS["double_delay_ms"]})')
     parser.add_argument('--room', type=float, help=f'Room amount 0-1 (default: {DEFAULTS["room_amount"]})')
     parser.add_argument('--cuddle-freq', type=float, help=f'Cuddle frequency Hz (default: {DEFAULTS["cuddle_freq"]})')
     parser.add_argument('--cuddle-depth', type=float, help=f'Cuddle depth dB (default: {DEFAULTS["cuddle_depth_db"]})')
@@ -1286,7 +1244,7 @@ Examples:
                        help='Use lightweight FFmpeg-only processing (lower memory, for long sessions)')
     parser.add_argument('--voice-clear', action='store_true',
                        help='Voice-first mode: max voice clarity, minimal effects. '
-                            'Disables whisper, subharmonic, double, HF-aura, dual-reverb, adaptive. '
+                            'Disables whisper, subharmonic, HF-aura, dual-reverb, adaptive. '
                             'Keeps warmth(20%%), room(3%%), echo(250ms/12%%), cuddle(1.2dB).')
 
     args = parser.parse_args()

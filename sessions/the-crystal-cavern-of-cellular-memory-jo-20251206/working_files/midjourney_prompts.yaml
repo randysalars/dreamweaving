@@ -1,4 +1,4 @@
-session: journey-to-the-land-of-endless-prosperit-20251205
+session: the-crystal-cavern-of-cellular-memory-jo-20251206
 style: abstract
 style_details:
   base_style: flowing forms, energy patterns, consciousness
@@ -20,29 +20,18 @@ thumbnail:
 scenes:
 - scene: opening
   description: Beginning of Hypnotic Journey
-  prompt: 'gateway or threshold, beginning of a journey, warm, golden light beginning
-    to glow there, flowing forms, energy patterns, consciousness, color palette: prismatic,
-    shifting gradients, mood: inviting, anticipation, safe entry, lighting: inner
-    glow, radiant energy, highly detailed, professional quality, 8k resolution --ar
-    16:9 --v 6 --style raw --s 250'
+  prompt: 'gateway or threshold, beginning of a journey, now a crystalline cavern
+    beneath a living mountain, flowing forms, energy patterns, consciousness, color
+    palette: prismatic, shifting gradients, mood: inviting, anticipation, safe entry,
+    lighting: inner glow, radiant energy, highly detailed, professional quality, 8k
+    resolution --ar 16:9 --v 6 --style raw --s 250'
 - scene: journey_1
-  description: figure approaching
-  prompt: 'figure approaching, flowing forms, energy patterns, consciousness, color
-    palette: prismatic, shifting gradients, mood: meditative, hypnotic, transformative,
-    lighting: inner glow, radiant energy, highly detailed, professional quality, 8k
-    resolution --ar 16:9 --v 6 --style raw --s 250'
-- scene: journey_2
-  description: light and smoke rising from within
-  prompt: 'light and smoke rising from within, flowing forms, energy patterns, consciousness,
-    color palette: prismatic, shifting gradients, mood: meditative, hypnotic, transformative,
-    lighting: inner glow, radiant energy, highly detailed, professional quality, 8k
-    resolution --ar 16:9 --v 6 --style raw --s 250'
-- scene: journey_3
-  description: their circumstances
-  prompt: 'their circumstances, flowing forms, energy patterns, consciousness, color
-    palette: prismatic, shifting gradients, mood: meditative, hypnotic, transformative,
-    lighting: inner glow, radiant energy, highly detailed, professional quality, 8k
-    resolution --ar 16:9 --v 6 --style raw --s 250'
+  description: the crystal seed in your heart, you remember to nourish your vitality
+  prompt: 'the crystal seed in your heart, you remember to nourish your vitality,
+    flowing forms, energy patterns, consciousness, color palette: prismatic, shifting
+    gradients, mood: meditative, hypnotic, transformative, lighting: inner glow, radiant
+    energy, highly detailed, professional quality, 8k resolution --ar 16:9 --v 6 --style
+    raw --s 250'
 - scene: closing
   description: Completion of Hypnotic Journey
   prompt: 'peaceful return, integration, wholeness, flowing forms, energy patterns,

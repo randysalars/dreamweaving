@@ -1,0 +1,144 @@
+session:
+  name: the-astral-gate-of-the-adept-journeyyou--20251206
+  topic: "The Astral Gate of the Adept \u2014 Journey:You approach a luminous gate\
+    \ floating in the astral realm, guarded by four elemental angels. Passing through\
+    \ requires attuning your inner vibrations to each element sequentially. Beyond\
+    \ the gate lies a hall of mirrors, each reflecting your past, present, and potential\
+    \ future mastery of magic-Archetypes:- Elemental Guardians, Astral Gatekeeper,\
+    \ Inner Adept- Sound: Harmonic wind, elemental pulses, soft celestial hums synchronizing\
+    \ with theta-gamma frequencies"
+  duration: 1800
+  style: anxiety
+  created: '2025-12-06'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: "The Astral Gate of the Adept \u2014 Journey:you Approach a Luminous\
+    \ Gate Floating in the Astral Realm, Guarded By Four Elemental Angels. Passing\
+    \ Through Requires Attuning Your Inner Vibrations to Each Element Sequentially.\
+    \ Beyond the Gate Lies a Hall of Mirrors, Each Reflecting Your Past, Present,\
+    \ and Potential Future Mastery of Magic-archetypes:- Elemental Guardians, Astral\
+    \ Gatekeeper, Inner Adept- Sound: Harmonic Wind, Elemental Pulses, Soft Celestial\
+    \ Hums Synchronizing with Theta-gamma Frequencies"
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: "Welcome and introduction to The Astral Gate of the Adept \u2014 Journey:You\
+    \ approach a luminous gate floating in the astral realm, guarded by four elemental\
+    \ angels. Passing through requires attuning your inner vibrations to each element\
+    \ sequentially. Beyond the gate lies a hall of mirrors, each reflecting your past,\
+    \ present, and potential future mastery of magic-Archetypes:- Elemental Guardians,\
+    \ Astral Gatekeeper, Inner Adept- Sound: Harmonic wind, elemental pulses, soft\
+    \ celestial hums synchronizing with theta-gamma frequencies"
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into on a sacred path that winds through realms
+    of transformation, where each step brings you closer to your truest self
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a sacred journey through underwater realms toward anxiety'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: resting in unshakeable calm and present-moment peace'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Star Guide
+  role: guidance
+  description: Celestial being of cosmic navigation
+  symbol: constellation map
+  qualities:
+  - cosmic awareness
+  - pathfinding
+  - clarity
+  appearance_section: journey
+- name: The Healer
+  role: healing
+  description: Compassionate presence of restoration
+  symbol: healing hands of light
+  qualities:
+  - restoration
+  - compassion
+  - wholeness
+  appearance_section: journey
+- name: The Temple
+  role: vessel
+  description: Sacred space for transformation
+  symbol: pillars of light
+  qualities:
+  - sanctuary
+  - ritual
+  - power
+  appearance_section: journey
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 432
+    sections:
+    - start: 0
+      end: 180
+      offset_hz: 10.0
+    - start: 180
+      end: 450
+      offset_hz: 7.0
+    - start: 450
+      end: 900
+      offset_hz: 4.0
+    - start: 900
+      end: 1260
+      offset_hz: 2.0
+    - start: 1260
+      end: 1530
+      offset_hz: 5.0
+    - start: 1530
+      end: 1800
+      offset_hz: 9.0
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: "The Astral Gate of the Adept \u2014 Journey:you Approach a Luminous Gate\
+    \ Floating in the Astral Realm, Guarded By Four Elemental Angels. Passing Through\
+    \ Requires Attuning Your Inner Vibrations to Each Element Sequentially. Beyond\
+    \ the Gate Lies a Hall of Mirrors, Each Reflecting Your Past, Present, and Potential\
+    \ Future Mastery of Magic-archetypes:- Elemental Guardians, Astral Gatekeeper,\
+    \ Inner Adept- Sound: Harmonic Wind, Elemental Pulses, Soft Celestial Hums Synchronizing\
+    \ with Theta-gamma Frequencies | Binaural Beats Meditation"
+  subtitle: "432Hz \u2022 Anxiety"
+  description: 'A transformational journey: resting in unshakeable calm and present-moment
+    peace'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - anxiety
+  - underwater

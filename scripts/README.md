@@ -52,9 +52,9 @@ python3 scripts/core/generate_images_sd.py
 python3 scripts/core/generate_images_sd.py --session-dir sessions/my-session
 
 # Quality options
-python3 scripts/core/generate_images_sd.py --quality draft   # Fast (30 steps)
-python3 scripts/core/generate_images_sd.py --quality normal  # Balanced (50 steps)
-python3 scripts/core/generate_images_sd.py --quality high    # Best (80 steps)
+python3 scripts/core/generate_images_sd.py --quality draft   # Fast (26 steps)
+python3 scripts/core/generate_images_sd.py --quality normal  # Balanced (32 steps)
+python3 scripts/core/generate_images_sd.py --quality high    # Best (40 steps)
 
 # Candidate selection
 python3 scripts/core/generate_images_sd.py --candidates 5   # Generate 5 versions per image

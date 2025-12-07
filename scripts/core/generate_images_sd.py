@@ -6,7 +6,12 @@ Uses SDXL for best results
 """
 
 import torch
-from diffusers import StableDiffusionXLPipeline, DPMSolverMultistepScheduler
+from diffusers import (
+    AutoencoderKL,
+    DPMSolverMultistepScheduler,
+    StableDiffusionXLImg2ImgPipeline,
+    StableDiffusionXLPipeline
+)
 from pathlib import Path
 import logging
 from typing import Optional, List, Dict
@@ -24,18 +29,32 @@ class ImageGenerator:
     def __init__(
         self,
         model_id: str = "stabilityai/stable-diffusion-xl-base-1.0",
+        refiner_model_id: Optional[str] = "stabilityai/stable-diffusion-xl-refiner-1.0",
+        vae_model_id: Optional[str] = "madebyollin/sdxl-vae-fp16-fix",
         device: Optional[str] = None,
         use_fp16: bool = True,
-        enable_optimizations: bool = True
+        enable_optimizations: bool = True,
+        use_refiner: bool = True,
+        refiner_start: float = 0.8,
+        refiner_steps: int = 18,
+        max_generation_side: int = 1152,
+        scheduler_type: str = "dpmpp_2m_karras"
     ):
         """
         Initialize the image generator
 
         Args:
             model_id: Hugging Face model ID
+            refiner_model_id: Optional SDXL refiner model ID for final detail pass
+            vae_model_id: Optional VAE override for sharper colors/details
             device: Device to use ('cuda', 'mps', 'cpu', or None for auto-detect)
             use_fp16: Use half precision for faster inference (requires GPU)
             enable_optimizations: Enable memory optimizations
+            use_refiner: Run SDXL refiner on final 20% of denoising steps
+            refiner_start: Where to split base/refiner denoising (0.0-1.0)
+            refiner_steps: Number of refiner steps (kept short to save time)
+            max_generation_side: Generate natively up to this side, then upscale to target
+            scheduler_type: Scheduler preset ('dpmpp_2m_karras' by default)
         """
         # Auto-detect device if not specified
         if device is None:
@@ -52,6 +71,12 @@ class ImageGenerator:
 
         self.device = device
         self.use_fp16 = use_fp16 and device == "cuda"
+        self.refiner_start = refiner_start
+        self.refiner_steps = refiner_steps
+        self.max_generation_side = max_generation_side
+        self.scheduler_type = scheduler_type
+        self.refiner_model_id = refiner_model_id
+        self.model_id = model_id
 
         logger.info(f"🔧 Loading Stable Diffusion XL: {model_id}")
         logger.info(f"📍 Device: {device}")
@@ -70,18 +95,44 @@ class ImageGenerator:
                 logger.info("⏱️  This will take 10-30 minutes depending on connection")
                 logger.info("💡 Model will be cached for future use")
 
-            self.pipe = StableDiffusionXLPipeline.from_pretrained(
-                model_id,
-                torch_dtype=dtype,
-                use_safetensors=True,
-                variant="fp16" if self.use_fp16 else None
-            )
+            vae = None
+            if vae_model_id:
+                try:
+                    logger.info(f"🎨 Loading VAE: {vae_model_id}")
+                    vae = AutoencoderKL.from_pretrained(
+                        vae_model_id,
+                        torch_dtype=dtype,
+                        use_safetensors=True
+                    )
+                except Exception as ve:
+                    logger.warning(f"⚠️  Could not load custom VAE ({vae_model_id}), using default. Reason: {ve}")
+
+            is_local_model = Path(model_id).exists()
+            if is_local_model:
+                logger.info(f"📦 Loading local SDXL model file: {model_id}")
+                self.pipe = StableDiffusionXLPipeline.from_single_file(
+                    model_id,
+                    torch_dtype=dtype,
+                    use_safetensors=True,
+                    vae=vae
+                )
+            else:
+                self.pipe = StableDiffusionXLPipeline.from_pretrained(
+                    model_id,
+                    torch_dtype=dtype,
+                    use_safetensors=True,
+                    variant="fp16" if self.use_fp16 else None,
+                    vae=vae
+                )
 
             # Optimize scheduler for quality
-            self.pipe.scheduler = DPMSolverMultistepScheduler.from_config(
-                self.pipe.scheduler.config,
-                use_karras_sigmas=True  # Better quality
-            )
+            if scheduler_type == "dpmpp_2m_karras":
+                self.pipe.scheduler = DPMSolverMultistepScheduler.from_config(
+                    self.pipe.scheduler.config,
+                    use_karras_sigmas=True,
+                    algorithm_type="dpmsolver++"
+                )
+            logger.info(f"🧠 Scheduler: {self.pipe.scheduler.__class__.__name__} ({scheduler_type})")
 
             # Move to device
             self.pipe = self.pipe.to(device)
@@ -106,6 +157,37 @@ class ImageGenerator:
                         logger.info("✅ xformers acceleration enabled")
                     except (ImportError, ModuleNotFoundError, RuntimeError):
                         logger.info("ℹ️  xformers not available (install with: pip install xformers)")
+                if device == "cuda":
+                    torch.backends.cuda.matmul.allow_tf32 = True
+                    torch.backends.cudnn.allow_tf32 = True
+
+            self.refiner = None
+            if use_refiner and refiner_model_id:
+                try:
+                    logger.info(f"🎨 Loading SDXL refiner: {refiner_model_id}")
+                    self.refiner = StableDiffusionXLImg2ImgPipeline.from_pretrained(
+                        refiner_model_id,
+                        torch_dtype=dtype,
+                        use_safetensors=True,
+                        variant="fp16" if self.use_fp16 else None,
+                        vae=self.pipe.vae
+                    ).to(device)
+
+                    if enable_optimizations:
+                        if device == "cuda":
+                            self.refiner.enable_attention_slicing(1)
+                            self.refiner.enable_vae_slicing()
+                            try:
+                                self.refiner.enable_xformers_memory_efficient_attention()
+                            except Exception:
+                                pass
+                        if device == "cpu":
+                            self.refiner.enable_sequential_cpu_offload()
+
+                    logger.info("✅ Refiner loaded successfully")
+                except Exception as re:
+                    logger.warning(f"⚠️  Refiner unavailable ({re}); continuing with base model only.")
+                    self.refiner = None
 
             logger.info("✅ Model loaded successfully")
 
@@ -113,14 +195,37 @@ class ImageGenerator:
             logger.error(f"❌ Error loading model: {e}")
             raise
 
+    def _prepare_generation_dimensions(self, target_width: int, target_height: int):
+        """
+        Keep SDXL generation near its native resolution, then optionally upscale.
+
+        Returns:
+            (gen_width, gen_height, upscale_target | None)
+        """
+        target_width = (target_width // 8) * 8
+        target_height = (target_height // 8) * 8
+
+        max_side = max(target_width, target_height)
+        if max_side <= self.max_generation_side:
+            return target_width, target_height, None
+
+        scale = self.max_generation_side / max_side
+        gen_width = max(64, int(target_width * scale) // 8 * 8)
+        gen_height = max(64, int(target_height * scale) // 8 * 8)
+
+        return gen_width, gen_height, (target_width, target_height)
+
     def generate_image(
         self,
         prompt: str,
-        negative_prompt: str = "blurry, ugly, duplicate, poorly drawn, deformed, text, watermark, low quality, distorted",
+        negative_prompt: str = (
+            "blurry, low quality, noisy, duplicate, poorly drawn, deformed, disfigured, extra limbs, extra fingers, "
+            "fused anatomy, malformed eyes, text, watermark, signature, logo, oversharpened, jpeg artifacts"
+        ),
         width: int = 1920,
         height: int = 1080,
-        num_inference_steps: int = 50,
-        guidance_scale: float = 7.5,
+        num_inference_steps: int = 32,
+        guidance_scale: float = 6.5,
         seed: Optional[int] = None,
         num_images: int = 1
     ) -> List[Image.Image]:
@@ -141,8 +246,7 @@ class ImageGenerator:
             List of PIL Image objects
         """
         # Ensure dimensions are divisible by 8
-        width = (width // 8) * 8
-        height = (height // 8) * 8
+        gen_width, gen_height, upscale_to = self._prepare_generation_dimensions(width, height)
 
         # Set seed if specified
         generator = None
@@ -151,27 +255,68 @@ class ImageGenerator:
 
         logger.info(f"\n🎨 Generating {num_images} image(s)...")
         logger.info(f"📝 Prompt: {prompt[:100]}...")
-        logger.info(f"📐 Size: {width}x{height}")
-        logger.info(f"🔢 Steps: {num_inference_steps}, Guidance: {guidance_scale}")
+        if upscale_to:
+            logger.info(f"📐 Native: {gen_width}x{gen_height} → Upscale to: {width}x{height}")
+        else:
+            logger.info(f"📐 Size: {gen_width}x{gen_height}")
+        logger.info(f"🔢 Steps: {num_inference_steps}, Guidance: {guidance_scale}, Scheduler: {self.scheduler_type}")
         if seed:
             logger.info(f"🎲 Seed: {seed}")
 
         start_time = time.time()
 
         try:
-            # Generate images
-            result = self.pipe(
-                prompt=prompt,
-                negative_prompt=negative_prompt,
-                width=width,
-                height=height,
-                num_inference_steps=num_inference_steps,
-                guidance_scale=guidance_scale,
-                generator=generator,
-                num_images_per_prompt=num_images
-            )
+            # Generate images (with optional refiner pass)
+            if self.refiner:
+                base_output = self.pipe(
+                    prompt=prompt,
+                    negative_prompt=negative_prompt,
+                    width=gen_width,
+                    height=gen_height,
+                    num_inference_steps=num_inference_steps,
+                    guidance_scale=guidance_scale,
+                    generator=generator,
+                    num_images_per_prompt=num_images,
+                    output_type="latent",
+                    denoising_end=self.refiner_start
+                )
 
-            images = result.images
+                refiner_steps = max(
+                    self.refiner_steps,
+                    int(num_inference_steps * (1 - self.refiner_start))
+                )
+
+                refined = self.refiner(
+                    prompt=prompt,
+                    negative_prompt=negative_prompt,
+                    image=base_output.images,
+                    num_inference_steps=refiner_steps,
+                    guidance_scale=guidance_scale,
+                    generator=generator,
+                    denoising_start=self.refiner_start
+                )
+                images = refined.images
+            else:
+                result = self.pipe(
+                    prompt=prompt,
+                    negative_prompt=negative_prompt,
+                    width=gen_width,
+                    height=gen_height,
+                    num_inference_steps=num_inference_steps,
+                    guidance_scale=guidance_scale,
+                    generator=generator,
+                    num_images_per_prompt=num_images
+                )
+                images = result.images
+
+            # Optional upscale to requested resolution for SDXL-native friendliness
+            if upscale_to:
+                target_size = (width, height)
+                upscaled = []
+                for img in images:
+                    upscaled.append(img.resize(target_size, Image.LANCZOS))
+                images = upscaled
+
             elapsed = time.time() - start_time
             logger.info(f"✅ Generated {len(images)} image(s) in {elapsed:.1f}s")
 
@@ -226,6 +371,8 @@ class ImageGenerator:
 
         # Save metadata
         if save_metadata:
+            native_width, native_height, upscale_to = self._prepare_generation_dimensions(width, height)
+
             metadata = {
                 "prompt": prompt,
                 "negative_prompt": negative_prompt,
@@ -233,6 +380,15 @@ class ImageGenerator:
                 "height": height,
                 "steps": num_inference_steps,
                 "guidance_scale": guidance_scale,
+                "native_width": native_width,
+                "native_height": native_height,
+                "upscaled_to": upscale_to if upscale_to else None,
+                "max_generation_side": self.max_generation_side,
+                "scheduler": self.scheduler_type,
+                "refined": bool(getattr(self, "refiner", None)),
+                "refiner_model": self.refiner_model_id if getattr(self, "refiner", None) else None,
+                "refiner_start": self.refiner_start if getattr(self, "refiner", None) else None,
+                "refiner_steps": self.refiner_steps if getattr(self, "refiner", None) else None,
                 "seed": seed,
                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
             }
@@ -254,22 +410,26 @@ class ImageGenerator:
 def generate_garden_of_eden_images(
     session_dir: str = "sessions/garden-of-eden",
     quality: str = "high",
-    num_candidates: int = 3
+    num_candidates: int = 3,
+    use_refiner: bool = True,
+    max_generation_side: int = 1152
 ):
     """
     Generate all 7 Garden of Eden meditation images
 
     Args:
         session_dir: Directory to save images
-        quality: 'draft' (30 steps), 'normal' (50 steps), 'high' (80 steps)
+        quality: 'draft' (26 steps), 'normal' (32 steps), 'high' (40 steps)
         num_candidates: Generate multiple versions per image for selection
+        use_refiner: Whether to run SDXL refiner on final denoising chunk
+        max_generation_side: Native generation side before upscaling
     """
 
     # Quality presets
     quality_settings = {
-        "draft": {"steps": 30, "guidance": 7.0},
-        "normal": {"steps": 50, "guidance": 7.5},
-        "high": {"steps": 80, "guidance": 8.0}
+        "draft": {"steps": 26, "guidance": 5.5},
+        "normal": {"steps": 32, "guidance": 6.5},
+        "high": {"steps": 40, "guidance": 7.0}
     }
 
     settings = quality_settings.get(quality, quality_settings["normal"])
@@ -286,7 +446,9 @@ def generate_garden_of_eden_images(
     generator = ImageGenerator(
         model_id="stabilityai/stable-diffusion-xl-base-1.0",
         use_fp16=True,
-        enable_optimizations=True
+        enable_optimizations=True,
+        use_refiner=use_refiner,
+        max_generation_side=max_generation_side
     )
 
     # Image prompts with enhanced quality keywords for SDXL
@@ -401,7 +563,7 @@ if __name__ == "__main__":
         type=str,
         choices=["draft", "normal", "high"],
         default="normal",
-        help="Generation quality: draft (30 steps), normal (50 steps), high (80 steps)"
+        help="Generation quality: draft (26 steps), normal (32 steps), high (40 steps)"
     )
     parser.add_argument(
         "--candidates",
@@ -409,11 +571,24 @@ if __name__ == "__main__":
         default=3,
         help="Number of candidate images to generate per prompt"
     )
+    parser.add_argument(
+        "--no-refiner",
+        action="store_true",
+        help="Disable SDXL refiner pass (useful for lower VRAM)"
+    )
+    parser.add_argument(
+        "--max-gen-side",
+        type=int,
+        default=1152,
+        help="Maximum side length to generate natively before upscaling"
+    )
 
     args = parser.parse_args()
 
     generate_garden_of_eden_images(
         session_dir=args.session_dir,
         quality=args.quality,
-        num_candidates=args.candidates
+        num_candidates=args.candidates,
+        use_refiner=not args.no_refiner,
+        max_generation_side=args.max_gen_side
     )

@@ -221,6 +221,8 @@ class AutoGenerator:
 
             # Stage 3: Generate SSML script
             self._stage_generate_script()
+            if "generate_script" in self.stages_failed:
+                raise RuntimeError("generate_script failed; aborting pipeline")
 
             # Stage 4: Generate image prompts
             self._stage_generate_prompts()
@@ -231,6 +233,9 @@ class AutoGenerator:
 
                 # Stage 6: Generate binaural
                 self._stage_generate_binaural()
+
+                # Stage 6.5: Generate SFX track (if markers exist)
+                self._stage_generate_sfx()
 
                 # Stage 7: Mix audio
                 self._stage_mix_audio()
@@ -409,10 +414,16 @@ class AutoGenerator:
    - CLOSING (2-3 minutes): Post-hypnotic anchors, gratitude
 
 2. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
-3. Use <break time="Xs"/> tags liberally for hypnotic pacing
+3. Use <break time="Xs"/> tags liberally for hypnotic pacing, favoring slightly longer pauses: 2-3s for normal beats, 3-5s for deeper drops, 1s for countdown ticks
 4. Include rich sensory language engaging all 5 senses
 5. Embed hypnotic suggestions naturally throughout
 6. Include 3-5 post-hypnotic anchors in the closing
+
+**SFX MARKERS (REQUIRED):**
+- Embed natural language SFX cues using [SFX: ...] (or [[SFX:...]]). Keep each marker concise (<140 chars) and place it exactly where the sound should trigger.
+- Provide at least 5 markers covering the journey arc: opening/entry tone, induction ambience, deepening texture, main journey accent(s), and integration/return chime.
+- Markers must describe sound character and duration (e.g., "Deep bronze bell, warm, 3s decay"), live on their own line, and avoid SSML tags inside the marker.
+- Keep markers within the <speak> body; they'll be stripped for voice synthesis but used to render the SFX track.
 
 **OUTPUT FORMAT:**
 Output ONLY the SSML script, starting with <?xml version="1.0" encoding="UTF-8"?>
@@ -428,6 +439,11 @@ Do NOT include any explanation or commentary before or after the SSML.
         user_prompt_file.write_text(user_prompt)
 
         script_content = None
+        claude_stdout = ""
+        claude_stderr = ""
+        result = None
+        codex_stdout = ""
+        codex_stderr = ""
 
         # 1) Primary attempt: Claude CLI
         self.log("Using Claude CLI for script generation...", "info")
@@ -447,20 +463,44 @@ Do NOT include any explanation or commentary before or after the SSML.
                 cwd=str(self.project_root)
             )
 
-            if result.returncode == 0:
-                response_data = json.loads(result.stdout)
-                script_content = response_data.get('result', '')
-            else:
-                error_msg = result.stderr[:200] if result.stderr else 'Unknown error'
-                self.log(f"Claude CLI error: {error_msg}", "error")
+            claude_stdout = result.stdout or ""
+            claude_stderr = result.stderr or ""
+
+            if result.returncode == 0 and claude_stdout.strip():
+                try:
+                    response_data = json.loads(claude_stdout)
+                    if response_data.get("is_error") or response_data.get("error"):
+                        err_detail = str(
+                            response_data.get("error")
+                            or response_data.get("result")
+                            or response_data.get("message")
+                            or ""
+                        ).strip()
+                        self.log(f"Claude CLI error: {err_detail or 'Unknown error'}", "error")
+                    else:
+                        script_content = response_data.get('result', '')
+                except json.JSONDecodeError as e:
+                    self.log(f"Failed to parse Claude response: {e}", "error")
+                    if claude_stdout.strip():
+                        script_content = claude_stdout
+                        self.log("Using raw response (Claude JSON parse failed)", "warning")
+            elif result.returncode != 0:
+                error_msg = claude_stderr.strip()
+                if not error_msg and claude_stdout.strip():
+                    try:
+                        parsed_stdout = json.loads(claude_stdout)
+                        error_msg = str(
+                            parsed_stdout.get("error")
+                            or parsed_stdout.get("result")
+                            or parsed_stdout.get("message")
+                            or ""
+                        )
+                    except json.JSONDecodeError:
+                        error_msg = claude_stdout.strip()
+                self.log(f"Claude CLI error: {error_msg[:200] if error_msg else 'Unknown error'}", "error")
         except FileNotFoundError:
             self.log("Claude CLI not found - install Claude Code extension", "error")
             self.log("Visit: https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code", "info")
-        except json.JSONDecodeError as e:
-            self.log(f"Failed to parse Claude response: {e}", "error")
-            if result.stdout and result.stdout.strip():
-                script_content = result.stdout
-                self.log("Using raw response (Claude JSON parse failed)", "warning")
         except subprocess.TimeoutExpired:
             self.log("Script generation timed out (5 min limit)", "error")
         except Exception as e:
@@ -475,7 +515,9 @@ Do NOT include any explanation or commentary before or after the SSML.
                 f"{system_prompt_text}\n\n"
                 f"User request:\n{user_prompt}\n\n"
                 f"Return ONLY JSON with a single key \"result\" whose value is the SSML starting "
-                f"with <?xml version=\"1.0\" encoding=\"UTF-8\"?>. No code fences, no comments."
+                f"with <?xml version=\"1.0\" encoding=\"UTF-8\"?>. No code fences, no comments.\n\n"
+                f"Break pacing bias: prefer slightly longer pauses (2-3s typical, 3-5s for deepening), "
+                f"with 1s ticks only for countdowns."
             )
             schema_path = self.session_path / "working_files" / "codex_output_schema.json"
             schema_path.write_text(
@@ -492,15 +534,17 @@ Do NOT include any explanation or commentary before or after the SSML.
                     timeout=300,
                     cwd=str(self.project_root)
                 )
-                if codex_result.returncode == 0 and codex_result.stdout.strip():
+                codex_stdout = codex_result.stdout or ""
+                codex_stderr = codex_result.stderr or ""
+                if codex_result.returncode == 0 and codex_stdout.strip():
                     try:
-                        codex_data = json.loads(codex_result.stdout)
+                        codex_data = json.loads(codex_stdout)
                         script_content = codex_data.get("result", "")
-                        if not script_content and codex_result.stdout.strip():
-                            script_content = codex_result.stdout
+                        if not script_content and codex_stdout.strip():
+                            script_content = codex_stdout
                             self.log("Using raw Codex response (missing result field)", "warning")
                     except json.JSONDecodeError:
-                        script_content = codex_result.stdout
+                        script_content = codex_stdout
                         self.log("Using raw Codex response (JSON parse failed)", "warning")
                 else:
                     codex_err = codex_result.stderr[:200] if codex_result.stderr else 'Unknown error'
@@ -518,43 +562,57 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.stages_failed.append("generate_script")
             return
 
-        # If raw output contains a JSON-like "result" field, extract and unescape it
-        if not script_content.strip().startswith("<?xml") or '"result"' in script_content:
-            matches = list(re.finditer(r'"result"\s*:\s*"(?P<content>.*?)"', script_content, re.DOTALL))
-            chosen = None
-            for m in matches:
-                c = m.group("content")
-                if "</speak>" in c or "\\/speak" in c:
-                    chosen = c  # prefer ones containing speak end
-            if not chosen and matches:
-                chosen = matches[-1].group("content")
-            if chosen:
+        # Save raw outputs for debugging and postmortem recovery
+        raw_dir = self.session_path / "working_files"
+        if claude_stdout:
+            (raw_dir / "claude_raw_stdout.txt").write_text(claude_stdout)
+        if claude_stderr:
+            (raw_dir / "claude_raw_stderr.txt").write_text(claude_stderr)
+        if codex_stdout:
+            (raw_dir / "codex_raw_stdout.txt").write_text(codex_stdout)
+        if codex_stderr:
+            (raw_dir / "codex_raw_stderr.txt").write_text(codex_stderr)
+
+        # Normalize SSML from any available output (stdout/stderr included)
+        raw_sources = [
+            ("primary_response", script_content),
+            ("claude_stdout", claude_stdout),
+            ("claude_stderr", claude_stderr),
+            ("codex_stdout", codex_stdout),
+            ("codex_stderr", codex_stderr),
+        ]
+
+        normalized_script = None
+        chosen_raw = None
+        for label, raw in raw_sources:
+            candidate = self._extract_ssml_from_text(raw)
+            if candidate:
+                normalized_script = candidate
+                chosen_raw = raw or ""
+                if label != "primary_response":
+                    self.log(f"Recovered SSML from {label.replace('_', ' ')}", "warning")
+                break
+
+        if not normalized_script:
+            self.log("Response doesn't contain valid SSML", "error")
+            self.log("Use /generate-script command to create script manually", "info")
+            # Remove any partial script artifacts
+            for path in [
+                self.session_path / "working_files" / "script.ssml",
+                self.session_path / "working_files" / "script_voice_clean.ssml",
+                self.session_path / "script.ssml",
+            ]:
                 try:
-                    # Unescape JSON string content safely
-                    script_content = json.loads(f'"{chosen}"')
-                except Exception:
-                    script_content = chosen
-
-        # Clean up the response - ensure it starts with XML declaration
-        if not script_content.strip().startswith('<?xml'):
-            # Try to find the XML start
-            xml_start = script_content.find('<?xml')
-            if xml_start != -1:
-                script_content = script_content[xml_start:]
-            else:
-                self.log("Response doesn't contain valid SSML", "error")
-                self.log("Use /generate-script command to create script manually", "info")
-                self.stages_failed.append("generate_script")
-                return
-
-        # Trim to the last </speak> and drop anything after
-        speak_end = script_content.rfind('</speak>')
-        if speak_end != -1:
-            script_content = script_content[:speak_end + len('</speak>')]
-        else:
-            self.log("SSML missing </speak> end tag", "error")
+                    path.unlink()
+                except FileNotFoundError:
+                    pass
             self.stages_failed.append("generate_script")
             return
+
+        if chosen_raw and '<speak' in chosen_raw and '</speak>' not in chosen_raw:
+            self.log("SSML missing </speak>; appended closing tag automatically", "warning")
+
+        script_content = normalized_script
 
         # Clean up SSML issues from model output
         # Remove markdown fences that Claude sometimes adds
@@ -577,15 +635,136 @@ Do NOT include any explanation or commentary before or after the SSML.
         # Save the full script (with any SFX markers)
         script_path = self.session_path / "working_files" / "script.ssml"
         script_path.write_text(script_content)
-        self.log(f"Generated script: {script_path}", "success")
+
+        marker_count = self._count_sfx_markers(script_content)
 
         # Create clean version for TTS (strip SFX markers)
-        clean_content = re.sub(r'\[SFX:[^\]]*\]\n?', '', script_content)
+        clean_content = re.sub(r'\[\[?SFX:[^\]]*\]\]?\s*', '', script_content, flags=re.IGNORECASE)
         clean_path = self.session_path / "working_files" / "script_voice_clean.ssml"
         clean_path.write_text(clean_content)
+
+        if marker_count == 0:
+            self.log("No SFX markers found in generated script; regenerate with `[SFX: ...]` cues (Claude/Codex).", "error")
+            self.log(f"Saved script without SFX markers: {script_path}", "warning")
+            self.log(f"Created voice-clean script: {clean_path}", "info")
+            self.stages_failed.append("generate_script")
+            return
+        elif marker_count < 4:
+            self.log(f"Generated script with low SFX marker count ({marker_count}); target at least one per section.", "warning")
+        else:
+            self.log(f"Generated script with {marker_count} SFX markers: {script_path}", "success")
+
         self.log(f"Created voice-clean script: {clean_path}", "success")
 
         self.stages_completed.append("generate_script")
+
+    def _extract_ssml_from_text(self, raw_text: Optional[str]) -> Optional[str]:
+        """Extract and normalize SSML content from a raw model response."""
+        if not raw_text:
+            return None
+
+        text = raw_text.strip()
+        if not text:
+            return None
+
+        def _decode_candidate(possible: str) -> str:
+            """Best-effort decoding of a JSON-string field."""
+            try:
+                return json.loads(f'"{possible}"')
+            except Exception:
+                try:
+                    return bytes(possible, "utf-8").decode("unicode_escape")
+                except Exception:
+                    return possible
+
+        candidates = []
+
+        # Try strict JSON parsing first
+        try:
+            parsed = json.loads(text)
+            if isinstance(parsed, dict) and 'result' in parsed:
+                candidates.append(str(parsed['result']))
+        except Exception:
+            pass
+
+        # If JSON is malformed, try to extract ALL "result" fields manually (CLI prepends other JSON)
+        result_field_pattern = r'"result"\s*:\s*"(?P<content>(?:\\.|[^"\\])*)"'
+        for match in re.finditer(result_field_pattern, text, re.DOTALL):
+            candidates.append(_decode_candidate(match.group("content")))
+
+        # Also grab any raw <speak> blocks that may already be present in the text
+        for match in re.finditer(r'<speak[^>]*>.*?</speak>', text, re.DOTALL):
+            candidates.append(match.group(0))
+
+        # Fallback to raw text if we found nothing
+        if not candidates:
+            candidates.append(text)
+
+        # Normalize/unescape each candidate
+        normalized_candidates = []
+        for cand in candidates:
+            cand = cand.replace('\\"', '"')
+            cand = cand.replace("\\n", "\n")
+            cand = cand.replace("\\t", "\t")
+            cand = re.sub(r'```[a-zA-Z0-9]*\n?', '', cand).strip()
+            normalized_candidates.append(cand)
+
+        # Prefer candidates with early <speak>/<\?xml> and minimal preamble noise
+        def _score(candidate: str):
+            has_speak = '<speak' in candidate
+            has_end = '</speak>' in candidate
+            # Distance from start to first xml/speak tag (lower is better)
+            xml_idx = candidate.find('<?xml') if '<?xml' in candidate else float('inf')
+            speak_idx = candidate.find('<speak') if has_speak else float('inf')
+            return (
+                0 if has_speak else 1,
+                0 if has_end else 1,
+                xml_idx,
+                speak_idx,
+                len(candidate),
+            )
+
+        text = min(normalized_candidates, key=_score)
+
+        # Pull out the actual <speak> block to drop any surrounding chatter
+        speak_block = re.search(r'<speak[^>]*>.*?</speak>', text, re.DOTALL)
+        if speak_block:
+            text = speak_block.group(0)
+        elif '<speak' in text and '</speak>' in text:
+            start = text.find('<speak')
+            end = text.rfind('</speak>') + len('</speak>')
+            text = text[start:end]
+        elif '<speak' in text:
+            # If speak start exists but no closing tag, grab from start
+            text = text[text.find('<speak'):]
+
+        # Locate SSML start
+        xml_start = text.find('<?xml')
+        speak_start = text.find('<speak')
+
+        if xml_start != -1 and (speak_start == -1 or xml_start < speak_start):
+            text = text[xml_start:]
+        elif speak_start != -1:
+            text = '<?xml version="1.0" encoding="UTF-8"?>\n' + text[speak_start:]
+        else:
+            stripped = text.strip()
+            if not stripped:
+                return None
+            return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+                    '<speak>\n' + stripped + '\n</speak>').strip()
+
+        # Ensure we end at </speak> and trim trailing noise
+        if '</speak>' in text:
+            text = text[: text.rfind('</speak>') + len('</speak>')]
+        elif '<speak' in text:
+            text = text.rstrip() + '\n</speak>'
+
+        return text.strip() if '<speak' in text else None
+
+    def _count_sfx_markers(self, ssml: str) -> int:
+        """Count SFX markers in SSML content."""
+        pattern = re.compile(r'\[\[?SFX:[^\]]+\]\]?', re.IGNORECASE)
+        return len(pattern.findall(ssml or ""))
 
     def _stage_generate_prompts(self):
         """Generate Midjourney/SD image prompts."""
@@ -658,13 +837,12 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.stages_failed.append("generate_voice")
 
     def _stage_generate_binaural(self):
-        """Generate binaural beats using FFmpeg (fast)."""
+        """Generate binaural beats using the dynamic generator; fall back to simple ffmpeg."""
         self.log("Generating binaural beats", "stage")
 
         output_path = self.session_path / "output" / "binaural_dynamic.wav"
         duration_seconds = self.duration_minutes * 60
 
-        # Read manifest for binaural settings if available
         manifest_path = self.session_path / "manifest.yaml"
         base_freq = 200  # Hz carrier frequency
         beat_freq = 7    # Hz binaural beat (theta default)
@@ -675,16 +853,38 @@ Do NOT include any explanation or commentary before or after the SSML.
                     manifest = yaml.safe_load(f)
                 binaural = manifest.get('sound_bed', {}).get('binaural', {})
                 base_freq = binaural.get('base_hz', 200)
-                # Use middle of the binaural curve for simplicity
+                # Use middle of the binaural curve for fallback simplicity
                 sections = binaural.get('sections', [])
                 if sections:
-                    # Average beat frequency from sections
                     beat_freq = sum(s.get('offset_hz', 7) for s in sections) / len(sections)
             except Exception:
                 pass  # Use defaults
 
-        # Generate stereo binaural with FFmpeg (very fast)
-        # Left channel: base_freq, Right channel: base_freq + beat_freq
+        # Primary: high-quality dynamic generator (keeps full progression/gamma/etc.)
+        if manifest_path.exists():
+            dyn_cmd = [
+                self.python_cmd, "scripts/core/generate_dynamic_binaural.py",
+                "--manifest", str(manifest_path),
+                "--output", str(output_path),
+            ]
+            try:
+                result = subprocess.run(
+                    dyn_cmd,
+                    capture_output=True,
+                    text=True,
+                    cwd=str(self.project_root),
+                    timeout=600,
+                )
+                if result.returncode == 0:
+                    self.log("Generated dynamic binaural from manifest progression", "success")
+                    self.stages_completed.append("generate_binaural")
+                    return
+                else:
+                    self.log(f"Dynamic binaural warning: {result.stderr[:160]}", "warning")
+            except Exception as e:
+                self.log(f"Dynamic binaural generation failed, using fallback: {e}", "warning")
+
+        # Fallback: simple stereo sine pair via FFmpeg
         left_freq = base_freq
         right_freq = base_freq + beat_freq
 
@@ -706,17 +906,70 @@ Do NOT include any explanation or commentary before or after the SSML.
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
-                timeout=120,  # FFmpeg is fast, 2 min timeout is plenty
+                timeout=180,  # allow a bit more if ffmpeg is slow
             )
 
             if result.returncode == 0:
-                self.log(f"Generated binaural beats ({left_freq}Hz / {right_freq}Hz)", "success")
+                self.log(f"Generated fallback binaural ({left_freq}Hz / {right_freq}Hz)", "success")
                 self.stages_completed.append("generate_binaural")
             else:
-                self.log(f"Binaural generation warning: {result.stderr[:100]}", "warning")
+                self.log(f"Binaural generation warning: {result.stderr[:160]}", "warning")
 
         except Exception as e:
             self.log(f"Binaural generation skipped: {e}", "warning")
+
+    def _stage_generate_sfx(self):
+        """Render SFX track from SSML markers aligned to voice."""
+        self.log("Generating SFX track", "stage")
+
+        script_path = self.session_path / "working_files" / "script.ssml"
+        output_dir = self.session_path / "output"
+
+        # Use same voice file selection as mixing
+        voice_file = None
+        for name in ["voice_enhanced.wav", "voice_enhanced.mp3", "voice.wav", "voice.mp3"]:
+            candidate = output_dir / name
+            if candidate.exists():
+                voice_file = candidate
+                break
+
+        if not script_path.exists():
+            self.log("No SSML script with SFX markers found; skipping SFX", "warning")
+            return
+        if not voice_file:
+            self.log("No voice file available yet; skipping SFX", "warning")
+            return
+
+        sfx_output = output_dir / "sfx.wav"
+
+        try:
+            result = subprocess.run(
+                [
+                    self.python_cmd, "scripts/core/sfx_sync.py",
+                    str(script_path),
+                    str(voice_file),
+                    str(sfx_output),
+                ],
+                capture_output=True,
+                text=True,
+                cwd=str(self.project_root),
+                timeout=300,
+            )
+
+            if result.returncode == 0 and sfx_output.exists():
+                self.log("Rendered SFX track from script markers", "success")
+                self.stages_completed.append("generate_sfx")
+            else:
+                stdout = result.stdout or ""
+                stderr = result.stderr or ""
+                if "No SFX markers found" in stdout:
+                    self.log("No SFX markers found in script; skipping SFX track", "info")
+                else:
+                    combined = stderr.strip() or stdout.strip()
+                    err = combined[:160] if combined else "Unknown SFX generation error"
+                    self.log(f"SFX generation warning: {err}", "warning")
+        except Exception as e:
+            self.log(f"SFX generation skipped: {e}", "warning")
 
     def _stage_mix_audio(self):
         """Mix audio layers using FFmpeg."""
@@ -738,23 +991,29 @@ Do NOT include any explanation or commentary before or after the SSML.
             return
 
         binaural_file = output_dir / "binaural_dynamic.wav"
+        sfx_file = output_dir / "sfx.wav"
 
         # Build FFmpeg command based on available files
+        cmd = ["ffmpeg", "-y"]
+        filters = []
+        stream_aliases = []
+
+        def add_input(path: Path, alias: str, gain_db: float):
+            idx = len(stream_aliases)
+            cmd.extend(["-i", str(path)])
+            filters.append(f"[{idx}:a]volume={gain_db}dB[{alias}]")
+            stream_aliases.append(alias)
+
+        # Always include voice
+        add_input(voice_file, "voice", -6.0)
+
         if binaural_file.exists():
-            # Two-stem mix: voice + binaural
-            cmd = [
-                "ffmpeg", "-y",
-                "-i", str(voice_file),
-                "-i", str(binaural_file),
-                "-filter_complex",
-                "[0:a]volume=-6dB[voice];[1:a]volume=-6dB[bin];[voice][bin]amix=inputs=2:duration=longest:normalize=0[mixed]",
-                "-map", "[mixed]",
-                "-acodec", "pcm_s16le",
-                str(mixed_file)
-            ]
-            self.log("Mixing voice + binaural", "info")
-        else:
-            # Voice only - just apply volume normalization
+            add_input(binaural_file, "bin", -6.0)
+        if sfx_file.exists():
+            add_input(sfx_file, "sfx", -12.0)
+
+        if len(stream_aliases) == 1:
+            # Voice only - simple volume normalize
             cmd = [
                 "ffmpeg", "-y",
                 "-i", str(voice_file),
@@ -762,7 +1021,18 @@ Do NOT include any explanation or commentary before or after the SSML.
                 "-acodec", "pcm_s16le",
                 str(mixed_file)
             ]
-            self.log("Voice only (no binaural found)", "warning")
+            self.log("Voice only (no binaural/SFX found)", "warning")
+        else:
+            amix_inputs = "".join(f"[{a}]" for a in stream_aliases)
+            filters.append(f"{amix_inputs}amix=inputs={len(stream_aliases)}:duration=longest:normalize=0[mixed]")
+            filter_complex = ";".join(filters)
+            cmd.extend([
+                "-filter_complex", filter_complex,
+                "-map", "[mixed]",
+                "-acodec", "pcm_s16le",
+                str(mixed_file)
+            ])
+            self.log(f"Mixing stems: {', '.join(stream_aliases)}", "info")
 
         try:
             result = subprocess.run(
@@ -879,8 +1149,12 @@ Do NOT include any explanation or commentary before or after the SSML.
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
-                timeout=1800,  # 30 min for image generation
+                timeout=3600,  # 60 min for image generation
             )
+
+            stderr = result.stderr or ""
+            stdout = result.stdout or ""
+            combined_output = (stderr.strip() or stdout.strip())
 
             if result.returncode == 0:
                 # Check if actual images were generated (not just guides/prompts)
@@ -902,12 +1176,23 @@ Do NOT include any explanation or commentary before or after the SSML.
                     self.log(f"No images generated by {method}", "warning")
                     return False
             else:
-                error_msg = result.stderr[:200] if result.stderr else 'Unknown error'
+                error_msg = combined_output[:200] if combined_output else 'Unknown error'
                 self.log(f"Image generation failed ({method}): {error_msg}", "warning")
+                if method in ("sd", "sdxl") and combined_output:
+                    lowered = combined_output.lower()
+                    if "diffusers" in lowered or "torch" in lowered or "sdxl generator" in lowered:
+                        self.log(
+                            "Install SD dependencies: pip install diffusers transformers accelerate torch Pillow",
+                            "info"
+                        )
                 return False
 
         except subprocess.TimeoutExpired:
             self.log(f"Image generation timed out ({method})", "warning")
+            if method == "sd":
+                # Fast fallback to avoid blank video
+                self.log("Falling back to PIL procedural images after SD timeout", "info")
+                return self._try_generate_images("pil")
             return False
         except Exception as e:
             self.log(f"Image generation error ({method}): {e}", "warning")
@@ -1019,7 +1304,9 @@ Do NOT include any explanation or commentary before or after the SSML.
                             self.log(f"URL: {line.strip()}", "info")
                             break
             else:
-                self.log(f"Website upload warning: {result.stderr[:200]}", "warning")
+                err_output = (result.stderr or "").strip() or (result.stdout or "").strip()
+                snippet = err_output[:200] if err_output else "Unknown error"
+                self.log(f"Website upload warning: {snippet}", "warning")
 
         except subprocess.TimeoutExpired:
             self.log("Website upload timed out", "error")
