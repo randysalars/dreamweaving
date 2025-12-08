@@ -208,8 +208,17 @@ def create_description(session_dir, manifest, output_dir, audio_duration):
         name = section.get("name", "").replace("_", " ").title()
         desc += f"**{start_time}** - {name}\n"
 
-    desc += "\n⚠️ Use headphones for binaural effectiveness\n"
-    desc += "Do not use while driving or operating machinery\n\n"
+    desc += "\n⚠️ Use headphones for binaural effectiveness\n\n"
+
+    # Add full safety disclaimer
+    try:
+        from scripts.ai.knowledge_tools import get_safety_disclaimer
+        safety_text = get_safety_disclaimer("youtube")
+    except ImportError:
+        safety_text = """⚠️ SAFETY: Do not listen while driving or operating machinery. Not medical/financial advice. Use in a safe, comfortable environment. Discontinue if you experience discomfort."""
+
+    desc += "## ⚠️ Safety Information\n\n"
+    desc += safety_text + "\n\n"
 
     # Tags (comma-separated for easy copy/paste into YouTube)
     tags = youtube_config.get("tags", ["meditation", "binaural beats"])

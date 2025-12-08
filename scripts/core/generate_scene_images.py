@@ -159,6 +159,50 @@ STYLE_PRESETS = {
     }
 }
 
+# =============================================================================
+# PERFORMANCE PRESETS
+# =============================================================================
+
+DEFAULT_SDXL_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"
+PERFORMANCE_PRESETS = {
+    "quality": {
+        "model_id": DEFAULT_SDXL_MODEL,
+        "steps": 40,
+        "guidance": 7.0,
+        "use_refiner": True,
+        "max_gen_side": 1216,
+        "compile_unet": False,
+        "disable_safety_checker": False,
+    },
+    "balanced": {
+        "model_id": DEFAULT_SDXL_MODEL,
+        "steps": 32,
+        "guidance": 6.5,
+        "use_refiner": True,
+        "max_gen_side": 1152,
+        "compile_unet": False,
+        "disable_safety_checker": False,
+    },
+    "speed": {
+        "model_id": DEFAULT_SDXL_MODEL,
+        "steps": 18,
+        "guidance": 5.5,
+        "use_refiner": False,
+        "max_gen_side": 960,
+        "compile_unet": True,
+        "disable_safety_checker": True,
+    },
+    "turbo": {
+        "model_id": "stabilityai/sdxl-turbo",
+        "steps": 4,
+        "guidance": 0.0,
+        "use_refiner": False,
+        "max_gen_side": 1024,
+        "compile_unet": False,
+        "disable_safety_checker": True,
+    },
+}
+
 
 # =============================================================================
 # DEPTH STAGE VISUAL MODIFIERS (Journey-Aware Enhancement)
@@ -429,17 +473,43 @@ def get_scenes(session_dir: Path) -> Tuple[List[Scene], str]:
 # STABLE DIFFUSION GENERATION (SDXL DEFAULT)
 # =============================================================================
 
+def resolve_generation_config(
+    performance: str,
+    steps: Optional[int],
+    guidance_scale: Optional[float],
+    use_refiner: bool,
+    max_generation_side: Optional[int],
+    model_path: Optional[str]
+) -> Dict[str, Any]:
+    """Apply performance presets while honoring user overrides."""
+    preset = PERFORMANCE_PRESETS.get(performance, PERFORMANCE_PRESETS["balanced"])
+
+    return {
+        "model_id": model_path or preset.get("model_id", DEFAULT_SDXL_MODEL),
+        "steps": steps if steps is not None else preset["steps"],
+        "guidance": guidance_scale if guidance_scale is not None else preset["guidance"],
+        "use_refiner": preset["use_refiner"] if performance in ("speed", "turbo") else use_refiner,
+        "max_gen_side": max_generation_side or preset["max_gen_side"],
+        "compile_unet": preset.get("compile_unet", False),
+        "disable_safety_checker": preset.get("disable_safety_checker", False),
+    }
+
+
 def generate_sd_scenes(
     session_dir: Path,
     scenes: List[Scene],
     style_preset: str = "neural_network",
-    steps: int = 32,
-    guidance_scale: float = 6.5,
+    steps: Optional[int] = None,
+    guidance_scale: Optional[float] = None,
     upscale: bool = True,
     force: bool = False,
     model_path: str = None,
     use_refiner: bool = True,
-    max_generation_side: int = 1152
+    max_generation_side: Optional[int] = None,
+    performance: str = "balanced",
+    compile_unet: bool = False,
+    disable_safety_checker: bool = False,
+    enable_vae_tiling: bool = True
 ) -> List[str]:
     """Generate scene images using SDXL (with optional refiner)."""
 
@@ -453,20 +523,37 @@ def generate_sd_scenes(
 
     preset = STYLE_PRESETS.get(style_preset, STYLE_PRESETS["neural_network"])
 
+    gen_config = resolve_generation_config(
+        performance=performance,
+        steps=steps,
+        guidance_scale=guidance_scale,
+        use_refiner=use_refiner,
+        max_generation_side=max_generation_side,
+        model_path=model_path,
+    )
+
+    effective_steps = gen_config["steps"]
+    effective_guidance = gen_config["guidance"]
+    effective_refiner = gen_config["use_refiner"]
+    effective_max_side = gen_config["max_gen_side"]
+    effective_model = gen_config["model_id"]
+    effective_compile = compile_unet or gen_config["compile_unet"]
+    effective_disable_safety = disable_safety_checker or gen_config["disable_safety_checker"]
+
     # Output directory
     output_dir = session_dir / "images" / "uploaded"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Use SDXL base by default; allow override
-    model_id = model_path or "stabilityai/stable-diffusion-xl-base-1.0"
-
-    print("Loading SDXL pipeline (base" + (" + refiner" if use_refiner else "") + ")...")
+    print("Loading SDXL pipeline (base" + (" + refiner" if effective_refiner else "") + ")...")
     generator = ImageGenerator(
-        model_id=model_id,
+        model_id=effective_model,
         use_fp16=True,
         enable_optimizations=True,
-        use_refiner=use_refiner,
-        max_generation_side=max_generation_side
+        use_refiner=effective_refiner,
+        max_generation_side=effective_max_side,
+        compile_unet=effective_compile,
+        disable_safety_checker=effective_disable_safety,
+        enable_vae_tiling=enable_vae_tiling
     )
     print("Pipeline loaded successfully!")
 
@@ -477,8 +564,13 @@ def generate_sd_scenes(
 
     print(f"\nGenerating {len(scenes)} scene images...")
     print(f"Output: {output_dir}")
-    print(f"Steps: {steps}, Guidance: {guidance_scale}, Style: {style_preset}")
-    print(f"Resolution: {target_width}x{target_height} (native side capped at {max_generation_side}px)")
+    print(f"Performance: {performance} | Steps: {effective_steps}, Guidance: {effective_guidance}, Refiner: {'on' if effective_refiner else 'off'}")
+    print(f"Model: {effective_model}")
+    if effective_compile:
+        print("Compile: torch.compile enabled for UNet")
+    if effective_disable_safety:
+        print("Safety checker: disabled for speed")
+    print(f"Resolution: {target_width}x{target_height} (native side capped at {effective_max_side}px)")
     print("=" * 60)
 
     for i, scene in enumerate(scenes, 1):
@@ -505,8 +597,8 @@ def generate_sd_scenes(
                 output_path=str(output_file),
                 width=target_width,
                 height=target_height,
-                num_inference_steps=steps,
-                guidance_scale=guidance_scale,
+                num_inference_steps=effective_steps,
+                guidance_scale=effective_guidance,
                 seed=scene.number * 1000,
                 num_candidates=1,
                 save_metadata=True
@@ -1013,6 +1105,9 @@ Examples:
 
   # Custom style and steps
   python3 generate_scene_images.py sessions/my-session/ --style cosmic_journey --steps 32 --guidance 6.5
+
+  # Fast renders (turbo model, 4 steps)
+  python3 generate_scene_images.py sessions/my-session/ --performance turbo --steps 4 --guidance 0 --no-refiner --no-upscale
 """
     )
 
@@ -1053,6 +1148,12 @@ Examples:
         help="Generate both SD images and Midjourney prompts"
     )
     parser.add_argument(
+        "--performance",
+        choices=list(PERFORMANCE_PRESETS.keys()),
+        default="balanced",
+        help="Speed/quality preset: quality | balanced | speed | turbo"
+    )
+    parser.add_argument(
         "--upscale",
         action="store_true",
         default=True,
@@ -1066,14 +1167,14 @@ Examples:
     parser.add_argument(
         "--steps",
         type=int,
-        default=32,
-        help="SDXL inference steps (default: 32, more=better quality but slower)"
+        default=None,
+        help="Override preset inference steps (default: preset-defined)"
     )
     parser.add_argument(
         "--guidance",
         type=float,
-        default=6.5,
-        help="Classifier-free guidance scale (default: 6.5)"
+        default=None,
+        help="Override preset guidance scale (default: preset-defined)"
     )
     parser.add_argument(
         "--force",
@@ -1093,8 +1194,23 @@ Examples:
     parser.add_argument(
         "--max-gen-side",
         type=int,
-        default=1152,
-        help="Maximum side length to generate natively before upscaling"
+        default=None,
+        help="Maximum side length to generate natively before upscaling (default: preset-defined)"
+    )
+    parser.add_argument(
+        "--compile-unet",
+        action="store_true",
+        help="Compile UNet for faster inference (PyTorch 2+, CUDA only)"
+    )
+    parser.add_argument(
+        "--disable-safety-checker",
+        action="store_true",
+        help="Skip NSFW safety checker (faster; disable only if you control prompts)"
+    )
+    parser.add_argument(
+        "--no-vae-tiling",
+        action="store_true",
+        help="Disable VAE tiling (uses more VRAM; only needed if you see tiling artifacts)"
     )
 
     args = parser.parse_args()
@@ -1153,7 +1269,11 @@ Examples:
             force=args.force,
             model_path=model_path,
             use_refiner=not args.no_refiner,
-            max_generation_side=args.max_gen_side
+            max_generation_side=args.max_gen_side,
+            performance=args.performance,
+            compile_unet=args.compile_unet,
+            disable_safety_checker=args.disable_safety_checker,
+            enable_vae_tiling=not args.no_vae_tiling
         )
 
         # Also generate Midjourney prompts if requested

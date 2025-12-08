@@ -1,0 +1,5 @@
+node_modules
+dist
+thumbnails
+.env
+npm-debug.log*

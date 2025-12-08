@@ -1,0 +1,23 @@
+[Unit]
+Description=Dreamweaving RAG Auto-Sync
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/rsalars/Projects/dreamweaving
+Environment="PATH=/home/rsalars/Projects/dreamweaving/venv/bin:/usr/local/bin:/usr/bin:/bin"
+EnvironmentFile=/home/rsalars/Projects/dreamweaving/.env
+ExecStart=/home/rsalars/Projects/dreamweaving/venv/bin/python3 scripts/ai/rag_auto_sync.py --json
+User=rsalars
+Group=rsalars
+
+# Logging
+StandardOutput=append:/home/rsalars/Projects/dreamweaving/logs/rag_sync.log
+StandardError=append:/home/rsalars/Projects/dreamweaving/logs/rag_sync.log
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

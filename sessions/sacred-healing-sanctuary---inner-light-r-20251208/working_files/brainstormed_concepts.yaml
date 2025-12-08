@@ -1,0 +1,483 @@
+- title: Sacred Healing Sanctuary - Inner Light Restoration
+  theme: Sacred Healing Sanctuary - inner light restoration
+  metaphor: a deep ocean sanctuary where wounds dissolve into light
+  therapeutic_goal: healing
+  setting: within an ancient temple of light, where sacred geometry resonates with
+    cosmic harmony
+  key_transformation: emerging whole, renewed, and radiating vitality
+  archetypes:
+  - name: The Healer
+    role: healing
+    description: Compassionate presence of restoration
+    symbol: healing hands of light
+    qualities:
+    - restoration
+    - compassion
+    - wholeness
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Star Guide
+    role: guidance
+    description: Celestial being of cosmic navigation
+    symbol: constellation map
+    qualities:
+    - cosmic awareness
+    - pathfinding
+    - clarity
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Inner Light
+    role: higher_self
+    description: The divine spark within
+    symbol: radiant core
+    qualities:
+    - divinity
+    - truth
+    - essence
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 15
+  voice_recommendation: default
+  imagery_style: underwater
+  score: 0.9299999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 0.7
+- title: Sacred Healing Sanctuary - Inner Light Restoration
+  theme: Sacred Healing Sanctuary - inner light restoration
+  metaphor: a sacred journey through inner realms toward healing
+  therapeutic_goal: healing
+  setting: within an ancient temple of light, where sacred geometry resonates with
+    cosmic harmony
+  key_transformation: emerging whole, renewed, and radiating vitality
+  archetypes:
+  - name: The Healer
+    role: healing
+    description: Compassionate presence of restoration
+    symbol: healing hands of light
+    qualities:
+    - restoration
+    - compassion
+    - wholeness
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Navigator
+    role: guidance
+    description: Wise guide through unknown territories
+    symbol: compass of light
+    qualities:
+    - wisdom
+    - direction
+    - trust
+    appearance_section: induction
+    suggested_voice_tone: warm
+  - name: The Inner Light
+    role: higher_self
+    description: The divine spark within
+    symbol: radiant core
+    qualities:
+    - divinity
+    - truth
+    - essence
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  target_duration_minutes: 15
+  voice_recommendation: default
+  imagery_style: inner
+  score: 0.9299999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 0.7
+- title: Sacred Healing Sanctuary - Inner Light Restoration
+  theme: Sacred Healing Sanctuary - inner light restoration
+  metaphor: healing waters flowing through an ancient forest
+  therapeutic_goal: healing
+  setting: within an ancient temple of light, where sacred geometry resonates with
+    cosmic harmony
+  key_transformation: emerging whole, renewed, and radiating vitality
+  archetypes:
+  - name: The Healer
+    role: healing
+    description: Compassionate presence of restoration
+    symbol: healing hands of light
+    qualities:
+    - restoration
+    - compassion
+    - wholeness
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Navigator
+    role: guidance
+    description: Wise guide through unknown territories
+    symbol: compass of light
+    qualities:
+    - wisdom
+    - direction
+    - trust
+    appearance_section: induction
+    suggested_voice_tone: warm
+  - name: The Soul Star
+    role: higher_self
+    description: Your eternal presence above the crown
+    symbol: star above
+    qualities:
+    - eternity
+    - purpose
+    - connection
+    appearance_section: integration
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Wind Through Trees
+    type: nature
+    description: Gentle breeze in canopy
+    character: rustling leaves
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Forest Rain
+    type: nature
+    description: Gentle rainfall through leaves
+    character: soft patter
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Ocean Waves
+    type: nature
+    description: Rhythmic surf on shore
+    character: rolling waves
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  target_duration_minutes: 15
+  voice_recommendation: default
+  imagery_style: nature
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 0.8
+    duration: 0.7
+- title: Sacred Healing Sanctuary - Inner Light Restoration
+  theme: Sacred Healing Sanctuary - inner light restoration
+  metaphor: healing waters flowing through an ancient forest
+  therapeutic_goal: healing
+  setting: within an ancient temple of light, where sacred geometry resonates with
+    cosmic harmony
+  key_transformation: emerging whole, renewed, and radiating vitality
+  archetypes:
+  - name: The Healer
+    role: healing
+    description: Compassionate presence of restoration
+    symbol: healing hands of light
+    qualities:
+    - restoration
+    - compassion
+    - wholeness
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Star Guide
+    role: guidance
+    description: Celestial being of cosmic navigation
+    symbol: constellation map
+    qualities:
+    - cosmic awareness
+    - pathfinding
+    - clarity
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Inner Light
+    role: higher_self
+    description: The divine spark within
+    symbol: radiant core
+    qualities:
+    - divinity
+    - truth
+    - essence
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Ocean Waves
+    type: nature
+    description: Rhythmic surf on shore
+    character: rolling waves
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Wind Through Trees
+    type: nature
+    description: Gentle breeze in canopy
+    character: rustling leaves
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Forest Rain
+    type: nature
+    description: Gentle rainfall through leaves
+    character: soft patter
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  target_duration_minutes: 15
+  voice_recommendation: default
+  imagery_style: nature
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 0.8
+    duration: 0.7
+- title: Sacred Healing Sanctuary - Inner Light Restoration
+  theme: Sacred Healing Sanctuary - inner light restoration
+  metaphor: a sacred journey through mystical realms toward healing
+  therapeutic_goal: healing
+  setting: within an ancient temple of light, where sacred geometry resonates with
+    cosmic harmony
+  key_transformation: emerging whole, renewed, and radiating vitality
+  archetypes:
+  - name: The Healer
+    role: healing
+    description: Compassionate presence of restoration
+    symbol: healing hands of light
+    qualities:
+    - restoration
+    - compassion
+    - wholeness
+    appearance_section: journey
+    suggested_voice_tone: warm
+  - name: The Navigator
+    role: guidance
+    description: Wise guide through unknown territories
+    symbol: compass of light
+    qualities:
+    - wisdom
+    - direction
+    - trust
+    appearance_section: induction
+    suggested_voice_tone: warm
+  - name: The Future Self
+    role: higher_self
+    description: Your evolved presence from beyond time
+    symbol: mirror of light
+    qualities:
+    - potential
+    - guidance
+    - love
+    appearance_section: journey
+    suggested_voice_tone: warm
+  binaural_progression:
+    name: Healing Waters
+    description: Gentle theta with delta dips for cellular healing
+    sections:
+      pretalk:
+        offset_hz: 10.0
+        duration_ratio: 0.1
+      induction:
+        offset_hz: 7.0
+        duration_ratio: 0.15
+      healing_1:
+        offset_hz: 4.0
+        duration_ratio: 0.25
+      healing_2:
+        offset_hz: 2.0
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.0
+        duration_ratio: 0.15
+      awakening:
+        offset_hz: 9.0
+        duration_ratio: 0.15
+    base_hz: 432
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Singing Bowls
+    type: tone
+    description: Tibetan bowl harmonics
+    character: rich overtones
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
+  - name: Angelic Choir
+    type: texture
+    description: Ethereal voices
+    character: wordless harmony
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 15
+  voice_recommendation: default
+  imagery_style: mystical
+  score: 0.87
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 0.7

@@ -8,6 +8,7 @@ This module provides AI-powered generation capabilities:
 - VTT subtitle generation
 - Quality scoring
 - Self-learning system
+- Notion knowledge base RAG integration
 
 Usage:
     # Generate VTT subtitles
@@ -27,6 +28,14 @@ Usage:
 
     # Manage lessons learned
     python3 -m scripts.ai.learning.lessons_manager show
+
+    # Query Notion knowledge base
+    python3 -m scripts.ai.notion_knowledge_retriever --search "Navigator"
+    python3 -m scripts.ai.knowledge_tools --query "shadow healing journey"
+
+    # Index Notion content for semantic search
+    python3 -m scripts.ai.notion_knowledge_retriever --export knowledge/notion_export/
+    python3 -m scripts.ai.notion_embeddings_pipeline --index
 """
 
 __version__ = "1.0.0"

@@ -68,6 +68,13 @@ warnings.filterwarnings('ignore', category=RuntimeWarning)
 # =============================================================================
 
 DEFAULTS = {
+    # Voice cleanup (NEW: Remove fuzz/static from audio)
+    'cleanup_enabled': True,      # Enable voice cleanup filters
+    'cleanup_highpass': 80,       # Remove low rumble below Hz
+    'cleanup_lowpass': 12000,     # Remove harsh highs above Hz
+    'cleanup_denoise': True,      # FFT-based denoising
+    'cleanup_denoise_amount': 25, # Denoise noise floor (-dB)
+
     # Tape warmth (lowered for clarity)
     'warmth_drive': 0.15,         # 0.0-1.0, higher = more saturation
 
@@ -133,6 +140,13 @@ DEFAULTS = {
 # Approved settings from Carnegie Steel Empire session testing.
 
 VOICE_CLEAR_SETTINGS = {
+    # Voice cleanup - aggressive for maximum clarity
+    'cleanup_enabled': True,
+    'cleanup_highpass': 100,      # Slightly higher to remove more rumble
+    'cleanup_lowpass': 11000,     # Slightly lower to tame more highs
+    'cleanup_denoise': True,
+    'cleanup_denoise_amount': 30, # Stronger denoising
+
     # Tape warmth - subtle analog feel
     'warmth_drive': 0.20,
 
@@ -749,6 +763,79 @@ def create_hf_whisper_aura(audio, sample_rate, level_db=-40, cutoff_hz=4000):
 
 
 # =============================================================================
+# VOICE CLEANUP (Remove fuzz/static)
+# =============================================================================
+
+def apply_voice_cleanup(input_path, output_path, cfg):
+    """
+    Apply voice cleanup filters using FFmpeg to remove fuzz and static.
+
+    Filters:
+    - highpass: Remove low rumble
+    - lowpass: Remove harsh high frequencies
+    - afftdn: FFT-based denoising for fuzz/static removal
+    - acompressor: Gentle compression to smooth dynamics
+
+    Args:
+        input_path: Path to input audio file
+        output_path: Path to output audio file
+        cfg: Configuration dict with cleanup settings
+
+    Returns:
+        True on success, False on failure
+    """
+    if not cfg.get('cleanup_enabled', True):
+        print("  ⏭️  Voice cleanup disabled, skipping...")
+        return True
+
+    print("\n🧹 VOICE CLEANUP")
+    print("=" * 60)
+
+    # Build filter chain
+    filters = []
+
+    # Highpass filter - remove low rumble
+    highpass_freq = cfg.get('cleanup_highpass', 80)
+    filters.append(f'highpass=f={highpass_freq}')
+    print(f"  📉 Highpass: {highpass_freq} Hz (remove low rumble)")
+
+    # Lowpass filter - remove harsh highs
+    lowpass_freq = cfg.get('cleanup_lowpass', 12000)
+    filters.append(f'lowpass=f={lowpass_freq}')
+    print(f"  📈 Lowpass: {lowpass_freq} Hz (tame harsh highs)")
+
+    # FFT-based denoising
+    if cfg.get('cleanup_denoise', True):
+        denoise_amount = cfg.get('cleanup_denoise_amount', 25)
+        # afftdn: nf=noise floor, nr=noise reduction strength, nt=noise type (w=white)
+        filters.append(f'afftdn=nf=-{denoise_amount}:nr=10:nt=w')
+        print(f"  🔇 Denoise: -{denoise_amount}dB noise floor (FFT-based)")
+
+    # Gentle compression to smooth dynamics
+    filters.append('acompressor=threshold=-20dB:ratio=3:attack=5:release=50')
+    print("  🔊 Compressor: -20dB threshold, 3:1 ratio")
+
+    filter_string = ','.join(filters)
+
+    # Run FFmpeg
+    cmd = [
+        'ffmpeg', '-y', '-i', str(input_path),
+        '-af', filter_string,
+        '-c:a', 'pcm_s24le', '-ar', '48000',
+        str(output_path)
+    ]
+
+    result = subprocess.run(cmd, capture_output=True, text=True)
+
+    if result.returncode == 0:
+        print(f"\n  ✓ Cleanup complete: {os.path.basename(output_path)}")
+        return True
+    else:
+        print(f"\n  ✗ Cleanup failed: {result.stderr[:200]}")
+        return False
+
+
+# =============================================================================
 # MASTERING CHAIN
 # =============================================================================
 
@@ -900,18 +987,34 @@ def process_audio(
     audio_16bit = (np.clip(enhanced, -1, 1) * 32767).astype(np.int16)
     wavfile.write(str(temp_wav), sample_rate, audio_16bit)
 
+    # Step 7: Apply voice cleanup (remove fuzz/static)
+    if cfg.get('cleanup_enabled', True):
+        cleanup_wav = output_dir / f"{output_name}_cleanup.wav"
+        cleanup_success = apply_voice_cleanup(temp_wav, cleanup_wav, cfg)
+        if cleanup_success and cleanup_wav.exists():
+            # Use cleanup file for mastering
+            master_input = cleanup_wav
+        else:
+            # Fall back to temp_wav if cleanup failed
+            master_input = temp_wav
+    else:
+        master_input = temp_wav
+
     # Final mastering
     output_wav = output_dir / f"{output_name}.wav"
     output_mp3 = output_dir / f"{output_name}.mp3"
 
     success = apply_mastering_chain(
-        temp_wav, output_wav, output_mp3,
+        master_input, output_wav, output_mp3,
         cfg['target_lufs'], cfg['true_peak_dbtp']
     )
 
-    # Cleanup temp file
+    # Cleanup temp files
     if temp_wav.exists():
         temp_wav.unlink()
+    cleanup_wav = output_dir / f"{output_name}_cleanup.wav"
+    if cleanup_wav.exists():
+        cleanup_wav.unlink()
 
     if success:
         print("\n" + "=" * 70)
@@ -1116,6 +1219,7 @@ def _build_settings_from_args(args):
 
     # Toggle mappings: (arg_name, setting_key)
     toggles = [
+        ('no_cleanup', 'cleanup_enabled'),
         ('no_deess', 'deess_enabled'),
         ('no_whisper', 'whisper_enabled'),
         ('no_subharmonic', 'subharmonic_enabled'),
@@ -1191,6 +1295,7 @@ Examples:
     parser.add_argument('--output-dir', '-o', help='Output directory')
 
     # Enhancement toggles
+    parser.add_argument('--no-cleanup', action='store_true', help='Disable voice cleanup (highpass/lowpass/denoise)')
     parser.add_argument('--no-deess', action='store_true', help='Disable de-essing')
     parser.add_argument('--no-whisper', action='store_true', help='Disable whisper layer')
     parser.add_argument('--no-subharmonic', action='store_true', help='Disable subharmonic layer')
