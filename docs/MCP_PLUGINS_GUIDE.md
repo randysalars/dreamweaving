@@ -469,6 +469,148 @@ npx claude-plugins skills install @mrgoonie/claudekit-skills/media-processing --
 
 ---
 
+## 8. Notion MCP Integration (Knowledge Base RAG)
+
+### Overview
+
+The Notion MCP server enables Claude Code to access the **Sacred Digital Dreamweaver** workspace as a canonical knowledge base. This provides:
+
+- Real-time access to structured databases (Archetypes, Realms, Frequencies, etc.)
+- Retrieval of unstructured page content (lore, philosophy, templates)
+- Semantic search via embeddings pipeline
+
+### Configuration
+
+**Already configured in `config/mcp_servers.json`:**
+
+```json
+{
+  "notion": {
+    "description": "Read/write Sacred Digital Dreamweaver workspace",
+    "command": "npx",
+    "args": ["-y", "@notionhq/notion-mcp-server"],
+    "env": {
+      "NOTION_TOKEN": "${NOTION_TOKEN}"
+    },
+    "enabled": true
+  }
+}
+```
+
+### Setup Steps
+
+1. **Create Notion Integration:**
+   - Visit https://www.notion.so/profile/integrations
+   - Click "New Integration"
+   - Name: `Dreamweaving RAG`
+   - Enable read permissions
+
+2. **Copy Integration Token:**
+   - Add to `.env`: `NOTION_TOKEN=ntn_your_token_here`
+
+3. **Grant Access to Pages:**
+   - Open Sacred Digital Dreamweaver page in Notion
+   - Click `•••` → Connections → Add `Dreamweaving RAG`
+   - Repeat for all databases and subpages
+
+### Knowledge Tools
+
+Three Python modules work together:
+
+| Module | Purpose |
+|--------|---------|
+| `notion_knowledge_retriever.py` | Direct Notion API queries |
+| `notion_embeddings_pipeline.py` | Vector database for semantic search |
+| `knowledge_tools.py` | High-level query functions |
+
+### Usage Examples
+
+**Direct database query:**
+```bash
+python3 -m scripts.ai.notion_knowledge_retriever --db archetypes --filter Navigator
+```
+
+**Semantic search (requires indexing):**
+```bash
+# First, export and index Notion content
+python3 -m scripts.ai.notion_knowledge_retriever --export knowledge/notion_export/
+python3 -m scripts.ai.notion_embeddings_pipeline --index
+
+# Then search semantically
+python3 -m scripts.ai.notion_embeddings_pipeline --search "shadow healing journey"
+```
+
+**Build journey context:**
+```bash
+python3 -m scripts.ai.knowledge_tools --build-context Navigator "Atlantean Crystal Spine" "Gamma Flash"
+```
+
+### RAG Architecture
+
+```
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│ Notion Workspace│────▶│  Export/Index    │────▶│  Qdrant Vector  │
+│ (Real-time MCP) │     │  (notion-to-md)  │     │    Database     │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+        │                                                │
+        │                                                ▼
+        │              ┌──────────────────┐     ┌─────────────────┐
+        └─────────────▶│ Claude Code via  │◀────│ Semantic Search │
+                       │   Notion MCP     │     │   Retrieval     │
+                       └──────────────────┘     └─────────────────┘
+```
+
+### Configuration File
+
+Full configuration in `config/notion_config.yaml`:
+
+```yaml
+notion:
+  integration_token: "${NOTION_TOKEN}"
+  workspace_root: "1ee2bab3796d80738af6c96bd5077acf"
+
+databases:
+  archetypes:
+    id: ""  # Add after creating in Notion
+  realms:
+    id: ""
+  frequencies:
+    id: ""
+  rituals:
+    id: ""
+  lore:
+    id: ""
+  scripts:
+    id: ""
+
+embeddings:
+  model: "text-embedding-3-small"
+  chunk_size: 1000
+  chunk_overlap: 200
+
+vector_db:
+  type: "qdrant"
+  path: "./knowledge/vector_db"
+  collection: "dreamweaving_knowledge"
+```
+
+### Dependencies
+
+```bash
+pip install notion-client openai qdrant-client pyyaml
+```
+
+### Cost Estimates
+
+| Component | Cost |
+|-----------|------|
+| Notion API | Free |
+| OpenAI Embeddings (initial) | ~$0.50 |
+| OpenAI Embeddings (monthly) | ~$0.10 |
+| Qdrant (local) | Free |
+
+---
+
 ## References
 
 - [Claude Plugins Marketplace](https://claude-plugins.dev/)
@@ -478,6 +620,8 @@ npx claude-plugins skills install @mrgoonie/claudekit-skills/media-processing --
 - [Midjourney MCP](https://playbooks.com/mcp/z23cc-midjourney)
 - [MCP Hierarchical Tool Management Discussion](https://github.com/orgs/modelcontextprotocol/discussions/532)
 - [Glama MCP Server Registry](https://glama.ai/mcp/servers/categories/image-and-video-processing)
+- [Notion MCP Documentation](https://developers.notion.com/docs/mcp)
+- [Official Notion MCP Server](https://github.com/makenotion/notion-mcp-server)
 
 ---
 

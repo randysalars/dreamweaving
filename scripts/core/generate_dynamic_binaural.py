@@ -723,8 +723,8 @@ Available presets: """ + ", ".join(PRESETS.keys())
     # Options
     parser.add_argument('--carrier', type=float, default=None,
                        help='Override carrier frequency (Hz)')
-    parser.add_argument('--amplitude', type=float, default=0.3,
-                       help='Amplitude 0.0-1.0 (default: 0.3)')
+    parser.add_argument('--amplitude', type=float, default=0.25,
+                       help='Amplitude 0.0-1.0 (default: 0.25)')
     parser.add_argument('--session-name', default='my_session',
                        help='Session name for template generation')
     parser.add_argument('--template-preset', choices=list(PRESETS.keys()),

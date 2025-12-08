@@ -848,11 +848,25 @@ class DreamweavingUploader:
             or self.session_path.name
         )
 
-        # Get topic for title extraction (this is the primary source of truth)
+        # Get topic (needed for description generation even if not used for title)
         topic = session_info.get("topic", "")
 
-        # Extract clean display title from topic or slug
-        title_text = extract_display_title(topic, slug)
+        # Get title - check multiple sources in order of preference
+        # 1. session.title (explicit title field)
+        # 2. youtube.title (if short enough, <150 chars)
+        # 3. Extract from topic string
+        # 4. Convert from slug
+        title_text = session_info.get("title", "")
+        youtube_info = manifest.get("youtube", {})
+        youtube_title = youtube_info.get("title", "")
+
+        if not title_text and youtube_title and len(youtube_title) < 150:
+            # Use youtube title if it's reasonable length (strip trailing metadata)
+            title_text = youtube_title.split(" | ")[0].strip()
+
+        if not title_text:
+            # Fall back to extracting from topic
+            title_text = extract_display_title(topic, slug)
 
         # Build archetypes array from multiple possible structures
         archetypes = []
@@ -902,6 +916,18 @@ class DreamweavingUploader:
         if not description:
             description = manifest.get("description", "")
 
+        # === SEO ENHANCEMENT: Dreamweaver Traffic System Integration ===
+        # Implements Phase 1 (Zero-Competition Keywords), Phase 2 (SEO Page Template),
+        # and Phase 3 (Product Schema) from the Notion knowledge base
+        seo_metadata = self._generate_seo_metadata(
+            topic=topic,
+            title=title_text,
+            category=category_slug,
+            slug=slug,
+            archetypes=[a.get("name", "") for a in archetypes if isinstance(a, dict)],
+            description=description
+        )
+
         payload = {
             "slug": slug,
             "title": title_text,
@@ -926,9 +952,301 @@ class DreamweavingUploader:
             "tags": ",".join(tags[:20]),  # Limit to 20 tags
             "chapters": chapters,
             "status": "published",
+            # SEO Enhancement Fields (Dreamweaver Traffic System)
+            "seo": {
+                "primary_keyword": seo_metadata.get("primary_keyword", ""),
+                "meta_title": seo_metadata.get("meta_title", ""),
+                "meta_description": seo_metadata.get("meta_description", ""),
+                "h1_title": seo_metadata.get("h1_title", ""),
+                "long_description": seo_metadata.get("long_description", ""),
+                "image_alt_text": seo_metadata.get("alt_text", ""),
+                "sku": seo_metadata.get("sku", ""),
+            },
+            "product_schema": seo_metadata.get("product_schema", {}),
+            "related_sessions": seo_metadata.get("related_sessions", []),
         }
 
         return payload
+
+    def _generate_seo_metadata(
+        self,
+        topic: str,
+        title: str,
+        category: str,
+        slug: str,
+        archetypes: list,
+        description: str
+    ) -> dict:
+        """
+        Generate SEO metadata following Dreamweaver Traffic System.
+
+        Implements:
+        - Phase 1: Zero-Competition Keyword Domination
+        - Phase 2: SEO Product Page Template
+        - Phase 3: Product Schema for Rich Snippets
+
+        First tries to use RAG from knowledge base, falls back to local generation.
+        """
+        # Try RAG-enhanced SEO generation
+        try:
+            # Try multiple import paths for flexibility
+            try:
+                from scripts.ai.knowledge_tools import get_website_seo_context
+            except ImportError:
+                import sys
+                from pathlib import Path
+                sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+                from scripts.ai.knowledge_tools import get_website_seo_context
+
+            # Build page URL for schema
+            page_url = f"{self.api_url}/dreamweavings/{slug}"
+
+            seo_context = get_website_seo_context(
+                topic=topic,
+                title=title,
+                category=category,
+                slug=slug,
+                archetypes=archetypes,
+                description=description,
+                thumbnail_url="",  # Will be filled after upload
+                page_url=page_url
+            )
+
+            if seo_context.get("primary_keyword"):
+                print("  Generated SEO metadata from knowledge base (RAG)")
+                return seo_context
+
+        except ImportError:
+            print("  Warning: knowledge_tools not available, using fallback SEO")
+        except Exception as e:
+            print(f"  Warning: RAG SEO generation failed: {e}, using fallback")
+
+        # Fallback: Generate basic SEO metadata without RAG
+        return self._generate_basic_seo_metadata(
+            title=title,
+            description=description,
+            category=category,
+            slug=slug,
+            archetypes=archetypes
+        )
+
+    def _generate_basic_seo_metadata(
+        self,
+        title: str,
+        description: str,
+        category: str,
+        slug: str,
+        archetypes: list
+    ) -> dict:
+        """
+        Generate basic SEO metadata without RAG (fallback).
+        Follows Phase 1-3 patterns from the Dreamweaver Traffic System.
+        """
+        import hashlib
+
+        # === PHASE 1: Zero-Competition Keyword ===
+        primary_keyword = f"{title} - Dreamweaver Guided Meditation"
+
+        # Generate SKU: DW-{CATEGORY}-{THEME}-{NUMBER}
+        category_codes = {
+            "starlight": "STL", "celestial": "STL",
+            "atlantean": "ATL", "atlantis": "ATL",
+            "eden": "EDN", "garden": "EDN",
+            "shadow": "SHD", "shadow-work": "SHD",
+            "archetypal": "ARC", "archetype": "ARC",
+            "cosmic": "COS", "cosmic-space": "COS", "space": "COS",
+            "healing": "HEL",
+            "navigator": "NAV",
+            "nature": "NAT", "forest": "NAT",
+            "spiritual": "SPI", "sacred": "SPI",
+            "confidence": "CNF",
+            "relaxation": "RLX",
+        }
+        cat_code = category_codes.get(category.lower().replace("-", "_"), "GEN")
+
+        # Theme code from slug
+        slug_parts = slug.replace("-", " ").split()
+        theme_code = ""
+        for part in slug_parts[:2]:
+            if len(part) >= 3 and part.lower() not in ["the", "and", "for", "with"]:
+                theme_code += part[:3].upper()
+        if not theme_code:
+            theme_code = slug[:4].upper()
+
+        hash_num = int(hashlib.md5(slug.encode()).hexdigest()[:4], 16) % 100
+        sku = f"DW-{cat_code}-{theme_code}-{hash_num:02d}"
+
+        # === PHASE 2: SEO Page Template ===
+        # Meta title (≤60 chars)
+        base_meta_title = f"{title} | Dreamweaver Journey"
+        if len(base_meta_title) <= 60:
+            meta_title = base_meta_title
+        else:
+            meta_title = title[:57] + "..." if len(title) > 57 else title
+
+        # Meta description (≤160 chars)
+        if description:
+            meta_description = description[:157] + "..." if len(description) > 160 else description
+        else:
+            meta_description = f"Experience the transformative {title} - a guided Dreamweaver meditation with binaural beats and archetypal journeywork."
+
+        # Image ALT text
+        archetype_str = f" featuring {', '.join(archetypes[:2])}" if archetypes else ""
+        alt_text = f"{title}{archetype_str} - Dreamweaver Hypnotic Journey Artwork"
+
+        # Long description (300-700 words) with safety disclaimer
+        # Use the new generate_benefit_laden_description function for clean, benefit-focused content
+        try:
+            from scripts.ai.knowledge_tools import generate_benefit_laden_description, inject_semantic_field
+
+            # Generate benefit-laden description with safety disclaimer included
+            long_description = generate_benefit_laden_description(
+                title=title,
+                archetypes=archetypes,
+                outcome="transformation",  # Default outcome for fallback
+                duration_minutes=None,  # Unknown in fallback
+                include_disclaimer=True  # Include full safety disclaimer
+            )
+
+            # Apply Layer 2 semantic field saturation
+            session_elements = {
+                "archetypes": archetypes,
+                "outcome": "transformation",
+            }
+            long_description = inject_semantic_field(
+                long_description,
+                session_elements=session_elements,
+                num_glossary_terms=4,
+                include_definition=True,
+                include_glossary=True
+            )
+            print("  Applied benefit-laden description with safety disclaimer and semantic field")
+
+        except ImportError:
+            # Fallback if knowledge_tools not available
+            long_desc_parts = [
+                f"**{title}** is a transformative guided meditation experience designed to take you on a profound inner journey.",
+                "",
+                "## About This Journey",
+                description if description else "This Dreamweaver session combines professional voice guidance, binaural beats, and symbolic imagery to create a deeply immersive experience.",
+                "",
+                "## What's Included",
+                "- High-quality audio with binaural beats tuned for deep theta state",
+                "- Professional voice guidance by Randy Salars",
+                "- Carefully crafted narrative with archetypal imagery",
+                "- Safe return protocol for gentle re-awakening",
+            ]
+            if archetypes:
+                long_desc_parts.extend([
+                    "",
+                    "## Archetypal Guides",
+                    f"This journey features the following archetypal energies: {', '.join(archetypes)}.",
+                ])
+            long_desc_parts.extend([
+                "",
+                "## Perfect For",
+                "- Meditation practitioners seeking deeper experiences",
+                "- Spiritual seekers exploring inner landscapes",
+                "- Anyone wanting deep relaxation and stress relief",
+                "- Those interested in Jungian archetypes and symbolic work",
+                "",
+                "## ⚠️ Important Safety Information",
+                "",
+                "**Please read before listening:**",
+                "",
+                "- **Do NOT listen while driving** or operating heavy machinery",
+                "- This is **not medical, financial, or professional advice**",
+                "- Consult a qualified healthcare provider for medical concerns",
+                "- Listen only in a **safe, comfortable environment** where you can fully relax",
+                "- If you experience any discomfort or distress, discontinue use immediately",
+                "",
+                "*By listening, you agree that this content is for entertainment and personal development purposes only.*"
+            ])
+            long_description = "\n".join(long_desc_parts)
+        except Exception as e:
+            print(f"  Warning: Benefit-laden description generation failed: {e}, using basic fallback")
+            long_description = f"**{title}** is a transformative Dreamweaver meditation experience.\n\n⚠️ SAFETY: Do not listen while driving. Not medical advice. Use in a safe environment."
+
+        # === PHASE 3: Product Schema ===
+        category_display = category.replace("-", " ").title() if category else "Guided Meditation"
+        page_url = f"{self.api_url}/dreamweavings/{slug}"
+
+        product_schema = {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": primary_keyword,
+            "description": meta_description,
+            "sku": sku,
+            "brand": {
+                "@type": "Brand",
+                "name": "Salars Dreamweaver"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "Randy Salars"
+            },
+            "category": f"Digital Download > Guided Meditation > {category_display}",
+            "offers": {
+                "@type": "Offer",
+                "url": page_url,
+                "price": "0",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2026-12-31"
+            }
+        }
+
+        return {
+            "primary_keyword": primary_keyword,
+            "meta_title": meta_title,
+            "meta_description": meta_description,
+            "h1_title": title,
+            "long_description": "\n".join(long_desc_parts),
+            "product_schema": product_schema,
+            "related_sessions": [],
+            "alt_text": alt_text,
+            "sku": sku,
+        }
+
+    def _save_seo_artifacts(self, payload: dict) -> None:
+        """
+        Save SEO artifacts to session output directory.
+
+        Saves:
+        - product_schema.json: JSON-LD schema for rich snippets
+        - seo_metadata.json: Full SEO metadata for reference
+        """
+        import json
+
+        output_dir = self.session_path / "output"
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Save product schema
+        product_schema = payload.get("product_schema", {})
+        if product_schema:
+            schema_path = output_dir / "product_schema.json"
+            with open(schema_path, "w") as f:
+                json.dump(product_schema, f, indent=2)
+            print(f"  Saved: {schema_path.name}")
+
+        # Save full SEO metadata
+        seo_data = payload.get("seo", {})
+        if seo_data:
+            seo_path = output_dir / "seo_metadata.json"
+            full_seo = {
+                **seo_data,
+                "product_schema": product_schema,
+                "related_sessions": payload.get("related_sessions", []),
+            }
+            with open(seo_path, "w") as f:
+                json.dump(full_seo, f, indent=2)
+            print(f"  Saved: {seo_path.name}")
+
+        # Log summary
+        sku = seo_data.get("sku", "N/A")
+        keyword = seo_data.get("primary_keyword", "N/A")
+        print(f"  SKU: {sku}")
+        print(f"  Primary Keyword: {keyword[:50]}..." if len(keyword) > 50 else f"  Primary Keyword: {keyword}")
 
     def upload_file(self, file_path: Path, slug: str, file_type: str) -> str:
         """Upload a single file using the configured storage backend."""
@@ -993,30 +1311,48 @@ class DreamweavingUploader:
         self.rollback.set_db_record(payload["slug"])
         return result
 
+    def delete_dreamweaving(self, slug: str) -> bool:
+        """Delete existing dreamweaving record via API."""
+        if self.dry_run:
+            print(f"  [DRY RUN] Would delete dreamweaving: {slug}")
+            return True
+
+        api_url = f"{self.api_url}/api/dreamweavings/{slug}"
+
+        response = requests.delete(
+            api_url,
+            headers={
+                "Authorization": f"Bearer {self.api_token}",
+            },
+            timeout=30,
+        )
+
+        if response.status_code == 404:
+            print(f"  Record not found (already deleted): {slug}")
+            return True
+
+        if response.status_code not in [200, 204]:
+            raise Exception(f"Delete API error: {response.status_code} - {response.text}")
+
+        return True
+
     def update_dreamweaving(self, payload: dict) -> dict:
-        """Update existing dreamweaving record via API (PUT)."""
+        """Update existing dreamweaving record via DELETE + POST (workaround for missing PUT support)."""
         if self.dry_run:
             print("  [DRY RUN] Would update dreamweaving:")
             print(f"    Slug: {payload['slug']}")
             print(f"    Title: {payload['title'][:60]}...")
             return {"id": 0, "slug": payload["slug"]}
 
-        api_url = f"{self.api_url}/api/dreamweavings/{payload['slug']}"
+        slug = payload['slug']
 
-        response = requests.put(
-            api_url,
-            json=payload,
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {self.api_token}",
-            },
-            timeout=30,
-        )
+        # Step 1: Delete existing record
+        print(f"  Deleting existing record: {slug}")
+        self.delete_dreamweaving(slug)
 
-        if response.status_code not in [200, 201]:
-            raise Exception(f"API error: {response.status_code} - {response.text}")
-
-        return response.json()
+        # Step 2: Create new record with same slug
+        print(f"  Creating updated record: {slug}")
+        return self.create_dreamweaving(payload)
 
     def run(self, category_override: str = None, update_mode: bool = False) -> dict:
         """Execute the complete upload workflow."""
@@ -1104,6 +1440,10 @@ class DreamweavingUploader:
                 print("\n=== Creating Database Record ===")
                 result = self.create_dreamweaving(payload)
                 print(f"  Created ID: {result.get('id')}")
+
+            # Step 8: Save product schema to session
+            print("\n=== Saving SEO Artifacts ===")
+            self._save_seo_artifacts(payload)
 
             # Success!
             print("\n" + "=" * 70)

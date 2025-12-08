@@ -1,0 +1,121 @@
+session:
+  name: sacred-healing-sanctuary---inner-light-r-20251208
+  topic: Sacred Healing Sanctuary - inner light restoration
+  duration: 900
+  style: healing
+  created: '2025-12-08'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: Sacred Healing Sanctuary - Inner Light Restoration
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 72
+  brainwave_target: alpha
+  description: Welcome and introduction to Sacred Healing Sanctuary - inner light
+    restoration
+- name: induction
+  start: 72
+  end: 207
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into within an ancient temple of light, where
+    sacred geometry resonates with cosmic harmony
+- name: journey
+  start: 207
+  end: 657
+  brainwave_target: theta_delta
+  description: 'Main journey: a deep ocean sanctuary where wounds dissolve into light'
+- name: integration
+  start: 657
+  end: 792
+  brainwave_target: theta_to_alpha
+  description: 'Integration: emerging whole, renewed, and radiating vitality'
+- name: awakening
+  start: 792
+  end: 900
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Healer
+  role: healing
+  description: Compassionate presence of restoration
+  symbol: healing hands of light
+  qualities:
+  - restoration
+  - compassion
+  - wholeness
+  appearance_section: journey
+- name: The Star Guide
+  role: guidance
+  description: Celestial being of cosmic navigation
+  symbol: constellation map
+  qualities:
+  - cosmic awareness
+  - pathfinding
+  - clarity
+  appearance_section: journey
+- name: The Inner Light
+  role: higher_self
+  description: The divine spark within
+  symbol: radiant core
+  qualities:
+  - divinity
+  - truth
+  - essence
+  appearance_section: journey
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 432
+    sections:
+    - start: 0
+      end: 90
+      offset_hz: 10.0
+    - start: 90
+      end: 225
+      offset_hz: 7.0
+    - start: 225
+      end: 450
+      offset_hz: 4.0
+    - start: 450
+      end: 630
+      offset_hz: 2.0
+    - start: 630
+      end: 765
+      offset_hz: 5.0
+    - start: 765
+      end: 900
+      offset_hz: 9.0
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: Sacred Healing Sanctuary - Inner Light Restoration | Binaural Beats Meditation
+  subtitle: "432Hz \u2022 Healing"
+  description: 'A transformational journey: emerging whole, renewed, and radiating
+    vitality'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - healing
+  - underwater

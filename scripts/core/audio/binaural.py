@@ -461,7 +461,7 @@ def generate(
     duration_sec: float,
     sample_rate: int = 48000,
     carrier_freq: float = 200,
-    amplitude: float = 0.3,
+    amplitude: float = 0.25,
     fade_in_sec: float = 5.0,
     fade_out_sec: float = 8.0,
     gamma_bursts: Optional[List[GammaBurstDict]] = None,
@@ -494,7 +494,7 @@ def generate(
         sample_rate: Sample rate in Hz (default: 48000)
         carrier_freq: Base carrier frequency in Hz (default: 200)
             Used when sections don't specify carrier_start/carrier_end
-        amplitude: Output amplitude 0.0-1.0 (default: 0.3)
+        amplitude: Output amplitude 0.0-1.0 (default: 0.25)
         fade_in_sec: Fade in duration in seconds (default: 5.0)
         fade_out_sec: Fade out duration in seconds (default: 8.0)
         gamma_bursts: Optional list of gamma burst events for peak moments.
@@ -1283,7 +1283,7 @@ def generate_dual_layer(
     duration_sec: float,
     sample_rate: int = 48000,
     carrier_freq: float = 200,
-    amplitude: float = 0.3,
+    amplitude: float = 0.25,
     fade_in_sec: float = 5.0,
     fade_out_sec: float = 8.0,
     gamma_bursts: Optional[List[GammaBurstDict]] = None,
@@ -1312,7 +1312,7 @@ def generate_dual_layer(
         duration_sec: Total duration in seconds
         sample_rate: Sample rate in Hz (default: 48000)
         carrier_freq: Base carrier frequency for primary (default: 200)
-        amplitude: Total output amplitude 0.0-1.0 (default: 0.3)
+        amplitude: Total output amplitude 0.0-1.0 (default: 0.25)
         fade_in_sec: Fade in duration in seconds (default: 5.0)
         fade_out_sec: Fade out duration in seconds (default: 8.0)
         gamma_bursts: Optional gamma burst events (applied to primary only)
@@ -1708,7 +1708,7 @@ def generate_multi_layer(
     p = params or {}
     sample_rate = p.get('sample_rate', 48000)
     carrier_freq = p.get('carrier_freq', 200)
-    amplitude = p.get('amplitude', 0.3)
+    amplitude = p.get('amplitude', 0.25)
     fade_in_sec = p.get('fade_in_sec', 5.0)
     fade_out_sec = p.get('fade_out_sec', 8.0)
     gamma_bursts = p.get('gamma_bursts')

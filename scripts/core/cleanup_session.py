@@ -18,7 +18,6 @@ Files REMOVED:
 - output/voice.mp3 (raw TTS, enhanced version exists)
 - output/video/solid_background.mp4 (generated fallback)
 - output/video/video_summary.json (metadata, not needed for delivery)
-- output/YOUTUBE_*.md (duplicates if in youtube_package/)
 - working_files/*.json (intermediate configs)
 
 Usage:
@@ -55,6 +54,9 @@ def cleanup_session(session_path: Path, dry_run: bool = False) -> dict:
         print(f"No output directory found in {session_path}")
         return {"error": "No output directory"}
 
+    youtube_pkg = output_path / "youtube_package"
+    youtube_pkg.mkdir(parents=True, exist_ok=True)
+
     # Track what we're doing
     files_to_remove = []
     bytes_to_free = 0
@@ -65,8 +67,18 @@ def cleanup_session(session_path: Path, dry_run: bool = False) -> dict:
         "*.wav",           # All WAV intermediates (including MASTER.wav if MP3 exists)
         "voice.mp3",       # Raw TTS (keep enhanced only if no MASTER)
         "voice_enhanced.mp3",  # Keep only MASTER
-        "YOUTUBE_*.md",    # Duplicates (keep in youtube_package/)
     ]
+
+    # Move any YouTube package files into youtube_package/ before cleanup
+    # so they are never deleted by pattern matching.
+    for yt_file in output_path.glob("YOUTUBE_*.md"):
+        target = youtube_pkg / yt_file.name
+        if target.exists():
+            # Keep existing copy; remove stray duplicate in output/
+            yt_file.unlink()
+        else:
+            yt_file.rename(target)
+        preserved_files.append(target)
 
     # Check if MASTER.mp3 exists (then we can remove MASTER.wav too)
     master_mp3_exists = list(output_path.glob("*_MASTER.mp3"))
@@ -141,7 +153,6 @@ def cleanup_session(session_path: Path, dry_run: bool = False) -> dict:
 
     # Show what will be preserved
     print("PRESERVED (Final Deliverables):")
-    youtube_pkg = output_path / "youtube_package"
     if youtube_pkg.exists():
         pkg_size = sum(f.stat().st_size for f in youtube_pkg.rglob("*") if f.is_file())
         print(f"  youtube_package/ ({format_size(pkg_size)})")

@@ -42,8 +42,8 @@ def main():
                        help='Output WAV file path')
     parser.add_argument('--carrier', type=validate_frequency, default=200,
                        help='Carrier frequency in Hz (default: 200)')
-    parser.add_argument('--amplitude', type=validate_percentage, default=0.3,
-                       help='Amplitude 0.0-1.0 (default: 0.3)')
+    parser.add_argument('--amplitude', type=validate_percentage, default=0.25,
+                       help='Amplitude 0.0-1.0 (default: 0.25)')
 
     args = parser.parse_args()
 

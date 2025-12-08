@@ -1,0 +1,243 @@
+# =============================================================================
+# COPYWRITING TEMPLATES - Emotionally Compelling Description Generation
+# =============================================================================
+# This file provides copywriting frameworks for generating emotionally
+# resonant descriptions that combine:
+# - PAS (Problem → Agitation → Solution)
+# - AIDA (Attention → Interest → Desire → Action)
+# - BAB (Before → After → Bridge)
+# - Sensory Stacking (Visual, Auditory, Kinesthetic, Emotional)
+#
+# These are used by generate_benefit_laden_description() in knowledge_tools.py
+# =============================================================================
+
+version: "1.0"
+last_updated: "2025-12-08"
+
+# -----------------------------------------------------------------------------
+# EMOTIONAL OPENERS BY OUTCOME
+# Each outcome has: hook, pain_point, desire
+# Used to create compelling opening that addresses the reader's state
+# -----------------------------------------------------------------------------
+openers:
+  healing:
+    hook: "Some healing can only happen in stillness. This is your invitation inward."
+    pain_point: "There's a part of you that's been carrying weight for too long—old wounds, stored tension, emotions you've pushed aside."
+    desire: "What if you could lay down that burden, just for a moment, and remember what lightness feels like?"
+
+  transformation:
+    hook: "Transformation isn't forced. It's remembered. This journey helps you remember."
+    pain_point: "You've felt it—that quiet knowing that something more is waiting for you, just beyond the edge of who you've been."
+    desire: "What would it mean to finally step through that threshold and meet the version of yourself you've always sensed was possible?"
+
+  empowerment:
+    hook: "Your power was never lost. It's waiting to be reclaimed."
+    pain_point: "How often have you held back, stayed small, let doubt speak louder than your inner knowing?"
+    desire: "Imagine standing in your full power—not arrogance, but quiet, unshakeable certainty in who you are."
+
+  confidence:
+    hook: "Confidence isn't built—it's uncovered. This journey shows you what's already there."
+    pain_point: "That voice of self-doubt has been running the show for long enough."
+    desire: "What would your life look like if you genuinely believed you were worthy of everything you desire?"
+
+  relaxation:
+    hook: "Your nervous system has been waiting for permission to release. This is that permission."
+    pain_point: "When was the last time you truly rested—not just stopped moving, but actually let go?"
+    desire: "Imagine sinking into a peace so deep that every cell in your body finally exhales."
+
+  spiritual_growth:
+    hook: "The veil between worlds is thinner than you think. This journey helps you see through it."
+    pain_point: "You've sensed there's more to this existence than what meets the eye—something calling you deeper."
+    desire: "What if you could access that expanded awareness, not someday, but now?"
+
+  abundance:
+    hook: "Abundance isn't attracted—it's allowed. This journey opens the gates."
+    pain_point: "Scarcity thinking has been blocking the flow—that nagging feeling that there's never quite enough."
+    desire: "What would shift if you truly embodied abundance, not as a concept, but as a felt sense in your body?"
+
+  clarity:
+    hook: "Clarity comes when the noise finally stops. Let's create that silence together."
+    pain_point: "The fog of overwhelm, the weight of too many choices, the paralysis of uncertainty."
+    desire: "What if the answers you've been seeking were already within you, just waiting for the space to emerge?"
+
+  sleep:
+    hook: "Tonight, you don't have to try to sleep. You just have to let go."
+    pain_point: "Another night of racing thoughts, restless tossing, waking up more tired than when you lay down."
+    desire: "What would it mean to drift into deep, restorative sleep—naturally, effortlessly, completely?"
+
+  default:
+    hook: "Something within you already knows the way. This journey helps you remember."
+    pain_point: "Life moves fast. When was the last time you truly paused to reconnect with yourself?"
+    desire: "What if transformation could feel less like work and more like homecoming?"
+
+# -----------------------------------------------------------------------------
+# SENSORY EXPERIENCE DESCRIPTORS
+# Layer visual, auditory, kinesthetic, and emotional language
+# Select 1-2 from each category to create immersive preview
+# -----------------------------------------------------------------------------
+sensory_language:
+  visual:
+    - "soft golden light washing over you"
+    - "vast cosmic expanse stretching infinitely"
+    - "sacred symbols glowing with ancient wisdom"
+    - "crystalline waters reflecting your true essence"
+    - "a sanctuary of deep violet and starlight"
+    - "emerald forests pulsing with life"
+    - "sacred geometry unfolding in luminous patterns"
+    - "the warm glow of an eternal flame"
+
+  auditory:
+    - "binaural frequencies gently tuning your brainwaves"
+    - "a voice that feels like it knows your soul"
+    - "harmonic tones dissolving resistance"
+    - "the sound of your own breath becoming rhythm"
+    - "whispered guidance from the depths of ancient knowing"
+    - "crystalline tones opening inner doorways"
+    - "the resonance of deep earth drums"
+    - "frequencies that speak directly to your nervous system"
+
+  kinesthetic:
+    - "warmth spreading through your chest"
+    - "tension melting from your shoulders"
+    - "a wave of calm washing through your entire body"
+    - "feeling held by something greater than yourself"
+    - "roots growing from your feet into the earth"
+    - "a gentle expansion in your heart space"
+    - "heaviness releasing from muscles you forgot were tight"
+    - "tingling awareness awakening in your fingertips"
+
+  emotional:
+    - "a homecoming you didn't know you needed"
+    - "permission to finally let go"
+    - "remembering who you were before the world told you otherwise"
+    - "the quiet joy of inner reunion"
+    - "relief washing through every part of your being"
+    - "a sense of being truly seen and understood"
+    - "the peace that comes from no longer fighting yourself"
+    - "gratitude for simply being alive in this moment"
+
+# -----------------------------------------------------------------------------
+# TRANSFORMATION BRIDGES
+# Before → After statements that show the journey's impact
+# Used in the "Your Transformation" section
+# -----------------------------------------------------------------------------
+transformation_bridges:
+  healing: "From fragmented to whole, from guarded to open, from wounded to healed."
+  transformation: "From limitation to expansion, from patterns to freedom, from stuck to flowing."
+  empowerment: "From doubt to certainty, from hesitation to decisiveness, from small to sovereign."
+  confidence: "From self-questioning to self-knowing, from comparison to completion."
+  relaxation: "From tension to release, from racing mind to deep stillness, from exhaustion to renewal."
+  spiritual_growth: "From seeking to finding, from separation to unity, from confusion to clarity."
+  abundance: "From scarcity to overflow, from blocking to receiving, from striving to allowing."
+  clarity: "From confusion to knowing, from overwhelm to peace, from scattered to centered."
+  sleep: "From restless to peaceful, from wired to tired, from insomnia to deep restoration."
+  default: "From where you are to where you're meant to be, guided every step of the way."
+
+# -----------------------------------------------------------------------------
+# CALL TO ACTION TEMPLATES
+# Invite immediate engagement without being pushy
+# -----------------------------------------------------------------------------
+calls_to_action:
+  gentle: "Find a quiet space, close your eyes, and let the journey begin."
+  inviting: "Your transformation is waiting. Press play when you're ready to meet it."
+  urgent: "Don't wait for the 'perfect' moment—your soul has been ready for this."
+  mystical: "The portal is open. All you have to do is step through."
+  empowering: "You've done the seeking. Now it's time for the finding."
+  nurturing: "Give yourself permission to receive this. You deserve this pause."
+
+# -----------------------------------------------------------------------------
+# WHO THIS IS FOR - QUALIFICATION STATEMENTS
+# Help readers self-identify as the ideal listener
+# -----------------------------------------------------------------------------
+who_this_is_for:
+  healing:
+    - "You're carrying weight that isn't yours to hold anymore"
+    - "You're ready to feel lighter, freer, more whole"
+    - "You believe healing is possible, even if it hasn't happened yet"
+    - "You're tired of just surviving and ready to truly live"
+
+  transformation:
+    - "You sense there's more to you than you've expressed"
+    - "You're ready to release patterns that no longer serve"
+    - "You believe change happens from the inside out"
+    - "You're done with the old story and ready for a new chapter"
+
+  empowerment:
+    - "You're ready to stop playing small"
+    - "You know your power but need help accessing it"
+    - "You're done asking permission to be yourself"
+    - "You're ready to lead your own life with confidence"
+
+  confidence:
+    - "You're tired of self-doubt holding you back"
+    - "You know you have something valuable to offer"
+    - "You're ready to believe in yourself as much as others do"
+    - "You want to walk into any room knowing you belong"
+
+  relaxation:
+    - "Your nervous system has been in overdrive for too long"
+    - "You've forgotten what deep rest actually feels like"
+    - "You're ready to stop just surviving and start thriving"
+    - "You need more than meditation apps—you need transformation"
+
+  spiritual_growth:
+    - "You've felt the call to something deeper"
+    - "You're ready to move beyond belief into experience"
+    - "You want to connect with dimensions beyond the ordinary"
+    - "You're a seeker who's ready to become a finder"
+
+  abundance:
+    - "You're ready to shift from scarcity to sufficiency"
+    - "You know abundance is a mindset, but need help embodying it"
+    - "You want to receive as freely as you give"
+    - "You're done with 'not enough' running your decisions"
+
+  default:
+    - "You're ready to move beyond surface-level relaxation"
+    - "You believe in the power of the inner world"
+    - "You're open to transformation that bypasses the analytical mind"
+    - "You want results you can feel, not just understand"
+
+# -----------------------------------------------------------------------------
+# FEATURE DESCRIPTIONS - SEO-OPTIMIZED TECHNICAL DETAILS
+# Retain keywords while adding emotional benefit
+# -----------------------------------------------------------------------------
+features:
+  binaural_beats:
+    technical: "Binaural beats tuned for deep theta state (4-7 Hz)"
+    benefit: "Theta-state frequencies scientifically shown to enhance receptivity and accelerate transformation"
+
+  voice_guidance:
+    technical: "Professional voice guidance with hypnotic pacing"
+    benefit: "Randy Salars' professionally crafted narration with embedded transformation patterns"
+
+  archetypal_symbolism:
+    technical: "Archetypal psychology and symbolic pathworking"
+    benefit: "Proven psychological frameworks for deep, lasting change"
+
+  safe_return:
+    technical: "Safe return protocol ensuring gentle awakening"
+    benefit: "Gentle guidance back to full waking awareness, feeling refreshed and integrated"
+
+  sound_design:
+    technical: "Multi-layered ambient soundscape"
+    benefit: "Immersive audio environment that supports complete surrender"
+
+  duration:
+    short: "15-20 minutes—perfect for a lunch break transformation"
+    medium: "25-35 minutes—deep enough to shift, short enough to fit your life"
+    long: "40+ minutes—for those ready for profound, extended journeys"
+
+# -----------------------------------------------------------------------------
+# META DESCRIPTION TEMPLATES
+# For SEO (must be ≤160 characters)
+# -----------------------------------------------------------------------------
+meta_descriptions:
+  healing: "{title} - A {duration}-minute guided journey for emotional release and inner restoration. Experience deep healing through binaural beats and archetypal wisdom."
+  transformation: "{title} - Transform your inner world in {duration} minutes. Binaural beats, hypnotic guidance, and archetypal pathworking for lasting change."
+  empowerment: "{title} - Reclaim your power in {duration} minutes. Deep theta frequencies and archetypal guidance to unlock your inner strength."
+  confidence: "{title} - Build unshakeable confidence in {duration} minutes. Hypnotic journey using binaural beats and proven transformation patterns."
+  relaxation: "{title} - Experience profound relaxation in {duration} minutes. Theta frequencies and expert guidance for complete nervous system reset."
+  spiritual_growth: "{title} - Expand your consciousness in {duration} minutes. Sacred journey with binaural beats and archetypal wisdom traditions."
+  abundance: "{title} - Open to abundance in {duration} minutes. Hypnotic journey to shift from scarcity to overflow using ancient and modern techniques."
+  default: "{title} - A {duration}-minute Dreamweaver journey combining binaural beats, hypnotic guidance, and archetypal symbolism for deep transformation."

@@ -1,0 +1,25 @@
+[Unit]
+Description=Dreamweaving RAG File Watcher
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/rsalars/Projects/dreamweaving
+Environment="PATH=/home/rsalars/Projects/dreamweaving/venv/bin:/usr/local/bin:/usr/bin:/bin"
+EnvironmentFile=/home/rsalars/Projects/dreamweaving/.env
+ExecStart=/home/rsalars/Projects/dreamweaving/venv/bin/python3 scripts/ai/rag_file_watcher.py
+User=rsalars
+Group=rsalars
+Restart=on-failure
+RestartSec=10
+
+# Logging
+StandardOutput=append:/home/rsalars/Projects/dreamweaving/logs/rag_watcher.log
+StandardError=append:/home/rsalars/Projects/dreamweaving/logs/rag_watcher.log
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

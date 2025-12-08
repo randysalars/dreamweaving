@@ -365,15 +365,44 @@ def main():
         print(f"❌ Session not found: {session_dir}")
         sys.exit(1)
 
-    # Resolve audio path
+    # Resolve audio path - prefer MASTER (post-processed) audio over raw mix
     audio_path = Path(args.audio) if args.audio else None
     if not audio_path:
-        # Try a common default
-        candidates = list((session_dir / "output").glob("*.mp3"))
-        if not candidates:
-            print("❌ Audio file not provided and none found in session/output")
-            sys.exit(1)
-        audio_path = candidates[0]
+        output_dir = session_dir / "output"
+        session_name = session_dir.name
+
+        # Priority order: MASTER (post-processed) > final > mixed > any MP3/WAV
+        # MASTER files have hypnotic post-processing applied (warmth, de-essing, etc.)
+        audio_candidates = [
+            output_dir / f"{session_name}_MASTER.mp3",
+            output_dir / f"{session_name}_MASTER.wav",
+            *list(output_dir.glob("*_MASTER.mp3")),
+            *list(output_dir.glob("*_MASTER.wav")),
+            output_dir / f"{session_name}_final.mp3",
+            output_dir / "final_master.mp3",
+            output_dir / "session_mixed.wav",
+            output_dir / "voice_enhanced.mp3",
+        ]
+
+        # Find first existing candidate
+        audio_path = None
+        for candidate in audio_candidates:
+            if candidate.exists():
+                audio_path = candidate
+                print(f"  Using audio: {candidate.name}")
+                break
+
+        # Fallback: any MP3 in output
+        if not audio_path:
+            mp3_files = list(output_dir.glob("*.mp3"))
+            wav_files = list(output_dir.glob("*.wav"))
+            all_audio = mp3_files + wav_files
+            if all_audio:
+                audio_path = all_audio[0]
+                print(f"  Using fallback audio: {audio_path.name}")
+            else:
+                print("❌ Audio file not provided and none found in session/output")
+                sys.exit(1)
     audio_path = audio_path.resolve()
     if not audio_path.exists():
         print(f"❌ Audio file not found: {audio_path}")

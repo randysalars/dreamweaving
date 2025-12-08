@@ -52,27 +52,440 @@ Cost Optimization Modes:
     - premium:  Maximum quality, ~$1.51 total
 """
 
-import os
-import sys
 import argparse
-import subprocess
 import json
-import yaml
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Optional, Tuple
+import os
+import random
 import re
+import subprocess
+import sys
 import time
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import requests
+import yaml
 from dotenv import load_dotenv
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+# Constants
+RAG_NO_CONTEXT = "(No canonical knowledge found)"
+
 # Load environment variables from .env file
 load_dotenv(PROJECT_ROOT / ".env")
 
 from scripts.ai.creative_workflow import CreativeWorkflow
+from scripts.utilities.estimate_duration import estimate_duration
+
+DEFAULT_NOTION_ROOT_PAGE_ID = os.getenv(
+    "NOTION_ROOT_PAGE_ID", "1ee2bab3796d80738af6c96bd5077acf"
+)
+DEFAULT_NOTION_TOPIC_DB_ID = os.getenv(
+    "NOTION_TOPIC_DATABASE_ID", "2c22bab3-796d-81fb-bdf8-efd2aab0159e"
+)
+
+
+class NotionTopicManager:
+    """Lightweight Notion helper for fetching and marking topics."""
+
+    def __init__(
+        self,
+        token: Optional[str],
+        root_page_id: Optional[str] = None,
+        database_id: Optional[str] = None,
+        notion_version: str = "2022-06-28",
+        timeout: int = 10,
+    ):
+        self.token = token
+        self.root_page_id = root_page_id or DEFAULT_NOTION_ROOT_PAGE_ID
+        self.database_id = database_id or DEFAULT_NOTION_TOPIC_DB_ID
+        self.notion_version = notion_version
+        self.timeout = timeout
+        self.session = requests.Session()
+
+    # ---------- Public API ----------
+    def get_unused_topics(self) -> List[Dict]:
+        """Return all unused topics under the configured root page."""
+        if not self.token:
+            raise RuntimeError("NOTION_TOKEN is not set; cannot query Notion.")
+        topics = self._collect_child_pages(self.root_page_id, path=[])
+        unused = []
+        for topic in topics:
+            page_data = self._get_page(topic["id"])
+            if not self._is_used(topic["title"], page_data):
+                topic["page"] = page_data
+                unused.append(topic)
+        return unused
+
+    def pick_random_unused(self) -> Dict:
+        """Pick a random unused topic."""
+        if not self.token:
+            raise RuntimeError("NOTION_TOKEN is not set; cannot query Notion.")
+
+        # Prefer database query if available
+        if self.database_id:
+            candidates = self._query_unused_database()
+            if candidates:
+                random.shuffle(candidates)
+                return candidates[0]
+
+        # Collect all child pages (structure only), shuffle for randomness
+        pages = self._collect_child_pages(self.root_page_id, path=[])
+        if not pages:
+            raise RuntimeError("No child pages found under the Notion root page.")
+        random.shuffle(pages)
+
+        last_page = None
+        for topic in pages:
+            page_data = self._get_page(topic["id"])
+            last_page = page_data
+            if not self._is_used(topic["title"], page_data):
+                topic["page"] = page_data
+                return topic
+
+        # If everything was used, fall back with more context
+        last_title = (last_page or {}).get("properties", {}).get(
+            "title", {}
+        )
+        raise RuntimeError(
+            "No unused topics available in Notion (all topics appear marked as used)."
+        )
+
+    def mark_used(self, topic: Dict) -> bool:
+        """Mark a topic as used in Notion (checkbox/status/title prefix)."""
+        page_id = topic["id"]
+        title = topic["title"]
+        page_data = topic.get("page") or self._get_page(page_id)
+
+        # If this is a database row, update via pages endpoint
+        if topic.get("is_db_row"):
+            updates: Dict = {"properties": {}}
+
+            # Status -> Used (if exists)
+            status_prop = self._find_status_property(page_data)
+            if status_prop:
+                updates["properties"][status_prop] = {"select": {"name": "Used"}}
+
+            # Checkbox Used -> true
+            used_checkbox = self._find_checkbox_property(page_data, prefer_name="Used")
+            if used_checkbox:
+                updates["properties"][used_checkbox] = {"checkbox": True}
+
+            # Used At -> now
+            updates["properties"]["Used At"] = {
+                "date": {"start": datetime.now().isoformat()}
+            }
+
+            resp = self.session.patch(
+                f"https://api.notion.com/v1/pages/{page_id}",
+                headers=self._headers(),
+                json=updates,
+                timeout=self.timeout,
+            )
+            if resp.status_code != 200:
+                raise RuntimeError(
+                    f"Failed to mark topic as used (HTTP {resp.status_code}): {resp.text[:200]}"
+                )
+            return True
+
+        updates: Dict = {"properties": {}}
+
+        # Prefer an explicit checkbox property named "Used"
+        used_checkbox = self._find_checkbox_property(page_data, prefer_name="Used")
+        if used_checkbox:
+            updates["properties"][used_checkbox] = {"checkbox": True}
+
+        # If a Status property has a "Used" option, set it
+        status_update = self._build_status_update(page_data)
+        if status_update:
+            updates["properties"].update(status_update)
+
+        # Fallback: prefix the title to reflect usage
+        if not self._title_looks_used(title):
+            title_prop = self._find_title_property(page_data)
+            if title_prop:
+                updates["properties"][title_prop] = {
+                    "title": [{"text": {"content": f"✅ {title}"}}]
+                }
+
+        if not updates["properties"]:
+            return False
+
+        resp = self.session.patch(
+            f"https://api.notion.com/v1/pages/{page_id}",
+            headers=self._headers(),
+            json=updates,
+            timeout=self.timeout,
+        )
+        if resp.status_code != 200:
+            raise RuntimeError(
+                f"Failed to mark topic as used (HTTP {resp.status_code}): {resp.text[:200]}"
+            )
+        return True
+
+    # ---------- Internal helpers ----------
+    def _headers(self) -> Dict[str, str]:
+        return {
+            "Authorization": f"Bearer {self.token}",
+            "Notion-Version": self.notion_version,
+            "Content-Type": "application/json",
+        }
+
+    def _list_children(self, block_id: str) -> List[Dict]:
+        url = f"https://api.notion.com/v1/blocks/{block_id}/children"
+        cursor = None
+        results: List[Dict] = []
+        while True:
+            params = {"page_size": 100}
+            if cursor:
+                params["start_cursor"] = cursor
+            resp = self.session.get(
+                url, headers=self._headers(), params=params, timeout=self.timeout
+            )
+            if resp.status_code != 200:
+                raise RuntimeError(
+                    f"Failed to fetch children for block {block_id}: {resp.text[:200]}"
+                )
+            data = resp.json()
+            results.extend(data.get("results", []))
+            if not data.get("has_more"):
+                break
+            cursor = data.get("next_cursor")
+        return results
+
+    def _collect_child_pages(self, parent_id: str, path: List[str]) -> List[Dict]:
+        collected: List[Dict] = []
+        for block in self._list_children(parent_id):
+            if block.get("type") != "child_page":
+                continue
+            title = (block["child_page"].get("title") or "").strip()
+            child_path = path + [title or "Untitled"]
+            collected.append(
+                {"id": block["id"], "title": title, "path": child_path}
+            )
+            if block.get("has_children"):
+                collected.extend(
+                    self._collect_child_pages(block["id"], child_path)
+                )
+        return collected
+
+    def _get_page(self, page_id: str) -> Dict:
+        resp = self.session.get(
+            f"https://api.notion.com/v1/pages/{page_id}",
+            headers=self._headers(),
+            timeout=self.timeout,
+        )
+        if resp.status_code != 200:
+            raise RuntimeError(
+                f"Failed to fetch page {page_id}: {resp.status_code} {resp.text[:200]}"
+            )
+        return resp.json()
+
+    def _query_unused_database(self) -> List[Dict]:
+        if not self.database_id:
+            return []
+
+        url = f"https://api.notion.com/v1/databases/{self.database_id}/query"
+        cursor = None
+        results: List[Dict] = []
+        while True:
+            body = {
+                "page_size": 100,
+                "filter": {
+                    "or": [
+                        {"property": "Used", "checkbox": {"equals": False}},
+                        {"property": "Status", "select": {"does_not_equal": "Used"}},
+                    ]
+                },
+            }
+            if cursor:
+                body["start_cursor"] = cursor
+            resp = self.session.post(
+                url, headers=self._headers(), json=body, timeout=self.timeout
+            )
+            if resp.status_code != 200:
+                raise RuntimeError(
+                    f"Failed to query database {self.database_id}: {resp.text[:200]}"
+                )
+            data = resp.json()
+            for row in data.get("results", []):
+                props = row.get("properties", {})
+                title_prop = self._find_title_property(row, properties_override=props)
+                title_text = ""
+                if title_prop and props.get(title_prop, {}).get("title"):
+                    title_text = "".join(
+                        t.get("plain_text", "")
+                        for t in props[title_prop].get("title", [])
+                    )
+                path_text = ""
+                if "Path" in props and props["Path"].get("rich_text"):
+                    path_text = "".join(
+                        t.get("plain_text", "") for t in props["Path"]["rich_text"]
+                    )
+                results.append(
+                    {
+                        "id": row["id"],
+                        "title": title_text or "Untitled",
+                        "path": [path_text] if path_text else [],
+                        "page": row,
+                        "is_db_row": True,
+                    }
+                )
+            if not data.get("has_more"):
+                break
+            cursor = data.get("next_cursor")
+        return results
+
+    def _title_looks_used(self, title: str) -> bool:
+        lowered = (title or "").strip().lower()
+        return lowered.startswith(("✅", "[used", "used", "✔", "done", "complete"))
+
+    def _is_used(self, title: str, page_data: Dict) -> bool:
+        if self._title_looks_used(title):
+            return True
+
+        properties = page_data.get("properties", {}) or {}
+        for name, prop in properties.items():
+            prop_type = prop.get("type")
+            if prop_type == "checkbox" and name.lower() == "used":
+                if prop.get("checkbox") is True:
+                    return True
+            if prop_type == "status":
+                status = prop.get("status") or {}
+                if (status.get("name") or "").lower() in {
+                    "used",
+                    "done",
+                    "complete",
+                    "finished",
+                }:
+                    return True
+        return False
+
+    def _find_checkbox_property(
+        self, page_data: Dict, prefer_name: str = "Used"
+    ) -> Optional[str]:
+        properties = page_data.get("properties", {}) or {}
+        preferred_lower = prefer_name.lower()
+        for name, prop in properties.items():
+            if prop.get("type") == "checkbox" and name.lower() == preferred_lower:
+                return name
+        for name, prop in properties.items():
+            if prop.get("type") == "checkbox":
+                return name
+        return None
+
+    def _find_title_property(
+        self, page_data: Dict, properties_override: Optional[Dict] = None
+    ) -> Optional[str]:
+        properties = properties_override or page_data.get("properties", {}) or {}
+        for name, prop in properties.items():
+            if prop.get("type") == "title":
+                return name
+        return None
+
+    def _find_status_property(self, page_data: Dict) -> Optional[str]:
+        properties = page_data.get("properties", {}) or {}
+        for name, prop in properties.items():
+            if prop.get("type") == "select":
+                return name
+        return None
+
+    def _build_status_update(self, page_data: Dict) -> Dict:
+        properties = page_data.get("properties", {}) or {}
+        for name, prop in properties.items():
+            if prop.get("type") != "status":
+                continue
+            options = prop.get("status", {}).get("options", [])
+            option_names = {opt.get("name", "").lower(): opt for opt in options}
+            for desired in ("used", "done", "complete"):
+                if desired in option_names:
+                    return {name: {"status": {"name": option_names[desired]["name"]}}}
+        return {}
+
+
+def prompt_for_topic(
+    cli_topic: Optional[str],
+    topic_source: str,
+    notion_root: Optional[str] = None,
+) -> Tuple[str, str]:
+    """Resolve the topic via CLI args or interactive selector."""
+    # Non-interactive environments: fall back to provided options
+    if not sys.stdin.isatty():
+        if cli_topic:
+            return cli_topic.strip(), "manual"
+        if topic_source == "notion":
+            return fetch_random_notion_topic(notion_root), "notion"
+        # Try Notion if token is available
+        if os.getenv("NOTION_TOKEN"):
+            return fetch_random_notion_topic(notion_root), "notion"
+        raise RuntimeError(
+            "No TTY available. Provide --topic or run with --topic-source notion (and NOTION_TOKEN set)."
+        )
+
+    if cli_topic and topic_source != "prompt":
+        return cli_topic.strip(), topic_source
+
+    if topic_source == "notion" and not cli_topic:
+        return fetch_random_notion_topic(notion_root), "notion"
+
+    if cli_topic:
+        return cli_topic.strip(), "manual"
+
+    print("\nTopic Selection")
+    print("  1) Enter topic manually")
+    print("  2) Random unused topic from Notion")
+
+    choice = None
+    while choice not in {"1", "2"}:
+        try:
+            choice = input("Choose 1 or 2 [1]: ").strip() or "1"
+        except EOFError:
+            # If input is closed mid-prompt, fall back to manual entry prompt
+            return prompt_manual_topic(), "manual"
+
+    if choice == "1":
+        return prompt_manual_topic(), "manual"
+
+    return fetch_random_notion_topic(notion_root), "notion"
+
+
+def prompt_manual_topic() -> str:
+    """Prompt user for a manual topic with basic validation."""
+    while True:
+        try:
+            topic = input("Enter a video topic: ").strip()
+        except EOFError:
+            raise RuntimeError("No input available; provide --topic or use --topic-source notion.")
+        if not topic:
+            print("Topic cannot be empty. Please try again.")
+            continue
+        if len(topic) < 3:
+            print("Topic is too short; please provide at least 3 characters.")
+            continue
+        if len(topic) > 200:
+            print("Topic is too long; keep it under 200 characters.")
+            continue
+        return topic
+
+
+def fetch_random_notion_topic(notion_root: Optional[str]) -> str:
+    """Fetch and mark a random unused topic from Notion."""
+    token = os.getenv("NOTION_TOKEN")
+    manager = NotionTopicManager(token=token, root_page_id=notion_root)
+    try:
+        topic = manager.pick_random_unused()
+        manager.mark_used(topic)
+        path = " > ".join(topic.get("path", []) or [topic["title"]])
+        print(f"Selected Notion topic: {topic['title']} (path: {path})")
+        return topic["title"]
+    except Exception as exc:
+        print(f"[warning] Notion topic retrieval failed: {exc}")
+        print("Falling back to manual topic entry.")
+        return prompt_manual_topic()
 
 
 class CostTracker:
@@ -129,6 +542,7 @@ class AutoGenerator:
     def __init__(
         self,
         topic: str,
+        topic_source: str = 'manual',
         mode: str = 'standard',
         duration_minutes: int = 30,
         audio_only: bool = False,
@@ -139,6 +553,7 @@ class AutoGenerator:
         no_cleanup: bool = False,
         no_learning: bool = False,
         image_method: str = 'sd',
+        image_performance: str = 'speed',
         stock_platform: str = 'unsplash',
     ):
         self.topic = topic
@@ -147,10 +562,12 @@ class AutoGenerator:
         self.audio_only = audio_only
         self.dry_run = dry_run
         self.verbose = verbose
+        self.topic_source = topic_source
         self.skip_upload = skip_upload
         self.no_cleanup = no_cleanup
         self.no_learning = no_learning
         self.image_method = image_method
+        self.image_performance = image_performance
         self.stock_platform = stock_platform
 
         # Generate session name from topic if not provided
@@ -205,6 +622,7 @@ class AutoGenerator:
 
         self.log(f"Auto-Generate Pipeline", "stage")
         self.log(f"Topic: {self.topic}")
+        self.log(f"Topic Source: {self.topic_source}")
         self.log(f"Mode: {self.mode}")
         self.log(f"Duration: {self.duration_minutes} min")
         self.log(f"Session: {self.session_name}")
@@ -307,6 +725,22 @@ class AutoGenerator:
         self.log("Generating manifest from topic", "stage")
         self.cost_tracker.add_operation('manifest_generation')
 
+        # NEW: Retrieve canonical knowledge for topic (RAG)
+        rag_context = None
+        try:
+            from scripts.ai.knowledge_tools import get_generation_context
+            rag_context = get_generation_context(
+                topic=self.topic,
+                outcome=getattr(self, 'desired_outcome', None),
+                limit=10
+            )
+            topic_count = len(rag_context.get("topic_knowledge", []))
+            if topic_count > 0:
+                self.log(f"Retrieved {topic_count} knowledge items from RAG", "info")
+        except Exception as e:
+            self.log(f"RAG retrieval skipped: {e}", "warning")
+            rag_context = None
+
         # Use CreativeWorkflow to brainstorm and select best journey
         result = self.workflow.brainstorm_and_create(
             topic=self.topic,
@@ -329,6 +763,19 @@ class AutoGenerator:
             with open(manifest_path, 'w') as f:
                 yaml.dump(manifest, f, default_flow_style=False, sort_keys=False)
             self.log(f"Saved: {manifest_path}", "success")
+
+            # Save RAG context for later stages (script generation, YouTube packaging)
+            if rag_context and rag_context.get("topic_knowledge"):
+                rag_context_path = self.session_path / "working_files" / "rag_context.yaml"
+                rag_context_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(rag_context_path, 'w') as f:
+                    yaml.dump({
+                        'topic': self.topic,
+                        'formatted_context': rag_context.get('formatted_context', ''),
+                        'topic_knowledge_count': len(rag_context.get('topic_knowledge', [])),
+                        'outcome_patterns_count': len(rag_context.get('outcome_patterns', [])),
+                    }, f, default_flow_style=False, sort_keys=False)
+                self.log("Saved RAG context for script generation", "info")
 
         self.stages_completed.append("generate_manifest")
         return manifest
@@ -375,11 +822,50 @@ class AutoGenerator:
         archetypes = manifest.get('archetypes', [])
         archetype_names = [a.get('name', 'Unknown') for a in archetypes] if archetypes else []
 
+        # NEW: Load or generate RAG context for canonical knowledge injection
+        rag_context_str = ""
+        rag_context_path = self.session_path / "working_files" / "rag_context.yaml"
+
+        # First try to load saved context from manifest stage
+        if rag_context_path.exists():
+            try:
+                with open(rag_context_path, 'r') as f:
+                    saved_context = yaml.safe_load(f)
+                    rag_context_str = saved_context.get('formatted_context', '')
+                    if rag_context_str and rag_context_str != RAG_NO_CONTEXT:
+                        self.log("Loaded RAG context from manifest stage", "info")
+            except Exception as e:
+                self.log(f"Failed to load saved RAG context: {e}", "warning")
+
+        # If no saved context, generate fresh (e.g., if manifest was pre-existing)
+        if not rag_context_str:
+            try:
+                from scripts.ai.knowledge_tools import get_generation_context
+                rag_context = get_generation_context(
+                    topic=self.topic,
+                    outcome=manifest.get('desired_outcome'),
+                    archetypes=archetype_names,
+                    limit=10
+                )
+                rag_context_str = rag_context.get('formatted_context', '')
+                if rag_context_str and rag_context_str != RAG_NO_CONTEXT:
+                    self.log(f"Retrieved fresh RAG context ({len(rag_context.get('topic_knowledge', []))} items)", "info")
+            except Exception as e:
+                self.log(f"RAG context retrieval skipped: {e}", "warning")
+
         # Build the user prompt with session context
+        # Target word range to land near the requested duration (accounts for breaks/pauses)
+        base_wpm = 130  # hypnotic pace
+        pause_multiplier = 1.6  # expected pause inflation vs straight speech
+        target_word_count = int((self.duration_minutes * base_wpm) / pause_multiplier)
+        min_words = int(target_word_count * 0.9)
+        max_words = int(target_word_count * 1.1)
+
         user_prompt = f"""Generate a complete SSML hypnotic script for the following session:
 
 **Topic:** {self.topic}
 **Target Duration:** {self.duration_minutes} minutes
+**Target Word Count:** {min_words}-{max_words} words (hypnotic pace ~{base_wpm} wpm with pauses)
 **Session Name:** {self.session_name}
 """
 
@@ -404,20 +890,33 @@ class AutoGenerator:
                 mins = duration // 60
                 user_prompt += f"- {name}: {mins} minutes\n"
 
-        user_prompt += """
-**CRITICAL REQUIREMENTS:**
-1. The script MUST follow the exact structure from the master prompt:
-   - PRE-TALK (2-3 minutes): Welcome, safety, preparation
-   - INDUCTION (4-5 minutes): Progressive relaxation, breathing, countdown
-   - MAIN JOURNEY (14-16 minutes): The full hypnotic experience with rich sensory detail
-   - INTEGRATION (2-3 minutes): Return to awareness
-   - CLOSING (2-3 minutes): Post-hypnotic anchors, gratitude
+        # NEW: Inject RAG canonical knowledge context
+        if rag_context_str and rag_context_str != RAG_NO_CONTEXT:
+            user_prompt += f"""
 
-2. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
-3. Use <break time="Xs"/> tags liberally for hypnotic pacing, favoring slightly longer pauses: 2-3s for normal beats, 3-5s for deeper drops, 1s for countdown ticks
-4. Include rich sensory language engaging all 5 senses
-5. Embed hypnotic suggestions naturally throughout
-6. Include 3-5 post-hypnotic anchors in the closing
+---
+## CANONICAL DREAMWEAVING KNOWLEDGE (from your knowledge base)
+Use this context to ensure the script aligns with YOUR established definitions, archetypes, and patterns:
+
+{rag_context_str}
+---
+"""
+
+        section_timing_note = (
+            "Match the Section Timing above within ±10%; expand MAIN JOURNEY and INTEGRATION first if you need more time."
+            if sections else
+            "Follow the Dreamweaver 5-part arc and keep timings proportional to the target duration."
+        )
+
+        user_prompt += f"""
+**CRITICAL REQUIREMENTS:**
+1. {section_timing_note}
+2. Keep total length within {min_words}-{max_words} words to land near {self.duration_minutes} minutes. If you are short, add sensory detail and deepen the MAIN JOURNEY; if long, trim gently.
+3. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
+4. Use <break time="Xs"/> tags liberally for hypnotic pacing, favoring slightly longer pauses: 2-3s for normal beats, 3-5s for deeper drops, 1s for countdown ticks
+5. Include rich sensory language engaging all 5 senses
+6. Embed hypnotic suggestions naturally throughout
+7. Include 3-5 post-hypnotic anchors in the closing
 
 **SFX MARKERS (REQUIRED):**
 - Embed natural language SFX cues using [SFX: ...] (or [[SFX:...]]). Keep each marker concise (<140 chars) and place it exactly where the sound should trigger.
@@ -653,6 +1152,19 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.log(f"Generated script with low SFX marker count ({marker_count}); target at least one per section.", "warning")
         else:
             self.log(f"Generated script with {marker_count} SFX markers: {script_path}", "success")
+
+        # Estimate duration to catch short/long drafts early
+        try:
+            duration_estimate = estimate_duration(clean_content, speaking_rate=1.0)
+            est_minutes = duration_estimate.get('total_minutes', 0)
+            diff_pct = ((est_minutes - self.duration_minutes) / self.duration_minutes) * 100 if self.duration_minutes else 0
+            level = "warning" if abs(diff_pct) > 10 else "info"
+            self.log(
+                f"Estimated script duration: {est_minutes:.1f} min vs target {self.duration_minutes} ({diff_pct:+.0f}%)",
+                level
+            )
+        except Exception as e:
+            self.log(f"Duration estimation skipped: {e}", "warning")
 
         self.log(f"Created voice-clean script: {clean_path}", "success")
 
@@ -1138,7 +1650,8 @@ Do NOT include any explanation or commentary before or after the SSML.
                 cmd.extend(["--platform", self.stock_platform, "--stock-guide"])
                 self.log(f"Using stock images from {self.stock_platform} (non-interactive)", "info")
             elif method == "sd":
-                self.log("Using Stable Diffusion for local image generation", "info")
+                self.log(f"Using Stable Diffusion for local image generation (performance={self.image_performance})", "info")
+                cmd.extend(["--performance", self.image_performance])
             elif method == "midjourney":
                 self.log("Generating Midjourney prompts only", "info")
             elif method == "pil":
@@ -1243,14 +1756,61 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.log(f"Video assembly skipped: {e}", "warning")
 
     def _stage_package_youtube(self):
-        """Create YouTube package."""
+        """Create YouTube package with SEO context from knowledge base."""
         self.log("Creating YouTube package", "stage")
 
         try:
+            youtube_output_dir = self.session_path / "output" / "youtube_package"
+            youtube_output_dir.mkdir(parents=True, exist_ok=True)
+
+            # NEW: Retrieve YouTube SEO context from knowledge base
+            seo_context_str = ""
+            try:
+                from scripts.ai.knowledge_tools import get_youtube_seo_context
+
+                # Load manifest to get outcome
+                manifest_path = self.session_path / "manifest.yaml"
+                outcome = None
+                if manifest_path.exists():
+                    with open(manifest_path, 'r') as f:
+                        manifest = yaml.safe_load(f)
+                        outcome = manifest.get('desired_outcome')
+
+                seo_context = get_youtube_seo_context(
+                    topic=self.topic,
+                    outcome=outcome
+                )
+                seo_context_str = seo_context.get('formatted_context', '')
+
+                if seo_context_str and seo_context_str != "(No SEO knowledge found)":
+                    self.log("Retrieved SEO knowledge from RAG", "info")
+
+                    # Save SEO context for reference
+                    seo_file = youtube_output_dir / "SEO_CONTEXT.md"
+                    seo_file.write_text(f"""# YouTube SEO Context from Knowledge Base
+
+Topic: {self.topic}
+Outcome: {outcome or 'N/A'}
+
+---
+
+{seo_context_str}
+
+---
+
+*Use this context to optimize your YouTube title, description, tags, and thumbnail.*
+*Generated from your Notion knowledge base via RAG.*
+""")
+                    self.log(f"Saved SEO context: {seo_file.name}", "info")
+
+            except Exception as e:
+                self.log(f"SEO context retrieval skipped: {e}", "warning")
+
             result = subprocess.run(
                 [
                     self.python_cmd, "scripts/core/package_youtube.py",
-                    "--session", str(self.session_path) + "/"
+                    "--session", str(self.session_path) + "/",
+                    "--output-dir", str(youtube_output_dir),
                 ],
                 capture_output=True,
                 text=True,
@@ -1410,6 +1970,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         report = {
             'session_name': self.session_name,
             'topic': self.topic,
+            'topic_source': self.topic_source,
             'mode': self.mode,
             'duration_minutes': self.duration_minutes,
             'audio_only': self.audio_only,
@@ -1464,6 +2025,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         status = "SUCCESS" if not report['stages']['failed'] else "PARTIAL"
         print(f"Status: {status}")
         print(f"Topic: {report['topic']}")
+        print(f"Topic Source: {report.get('topic_source', 'manual')}")
         print(f"Mode: {report['mode']}")
         print(f"Duration: {report['execution']['duration_seconds']:.1f}s")
 
@@ -1513,8 +2075,13 @@ Note: Requires Claude Code extension for VS Code (uses your Claude subscription)
         """
     )
 
-    parser.add_argument('--topic', '-t', required=True,
-                       help='Topic/theme for the session')
+    parser.add_argument('--topic', '-t', required=False,
+                       help='Topic/theme for the session (optional when using interactive selector)')
+    parser.add_argument('--topic-source', default='prompt',
+                       choices=['prompt', 'manual', 'notion'],
+                       help='Topic selection mode: prompt (interactive), manual (use --topic directly), notion (auto-pick unused from Notion)')
+    parser.add_argument('--notion-root', default=os.getenv("NOTION_ROOT_PAGE_ID", DEFAULT_NOTION_ROOT_PAGE_ID),
+                       help='Root Notion page ID to scan for topics (defaults to Sacred Digital Dreamweaver page)')
     parser.add_argument('--mode', '-m', default='standard',
                        choices=['budget', 'standard', 'premium'],
                        help='Cost optimization mode (default: standard)')
@@ -1539,14 +2106,24 @@ Note: Requires Claude Code extension for VS Code (uses your Claude subscription)
     parser.add_argument('--image-method', default='sd',
                        choices=['stock', 'sd', 'midjourney', 'pil'],
                        help='Image sourcing method: sd (default, Stable Diffusion), stock (guide only), midjourney (prompts only), pil (fast procedural)')
+    parser.add_argument('--image-performance', default='speed',
+                        choices=['quality', 'balanced', 'speed', 'turbo'],
+                        help='Stable Diffusion performance preset (default: speed)')
     parser.add_argument('--stock-platform', default='unsplash',
                        choices=['unsplash', 'pexels', 'pixabay'],
                        help='Stock image platform (default: unsplash)')
 
     args = parser.parse_args()
 
+    topic, topic_source = prompt_for_topic(
+        cli_topic=args.topic,
+        topic_source=args.topic_source,
+        notion_root=args.notion_root,
+    )
+
     generator = AutoGenerator(
-        topic=args.topic,
+        topic=topic,
+        topic_source=topic_source,
         mode=args.mode,
         duration_minutes=args.duration,
         audio_only=args.audio_only,
@@ -1557,6 +2134,7 @@ Note: Requires Claude Code extension for VS Code (uses your Claude subscription)
         no_cleanup=args.no_cleanup,
         no_learning=args.no_learning,
         image_method=args.image_method,
+        image_performance=args.image_performance,
         stock_platform=args.stock_platform,
     )
 

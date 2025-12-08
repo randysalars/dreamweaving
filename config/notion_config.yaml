@@ -1,0 +1,222 @@
+# Notion RAG Configuration for Dreamweaving
+# Canonical knowledge base for Sacred Digital Dreamweaver
+
+notion:
+  # Integration token - set via NOTION_TOKEN environment variable
+  integration_token: "${NOTION_TOKEN}"
+
+  # Root workspace page ID (Sacred Digital Dreamweaver)
+  workspace_root: "1ee2bab3796d80738af6c96bd5077acf"
+  workspace_url: "https://www.notion.so/Sacred-Digital-Dreamweaver-1ee2bab3796d80738af6c96bd5077acf"
+
+# Database IDs - populate after creating databases in Notion
+# To find database ID: Open database in Notion, copy URL, extract ID from path
+databases:
+  archetypes:
+    id: ""  # TODO: Add database ID
+    description: "Shadow/light aspects, activation rituals, visual prompts"
+  realms:
+    id: ""  # TODO: Add database ID
+    description: "Mythic locations, energetic qualities, atmospheres"
+  frequencies:
+    id: ""  # TODO: Add database ID
+    description: "Brainwave states, Hz values, consciousness technologies"
+  rituals:
+    id: ""  # TODO: Add database ID
+    description: "Ceremonies, activations, sequence steps"
+  lore:
+    id: ""  # TODO: Add database ID
+    description: "Characters, spirits, symbols, origin stories"
+  scripts:
+    id: ""  # TODO: Add database ID
+    description: "SSML templates, NLP patterns, script components"
+
+# Embeddings configuration for semantic RAG
+embeddings:
+  model: "text-embedding-3-small"  # OpenAI embedding model
+  dimensions: 1536  # Vector dimensions for this model
+  chunk_size: 1000  # Characters per chunk
+  chunk_overlap: 200  # Overlap between chunks
+  batch_size: 100  # Embeddings per API call
+
+# Vector database configuration
+vector_db:
+  type: "qdrant"  # Options: qdrant, pgvector, chromadb, lancedb
+  path: "./knowledge/vector_db"  # Local storage path
+  collection: "dreamweaving_knowledge"
+
+  # Qdrant-specific settings
+  qdrant:
+    distance: "Cosine"  # Options: Cosine, Euclid, Dot
+    on_disk: true  # Store vectors on disk for large datasets
+
+  # pgvector settings (if using Neon Postgres)
+  pgvector:
+    connection_string: "${DATABASE_URL}"
+    table_name: "notion_embeddings"
+
+# Content extraction settings
+extraction:
+  # Content types to extract
+  include_pages: true
+  include_databases: true
+  include_nested_blocks: true
+  max_depth: 10  # Maximum nested block depth
+
+  # Chunking strategy by content type
+  chunking:
+    database_entries: "full"  # Keep entries intact
+    narrative_pages: "recursive"  # Split by paragraph/section
+    ssml_templates: "full"  # Never split SSML
+    tables: "row"  # One chunk per table row
+
+  # Text preprocessing
+  preprocessing:
+    remove_special_chars: false  # Keep markup for SSML
+    collapse_whitespace: true
+    lowercase: false  # Preserve case for proper nouns
+
+# Search configuration
+search:
+  default_limit: 5  # Results per query
+  score_threshold: 0.7  # Minimum relevance score (0-1)
+
+  # Hybrid search weights (Qdrant)
+  hybrid:
+    vector_weight: 0.75  # Semantic similarity
+    bm25_weight: 0.25  # Keyword matching
+
+  # Reranking (optional, requires Cohere API key)
+  rerank:
+    enabled: false
+    model: "rerank-english-v2.0"
+    top_k: 10  # Rerank top N results
+
+# Sync settings (Phase 8: Automatic RAG Indexing System)
+sync:
+  auto_sync: true  # Enable periodic sync with Notion
+  sync_interval_hours: 24  # How often to re-index
+  incremental: true  # Only update changed pages (via content hash)
+
+  # Schedule settings (systemd timer)
+  cron_schedule: "0 3 * * *"  # Run at 3 AM daily
+  log_file: "logs/rag_sync.log"  # Sync log location
+  state_file: ".sync_state.json"  # State persistence
+
+  # Webhook integration (future enhancement)
+  webhook_enabled: false
+  webhook_secret: "${NOTION_WEBHOOK_SECRET}"
+
+# Database schemas for reference
+# Use these when creating databases in Notion
+schemas:
+  archetypes:
+    - name: Name
+      type: title
+    - name: Shadow Aspect
+      type: rich_text
+    - name: Light Aspect
+      type: rich_text
+    - name: Activation Ritual
+      type: rich_text
+    - name: Associated Realms
+      type: relation
+      relation_to: realms
+    - name: Frequencies
+      type: relation
+      relation_to: frequencies
+    - name: Visual Prompts
+      type: rich_text
+    - name: SSML Template
+      type: rich_text
+    - name: Tags
+      type: multi_select
+
+  realms:
+    - name: Name
+      type: title
+    - name: Energetic Quality
+      type: select
+      options: [Transformative, Healing, Empowering, Grounding, Transcendent]
+    - name: Atmosphere
+      type: rich_text
+    - name: Portal Entry
+      type: rich_text
+    - name: Guardian
+      type: relation
+      relation_to: archetypes
+    - name: Soundscape
+      type: rich_text
+    - name: Color Palette
+      type: multi_select
+      options: [Gold, Silver, Emerald, Sapphire, Amethyst, Ruby, Obsidian, Crystal]
+
+  frequencies:
+    - name: Name
+      type: title
+    - name: Hz Range
+      type: number
+    - name: Brainwave State
+      type: select
+      options: [Delta, Theta, Alpha, Beta, Gamma]
+    - name: Effects
+      type: rich_text
+    - name: SSML Pacing
+      type: rich_text
+    - name: Binaural Config
+      type: rich_text
+
+  rituals:
+    - name: Name
+      type: title
+    - name: Purpose
+      type: rich_text
+    - name: Duration
+      type: number
+    - name: Sequence Steps
+      type: rich_text
+    - name: Required Archetypes
+      type: relation
+      relation_to: archetypes
+    - name: Required Realms
+      type: relation
+      relation_to: realms
+    - name: Required Frequencies
+      type: relation
+      relation_to: frequencies
+    - name: Script Template
+      type: rich_text
+
+  lore:
+    - name: Name
+      type: title
+    - name: Category
+      type: select
+      options: [Character, Spirit, Symbol, Origin Story, Prophecy, Sacred Object]
+    - name: Description
+      type: rich_text
+    - name: Related Archetypes
+      type: relation
+      relation_to: archetypes
+    - name: Related Realms
+      type: relation
+      relation_to: realms
+    - name: Usage Notes
+      type: rich_text
+
+  scripts:
+    - name: Name
+      type: title
+    - name: Section Type
+      type: select
+      options: [Pre-talk, Induction, Deepening, Journey, Helm, Integration, Closing]
+    - name: SSML Template
+      type: rich_text
+    - name: NLP Patterns
+      type: multi_select
+      options: [Embedded Commands, Fractionation, Temporal Dissociation, Sensory Stacking, Vagal Activation]
+    - name: Typical Duration
+      type: number
+    - name: Dependencies
+      type: relation
+      relation_to: scripts

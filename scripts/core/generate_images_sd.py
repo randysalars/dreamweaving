@@ -38,7 +38,11 @@ class ImageGenerator:
         refiner_start: float = 0.8,
         refiner_steps: int = 18,
         max_generation_side: int = 1152,
-        scheduler_type: str = "dpmpp_2m_karras"
+        scheduler_type: str = "dpmpp_2m_karras",
+        compile_unet: bool = False,
+        enable_vae_tiling: bool = True,
+        disable_safety_checker: bool = False,
+        channels_last: bool = True
     ):
         """
         Initialize the image generator
@@ -55,6 +59,10 @@ class ImageGenerator:
             refiner_steps: Number of refiner steps (kept short to save time)
             max_generation_side: Generate natively up to this side, then upscale to target
             scheduler_type: Scheduler preset ('dpmpp_2m_karras' by default)
+            compile_unet: Compile UNet (and refiner) for faster inference on PyTorch 2+ (CUDA only)
+            enable_vae_tiling: Use VAE tiling to reduce memory for larger renders
+            disable_safety_checker: Skip NSFW safety checks to shave a bit of overhead
+            channels_last: Put UNet tensors in channels_last for better GPU throughput
         """
         # Auto-detect device if not specified
         if device is None:
@@ -77,6 +85,12 @@ class ImageGenerator:
         self.scheduler_type = scheduler_type
         self.refiner_model_id = refiner_model_id
         self.model_id = model_id
+        self.enable_vae_tiling = enable_vae_tiling
+        self.disable_safety_checker = disable_safety_checker
+        self.channels_last = channels_last
+        self.compiled_unet = False
+        self.cpu_offloaded = False
+        self.refiner_offloaded = False
 
         logger.info(f"🔧 Loading Stable Diffusion XL: {model_id}")
         logger.info(f"📍 Device: {device}")
@@ -136,16 +150,30 @@ class ImageGenerator:
 
             # Move to device
             self.pipe = self.pipe.to(device)
+            self.pipe.set_progress_bar_config(disable=True)
+
+            if self.disable_safety_checker:
+                self.pipe.safety_checker = None
+                self.pipe.requires_safety_checker = False
+                logger.info("🛡️  Safety checker disabled for speed")
+
+            if self.enable_vae_tiling:
+                self.pipe.enable_vae_tiling()
+
+            if self.channels_last and device == "cuda":
+                self.pipe.unet.to(memory_format=torch.channels_last)
 
             # Enable memory optimizations
             if enable_optimizations:
                 if device == "cuda":
+                    torch.backends.cudnn.benchmark = True
                     # Check VRAM
                     vram_gb = torch.cuda.get_device_properties(0).total_memory / 1e9
 
                     if vram_gb < 12:
                         logger.info("💡 Low VRAM detected, enabling CPU offloading")
                         self.pipe.enable_model_cpu_offload()
+                        self.cpu_offloaded = True
 
                     # Always enable these for better memory efficiency
                     self.pipe.enable_attention_slicing(1)
@@ -183,11 +211,31 @@ class ImageGenerator:
                                 pass
                         if device == "cpu":
                             self.refiner.enable_sequential_cpu_offload()
+                            self.refiner_offloaded = True
+
+                    self.refiner.set_progress_bar_config(disable=True)
+                    if self.disable_safety_checker:
+                        self.refiner.safety_checker = None
+                        self.refiner.requires_safety_checker = False
+                    if self.enable_vae_tiling:
+                        self.refiner.enable_vae_tiling()
+                    if self.channels_last and device == "cuda":
+                        self.refiner.unet.to(memory_format=torch.channels_last)
 
                     logger.info("✅ Refiner loaded successfully")
                 except Exception as re:
                     logger.warning(f"⚠️  Refiner unavailable ({re}); continuing with base model only.")
                     self.refiner = None
+
+            if compile_unet and device == "cuda" and hasattr(torch, "compile") and not self.cpu_offloaded:
+                try:
+                    self.pipe.unet = torch.compile(self.pipe.unet, mode="reduce-overhead", fullgraph=False)
+                    if self.refiner and not self.refiner_offloaded:
+                        self.refiner.unet = torch.compile(self.refiner.unet, mode="reduce-overhead", fullgraph=False)
+                    self.compiled_unet = True
+                    logger.info("⚡ torch.compile enabled for UNet" + (" + refiner" if self.refiner and not self.refiner_offloaded else ""))
+                except Exception as ce:
+                    logger.warning(f"⚠️  Could not compile UNet(s): {ce}")
 
             logger.info("✅ Model loaded successfully")
 
@@ -389,6 +437,12 @@ class ImageGenerator:
                 "refiner_model": self.refiner_model_id if getattr(self, "refiner", None) else None,
                 "refiner_start": self.refiner_start if getattr(self, "refiner", None) else None,
                 "refiner_steps": self.refiner_steps if getattr(self, "refiner", None) else None,
+                "model_id": self.model_id,
+                "device": self.device,
+                "fp16": self.use_fp16,
+                "compiled_unet": self.compiled_unet,
+                "vae_tiling": self.enable_vae_tiling,
+                "safety_checker_disabled": self.disable_safety_checker,
                 "seed": seed,
                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
             }
