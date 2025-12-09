@@ -89,6 +89,77 @@ PALETTES = {
         "text_shadow": "#000022",
         "glow": "#00D4FF",
     },
+    # NEW PALETTES from Viral Thumbnail System color psychology
+    "sapphire_depth": {
+        "name": "Sapphire Depth",
+        "primary": "#1E40AF",      # Deep sapphire blue
+        "secondary": "#FFD700",    # Gold accent
+        "accent": "#60A5FA",       # Light blue
+        "background": "#0A0A1A",   # Cosmic void
+        "text": "#FFFFFF",
+        "text_shadow": "#000033",
+        "glow": "#1E40AF",
+    },
+    "gold_enlightenment": {
+        "name": "Gold Enlightenment",
+        "primary": "#FFD700",      # Brilliant gold
+        "secondary": "#FFFFFF",    # Pure white
+        "accent": "#FEF3C7",       # Warm cream
+        "background": "#1A1A0A",   # Dark gold shadow
+        "text": "#FFFFFF",
+        "text_shadow": "#0A0A00",
+        "glow": "#FFD700",
+    },
+    "amethyst_mystery": {
+        "name": "Amethyst Mystery",
+        "primary": "#7C3AED",      # Deep violet
+        "secondary": "#FFD700",    # Gold accent
+        "accent": "#A78BFA",       # Light violet
+        "background": "#0D0221",   # Deep purple void
+        "text": "#FFFFFF",
+        "text_shadow": "#1A0033",
+        "glow": "#7C3AED",
+    },
+    "aurora_healing": {
+        "name": "Aurora Healing",
+        "primary": "#14B8A6",      # Healing teal
+        "secondary": "#C0C0C0",    # Silver
+        "accent": "#5EEAD4",       # Light teal
+        "background": "#0A1A1A",   # Deep teal shadow
+        "text": "#FFFFFF",
+        "text_shadow": "#001A1A",
+        "glow": "#14B8A6",
+    },
+    "obsidian_shadow": {
+        "name": "Obsidian Shadow",
+        "primary": "#1A1A1A",      # Deep obsidian
+        "secondary": "#DC2626",    # Ember red
+        "accent": "#EF4444",       # Fire red
+        "background": "#0A0505",   # Near black
+        "text": "#FFFFFF",
+        "text_shadow": "#000000",
+        "glow": "#DC2626",
+    },
+    "volcanic_forge": {
+        "name": "Volcanic Forge",
+        "primary": "#B91C1C",      # Iron red
+        "secondary": "#FFD700",    # Molten gold
+        "accent": "#F97316",       # Orange flame
+        "background": "#1A0A0A",   # Dark forge
+        "text": "#FFFFFF",
+        "text_shadow": "#0A0000",
+        "glow": "#F97316",
+    },
+    "celestial_blue": {
+        "name": "Celestial Blue",
+        "primary": "#60A5FA",      # Sky blue
+        "secondary": "#FFFFFF",    # Pure white
+        "accent": "#93C5FD",       # Light blue
+        "background": "#0A0A1A",   # Night sky
+        "text": "#FFFFFF",
+        "text_shadow": "#000022",
+        "glow": "#60A5FA",
+    },
 }
 
 
@@ -136,6 +207,73 @@ TEMPLATES = {
         "badge_zone": True,
         "vignette_strength": 0.5,
         "center_glow": True,
+    },
+    # NEW TEMPLATES from Viral Thumbnail System
+    "portal_shockwave": {
+        "name": "Portal Shockwave",
+        "description": "Right silhouette + center portal (highest CTR systemwide)",
+        "title_position": "top_left",
+        "title_y_ratio": 0.10,
+        "subtitle_y_offset": 80,
+        "badge_zone": True,
+        "vignette_strength": 0.7,
+        "center_glow": True,
+        "edge_glow": True,
+    },
+    "archetype_reveal": {
+        "name": "Archetype Reveal",
+        "description": "Close-up archetype with dramatic aura",
+        "title_position": "top_center",
+        "title_y_ratio": 0.08,
+        "subtitle_y_offset": 75,
+        "badge_zone": True,
+        "vignette_strength": 0.5,
+        "center_glow": False,
+        "edge_glow": True,
+    },
+    "impossible_landscape": {
+        "name": "Impossible Landscape",
+        "description": "Jaw-dropping scene, no character needed",
+        "title_position": "bottom_center",
+        "title_y_ratio": 0.75,
+        "subtitle_y_offset": 60,
+        "badge_zone": True,
+        "vignette_strength": 0.4,
+        "center_glow": True,
+        "fog": True,
+    },
+    "viewer_pov": {
+        "name": "Viewer POV",
+        "description": "Viewer hands/silhouette for immersion",
+        "title_position": "top_center",
+        "title_y_ratio": 0.12,
+        "subtitle_y_offset": 85,
+        "badge_zone": True,
+        "vignette_strength": 0.6,
+        "center_glow": True,
+    },
+    "transformation_shot": {
+        "name": "Transformation Shot",
+        "description": "Golden rays, crown/halo effect",
+        "title_position": "top_center",
+        "title_y_ratio": 0.10,
+        "subtitle_y_offset": 80,
+        "badge_zone": True,
+        "vignette_strength": 0.45,
+        "center_glow": True,
+        "radiant_glow": True,
+    },
+    "shadow_confrontation": {
+        "name": "Shadow Confrontation",
+        "description": "Dark mirror reflection, threshold line",
+        "title_position": "top_center",
+        "title_y_ratio": 0.10,
+        "subtitle_y_offset": 80,
+        "badge_zone": True,
+        "vignette_strength": 0.75,
+        "center_glow": False,
+        "edge_glow": True,
+        "fog": True,
     },
 }
 
@@ -309,6 +447,216 @@ def apply_center_glow(img: Image.Image, palette: Dict, intensity: float = 0.3) -
         img = img.convert('RGBA')
 
     return Image.alpha_composite(img, glow)
+
+
+# =============================================================================
+# NEW VIRAL MICRO-EFFECTS (from Viral Thumbnail System)
+# =============================================================================
+
+def apply_edge_glow(
+    img: Image.Image,
+    palette: Dict,
+    intensity: float = 0.3,
+    width_ratio: float = 0.08
+) -> Image.Image:
+    """
+    Apply edge framing glow for mobile visibility.
+    Creates a rim light effect around the edges.
+    """
+    width, height = img.size
+    glow_color = hex_to_rgba(palette["glow"], int(150 * intensity))
+
+    if img.mode != 'RGBA':
+        img = img.convert('RGBA')
+
+    # Create edge glow layer
+    edge_layer = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+
+    # Edge width in pixels
+    edge_width = int(width * width_ratio)
+
+    # Draw gradient edges
+    for i in range(edge_width):
+        alpha = int(glow_color[3] * (1 - i / edge_width) * 0.5)
+        color = (*glow_color[:3], alpha)
+
+        # Create temporary layer for this edge level
+        temp = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+        temp_draw = ImageDraw.Draw(temp)
+
+        # Top edge
+        temp_draw.rectangle([(0, i), (width, i + 1)], fill=color)
+        # Bottom edge
+        temp_draw.rectangle([(0, height - i - 1), (width, height - i)], fill=color)
+        # Left edge
+        temp_draw.rectangle([(i, 0), (i + 1, height)], fill=color)
+        # Right edge
+        temp_draw.rectangle([(width - i - 1, 0), (width - i, height)], fill=color)
+
+        edge_layer = Image.alpha_composite(edge_layer, temp)
+
+    # Blur slightly for smoothness
+    edge_layer = edge_layer.filter(ImageFilter.GaussianBlur(radius=5))
+
+    return Image.alpha_composite(img, edge_layer)
+
+
+def apply_atmospheric_fog(
+    img: Image.Image,
+    density: float = 0.2,
+    color: Tuple[int, int, int] = (200, 200, 220)
+) -> Image.Image:
+    """
+    Apply atmospheric fog effect for cinematic depth.
+    Creates a subtle misty overlay at the bottom third.
+    """
+    width, height = img.size
+
+    if img.mode != 'RGBA':
+        img = img.convert('RGBA')
+
+    # Create fog layer
+    fog = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    fog_draw = ImageDraw.Draw(fog)
+
+    # Fog gradient from bottom to middle
+    fog_start = int(height * 0.5)  # Start fog at 50% height
+    fog_end = height
+
+    for y in range(fog_start, fog_end):
+        # Gradient: more fog at bottom
+        progress = (y - fog_start) / (fog_end - fog_start)
+        alpha = int(255 * density * (progress ** 1.5))  # Exponential curve
+        fog_draw.rectangle([(0, y), (width, y + 1)], fill=(*color, alpha))
+
+    # Add some noise/variation to fog
+    fog = fog.filter(ImageFilter.GaussianBlur(radius=20))
+
+    return Image.alpha_composite(img, fog)
+
+
+def apply_radiant_glow(
+    img: Image.Image,
+    palette: Dict,
+    intensity: float = 0.4,
+    rays: int = 12
+) -> Image.Image:
+    """
+    Apply radiant light rays effect (for transformation_shot template).
+    Creates golden rays emanating from center-top.
+    """
+    width, height = img.size
+    glow_color = hex_to_rgba(palette["primary"], int(100 * intensity))
+
+    if img.mode != 'RGBA':
+        img = img.convert('RGBA')
+
+    # Create rays layer
+    rays_layer = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    rays_draw = ImageDraw.Draw(rays_layer)
+
+    # Ray origin (center-top)
+    origin_x, origin_y = width // 2, int(height * 0.2)
+
+    import math
+
+    # Draw light rays
+    for i in range(rays):
+        angle = (i / rays) * math.pi  # Spread across 180 degrees
+        angle += math.pi / 2  # Start from top
+
+        # Ray endpoint (extended beyond image)
+        end_x = origin_x + int(math.cos(angle) * width)
+        end_y = origin_y + int(math.sin(angle) * height)
+
+        # Draw multiple lines for ray thickness
+        for offset in range(-10, 11, 2):
+            alpha = int(glow_color[3] * (1 - abs(offset) / 10))
+            rays_draw.line(
+                [(origin_x + offset, origin_y), (end_x + offset * 2, end_y)],
+                fill=(*glow_color[:3], alpha),
+                width=3
+            )
+
+    # Heavy blur for soft rays
+    rays_layer = rays_layer.filter(ImageFilter.GaussianBlur(radius=30))
+
+    return Image.alpha_composite(img, rays_layer)
+
+
+def add_sigil_overlay(
+    img: Image.Image,
+    palette: Dict,
+    sigil_type: str = "dreamweaver",
+    opacity: float = 0.07,
+    position: str = "bottom_left"
+) -> Image.Image:
+    """
+    Add branded sigil for universe continuity.
+    Sigil appears at ~7% of thumbnail area, semi-transparent.
+    """
+    width, height = img.size
+
+    if img.mode != 'RGBA':
+        img = img.convert('RGBA')
+
+    # Sigil size (7% of area ≈ 26% of width/height)
+    sigil_size = int(min(width, height) * 0.15)
+
+    # Create sigil layer
+    sigil_layer = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    sigil_draw = ImageDraw.Draw(sigil_layer)
+
+    # Position coordinates
+    if position == "bottom_left":
+        x, y = int(width * 0.05), int(height * 0.80)
+    elif position == "bottom_right":
+        x, y = int(width * 0.80), int(height * 0.80)
+    elif position == "top_left":
+        x, y = int(width * 0.05), int(height * 0.05)
+    else:  # top_right
+        x, y = int(width * 0.80), int(height * 0.05)
+
+    # Get glow color with opacity
+    glow_color = hex_to_rgba(palette["glow"], int(255 * opacity))
+
+    # Draw a simple geometric sigil (spiral/circle pattern)
+    # This is a placeholder - could be replaced with actual sigil image
+    import math
+
+    center_x, center_y = x + sigil_size // 2, y + sigil_size // 2
+
+    # Outer circle
+    sigil_draw.ellipse(
+        [(center_x - sigil_size // 2, center_y - sigil_size // 2),
+         (center_x + sigil_size // 2, center_y + sigil_size // 2)],
+        outline=glow_color,
+        width=2
+    )
+
+    # Inner spiral pattern
+    for i in range(3):
+        r = sigil_size // 2 - (i * sigil_size // 8)
+        if r > 5:
+            sigil_draw.ellipse(
+                [(center_x - r, center_y - r),
+                 (center_x + r, center_y + r)],
+                outline=(*glow_color[:3], glow_color[3] // (i + 1)),
+                width=1
+            )
+
+    # Central dot
+    dot_r = sigil_size // 10
+    sigil_draw.ellipse(
+        [(center_x - dot_r, center_y - dot_r),
+         (center_x + dot_r, center_y + dot_r)],
+        fill=glow_color
+    )
+
+    # Blur for glow effect
+    sigil_layer = sigil_layer.filter(ImageFilter.GaussianBlur(radius=3))
+
+    return Image.alpha_composite(img, sigil_layer)
 
 
 def process_base_image(
@@ -495,6 +843,13 @@ def generate_thumbnail(
         elif manifest and "theme" in manifest:
             subtitle = manifest["theme"]
 
+    # Ensure subtitle is a string (theme can be a dict)
+    if subtitle is not None:
+        if isinstance(subtitle, dict):
+            subtitle = subtitle.get("primary", "") or subtitle.get("name", "") or ""
+        else:
+            subtitle = str(subtitle) if subtitle else None
+
     # Determine duration
     if duration is None and manifest:
         if "duration" in manifest:
@@ -503,7 +858,12 @@ def generate_thumbnail(
                 minutes = int(dur // 60)
                 seconds = int(dur % 60)
                 duration = f"{minutes}:{seconds:02d}"
-            else:
+            elif isinstance(dur, dict):
+                # Extract target_minutes from duration dict
+                target_mins = dur.get("target_minutes", dur.get("minutes", 0))
+                if target_mins:
+                    duration = f"{int(target_mins)}:00"
+            elif dur:
                 duration = str(dur)
 
     # Determine features
@@ -533,8 +893,18 @@ def generate_thumbnail(
     img = apply_vignette(img, template["vignette_strength"])
 
     # Apply center glow
-    if template["center_glow"]:
+    if template.get("center_glow", False):
         img = apply_center_glow(img, palette, intensity=0.25)
+
+    # Apply new viral micro-effects based on template
+    if template.get("edge_glow", False):
+        img = apply_edge_glow(img, palette, intensity=0.3)
+
+    if template.get("fog", False):
+        img = apply_atmospheric_fog(img, density=0.15)
+
+    if template.get("radiant_glow", False):
+        img = apply_radiant_glow(img, palette, intensity=0.35)
 
     # Load fonts with auto-scaling for title
     # Leave 120px margin on each side (60px safe zone * 2)
@@ -557,6 +927,8 @@ def generate_thumbnail(
     elif template["title_position"] == "top_left":
         title_x = 60
     elif template["title_position"] == "center":
+        title_x = (width - title_width) // 2
+    elif template["title_position"] == "bottom_center":
         title_x = (width - title_width) // 2
     else:
         title_x = (width - title_width) // 2

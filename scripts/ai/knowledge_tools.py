@@ -1931,6 +1931,179 @@ def _format_generation_context(context: Dict[str, Any]) -> str:
     return "\n".join(sections)
 
 
+def get_thumbnail_design_context(
+    outcome: str,
+    theme: Optional[str] = None,
+    archetypes: Optional[List[str]] = None
+) -> Dict[str, Any]:
+    """
+    Build design context from RAG knowledge for thumbnail generation.
+
+    Retrieves viral thumbnail best practices, color psychology, template
+    recommendations, and power words from the Notion knowledge base.
+
+    This function powers the Ultimate Thumbnail Generator by providing
+    RAG-enhanced design guidance for high-CTR thumbnails.
+
+    Args:
+        outcome: Desired session outcome (healing, transformation, etc.)
+        theme: Session theme/topic for visual guidance
+        archetypes: List of archetype names for visual symbolism
+
+    Returns:
+        Dictionary with:
+            - viral_templates: High-CTR layout recommendations
+            - color_psychology: Palette guidance based on outcome/theme
+            - power_words: Title optimization words for the outcome
+            - visual_elements: Recommended imagery and symbols
+            - text_guidelines: Title/subtitle formatting rules
+            - micro_effects: CTR-boosting effects to apply
+            - formatted_context: Ready-to-use prompt section
+
+    Example:
+        >>> context = get_thumbnail_design_context(
+        ...     outcome="transformation",
+        ...     theme="shadow integration",
+        ...     archetypes=["Shadow Walker", "Alchemist"]
+        ... )
+        >>> print(context["color_psychology"])
+    """
+    context = {
+        "viral_templates": [],
+        "color_psychology": [],
+        "power_words": [],
+        "visual_elements": [],
+        "text_guidelines": [],
+        "micro_effects": [],
+        "errors": []
+    }
+
+    if not HAS_EMBEDDINGS:
+        context["errors"].append("Embeddings pipeline not available")
+        context["formatted_context"] = "(No thumbnail design knowledge found - embeddings unavailable)"
+        return context
+
+    try:
+        pipeline = NotionEmbeddingsPipeline()
+
+        # 1. Get viral thumbnail templates and layouts
+        try:
+            context["viral_templates"] = pipeline.search(
+                query="YouTube thumbnail viral layout template high CTR portal shockwave archetype reveal",
+                limit=5
+            )
+        except Exception as e:
+            context["errors"].append(f"Viral templates search error: {e}")
+
+        # 2. Get color psychology for the outcome
+        try:
+            context["color_psychology"] = pipeline.search(
+                query=f"thumbnail color psychology {outcome} palette emotional response trust intrigue",
+                limit=4
+            )
+        except Exception as e:
+            context["errors"].append(f"Color psychology search error: {e}")
+
+        # 3. Get power words/copywriting for titles
+        try:
+            context["power_words"] = pipeline.search(
+                query=f"power words {outcome} emotional hooks curiosity gap thumbnail title CTR",
+                limit=4
+            )
+        except Exception as e:
+            context["errors"].append(f"Power words search error: {e}")
+
+        # 4. Get visual element recommendations
+        if theme or archetypes:
+            search_elements = theme or ""
+            if archetypes:
+                search_elements += " " + " ".join(archetypes[:2])
+            try:
+                context["visual_elements"] = pipeline.search(
+                    query=f"visual imagery {search_elements} symbolic sacred mystical thumbnail",
+                    limit=4
+                )
+            except Exception as e:
+                context["errors"].append(f"Visual elements search error: {e}")
+
+        # 5. Get text guidelines
+        try:
+            context["text_guidelines"] = pipeline.search(
+                query="thumbnail text rules maximum words font size mobile visibility contrast",
+                limit=3
+            )
+        except Exception as e:
+            context["errors"].append(f"Text guidelines search error: {e}")
+
+        # 6. Get micro-effects for CTR boost
+        try:
+            context["micro_effects"] = pipeline.search(
+                query="thumbnail micro effects edge glow fog sigil viral CTR boost",
+                limit=3
+            )
+        except Exception as e:
+            context["errors"].append(f"Micro effects search error: {e}")
+
+    except Exception as e:
+        context["errors"].append(f"Pipeline initialization error: {e}")
+
+    # Format for prompt injection
+    context["formatted_context"] = _format_thumbnail_design_context(context)
+
+    return context
+
+
+def _format_thumbnail_design_context(context: Dict[str, Any]) -> str:
+    """Format thumbnail design RAG results as a prompt-ready string."""
+    sections = []
+
+    if context.get("viral_templates"):
+        sections.append("### Viral Thumbnail Templates")
+        for item in context["viral_templates"][:3]:
+            title = item.get("title", "Untitled")
+            text = item.get("text", "")[:200]
+            sections.append(f"- **{title}**: {text}...")
+
+    if context.get("color_psychology"):
+        sections.append("\n### Color Psychology")
+        for item in context["color_psychology"][:2]:
+            text = item.get("text", "")[:200]
+            sections.append(f"- {text}...")
+
+    if context.get("power_words"):
+        sections.append("\n### Power Words & Emotional Hooks")
+        for item in context["power_words"][:2]:
+            text = item.get("text", "")[:200]
+            sections.append(f"- {text}...")
+
+    if context.get("visual_elements"):
+        sections.append("\n### Visual Elements")
+        for item in context["visual_elements"][:2]:
+            title = item.get("title", "")
+            text = item.get("text", "")[:150]
+            if title:
+                sections.append(f"- **{title}**: {text}...")
+            else:
+                sections.append(f"- {text}...")
+
+    if context.get("text_guidelines"):
+        sections.append("\n### Text Guidelines")
+        for item in context["text_guidelines"][:2]:
+            text = item.get("text", "")[:150]
+            sections.append(f"- {text}...")
+
+    if context.get("micro_effects"):
+        sections.append("\n### CTR-Boosting Micro Effects")
+        for item in context["micro_effects"][:2]:
+            text = item.get("text", "")[:150]
+            sections.append(f"- {text}...")
+
+    if not sections:
+        return "(No thumbnail design knowledge found)"
+
+    return "\n".join(sections)
+
+
 def _format_youtube_seo_context(context: Dict[str, Any]) -> str:
     """Format YouTube/SEO RAG results as a prompt-ready string."""
     sections = []
@@ -1971,6 +2144,790 @@ def _format_youtube_seo_context(context: Dict[str, Any]) -> str:
         return "(No SEO knowledge found)"
 
     return "\n".join(sections)
+
+
+# =============================================================================
+# YOUTUBE COMPETITOR ANALYSIS FUNCTIONS
+# =============================================================================
+# Functions for retrieving competitor insights from the YouTube analysis system.
+# These integrate with the data collected by youtube_competitor_analyzer.py
+# and processed by youtube_insights_extractor.py.
+# =============================================================================
+
+# Competitor data directory
+COMPETITOR_DATA_PATH = PROJECT_ROOT / "knowledge" / "youtube_competitor_data"
+
+
+def _load_competitor_yaml(filename: str) -> Optional[Dict[str, Any]]:
+    """Load YAML data from competitor data directory."""
+    filepath = COMPETITOR_DATA_PATH / filename
+    if filepath.exists():
+        try:
+            with open(filepath) as f:
+                return yaml.safe_load(f)
+        except Exception as e:
+            print(f"Warning: Failed to load {filename}: {e}")
+    return None
+
+
+def get_competitor_insights(
+    category: Optional[str] = None,
+    limit: int = 10
+) -> Dict[str, Any]:
+    """
+    Get competitor analysis insights for video creation.
+
+    Retrieves processed competitor data including top channels, videos,
+    and patterns for a specific category or across all categories.
+
+    Args:
+        category: Filter by category (meditation, hypnosis, sleep,
+                 affirmations, binaural_beats, spiritual). None for all.
+        limit: Maximum items per section
+
+    Returns:
+        Dictionary with:
+            - top_channels: High-performing competitor channels
+            - top_videos: Best-performing videos in category
+            - title_patterns: Successful title structures
+            - tag_recommendations: High-value tags
+            - engagement_benchmarks: Category performance baselines
+            - formatted_context: Ready-to-inject prompt section
+
+    Example:
+        >>> insights = get_competitor_insights("meditation", limit=5)
+        >>> print(insights["formatted_context"])
+    """
+    context = {
+        "top_channels": [],
+        "top_videos": [],
+        "title_patterns": [],
+        "tag_recommendations": [],
+        "engagement_benchmarks": {},
+        "errors": []
+    }
+
+    # Load competitor channels
+    channels_data = _load_competitor_yaml("competitor_channels.yaml")
+    if channels_data and "channels" in channels_data:
+        channels_list = channels_data["channels"]
+
+        # Handle both list format and dict-by-category format
+        if isinstance(channels_list, list):
+            # List format: each channel has primary_category
+            all_channels = channels_list
+            if category:
+                all_channels = [ch for ch in all_channels if ch.get("primary_category") == category]
+        else:
+            # Dict format: keyed by category
+            all_channels = []
+            for cat, channels in channels_list.items():
+                if category is None or cat == category:
+                    for ch in channels:
+                        ch["category"] = cat
+                        all_channels.append(ch)
+
+        # Sort by subscribers
+        all_channels.sort(key=lambda x: x.get("subscriber_count", x.get("subscribers", 0)), reverse=True)
+        context["top_channels"] = all_channels[:limit]
+
+    # Load top videos
+    videos_data = _load_competitor_yaml("top_videos.yaml")
+    if videos_data and "videos" in videos_data:
+        videos = videos_data["videos"]
+        if category:
+            videos = [v for v in videos if category in v.get("categories", [])]
+        videos.sort(key=lambda x: x.get("views", 0), reverse=True)
+        context["top_videos"] = videos[:limit]
+
+    # Load title patterns
+    patterns_data = _load_competitor_yaml("title_patterns.yaml")
+    if patterns_data and "patterns" in patterns_data:
+        patterns = patterns_data["patterns"]
+        if category:
+            patterns = [p for p in patterns if category in p.get("categories", [])]
+        patterns.sort(key=lambda x: x.get("avg_ctr", 0), reverse=True)
+        context["title_patterns"] = patterns[:limit]
+
+    # Load tag clusters
+    tags_data = _load_competitor_yaml("tag_clusters.yaml")
+    if tags_data and "tags" in tags_data:
+        tags = []
+        for tag_name, tag_info in tags_data["tags"].items():
+            if category is None or category in tag_info.get("categories", []):
+                tags.append({
+                    "tag": tag_name,
+                    **tag_info
+                })
+        tags.sort(key=lambda x: x.get("avg_engagement", 0), reverse=True)
+        context["tag_recommendations"] = tags[:limit]
+
+    # Load retention benchmarks
+    benchmarks_data = _load_competitor_yaml("retention_benchmarks.yaml")
+    if benchmarks_data and "benchmarks" in benchmarks_data:
+        if category and category in benchmarks_data["benchmarks"]:
+            context["engagement_benchmarks"] = benchmarks_data["benchmarks"][category]
+        else:
+            context["engagement_benchmarks"] = benchmarks_data.get("overall", {})
+
+    # Format for prompt injection
+    context["formatted_context"] = _format_competitor_insights(context, category)
+
+    return context
+
+
+def get_title_recommendations(
+    topic: str,
+    outcome: Optional[str] = None,
+    category: Optional[str] = None,
+    limit: int = 5
+) -> Dict[str, Any]:
+    """
+    Get optimized title recommendations based on competitor analysis.
+
+    Combines title pattern analysis with the specific topic to suggest
+    high-CTR title variations.
+
+    Args:
+        topic: Main topic/theme (e.g., "shadow healing", "morning meditation")
+        outcome: Desired outcome (e.g., "healing", "confidence")
+        category: Content category for pattern matching
+        limit: Maximum recommendations
+
+    Returns:
+        Dictionary with:
+            - patterns: Matching title patterns with CTR estimates
+            - suggestions: Generated title variations
+            - power_words: High-impact words for this topic
+            - avoid_words: Words that reduce CTR
+            - formatted_context: Ready-to-inject prompt section
+
+    Example:
+        >>> recs = get_title_recommendations(
+        ...     topic="deep sleep",
+        ...     outcome="relaxation",
+        ...     category="sleep"
+        ... )
+        >>> print(recs["suggestions"])
+    """
+    context = {
+        "patterns": [],
+        "suggestions": [],
+        "power_words": [],
+        "avoid_words": [],
+        "errors": []
+    }
+
+    # Load title patterns
+    patterns_data = _load_competitor_yaml("title_patterns.yaml")
+    if patterns_data and "patterns" in patterns_data:
+        patterns = patterns_data["patterns"]
+
+        # Filter by category if specified
+        if category:
+            patterns = [p for p in patterns if category in p.get("categories", [])]
+
+        # Sort by CTR
+        patterns.sort(key=lambda x: x.get("avg_ctr", 0), reverse=True)
+        context["patterns"] = patterns[:limit]
+
+        # Generate suggestions based on patterns
+        for pattern in context["patterns"][:3]:
+            template = pattern.get("pattern", "")
+            if template:
+                suggestion = _apply_title_pattern(template, topic, outcome)
+                if suggestion:
+                    context["suggestions"].append({
+                        "title": suggestion,
+                        "pattern": pattern.get("name", template),
+                        "est_ctr": pattern.get("avg_ctr", 0)
+                    })
+
+    # Power words from top-performing videos
+    videos_data = _load_competitor_yaml("top_videos.yaml")
+    if videos_data and "videos" in videos_data:
+        # Extract common words from high-view titles
+        word_counts = {}
+        for video in videos_data["videos"][:50]:
+            title = video.get("title", "").lower()
+            for word in title.split():
+                word = word.strip(",.!?:|-")
+                if len(word) > 3 and word not in ["this", "that", "with", "your", "will"]:
+                    word_counts[word] = word_counts.get(word, 0) + 1
+
+        sorted_words = sorted(word_counts.items(), key=lambda x: x[1], reverse=True)
+        context["power_words"] = [w[0] for w in sorted_words[:15]]
+
+    # Common avoid words (low performers)
+    context["avoid_words"] = [
+        "boring", "simple", "basic", "just", "only",
+        "try", "maybe", "hopefully", "might"
+    ]
+
+    context["formatted_context"] = _format_title_recommendations(context)
+
+    return context
+
+
+def _apply_title_pattern(template: str, topic: str, outcome: Optional[str]) -> Optional[str]:
+    """Apply a title pattern template to generate a specific title."""
+    # Common pattern replacements
+    replacements = {
+        "[DURATION]": "30-Minute",
+        "[BENEFIT]": outcome.title() if outcome else "Deep Relaxation",
+        "[FREQUENCY]": "Theta Waves",
+        "[HZ]": "7Hz",
+        "[TOPIC]": topic.title(),
+        "[ADJECTIVE]": "DEEPEST" if outcome in ["sleep", "relaxation"] else "POWERFUL",
+        "[OUTCOME]": outcome.title() if outcome else "Transformation",
+        "[MODIFIER]": "For Deep Sleep" if outcome == "sleep" else "Guided Journey",
+    }
+
+    result = template
+    for placeholder, value in replacements.items():
+        result = result.replace(placeholder, value)
+
+    # If still has unreplaced brackets, skip
+    if "[" in result:
+        return None
+
+    return result
+
+
+def get_tag_recommendations(
+    topic: str,
+    category: Optional[str] = None,
+    limit: int = 20
+) -> Dict[str, Any]:
+    """
+    Get recommended tags based on competitor analysis.
+
+    Returns tags ranked by a combination of search volume and
+    competition level, optimized for discoverability.
+
+    Args:
+        topic: Main topic for relevance matching
+        category: Content category filter
+        limit: Maximum tags to return
+
+    Returns:
+        Dictionary with:
+            - high_volume: Tags with high search volume
+            - low_competition: Tags with low competition
+            - balanced: Best balance of volume/competition
+            - topic_specific: Tags relevant to the specific topic
+            - formatted_context: Ready-to-inject prompt section
+
+    Example:
+        >>> tags = get_tag_recommendations("astral projection", "spiritual")
+        >>> print(tags["balanced"])
+    """
+    context = {
+        "high_volume": [],
+        "low_competition": [],
+        "balanced": [],
+        "topic_specific": [],
+        "errors": []
+    }
+
+    tags_data = _load_competitor_yaml("tag_clusters.yaml")
+    if not tags_data or "tags" not in tags_data:
+        context["errors"].append("No tag cluster data available")
+        context["formatted_context"] = "(No tag analysis data found)"
+        return context
+
+    all_tags = []
+    for tag_name, tag_info in tags_data["tags"].items():
+        if category is None or category in tag_info.get("categories", []):
+            all_tags.append({
+                "tag": tag_name,
+                **tag_info
+            })
+
+    # High volume tags
+    high_volume = sorted(all_tags, key=lambda x: x.get("video_count", 0), reverse=True)
+    context["high_volume"] = [t["tag"] for t in high_volume[:limit//4]]
+
+    # Low competition (high engagement = less saturated)
+    low_comp = sorted(all_tags, key=lambda x: x.get("avg_engagement", 0), reverse=True)
+    context["low_competition"] = [t["tag"] for t in low_comp[:limit//4]]
+
+    # Balanced score (volume * engagement)
+    for tag in all_tags:
+        tag["score"] = tag.get("video_count", 0) * tag.get("avg_engagement", 0)
+    balanced = sorted(all_tags, key=lambda x: x.get("score", 0), reverse=True)
+    context["balanced"] = [t["tag"] for t in balanced[:limit//2]]
+
+    # Topic-specific (contains topic words)
+    topic_words = topic.lower().split()
+    topic_specific = [
+        t for t in all_tags
+        if any(word in t["tag"].lower() for word in topic_words)
+    ]
+    context["topic_specific"] = [t["tag"] for t in topic_specific[:limit//4]]
+
+    context["formatted_context"] = _format_tag_recommendations(context)
+
+    return context
+
+
+def get_seasonal_insights(
+    month: Optional[int] = None
+) -> Dict[str, Any]:
+    """
+    Get seasonal trend insights for content planning.
+
+    Provides theme recommendations, interest spikes, and optimal
+    upload timing based on historical patterns.
+
+    Args:
+        month: Specific month (1-12) or None for current month
+
+    Returns:
+        Dictionary with:
+            - current_month: Data for the specified/current month
+            - interest_themes: Themes with elevated interest
+            - recommended_topics: Suggested content topics
+            - upload_timing: Optimal days/times
+            - upcoming_trends: Next 2-3 months preview
+            - formatted_context: Ready-to-inject prompt section
+
+    Example:
+        >>> insights = get_seasonal_insights(1)  # January
+        >>> print(insights["interest_themes"])
+        {"confidence": 45, "new_beginnings": 38, ...}
+    """
+    from datetime import datetime
+
+    context = {
+        "current_month": {},
+        "interest_themes": {},
+        "recommended_topics": [],
+        "upload_timing": "",
+        "upcoming_trends": [],
+        "errors": []
+    }
+
+    if month is None:
+        month = datetime.now().month
+
+    month_names = [
+        "", "january", "february", "march", "april", "may", "june",
+        "july", "august", "september", "october", "november", "december"
+    ]
+    month_name = month_names[month]
+
+    seasonal_data = _load_competitor_yaml("seasonal_trends.yaml")
+    if not seasonal_data or "months" not in seasonal_data:
+        context["errors"].append("No seasonal trends data available")
+        context["formatted_context"] = "(No seasonal analysis data found)"
+        return context
+
+    months = seasonal_data["months"]
+
+    # Current month data
+    if month_name in months:
+        current = months[month_name]
+        context["current_month"] = current
+        context["interest_themes"] = current.get("interest_boost", {})
+        context["recommended_topics"] = current.get("recommended_themes", [])
+        context["upload_timing"] = current.get("best_upload_days", "")
+
+    # Upcoming months (next 2-3)
+    for i in range(1, 4):
+        next_month = (month % 12) + i
+        next_name = month_names[next_month if next_month <= 12 else next_month - 12]
+        if next_name in months:
+            context["upcoming_trends"].append({
+                "month": next_name.title(),
+                "themes": months[next_name].get("interest_boost", {}),
+                "topics": months[next_name].get("recommended_themes", [])[:3]
+            })
+
+    context["formatted_context"] = _format_seasonal_insights(context, month_name)
+
+    return context
+
+
+def get_retention_benchmarks(
+    duration_minutes: int,
+    category: Optional[str] = None
+) -> Dict[str, Any]:
+    """
+    Get retention curve benchmarks for a given duration.
+
+    Provides target retention rates, common drop-off points,
+    and recommendations for maintaining engagement.
+
+    Args:
+        duration_minutes: Target duration of the video
+        category: Content category for more specific benchmarks
+
+    Returns:
+        Dictionary with:
+            - avg_retention: Expected average retention percentage
+            - target_retention: Good performance target
+            - drop_points: Common drop-off timestamps with recommendations
+            - engagement_rate: Expected engagement (likes/views)
+            - recommendations: Intervention strategies
+            - formatted_context: Ready-to-inject prompt section
+
+    Example:
+        >>> benchmarks = get_retention_benchmarks(25, "meditation")
+        >>> print(benchmarks["drop_points"])
+    """
+    context = {
+        "avg_retention": 0,
+        "target_retention": 0,
+        "drop_points": [],
+        "engagement_rate": 0,
+        "recommendations": [],
+        "errors": []
+    }
+
+    benchmarks_data = _load_competitor_yaml("retention_benchmarks.yaml")
+    if not benchmarks_data or "benchmarks" not in benchmarks_data:
+        # Provide fallback estimates based on duration
+        context["avg_retention"] = max(30, 70 - (duration_minutes * 1.5))
+        context["target_retention"] = context["avg_retention"] + 10
+        context["engagement_rate"] = 0.035  # 3.5% baseline
+        context["drop_points"] = [
+            {"time": "0:30", "drop": 10, "recommendation": "Strong hook needed in first 30 seconds"},
+            {"time": f"{duration_minutes//4}:00", "drop": 15, "recommendation": "Add engagement cue or pattern interrupt"},
+            {"time": f"{duration_minutes//2}:00", "drop": 10, "recommendation": "Midpoint deepening or scene change"},
+        ]
+        context["recommendations"] = [
+            "Use strong visual/audio hook in first 30 seconds",
+            "Add engagement cues every 5-7 minutes",
+            "Vary vocal delivery to maintain interest",
+            "Use sound effects at transition points"
+        ]
+        context["formatted_context"] = _format_retention_benchmarks(context, duration_minutes)
+        return context
+
+    benchmarks = benchmarks_data["benchmarks"]
+
+    # Find closest duration match
+    duration_key = f"{category}_{duration_minutes}min" if category else f"general_{duration_minutes}min"
+
+    # Try exact match, then category, then general
+    if duration_key in benchmarks:
+        data = benchmarks[duration_key]
+    elif category and category in benchmarks:
+        data = benchmarks[category]
+    elif "overall" in benchmarks:
+        data = benchmarks["overall"]
+    else:
+        # Use first available
+        data = list(benchmarks.values())[0] if benchmarks else {}
+
+    context["avg_retention"] = data.get("avg_retention", 45)
+    context["target_retention"] = data.get("target_retention", context["avg_retention"] + 10)
+    context["engagement_rate"] = data.get("avg_engagement", 0.035)
+    context["drop_points"] = data.get("drop_points", [])
+    context["recommendations"] = data.get("recommendations", [])
+
+    context["formatted_context"] = _format_retention_benchmarks(context, duration_minutes)
+
+    return context
+
+
+def get_our_channel_performance(
+    compare_to_benchmarks: bool = True
+) -> Dict[str, Any]:
+    """
+    Get our channel's performance metrics and improvement suggestions.
+
+    Retrieves tracked video stats and compares against category benchmarks.
+
+    Args:
+        compare_to_benchmarks: Include comparison to competitor benchmarks
+
+    Returns:
+        Dictionary with:
+            - videos: List of our video stats
+            - overall_stats: Aggregated channel metrics
+            - vs_benchmark: Performance vs competitors
+            - top_performers: Our best videos
+            - improvement_areas: Suggested improvements
+            - formatted_context: Ready-to-inject prompt section
+
+    Example:
+        >>> perf = get_our_channel_performance()
+        >>> print(perf["improvement_areas"])
+    """
+    context = {
+        "videos": [],
+        "overall_stats": {},
+        "vs_benchmark": {},
+        "top_performers": [],
+        "improvement_areas": [],
+        "errors": []
+    }
+
+    our_data = _load_competitor_yaml("our_channel_metrics.yaml")
+    if not our_data or "videos" not in our_data:
+        context["errors"].append("No our channel data available - run youtube_competitor_analyzer.py --our-channel first")
+        context["formatted_context"] = "(No our channel data found)"
+        return context
+
+    videos = our_data["videos"]
+    context["videos"] = videos
+
+    # Calculate overall stats
+    if videos:
+        total_views = sum(v.get("views", 0) for v in videos)
+        total_likes = sum(v.get("likes", 0) for v in videos)
+        avg_engagement = total_likes / total_views if total_views > 0 else 0
+
+        context["overall_stats"] = {
+            "video_count": len(videos),
+            "total_views": total_views,
+            "total_likes": total_likes,
+            "avg_engagement": avg_engagement,
+            "avg_views_per_video": total_views // len(videos)
+        }
+
+        # Top performers
+        sorted_videos = sorted(videos, key=lambda x: x.get("views", 0), reverse=True)
+        context["top_performers"] = sorted_videos[:5]
+
+    # Compare to benchmarks if requested
+    if compare_to_benchmarks:
+        benchmarks_data = _load_competitor_yaml("retention_benchmarks.yaml")
+        if benchmarks_data and "overall" in benchmarks_data.get("benchmarks", {}):
+            overall = benchmarks_data["benchmarks"]["overall"]
+            our_eng = context["overall_stats"].get("avg_engagement", 0)
+            bench_eng = overall.get("avg_engagement", 0.035)
+
+            context["vs_benchmark"] = {
+                "engagement_diff": (our_eng - bench_eng) * 100,  # percentage points
+                "status": "above" if our_eng > bench_eng else "below",
+                "benchmark_engagement": bench_eng
+            }
+
+    # Identify improvement areas
+    improvements = []
+    for video in videos[:10]:
+        video_improvements = video.get("improvements", [])
+        improvements.extend(video_improvements)
+
+    # Deduplicate and count
+    improvement_counts = {}
+    for imp in improvements:
+        improvement_counts[imp] = improvement_counts.get(imp, 0) + 1
+
+    sorted_improvements = sorted(improvement_counts.items(), key=lambda x: x[1], reverse=True)
+    context["improvement_areas"] = [imp[0] for imp in sorted_improvements[:5]]
+
+    context["formatted_context"] = _format_our_channel_performance(context)
+
+    return context
+
+
+def _format_competitor_insights(context: Dict[str, Any], category: Optional[str]) -> str:
+    """Format competitor insights as a prompt-ready string."""
+    sections = []
+    cat_str = f" ({category})" if category else ""
+
+    sections.append(f"## COMPETITOR INSIGHTS{cat_str}")
+    sections.append("")
+
+    if context.get("top_channels"):
+        sections.append("### Top Competitor Channels")
+        for ch in context["top_channels"][:5]:
+            subs = ch.get("subscriber_count", ch.get("subscribers", 0))
+            name = ch.get("title", ch.get("name", "Unknown"))
+            sections.append(f"- **{name}**: {subs:,} subscribers")
+        sections.append("")
+
+    if context.get("title_patterns"):
+        sections.append("### Top-Performing Title Patterns")
+        for pattern in context["title_patterns"][:5]:
+            ctr = pattern.get("estimated_ctr", pattern.get("avg_ctr", 0))
+            if ctr < 1:  # If stored as decimal, convert to percentage
+                ctr = ctr * 100
+            template = pattern.get("template", pattern.get("pattern", ""))
+            sections.append(f"- \"{template}\" - Est. CTR: {ctr:.1f}%")
+            examples = pattern.get("examples", [])[:2]
+            for ex in examples:
+                if isinstance(ex, dict):
+                    sections.append(f"  Example: {ex.get('title', '')}")
+                else:
+                    sections.append(f"  Example: {ex}")
+        sections.append("")
+
+    if context.get("tag_recommendations"):
+        sections.append("### Recommended Tags (High Value)")
+        tags = [t["tag"] for t in context["tag_recommendations"][:10]]
+        sections.append(f"- {', '.join(tags)}")
+        sections.append("")
+
+    if context.get("engagement_benchmarks"):
+        bench = context["engagement_benchmarks"]
+        sections.append("### Engagement Benchmarks")
+        sections.append(f"- Avg Engagement Rate: {bench.get('avg_engagement', 0)*100:.2f}%")
+        sections.append(f"- Target Retention: {bench.get('target_retention', 45)}%")
+        sections.append("")
+
+    return "\n".join(sections) if sections else "(No competitor insights available)"
+
+
+def _format_title_recommendations(context: Dict[str, Any]) -> str:
+    """Format title recommendations as a prompt-ready string."""
+    sections = []
+
+    sections.append("## TITLE OPTIMIZATION")
+    sections.append("")
+
+    if context.get("suggestions"):
+        sections.append("### Generated Title Suggestions")
+        for sug in context["suggestions"]:
+            ctr = sug.get("est_ctr", 0) * 100
+            sections.append(f"- \"{sug['title']}\" (Est. CTR: {ctr:.1f}%)")
+        sections.append("")
+
+    if context.get("patterns"):
+        sections.append("### High-CTR Patterns to Follow")
+        for pattern in context["patterns"][:3]:
+            sections.append(f"- {pattern.get('pattern', '')}")
+        sections.append("")
+
+    if context.get("power_words"):
+        sections.append("### Power Words (Use These)")
+        sections.append(f"- {', '.join(context['power_words'][:10])}")
+        sections.append("")
+
+    if context.get("avoid_words"):
+        sections.append("### Avoid These Words")
+        sections.append(f"- {', '.join(context['avoid_words'])}")
+
+    return "\n".join(sections) if sections else "(No title recommendations available)"
+
+
+def _format_tag_recommendations(context: Dict[str, Any]) -> str:
+    """Format tag recommendations as a prompt-ready string."""
+    sections = []
+
+    sections.append("## TAG RECOMMENDATIONS")
+    sections.append("")
+
+    if context.get("balanced"):
+        sections.append("### Best Overall Tags (Volume + Low Competition)")
+        sections.append(f"- {', '.join(context['balanced'][:10])}")
+        sections.append("")
+
+    if context.get("high_volume"):
+        sections.append("### High Volume Tags")
+        sections.append(f"- {', '.join(context['high_volume'])}")
+        sections.append("")
+
+    if context.get("low_competition"):
+        sections.append("### Low Competition Tags")
+        sections.append(f"- {', '.join(context['low_competition'])}")
+        sections.append("")
+
+    if context.get("topic_specific"):
+        sections.append("### Topic-Specific Tags")
+        sections.append(f"- {', '.join(context['topic_specific'])}")
+
+    return "\n".join(sections) if sections else "(No tag recommendations available)"
+
+
+def _format_seasonal_insights(context: Dict[str, Any], month_name: str) -> str:
+    """Format seasonal insights as a prompt-ready string."""
+    sections = []
+
+    sections.append(f"## SEASONAL INSIGHTS - {month_name.upper()}")
+    sections.append("")
+
+    if context.get("interest_themes"):
+        sections.append("### Interest Spikes This Month")
+        for theme, boost in context["interest_themes"].items():
+            sections.append(f"- {theme.replace('_', ' ').title()}: +{boost}%")
+        sections.append("")
+
+    if context.get("recommended_topics"):
+        sections.append("### Recommended Content Topics")
+        for topic in context["recommended_topics"]:
+            sections.append(f"- {topic}")
+        sections.append("")
+
+    if context.get("upload_timing"):
+        sections.append("### Optimal Upload Timing")
+        sections.append(f"- {context['upload_timing']}")
+        sections.append("")
+
+    if context.get("upcoming_trends"):
+        sections.append("### Upcoming Trends")
+        for trend in context["upcoming_trends"]:
+            topics = ", ".join(trend["topics"][:3])
+            sections.append(f"- **{trend['month']}**: {topics}")
+
+    return "\n".join(sections) if sections else "(No seasonal insights available)"
+
+
+def _format_retention_benchmarks(context: Dict[str, Any], duration: int) -> str:
+    """Format retention benchmarks as a prompt-ready string."""
+    sections = []
+
+    sections.append(f"## RETENTION BENCHMARKS ({duration} min video)")
+    sections.append("")
+
+    sections.append(f"- Average Retention: {context.get('avg_retention', 0):.0f}%")
+    sections.append(f"- Target Retention: {context.get('target_retention', 0):.0f}%")
+    sections.append(f"- Expected Engagement: {context.get('engagement_rate', 0)*100:.2f}%")
+    sections.append("")
+
+    if context.get("drop_points"):
+        sections.append("### Critical Drop-Off Points")
+        for point in context["drop_points"]:
+            sections.append(f"- **{point['time']}** (-{point.get('drop', 0)}%): {point.get('recommendation', '')}")
+        sections.append("")
+
+    if context.get("recommendations"):
+        sections.append("### Retention Strategies")
+        for rec in context["recommendations"][:5]:
+            sections.append(f"- {rec}")
+
+    return "\n".join(sections) if sections else "(No retention benchmarks available)"
+
+
+def _format_our_channel_performance(context: Dict[str, Any]) -> str:
+    """Format our channel performance as a prompt-ready string."""
+    sections = []
+
+    sections.append("## OUR CHANNEL PERFORMANCE")
+    sections.append("")
+
+    stats = context.get("overall_stats", {})
+    if stats:
+        sections.append("### Overall Stats")
+        sections.append(f"- Videos: {stats.get('video_count', 0)}")
+        sections.append(f"- Total Views: {stats.get('total_views', 0):,}")
+        sections.append(f"- Avg Engagement: {stats.get('avg_engagement', 0)*100:.2f}%")
+        sections.append("")
+
+    if context.get("vs_benchmark"):
+        bench = context["vs_benchmark"]
+        diff = bench.get("engagement_diff", 0)
+        status = "above" if diff > 0 else "below"
+        sections.append(f"### vs Competitors")
+        sections.append(f"- Engagement is **{abs(diff):.2f}%** {status} benchmark")
+        sections.append("")
+
+    if context.get("top_performers"):
+        sections.append("### Our Top Performers")
+        for video in context["top_performers"][:3]:
+            sections.append(f"- \"{video.get('title', '')[:40]}...\" - {video.get('views', 0):,} views")
+        sections.append("")
+
+    if context.get("improvement_areas"):
+        sections.append("### Priority Improvements")
+        for imp in context["improvement_areas"][:5]:
+            sections.append(f"- {imp}")
+
+    return "\n".join(sections) if sections else "(No channel performance data available)"
 
 
 def _format_combined_results(results: Dict[str, Any]) -> str:

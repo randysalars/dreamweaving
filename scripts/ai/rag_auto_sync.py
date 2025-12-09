@@ -3,10 +3,17 @@
 Automatic RAG synchronization script.
 Exports Notion content and re-indexes vector database.
 
+INCREMENTAL UPDATES (Default):
+    Only processes files that have changed since last sync.
+    Much faster than full re-index when only a few files changed.
+
 Usage:
-    python3 scripts/ai/rag_auto_sync.py              # Full sync
+    python3 scripts/ai/rag_auto_sync.py              # Incremental sync (default)
+    python3 scripts/ai/rag_auto_sync.py --full       # Full re-index of all content
+    python3 scripts/ai/rag_auto_sync.py --force      # Force sync even if no changes
     python3 scripts/ai/rag_auto_sync.py --check-only # Check for changes without indexing
-    python3 scripts/ai/rag_auto_sync.py --force      # Force full re-index
+    python3 scripts/ai/rag_auto_sync.py --rebuild-manifest  # Rebuild file manifest
+    python3 scripts/ai/rag_auto_sync.py --status     # Show sync status
 
 Part of Phase 8: Automatic RAG Indexing System
 """
@@ -143,54 +150,109 @@ class RAGAutoSync:
         logger.info("No content changes detected.")
         return False
 
-    def reindex_vectors(self) -> Dict[str, Any]:
-        """Re-index all content in vector database."""
+    def reindex_vectors(self, incremental: bool = True) -> Dict[str, Any]:
+        """
+        Re-index content in vector database.
+
+        Args:
+            incremental: If True, only process changed files (much faster).
+                        If False, do full re-index of all content.
+
+        Returns:
+            Statistics about the indexing operation.
+        """
         try:
-            logger.info("Re-indexing vector database...")
-            self.pipeline.index_all_content()
-            return self.pipeline.get_stats()
+            if incremental:
+                logger.info("Incremental re-indexing (changed files only)...")
+                stats = self.pipeline.index_incremental()
+
+                # If status is no_changes, return early
+                if stats.get("status") == "no_changes":
+                    return {
+                        "pages": 0,
+                        "vectors": 0,
+                        "incremental": True,
+                        "changes": stats
+                    }
+
+                # Return combined stats
+                full_stats = self.pipeline.get_stats()
+                return {
+                    "pages": full_stats.get("points_count", 0),
+                    "vectors": full_stats.get("vectors_count", 0),
+                    "incremental": True,
+                    "changes": stats
+                }
+            else:
+                logger.info("Full re-indexing (all content)...")
+                self.pipeline.index_all_content()
+                return self.pipeline.get_stats()
         except Exception as e:
             logger.error(f"Re-indexing failed: {e}")
             return {"error": str(e)}
 
-    def sync(self, force: bool = False) -> Dict[str, Any]:
+    def sync(self, force: bool = False, full_reindex: bool = False) -> Dict[str, Any]:
         """
-        Perform full RAG sync.
+        Perform RAG sync with incremental updates by default.
 
         Args:
             force: If True, re-index even if no changes detected.
+            full_reindex: If True, do full re-index instead of incremental.
+                         Default is False (incremental mode - much faster).
 
         Returns:
             Sync statistics.
         """
+        mode = "FULL" if full_reindex else "INCREMENTAL"
         logger.info("=" * 60)
-        logger.info("RAG AUTO-SYNC STARTING")
+        logger.info(f"RAG AUTO-SYNC STARTING ({mode} MODE)")
         logger.info(f"Export directory: {self.export_dir}")
         logger.info(f"Force mode: {force}")
         logger.info("=" * 60)
 
         start_time = datetime.now()
 
-        # Check for changes (this also exports content)
-        has_changes = self.check_for_changes()
-
-        if not has_changes and not force:
-            logger.info("Skipping re-index (no changes). Use --force to override.")
-            return {
-                "status": "skipped",
-                "reason": "no_changes",
-                "timestamp": datetime.now().isoformat()
-            }
-
-        # Re-index vectors
-        stats = self.reindex_vectors()
-
-        if "error" in stats:
+        # Export latest content from Notion
+        if not self.export_notion_content():
+            logger.error("Notion export failed")
             return {
                 "status": "failed",
-                "error": stats["error"],
+                "error": "Notion export failed",
                 "timestamp": datetime.now().isoformat()
             }
+
+        # For incremental mode, let the pipeline detect changes
+        if not full_reindex and not force:
+            # Use incremental indexing - it handles change detection internally
+            stats = self.reindex_vectors(incremental=True)
+
+            if "error" in stats:
+                return {
+                    "status": "failed",
+                    "error": stats["error"],
+                    "timestamp": datetime.now().isoformat()
+                }
+
+            # Check if any changes were processed
+            changes = stats.get("changes", {})
+            if changes.get("status") == "no_changes":
+                logger.info("No file changes detected - index is up to date")
+                return {
+                    "status": "skipped",
+                    "reason": "no_changes",
+                    "timestamp": datetime.now().isoformat()
+                }
+
+        else:
+            # Full re-index mode
+            stats = self.reindex_vectors(incremental=False)
+
+            if "error" in stats:
+                return {
+                    "status": "failed",
+                    "error": stats["error"],
+                    "timestamp": datetime.now().isoformat()
+                }
 
         # Calculate content hash and save state
         content_hash = self.get_content_hash()
@@ -198,20 +260,42 @@ class RAGAutoSync:
 
         duration = (datetime.now() - start_time).total_seconds()
 
+        # Build result with change details for incremental mode
+        changes = stats.get("changes", {})
         logger.info("=" * 60)
         logger.info(f"SYNC COMPLETE in {duration:.1f}s")
-        logger.info(f"Pages: {stats.get('pages', 'N/A')}")
-        logger.info(f"Vectors: {stats.get('vectors', 'N/A')}")
+        if stats.get("incremental"):
+            logger.info(f"Files: +{changes.get('added', 0)} added, "
+                       f"~{changes.get('modified', 0)} modified, "
+                       f"-{changes.get('deleted', 0)} deleted")
+            logger.info(f"Vectors: +{changes.get('vectors_added', 0)} added, "
+                       f"-{changes.get('vectors_removed', 0)} removed")
+        else:
+            logger.info(f"Pages: {stats.get('pages', 'N/A')}")
+            logger.info(f"Vectors: {stats.get('vectors', 'N/A')}")
         logger.info("=" * 60)
 
-        return {
+        result = {
             "status": "completed",
+            "mode": mode.lower(),
             "pages": stats.get("pages", 0),
             "vectors": stats.get("vectors", 0),
             "duration_seconds": duration,
             "content_hash": content_hash,
             "timestamp": datetime.now().isoformat()
         }
+
+        # Add incremental-specific stats
+        if stats.get("incremental"):
+            result["changes"] = {
+                "files_added": changes.get("added", 0),
+                "files_modified": changes.get("modified", 0),
+                "files_deleted": changes.get("deleted", 0),
+                "vectors_added": changes.get("vectors_added", 0),
+                "vectors_removed": changes.get("vectors_removed", 0)
+            }
+
+        return result
 
     def get_status(self) -> Dict[str, Any]:
         """Get current sync status."""
@@ -249,7 +333,11 @@ Examples:
     parser.add_argument("--check-only", action="store_true",
                         help="Check for changes without re-indexing")
     parser.add_argument("--force", action="store_true",
-                        help="Force full re-index even if no changes")
+                        help="Force re-index even if no changes detected")
+    parser.add_argument("--full", action="store_true",
+                        help="Full re-index (default is incremental - only changed files)")
+    parser.add_argument("--rebuild-manifest", action="store_true",
+                        help="Rebuild file manifest from current export (use after manual edits)")
     parser.add_argument("--status", action="store_true",
                         help="Show current sync status")
     parser.add_argument("--export-dir", default="knowledge/notion_export",
@@ -272,6 +360,14 @@ Examples:
                 for key, value in result.items():
                     print(f"  {key}: {value}")
                 print()
+        elif args.rebuild_manifest:
+            # Rebuild the file manifest from current export
+            result = syncer.pipeline.rebuild_manifest_from_index()
+            if args.json:
+                print(json.dumps(result, indent=2))
+            else:
+                print(f"\n✅ Manifest rebuilt with {len(result.get('files', {}))} files")
+                print("   Next sync will use incremental updates")
         elif args.check_only:
             has_changes = syncer.check_for_changes()
             result = {"has_changes": has_changes}
@@ -284,7 +380,7 @@ Examples:
                     print("✨ No changes detected")
             sys.exit(0 if has_changes else 1)
         else:
-            result = syncer.sync(force=args.force)
+            result = syncer.sync(force=args.force, full_reindex=args.full)
             if args.json:
                 print(json.dumps(result, indent=2))
             else:

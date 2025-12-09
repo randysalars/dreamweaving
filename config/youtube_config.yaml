@@ -1,0 +1,196 @@
+# =============================================================================
+# YOUTUBE COMPETITOR ANALYSIS CONFIGURATION
+# =============================================================================
+# Configuration for YouTube Data API integration, competitor tracking,
+# and automated analysis for the Dreamweaving project.
+# =============================================================================
+
+api:
+  # OAuth client secrets file path
+  client_secrets_file: "config/youtube_client_secret.json"
+  # Token storage path (will be created on first auth)
+  token_file: "config/youtube_token.json"
+  # Scopes needed for full functionality
+  scopes:
+    - "https://www.googleapis.com/auth/youtube.readonly"
+    - "https://www.googleapis.com/auth/youtube.force-ssl"
+    - "https://www.googleapis.com/auth/yt-analytics.readonly"
+
+# Our channel configuration
+our_channel:
+  channel_id: ""  # Will be auto-detected on first auth
+  channel_name: "Salars Dreamweaver"
+  track_videos: true
+  track_comments: true
+  track_analytics: true
+
+# Categories to analyze
+categories:
+  meditation:
+    keywords:
+      - "guided meditation"
+      - "meditation for beginners"
+      - "deep meditation"
+      - "meditation music"
+      - "morning meditation"
+      - "mindfulness meditation"
+    max_results: 50
+    min_views: 10000
+
+  hypnosis:
+    keywords:
+      - "sleep hypnosis"
+      - "hypnosis for sleep"
+      - "guided hypnosis"
+      - "hypnotherapy"
+      - "self hypnosis"
+      - "deep sleep hypnosis"
+    max_results: 50
+    min_views: 10000
+
+  sleep:
+    keywords:
+      - "sleep music"
+      - "sleep meditation"
+      - "deep sleep"
+      - "insomnia relief"
+      - "sleep sounds"
+      - "relaxing sleep music"
+    max_results: 50
+    min_views: 10000
+
+  affirmations:
+    keywords:
+      - "positive affirmations"
+      - "morning affirmations"
+      - "self love affirmations"
+      - "confidence affirmations"
+      - "abundance affirmations"
+      - "sleep affirmations"
+    max_results: 50
+    min_views: 10000
+
+  binaural_beats:
+    keywords:
+      - "binaural beats"
+      - "theta waves"
+      - "delta waves"
+      - "alpha waves"
+      - "gamma waves"
+      - "432hz"
+      - "528hz"
+      - "healing frequencies"
+    max_results: 50
+    min_views: 10000
+
+  spiritual:
+    keywords:
+      - "spiritual journey"
+      - "spiritual awakening"
+      - "chakra meditation"
+      - "kundalini"
+      - "astral projection"
+      - "lucid dreaming"
+      - "shamanic journey"
+    max_results: 50
+    min_views: 10000
+
+# Competitor channels to track (will be auto-populated on first run)
+competitor_channels:
+  meditation:
+    - name: "Michael Sealey"
+      channel_id: ""
+    - name: "Jason Stephenson"
+      channel_id: ""
+    - name: "The Honest Guys"
+      channel_id: ""
+    - name: "Great Meditation"
+      channel_id: ""
+
+  hypnosis:
+    - name: "Michael Sealey"
+      channel_id: ""
+    - name: "Hypnotic Labs"
+      channel_id: ""
+
+  sleep:
+    - name: "SleepTube"
+      channel_id: ""
+    - name: "Yellow Brick Cinema"
+      channel_id: ""
+    - name: "Soothing Relaxation"
+      channel_id: ""
+
+  binaural:
+    - name: "Magnetic Minds"
+      channel_id: ""
+    - name: "PowerThoughts Meditation Club"
+      channel_id: ""
+
+# Analysis settings
+analysis:
+  # Title pattern extraction
+  title_patterns:
+    min_occurrences: 5
+    min_avg_views: 50000
+
+  # Tag clustering
+  tag_clusters:
+    min_tag_occurrences: 10
+    max_tags_per_cluster: 20
+
+  # Retention benchmarks (estimated from engagement rates)
+  retention:
+    high_engagement_threshold: 0.05  # likes/views > 5%
+    low_engagement_threshold: 0.02   # likes/views < 2%
+
+  # Seasonal trends
+  seasonal:
+    lookback_months: 12
+    trend_threshold: 0.15  # 15% increase = trending
+
+# Sync settings
+sync:
+  # Weekly sync day (0=Monday, 6=Sunday)
+  weekly_day: 6  # Sunday
+  weekly_hour: 3  # 3 AM
+
+  # Daily our-channel check
+  daily_hour: 6  # 6 AM
+
+  # Monthly deep analysis
+  monthly_day: 1  # 1st of month
+  monthly_hour: 4  # 4 AM
+
+  # Rate limiting
+  requests_per_minute: 30
+  batch_size: 50
+
+# Notion sync settings (database IDs will be added after creation)
+notion:
+  enabled: true
+  databases:
+    competitor_channels: ""
+    top_videos: ""
+    title_patterns: ""
+    tag_clusters: ""
+    our_metrics: ""
+    seasonal_trends: ""
+
+# Output paths
+output:
+  competitor_channels: "knowledge/youtube_competitor_data/competitor_channels.yaml"
+  top_videos: "knowledge/youtube_competitor_data/top_videos.yaml"
+  title_patterns: "knowledge/youtube_competitor_data/title_patterns.yaml"
+  tag_clusters: "knowledge/youtube_competitor_data/tag_clusters.yaml"
+  retention_benchmarks: "knowledge/youtube_competitor_data/retention_benchmarks.yaml"
+  seasonal_trends: "knowledge/youtube_competitor_data/seasonal_trends.yaml"
+  our_channel_metrics: "knowledge/youtube_competitor_data/our_channel_metrics.yaml"
+  raw_data: "knowledge/youtube_competitor_data/raw/"
+
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/youtube_analysis.log"
+  max_size_mb: 10
+  backup_count: 5

@@ -14,9 +14,10 @@ Orchestrates the complete session production from just a topic:
 9. Generate VTT subtitles
 10. Assemble video (when images available)
 11. Package for YouTube
-12. Upload to website (salars.net)
-13. Cleanup intermediate files
-14. Self-improvement/learning (record lessons learned)
+12. Generate optimized YouTube thumbnail (LLM-powered text, auto style selection)
+13. Upload to website (salars.net)
+14. Cleanup intermediate files
+15. Self-improvement/learning (record lessons learned)
 
 Requirements:
     - Claude Code extension for VS Code (uses your Claude subscription)
@@ -674,6 +675,9 @@ class AutoGenerator:
                     # Stage 12: Package for YouTube
                     self._stage_package_youtube()
 
+                    # Stage 12.5: Generate thumbnail
+                    self._stage_generate_thumbnail()
+
                     # Stage 13: Upload to website (optional)
                     if not self.skip_upload:
                         self._stage_upload_website()
@@ -741,6 +745,47 @@ class AutoGenerator:
             self.log(f"RAG retrieval skipped: {e}", "warning")
             rag_context = None
 
+        # NEW: Retrieve competitor insights for better titles/themes
+        competitor_context = None
+        try:
+            from scripts.ai.knowledge_tools import (
+                get_competitor_insights,
+                get_seasonal_insights,
+                get_title_recommendations
+            )
+
+            # Detect category from topic
+            topic_lower = self.topic.lower()
+            category = None
+            for cat in ['meditation', 'hypnosis', 'sleep', 'affirmations', 'binaural_beats', 'spiritual']:
+                if cat.replace('_', ' ') in topic_lower or cat in topic_lower:
+                    category = cat
+                    break
+
+            # Get competitor insights
+            competitor_context = get_competitor_insights(category=category, limit=5)
+            if competitor_context.get("title_patterns"):
+                self.log(f"Retrieved {len(competitor_context['title_patterns'])} title patterns from competitor analysis", "info")
+
+            # Get seasonal insights
+            seasonal = get_seasonal_insights()
+            if seasonal.get("interest_themes"):
+                self.log("Retrieved seasonal trends for current month", "info")
+                competitor_context["seasonal"] = seasonal
+
+            # Get title recommendations
+            title_recs = get_title_recommendations(
+                topic=self.topic,
+                outcome=getattr(self, 'desired_outcome', None),
+                category=category
+            )
+            if title_recs.get("suggestions"):
+                competitor_context["title_suggestions"] = title_recs
+
+        except Exception as e:
+            self.log(f"Competitor context retrieval skipped: {e}", "warning")
+            competitor_context = None
+
         # Use CreativeWorkflow to brainstorm and select best journey
         result = self.workflow.brainstorm_and_create(
             topic=self.topic,
@@ -776,6 +821,20 @@ class AutoGenerator:
                         'outcome_patterns_count': len(rag_context.get('outcome_patterns', [])),
                     }, f, default_flow_style=False, sort_keys=False)
                 self.log("Saved RAG context for script generation", "info")
+
+            # Save competitor context for YouTube packaging
+            if competitor_context and competitor_context.get("title_patterns"):
+                competitor_context_path = self.session_path / "working_files" / "competitor_context.yaml"
+                with open(competitor_context_path, 'w') as f:
+                    yaml.dump({
+                        'topic': self.topic,
+                        'formatted_context': competitor_context.get('formatted_context', ''),
+                        'title_patterns': competitor_context.get('title_patterns', []),
+                        'tag_recommendations': [t.get('tag') for t in competitor_context.get('tag_recommendations', [])[:15]],
+                        'seasonal_themes': competitor_context.get('seasonal', {}).get('interest_themes', {}),
+                        'title_suggestions': [s.get('title') for s in competitor_context.get('title_suggestions', {}).get('suggestions', [])],
+                    }, f, default_flow_style=False, sort_keys=False)
+                self.log("Saved competitor context for YouTube packaging", "info")
 
         self.stages_completed.append("generate_manifest")
         return manifest
@@ -1806,6 +1865,66 @@ Outcome: {outcome or 'N/A'}
             except Exception as e:
                 self.log(f"SEO context retrieval skipped: {e}", "warning")
 
+            # NEW: Load or retrieve competitor context for YouTube optimization
+            competitor_context_str = ""
+            try:
+                # First try saved context from manifest stage
+                competitor_context_path = self.session_path / "working_files" / "competitor_context.yaml"
+                if competitor_context_path.exists():
+                    with open(competitor_context_path, 'r') as f:
+                        saved_context = yaml.safe_load(f)
+                        competitor_context_str = saved_context.get('formatted_context', '')
+                        if competitor_context_str:
+                            self.log("Loaded competitor context from manifest stage", "info")
+
+                # If no saved context, retrieve fresh
+                if not competitor_context_str:
+                    from scripts.ai.knowledge_tools import (
+                        get_competitor_insights,
+                        get_tag_recommendations,
+                        get_retention_benchmarks
+                    )
+
+                    # Get competitor insights
+                    insights = get_competitor_insights(limit=5)
+                    competitor_context_str = insights.get('formatted_context', '')
+
+                    # Get tag recommendations
+                    tags = get_tag_recommendations(topic=self.topic)
+                    if tags.get('formatted_context'):
+                        competitor_context_str += "\n\n" + tags['formatted_context']
+
+                    # Get retention benchmarks
+                    benchmarks = get_retention_benchmarks(
+                        duration_minutes=getattr(self, 'duration_minutes', 25)
+                    )
+                    if benchmarks.get('formatted_context'):
+                        competitor_context_str += "\n\n" + benchmarks['formatted_context']
+
+                    if competitor_context_str:
+                        self.log("Retrieved fresh competitor context", "info")
+
+                # Save competitor context for reference
+                if competitor_context_str:
+                    competitor_file = youtube_output_dir / "COMPETITOR_INSIGHTS.md"
+                    competitor_file.write_text(f"""# YouTube Competitor Insights
+
+Topic: {self.topic}
+
+---
+
+{competitor_context_str}
+
+---
+
+*Use these insights to optimize your YouTube title, description, tags, and thumbnail.*
+*Generated from YouTube competitor analysis.*
+""")
+                    self.log(f"Saved competitor insights: {competitor_file.name}", "info")
+
+            except Exception as e:
+                self.log(f"Competitor context retrieval skipped: {e}", "warning")
+
             result = subprocess.run(
                 [
                     self.python_cmd, "scripts/core/package_youtube.py",
@@ -1826,6 +1945,51 @@ Outcome: {outcome or 'N/A'}
 
         except Exception as e:
             self.log(f"YouTube packaging skipped: {e}", "warning")
+
+    def _stage_generate_thumbnail(self):
+        """Generate optimized YouTube thumbnail using Ultimate Thumbnail Generator."""
+        self.log("Generating optimized YouTube thumbnail", "stage")
+
+        try:
+            # Use the ultimate thumbnail generator for auto-optimized output
+            result = subprocess.run(
+                [
+                    self.python_cmd, "scripts/core/generate_ultimate_thumbnail.py",
+                    str(self.session_path),
+                    "--variants", "1",  # Single optimized thumbnail for auto-generation
+                ],
+                capture_output=True,
+                text=True,
+                cwd=str(self.project_root),
+                timeout=120,
+            )
+
+            stdout = result.stdout or ""
+            stderr = result.stderr or ""
+
+            if result.returncode == 0:
+                self.log("Generated optimized YouTube thumbnail", "success")
+                self.stages_completed.append("generate_thumbnail")
+
+                # Check if thumbnail was copied to youtube_package
+                youtube_pkg = self.session_path / "output" / "youtube_package"
+                if youtube_pkg.exists():
+                    thumb_in_pkg = youtube_pkg / "thumbnail.png"
+                    if thumb_in_pkg.exists():
+                        self.log("Thumbnail copied to youtube_package/", "info")
+            else:
+                err_msg = stderr[:200] if stderr else stdout[:200] if stdout else "Unknown error"
+                self.log(f"Thumbnail generation warning: {err_msg}", "warning")
+                # Don't fail the pipeline - thumbnails can be generated manually
+                self.log("Use /generate-thumbnail command to create thumbnail manually", "info")
+
+        except subprocess.TimeoutExpired:
+            self.log("Thumbnail generation timed out", "warning")
+        except FileNotFoundError:
+            self.log("Thumbnail generator script not found", "warning")
+            self.log("Run: python3 scripts/core/generate_ultimate_thumbnail.py sessions/{session}/", "info")
+        except Exception as e:
+            self.log(f"Thumbnail generation skipped: {e}", "warning")
 
     def _stage_upload_website(self):
         """Upload session to salars.net website."""
