@@ -161,24 +161,26 @@ def build_filter_complex(images_timed, title, subtitle, fade_seconds=2.0):
     Build ffmpeg filter_complex for overlays and optional text.
     Returns (filter_str, output_label).
 
-    Uses the fast 'fade' filter with alpha=1 instead of slow 'geq' filter.
-    The fade filter is hardware-optimized and 10-50x faster.
+    Uses setpts to align image timestamps with the main video timeline,
+    then applies fade in/out relative to those aligned timestamps.
     """
     filters = []
 
-    # Scale/pad, add alpha channel, and apply fade in/out per image
-    # This approach uses the built-in fade filter which is much faster than geq
+    # Scale/pad, add alpha channel, align PTS to main timeline, then apply fades
+    # Key insight: looped images start at PTS=0, but we need fades relative to main timeline
+    # Solution: use setpts to shift image PTS to match overlay enable window
     for idx, (img_path, start_sec, end_sec) in enumerate(images_timed):
         input_num = idx + 1  # video is 0
         duration = end_sec - start_sec
-        fade_out_start = duration - fade_seconds  # relative to image start
+        fade_out_start = start_sec + duration - fade_seconds  # absolute timeline position
 
         filters.append(
             f"[{input_num}:v]"
             f"scale=1920:1080:force_original_aspect_ratio=decrease,"
             f"pad=1920:1080:(ow-iw)/2:(oh-ih)/2,"
             f"format=yuva420p,"
-            f"fade=t=in:st=0:d={fade_seconds}:alpha=1,"
+            f"setpts=PTS+{start_sec}/TB,"  # Shift PTS to align with overlay window
+            f"fade=t=in:st={start_sec}:d={fade_seconds}:alpha=1,"
             f"fade=t=out:st={fade_out_start}:d={fade_seconds}:alpha=1"
             f"[faded{idx}]"
         )

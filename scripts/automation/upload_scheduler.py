@@ -4,6 +4,12 @@ Upload Scheduler
 
 Selects and uploads videos to YouTube based on quality scores and analytics.
 
+Features:
+- SEO-optimized title and description generation
+- Automatic playlist assignment (Dreamweaving playlist)
+- Optimized tag selection (under 500 chars)
+- Proper YouTube metadata formatting
+
 Usage:
     # Upload next video (auto-select based on quality)
     python -m scripts.automation.upload_scheduler
@@ -20,13 +26,56 @@ Usage:
 
 import argparse
 import logging
+import re
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 import yaml
 
 logger = logging.getLogger(__name__)
+
+# Dreamweaving playlist ID on Randy Salars channel
+DREAMWEAVING_PLAYLIST_ID = "PLUza-jvPB6FycwFSty1CWCiqTCxSbj90l"
+
+# Optimized tag set for Dreamweaving content (curated for SEO, under 500 chars total)
+# Format: priority tags first, niche tags later
+DREAMWEAVING_BASE_TAGS = [
+    # Primary high-volume tags
+    "guided meditation",
+    "sleep hypnosis",
+    "deep sleep",
+    "meditation for sleep",
+    "relaxation",
+    # Secondary targeting tags
+    "hypnosis",
+    "guided hypnosis",
+    "meditation music",
+    "sleep meditation",
+    "calming music",
+    # Niche differentiators
+    "dreamweaving",
+    "spiritual journey",
+    "inner peace",
+    "theta waves",
+    "binaural beats",
+    # Long-tail tags
+    "guided visualization",
+    "hypnotherapy",
+    "deep relaxation",
+]
+
+# Theme-specific tag mappings
+THEME_TAGS = {
+    "spiritual": ["spiritual awakening", "mystical journey", "soul healing", "divine connection"],
+    "nature": ["nature sounds", "forest meditation", "garden meditation", "peaceful nature"],
+    "cosmic": ["astral projection", "cosmic journey", "starlight meditation", "universe meditation"],
+    "healing": ["healing meditation", "emotional healing", "inner healing", "self healing"],
+    "sleep": ["fall asleep fast", "insomnia relief", "bedtime meditation", "sleep music"],
+    "confidence": ["confidence boost", "self confidence", "inner strength", "empowerment"],
+    "anxiety": ["anxiety relief", "stress relief", "calming meditation", "peace of mind"],
+    "adventure": ["guided adventure", "inner journey", "exploration meditation", "discovery"],
+}
 
 
 class UploadScheduler:
@@ -75,7 +124,13 @@ class UploadScheduler:
         privacy_status: str = 'public',
         dry_run: bool = False
     ) -> Optional[str]:
-        """Upload video to YouTube.
+        """Upload video to YouTube with optimized metadata.
+
+        Features:
+        - SEO-optimized title and description
+        - Automatic playlist assignment
+        - Optimized tag selection
+        - Thumbnail upload
 
         Args:
             session: Session dict from database
@@ -90,15 +145,18 @@ class UploadScheduler:
 
         logger.info(f"Preparing to upload: {session_name}")
 
-        # Load metadata
+        # Load and enhance metadata
         metadata = self._load_metadata(session_path)
         if not metadata:
             logger.error("Failed to load metadata")
             return None
 
+        # Generate optimized title if needed
+        title = self._generate_optimized_title(metadata, session_name, session_path)
+
         # Find video file
-        video_path = Path(session['video_path'])
-        if not video_path.exists():
+        video_path = Path(session['video_path']) if session.get('video_path') else None
+        if not video_path or not video_path.exists():
             # Try alternative paths
             video_path = session_path / 'output' / 'youtube_package' / 'final_video.mp4'
             if not video_path.exists():
@@ -111,28 +169,30 @@ class UploadScheduler:
         # Find thumbnail
         thumbnail_path = self._find_thumbnail(session_path)
 
-        # Build description with website link
-        description = self._build_description(metadata, session)
+        # Build SEO-optimized description
+        description = self._build_description(metadata, session, session_path)
 
-        # Get tags
-        tags = metadata.get('tags', [])
-        if isinstance(tags, str):
-            tags = [t.strip() for t in tags.split(',')]
+        # Generate optimized tags (under 500 chars)
+        tags = self._generate_optimized_tags(metadata, session_name)
 
-        logger.info(f"Title: {metadata.get('title', 'Untitled')[:60]}...")
+        # Calculate tag character count
+        tag_chars = sum(len(t) for t in tags) + len(tags) - 1  # tags + commas
+
+        logger.info(f"Title: {title[:60]}...")
         logger.info(f"Video: {video_path}")
         logger.info(f"Thumbnail: {thumbnail_path}")
-        logger.info(f"Tags: {len(tags)} tags")
+        logger.info(f"Tags: {len(tags)} tags ({tag_chars} chars)")
         logger.info(f"Privacy: {privacy_status}")
 
         if dry_run:
             logger.info("[DRY RUN] Would upload video")
+            logger.info(f"[DRY RUN] Would add to playlist: {DREAMWEAVING_PLAYLIST_ID}")
             return "DRY_RUN_VIDEO_ID"
 
         try:
             video_id = self.youtube.upload_video(
                 video_path=str(video_path),
-                title=metadata.get('title', session_name)[:100],
+                title=title[:100],
                 description=description,
                 tags=tags,
                 category_id=self.config['upload']['category_id'],
@@ -140,9 +200,21 @@ class UploadScheduler:
                 made_for_kids=False,
                 is_short=False,
                 thumbnail_path=str(thumbnail_path) if thumbnail_path else None,
+                # Always declare altered/synthetic content for Dreamweaving
+                # Sessions use AI-generated voice (TTS) and AI-generated images
+                contains_synthetic_media=True,
             )
 
             logger.info(f"Upload successful! Video ID: {video_id}")
+
+            # Add to Dreamweaving playlist
+            try:
+                if self.youtube.add_to_playlist(video_id, DREAMWEAVING_PLAYLIST_ID):
+                    logger.info("Added to Dreamweaving playlist")
+                else:
+                    logger.warning("Failed to add to playlist (non-fatal)")
+            except Exception as e:
+                logger.warning(f"Playlist assignment failed (non-fatal): {e}")
 
             # Update database
             self.db.mark_youtube_uploaded(session_name, video_id)
@@ -165,6 +237,179 @@ class UploadScheduler:
                 error_message=str(e),
             )
             return None
+
+    def _generate_optimized_title(
+        self,
+        metadata: Dict,
+        session_name: str,
+        session_path: Path
+    ) -> str:
+        """Generate SEO-optimized YouTube title.
+
+        Format patterns that work well:
+        - "POWERFUL [Benefit] Meditation | [Theme] Guided Journey"
+        - "[Theme] Hypnosis For [Benefit] | Deep Sleep Meditation"
+        - "30-Minute [Theme] Journey | [Outcome] Meditation"
+
+        Args:
+            metadata: Loaded metadata
+            session_name: Session identifier
+            session_path: Path to session
+
+        Returns:
+            Optimized title (max 100 chars)
+        """
+        # First try explicit title from metadata
+        if metadata.get('title') and len(metadata['title']) > 20:
+            title = metadata['title']
+            # Ensure it's not just the session name
+            if title.lower() != session_name.lower().replace('-', ' '):
+                return title[:100]
+
+        # Load manifest for more context
+        manifest_path = session_path / 'manifest.yaml'
+        manifest = {}
+        if manifest_path.exists():
+            try:
+                with open(manifest_path) as f:
+                    manifest = yaml.safe_load(f) or {}
+            except Exception:
+                pass
+
+        # Extract topic and outcome
+        session_info = manifest.get('session', {})
+        voice_info = manifest.get('voice', {})
+
+        # Try to get a good topic from multiple sources
+        topic = session_info.get('topic', session_name.replace('-', ' ').title())
+
+        # If topic is too short/generic, try voice description
+        if len(topic) < 10 or topic.lower() == session_name.lower().replace('-', ' '):
+            voice_desc = voice_info.get('description', '')
+            if voice_desc and len(voice_desc) > len(topic):
+                topic = voice_desc
+
+        # Also check session title if available
+        session_title = session_info.get('title', '')
+        if session_title and len(session_title) > len(topic):
+            topic = session_title
+
+        outcome = session_info.get('desired_outcome', session_info.get('style', 'relaxation'))
+        duration = session_info.get('duration_minutes', 25)
+        # Convert duration from seconds if needed
+        if isinstance(duration, int) and duration > 100:
+            duration = duration // 60
+
+        # Clean up topic
+        topic = topic.replace('_', ' ').strip()
+
+        # Generate title based on outcome type
+        outcome_lower = outcome.lower() if outcome else 'relaxation'
+
+        if 'sleep' in outcome_lower or 'sleep' in topic.lower():
+            title = f"Deep Sleep Hypnosis | {topic} | Fall Asleep Fast"
+        elif 'confidence' in outcome_lower:
+            title = f"POWERFUL Confidence Meditation | {topic} | Build Inner Strength"
+        elif 'healing' in outcome_lower:
+            title = f"Healing Meditation | {topic} | Guided Journey for Inner Peace"
+        elif 'spiritual' in outcome_lower or 'spiritual' in topic.lower():
+            title = f"Spiritual Journey | {topic} | {duration}-Minute Deep Meditation"
+        elif 'transform' in outcome_lower:
+            title = f"Transformative Hypnosis | {topic} | Deep Inner Journey"
+        else:
+            # Default format
+            title = f"{topic} | Guided Meditation & Hypnosis | Deep Relaxation"
+
+        # Ensure proper capitalization
+        # Don't lowercase small words after pipe separators
+        small_words = {'for', 'and', 'the', 'a', 'an', 'in', 'on', 'of', 'to', 'with'}
+        words = title.split()
+        after_separator = True  # Start of title is like after separator
+        for i, word in enumerate(words):
+            if word == '|':
+                after_separator = True
+                continue
+            if after_separator or word.lower() not in small_words:
+                if not word.isupper():  # Preserve intentional ALL CAPS
+                    words[i] = word.capitalize()
+                after_separator = False
+            else:
+                words[i] = word.lower()
+        title = ' '.join(words)
+
+        return title[:100]
+
+    def _generate_optimized_tags(
+        self,
+        metadata: Dict,
+        session_name: str
+    ) -> List[str]:
+        """Generate optimized tag list under 500 characters.
+
+        Strategy:
+        - Start with high-volume base tags
+        - Add theme-specific tags
+        - Add session-specific keywords
+        - Trim to stay under 495 chars (buffer for safety)
+
+        Args:
+            metadata: Loaded metadata
+            session_name: Session identifier
+
+        Returns:
+            List of optimized tags
+        """
+        MAX_CHARS = 495  # Leave 5 char buffer from 500 limit
+
+        tags = []
+
+        # Start with base dreamweaving tags
+        tags.extend(DREAMWEAVING_BASE_TAGS)
+
+        # Detect theme from session name and metadata
+        session_lower = session_name.lower()
+        title_lower = metadata.get('title', '').lower()
+        combined = f"{session_lower} {title_lower}"
+
+        # Add theme-specific tags
+        for theme, theme_tags in THEME_TAGS.items():
+            if theme in combined:
+                tags.extend(theme_tags)
+                break  # Only add one theme's tags
+
+        # Add any existing tags from metadata (but validate them)
+        existing_tags = metadata.get('tags', [])
+        if isinstance(existing_tags, str):
+            existing_tags = [t.strip() for t in existing_tags.split(',')]
+
+        for tag in existing_tags:
+            tag = tag.strip().lower()
+            if tag and tag not in [t.lower() for t in tags] and len(tag) < 50:
+                tags.append(tag)
+
+        # Remove duplicates while preserving order
+        seen = set()
+        unique_tags = []
+        for tag in tags:
+            tag_lower = tag.lower()
+            if tag_lower not in seen:
+                seen.add(tag_lower)
+                unique_tags.append(tag)
+
+        # Trim to fit under MAX_CHARS
+        final_tags = []
+        char_count = 0
+        for tag in unique_tags:
+            # +1 for comma separator (except first)
+            separator = 1 if final_tags else 0
+            if char_count + len(tag) + separator <= MAX_CHARS:
+                final_tags.append(tag)
+                char_count += len(tag) + separator
+            else:
+                break
+
+        logger.debug(f"Generated {len(final_tags)} tags ({char_count} chars)")
+        return final_tags
 
     def _load_metadata(self, session_path: Path) -> Optional[Dict]:
         """Load YouTube metadata from session.
@@ -222,32 +467,95 @@ class UploadScheduler:
 
         return None
 
-    def _build_description(self, metadata: Dict, session: Dict) -> str:
-        """Build YouTube description with website link.
+    def _build_description(
+        self,
+        metadata: Dict,
+        session: Dict,
+        session_path: Optional[Path] = None
+    ) -> str:
+        """Build SEO-optimized YouTube description.
+
+        Includes:
+        - Main description from metadata/manifest
+        - Benefits and what to expect
+        - Website link for full experience
+        - Subscribe CTA
+        - Relevant hashtags
 
         Args:
             metadata: Loaded metadata
             session: Session database record
+            session_path: Optional path for loading additional context
 
         Returns:
-            Formatted description
+            Formatted description (max 5000 chars)
         """
+        session_name = session['session_name']
+
+        # Get base description
         description = metadata.get('description', '')
+
+        # If no description, generate from manifest
+        if not description and session_path:
+            manifest_path = session_path / 'manifest.yaml'
+            if manifest_path.exists():
+                try:
+                    with open(manifest_path) as f:
+                        manifest = yaml.safe_load(f) or {}
+                    session_info = manifest.get('session', {})
+                    topic = session_info.get('topic', session_name.replace('-', ' '))
+                    outcome = session_info.get('desired_outcome', 'deep relaxation')
+                    duration = session_info.get('duration_minutes', 25)
+
+                    description = f"""Experience a {duration}-minute guided journey into {topic}.
+
+This session uses hypnotic techniques, theta wave binaural beats, and immersive soundscapes to help you achieve {outcome}.
+
+🎧 Best experienced with headphones in a quiet, comfortable space.
+
+What you'll experience:
+• Progressive relaxation and deep breathing
+• Guided visualization journey
+• Theta wave binaural beats (4-7 Hz)
+• Return to wakefulness feeling refreshed
+
+⚠️ Do not listen while driving or operating machinery."""
+                except Exception:
+                    pass
+
+        # Ensure we have at least a basic description
+        if not description:
+            description = """A guided meditation and hypnosis journey designed for deep relaxation.
+
+🎧 Best experienced with headphones in a quiet, comfortable space.
+
+This session features:
+• Professional voice guidance
+• Theta wave binaural beats
+• Immersive ambient soundscapes
+• Gentle return to full awareness
+
+⚠️ Do not listen while driving or operating machinery."""
 
         # Get website URL
         website_url = session.get('website_url')
         if not website_url:
-            website_url = f"https://www.salars.net/dreamweavings/{session['session_name']}"
+            website_url = f"https://www.salars.net/dreamweavings/{session_name}"
 
-        # Add footer with links
+        # Build footer with links and CTAs
         footer = f"""
 
----
-Experience the full journey with enhanced audio: {website_url}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Subscribe for more guided journeys and meditations.
+🌙 Full Experience with Enhanced Audio:
+{website_url}
 
-#Dreamweaving #GuidedMeditation #Hypnosis #SpiritualJourney #Meditation #Relaxation
+📺 Subscribe for new guided journeys weekly:
+https://www.youtube.com/@RandySalars?sub_confirmation=1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#GuidedMeditation #SleepHypnosis #DeepSleep #Meditation #Relaxation #Hypnosis #BinauralBeats #ThetaWaves #SpiritualJourney #InnerPeace #Dreamweaving
 """
 
         return (description + footer)[:5000]

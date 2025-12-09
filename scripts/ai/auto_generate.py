@@ -1408,7 +1408,7 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.stages_failed.append("generate_voice")
 
     def _stage_generate_binaural(self):
-        """Generate binaural beats using the dynamic generator; fall back to simple ffmpeg."""
+        """Generate binaural beats using YAML presets, manifest, or fallback."""
         self.log("Generating binaural beats", "stage")
 
         output_path = self.session_path / "output" / "binaural_dynamic.wav"
@@ -1417,6 +1417,7 @@ Do NOT include any explanation or commentary before or after the SSML.
         manifest_path = self.session_path / "manifest.yaml"
         base_freq = 200  # Hz carrier frequency
         beat_freq = 7    # Hz binaural beat (theta default)
+        binaural_preset = None
 
         if manifest_path.exists():
             try:
@@ -1424,6 +1425,8 @@ Do NOT include any explanation or commentary before or after the SSML.
                     manifest = yaml.safe_load(f)
                 binaural = manifest.get('sound_bed', {}).get('binaural', {})
                 base_freq = binaural.get('base_hz', 200)
+                # Check for YAML preset name from knowledge base
+                binaural_preset = binaural.get('preset')
                 # Use middle of the binaural curve for fallback simplicity
                 sections = binaural.get('sections', [])
                 if sections:
@@ -1431,7 +1434,32 @@ Do NOT include any explanation or commentary before or after the SSML.
             except Exception:
                 pass  # Use defaults
 
-        # Primary: high-quality dynamic generator (keeps full progression/gamma/etc.)
+        # Priority 1: YAML preset from knowledge base (if specified in manifest)
+        if binaural_preset:
+            dyn_cmd = [
+                self.python_cmd, "scripts/core/generate_dynamic_binaural.py",
+                "--yaml-preset", binaural_preset,
+                "--duration", str(duration_seconds),
+                "--output", str(output_path),
+            ]
+            try:
+                result = subprocess.run(
+                    dyn_cmd,
+                    capture_output=True,
+                    text=True,
+                    cwd=str(self.project_root),
+                    timeout=600,
+                )
+                if result.returncode == 0:
+                    self.log(f"Generated binaural from YAML preset: {binaural_preset}", "success")
+                    self.stages_completed.append("generate_binaural")
+                    return
+                else:
+                    self.log(f"YAML preset '{binaural_preset}' failed: {result.stderr[:160]}", "warning")
+            except Exception as e:
+                self.log(f"YAML preset generation failed: {e}", "warning")
+
+        # Priority 2: Manifest sections/progression (existing behavior)
         if manifest_path.exists():
             dyn_cmd = [
                 self.python_cmd, "scripts/core/generate_dynamic_binaural.py",

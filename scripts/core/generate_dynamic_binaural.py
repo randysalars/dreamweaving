@@ -41,6 +41,14 @@ from core.audio.binaural import (
     DEFAULT_HARMONICS, DEFAULT_MICRO_MOD, DEFAULT_SPATIAL
 )
 
+# Import the YAML preset loader
+from core.audio.binaural_preset_loader import (
+    load_preset as load_yaml_preset,
+    list_presets as list_yaml_presets,
+    get_preset_info,
+    get_presets_by_outcome,
+)
+
 
 # ============================================================================
 # PRESET PROGRESSIONS
@@ -397,6 +405,69 @@ def preset_to_sections(
     return sections, gamma_bursts, carrier_freq
 
 
+def yaml_preset_to_sections(
+    preset_name: str,
+    duration_sec: Optional[float] = None
+) -> tuple[List[SectionDict], List[GammaBurstDict], float]:
+    """
+    Load a preset from the YAML knowledge base and convert to sections.
+
+    This provides access to ~95 presets defined in knowledge/audio/binaural_presets.yaml
+    including advanced presets for kundalini, astral, shadow work, etc.
+
+    Args:
+        preset_name: Name of the YAML preset (e.g., "healing_deep", "kundalini_awaken")
+        duration_sec: Optional duration override in seconds
+
+    Returns:
+        Tuple of (sections, gamma_bursts, carrier_freq)
+    """
+    # Load and convert the preset
+    preset_data = load_yaml_preset(preset_name, duration_sec)
+
+    sections: List[SectionDict] = []
+    gamma_bursts: List[GammaBurstDict] = []
+
+    carrier_freq = preset_data.get('carrier_freq', 200)
+
+    # Get actual duration from metadata
+    actual_duration = preset_data['metadata']['actual_duration_seconds']
+
+    # Convert stages to sections (time-based)
+    current_time = 0.0
+    for stage in preset_data.get('stages', []):
+        stage_duration = actual_duration * (stage['pct'] / 100)
+
+        # Ensure sections don't exceed total duration
+        end_time = min(current_time + stage_duration, actual_duration)
+        if end_time <= current_time:
+            break  # No more room for sections
+
+        section: SectionDict = {
+            'start': int(current_time),
+            'end': int(end_time),
+            'freq_start': stage['freq_start'],
+            'freq_end': stage['freq_end'],
+            'transition': stage.get('transition', 'linear'),
+        }
+        sections.append(section)
+
+        current_time = end_time
+
+    # Get gamma bursts from preset data, filtering to valid time range
+    for gb in preset_data.get('gamma_bursts', []):
+        burst_time = gb['time']
+        # Only include gamma bursts that fit within the actual duration
+        if burst_time < actual_duration:
+            gamma_bursts.append({
+                'time': int(burst_time),
+                'duration': gb['duration'],
+                'frequency': gb['frequency'],
+            })
+
+    return sections, gamma_bursts, carrier_freq
+
+
 # ============================================================================
 # FREQUENCY MAP TEMPLATE GENERATION
 # ============================================================================
@@ -604,6 +675,22 @@ def _get_sections_from_input(
         duration = args.duration
         sections, gamma_bursts, carrier_freq = preset_to_sections(args.preset, duration)
 
+    elif args.yaml_preset:
+        # Load from YAML knowledge base - duration is optional
+        try:
+            sections, gamma_bursts, carrier_freq = yaml_preset_to_sections(
+                args.yaml_preset, args.duration
+            )
+            # Get duration from the preset if not overridden
+            preset_info = get_preset_info(args.yaml_preset)
+            if preset_info:
+                duration = args.duration if args.duration else preset_info['duration_minutes'] * 60
+            else:
+                duration = args.duration if args.duration else 1500  # Default 25 min
+        except ValueError as e:
+            parser.error(str(e))
+            return [], [], 200.0, 0.0
+
     else:
         parser.error("No input source specified")
         return [], [], 200.0, 0.0  # unreachable but satisfies type checker
@@ -676,15 +763,81 @@ def _handle_template_generation(args, parser) -> int:
     return 0
 
 
+def _handle_list_yaml_presets(args) -> int:
+    """Handle --list-yaml-presets mode."""
+    from core.audio.binaural_preset_loader import (
+        get_presets_by_intensity as _get_by_intensity,
+    )
+
+    print("=" * 70)
+    print("YAML BINAURAL PRESETS")
+    print("=" * 70)
+    print("\nPresets from: knowledge/audio/binaural_presets.yaml\n")
+
+    # Filter by outcome if specified
+    if args.outcome:
+        presets = get_presets_by_outcome(args.outcome)
+        print(f"Filtered by outcome: {args.outcome}")
+    elif args.intensity:
+        presets = _get_by_intensity(args.intensity)
+        print(f"Filtered by intensity: {args.intensity}")
+    else:
+        presets = list_yaml_presets()
+
+    if not presets:
+        print("No presets found matching the filter criteria.")
+        return 0
+
+    print(f"\nFound {len(presets)} presets:\n")
+
+    # Group presets by category for better display
+    categories: Dict[str, List[str]] = {}
+    for name in presets:
+        info = get_preset_info(name)
+        if info:
+            category = info.get('category', 'standard')
+            if category not in categories:
+                categories[category] = []
+            categories[category].append(name)
+
+    for category, names in sorted(categories.items()):
+        print(f"\n[{category.upper()}]")
+        for name in names:
+            info = get_preset_info(name)
+            if info:
+                desc = info['description'][:50] + "..." if len(info['description']) > 50 else info['description']
+                duration = info.get('duration_minutes', '?')
+                intensity = info.get('intensity', 'moderate')
+                print(f"  {name}")
+                print(f"    {desc}")
+                print(f"    Duration: {duration}min | Intensity: {intensity}")
+            else:
+                print(f"  {name}")
+
+    print("\n" + "-" * 70)
+    print("Usage: --yaml-preset <name> [--duration <seconds>] --output <file.wav>")
+    print("-" * 70)
+    return 0
+
+
 # ============================================================================
 # MAIN
 # ============================================================================
 
 def main():
+    # Get YAML presets for help text
+    try:
+        yaml_presets = list_yaml_presets()
+        yaml_preset_count = len(yaml_presets)
+        yaml_preset_sample = ", ".join(yaml_presets[:8]) + f"... ({yaml_preset_count} total)"
+    except Exception:
+        yaml_preset_sample = "(run --list-yaml-presets to see available)"
+        yaml_preset_count = 0
+
     parser = argparse.ArgumentParser(
         description='Generate dynamic binaural beats with frequency progressions',
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
+        epilog=f"""
 Examples:
   # From frequency map JSON (most detailed control)
   %(prog)s --frequency-map session/binaural_frequency_map.json --output output/binaural.wav
@@ -692,13 +845,24 @@ Examples:
   # From manifest with progression
   %(prog)s --manifest session/manifest.yaml --output output/binaural.wav
 
-  # From preset
+  # From built-in preset (quick)
   %(prog)s --preset neuroplasticity --duration 1800 --output output/binaural.wav
+
+  # From YAML knowledge base preset (~{yaml_preset_count} presets available!)
+  %(prog)s --yaml-preset healing_deep --output output/binaural.wav
+  %(prog)s --yaml-preset kundalini_awaken --duration 1800 --output output/binaural.wav
+
+  # List all YAML presets
+  %(prog)s --list-yaml-presets --output /dev/null
+  %(prog)s --list-yaml-presets --outcome healing --output /dev/null
 
   # Generate template for manual editing
   %(prog)s --generate-template --preset neuroplasticity --duration 1800 --output template.json
 
-Available presets: """ + ", ".join(PRESETS.keys())
+Built-in presets: {", ".join(PRESETS.keys())}
+
+YAML presets: {yaml_preset_sample}
+"""
     )
 
     # Input sources (mutually exclusive)
@@ -708,7 +872,11 @@ Available presets: """ + ", ".join(PRESETS.keys())
     input_group.add_argument('--manifest', type=Path,
                             help='Path to session manifest.yaml')
     input_group.add_argument('--preset', choices=list(PRESETS.keys()),
-                            help='Use a preset progression')
+                            help='Use a built-in preset progression')
+    input_group.add_argument('--yaml-preset', type=str,
+                            help='Use a preset from knowledge/audio/binaural_presets.yaml')
+    input_group.add_argument('--list-yaml-presets', action='store_true',
+                            help='List all available YAML presets')
     input_group.add_argument('--generate-template', action='store_true',
                             help='Generate a frequency map template')
 
@@ -718,7 +886,14 @@ Available presets: """ + ", ".join(PRESETS.keys())
 
     # Duration (required for preset and template)
     parser.add_argument('--duration', type=float,
-                       help='Duration in seconds (required for preset/template)')
+                       help='Duration in seconds (optional for yaml-preset, required for others)')
+
+    # YAML preset filtering
+    parser.add_argument('--outcome', type=str,
+                       help='Filter YAML presets by outcome (e.g., healing, transformation)')
+    parser.add_argument('--intensity', type=str,
+                       choices=['gentle', 'moderate', 'intense', 'extreme'],
+                       help='Filter YAML presets by intensity level')
 
     # Options
     parser.add_argument('--carrier', type=float, default=None,
@@ -780,6 +955,10 @@ Available presets: """ + ", ".join(PRESETS.keys())
     # Handle template generation mode
     if args.generate_template:
         return _handle_template_generation(args, parser)
+
+    # Handle list YAML presets mode
+    if args.list_yaml_presets:
+        return _handle_list_yaml_presets(args)
 
     # Get sections from input source
     sections, gamma_bursts, carrier_freq, duration = _get_sections_from_input(args, parser)

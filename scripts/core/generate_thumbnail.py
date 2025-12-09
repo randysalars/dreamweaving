@@ -307,14 +307,17 @@ def find_base_image(session_path: Path) -> Optional[Path]:
     """Find a suitable base image in the session."""
     images_dir = session_path / "images" / "uploaded"
     if images_dir.exists():
+        # Valid image extensions
+        valid_extensions = {'.png', '.jpg', '.jpeg', '.webp'}
+
         # Look for thumbnail-specific images first
         for pattern in ["*thumbnail*", "*helm*", "*scene*05*", "*scene*04*", "*main*"]:
-            matches = list(images_dir.glob(pattern))
+            matches = [p for p in images_dir.glob(pattern) if p.suffix.lower() in valid_extensions]
             if matches:
-                return matches[0]
-        # Fall back to any PNG/JPG
+                return sorted(matches)[0]  # Sort for deterministic selection
+        # Fall back to any image file
         for ext in ["*.png", "*.jpg", "*.jpeg"]:
-            matches = list(images_dir.glob(ext))
+            matches = sorted(images_dir.glob(ext))  # Sort for deterministic selection
             if matches:
                 return matches[0]
     return None

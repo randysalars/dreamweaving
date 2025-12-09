@@ -562,8 +562,14 @@ def generate_sd_scenes(
     target_width = 1920 if upscale else 1280
     target_height = 1080 if upscale else 720
 
+    # Generate session-specific seed offset for image diversity across videos
+    # This ensures different sessions with similar topics get visually distinct images
+    session_name = session_dir.name
+    session_seed_offset = sum(ord(c) for c in session_name) * 7919  # Prime multiplier for better distribution
+
     print(f"\nGenerating {len(scenes)} scene images...")
     print(f"Output: {output_dir}")
+    print(f"Session seed offset: {session_seed_offset} (from '{session_name}')")
     print(f"Performance: {performance} | Steps: {effective_steps}, Guidance: {effective_guidance}, Refiner: {'on' if effective_refiner else 'off'}")
     print(f"Model: {effective_model}")
     if effective_compile:
@@ -586,8 +592,13 @@ def generate_sd_scenes(
         full_prompt = scene.prompt + preset["suffix"]
         negative_prompt = preset["negative"]
 
+        # Compute unique seed: session_offset + scene_number * 1000
+        # This ensures: same session = reproducible, different sessions = different images
+        scene_seed = session_seed_offset + (scene.number * 1000)
+
         print(f"\n[{i}/{len(scenes)}] {scene.filename}")
         print(f"  Prompt: {scene.prompt[:60]}...")
+        print(f"  Seed: {scene_seed}")
         print(f"  Generating...", end=" ", flush=True)
 
         try:
@@ -599,7 +610,7 @@ def generate_sd_scenes(
                 height=target_height,
                 num_inference_steps=effective_steps,
                 guidance_scale=effective_guidance,
-                seed=scene.number * 1000,
+                seed=scene_seed,
                 num_candidates=1,
                 save_metadata=True
             )

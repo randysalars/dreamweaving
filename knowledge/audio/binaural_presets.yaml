@@ -56,6 +56,63 @@ brainwave_reference:
     uses: "Deep healing, integration, rest"
     note: "Use for deepest work only"
 
+  # ---------------------------------------------------------------------------
+  # EXTENDED BRAINWAVE REFERENCE (Advanced Categories)
+  # ---------------------------------------------------------------------------
+  smr:
+    range: "12-15 Hz"
+    typical: "13 Hz"
+    state: "Sensorimotor rhythm, calm focus"
+    uses: "Confidence, grounded action, ADHD support"
+    note: "Bridge between relaxed and alert"
+
+  high_gamma:
+    range: "60-120 Hz"
+    typical: "80 Hz"
+    state: "Peak mystical, nondual awareness, ecstatic bliss"
+    uses: "Kundalini peaks, enlightenment, divine communion"
+    caution: "Very intense; use briefly at journey peaks only"
+
+  hypnagogic:
+    range: "3-4 Hz"
+    typical: "3.2 Hz"
+    state: "Dream-wake boundary, visionary states"
+    uses: "Hypnagogic visions, lucid dreaming entry"
+    note: "Theta-delta crossover zone"
+
+  # ---------------------------------------------------------------------------
+  # SPECIAL RESONANCE FREQUENCIES
+  # ---------------------------------------------------------------------------
+  schumann:
+    frequency: "7.83 Hz"
+    state: "Earth resonance, grounding"
+    uses: "Energy clearing, earth connection, reset"
+    note: "Natural planetary frequency"
+
+  vibrational_state:
+    frequency: "7.83 Hz"
+    state: "Pre-astral vibrational state"
+    uses: "Astral projection prep, Schumann grounding"
+    note: "Earth resonance frequency"
+
+  heart_coherence:
+    range: "0.1 Hz"
+    state: "Heart-brain synchronization"
+    uses: "Emotional balance, abundance work"
+    note: "Overlay frequency, not binaural beat"
+
+  yogic_resonance:
+    frequency: "108 Hz"
+    state: "Crown chakra activation, spiritual completion"
+    uses: "Kundalini crown bloom, sacred sexuality peaks"
+    note: "Traditional yogic sacred number frequency"
+
+  dna_resonance:
+    frequency: "528 Hz"
+    state: "Cellular repair, regeneration"
+    uses: "Longevity work, cellular healing"
+    note: "Solfeggio frequency; use as harmonic overlay"
+
 # =============================================================================
 # OUTCOME-BASED PRESETS
 # =============================================================================
@@ -160,6 +217,121 @@ presets:
     fade_in_seconds: 45
     fade_out_seconds: 60
     transition_style: "very_smooth"
+
+  # ---------------------------------------------------------------------------
+  healing_cellular_renewal:
+    name: "Cellular Renewal Journey"
+    description: "Delta-focused with 40 Hz gamma pulses for immune modulation and cellular repair"
+    outcome_alignment: [healing, longevity]
+    journey_family: [eden_garden, ocean_depths]
+    duration_minutes: 28
+
+    carrier_frequency: 180
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Relaxed preparation"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Entering healing state"
+      - time: "08:00"
+        beat_hz: 4.0
+        state: "low_theta"
+        note: "Deep healing begins"
+      - time: "12:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Cellular renewal state"
+      - time: "14:00"
+        beat_hz: 40.0
+        state: "gamma_burst"
+        note: "40 Hz immune activation pulse"
+      - time: "14:30"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Return to deep healing"
+      - time: "18:00"
+        beat_hz: 40.0
+        state: "gamma_burst"
+        note: "Second immune activation"
+      - time: "18:30"
+        beat_hz: 2.5
+        state: "delta"
+        note: "Integration at depth"
+      - time: "22:00"
+        beat_hz: 4.0
+        state: "theta"
+        note: "Rising"
+      - time: "25:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Integration"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "very_smooth"
+    harmonic_layer:
+      enabled: true
+      type: "528hz_healing"
+      volume: -18
+      purpose: "DNA repair frequency"
+
+  # ---------------------------------------------------------------------------
+  healing_immune_activation:
+    name: "Immune System Activation"
+    description: "Gentle gamma (40 Hz) with theta base for immune response enhancement"
+    outcome_alignment: [healing]
+    journey_family: [eden_garden]
+    duration_minutes: 22
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "06:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Baseline theta"
+      - time: "09:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Sustained 40 Hz immune modulation"
+      - time: "12:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Rest period"
+      - time: "14:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Second gamma phase"
+      - time: "16:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Integration"
+      - time: "19:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+    note: "40 Hz gamma has been shown to support immune function and reduce inflammation"
 
   # ---------------------------------------------------------------------------
   # TRANSFORMATION - Deep alchemical work
@@ -274,6 +446,70 @@ presets:
     transition_style: "dramatic"
 
   # ---------------------------------------------------------------------------
+  transformation_identity_shift:
+    name: "Identity Shift Journey"
+    description: "Deep theta 3.5-4 Hz with gamma insight bursts for profound identity transformation"
+    outcome_alignment: [transformation, self_knowledge]
+    journey_family: [cosmic_forge, underworld_descent]
+    duration_minutes: 32
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded awareness"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Entering inner world"
+      - time: "08:00"
+        beat_hz: 5.0
+        state: "mid_theta"
+        note: "Accessing old identity structures"
+      - time: "12:00"
+        beat_hz: 3.5
+        state: "low_theta"
+        note: "Deep identity dissolution zone"
+      - time: "16:00"
+        beat_hz: 3.5
+        state: "low_theta"
+        note: "Sustained dissolution"
+      - time: "18:00"
+        beat_hz: 60.0
+        state: "gamma_insight"
+        note: "New identity crystallization burst"
+      - time: "18:30"
+        beat_hz: 4.0
+        state: "theta"
+        note: "Integration of new patterns"
+      - time: "22:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Second insight: embodiment of new self"
+      - time: "22:30"
+        beat_hz: 5.0
+        state: "theta"
+      - time: "26:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Stabilizing new identity"
+      - time: "29:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "32:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+        note: "Energized return as new self"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+    note: "Use for deep identity work; ensure proper container and integration support"
+
+  # ---------------------------------------------------------------------------
   # EMPOWERMENT - Activating and strengthening
   # ---------------------------------------------------------------------------
   empowerment_warrior:
@@ -368,6 +604,59 @@ presets:
     transition_style: "smooth"
 
   # ---------------------------------------------------------------------------
+  empowerment_willpower_forge:
+    name: "Willpower Forge"
+    description: "SMR-focused (12-15 Hz) for grounded self-command and disciplined action"
+    outcome_alignment: [empowerment, focus]
+    journey_family: [cosmic_forge, temple_initiation]
+    duration_minutes: 20
+
+    carrier_frequency: 220
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centered awareness"
+      - time: "03:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "SMR activation - calm focus"
+      - time: "06:00"
+        beat_hz: 13.0
+        state: "smr"
+        note: "Sustained SMR for grounded power"
+      - time: "09:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Brief dip for resource access"
+      - time: "11:00"
+        beat_hz: 13.0
+        state: "smr"
+        note: "Return to willpower frequency"
+      - time: "14:00"
+        beat_hz: 15.0
+        state: "high_smr"
+        note: "Peak self-command activation"
+      - time: "16:00"
+        beat_hz: 13.0
+        state: "smr"
+        note: "Sustained grounded power"
+      - time: "18:00"
+        beat_hz: 12.0
+        state: "smr"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Integrated, grounded return"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 25
+    transition_style: "smooth"
+    note: "SMR (12-15 Hz) reduces mental chatter while maintaining grounded alertness"
+
+  # ---------------------------------------------------------------------------
   # SPIRITUAL GROWTH - Transcendent experiences
   # ---------------------------------------------------------------------------
   spiritual_ascent:
@@ -460,6 +749,134 @@ presets:
     transition_style: "very_smooth"
 
   # ---------------------------------------------------------------------------
+  spiritual_higher_self_contact:
+    name: "Higher Self Contact"
+    description: "Theta 6-7 Hz with high gamma (60-80 Hz) peaks for transcendent guidance"
+    outcome_alignment: [spiritual_growth, self_knowledge]
+    journey_family: [celestial_journey, temple_initiation]
+    duration_minutes: 28
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded starting point"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Opening inner space"
+      - time: "08:00"
+        beat_hz: 6.5
+        state: "theta"
+        note: "Sustained theta for receptivity"
+      - time: "12:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Deep receptive state"
+      - time: "14:00"
+        beat_hz: 70.0
+        state: "high_gamma"
+        note: "Higher Self contact peak"
+      - time: "15:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Integration of guidance"
+      - time: "18:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Second contact peak - deeper communion"
+      - time: "19:00"
+        beat_hz: 6.5
+        state: "theta"
+      - time: "22:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Processing wisdom"
+      - time: "25:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded return with guidance"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "ethereal"
+    harmonic_layer:
+      enabled: true
+      type: "432hz_undertone"
+      volume: -20
+
+  # ---------------------------------------------------------------------------
+  spiritual_lightbody_activation:
+    name: "Lightbody Activation"
+    description: "Theta-delta-gamma progression for activating subtle body awareness"
+    outcome_alignment: [spiritual_growth, transformation]
+    journey_family: [celestial_journey]
+    duration_minutes: 32
+
+    carrier_frequency: 180
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Physical grounding"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Subtle body awareness"
+      - time: "08:00"
+        beat_hz: 5.0
+        state: "mid_theta"
+        note: "Etheric layer activation"
+      - time: "12:00"
+        beat_hz: 3.5
+        state: "low_theta"
+        note: "Astral layer opening"
+      - time: "16:00"
+        beat_hz: 2.5
+        state: "delta"
+        note: "Causal body access"
+      - time: "18:00"
+        beat_hz: 60.0
+        state: "gamma"
+        note: "Light body ignition"
+      - time: "19:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Peak activation - luminous body"
+      - time: "20:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Integration begins"
+      - time: "24:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Stabilizing activation"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "32:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+        note: "Energized, luminous return"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "ethereal"
+    secondary_layer:
+      enabled: true
+      carrier: 200
+      offset_hz: 0.5
+      purpose: "Creates shimmer effect for lightbody"
+
+  # ---------------------------------------------------------------------------
   # RELAXATION - Deep rest and stress relief
   # ---------------------------------------------------------------------------
   relaxation_deep:
@@ -538,6 +955,110 @@ presets:
     fade_in_seconds: 90
     fade_out_seconds: 0  # Fades to silence naturally
     transition_style: "very_smooth"
+
+  # ---------------------------------------------------------------------------
+  relaxation_vagus_reset:
+    name: "Vagus Nerve Reset"
+    description: "4.5 Hz vagus resonance with slow descent for parasympathetic activation"
+    outcome_alignment: [relaxation, healing]
+    journey_family: [eden_garden, ocean_depths]
+    duration_minutes: 22
+
+    carrier_frequency: 160
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Gentle opening"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Entering rest-digest state"
+      - time: "08:00"
+        beat_hz: 4.5
+        state: "vagus_resonance"
+        note: "Vagus nerve activation frequency"
+      - time: "12:00"
+        beat_hz: 4.5
+        state: "vagus_resonance"
+        note: "Sustained vagal stimulation"
+      - time: "15:00"
+        beat_hz: 4.5
+        state: "vagus_resonance"
+        note: "Deep parasympathetic reset"
+      - time: "18:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Gentle rise"
+      - time: "20:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Calm, regulated return"
+
+    fade_in_seconds: 60
+    fade_out_seconds: 75
+    transition_style: "very_smooth"
+    breathing_overlay:
+      enabled: true
+      frequency: 0.1  # Hz (6 breaths/min)
+      depth: 2  # dB modulation
+      purpose: "Guides slow diaphragmatic breathing"
+
+  # ---------------------------------------------------------------------------
+  relaxation_stress_release:
+    name: "Stress Release Protocol"
+    description: "Theta with 0.1-0.2 Hz breathing entrainment overlay for deep stress relief"
+    outcome_alignment: [relaxation, healing]
+    journey_family: [eden_garden]
+    duration_minutes: 20
+
+    carrier_frequency: 180
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+        note: "Match elevated stress state"
+      - time: "03:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Beginning descent"
+      - time: "06:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "09:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Stress release state"
+      - time: "12:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Deep release"
+      - time: "15:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "17:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Calm, refreshed return"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+    breathing_overlay:
+      enabled: true
+      frequency: 0.15  # Hz (9 breaths/min - gentle pacing)
+      depth: 2.5  # dB modulation
+      purpose: "Entrains breathing to calming rhythm"
 
   # ---------------------------------------------------------------------------
   # SELF KNOWLEDGE - Introspection and insight
@@ -665,6 +1186,3966 @@ presets:
     fade_out_seconds: 20
     transition_style: "smooth"
 
+  # ===========================================================================
+  # NEW OUTCOME CATEGORIES
+  # ===========================================================================
+
+  # ---------------------------------------------------------------------------
+  # ABUNDANCE & MAGNETISM - Prosperity consciousness
+  # ---------------------------------------------------------------------------
+  abundance_mindset:
+    name: "Abundance Mindset"
+    description: "Alpha-theta 6-9 Hz for belief imprinting and prosperity consciousness"
+    outcome_alignment: [abundance, transformation]
+    journey_family: [eden_garden, celestial_journey]
+    duration_minutes: 25
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Open, receptive state"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "08:00"
+        beat_hz: 6.5
+        state: "theta"
+        note: "Belief access zone"
+      - time: "12:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Deep imprinting"
+      - time: "16:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Integration"
+      - time: "19:00"
+        beat_hz: 9.0
+        state: "alpha"
+        note: "Magnetism activation"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "25:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+        note: "Energized, abundant return"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+    heart_coherence_overlay:
+      enabled: true
+      frequency: 0.1
+      depth: 1.5
+      purpose: "Heart-centered abundance magnetism"
+
+  # ---------------------------------------------------------------------------
+  abundance_magnetic_field:
+    name: "Magnetic Field Expansion"
+    description: "Light gamma 40 Hz with heart coherence for attraction amplification"
+    outcome_alignment: [abundance, empowerment]
+    journey_family: [celestial_journey]
+    duration_minutes: 20
+
+    carrier_frequency: 220
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 8.0
+        state: "low_alpha"
+      - time: "06:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Field activation"
+      - time: "09:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Deep receptivity"
+      - time: "12:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Sustained magnetic field"
+      - time: "15:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "18:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 30
+    transition_style: "smooth"
+    heart_coherence_overlay:
+      enabled: true
+      frequency: 0.1
+      depth: 2.0
+      purpose: "Amplifies magnetic attraction field"
+
+  # ---------------------------------------------------------------------------
+  abundance_wealth_resonance:
+    name: "Wealth Resonance"
+    description: "0.1 Hz heart coherence overlay with theta for prosperity alignment"
+    outcome_alignment: [abundance, healing]
+    journey_family: [eden_garden]
+    duration_minutes: 22
+
+    carrier_frequency: 180
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "08:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Subconscious wealth programming"
+      - time: "12:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Sustained imprinting"
+      - time: "16:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "19:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "very_smooth"
+    heart_coherence_overlay:
+      enabled: true
+      frequency: 0.1
+      depth: 2.5
+      purpose: "Sustained heart-wealth coherence"
+
+  # ---------------------------------------------------------------------------
+  # INTUITION & PSYCHIC DEVELOPMENT
+  # ---------------------------------------------------------------------------
+  intuition_third_eye_awaken:
+    name: "Third Eye Awakening"
+    description: "High theta 6.5-7.5 Hz for pineal activation and intuitive sight"
+    outcome_alignment: [intuition, spiritual_growth]
+    journey_family: [celestial_journey, temple_initiation]
+    duration_minutes: 25
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 7.5
+        state: "high_theta"
+        note: "Third eye frequency zone"
+      - time: "08:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Deepening activation"
+      - time: "12:00"
+        beat_hz: 6.5
+        state: "theta"
+        note: "Peak pineal stimulation"
+      - time: "16:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "19:00"
+        beat_hz: 7.5
+        state: "high_theta"
+        note: "Sustained vision state"
+      - time: "22:00"
+        beat_hz: 8.5
+        state: "alpha"
+      - time: "25:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "ethereal"
+    harmonic_layer:
+      enabled: true
+      type: "936hz_solfeggio"
+      volume: -20
+      purpose: "Third eye solfeggio enhancement"
+
+  # ---------------------------------------------------------------------------
+  intuition_flow:
+    name: "Intuition Flow State"
+    description: "Sustained theta with gamma bursts (70-90 Hz) for psychic insight"
+    outcome_alignment: [intuition, creativity]
+    journey_family: [celestial_journey]
+    duration_minutes: 22
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "06:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Intuition baseline"
+      - time: "09:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Insight burst"
+      - time: "09:30"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "13:00"
+        beat_hz: 70.0
+        state: "gamma"
+        note: "Second insight burst"
+      - time: "13:30"
+        beat_hz: 6.5
+        state: "theta"
+      - time: "17:00"
+        beat_hz: 90.0
+        state: "high_gamma"
+        note: "Peak intuitive flash"
+      - time: "17:30"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  intuition_clairvoyance:
+    name: "Clairvoyance Stabilization"
+    description: "Theta-gamma cycling for stable psychic perception"
+    outcome_alignment: [intuition, spiritual_growth]
+    journey_family: [celestial_journey, temple_initiation]
+    duration_minutes: 28
+
+    carrier_frequency: 180
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "07:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Perception opening"
+      - time: "08:00"
+        beat_hz: 6.5
+        state: "theta"
+      - time: "11:00"
+        beat_hz: 60.0
+        state: "gamma"
+        note: "Clairvoyant activation"
+      - time: "12:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Vision integration"
+      - time: "16:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Peak clarity"
+      - time: "17:00"
+        beat_hz: 6.5
+        state: "theta"
+      - time: "21:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "24:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "ethereal"
+
+  # ---------------------------------------------------------------------------
+  # ENERGY CLEARING
+  # ---------------------------------------------------------------------------
+  energy_cleansing:
+    name: "Energy Cleansing"
+    description: "7.83 Hz Schumann resonance base for full energy field clearing"
+    outcome_alignment: [energy_clearing, healing]
+    journey_family: [eden_garden, ocean_depths]
+    duration_minutes: 20
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth resonance grounding"
+      - time: "08:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Sustained clearing"
+      - time: "12:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Deep field reset"
+      - time: "15:00"
+        beat_hz: 8.5
+        state: "alpha"
+      - time: "18:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+    harmonic_layer:
+      enabled: true
+      type: "111hz_sacred"
+      volume: -18
+      purpose: "Sacred healing tone for clearing"
+
+  # ---------------------------------------------------------------------------
+  energy_chakra_reset:
+    name: "Chakra Reset"
+    description: "4.5 Hz aura sweep for full chakra system clearing"
+    outcome_alignment: [energy_clearing, healing, spiritual_growth]
+    journey_family: [temple_initiation]
+    duration_minutes: 28
+
+    carrier_frequency: 180
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounding"
+      - time: "04:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth connection"
+      - time: "08:00"
+        beat_hz: 4.5
+        state: "low_theta"
+        note: "Root/sacral clearing"
+      - time: "12:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Solar/heart clearing"
+      - time: "16:00"
+        beat_hz: 6.5
+        state: "theta"
+        note: "Throat/third eye clearing"
+      - time: "20:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Crown/reset"
+      - time: "24:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "very_smooth"
+
+  # ---------------------------------------------------------------------------
+  energy_field_purification:
+    name: "Field Purification"
+    description: "111 Hz sacred healing tone overlay for deep energy purification"
+    outcome_alignment: [energy_clearing, healing]
+    journey_family: [temple_initiation, eden_garden]
+    duration_minutes: 22
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "07:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Deep purification"
+      - time: "11:00"
+        beat_hz: 4.0
+        state: "low_theta"
+        note: "Deepest clearing"
+      - time: "15:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "18:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+    harmonic_layer:
+      enabled: true
+      type: "111hz_sacred"
+      volume: -15
+      purpose: "Primary purification frequency"
+
+  # ---------------------------------------------------------------------------
+  # MANIFESTATION
+  # ---------------------------------------------------------------------------
+  manifestation_quantum:
+    name: "Quantum Manifestation"
+    description: "Alpha 10 Hz intention + theta 5 Hz imprinting + gamma collapse"
+    outcome_alignment: [manifestation, abundance]
+    journey_family: [celestial_journey, cosmic_forge]
+    duration_minutes: 28
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Intention setting phase"
+      - time: "05:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Clear intention holding"
+      - time: "08:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Subconscious imprinting"
+      - time: "14:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Deep belief encoding"
+      - time: "18:00"
+        beat_hz: 60.0
+        state: "gamma"
+        note: "Probability collapse"
+      - time: "19:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Reality anchoring"
+      - time: "23:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+    heart_coherence_overlay:
+      enabled: true
+      frequency: 0.1
+      depth: 2.0
+      purpose: "Heart-intention coherence"
+
+  # ---------------------------------------------------------------------------
+  manifestation_timeline_shift:
+    name: "Timeline Shift"
+    description: "Gamma 55-65 Hz for probability wave collapse and reality selection"
+    outcome_alignment: [manifestation, transformation]
+    journey_family: [cosmic_forge, celestial_journey]
+    duration_minutes: 25
+
+    carrier_frequency: 220
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Accessing quantum field"
+      - time: "07:00"
+        beat_hz: 55.0
+        state: "gamma"
+        note: "Timeline scanning"
+      - time: "10:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Selection imprinting"
+      - time: "14:00"
+        beat_hz: 65.0
+        state: "gamma"
+        note: "Timeline lock"
+      - time: "16:00"
+        beat_hz: 60.0
+        state: "gamma"
+        note: "Probability collapse"
+      - time: "18:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Integration"
+      - time: "21:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "25:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 35
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  manifestation_attractor_field:
+    name: "Attractor Field"
+    description: "Alpha-theta with gamma peaks for creating magnetic attraction field"
+    outcome_alignment: [manifestation, abundance]
+    journey_family: [celestial_journey]
+    duration_minutes: 24
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "10:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Field activation"
+      - time: "11:00"
+        beat_hz: 5.5
+        state: "theta"
+      - time: "15:00"
+        beat_hz: 70.0
+        state: "high_gamma"
+        note: "Peak attraction"
+      - time: "16:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "19:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "24:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  # TRAUMA RELEASE
+  # ---------------------------------------------------------------------------
+  trauma_release:
+    name: "Trauma Release"
+    description: "Theta 3-5 Hz with delta safety net for trauma processing"
+    outcome_alignment: [trauma_release, healing]
+    journey_family: [underworld_descent, ocean_depths]
+    duration_minutes: 30
+
+    carrier_frequency: 160
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Safety establishment"
+      - time: "05:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Gentle opening"
+      - time: "10:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Trauma access"
+      - time: "14:00"
+        beat_hz: 3.5
+        state: "low_theta"
+        note: "Deep processing"
+      - time: "18:00"
+        beat_hz: 2.5
+        state: "delta"
+        note: "Delta safety net"
+      - time: "20:00"
+        beat_hz: 4.0
+        state: "theta"
+        note: "Release integration"
+      - time: "24:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "27:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 60
+    fade_out_seconds: 90
+    transition_style: "very_smooth"
+    breathing_overlay:
+      enabled: true
+      frequency: 0.1
+      depth: 2.0
+      purpose: "Somatic release breathing"
+
+  # ---------------------------------------------------------------------------
+  trauma_inner_child_healing:
+    name: "Inner Child Healing"
+    description: "Gentle theta 5-6 Hz for safe inner child work"
+    outcome_alignment: [trauma_release, healing, self_knowledge]
+    journey_family: [eden_garden, underworld_descent]
+    duration_minutes: 28
+
+    carrier_frequency: 160
+    base_volume: -8  # Extra gentle
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "05:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "09:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Child state access"
+      - time: "13:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Deep nurturing zone"
+      - time: "17:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Sustained healing"
+      - time: "21:00"
+        beat_hz: 6.5
+        state: "theta"
+      - time: "24:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 60
+    fade_out_seconds: 90
+    transition_style: "very_smooth"
+
+  # ---------------------------------------------------------------------------
+  trauma_somatic_discharge:
+    name: "Somatic Discharge"
+    description: "0.1-0.2 Hz breathing entrainment for body-based trauma release"
+    outcome_alignment: [trauma_release, healing, relaxation]
+    journey_family: [ocean_depths, eden_garden]
+    duration_minutes: 25
+
+    carrier_frequency: 150
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "08:00"
+        beat_hz: 4.5
+        state: "low_theta"
+        note: "Somatic awareness"
+      - time: "12:00"
+        beat_hz: 4.0
+        state: "low_theta"
+        note: "Body release activation"
+      - time: "16:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Discharge phase"
+      - time: "20:00"
+        beat_hz: 7.0
+        state: "theta"
+      - time: "23:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "25:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "very_smooth"
+    breathing_overlay:
+      enabled: true
+      frequency: 0.15
+      depth: 3.0
+      purpose: "Somatic discharge breathing pattern"
+
+  # ---------------------------------------------------------------------------
+  # MOTIVATION & DRIVE
+  # ---------------------------------------------------------------------------
+  motivation_momentum:
+    name: "Momentum Builder"
+    description: "Beta 16-20 Hz for activation and forward momentum"
+    outcome_alignment: [motivation, empowerment, focus]
+    journey_family: [cosmic_forge]
+    duration_minutes: 18
+
+    carrier_frequency: 250
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "02:00"
+        beat_hz: 14.0
+        state: "low_beta"
+      - time: "05:00"
+        beat_hz: 16.0
+        state: "beta"
+        note: "Activation begins"
+      - time: "08:00"
+        beat_hz: 18.0
+        state: "beta"
+        note: "Momentum building"
+      - time: "11:00"
+        beat_hz: 20.0
+        state: "high_beta"
+        note: "Peak drive"
+      - time: "14:00"
+        beat_hz: 16.0
+        state: "beta"
+      - time: "16:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+      - time: "18:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+
+    fade_in_seconds: 10
+    fade_out_seconds: 15
+    transition_style: "energetic"
+
+  # ---------------------------------------------------------------------------
+  motivation_action_trigger:
+    name: "Action Trigger"
+    description: "SMR 13 Hz to reduce overwhelm and enable clear action"
+    outcome_alignment: [motivation, focus]
+    journey_family: [temple_initiation]
+    duration_minutes: 15
+
+    carrier_frequency: 220
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "02:00"
+        beat_hz: 12.0
+        state: "smr"
+      - time: "05:00"
+        beat_hz: 13.0
+        state: "smr"
+        note: "Clear action state"
+      - time: "08:00"
+        beat_hz: 13.0
+        state: "smr"
+        note: "Sustained clarity"
+      - time: "11:00"
+        beat_hz: 14.0
+        state: "low_beta"
+        note: "Action readiness"
+      - time: "13:00"
+        beat_hz: 12.0
+        state: "smr"
+      - time: "15:00"
+        beat_hz: 12.0
+        state: "smr"
+
+    fade_in_seconds: 10
+    fade_out_seconds: 15
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  motivation_task_mastery:
+    name: "Task Mastery"
+    description: "Low beta 14-16 Hz sustained for productive focus"
+    outcome_alignment: [motivation, focus]
+    journey_family: [temple_initiation]
+    duration_minutes: 20
+
+    carrier_frequency: 240
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+      - time: "06:00"
+        beat_hz: 14.0
+        state: "low_beta"
+      - time: "09:00"
+        beat_hz: 15.0
+        state: "beta"
+        note: "Task focus zone"
+      - time: "13:00"
+        beat_hz: 16.0
+        state: "beta"
+        note: "Peak productivity"
+      - time: "16:00"
+        beat_hz: 14.0
+        state: "low_beta"
+      - time: "18:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 15
+    fade_out_seconds: 20
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  # COGNITIVE ENHANCEMENT
+  # ---------------------------------------------------------------------------
+  cognitive_genius_mind:
+    name: "Genius Mind"
+    description: "Gamma 40-100 Hz for peak cognitive performance"
+    outcome_alignment: [cognitive_enhancement, focus, creativity]
+    journey_family: [celestial_journey, temple_initiation]
+    duration_minutes: 22
+
+    carrier_frequency: 250
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 20.0
+        state: "beta"
+      - time: "06:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Cognitive activation"
+      - time: "09:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Peak processing"
+      - time: "12:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Genius zone"
+      - time: "14:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Maximum integration"
+      - time: "15:00"
+        beat_hz: 60.0
+        state: "gamma"
+      - time: "17:00"
+        beat_hz: 40.0
+        state: "gamma"
+      - time: "19:00"
+        beat_hz: 14.0
+        state: "beta"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  cognitive_learning_accelerator:
+    name: "Learning Accelerator"
+    description: "High beta 20-28 Hz for enhanced learning and memory encoding"
+    outcome_alignment: [cognitive_enhancement, focus]
+    journey_family: [temple_initiation]
+    duration_minutes: 25
+
+    carrier_frequency: 260
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 14.0
+        state: "low_beta"
+      - time: "06:00"
+        beat_hz: 18.0
+        state: "beta"
+      - time: "09:00"
+        beat_hz: 22.0
+        state: "high_beta"
+        note: "Learning zone"
+      - time: "13:00"
+        beat_hz: 26.0
+        state: "high_beta"
+        note: "Peak encoding"
+      - time: "16:00"
+        beat_hz: 28.0
+        state: "high_beta"
+        note: "Maximum absorption"
+      - time: "18:00"
+        beat_hz: 22.0
+        state: "high_beta"
+      - time: "20:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Memory consolidation"
+      - time: "23:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "25:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  cognitive_synapse_growth:
+    name: "Synapse Growth"
+    description: "Theta bursts for neuroplasticity and memory consolidation"
+    outcome_alignment: [cognitive_enhancement, healing]
+    journey_family: [eden_garden]
+    duration_minutes: 28
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Neuroplastic state"
+      - time: "07:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Synapse activation burst"
+      - time: "08:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Growth integration"
+      - time: "12:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Second burst"
+      - time: "13:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Deep consolidation"
+      - time: "17:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Third burst"
+      - time: "18:00"
+        beat_hz: 6.0
+        state: "theta"
+      - time: "22:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Neural repair phase"
+      - time: "25:00"
+        beat_hz: 8.0
+        state: "alpha"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  # CREATIVITY ADDITIONS
+  # ---------------------------------------------------------------------------
+  creativity_unblocking:
+    name: "Creative Unblocking"
+    description: "Alpha-theta 7-10 Hz for dissolving creative blocks"
+    outcome_alignment: [creativity, transformation]
+    journey_family: [eden_garden, celestial_journey]
+    duration_minutes: 22
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 8.5
+        state: "alpha_theta"
+        note: "Creative border zone"
+      - time: "07:00"
+        beat_hz: 7.5
+        state: "theta"
+        note: "Block dissolution"
+      - time: "11:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Deep unblocking"
+      - time: "15:00"
+        beat_hz: 8.0
+        state: "alpha_theta"
+        note: "Creative emergence"
+      - time: "18:00"
+        beat_hz: 9.0
+        state: "alpha"
+        note: "Ideas flowing"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  creativity_muse_contact:
+    name: "Muse Contact"
+    description: "Flow band 8-9 Hz sustained for inspiration and creative channeling"
+    outcome_alignment: [creativity, spiritual_growth]
+    journey_family: [celestial_journey]
+    duration_minutes: 25
+
+    carrier_frequency: 200
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "04:00"
+        beat_hz: 8.5
+        state: "flow_band"
+        note: "Entering flow state"
+      - time: "08:00"
+        beat_hz: 8.0
+        state: "flow_band"
+        note: "Sustained muse connection"
+      - time: "12:00"
+        beat_hz: 8.5
+        state: "flow_band"
+        note: "Creative channeling"
+      - time: "16:00"
+        beat_hz: 9.0
+        state: "flow_band"
+        note: "Peak inspiration"
+      - time: "19:00"
+        beat_hz: 8.5
+        state: "flow_band"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "25:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "ethereal"
+
+  # ---------------------------------------------------------------------------
+  # FOCUS ADDITIONS
+  # ---------------------------------------------------------------------------
+  focus_study_mode:
+    name: "Study Mode"
+    description: "Low beta 14-18 Hz for sustained study focus and retention"
+    outcome_alignment: [focus, cognitive_enhancement]
+    journey_family: [temple_initiation]
+    duration_minutes: 45
+
+    carrier_frequency: 250
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "03:00"
+        beat_hz: 12.0
+        state: "smr"
+      - time: "06:00"
+        beat_hz: 14.0
+        state: "low_beta"
+      - time: "10:00"
+        beat_hz: 16.0
+        state: "beta"
+        note: "Study zone"
+      - time: "20:00"
+        beat_hz: 16.0
+        state: "beta"
+        note: "Sustained focus"
+      - time: "30:00"
+        beat_hz: 18.0
+        state: "beta"
+        note: "Peak concentration"
+      - time: "35:00"
+        beat_hz: 16.0
+        state: "beta"
+      - time: "40:00"
+        beat_hz: 14.0
+        state: "low_beta"
+      - time: "43:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "45:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 15
+    fade_out_seconds: 20
+    transition_style: "smooth"
+
+  # ---------------------------------------------------------------------------
+  focus_hyperclarity:
+    name: "Hyperclarity"
+    description: "High beta 18-22 Hz for maximum mental clarity and precision"
+    outcome_alignment: [focus, cognitive_enhancement]
+    journey_family: [temple_initiation]
+    duration_minutes: 20
+
+    carrier_frequency: 260
+    base_volume: -6
+
+    progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+      - time: "02:00"
+        beat_hz: 14.0
+        state: "low_beta"
+      - time: "05:00"
+        beat_hz: 18.0
+        state: "high_beta"
+        note: "Clarity onset"
+      - time: "08:00"
+        beat_hz: 20.0
+        state: "high_beta"
+        note: "Peak clarity"
+      - time: "12:00"
+        beat_hz: 22.0
+        state: "high_beta"
+        note: "Maximum precision"
+      - time: "14:00"
+        beat_hz: 20.0
+        state: "high_beta"
+      - time: "16:00"
+        beat_hz: 16.0
+        state: "beta"
+      - time: "18:00"
+        beat_hz: 12.0
+        state: "high_alpha"
+      - time: "20:00"
+        beat_hz: 10.0
+        state: "alpha"
+
+    fade_in_seconds: 10
+    fade_out_seconds: 15
+    transition_style: "smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: KUNDALINI ACTIVATION & ENERGY RISING
+  # ===========================================================================
+  # Presets designed for kundalini awakening and spinal energy work.
+  # WARNING: These are intense states - use with grounding and integration.
+
+  kundalini_awaken:
+    name: "Kundalini Awakening"
+    description: "Spiral activation from root chakra to crown"
+    category: "kundalini"
+    intensity: "extreme"
+    duration_minutes: 35
+    carrier_hz: 180
+    target_outcome: "kundalini_activation"
+    caution: "Use grounding techniques before and after; intense energy release"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centering and grounding"
+      - time: "03:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth connection"
+      - time: "06:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Root chakra activation"
+      - time: "10:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Sacral/solar energy rising"
+      - time: "14:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart center ignition"
+      - time: "18:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Third eye activation surge"
+      - time: "22:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Crown approach"
+      - time: "25:00"
+        beat_hz: 108.0
+        state: "yogic_resonance"
+        note: "Crown bloom - full kundalini"
+      - time: "28:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Integration descent"
+      - time: "31:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Grounding return"
+      - time: "35:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centered completion"
+
+    overlay:
+      type: "frequency_stack"
+      stack: "kundalini_spiral"
+      note: "Uses rising frequency stack matching chakra positions"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "smooth"
+
+  spinal_fireflow:
+    name: "Spinal Fire Flow"
+    description: "Sacral/solar fire with gamma surges for energy rising"
+    category: "kundalini"
+    intensity: "intense"
+    duration_minutes: 28
+    carrier_hz: 185
+    target_outcome: "energy_activation"
+    caution: "May cause spontaneous body movements; allow energy to flow"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling awareness"
+      - time: "03:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Internal focus"
+      - time: "06:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Sacral fire ignition"
+      - time: "09:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "First gamma surge"
+      - time: "10:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Return to sacral"
+      - time: "13:00"
+        beat_hz: 6.5
+        state: "theta"
+        note: "Solar plexus activation"
+      - time: "16:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Second gamma surge - stronger"
+      - time: "17:00"
+        beat_hz: 6.5
+        state: "theta"
+        note: "Integration"
+      - time: "20:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart energy flow"
+      - time: "23:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Final gamma surge - peak"
+      - time: "24:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Gentle descent"
+      - time: "26:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounding"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "three_surges"
+      intensities: [-14, -12, -10]  # dB - progressively stronger
+      note: "Three gamma surges of increasing intensity"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  serpent_ascension:
+    name: "Serpent Ascension"
+    description: "Heart ignition at Schumann resonance with crown bloom"
+    category: "kundalini"
+    intensity: "extreme"
+    duration_minutes: 32
+    carrier_hz: 175
+    target_outcome: "spiritual_awakening"
+    caution: "Powerful heart-crown activation; ensure safe environment"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Preparation"
+      - time: "04:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Root grounding"
+      - time: "07:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth attunement"
+      - time: "10:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart ignition begins"
+      - time: "14:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Heart-Earth resonance lock"
+      - time: "18:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Serpent rising to third eye"
+      - time: "21:00"
+        beat_hz: 70.0
+        state: "high_gamma"
+        note: "Third eye activation"
+      - time: "24:00"
+        beat_hz: 108.0
+        state: "yogic_resonance"
+        note: "Crown bloom - serpent arrives"
+      - time: "26:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Crown stabilization"
+      - time: "28:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Descent integration"
+      - time: "30:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth grounding"
+      - time: "32:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centered return"
+
+    overlay:
+      type: "heart_coherence"
+      frequency: 0.1  # Hz
+      activation_time: "10:00-18:00"
+      note: "Heart coherence during heart ignition phase"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 40
+    transition_style: "very_smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: HYPNAGOGIC GATEWAY / VISIONARY STATES
+  # ===========================================================================
+  # Presets designed for hypnagogic entry and visionary experiences.
+  # These target the theta-delta crossover zone for vivid internal imagery.
+
+  hypnagogic_dream_gate:
+    name: "Dream Gate Opening"
+    description: "Theta-delta crossover for hypnagogic visionary access"
+    category: "hypnagogic"
+    intensity: "moderate"
+    duration_minutes: 30
+    carrier_hz: 170
+    target_outcome: "hypnagogic_visions"
+    caution: "May cause vivid imagery; maintain observer awareness"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Eyes closed relaxation"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Deeper relaxation"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Theta entry"
+      - time: "10:00"
+        beat_hz: 4.5
+        state: "theta"
+        note: "Approaching hypnagogic zone"
+      - time: "13:00"
+        beat_hz: 3.2
+        state: "hypnagogic"
+        note: "Theta-delta crossover - gate opens"
+      - time: "18:00"
+        beat_hz: 3.0
+        state: "hypnagogic"
+        note: "Deep hypnagogic - visions emerge"
+      - time: "22:00"
+        beat_hz: 3.5
+        state: "hypnagogic"
+        note: "Sustained visionary access"
+      - time: "25:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Gentle ascent"
+      - time: "27:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Return journey"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Waking integration"
+
+    overlay:
+      type: "none"
+      note: "Pure binaural for clarity of internal visions"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "very_smooth"
+
+  hypnagogic_visionary_trance:
+    name: "Visionary Trance"
+    description: "Hypnagogic flicker zone for vivid internal experiences"
+    category: "hypnagogic"
+    intensity: "intense"
+    duration_minutes: 35
+    carrier_hz: 165
+    target_outcome: "visionary_experience"
+    caution: "Profound altered state; ensure comfortable position"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Initial settling"
+      - time: "05:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Theta immersion"
+      - time: "08:00"
+        beat_hz: 6.5
+        state: "theta"
+        note: "Hypnagogic flicker zone approach"
+      - time: "11:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Flicker zone entry"
+      - time: "14:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Deep flicker - imagery intensifies"
+      - time: "17:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Gamma burst for vision clarity"
+      - time: "18:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Return to flicker zone"
+      - time: "22:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Sustained visionary state"
+      - time: "25:00"
+        beat_hz: 70.0
+        state: "high_gamma"
+        note: "Second gamma burst - peak clarity"
+      - time: "26:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Integration"
+      - time: "30:00"
+        beat_hz: 7.5
+        state: "theta"
+        note: "Gentle ascent"
+      - time: "33:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Waking state"
+      - time: "35:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "vision_clarity"
+      times: ["17:00", "25:00"]
+      intensity: -14  # dB
+      note: "Brief gamma for sharpening internal visuals"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 35
+    transition_style: "smooth"
+
+  hypnagogic_liminal_space:
+    name: "Liminal Space Activation"
+    description: "Occipital gamma enhancement for vivid internal visuals"
+    category: "hypnagogic"
+    intensity: "intense"
+    duration_minutes: 28
+    carrier_hz: 175
+    target_outcome: "visual_enhancement"
+    caution: "Intense internal visuals; remain relaxed"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "03:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Relaxed awareness"
+      - time: "06:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Internal focus"
+      - time: "09:00"
+        beat_hz: 4.5
+        state: "theta"
+        note: "Liminal space approach"
+      - time: "12:00"
+        beat_hz: 3.5
+        state: "hypnagogic"
+        note: "Liminal space entry"
+      - time: "14:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Occipital gamma activation"
+      - time: "15:00"
+        beat_hz: 3.5
+        state: "hypnagogic"
+        note: "Return to liminal with enhanced visuals"
+      - time: "18:00"
+        beat_hz: 75.0
+        state: "high_gamma"
+        note: "Second gamma activation"
+      - time: "19:00"
+        beat_hz: 3.5
+        state: "hypnagogic"
+        note: "Peak visual state"
+      - time: "22:00"
+        beat_hz: 85.0
+        state: "high_gamma"
+        note: "Third gamma - maximum clarity"
+      - time: "23:00"
+        beat_hz: 5.0
+        state: "theta"
+        note: "Gentle return"
+      - time: "25:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Integration"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Waking completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "occipital_activation"
+      frequencies: [60, 75, 85]  # Hz - progressive intensity
+      duration_seconds: 45
+      note: "Occipital gamma 60-85 Hz for visual cortex activation"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: ASTRAL PROJECTION & NON-PHYSICAL TRAVEL
+  # ===========================================================================
+  # Presets designed for astral projection preparation and out-of-body states.
+  # These induce the vibrational state and facilitate non-physical exploration.
+
+  astral_exit:
+    name: "Astral Exit Protocol"
+    description: "Rope-technique frequency for astral body separation"
+    category: "astral"
+    intensity: "extreme"
+    duration_minutes: 40
+    carrier_hz: 160
+    target_outcome: "astral_projection"
+    caution: "Powerful dissociative state; maintain grounding anchor"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Relaxation begins"
+      - time: "05:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth grounding anchor"
+      - time: "08:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Deep relaxation"
+      - time: "12:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Rope-tech frequency entry"
+      - time: "16:00"
+        beat_hz: 3.5
+        state: "deep_theta"
+        note: "Vibrational state approach"
+      - time: "20:00"
+        beat_hz: 7.83
+        state: "vibrational_state"
+        note: "Schumann vibrational resonance"
+      - time: "24:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Exit window - separation point"
+      - time: "28:00"
+        beat_hz: 8.5
+        state: "high_theta"
+        note: "Non-physical navigation state"
+      - time: "32:00"
+        beat_hz: 75.0
+        state: "high_gamma"
+        note: "Awareness clarity boost"
+      - time: "33:00"
+        beat_hz: 8.5
+        state: "high_theta"
+        note: "Sustained exploration"
+      - time: "36:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Return preparation"
+      - time: "38:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Grounding return"
+      - time: "40:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Physical reintegration"
+
+    overlay:
+      type: "frequency_stack"
+      stack: "astral_launch"
+      note: "Uses astral launch frequency stack"
+
+    fade_in_seconds: 35
+    fade_out_seconds: 45
+    transition_style: "very_smooth"
+
+  astral_etheric_shift:
+    name: "Etheric Body Shift"
+    description: "Vibrational state at Schumann for etheric separation"
+    category: "astral"
+    intensity: "intense"
+    duration_minutes: 35
+    carrier_hz: 165
+    target_outcome: "etheric_awareness"
+    caution: "May experience vibrations, tingling, or floating sensation"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Initial relaxation"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Body awareness"
+      - time: "07:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Schumann attunement"
+      - time: "10:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Theta descent"
+      - time: "14:00"
+        beat_hz: 4.5
+        state: "theta"
+        note: "Approaching vibrational zone"
+      - time: "17:00"
+        beat_hz: 7.83
+        state: "vibrational_state"
+        note: "Vibrational state activation"
+      - time: "21:00"
+        beat_hz: 7.83
+        state: "vibrational_state"
+        note: "Sustained vibrations - etheric loosening"
+      - time: "25:00"
+        beat_hz: 8.5
+        state: "high_theta"
+        note: "Shift point - etheric mobility"
+      - time: "28:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Clarity burst"
+      - time: "29:00"
+        beat_hz: 8.5
+        state: "high_theta"
+        note: "Exploration state"
+      - time: "32:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Return journey"
+      - time: "35:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Physical reintegration"
+
+    overlay:
+      type: "schumann_resonance"
+      frequency: 7.83
+      activation_time: "07:00-25:00"
+      note: "Extended Schumann resonance for vibrational state"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 40
+    transition_style: "very_smooth"
+
+  astral_plane_navigation:
+    name: "Plane Navigation"
+    description: "High-theta dissociation with crown gamma for astral clarity"
+    category: "astral"
+    intensity: "extreme"
+    duration_minutes: 38
+    carrier_hz: 155
+    target_outcome: "astral_travel"
+    caution: "Advanced state; maintain observer consciousness"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Preparation"
+      - time: "04:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth anchor"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Theta immersion"
+      - time: "10:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Deep theta"
+      - time: "13:00"
+        beat_hz: 7.83
+        state: "vibrational_state"
+        note: "Vibrational activation"
+      - time: "16:00"
+        beat_hz: 8.5
+        state: "high_theta"
+        note: "High-theta dissociation"
+      - time: "19:00"
+        beat_hz: 75.0
+        state: "high_gamma"
+        note: "Crown gamma - navigation clarity"
+      - time: "20:00"
+        beat_hz: 8.5
+        state: "high_theta"
+        note: "Navigation state"
+      - time: "24:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Second gamma - heightened awareness"
+      - time: "25:00"
+        beat_hz: 8.5
+        state: "high_theta"
+        note: "Sustained navigation"
+      - time: "29:00"
+        beat_hz: 90.0
+        state: "high_gamma"
+        note: "Third gamma - peak clarity"
+      - time: "30:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Return initiation"
+      - time: "33:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth reconnection"
+      - time: "36:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Full return"
+      - time: "38:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "navigation_clarity"
+      frequencies: [75, 80, 90]  # Hz - progressive crown activation
+      note: "High gamma for astral navigation awareness"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "very_smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: ARCHETYPAL EMBODIMENT & MYTHIC IDENTITY
+  # ===========================================================================
+  # Presets designed for embodying archetypal energies and mythic identities.
+  # These use specific frequency profiles to evoke and stabilize archetypal states.
+
+  archetype_warrior:
+    name: "Warrior Archetype Embodiment"
+    description: "Summon 8-9 Hz + stabilization 12 Hz + mythic gamma 80-100 Hz"
+    category: "archetypal"
+    intensity: "intense"
+    duration_minutes: 28
+    carrier_hz: 195
+    target_outcome: "warrior_embodiment"
+    caution: "Powerful activation energy; ground thoroughly before and after"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centering"
+      - time: "03:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Warrior summons - flow band entry"
+      - time: "06:00"
+        beat_hz: 8.5
+        state: "alpha"
+        note: "Archetype emergence"
+      - time: "09:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "SMR stabilization - grounded power"
+      - time: "12:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Mythic gamma - warrior activates"
+      - time: "13:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "Stability lock"
+      - time: "16:00"
+        beat_hz: 90.0
+        state: "high_gamma"
+        note: "Peak warrior power"
+      - time: "17:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "Grounded integration"
+      - time: "20:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Maximum mythic activation"
+      - time: "21:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "Stabilization"
+      - time: "24:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Integration"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "warrior_activation"
+      frequencies: [80, 90, 100]  # Hz - escalating power
+      note: "Mythic gamma bursts for warrior embodiment"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 25
+    transition_style: "energetic"
+
+  archetype_mystic:
+    name: "Mystic Archetype Embodiment"
+    description: "Deep theta 5 Hz + gamma insight 90 Hz for mystical knowing"
+    category: "archetypal"
+    intensity: "intense"
+    duration_minutes: 32
+    carrier_hz: 175
+    target_outcome: "mystic_embodiment"
+    caution: "Profound state; may induce mystical experiences"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Initial settling"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Theta immersion"
+      - time: "07:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Deep theta - mystic depth"
+      - time: "10:00"
+        beat_hz: 4.5
+        state: "deep_theta"
+        note: "Mystical void entry"
+      - time: "14:00"
+        beat_hz: 90.0
+        state: "high_gamma"
+        note: "Gamma insight - mystic knowing"
+      - time: "15:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Integration"
+      - time: "18:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Deepest mystic state"
+      - time: "21:00"
+        beat_hz: 95.0
+        state: "high_gamma"
+        note: "Second insight burst"
+      - time: "22:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Return to depth"
+      - time: "25:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Peak mystical insight"
+      - time: "26:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Gentle ascent"
+      - time: "29:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Return"
+      - time: "32:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "mystic_insight"
+      frequencies: [90, 95, 100]  # Hz
+      note: "Insight gamma for mystical knowing"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 35
+    transition_style: "very_smooth"
+
+  archetype_creator:
+    name: "Creator Archetype Embodiment"
+    description: "Flow band 8-9 Hz + creative gamma 60 Hz for divine creation"
+    category: "archetypal"
+    intensity: "moderate"
+    duration_minutes: 30
+    carrier_hz: 200
+    target_outcome: "creator_embodiment"
+    caution: "May trigger intense creative urges; have materials ready"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "04:00"
+        beat_hz: 9.0
+        state: "alpha"
+        note: "Flow band entry"
+      - time: "07:00"
+        beat_hz: 8.5
+        state: "alpha"
+        note: "Creator archetype awakening"
+      - time: "10:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Sustained flow state"
+      - time: "13:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Creative gamma - inspiration burst"
+      - time: "14:00"
+        beat_hz: 8.5
+        state: "alpha"
+        note: "Flow integration"
+      - time: "17:00"
+        beat_hz: 9.0
+        state: "alpha"
+        note: "Creative channel open"
+      - time: "20:00"
+        beat_hz: 65.0
+        state: "high_gamma"
+        note: "Second gamma - creative peak"
+      - time: "21:00"
+        beat_hz: 8.5
+        state: "alpha"
+        note: "Sustained creation"
+      - time: "24:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Final creative burst"
+      - time: "25:00"
+        beat_hz: 9.0
+        state: "alpha"
+        note: "Flow completion"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounding"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "creative_inspiration"
+      frequency: 60  # Hz
+      note: "Creative gamma at 60 Hz for inspiration"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 25
+    transition_style: "smooth"
+
+  archetype_sovereign:
+    name: "Sovereign Archetype Embodiment"
+    description: "Alpha authority 10-12 Hz + gamma presence 80 Hz for regal power"
+    category: "archetypal"
+    intensity: "intense"
+    duration_minutes: 28
+    carrier_hz: 190
+    target_outcome: "sovereign_embodiment"
+    caution: "Powerful authority state; use responsibly"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centering"
+      - time: "03:00"
+        beat_hz: 11.0
+        state: "alpha"
+        note: "Authority alpha"
+      - time: "06:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "SMR confidence"
+      - time: "09:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Sovereign presence building"
+      - time: "12:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Gamma presence - sovereign activates"
+      - time: "13:00"
+        beat_hz: 11.0
+        state: "alpha"
+        note: "Authority lock"
+      - time: "16:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "Grounded command"
+      - time: "19:00"
+        beat_hz: 85.0
+        state: "high_gamma"
+        note: "Peak sovereign power"
+      - time: "20:00"
+        beat_hz: 11.0
+        state: "alpha"
+        note: "Stabilization"
+      - time: "23:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Final presence burst"
+      - time: "24:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Integration"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "sovereign_presence"
+      frequencies: [80, 85]  # Hz
+      note: "Presence gamma for sovereign authority"
+
+    fade_in_seconds: 18
+    fade_out_seconds: 25
+    transition_style: "smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: ECSTATIC UNION / DIVINE COMMUNION
+  # ===========================================================================
+  # Presets designed for divine communion and ecstatic spiritual states.
+  # These use high-gamma for bliss and heart coherence for divine connection.
+
+  ecstatic_divine_unity:
+    name: "Divine Unity Experience"
+    description: "Heart coherence 0.1 Hz + high-gamma bliss 100-120 Hz"
+    category: "ecstatic_union"
+    intensity: "extreme"
+    duration_minutes: 35
+    carrier_hz: 170
+    target_outcome: "divine_union"
+    caution: "Profound spiritual experience; allow full integration time"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Heart opening"
+      - time: "07:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Devotional state"
+      - time: "10:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Heart-mind alignment"
+      - time: "14:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Ecstatic bliss onset"
+      - time: "16:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Integration wave"
+      - time: "19:00"
+        beat_hz: 110.0
+        state: "high_gamma"
+        note: "Deeper bliss"
+      - time: "21:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Divine communion"
+      - time: "24:00"
+        beat_hz: 120.0
+        state: "high_gamma"
+        note: "Peak unity - maximum bliss"
+      - time: "26:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Ecstatic descent"
+      - time: "29:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Heart integration"
+      - time: "32:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Gentle return"
+      - time: "35:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "heart_coherence"
+      frequency: 0.1  # Hz
+      activation_time: "07:00-29:00"
+      note: "Sustained heart coherence for divine connection"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "very_smooth"
+
+  ecstatic_holy_spirit:
+    name: "Holy Spirit Descent"
+    description: "Deep-theta devotion 5-6 Hz for spiritual infilling"
+    category: "ecstatic_union"
+    intensity: "intense"
+    duration_minutes: 32
+    carrier_hz: 175
+    target_outcome: "spiritual_infilling"
+    caution: "May induce strong devotional emotions; allow full expression"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Preparation"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart centering"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Devotional opening"
+      - time: "10:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Deep devotion"
+      - time: "13:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Receptive state"
+      - time: "16:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Holy Spirit approach"
+      - time: "18:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Descent initiation"
+      - time: "19:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Deep reception"
+      - time: "22:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Peak infilling"
+      - time: "23:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Integration"
+      - time: "26:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Gratitude state"
+      - time: "29:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Return"
+      - time: "32:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded completion"
+
+    overlay:
+      type: "heart_coherence"
+      frequency: 0.1  # Hz
+      activation_time: "07:00-26:00"
+      note: "Heart coherence throughout devotional phase"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 35
+    transition_style: "very_smooth"
+
+  ecstatic_cosmic_breath:
+    name: "Cosmic Breath Union"
+    description: "Theta 6 Hz + breath entrainment 0.1 Hz for cosmic connection"
+    category: "ecstatic_union"
+    intensity: "moderate"
+    duration_minutes: 30
+    carrier_hz: 180
+    target_outcome: "cosmic_unity"
+    caution: "Deep breathing may cause light-headedness; breathe naturally"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Breath awareness"
+      - time: "07:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Cosmic attunement begins"
+      - time: "10:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Breath entrainment active"
+      - time: "14:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Deep cosmic breath"
+      - time: "18:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Sustained union"
+      - time: "21:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Clarity burst"
+      - time: "22:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Return to breath"
+      - time: "25:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Integration"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Return"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "breathing_entrainment"
+      frequency: 0.1  # Hz - 6 breaths per minute
+      activation_time: "07:00-25:00"
+      note: "Breathing entrainment for cosmic connection"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  ecstatic_sacred_ecstasy:
+    name: "Sacred Ecstasy"
+    description: "Gamma bliss 100-120 Hz peaks for transcendent joy"
+    category: "ecstatic_union"
+    intensity: "extreme"
+    duration_minutes: 28
+    carrier_hz: 165
+    target_outcome: "transcendent_joy"
+    caution: "Intense ecstatic states; ensure safe, comfortable environment"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Preparation"
+      - time: "03:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart opening"
+      - time: "06:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Joy cultivation"
+      - time: "09:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "First ecstatic wave"
+      - time: "10:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Integration"
+      - time: "13:00"
+        beat_hz: 110.0
+        state: "high_gamma"
+        note: "Second wave - stronger"
+      - time: "14:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Deep joy"
+      - time: "17:00"
+        beat_hz: 115.0
+        state: "high_gamma"
+        note: "Third wave - building"
+      - time: "18:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Preparation for peak"
+      - time: "20:00"
+        beat_hz: 120.0
+        state: "high_gamma"
+        note: "Peak sacred ecstasy"
+      - time: "21:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Ecstatic descent"
+      - time: "24:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Integration"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded return"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "ecstatic_waves"
+      frequencies: [100, 110, 115, 120]  # Hz - building ecstasy
+      note: "Progressive gamma waves for sacred ecstasy"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 35
+    transition_style: "smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: SHADOW INTEGRATION & DEPTH PSYCHOLOGY
+  # ===========================================================================
+  # Presets designed for shadow work and depth psychological integration.
+  # These use deep theta/delta for accessing subconscious material safely.
+
+  shadow_embrace:
+    name: "Shadow Embrace"
+    description: "Subconscious depth 3.4-4 Hz for shadow encounter"
+    category: "shadow_integration"
+    intensity: "intense"
+    duration_minutes: 35
+    carrier_hz: 165
+    target_outcome: "shadow_integration"
+    caution: "Deep psychological work; have support available if needed"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Safety establishing"
+      - time: "04:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth grounding"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Theta descent"
+      - time: "10:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Subconscious approach"
+      - time: "14:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Shadow territory entry"
+      - time: "17:00"
+        beat_hz: 3.4
+        state: "deep_theta"
+        note: "Deep shadow encounter"
+      - time: "21:00"
+        beat_hz: 3.4
+        state: "deep_theta"
+        note: "Sustained shadow work"
+      - time: "25:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Integration stitch"
+      - time: "26:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Final shadow embrace"
+      - time: "29:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Return journey"
+      - time: "32:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth reconnection"
+      - time: "35:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Safe return"
+
+    overlay:
+      type: "frequency_stack"
+      stack: "shadow_descent"
+      note: "Uses shadow descent frequency stack"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 40
+    transition_style: "very_smooth"
+
+  shadow_subconscious_alignment:
+    name: "Subconscious Alignment"
+    description: "Ego disarm 6 Hz for subconscious integration"
+    category: "shadow_integration"
+    intensity: "moderate"
+    duration_minutes: 30
+    carrier_hz: 170
+    target_outcome: "subconscious_harmony"
+    caution: "May surface unexpected emotions; allow processing"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Relaxation deepens"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Ego disarm frequency"
+      - time: "10:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Subconscious contact"
+      - time: "14:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Sustained ego disarm"
+      - time: "18:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Deep alignment"
+      - time: "22:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Integration stitch"
+      - time: "23:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Final alignment"
+      - time: "26:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Return"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "none"
+      note: "Pure binaural for clarity of subconscious communication"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  shadow_inner_darkness:
+    name: "Inner Darkness Healing"
+    description: "Integration stitch 8 Hz with deep theta shadow work"
+    category: "shadow_integration"
+    intensity: "intense"
+    duration_minutes: 32
+    carrier_hz: 160
+    target_outcome: "darkness_transformation"
+    caution: "Deep shadow material; ensure adequate grounding"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Safety anchor"
+      - time: "04:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth grounding"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Descent begins"
+      - time: "10:00"
+        beat_hz: 4.5
+        state: "theta"
+        note: "Approaching darkness"
+      - time: "13:00"
+        beat_hz: 3.5
+        state: "deep_theta"
+        note: "Inner darkness territory"
+      - time: "16:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "First integration stitch"
+      - time: "17:00"
+        beat_hz: 3.5
+        state: "deep_theta"
+        note: "Deeper work"
+      - time: "20:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Second integration stitch"
+      - time: "21:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Final shadow healing"
+      - time: "24:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Third integration stitch"
+      - time: "27:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth return"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Safe completion"
+      - time: "32:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded"
+
+    overlay:
+      type: "integration_stitch"
+      frequency: 8.0  # Hz
+      pattern: "periodic"
+      note: "Integration stitches to bridge shadow material"
+
+    fade_in_seconds: 28
+    fade_out_seconds: 35
+    transition_style: "very_smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: EMOTIONAL ALCHEMY & TRANSMUTATION
+  # ===========================================================================
+  # Presets designed for emotional transmutation and heart-centered alchemy.
+  # These transform difficult emotions into wisdom and power.
+
+  alchemy_emotional_gold:
+    name: "Emotional Gold"
+    description: "Transmutation theta 4.44 Hz for emotion-to-wisdom conversion"
+    category: "emotional_alchemy"
+    intensity: "moderate"
+    duration_minutes: 28
+    carrier_hz: 175
+    target_outcome: "emotional_transmutation"
+    caution: "May intensify emotions before transmutation; allow the process"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "03:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart centering"
+      - time: "06:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Emotional access"
+      - time: "09:00"
+        beat_hz: 4.44
+        state: "deep_theta"
+        note: "Transmutation frequency"
+      - time: "13:00"
+        beat_hz: 4.44
+        state: "deep_theta"
+        note: "Sustained transmutation"
+      - time: "17:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Wisdom integration burst"
+      - time: "18:00"
+        beat_hz: 4.44
+        state: "deep_theta"
+        note: "Return to transmutation"
+      - time: "21:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Gold integration"
+      - time: "24:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Return"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "wisdom_integration"
+      frequency: 40  # Hz
+      note: "Gamma burst for wisdom integration"
+
+    fade_in_seconds: 22
+    fade_out_seconds: 28
+    transition_style: "smooth"
+
+  alchemy_heart_fire:
+    name: "Heart Fire Alchemy"
+    description: "Heart-coherence 0.1-0.2 Hz + emotional gamma 60 Hz"
+    category: "emotional_alchemy"
+    intensity: "intense"
+    duration_minutes: 30
+    carrier_hz: 180
+    target_outcome: "heart_transformation"
+    caution: "Powerful heart activation; allow emotional flow"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart awareness"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Heart fire ignition"
+      - time: "10:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Deep heart access"
+      - time: "13:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Emotional gamma activation"
+      - time: "14:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Integration"
+      - time: "17:00"
+        beat_hz: 65.0
+        state: "high_gamma"
+        note: "Second gamma wave"
+      - time: "18:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Heart fire burning"
+      - time: "21:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Final transmutation"
+      - time: "22:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Cooling integration"
+      - time: "26:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Return"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "heart_coherence"
+      frequency: 0.15  # Hz - slightly faster breathing
+      activation_time: "07:00-22:00"
+      note: "Heart coherence during fire alchemy"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  alchemy_phoenix_heart:
+    name: "Phoenix Heart"
+    description: "Death/rebirth 2 Hz → gamma flash 40 Hz → theta 6 Hz"
+    category: "emotional_alchemy"
+    intensity: "extreme"
+    duration_minutes: 35
+    carrier_hz: 160
+    target_outcome: "emotional_rebirth"
+    caution: "Deep transformative process; may feel like ego death"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Preparation"
+      - time: "04:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Descent begins"
+      - time: "07:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Deep descent"
+      - time: "10:00"
+        beat_hz: 3.0
+        state: "delta"
+        note: "Approaching death frequency"
+      - time: "13:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Death/dissolution phase"
+      - time: "17:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Complete dissolution"
+      - time: "20:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Gamma flash - rebirth ignition"
+      - time: "21:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Phoenix rising"
+      - time: "24:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Second flash - full rebirth"
+      - time: "25:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "New form stabilizing"
+      - time: "28:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Integration"
+      - time: "32:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Return"
+      - time: "35:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded rebirth"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "rebirth_flash"
+      times: ["20:00", "24:00"]
+      frequencies: [40, 60]  # Hz
+      note: "Gamma flashes for rebirth ignition"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 40
+    transition_style: "very_smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: LONGEVITY / REGENERATION
+  # ===========================================================================
+  # Presets designed for cellular regeneration and longevity activation.
+  # These use delta repair frequencies and DNA resonance.
+
+  longevity_youthfield:
+    name: "Youthfield Activation"
+    description: "Delta repair 1.5-2.5 Hz + DNA resonance 528 Hz overlay"
+    category: "longevity"
+    intensity: "moderate"
+    duration_minutes: 40
+    carrier_hz: 175
+    target_outcome: "cellular_rejuvenation"
+    caution: "Deep regenerative state; allow full rest period afterward"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "05:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Relaxation deepens"
+      - time: "10:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Body relaxation complete"
+      - time: "15:00"
+        beat_hz: 2.5
+        state: "delta"
+        note: "Delta repair onset"
+      - time: "20:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Deep repair frequency"
+      - time: "25:00"
+        beat_hz: 1.5
+        state: "delta"
+        note: "Cellular regeneration peak"
+      - time: "30:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Sustained repair"
+      - time: "35:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Emergence"
+      - time: "38:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Return"
+      - time: "40:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "harmonic"
+      frequency: 528  # Hz - DNA resonance
+      level: -18  # dB
+      activation_time: "15:00-35:00"
+      note: "528 Hz Solfeggio overlay for DNA activation"
+
+    fade_in_seconds: 40
+    fade_out_seconds: 45
+    transition_style: "very_smooth"
+
+  longevity_cellular_regen:
+    name: "Cellular Regeneration"
+    description: "Deep delta 2 Hz sustained for cellular repair"
+    category: "longevity"
+    intensity: "gentle"
+    duration_minutes: 45
+    carrier_hz: 160
+    target_outcome: "cellular_healing"
+    caution: "May induce deep sleep; best used at bedtime"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Initial relaxation"
+      - time: "06:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Theta deepening"
+      - time: "12:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Pre-delta"
+      - time: "18:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Cellular repair frequency"
+      - time: "25:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Sustained regeneration"
+      - time: "32:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Deep cellular work"
+      - time: "38:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Gradual return"
+      - time: "42:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Emergence"
+      - time: "45:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "none"
+      note: "Pure delta for maximum regeneration"
+
+    fade_in_seconds: 45
+    fade_out_seconds: 60
+    transition_style: "very_smooth"
+
+  longevity_mitochondrial:
+    name: "Mitochondrial Boost"
+    description: "Gamma 40 Hz for cellular energy and mitochondrial function"
+    category: "longevity"
+    intensity: "moderate"
+    duration_minutes: 30
+    carrier_hz: 200
+    target_outcome: "cellular_energy"
+    caution: "Energizing session; avoid before sleep"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centering"
+      - time: "04:00"
+        beat_hz: 14.0
+        state: "low_beta"
+        note: "Alertness building"
+      - time: "07:00"
+        beat_hz: 20.0
+        state: "beta"
+        note: "Beta activation"
+      - time: "10:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Gamma onset - mitochondrial activation"
+      - time: "15:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Sustained gamma"
+      - time: "20:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Peak mitochondrial boost"
+      - time: "24:00"
+        beat_hz: 20.0
+        state: "beta"
+        note: "Descent"
+      - time: "27:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "Integration"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "sustained_gamma"
+      frequency: 40  # Hz
+      activation_time: "10:00-24:00"
+      note: "Sustained 40 Hz gamma for mitochondrial function"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 25
+    transition_style: "smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: PSYCHIC SHIELDING / ENERGY ARMOR
+  # ===========================================================================
+  # Presets designed for energetic protection and psychic shielding.
+  # These establish grounding and protective frequency fields.
+
+  shield_energetic_barrier:
+    name: "Energetic Barrier"
+    description: "Root-delta grounding 1-2 Hz for foundational protection"
+    category: "psychic_shield"
+    intensity: "moderate"
+    duration_minutes: 25
+    carrier_hz: 165
+    target_outcome: "energetic_protection"
+    caution: "May feel heavy grounding; allow adjustment time"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centering"
+      - time: "03:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth connection"
+      - time: "06:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Grounding deepens"
+      - time: "09:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Root-delta grounding"
+      - time: "12:00"
+        beat_hz: 1.5
+        state: "delta"
+        note: "Deep root establishment"
+      - time: "15:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Barrier formation"
+      - time: "18:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth seal"
+      - time: "21:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Shield activation"
+      - time: "25:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Protected completion"
+
+    overlay:
+      type: "schumann_resonance"
+      frequency: 7.83
+      note: "Schumann grounding throughout"
+
+    fade_in_seconds: 20
+    fade_out_seconds: 25
+    transition_style: "smooth"
+
+  shield_psychic_armor:
+    name: "Psychic Armor"
+    description: "Field-seal harmonic 108 Hz for protective energy field"
+    category: "psychic_shield"
+    intensity: "moderate"
+    duration_minutes: 28
+    carrier_hz: 180
+    target_outcome: "psychic_protection"
+    caution: "Strong energy field activation; ground afterward if needed"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centering"
+      - time: "04:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth grounding"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Inner focus"
+      - time: "10:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Shield gamma activation"
+      - time: "11:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Integration"
+      - time: "14:00"
+        beat_hz: 90.0
+        state: "high_gamma"
+        note: "Armor strengthening"
+      - time: "15:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Field stabilization"
+      - time: "18:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth lock"
+      - time: "22:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Armor complete"
+      - time: "25:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "Grounded presence"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Protected"
+
+    overlay:
+      type: "harmonic"
+      frequency: 108  # Hz - yogic seal
+      level: -15  # dB
+      activation_time: "10:00-22:00"
+      note: "108 Hz yogic frequency for field seal"
+
+    fade_in_seconds: 22
+    fade_out_seconds: 28
+    transition_style: "smooth"
+
+  shield_field_108:
+    name: "Field Shield 108"
+    description: "Shield-gamma 80 Hz + grounding delta 2 Hz"
+    category: "psychic_shield"
+    intensity: "intense"
+    duration_minutes: 30
+    carrier_hz: 170
+    target_outcome: "complete_protection"
+    caution: "Powerful shielding; may feel energetic pressure"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Preparation"
+      - time: "04:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth anchor"
+      - time: "07:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Grounding descent"
+      - time: "10:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Root foundation"
+      - time: "13:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Shield activation"
+      - time: "14:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Root lock"
+      - time: "17:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Shield strengthening"
+      - time: "18:00"
+        beat_hz: 2.0
+        state: "delta"
+        note: "Foundation secure"
+      - time: "21:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Final shield layer"
+      - time: "22:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Earth seal"
+      - time: "26:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Shield complete"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Protected completion"
+
+    overlay:
+      type: "harmonic"
+      frequency: 108  # Hz
+      level: -16  # dB
+      note: "108 Hz field seal throughout shield phases"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: SACRED SEXUALITY / TANTRIC ENERGY
+  # ===========================================================================
+  # Presets designed for tantric practice and sacred sexuality.
+  # These work with sacral energy and heart-soma connections.
+
+  tantric_fire:
+    name: "Tantric Fire"
+    description: "Sacral resonance 5.2 Hz for creative/sexual energy activation"
+    category: "tantric"
+    intensity: "intense"
+    duration_minutes: 32
+    carrier_hz: 185
+    target_outcome: "tantric_activation"
+    caution: "Powerful sacral activation; practice with awareness"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centering"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Body awareness"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Internal focus"
+      - time: "10:00"
+        beat_hz: 5.2
+        state: "theta"
+        note: "Sacral resonance"
+      - time: "14:00"
+        beat_hz: 5.2
+        state: "theta"
+        note: "Sacral fire building"
+      - time: "18:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Fire surge"
+      - time: "19:00"
+        beat_hz: 5.2
+        state: "theta"
+        note: "Return to sacral"
+      - time: "22:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart connection"
+      - time: "25:00"
+        beat_hz: 70.0
+        state: "high_gamma"
+        note: "Heart-sacral bridge"
+      - time: "26:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Integration"
+      - time: "29:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounding"
+      - time: "32:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "sacral_fire"
+      frequencies: [60, 70]  # Hz
+      note: "Gamma surges for energy activation"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 30
+    transition_style: "smooth"
+
+  tantric_kundalini_eros:
+    name: "Kundalini Eros"
+    description: "Heart-soma 8 Hz + gamma bliss 100 Hz for sacred union"
+    category: "tantric"
+    intensity: "extreme"
+    duration_minutes: 35
+    carrier_hz: 175
+    target_outcome: "sacred_union"
+    caution: "Powerful heart-sacral-crown integration; ensure grounding"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Preparation"
+      - time: "04:00"
+        beat_hz: 5.2
+        state: "theta"
+        note: "Sacral awakening"
+      - time: "07:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart-soma connection"
+      - time: "10:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Energy rising"
+      - time: "14:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart fire"
+      - time: "17:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Bliss gamma activation"
+      - time: "18:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart integration"
+      - time: "21:00"
+        beat_hz: 108.0
+        state: "yogic_resonance"
+        note: "Crown approach"
+      - time: "23:00"
+        beat_hz: 110.0
+        state: "high_gamma"
+        note: "Peak bliss"
+      - time: "25:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Sacred union"
+      - time: "28:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Final bliss wave"
+      - time: "29:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Integration"
+      - time: "32:00"
+        beat_hz: 7.83
+        state: "schumann"
+        note: "Grounding"
+      - time: "35:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "heart_coherence"
+      frequency: 0.1  # Hz
+      activation_time: "07:00-29:00"
+      note: "Heart coherence for sacred connection"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 40
+    transition_style: "very_smooth"
+
+  tantric_divine_union:
+    name: "Divine Union Pulse"
+    description: "Heart coherence 0.1 Hz + ecstatic gamma 100 Hz"
+    category: "tantric"
+    intensity: "extreme"
+    duration_minutes: 30
+    carrier_hz: 180
+    target_outcome: "divine_union"
+    caution: "Profound union experience; ensure sacred space"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Sacred space"
+      - time: "04:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart opening"
+      - time: "07:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Devotional state"
+      - time: "10:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Union approach"
+      - time: "13:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Ecstatic onset"
+      - time: "14:00"
+        beat_hz: 5.5
+        state: "theta"
+        note: "Integration"
+      - time: "17:00"
+        beat_hz: 105.0
+        state: "high_gamma"
+        note: "Deeper ecstasy"
+      - time: "18:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Union deepens"
+      - time: "21:00"
+        beat_hz: 110.0
+        state: "high_gamma"
+        note: "Peak divine union"
+      - time: "22:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Sacred descent"
+      - time: "25:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Heart return"
+      - time: "28:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounding"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Blessed completion"
+
+    overlay:
+      type: "heart_coherence"
+      frequency: 0.1  # Hz
+      activation_time: "07:00-25:00"
+      note: "Heart coherence throughout union experience"
+
+    fade_in_seconds: 25
+    fade_out_seconds: 35
+    transition_style: "very_smooth"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: PEAK PERFORMANCE FLOW-STATE
+  # ===========================================================================
+  # Presets designed for optimal performance and sustained flow states.
+  # These maintain the flow band with precision and adaptability.
+
+  peak_superflow:
+    name: "Superflow State"
+    description: "Flow-band 8-9 Hz sustained for optimal performance"
+    category: "peak_performance"
+    intensity: "moderate"
+    duration_minutes: 45
+    carrier_hz: 200
+    target_outcome: "sustained_flow"
+    caution: "May be highly productive; have work ready"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "05:00"
+        beat_hz: 9.0
+        state: "alpha"
+        note: "Flow band entry"
+      - time: "10:00"
+        beat_hz: 8.5
+        state: "alpha"
+        note: "Flow deepens"
+      - time: "15:00"
+        beat_hz: 8.5
+        state: "alpha"
+        note: "Sustained flow"
+      - time: "20:00"
+        beat_hz: 8.5
+        state: "alpha"
+        note: "Deep flow"
+      - time: "25:00"
+        beat_hz: 40.0
+        state: "gamma"
+        note: "Insight burst"
+      - time: "26:00"
+        beat_hz: 8.5
+        state: "alpha"
+        note: "Return to flow"
+      - time: "30:00"
+        beat_hz: 9.0
+        state: "alpha"
+        note: "Sustained performance"
+      - time: "35:00"
+        beat_hz: 8.5
+        state: "alpha"
+        note: "Continued flow"
+      - time: "40:00"
+        beat_hz: 9.0
+        state: "alpha"
+        note: "Flow maintenance"
+      - time: "45:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Gentle completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "insight_flash"
+      time: "25:00"
+      frequency: 40  # Hz
+      note: "Single gamma burst for insight"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 25
+    transition_style: "smooth"
+
+  peak_hyperpresence:
+    name: "Hyperpresence"
+    description: "Beta precision 18-20 Hz for heightened awareness"
+    category: "peak_performance"
+    intensity: "moderate"
+    duration_minutes: 30
+    carrier_hz: 210
+    target_outcome: "heightened_presence"
+    caution: "Energizing; avoid before sleep"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centering"
+      - time: "04:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "SMR foundation"
+      - time: "07:00"
+        beat_hz: 14.0
+        state: "low_beta"
+        note: "Alert onset"
+      - time: "10:00"
+        beat_hz: 18.0
+        state: "beta"
+        note: "Precision beta"
+      - time: "14:00"
+        beat_hz: 20.0
+        state: "beta"
+        note: "Peak precision"
+      - time: "18:00"
+        beat_hz: 18.0
+        state: "beta"
+        note: "Sustained presence"
+      - time: "22:00"
+        beat_hz: 20.0
+        state: "beta"
+        note: "Second peak"
+      - time: "25:00"
+        beat_hz: 14.0
+        state: "low_beta"
+        note: "Descent"
+      - time: "28:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "Grounding"
+      - time: "30:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "none"
+      note: "Pure binaural for maximum precision"
+
+    fade_in_seconds: 18
+    fade_out_seconds: 20
+    transition_style: "energetic"
+
+  peak_action_mode:
+    name: "Peak Action Mode"
+    description: "Gamma micro-bursts 60 Hz for adaptability and quick response"
+    category: "peak_performance"
+    intensity: "intense"
+    duration_minutes: 25
+    carrier_hz: 205
+    target_outcome: "peak_action"
+    caution: "High activation state; use for performance needs"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Preparation"
+      - time: "03:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "Grounded alert"
+      - time: "05:00"
+        beat_hz: 16.0
+        state: "beta"
+        note: "Activation"
+      - time: "07:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "First gamma burst"
+      - time: "08:00"
+        beat_hz: 18.0
+        state: "beta"
+        note: "Action mode"
+      - time: "11:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Second gamma burst"
+      - time: "12:00"
+        beat_hz: 18.0
+        state: "beta"
+        note: "Sustained action"
+      - time: "15:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Third gamma burst"
+      - time: "16:00"
+        beat_hz: 16.0
+        state: "beta"
+        note: "Peak action"
+      - time: "19:00"
+        beat_hz: 60.0
+        state: "high_gamma"
+        note: "Final burst"
+      - time: "20:00"
+        beat_hz: 14.0
+        state: "low_beta"
+        note: "Descent"
+      - time: "22:00"
+        beat_hz: 12.0
+        state: "smr"
+        note: "Grounding"
+      - time: "25:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Completion"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "micro_bursts"
+      frequency: 60  # Hz
+      interval: "every 4 minutes"
+      note: "Regular gamma micro-bursts for adaptability"
+
+    fade_in_seconds: 15
+    fade_out_seconds: 20
+    transition_style: "energetic"
+
+  # ===========================================================================
+  # ULTRA-ADVANCED: ENLIGHTENMENT / NONDUAL AWARENESS
+  # ===========================================================================
+  # Presets designed for nondual awareness and enlightenment states.
+  # These dissolve ego boundaries and access unified consciousness.
+
+  nondual_void_mind:
+    name: "Void Mind"
+    description: "Deep-theta 4.5 Hz + alpha transparency 8-10 Hz"
+    category: "nondual"
+    intensity: "intense"
+    duration_minutes: 40
+    carrier_hz: 165
+    target_outcome: "void_awareness"
+    caution: "Ego dissolution state; ensure safe, quiet environment"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Settling"
+      - time: "05:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Alpha transparency"
+      - time: "10:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Theta descent"
+      - time: "15:00"
+        beat_hz: 4.5
+        state: "deep_theta"
+        note: "Void approach"
+      - time: "20:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Void mind entry"
+      - time: "25:00"
+        beat_hz: 4.5
+        state: "deep_theta"
+        note: "Sustained void"
+      - time: "30:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Transparency return"
+      - time: "31:00"
+        beat_hz: 4.5
+        state: "deep_theta"
+        note: "Final void"
+      - time: "35:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Alpha integration"
+      - time: "38:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Return"
+      - time: "40:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded"
+
+    overlay:
+      type: "none"
+      note: "Pure binaural for void clarity"
+
+    fade_in_seconds: 35
+    fade_out_seconds: 45
+    transition_style: "very_smooth"
+
+  nondual_infinite_self:
+    name: "Infinite Self"
+    description: "Nondual gamma 80-120 Hz for expanded consciousness"
+    category: "nondual"
+    intensity: "extreme"
+    duration_minutes: 35
+    carrier_hz: 160
+    target_outcome: "infinite_awareness"
+    caution: "Profound ego transcendence; full integration needed"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Preparation"
+      - time: "05:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Theta immersion"
+      - time: "09:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Deep theta"
+      - time: "12:00"
+        beat_hz: 80.0
+        state: "high_gamma"
+        note: "Nondual gamma onset"
+      - time: "13:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Integration"
+      - time: "16:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Expansion"
+      - time: "17:00"
+        beat_hz: 4.5
+        state: "deep_theta"
+        note: "Deepening"
+      - time: "20:00"
+        beat_hz: 110.0
+        state: "high_gamma"
+        note: "Infinite opening"
+      - time: "21:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Sustained infinite"
+      - time: "24:00"
+        beat_hz: 120.0
+        state: "high_gamma"
+        note: "Peak infinite self"
+      - time: "25:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Return begins"
+      - time: "29:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Integration"
+      - time: "32:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Return"
+      - time: "35:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded infinity"
+
+    overlay:
+      type: "gamma_burst"
+      pattern: "nondual_expansion"
+      frequencies: [80, 100, 110, 120]  # Hz - progressive expansion
+      note: "Progressive gamma for infinite expansion"
+
+    fade_in_seconds: 30
+    fade_out_seconds: 45
+    transition_style: "very_smooth"
+
+  nondual_dissolution:
+    name: "Nondual Dissolution"
+    description: "Theta-gamma oscillation for ego transcendence"
+    category: "nondual"
+    intensity: "extreme"
+    duration_minutes: 38
+    carrier_hz: 155
+    target_outcome: "ego_dissolution"
+    caution: "Complete ego transcendence; ensure proper set and setting"
+
+    frequency_progression:
+      - time: "00:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Centering"
+      - time: "05:00"
+        beat_hz: 7.0
+        state: "theta"
+        note: "Theta entry"
+      - time: "09:00"
+        beat_hz: 5.0
+        state: "deep_theta"
+        note: "Deep dissolution begins"
+      - time: "12:00"
+        beat_hz: 90.0
+        state: "high_gamma"
+        note: "First gamma oscillation"
+      - time: "13:00"
+        beat_hz: 4.5
+        state: "deep_theta"
+        note: "Dissolution deepens"
+      - time: "16:00"
+        beat_hz: 100.0
+        state: "high_gamma"
+        note: "Second gamma oscillation"
+      - time: "17:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Ego boundary thinning"
+      - time: "20:00"
+        beat_hz: 110.0
+        state: "high_gamma"
+        note: "Third gamma oscillation"
+      - time: "21:00"
+        beat_hz: 4.0
+        state: "deep_theta"
+        note: "Near dissolution"
+      - time: "24:00"
+        beat_hz: 120.0
+        state: "high_gamma"
+        note: "Peak oscillation"
+      - time: "25:00"
+        beat_hz: 4.5
+        state: "deep_theta"
+        note: "Complete dissolution"
+      - time: "28:00"
+        beat_hz: 6.0
+        state: "theta"
+        note: "Reconstitution"
+      - time: "32:00"
+        beat_hz: 8.0
+        state: "alpha"
+        note: "Self returns"
+      - time: "35:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Integration"
+      - time: "38:00"
+        beat_hz: 10.0
+        state: "alpha"
+        note: "Grounded transcendence"
+
+    overlay:
+      type: "theta_gamma_oscillation"
+      pattern: "dissolution"
+      theta_base: 4.5  # Hz
+      gamma_peaks: [90, 100, 110, 120]  # Hz
+      note: "Theta-gamma oscillation for ego dissolution"
+
+    fade_in_seconds: 35
+    fade_out_seconds: 50
+    transition_style: "very_smooth"
+
 # =============================================================================
 # TECHNICAL SPECIFICATIONS
 # =============================================================================
@@ -711,6 +5192,192 @@ technical_specs:
     binaural: -6  # dB (was -12, updated per lessons)
     sfx: 0  # dB
 
+  # ---------------------------------------------------------------------------
+  # SPECIAL FREQUENCIES - Sacred & Resonant Frequencies
+  # ---------------------------------------------------------------------------
+  special_frequencies:
+    schumann_resonance:
+      frequency: 7.83  # Hz
+      description: "Earth's electromagnetic resonance"
+      uses: "Grounding, energy clearing, natural reset"
+      note: "Planetary baseline frequency"
+
+    sacred_healing_tone:
+      frequency: 111  # Hz
+      description: "Archaeological healing frequency"
+      uses: "Deep healing, cellular regeneration"
+      note: "Found in ancient healing chambers"
+
+    vagus_resonance:
+      frequency: 4.5  # Hz
+      description: "Vagus nerve activation frequency"
+      uses: "Parasympathetic activation, trauma release"
+      note: "Stimulates vagal tone"
+
+    heart_coherence_overlay:
+      frequency: 0.1  # Hz
+      description: "Heart rate variability synchronization"
+      uses: "Emotional balance, abundance work, heart-brain coherence"
+      note: "Applied as amplitude modulation overlay"
+
+    solfeggio_528:
+      frequency: 528  # Hz
+      description: "DNA repair and transformation frequency"
+      uses: "Cellular healing, longevity work"
+      note: "Solfeggio miracle tone"
+
+    crown_activation:
+      frequency: 108  # Hz
+      description: "Yogic sacred number frequency"
+      uses: "Kundalini crown bloom, spiritual completion"
+      note: "Traditional yogic resonance"
+
+    pineal_stimulation:
+      frequency: 936  # Hz
+      description: "Third eye activation frequency"
+      uses: "Intuition, clairvoyance, pineal gland stimulation"
+      note: "Solfeggio frequency for spiritual vision"
+
+  # ---------------------------------------------------------------------------
+  # OVERLAY TYPES - Modulation Layers Applied Over Binaural
+  # ---------------------------------------------------------------------------
+  overlay_types:
+    breathing_entrainment:
+      description: "Slow amplitude modulation to guide breathing rhythm"
+      frequency_range: "0.1-0.2 Hz"
+      implementation: "Volume swell at breath rate (5-6 breaths/min)"
+      intensity: "±2-3 dB modulation depth"
+      uses: "Vagus reset, stress release, grounding"
+
+    heart_coherence:
+      description: "Subtle pulsing at heart coherence rate"
+      frequency: "0.1 Hz"
+      implementation: "Gentle amplitude modulation synchronized to HRV"
+      intensity: "±1.5 dB modulation"
+      uses: "Abundance work, emotional healing, manifestation"
+
+    gamma_burst:
+      description: "Brief gamma frequency overlay for insight moments"
+      frequency: "40-100 Hz"
+      duration: "10-30 seconds"
+      intensity: "-12 to -18 dB"
+      implementation: "Layered on top at peak journey moments"
+      uses: "Spiritual peaks, kundalini activation, enlightenment flashes"
+
+    high_gamma_cascade:
+      description: "Extended high gamma for mystical states"
+      frequency: "60-120 Hz"
+      duration: "30-90 seconds"
+      intensity: "-15 to -20 dB"
+      uses: "Ecstatic union, nondual awareness, divine communion"
+
+    harmonic_undertone:
+      description: "Subtle harmonic layer for depth and warmth"
+      options: ["432hz_undertone", "528hz_healing", "111hz_sacred"]
+      intensity: "-18 to -24 dB"
+      uses: "Adding sacred resonance to any preset"
+
+    schumann_grounding:
+      description: "7.83 Hz earth resonance layer"
+      frequency: "7.83 Hz"
+      implementation: "Continuous subtle layer"
+      intensity: "-12 dB"
+      uses: "Grounding, energy clearing, astral work stability"
+
+  # ---------------------------------------------------------------------------
+  # FREQUENCY STACKS - Multi-Band Layered Entrainment
+  # ---------------------------------------------------------------------------
+  frequency_stacks:
+    three_layer_dreamweaver:
+      description: "Standard 3-layer consciousness stack"
+      layers:
+        base:
+          range: "1-5 Hz"
+          purpose: "Delta-Theta subconscious opening"
+          intensity: "-6 dB"
+        mid:
+          range: "7-12 Hz"
+          purpose: "Alpha stabilization + imagery"
+          intensity: "-9 dB"
+        high:
+          range: "40-120 Hz"
+          purpose: "Gamma insight + manifestation"
+          intensity: "-15 dB"
+      note: "Layers blend to create full-spectrum entrainment"
+
+    kundalini_spiral:
+      description: "Rising energy from root to crown"
+      progression: [2, 5, 8, 40, 108]  # Hz sequence
+      timing: "Matches chakra positions in journey"
+      duration_per_stage: "3-5 minutes each"
+      layers:
+        root: { frequency: 2, chakra: "root", duration: "3min" }
+        sacral: { frequency: 5.2, chakra: "sacral", duration: "3min" }
+        solar: { frequency: 8, chakra: "solar_plexus", duration: "3min" }
+        heart: { frequency: 10.5, chakra: "heart", duration: "4min" }
+        throat: { frequency: 15, chakra: "throat", duration: "3min" }
+        third_eye: { frequency: 40, chakra: "ajna", duration: "4min" }
+        crown: { frequency: 108, chakra: "crown", duration: "5min" }
+
+    quantum_attraction:
+      description: "Manifestation probability field stack"
+      layers:
+        intention:
+          frequency: 10  # Hz alpha
+          purpose: "Conscious intention setting"
+        imprint:
+          frequency: 5  # Hz theta
+          purpose: "Subconscious belief imprinting"
+        heart_field:
+          frequency: 0.1  # Hz coherence overlay
+          purpose: "Emotional resonance field"
+        collapse:
+          frequency: "55-65"  # Hz gamma
+          purpose: "Probability wave collapse"
+      sequence: "intention → imprint → heart_field → collapse"
+
+    astral_launch:
+      description: "Astral projection frequency stack"
+      layers:
+        grounding:
+          frequency: 7.83  # Schumann
+          duration: "5min"
+          purpose: "Earth anchor before departure"
+        loosening:
+          frequency: 4  # Hz theta-delta
+          duration: "8min"
+          purpose: "Etheric body loosening"
+        vibrational:
+          frequency: 7.83  # sustained
+          duration: "5min"
+          purpose: "Vibrational state induction"
+        separation:
+          frequency: 8.5  # high theta
+          with_gamma: 75  # Hz overlay
+          duration: "7min"
+          purpose: "Separation and navigation"
+
+    shadow_descent:
+      description: "Shadow work frequency progression"
+      layers:
+        safety_anchor:
+          frequency: 10  # alpha
+          duration: "3min"
+          purpose: "Conscious stability"
+        subconscious_gate:
+          frequency: 6  # theta
+          duration: "5min"
+          purpose: "Opening to shadow material"
+        deep_shadow:
+          frequency: 3.4  # low theta
+          duration: "10min"
+          purpose: "Shadow encounter"
+        integration:
+          frequency: 8  # alpha-theta
+          duration: "7min"
+          purpose: "Integration stitch"
+      gamma_bursts: "Apply 40Hz during integration moments"
+
 # =============================================================================
 # PRODUCTION COMMAND TEMPLATES
 # =============================================================================
@@ -737,23 +5404,635 @@ production_commands:
 
 selection_guide:
   by_outcome:
-    healing: [healing_deep, healing_gentle]
-    transformation: [transformation_alchemical, transformation_phoenix]
-    empowerment: [empowerment_warrior, empowerment_confidence]
+    # ---------------------------------------------------------------------------
+    # CORE OUTCOMES (Original)
+    # ---------------------------------------------------------------------------
+    healing: [healing_deep, healing_gentle, healing_cellular_renewal, healing_immune_activation]
+    transformation: [transformation_alchemical, transformation_phoenix, transformation_identity_shift]
+    empowerment: [empowerment_warrior, empowerment_confidence, empowerment_willpower_forge]
     self_knowledge: [self_knowledge_deep]
-    release: [healing_deep, transformation_phoenix]
-    spiritual_growth: [spiritual_ascent, spiritual_meditation]
-    creativity: [creativity_flow]
-    relaxation: [relaxation_deep, relaxation_sleep]
-    focus: [focus_concentration]
-    confidence: [empowerment_confidence, empowerment_warrior]
+    release: [healing_deep, transformation_phoenix, trauma_release, trauma_inner_child, trauma_somatic_discharge]
+    spiritual_growth: [spiritual_ascent, spiritual_meditation, spiritual_higher_self_contact, spiritual_lightbody_activation]
+    creativity: [creativity_flow, creativity_creative_unblocking, creativity_muse_contact]
+    relaxation: [relaxation_deep, relaxation_sleep, relaxation_vagus_reset, relaxation_stress_release]
+    focus: [focus_concentration, focus_study_mode, focus_hyperclarity]
+    confidence: [empowerment_confidence, empowerment_warrior, empowerment_willpower_forge]
+
+    # ---------------------------------------------------------------------------
+    # STANDARD EXPANSION OUTCOMES
+    # ---------------------------------------------------------------------------
+    abundance: [abundance_mindset, abundance_magnetic_field, abundance_wealth_resonance]
+    intuition: [intuition_third_eye_awaken, intuition_flow, intuition_clairvoyance]
+    energy_clearing: [energy_cleansing, energy_chakra_reset, energy_field_purification]
+    manifestation: [manifestation_quantum, manifestation_timeline_shift, manifestation_attractor_field]
+    trauma_release: [trauma_release, trauma_inner_child, trauma_somatic_discharge]
+    motivation: [motivation_momentum_builder, motivation_action_trigger, motivation_task_mastery]
+    cognitive_enhancement: [cognitive_genius_mind, cognitive_learning_accelerator, cognitive_synapse_growth]
+
+    # ---------------------------------------------------------------------------
+    # ULTRA-ADVANCED OUTCOMES (Frontier Consciousness Engineering)
+    # ---------------------------------------------------------------------------
+    kundalini: [kundalini_awaken, spinal_fireflow, serpent_ascension]
+    hypnagogic: [hypnagogic_dream_gate, hypnagogic_visionary_trance, hypnagogic_liminal_space]
+    astral: [astral_exit, astral_etheric_shift, astral_plane_navigation]
+    archetypal: [archetype_warrior, archetype_mystic, archetype_creator, archetype_sovereign]
+    ecstatic_union: [ecstatic_divine_unity, ecstatic_holy_spirit, ecstatic_cosmic_breath, ecstatic_sacred_ecstasy]
+    shadow_work: [shadow_embrace, shadow_subconscious_alignment, shadow_inner_darkness]
+    emotional_alchemy: [alchemy_emotional_gold, alchemy_heart_fire, alchemy_phoenix_heart]
+    longevity: [longevity_youthfield, longevity_cellular_regen, longevity_mitochondrial]
+    psychic_shield: [shield_energetic_barrier, shield_psychic_armor, shield_field_108]
+    tantric: [tantric_fire, tantric_kundalini_eros, tantric_divine_union]
+    peak_performance: [peak_superflow, peak_hyperpresence, peak_action_mode]
+    nondual: [nondual_void_mind, nondual_infinite_self, nondual_dissolution]
+
+    # ---------------------------------------------------------------------------
+    # CROSS-CATEGORY MAPPINGS (Multiple paths to similar outcomes)
+    # ---------------------------------------------------------------------------
+    deep_healing: [healing_deep, healing_cellular_renewal, trauma_release, shadow_embrace]
+    mystical_experience: [spiritual_ascent, ecstatic_divine_unity, nondual_dissolution, kundalini_awaken]
+    inner_transformation: [transformation_alchemical, shadow_embrace, alchemy_phoenix_heart, nondual_dissolution]
+    energy_work: [kundalini_awaken, spiritual_lightbody_activation, energy_chakra_reset, tantric_fire]
+    altered_states: [hypnagogic_dream_gate, astral_exit, ecstatic_sacred_ecstasy, nondual_void_mind]
+    grounding_protection: [relaxation_vagus_reset, shield_energetic_barrier, energy_cleansing, shield_psychic_armor]
+    creative_flow: [creativity_flow, creativity_muse_contact, peak_superflow, archetype_creator]
+    emotional_healing: [healing_gentle, trauma_inner_child, alchemy_heart_fire, shadow_inner_darkness]
 
   by_duration:
-    short_15_20: [focus_concentration, creativity_flow, relaxation_gentle]
-    medium_22_25: [empowerment_warrior, empowerment_confidence, healing_gentle, relaxation_deep]
-    long_28_30: [healing_deep, transformation_alchemical, transformation_phoenix, spiritual_ascent, self_knowledge_deep]
+    # ---------------------------------------------------------------------------
+    # SHORT SESSIONS (15-20 minutes)
+    # ---------------------------------------------------------------------------
+    short_15_20:
+      - focus_concentration
+      - focus_study_mode
+      - focus_hyperclarity
+      - creativity_flow
+      - creativity_creative_unblocking
+      - relaxation_vagus_reset
+      - relaxation_stress_release
+      - motivation_action_trigger
+      - motivation_task_mastery
+      - cognitive_learning_accelerator
+      - peak_hyperpresence
+      - peak_action_mode
+      - shield_energetic_barrier
+
+    # ---------------------------------------------------------------------------
+    # MEDIUM SESSIONS (22-28 minutes)
+    # ---------------------------------------------------------------------------
+    medium_22_28:
+      - empowerment_warrior
+      - empowerment_confidence
+      - empowerment_willpower_forge
+      - healing_gentle
+      - healing_immune_activation
+      - relaxation_deep
+      - creativity_muse_contact
+      - abundance_mindset
+      - abundance_magnetic_field
+      - intuition_third_eye_awaken
+      - intuition_flow
+      - energy_cleansing
+      - energy_chakra_reset
+      - manifestation_quantum
+      - motivation_momentum_builder
+      - cognitive_genius_mind
+      - shadow_subconscious_alignment
+      - alchemy_emotional_gold
+      - shield_psychic_armor
+      - peak_superflow
+      - archetype_warrior
+      - archetype_creator
+
+    # ---------------------------------------------------------------------------
+    # LONG SESSIONS (28-35 minutes)
+    # ---------------------------------------------------------------------------
+    long_28_35:
+      - healing_deep
+      - healing_cellular_renewal
+      - transformation_alchemical
+      - transformation_phoenix
+      - transformation_identity_shift
+      - spiritual_ascent
+      - spiritual_higher_self_contact
+      - spiritual_lightbody_activation
+      - self_knowledge_deep
+      - abundance_wealth_resonance
+      - intuition_clairvoyance
+      - energy_field_purification
+      - manifestation_timeline_shift
+      - manifestation_attractor_field
+      - trauma_release
+      - trauma_inner_child
+      - trauma_somatic_discharge
+      - cognitive_synapse_growth
+      - shadow_embrace
+      - shadow_inner_darkness
+      - alchemy_heart_fire
+      - alchemy_phoenix_heart
+      - longevity_youthfield
+      - longevity_cellular_regen
+      - longevity_mitochondrial
+      - archetype_mystic
+      - archetype_sovereign
+      - hypnagogic_dream_gate
+      - hypnagogic_visionary_trance
+
+    # ---------------------------------------------------------------------------
+    # EXTENDED SESSIONS (35-45 minutes) - Deep Work
+    # ---------------------------------------------------------------------------
+    extended_35_45:
+      - kundalini_awaken
+      - spinal_fireflow
+      - serpent_ascension
+      - hypnagogic_liminal_space
+      - astral_exit
+      - astral_etheric_shift
+      - astral_plane_navigation
+      - ecstatic_divine_unity
+      - ecstatic_holy_spirit
+      - ecstatic_cosmic_breath
+      - ecstatic_sacred_ecstasy
+      - tantric_fire
+      - tantric_kundalini_eros
+      - tantric_divine_union
+      - nondual_void_mind
+      - nondual_infinite_self
+      - nondual_dissolution
+      - shield_field_108
 
   by_intensity:
-    gentle: [healing_gentle, relaxation_deep, spiritual_meditation]
-    moderate: [healing_deep, empowerment_confidence, creativity_flow, self_knowledge_deep]
-    intense: [transformation_alchemical, transformation_phoenix, empowerment_warrior, spiritual_ascent]
+    # ---------------------------------------------------------------------------
+    # GENTLE - Safe for beginners, low intensity
+    # ---------------------------------------------------------------------------
+    gentle:
+      - healing_gentle
+      - healing_immune_activation
+      - relaxation_deep
+      - relaxation_sleep
+      - relaxation_vagus_reset
+      - relaxation_stress_release
+      - spiritual_meditation
+      - creativity_flow
+      - creativity_creative_unblocking
+      - focus_study_mode
+      - abundance_mindset
+      - intuition_flow
+      - energy_cleansing
+      - motivation_task_mastery
+      - trauma_inner_child
+      - longevity_cellular_regen
+      - shield_energetic_barrier
+
+    # ---------------------------------------------------------------------------
+    # MODERATE - Standard intensity, some experience helpful
+    # ---------------------------------------------------------------------------
+    moderate:
+      - healing_deep
+      - healing_cellular_renewal
+      - empowerment_confidence
+      - empowerment_willpower_forge
+      - creativity_muse_contact
+      - focus_concentration
+      - focus_hyperclarity
+      - self_knowledge_deep
+      - abundance_magnetic_field
+      - abundance_wealth_resonance
+      - intuition_third_eye_awaken
+      - intuition_clairvoyance
+      - energy_chakra_reset
+      - energy_field_purification
+      - manifestation_quantum
+      - manifestation_attractor_field
+      - motivation_momentum_builder
+      - motivation_action_trigger
+      - cognitive_genius_mind
+      - cognitive_learning_accelerator
+      - cognitive_synapse_growth
+      - trauma_release
+      - trauma_somatic_discharge
+      - shadow_subconscious_alignment
+      - alchemy_emotional_gold
+      - alchemy_heart_fire
+      - longevity_youthfield
+      - longevity_mitochondrial
+      - shield_psychic_armor
+      - peak_superflow
+      - peak_hyperpresence
+      - peak_action_mode
+      - archetype_creator
+      - hypnagogic_dream_gate
+      - hypnagogic_visionary_trance
+
+    # ---------------------------------------------------------------------------
+    # INTENSE - Deep work, experience required
+    # ---------------------------------------------------------------------------
+    intense:
+      - transformation_alchemical
+      - transformation_phoenix
+      - transformation_identity_shift
+      - empowerment_warrior
+      - spiritual_ascent
+      - spiritual_higher_self_contact
+      - spiritual_lightbody_activation
+      - manifestation_timeline_shift
+      - shadow_embrace
+      - shadow_inner_darkness
+      - alchemy_phoenix_heart
+      - shield_field_108
+      - archetype_warrior
+      - archetype_mystic
+      - archetype_sovereign
+      - hypnagogic_liminal_space
+      - astral_exit
+      - astral_etheric_shift
+      - astral_plane_navigation
+
+    # ---------------------------------------------------------------------------
+    # EXTREME - Frontier consciousness, advanced practitioners only
+    # ---------------------------------------------------------------------------
+    extreme:
+      - kundalini_awaken
+      - spinal_fireflow
+      - serpent_ascension
+      - ecstatic_divine_unity
+      - ecstatic_holy_spirit
+      - ecstatic_cosmic_breath
+      - ecstatic_sacred_ecstasy
+      - tantric_fire
+      - tantric_kundalini_eros
+      - tantric_divine_union
+      - nondual_void_mind
+      - nondual_infinite_self
+      - nondual_dissolution
+
+# =============================================================================
+# JOURNEY FAMILIES
+# =============================================================================
+# Groups of related presets that work well together in multi-session series
+# or can be combined for layered experiences
+
+journey_families:
+
+  # ---------------------------------------------------------------------------
+  # CORE JOURNEY FAMILIES
+  # ---------------------------------------------------------------------------
+
+  healing_restoration:
+    name: "Healing & Restoration Series"
+    description: "Progressive healing journey from gentle to deep cellular work"
+    presets:
+      - healing_gentle           # Day 1: Light healing
+      - healing_immune_activation  # Day 2: Immune support
+      - healing_cellular_renewal   # Day 3: Deep cellular work
+      - healing_deep             # Day 4: Full healing integration
+    suggested_order: sequential
+    spacing: "1-2 days between sessions"
+    notes: "Start gentle, progress deeper as comfort increases"
+
+  transformation_phoenix:
+    name: "Phoenix Transformation Series"
+    description: "Death/rebirth transformation cycle"
+    presets:
+      - shadow_embrace           # Phase 1: Face the shadow
+      - alchemy_phoenix_heart    # Phase 2: Transmutation fire
+      - transformation_phoenix   # Phase 3: Rise from ashes
+      - transformation_identity_shift  # Phase 4: New self integration
+    suggested_order: sequential
+    spacing: "3-7 days between sessions"
+    notes: "Deep work - allow processing time between sessions"
+
+  empowerment_forge:
+    name: "Inner Warrior Forge"
+    description: "Build strength, confidence, and willpower"
+    presets:
+      - empowerment_confidence   # Foundation: Self-belief
+      - empowerment_willpower_forge  # Core: Inner fire
+      - archetype_warrior        # Peak: Warrior embodiment
+      - empowerment_warrior      # Integration: Sustained power
+    suggested_order: sequential
+    spacing: "2-3 days between sessions"
+    notes: "Physical activity recommended between sessions"
+
+  # ---------------------------------------------------------------------------
+  # SPIRITUAL JOURNEY FAMILIES
+  # ---------------------------------------------------------------------------
+
+  kundalini_rising:
+    name: "Kundalini Awakening Journey"
+    description: "Progressive kundalini activation from root to crown"
+    presets:
+      - energy_chakra_reset      # Prep: Clear energy channels
+      - kundalini_awaken         # Phase 1: Initial awakening
+      - spinal_fireflow          # Phase 2: Energy rising
+      - serpent_ascension        # Phase 3: Full activation
+    suggested_order: sequential
+    spacing: "5-7 days between sessions"
+    caution: "Grounding practice essential; experienced practitioners only"
+    notes: "May cause intense energy experiences; have support available"
+
+  astral_realm:
+    name: "Astral Projection Training"
+    description: "Progressive astral awareness and projection skills"
+    presets:
+      - hypnagogic_dream_gate    # Prep: Threshold awareness
+      - astral_etheric_shift     # Phase 1: Body awareness
+      - astral_exit              # Phase 2: Separation technique
+      - astral_plane_navigation  # Phase 3: Travel mastery
+    suggested_order: sequential
+    spacing: "2-4 days between sessions"
+    notes: "Best practiced in evening/night sessions"
+
+  divine_encounter:
+    name: "Divine Communion Series"
+    description: "Progressive mystical union experiences"
+    presets:
+      - spiritual_meditation     # Prep: Quiet the mind
+      - spiritual_higher_self_contact  # Phase 1: Higher self
+      - ecstatic_holy_spirit     # Phase 2: Divine presence
+      - ecstatic_divine_unity    # Phase 3: Full union
+    suggested_order: sequential
+    spacing: "3-5 days between sessions"
+    notes: "Devotional practice enhances effects"
+
+  lightbody_activation_series:
+    name: "Lightbody Development"
+    description: "Activate and strengthen the lightbody"
+    presets:
+      - energy_field_purification  # Phase 1: Clear field
+      - spiritual_lightbody_activation  # Phase 2: Activate
+      - shield_field_108         # Phase 3: Stabilize field
+      - nondual_infinite_self    # Phase 4: Expand awareness
+    suggested_order: sequential
+    spacing: "4-7 days between sessions"
+    notes: "Meditation practice enhances integration"
+
+  # ---------------------------------------------------------------------------
+  # SHADOW & PSYCHOLOGICAL FAMILIES
+  # ---------------------------------------------------------------------------
+
+  shadow_descent:
+    name: "Shadow Integration Journey"
+    description: "Deep shadow work for psychological integration"
+    presets:
+      - shadow_subconscious_alignment  # Phase 1: Meet the shadow
+      - shadow_embrace           # Phase 2: Accept the shadow
+      - shadow_inner_darkness    # Phase 3: Integrate darkness
+      - alchemy_emotional_gold   # Phase 4: Transmute to gold
+    suggested_order: sequential
+    spacing: "5-10 days between sessions"
+    caution: "Therapeutic support recommended for trauma histories"
+    notes: "Journaling essential for integration"
+
+  trauma_healing:
+    name: "Trauma Release Protocol"
+    description: "Gentle progressive trauma healing"
+    presets:
+      - relaxation_vagus_reset   # Prep: Nervous system safety
+      - trauma_inner_child       # Phase 1: Inner child work
+      - trauma_somatic_discharge # Phase 2: Body release
+      - trauma_release           # Phase 3: Full release
+    suggested_order: sequential
+    spacing: "7-14 days between sessions"
+    caution: "Professional support strongly recommended"
+    notes: "Go slowly; skip sessions if overwhelmed"
+
+  emotional_alchemy_series:
+    name: "Emotional Transmutation Series"
+    description: "Transform difficult emotions into wisdom"
+    presets:
+      - alchemy_emotional_gold   # Phase 1: Basic transmutation
+      - alchemy_heart_fire       # Phase 2: Heart opening
+      - alchemy_phoenix_heart    # Phase 3: Death/rebirth cycle
+      - nondual_void_mind        # Phase 4: Beyond emotion
+    suggested_order: sequential
+    spacing: "3-7 days between sessions"
+    notes: "Emotional intensity varies; honor your process"
+
+  # ---------------------------------------------------------------------------
+  # TANTRIC JOURNEY FAMILIES
+  # ---------------------------------------------------------------------------
+
+  tantric_temple:
+    name: "Sacred Sexuality Journey"
+    description: "Progressive tantric energy cultivation"
+    presets:
+      - energy_chakra_reset      # Prep: Clear channels
+      - tantric_fire             # Phase 1: Sacral awakening
+      - tantric_kundalini_eros   # Phase 2: Energy cultivation
+      - tantric_divine_union     # Phase 3: Sacred union
+    suggested_order: sequential
+    spacing: "5-7 days between sessions"
+    notes: "Can be practiced solo or with partner; maintain boundaries"
+
+  # ---------------------------------------------------------------------------
+  # MANIFESTATION FAMILIES
+  # ---------------------------------------------------------------------------
+
+  quantum_creator:
+    name: "Quantum Manifestation Series"
+    description: "Progressive manifestation skill building"
+    presets:
+      - abundance_mindset        # Foundation: Prosperity beliefs
+      - manifestation_quantum    # Phase 1: Intention setting
+      - manifestation_attractor_field  # Phase 2: Field expansion
+      - manifestation_timeline_shift  # Phase 3: Reality shifting
+    suggested_order: sequential
+    spacing: "2-4 days between sessions"
+    notes: "Clear intention required; journal manifestation results"
+
+  abundance_magnetism:
+    name: "Abundance Attraction Series"
+    description: "Build magnetic prosperity consciousness"
+    presets:
+      - abundance_mindset        # Foundation: Clear blocks
+      - abundance_magnetic_field # Phase 1: Expand field
+      - abundance_wealth_resonance  # Phase 2: Wealth frequency
+      - archetype_sovereign      # Phase 3: Royal consciousness
+    suggested_order: sequential
+    spacing: "3-5 days between sessions"
+    notes: "Combine with practical action for best results"
+
+  # ---------------------------------------------------------------------------
+  # COGNITIVE ENHANCEMENT FAMILIES
+  # ---------------------------------------------------------------------------
+
+  genius_activation:
+    name: "Genius Mind Development"
+    description: "Activate higher cognitive capacities"
+    presets:
+      - focus_study_mode         # Foundation: Basic focus
+      - cognitive_learning_accelerator  # Phase 1: Learning boost
+      - cognitive_genius_mind    # Phase 2: Genius activation
+      - cognitive_synapse_growth # Phase 3: Neural enhancement
+    suggested_order: sequential
+    spacing: "1-2 days between sessions"
+    notes: "Best combined with learning activities"
+
+  creative_mastery:
+    name: "Creative Flow Mastery"
+    description: "Unlock and sustain creative flow"
+    presets:
+      - creativity_creative_unblocking  # Phase 1: Remove blocks
+      - creativity_flow          # Phase 2: Enter flow
+      - creativity_muse_contact  # Phase 3: Inspiration channel
+      - archetype_creator        # Phase 4: Creator embodiment
+    suggested_order: flexible
+    spacing: "1-3 days between sessions"
+    notes: "Use before creative projects"
+
+  peak_performer:
+    name: "Peak Performance Protocol"
+    description: "Optimize for high performance states"
+    presets:
+      - focus_hyperclarity       # Phase 1: Mental clarity
+      - peak_hyperpresence       # Phase 2: Total presence
+      - peak_superflow           # Phase 3: Flow state
+      - peak_action_mode         # Phase 4: Action mastery
+    suggested_order: flexible
+    spacing: "1-2 days between sessions"
+    notes: "Use before important events or competitions"
+
+  # ---------------------------------------------------------------------------
+  # PROTECTION & GROUNDING FAMILIES
+  # ---------------------------------------------------------------------------
+
+  energy_armor:
+    name: "Energetic Protection Protocol"
+    description: "Build comprehensive energetic protection"
+    presets:
+      - energy_cleansing         # Phase 1: Clear field
+      - shield_energetic_barrier # Phase 2: Basic shield
+      - shield_psychic_armor     # Phase 3: Advanced protection
+      - shield_field_108         # Phase 4: Sacred seal
+    suggested_order: sequential
+    spacing: "2-3 days between sessions"
+    notes: "Daily maintenance practice recommended after series"
+
+  grounding_reset:
+    name: "Nervous System Reset"
+    description: "Deep relaxation and nervous system repair"
+    presets:
+      - relaxation_stress_release  # Phase 1: Release tension
+      - relaxation_vagus_reset   # Phase 2: Vagus activation
+      - relaxation_deep          # Phase 3: Deep relaxation
+      - relaxation_sleep         # Phase 4: Restorative sleep
+    suggested_order: sequential
+    spacing: "1-2 days between sessions"
+    notes: "Excellent for stress recovery periods"
+
+  # ---------------------------------------------------------------------------
+  # MYTHIC IDENTITY FAMILIES
+  # ---------------------------------------------------------------------------
+
+  mythic_identity:
+    name: "Archetypal Embodiment Series"
+    description: "Embody different archetypal energies"
+    presets:
+      - archetype_warrior        # Strength & courage
+      - archetype_mystic         # Wisdom & intuition
+      - archetype_creator        # Creation & innovation
+      - archetype_sovereign      # Authority & presence
+    suggested_order: flexible
+    spacing: "3-5 days between sessions"
+    notes: "Choose based on current life needs; can cycle through"
+
+  # ---------------------------------------------------------------------------
+  # VISIONARY STATES FAMILIES
+  # ---------------------------------------------------------------------------
+
+  visionary_development:
+    name: "Visionary Capacity Building"
+    description: "Develop inner vision and psychic sight"
+    presets:
+      - intuition_third_eye_awaken  # Phase 1: Third eye opening
+      - hypnagogic_visionary_trance  # Phase 2: Visionary states
+      - hypnagogic_liminal_space  # Phase 3: Threshold mastery
+      - intuition_clairvoyance   # Phase 4: Clear seeing
+    suggested_order: sequential
+    spacing: "3-5 days between sessions"
+    notes: "Record visions in dream journal"
+
+  # ---------------------------------------------------------------------------
+  # LONGEVITY FAMILIES
+  # ---------------------------------------------------------------------------
+
+  rejuvenation_protocol:
+    name: "Cellular Rejuvenation Protocol"
+    description: "Anti-aging and cellular regeneration"
+    presets:
+      - longevity_cellular_regen  # Phase 1: Cellular repair
+      - longevity_mitochondrial   # Phase 2: Energy production
+      - longevity_youthfield      # Phase 3: Full rejuvenation
+      - healing_cellular_renewal  # Phase 4: Integration
+    suggested_order: sequential
+    spacing: "3-5 days between sessions"
+    notes: "Combine with healthy lifestyle practices"
+
+  # ---------------------------------------------------------------------------
+  # ENLIGHTENMENT FAMILIES
+  # ---------------------------------------------------------------------------
+
+  nondual_awakening:
+    name: "Nondual Awareness Series"
+    description: "Progressive dissolution into nondual awareness"
+    presets:
+      - spiritual_meditation     # Prep: Stable attention
+      - nondual_void_mind        # Phase 1: Empty mind
+      - nondual_infinite_self    # Phase 2: Infinite expansion
+      - nondual_dissolution      # Phase 3: Complete dissolution
+    suggested_order: sequential
+    spacing: "7-14 days between sessions"
+    caution: "May cause profound shifts; integration support helpful"
+    notes: "Mature meditation practice recommended as foundation"
+
+  ecstatic_path:
+    name: "Path of Sacred Ecstasy"
+    description: "Progressive mystical ecstasy cultivation"
+    presets:
+      - spiritual_higher_self_contact  # Prep: Higher connection
+      - ecstatic_cosmic_breath   # Phase 1: Breath ecstasy
+      - ecstatic_holy_spirit     # Phase 2: Divine presence
+      - ecstatic_sacred_ecstasy  # Phase 3: Full ecstasy
+      - ecstatic_divine_unity    # Phase 4: Union
+    suggested_order: sequential
+    spacing: "5-10 days between sessions"
+    notes: "Devotional practice enhances experience"
+
+# =============================================================================
+# PRESET COUNT SUMMARY
+# =============================================================================
+#
+# Original presets: ~20
+# Standard expansion: +35 presets
+#   - Healing: +2 (cellular_renewal, immune_activation)
+#   - Transformation: +1 (identity_shift)
+#   - Empowerment: +1 (willpower_forge)
+#   - Spiritual: +2 (higher_self_contact, lightbody_activation)
+#   - Relaxation: +2 (vagus_reset, stress_release)
+#   - Creativity: +2 (creative_unblocking, muse_contact)
+#   - Focus: +2 (study_mode, hyperclarity)
+#   - NEW Abundance: +3
+#   - NEW Intuition: +3
+#   - NEW Energy Clearing: +3
+#   - NEW Manifestation: +3
+#   - NEW Trauma Release: +3
+#   - NEW Motivation: +3
+#   - NEW Cognitive Enhancement: +3
+#
+# Ultra-advanced expansion: +40 presets
+#   - Kundalini: +3
+#   - Hypnagogic: +3
+#   - Astral: +3
+#   - Archetypal: +4
+#   - Ecstatic Union: +4
+#   - Shadow Integration: +3
+#   - Emotional Alchemy: +3
+#   - Longevity: +3
+#   - Psychic Shield: +3
+#   - Tantric: +3
+#   - Peak Performance: +3
+#   - Nondual: +3
+#
+# TOTAL: ~95 presets
+# Journey Families: 22 curated series
+# =============================================================================

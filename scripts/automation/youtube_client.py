@@ -227,6 +227,7 @@ class YouTubeClient:
         is_short: bool = False,
         notify_subscribers: bool = True,
         thumbnail_path: Optional[str] = None,
+        contains_synthetic_media: bool = True,
     ) -> str:
         """Upload a video to YouTube.
 
@@ -241,6 +242,8 @@ class YouTubeClient:
             is_short: Whether this is a YouTube Short
             notify_subscribers: Whether to notify subscribers
             thumbnail_path: Optional custom thumbnail path
+            contains_synthetic_media: Whether video contains AI-generated content
+                                     (default True for Dreamweaving sessions)
 
         Returns:
             YouTube video ID
@@ -278,6 +281,7 @@ class YouTubeClient:
                 'privacyStatus': privacy_status,
                 'selfDeclaredMadeForKids': made_for_kids,
                 'notifySubscribers': notify_subscribers,
+                'containsSyntheticMedia': contains_synthetic_media,
             },
         }
 
@@ -525,6 +529,129 @@ class YouTubeClient:
         except HttpError as e:
             logger.error(f"Failed to fetch hourly analytics: {e}")
             return {'error': str(e)}
+
+    def get_video_analytics(self, video_id: str, days: int = 7) -> Dict[str, Any]:
+        """Get analytics for a specific video.
+
+        Args:
+            video_id: YouTube video ID
+            days: Number of days to fetch
+
+        Returns:
+            Video analytics including views, watch time, retention
+        """
+        analytics = self._get_analytics_service()
+        channel_info = self.get_channel_info()
+        channel_id = channel_info['id']
+
+        end_date = datetime.now().strftime('%Y-%m-%d')
+        start_date = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
+
+        try:
+            response = analytics.reports().query(
+                ids=f'channel=={channel_id}',
+                startDate=start_date,
+                endDate=end_date,
+                metrics='views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,likes,comments',
+                filters=f'video=={video_id}',
+            ).execute()
+
+            if 'rows' in response and response['rows']:
+                row = response['rows'][0]
+                return {
+                    'video_id': video_id,
+                    'views': row[0],
+                    'watch_time_minutes': row[1],
+                    'averageViewDuration': row[2],
+                    'averageViewPercentage': row[3],
+                    'likes': row[4],
+                    'comments': row[5],
+                }
+            return {}
+
+        except HttpError as e:
+            logger.error(f"Failed to fetch video analytics: {e}")
+            return {'error': str(e)}
+
+    # ==================== Playlist Management ====================
+
+    def add_to_playlist(self, video_id: str, playlist_id: str) -> bool:
+        """Add a video to a playlist.
+
+        Args:
+            video_id: YouTube video ID
+            playlist_id: YouTube playlist ID
+
+        Returns:
+            True if successful
+        """
+        youtube = self._get_youtube_service()
+
+        try:
+            youtube.playlistItems().insert(
+                part='snippet',
+                body={
+                    'snippet': {
+                        'playlistId': playlist_id,
+                        'resourceId': {
+                            'kind': 'youtube#video',
+                            'videoId': video_id
+                        }
+                    }
+                }
+            ).execute()
+            logger.info(f"Added video {video_id} to playlist {playlist_id}")
+            return True
+        except HttpError as e:
+            logger.error(f"Failed to add to playlist: {e}")
+            return False
+
+    def list_playlists(self, max_results: int = 50) -> List[Dict[str, Any]]:
+        """List all playlists on the channel.
+
+        Args:
+            max_results: Maximum number of playlists to return
+
+        Returns:
+            List of playlist info dicts
+        """
+        youtube = self._get_youtube_service()
+
+        try:
+            response = youtube.playlists().list(
+                part='snippet,contentDetails',
+                mine=True,
+                maxResults=max_results
+            ).execute()
+
+            playlists = []
+            for item in response.get('items', []):
+                playlists.append({
+                    'id': item['id'],
+                    'title': item['snippet']['title'],
+                    'description': item['snippet'].get('description', ''),
+                    'video_count': item['contentDetails']['itemCount'],
+                })
+            return playlists
+        except HttpError as e:
+            logger.error(f"Failed to list playlists: {e}")
+            return []
+
+    def find_playlist_by_name(self, name: str) -> Optional[str]:
+        """Find a playlist by name (case-insensitive partial match).
+
+        Args:
+            name: Playlist name to search for
+
+        Returns:
+            Playlist ID if found, None otherwise
+        """
+        playlists = self.list_playlists()
+        name_lower = name.lower()
+        for playlist in playlists:
+            if name_lower in playlist['title'].lower():
+                return playlist['id']
+        return None
 
     # ==================== Video Management ====================
 

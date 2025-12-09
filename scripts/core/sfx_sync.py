@@ -1044,12 +1044,920 @@ def _generate_mystical(
     return mystical
 
 
+def _generate_atmospheric(
+    duration: float,
+    sample_rate: int = 48000,
+    params: Dict[str, Any] = None
+) -> np.ndarray:
+    """
+    Generate atmospheric textures: wind, sweeps, breath, shimmer, pads, whispers, vortex.
+
+    Args:
+        duration: Duration in seconds
+        sample_rate: Audio sample rate
+        params: Dict with 'type' and type-specific parameters
+    """
+    params = params or {}
+    atmo_type = params.get('type', 'wind')
+    samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, samples, dtype=np.float32)
+    rng = np.random.default_rng(seed=42)
+
+    if atmo_type == 'wind':
+        # Soft ethereal wind bed
+        intensity = params.get('intensity', 0.3)
+        filter_hz = params.get('filter_hz', 2000)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        # Lowpass via moving average
+        window = int(sample_rate / filter_hz)
+        kernel = np.ones(max(window, 1)) / max(window, 1)
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        # Slow modulation
+        mod = 0.7 + 0.3 * np.sin(2 * np.pi * 0.05 * t)
+        output = filtered * mod * intensity
+
+    elif atmo_type == 'sweep':
+        # Ethereal rising sweep
+        rise_time = params.get('rise_time', 4.0)
+        filter_hz = params.get('filter_hz', 4000)
+        freq_start = 100
+        freq_end = filter_hz
+        freq = freq_start + (freq_end - freq_start) * (t / duration) ** 0.5
+        phase = 2 * np.pi * np.cumsum(freq) / sample_rate
+        sweep = np.sin(phase) + 0.3 * np.sin(phase * 2)
+        envelope = np.sin(np.pi * t / duration)
+        output = sweep * envelope * 0.5
+
+    elif atmo_type == 'breath':
+        # Breathing texture
+        cycle_sec = params.get('cycle_sec', 7.0)
+        depth = params.get('depth', 0.6)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        window = int(sample_rate * 0.01)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        breath_mod = 0.5 + 0.5 * np.sin(2 * np.pi * t / cycle_sec)
+        output = filtered * breath_mod * depth * 0.4
+
+    elif atmo_type == 'shimmer':
+        # High frequency sparkle/shimmer
+        freq_min = params.get('freq_min', 8000)
+        freq_max = params.get('freq_max', 16000)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        # Highpass effect via bandpass
+        freq_center = (freq_min + freq_max) / 2
+        tone1 = np.sin(2 * np.pi * freq_center * t)
+        tone2 = np.sin(2 * np.pi * (freq_center * 1.2) * t)
+        mod = 0.5 + 0.5 * rng.random(samples).astype(np.float32)
+        output = (tone1 + tone2 * 0.5) * mod * 0.3
+
+    elif atmo_type == 'pad':
+        # Ambient liminal pad
+        base_freq = params.get('base_freq', 220)
+        harmonics = params.get('harmonics', [1.0, 0.3, 0.1])
+        pad = np.zeros(samples, dtype=np.float32)
+        for i, h in enumerate(harmonics):
+            pad += h * np.sin(2 * np.pi * base_freq * (i + 1) * t)
+        # Slow evolving modulation
+        mod = 0.7 + 0.3 * np.sin(2 * np.pi * 0.02 * t)
+        output = pad * mod * 0.4
+
+    elif atmo_type == 'whisper':
+        # Wind whisper resonance
+        formant_freq = params.get('formant_freq', 1500)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        # Resonant filter simulation
+        resonance = np.sin(2 * np.pi * formant_freq * t) * 0.3
+        window = int(sample_rate * 0.005)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        mod = 0.6 + 0.4 * np.sin(2 * np.pi * 0.3 * t)
+        output = (filtered * 0.4 + resonance) * mod * 0.5
+
+    elif atmo_type == 'vortex':
+        # Swirling vortex effect
+        rotation_hz = params.get('rotation_hz', 0.1)
+        depth = params.get('depth', 0.7)
+        # Rotating stereo will be handled at mix level
+        base = np.sin(2 * np.pi * 150 * t) + 0.5 * np.sin(2 * np.pi * 220 * t)
+        rotation = np.sin(2 * np.pi * rotation_hz * t)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        window = int(sample_rate * 0.01)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        output = (base * 0.4 + filtered * 0.3) * (0.5 + depth * 0.5 * rotation)
+
+    else:
+        output = np.zeros(samples, dtype=np.float32)
+
+    # Fade in/out
+    fade_samples = int(sample_rate * 0.5)
+    if fade_samples > 0 and len(output) > fade_samples * 2:
+        output[:fade_samples] *= np.linspace(0, 1, fade_samples)
+        output[-fade_samples:] *= np.linspace(1, 0, fade_samples)
+
+    return output
+
+
+def _generate_water(
+    duration: float,
+    sample_rate: int = 48000,
+    params: Dict[str, Any] = None
+) -> np.ndarray:
+    """
+    Generate water effects: ocean, stream, underwater, drip, bowl, rain, submerged, ripple.
+    """
+    params = params or {}
+    water_type = params.get('type', 'ocean')
+    samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, samples, dtype=np.float32)
+    rng = np.random.default_rng(seed=42)
+
+    if water_type == 'ocean':
+        # Gentle ocean wave lapping
+        wave_period = params.get('wave_period', 8.0)
+        intensity = params.get('intensity', 0.4)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        window = int(sample_rate * 0.02)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        # Wave envelope
+        wave_env = 0.5 + 0.5 * np.sin(2 * np.pi * t / wave_period)
+        output = filtered * wave_env * intensity
+
+    elif water_type == 'stream':
+        # Brook/trickle
+        flow_rate = params.get('flow_rate', 0.5)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        window = int(sample_rate * 0.005)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        # Irregular flow modulation
+        mod = 0.6 + 0.4 * np.sin(2 * np.pi * 3 * t) * np.sin(2 * np.pi * 0.2 * t)
+        output = filtered * mod * flow_rate * 0.5
+
+    elif water_type == 'underwater':
+        # Muffled underwater pulse
+        pulse_hz = params.get('pulse_hz', 1.0)
+        depth = params.get('depth', 0.8)
+        # Deep rumble with pulse
+        rumble = np.sin(2 * np.pi * 40 * t) + 0.5 * np.sin(2 * np.pi * 60 * t)
+        pulse = 0.5 + 0.5 * np.sin(2 * np.pi * pulse_hz * t)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        window = int(sample_rate * 0.03)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        output = (rumble * 0.4 + filtered * 0.2) * pulse * depth
+
+    elif water_type == 'drip_stretch':
+        # Time-stretched water drip
+        stretch_factor = params.get('stretch_factor', 8.0)
+        # Single drip stretched out
+        drip_samples = int(samples / stretch_factor)
+        drip_t = np.linspace(0, 1, drip_samples)
+        drip = np.sin(2 * np.pi * 1000 * drip_t) * np.exp(-drip_t * 10)
+        # Stretch by interpolation
+        output = np.interp(np.linspace(0, drip_samples, samples), np.arange(drip_samples), drip).astype(np.float32)
+        # Add ethereal shimmer
+        shimmer = np.sin(2 * np.pi * 2000 * t) * 0.2 * np.sin(np.pi * t / duration)
+        output = output * 0.6 + shimmer
+
+    elif water_type == 'bowl':
+        # Tibetan water bowl
+        freq = params.get('freq', 432)
+        water_amount = params.get('water_amount', 0.5)
+        # Bowl resonance with water modulation
+        bowl = np.sin(2 * np.pi * freq * t) + 0.4 * np.sin(2 * np.pi * freq * 2.7 * t)
+        water_mod = 1.0 + water_amount * 0.2 * np.sin(2 * np.pi * 3 * t)
+        envelope = np.exp(-t * 0.5)
+        output = bowl * water_mod * envelope * 0.6
+
+    elif water_type == 'rain':
+        # Rain on leaves/surfaces
+        density = params.get('density', 0.4)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        # High frequency drops
+        window = int(sample_rate * 0.002)
+        kernel = np.ones(window) / window
+        drops = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        # Random patter modulation
+        patter = 0.5 + 0.5 * np.abs(np.sin(2 * np.pi * 8 * t + rng.random() * np.pi))
+        output = drops * patter * density * 0.4
+
+    elif water_type == 'submerged':
+        # Submerged wash/rumble
+        rumble_hz = params.get('rumble_hz', 40)
+        rumble = np.sin(2 * np.pi * rumble_hz * t) + 0.5 * np.sin(2 * np.pi * rumble_hz * 1.5 * t)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        window = int(sample_rate * 0.04)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        mod = 0.7 + 0.3 * np.sin(2 * np.pi * 0.1 * t)
+        output = (rumble * 0.5 + filtered * 0.3) * mod
+
+    elif water_type == 'ripple':
+        # Ripple sweep transition
+        spread_rate = params.get('spread_rate', 2.0)
+        freq_start = 800
+        freq_end = 200
+        freq = freq_start + (freq_end - freq_start) * (t / duration)
+        phase = 2 * np.pi * np.cumsum(freq) / sample_rate
+        ripple = np.sin(phase) * np.sin(np.pi * t / duration)
+        output = ripple * 0.5
+
+    else:
+        output = np.zeros(samples, dtype=np.float32)
+
+    # Fade in/out
+    fade_samples = int(sample_rate * 0.3)
+    if fade_samples > 0 and len(output) > fade_samples * 2:
+        output[:fade_samples] *= np.linspace(0, 1, fade_samples)
+        output[-fade_samples:] *= np.linspace(1, 0, fade_samples)
+
+    return output
+
+
+def _generate_earth(
+    duration: float,
+    sample_rate: int = 48000,
+    params: Dict[str, Any] = None
+) -> np.ndarray:
+    """
+    Generate earth/grounding effects: rumble, groan, stone, cavern, chime, pulse.
+    """
+    params = params or {}
+    earth_type = params.get('type', 'rumble')
+    samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, samples, dtype=np.float32)
+    rng = np.random.default_rng(seed=42)
+
+    if earth_type == 'rumble':
+        # Deep earth rumble
+        freq = params.get('freq', 30)
+        decay = params.get('decay', 8.0)
+        rumble = np.sin(2 * np.pi * freq * t) + 0.6 * np.sin(2 * np.pi * freq * 1.5 * t)
+        rumble += 0.3 * np.sin(2 * np.pi * freq * 2 * t)
+        envelope = np.exp(-t / decay)
+        output = rumble * envelope * 0.6
+
+    elif earth_type == 'groan':
+        # Earth crust groaning
+        freq_range = params.get('freq_range', [20, 80])
+        freq = freq_range[0] + (freq_range[1] - freq_range[0]) * np.sin(np.pi * t / duration)
+        phase = 2 * np.pi * np.cumsum(freq) / sample_rate
+        groan = np.sin(phase)
+        # Add texture
+        noise = rng.standard_normal(samples).astype(np.float32)
+        window = int(sample_rate * 0.05)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        output = groan * 0.5 + filtered * 0.2
+
+    elif earth_type == 'stone':
+        # Stone shifting sound
+        mass = params.get('mass', 0.7)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        # Rumbling stone
+        stone = np.sin(2 * np.pi * 50 * t) * np.exp(-t * 2)
+        window = int(sample_rate * 0.01)
+        kernel = np.ones(window) / window
+        grit = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        envelope = np.sin(np.pi * t / duration)
+        output = (stone * mass + grit * 0.3) * envelope * 0.6
+
+    elif earth_type == 'cavern':
+        # Cavern resonance
+        size = params.get('size', 'large')
+        reverb = params.get('reverb', 0.8)
+        reverb_time = {'small': 1.0, 'medium': 2.0, 'large': 4.0}.get(size, 2.0)
+        # Deep drone
+        drone = np.sin(2 * np.pi * 60 * t) + 0.4 * np.sin(2 * np.pi * 90 * t)
+        # Reverb tail simulation
+        tail_samples = int(sample_rate * reverb_time)
+        tail = np.exp(-np.linspace(0, reverb_time, tail_samples) * 2)
+        if len(drone) > tail_samples:
+            reverbed = np.convolve(drone, tail, mode='same')[:samples] * reverb
+        else:
+            reverbed = drone * reverb
+        output = reverbed.astype(np.float32) * 0.4
+
+    elif earth_type == 'chime':
+        # Rock/stone chime (like lithophone)
+        material = params.get('material', 'stone')
+        freq = params.get('freq', 880)
+        # Stone has less sustain than metal
+        decay_rate = 5.0 if material == 'stone' else 2.0
+        chime = np.sin(2 * np.pi * freq * t) + 0.3 * np.sin(2 * np.pi * freq * 2.3 * t)
+        envelope = np.exp(-t * decay_rate)
+        output = chime * envelope * 0.6
+
+    elif earth_type == 'pulse':
+        # Earth pulse/heartbeat
+        freq = params.get('freq', 40)
+        bpm = params.get('bpm', 60)
+        beat_interval = 60.0 / bpm
+        beat_samples = int(beat_interval * sample_rate)
+        output = np.zeros(samples, dtype=np.float32)
+        # Single earth pulse
+        pulse_len = int(sample_rate * 0.3)
+        pulse_t = np.linspace(0, 0.3, pulse_len)
+        pulse = np.sin(2 * np.pi * freq * pulse_t) * np.exp(-pulse_t * 8)
+        # Place pulses
+        pos = 0
+        while pos + pulse_len < samples:
+            output[pos:pos + pulse_len] += pulse
+            pos += beat_samples
+        output *= 0.6
+
+    else:
+        output = np.zeros(samples, dtype=np.float32)
+
+    # Fade in/out
+    fade_samples = int(sample_rate * 0.3)
+    if fade_samples > 0 and len(output) > fade_samples * 2:
+        output[:fade_samples] *= np.linspace(0, 1, fade_samples)
+        output[-fade_samples:] *= np.linspace(1, 0, fade_samples)
+
+    return output
+
+
+def _generate_light(
+    duration: float,
+    sample_rate: int = 48000,
+    params: Dict[str, Any] = None
+) -> np.ndarray:
+    """
+    Generate light/solar effects: shimmer, radiance.
+    """
+    params = params or {}
+    light_type = params.get('type', 'shimmer')
+    samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, samples, dtype=np.float32)
+    rng = np.random.default_rng(seed=42)
+
+    warmth = params.get('warmth', 0.7)
+    freq = params.get('freq', 5000)
+
+    # High frequency shimmer with warmth
+    shimmer = np.sin(2 * np.pi * freq * t) + 0.5 * np.sin(2 * np.pi * freq * 1.5 * t)
+    # Warm low undertone
+    warm_tone = np.sin(2 * np.pi * 220 * t) * warmth * 0.3
+    # Sparkle modulation
+    sparkle = 0.5 + 0.5 * np.abs(np.sin(2 * np.pi * 8 * t))
+
+    output = (shimmer * 0.3 * sparkle + warm_tone) * np.sin(np.pi * t / duration)
+
+    return output * 0.5
+
+
+def _generate_celestial(
+    duration: float,
+    sample_rate: int = 48000,
+    params: Dict[str, Any] = None
+) -> np.ndarray:
+    """
+    Generate celestial/mystical effects: choir, particles, pad, portal, whisper.
+    """
+    params = params or {}
+    celestial_type = params.get('type', 'choir')
+    samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, samples, dtype=np.float32)
+    rng = np.random.default_rng(seed=42)
+
+    if celestial_type == 'choir':
+        # Angelic choir swell
+        voices = params.get('voices', 4)
+        freq = params.get('freq', 440)
+        output = np.zeros(samples, dtype=np.float32)
+        for i in range(voices):
+            # Slightly detuned voices
+            voice_freq = freq * (1.0 + (i - voices/2) * 0.005)
+            voice = np.sin(2 * np.pi * voice_freq * t)
+            voice += 0.3 * np.sin(2 * np.pi * voice_freq * 2 * t)
+            # Slow vibrato
+            vibrato = 1.0 + 0.01 * np.sin(2 * np.pi * (4 + i * 0.5) * t)
+            output += voice * vibrato / voices
+        envelope = np.sin(np.pi * t / duration)
+        output *= envelope * 0.5
+
+    elif celestial_type == 'particles':
+        # Stardust sparkle particles
+        density = params.get('density', 0.6)
+        freq_range = params.get('freq_range', [4000, 12000])
+        # Random sparkle particles
+        output = np.zeros(samples, dtype=np.float32)
+        num_particles = int(density * duration * 10)
+        for _ in range(num_particles):
+            pos = int(rng.random() * samples)
+            freq = freq_range[0] + rng.random() * (freq_range[1] - freq_range[0])
+            length = int(sample_rate * (0.05 + rng.random() * 0.1))
+            if pos + length < samples:
+                particle_t = np.linspace(0, length/sample_rate, length)
+                particle = np.sin(2 * np.pi * freq * particle_t) * np.exp(-particle_t * 20)
+                output[pos:pos+length] += particle * 0.3
+
+    elif celestial_type == 'pad':
+        # Heavenly ambient pad
+        base = params.get('base', 220)
+        warmth = params.get('warmth', 0.6)
+        pad = np.sin(2 * np.pi * base * t) + 0.5 * np.sin(2 * np.pi * base * 2 * t)
+        pad += 0.3 * np.sin(2 * np.pi * base * 3 * t)
+        mod = 0.7 + 0.3 * np.sin(2 * np.pi * 0.05 * t)
+        output = pad * mod * warmth * 0.4
+
+    elif celestial_type == 'portal':
+        # Portal shimmer opening
+        rise_time = params.get('rise_time', 3.0)
+        shimmer = params.get('shimmer', 0.8)
+        freq_start = 200
+        freq_end = 2000
+        freq = freq_start + (freq_end - freq_start) * (t / duration) ** 0.7
+        phase = 2 * np.pi * np.cumsum(freq) / sample_rate
+        tone = np.sin(phase) + shimmer * 0.5 * np.sin(phase * 2)
+        # Rising envelope
+        envelope = (t / duration) ** 0.5 * np.sin(np.pi * t / duration)
+        output = tone * envelope * 0.5
+
+    elif celestial_type == 'whisper':
+        # Cosmic whisper
+        formant = params.get('formant', 1200)
+        reverb = params.get('reverb', 0.9)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        # Formant resonance
+        resonance = np.sin(2 * np.pi * formant * t) * 0.4
+        window = int(sample_rate * 0.008)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        mod = 0.5 + 0.5 * np.sin(2 * np.pi * 0.5 * t)
+        whisper = (filtered * 0.3 + resonance) * mod
+        # Simple reverb simulation
+        output = whisper * reverb * 0.5
+
+    else:
+        output = np.zeros(samples, dtype=np.float32)
+
+    # Fade in/out
+    fade_samples = int(sample_rate * 0.3)
+    if fade_samples > 0 and len(output) > fade_samples * 2:
+        output[:fade_samples] *= np.linspace(0, 1, fade_samples)
+        output[-fade_samples:] *= np.linspace(1, 0, fade_samples)
+
+    return output
+
+
+def _generate_presence(
+    duration: float,
+    sample_rate: int = 48000,
+    params: Dict[str, Any] = None
+) -> np.ndarray:
+    """
+    Generate presence/spirit effects: whisper, breath, vocal_air, overtone, shimmer, fabric.
+    """
+    params = params or {}
+    presence_type = params.get('type', 'whisper')
+    samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, samples, dtype=np.float32)
+    rng = np.random.default_rng(seed=42)
+
+    if presence_type == 'whisper':
+        # Phase whisper for spirit guide
+        phase_diff = params.get('phase_diff', 0.01)
+        formant = params.get('formant', 1200)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        resonance = np.sin(2 * np.pi * formant * t)
+        # Phase modulation
+        phase_mod = np.sin(2 * np.pi * 0.1 * t) * phase_diff
+        resonance2 = np.sin(2 * np.pi * formant * (t + phase_mod))
+        window = int(sample_rate * 0.005)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        output = (filtered * 0.3 + resonance * 0.2 + resonance2 * 0.2) * 0.6
+
+    elif presence_type == 'breath':
+        # Formant breath presence
+        formant_freq = params.get('formant_freq', 800)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        formant = np.sin(2 * np.pi * formant_freq * t) * 0.3
+        window = int(sample_rate * 0.01)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        breath_env = np.sin(np.pi * t / duration)
+        output = (filtered * 0.4 + formant) * breath_env * 0.5
+
+    elif presence_type == 'vocal_air':
+        # Soft angelic vocal air
+        brightness = params.get('brightness', 0.4)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        # Multiple formants for vocal quality
+        formant1 = np.sin(2 * np.pi * 600 * t) * 0.2
+        formant2 = np.sin(2 * np.pi * 1200 * t) * brightness * 0.15
+        window = int(sample_rate * 0.008)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        output = (filtered * 0.3 + formant1 + formant2) * 0.5
+
+    elif presence_type == 'overtone':
+        # Overtone/throat singing drone
+        base_freq = params.get('base_freq', 150)
+        harmonics = params.get('harmonics', 6)
+        output = np.zeros(samples, dtype=np.float32)
+        for h in range(1, harmonics + 1):
+            # Odd harmonics more prominent
+            amp = 1.0 / h if h % 2 == 1 else 0.5 / h
+            output += amp * np.sin(2 * np.pi * base_freq * h * t)
+        # Slow modulation
+        mod = 0.7 + 0.3 * np.sin(2 * np.pi * 0.1 * t)
+        output *= mod * 0.4
+
+    elif presence_type == 'shimmer':
+        # Arrival shimmer
+        rise_time = params.get('rise_time', 2.0)
+        sustain = params.get('sustain', 3.0)
+        # Rising shimmer
+        freq = 400 + 800 * (t / duration)
+        phase = 2 * np.pi * np.cumsum(freq) / sample_rate
+        shimmer = np.sin(phase) + 0.5 * np.sin(phase * 2)
+        # Envelope: rise then sustain
+        envelope = np.minimum(t / rise_time, 1.0) * np.sin(np.pi * t / duration)
+        output = shimmer * envelope * 0.5
+
+    elif presence_type == 'fabric':
+        # Cloak/robe rustle
+        density = params.get('density', 0.4)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        # Fabric-like filtered noise
+        window = int(sample_rate * 0.003)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        # Irregular movement
+        movement = 0.3 + 0.7 * np.abs(np.sin(2 * np.pi * 5 * t + rng.random() * np.pi))
+        output = filtered * movement * density * 0.5
+
+    else:
+        output = np.zeros(samples, dtype=np.float32)
+
+    # Fade in/out
+    fade_samples = int(sample_rate * 0.2)
+    if fade_samples > 0 and len(output) > fade_samples * 2:
+        output[:fade_samples] *= np.linspace(0, 1, fade_samples)
+        output[-fade_samples:] *= np.linspace(1, 0, fade_samples)
+
+    return output
+
+
+def _generate_advanced(
+    duration: float,
+    sample_rate: int = 48000,
+    params: Dict[str, Any] = None
+) -> np.ndarray:
+    """
+    Generate advanced/experimental effects: fractal, particles, spectral_choir, tuned_drum, field_pulse, sparkfield.
+    """
+    params = params or {}
+    adv_type = params.get('type', 'fractal')
+    samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, samples, dtype=np.float32)
+    rng = np.random.default_rng(seed=42)
+
+    if adv_type == 'fractal':
+        # Evolving fractal atmosphere
+        complexity = params.get('complexity', 0.7)
+        evolution_rate = params.get('evolution_rate', 0.01)
+        output = np.zeros(samples, dtype=np.float32)
+        # Multiple layers of sine waves with evolving phases
+        num_layers = int(5 + complexity * 10)
+        for i in range(num_layers):
+            freq = 50 + i * 30 + 20 * np.sin(2 * np.pi * evolution_rate * i * t)
+            phase = 2 * np.pi * np.cumsum(freq) / sample_rate
+            output += (1.0 / (i + 1)) * np.sin(phase)
+        output = output / num_layers * 0.5
+
+    elif adv_type == 'particles':
+        # Drifting cosmic particles
+        density = params.get('density', 0.3)
+        drift_rate = params.get('drift_rate', 0.05)
+        output = np.zeros(samples, dtype=np.float32)
+        num_particles = int(density * duration * 20)
+        for _ in range(num_particles):
+            pos = int(rng.random() * samples)
+            freq = 500 + rng.random() * 2000
+            drift = 1.0 + drift_rate * np.sin(2 * np.pi * 0.1 * t)
+            length = int(sample_rate * (0.1 + rng.random() * 0.3))
+            if pos + length < samples:
+                particle_t = np.linspace(0, length/sample_rate, length)
+                particle = np.sin(2 * np.pi * freq * particle_t) * np.exp(-particle_t * 5)
+                output[pos:pos+length] += particle * 0.2
+
+    elif adv_type == 'spectral_choir':
+        # Spectral drum choir (harmonics from drum)
+        source = params.get('source', 'frame')
+        voices = params.get('voices', 8)
+        base_freq = 80 if source == 'frame' else 50
+        output = np.zeros(samples, dtype=np.float32)
+        for v in range(voices):
+            freq = base_freq * (v + 1)
+            amp = 1.0 / (v + 1)
+            voice = amp * np.sin(2 * np.pi * freq * t)
+            # Slow modulation
+            mod = 0.7 + 0.3 * np.sin(2 * np.pi * (0.05 + v * 0.01) * t)
+            output += voice * mod
+        envelope = np.sin(np.pi * t / duration)
+        output *= envelope * 0.4
+
+    elif adv_type == 'tuned_drum':
+        # Planetary tuned drum (lunar 210.42 Hz, solar 126.22 Hz)
+        freq = params.get('freq', 210.42)
+        decay = params.get('decay', 12.0)
+        # Deep resonant drum with specific frequency
+        pitch_bend = freq * np.exp(-t * 0.5)
+        phase = 2 * np.pi * np.cumsum(pitch_bend) / sample_rate
+        drum = np.sin(phase) + 0.4 * np.sin(phase * 2)
+        envelope = np.exp(-t / decay)
+        output = drum * envelope * 0.6
+
+    elif adv_type == 'field_pulse':
+        # Resonant field pulse
+        freq = params.get('freq', 30)
+        earth_blend = params.get('earth_blend', 0.5)
+        # Base pulse
+        pulse = np.sin(2 * np.pi * freq * t)
+        # Earth resonance (7.83 Hz Schumann)
+        schumann = np.sin(2 * np.pi * 7.83 * t) * earth_blend
+        # Combine
+        mod = 0.7 + 0.3 * np.sin(2 * np.pi * 0.05 * t)
+        output = (pulse * 0.6 + schumann * 0.4) * mod * 0.5
+
+    elif adv_type == 'sparkfield':
+        # Astral sparkfield
+        density = params.get('density', 0.5)
+        freq_range = params.get('freq_range', [3000, 12000])
+        output = np.zeros(samples, dtype=np.float32)
+        num_sparks = int(density * duration * 30)
+        for _ in range(num_sparks):
+            pos = int(rng.random() * samples)
+            freq = freq_range[0] + rng.random() * (freq_range[1] - freq_range[0])
+            length = int(sample_rate * (0.02 + rng.random() * 0.08))
+            if pos + length < samples:
+                spark_t = np.linspace(0, length/sample_rate, length)
+                spark = np.sin(2 * np.pi * freq * spark_t) * np.exp(-spark_t * 30)
+                output[pos:pos+length] += spark * 0.25
+
+    else:
+        output = np.zeros(samples, dtype=np.float32)
+
+    # Fade in/out
+    fade_samples = int(sample_rate * 0.5)
+    if fade_samples > 0 and len(output) > fade_samples * 2:
+        output[:fade_samples] *= np.linspace(0, 1, fade_samples)
+        output[-fade_samples:] *= np.linspace(1, 0, fade_samples)
+
+    return output
+
+
+def _generate_drum_expanded(
+    duration: float,
+    sample_rate: int = 48000,
+    params: Dict[str, Any] = None
+) -> np.ndarray:
+    """
+    Expanded drum generator supporting many drum types:
+    frame, buffalo, bodhran, ocean, damaru, djembe, dunun, talking, daf, riqq,
+    tabla, doumbek, taiko, odaiko, shime, cinematic, earthquake, granular, etc.
+    """
+    params = params or {}
+    drum_type = params.get('type', 'frame')
+    freq = params.get('freq', 60)
+    samples = int(sample_rate * duration)
+    t = np.linspace(0, duration, samples, dtype=np.float32)
+    rng = np.random.default_rng(seed=42)
+
+    if drum_type in ('frame', 'shamanic'):
+        # Frame drum / shamanic drum
+        decay = params.get('decay', 3.5)
+        resonance = params.get('resonance', 0.7)
+        pitch_bend = freq * np.exp(-t * 2)
+        phase = 2 * np.pi * np.cumsum(pitch_bend) / sample_rate
+        drum = np.sin(phase) * resonance
+        # Overtones
+        drum += 0.3 * np.sin(phase * 2.3)
+        envelope = np.exp(-t / decay)
+        output = drum * envelope * 0.7
+
+    elif drum_type == 'buffalo':
+        # Deep buffalo drum
+        pattern = params.get('pattern', 'single')
+        sub_layer = params.get('sub_layer', False)
+        decay = params.get('decay', 4.0)
+        bpm = params.get('bpm', 60)
+
+        pitch_bend = freq * np.exp(-t * 1.5)
+        phase = 2 * np.pi * np.cumsum(pitch_bend) / sample_rate
+        drum = np.sin(phase)
+        if sub_layer:
+            drum += 0.5 * np.sin(phase * 0.5)  # Sub-bass layer
+
+        if pattern == 'heartbeat':
+            # Double beat pattern
+            beat_interval = 60.0 / bpm
+            output = np.zeros(samples, dtype=np.float32)
+            beat_len = int(sample_rate * 0.4)
+            pos = 0
+            while pos + beat_len < samples:
+                # First beat
+                beat_t = np.linspace(0, 0.4, beat_len)
+                beat = np.sin(2 * np.pi * freq * beat_t) * np.exp(-beat_t * 5)
+                output[pos:pos+beat_len] += beat
+                # Second beat (softer)
+                pos2 = pos + int(sample_rate * 0.15)
+                if pos2 + beat_len < samples:
+                    output[pos2:pos2+beat_len] += beat * 0.6
+                pos += int(beat_interval * sample_rate)
+            output *= 0.7
+        elif pattern == 'double':
+            # Double pulse
+            output = np.zeros(samples, dtype=np.float32)
+            beat_len = int(sample_rate * 0.3)
+            beat_t = np.linspace(0, 0.3, beat_len)
+            beat = np.sin(2 * np.pi * freq * beat_t) * np.exp(-beat_t * 6)
+            output[:beat_len] = beat
+            pos2 = int(sample_rate * 0.2)
+            if pos2 + beat_len < samples:
+                output[pos2:pos2+beat_len] += beat * 0.8
+            output *= 0.7
+        else:
+            envelope = np.exp(-t / decay)
+            output = drum * envelope * 0.7
+
+    elif drum_type == 'bodhran':
+        # Irish bodhran with roll
+        pattern = params.get('pattern', 'roll')
+        bpm = params.get('bpm', 80)
+        if pattern == 'roll':
+            output = np.zeros(samples, dtype=np.float32)
+            roll_freq = bpm / 60 * 4  # 4 hits per beat
+            hit_interval = int(sample_rate / roll_freq)
+            hit_len = int(sample_rate * 0.05)
+            hit_t = np.linspace(0, 0.05, hit_len)
+            hit = np.sin(2 * np.pi * 100 * hit_t) * np.exp(-hit_t * 30)
+            pos = 0
+            while pos + hit_len < samples:
+                amp = 0.5 + 0.5 * np.sin(2 * np.pi * 2 * pos / sample_rate)  # Volume variation
+                output[pos:pos+hit_len] += hit * amp
+                pos += hit_interval
+            output *= 0.6
+        else:
+            output = np.sin(2 * np.pi * freq * t) * np.exp(-t * 5) * 0.6
+
+    elif drum_type == 'ocean':
+        # Ocean drum (rain stick-like)
+        wave_rate = params.get('wave_rate', 0.2)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        window = int(sample_rate * 0.01)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        wave = 0.5 + 0.5 * np.sin(2 * np.pi * wave_rate * t)
+        output = filtered * wave * 0.5
+
+    elif drum_type == 'djembe':
+        # West African djembe with zones
+        zone = params.get('zone', 'bass')
+        intensity = params.get('intensity', 0.7)
+        resonance = params.get('resonance', 0.7)
+
+        if zone == 'bass':
+            freq_local = 80
+            decay = 0.3
+        elif zone == 'tone':
+            freq_local = 200
+            decay = 0.2
+        else:  # slap
+            freq_local = 400
+            decay = 0.1
+
+        drum = np.sin(2 * np.pi * freq_local * t) * np.exp(-t / decay)
+        # Add attack noise for slap
+        if zone == 'slap':
+            noise = rng.standard_normal(samples).astype(np.float32)
+            drum += noise * np.exp(-t * 50) * 0.3
+        output = drum * intensity * resonance * 0.7
+
+    elif drum_type == 'dunun':
+        # Dunun bass drum
+        decay = params.get('decay', 3.0)
+        drum = np.sin(2 * np.pi * freq * t) + 0.5 * np.sin(2 * np.pi * freq * 2 * t)
+        envelope = np.exp(-t / decay)
+        output = drum * envelope * 0.7
+
+    elif drum_type == 'taiko':
+        # Japanese taiko
+        intensity = params.get('intensity', 0.7)
+        decay = params.get('decay', 5.0)
+        # Massive low end with resonance
+        pitch_bend = 60 * np.exp(-t * 0.5)
+        phase = 2 * np.pi * np.cumsum(pitch_bend) / sample_rate
+        drum = np.sin(phase) + 0.4 * np.sin(phase * 2)
+        # Attack transient
+        attack = rng.standard_normal(samples).astype(np.float32) * np.exp(-t * 30) * 0.3
+        envelope = np.exp(-t / decay)
+        output = (drum + attack) * envelope * intensity * 0.8
+
+    elif drum_type == 'odaiko':
+        # Massive odaiko (big taiko)
+        decay = params.get('decay', 8.0)
+        pitch_bend = 30 * np.exp(-t * 0.3)
+        phase = 2 * np.pi * np.cumsum(pitch_bend) / sample_rate
+        drum = np.sin(phase) + 0.5 * np.sin(phase * 2) + 0.3 * np.sin(phase * 0.5)
+        envelope = np.exp(-t / decay)
+        output = drum * envelope * 0.8
+
+    elif drum_type == 'cinematic':
+        # Cinematic tom/impact
+        decay = params.get('decay', 4.0)
+        reverb = params.get('reverb', 0.7)
+        pitch_bend = freq * np.exp(-t * 2)
+        phase = 2 * np.pi * np.cumsum(pitch_bend) / sample_rate
+        drum = np.sin(phase) + 0.3 * np.sin(phase * 2)
+        envelope = np.exp(-t / decay)
+        # Simple reverb tail
+        output = drum * envelope * 0.7
+        if reverb > 0:
+            tail_len = int(sample_rate * reverb * 2)
+            if tail_len < samples:
+                tail = np.exp(-np.linspace(0, 2, tail_len) * 3)
+                output = np.convolve(output, tail, mode='same')[:samples].astype(np.float32)
+
+    elif drum_type == 'earthquake':
+        # Distant earthquake rumble drum
+        distance = params.get('distance', 'far')
+        decay_mult = {'near': 1.0, 'medium': 2.0, 'far': 4.0}.get(distance, 2.0)
+        freq_local = freq if freq > 0 else 25
+        rumble = np.sin(2 * np.pi * freq_local * t) + 0.5 * np.sin(2 * np.pi * freq_local * 1.5 * t)
+        noise = rng.standard_normal(samples).astype(np.float32)
+        window = int(sample_rate * 0.05)
+        kernel = np.ones(window) / window
+        filtered = np.convolve(noise, kernel, mode='same').astype(np.float32)
+        mod = 0.5 + 0.5 * np.sin(2 * np.pi * 0.1 * t)
+        envelope = np.exp(-t / (decay_mult * 2))
+        output = (rumble * 0.5 + filtered * 0.3) * mod * envelope * 0.6
+
+    elif drum_type == 'granular':
+        # Granular drum texture
+        grain_size = params.get('grain_size', 50)
+        scatter = params.get('scatter', 0.5)
+        density = params.get('density', 0.4)
+        output = np.zeros(samples, dtype=np.float32)
+        grain_samples = int(sample_rate * grain_size / 1000)
+        num_grains = int(density * duration * 50)
+        # Base drum sound to granulate
+        base_t = np.linspace(0, 0.2, int(sample_rate * 0.2))
+        base_drum = np.sin(2 * np.pi * freq * base_t) * np.exp(-base_t * 10)
+        for _ in range(num_grains):
+            pos = int(rng.random() * (samples - grain_samples))
+            grain_start = int(rng.random() * max(1, len(base_drum) - grain_samples))
+            grain = base_drum[grain_start:grain_start + min(grain_samples, len(base_drum) - grain_start)]
+            if len(grain) > 0 and pos + len(grain) < samples:
+                # Apply grain window
+                window = np.hanning(len(grain))
+                output[pos:pos + len(grain)] += grain * window * scatter
+        output *= 0.6
+
+    elif drum_type in ('stretched', 'reverse'):
+        # Time-stretched or reversed drum
+        source = params.get('source', 'frame')
+        stretch_factor = params.get('stretch_factor', 10.0)
+        fade = params.get('fade', True)
+        # Generate base drum
+        base_len = int(samples / stretch_factor)
+        base_t = np.linspace(0, base_len / sample_rate, base_len)
+        base = np.sin(2 * np.pi * freq * base_t) * np.exp(-base_t * 5)
+        # Stretch
+        output = np.interp(np.linspace(0, base_len, samples), np.arange(base_len), base).astype(np.float32)
+        if drum_type == 'reverse':
+            output = output[::-1]
+        if fade:
+            fade_samples = int(sample_rate * 1.0)
+            if fade_samples < samples:
+                output[:fade_samples] *= np.linspace(0, 1, fade_samples)
+                output[-fade_samples:] *= np.linspace(1, 0, fade_samples)
+        output *= 0.6
+
+    else:
+        # Default simple drum
+        pitch_bend = freq * np.exp(-t * 3)
+        phase = 2 * np.pi * np.cumsum(pitch_bend) / sample_rate
+        drum = np.sin(phase)
+        envelope = np.exp(-t * 4)
+        output = drum * envelope * 0.7
+
+    return output
+
+
 def _generate_drum(
     duration: float,
     freq: float = 60,
     sample_rate: int = 48000
 ) -> np.ndarray:
-    """Generate deep drum hit."""
+    """Generate deep drum hit (simple version for backward compatibility)."""
     samples = int(sample_rate * duration)
     t = np.linspace(0, duration, samples, dtype=np.float32)
 

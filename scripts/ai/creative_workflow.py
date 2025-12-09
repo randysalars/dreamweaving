@@ -1000,6 +1000,149 @@ class CreativeWorkflow:
 
             concept.score = min(1.0, concept.score + adjustment)
 
+    def _select_binaural_preset(self, concept: JourneyConcept) -> Optional[str]:
+        """
+        Select the best binaural preset from the YAML knowledge base based on concept.
+
+        Uses the therapeutic_goal, theme, and key_transformation to find a matching preset.
+
+        Returns:
+            Preset name (e.g., 'healing_deep', 'kundalini_awaken') or None to use fallback.
+        """
+        try:
+            from scripts.core.audio.binaural_preset_loader import (
+                get_presets_by_outcome,
+                list_presets,
+                get_preset_info,
+            )
+        except ImportError:
+            return None
+
+        # Map therapeutic_goal to outcome categories
+        goal_to_outcome = {
+            # Standard outcomes
+            'healing': 'healing',
+            'emotional healing': 'healing',
+            'physical healing': 'healing',
+            'trauma': 'healing',
+            'grief': 'healing',
+            'pain': 'healing',
+
+            'transformation': 'transformation',
+            'change': 'transformation',
+            'growth': 'transformation',
+            'evolution': 'transformation',
+            'shadow work': 'shadow_work',
+
+            'relaxation': 'relaxation',
+            'stress relief': 'relaxation',
+            'calm': 'relaxation',
+            'peace': 'relaxation',
+            'sleep': 'sleep',
+            'rest': 'sleep',
+
+            'empowerment': 'empowerment',
+            'confidence': 'confidence',
+            'strength': 'empowerment',
+            'courage': 'confidence',
+            'willpower': 'empowerment',
+            'motivation': 'motivation',
+
+            'creativity': 'creativity',
+            'creative': 'creativity',
+            'inspiration': 'creativity',
+            'imagination': 'creativity',
+
+            'focus': 'focus',
+            'concentration': 'focus',
+            'clarity': 'focus',
+            'learning': 'cognitive_enhancement',
+            'memory': 'cognitive_enhancement',
+            'study': 'focus',
+
+            'spiritual': 'spiritual_growth',
+            'spiritual growth': 'spiritual_growth',
+            'enlightenment': 'nondual',
+            'awakening': 'spiritual_growth',
+            'divine': 'ecstatic_union',
+            'sacred': 'spiritual_growth',
+
+            # Advanced outcomes
+            'kundalini': 'kundalini',
+            'energy': 'kundalini',
+            'chakra': 'kundalini',
+            'astral': 'astral',
+            'astral projection': 'astral',
+            'lucid': 'hypnagogic',
+            'dream': 'hypnagogic',
+            'visionary': 'hypnagogic',
+            'manifestation': 'manifestation',
+            'abundance': 'abundance',
+            'wealth': 'abundance',
+            'intuition': 'intuition',
+            'psychic': 'intuition',
+            'tantric': 'tantric',
+        }
+
+        # Determine outcome from therapeutic_goal
+        goal_lower = concept.therapeutic_goal.lower().strip()
+        outcome = goal_to_outcome.get(goal_lower)
+
+        # Try to match by keywords in the goal if no direct match
+        if not outcome:
+            for key, out in goal_to_outcome.items():
+                if key in goal_lower:
+                    outcome = out
+                    break
+
+        # Try theme keywords if still no match
+        if not outcome:
+            theme_lower = concept.theme.lower()
+            for key, out in goal_to_outcome.items():
+                if key in theme_lower:
+                    outcome = out
+                    break
+
+        # Default to relaxation for unknown outcomes
+        if not outcome:
+            outcome = 'relaxation'
+
+        # Get presets for this outcome
+        presets = get_presets_by_outcome(outcome)
+
+        if not presets:
+            # Fallback to standard presets
+            presets = get_presets_by_outcome('relaxation') or ['theta_meditation']
+
+        # Select based on intensity and specificity
+        # Prefer "deep" variants for longer sessions, standard for shorter
+        selected = None
+        duration = concept.target_duration_minutes
+
+        for preset_name in presets:
+            info = get_preset_info(preset_name)
+            if not info:
+                continue
+
+            # Check duration compatibility
+            preset_duration = info.get('duration_minutes', 25)
+
+            # Prefer presets whose default duration is close to target
+            if abs(preset_duration - duration) <= 10:
+                selected = preset_name
+                break
+
+            # Use deep variants for longer sessions
+            if duration >= 25 and 'deep' in preset_name:
+                selected = preset_name
+                break
+
+        # Fallback to first preset if no good match
+        if not selected and presets:
+            selected = presets[0]
+
+        return selected
+
     def generate_manifest(self, concept: JourneyConcept, session_name: str) -> Dict:
         """
         Generate a complete manifest.yaml structure from a concept.
@@ -1046,15 +1189,7 @@ class CreativeWorkflow:
                 }
                 for a in concept.archetypes
             ],
-            'sound_bed': {
-                'binaural': {
-                    'enabled': True,
-                    'base_hz': concept.binaural_progression.base_hz,
-                    'sections': concept.binaural_progression.to_manifest_format(duration_seconds),
-                },
-                'pink_noise': {'enabled': False},
-                'nature': {'enabled': any(e.type == 'nature' for e in concept.sound_effects)},
-            },
+            'sound_bed': self._build_sound_bed(concept, duration_seconds),
             'mixing': {
                 'voice_lufs': -16,
                 'binaural_lufs': -26,
@@ -1142,6 +1277,40 @@ class CreativeWorkflow:
             'awakening': "Gentle return to full waking awareness",
         }
         return descriptions.get(section, section.title())
+
+    def _build_sound_bed(self, concept: JourneyConcept, duration_seconds: int) -> Dict:
+        """
+        Build sound_bed configuration, preferring YAML presets when available.
+
+        Args:
+            concept: The journey concept
+            duration_seconds: Total duration in seconds
+
+        Returns:
+            Dict with binaural, pink_noise, and nature configuration
+        """
+        # Try to select a YAML preset based on the concept
+        preset_name = self._select_binaural_preset(concept)
+
+        binaural_config = {
+            'enabled': True,
+            'base_hz': concept.binaural_progression.base_hz,
+        }
+
+        if preset_name:
+            # Use YAML preset - auto_generate will load it via --yaml-preset
+            binaural_config['preset'] = preset_name
+            # Still include sections as fallback if preset loading fails
+            binaural_config['sections'] = concept.binaural_progression.to_manifest_format(duration_seconds)
+        else:
+            # No preset found, use concept's binaural progression
+            binaural_config['sections'] = concept.binaural_progression.to_manifest_format(duration_seconds)
+
+        return {
+            'binaural': binaural_config,
+            'pink_noise': {'enabled': False},
+            'nature': {'enabled': any(e.type == 'nature' for e in concept.sound_effects)},
+        }
 
     def brainstorm_and_create(
         self,

@@ -100,3 +100,41 @@ cron:
   # These are placeholders until analytics are fetched
   daily_upload: null
   daily_shorts: null
+
+  # Automated learning jobs (collects analytics and updates knowledge base)
+  # Daily: Fetch analytics for videos uploaded 48+ hours ago
+  # Runs at 3pm MST = 10pm UTC (after most daily views are recorded)
+  daily_analytics: "0 22 * * *"
+
+  # Weekly: Deep analysis and lesson extraction
+  # Runs Sunday at 3am MST = 10am UTC
+  weekly_learning: "0 10 * * 0"
+
+# LEARNING SYSTEM
+# ===============
+# Automated feedback collection and knowledge base updates
+learning:
+  # Minimum video age (hours) before fetching analytics
+  min_video_age_hours: 48
+
+  # Performance thresholds for categorizing videos
+  thresholds:
+    excellent:
+      views_per_day: 100
+      retention_percent: 60
+    good:
+      views_per_day: 50
+      retention_percent: 45
+    average:
+      views_per_day: 20
+      retention_percent: 30
+
+  # Auto-update lessons_learned.yaml with findings
+  auto_update_lessons: true
+
+  # Categories to track
+  tracked_patterns:
+    - theme_performance    # Which themes get more views
+    - duration_impact      # How duration affects retention
+    - title_patterns       # What titles drive clicks
+    - thumbnail_effect     # Future: A/B test thumbnails

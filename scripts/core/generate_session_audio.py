@@ -206,15 +206,15 @@ def main():
     )
     parser.add_argument("--carrier-hz", type=validate_frequency, default=432.0, help="Carrier frequency (0.1-20000 Hz).")
     parser.add_argument("--bed-amplitude", type=validate_percentage, default=0.3, help="Bed amplitude (0.0-1.0, before dB gain).")
-    parser.add_argument("--bed-gain-db", type=validate_volume_db, default=-10.0, help="Bed gain applied in final mix (-40 to +10 dB).")
-    parser.add_argument("--voice-gain-db", type=validate_volume_db, default=0.0, help="Voice gain applied in final mix (-40 to +10 dB).")
+    parser.add_argument("--bed-gain-db", type=validate_volume_db, default=-12.0, help="Bed gain applied in final mix (-40 to +10 dB). Default: -12 dB (best practice).")
+    parser.add_argument("--voice-gain-db", type=validate_volume_db, default=-6.0, help="Voice gain applied in final mix (-40 to +10 dB). Default: -6 dB (headroom for post-processing).")
     parser.add_argument("--output-dir", default=None, help="Output directory (default: <ssml_dir>/output).")
     parser.add_argument("--voice-out", type=validate_output_path, default=None, help="Override voice output path.")
     parser.add_argument("--bed-out", type=validate_output_path, default=None, help="Override binaural bed output path.")
     parser.add_argument("--mix-out", type=validate_output_path, default=None, help="If set, export final mix MP3 to this path.")
     parser.add_argument("--sfx-path", default=None, help="Optional sound-effect file to overlay onto the bed.")
     parser.add_argument("--sfx-at-sec", type=float, default=0.0, help="Position for the sfx in seconds.")
-    parser.add_argument("--sfx-gain-db", type=validate_volume_db, default=0.0, help="Gain (-40 to +10 dB) applied to the sfx before overlay.")
+    parser.add_argument("--sfx-gain-db", type=validate_volume_db, default=-6.0, help="Gain (-40 to +10 dB) applied to the sfx before overlay. Default: -6 dB (best practice).")
     parser.add_argument(
         "--sfx-config",
         default=None,

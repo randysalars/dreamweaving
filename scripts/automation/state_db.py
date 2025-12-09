@@ -106,6 +106,7 @@ class StateDatabase:
                 uploaded_to_youtube INTEGER DEFAULT 0,
                 youtube_video_id TEXT,
                 youtube_uploaded_at TIMESTAMP,
+                analytics_fetched_at TIMESTAMP,
 
                 -- Website upload
                 uploaded_to_website INTEGER DEFAULT 0,
