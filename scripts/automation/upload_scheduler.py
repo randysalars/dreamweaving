@@ -33,9 +33,11 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
+from scripts.automation.playlist_classifier import PlaylistClassifier
+
 logger = logging.getLogger(__name__)
 
-# Dreamweaving playlist ID on Randy Salars channel
+# Legacy: Dreamweaving master playlist ID (now managed via PlaylistClassifier)
 DREAMWEAVING_PLAYLIST_ID = "PLUza-jvPB6FycwFSty1CWCiqTCxSbj90l"
 
 # Optimized tag set for Dreamweaving content (curated for SEO, under 500 chars total)
@@ -94,6 +96,7 @@ class UploadScheduler:
         self.db = db
         self.youtube = youtube_client
         self.analytics = analytics_optimizer
+        self.playlist_classifier = PlaylistClassifier()
 
     def select_next_upload(self) -> Optional[Dict[str, Any]]:
         """Select next video to upload based on configured strategy.
@@ -207,14 +210,58 @@ class UploadScheduler:
 
             logger.info(f"Upload successful! Video ID: {video_id}")
 
-            # Add to Dreamweaving playlist
+            # Classify and add to playlists
             try:
-                if self.youtube.add_to_playlist(video_id, DREAMWEAVING_PLAYLIST_ID):
-                    logger.info("Added to Dreamweaving playlist")
-                else:
-                    logger.warning("Failed to add to playlist (non-fatal)")
+                # Build session data for classification
+                session_data = self._build_classification_data(session, session_path, metadata)
+                classification = self.playlist_classifier.get_playlists_for_session(session_data)
+
+                logger.info(
+                    f"Playlist classification: {classification['primary']} "
+                    f"(confidence: {classification['confidence']:.2f}, "
+                    f"matches: {classification['match_count']})"
+                )
+
+                # Add to all matched playlists
+                added_count = 0
+                failed_count = 0
+                for playlist_id in classification['playlists']:
+                    if playlist_id:
+                        try:
+                            if self.youtube.add_to_playlist(video_id, playlist_id):
+                                added_count += 1
+                                logger.debug(f"Added to playlist: {playlist_id}")
+                            else:
+                                failed_count += 1
+                                logger.warning(f"Failed to add to playlist: {playlist_id}")
+                        except Exception as e:
+                            failed_count += 1
+                            logger.warning(f"Playlist {playlist_id} failed: {e}")
+
+                logger.info(f"Added to {added_count} playlist(s)")
+                if failed_count > 0:
+                    logger.warning(f"Failed to add to {failed_count} playlist(s)")
+
+                if classification['needs_review']:
+                    logger.warning(
+                        f"Low confidence classification ({classification['confidence']:.2f}) - "
+                        "manual review recommended"
+                    )
+
+                # Log classification details for debugging
+                if classification.get('details'):
+                    logger.debug("Classification details:")
+                    for detail in classification['details'][:3]:
+                        logger.debug(f"  - {detail['name']}: {detail['confidence']:.3f} ({detail['type']})")
+
             except Exception as e:
-                logger.warning(f"Playlist assignment failed (non-fatal): {e}")
+                logger.warning(f"Playlist classification failed, using fallback: {e}")
+                # Fallback to legacy single playlist
+                try:
+                    if self.youtube.add_to_playlist(video_id, DREAMWEAVING_PLAYLIST_ID):
+                        logger.info("Added to Dreamweaving playlist (fallback)")
+                except Exception as fallback_e:
+                    logger.warning(f"Fallback playlist assignment also failed: {fallback_e}")
 
             # Update database
             self.db.mark_youtube_uploaded(session_name, video_id)
@@ -410,6 +457,59 @@ class UploadScheduler:
 
         logger.debug(f"Generated {len(final_tags)} tags ({char_count} chars)")
         return final_tags
+
+    def _build_classification_data(
+        self,
+        session: Dict[str, Any],
+        session_path: Path,
+        metadata: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Build session data dict for playlist classification.
+
+        Args:
+            session: Session dict from database
+            session_path: Path to session directory
+            metadata: Loaded metadata dict
+
+        Returns:
+            Session data dict for PlaylistClassifier
+        """
+        # Load manifest for full context
+        manifest = {}
+        manifest_path = session_path / 'manifest.yaml'
+        if manifest_path.exists():
+            try:
+                with open(manifest_path) as f:
+                    manifest = yaml.safe_load(f) or {}
+            except Exception as e:
+                logger.debug(f"Could not load manifest: {e}")
+
+        session_info = manifest.get('session', {})
+        youtube_info = manifest.get('youtube', {})
+
+        # Get duration, handling seconds vs minutes
+        duration = session_info.get('duration', manifest.get('duration', 25))
+        if isinstance(duration, (int, float)) and duration > 100:
+            duration = int(duration) // 60
+
+        return {
+            'title': (
+                metadata.get('title') or
+                youtube_info.get('optimized_title') or
+                youtube_info.get('title') or
+                session_info.get('topic') or
+                session['session_name']
+            ),
+            'description': (
+                metadata.get('description') or
+                session_info.get('description') or
+                manifest.get('description', '')
+            ),
+            'tags': metadata.get('tags', youtube_info.get('tags', [])),
+            'duration_minutes': duration,
+            'archetypes': manifest.get('archetypes', []),
+            'manifest': manifest
+        }
 
     def _load_metadata(self, session_path: Path) -> Optional[Dict]:
         """Load YouTube metadata from session.

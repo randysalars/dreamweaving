@@ -199,7 +199,22 @@ def create_description(session_dir, manifest, output_dir, audio_duration):
             time_str = format_timestamp(fx.get("time", 0))
             desc += f"- **Gamma Flash**: {fx.get('freq_hz', 40)} Hz at {time_str}\n"
 
-    desc += "\n## 🌌 Timeline\n\n"
+    # Anchors section (if present)
+    anchors = manifest.get("anchors", [])
+    if anchors:
+        desc += "## 🎯 Post-Hypnotic Anchors\n\n"
+        desc += "This session installs these powerful anchors for future use:\n\n"
+        for anchor in anchors:
+            name = anchor.get("name", "Unknown")
+            category = anchor.get("category", "").replace("_", " ").title()
+            recall = anchor.get("recall_phrase", "")
+            desc += f"**{name}** ({category})\n"
+            if recall:
+                desc += f"  *Trigger: {recall}*\n"
+            desc += "\n"
+        desc += "_These anchors strengthen with repeated listening._\n\n"
+
+    desc += "## 🌌 Timeline\n\n"
 
     # Add chapter markers
     sections = manifest.get("sections", [])

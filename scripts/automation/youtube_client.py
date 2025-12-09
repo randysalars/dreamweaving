@@ -653,6 +653,72 @@ class YouTubeClient:
                 return playlist['id']
         return None
 
+    def create_playlist(
+        self,
+        title: str,
+        description: str = "",
+        privacy_status: str = 'public'
+    ) -> Optional[str]:
+        """Create a new playlist on the channel.
+
+        Args:
+            title: Playlist title
+            description: Playlist description
+            privacy_status: public | private | unlisted
+
+        Returns:
+            Playlist ID if successful, None otherwise
+        """
+        youtube = self._get_youtube_service()
+
+        try:
+            response = youtube.playlists().insert(
+                part='snippet,status',
+                body={
+                    'snippet': {
+                        'title': title,
+                        'description': description,
+                    },
+                    'status': {
+                        'privacyStatus': privacy_status
+                    }
+                }
+            ).execute()
+
+            playlist_id = response['id']
+            logger.info(f"Created playlist '{title}' with ID: {playlist_id}")
+            return playlist_id
+
+        except HttpError as e:
+            logger.error(f"Failed to create playlist: {e}")
+            return None
+
+    def validate_playlist_exists(self, playlist_id: str) -> bool:
+        """Check if a playlist ID exists and is accessible.
+
+        Args:
+            playlist_id: YouTube playlist ID
+
+        Returns:
+            True if playlist exists and is accessible
+        """
+        if not playlist_id:
+            return False
+
+        youtube = self._get_youtube_service()
+
+        try:
+            response = youtube.playlists().list(
+                part='id',
+                id=playlist_id
+            ).execute()
+
+            return len(response.get('items', [])) > 0
+
+        except HttpError as e:
+            logger.error(f"Failed to validate playlist: {e}")
+            return False
+
     # ==================== Video Management ====================
 
     def get_video_info(self, video_id: str) -> Dict[str, Any]:

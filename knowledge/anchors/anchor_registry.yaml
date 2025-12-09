@@ -1,0 +1,4534 @@
+# =============================================================================
+# ANCHOR REGISTRY - Dreamweaving Post-Hypnotic Anchor Library
+# =============================================================================
+# Master registry containing all anchor definitions for hypnotic sessions.
+# Each anchor links a specific trigger to a desired state.
+#
+# Version: 1.0
+# Created: 2025-12-09
+# Total Anchors: 100 (organized in 10 categories x 10 each)
+# Schema: See anchor_schema.yaml for entry format specification
+# =============================================================================
+
+metadata:
+  version: "1.0"
+  created: "2025-12-09"
+  updated: "2025-12-09"
+  total_anchors: 100
+  categories: 10
+  anchors_per_category: 10
+  constraint: "All SSML templates use rate='1.0' - pacing achieved through breaks"
+
+# =============================================================================
+# CATEGORY 1: BREATH ANCHORS
+# =============================================================================
+# Anchors triggered by specific breathing patterns
+
+breath:
+  calm_breath_slow_exhale:
+    anchor_id: "breath.calm_breath_slow_exhale"
+    name: "Calm Breath - Slow Exhale"
+    category: breath
+    trigger_type: physical
+
+    definition:
+      brief: "Extended exhale activates parasympathetic response for instant calm"
+      extended: |
+        The extended exhale pattern directly stimulates the vagus nerve,
+        shifting the nervous system from sympathetic to parasympathetic
+        dominance. By making this breath deliberate and associated with
+        a calm state, it becomes a reliable anchor for instant calm access
+        in any situation.
+
+    attributes:
+      state_tags: [calm, grounding, release]
+      intensity: moderate
+      modality: physical
+      duration_effect: short
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, integration, reorientation]
+      outcome_alignment: [relaxation, healing, release, focus]
+      installation_context: during_induction
+      contraindications:
+        - "Respiratory conditions requiring modified breathing"
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now I want to give you a gift...<break time="2s"/>
+        an anchor you can use anytime...<break time="1.5s"/>
+        Simply exhale slowly through your mouth...<break time="1s"/>
+        letting the breath be longer than the inhale...<break time="3s"/>
+        Feel how immediately...<break time="1.5s"/>
+        the calm arrives...<break time="2s"/>
+        This breath is now linked to this state...<break time="2s"/>
+        Anytime you use this slow exhale...<break time="1.5s"/>
+        anywhere, any situation...<break time="1.5s"/>
+        this calm returns instantly...<break time="3s"/>
+        </prosody>
+
+      reinforcement_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And remember your calm breath...<break time="1.5s"/>
+        the slow exhale that brings peace...<break time="2s"/>
+        </prosody>
+
+      recall_phrase: "Slow exhale, calm arrives"
+      sfx_cue: "Soft wind sound, gentle whoosh"
+      visual_imagery: "Soft blue light flowing outward with exhale"
+
+    relationships:
+      synergies:
+        - kinesthetic.heart_touch_calm
+        - nature.cool_breeze_face
+      conflicts: []
+      progressions:
+        - breath.power_breath_chest_lift
+      outcome_patterns:
+        - vagal_activation
+        - breath_pacing
+
+  power_breath_chest_lift:
+    anchor_id: "breath.power_breath_chest_lift"
+    name: "Power Breath - Chest Lift"
+    category: breath
+    trigger_type: physical
+
+    definition:
+      brief: "Expansive breath with chest lift activates confidence and strength"
+      extended: |
+        This breath pattern combines deep diaphragmatic breathing with
+        deliberate chest expansion and shoulder broadening. The physical
+        posture activates associated power states through embodied cognition.
+        With practice, a single power breath can shift state immediately.
+
+    attributes:
+      state_tags: [power, confidence, activation, strength]
+      intensity: strong
+      modality: physical
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [empowerment, confidence, courage, focus]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And I want you to remember this breath...<break time="1.5s"/>
+        the power breath...<break time="1s"/>
+        When you need to feel your strength...<break time="1.5s"/>
+        simply breathe in deeply...<break time="1s"/>
+        lifting your chest...<break time="1.5s"/>
+        expanding your shoulders back...<break time="2s"/>
+        filling every cell with power...<break time="3s"/>
+        And as you exhale...<break time="1.5s"/>
+        you keep that expanded posture...<break time="2s"/>
+        feeling the strength remain...<break time="2s"/>
+        This is your power breath now...<break time="2s"/>
+        </prosody>
+
+      reinforcement_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Take your power breath now...<break time="1.5s"/>
+        chest lifting, strength rising...<break time="2s"/>
+        </prosody>
+
+      recall_phrase: "Power breath, strength rises"
+      sfx_cue: "Rising tone, subtle drum beat"
+      visual_imagery: "Golden light filling chest, radiating outward"
+
+    relationships:
+      synergies:
+        - kinesthetic.fist_squeeze_power
+        - symbolic.phoenix_feather_rise
+      conflicts:
+        - breath.calm_breath_slow_exhale
+      progressions:
+        - breath.warrior_breath_rhythm
+      outcome_patterns:
+        - embodied_command
+        - postural_activation
+
+  reset_breath_4_7_8:
+    anchor_id: "breath.reset_breath_4_7_8"
+    name: "Reset Breath - 4-7-8 Pattern"
+    category: breath
+    trigger_type: physical
+
+    definition:
+      brief: "The 4-7-8 breathing pattern resets the nervous system to neutral"
+      extended: |
+        Inhale for 4 counts, hold for 7, exhale for 8. This pattern
+        activates the vagus nerve through extended exhalation, creating
+        a reliable reset for the entire nervous system. Perfect for
+        transitions, stress interruption, and sleep preparation.
+
+    attributes:
+      state_tags: [calm, grounding, release]
+      intensity: moderate
+      modality: physical
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, integration]
+      outcome_alignment: [relaxation, healing, focus, release]
+      installation_context: during_induction
+      contraindications:
+        - "Anxiety disorders without grounding first"
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now let me share a powerful reset breath...<break time="1.5s"/>
+        that will serve you well...<break time="1.5s"/>
+        Breathe in through your nose...<break time="1s"/>
+        for four slow counts...<break time="5s"/>
+        Hold gently for seven...<break time="8s"/>
+        And exhale through your mouth...<break time="1s"/>
+        slowly for eight...<break time="9s"/>
+        Notice how everything resets...<break time="2s"/>
+        This is your reset breath...<break time="1.5s"/>
+        Anytime life feels too much...<break time="1.5s"/>
+        one cycle returns you to center...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "4-7-8, reset complete"
+      sfx_cue: "Soft crystalline tone on exhale completion"
+
+    relationships:
+      synergies:
+        - kinesthetic.heart_touch_calm
+        - daily_life.doorway_reset_micro
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - vagal_activation
+        - breath_pacing
+
+  ocean_breath_wave_pattern:
+    anchor_id: "breath.ocean_breath_wave_pattern"
+    name: "Ocean Breath - Wave Pattern"
+    category: breath
+    trigger_type: physical
+
+    definition:
+      brief: "Breath flows like ocean waves, creating continuous flow state"
+      extended: |
+        The ocean breath connects inhale and exhale in a smooth, continuous
+        wave pattern with no pause between. This creates a meditative flow
+        state and connects the breather to the primal rhythm of the ocean.
+        Excellent for sustained calm and creative flow.
+
+    attributes:
+      state_tags: [calm, connection, peace]
+      intensity: subtle
+      modality: physical
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [relaxation, creativity, spiritual_growth]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        And now your breath becomes like the ocean...<break time="2s"/>
+        each inhale a wave rolling in...<break time="2s"/>
+        each exhale, the wave returning to the sea...<break time="2s"/>
+        no pause between...<break time="1.5s"/>
+        just continuous, eternal rhythm...<break time="2s"/>
+        This is your ocean breath...<break time="1.5s"/>
+        and whenever you breathe this way...<break time="1.5s"/>
+        you connect to something vast...<break time="2s"/>
+        something peaceful...<break time="2s"/>
+        something eternal...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Breathe like the ocean, endless peace"
+      sfx_cue: "Gentle ocean waves, rhythmic"
+
+    relationships:
+      synergies:
+        - nature.tide_pull_entrainment
+        - auditory.wave_rhythm_sync
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - sensory_immersion
+        - breath_pacing
+
+  spiral_breath_ascending:
+    anchor_id: "breath.spiral_breath_ascending"
+    name: "Spiral Breath - Ascending Energy"
+    category: breath
+    trigger_type: physical
+
+    definition:
+      brief: "Visualized spiral breath lifts energy and consciousness upward"
+      extended: |
+        With each inhale, energy spirals up from the base of the spine
+        toward the crown. This pattern combines breathwork with visualization
+        to create an ascending, elevating state. Excellent for spiritual
+        journeys and consciousness expansion.
+
+    attributes:
+      state_tags: [transcendence, activation, clarity]
+      intensity: strong
+      modality: combined
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [spiritual_growth, transformation, intuition]
+      installation_context: during_journey
+      contraindications:
+        - "Ungrounded states without preparation"
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And with your next breath...<break time="1.5s"/>
+        imagine a spiral of light...<break time="1.5s"/>
+        at the base of your spine...<break time="2s"/>
+        As you inhale...<break time="1s"/>
+        this light spirals upward...<break time="2s"/>
+        through your center...<break time="1.5s"/>
+        rising, expanding...<break time="2s"/>
+        reaching toward your crown...<break time="2s"/>
+        This is your ascending breath...<break time="1.5s"/>
+        and whenever you breathe this way...<break time="1.5s"/>
+        your consciousness rises...<break time="2s"/>
+        your awareness expands...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Spiral up, consciousness rises"
+      sfx_cue: "Rising ethereal tone, spiral sound design"
+      visual_imagery: "Golden-white spiral ascending through the body"
+
+    relationships:
+      synergies:
+        - visual.column_of_light
+        - portal.staircase_10_up
+      conflicts:
+        - breath.root_breath_descending
+      progressions: []
+      outcome_patterns:
+        - kundalini_activation
+        - consciousness_expansion
+
+# =============================================================================
+# CATEGORY 2: AUDITORY/SFX ANCHORS
+# =============================================================================
+# Anchors triggered by sounds, tones, or imagined audio
+
+auditory:
+  soft_chime_depth:
+    anchor_id: "auditory.soft_chime_depth"
+    name: "Soft Chime - Deepening Signal"
+    category: auditory
+    trigger_type: auditory
+
+    definition:
+      brief: "Gentle chime sound signals deepening trance automatically"
+      extended: |
+        A specific chime tone becomes associated with going deeper.
+        After repeated association, hearing this tone (or imagining it)
+        automatically triggers the deepening response. Perfect for
+        reinduction and maintaining trance.
+
+    attributes:
+      state_tags: [calm, transcendence]
+      intensity: subtle
+      modality: mental
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, deepening, journey]
+      outcome_alignment: [relaxation, spiritual_growth, healing]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        [SFX: Soft crystal chime, 3 seconds]
+
+        And each time you hear that chime...<break time="2s"/>
+        you go deeper...<break time="2s"/>
+        automatically, effortlessly...<break time="2s"/>
+
+        [SFX: Soft crystal chime, 3 seconds]
+
+        Even now, going deeper still...<break time="3s"/>
+        This sound is linked to depth forever...<break time="2s"/>
+        And even imagining this sound...<break time="1.5s"/>
+        in your daily life...<break time="1.5s"/>
+        will bring a wave of calm...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Hear the chime, go deeper"
+      sfx_cue: "Crystal chime, C5 frequency, 3 second decay"
+
+    relationships:
+      synergies:
+        - portal.staircase_10_down
+        - breath.calm_breath_slow_exhale
+      conflicts: []
+      progressions:
+        - auditory.gong_wash_reset
+      outcome_patterns:
+        - fractionation_loops
+        - depth_signaling
+
+  drum_heartbeat_ground:
+    anchor_id: "auditory.drum_heartbeat_ground"
+    name: "Drum Heartbeat - Grounding Rhythm"
+    category: auditory
+    trigger_type: auditory
+
+    definition:
+      brief: "60 BPM drum synchronizes with heart, grounds awareness in body"
+      extended: |
+        Drums at resting heart rate entrain the listener's heartbeat,
+        creating a grounding rhythm that anchors awareness in the body.
+        This primal sound connects to ancestral memory and earthly presence.
+
+    attributes:
+      state_tags: [grounding, calm, connection, strength]
+      intensity: moderate
+      modality: physical
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, journey, integration]
+      outcome_alignment: [grounding, healing, confidence, empowerment]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        [SFX: Slow drum beat, 60 BPM, continues beneath narration]
+
+        And now hear the drum...<break time="2s"/>
+        beating like a heart...<break time="2s"/>
+        your heart...<break time="1.5s"/>
+        the heart of the earth...<break time="2s"/>
+        Feel how your pulse wants to match...<break time="2s"/>
+        to synchronize...<break time="1.5s"/>
+        This rhythm is always available to you...<break time="2s"/>
+        Whenever you need to feel grounded...<break time="1.5s"/>
+        simply imagine this drumbeat...<break time="2s"/>
+        and your heart remembers...<break time="2s"/>
+        your body remembers...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Hear the drum, feel the ground"
+      sfx_cue: "Deep frame drum, 60 BPM, resonant"
+
+    relationships:
+      synergies:
+        - kinesthetic.foot_root_ground
+        - nature.tree_roots_support
+      conflicts: []
+      progressions:
+        - auditory.tribal_rhythm_power
+      outcome_patterns:
+        - heart_coherence
+        - embodied_grounding
+
+  wind_whoosh_release:
+    anchor_id: "auditory.wind_whoosh_release"
+    name: "Wind Whoosh - Release Signal"
+    category: auditory
+    trigger_type: auditory
+
+    definition:
+      brief: "Wind sound triggers letting go and releasing tension"
+      extended: |
+        The sound of wind sweeping through carries away whatever needs
+        to be released. This primal sound of cleansing becomes an
+        automatic trigger for letting go of stress, tension, and old energy.
+
+    attributes:
+      state_tags: [release, calm, peace]
+      intensity: moderate
+      modality: emotional
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [deepening, journey, integration]
+      outcome_alignment: [release, healing, transformation, relaxation]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        [SFX: Soft wind whoosh, 3 seconds]
+
+        And as you hear that wind...<break time="2s"/>
+        feel it carrying something away...<break time="2s"/>
+        tension, perhaps...<break time="1.5s"/>
+        old energy...<break time="1.5s"/>
+        anything ready to leave...<break time="2s"/>
+
+        [SFX: Soft wind whoosh, 3 seconds]
+
+        And now this sound means release...<break time="2s"/>
+        Whenever you hear wind...<break time="1.5s"/>
+        or imagine this whoosh...<break time="1.5s"/>
+        something releases...<break time="2s"/>
+        automatically...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Wind sweeps through, tension releases"
+      sfx_cue: "Soft wind whoosh, gentle but present, 3 seconds"
+
+    relationships:
+      synergies:
+        - breath.calm_breath_slow_exhale
+        - symbolic.feather_release_lightness
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - cathartic_release
+        - sensory_anchoring
+
+  crystal_ping_clarity:
+    anchor_id: "auditory.crystal_ping_clarity"
+    name: "Crystal Ping - Instant Clarity"
+    category: auditory
+    trigger_type: auditory
+
+    definition:
+      brief: "High crystal tone instantly sharpens mental focus and clarity"
+      extended: |
+        A pure, high-frequency crystal tone cuts through mental fog
+        and brings immediate clarity. This sound becomes linked to
+        sharp, clear thinking and decisive awareness.
+
+    attributes:
+      state_tags: [clarity, focus, activation]
+      intensity: moderate
+      modality: mental
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, integration, reorientation]
+      outcome_alignment: [focus, cognitive_enhancement, confidence]
+      installation_context: during_integration
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        [SFX: Crystal singing bowl ping, high, clear]
+
+        And that sound...<break time="2s"/>
+        notice how it clears the mind...<break time="2s"/>
+        like a bell of awareness...<break time="1.5s"/>
+        cutting through any fog...<break time="2s"/>
+        This crystal tone is now linked...<break time="1.5s"/>
+        to perfect clarity...<break time="2s"/>
+        Whenever you need sharp focus...<break time="1.5s"/>
+        simply imagine this ping...<break time="2s"/>
+        and your mind crystallizes...<break time="2s"/>
+        clear, sharp, present...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Crystal ping, mind clears"
+      sfx_cue: "Crystal singing bowl, high C, single clear strike"
+
+    relationships:
+      synergies:
+        - visual.blue_flame_focus
+        - verbal.phrase_lock_in
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - focus_activation
+        - clarity_signaling
+
+  gong_wash_reset:
+    anchor_id: "auditory.gong_wash_reset"
+    name: "Gong Wash - Complete Reset"
+    category: auditory
+    trigger_type: auditory
+
+    definition:
+      brief: "Resonant gong sound completely resets consciousness"
+      extended: |
+        The rich harmonics of a gong create a sound bath that resets
+        the entire nervous system. This profound sound clears old
+        patterns and prepares for new states. A complete energetic reset.
+
+    attributes:
+      state_tags: [transcendence, release, peace]
+      intensity: profound
+      modality: combined
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [transformation, spiritual_growth, healing]
+      installation_context: at_peak
+      contraindications:
+        - "Sound sensitivity"
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        [SFX: Gong, building, 8 seconds of sustained wash]
+
+        And the gong washes through you...<break time="3s"/>
+        every cell vibrating...<break time="2s"/>
+        resetting, clearing...<break time="2s"/>
+        returning to zero...<break time="2s"/>
+        This sound resets everything...<break time="2s"/>
+        And you carry this reset with you...<break time="1.5s"/>
+        Whenever you need to begin again...<break time="1.5s"/>
+        hear the gong in your mind...<break time="2s"/>
+        and everything clears...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Gong sounds, all resets"
+      sfx_cue: "Large gong, sustained wash, rich harmonics"
+
+    relationships:
+      synergies:
+        - breath.reset_breath_4_7_8
+        - portal.void_clearing
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - deep_reset
+        - consciousness_clearing
+
+# =============================================================================
+# CATEGORY 3: VISUAL/IMAGINATION ANCHORS
+# =============================================================================
+# Anchors triggered by visualization or imagined imagery
+
+visual:
+  blue_flame_focus:
+    anchor_id: "visual.blue_flame_focus"
+    name: "Blue Flame - Focus Point"
+    category: visual
+    trigger_type: visual
+
+    definition:
+      brief: "Visualizing a blue flame concentrates attention and clarity"
+      extended: |
+        The blue flame is a universal symbol of pure consciousness and
+        focused awareness. The hottest part of any flame, blue represents
+        the purest, most concentrated energy. By establishing this as an
+        anchor, the listener can instantly access sharp mental clarity.
+
+    attributes:
+      state_tags: [focus, clarity, activation]
+      intensity: moderate
+      modality: mental
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [focus, cognitive_enhancement, confidence]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And in your mind's eye now...<break time="1.5s"/>
+        you see a flame appearing...<break time="2s"/>
+        not red or orange...<break time="1.5s"/>
+        but the purest blue...<break time="2s"/>
+        like the hottest part of a flame...<break time="1.5s"/>
+        or a star's inner fire...<break time="2s"/>
+        This blue flame burns steady...<break time="2s"/>
+        unwavering...<break time="1s"/>
+        and whenever you see it...<break time="1.5s"/>
+        your mind becomes equally clear...<break time="2s"/>
+        equally focused...<break time="2s"/>
+        This is your focus flame...<break time="2s"/>
+        Anytime you need clarity...<break time="1.5s"/>
+        simply visualize this blue light...<break time="2s"/>
+        and your mind sharpens instantly...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "See your blue flame of clarity"
+      sfx_cue: "Subtle ethereal tone, stable and clear"
+      visual_imagery: "Single blue flame, stable and bright, against dark void"
+
+    relationships:
+      synergies:
+        - auditory.crystal_ping_clarity
+        - verbal.phrase_lock_in
+      conflicts: []
+      progressions:
+        - visual.white_fire_purification
+      outcome_patterns:
+        - focus_activation
+        - visualization_anchoring
+
+  golden_thread_guidance:
+    anchor_id: "visual.golden_thread_guidance"
+    name: "Golden Thread - Inner Guidance"
+    category: visual
+    trigger_type: visual
+
+    definition:
+      brief: "Golden thread leads to answers and right direction"
+      extended: |
+        Based on the mythic thread of Ariadne that led Theseus through
+        the labyrinth, this golden thread represents inner guidance and
+        intuition. Visualizing it helps access subconscious wisdom about
+        direction, choice, and the next right step.
+
+    attributes:
+      state_tags: [intuition, guidance, connection, wisdom]
+      intensity: subtle
+      modality: mental
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [intuition, self_knowledge, manifestation]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And notice now...<break time="1.5s"/>
+        a thread of golden light...<break time="2s"/>
+        appearing before you...<break time="1.5s"/>
+        This thread knows the way...<break time="2s"/>
+        It always has...<break time="1.5s"/>
+        This is your inner guidance...<break time="2s"/>
+        made visible...<break time="1.5s"/>
+        Whenever you face a choice...<break time="1.5s"/>
+        or seek direction...<break time="1.5s"/>
+        simply close your eyes...<break time="1.5s"/>
+        see this golden thread...<break time="2s"/>
+        and follow where it leads...<break time="2s"/>
+        It will never lead you wrong...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "See the golden thread, follow it home"
+      sfx_cue: "Soft, warm tone, gentle chime"
+      visual_imagery: "Luminous golden thread stretching forward into mist"
+
+    relationships:
+      synergies:
+        - symbolic.compass_true_north
+        - portal.path_of_light
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - intuitive_guidance
+        - decision_support
+
+  silver_mist_protection:
+    anchor_id: "visual.silver_mist_protection"
+    name: "Silver Mist - Protective Field"
+    category: visual
+    trigger_type: visual
+
+    definition:
+      brief: "Silver mist surrounds and protects, deflecting negativity"
+      extended: |
+        A shimmering silver mist forms a protective boundary around the
+        listener. This visualization creates a sense of safety and
+        protection from external negativity. The mist filters what
+        enters and maintains inner sanctity.
+
+    attributes:
+      state_tags: [protection, calm, peace]
+      intensity: moderate
+      modality: mental
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [pre_talk, induction, journey]
+      outcome_alignment: [protection, healing, confidence]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And see now...<break time="1.5s"/>
+        a silver mist...<break time="1.5s"/>
+        beginning to form around you...<break time="2s"/>
+        shimmering, protective...<break time="1.5s"/>
+        This mist allows only goodness to enter...<break time="2s"/>
+        Everything harmful...<break time="1s"/>
+        simply cannot penetrate...<break time="2s"/>
+        This is your silver shield...<break time="1.5s"/>
+        Whenever you need protection...<break time="1.5s"/>
+        simply visualize this mist...<break time="2s"/>
+        surrounding you completely...<break time="2s"/>
+        and feel safe...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Silver mist surrounds, I am protected"
+      sfx_cue: "Soft ethereal shimmer, gentle undertone"
+      visual_imagery: "Iridescent silver mist, slowly swirling around body"
+
+    relationships:
+      synergies:
+        - symbolic.shield_of_light
+        - verbal.phrase_sanctuary_now
+      conflicts: []
+      progressions:
+        - visual.golden_dome_sanctuary
+      outcome_patterns:
+        - protective_visualization
+        - safety_anchoring
+
+  sun_disc_vitality:
+    anchor_id: "visual.sun_disc_vitality"
+    name: "Sun Disc - Vital Energy"
+    category: visual
+    trigger_type: visual
+
+    definition:
+      brief: "Golden sun disc radiates warmth and vital energy into body"
+      extended: |
+        Visualizing a golden sun disc above the head, radiating warm
+        light down through the body, activates vitality and life force.
+        This ancient solar symbol connects to primal energy and renewal.
+
+    attributes:
+      state_tags: [activation, healing, strength, joy]
+      intensity: strong
+      modality: combined
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, integration, reorientation]
+      outcome_alignment: [healing, empowerment, confidence, abundance]
+      installation_context: during_integration
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And above your head now...<break time="1.5s"/>
+        imagine a golden sun...<break time="2s"/>
+        radiating warmth...<break time="1.5s"/>
+        radiating life...<break time="2s"/>
+        Feel its light streaming down...<break time="1.5s"/>
+        through your crown...<break time="1.5s"/>
+        filling every cell...<break time="2s"/>
+        with vital energy...<break time="2s"/>
+        This is your inner sun...<break time="1.5s"/>
+        Whenever you need energy...<break time="1.5s"/>
+        vitality, life force...<break time="1.5s"/>
+        simply see this sun...<break time="2s"/>
+        and feel it fill you...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "See the sun, feel the life"
+      sfx_cue: "Warm, rising tone, solar brass undertone"
+      visual_imagery: "Brilliant golden sun disc above head, rays streaming down"
+
+    relationships:
+      synergies:
+        - nature.sunbeam_on_skin
+        - breath.power_breath_chest_lift
+      conflicts:
+        - visual.moon_glow_receptivity
+      progressions: []
+      outcome_patterns:
+        - solar_activation
+        - vitality_anchoring
+
+  tree_of_light_center:
+    anchor_id: "visual.tree_of_light_center"
+    name: "Tree of Light - Centered Connection"
+    category: visual
+    trigger_type: visual
+
+    definition:
+      brief: "Standing beneath a luminous tree connects above and below"
+      extended: |
+        The Tree of Life appears in every mystical tradition as the
+        axis connecting heaven and earth. Visualizing standing beneath
+        (or becoming) this luminous tree creates centered stability
+        with connection to both grounded earth and celestial light.
+
+    attributes:
+      state_tags: [grounding, connection, peace, wisdom]
+      intensity: moderate
+      modality: spiritual
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [spiritual_growth, healing, self_knowledge]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And before you now...<break time="1.5s"/>
+        stands a great tree of light...<break time="2s"/>
+        Its roots go deep...<break time="1.5s"/>
+        deep into the earth...<break time="2s"/>
+        Its branches reach high...<break time="1.5s"/>
+        high into the stars...<break time="2s"/>
+        And you stand here...<break time="1.5s"/>
+        at the center...<break time="1.5s"/>
+        connected to both...<break time="2s"/>
+        This is your tree of connection...<break time="1.5s"/>
+        Whenever you need to feel centered...<break time="1.5s"/>
+        grounded yet connected to source...<break time="1.5s"/>
+        simply see this tree...<break time="2s"/>
+        and stand in its light...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Stand by the tree, roots and stars"
+      sfx_cue: "Deep tone plus high shimmer, harmonic"
+      visual_imagery: "Luminous silver-gold tree, roots visible, branches into stars"
+
+    relationships:
+      synergies:
+        - kinesthetic.foot_root_ground
+        - breath.spiral_breath_ascending
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - axis_mundi
+        - vertical_integration
+
+# =============================================================================
+# CATEGORY 4: KINESTHETIC/GESTURE ANCHORS
+# =============================================================================
+# Anchors triggered by physical gestures or body positions
+
+kinesthetic:
+  heart_touch_calm:
+    anchor_id: "kinesthetic.heart_touch_calm"
+    name: "Heart Touch - Instant Calm"
+    category: kinesthetic
+    trigger_type: physical
+
+    definition:
+      brief: "Hand on heart triggers calm and self-compassion"
+      extended: |
+        Placing a hand over the heart activates self-soothing mechanisms
+        through touch and proprioceptive feedback. This ancient gesture
+        of sincerity becomes a reliable portal to centered calm. The warmth
+        and pressure engage the vagus nerve, shifting toward parasympathetic
+        dominance.
+
+    attributes:
+      state_tags: [calm, healing, connection]
+      intensity: moderate
+      modality: physical
+      duration_effect: short
+      cumulative: true
+
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [healing, relaxation, confidence, self_knowledge]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And if you wish...<break time="1.5s"/>
+        place your hand over your heart now...<break time="3s"/>
+        Feel the warmth of your palm...<break time="2s"/>
+        the steady rhythm beneath...<break time="2s"/>
+        This simple gesture...<break time="1.5s"/>
+        is now linked to everything you've felt here...<break time="2.5s"/>
+        Anytime in your daily life...<break time="1.5s"/>
+        when you place your hand here...<break time="2s"/>
+        this peace returns...<break time="2s"/>
+        this connection to your center...<break time="2s"/>
+        instantly, automatically...<break time="3s"/>
+        </prosody>
+
+      reinforcement_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And remember that touch...<break time="1.5s"/>
+        always bringing you back here...<break time="2s"/>
+        </prosody>
+
+      recall_phrase: "Hand on heart, peace arrives"
+      sfx_cue: "Soft heartbeat sound, warm undertone"
+      visual_imagery: "Warm golden glow emanating from hand on chest"
+
+    relationships:
+      synergies:
+        - breath.calm_breath_slow_exhale
+        - nature.sunbeam_on_skin
+      conflicts: []
+      progressions:
+        - kinesthetic.fist_squeeze_power
+      outcome_patterns:
+        - vagal_activation
+        - embodied_grounding
+
+  fist_squeeze_power:
+    anchor_id: "kinesthetic.fist_squeeze_power"
+    name: "Fist Squeeze - Power Activation"
+    category: kinesthetic
+    trigger_type: physical
+
+    definition:
+      brief: "Making a fist and squeezing activates warrior energy"
+      extended: |
+        The act of making a firm fist engages the same neural pathways
+        as determination and resolve. By anchoring this to power states,
+        a simple squeeze becomes instant access to inner strength.
+        Can be done discreetly in any situation.
+
+    attributes:
+      state_tags: [power, confidence, strength, courage]
+      intensity: strong
+      modality: physical
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [empowerment, confidence, courage, focus]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And now make a fist...<break time="1.5s"/>
+        with your dominant hand...<break time="2s"/>
+        Squeeze it firmly...<break time="2s"/>
+        and feel the power there...<break time="2s"/>
+        This is your power switch...<break time="1.5s"/>
+        Whenever you need strength...<break time="1.5s"/>
+        confidence...<break time="1s"/>
+        courage...<break time="1s"/>
+        simply make this fist...<break time="1.5s"/>
+        squeeze it...<break time="1.5s"/>
+        and the power flows...<break time="2s"/>
+        immediately, automatically...<break time="3s"/>
+        </prosody>
+
+      reinforcement_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Make that fist...<break time="1.5s"/>
+        feel that power...<break time="2s"/>
+        </prosody>
+
+      recall_phrase: "Squeeze fist, power flows"
+      sfx_cue: "Low drum hit, solid and grounding"
+      visual_imagery: "Fist glowing with inner fire, power lines radiating"
+
+    relationships:
+      synergies:
+        - breath.power_breath_chest_lift
+        - symbolic.sword_of_will
+      conflicts:
+        - kinesthetic.open_palms_receive
+      progressions: []
+      outcome_patterns:
+        - power_activation
+        - embodied_command
+
+  foot_root_ground:
+    anchor_id: "kinesthetic.foot_root_ground"
+    name: "Foot Root - Deep Grounding"
+    category: kinesthetic
+    trigger_type: physical
+
+    definition:
+      brief: "Pressing feet into floor and imagining roots creates instant grounding"
+      extended: |
+        By pressing the feet firmly into the floor and visualizing roots
+        extending deep into the earth, the listener creates a reliable
+        grounding anchor. This combines physical pressure with visualization
+        for a powerful grounding effect.
+
+    attributes:
+      state_tags: [grounding, calm, strength, peace]
+      intensity: moderate
+      modality: combined
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, integration, reorientation]
+      outcome_alignment: [grounding, healing, confidence, relaxation]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now press your feet...<break time="1.5s"/>
+        firmly into the floor...<break time="2s"/>
+        Feel that contact...<break time="1.5s"/>
+        and imagine roots...<break time="1.5s"/>
+        growing from your feet...<break time="2s"/>
+        deep into the earth...<break time="2s"/>
+        deeper and deeper...<break time="2s"/>
+        anchoring you...<break time="1.5s"/>
+        supporting you...<break time="2s"/>
+        This is your ground anchor...<break time="1.5s"/>
+        Whenever you need stability...<break time="1.5s"/>
+        simply press your feet down...<break time="1.5s"/>
+        feel those roots...<break time="2s"/>
+        and the earth holds you...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Feet press down, roots hold strong"
+      sfx_cue: "Deep earth tone, subtle rumble"
+      visual_imagery: "Roots of light extending from feet into glowing earth"
+
+    relationships:
+      synergies:
+        - visual.tree_of_light_center
+        - auditory.drum_heartbeat_ground
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - grounding_visualization
+        - embodied_grounding
+
+  shoulder_drop_release:
+    anchor_id: "kinesthetic.shoulder_drop_release"
+    name: "Shoulder Drop - Tension Release"
+    category: kinesthetic
+    trigger_type: physical
+
+    definition:
+      brief: "Deliberately dropping shoulders releases held tension instantly"
+      extended: |
+        Many people hold tension in raised shoulders without awareness.
+        By consciously raising then dropping the shoulders while anchoring
+        this to release, the gesture becomes an instant tension reliever
+        that can be used anywhere, anytime.
+
+    attributes:
+      state_tags: [release, calm, peace]
+      intensity: subtle
+      modality: physical
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, integration, reorientation]
+      outcome_alignment: [relaxation, release, healing]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now lift your shoulders...<break time="1.5s"/>
+        up toward your ears...<break time="2s"/>
+        hold for a moment...<break time="2s"/>
+        and drop them completely...<break time="2s"/>
+        Feel everything release...<break time="2s"/>
+        This is your release signal...<break time="1.5s"/>
+        Whenever you notice tension...<break time="1.5s"/>
+        lift and drop your shoulders...<break time="1.5s"/>
+        and everything releases...<break time="2s"/>
+        instantly, automatically...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Shoulders drop, tension releases"
+      sfx_cue: "Soft exhale sound, letting go"
+
+    relationships:
+      synergies:
+        - breath.calm_breath_slow_exhale
+        - auditory.wind_whoosh_release
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - tension_release
+        - body_awareness
+
+  three_finger_focus:
+    anchor_id: "kinesthetic.three_finger_focus"
+    name: "Three Fingers - Focus Trigger"
+    category: kinesthetic
+    trigger_type: physical
+
+    definition:
+      brief: "Touching thumb, index, and middle finger together activates focus"
+      extended: |
+        This mudra-like gesture creates a discrete focus anchor. Touching
+        these three fingers together can be done anywhere without drawing
+        attention. The unique sensation becomes linked to sharp mental focus.
+
+    attributes:
+      state_tags: [focus, clarity, activation]
+      intensity: moderate
+      modality: physical
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [focus, cognitive_enhancement, confidence]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And now touch together...<break time="1.5s"/>
+        your thumb, index, and middle finger...<break time="2s"/>
+        Feel that unique contact...<break time="2s"/>
+        This gesture now means focus...<break time="1.5s"/>
+        perfect clarity...<break time="1.5s"/>
+        Whenever you need to concentrate...<break time="1.5s"/>
+        to think clearly...<break time="1.5s"/>
+        simply touch these fingers together...<break time="2s"/>
+        and your mind sharpens...<break time="2s"/>
+        instantly, completely...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Three fingers touch, mind sharpens"
+      sfx_cue: "Subtle chime, clarity tone"
+
+    relationships:
+      synergies:
+        - visual.blue_flame_focus
+        - verbal.phrase_lock_in
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - focus_activation
+        - mudra_anchoring
+
+# =============================================================================
+# CATEGORY 5: SYMBOLIC/ARCHETYPAL ANCHORS
+# =============================================================================
+# Anchors based on archetypal symbols and metaphors
+
+symbolic:
+  phoenix_feather_rise:
+    anchor_id: "symbolic.phoenix_feather_rise"
+    name: "Phoenix Feather - Rising from Ashes"
+    category: symbolic
+    trigger_type: symbolic
+
+    definition:
+      brief: "Phoenix feather symbol triggers transformation and renewal"
+      extended: |
+        The phoenix rises renewed from its own ashes. Holding a phoenix
+        feather in imagination connects to this archetypal power of
+        transformation, rebirth, and transcending apparent endings.
+        What seems lost becomes fuel for what emerges.
+
+    attributes:
+      state_tags: [transformation, power, healing, courage]
+      intensity: strong
+      modality: spiritual
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [transformation, healing, empowerment, courage]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And in your hand now...<break time="1.5s"/>
+        appears a single feather...<break time="2s"/>
+        from the phoenix itself...<break time="1.5s"/>
+        Feel its warmth...<break time="1.5s"/>
+        the fire that does not burn...<break time="2s"/>
+        This feather carries the secret...<break time="1.5s"/>
+        of rising from ashes...<break time="2s"/>
+        of ending becoming beginning...<break time="1.5s"/>
+        Whenever you face what seems like an ending...<break time="1.5s"/>
+        remember this feather...<break time="1.5s"/>
+        and know you will rise...<break time="2s"/>
+        transformed, renewed...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Phoenix feather, I rise renewed"
+      sfx_cue: "Rising fire sound, warm and powerful"
+      visual_imagery: "Iridescent golden-red feather, glowing with inner fire"
+
+    relationships:
+      synergies:
+        - breath.power_breath_chest_lift
+        - portal.threshold_transformation
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - death_rebirth
+        - transformation_anchoring
+
+  golden_key_unlock:
+    anchor_id: "symbolic.golden_key_unlock"
+    name: "Golden Key - Unlock Potential"
+    category: symbolic
+    trigger_type: symbolic
+
+    definition:
+      brief: "Golden key symbolizes access to locked potential and hidden gifts"
+      extended: |
+        The golden key represents access to what has been locked away -
+        potential, gifts, abilities, wisdom. Receiving and using this
+        key opens doors that seemed closed and reveals what was always
+        waiting within.
+
+    attributes:
+      state_tags: [activation, wisdom, power, clarity]
+      intensity: moderate
+      modality: mental
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [self_knowledge, empowerment, creativity, intuition]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And placed into your hand now...<break time="1.5s"/>
+        is a golden key...<break time="2s"/>
+        Feel its weight...<break time="1.5s"/>
+        its ancient knowing...<break time="2s"/>
+        This key opens any door within you...<break time="1.5s"/>
+        unlocks any potential...<break time="1.5s"/>
+        reveals any hidden gift...<break time="2s"/>
+        Whenever you feel blocked...<break time="1.5s"/>
+        or sense something waiting inside...<break time="1.5s"/>
+        hold this key in your mind...<break time="2s"/>
+        and feel the door open...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Golden key turns, potential unlocks"
+      sfx_cue: "Metallic key turning, door opening creak"
+      visual_imagery: "Ornate golden key with ancient symbols, softly glowing"
+
+    relationships:
+      synergies:
+        - portal.door_threshold_entry
+        - visual.golden_thread_guidance
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - unlocking_metaphor
+        - potential_activation
+
+  serpent_coil_power:
+    anchor_id: "symbolic.serpent_coil_power"
+    name: "Serpent Coil - Concentrated Power"
+    category: symbolic
+    trigger_type: symbolic
+
+    definition:
+      brief: "Coiled serpent symbolizes concentrated, ready-to-strike power"
+      extended: |
+        The coiled serpent represents potential energy at its peak -
+        perfectly still yet ready to spring into action. This ancient
+        symbol of wisdom and power reminds us of the strength that
+        comes from centered stillness and patience.
+
+    attributes:
+      state_tags: [power, focus, wisdom, strength]
+      intensity: strong
+      modality: mental
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [empowerment, focus, confidence, intuition]
+      installation_context: during_journey
+      contraindications:
+        - "Snake phobia"
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And within you now...<break time="1.5s"/>
+        you sense a coiled serpent...<break time="2s"/>
+        ancient, patient...<break time="1.5s"/>
+        perfectly still...<break time="2s"/>
+        yet containing immense power...<break time="2s"/>
+        This is your power coiled and ready...<break time="1.5s"/>
+        Whenever you need concentrated strength...<break time="1.5s"/>
+        feel this serpent within...<break time="1.5s"/>
+        patient, powerful, poised...<break time="2s"/>
+        ready to move when needed...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Serpent coils, power waits"
+      sfx_cue: "Low, mysterious tone, subtle hiss undertone"
+      visual_imagery: "Golden serpent, perfectly coiled, eyes wise and patient"
+
+    relationships:
+      synergies:
+        - kinesthetic.fist_squeeze_power
+        - breath.ocean_breath_wave_pattern
+      conflicts: []
+      progressions:
+        - symbolic.dragon_flight_mastery
+      outcome_patterns:
+        - kundalini_metaphor
+        - power_concentration
+
+  shield_of_light:
+    anchor_id: "symbolic.shield_of_light"
+    name: "Shield of Light - Sacred Protection"
+    category: symbolic
+    trigger_type: symbolic
+
+    definition:
+      brief: "Luminous shield provides impenetrable protection from harm"
+      extended: |
+        A shield of pure light forms before and around the listener,
+        deflecting all negativity and harm. This archetypal symbol of
+        protection creates a sense of absolute safety and invulnerability
+        while remaining open to positive influences.
+
+    attributes:
+      state_tags: [protection, confidence, peace]
+      intensity: moderate
+      modality: mental
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [pre_talk, induction, journey]
+      outcome_alignment: [protection, confidence, healing]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And before you now...<break time="1.5s"/>
+        a shield of pure light forms...<break time="2s"/>
+        Brilliant, powerful...<break time="1.5s"/>
+        impenetrable to harm...<break time="2s"/>
+        Yet open to all that serves you...<break time="2s"/>
+        This is your sacred shield...<break time="1.5s"/>
+        Whenever you need protection...<break time="1.5s"/>
+        simply see this shield before you...<break time="2s"/>
+        and know you are safe...<break time="2s"/>
+        absolutely safe...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Shield of light, nothing harms"
+      sfx_cue: "Resonant metallic hum, protective tone"
+      visual_imagery: "Circular shield of white-gold light, ancient symbols glowing"
+
+    relationships:
+      synergies:
+        - visual.silver_mist_protection
+        - verbal.phrase_sanctuary_now
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - protective_visualization
+        - warrior_archetype
+
+  seed_of_becoming:
+    anchor_id: "symbolic.seed_of_becoming"
+    name: "Seed of Becoming - Growth Potential"
+    category: symbolic
+    trigger_type: symbolic
+
+    definition:
+      brief: "Seed symbol holds all future growth, patience, and trust"
+      extended: |
+        The seed contains the entire tree in potential. This symbol
+        reminds us that great things begin small and require patience.
+        Holding this seed connects to trust in the unfolding process
+        and the certainty that what is planted will grow.
+
+    attributes:
+      state_tags: [peace, wisdom, healing, connection]
+      intensity: subtle
+      modality: spiritual
+      duration_effect: permanent
+      cumulative: true
+
+    applications:
+      journey_phases: [integration]
+      outcome_alignment: [transformation, healing, spiritual_growth, manifestation]
+      installation_context: during_integration
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And in your palm now...<break time="1.5s"/>
+        rests a single seed...<break time="2s"/>
+        So small...<break time="1s"/>
+        yet containing everything...<break time="2s"/>
+        All that you have experienced here...<break time="1.5s"/>
+        lives in this seed now...<break time="2s"/>
+        Plant it in your heart...<break time="2s"/>
+        Trust it to grow...<break time="1.5s"/>
+        in its own time...<break time="1.5s"/>
+        in its own way...<break time="2s"/>
+        It will become what it needs to become...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "The seed grows, trust the process"
+      sfx_cue: "Soft earth tones, gentle growth sounds"
+      visual_imagery: "Small golden seed with visible light within, ready to sprout"
+
+    relationships:
+      synergies:
+        - visual.tree_of_light_center
+        - nature.forest_floor_nurture
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - future_pacing
+        - trust_installation
+
+# =============================================================================
+# CATEGORY 6: PORTAL/JOURNEY TRANSITION ANCHORS
+# =============================================================================
+# Anchors for journey transitions and state changes
+
+portal:
+  door_threshold_entry:
+    anchor_id: "portal.door_threshold_entry"
+    name: "Doorway Threshold - Dreamweaver Entry"
+    category: portal
+    trigger_type: symbolic
+
+    definition:
+      brief: "Stepping through doorway marks transition into altered states"
+      extended: |
+        The threshold is a universal symbol of transition between worlds.
+        By establishing a specific doorway as the entry to Dreamweaver
+        space, the act of stepping through (real or imagined) becomes
+        an automatic induction trigger.
+
+    attributes:
+      state_tags: [transcendence, peace]
+      intensity: moderate
+      modality: mental
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, deepening]
+      outcome_alignment: [spiritual_growth, relaxation, transformation]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And before you now...<break time="1.5s"/>
+        stands a doorway...<break time="2s"/>
+        familiar yet sacred...<break time="1.5s"/>
+        This is your Dreamweaver door...<break time="2s"/>
+        Beyond it waits the space of journeys...<break time="2s"/>
+        Step through now...<break time="3s"/>
+        and feel how everything shifts...<break time="2s"/>
+        This doorway is always here...<break time="1.5s"/>
+        Whenever you step through it...<break time="1.5s"/>
+        in imagination...<break time="1s"/>
+        you enter this space again...<break time="2s"/>
+        automatically, effortlessly...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Step through the door, enter the dream"
+      sfx_cue: "Door opening, soft transition tone"
+      visual_imagery: "Ornate doorway with soft light beyond, familiar yet mystical"
+
+    relationships:
+      synergies:
+        - verbal.phrase_dreamweaver_open
+        - symbolic.golden_key_unlock
+      conflicts: []
+      progressions:
+        - portal.spiral_descent
+      outcome_patterns:
+        - threshold_induction
+        - sacred_space_creation
+
+  staircase_10_down:
+    anchor_id: "portal.staircase_10_down"
+    name: "Ten-Step Staircase - Deepening Descent"
+    category: portal
+    trigger_type: symbolic
+
+    definition:
+      brief: "Counting down 10 steps triggers progressively deeper trance"
+      extended: |
+        The classic deepening technique of counting down stairs creates
+        a reliable depth anchor. Each step takes the listener deeper,
+        and the staircase itself becomes a symbol of accessible depth.
+        Can be used for reinduction with abbreviated counting.
+
+    attributes:
+      state_tags: [transcendence, calm]
+      intensity: strong
+      modality: mental
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, deepening]
+      outcome_alignment: [relaxation, spiritual_growth, healing]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        And here is a staircase...<break time="1.5s"/>
+        ten steps going down...<break time="2s"/>
+        Each step takes you deeper...<break time="2s"/>
+        Ten...<break time="2s"/> deeper...<break time="1.5s"/>
+        Nine...<break time="2s"/> letting go...<break time="1.5s"/>
+        Eight...<break time="2s"/> more relaxed...<break time="1.5s"/>
+        Seven...<break time="2s"/> drifting...<break time="1.5s"/>
+        Six...<break time="2s"/> releasing...<break time="1.5s"/>
+        Five...<break time="2.5s"/> halfway now...<break time="2s"/>
+        Four...<break time="2s"/> so deep...<break time="1.5s"/>
+        Three...<break time="2s"/> peaceful...<break time="1.5s"/>
+        Two...<break time="2s"/> almost there...<break time="1.5s"/>
+        One...<break time="3s"/>
+        Perfect depth...<break time="2s"/>
+        This staircase is always here...<break time="2s"/>
+        and now just seeing it...<break time="1.5s"/>
+        takes you deep...<break time="3s"/>
+        </prosody>
+
+      reinforcement_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        Ten... five... one...<break time="2s"/>
+        All the way down...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Ten steps down, deep trance now"
+      sfx_cue: "Soft footsteps descending, echo fading"
+      visual_imagery: "Stone staircase spiraling down into warm, safe depths"
+
+    relationships:
+      synergies:
+        - auditory.soft_chime_depth
+        - breath.calm_breath_slow_exhale
+      conflicts: []
+      progressions:
+        - portal.infinite_descent
+      outcome_patterns:
+        - count_down_induction
+        - progressive_deepening
+
+  bridge_of_light_crossing:
+    anchor_id: "portal.bridge_of_light_crossing"
+    name: "Bridge of Light - Safe Passage"
+    category: portal
+    trigger_type: symbolic
+
+    definition:
+      brief: "Rainbow bridge provides safe passage over difficult terrain"
+      extended: |
+        The bridge of light allows safe passage over any difficult
+        landscape - emotional chasms, mental obstacles, spiritual gaps.
+        This symbol connects to the Norse Bifrost and similar mythic
+        bridges, providing confidence for any crossing.
+
+    attributes:
+      state_tags: [confidence, peace, connection]
+      intensity: moderate
+      modality: mental
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [journey]
+      outcome_alignment: [transformation, courage, healing]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And here before you...<break time="1.5s"/>
+        a bridge of pure light appears...<break time="2s"/>
+        spanning whatever gap seems to exist...<break time="2s"/>
+        This bridge is always stable...<break time="1.5s"/>
+        always safe...<break time="1.5s"/>
+        Walk across now...<break time="3s"/>
+        feeling how supported you are...<break time="2s"/>
+        This bridge is always available...<break time="1.5s"/>
+        Whenever you need to cross something...<break time="1.5s"/>
+        any obstacle, any gap...<break time="1.5s"/>
+        see this bridge of light...<break time="2s"/>
+        and cross safely...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "The bridge appears, I cross safely"
+      sfx_cue: "Ethereal humming, slight sparkle"
+      visual_imagery: "Luminous rainbow bridge stretching across mist, stable and inviting"
+
+    relationships:
+      synergies:
+        - visual.golden_thread_guidance
+        - symbolic.shield_of_light
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - safe_passage
+        - obstacle_navigation
+
+  spiral_descent_depths:
+    anchor_id: "portal.spiral_descent_depths"
+    name: "Spiral Descent - Deep Exploration"
+    category: portal
+    trigger_type: symbolic
+
+    definition:
+      brief: "Spiraling descent accesses deep unconscious layers"
+      extended: |
+        The spiral is nature's pattern of growth and depth. A spiraling
+        descent into inner depths accesses layers of the unconscious
+        that straight paths cannot reach. This journey inward reveals
+        hidden treasures and forgotten wisdom.
+
+    attributes:
+      state_tags: [transcendence, wisdom, healing]
+      intensity: profound
+      modality: spiritual
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [deepening, helm_deep_trance]
+      outcome_alignment: [self_knowledge, healing, transformation, spiritual_growth]
+      installation_context: during_deepening
+      contraindications:
+        - "Vertigo sensitivity"
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        And now the path begins to spiral...<break time="2s"/>
+        gently, slowly...<break time="2s"/>
+        going deeper with each turn...<break time="2s"/>
+        round and round...<break time="2s"/>
+        deeper and deeper...<break time="2.5s"/>
+        into the very center of yourself...<break time="2s"/>
+        where all answers wait...<break time="2s"/>
+        This spiral is always here...<break time="1.5s"/>
+        Whenever you need to go deep...<break time="1.5s"/>
+        deeper than usual...<break time="1.5s"/>
+        find the spiral and follow it down...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Spiral down, find the depths"
+      sfx_cue: "Descending tones, gentle vortex sound"
+      visual_imagery: "Golden spiral descending into warm depths, soft light below"
+
+    relationships:
+      synergies:
+        - portal.staircase_10_down
+        - breath.spiral_breath_ascending
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - depth_exploration
+        - unconscious_access
+
+  return_path_home:
+    anchor_id: "portal.return_path_home"
+    name: "Return Path - Coming Home"
+    category: portal
+    trigger_type: symbolic
+
+    definition:
+      brief: "Clear path home ensures safe return from any depth"
+      extended: |
+        A clear, well-lit path always leads back to full waking
+        consciousness. This safety anchor ensures that no matter how
+        deep the journey, the return is always available and easy.
+        The path lights up whenever needed.
+
+    attributes:
+      state_tags: [peace, grounding, connection]
+      intensity: subtle
+      modality: mental
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [healing, relaxation, confidence]
+      installation_context: during_integration
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And there is always a path home...<break time="2s"/>
+        a clear, well-lit way...<break time="1.5s"/>
+        back to full waking awareness...<break time="2s"/>
+        This path is always available...<break time="1.5s"/>
+        Whenever you're ready to return...<break time="1.5s"/>
+        or need to come back quickly...<break time="1.5s"/>
+        simply see this path light up...<break time="2s"/>
+        and follow it home...<break time="2s"/>
+        safe, easy, natural...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Path lights up, I come home"
+      sfx_cue: "Gentle ascending tones, welcoming warmth"
+      visual_imagery: "Soft golden path winding back, familiar light ahead"
+
+    relationships:
+      synergies:
+        - visual.golden_thread_guidance
+        - breath.reset_breath_4_7_8
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - safe_return
+        - grounding_transition
+
+# =============================================================================
+# CATEGORY 7: VERBAL/MANTRA ANCHORS
+# =============================================================================
+# Anchors triggered by specific phrases or mantras
+
+verbal:
+  phrase_sanctuary_now:
+    anchor_id: "verbal.phrase_sanctuary_now"
+    name: "Sanctuary Now - Instant Safe Space"
+    category: verbal
+    trigger_type: verbal
+
+    definition:
+      brief: "Saying 'Sanctuary now' instantly creates inner safe space"
+      extended: |
+        This power phrase creates an immediate sanctuary within. Simply
+        thinking or whispering these words triggers a protective, calm
+        state. The phrase becomes a verbal key to instant safety.
+
+    attributes:
+      state_tags: [protection, calm, peace]
+      intensity: strong
+      modality: mental
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [pre_talk, integration]
+      outcome_alignment: [protection, relaxation, healing]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And I give you now a phrase of power...<break time="1.5s"/>
+        two simple words...<break time="1.5s"/>
+        Sanctuary now...<break time="2.5s"/>
+        Whenever you speak or think these words...<break time="1.5s"/>
+        Sanctuary now...<break time="2s"/>
+        an instant safe space forms around you...<break time="2s"/>
+        No matter where you are...<break time="1.5s"/>
+        no matter what is happening...<break time="1.5s"/>
+        Sanctuary now...<break time="2s"/>
+        creates immediate peace...<break time="2s"/>
+        immediate safety...<break time="2s"/>
+        Try it now...<break time="1s"/>
+        silently to yourself...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Sanctuary now"
+      sfx_cue: "Soft dome sound, protective resonance"
+
+    relationships:
+      synergies:
+        - visual.silver_mist_protection
+        - symbolic.shield_of_light
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - power_phrase
+        - instant_state_change
+
+  phrase_dreamweaver_open:
+    anchor_id: "verbal.phrase_dreamweaver_open"
+    name: "Dreamweaver Open - Portal Phrase"
+    category: verbal
+    trigger_type: verbal
+
+    definition:
+      brief: "'Dreamweaver, open the gate' triggers entry to trance space"
+      extended: |
+        This phrase serves as a verbal key to enter the Dreamweaver
+        realm. Speaking or thinking these words begins the transition
+        into altered states, making reinduction quick and natural.
+
+    attributes:
+      state_tags: [transcendence, peace]
+      intensity: moderate
+      modality: mental
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [induction]
+      outcome_alignment: [spiritual_growth, relaxation, transformation]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you have a key phrase...<break time="1.5s"/>
+        Dreamweaver, open the gate...<break time="2.5s"/>
+        Any time you wish to return here...<break time="1.5s"/>
+        to this state, this space...<break time="1.5s"/>
+        simply speak or think these words...<break time="2s"/>
+        Dreamweaver, open the gate...<break time="2.5s"/>
+        and the doorway opens...<break time="2s"/>
+        the journey begins...<break time="2s"/>
+        easier each time...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Dreamweaver, open the gate"
+      sfx_cue: "Portal opening sound, ethereal"
+
+    relationships:
+      synergies:
+        - portal.door_threshold_entry
+        - auditory.soft_chime_depth
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - verbal_induction
+        - reinduction_trigger
+
+  phrase_i_am_safe:
+    anchor_id: "verbal.phrase_i_am_safe"
+    name: "I Am Safe - Core Safety Affirmation"
+    category: verbal
+    trigger_type: verbal
+
+    definition:
+      brief: "'I am safe' activates the felt sense of complete safety"
+      extended: |
+        This simple affirmation, properly anchored, activates the
+        physiological state of safety in the body. Not just a thought,
+        but a body-level experience of being held and protected.
+
+    attributes:
+      state_tags: [calm, protection, peace]
+      intensity: moderate
+      modality: emotional
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [pre_talk, integration]
+      outcome_alignment: [healing, relaxation, protection, confidence]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And now speak silently to yourself...<break time="1.5s"/>
+        I am safe...<break time="2.5s"/>
+        Feel how your body responds...<break time="2s"/>
+        not just the words...<break time="1.5s"/>
+        but the feeling beneath them...<break time="2s"/>
+        I am safe...<break time="2.5s"/>
+        Whenever you need to feel this...<break time="1.5s"/>
+        in your daily life...<break time="1.5s"/>
+        speak these words internally...<break time="1.5s"/>
+        and feel your body remember...<break time="2s"/>
+        you are safe...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "I am safe"
+      sfx_cue: "Soft, warm tone, embracing"
+
+    relationships:
+      synergies:
+        - kinesthetic.heart_touch_calm
+        - breath.calm_breath_slow_exhale
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - safety_affirmation
+        - vagal_activation
+
+  phrase_lock_in:
+    anchor_id: "verbal.phrase_lock_in"
+    name: "Lock In - Focus Activation"
+    category: verbal
+    trigger_type: verbal
+
+    definition:
+      brief: "'Lock in' triggers intense concentration and mental clarity"
+      extended: |
+        A command phrase that shifts the mind into sharp focus mode.
+        Used before tasks requiring concentration, or when attention
+        begins to wander. Creates laser-like mental clarity.
+
+    attributes:
+      state_tags: [focus, clarity, activation]
+      intensity: strong
+      modality: mental
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [focus, cognitive_enhancement, confidence]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And here is a focus command...<break time="1.5s"/>
+        Two words that shift your state...<break time="1.5s"/>
+        Lock in...<break time="2s"/>
+        Whenever you need to focus...<break time="1.5s"/>
+        to concentrate completely...<break time="1.5s"/>
+        simply command yourself...<break time="1.5s"/>
+        Lock in...<break time="2s"/>
+        and feel your mind sharpen...<break time="2s"/>
+        distractions fade...<break time="1.5s"/>
+        clarity arrives...<break time="2s"/>
+        Lock in...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Lock in"
+      sfx_cue: "Click sound, focus tone"
+
+    relationships:
+      synergies:
+        - visual.blue_flame_focus
+        - kinesthetic.three_finger_focus
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - focus_command
+        - attention_shifting
+
+  phrase_release_this:
+    anchor_id: "verbal.phrase_release_this"
+    name: "I Release This - Letting Go Command"
+    category: verbal
+    trigger_type: verbal
+
+    definition:
+      brief: "'I release this' triggers letting go of what no longer serves"
+      extended: |
+        A verbal command that activates the release response. Speaking
+        this phrase while focusing on what needs to be released creates
+        an immediate letting go. Combines intention with vocal activation.
+
+    attributes:
+      state_tags: [release, calm, peace]
+      intensity: moderate
+      modality: emotional
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [release, healing, transformation]
+      installation_context: during_integration
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now learn these words of power...<break time="1.5s"/>
+        I release this...<break time="2.5s"/>
+        Whenever you hold onto something...<break time="1.5s"/>
+        that no longer serves you...<break time="1.5s"/>
+        speak or think these words...<break time="1.5s"/>
+        I release this...<break time="2.5s"/>
+        and feel it go...<break time="2s"/>
+        dissolving, leaving...<break time="1.5s"/>
+        making space for something new...<break time="2s"/>
+        I release this...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "I release this"
+      sfx_cue: "Soft whoosh, releasing sound"
+
+    relationships:
+      synergies:
+        - auditory.wind_whoosh_release
+        - breath.calm_breath_slow_exhale
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - verbal_release
+        - cathartic_command
+
+# =============================================================================
+# CATEGORY 8: MUSICAL/FREQUENCY MOTIF ANCHORS
+# =============================================================================
+# Anchors linked to musical motifs or frequencies
+
+musical:
+  ascending_arpeggio_hope:
+    anchor_id: "musical.ascending_arpeggio_hope"
+    name: "Ascending Arpeggio - Rising Hope"
+    category: musical
+    trigger_type: auditory
+
+    definition:
+      brief: "Rising musical phrase triggers hope and positive expectation"
+      extended: |
+        An ascending arpeggio naturally lifts the spirit. This musical
+        motif becomes linked to hope, optimism, and positive expectation.
+        Hearing or imagining this rising phrase activates hope.
+
+    attributes:
+      state_tags: [joy, activation, healing]
+      intensity: moderate
+      modality: emotional
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, integration, reorientation]
+      outcome_alignment: [healing, transformation, manifestation]
+      installation_context: during_integration
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        [SFX: Ascending arpeggio, harp or piano, major key, 4 seconds]
+
+        And feel that music...<break time="2s"/>
+        rising, lifting...<break time="1.5s"/>
+        This is the sound of hope...<break time="2s"/>
+        of things getting better...<break time="1.5s"/>
+        of new possibilities opening...<break time="2s"/>
+        This music is now linked to hope within you...<break time="2s"/>
+        Whenever you need to feel hope...<break time="1.5s"/>
+        hear this ascending phrase in your mind...<break time="2s"/>
+        and feel your spirit rise...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "The music rises, hope grows"
+      sfx_cue: "Harp or piano ascending arpeggio, C major, gentle"
+
+    relationships:
+      synergies:
+        - breath.spiral_breath_ascending
+        - visual.sun_disc_vitality
+      conflicts:
+        - musical.descending_arpeggio_depth
+      progressions: []
+      outcome_patterns:
+        - emotional_lift
+        - hope_activation
+
+  low_drone_grounding:
+    anchor_id: "musical.low_drone_grounding"
+    name: "Low Drone - Deep Grounding"
+    category: musical
+    trigger_type: auditory
+
+    definition:
+      brief: "Deep bass drone creates instant grounding and stability"
+      extended: |
+        A low, sustained tone resonates with the body's lower centers,
+        creating a grounding effect. This drone becomes linked to
+        stability, presence, and connection to earth.
+
+    attributes:
+      state_tags: [grounding, calm, strength]
+      intensity: moderate
+      modality: physical
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, journey]
+      outcome_alignment: [grounding, healing, confidence]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        [SFX: Low bass drone, sustained, warm, 6 seconds]
+
+        And this sound...<break time="2s"/>
+        feel it in your body...<break time="2s"/>
+        anchoring you...<break time="1.5s"/>
+        grounding you...<break time="1.5s"/>
+        This is the sound of earth...<break time="2s"/>
+        of stability, of foundation...<break time="2s"/>
+        Whenever you need to feel grounded...<break time="1.5s"/>
+        hear this drone in your mind...<break time="2s"/>
+        and feel your roots deepen...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Low drone sounds, I am grounded"
+      sfx_cue: "Sustained bass tone, 60-80 Hz, warm and stable"
+
+    relationships:
+      synergies:
+        - kinesthetic.foot_root_ground
+        - auditory.drum_heartbeat_ground
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - frequency_grounding
+        - bass_anchoring
+
+  crystal_bowl_alignment:
+    anchor_id: "musical.crystal_bowl_alignment"
+    name: "Crystal Bowl - Chakra Alignment"
+    category: musical
+    trigger_type: auditory
+
+    definition:
+      brief: "Crystal bowl tones align and balance the energy centers"
+      extended: |
+        Crystal singing bowl tones resonate with the body's energy
+        centers, creating alignment and balance. This sound becomes
+        linked to harmonizing and centering the entire system.
+
+    attributes:
+      state_tags: [peace, healing, transcendence]
+      intensity: moderate
+      modality: spiritual
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [healing, spiritual_growth, relaxation]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        [SFX: Crystal singing bowl, sustained, pure, 8 seconds]
+
+        And this pure tone...<break time="2s"/>
+        resonating through you...<break time="2s"/>
+        aligning everything...<break time="1.5s"/>
+        harmonizing all parts...<break time="2s"/>
+        This is the sound of balance...<break time="2s"/>
+        of alignment...<break time="1.5s"/>
+        Whenever you need to center yourself...<break time="1.5s"/>
+        hear this bowl in your mind...<break time="2s"/>
+        and feel everything align...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Crystal bowl sounds, I align"
+      sfx_cue: "Crystal singing bowl, clear F or C, sustained"
+
+    relationships:
+      synergies:
+        - auditory.crystal_ping_clarity
+        - visual.tree_of_light_center
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - harmonic_alignment
+        - chakra_balancing
+
+  vocal_om_centering:
+    anchor_id: "musical.vocal_om_centering"
+    name: "Om Tone - Universal Centering"
+    category: musical
+    trigger_type: auditory
+
+    definition:
+      brief: "The Om sound centers awareness and connects to source"
+      extended: |
+        The primordial sound of Om contains all vibrations. Hearing
+        or voicing this sound creates immediate centering and connection
+        to universal consciousness. Ancient yet immediately accessible.
+
+    attributes:
+      state_tags: [peace, transcendence, connection]
+      intensity: profound
+      modality: spiritual
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [spiritual_growth, relaxation, healing]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        [SFX: Om chant, sustained, harmonics, 10 seconds]
+
+        And the sound of Om...<break time="2s"/>
+        the original vibration...<break time="2s"/>
+        containing everything...<break time="2s"/>
+        Feel it resonate through you...<break time="2s"/>
+        centering, connecting...<break time="1.5s"/>
+        This sound is always available...<break time="1.5s"/>
+        Anytime you need to center...<break time="1.5s"/>
+        to connect to something greater...<break time="1.5s"/>
+        simply sound or imagine Om...<break time="2s"/>
+        and everything centers...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Om sounds, I am centered"
+      sfx_cue: "Om chant, rich harmonics, sustained drone"
+
+    relationships:
+      synergies:
+        - breath.ocean_breath_wave_pattern
+        - portal.spiral_descent_depths
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - primordial_sound
+        - universal_connection
+
+  heartbeat_rhythm_sync:
+    anchor_id: "musical.heartbeat_rhythm_sync"
+    name: "Heartbeat Rhythm - Coherence Sync"
+    category: musical
+    trigger_type: auditory
+
+    definition:
+      brief: "Rhythmic heartbeat synchronizes and calms the entire system"
+      extended: |
+        A steady heartbeat rhythm at resting rate entrains the listener's
+        own heart, creating coherence and calm. This primal rhythm
+        connects to the body's deepest wisdom and rest response.
+
+    attributes:
+      state_tags: [calm, grounding, healing]
+      intensity: subtle
+      modality: physical
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, journey, integration]
+      outcome_alignment: [relaxation, healing, grounding]
+      installation_context: during_induction
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        [SFX: Heartbeat sound, 60 BPM, warm, continues beneath]
+
+        And this rhythm...<break time="2s"/>
+        the rhythm of life...<break time="2s"/>
+        Feel your own heart...<break time="1.5s"/>
+        beginning to synchronize...<break time="2s"/>
+        matching this steady beat...<break time="2s"/>
+        This is the rhythm of rest...<break time="1.5s"/>
+        of peace...<break time="1.5s"/>
+        Whenever you hear or imagine this heartbeat...<break time="1.5s"/>
+        your system syncs to calm...<break time="2s"/>
+        automatically...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Heartbeat rhythm, calm syncs"
+      sfx_cue: "Recorded heartbeat, 60 BPM, warm processing"
+
+    relationships:
+      synergies:
+        - auditory.drum_heartbeat_ground
+        - kinesthetic.heart_touch_calm
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - heart_coherence
+        - rhythm_entrainment
+
+# =============================================================================
+# CATEGORY 9: NATURE-BASED ANCHORS
+# =============================================================================
+# Anchors connected to natural phenomena and elements
+
+nature:
+  sunbeam_on_skin:
+    anchor_id: "nature.sunbeam_on_skin"
+    name: "Sunbeam on Skin - Warmth and Vitality"
+    category: nature
+    trigger_type: sensory
+
+    definition:
+      brief: "Feeling sunlight on skin triggers warmth, vitality, and joy"
+      extended: |
+        The sensation of warm sunlight on the skin activates primal
+        pleasure and life-giving associations. This natural anchor
+        can be recalled anytime to access warmth, vitality, and the
+        sense of being blessed by light.
+
+    attributes:
+      state_tags: [joy, healing, activation]
+      intensity: moderate
+      modality: physical
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, integration, reorientation]
+      outcome_alignment: [healing, abundance, confidence, joy]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And now imagine...<break time="1.5s"/>
+        warm sunlight...<break time="1.5s"/>
+        falling gently on your face...<break time="2s"/>
+        your arms...<break time="1.5s"/>
+        Feel that warmth...<break time="2s"/>
+        the way it soaks into your skin...<break time="1.5s"/>
+        filling you with light...<break time="2s"/>
+        This is your sunbeam anchor...<break time="1.5s"/>
+        Whenever you need warmth...<break time="1.5s"/>
+        vitality, a sense of being blessed...<break time="1.5s"/>
+        simply imagine this sunlight...<break time="2s"/>
+        and feel its warmth again...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Feel the sun, warmth fills me"
+      sfx_cue: "Warm ambient tones, subtle sparkle"
+      visual_imagery: "Golden sunbeams streaming down, warm and nurturing"
+
+    relationships:
+      synergies:
+        - visual.sun_disc_vitality
+        - kinesthetic.heart_touch_calm
+      conflicts:
+        - nature.cool_breeze_face
+      progressions: []
+      outcome_patterns:
+        - solar_nurturing
+        - warmth_anchoring
+
+  cool_breeze_face:
+    anchor_id: "nature.cool_breeze_face"
+    name: "Cool Breeze - Clarity and Refresh"
+    category: nature
+    trigger_type: sensory
+
+    definition:
+      brief: "Cool breeze on face brings clarity, freshness, and alertness"
+      extended: |
+        A cool breeze on the face naturally refreshes and clears the
+        mind. This sensation becomes linked to mental clarity, fresh
+        starts, and clear thinking. Can be recalled for instant refresh.
+
+    attributes:
+      state_tags: [clarity, focus, activation]
+      intensity: subtle
+      modality: physical
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [focus, cognitive_enhancement, relaxation]
+      installation_context: during_integration
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And imagine now...<break time="1.5s"/>
+        a cool, fresh breeze...<break time="1.5s"/>
+        touching your face...<break time="2s"/>
+        Feel how it clears your mind...<break time="2s"/>
+        refreshes your thoughts...<break time="1.5s"/>
+        This is your clarity breeze...<break time="1.5s"/>
+        Whenever your mind feels foggy...<break time="1.5s"/>
+        or you need a fresh start...<break time="1.5s"/>
+        feel this cool breeze on your face...<break time="2s"/>
+        and everything clears...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Cool breeze, mind clears"
+      sfx_cue: "Gentle wind sound, refreshing"
+
+    relationships:
+      synergies:
+        - auditory.wind_whoosh_release
+        - visual.blue_flame_focus
+      conflicts:
+        - nature.sunbeam_on_skin
+      progressions: []
+      outcome_patterns:
+        - refreshing_sensation
+        - clarity_anchoring
+
+  tree_roots_support:
+    anchor_id: "nature.tree_roots_support"
+    name: "Tree Roots - Deep Support"
+    category: nature
+    trigger_type: sensory
+
+    definition:
+      brief: "Feeling tree roots beneath feet provides unshakeable support"
+      extended: |
+        Standing on a web of ancient tree roots creates a sense of
+        being supported by something deep and enduring. This anchor
+        provides access to stability that comes from connection to
+        nature's strength.
+
+    attributes:
+      state_tags: [grounding, strength, peace]
+      intensity: moderate
+      modality: combined
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [induction, journey, integration]
+      outcome_alignment: [grounding, healing, confidence]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And beneath your feet now...<break time="1.5s"/>
+        feel the roots...<break time="2s"/>
+        ancient tree roots...<break time="1.5s"/>
+        forming a web of support...<break time="2s"/>
+        deep into the earth...<break time="1.5s"/>
+        You are standing on strength...<break time="2s"/>
+        on enduring support...<break time="1.5s"/>
+        This is your root support...<break time="1.5s"/>
+        Whenever you need to feel held...<break time="1.5s"/>
+        supported, unshakeable...<break time="1.5s"/>
+        feel these roots beneath you...<break time="2s"/>
+        and know you are supported...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Roots beneath me, I am supported"
+      sfx_cue: "Deep earth tones, subtle wood creaking"
+      visual_imagery: "Ancient tree roots visible beneath feet, glowing with life"
+
+    relationships:
+      synergies:
+        - kinesthetic.foot_root_ground
+        - visual.tree_of_light_center
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - nature_support
+        - grounding_visualization
+
+  waterfall_cleansing:
+    anchor_id: "nature.waterfall_cleansing"
+    name: "Waterfall - Complete Cleansing"
+    category: nature
+    trigger_type: sensory
+
+    definition:
+      brief: "Standing under waterfall cleanses all negative energy"
+      extended: |
+        The rush of clean water over the body washes away everything
+        that doesn't serve. This powerful cleansing image creates a
+        reset, leaving the listener refreshed and purified.
+
+    attributes:
+      state_tags: [release, healing, peace]
+      intensity: strong
+      modality: emotional
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [release, healing, transformation]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        [SFX: Waterfall sound, natural, sustained beneath narration]
+
+        And here now...<break time="1.5s"/>
+        a waterfall of pure light...<break time="2s"/>
+        Step beneath it...<break time="2s"/>
+        Feel the water cascade over you...<break time="2s"/>
+        washing away everything old...<break time="2s"/>
+        everything heavy...<break time="1.5s"/>
+        everything that doesn't serve you...<break time="2s"/>
+        This is your cleansing waterfall...<break time="1.5s"/>
+        Whenever you need to purify...<break time="1.5s"/>
+        to let go of what's accumulated...<break time="1.5s"/>
+        step under this waterfall...<break time="2s"/>
+        and feel it wash you clean...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Waterfall washes, I am clean"
+      sfx_cue: "Natural waterfall, medium intensity, cleansing"
+      visual_imagery: "Crystal waterfall of light, cleansing and refreshing"
+
+    relationships:
+      synergies:
+        - auditory.wind_whoosh_release
+        - verbal.phrase_release_this
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - water_purification
+        - cathartic_release
+
+  starfield_expansion:
+    anchor_id: "nature.starfield_expansion"
+    name: "Starfield - Cosmic Expansion"
+    category: nature
+    trigger_type: visual
+
+    definition:
+      brief: "Gazing at infinite stars expands awareness beyond limits"
+      extended: |
+        Looking up at a vast field of stars naturally expands awareness
+        beyond ordinary limits. This cosmic perspective provides
+        access to a sense of infinite possibility and connection to
+        something vast.
+
+    attributes:
+      state_tags: [transcendence, peace, wisdom]
+      intensity: profound
+      modality: spiritual
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [spiritual_growth, transformation, intuition]
+      installation_context: during_journey
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        And above you now...<break time="1.5s"/>
+        infinite stars...<break time="2s"/>
+        stretching in all directions...<break time="2s"/>
+        Feel your awareness expand...<break time="2s"/>
+        to match the vastness...<break time="2s"/>
+        You are part of this...<break time="1.5s"/>
+        connected to all of it...<break time="2s"/>
+        This is your starfield expansion...<break time="1.5s"/>
+        Whenever you need perspective...<break time="1.5s"/>
+        or connection to something vast...<break time="1.5s"/>
+        see these stars...<break time="2s"/>
+        and feel yourself expand...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Stars above, I expand"
+      sfx_cue: "Deep space ambience, ethereal, vast"
+      visual_imagery: "Infinite starfield, vivid and close, sense of floating"
+
+    relationships:
+      synergies:
+        - breath.spiral_breath_ascending
+        - portal.spiral_descent_depths
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - cosmic_perspective
+        - consciousness_expansion
+
+# =============================================================================
+# CATEGORY 10: DAILY LIFE ANCHORS
+# =============================================================================
+# Anchors designed for use in everyday situations
+
+daily_life:
+  doorway_reset_micro:
+    anchor_id: "daily_life.doorway_reset_micro"
+    name: "Doorway Reset - Micro Transition"
+    category: daily_life
+    trigger_type: environmental
+
+    definition:
+      brief: "Passing through any doorway triggers a micro-reset and presence"
+      extended: |
+        Each doorway becomes an opportunity for a micro-reset. Passing
+        through consciously leaves the old space's energy behind and
+        enters the new space fresh and present. Dozens of daily resets
+        accumulate into sustained presence.
+
+    attributes:
+      state_tags: [grounding, focus, peace]
+      intensity: subtle
+      modality: mental
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [focus, relaxation, confidence]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And in your daily life...<break time="1.5s"/>
+        notice doorways...<break time="1.5s"/>
+        Each one is an opportunity...<break time="2s"/>
+        When you pass through any doorway...<break time="1.5s"/>
+        let it become a micro-reset...<break time="2s"/>
+        Leave the old space behind...<break time="1.5s"/>
+        enter the new one fresh...<break time="2s"/>
+        present...<break time="1s"/>
+        renewed...<break time="1.5s"/>
+        Each doorway, a small rebirth...<break time="2s"/>
+        dozens of resets each day...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Through the door, fresh and present"
+      sfx_cue: "Subtle door transition, soft bell"
+
+    relationships:
+      synergies:
+        - portal.door_threshold_entry
+        - breath.reset_breath_4_7_8
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - environmental_trigger
+        - presence_anchoring
+
+  mirror_bless_self:
+    anchor_id: "daily_life.mirror_bless_self"
+    name: "Mirror Blessing - Self-Love Moment"
+    category: daily_life
+    trigger_type: environmental
+
+    definition:
+      brief: "Looking in mirror triggers self-acceptance and self-blessing"
+      extended: |
+        Each time you see yourself in a mirror, it becomes an opportunity
+        for self-blessing. Instead of criticism, the reflection triggers
+        acceptance, appreciation, and quiet blessing of oneself.
+
+    attributes:
+      state_tags: [healing, peace, confidence]
+      intensity: subtle
+      modality: emotional
+      duration_effect: medium
+      cumulative: true
+
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [healing, confidence, self_knowledge]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And when you look in mirrors now...<break time="1.5s"/>
+        let something shift...<break time="2s"/>
+        Instead of criticism...<break time="1.5s"/>
+        let there be a quiet blessing...<break time="2s"/>
+        a moment of acceptance...<break time="1.5s"/>
+        of appreciation...<break time="1.5s"/>
+        Each mirror becomes a moment of self-love...<break time="2s"/>
+        a quiet hello to the one you are becoming...<break time="2s"/>
+        blessed, accepted, whole...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Mirror sees me, I am blessed"
+      sfx_cue: "Soft, warm tone, self-acceptance"
+
+    relationships:
+      synergies:
+        - verbal.phrase_i_am_safe
+        - kinesthetic.heart_touch_calm
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - self_blessing
+        - mirror_work
+
+  morning_light_activation:
+    anchor_id: "daily_life.morning_light_activation"
+    name: "Morning Light - Day Activation"
+    category: daily_life
+    trigger_type: environmental
+
+    definition:
+      brief: "First light of day triggers activation and positive expectation"
+      extended: |
+        The first morning light becomes a trigger for activating the
+        best of what was learned in session. Each new day begins with
+        a reminder of growth, possibility, and positive expectation.
+
+    attributes:
+      state_tags: [activation, joy, healing]
+      intensity: subtle
+      modality: emotional
+      duration_effect: long
+      cumulative: true
+
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [abundance, manifestation, confidence, healing]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And each morning...<break time="1.5s"/>
+        when you first see the light...<break time="2s"/>
+        through your window...<break time="1.5s"/>
+        let something activate...<break time="2s"/>
+        A quiet reminder...<break time="1.5s"/>
+        of what you've learned here...<break time="1.5s"/>
+        of who you're becoming...<break time="2s"/>
+        Each morning light...<break time="1.5s"/>
+        a fresh invitation...<break time="1.5s"/>
+        to bring these gifts into your day...<break time="2s"/>
+        automatically, naturally...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Morning light, gifts activate"
+      sfx_cue: "Gentle morning ambience, hopeful"
+
+    relationships:
+      synergies:
+        - nature.sunbeam_on_skin
+        - visual.sun_disc_vitality
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - morning_ritual
+        - activation_trigger
+
+  water_touch_cleanse:
+    anchor_id: "daily_life.water_touch_cleanse"
+    name: "Water Touch - Mini Cleanse"
+    category: daily_life
+    trigger_type: environmental
+
+    definition:
+      brief: "Touching water (washing hands, shower) triggers mini-cleansing"
+      extended: |
+        Every contact with water becomes an opportunity for energetic
+        cleansing. Washing hands, showering, even drinking water can
+        carry a moment of release and purification.
+
+    attributes:
+      state_tags: [release, calm, healing]
+      intensity: subtle
+      modality: physical
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [release, healing, relaxation]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And when you touch water...<break time="1.5s"/>
+        washing your hands...<break time="1.5s"/>
+        in the shower...<break time="1.5s"/>
+        let it carry something...<break time="2s"/>
+        A mini-cleanse...<break time="1.5s"/>
+        a moment of release...<break time="1.5s"/>
+        The water takes away...<break time="1.5s"/>
+        what you no longer need...<break time="2s"/>
+        leaving you lighter...<break time="1.5s"/>
+        cleaner...<break time="1.5s"/>
+        refreshed...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Water touches, cleansing flows"
+      sfx_cue: "Gentle water sound, cleansing"
+
+    relationships:
+      synergies:
+        - nature.waterfall_cleansing
+        - verbal.phrase_release_this
+      conflicts: []
+      progressions: []
+      outcome_patterns:
+        - water_ritual
+        - daily_cleansing
+
+  three_breath_reset:
+    anchor_id: "daily_life.three_breath_reset"
+    name: "Three Breaths - Instant Reset"
+    category: daily_life
+    trigger_type: physical
+
+    definition:
+      brief: "Taking three conscious breaths anywhere triggers complete reset"
+      extended: |
+        Three conscious breaths is always available, always free, always
+        instant. This simple practice becomes linked to returning to
+        center, no matter what is happening around you.
+
+    attributes:
+      state_tags: [calm, grounding, peace]
+      intensity: moderate
+      modality: physical
+      duration_effect: instant
+      cumulative: true
+
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [relaxation, focus, healing, confidence]
+      installation_context: in_closing
+      contraindications: []
+
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And here is the simplest anchor of all...<break time="1.5s"/>
+        three conscious breaths...<break time="2s"/>
+        Always available...<break time="1.5s"/>
+        always free...<break time="1.5s"/>
+        Whenever you need to reset...<break time="1.5s"/>
+        to return to center...<break time="1.5s"/>
+        take three deep breaths...<break time="2s"/>
+        slow and conscious...<break time="2s"/>
+        And everything returns to peace...<break time="2s"/>
+        Three breaths. That's all it takes...<break time="3s"/>
+        </prosody>
+
+      recall_phrase: "Three breaths, peace returns"
+      sfx_cue: "Soft breath sounds, calming"
+
+    relationships:
+      synergies:
+        - breath.calm_breath_slow_exhale
+        - kinesthetic.heart_touch_calm
+      conflicts: []
+      progressions:
+        - breath.reset_breath_4_7_8
+      outcome_patterns:
+        - breath_trigger
+        - universal_anchor
+
+# =============================================================================
+# ADDITIONAL ANCHORS - EXPANDED LIBRARY
+# =============================================================================
+# The following anchors expand each category to 20+ entries for maximum variety
+
+# -----------------------------------------------------------------------------
+# BREATH CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+breath:
+  box_breath_4_4:
+    anchor_id: "breath.box_breath_4_4"
+    name: "Box Breath - 4-4-4-4"
+    category: breath
+    trigger_type: physical
+    definition:
+      brief: "Square breathing pattern for balance and centering"
+    attributes:
+      state_tags: [calm, focus, grounding]
+      intensity: moderate
+      modality: physical
+    applications:
+      journey_phases: [induction, integration]
+      outcome_alignment: [focus, relaxation, confidence]
+      installation_context: during_induction
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Let me teach you box breathing...<break time="1.5s"/>
+        Inhale for four counts...<break time="1s"/>
+        Hold for four...<break time="1s"/>
+        Exhale for four...<break time="1s"/>
+        Hold for four...<break time="2s"/>
+        This square of breath brings perfect balance...<break time="2s"/>
+        Anytime you need centering...<break time="1.5s"/>
+        draw this square with your breath...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Box breath, perfect balance"
+    relationships:
+      synergies: [breath.calm_breath_slow_exhale]
+      conflicts: []
+      progressions: []
+
+  morning_awakening_breath:
+    anchor_id: "breath.morning_awakening_breath"
+    name: "Morning Awakening Breath"
+    category: breath
+    trigger_type: physical
+    definition:
+      brief: "Energizing breath pattern for vibrant morning activation"
+    attributes:
+      state_tags: [activation, strength, joy]
+      intensity: strong
+      modality: physical
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [confidence, empowerment, focus]
+      installation_context: daily_practice
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Each morning when you wake...<break time="1.5s"/>
+        take three expansive breaths...<break time="1.5s"/>
+        filling yourself with new day energy...<break time="2s"/>
+        This becomes your activation signal...<break time="2s"/>
+        Morning breath, awakening power...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Morning breath, awakening power"
+    relationships:
+      synergies: [daily_life.morning_light_activation]
+      conflicts: []
+      progressions: []
+
+  ocean_wave_breath:
+    anchor_id: "breath.ocean_wave_breath"
+    name: "Ocean Wave Breath"
+    category: breath
+    trigger_type: physical
+    definition:
+      brief: "Breath that flows like ocean waves, bringing deep peace"
+    attributes:
+      state_tags: [calm, peace, healing]
+      intensity: subtle
+      modality: physical
+    applications:
+      journey_phases: [induction, deepening, journey]
+      outcome_alignment: [relaxation, healing, spiritual_growth]
+      installation_context: during_induction
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Let your breath become like ocean waves...<break time="2s"/>
+        rising and falling naturally...<break time="1.5s"/>
+        each wave washing away tension...<break time="2s"/>
+        Whenever you breathe like the ocean...<break time="1.5s"/>
+        deep peace arrives...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Ocean breath, waves of peace"
+    relationships:
+      synergies: [nature.ocean_shore_peace]
+      conflicts: []
+      progressions: []
+
+  golden_breath_abundance:
+    anchor_id: "breath.golden_breath_abundance"
+    name: "Golden Breath - Abundance"
+    category: breath
+    trigger_type: physical
+    definition:
+      brief: "Visualizing golden light on breath to attract abundance"
+    attributes:
+      state_tags: [confidence, joy, activation]
+      intensity: moderate
+      modality: combined
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [abundance, confidence, manifestation]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Breathe in golden light...<break time="2s"/>
+        the color of abundance and possibility...<break time="1.5s"/>
+        Each golden breath expands your capacity...<break time="2s"/>
+        to receive and create...<break time="2s"/>
+        Golden breath, abundance flows...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Golden breath, abundance flows"
+    relationships:
+      synergies: [visual.golden_sphere_abundance]
+      conflicts: []
+      progressions: []
+
+  grounding_earth_breath:
+    anchor_id: "breath.grounding_earth_breath"
+    name: "Grounding Earth Breath"
+    category: breath
+    trigger_type: physical
+    definition:
+      brief: "Breathing down into the earth for stability and grounding"
+    attributes:
+      state_tags: [grounding, calm, strength]
+      intensity: moderate
+      modality: physical
+    applications:
+      journey_phases: [induction, integration, reorientation]
+      outcome_alignment: [healing, relaxation, focus]
+      installation_context: during_induction
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Breathe down into the earth...<break time="2s"/>
+        feeling roots extend from your body...<break time="1.5s"/>
+        into the stable ground below...<break time="2s"/>
+        This earth breath grounds you instantly...<break time="2s"/>
+        whenever you need stability...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Earth breath, grounded strength"
+    relationships:
+      synergies: [kinesthetic.foot_root_ground, nature.tree_roots_stability]
+      conflicts: []
+      progressions: []
+
+# -----------------------------------------------------------------------------
+# AUDITORY CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+auditory:
+  singing_bowl_resonance:
+    anchor_id: "auditory.singing_bowl_resonance"
+    name: "Singing Bowl Resonance"
+    category: auditory
+    trigger_type: auditory
+    definition:
+      brief: "The pure tone of a singing bowl triggers deep meditative states"
+    attributes:
+      state_tags: [calm, transcendence, clarity]
+      intensity: profound
+      modality: combined
+    applications:
+      journey_phases: [deepening, helm_deep_trance]
+      outcome_alignment: [spiritual_growth, healing, relaxation]
+      installation_context: during_deepening
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Imagine the clear tone of a singing bowl...<break time="2s"/>
+        its pure frequency resonating through you...<break time="2s"/>
+        Whenever you hear or imagine this tone...<break time="1.5s"/>
+        deep meditation awakens...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Bowl tone, deep peace"
+    relationships:
+      synergies: [musical.gong_wash_reset]
+      conflicts: []
+      progressions: []
+
+  rain_on_roof:
+    anchor_id: "auditory.rain_on_roof"
+    name: "Rain on Roof"
+    category: auditory
+    trigger_type: auditory
+    definition:
+      brief: "Sound of gentle rain creates cozy safety and relaxation"
+    attributes:
+      state_tags: [calm, peace, protection]
+      intensity: subtle
+      modality: auditory
+    applications:
+      journey_phases: [induction, journey]
+      outcome_alignment: [relaxation, healing, protection]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Hear the gentle rain on the roof...<break time="2s"/>
+        safe and cozy inside...<break time="1.5s"/>
+        This sound of rain becomes your signal...<break time="1.5s"/>
+        for safety and peace...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Rain sounds, safe and cozy"
+    relationships:
+      synergies: [nature.rain_gentle_cleansing]
+      conflicts: []
+      progressions: []
+
+  crackling_fire:
+    anchor_id: "auditory.crackling_fire"
+    name: "Crackling Fire"
+    category: auditory
+    trigger_type: auditory
+    definition:
+      brief: "Sound of crackling fire triggers warmth and comfort"
+    attributes:
+      state_tags: [calm, peace, healing]
+      intensity: moderate
+      modality: auditory
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [relaxation, healing, transformation]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Hear the gentle crackling of a fire...<break time="2s"/>
+        warmth spreading through you...<break time="1.5s"/>
+        This sound becomes your anchor for comfort...<break time="2s"/>
+        warmth and peace, always available...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Fire crackles, warmth spreads"
+    relationships:
+      synergies: [visual.warm_flame_heart]
+      conflicts: []
+      progressions: []
+
+  inner_voice_guidance:
+    anchor_id: "auditory.inner_voice_guidance"
+    name: "Inner Voice Guidance"
+    category: auditory
+    trigger_type: auditory
+    definition:
+      brief: "Your own inner wise voice provides guidance and wisdom"
+    attributes:
+      state_tags: [wisdom, intuition, clarity]
+      intensity: moderate
+      modality: mental
+    applications:
+      journey_phases: [journey, helm_deep_trance, integration]
+      outcome_alignment: [self_knowledge, intuition, spiritual_growth]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you can hear your inner wise voice...<break time="2s"/>
+        that part of you that always knows...<break time="1.5s"/>
+        Whenever you seek guidance...<break time="1.5s"/>
+        listen for this voice within...<break time="2s"/>
+        it speaks truth and wisdom...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Inner voice, wisdom speaks"
+    relationships:
+      synergies: [symbolic.wise_elder_guidance]
+      conflicts: []
+      progressions: []
+
+  heartbeat_rhythm:
+    anchor_id: "auditory.heartbeat_rhythm"
+    name: "Heartbeat Rhythm"
+    category: auditory
+    trigger_type: auditory
+    definition:
+      brief: "Your own heartbeat becomes a grounding rhythm"
+    attributes:
+      state_tags: [grounding, calm, connection]
+      intensity: subtle
+      modality: physical
+    applications:
+      journey_phases: [induction, integration]
+      outcome_alignment: [healing, relaxation, self_knowledge]
+      installation_context: during_induction
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Notice your own heartbeat...<break time="2s"/>
+        that faithful rhythm...<break time="1.5s"/>
+        always with you, always grounding...<break time="2s"/>
+        Your heartbeat is your anchor to presence...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Heartbeat grounds me"
+    relationships:
+      synergies: [kinesthetic.heart_touch_calm]
+      conflicts: []
+      progressions: []
+
+# -----------------------------------------------------------------------------
+# VISUAL CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+visual:
+  warm_flame_heart:
+    anchor_id: "visual.warm_flame_heart"
+    name: "Warm Flame in Heart"
+    category: visual
+    trigger_type: visual
+    definition:
+      brief: "A warm golden flame glowing in the heart center"
+    attributes:
+      state_tags: [healing, peace, connection]
+      intensity: moderate
+      modality: combined
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [healing, love, confidence]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        See a warm golden flame...<break time="1.5s"/>
+        glowing gently in your heart center...<break time="2s"/>
+        This flame is always there...<break time="1.5s"/>
+        your inner light of healing and love...<break time="2s"/>
+        Whenever you visualize this flame...<break time="1.5s"/>
+        warmth and healing flow...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Heart flame, warmth flows"
+    relationships:
+      synergies: [kinesthetic.heart_touch_calm]
+      conflicts: []
+      progressions: []
+
+  mountain_peak_clarity:
+    anchor_id: "visual.mountain_peak_clarity"
+    name: "Mountain Peak Clarity"
+    category: visual
+    trigger_type: visual
+    definition:
+      brief: "Standing on a mountain peak with crystal clear vision"
+    attributes:
+      state_tags: [clarity, focus, strength]
+      intensity: strong
+      modality: mental
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [focus, confidence, self_knowledge]
+      installation_context: at_peak
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        See yourself standing on a mountain peak...<break time="2s"/>
+        above the clouds, crystal clear air...<break time="1.5s"/>
+        From here you can see everything clearly...<break time="2s"/>
+        This view becomes your anchor for clarity...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Mountain peak, clear vision"
+    relationships:
+      synergies: [breath.power_breath_chest_lift]
+      conflicts: []
+      progressions: []
+
+  healing_waterfall_light:
+    anchor_id: "visual.healing_waterfall_light"
+    name: "Healing Waterfall of Light"
+    category: visual
+    trigger_type: visual
+    definition:
+      brief: "A waterfall of healing light cascading through the body"
+    attributes:
+      state_tags: [healing, release, peace]
+      intensity: strong
+      modality: combined
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [healing, release, transformation]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Visualize a waterfall of pure light...<break time="2s"/>
+        cascading through your entire body...<break time="1.5s"/>
+        washing away everything that no longer serves...<break time="2s"/>
+        This waterfall of light is always available...<break time="2s"/>
+        for cleansing and renewal...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Light waterfall, cleansing flows"
+    relationships:
+      synergies: [nature.waterfall_cleansing]
+      conflicts: []
+      progressions: []
+
+  starlight_connection:
+    anchor_id: "visual.starlight_connection"
+    name: "Starlight Connection"
+    category: visual
+    trigger_type: visual
+    definition:
+      brief: "Connecting to the infinite through starlight"
+    attributes:
+      state_tags: [transcendence, peace, wisdom]
+      intensity: profound
+      modality: spiritual
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [spiritual_growth, intuition, healing]
+      installation_context: at_peak
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        See the stars above you...<break time="2s"/>
+        ancient light traveling across eternity...<break time="1.5s"/>
+        Feel yourself connected to this vastness...<break time="2s"/>
+        Part of something infinite and beautiful...<break time="2s"/>
+        The stars remind you of your true nature...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Starlight connects, infinite peace"
+    relationships:
+      synergies: [nature.moonlight_wisdom]
+      conflicts: []
+      progressions: []
+
+  emerald_healing_sphere:
+    anchor_id: "visual.emerald_healing_sphere"
+    name: "Emerald Healing Sphere"
+    category: visual
+    trigger_type: visual
+    definition:
+      brief: "A sphere of emerald green light for healing and renewal"
+    attributes:
+      state_tags: [healing, peace, clarity]
+      intensity: moderate
+      modality: combined
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [healing, relaxation, transformation]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        See a sphere of emerald green light...<break time="2s"/>
+        the color of nature's healing...<break time="1.5s"/>
+        surrounding and filling you completely...<break time="2s"/>
+        This emerald light heals and renews...<break time="2s"/>
+        always available when you need it...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Emerald sphere, healing flows"
+    relationships:
+      synergies: [nature.forest_sanctuary]
+      conflicts: []
+      progressions: []
+
+# -----------------------------------------------------------------------------
+# KINESTHETIC CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+kinesthetic:
+  shoulder_drop_release:
+    anchor_id: "kinesthetic.shoulder_drop_release"
+    name: "Shoulder Drop Release"
+    category: kinesthetic
+    trigger_type: physical
+    definition:
+      brief: "Consciously dropping shoulders releases accumulated tension"
+    attributes:
+      state_tags: [release, calm, grounding]
+      intensity: moderate
+      modality: physical
+    applications:
+      journey_phases: [induction, integration, reorientation]
+      outcome_alignment: [relaxation, release, healing]
+      installation_context: during_induction
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Notice your shoulders...<break time="1.5s"/>
+        and let them drop now...<break time="2s"/>
+        releasing everything they've been holding...<break time="2s"/>
+        Whenever you drop your shoulders consciously...<break time="1.5s"/>
+        tension dissolves instantly...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Shoulders drop, tension releases"
+    relationships:
+      synergies: [breath.calm_breath_slow_exhale]
+      conflicts: []
+      progressions: []
+
+  palm_warmth_healing:
+    anchor_id: "kinesthetic.palm_warmth_healing"
+    name: "Palm Warmth Healing"
+    category: kinesthetic
+    trigger_type: physical
+    definition:
+      brief: "Warmth in palms activates healing energy"
+    attributes:
+      state_tags: [healing, peace, connection]
+      intensity: moderate
+      modality: physical
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [healing, relaxation, empowerment]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Feel the warmth building in your palms...<break time="2s"/>
+        this is healing energy awakening...<break time="1.5s"/>
+        You can place these warm hands anywhere...<break time="1.5s"/>
+        that needs healing...<break time="2s"/>
+        Your hands carry healing now...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Warm palms, healing flows"
+    relationships:
+      synergies: [visual.warm_flame_heart]
+      conflicts: []
+      progressions: []
+
+  jaw_release_peace:
+    anchor_id: "kinesthetic.jaw_release_peace"
+    name: "Jaw Release Peace"
+    category: kinesthetic
+    trigger_type: physical
+    definition:
+      brief: "Releasing jaw tension brings instant peace"
+    attributes:
+      state_tags: [release, calm, peace]
+      intensity: moderate
+      modality: physical
+    applications:
+      journey_phases: [induction, integration]
+      outcome_alignment: [relaxation, release, healing]
+      installation_context: during_induction
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Notice your jaw...<break time="1.5s"/>
+        and let it soften now...<break time="2s"/>
+        Perhaps letting your lips part slightly...<break time="1.5s"/>
+        releasing all tension held there...<break time="2s"/>
+        A soft jaw means a peaceful mind...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Soft jaw, peaceful mind"
+    relationships:
+      synergies: [kinesthetic.shoulder_drop_release]
+      conflicts: []
+      progressions: []
+
+  belly_breathing_ground:
+    anchor_id: "kinesthetic.belly_breathing_ground"
+    name: "Belly Breathing Ground"
+    category: kinesthetic
+    trigger_type: physical
+    definition:
+      brief: "Belly rising and falling creates grounding stability"
+    attributes:
+      state_tags: [grounding, calm, focus]
+      intensity: subtle
+      modality: physical
+    applications:
+      journey_phases: [induction, deepening]
+      outcome_alignment: [relaxation, focus, healing]
+      installation_context: during_induction
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Place your awareness in your belly...<break time="2s"/>
+        feeling it rise and fall with each breath...<break time="1.5s"/>
+        This natural rhythm grounds you...<break time="1.5s"/>
+        connects you to your center...<break time="2s"/>
+        Belly breathing, always grounding...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Belly breathes, grounded calm"
+    relationships:
+      synergies: [breath.grounding_earth_breath]
+      conflicts: []
+      progressions: []
+
+  spine_alignment_power:
+    anchor_id: "kinesthetic.spine_alignment_power"
+    name: "Spine Alignment Power"
+    category: kinesthetic
+    trigger_type: physical
+    definition:
+      brief: "Aligning spine activates strength and confidence"
+    attributes:
+      state_tags: [power, confidence, strength]
+      intensity: strong
+      modality: physical
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [confidence, empowerment, focus]
+      installation_context: during_integration
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Feel your spine lengthening...<break time="2s"/>
+        each vertebra stacking perfectly...<break time="1.5s"/>
+        This alignment activates your power...<break time="2s"/>
+        Anytime you straighten your spine...<break time="1.5s"/>
+        strength and confidence flow through you...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Spine aligns, power flows"
+    relationships:
+      synergies: [breath.power_breath_chest_lift]
+      conflicts: []
+      progressions: []
+
+# -----------------------------------------------------------------------------
+# SYMBOLIC CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+symbolic:
+  sacred_key_access:
+    anchor_id: "symbolic.sacred_key_access"
+    name: "Sacred Key of Access"
+    category: symbolic
+    trigger_type: symbolic
+    definition:
+      brief: "A golden key that unlocks inner wisdom and resources"
+    attributes:
+      state_tags: [wisdom, power, clarity]
+      intensity: strong
+      modality: mental
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [self_knowledge, empowerment, intuition]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        You are given a sacred golden key...<break time="2s"/>
+        This key opens any door within you...<break time="1.5s"/>
+        unlocking wisdom and resources...<break time="2s"/>
+        Whenever you hold this key in your mind...<break time="1.5s"/>
+        access opens to what you need...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Golden key, wisdom unlocks"
+    relationships:
+      synergies: [portal.golden_door_opportunity]
+      conflicts: []
+      progressions: []
+
+  shield_of_protection:
+    anchor_id: "symbolic.shield_of_protection"
+    name: "Shield of Protection"
+    category: symbolic
+    trigger_type: symbolic
+    definition:
+      brief: "An energy shield that protects from negativity"
+    attributes:
+      state_tags: [protection, strength, peace]
+      intensity: strong
+      modality: combined
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [protection, confidence, healing]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Around you now forms a shield of light...<break time="2s"/>
+        impenetrable to negativity...<break time="1.5s"/>
+        yet allowing love and good to flow freely...<break time="2s"/>
+        This shield is always available...<break time="1.5s"/>
+        simply visualize it and it appears...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Shield of light, protected safe"
+    relationships:
+      synergies: [verbal.phrase_i_am_protected]
+      conflicts: []
+      progressions: []
+
+  chalice_of_healing:
+    anchor_id: "symbolic.chalice_of_healing"
+    name: "Chalice of Healing"
+    category: symbolic
+    trigger_type: symbolic
+    definition:
+      brief: "A sacred chalice filled with healing light"
+    attributes:
+      state_tags: [healing, peace, transcendence]
+      intensity: profound
+      modality: spiritual
+    applications:
+      journey_phases: [helm_deep_trance, integration]
+      outcome_alignment: [healing, spiritual_growth, transformation]
+      installation_context: at_peak
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Before you appears a sacred chalice...<break time="2s"/>
+        filled with pure healing light...<break time="1.5s"/>
+        Drink from this chalice now...<break time="2s"/>
+        feeling healing flow through every cell...<break time="2s"/>
+        This chalice is always here for you...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Chalice drinks, healing flows"
+    relationships:
+      synergies: [visual.healing_waterfall_light]
+      conflicts: []
+      progressions: []
+
+  seed_of_potential:
+    anchor_id: "symbolic.seed_of_potential"
+    name: "Seed of Potential"
+    category: symbolic
+    trigger_type: symbolic
+    definition:
+      brief: "A golden seed containing all your potential"
+    attributes:
+      state_tags: [transformation, joy, activation]
+      intensity: moderate
+      modality: mental
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [transformation, manifestation, confidence]
+      installation_context: during_integration
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Hold in your mind a golden seed...<break time="2s"/>
+        within it, all your potential...<break time="1.5s"/>
+        everything you can become...<break time="2s"/>
+        Plant this seed in your heart...<break time="1.5s"/>
+        and feel it begin to grow...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Seed planted, potential grows"
+    relationships:
+      synergies: [nature.tree_roots_stability]
+      conflicts: []
+      progressions: []
+
+  compass_true_direction:
+    anchor_id: "symbolic.compass_true_direction"
+    name: "Compass of True Direction"
+    category: symbolic
+    trigger_type: symbolic
+    definition:
+      brief: "An inner compass that always points to your true path"
+    attributes:
+      state_tags: [clarity, wisdom, intuition]
+      intensity: moderate
+      modality: mental
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [self_knowledge, intuition, focus]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Within you is a compass...<break time="2s"/>
+        always pointing to your true direction...<break time="1.5s"/>
+        Whenever you feel lost or uncertain...<break time="1.5s"/>
+        check your inner compass...<break time="2s"/>
+        it always knows the way...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Inner compass, true direction"
+    relationships:
+      synergies: [auditory.inner_voice_guidance]
+      conflicts: []
+      progressions: []
+
+# -----------------------------------------------------------------------------
+# PORTAL CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+portal:
+  garden_gate_peace:
+    anchor_id: "portal.garden_gate_peace"
+    name: "Garden Gate to Peace"
+    category: portal
+    trigger_type: symbolic
+    definition:
+      brief: "A wooden gate that opens into a peaceful garden sanctuary"
+    attributes:
+      state_tags: [peace, calm, healing]
+      intensity: moderate
+      modality: mental
+    applications:
+      journey_phases: [induction, journey]
+      outcome_alignment: [relaxation, healing, spiritual_growth]
+      installation_context: during_induction
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Before you is an old wooden gate...<break time="2s"/>
+        beyond it, a beautiful garden of peace...<break time="1.5s"/>
+        Open the gate now...<break time="2s"/>
+        and step into sanctuary...<break time="2s"/>
+        This garden is always waiting for you...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Garden gate, sanctuary opens"
+    relationships:
+      synergies: [nature.forest_sanctuary]
+      conflicts: []
+      progressions: []
+
+  spiral_staircase_deep:
+    anchor_id: "portal.spiral_staircase_deep"
+    name: "Spiral Staircase Down"
+    category: portal
+    trigger_type: symbolic
+    definition:
+      brief: "A spiral staircase leading deeper into trance"
+    attributes:
+      state_tags: [calm, transcendence, focus]
+      intensity: strong
+      modality: mental
+    applications:
+      journey_phases: [deepening, helm_deep_trance]
+      outcome_alignment: [relaxation, spiritual_growth, self_knowledge]
+      installation_context: during_deepening
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        A spiral staircase appears before you...<break time="2s"/>
+        winding gently downward...<break time="1.5s"/>
+        With each step down, deeper relaxation...<break time="2s"/>
+        Descending into your deepest self...<break time="2s"/>
+        Deeper and deeper still...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Spiral down, deeper peace"
+    relationships:
+      synergies: [portal.staircase_10_down]
+      conflicts: []
+      progressions: []
+
+  waterfall_curtain_passage:
+    anchor_id: "portal.waterfall_curtain_passage"
+    name: "Waterfall Curtain Passage"
+    category: portal
+    trigger_type: symbolic
+    definition:
+      brief: "Walking through a waterfall into a hidden sanctuary"
+    attributes:
+      state_tags: [transformation, healing, transcendence]
+      intensity: strong
+      modality: combined
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [transformation, healing, spiritual_growth]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Before you, a curtain of falling water...<break time="2s"/>
+        Step through it now...<break time="1.5s"/>
+        feeling the water wash away the old...<break time="2s"/>
+        Emerging on the other side, transformed...<break time="2s"/>
+        into a hidden sanctuary of power...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Through waterfall, transformed"
+    relationships:
+      synergies: [visual.healing_waterfall_light]
+      conflicts: []
+      progressions: []
+
+  rainbow_bridge_connection:
+    anchor_id: "portal.rainbow_bridge_connection"
+    name: "Rainbow Bridge Connection"
+    category: portal
+    trigger_type: symbolic
+    definition:
+      brief: "A rainbow bridge connecting to higher consciousness"
+    attributes:
+      state_tags: [transcendence, joy, connection]
+      intensity: profound
+      modality: spiritual
+    applications:
+      journey_phases: [helm_deep_trance]
+      outcome_alignment: [spiritual_growth, intuition, transformation]
+      installation_context: at_peak
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        A rainbow bridge arches before you...<break time="2s"/>
+        connecting earth to sky...<break time="1.5s"/>
+        Walk across this bridge now...<break time="2s"/>
+        feeling yourself rise to higher awareness...<break time="2s"/>
+        Connected to all that is...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Rainbow bridge, higher connection"
+    relationships:
+      synergies: [visual.starlight_connection]
+      conflicts: []
+      progressions: []
+
+  crystal_cave_wisdom:
+    anchor_id: "portal.crystal_cave_wisdom"
+    name: "Crystal Cave of Wisdom"
+    category: portal
+    trigger_type: symbolic
+    definition:
+      brief: "Entering a cave of crystals that contains ancient wisdom"
+    attributes:
+      state_tags: [wisdom, clarity, transcendence]
+      intensity: strong
+      modality: combined
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [self_knowledge, intuition, spiritual_growth]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        You enter a cave of living crystals...<break time="2s"/>
+        each one glowing with ancient wisdom...<break time="1.5s"/>
+        The crystals share their knowledge with you...<break time="2s"/>
+        absorbing what you need to know...<break time="2s"/>
+        This wisdom is now yours...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Crystal cave, wisdom flows"
+    relationships:
+      synergies: [symbolic.sacred_key_access]
+      conflicts: []
+      progressions: []
+
+# -----------------------------------------------------------------------------
+# VERBAL CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+verbal:
+  phrase_i_am_safe:
+    anchor_id: "verbal.phrase_i_am_safe"
+    name: "Phrase - I Am Safe"
+    category: verbal
+    trigger_type: verbal
+    definition:
+      brief: "Speaking 'I am safe' activates deep security"
+    attributes:
+      state_tags: [protection, calm, grounding]
+      intensity: moderate
+      modality: mental
+    applications:
+      journey_phases: [induction, integration, reorientation]
+      outcome_alignment: [protection, healing, confidence]
+      installation_context: in_closing
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Repeat these words in your mind now...<break time="1.5s"/>
+        I am safe...<break time="2s"/>
+        Whenever you say these words...<break time="1.5s"/>
+        silently or aloud...<break time="1.5s"/>
+        safety wraps around you...<break time="3s"/>
+        </prosody>
+      recall_phrase: "I am safe"
+    relationships:
+      synergies: [symbolic.shield_of_protection]
+      conflicts: []
+      progressions: []
+
+  phrase_i_am_protected:
+    anchor_id: "verbal.phrase_i_am_protected"
+    name: "Phrase - I Am Protected"
+    category: verbal
+    trigger_type: verbal
+    definition:
+      brief: "Affirmation of protection activates energy shield"
+    attributes:
+      state_tags: [protection, strength, confidence]
+      intensity: moderate
+      modality: mental
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [protection, confidence, empowerment]
+      installation_context: in_closing
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Know that you can say at any time...<break time="1.5s"/>
+        I am protected...<break time="2s"/>
+        And your energy shield activates...<break time="1.5s"/>
+        surrounding you in light...<break time="3s"/>
+        </prosody>
+      recall_phrase: "I am protected"
+    relationships:
+      synergies: [symbolic.shield_of_protection]
+      conflicts: []
+      progressions: []
+
+  phrase_release_this:
+    anchor_id: "verbal.phrase_release_this"
+    name: "Phrase - I Release This"
+    category: verbal
+    trigger_type: verbal
+    definition:
+      brief: "Speaking 'I release this' lets go of unwanted energy"
+    attributes:
+      state_tags: [release, healing, peace]
+      intensity: moderate
+      modality: combined
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [release, healing, transformation]
+      installation_context: during_integration
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        When something no longer serves you...<break time="1.5s"/>
+        simply say, I release this...<break time="2s"/>
+        And feel it leave your body and mind...<break time="2s"/>
+        Released and dissolved...<break time="3s"/>
+        </prosody>
+      recall_phrase: "I release this"
+    relationships:
+      synergies: [breath.calm_breath_slow_exhale]
+      conflicts: []
+      progressions: []
+
+  mantra_peace_within:
+    anchor_id: "verbal.mantra_peace_within"
+    name: "Mantra - Peace Within"
+    category: verbal
+    trigger_type: verbal
+    definition:
+      brief: "Repeating 'Peace within' activates deep tranquility"
+    attributes:
+      state_tags: [peace, calm, transcendence]
+      intensity: moderate
+      modality: mental
+    applications:
+      journey_phases: [induction, integration]
+      outcome_alignment: [relaxation, healing, spiritual_growth]
+      installation_context: during_integration
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Let these words become your mantra...<break time="1.5s"/>
+        Peace within...<break time="2s"/>
+        Peace within...<break time="2s"/>
+        Each time you think or speak these words...<break time="1.5s"/>
+        peace deepens...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Peace within"
+    relationships:
+      synergies: [kinesthetic.heart_touch_calm]
+      conflicts: []
+      progressions: []
+
+  word_trigger_clarity:
+    anchor_id: "verbal.word_trigger_clarity"
+    name: "Word Trigger - Clarity"
+    category: verbal
+    trigger_type: verbal
+    definition:
+      brief: "The word 'clarity' instantly clears mental fog"
+    attributes:
+      state_tags: [clarity, focus, wisdom]
+      intensity: moderate
+      modality: mental
+    applications:
+      journey_phases: [integration, reorientation]
+      outcome_alignment: [focus, self_knowledge, cognitive_enhancement]
+      installation_context: in_closing
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        From now on, when you think or speak the word...<break time="1.5s"/>
+        Clarity...<break time="2s"/>
+        mental fog clears instantly...<break time="1.5s"/>
+        your mind becomes sharp and focused...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Clarity"
+    relationships:
+      synergies: [visual.mountain_peak_clarity]
+      conflicts: []
+      progressions: []
+
+# -----------------------------------------------------------------------------
+# MUSICAL CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+musical:
+  432hz_heart_opening:
+    anchor_id: "musical.432hz_heart_opening"
+    name: "432 Hz Heart Opening"
+    category: musical
+    trigger_type: auditory
+    definition:
+      brief: "432 Hz frequency opens heart and promotes healing"
+    attributes:
+      state_tags: [healing, peace, connection]
+      intensity: moderate
+      modality: combined
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [healing, love, spiritual_growth]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Imagine the frequency of 432 Hz...<break time="2s"/>
+        the natural harmonic of the heart...<break time="1.5s"/>
+        Feel it vibrating in your chest...<break time="2s"/>
+        opening your heart to healing...<break time="2s"/>
+        This frequency is always within you...<break time="3s"/>
+        </prosody>
+      recall_phrase: "432 Hz, heart opens"
+    relationships:
+      synergies: [kinesthetic.heart_touch_calm]
+      conflicts: []
+      progressions: []
+
+  theta_wave_journey:
+    anchor_id: "musical.theta_wave_journey"
+    name: "Theta Wave Journey"
+    category: musical
+    trigger_type: auditory
+    definition:
+      brief: "Theta brainwave frequency for deep meditation"
+    attributes:
+      state_tags: [transcendence, calm, intuition]
+      intensity: profound
+      modality: combined
+    applications:
+      journey_phases: [deepening, helm_deep_trance]
+      outcome_alignment: [spiritual_growth, intuition, self_knowledge]
+      installation_context: during_deepening
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        The theta waves carry you deeper...<break time="2s"/>
+        four to seven cycles per second...<break time="1.5s"/>
+        The doorway to your subconscious...<break time="2s"/>
+        Let the theta rhythm guide you...<break time="2s"/>
+        into the deepest meditation...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Theta waves, deep journey"
+    relationships:
+      synergies: [portal.spiral_staircase_deep]
+      conflicts: []
+      progressions: []
+
+  crystal_tones_harmony:
+    anchor_id: "musical.crystal_tones_harmony"
+    name: "Crystal Tones Harmony"
+    category: musical
+    trigger_type: auditory
+    definition:
+      brief: "Pure crystal bowl tones harmonize and balance"
+    attributes:
+      state_tags: [healing, clarity, peace]
+      intensity: moderate
+      modality: combined
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [healing, relaxation, transformation]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Hear the pure tones of crystal singing bowls...<break time="2s"/>
+        harmonizing every cell of your being...<break time="1.5s"/>
+        bringing everything into perfect balance...<break time="2s"/>
+        These crystal tones are now your anchor...<break time="2s"/>
+        for harmony and healing...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Crystal tones, harmony flows"
+    relationships:
+      synergies: [auditory.singing_bowl_resonance]
+      conflicts: []
+      progressions: []
+
+  heartbeat_drum_ground:
+    anchor_id: "musical.heartbeat_drum_ground"
+    name: "Heartbeat Drum Grounding"
+    category: musical
+    trigger_type: auditory
+    definition:
+      brief: "Shamanic drum beat grounds and connects to earth"
+    attributes:
+      state_tags: [grounding, power, connection]
+      intensity: strong
+      modality: combined
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [healing, empowerment, spiritual_growth]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Hear the deep beat of the drum...<break time="2s"/>
+        like a heartbeat of the earth...<break time="1.5s"/>
+        Each beat grounds you deeper...<break time="2s"/>
+        connecting you to ancient rhythms...<break time="2s"/>
+        The drum beat is your anchor to earth...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Drum beats, earth connection"
+    relationships:
+      synergies: [kinesthetic.foot_root_ground]
+      conflicts: []
+      progressions: []
+
+  celestial_choir_transcend:
+    anchor_id: "musical.celestial_choir_transcend"
+    name: "Celestial Choir Transcendence"
+    category: musical
+    trigger_type: auditory
+    definition:
+      brief: "Heavenly choir voices lift consciousness higher"
+    attributes:
+      state_tags: [transcendence, joy, peace]
+      intensity: profound
+      modality: spiritual
+    applications:
+      journey_phases: [helm_deep_trance]
+      outcome_alignment: [spiritual_growth, faith, healing]
+      installation_context: at_peak
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Now hear the voices of a celestial choir...<break time="2s"/>
+        singing you higher...<break time="1.5s"/>
+        lifting your consciousness...<break time="2s"/>
+        to realms of pure light and love...<break time="2s"/>
+        This heavenly music is always available...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Choir sings, spirit soars"
+    relationships:
+      synergies: [portal.rainbow_bridge_connection]
+      conflicts: []
+      progressions: []
+
+# -----------------------------------------------------------------------------
+# NATURE CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+nature:
+  rain_gentle_cleansing:
+    anchor_id: "nature.rain_gentle_cleansing"
+    name: "Gentle Rain Cleansing"
+    category: nature
+    trigger_type: sensory
+    definition:
+      brief: "Gentle rain washes away stress and negativity"
+    attributes:
+      state_tags: [release, healing, peace]
+      intensity: moderate
+      modality: combined
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [release, healing, relaxation]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Feel a gentle rain beginning to fall...<break time="2s"/>
+        warm summer rain...<break time="1.5s"/>
+        washing away everything that needs to go...<break time="2s"/>
+        Each drop cleanses and renews...<break time="2s"/>
+        Rain becomes your anchor for cleansing...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Gentle rain, cleansing flows"
+    relationships:
+      synergies: [auditory.rain_on_roof]
+      conflicts: []
+      progressions: []
+
+  tree_roots_stability:
+    anchor_id: "nature.tree_roots_stability"
+    name: "Tree Roots Stability"
+    category: nature
+    trigger_type: sensory
+    definition:
+      brief: "Roots extending into earth for unshakeable stability"
+    attributes:
+      state_tags: [grounding, strength, calm]
+      intensity: strong
+      modality: combined
+    applications:
+      journey_phases: [induction, integration]
+      outcome_alignment: [focus, confidence, healing]
+      installation_context: during_induction
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Imagine roots extending from your feet...<break time="2s"/>
+        deep into the earth...<break time="1.5s"/>
+        like a great ancient tree...<break time="2s"/>
+        These roots make you unshakeable...<break time="1.5s"/>
+        grounded and stable always...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Roots deep, unshakeable"
+    relationships:
+      synergies: [kinesthetic.foot_root_ground]
+      conflicts: []
+      progressions: []
+
+  ocean_shore_peace:
+    anchor_id: "nature.ocean_shore_peace"
+    name: "Ocean Shore Peace"
+    category: nature
+    trigger_type: sensory
+    definition:
+      brief: "Standing at the ocean shore brings endless peace"
+    attributes:
+      state_tags: [peace, calm, transcendence]
+      intensity: moderate
+      modality: combined
+    applications:
+      journey_phases: [journey, integration]
+      outcome_alignment: [relaxation, healing, spiritual_growth]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Stand now at the edge of the ocean...<break time="2s"/>
+        waves rolling in, rolling out...<break time="1.5s"/>
+        the vast peace of the sea...<break time="2s"/>
+        This shore is always here for you...<break time="1.5s"/>
+        peace as endless as the ocean...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Ocean shore, endless peace"
+    relationships:
+      synergies: [breath.ocean_wave_breath]
+      conflicts: []
+      progressions: []
+
+  forest_sanctuary:
+    anchor_id: "nature.forest_sanctuary"
+    name: "Forest Sanctuary"
+    category: nature
+    trigger_type: sensory
+    definition:
+      brief: "Deep in the forest, complete sanctuary and safety"
+    attributes:
+      state_tags: [peace, protection, healing]
+      intensity: moderate
+      modality: combined
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [healing, protection, spiritual_growth]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        You walk into an ancient forest...<break time="2s"/>
+        trees towering protectively above...<break time="1.5s"/>
+        filtered green light, soft earth beneath...<break time="2s"/>
+        This forest is your sanctuary...<break time="1.5s"/>
+        always safe, always healing...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Forest sanctuary, safe and healing"
+    relationships:
+      synergies: [portal.garden_gate_peace]
+      conflicts: []
+      progressions: []
+
+  moonlight_wisdom:
+    anchor_id: "nature.moonlight_wisdom"
+    name: "Moonlight Wisdom"
+    category: nature
+    trigger_type: sensory
+    definition:
+      brief: "Moonlight illuminates intuition and inner wisdom"
+    attributes:
+      state_tags: [wisdom, intuition, peace]
+      intensity: subtle
+      modality: spiritual
+    applications:
+      journey_phases: [journey, helm_deep_trance]
+      outcome_alignment: [intuition, self_knowledge, spiritual_growth]
+      installation_context: during_journey
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Silver moonlight falls upon you...<break time="2s"/>
+        illuminating what you need to see...<break time="1.5s"/>
+        The moon awakens your intuition...<break time="2s"/>
+        revealing the wisdom you already have...<break time="2s"/>
+        Moonlight, your guide to truth...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Moonlight reveals, wisdom flows"
+    relationships:
+      synergies: [visual.starlight_connection]
+      conflicts: []
+      progressions: []
+
+# -----------------------------------------------------------------------------
+# DAILY LIFE CATEGORY - Additional Anchors (6-20)
+# -----------------------------------------------------------------------------
+
+daily_life:
+  shower_ritual_cleanse:
+    anchor_id: "daily_life.shower_ritual_cleanse"
+    name: "Shower Ritual Cleansing"
+    category: daily_life
+    trigger_type: environmental
+    definition:
+      brief: "Daily shower becomes energy cleansing ritual"
+    attributes:
+      state_tags: [release, peace, activation]
+      intensity: moderate
+      modality: physical
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [release, healing, confidence]
+      installation_context: daily_practice
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Each time you shower...<break time="1.5s"/>
+        the water becomes a cleansing ritual...<break time="2s"/>
+        Washing away not just physical...<break time="1.5s"/>
+        but energetic residue as well...<break time="2s"/>
+        Your daily shower, a renewal...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Shower cleanses, energy renews"
+    relationships:
+      synergies: [nature.waterfall_cleansing]
+      conflicts: []
+      progressions: []
+
+  coffee_tea_mindfulness:
+    anchor_id: "daily_life.coffee_tea_mindfulness"
+    name: "Coffee/Tea Mindfulness"
+    category: daily_life
+    trigger_type: environmental
+    definition:
+      brief: "Morning beverage becomes mindfulness anchor"
+    attributes:
+      state_tags: [calm, focus, grounding]
+      intensity: subtle
+      modality: physical
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [focus, relaxation, self_knowledge]
+      installation_context: daily_practice
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        When you hold your morning cup...<break time="1.5s"/>
+        let it become a moment of presence...<break time="2s"/>
+        Feel the warmth in your hands...<break time="1.5s"/>
+        This simple ritual, grounding and centering...<break time="2s"/>
+        Each morning cup, a mindfulness anchor...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Warm cup, present moment"
+    relationships:
+      synergies: [kinesthetic.palm_warmth_healing]
+      conflicts: []
+      progressions: []
+
+  walking_meditation_step:
+    anchor_id: "daily_life.walking_meditation_step"
+    name: "Walking Meditation Step"
+    category: daily_life
+    trigger_type: physical
+    definition:
+      brief: "Each step becomes a meditation, a return to presence"
+    attributes:
+      state_tags: [grounding, calm, clarity]
+      intensity: subtle
+      modality: physical
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [focus, relaxation, healing]
+      installation_context: daily_practice
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        As you walk through your day...<break time="1.5s"/>
+        let each step be a meditation...<break time="2s"/>
+        Feeling the earth beneath you...<break time="1.5s"/>
+        present and grounded with each step...<break time="2s"/>
+        Walking becomes meditation...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Each step, present peace"
+    relationships:
+      synergies: [kinesthetic.foot_root_ground]
+      conflicts: []
+      progressions: []
+
+  smile_activation:
+    anchor_id: "daily_life.smile_activation"
+    name: "Smile Activation"
+    category: daily_life
+    trigger_type: physical
+    definition:
+      brief: "A gentle smile activates positive state instantly"
+    attributes:
+      state_tags: [joy, confidence, peace]
+      intensity: subtle
+      modality: physical
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [confidence, healing, relaxation]
+      installation_context: daily_practice
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        Know that a simple smile...<break time="1.5s"/>
+        even a subtle inner smile...<break time="2s"/>
+        shifts your entire state...<break time="1.5s"/>
+        Smile now and feel the change...<break time="2s"/>
+        Your smile, an instant anchor to joy...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Smile shifts, joy flows"
+    relationships:
+      synergies: [kinesthetic.heart_touch_calm]
+      conflicts: []
+      progressions: []
+
+  bedtime_gratitude_close:
+    anchor_id: "daily_life.bedtime_gratitude_close"
+    name: "Bedtime Gratitude Close"
+    category: daily_life
+    trigger_type: environmental
+    definition:
+      brief: "Ending each day with gratitude for peaceful sleep"
+    attributes:
+      state_tags: [peace, joy, grounding]
+      intensity: subtle
+      modality: combined
+    applications:
+      journey_phases: [reorientation]
+      outcome_alignment: [relaxation, healing, spiritual_growth]
+      installation_context: daily_practice
+    templates:
+      installation_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        As you lie down to sleep...<break time="1.5s"/>
+        think of three things you're grateful for...<break time="2s"/>
+        Let gratitude be your last thought...<break time="1.5s"/>
+        inviting peaceful, healing sleep...<break time="2s"/>
+        Gratitude closes the day in peace...<break time="3s"/>
+        </prosody>
+      recall_phrase: "Gratitude ends, peace begins"
+    relationships:
+      synergies: [verbal.mantra_peace_within]
+      conflicts: []
+      progressions: []
+
+# =============================================================================
+# ANCHOR USAGE STATISTICS AND HISTORY
+# =============================================================================
+# This section can be updated by anchor_selector.py to track usage
+
+usage_tracking:
+  enabled: true
+  history_file: "anchor_history.yaml"
+  lookback_sessions: 3
+  statistics:
+    most_used: []
+    least_used: []
+    last_updated: null

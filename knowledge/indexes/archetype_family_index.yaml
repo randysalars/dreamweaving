@@ -1,0 +1,341 @@
+# =============================================================================
+# ARCHETYPE FAMILY INDEX - Quick Navigation by Family
+# =============================================================================
+# Maps archetype families to their archetypes and key attributes.
+# Use this for fast lookup when selecting archetypes by family.
+#
+# Version: 1.0
+# Created: 2025-12-09
+# =============================================================================
+
+metadata:
+  version: "1.0"
+  created: "2025-12-09"
+  updated: "2025-12-09"
+  total_families: 12
+  total_archetypes: 100
+  source_file: "knowledge/archetypes/archetype_codex.yaml"
+
+# =============================================================================
+# FAMILY REGISTRY
+# =============================================================================
+
+families:
+
+  divine_light_healing:
+    name: "Divine Light & Healing"
+    description: "Restoration, regeneration, purification, cellular healing"
+    archetypes:
+      - inner_healer
+      - great_physician
+      - shekinah_restorer
+      - sacred_waters_bearer
+      - sun_of_righteousness
+      - temple_healer
+      - cellular_guardian
+      - dna_restorer
+      - beauty_activator
+      - wound_mender
+    archetype_count: 10
+    primary_outcomes: [healing, transformation, relaxation]
+    element: water
+    chakra: heart
+    default_brainwave: theta
+    default_frequency: 528
+    color_palette: ["#FFFFFF", "#50C878", "#FFD700"]
+
+  transformation_alchemy:
+    name: "Transformation & Alchemy"
+    description: "Death/rebirth, shadow work, purification, fundamental change"
+    archetypes:
+      - phoenix_renewal
+      - sacred_deathbringer
+      - baptismal_initiate
+      - bennu_bird
+      - purifying_seraph
+      - alchemical_fire
+      - dissolution_master
+      - emergence_guide
+      - chrysalis_keeper
+      - transmutation_angel
+    archetype_count: 10
+    primary_outcomes: [transformation, release, self_knowledge]
+    element: fire
+    chakra: solar
+    default_brainwave: theta
+    default_frequency: 741
+    color_palette: ["#FFD700", "#DC143C", "#4B0082"]
+
+  oracle_seer:
+    name: "Oracle & Seer"
+    description: "Intuition, prophecy, hidden knowledge, destiny navigation"
+    archetypes:
+      - oracle_of_light
+      - prophet_voice
+      - rishi_seer
+      - volva_seeress
+      - delphic_voice
+      - akashic_librarian
+      - timeline_navigator
+      - mirror_of_truth
+    archetype_count: 8
+    primary_outcomes: [self_knowledge, spiritual_growth, focus]
+    element: air
+    chakra: third_eye
+    default_brainwave: alpha
+    default_frequency: 852
+    color_palette: ["#C0C0C0", "#8A2BE2", "#4169E1"]
+
+  warrior_power:
+    name: "Warrior & Power"
+    description: "Courage, protection, strength, sovereignty"
+    archetypes:
+      - archangel_michael
+      - solar_king
+      - valkyrie
+      - lion_of_god
+      - thunderer
+      - spiritual_samurai
+      - shield_bearer
+      - victory_angel
+    archetype_count: 8
+    primary_outcomes: [empowerment, confidence, courage, focus]
+    element: fire
+    chakra: solar
+    default_brainwave: beta
+    default_frequency: 528
+    color_palette: ["#0047AB", "#FFD700", "#DC143C"]
+
+  divine_feminine:
+    name: "Divine Feminine"
+    description: "Wisdom, compassion, intuition, creative power"
+    archetypes:
+      - sophia_wisdom
+      - rose_mother
+      - shakti_fire
+      - moon_priestess
+      - inner_muse
+      - magdalene_presence
+      - earth_mother
+      - star_goddess
+    archetype_count: 8
+    primary_outcomes: [creativity, healing, self_knowledge, relaxation]
+    element: water
+    chakra: heart
+    default_brainwave: theta
+    default_frequency: 528
+    color_palette: ["#4169E1", "#FF007F", "#9400D3"]
+
+  divine_masculine:
+    name: "Divine Masculine"
+    description: "Structure, purpose, direction, protective strength"
+    archetypes:
+      - logos_bearer
+      - guardian_father
+      - solar_king
+      - wise_patriarch
+      - architect_of_worlds
+      - covenant_keeper
+      - thunder_voice
+      - anchor_stone
+    archetype_count: 8
+    primary_outcomes: [empowerment, focus, confidence]
+    element: fire
+    chakra: solar
+    default_brainwave: beta
+    default_frequency: 432
+    color_palette: ["#FFFFFF", "#FFD700", "#00008B"]
+
+  ascension_lightbody:
+    name: "Ascension & Lightbody"
+    description: "Transcendence, enlightenment, multi-dimensional awareness"
+    archetypes:
+      - transfigured_one
+      - bodhisattva_guide
+      - merkavah_rider
+      - taoist_immortal
+      - akh_radiant
+      - rainbow_body
+      - cosmic_christ
+      - starborn_self
+    archetype_count: 8
+    primary_outcomes: [spiritual_growth, transformation, self_knowledge]
+    element: spirit
+    chakra: crown
+    default_brainwave: gamma
+    default_frequency: 963
+    color_palette: ["#F8F8FF", "#FFD700", "#E6E6FA"]
+
+  shamanic_earth:
+    name: "Shamanic & Earth"
+    description: "Nature, grounding, animal allies, elemental forces"
+    archetypes:
+      - world_tree_guardian
+      - spirit_animal_companion
+      - stone_elder
+      - river_mother
+      - storm_shaman
+      - plant_spirit_ally
+      - cave_ancestor
+      - mountain_keeper
+    archetype_count: 8
+    primary_outcomes: [healing, relaxation, self_knowledge]
+    element: earth
+    chakra: root
+    default_brainwave: theta
+    default_frequency: 7.83  # Schumann
+    color_palette: ["#006400", "#8B4513", "#228B22"]
+
+  mental_intelligence:
+    name: "Mental & Intelligence"
+    description: "Cognition, memory, learning, mental enhancement"
+    archetypes:
+      - memory_palace_keeper
+      - neocortex_angel
+      - synapse_builder
+      - dream_scientist
+      - akashic_archivist
+      - genius_loci
+      - pattern_master
+      - clarity_bringer
+    archetype_count: 8
+    primary_outcomes: [focus, self_knowledge, creativity]
+    element: air
+    chakra: third_eye
+    default_brainwave: beta
+    default_frequency: 10  # Alpha
+    color_palette: ["#9400D3", "#C0C0C0", "#4169E1"]
+
+  emotional_heart:
+    name: "Emotional & Heart"
+    description: "Love, joy, compassion, emotional healing"
+    archetypes:
+      - heart_flame_tender
+      - joy_child
+      - forgiver
+      - empathic_mirror
+      - heart_phoenix
+      - grief_alchemist
+      - love_ambassador
+      - compassion_bodhisattva
+    archetype_count: 8
+    primary_outcomes: [healing, relaxation, self_knowledge]
+    element: water
+    chakra: heart
+    default_brainwave: theta
+    default_frequency: 528
+    color_palette: ["#B76E79", "#FFC0CB", "#FFD700"]
+
+  abundance_destiny:
+    name: "Abundance & Destiny"
+    description: "Prosperity, opportunity, calling, fortune"
+    archetypes:
+      - providence_angel
+      - harvest_overseer
+      - jupiterian_king
+      - golden_merchant
+      - karmic_weaver
+      - destiny_navigator
+      - flow_guardian
+      - abundance_dragon
+    archetype_count: 8
+    primary_outcomes: [abundance, empowerment, spiritual_growth]
+    element: earth
+    chakra: solar
+    default_brainwave: alpha
+    default_frequency: 417
+    color_palette: ["#FFD700", "#228B22", "#8B4513"]
+
+  dreamweaver_meta:
+    name: "Dreamweaver Meta-Archetypes"
+    description: "Storytelling, world-shaping, navigation, reality creation"
+    archetypes:
+      - dream_architect
+      - portal_keeper
+      - sigil_scribe
+      - frequency_weaver
+      - timeline_navigator
+      - realm_guardian
+      - cosmic_narrator
+      - veil_walker
+    archetype_count: 8
+    primary_outcomes: [all]
+    element: spirit
+    chakra: crown
+    default_brainwave: gamma
+    default_frequency: 963
+    color_palette: ["#E6E6FA", "#483D8B", "#C0C0C0"]
+
+# =============================================================================
+# OUTCOME → FAMILY MAPPING
+# =============================================================================
+# Quick lookup for which families support each outcome
+
+outcome_families:
+  healing:
+    primary: [divine_light_healing, emotional_heart, shamanic_earth]
+    secondary: [divine_feminine, transformation_alchemy]
+
+  transformation:
+    primary: [transformation_alchemy, ascension_lightbody]
+    secondary: [divine_light_healing, dreamweaver_meta]
+
+  empowerment:
+    primary: [warrior_power, divine_masculine, abundance_destiny]
+    secondary: [transformation_alchemy, ascension_lightbody]
+
+  confidence:
+    primary: [warrior_power, divine_masculine]
+    secondary: [abundance_destiny, emotional_heart]
+
+  self_knowledge:
+    primary: [oracle_seer, emotional_heart, mental_intelligence]
+    secondary: [transformation_alchemy, shamanic_earth]
+
+  spiritual_growth:
+    primary: [ascension_lightbody, oracle_seer]
+    secondary: [divine_feminine, shamanic_earth, abundance_destiny]
+
+  relaxation:
+    primary: [divine_light_healing, emotional_heart, shamanic_earth]
+    secondary: [divine_feminine]
+
+  focus:
+    primary: [mental_intelligence, warrior_power, divine_masculine]
+    secondary: [oracle_seer]
+
+  creativity:
+    primary: [divine_feminine, mental_intelligence, emotional_heart]
+    secondary: [dreamweaver_meta]
+
+  release:
+    primary: [transformation_alchemy]
+    secondary: [emotional_heart, divine_light_healing]
+
+  abundance:
+    primary: [abundance_destiny]
+    secondary: [warrior_power, divine_masculine]
+
+  courage:
+    primary: [warrior_power]
+    secondary: [divine_masculine, transformation_alchemy]
+
+# =============================================================================
+# ELEMENT → FAMILY MAPPING
+# =============================================================================
+
+element_families:
+  fire:
+    families: [transformation_alchemy, warrior_power, divine_masculine]
+
+  water:
+    families: [divine_light_healing, divine_feminine, emotional_heart]
+
+  air:
+    families: [oracle_seer, mental_intelligence]
+
+  earth:
+    families: [shamanic_earth, abundance_destiny]
+
+  spirit:
+    families: [ascension_lightbody, dreamweaver_meta]

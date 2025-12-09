@@ -1,0 +1,453 @@
+# =============================================================================
+# ANCHOR SCHEMA - Entry Format Specification for Dreamweaving Anchors
+# =============================================================================
+# Defines the standard structure for all anchor entries in the registry.
+# Anchors are post-hypnotic triggers that link specific stimuli to desired states.
+#
+# Version: 1.0
+# Created: 2025-12-09
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-09"
+purpose: "Define standard structure for anchor entries in the Dreamweaving system"
+constraint: "All SSML templates MUST use rate='1.0' - achieve pacing through breaks only"
+
+# =============================================================================
+# ANCHOR CATEGORIES
+# =============================================================================
+# 10 primary categories, each containing 20+ anchors for variety
+
+categories:
+  breath:
+    id_prefix: "breath"
+    description: "Anchors triggered by specific breathing patterns"
+    examples: [calm_breath_slow_exhale, power_breath_chest_lift, reset_breath_4_6]
+    trigger_modality: physical
+
+  auditory:
+    id_prefix: "auditory"
+    description: "Anchors triggered by sounds, tones, or imagined audio"
+    examples: [soft_chime_depth, drum_heartbeat_ground, wind_whoosh_release]
+    trigger_modality: auditory
+
+  visual:
+    id_prefix: "visual"
+    description: "Anchors triggered by visualization or imagined imagery"
+    examples: [blue_flame_focus, golden_thread_guidance, silver_mist_relax]
+    trigger_modality: visual
+
+  kinesthetic:
+    id_prefix: "kinesthetic"
+    description: "Anchors triggered by physical gestures or body positions"
+    examples: [heart_touch_calm, fist_squeeze_power, foot_root_ground]
+    trigger_modality: physical
+
+  symbolic:
+    id_prefix: "symbolic"
+    description: "Anchors based on archetypal symbols and metaphors"
+    examples: [phoenix_feather_rise, serpent_coil_focus, tree_of_light_center]
+    trigger_modality: mental
+
+  portal:
+    id_prefix: "portal"
+    description: "Anchors for journey transitions and state changes"
+    examples: [door_threshold_entry, staircase_10_down, bridge_of_light_passage]
+    trigger_modality: mental
+
+  verbal:
+    id_prefix: "verbal"
+    description: "Anchors triggered by specific phrases or mantras"
+    examples: [phrase_sanctuary_now, phrase_dreamweaver_open, phrase_i_am_ready]
+    trigger_modality: verbal
+
+  musical:
+    id_prefix: "musical"
+    description: "Anchors linked to musical motifs or frequencies"
+    examples: [ascending_arpeggio_hope, low_drone_grounding, gong_wash_reset]
+    trigger_modality: auditory
+
+  nature:
+    id_prefix: "nature"
+    description: "Anchors connected to natural phenomena and elements"
+    examples: [sunbeam_on_skin, cool_breeze_face, waterfall_mist_refresh]
+    trigger_modality: sensory
+
+  daily_life:
+    id_prefix: "daily_life"
+    description: "Anchors designed for use in everyday situations"
+    examples: [doorway_reset_micro, mirror_bless_self, morning_light_activation]
+    trigger_modality: environmental
+
+# =============================================================================
+# ENTRY SCHEMA
+# =============================================================================
+
+entry_schema:
+  # -------------------------------------------------------------------------
+  # IDENTIFICATION (Required)
+  # -------------------------------------------------------------------------
+  anchor_id:
+    type: string
+    format: "{category}.{snake_case_name}"
+    pattern: "^[a-z_]+\\.[a-z0-9_]+$"
+    example: "kinesthetic.heart_touch_calm"
+    description: "Unique identifier for the anchor"
+    required: true
+
+  name:
+    type: string
+    max_length: 60
+    example: "Heart Touch - Instant Calm"
+    description: "Human-readable anchor name"
+    required: true
+
+  category:
+    type: string
+    enum: [breath, auditory, visual, kinesthetic, symbolic, portal, verbal, musical, nature, daily_life]
+    description: "Anchor category (one of 10)"
+    required: true
+
+  trigger_type:
+    type: string
+    enum: [physical, sensory, symbolic, auditory, visual, verbal, environmental]
+    description: "What type of stimulus triggers the anchor"
+    required: true
+
+  # -------------------------------------------------------------------------
+  # DEFINITION (Required)
+  # -------------------------------------------------------------------------
+  definition:
+    type: object
+    required: true
+    properties:
+      brief:
+        type: string
+        max_length: 100
+        description: "One-line description of the anchor"
+        required: true
+      extended:
+        type: string
+        description: "Full explanation of the anchor mechanism and psychology"
+        required: false
+
+  # -------------------------------------------------------------------------
+  # HYPNOTIC ATTRIBUTES (Required)
+  # -------------------------------------------------------------------------
+  attributes:
+    type: object
+    required: true
+    properties:
+      state_tags:
+        type: array
+        items:
+          type: string
+          enum:
+            - calm
+            - focus
+            - power
+            - grounding
+            - transcendence
+            - protection
+            - healing
+            - confidence
+            - release
+            - connection
+            - activation
+            - clarity
+            - courage
+            - creativity
+            - intuition
+            - joy
+            - peace
+            - strength
+            - transformation
+            - wisdom
+        min_items: 1
+        max_items: 5
+        description: "States this anchor evokes"
+        required: true
+
+      intensity:
+        type: string
+        enum: [subtle, moderate, strong, profound]
+        description: "Intensity level of anchor effect"
+        required: true
+
+      modality:
+        type: string
+        enum: [physical, mental, emotional, spiritual, combined]
+        description: "Primary modality the anchor engages"
+        required: true
+
+      duration_effect:
+        type: string
+        enum: [instant, short, medium, long, permanent]
+        description: "How long the anchor effect typically lasts"
+        default: short
+
+      cumulative:
+        type: boolean
+        description: "Does this anchor strengthen with repeated use?"
+        default: true
+
+  # -------------------------------------------------------------------------
+  # APPLICATION CONTEXT (Required)
+  # -------------------------------------------------------------------------
+  applications:
+    type: object
+    required: true
+    properties:
+      journey_phases:
+        type: array
+        items:
+          type: string
+          enum: [pre_talk, induction, deepening, journey, helm_deep_trance, integration, reorientation]
+        description: "Which journey phases this anchor suits"
+        required: true
+
+      outcome_alignment:
+        type: array
+        items:
+          type: string
+          enum:
+            - healing
+            - transformation
+            - empowerment
+            - self_knowledge
+            - release
+            - spiritual_growth
+            - creativity
+            - relaxation
+            - focus
+            - confidence
+            - abundance
+            - manifestation
+            - faith
+            - intuition
+            - cognitive_enhancement
+            - courage
+            - love
+            - protection
+        description: "Which session outcomes this anchor supports"
+        required: true
+
+      installation_context:
+        type: string
+        enum:
+          - during_induction
+          - during_deepening
+          - during_journey
+          - at_peak
+          - during_integration
+          - in_closing
+          - daily_practice
+        description: "When in the session to install this anchor"
+        default: in_closing
+
+      contraindications:
+        type: array
+        items: string
+        description: "Populations or contexts where this anchor should be avoided"
+        default: []
+
+  # -------------------------------------------------------------------------
+  # TEMPLATES (Required - at least installation_ssml)
+  # -------------------------------------------------------------------------
+  templates:
+    type: object
+    required: true
+    properties:
+      installation_ssml:
+        type: string
+        format: xml
+        description: "Full SSML template for anchor installation (MUST use rate='1.0')"
+        required: true
+        validation:
+          - contains: "rate=\"1.0\""
+          - contains: "<break"
+          - min_length: 200
+
+      reinforcement_ssml:
+        type: string
+        format: xml
+        description: "Shorter SSML for reinforcing an existing anchor"
+        required: false
+
+      recall_phrase:
+        type: string
+        max_length: 60
+        description: "Brief phrase for triggering the anchor in daily life"
+        required: true
+
+      sfx_cue:
+        type: string
+        description: "Sound effect suggestion to accompany anchor installation"
+        required: false
+
+      visual_imagery:
+        type: string
+        description: "Imagery description for visualizing this anchor"
+        required: false
+
+  # -------------------------------------------------------------------------
+  # RELATIONSHIPS (Optional but recommended)
+  # -------------------------------------------------------------------------
+  relationships:
+    type: object
+    required: false
+    properties:
+      synergies:
+        type: array
+        items: string
+        description: "Anchor IDs that pair well with this one"
+        default: []
+
+      conflicts:
+        type: array
+        items: string
+        description: "Anchor IDs that should not be used together"
+        default: []
+
+      progressions:
+        type: array
+        items: string
+        description: "More advanced anchors to progress to after this one"
+        default: []
+
+      outcome_patterns:
+        type: array
+        items: string
+        description: "Hypnotic patterns from hypnotic_patterns.yaml this anchor works with"
+        default: []
+
+# =============================================================================
+# VALIDATION RULES
+# =============================================================================
+
+validation_rules:
+  # Minimum requirements for a valid anchor entry
+  required_fields:
+    - anchor_id
+    - name
+    - category
+    - trigger_type
+    - definition.brief
+    - attributes.state_tags
+    - attributes.intensity
+    - attributes.modality
+    - applications.journey_phases
+    - applications.outcome_alignment
+    - templates.installation_ssml
+    - templates.recall_phrase
+
+  # SSML template rules
+  ssml_rules:
+    rate: "1.0"  # NEVER use slow rates
+    must_contain_breaks: true
+    min_break_duration: "500ms"
+    max_break_duration: "5s"
+    must_use_prosody: true
+
+  # Naming conventions
+  naming:
+    anchor_id_pattern: "^[a-z_]+\\.[a-z0-9_]+$"
+    max_name_length: 60
+    max_brief_length: 100
+
+# =============================================================================
+# SELECTION CRITERIA
+# =============================================================================
+# Guidelines for the anchor_selector.py utility
+
+selection_criteria:
+  # Session requirements
+  per_session:
+    minimum_anchors: 3
+    maximum_anchors: 7
+    minimum_categories: 2
+
+  # Required type presence
+  required_presence:
+    - physical_or_kinesthetic  # At least 1 body-based anchor
+    - symbolic_or_verbal       # At least 1 mental anchor
+
+  # Variety enforcement
+  variety:
+    lookback_sessions: 3       # Don't repeat from last 3 sessions
+    max_repetition_count: 5    # Max times to use any single anchor globally
+
+  # Synergy scoring
+  synergy_bonus: 0.2           # Score bonus for synergistic pairs
+  conflict_penalty: 0.5        # Score penalty for conflicting pairs
+  recency_penalty: 0.3         # Score penalty for recently used anchors
+
+# =============================================================================
+# EXAMPLE ENTRY (Complete)
+# =============================================================================
+
+example_entry:
+  anchor_id: "kinesthetic.heart_touch_calm"
+  name: "Heart Touch - Instant Calm"
+  category: kinesthetic
+  trigger_type: physical
+
+  definition:
+    brief: "Hand on heart triggers calm and self-compassion"
+    extended: |
+      Placing a hand over the heart activates self-soothing mechanisms
+      through touch and proprioceptive feedback. This ancient gesture
+      of sincerity becomes a reliable portal to centered calm. The warmth
+      and pressure engage the vagus nerve, shifting the nervous system
+      toward parasympathetic dominance. With repeated use, the gesture
+      becomes an instant trigger for the complete calm state.
+
+  attributes:
+    state_tags: [calm, healing, connection]
+    intensity: moderate
+    modality: physical
+    duration_effect: short
+    cumulative: true
+
+  applications:
+    journey_phases: [integration, reorientation]
+    outcome_alignment: [healing, relaxation, confidence, self_knowledge]
+    installation_context: in_closing
+    contraindications: []
+
+  templates:
+    installation_ssml: |
+      <prosody rate="1.0" pitch="0st">
+      And if you wish...<break time="1.5s"/>
+      place your hand over your heart now...<break time="3s"/>
+      Feel the warmth of your palm...<break time="2s"/>
+      the steady rhythm beneath...<break time="2s"/>
+      This simple gesture...<break time="1.5s"/>
+      is now linked to everything you've felt here...<break time="2.5s"/>
+      Anytime in your daily life...<break time="1.5s"/>
+      when you place your hand here...<break time="2s"/>
+      this peace returns...<break time="2s"/>
+      this connection to your center...<break time="2s"/>
+      instantly, automatically...<break time="3s"/>
+      </prosody>
+
+    reinforcement_ssml: |
+      <prosody rate="1.0" pitch="0st">
+      And remember that touch...<break time="1.5s"/>
+      always bringing you back here...<break time="2s"/>
+      </prosody>
+
+    recall_phrase: "Hand on heart, peace arrives"
+    sfx_cue: "Soft heartbeat sound, warm undertone"
+    visual_imagery: "Warm golden glow emanating from hand on chest"
+
+  relationships:
+    synergies:
+      - breath.calm_breath_slow_exhale
+      - nature.sunbeam_on_skin
+    conflicts: []
+    progressions:
+      - kinesthetic.fist_squeeze_power
+    outcome_patterns:
+      - vagal_activation
+      - embodied_grounding

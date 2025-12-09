@@ -1,0 +1,395 @@
+# =============================================================================
+# COLOR & FREQUENCY MAP - Visual and Audio Attributes for Archetypes
+# =============================================================================
+# Quick lookup for archetype colors, frequencies, and brainwave targets.
+# Use this for thumbnail design, binaural generation, and visual styling.
+#
+# Version: 1.0
+# Created: 2025-12-09
+# =============================================================================
+
+metadata:
+  version: "1.0"
+  created: "2025-12-09"
+  updated: "2025-12-09"
+  source_file: "knowledge/archetypes/archetype_codex.yaml"
+  color_format: "hex"
+  frequency_unit: "Hz"
+
+# =============================================================================
+# ARCHETYPE → VISUAL/AUDIO MAPPING
+# =============================================================================
+
+archetypes:
+
+  # DIVINE LIGHT & HEALING
+  inner_healer:
+    family: divine_light_healing
+    primary_color: "#FFFFFF"  # white
+    secondary_color: "#50C878"  # emerald
+    frequency_hz: 528
+    brainwave_target: theta
+    element: water
+    chakra: heart
+    intensity: moderate
+    thumbnail_palette: ["#FFFFFF", "#50C878", "#0A1628"]
+
+  great_physician:
+    family: divine_light_healing
+    primary_color: "#FFD700"  # gold
+    secondary_color: "#FFFFFF"  # white
+    frequency_hz: 432
+    brainwave_target: theta
+    element: spirit
+    chakra: crown
+    intensity: strong
+    thumbnail_palette: ["#FFD700", "#FFFFFF", "#1A0F2E"]
+
+  shekinah_restorer:
+    family: divine_light_healing
+    primary_color: "#E8B4B8"  # rose gold
+    secondary_color: "#FFB6C1"  # soft pink
+    frequency_hz: 396
+    brainwave_target: alpha
+    element: water
+    chakra: heart
+    intensity: gentle
+    thumbnail_palette: ["#E8B4B8", "#FFB6C1", "#2E1F2E"]
+
+  # TRANSFORMATION & ALCHEMY
+  phoenix_renewal:
+    family: transformation_alchemy
+    primary_color: "#FFD700"  # gold
+    secondary_color: "#DC143C"  # crimson
+    frequency_hz: 741
+    brainwave_target: theta
+    element: fire
+    chakra: solar
+    intensity: strong
+    thumbnail_palette: ["#FFD700", "#DC143C", "#1A0A00"]
+
+  sacred_deathbringer:
+    family: transformation_alchemy
+    primary_color: "#4B0082"  # deep purple
+    secondary_color: "#000000"  # black
+    frequency_hz: 396
+    brainwave_target: delta
+    element: fire
+    chakra: root
+    intensity: very_strong
+    thumbnail_palette: ["#4B0082", "#000000", "#1A0A1A"]
+
+  # ORACLE & SEER
+  oracle_of_light:
+    family: oracle_seer
+    primary_color: "#C0C0C0"  # silver
+    secondary_color: "#8A2BE2"  # violet
+    frequency_hz: 852
+    brainwave_target: alpha
+    element: air
+    chakra: third_eye
+    intensity: moderate
+    thumbnail_palette: ["#C0C0C0", "#8A2BE2", "#0A0A1A"]
+
+  # WARRIOR & POWER
+  archangel_michael:
+    family: warrior_power
+    primary_color: "#0047AB"  # cobalt blue
+    secondary_color: "#FFD700"  # gold
+    frequency_hz: 528
+    brainwave_target: beta
+    element: fire
+    chakra: solar
+    intensity: strong
+    thumbnail_palette: ["#0047AB", "#FFD700", "#0A0A1A"]
+
+  solar_king:
+    family: warrior_power
+    primary_color: "#FFD700"  # gold
+    secondary_color: "#FFA500"  # orange
+    frequency_hz: 528
+    brainwave_target: alpha
+    element: fire
+    chakra: solar
+    intensity: strong
+    thumbnail_palette: ["#FFD700", "#FFA500", "#1A0F00"]
+
+  # DIVINE FEMININE
+  sophia_wisdom:
+    family: divine_feminine
+    primary_color: "#4169E1"  # royal blue
+    secondary_color: "#9400D3"  # violet
+    frequency_hz: 852
+    brainwave_target: alpha
+    element: water
+    chakra: third_eye
+    intensity: moderate
+    thumbnail_palette: ["#4169E1", "#9400D3", "#0A0F1A"]
+
+  rose_mother:
+    family: divine_feminine
+    primary_color: "#FF007F"  # rose
+    secondary_color: "#87CEEB"  # sky blue
+    frequency_hz: 528
+    brainwave_target: theta
+    element: water
+    chakra: heart
+    intensity: gentle
+    thumbnail_palette: ["#FF007F", "#87CEEB", "#1A0F1A"]
+
+  # DIVINE MASCULINE
+  logos_bearer:
+    family: divine_masculine
+    primary_color: "#FFFFFF"  # white
+    secondary_color: "#FFD700"  # gold
+    frequency_hz: 432
+    brainwave_target: alpha
+    element: spirit
+    chakra: throat
+    intensity: strong
+    thumbnail_palette: ["#FFFFFF", "#FFD700", "#0A0A1A"]
+
+  guardian_father:
+    family: divine_masculine
+    primary_color: "#00008B"  # deep blue
+    secondary_color: "#8B4513"  # brown
+    frequency_hz: 396
+    brainwave_target: alpha
+    element: earth
+    chakra: root
+    intensity: moderate
+    thumbnail_palette: ["#00008B", "#8B4513", "#0A0A0A"]
+
+  # ASCENSION & LIGHTBODY
+  transfigured_one:
+    family: ascension_lightbody
+    primary_color: "#F8F8FF"  # brilliant white
+    secondary_color: "#FFD700"  # gold
+    frequency_hz: 963
+    brainwave_target: gamma
+    element: spirit
+    chakra: crown
+    intensity: very_strong
+    thumbnail_palette: ["#F8F8FF", "#FFD700", "#1A0F2E"]
+
+  # SHAMANIC & EARTH
+  world_tree_guardian:
+    family: shamanic_earth
+    primary_color: "#006400"  # deep green
+    secondary_color: "#8B4513"  # brown
+    frequency_hz: 7.83  # Schumann
+    brainwave_target: theta
+    element: earth
+    chakra: root
+    intensity: moderate
+    thumbnail_palette: ["#006400", "#8B4513", "#0A1A0A"]
+
+  # MENTAL & INTELLIGENCE
+  memory_palace_keeper:
+    family: mental_intelligence
+    primary_color: "#9400D3"  # violet
+    secondary_color: "#C0C0C0"  # silver
+    frequency_hz: 10
+    brainwave_target: alpha
+    element: air
+    chakra: third_eye
+    intensity: moderate
+    thumbnail_palette: ["#9400D3", "#C0C0C0", "#0A0A1A"]
+
+  # EMOTIONAL & HEART
+  heart_flame_tender:
+    family: emotional_heart
+    primary_color: "#B76E79"  # rose gold
+    secondary_color: "#FFC0CB"  # pink
+    frequency_hz: 528
+    brainwave_target: theta
+    element: fire
+    chakra: heart
+    intensity: gentle
+    thumbnail_palette: ["#B76E79", "#FFC0CB", "#1A0A0F"]
+
+  joy_child:
+    family: emotional_heart
+    primary_color: "#FFD700"  # golden yellow
+    secondary_color: "#FF69B4"  # rainbow/pink
+    frequency_hz: 639
+    brainwave_target: alpha
+    element: air
+    chakra: heart
+    intensity: light
+    thumbnail_palette: ["#FFD700", "#FF69B4", "#1A1A00"]
+
+  # ABUNDANCE & DESTINY
+  providence_angel:
+    family: abundance_destiny
+    primary_color: "#FFD700"  # gold
+    secondary_color: "#228B22"  # green
+    frequency_hz: 417
+    brainwave_target: alpha
+    element: earth
+    chakra: solar
+    intensity: moderate
+    thumbnail_palette: ["#FFD700", "#228B22", "#0A0F0A"]
+
+  # DREAMWEAVER META
+  dream_architect:
+    family: dreamweaver_meta
+    primary_color: "#E6E6FA"  # iridescent/lavender
+    secondary_color: "#483D8B"  # cosmic purple
+    frequency_hz: 963
+    brainwave_target: gamma
+    element: spirit
+    chakra: crown
+    intensity: strong
+    thumbnail_palette: ["#E6E6FA", "#483D8B", "#0A0A1A"]
+
+  portal_keeper:
+    family: dreamweaver_meta
+    primary_color: "#C0C0C0"  # silver
+    secondary_color: "#00008B"  # deep blue
+    frequency_hz: 852
+    brainwave_target: theta
+    element: air
+    chakra: third_eye
+    intensity: moderate
+    thumbnail_palette: ["#C0C0C0", "#00008B", "#0A0A1A"]
+
+# =============================================================================
+# FREQUENCY PRESETS
+# =============================================================================
+
+frequency_presets:
+  solfeggio:
+    396: "Liberation from Fear"
+    417: "Facilitating Change"
+    432: "Natural Tuning"
+    528: "Healing & DNA Repair"
+    639: "Connecting Relationships"
+    741: "Awakening Intuition"
+    852: "Returning to Spiritual Order"
+    963: "Divine Consciousness"
+
+  brainwave:
+    delta: "0.5-4 Hz - Deep sleep, healing"
+    theta: "4-8 Hz - Meditation, creativity"
+    alpha: "8-12 Hz - Relaxation, learning"
+    beta: "12-30 Hz - Active thinking, focus"
+    gamma: "30-100 Hz - Peak performance, insight"
+
+  special:
+    7.83: "Schumann Resonance - Earth frequency"
+    10: "Alpha peak - Optimal learning"
+    40: "Gamma peak - Enhanced cognition"
+
+# =============================================================================
+# COLOR PALETTES BY OUTCOME
+# =============================================================================
+
+outcome_palettes:
+  healing:
+    primary: ["#FFFFFF", "#50C878", "#528EC4"]
+    accent: "#FFD700"
+    background: "#0A1628"
+    gradient: "linear-gradient(135deg, #50C878 0%, #528EC4 100%)"
+
+  transformation:
+    primary: ["#FFD700", "#DC143C", "#4B0082"]
+    accent: "#FFFFFF"
+    background: "#1A0A00"
+    gradient: "linear-gradient(135deg, #DC143C 0%, #FFD700 100%)"
+
+  empowerment:
+    primary: ["#FFD700", "#FFA500", "#0047AB"]
+    accent: "#FFFFFF"
+    background: "#0A0A1A"
+    gradient: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)"
+
+  spiritual_growth:
+    primary: ["#F8F8FF", "#E6E6FA", "#9400D3"]
+    accent: "#FFD700"
+    background: "#0A0F1A"
+    gradient: "linear-gradient(135deg, #E6E6FA 0%, #9400D3 100%)"
+
+  relaxation:
+    primary: ["#87CEEB", "#50C878", "#4169E1"]
+    accent: "#FFFFFF"
+    background: "#0A1A1A"
+    gradient: "linear-gradient(135deg, #87CEEB 0%, #4169E1 100%)"
+
+  self_knowledge:
+    primary: ["#9400D3", "#C0C0C0", "#4169E1"]
+    accent: "#FFD700"
+    background: "#0A0A1A"
+    gradient: "linear-gradient(135deg, #9400D3 0%, #4169E1 100%)"
+
+  abundance:
+    primary: ["#FFD700", "#228B22", "#8B4513"]
+    accent: "#FFFFFF"
+    background: "#0A0F00"
+    gradient: "linear-gradient(135deg, #FFD700 0%, #228B22 100%)"
+
+# =============================================================================
+# THUMBNAIL GENERATION HELPERS
+# =============================================================================
+
+thumbnail_templates:
+  by_family:
+    divine_light_healing:
+      style: "sacred_light"
+      glow_color: "#FFFFFF"
+      vignette: dark
+
+    transformation_alchemy:
+      style: "cosmic_journey"
+      glow_color: "#DC143C"
+      vignette: dark
+
+    oracle_seer:
+      style: "portal_gateway"
+      glow_color: "#8A2BE2"
+      vignette: dark
+
+    warrior_power:
+      style: "ancient_temple"
+      glow_color: "#FFD700"
+      vignette: dark
+
+    divine_feminine:
+      style: "sacred_light"
+      glow_color: "#FF007F"
+      vignette: soft
+
+    divine_masculine:
+      style: "ancient_temple"
+      glow_color: "#FFD700"
+      vignette: dark
+
+    ascension_lightbody:
+      style: "cosmic_journey"
+      glow_color: "#F8F8FF"
+      vignette: dark
+
+    shamanic_earth:
+      style: "garden_eden"
+      glow_color: "#50C878"
+      vignette: natural
+
+    mental_intelligence:
+      style: "neural_network"
+      glow_color: "#9400D3"
+      vignette: dark
+
+    emotional_heart:
+      style: "sacred_light"
+      glow_color: "#FFC0CB"
+      vignette: soft
+
+    abundance_destiny:
+      style: "ancient_temple"
+      glow_color: "#FFD700"
+      vignette: warm
+
+    dreamweaver_meta:
+      style: "cosmic_journey"
+      glow_color: "#E6E6FA"
+      vignette: dark

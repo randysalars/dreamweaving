@@ -142,6 +142,7 @@ SENSORY_PATTERNS = {
 
 ANCHOR_PATTERNS = {
     'min_count': 3,
+    'min_categories': 2,  # Require at least 2 different categories
     'physical': [
         r'each time you take.*breath',
         r'whenever you.*breathe',
@@ -162,6 +163,139 @@ ANCHOR_PATTERNS = {
         r'that feeling of',
     ],
     'description': 'Triggers for reinstating hypnotic states'
+}
+
+# Extended anchor patterns matching the 10 anchor categories
+ANCHOR_CATEGORY_PATTERNS = {
+    'breath': {
+        'patterns': [
+            r'breath\s+in.*peace',
+            r'exhale.*release',
+            r'slow\s+exhale',
+            r'breathe?\s+deeply',
+            r'each\s+breath',
+            r'power\s+breath',
+            r'4.*count.*breath',
+            r'belly\s+breath',
+        ],
+        'description': 'Breath-based anchors'
+    },
+    'auditory': {
+        'patterns': [
+            r'when\s+you\s+hear',
+            r'sound\s+of.*bell',
+            r'chime\s+rings?',
+            r'whenever\s+you\s+hear',
+            r'drum.*beat',
+            r'tone.*resonates?',
+            r'sound\s+anchor',
+        ],
+        'description': 'Sound/audio-based anchors'
+    },
+    'visual': {
+        'patterns': [
+            r'see\s+.*\s+light',
+            r'visuali[sz]e.*flame',
+            r'golden\s+thread',
+            r'silver\s+mist',
+            r'blue\s+flame',
+            r'white\s+light',
+            r'inner\s+light',
+            r'sphere\s+of\s+light',
+        ],
+        'description': 'Visual/imagery anchors'
+    },
+    'kinesthetic': {
+        'patterns': [
+            r'hand\s+(on|over)\s+heart',
+            r'touch.*chest',
+            r'fist\s+squeeze',
+            r'press.*thumb',
+            r'feet.*ground',
+            r'palms\s+together',
+            r'place\s+your\s+hand',
+            r'feel\s+the\s+warmth',
+        ],
+        'description': 'Body touch/gesture anchors'
+    },
+    'symbolic': {
+        'patterns': [
+            r'phoenix.*feather',
+            r'serpent.*coil',
+            r'tree\s+of\s+life',
+            r'sacred\s+symbol',
+            r'inner\s+temple',
+            r'sanctuary',
+            r'totem\s+animal',
+            r'power\s+symbol',
+        ],
+        'description': 'Archetypal symbol anchors'
+    },
+    'portal': {
+        'patterns': [
+            r'door.*threshold',
+            r'staircase.*down',
+            r'bridge\s+of\s+light',
+            r'golden\s+door',
+            r'portal',
+            r'gateway',
+            r'step\s+through',
+            r'enter\s+the\s+doorway',
+        ],
+        'description': 'Journey transition anchors'
+    },
+    'verbal': {
+        'patterns': [
+            r'word.*sanctuary',
+            r'phrase.*peace',
+            r'mantra',
+            r'say.*words?',
+            r'when\s+you\s+say',
+            r'speaking\s+the\s+words?',
+            r'power\s+phrase',
+            r'i\s+am\s+(?:calm|peace|safe)',
+        ],
+        'description': 'Word/phrase anchors'
+    },
+    'musical': {
+        'patterns': [
+            r'ascending.*notes?',
+            r'low\s+drone',
+            r'gong',
+            r'singing\s+bowl',
+            r'frequency',
+            r'harmonic',
+            r'musical\s+tone',
+            r'arpeggio',
+        ],
+        'description': 'Musical/frequency anchors'
+    },
+    'nature': {
+        'patterns': [
+            r'sunbeam\s+on\s+skin',
+            r'cool\s+breeze',
+            r'waterfall.*mist',
+            r'morning\s+light',
+            r'moonlight',
+            r'ocean\s+waves?',
+            r'rain.*gentle',
+            r'earth.*beneath',
+        ],
+        'description': 'Nature/elemental anchors'
+    },
+    'daily_life': {
+        'patterns': [
+            r'doorway.*reset',
+            r'mirror.*bless',
+            r'morning.*routine',
+            r'cup.*tea',
+            r'shower.*renew',
+            r'in\s+your\s+daily\s+life',
+            r'each\s+morning',
+            r'everyday\s+moments?',
+        ],
+        'description': 'Daily life integration anchors'
+    },
 }
 
 NEGATIVE_PATTERNS = [
@@ -342,6 +476,73 @@ def validate_anchors(content: str) -> ValidationResult:
     return result
 
 
+def validate_anchor_variety(content: str) -> ValidationResult:
+    """
+    Validate anchor variety across all 10 categories.
+
+    Requirements:
+    - Minimum 3 anchors total
+    - Minimum 2 different categories
+    - At least 1 physical/kinesthetic anchor (body-based)
+    - At least 1 symbolic/verbal anchor (mental)
+    """
+    content_lower = content.lower()
+    categories_found = {}
+    all_matches = []
+
+    for category, config in ANCHOR_CATEGORY_PATTERNS.items():
+        matches = []
+        for pattern in config['patterns']:
+            for match in re.finditer(pattern, content_lower):
+                matches.append(match.group(0)[:50])
+
+        if matches:
+            categories_found[category] = matches
+            for m in matches[:2]:  # First 2 per category
+                all_matches.append(f"[{category}] {m}")
+
+    total_anchors = sum(len(v) for v in categories_found.values())
+    num_categories = len(categories_found)
+
+    # Check for required presence
+    body_based = any(c in categories_found for c in ['breath', 'kinesthetic', 'nature'])
+    mental_based = any(c in categories_found for c in ['symbolic', 'verbal', 'visual'])
+
+    # Determine pass/fail
+    min_anchors = ANCHOR_PATTERNS.get('min_count', 3)
+    min_categories = ANCHOR_PATTERNS.get('min_categories', 2)
+
+    passed = (
+        total_anchors >= min_anchors and
+        num_categories >= min_categories and
+        body_based and
+        mental_based
+    )
+
+    result = ValidationResult(
+        name="Anchor Variety",
+        passed=passed,
+        found=num_categories,
+        required=min_categories,
+        details=all_matches[:8]  # Show up to 8 examples
+    )
+
+    if not passed:
+        suggestions = []
+        if total_anchors < min_anchors:
+            suggestions.append(f"Add more anchors: found {total_anchors}, need {min_anchors}")
+        if num_categories < min_categories:
+            suggestions.append(f"Use more anchor categories: found {num_categories}, need {min_categories}")
+        if not body_based:
+            suggestions.append("Add body-based anchor (breath, kinesthetic, or nature)")
+        if not mental_based:
+            suggestions.append("Add mental anchor (symbolic, verbal, or visual)")
+
+        result.suggestions = suggestions
+
+    return result
+
+
 def validate_positive_language(content: str) -> ValidationResult:
     """Check for negative/fear-based language."""
     content_lower = content.lower()
@@ -417,11 +618,17 @@ def validate_script(script_path: str, verbose: bool = False) -> ValidationReport
         if not result.passed and SENSORY_PATTERNS[name]['min_count'] > 0:
             report.passed = False
 
-    # Anchors
+    # Anchors (legacy basic check)
     anchor_result = validate_anchors(content)
     report.checks['anchors'] = anchor_result
     if not anchor_result.passed:
         report.passed = False
+
+    # Anchor variety (enhanced 10-category check)
+    anchor_variety_result = validate_anchor_variety(content)
+    report.checks['anchor_variety'] = anchor_variety_result
+    if not anchor_variety_result.passed:
+        report.warnings.append("Anchor variety could be improved")
 
     # Positive language
     positive_result = validate_positive_language(content)
@@ -452,7 +659,7 @@ def print_report(report: ValidationReport, verbose: bool = False):
         'Structure': ['structure'],
         'NLP Patterns': [k for k in report.checks if k.startswith('nlp_')],
         'Sensory Language': [k for k in report.checks if k.startswith('sensory_')],
-        'Anchors': ['anchors'],
+        'Anchors': ['anchors', 'anchor_variety'],
         'Language Quality': ['positive_language'],
     }
 

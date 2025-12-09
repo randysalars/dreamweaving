@@ -1,0 +1,684 @@
+# YouTube Playlist Configuration for Dreamweaving
+# Maps content categories to YouTube playlists with keyword routing
+#
+# Usage:
+#   1. Run sync_playlist_ids.py to populate youtube_id fields
+#   2. Upload scheduler uses this config for auto-categorization
+#
+# Structure:
+#   - master_playlist: All videos go here
+#   - content_playlists: Theme-based categorization
+#   - format_playlists: Audio format-based (drums, frequencies)
+#   - duration_playlists: Length-based (short, deep)
+#   - series_playlists: Sequential paths (50-step, mastery)
+
+# Playlist ID Discovery Mode
+# 'auto' = match by name from YouTube, 'manual' = use explicit IDs
+id_resolution: auto
+
+# Master Dreamweaving Playlist (all videos go here)
+master_playlist:
+  name: "Dreamweaving"
+  youtube_id: "PLUza-jvPB6FycwFSty1CWCiqTCxSbj90l"
+  add_all_videos: true
+
+# Content-Based Playlists (based on session theme/outcome)
+content_playlists:
+  healing-regeneration:
+    name: "Healing & Regeneration"
+    youtube_id: ""
+    priority: 10
+    keywords:
+      primary:
+        - healing
+        - regenerate
+        - restoration
+        - cellular repair
+        - immune
+        - rejuvenation
+        - vitality
+        - detox
+        - cleanse
+        - renewal
+        - physical healing
+        - emotional healing
+        - restore
+        - repair
+        - wellness
+        - recovery
+      secondary:
+        - renew
+        - health
+        - body
+        - cell
+        - tissue
+        - energy healing
+    manifest_fields:
+      desired_outcome:
+        - healing
+
+  transformation-alchemy:
+    name: "Transformation & Alchemy"
+    youtube_id: ""
+    priority: 20
+    keywords:
+      primary:
+        - transformation
+        - alchemy
+        - phoenix
+        - transmute
+        - metamorphosis
+        - rebirth
+        - identity shift
+        - inner fire
+        - becoming
+        - evolution
+        - transmutation
+        - change
+      secondary:
+        - evolve
+        - shift
+        - new self
+        - emerge
+        - transform
+    manifest_fields:
+      desired_outcome:
+        - transformation
+
+  abundance-activation:
+    name: "Abundance Activation"
+    youtube_id: ""
+    priority: 30
+    keywords:
+      primary:
+        - abundance
+        - wealth
+        - prosperity
+        - money
+        - success
+        - opportunity
+        - receiving
+        - overflow
+        - manifestation
+        - riches
+        - fortune
+        - attract
+      secondary:
+        - rich
+        - financial
+        - manifest
+        - law of attraction
+        - deserve
+    manifest_fields:
+      desired_outcome:
+        - abundance
+        - manifestation
+
+  empowerment-confidence:
+    name: "Empowerment & Confidence"
+    youtube_id: ""
+    priority: 40
+    keywords:
+      primary:
+        - confidence
+        - empowerment
+        - courage
+        - strength
+        - warrior
+        - leadership
+        - inner power
+        - determination
+        - bravery
+        - assertiveness
+        - fearless
+        - bold
+        - power
+      secondary:
+        - brave
+        - unstoppable
+        - self-belief
+        - worth
+        - value
+    manifest_fields:
+      desired_outcome:
+        - empowerment
+        - confidence
+
+  relaxation-sleep:
+    name: "Relaxation & Sleep"
+    youtube_id: ""
+    priority: 50
+    keywords:
+      primary:
+        - sleep
+        - relax
+        - relaxation
+        - deep rest
+        - calm
+        - unwind
+        - drift
+        - dream
+        - soothing
+        - quiet
+        - slow
+        - night
+        - insomnia
+        - bedtime
+      secondary:
+        - serene
+        - tranquil
+        - peaceful
+        - gentle
+        - rest
+    manifest_fields:
+      desired_outcome:
+        - relaxation
+      style:
+        - relaxation
+
+  focus-memory-superbrain:
+    name: "Focus, Memory & Superbrain"
+    youtube_id: ""
+    priority: 60
+    keywords:
+      primary:
+        - memory
+        - focus
+        - concentration
+        - intelligence
+        - brain power
+        - synapse
+        - learning
+        - cognition
+        - neuro
+        - genius
+        - clarity
+        - mental enhancement
+        - superbrain
+        - cognitive
+      secondary:
+        - study
+        - think
+        - mind
+        - sharp
+        - smart
+    manifest_fields:
+      desired_outcome:
+        - focus
+        - cognitive_enhancement
+
+  archetype-codex:
+    name: "Dreamweaver Archetype Codex"
+    youtube_id: ""
+    priority: 70
+    keywords:
+      primary:
+        - archetype
+        - alchemist
+        - navigator
+        - soul star
+        - oracle
+        - warrior
+        - sage
+        - mystic
+        - priestess
+        - shapeshifter
+        - guardian
+        - archetypal
+        - hero
+        - shadow
+        - magician
+      secondary:
+        - king
+        - queen
+        - fool
+        - trickster
+        - mother
+        - father
+        - wise old man
+        - great mother
+        - lover
+
+  mythic-realms-dream-temples:
+    name: "Mythic Realms & Dream Temples"
+    youtube_id: ""
+    priority: 80
+    keywords:
+      primary:
+        - celtic
+        - atlantean
+        - egyptian
+        - mayan
+        - lemurian
+        - tir na nog
+        - avalon
+        - temple
+        - realm
+        - kingdom
+        - world
+        - dimension
+        - underworld
+        - celestial
+        - eden
+        - olympus
+        - asgard
+        - atlantis
+      secondary:
+        - sacred place
+        - sanctuary
+        - ancient
+        - legendary
+        - mythic
+
+  portals-dimensional-travel:
+    name: "Portals & Dimensional Travel"
+    youtube_id: ""
+    priority: 90
+    keywords:
+      primary:
+        - portal
+        - time travel
+        - gate
+        - doorway
+        - wormhole
+        - teleport
+        - timeline
+        - astral
+        - interdimensional
+        - crossing
+        - dimension
+        - gateway
+        - parallel
+        - cosmic
+      secondary:
+        - stargate
+        - vortex
+        - transport
+        - traverse
+
+  rituals-ceremonies:
+    name: "Dreamweaver Rituals & Ceremonies"
+    youtube_id: ""
+    priority: 100
+    keywords:
+      primary:
+        - ritual
+        - ceremony
+        - rite
+        - offering
+        - moon
+        - full moon
+        - new moon
+        - solstice
+        - equinox
+        - altar
+        - invocation
+        - initiation
+        - consecration
+      secondary:
+        - blessing
+        - anointment
+        - sacred rite
+
+  nlp-subconscious:
+    name: "NLP & Subconscious Repatterning"
+    youtube_id: ""
+    priority: 110
+    keywords:
+      primary:
+        - nlp
+        - anchoring
+        - parts work
+        - reframing
+        - timeline therapy
+        - subconscious
+        - persuasion
+        - reprogram
+        - hypnotic language
+        - pattern
+        - belief
+        - mindset
+      secondary:
+        - reframe
+        - anchor
+        - timeline
+        - unconscious
+        - programming
+
+  energy-clearing-blockage:
+    name: "Energy Clearing & Blockage Removal"
+    youtube_id: ""
+    priority: 120
+    keywords:
+      primary:
+        - energy clearing
+        - blockage
+        - aura
+        - cleanse
+        - remove
+        - sweep
+        - purge
+        - unstuck
+        - chakra alignment
+        - release
+        - negativity
+        - clearing
+        - purify
+      secondary:
+        - dissolve
+        - let go
+        - free
+        - unblock
+
+  shadow-work-integration:
+    name: "Shadow Work & Integration"
+    youtube_id: ""
+    priority: 130
+    keywords:
+      primary:
+        - shadow
+        - trauma
+        - integration
+        - deep psyche
+        - wounds
+        - darkness
+        - self-acceptance
+        - emotional purge
+        - inner child
+        - shadow work
+        - unconscious
+        - depth
+      secondary:
+        - hidden
+        - repressed
+        - underworld
+        - dark
+
+  intuition-higher-guidance:
+    name: "Intuition & Higher Guidance"
+    youtube_id: ""
+    priority: 140
+    keywords:
+      primary:
+        - intuition
+        - guidance
+        - holy spirit
+        - oracle
+        - angels
+        - higher self
+        - insight
+        - divination
+        - inner knowing
+        - messages
+        - psychic
+        - clairvoyant
+      secondary:
+        - wisdom
+        - vision
+        - receive
+        - spirit guide
+
+  christian-meditation:
+    name: "Christian Meditation"
+    youtube_id: ""
+    priority: 150
+    keywords:
+      primary:
+        - christian
+        - jesus
+        - christ
+        - god
+        - bible
+        - biblical
+        - matthew
+        - mark
+        - luke
+        - john
+        - paul
+        - faith
+        - holy spirit
+        - prayer
+        - scripture
+      secondary:
+        - gospel
+        - divine
+        - lord
+        - heavenly father
+        - salvation
+        - grace
+        - apostle
+        - psalm
+
+  love-heart-awakening:
+    name: "Love & Heart Awakening"
+    youtube_id: ""
+    priority: 160
+    keywords:
+      primary:
+        - love
+        - heart
+        - heart chakra
+        - compassion
+        - forgiveness
+        - connection
+        - divine love
+        - self-love
+        - heart opening
+        - unconditional love
+      secondary:
+        - kindness
+        - empathy
+        - relationship
+        - romance
+        - beloved
+
+# Format-Based Playlists (based on audio characteristics)
+format_playlists:
+  drum-trance:
+    name: "Drum Trance Dreamweavings"
+    youtube_id: ""
+    priority: 200
+    keywords:
+      primary:
+        - drum
+        - drumming
+        - shamanic beat
+        - frame drum
+        - heartbeat drum
+        - trance percussion
+        - shamanic drum
+        - rhythmic
+      secondary:
+        - percussion
+        - beat
+        - tribal
+        - rhythm
+    manifest_fields:
+      sound_bed:
+        percussion:
+          enabled: true
+
+  sonic-frequency-journeys:
+    name: "Sonic & Frequency Journeys (Non-Binaural)"
+    youtube_id: ""
+    priority: 210
+    keywords:
+      primary:
+        - gamma
+        - theta swell
+        - tonal sweep
+        - harmonic resonance
+        - vibrational journey
+        - sound corridor
+        - spatialized sound
+        - solfeggio
+        - 432hz
+        - 528hz
+        - frequency
+        - tone
+        - sound bath
+      secondary:
+        - isochronic
+        - sound healing
+        - vibration
+        - hz
+    # Negative match: lower priority if binaural is explicitly mentioned
+    deprioritize_if:
+      keywords:
+        - binaural
+
+# Duration-Based Playlists (based on session length)
+duration_playlists:
+  short-resets:
+    name: "Short Resets (5-10 Minutes)"
+    youtube_id: ""
+    priority: 300
+    duration_range:
+      min_minutes: 5
+      max_minutes: 10
+    allow_overlap: true
+    keywords:
+      primary:
+        - quick
+        - short
+        - reset
+        - mini
+        - fast track
+        - rapid
+        - brief
+      secondary:
+        - 5 minute
+        - 10 minute
+
+  deep-immersion:
+    name: "Deep Immersion Journeys (30-60 Minutes)"
+    youtube_id: ""
+    priority: 310
+    duration_range:
+      min_minutes: 30
+      max_minutes: 60
+    allow_overlap: true
+    keywords:
+      primary:
+        - deep dive
+        - immersion
+        - long form
+        - extended journey
+        - deep
+        - extended
+      secondary:
+        - 30 minute
+        - 45 minute
+        - hour
+
+# Series/Path Playlists (manually managed paths, AI suggests)
+series_playlists:
+  mastery-path:
+    name: "Dreamweaver Mastery Path (Level System)"
+    youtube_id: ""
+    priority: 400
+    manual_assignment: true
+    keywords:
+      primary:
+        - mastery
+        - level
+        - progression
+        - path
+        - course
+        - beginner
+        - intermediate
+        - advanced
+        - adept
+        - master
+        - ascended
+      secondary:
+        - step
+        - stage
+        - training
+
+  abundance-50-step:
+    name: "Abundance 50-Step Path"
+    youtube_id: ""
+    priority: 410
+    manual_assignment: true
+    keywords:
+      primary:
+        - abundance path
+        - 50 step
+        - abundance journey
+        - wealth journey sequence
+        - step 1
+        - step 2
+      secondary:
+        - abundance series
+        - wealth path
+
+  love-50-step:
+    name: "Love & Heart Awakening 50-Step Path"
+    youtube_id: ""
+    priority: 420
+    manual_assignment: true
+    keywords:
+      primary:
+        - love path
+        - heart path
+        - 50 step love
+        - love journey sequence
+      secondary:
+        - heart series
+        - love series
+
+  experiments:
+    name: "Dreamweaver Experiments (New Techniques)"
+    youtube_id: ""
+    priority: 500
+    keywords:
+      primary:
+        - experiment
+        - experimental
+        - new technique
+        - prototype
+        - test
+        - beta
+        - trial
+        - future tech
+        - esoteric
+        - unknown
+      secondary:
+        - innovation
+        - novel
+        - cutting edge
+
+# Fallback playlist for unmatched content
+fallback_playlist:
+  name: "Uncategorized / Needs Review"
+  youtube_id: ""
+  priority: 999
+
+# Classification Settings
+classification:
+  # Minimum confidence to auto-assign (0.0 - 1.0)
+  min_confidence: 0.35
+
+  # Maximum playlists a video can be added to (excluding master)
+  max_playlists_per_video: 3
+
+  # Weight multipliers for different signal sources
+  weights:
+    title: 0.35
+    description: 0.25
+    tags: 0.15
+    manifest_outcome: 0.15
+    archetypes: 0.10
+
+  # Always add to master playlist
+  always_include_master: true
+
+  # Priority resolution strategy
+  # 'top_n' = add to top N matches, 'all' = add to all above threshold
+  multi_match_strategy: top_n
+  multi_match_count: 3
+
+  # Confidence thresholds for review flags
+  high_confidence: 0.7
+  medium_confidence: 0.5

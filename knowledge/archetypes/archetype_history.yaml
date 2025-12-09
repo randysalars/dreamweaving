@@ -1,0 +1,181 @@
+# =============================================================================
+# ARCHETYPE HISTORY - Session Usage Tracking for Recurring Archetypes
+# =============================================================================
+# Tracks archetype appearances across sessions to enable:
+# - Appropriate encounter_type selection (first vs return)
+# - Relationship depth tracking
+# - Recency-based selection (avoid overuse)
+# - Cross-session character development
+#
+# Version: 1.0
+# Created: 2025-12-09
+# =============================================================================
+
+metadata:
+  version: "1.0"
+  created: "2025-12-09"
+  updated: "2025-12-09"
+  total_sessions_tracked: 0
+  unique_archetypes_used: 0
+  notes: |
+    This file is automatically updated by archetype_selector.py after each session.
+    Manual edits should be avoided unless correcting errors.
+
+# =============================================================================
+# GLOBAL STATISTICS
+# =============================================================================
+
+statistics:
+  most_used_archetypes: []  # List of {archetype_id, count}
+  most_effective_archetypes: []  # Based on session ratings if tracked
+  family_distribution: {}  # Count by family
+  tradition_usage: {}  # Count by tradition if specified
+
+# =============================================================================
+# SESSION HISTORY
+# =============================================================================
+# Chronological record of archetype usage per session.
+# Each entry records which archetypes appeared and their encounter types.
+
+session_history: []
+  # Example entry:
+  # - session_id: "iron-soul-forge"
+  #   date: "2025-12-05"
+  #   outcome: "empowerment"
+  #   archetypes_used:
+  #     - archetype_id: "warrior_power.archangel_michael"
+  #       role: "primary"
+  #       encounter_type: "first_encounter"
+  #       section: "journey"
+  #     - archetype_id: "transformation_alchemy.phoenix_renewal"
+  #       role: "secondary"
+  #       encounter_type: "first_encounter"
+  #       section: "helm_deep_trance"
+  #   notes: ""
+
+# =============================================================================
+# LISTENER RELATIONSHIPS
+# =============================================================================
+# Aggregated relationship data for each archetype.
+# Determines encounter_type and tracks deepening relationships.
+
+listener_relationships: {}
+  # Example entries:
+  # divine_light_healing.inner_healer:
+  #   total_encounters: 5
+  #   first_session: "garden-of-eden-001"
+  #   first_session_date: "2025-11-15"
+  #   last_session: "healing-waters-003"
+  #   last_session_date: "2025-12-08"
+  #   relationship_level: 3  # 1=new, 2=familiar, 3=deep, 4=mastered
+  #   encounter_history:
+  #     - session: "garden-of-eden-001"
+  #       type: "first_encounter"
+  #     - session: "inner-sanctuary-002"
+  #       type: "return_encounter"
+  #   effectiveness_score: 0.85  # If tracking ratings
+
+# =============================================================================
+# RELATIONSHIP LEVELS
+# =============================================================================
+# Defines the progression of listener-archetype relationships.
+
+relationship_levels:
+  1:
+    name: "New"
+    description: "First encounter with this archetype"
+    encounter_type: "first_encounter"
+    sessions_required: 1
+  2:
+    name: "Familiar"
+    description: "Listener has met this archetype before"
+    encounter_type: "return_encounter"
+    sessions_required: 2
+  3:
+    name: "Deep"
+    description: "Strong relationship established"
+    encounter_type: "return_encounter"
+    sessions_required: 4
+    notes: "Can use abbreviated introductions"
+  4:
+    name: "Mastered"
+    description: "Archetype is fully integrated"
+    encounter_type: "integration"
+    sessions_required: 7
+    notes: "Archetype can be invoked with minimal guidance"
+
+# =============================================================================
+# RECENCY TRACKING
+# =============================================================================
+# Prevents overuse of the same archetypes in consecutive sessions.
+
+recency_data:
+  last_5_sessions: []  # List of session_ids
+  archetype_cooldowns: {}
+    # archetype_id: sessions_since_use
+    # Example:
+    # divine_light_healing.inner_healer: 2
+    # transformation_alchemy.phoenix_renewal: 0  # Used in last session
+
+# =============================================================================
+# SELECTION WEIGHTS
+# =============================================================================
+# Pre-computed weights for archetype selection based on history.
+# Updated by archetype_selector.py
+
+selection_weights: {}
+  # Example:
+  # divine_light_healing.inner_healer:
+  #   base_score: 1.0
+  #   relationship_bonus: 0.2  # Familiar = good
+  #   recency_penalty: -0.1   # Used 2 sessions ago
+  #   effectiveness_bonus: 0.15
+  #   final_score: 1.25
+
+# =============================================================================
+# FAMILY ROTATION TRACKING
+# =============================================================================
+# Ensures diversity in archetype family selection across sessions.
+
+family_rotation:
+  last_session_families: []  # e.g., [warrior_power, divine_light_healing]
+  family_usage_counts: {}
+    # warrior_power: 5
+    # divine_light_healing: 8
+    # transformation_alchemy: 3
+
+# =============================================================================
+# ARCHETYPE PAIRINGS
+# =============================================================================
+# Tracks which archetypes work well together based on session outcomes.
+
+effective_pairings: []
+  # Example:
+  # - archetypes: [inner_healer, rose_mother]
+  #   sessions: 3
+  #   synergy_rating: 0.92
+  # - archetypes: [phoenix_renewal, sacred_deathbringer]
+  #   sessions: 2
+  #   synergy_rating: 0.88
+
+# =============================================================================
+# NOTES FOR DEVELOPERS
+# =============================================================================
+#
+# Usage Pattern:
+# 1. archetype_selector.py reads this file at startup
+# 2. When selecting archetypes, it considers:
+#    - Outcome alignment (from archetype_codex.yaml)
+#    - Listener relationships (from this file)
+#    - Recency penalties (from this file)
+#    - Family diversity (from this file)
+# 3. After session generation, update_history() is called
+# 4. This file is rewritten with updated data
+#
+# Backup Policy:
+# - This file should be backed up before major updates
+# - Keep archetype_history.yaml.bak as rolling backup
+#
+# Manual Reset:
+# - To reset history: delete all entries in session_history
+#   and listener_relationships, then run backfill script

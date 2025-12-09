@@ -1,0 +1,273 @@
+# =============================================================================
+# TRADITION EQUIVALENCE INDEX - Cross-Tradition Archetype Mappings
+# =============================================================================
+# Maps archetypes across different spiritual and religious traditions.
+# Use this to find tradition-appropriate language for diverse audiences.
+#
+# Version: 1.0
+# Created: 2025-12-09
+# =============================================================================
+
+metadata:
+  version: "1.0"
+  created: "2025-12-09"
+  updated: "2025-12-09"
+  source_file: "knowledge/archetypes/archetype_codex.yaml"
+  traditions_covered:
+    - christian
+    - jewish
+    - islamic
+    - hindu
+    - buddhist
+    - egyptian
+    - greek
+    - norse
+    - celtic
+    - mayan
+    - shamanic
+    - taoist
+    - gnostic
+
+# =============================================================================
+# TRADITION → ARCHETYPE MAPPINGS
+# =============================================================================
+# Each tradition lists which archetypes have equivalents and their names
+
+traditions:
+
+  christian:
+    description: "Christian mystical and biblical archetypes"
+    archetypes:
+      inner_healer: "Holy Spirit as Comforter & Restorer"
+      great_physician: "Jesus Christ as Healer"
+      shekinah_restorer: "Holy Spirit (feminine aspect)"
+      phoenix_renewal: "Resurrection of Christ"
+      sacred_deathbringer: "Angel of Death (Azrael)"
+      oracle_of_light: "Prophetic Gifts of the Spirit"
+      archangel_michael: "Archangel Michael"
+      sophia_wisdom: "Sophia (Divine Wisdom)"
+      rose_mother: "Virgin Mary"
+      logos_bearer: "Christ as Logos"
+      guardian_father: "God the Father"
+      transfigured_one: "Transfigured Christ"
+      joy_child: "Christ Child"
+      providence_angel: "Guardian Angel of Provision"
+
+  jewish:
+    description: "Jewish Kabbalistic and mystical archetypes"
+    archetypes:
+      inner_healer: "Raphael (Angel of Healing)"
+      great_physician: "HaShem as Rofeh (The One Who Heals)"
+      shekinah_restorer: "Shekinah (Divine Presence)"
+      phoenix_renewal: "Teshuvah (Complete Return)"
+      oracle_of_light: "Prophetic Tradition (Nevi'im)"
+      archangel_michael: "Michael (Guardian of Israel)"
+      sophia_wisdom: "Chokmah (Wisdom)"
+      guardian_father: "Avinu (Our Father)"
+      world_tree_guardian: "Tree of Life (Etz Chaim)"
+
+  islamic:
+    description: "Islamic Sufi and mystical archetypes"
+    archetypes:
+      inner_healer: "Al-Shafi (The Healer)"
+      great_physician: "Allah as Ash-Shafi (The Healer)"
+      shekinah_restorer: "Rahma (Divine Mercy)"
+      phoenix_renewal: "Death Before Death"
+      oracle_of_light: "Kashf (Spiritual Unveiling)"
+      archangel_michael: "Mikail (Protector Angel)"
+      sophia_wisdom: "Hikmah (Divine Wisdom)"
+      guardian_father: "Ar-Rahman (The Merciful)"
+
+  hindu:
+    description: "Hindu Vedic and tantric archetypes"
+    archetypes:
+      inner_healer: "Dhanvantri (Divine Physician)"
+      great_physician: "Vishnu in Healing Aspect"
+      shekinah_restorer: "Shakti (Divine Feminine)"
+      phoenix_renewal: "Shiva/Shakti Transformation"
+      sacred_deathbringer: "Kali/Shiva as Destroyer"
+      oracle_of_light: "Rishi Vision"
+      archangel_michael: "Kartikeya (War God)"
+      sophia_wisdom: "Saraswati"
+      rose_mother: "Divine Mother (Mata)"
+      logos_bearer: "Vak (Divine Speech)"
+      guardian_father: "Brahma as Creator Father"
+      solar_king: "Surya (Sun God)"
+      transfigured_one: "Deathless Body (Siddha)"
+      joy_child: "Krishna as Divine Child"
+      world_tree_guardian: "Ashvattha (Cosmic Tree)"
+      memory_palace_keeper: "Saraswati (Learning)"
+
+  buddhist:
+    description: "Buddhist Mahayana and Vajrayana archetypes"
+    archetypes:
+      inner_healer: "Medicine Buddha (Bhaisajyaguru)"
+      great_physician: "Amitabha Buddha"
+      shekinah_restorer: "Tara (Mother of Liberation)"
+      phoenix_renewal: "Ego Death and Awakening"
+      sacred_deathbringer: "Wrathful Deities"
+      oracle_of_light: "Prajna (Wisdom Eye)"
+      archangel_michael: "Manjushri (Sword of Wisdom)"
+      sophia_wisdom: "Prajnaparamita"
+      rose_mother: "Kuan Yin"
+      transfigured_one: "Rainbow Body"
+      joy_child: "Beginner's Mind"
+      heart_flame_tender: "Maitri (Loving Kindness)"
+
+  egyptian:
+    description: "Ancient Egyptian Kemetic archetypes"
+    archetypes:
+      inner_healer: "Isis (Restorer of Bodies)"
+      great_physician: "Thoth (Master of Medicine)"
+      sacred_deathbringer: "Sekhmet (Fierce Protector)"
+      phoenix_renewal: "Bennu Bird (Proto-Phoenix)"
+      oracle_of_light: "Eye of Horus"
+      archangel_michael: "Horus (Sky Warrior)"
+      solar_king: "Ra (Sun King)"
+      transfigured_one: "Akh (Transfigured Spirit)"
+      joy_child: "Horus Child"
+      portal_keeper: "Anubis (Guardian of Thresholds)"
+      memory_palace_keeper: "Thoth (Record Keeper)"
+      logos_bearer: "Thoth/Hermes"
+
+  greek:
+    description: "Ancient Greek mythological archetypes"
+    archetypes:
+      inner_healer: "Asclepius"
+      great_physician: "Apollo Medicus"
+      phoenix_renewal: "Dionysian Rebirth"
+      sacred_deathbringer: "Thanatos (Gentle Death)"
+      oracle_of_light: "Delphic Oracle"
+      archangel_michael: "Athena (Strategic Warrior)"
+      sophia_wisdom: "Athena (Wisdom Aspect)"
+      rose_mother: "Demeter"
+      logos_bearer: "Logos"
+      abundance_destiny: "Tyche (Fortune)"
+      memory_palace_keeper: "Mnemosyne (Memory Goddess)"
+      portal_keeper: "Hermes (Psychopomp)"
+
+  norse:
+    description: "Norse and Germanic mythological archetypes"
+    archetypes:
+      inner_healer: "Eir (Healing Goddess)"
+      great_physician: "Baldur (Light Healer)"
+      phoenix_renewal: "Ragnarok/Renewal"
+      sacred_deathbringer: "Hela"
+      oracle_of_light: "Volva (Seeress)"
+      archangel_michael: "Thor (Defender)"
+      solar_king: "Baldur"
+      world_tree_guardian: "Yggdrasil"
+      abundance_destiny: "Norns (Fate Weavers)"
+      portal_keeper: "Heimdall (Guardian)"
+
+  celtic:
+    description: "Celtic and Druidic archetypes"
+    archetypes:
+      world_tree_guardian: "Sacred Oak"
+      divine_feminine: "Brigid"
+      wisdom_keeper: "Merlin"
+      joy_child: "Eternal Youth (Tir na nOg)"
+
+  mayan:
+    description: "Mayan cosmological archetypes"
+    archetypes:
+      phoenix_renewal: "Hero Twins Rebirth"
+      world_tree_guardian: "World Tree (Yaxche)"
+
+  shamanic:
+    description: "Universal shamanic archetypes"
+    archetypes:
+      inner_healer: "Spirit Healer Animal"
+      world_tree_guardian: "World Tree / Axis Mundi"
+      spirit_animal: "Spirit Animal Companion"
+      stone_elder: "Stone People"
+
+  taoist:
+    description: "Taoist immortality and alchemy archetypes"
+    archetypes:
+      transfigured_one: "Immortal Body"
+      taoist_immortal: "Xian (Immortal)"
+      flow_guardian: "Wu Wei Master"
+
+  gnostic:
+    description: "Gnostic mystical archetypes"
+    archetypes:
+      sophia_wisdom: "Sophia (Fallen/Redeemed Wisdom)"
+      dream_architect: "Demiurge (World Crafter)"
+      inner_light: "Divine Spark (Pneuma)"
+
+# =============================================================================
+# ARCHETYPE → TRADITIONS MAPPING (Reverse Lookup)
+# =============================================================================
+# For each archetype, which traditions have equivalents
+
+archetype_traditions:
+
+  inner_healer:
+    traditions: [christian, jewish, islamic, hindu, buddhist, egyptian, greek, norse, shamanic]
+
+  great_physician:
+    traditions: [christian, jewish, islamic, hindu, buddhist, egyptian, greek, norse]
+
+  shekinah_restorer:
+    traditions: [christian, jewish, islamic, hindu, buddhist]
+
+  phoenix_renewal:
+    traditions: [christian, jewish, islamic, hindu, buddhist, egyptian, greek, norse, mayan]
+
+  sacred_deathbringer:
+    traditions: [christian, hindu, buddhist, egyptian, greek, norse]
+
+  oracle_of_light:
+    traditions: [christian, jewish, islamic, hindu, buddhist, egyptian, greek, norse]
+
+  archangel_michael:
+    traditions: [christian, jewish, islamic, hindu, buddhist, egyptian, greek, norse]
+
+  sophia_wisdom:
+    traditions: [christian, jewish, islamic, hindu, buddhist, greek, gnostic]
+
+  rose_mother:
+    traditions: [christian, hindu, buddhist, greek]
+
+  logos_bearer:
+    traditions: [christian, hindu, egyptian, greek]
+
+  guardian_father:
+    traditions: [christian, jewish, islamic, hindu]
+
+  solar_king:
+    traditions: [hindu, egyptian, norse]
+
+  transfigured_one:
+    traditions: [christian, hindu, buddhist, egyptian, taoist]
+
+  joy_child:
+    traditions: [christian, hindu, buddhist, egyptian, celtic]
+
+  world_tree_guardian:
+    traditions: [jewish, hindu, norse, celtic, mayan, shamanic]
+
+  portal_keeper:
+    traditions: [egyptian, greek, norse]
+
+  memory_palace_keeper:
+    traditions: [hindu, egyptian, greek]
+
+  providence_angel:
+    traditions: [christian, jewish, hindu, greek, norse]
+
+# =============================================================================
+# USAGE NOTES
+# =============================================================================
+# When generating scripts for specific audiences:
+# 1. Identify the listener's tradition preference (if any)
+# 2. Look up archetype in tradition section
+# 3. Use tradition-specific name in script if requested
+# 4. Fall back to universal name if no tradition specified
+#
+# Example:
+#   Archetype: inner_healer
+#   For Christian audience: "Holy Spirit as Comforter & Restorer"
+#   For Hindu audience: "Dhanvantri (Divine Physician)"
+#   For universal: "The Inner Healer"

@@ -434,15 +434,48 @@ def _extract_duration_from_description(description_lower: str) -> float:
 
 # Effect type detection rules: (keywords, effect_name, param_extractor)
 EFFECT_TYPE_RULES = [
+    # Original categories
     (['bell', 'chime', 'gong', 'singing bowl'], 'bell', '_get_bell_params'),
     (['hammer', 'strike', 'clang', 'impact'], 'impact', '_get_impact_params'),
-    (['fire', 'flame', 'crackle', 'burning'], 'fire', '_get_fire_params'),
+    (['fire', 'flame', 'crackle', 'burning', 'torch', 'ember'], 'fire', '_get_fire_params'),
     (['footstep', 'step', 'walking'], 'footstep', '_get_footstep_params'),
     (['ambient', 'atmosphere', 'continuous', 'rumble'], 'ambient', None),
     (['whoosh', 'wind', 'breath', 'bellows'], 'whoosh', None),
-    (['heartbeat', 'heart', 'drum', 'pulse'], 'heartbeat', '_get_heartbeat_params'),
+    (['heartbeat', 'heart', 'pulse'], 'heartbeat', '_get_heartbeat_params'),
     (['metal', 'resonan', 'hum', 'tone'], 'resonance', None),
     (['ethereal', 'magical', 'whisper', 'ancient', 'mystical'], 'mystical', None),
+
+    # NEW: Atmospheric textures
+    (['air', 'ether', 'shimmer', 'liminal', 'vortex', 'swirl'], 'atmospheric', None),
+
+    # NEW: Water & fluid
+    (['ocean', 'wave', 'stream', 'brook', 'rain', 'underwater', 'ripple', 'drip', 'water'], 'water', None),
+
+    # NEW: Earth & grounding
+    (['earth', 'ground', 'stone', 'rock', 'cavern', 'cave', 'tectonic'], 'earth', None),
+
+    # NEW: Light effects
+    (['solar', 'sunlight', 'radiant', 'glow', 'light'], 'light', None),
+
+    # NEW: Celestial & heavenly
+    (['celestial', 'angelic', 'heavenly', 'cosmic', 'stardust', 'prismatic', 'divine', 'portal'], 'celestial', None),
+
+    # NEW: Presence & spirit
+    (['presence', 'spirit', 'guide', 'entity', 'cloak', 'overtone', 'throat'], 'presence', None),
+
+    # NEW: Advanced experimental
+    (['fractal', 'spectral', 'lunar', 'solar', 'astral', 'field', 'particle'], 'advanced', None),
+
+    # NEW: Transitions & portals
+    (['transition', 'portal', 'shift', 'transform', 'vacuum', 'riser'], 'transition', None),
+
+    # ENHANCED: Drums - various types
+    (['drum', 'frame drum', 'shamanic', 'bodhran', 'buffalo'], 'drum', None),
+    (['djembe', 'dunun', 'talking drum', 'african'], 'drum', None),
+    (['daf', 'riqq', 'tabla', 'doumbek', 'persian', 'arabic'], 'drum', None),
+    (['taiko', 'odaiko', 'shime', 'japanese drum'], 'drum', None),
+    (['cinematic', 'epic drum', 'tom', 'earthquake'], 'drum', None),
+    (['stretched drum', 'granular drum', 'experimental drum', 'spectral drum'], 'drum', None),
 ]
 
 
@@ -2022,7 +2055,6 @@ EFFECT_GENERATORS = {
     'whoosh': _generate_whoosh,
     'wind': _generate_whoosh,
     'breath': _generate_whoosh,
-    'air': _generate_whoosh,
 
     # Impacts and strikes
     'impact': _generate_impact,
@@ -2041,12 +2073,13 @@ EFFECT_GENERATORS = {
     'molten': _generate_fire,
     'magma': _generate_fire,
     'lava': _generate_fire,
+    'torch': _generate_fire,
+    'ember': _generate_fire,
 
     # Metallic resonance
     'resonance': _generate_resonance,
     'metallic': _generate_resonance,
     'ring': _generate_resonance,
-    'shimmer': _generate_resonance,
     'crystallize': _generate_resonance,
     'harmonic': _generate_resonance,
 
@@ -2060,7 +2093,6 @@ EFFECT_GENERATORS = {
     # Mystical and ethereal
     'mystical': _generate_mystical,
     'ethereal': _generate_mystical,
-    'transition': _generate_transition,
     'merge': _generate_mystical,
     'whisper': _generate_mystical,
     'ancient': _generate_mystical,
@@ -2072,6 +2104,97 @@ EFFECT_GENERATORS = {
     'drum': _generate_drum,
     'deep_drum': _generate_drum,
     'ritual_drum': _generate_drum,
+    'frame_drum': _generate_drum,
+    'buffalo_drum': _generate_drum,
+    'shamanic_drum': _generate_drum,
+    'bodhran': _generate_drum,
+    'djembe': _generate_drum,
+    'dunun': _generate_drum,
+    'talking_drum': _generate_drum,
+    'daf': _generate_drum,
+    'riqq': _generate_drum,
+    'tabla': _generate_drum,
+    'doumbek': _generate_drum,
+    'taiko': _generate_drum,
+    'odaiko': _generate_drum,
+    'shime': _generate_drum,
+    'damaru': _generate_drum,
+    'ocean_drum': _generate_drum,
+
+    # NEW: Atmospheric textures
+    'atmospheric': _generate_atmospheric,
+    'air': _generate_atmospheric,
+    'ether': _generate_atmospheric,
+    'shimmer': _generate_atmospheric,
+    'liminal': _generate_atmospheric,
+    'vortex': _generate_atmospheric,
+    'pad': _generate_atmospheric,
+
+    # NEW: Water effects
+    'water': _generate_water,
+    'ocean': _generate_water,
+    'stream': _generate_water,
+    'brook': _generate_water,
+    'rain': _generate_water,
+    'underwater': _generate_water,
+    'ripple': _generate_water,
+    'drip': _generate_water,
+    'wave': _generate_water,
+
+    # NEW: Earth effects
+    'earth': _generate_earth,
+    'ground': _generate_earth,
+    'stone': _generate_earth,
+    'rock': _generate_earth,
+    'cavern': _generate_earth,
+    'tectonic': _generate_earth,
+
+    # NEW: Light effects
+    'light': _generate_light,
+    'solar': _generate_light,
+    'sunlight': _generate_light,
+    'radiant': _generate_light,
+    'glow': _generate_light,
+
+    # NEW: Celestial effects
+    'celestial': _generate_celestial,
+    'angelic': _generate_celestial,
+    'heavenly': _generate_celestial,
+    'cosmic': _generate_celestial,
+    'stardust': _generate_celestial,
+    'prismatic': _generate_celestial,
+    'divine': _generate_celestial,
+    'portal': _generate_celestial,
+    'choir': _generate_celestial,
+
+    # NEW: Presence effects
+    'presence': _generate_presence,
+    'spirit': _generate_presence,
+    'guide': _generate_presence,
+    'entity': _generate_presence,
+    'cloak': _generate_presence,
+    'overtone': _generate_presence,
+    'throat_singing': _generate_presence,
+
+    # NEW: Advanced effects
+    'advanced': _generate_advanced,
+    'fractal': _generate_advanced,
+    'spectral': _generate_advanced,
+    'lunar': _generate_advanced,
+    'astral': _generate_advanced,
+    'field': _generate_advanced,
+    'particle': _generate_advanced,
+    'sparkfield': _generate_advanced,
+
+    # NEW: Transition effects
+    'transition': _generate_transition,
+    'portal_transition': _generate_transition,
+    'shift': _generate_transition,
+    'transform': _generate_transition,
+    'vacuum': _generate_transition,
+    'riser': _generate_transition,
+    'sweep': _generate_transition,
+    'scatter': _generate_transition,
 }
 
 

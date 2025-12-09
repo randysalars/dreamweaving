@@ -736,3 +736,1181 @@ environmental:
       fade_out: 3.0
       reverb: 0.6
       distant: true
+
+# =============================================================================
+# ATMOSPHERIC TEXTURES (NEW)
+# Air & ether textures for trance foundation
+# =============================================================================
+atmospheric:
+  - name: air_soft_wind_bed
+    file: atmospheric/air_soft_wind_bed.wav
+    duration: 30.0
+    tags: [air, wind, ethereal, bed, ambient, spacious]
+    keywords: ["soft ethereal wind", "air bed", "spacious wind"]
+    generator: atmospheric
+    params:
+      type: wind
+      intensity: 0.3
+      filter_hz: 2000
+    loop: true
+    gain_db: -24
+
+  - name: air_ethereal_sweep
+    file: atmospheric/air_ethereal_sweep.wav
+    duration: 8.0
+    tags: [air, sweep, ethereal, dimensional]
+    keywords: ["ethereal sweep", "dimensional shift", "air whoosh"]
+    generator: atmospheric
+    params:
+      type: sweep
+      rise_time: 4.0
+      filter_hz: 4000
+    gain_db: -18
+
+  - name: air_breath_texture
+    file: atmospheric/air_breath_texture.wav
+    duration: 7.0
+    tags: [breath, air, pacing, induction]
+    keywords: ["breath texture", "breathing pace", "exhale texture"]
+    generator: atmospheric
+    params:
+      type: breath
+      cycle_sec: 7.0
+      depth: 0.6
+    gain_db: -20
+
+  - name: ether_shimmer_haze
+    file: atmospheric/ether_shimmer_haze.wav
+    duration: 20.0
+    tags: [ether, shimmer, high, celestial, sparkle]
+    keywords: ["shimmer haze", "celestial shimmer", "high frequency sparkle"]
+    generator: atmospheric
+    params:
+      type: shimmer
+      freq_min: 8000
+      freq_max: 16000
+    loop: true
+    gain_db: -26
+
+  - name: ether_liminal_pad
+    file: atmospheric/ether_liminal_pad.wav
+    duration: 30.0
+    tags: [ether, liminal, pad, ambient, timeless]
+    keywords: ["liminal pad", "timeless atmosphere", "mystical spaciousness"]
+    generator: atmospheric
+    params:
+      type: pad
+      base_freq: 220
+      harmonics: [1.0, 0.3, 0.1]
+    loop: true
+    gain_db: -22
+
+  - name: air_whisper_resonance
+    file: atmospheric/air_whisper_resonance.wav
+    duration: 10.0
+    tags: [whisper, air, resonance, presence]
+    keywords: ["whisper wind", "air resonance", "wind whisper"]
+    generator: atmospheric
+    params:
+      type: whisper
+      formant_freq: 1500
+    gain_db: -20
+
+  - name: air_swirling_vortex
+    file: atmospheric/air_swirling_vortex.wav
+    duration: 15.0
+    tags: [vortex, swirl, air, portal, dimensional]
+    keywords: ["swirling vortex", "air vortex", "dimensional swirl"]
+    generator: atmospheric
+    params:
+      type: vortex
+      rotation_hz: 0.1
+      depth: 0.7
+    gain_db: -18
+
+# =============================================================================
+# WATER & FLUID (NEW)
+# =============================================================================
+water:
+  - name: water_ocean_gentle_laps
+    file: water/ocean_gentle_laps.wav
+    duration: 30.0
+    tags: [ocean, waves, gentle, lapping, cleansing]
+    keywords: ["gentle ocean", "soft waves", "lapping water"]
+    generator: water
+    params:
+      type: ocean
+      wave_period: 8.0
+      intensity: 0.4
+    loop: true
+    gain_db: -20
+
+  - name: water_brook_trickle
+    file: water/brook_trickle.wav
+    duration: 30.0
+    tags: [brook, stream, trickle, flow, peaceful]
+    keywords: ["brook", "trickling stream", "flowing water"]
+    generator: water
+    params:
+      type: stream
+      flow_rate: 0.5
+    loop: true
+    gain_db: -22
+
+  - name: water_underwater_pulse
+    file: water/underwater_pulse.wav
+    duration: 8.0
+    tags: [underwater, pulse, deep, heartbeat, muffled]
+    keywords: ["underwater heartbeat", "submerged pulse", "deep water"]
+    generator: water
+    params:
+      type: underwater
+      pulse_hz: 1.0
+      depth: 0.8
+    gain_db: -18
+
+  - name: water_drip_stretched
+    file: water/drip_stretched.wav
+    duration: 12.0
+    tags: [drip, stretched, ethereal, time, crystalline]
+    keywords: ["stretched water drop", "ethereal drip", "time-stretched water"]
+    generator: water
+    params:
+      type: drip_stretch
+      stretch_factor: 8.0
+    gain_db: -16
+
+  - name: water_bowl_tibetan
+    file: water/bowl_tibetan.wav
+    duration: 10.0
+    tags: [bowl, tibetan, water, bend, singing]
+    keywords: ["water bowl", "tibetan water", "singing bowl water bend"]
+    generator: water
+    params:
+      type: bowl
+      freq: 432
+      water_amount: 0.5
+    gain_db: -14
+
+  - name: water_rain_leaves
+    file: water/rain_leaves.wav
+    duration: 30.0
+    tags: [rain, leaves, gentle, nature, peaceful]
+    keywords: ["rain on leaves", "soft rain", "forest rain"]
+    generator: water
+    params:
+      type: rain
+      density: 0.4
+      surface: leaves
+    loop: true
+    gain_db: -24
+
+  - name: water_submerged_wash
+    file: water/submerged_wash.wav
+    duration: 15.0
+    tags: [submerged, wash, rumble, deep, oceanic]
+    keywords: ["submerged rumble", "underwater wash", "deep water"]
+    generator: water
+    params:
+      type: submerged
+      rumble_hz: 40
+    gain_db: -20
+
+  - name: water_ripple_sweep
+    file: water/ripple_sweep.wav
+    duration: 6.0
+    tags: [ripple, sweep, transition, water, soft]
+    keywords: ["ripple sweep", "water transition", "rippling water"]
+    generator: water
+    params:
+      type: ripple
+      spread_rate: 2.0
+    gain_db: -18
+
+# =============================================================================
+# EARTH & GROUNDING (NEW)
+# =============================================================================
+earth:
+  - name: earth_deep_rumble
+    file: earth/deep_rumble.wav
+    duration: 10.0
+    tags: [earth, rumble, deep, grounding, bass]
+    keywords: ["deep earth rumble", "ground shake", "earth bass"]
+    generator: earth
+    params:
+      type: rumble
+      freq: 30
+      decay: 8.0
+    gain_db: -16
+
+  - name: earth_crust_groan
+    file: earth/crust_groan.wav
+    duration: 8.0
+    tags: [earth, groan, tectonic, movement, ancient]
+    keywords: ["earth groan", "tectonic shift", "earth crust"]
+    generator: earth
+    params:
+      type: groan
+      freq_range: [20, 80]
+    gain_db: -18
+
+  - name: earth_stone_shift
+    file: earth/stone_shift.wav
+    duration: 4.0
+    tags: [stone, shift, rock, movement, solid]
+    keywords: ["stone shifting", "rock movement", "boulder shift"]
+    generator: earth
+    params:
+      type: stone
+      mass: 0.7
+    gain_db: -14
+
+  - name: earth_cavern_resonance
+    file: earth/cavern_resonance.wav
+    duration: 15.0
+    tags: [cavern, resonance, echo, deep, hollow]
+    keywords: ["cavern resonance", "cave echo", "hollow earth"]
+    generator: earth
+    params:
+      type: cavern
+      size: large
+      reverb: 0.8
+    gain_db: -20
+
+  - name: earth_footstep_dust
+    file: earth/footstep_dust.wav
+    duration: 1.5
+    tags: [footstep, dust, soft, crunch, ground]
+    keywords: ["dusty footstep", "soft crunch", "earth step"]
+    generator: footstep
+    params:
+      surface: dust
+      weight: 0.5
+    gain_db: -12
+
+  - name: earth_rock_chime
+    file: earth/rock_chime.wav
+    duration: 5.0
+    tags: [rock, chime, glockenspiel, stone, crystalline]
+    keywords: ["rock chime", "stone glockenspiel", "crystal rock"]
+    generator: earth
+    params:
+      type: chime
+      material: stone
+      freq: 880
+    gain_db: -14
+
+  - name: earth_sub_pulse
+    file: earth/sub_pulse.wav
+    duration: 6.0
+    tags: [sub, pulse, bass, grounding, heartbeat]
+    keywords: ["earth pulse", "sub bass heartbeat", "ground pulse"]
+    generator: earth
+    params:
+      type: pulse
+      freq: 40
+      bpm: 60
+    gain_db: -18
+
+# =============================================================================
+# FIRE & LIGHT (EXPANDED)
+# =============================================================================
+fire_light:
+  - name: fire_crackle_gentle
+    file: fire_light/crackle_gentle.wav
+    duration: 30.0
+    tags: [fire, crackle, gentle, warm, hearth]
+    keywords: ["gentle fire crackle", "fireplace", "warm crackling"]
+    generator: fire
+    params:
+      type: crackle
+      intensity: 0.3
+      pop_rate: 0.2
+    loop: true
+    gain_db: -22
+
+  - name: fire_ember_pop
+    file: fire_light/ember_pop.wav
+    duration: 2.0
+    tags: [ember, pop, spark, fire, accent]
+    keywords: ["ember pop", "fire spark", "crackling ember"]
+    generator: fire
+    params:
+      type: ember
+      pop_count: 3
+    gain_db: -14
+
+  - name: fire_flame_hiss
+    file: fire_light/flame_hiss.wav
+    duration: 8.0
+    tags: [flame, hiss, air, fire, sustained]
+    keywords: ["flame hiss", "fire tongue", "hissing flame"]
+    generator: fire
+    params:
+      type: hiss
+      intensity: 0.5
+      freq_range: [2000, 8000]
+    gain_db: -18
+
+  - name: fire_torch_roar
+    file: fire_light/torch_roar.wav
+    duration: 10.0
+    tags: [torch, roar, fire, intense, power]
+    keywords: ["torch roar", "blazing torch", "fire roar"]
+    generator: fire
+    params:
+      type: roar
+      intensity: 0.7
+    gain_db: -16
+
+  - name: fire_ritual_sweep
+    file: fire_light/ritual_sweep.wav
+    duration: 5.0
+    tags: [ritual, fire, sweep, ceremonial, whoosh]
+    keywords: ["ritual flame sweep", "ceremonial fire", "fire whoosh"]
+    generator: fire
+    params:
+      type: sweep
+      arc: 180
+    gain_db: -14
+
+  - name: light_solar_shimmer
+    file: fire_light/solar_shimmer.wav
+    duration: 12.0
+    tags: [solar, shimmer, light, radiant, warm]
+    keywords: ["solar shimmer", "sunlight sparkle", "radiant light"]
+    generator: light
+    params:
+      type: shimmer
+      warmth: 0.7
+      freq: 5000
+    gain_db: -20
+
+# =============================================================================
+# CELESTIAL & MYSTICAL (EXPANDED)
+# =============================================================================
+celestial:
+  - name: celestial_crystal_chimes
+    file: celestial/crystal_chimes.wav
+    duration: 8.0
+    tags: [crystal, chimes, celestial, sparkle, angelic]
+    keywords: ["crystal chimes", "celestial bells", "sparkle chimes"]
+    generator: bell
+    params:
+      frequency: 2000
+      decay: 6.0
+      harmonics: [1.0, 0.8, 0.6, 0.4]
+    gain_db: -16
+
+  - name: celestial_prismatic_bells
+    file: celestial/prismatic_bells.wav
+    duration: 10.0
+    tags: [prismatic, bells, rainbow, light, celestial]
+    keywords: ["prismatic bells", "rainbow chimes", "light bells"]
+    generator: bell
+    params:
+      frequency: 1200
+      decay: 8.0
+      spread: 0.3
+    gain_db: -14
+
+  - name: celestial_glass_harmonic
+    file: celestial/glass_harmonic.wav
+    duration: 12.0
+    tags: [glass, harmonic, ethereal, pure, resonance]
+    keywords: ["glass harmonic", "crystal resonance", "pure tone"]
+    generator: resonance
+    params:
+      type: glass
+      freq: 880
+      sustain: 10.0
+    gain_db: -16
+
+  - name: celestial_angelic_swell
+    file: celestial/angelic_swell.wav
+    duration: 15.0
+    tags: [angelic, swell, heaven, divine, choir]
+    keywords: ["angelic swell", "heavenly choir", "divine presence"]
+    generator: celestial
+    params:
+      type: choir
+      voices: 4
+      freq: 440
+    gain_db: -18
+
+  - name: celestial_stardust_sparkle
+    file: celestial/stardust_sparkle.wav
+    duration: 10.0
+    tags: [stardust, sparkle, cosmic, particles, high]
+    keywords: ["stardust sparkle", "cosmic particles", "star shimmer"]
+    generator: celestial
+    params:
+      type: particles
+      density: 0.6
+      freq_range: [4000, 12000]
+    gain_db: -20
+
+  - name: celestial_heavenly_pad
+    file: celestial/heavenly_pad.wav
+    duration: 30.0
+    tags: [heavenly, pad, ambient, divine, soft]
+    keywords: ["heavenly pad", "divine atmosphere", "angelic ambient"]
+    generator: celestial
+    params:
+      type: pad
+      base: 220
+      warmth: 0.6
+    loop: true
+    gain_db: -24
+
+  - name: celestial_portal_shimmer
+    file: celestial/portal_shimmer.wav
+    duration: 8.0
+    tags: [portal, shimmer, gateway, dimensional, transition]
+    keywords: ["portal shimmer", "gateway sparkle", "dimensional shift"]
+    generator: celestial
+    params:
+      type: portal
+      rise_time: 3.0
+      shimmer: 0.8
+    gain_db: -16
+
+  - name: celestial_cosmic_whisper
+    file: celestial/cosmic_whisper.wav
+    duration: 10.0
+    tags: [cosmic, whisper, space, ethereal, distant]
+    keywords: ["cosmic whisper", "space whisper", "ethereal voice"]
+    generator: celestial
+    params:
+      type: whisper
+      formant: 1200
+      reverb: 0.9
+    gain_db: -18
+
+# =============================================================================
+# RITUAL DRUMS - FRAME DRUMS (NEW)
+# =============================================================================
+drums_frame:
+  - name: frame_drum_deep_hit
+    file: drums_frame/deep_hit.wav
+    duration: 4.0
+    tags: [frame, drum, deep, hit, ritual, shamanic]
+    keywords: ["frame drum deep", "shamanic drum", "ritual drum hit"]
+    generator: drum
+    params:
+      type: frame
+      freq: 80
+      decay: 3.5
+      resonance: 0.7
+    gain_db: -10
+
+  - name: frame_drum_heartbeat
+    file: drums_frame/heartbeat.wav
+    duration: 6.0
+    tags: [frame, drum, heartbeat, pulse, steady]
+    keywords: ["drum heartbeat", "frame drum pulse", "heartbeat rhythm"]
+    generator: drum
+    params:
+      type: frame
+      freq: 60
+      pattern: heartbeat
+      bpm: 60
+    gain_db: -12
+
+  - name: frame_drum_mallet_soft
+    file: drums_frame/mallet_soft.wav
+    duration: 3.0
+    tags: [frame, drum, mallet, soft, gentle]
+    keywords: ["soft mallet drum", "gentle frame drum", "mallet hit"]
+    generator: drum
+    params:
+      type: frame
+      freq: 100
+      attack: soft
+      decay: 2.5
+    gain_db: -12
+
+  - name: frame_drum_rim_sweep
+    file: drums_frame/rim_sweep.wav
+    duration: 5.0
+    tags: [frame, drum, rim, sweep, texture, eerie]
+    keywords: ["rim sweep", "drum rim", "eerie drum texture"]
+    generator: drum
+    params:
+      type: rim_sweep
+      duration: 4.0
+      resonance: 0.6
+    gain_db: -14
+
+  - name: frame_drum_echo_hit
+    file: drums_frame/echo_hit.wav
+    duration: 6.0
+    tags: [frame, drum, echo, reverb, spacious]
+    keywords: ["echoing drum", "reverb drum hit", "spacious drum"]
+    generator: drum
+    params:
+      type: frame
+      freq: 90
+      reverb: 0.8
+      decay: 5.0
+    gain_db: -12
+
+  - name: bodhran_soft_roll
+    file: drums_frame/bodhran_soft_roll.wav
+    duration: 8.0
+    tags: [bodhran, irish, roll, celtic, continuous]
+    keywords: ["bodhran roll", "irish drum", "celtic drum"]
+    generator: drum
+    params:
+      type: bodhran
+      pattern: roll
+      bpm: 80
+    gain_db: -14
+
+  - name: ocean_drum_waves
+    file: drums_frame/ocean_drum_waves.wav
+    duration: 15.0
+    tags: [ocean, drum, waves, transition, water, soothing]
+    keywords: ["ocean drum", "wave drum", "water drum"]
+    generator: drum
+    params:
+      type: ocean
+      wave_rate: 0.2
+    loop: true
+    gain_db: -18
+
+# =============================================================================
+# RITUAL DRUMS - BUFFALO/DEEP (NEW)
+# =============================================================================
+drums_buffalo:
+  - name: buffalo_drum_heartbeat
+    file: drums_buffalo/heartbeat.wav
+    duration: 8.0
+    tags: [buffalo, drum, heartbeat, deep, primal, native]
+    keywords: ["buffalo drum heartbeat", "deep heartbeat drum", "primal pulse"]
+    generator: drum
+    params:
+      type: buffalo
+      freq: 40
+      pattern: heartbeat
+      bpm: 60
+    gain_db: -10
+
+  - name: buffalo_drum_double_pulse
+    file: drums_buffalo/double_pulse.wav
+    duration: 6.0
+    tags: [buffalo, drum, double, pulse, power, grounding]
+    keywords: ["double pulse drum", "buffalo double hit", "power drum"]
+    generator: drum
+    params:
+      type: buffalo
+      freq: 45
+      pattern: double
+      bpm: 55
+    gain_db: -10
+
+  - name: buffalo_drum_sub_resonance
+    file: drums_buffalo/sub_resonance.wav
+    duration: 10.0
+    tags: [buffalo, drum, sub, resonance, deep, rumble]
+    keywords: ["sub bass drum", "deep resonance", "buffalo rumble"]
+    generator: drum
+    params:
+      type: buffalo
+      freq: 30
+      decay: 8.0
+      sub_layer: true
+    gain_db: -12
+
+  - name: zen_temple_drum
+    file: drums_buffalo/zen_temple.wav
+    duration: 8.0
+    tags: [zen, temple, drum, meditative, low, peaceful]
+    keywords: ["zen drum", "temple drum", "meditative drum"]
+    generator: drum
+    params:
+      type: temple
+      freq: 50
+      decay: 6.0
+      reverb: 0.7
+    gain_db: -12
+
+  - name: damaru_tibetan
+    file: drums_buffalo/damaru_tibetan.wav
+    duration: 4.0
+    tags: [damaru, tibetan, double, ritual, sacred]
+    keywords: ["damaru drum", "tibetan hand drum", "double drum"]
+    generator: drum
+    params:
+      type: damaru
+      freq: 200
+      pattern: alternating
+    gain_db: -12
+
+# =============================================================================
+# WORLD DRUMS - AFRICAN (NEW)
+# =============================================================================
+drums_african:
+  - name: djembe_bass_soft
+    file: drums_african/djembe_bass_soft.wav
+    duration: 3.0
+    tags: [djembe, bass, african, soft, warm]
+    keywords: ["djembe bass", "soft djembe", "african drum bass"]
+    generator: drum
+    params:
+      type: djembe
+      zone: bass
+      intensity: 0.5
+    gain_db: -10
+
+  - name: djembe_tone_resonant
+    file: drums_african/djembe_tone_resonant.wav
+    duration: 2.5
+    tags: [djembe, tone, resonant, african, clear]
+    keywords: ["djembe tone", "resonant djembe", "clear drum tone"]
+    generator: drum
+    params:
+      type: djembe
+      zone: tone
+      resonance: 0.7
+    gain_db: -10
+
+  - name: djembe_slap_crisp
+    file: drums_african/djembe_slap_crisp.wav
+    duration: 1.5
+    tags: [djembe, slap, crisp, african, accent]
+    keywords: ["djembe slap", "crisp slap", "drum accent"]
+    generator: drum
+    params:
+      type: djembe
+      zone: slap
+      attack: sharp
+    gain_db: -8
+
+  - name: dunun_earth_bass
+    file: drums_african/dunun_earth_bass.wav
+    duration: 4.0
+    tags: [dunun, earth, bass, grounding, massive, african]
+    keywords: ["dunun bass", "earth drum", "massive bass drum"]
+    generator: drum
+    params:
+      type: dunun
+      freq: 50
+      decay: 3.0
+    gain_db: -8
+
+  - name: talking_drum_spirit
+    file: drums_african/talking_drum_spirit.wav
+    duration: 5.0
+    tags: [talking, drum, spirit, pitch, african, voice]
+    keywords: ["talking drum", "spirit speech", "pitch drum"]
+    generator: drum
+    params:
+      type: talking
+      pitch_range: [100, 400]
+      pattern: speech
+    gain_db: -10
+
+# =============================================================================
+# WORLD DRUMS - MIDDLE EASTERN (NEW)
+# =============================================================================
+drums_middle_east:
+  - name: daf_air_resonance
+    file: drums_middle_east/daf_air_resonance.wav
+    duration: 6.0
+    tags: [daf, persian, air, resonance, membrane, ethereal]
+    keywords: ["daf drum", "persian drum", "airy drum resonance"]
+    generator: drum
+    params:
+      type: daf
+      freq: 120
+      jingles: true
+      resonance: 0.8
+    gain_db: -12
+
+  - name: riqq_light_jingle
+    file: drums_middle_east/riqq_light_jingle.wav
+    duration: 3.0
+    tags: [riqq, jingle, light, arabic, shimmer]
+    keywords: ["riqq jingles", "light tambourine", "arabic shimmer"]
+    generator: drum
+    params:
+      type: riqq
+      jingle_amount: 0.7
+    gain_db: -14
+
+  - name: tabla_bols_texture
+    file: drums_middle_east/tabla_bols_texture.wav
+    duration: 8.0
+    tags: [tabla, bols, texture, indian, intricate, hypnotic]
+    keywords: ["tabla texture", "bols pattern", "hypnotic tabla"]
+    generator: drum
+    params:
+      type: tabla
+      pattern: bols
+      bpm: 70
+    gain_db: -12
+
+  - name: doumbek_deep_tek
+    file: drums_middle_east/doumbek_deep_tek.wav
+    duration: 2.0
+    tags: [doumbek, tek, arabic, accent, sharp]
+    keywords: ["doumbek", "arabic drum", "tek accent"]
+    generator: drum
+    params:
+      type: doumbek
+      zone: tek
+    gain_db: -10
+
+# =============================================================================
+# WORLD DRUMS - JAPANESE (NEW)
+# =============================================================================
+drums_japanese:
+  - name: taiko_soft_boom
+    file: drums_japanese/taiko_soft_boom.wav
+    duration: 6.0
+    tags: [taiko, boom, soft, japanese, ceremonial, massive]
+    keywords: ["soft taiko", "gentle taiko boom", "japanese drum"]
+    generator: drum
+    params:
+      type: taiko
+      intensity: 0.4
+      decay: 5.0
+    gain_db: -8
+
+  - name: taiko_powerful_strike
+    file: drums_japanese/taiko_powerful_strike.wav
+    duration: 8.0
+    tags: [taiko, powerful, strike, epic, ceremonial]
+    keywords: ["powerful taiko", "taiko strike", "epic drum"]
+    generator: drum
+    params:
+      type: taiko
+      intensity: 0.9
+      decay: 6.0
+    gain_db: -6
+
+  - name: odaiko_sub_impact
+    file: drums_japanese/odaiko_sub_impact.wav
+    duration: 10.0
+    tags: [odaiko, sub, impact, massive, earthquake, deep]
+    keywords: ["odaiko impact", "massive drum", "earthquake drum"]
+    generator: drum
+    params:
+      type: odaiko
+      freq: 30
+      decay: 8.0
+    gain_db: -8
+
+  - name: shime_crisp_snap
+    file: drums_japanese/shime_crisp_snap.wav
+    duration: 1.5
+    tags: [shime, crisp, snap, tight, accent, japanese]
+    keywords: ["shime snap", "crisp drum", "tight taiko"]
+    generator: drum
+    params:
+      type: shime
+      attack: sharp
+    gain_db: -10
+
+# =============================================================================
+# CINEMATIC DRUMS (NEW)
+# =============================================================================
+drums_cinematic:
+  - name: cine_tom_sub_impact
+    file: drums_cinematic/tom_sub_impact.wav
+    duration: 5.0
+    tags: [cinematic, tom, sub, impact, epic, reveal]
+    keywords: ["cinematic impact", "sub boom", "epic reveal"]
+    generator: drum
+    params:
+      type: cinematic
+      freq: 40
+      decay: 4.0
+      reverb: 0.7
+    gain_db: -8
+
+  - name: cine_tom_soft_roll
+    file: drums_cinematic/tom_soft_roll.wav
+    duration: 10.0
+    tags: [cinematic, tom, roll, building, tension, soft]
+    keywords: ["soft tom roll", "building tension", "drum roll"]
+    generator: drum
+    params:
+      type: cinematic
+      pattern: roll
+      intensity: 0.3
+      bpm: 120
+    gain_db: -14
+
+  - name: cine_tom_reverse_swell
+    file: drums_cinematic/tom_reverse_swell.wav
+    duration: 6.0
+    tags: [cinematic, reverse, swell, transition, epic]
+    keywords: ["reverse drum swell", "drum transition", "building drum"]
+    generator: drum
+    params:
+      type: reverse
+      decay: 5.0
+    gain_db: -12
+
+  - name: cine_earthquake_drum
+    file: drums_cinematic/earthquake_drum.wav
+    duration: 8.0
+    tags: [earthquake, drum, rumble, distant, massive]
+    keywords: ["earthquake drum", "distant thunder drum", "massive rumble"]
+    generator: drum
+    params:
+      type: earthquake
+      freq: 25
+      distance: far
+    gain_db: -10
+
+  - name: cine_granular_dust
+    file: drums_cinematic/granular_dust.wav
+    duration: 12.0
+    tags: [granular, dust, texture, atmospheric, experimental]
+    keywords: ["granular drum", "dust texture", "drum particles"]
+    generator: drum
+    params:
+      type: granular
+      grain_size: 50
+      density: 0.4
+    gain_db: -16
+
+# =============================================================================
+# EXPERIMENTAL DRUM TEXTURES (NEW)
+# =============================================================================
+drums_experimental:
+  - name: exp_stretched_frame
+    file: drums_experimental/stretched_frame.wav
+    duration: 20.0
+    tags: [stretched, frame, ethereal, experimental, ambient]
+    keywords: ["stretched drum", "time stretched", "ethereal drum"]
+    generator: drum
+    params:
+      type: stretched
+      stretch_factor: 10.0
+      source: frame
+    gain_db: -16
+
+  - name: exp_reverse_breath
+    file: drums_experimental/reverse_breath.wav
+    duration: 8.0
+    tags: [reverse, breath, drum, whoosh, portal]
+    keywords: ["reverse drum breath", "drum whoosh", "portal drum"]
+    generator: drum
+    params:
+      type: reverse
+      source: frame
+      fade: true
+    gain_db: -14
+
+  - name: exp_granular_cloud
+    file: drums_experimental/granular_cloud.wav
+    duration: 15.0
+    tags: [granular, cloud, particles, shifting, experimental]
+    keywords: ["granular cloud", "drum particles", "shifting dust"]
+    generator: drum
+    params:
+      type: granular
+      grain_size: 30
+      scatter: 0.8
+    gain_db: -18
+
+  - name: exp_rim_scrape
+    file: drums_experimental/rim_scrape.wav
+    duration: 6.0
+    tags: [rim, scrape, eerie, texture, experimental]
+    keywords: ["rim scrape", "eerie drum", "stick scrape"]
+    generator: drum
+    params:
+      type: rim_scrape
+      duration: 5.0
+      resonance: 0.5
+    gain_db: -14
+
+  - name: exp_skin_rattle
+    file: drums_experimental/skin_rattle.wav
+    duration: 4.0
+    tags: [skin, rattle, loose, experimental, texture]
+    keywords: ["skin rattle", "loose drum", "drum rattle"]
+    generator: drum
+    params:
+      type: skin_rattle
+      looseness: 0.7
+    gain_db: -14
+
+  - name: exp_spectral_choir
+    file: drums_experimental/spectral_choir.wav
+    duration: 15.0
+    tags: [spectral, choir, harmonic, ethereal, experimental]
+    keywords: ["spectral drum choir", "harmonic drum", "drum harmonics"]
+    generator: drum
+    params:
+      type: spectral
+      harmonics: 8
+      spread: 0.6
+    gain_db: -16
+
+  - name: exp_dimensional_phase
+    file: drums_experimental/dimensional_phase.wav
+    duration: 10.0
+    tags: [dimensional, phase, stereo, experimental, portal]
+    keywords: ["dimensional drum", "phase drum", "portal heartbeat"]
+    generator: drum
+    params:
+      type: phase
+      phase_offset: 0.02
+      freq: 60
+    gain_db: -14
+
+# =============================================================================
+# TRANSITIONS & PORTALS (NEW)
+# =============================================================================
+transitions:
+  - name: trans_reverse_sweep
+    file: transitions/reverse_sweep.wav
+    duration: 6.0
+    tags: [reverse, sweep, transition, portal, buildup]
+    keywords: ["reverse sweep", "transition buildup", "portal opening"]
+    generator: transition
+    params:
+      type: reverse
+      rise_time: 5.0
+    gain_db: -12
+
+  - name: trans_dimensional_whoosh
+    file: transitions/dimensional_whoosh.wav
+    duration: 4.0
+    tags: [dimensional, whoosh, shift, portal, movement]
+    keywords: ["dimensional whoosh", "portal shift", "realm transition"]
+    generator: transition
+    params:
+      type: whoosh
+      speed: medium
+      stereo_width: 0.8
+    gain_db: -10
+
+  - name: trans_portal_shimmer_rise
+    file: transitions/portal_shimmer_rise.wav
+    duration: 8.0
+    tags: [portal, shimmer, rise, opening, magical]
+    keywords: ["portal shimmer", "magical opening", "shimmer rise"]
+    generator: transition
+    params:
+      type: shimmer_rise
+      start_freq: 200
+      end_freq: 4000
+    gain_db: -14
+
+  - name: trans_crystal_scatter
+    file: transitions/crystal_scatter.wav
+    duration: 5.0
+    tags: [crystal, scatter, sparkle, transition, magical]
+    keywords: ["crystal scatter", "sparkle transition", "magical burst"]
+    generator: transition
+    params:
+      type: scatter
+      particles: 20
+      spread: 0.7
+    gain_db: -14
+
+  - name: trans_infinity_riser
+    file: transitions/infinity_riser.wav
+    duration: 40.0
+    tags: [infinity, riser, slow, building, endless]
+    keywords: ["infinity riser", "endless rise", "slow buildup"]
+    generator: transition
+    params:
+      type: shepard
+      rate: 0.02
+    gain_db: -18
+
+  - name: trans_sub_boom_arrival
+    file: transitions/sub_boom_arrival.wav
+    duration: 4.0
+    tags: [sub, boom, arrival, impact, presence]
+    keywords: ["arrival boom", "presence impact", "entity arrival"]
+    generator: transition
+    params:
+      type: boom
+      freq: 35
+      decay: 3.0
+    gain_db: -10
+
+  - name: trans_vacuum_suck
+    file: transitions/vacuum_suck.wav
+    duration: 3.0
+    tags: [vacuum, suck, pull, transition, soft]
+    keywords: ["vacuum suck", "atmospheric pull", "gentle vacuum"]
+    generator: transition
+    params:
+      type: vacuum
+      intensity: 0.5
+    gain_db: -12
+
+# =============================================================================
+# PRESENCE & SPIRIT (NEW)
+# =============================================================================
+presence:
+  - name: presence_phase_whisper
+    file: presence/phase_whisper.wav
+    duration: 8.0
+    tags: [phase, whisper, spirit, guide, ethereal]
+    keywords: ["phase whisper", "spirit whisper", "guide presence"]
+    generator: presence
+    params:
+      type: whisper
+      phase_diff: 0.01
+      formant: 1200
+    gain_db: -18
+
+  - name: presence_formant_breath
+    file: presence/formant_breath.wav
+    duration: 6.0
+    tags: [formant, breath, voice, ethereal, presence]
+    keywords: ["formant breath", "ethereal voice", "breath presence"]
+    generator: presence
+    params:
+      type: breath
+      formant_freq: 800
+    gain_db: -16
+
+  - name: presence_vocal_air
+    file: presence/vocal_air.wav
+    duration: 10.0
+    tags: [vocal, air, soft, angelic, gentle]
+    keywords: ["vocal air", "soft angelic", "gentle voice"]
+    generator: presence
+    params:
+      type: vocal_air
+      brightness: 0.4
+    gain_db: -20
+
+  - name: presence_overtone_drone
+    file: presence/overtone_drone.wav
+    duration: 20.0
+    tags: [overtone, drone, throat, harmonic, sacred]
+    keywords: ["overtone drone", "throat singing", "harmonic drone"]
+    generator: presence
+    params:
+      type: overtone
+      base_freq: 150
+      harmonics: 6
+    loop: true
+    gain_db: -18
+
+  - name: presence_arrival_shimmer
+    file: presence/arrival_shimmer.wav
+    duration: 6.0
+    tags: [arrival, shimmer, entity, presence, transcendent]
+    keywords: ["arrival shimmer", "entity presence", "guide arrival"]
+    generator: presence
+    params:
+      type: shimmer
+      rise_time: 2.0
+      sustain: 3.0
+    gain_db: -14
+
+  - name: presence_cloak_rustle
+    file: presence/cloak_rustle.wav
+    duration: 3.0
+    tags: [cloak, rustle, fabric, movement, spirit]
+    keywords: ["cloak rustle", "robe sweep", "fabric movement"]
+    generator: presence
+    params:
+      type: fabric
+      density: 0.4
+    gain_db: -16
+
+# =============================================================================
+# ULTRA-ADVANCED (NEW)
+# =============================================================================
+advanced:
+  - name: adv_fractal_evolving
+    file: advanced/fractal_evolving.wav
+    duration: 60.0
+    tags: [fractal, evolving, infinite, experimental, ambient]
+    keywords: ["fractal atmosphere", "evolving cloud", "infinite texture"]
+    generator: advanced
+    params:
+      type: fractal
+      complexity: 0.7
+      evolution_rate: 0.01
+    loop: true
+    gain_db: -22
+
+  - name: adv_particle_drift
+    file: advanced/particle_drift.wav
+    duration: 30.0
+    tags: [particle, drift, cosmic, floating, ethereal]
+    keywords: ["particle drift", "cosmic particles", "floating texture"]
+    generator: advanced
+    params:
+      type: particles
+      density: 0.3
+      drift_rate: 0.05
+    loop: true
+    gain_db: -20
+
+  - name: adv_spectral_drum_choir
+    file: advanced/spectral_drum_choir.wav
+    duration: 20.0
+    tags: [spectral, drum, choir, harmonic, otherworldly]
+    keywords: ["spectral drum choir", "drum harmonics", "otherworldly drums"]
+    generator: advanced
+    params:
+      type: spectral_choir
+      source: frame
+      voices: 8
+    gain_db: -16
+
+  - name: adv_lunar_resonance
+    file: advanced/lunar_resonance.wav
+    duration: 15.0
+    tags: [lunar, resonance, moon, 210hz, dreamwork]
+    keywords: ["lunar resonance", "moon frequency", "210 hz drum"]
+    generator: advanced
+    params:
+      type: tuned_drum
+      freq: 210.42
+      decay: 12.0
+    gain_db: -14
+
+  - name: adv_solar_radiance
+    file: advanced/solar_radiance.wav
+    duration: 15.0
+    tags: [solar, radiance, sun, 126hz, activation]
+    keywords: ["solar radiance", "sun frequency", "126 hz drum"]
+    generator: advanced
+    params:
+      type: tuned_drum
+      freq: 126.22
+      decay: 12.0
+    gain_db: -14
+
+  - name: adv_resonant_field_pulse
+    file: advanced/resonant_field_pulse.wav
+    duration: 10.0
+    tags: [resonant, field, pulse, planet, grounding]
+    keywords: ["resonant field", "planet pulse", "field resonance"]
+    generator: advanced
+    params:
+      type: field_pulse
+      freq: 30
+      earth_blend: 0.5
+    gain_db: -14
+
+  - name: adv_astral_sparkfield
+    file: advanced/astral_sparkfield.wav
+    duration: 25.0
+    tags: [astral, spark, field, cosmic, stars]
+    keywords: ["astral sparkfield", "star particles", "cosmic field"]
+    generator: advanced
+    params:
+      type: sparkfield
+      density: 0.5
+      freq_range: [3000, 12000]
+    loop: true
+    gain_db: -20

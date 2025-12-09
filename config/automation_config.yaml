@@ -88,18 +88,18 @@ logging:
 
 # CRON SCHEDULING
 # ===============
-# DISABLED until manual testing is complete!
-# Set enabled: true after running the full test protocol.
+# Automation enabled as of 2025-12-09
 cron:
-  enabled: false
+  enabled: true
 
   # Nightly generation: 9pm MST = 4am UTC next day
   nightly_generation: "0 4 * * *"
 
-  # Daily upload times will be set from YouTube analytics
-  # These are placeholders until analytics are fetched
-  daily_upload: null
-  daily_shorts: null
+  # Daily upload: 12pm MST = 7pm UTC
+  daily_upload: "0 19 * * *"
+
+  # Daily shorts: 8am MST = 3pm UTC
+  daily_shorts: "0 15 * * *"
 
   # Automated learning jobs (collects analytics and updates knowledge base)
   # Daily: Fetch analytics for videos uploaded 48+ hours ago

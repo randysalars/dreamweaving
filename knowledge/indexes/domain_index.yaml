@@ -429,13 +429,60 @@ domains:
         entries: []
         status: "active"
 
+  # ---------------------------------------------------------------------------
+  # ARCHETYPES - Recurring archetype codex and tracking (NEW)
+  # ---------------------------------------------------------------------------
+  archetypes:
+    description: "Recurring archetype library with cross-tradition equivalents and session tracking"
+    status: "active"
+    files:
+      archetype_codex:
+        path: "archetypes/archetype_codex.yaml"
+        entries: [inner_healer, great_physician, shekinah_restorer, phoenix_renewal, sacred_deathbringer, oracle_of_light, archangel_michael, solar_king, sophia_wisdom, rose_mother, logos_bearer, guardian_father, transfigured_one, world_tree_guardian, memory_palace_keeper, heart_flame_tender, joy_child, providence_angel, dream_architect, portal_keeper]
+        status: "active"
+        notes: "100 archetypes planned across 12 families, 20 currently defined"
+      archetype_history:
+        path: "archetypes/archetype_history.yaml"
+        entries: []
+        status: "pending"
+        notes: "Session tracking for recurring archetype usage"
+
+  # ---------------------------------------------------------------------------
+  # INDEXES - Cross-reference indexes (meta)
+  # ---------------------------------------------------------------------------
+  indexes:
+    description: "Cross-reference indexes for knowledge retrieval"
+    status: "active"
+    files:
+      domain_index:
+        path: "indexes/domain_index.yaml"
+        status: "active"
+      outcome_index:
+        path: "indexes/outcome_index.yaml"
+        status: "active"
+      contraindication_index:
+        path: "indexes/contraindication_index.yaml"
+        status: "active"
+      archetype_family_index:
+        path: "indexes/archetype_family_index.yaml"
+        status: "active"
+        notes: "Maps archetype families to archetypes and attributes"
+      tradition_equivalence_index:
+        path: "indexes/tradition_equivalence_index.yaml"
+        status: "active"
+        notes: "Cross-tradition archetype name mappings"
+      color_frequency_map:
+        path: "indexes/color_frequency_map.yaml"
+        status: "active"
+        notes: "Visual and audio attributes for archetypes"
+
 # =============================================================================
 # STATISTICS
 # =============================================================================
 
 statistics:
-  total_domains: 13
-  total_files: 78
-  files_active: 12
+  total_domains: 15
+  total_files: 84
+  files_active: 18
   files_pending: 66
-  last_entry_added: "2025-12-05"
+  last_entry_added: "2025-12-09"
