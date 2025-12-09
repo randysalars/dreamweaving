@@ -59,6 +59,7 @@ except ImportError:
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 CONFIG_PATH = PROJECT_ROOT / "config" / "notion_config.yaml"
 VECTOR_DB_PATH = PROJECT_ROOT / "knowledge" / "vector_db"
+FILE_MANIFEST_PATH = VECTOR_DB_PATH / "file_manifest.json"
 
 
 def load_config() -> Dict[str, Any]:
@@ -302,10 +303,230 @@ class NotionEmbeddingsPipeline:
         try:
             self.qdrant.delete_collection(self.collection_name)
             self._init_collection()
+            # Also clear file manifest
+            if FILE_MANIFEST_PATH.exists():
+                FILE_MANIFEST_PATH.unlink()
             return True
         except Exception as e:
             print(f"Error clearing index: {e}")
             return False
+
+    # ========== Incremental Update Methods ==========
+
+    def load_file_manifest(self) -> Dict[str, Any]:
+        """Load the file manifest tracking individual file hashes and vector IDs."""
+        if FILE_MANIFEST_PATH.exists():
+            try:
+                return json.loads(FILE_MANIFEST_PATH.read_text())
+            except json.JSONDecodeError:
+                print("Warning: Failed to parse file manifest, starting fresh")
+        return {"files": {}, "last_sync": None, "statistics": {}}
+
+    def save_file_manifest(self, manifest: Dict[str, Any]):
+        """Save the file manifest."""
+        manifest["last_sync"] = datetime.now().isoformat()
+        FILE_MANIFEST_PATH.parent.mkdir(parents=True, exist_ok=True)
+        FILE_MANIFEST_PATH.write_text(json.dumps(manifest, indent=2))
+
+    def get_file_hash(self, filepath: Path) -> str:
+        """Calculate MD5 hash of a single file."""
+        return hashlib.md5(filepath.read_bytes()).hexdigest()
+
+    def detect_changes(self, export_dir: Path) -> Dict[str, List[Path]]:
+        """
+        Detect which files have been added, modified, or deleted since last sync.
+
+        Returns:
+            Dictionary with 'added', 'modified', 'deleted' lists of file paths.
+        """
+        manifest = self.load_file_manifest()
+        old_files = manifest.get("files", {})
+
+        # Get current files
+        current_files = {}
+        for md_file in export_dir.glob("**/*.md"):
+            rel_path = str(md_file.relative_to(export_dir))
+            current_files[rel_path] = {
+                "hash": self.get_file_hash(md_file),
+                "size": md_file.stat().st_size,
+                "mtime": md_file.stat().st_mtime
+            }
+
+        changes = {
+            "added": [],
+            "modified": [],
+            "deleted": []
+        }
+
+        # Find added and modified files
+        for rel_path, info in current_files.items():
+            if rel_path not in old_files:
+                changes["added"].append(export_dir / rel_path)
+            elif info["hash"] != old_files[rel_path].get("hash"):
+                changes["modified"].append(export_dir / rel_path)
+
+        # Find deleted files
+        for rel_path in old_files:
+            if rel_path not in current_files:
+                changes["deleted"].append(rel_path)
+
+        return changes
+
+    def index_incremental(self, export_dir: Optional[Path] = None) -> Dict[str, Any]:
+        """
+        Incremental indexing - only process changed files.
+
+        This is MUCH faster than full re-indexing when only a few files changed.
+
+        Args:
+            export_dir: Directory containing exported Notion content
+
+        Returns:
+            Statistics about the incremental update
+        """
+        if export_dir is None:
+            export_dir = PROJECT_ROOT / "knowledge" / "notion_export"
+
+        if not export_dir.exists():
+            raise FileNotFoundError(f"Export directory not found: {export_dir}")
+
+        # Detect changes
+        changes = self.detect_changes(export_dir)
+        total_changes = len(changes["added"]) + len(changes["modified"]) + len(changes["deleted"])
+
+        if total_changes == 0:
+            print("No changes detected - index is up to date")
+            return {
+                "status": "no_changes",
+                "added": 0,
+                "modified": 0,
+                "deleted": 0,
+                "vectors_added": 0,
+                "vectors_removed": 0
+            }
+
+        print(f"Detected changes: +{len(changes['added'])} added, "
+              f"~{len(changes['modified'])} modified, -{len(changes['deleted'])} deleted")
+
+        manifest = self.load_file_manifest()
+        stats = {
+            "added": len(changes["added"]),
+            "modified": len(changes["modified"]),
+            "deleted": len(changes["deleted"]),
+            "vectors_added": 0,
+            "vectors_removed": 0
+        }
+
+        # 1. Delete vectors for modified files
+        for filepath in changes["modified"]:
+            rel_path = str(filepath.relative_to(export_dir))
+            if rel_path in manifest["files"]:
+                old_info = manifest["files"][rel_path]
+                vector_ids = old_info.get("vector_ids", [])
+                if vector_ids:
+                    self._delete_vectors_by_ids(vector_ids)
+                    stats["vectors_removed"] += len(vector_ids)
+
+        # Handle deleted files
+        for rel_path in changes["deleted"]:
+            if rel_path in manifest["files"]:
+                old_info = manifest["files"][rel_path]
+                vector_ids = old_info.get("vector_ids", [])
+                if vector_ids:
+                    self._delete_vectors_by_ids(vector_ids)
+                    stats["vectors_removed"] += len(vector_ids)
+                # Remove from manifest
+                del manifest["files"][rel_path]
+
+        # 2. Index added and modified files
+        files_to_index = changes["added"] + changes["modified"]
+        for filepath in files_to_index:
+            try:
+                rel_path = str(filepath.relative_to(export_dir))
+
+                # Determine if page or database entry
+                if "databases" in str(filepath):
+                    db_name = filepath.parent.name
+                    chunks = self._process_entry_file(filepath, database=db_name)
+                else:
+                    chunks = self._process_page_file(filepath)
+
+                # Create and upsert points
+                points = self._create_points(chunks)
+                if points:
+                    self.qdrant.upsert(
+                        collection_name=self.collection_name,
+                        points=points
+                    )
+                    stats["vectors_added"] += len(points)
+
+                # Update manifest
+                manifest["files"][rel_path] = {
+                    "hash": self.get_file_hash(filepath),
+                    "size": filepath.stat().st_size,
+                    "chunks": len(chunks),
+                    "vector_ids": [p.id for p in points]
+                }
+
+            except Exception as e:
+                print(f"Error processing {filepath.name}: {e}")
+
+        # 3. Update statistics
+        manifest["statistics"] = {
+            "total_files": len(manifest["files"]),
+            "total_vectors": sum(len(f.get("vector_ids", [])) for f in manifest["files"].values())
+        }
+
+        # 4. Save updated manifest
+        self.save_file_manifest(manifest)
+
+        return stats
+
+    def _delete_vectors_by_ids(self, vector_ids: List[str]):
+        """Delete specific vectors by their IDs."""
+        if not vector_ids:
+            return
+        try:
+            from qdrant_client.models import PointIdsList
+            self.qdrant.delete(
+                collection_name=self.collection_name,
+                points_selector=PointIdsList(points=vector_ids)
+            )
+        except Exception as e:
+            print(f"Warning: Failed to delete vectors: {e}")
+
+    def rebuild_manifest_from_index(self, export_dir: Optional[Path] = None) -> Dict[str, Any]:
+        """
+        Rebuild the file manifest from scratch based on current export files.
+
+        Use this to initialize incremental updates on an existing full index,
+        or to repair a corrupted manifest.
+        """
+        if export_dir is None:
+            export_dir = PROJECT_ROOT / "knowledge" / "notion_export"
+
+        print("Rebuilding file manifest from export directory...")
+        manifest = {"files": {}, "statistics": {}}
+
+        for md_file in export_dir.glob("**/*.md"):
+            rel_path = str(md_file.relative_to(export_dir))
+            manifest["files"][rel_path] = {
+                "hash": self.get_file_hash(md_file),
+                "size": md_file.stat().st_size,
+                "chunks": 0,  # Unknown without re-processing
+                "vector_ids": []  # Unknown without re-indexing
+            }
+
+        manifest["statistics"] = {
+            "total_files": len(manifest["files"]),
+            "total_vectors": 0,  # Unknown
+            "manifest_rebuilt": True
+        }
+
+        self.save_file_manifest(manifest)
+        print(f"Manifest rebuilt with {len(manifest['files'])} files")
+
+        return manifest
 
     def _process_page_file(self, filepath: Path) -> List[Dict]:
         """Process a page markdown file into chunks."""
