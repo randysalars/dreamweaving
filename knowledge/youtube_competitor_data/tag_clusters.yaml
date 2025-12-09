@@ -1,0 +1,1164 @@
+clusters:
+  by_category:
+    affirmations:
+    - &id001
+      avg_likes: 28877
+      avg_views: 17772372
+      categories:
+      - binaural_beats
+      - affirmations
+      - sleep
+      competition: high
+      count: 5
+      engagement_rate: 0.0016
+      tag: '#mindfulness'
+      volume: low
+    - &id002
+      avg_likes: 202869
+      avg_views: 17536766
+      categories:
+      - sleep
+      - spiritual
+      - hypnosis
+      - affirmations
+      - meditation
+      - binaural_beats
+      competition: high
+      count: 18
+      engagement_rate: 0.0116
+      tag: shorts
+      volume: medium
+    - &id003
+      avg_likes: 59945
+      avg_views: 10196376
+      categories:
+      - sleep
+      - spiritual
+      - hypnosis
+      - affirmations
+      - meditation
+      - binaural_beats
+      competition: high
+      count: 12
+      engagement_rate: 0.0059
+      tag: sleeping music for deep sleeping
+      volume: medium
+    - &id023
+      avg_likes: 174241
+      avg_views: 7254379
+      categories:
+      - binaural_beats
+      - affirmations
+      - meditation
+      - spiritual
+      competition: high
+      count: 10
+      engagement_rate: 0.024
+      tag: mindfulness meditation
+      volume: medium
+    - &id024
+      avg_likes: 104800
+      avg_views: 7147731
+      categories:
+      - affirmations
+      - meditation
+      - spiritual
+      competition: high
+      count: 5
+      engagement_rate: 0.0147
+      tag: energy healing
+      volume: low
+    - &id025
+      avg_likes: 186332
+      avg_views: 6920392
+      categories:
+      - affirmations
+      - sleep
+      - spiritual
+      - meditation
+      competition: high
+      count: 9
+      engagement_rate: 0.0269
+      tag: viral shorts
+      volume: low
+    - &id026
+      avg_likes: 171319
+      avg_views: 6775745
+      categories:
+      - affirmations
+      - meditation
+      - spiritual
+      competition: high
+      count: 16
+      engagement_rate: 0.0253
+      tag: spiritual journey
+      volume: medium
+    - &id033
+      avg_likes: 50713
+      avg_views: 6381647
+      categories:
+      - sleep
+      - hypnosis
+      - affirmations
+      - meditation
+      - binaural_beats
+      competition: high
+      count: 32
+      engagement_rate: 0.0079
+      tag: relaxing
+      volume: high
+    - &id029
+      avg_likes: 61099
+      avg_views: 5848846
+      categories:
+      - sleep
+      - hypnosis
+      - affirmations
+      - meditation
+      - binaural_beats
+      competition: high
+      count: 54
+      engagement_rate: 0.0104
+      tag: deep sleep music
+      volume: high
+    - &id031
+      avg_likes: 105833
+      avg_views: 5676458
+      categories:
+      - hypnosis
+      - affirmations
+      - sleep
+      - meditation
+      competition: high
+      count: 36
+      engagement_rate: 0.0186
+      tag: asmr
+      volume: high
+    - avg_likes: 120702
+      avg_views: 5407719
+      categories:
+      - binaural_beats
+      - affirmations
+      - meditation
+      - spiritual
+      competition: high
+      count: 16
+      engagement_rate: 0.0223
+      tag: inner peace
+      volume: medium
+    - &id027
+      avg_likes: 57179
+      avg_views: 5217679
+      categories:
+      - sleep
+      - spiritual
+      - hypnosis
+      - affirmations
+      - meditation
+      - binaural_beats
+      competition: high
+      count: 89
+      engagement_rate: 0.011
+      tag: meditation music
+      volume: high
+    - &id030
+      avg_likes: 61791
+      avg_views: 5153637
+      categories:
+      - binaural_beats
+      - affirmations
+      - sleep
+      - meditation
+      competition: high
+      count: 39
+      engagement_rate: 0.012
+      tag: 432hz
+      volume: high
+    - avg_likes: 121638
+      avg_views: 5133057
+      categories:
+      - affirmations
+      - meditation
+      - spiritual
+      competition: high
+      count: 16
+      engagement_rate: 0.0237
+      tag: spiritual growth
+      volume: medium
+    - avg_likes: 126397
+      avg_views: 4778449
+      categories:
+      - affirmations
+      - sleep
+      - spiritual
+      - meditation
+      competition: high
+      count: 18
+      engagement_rate: 0.0265
+      tag: spirituality
+      volume: medium
+    - &id028
+      avg_likes: 53934
+      avg_views: 4679404
+      categories:
+      - sleep
+      - spiritual
+      - hypnosis
+      - affirmations
+      - meditation
+      - binaural_beats
+      competition: high
+      count: 81
+      engagement_rate: 0.0115
+      tag: sleep music
+      volume: high
+    - avg_likes: 73377
+      avg_views: 4665984
+      categories:
+      - hypnosis
+      - affirmations
+      - spiritual
+      competition: high
+      count: 8
+      engagement_rate: 0.0157
+      tag: peace
+      volume: low
+    - avg_likes: 56237
+      avg_views: 4645230
+      categories:
+      - hypnosis
+      - affirmations
+      competition: high
+      count: 16
+      engagement_rate: 0.0121
+      tag: hypnosis
+      volume: medium
+    - avg_likes: 128796
+      avg_views: 4034947
+      categories:
+      - affirmations
+      - meditation
+      - spiritual
+      competition: high
+      count: 14
+      engagement_rate: 0.0319
+      tag: inspiration
+      volume: medium
+    - avg_likes: 101609
+      avg_views: 4000278
+      categories:
+      - hypnosis
+      - affirmations
+      competition: high
+      count: 5
+      engagement_rate: 0.0254
+      tag: manifest anything
+      volume: low
+    binaural_beats:
+    - &id004
+      avg_likes: 95303
+      avg_views: 24651118
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 9
+      engagement_rate: 0.0039
+      tag: rain
+      volume: low
+    - &id005
+      avg_likes: 95296
+      avg_views: 19244578
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.005
+      tag: relaxing sleeping music
+      volume: low
+    - &id006
+      avg_likes: 95296
+      avg_views: 19244578
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.005
+      tag: soft piano music
+      volume: low
+    - &id007
+      avg_likes: 95296
+      avg_views: 19244578
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.005
+      tag: beautiful piano music
+      volume: low
+    - &id008
+      avg_likes: 95296
+      avg_views: 19244578
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.005
+      tag: bakground music
+      volume: low
+    - &id009
+      avg_likes: 95296
+      avg_views: 19244578
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.005
+      tag: peaceful piano music
+      volume: low
+    - *id001
+    - *id002
+    - &id014
+      avg_likes: 37569
+      avg_views: 15111714
+      categories:
+      - binaural_beats
+      - sleep
+      - meditation
+      competition: high
+      count: 6
+      engagement_rate: 0.0025
+      tag: '#relaxingmusic'
+      volume: low
+    - &id010
+      avg_likes: 70257
+      avg_views: 14448896
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 7
+      engagement_rate: 0.0049
+      tag: beautiful music
+      volume: low
+    - &id015
+      avg_likes: 130965
+      avg_views: 10993293
+      categories:
+      - binaural_beats
+      - sleep
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.0119
+      tag: mozart
+      volume: low
+    - &id011
+      avg_likes: 88946
+      avg_views: 10841094
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 15
+      engagement_rate: 0.0082
+      tag: piano relaxing music
+      volume: medium
+    - *id003
+    - &id016
+      avg_likes: 132721
+      avg_views: 9894648
+      categories:
+      - binaural_beats
+      - sleep
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.0134
+      tag: classical music
+      volume: low
+    - &id017
+      avg_likes: 132721
+      avg_views: 9894648
+      categories:
+      - binaural_beats
+      - sleep
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.0134
+      tag: classical
+      volume: low
+    - &id012
+      avg_likes: 77972
+      avg_views: 9447915
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 17
+      engagement_rate: 0.0083
+      tag: piano
+      volume: medium
+    - &id013
+      avg_likes: 96258
+      avg_views: 9272564
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 23
+      engagement_rate: 0.0104
+      tag: soft music
+      volume: high
+    - &id034
+      avg_likes: 79681
+      avg_views: 7854185
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 29
+      engagement_rate: 0.0101
+      tag: piano music
+      volume: high
+    - avg_likes: 70749
+      avg_views: 7346326
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 15
+      engagement_rate: 0.0096
+      tag: rain sounds
+      volume: medium
+    - &id032
+      avg_likes: 74651
+      avg_views: 7296502
+      categories:
+      - binaural_beats
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 33
+      engagement_rate: 0.0102
+      tag: soothing music
+      volume: high
+    hypnosis:
+    - *id004
+    - &id020
+      avg_likes: 340044
+      avg_views: 20266704
+      categories:
+      - hypnosis
+      - sleep
+      competition: high
+      count: 5
+      engagement_rate: 0.0168
+      tag: comedy
+      volume: low
+    - *id005
+    - *id006
+    - *id007
+    - *id008
+    - *id009
+    - *id002
+    - *id010
+    - *id011
+    - *id003
+    - *id012
+    - *id013
+    - &id018
+      avg_likes: 108787
+      avg_views: 8706591
+      categories:
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 9
+      engagement_rate: 0.0125
+      tag: rain ambience
+      volume: low
+    - &id019
+      avg_likes: 120546
+      avg_views: 8694929
+      categories:
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 8
+      engagement_rate: 0.0139
+      tag: soothing rain
+      volume: low
+    - avg_likes: 131706
+      avg_views: 8623580
+      categories:
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 7
+      engagement_rate: 0.0153
+      tag: soft rain sounds
+      volume: low
+    - avg_likes: 151205
+      avg_views: 8594195
+      categories:
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 6
+      engagement_rate: 0.0176
+      tag: rain sound sleep
+      volume: low
+    - avg_likes: 151205
+      avg_views: 8594195
+      categories:
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 6
+      engagement_rate: 0.0176
+      tag: gentle rain
+      volume: low
+    - avg_likes: 151205
+      avg_views: 8594195
+      categories:
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 6
+      engagement_rate: 0.0176
+      tag: warm room
+      volume: low
+    - avg_likes: 151205
+      avg_views: 8594195
+      categories:
+      - hypnosis
+      - sleep
+      - meditation
+      competition: high
+      count: 6
+      engagement_rate: 0.0176
+      tag: rain and piano
+      volume: low
+    meditation:
+    - *id004
+    - *id005
+    - *id006
+    - *id007
+    - *id008
+    - *id009
+    - *id002
+    - *id014
+    - *id010
+    - *id015
+    - *id011
+    - *id003
+    - *id016
+    - *id017
+    - *id012
+    - &id021
+      avg_likes: 243244
+      avg_views: 9316341
+      categories:
+      - sleep
+      - spiritual
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.0261
+      tag: trending
+      volume: low
+    - &id022
+      avg_likes: 230871
+      avg_views: 9284891
+      categories:
+      - sleep
+      - spiritual
+      - meditation
+      competition: high
+      count: 9
+      engagement_rate: 0.0249
+      tag: krishna
+      volume: low
+    - *id013
+    - *id018
+    - *id019
+    sleep:
+    - *id004
+    - *id020
+    - *id005
+    - *id006
+    - *id007
+    - *id008
+    - *id009
+    - *id001
+    - *id002
+    - *id014
+    - *id010
+    - *id015
+    - *id011
+    - *id003
+    - *id016
+    - *id017
+    - *id012
+    - *id021
+    - *id022
+    - *id013
+    spiritual:
+    - *id002
+    - *id003
+    - *id021
+    - *id022
+    - avg_likes: 309831
+      avg_views: 7945981
+      categories:
+      - sleep
+      - spiritual
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.039
+      tag: bhakti
+      volume: low
+    - *id023
+    - avg_likes: 96852
+      avg_views: 7183520
+      categories:
+      - binaural_beats
+      - sleep
+      - spiritual
+      - meditation
+      competition: high
+      count: 5
+      engagement_rate: 0.0135
+      tag: youtube shorts
+      volume: low
+    - *id024
+    - *id025
+    - *id026
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: chitralekhaji shorts
+      volume: low
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: chitralekhaji shorts video
+      volume: low
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: chitralekhaji podcast
+      volume: low
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: chitralekhaji podcast shorts
+      volume: low
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: chitralekhaji motivational video
+      volume: low
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: chitralekhaji status
+      volume: low
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: devi chitralekhaji motivational speech
+      volume: low
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: motivational quotes
+      volume: low
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: shrikrishna
+      volume: low
+    - avg_likes: 181645
+      avg_views: 6643470
+      categories:
+      - spiritual
+      competition: high
+      count: 6
+      engagement_rate: 0.0273
+      tag: chitralekhaji
+      volume: low
+  high_performance:
+  - avg_likes: 100882
+    avg_views: 2184118
+    categories:
+    - binaural_beats
+    - affirmations
+    - meditation
+    competition: high
+    count: 5
+    engagement_rate: 0.0462
+    tag: motivational
+    volume: low
+  - avg_likes: 121621
+    avg_views: 2796225
+    categories:
+    - hypnosis
+    - affirmations
+    - meditation
+    competition: high
+    count: 7
+    engagement_rate: 0.0435
+    tag: louise hay
+    volume: low
+  - avg_likes: 65085
+    avg_views: 1625001
+    categories:
+    - binaural_beats
+    - affirmations
+    - meditation
+    competition: high
+    count: 8
+    engagement_rate: 0.0401
+    tag: motivational video
+    volume: low
+  high_volume:
+  - avg_likes: 55734
+    avg_views: 5103308
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 90
+    engagement_rate: 0.0109
+    tag: relaxing music
+    volume: high
+  - *id027
+  - *id028
+  - avg_likes: 54762
+    avg_views: 2836138
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - affirmations
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 77
+    engagement_rate: 0.0193
+    tag: meditation
+    volume: high
+  - avg_likes: 41353
+    avg_views: 4544858
+    categories:
+    - binaural_beats
+    - hypnosis
+    - sleep
+    - meditation
+    competition: high
+    count: 55
+    engagement_rate: 0.0091
+    tag: healing music
+    volume: high
+  - *id029
+  - avg_likes: 44427
+    avg_views: 2842677
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - affirmations
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 47
+    engagement_rate: 0.0156
+    tag: sleep
+    volume: high
+  - avg_likes: 42679
+    avg_views: 3112362
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - affirmations
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 47
+    engagement_rate: 0.0137
+    tag: deep sleep
+    volume: high
+  - avg_likes: 63423
+    avg_views: 5841980
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 46
+    engagement_rate: 0.0109
+    tag: peaceful music
+    volume: high
+  - avg_likes: 29421
+    avg_views: 2139874
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - affirmations
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 45
+    engagement_rate: 0.0137
+    tag: sleep meditation
+    volume: high
+  - avg_likes: 65748
+    avg_views: 6112120
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 43
+    engagement_rate: 0.0108
+    tag: calm music
+    volume: high
+  - *id030
+  - avg_likes: 42014
+    avg_views: 3700115
+    categories:
+    - binaural_beats
+    - hypnosis
+    - sleep
+    - meditation
+    competition: high
+    count: 37
+    engagement_rate: 0.0114
+    tag: alpha waves
+    volume: high
+  - *id031
+  - *id032
+  - avg_likes: 31869
+    avg_views: 4825517
+    categories:
+    - binaural_beats
+    - hypnosis
+    - sleep
+    - meditation
+    competition: high
+    count: 33
+    engagement_rate: 0.0066
+    tag: calming music
+    volume: high
+  - avg_likes: 48602
+    avg_views: 1784193
+    categories:
+    - hypnosis
+    - affirmations
+    - spiritual
+    competition: high
+    count: 33
+    engagement_rate: 0.0272
+    tag: law of attraction
+    volume: high
+  - *id033
+  - avg_likes: 74774
+    avg_views: 7279749
+    categories:
+    - binaural_beats
+    - hypnosis
+    - sleep
+    - meditation
+    competition: high
+    count: 31
+    engagement_rate: 0.0103
+    tag: relaxing sleep music
+    volume: high
+  - avg_likes: 76586
+    avg_views: 6413399
+    categories:
+    - binaural_beats
+    - hypnosis
+    - sleep
+    - meditation
+    competition: high
+    count: 31
+    engagement_rate: 0.0119
+    tag: music
+    volume: high
+  - avg_likes: 51101
+    avg_views: 3700655
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 31
+    engagement_rate: 0.0138
+    tag: insomnia
+    volume: high
+  - *id034
+  - avg_likes: 61979
+    avg_views: 6914334
+    categories:
+    - binaural_beats
+    - hypnosis
+    - sleep
+    - meditation
+    competition: high
+    count: 29
+    engagement_rate: 0.009
+    tag: background music
+    volume: high
+  - avg_likes: 64809
+    avg_views: 2823639
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - affirmations
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 29
+    engagement_rate: 0.023
+    tag: mindfulness
+    volume: high
+  - avg_likes: 54040
+    avg_views: 6835280
+    categories:
+    - binaural_beats
+    - hypnosis
+    - sleep
+    - meditation
+    competition: high
+    count: 27
+    engagement_rate: 0.0079
+    tag: sleeping music
+    volume: high
+  - avg_likes: 50246
+    avg_views: 2905151
+    categories:
+    - spiritual
+    - hypnosis
+    - affirmations
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 27
+    engagement_rate: 0.0173
+    tag: spiritual awakening
+    volume: high
+  - avg_likes: 62291
+    avg_views: 3882840
+    categories:
+    - sleep
+    - hypnosis
+    - affirmations
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 26
+    engagement_rate: 0.016
+    tag: stress relief
+    volume: high
+  - avg_likes: 49915
+    avg_views: 3269430
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - affirmations
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 26
+    engagement_rate: 0.0153
+    tag: calm
+    volume: high
+  - avg_likes: 58081
+    avg_views: 4379540
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 24
+    engagement_rate: 0.0133
+    tag: relax
+    volume: high
+  - avg_likes: 22248
+    avg_views: 2079977
+    categories:
+    - sleep
+    - hypnosis
+    - affirmations
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 24
+    engagement_rate: 0.0107
+    tag: relaxation
+    volume: high
+  - avg_likes: 23148
+    avg_views: 978434
+    categories:
+    - binaural_beats
+    - hypnosis
+    - affirmations
+    - spiritual
+    competition: high
+    count: 24
+    engagement_rate: 0.0237
+    tag: manifestation
+    volume: high
+  - *id013
+  - avg_likes: 87892
+    avg_views: 6060646
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 23
+    engagement_rate: 0.0145
+    tag: music for sleep
+    volume: high
+  - avg_likes: 66757
+    avg_views: 2201596
+    categories:
+    - hypnosis
+    - affirmations
+    - meditation
+    - spiritual
+    competition: high
+    count: 21
+    engagement_rate: 0.0303
+    tag: guided meditation
+    volume: high
+  - avg_likes: 22010
+    avg_views: 902978
+    categories:
+    - hypnosis
+    - affirmations
+    competition: high
+    count: 21
+    engagement_rate: 0.0244
+    tag: affirmations
+    volume: high
+  - avg_likes: 54442
+    avg_views: 4131823
+    categories:
+    - sleep
+    - spiritual
+    - hypnosis
+    - meditation
+    - binaural_beats
+    competition: high
+    count: 20
+    engagement_rate: 0.0132
+    tag: spiritual healing
+    volume: high
+  - avg_likes: 99903
+    avg_views: 3211551
+    categories:
+    - affirmations
+    - meditation
+    - spiritual
+    competition: high
+    count: 20
+    engagement_rate: 0.0311
+    tag: motivation
+    volume: high
+extracted_at: '2025-12-08T16:05:33.746533'

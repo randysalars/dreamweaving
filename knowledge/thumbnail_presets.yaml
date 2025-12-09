@@ -1,0 +1,591 @@
+# =============================================================================
+# THUMBNAIL PRESETS - Centralized Template and Palette Definitions
+# =============================================================================
+# This file defines all available thumbnail templates and color palettes
+# for the Ultimate Thumbnail Generator system.
+#
+# Based on the Viral Thumbnail System from knowledge base.
+# =============================================================================
+
+version: "1.0"
+last_updated: "2025-12-08"
+
+# =============================================================================
+# TEMPLATES
+# =============================================================================
+# Each template defines layout, positioning, and which effects to apply.
+
+templates:
+
+  # --- ORIGINAL TEMPLATES ---
+
+  portal_gateway:
+    name: "Portal Gateway"
+    description: "Luminous center with dark edges, ideal for spiritual journeys"
+    category: "original"
+    title_position: "top_center"
+    title_y_ratio: 0.15
+    subtitle_y_offset: 90
+    badge_zone: true
+    vignette_strength: 0.6
+    effects:
+      center_glow: true
+    best_for:
+      - healing
+      - relaxation
+      - spiritual_growth
+      - sleep
+
+  sacred_symbol:
+    name: "Sacred Symbol"
+    description: "Central glowing symbol with title overlay"
+    category: "original"
+    title_position: "top_center"
+    title_y_ratio: 0.12
+    subtitle_y_offset: 85
+    badge_zone: true
+    vignette_strength: 0.4
+    effects:
+      center_glow: true
+    best_for:
+      - spiritual_growth
+      - clarity
+      - transformation
+
+  journey_scene:
+    name: "Journey Scene"
+    description: "Full-frame scene with text overlay in upper area"
+    category: "original"
+    title_position: "top_left"
+    title_y_ratio: 0.08
+    subtitle_y_offset: 70
+    badge_zone: true
+    vignette_strength: 0.3
+    effects:
+      center_glow: false
+    best_for:
+      - confidence
+      - abundance
+      - default
+
+  abstract_energy:
+    name: "Abstract Energy"
+    description: "Flowing energy patterns with centered title"
+    category: "original"
+    title_position: "center"
+    title_y_ratio: 0.35
+    subtitle_y_offset: 100
+    badge_zone: true
+    vignette_strength: 0.5
+    effects:
+      center_glow: true
+    best_for:
+      - empowerment
+      - transformation
+      - shadow_work
+
+  # --- VIRAL THUMBNAIL SYSTEM TEMPLATES ---
+
+  portal_shockwave:
+    name: "Portal Shockwave"
+    description: "Right silhouette + center portal (highest CTR systemwide)"
+    category: "viral"
+    title_position: "top_left"
+    title_y_ratio: 0.10
+    subtitle_y_offset: 80
+    badge_zone: true
+    vignette_strength: 0.7
+    effects:
+      center_glow: true
+      edge_glow: true
+    best_for:
+      - empowerment
+      - transformation
+      - spiritual_growth
+    ctr_notes: "Highest CTR template in the viral system"
+
+  archetype_reveal:
+    name: "Archetype Reveal"
+    description: "Close-up archetype with dramatic aura"
+    category: "viral"
+    title_position: "top_center"
+    title_y_ratio: 0.08
+    subtitle_y_offset: 75
+    badge_zone: true
+    vignette_strength: 0.5
+    effects:
+      center_glow: false
+      edge_glow: true
+    best_for:
+      - empowerment
+      - confidence
+      - shadow_work
+    ctr_notes: "Strong personality-driven virality and identity imprinting"
+
+  impossible_landscape:
+    name: "Impossible Landscape"
+    description: "Jaw-dropping scene, no character needed"
+    category: "viral"
+    title_position: "bottom_center"
+    title_y_ratio: 0.75
+    subtitle_y_offset: 60
+    badge_zone: true
+    vignette_strength: 0.4
+    effects:
+      center_glow: true
+      fog: true
+    best_for:
+      - spiritual_growth
+      - abundance
+      - clarity
+    ctr_notes: "Creates 'What IS this world? I need to know more' impulse"
+
+  viewer_pov:
+    name: "Viewer POV"
+    description: "Viewer hands/silhouette for immersion"
+    category: "viral"
+    title_position: "top_center"
+    title_y_ratio: 0.12
+    subtitle_y_offset: 85
+    badge_zone: true
+    vignette_strength: 0.6
+    effects:
+      center_glow: true
+    best_for:
+      - transformation
+      - shadow_work
+      - healing
+    ctr_notes: "Instant immersion - feels personal, high CTR"
+
+  transformation_shot:
+    name: "Transformation Shot"
+    description: "Golden rays, crown/halo effect"
+    category: "viral"
+    title_position: "top_center"
+    title_y_ratio: 0.10
+    subtitle_y_offset: 80
+    badge_zone: true
+    vignette_strength: 0.45
+    effects:
+      center_glow: true
+      radiant_glow: true
+    best_for:
+      - transformation
+      - abundance
+      - spiritual_growth
+    ctr_notes: "Creates 'I want that transformation' desire"
+
+  shadow_confrontation:
+    name: "Shadow Confrontation"
+    description: "Dark mirror reflection, threshold line"
+    category: "viral"
+    title_position: "top_center"
+    title_y_ratio: 0.10
+    subtitle_y_offset: 80
+    badge_zone: true
+    vignette_strength: 0.75
+    effects:
+      center_glow: false
+      edge_glow: true
+      fog: true
+    best_for:
+      - shadow_work
+      - transformation
+      - healing
+    ctr_notes: "Deep curiosity, strong shareability"
+
+
+# =============================================================================
+# COLOR PALETTES
+# =============================================================================
+# Each palette defines primary, secondary, accent, background, text colors.
+
+palettes:
+
+  # --- ORIGINAL PALETTES ---
+
+  sacred_light:
+    name: "Sacred Light"
+    description: "Gold/cream on cosmic dark"
+    category: "original"
+    colors:
+      primary: "#FFD700"       # Gold
+      secondary: "#F4E4BC"     # Warm cream
+      accent: "#FFFFFF"        # Pure white
+      background: "#0A0A1A"    # Deep cosmic blue-black
+      text: "#FFFFFF"
+      text_shadow: "#000000"
+      glow: "#FFD700"
+    best_for:
+      - healing
+      - spiritual_growth
+      - confidence
+      - abundance
+    psychology: "Gold evokes divinity, transformation, and highest value"
+
+  cosmic_journey:
+    name: "Cosmic Journey"
+    description: "Purple/blue on deep space"
+    category: "original"
+    colors:
+      primary: "#9B6DFF"       # Mystic purple
+      secondary: "#64B5F6"     # Celestial blue
+      accent: "#FF6B9D"        # Ethereal pink
+      background: "#0D0221"    # Deep space purple
+      text: "#FFFFFF"
+      text_shadow: "#1A0033"
+      glow: "#9B6DFF"
+    best_for:
+      - transformation
+      - spiritual_growth
+      - clarity
+    psychology: "Purple signals mystery, magic, and higher consciousness"
+
+  garden_eden:
+    name: "Garden/Eden"
+    description: "Emerald/gold on forest shadow"
+    category: "original"
+    colors:
+      primary: "#50C878"       # Emerald green
+      secondary: "#FFD700"     # Sunlight gold
+      accent: "#FFFFFF"        # Divine light
+      background: "#0F2818"    # Forest shadow
+      text: "#FFFFFF"
+      text_shadow: "#0A1A0F"
+      glow: "#50C878"
+    best_for:
+      - healing
+      - relaxation
+      - abundance
+    psychology: "Green represents growth, nature, and renewal"
+
+  ancient_temple:
+    name: "Ancient Temple"
+    description: "Antique gold on temple shadow"
+    category: "original"
+    colors:
+      primary: "#D4AF37"       # Antique gold
+      secondary: "#8B4513"     # Warm bronze
+      accent: "#FFF8DC"        # Candlelight
+      background: "#1A0F0A"    # Temple shadow
+      text: "#FFFFFF"
+      text_shadow: "#0D0805"
+      glow: "#D4AF37"
+    best_for:
+      - shadow_work
+      - transformation
+      - spiritual_growth
+    psychology: "Bronze and gold evoke ancient wisdom and timeless power"
+
+  neural_network:
+    name: "Neural Network"
+    description: "Cyan/purple on digital void"
+    category: "original"
+    colors:
+      primary: "#00D4FF"       # Electric cyan
+      secondary: "#9B6DFF"     # Neural purple
+      accent: "#FF6B9D"        # Synapse pink
+      background: "#0A0A1A"    # Digital void
+      text: "#FFFFFF"
+      text_shadow: "#000022"
+      glow: "#00D4FF"
+    best_for:
+      - clarity
+      - transformation
+      - empowerment
+    psychology: "Cyan represents innovation, technology, and clarity"
+
+  # --- VIRAL SYSTEM PALETTES ---
+
+  sapphire_depth:
+    name: "Sapphire Depth"
+    description: "Deep sapphire blue + gold (discovery, depth)"
+    category: "viral"
+    colors:
+      primary: "#1E40AF"       # Deep sapphire
+      secondary: "#FFD700"     # Gold accent
+      accent: "#60A5FA"        # Light blue
+      background: "#0A0A1A"    # Cosmic void
+      text: "#FFFFFF"
+      text_shadow: "#000033"
+      glow: "#1E40AF"
+    best_for:
+      - spiritual_growth
+      - clarity
+      - relaxation
+    psychology: "Sapphire generates trust + intrigue, ideal for Navigator/dream journeys"
+
+  gold_enlightenment:
+    name: "Gold Enlightenment"
+    description: "Brilliant gold + white (transformation, enlightenment)"
+    category: "viral"
+    colors:
+      primary: "#FFD700"       # Brilliant gold
+      secondary: "#FFFFFF"     # Pure white
+      accent: "#FEF3C7"        # Warm cream
+      background: "#1A1A0A"    # Dark gold shadow
+      text: "#FFFFFF"
+      text_shadow: "#0A0A00"
+      glow: "#FFD700"
+    best_for:
+      - empowerment
+      - confidence
+      - abundance
+      - transformation
+    psychology: "Gold + white = elevation, awakening, Soul Star, Alchemist videos"
+
+  amethyst_mystery:
+    name: "Amethyst Mystery"
+    description: "Violet + gold (prophecy, mystery)"
+    category: "viral"
+    colors:
+      primary: "#7C3AED"       # Deep violet
+      secondary: "#FFD700"     # Gold accent
+      accent: "#A78BFA"        # Light violet
+      background: "#0D0221"    # Deep purple void
+      text: "#FFFFFF"
+      text_shadow: "#1A0033"
+      glow: "#7C3AED"
+    best_for:
+      - spiritual_growth
+      - clarity
+      - shadow_work
+    psychology: "Amethyst signals hidden wisdom, prophecy - Silent Prophet journeys"
+
+  aurora_healing:
+    name: "Aurora Healing"
+    description: "Teal + silver (emotion, healing)"
+    category: "viral"
+    colors:
+      primary: "#14B8A6"       # Healing teal
+      secondary: "#C0C0C0"     # Silver
+      accent: "#5EEAD4"        # Light teal
+      background: "#0A1A1A"    # Deep teal shadow
+      text: "#FFFFFF"
+      text_shadow: "#001A1A"
+      glow: "#14B8A6"
+    best_for:
+      - healing
+      - relaxation
+      - clarity
+    psychology: "Teal represents emotional healing, Harmonic Weaver videos"
+
+  obsidian_shadow:
+    name: "Obsidian Shadow"
+    description: "Black + ember (shadow work)"
+    category: "viral"
+    colors:
+      primary: "#1A1A1A"       # Deep obsidian
+      secondary: "#DC2626"     # Ember red
+      accent: "#EF4444"        # Fire red
+      background: "#0A0505"    # Near black
+      text: "#FFFFFF"
+      text_shadow: "#000000"
+      glow: "#DC2626"
+    best_for:
+      - shadow_work
+      - transformation
+    psychology: "Obsidian + ember for Mirror Sage, Dreamwarden, shadow integration"
+
+  volcanic_forge:
+    name: "Volcanic Forge"
+    description: "Iron red + gold (strength, forging)"
+    category: "viral"
+    colors:
+      primary: "#B91C1C"       # Iron red
+      secondary: "#FFD700"     # Molten gold
+      accent: "#F97316"        # Orange flame
+      background: "#1A0A0A"    # Dark forge
+      text: "#FFFFFF"
+      text_shadow: "#0A0000"
+      glow: "#F97316"
+    best_for:
+      - empowerment
+      - confidence
+      - shadow_work
+    psychology: "Red + gold = power, transformation, Forge-Father/Alchemist themes"
+
+  celestial_blue:
+    name: "Celestial Blue"
+    description: "Sky blue + white (peace, heavenly)"
+    category: "viral"
+    colors:
+      primary: "#60A5FA"       # Sky blue
+      secondary: "#FFFFFF"     # Pure white
+      accent: "#93C5FD"        # Light blue
+      background: "#0A0A1A"    # Night sky
+      text: "#FFFFFF"
+      text_shadow: "#000022"
+      glow: "#60A5FA"
+    best_for:
+      - relaxation
+      - sleep
+      - healing
+      - spiritual_growth
+    psychology: "Soft blue evokes peace, calm, heavenly serenity"
+
+
+# =============================================================================
+# OUTCOME MAPPINGS
+# =============================================================================
+# Default template and palette for each session outcome.
+
+outcome_mappings:
+
+  healing:
+    primary_template: "portal_gateway"
+    primary_palette: "aurora_healing"
+    alternatives:
+      - template: "viewer_pov"
+        palette: "celestial_blue"
+
+  transformation:
+    primary_template: "portal_shockwave"
+    primary_palette: "cosmic_journey"
+    alternatives:
+      - template: "transformation_shot"
+        palette: "gold_enlightenment"
+
+  empowerment:
+    primary_template: "portal_shockwave"
+    primary_palette: "gold_enlightenment"
+    alternatives:
+      - template: "archetype_reveal"
+        palette: "volcanic_forge"
+
+  confidence:
+    primary_template: "archetype_reveal"
+    primary_palette: "gold_enlightenment"
+    alternatives:
+      - template: "journey_scene"
+        palette: "sacred_light"
+
+  relaxation:
+    primary_template: "portal_gateway"
+    primary_palette: "celestial_blue"
+    alternatives:
+      - template: "impossible_landscape"
+        palette: "aurora_healing"
+
+  spiritual_growth:
+    primary_template: "impossible_landscape"
+    primary_palette: "amethyst_mystery"
+    alternatives:
+      - template: "transformation_shot"
+        palette: "cosmic_journey"
+
+  abundance:
+    primary_template: "transformation_shot"
+    primary_palette: "sacred_light"
+    alternatives:
+      - template: "impossible_landscape"
+        palette: "gold_enlightenment"
+
+  clarity:
+    primary_template: "sacred_symbol"
+    primary_palette: "sapphire_depth"
+    alternatives:
+      - template: "impossible_landscape"
+        palette: "amethyst_mystery"
+
+  sleep:
+    primary_template: "portal_gateway"
+    primary_palette: "celestial_blue"
+    alternatives:
+      - template: "viewer_pov"
+        palette: "aurora_healing"
+
+  shadow_work:
+    primary_template: "shadow_confrontation"
+    primary_palette: "obsidian_shadow"
+    alternatives:
+      - template: "viewer_pov"
+        palette: "ancient_temple"
+
+  default:
+    primary_template: "portal_gateway"
+    primary_palette: "sacred_light"
+    alternatives:
+      - template: "portal_shockwave"
+        palette: "cosmic_journey"
+
+
+# =============================================================================
+# MICRO-EFFECTS
+# =============================================================================
+# Viral micro-elements that boost CTR by 15-40%.
+
+micro_effects:
+
+  edge_glow:
+    description: "Soft glow around edges for mobile visibility"
+    ctr_boost: "15-25%"
+    applies_to: ["portal_shockwave", "archetype_reveal", "shadow_confrontation"]
+
+  atmospheric_fog:
+    description: "Creates cinematic depth and mystery"
+    ctr_boost: "10-20%"
+    applies_to: ["impossible_landscape", "shadow_confrontation"]
+
+  center_glow:
+    description: "Luminous center draws eye and creates portal effect"
+    ctr_boost: "20-30%"
+    applies_to: ["portal_gateway", "portal_shockwave", "transformation_shot"]
+
+  radiant_glow:
+    description: "Golden rays emanating from center-top"
+    ctr_boost: "25-35%"
+    applies_to: ["transformation_shot"]
+
+  sigil_overlay:
+    description: "Branded sigil for universe continuity"
+    ctr_boost: "5-10%"
+    applies_to: "all"
+    position: "bottom_left"
+    opacity: 0.07
+
+
+# =============================================================================
+# TEXT GUIDELINES
+# =============================================================================
+# From the Viral Thumbnail System.
+
+text_guidelines:
+
+  title:
+    max_words: 5
+    min_words: 2
+    style: "UPPERCASE"
+    power_verbs:
+      - FORGE
+      - ENTER
+      - UNLOCK
+      - AWAKEN
+      - DISCOVER
+      - TRANSFORM
+      - IGNITE
+      - UNLEASH
+      - EMBRACE
+      - RECLAIM
+      - REVEAL
+      - ACTIVATE
+    font_size_range: "50-100px"
+    font_weight: "bold"
+    effects: ["glow", "shadow"]
+
+  subtitle:
+    max_words: 4
+    style: "Title Case"
+    font_size: "42px"
+    optional: true
+    effects: ["glow", "shadow"]
+
+  badges:
+    max_features: 2
+    font_size: "32px"
+    position: "bottom"
+    examples:
+      - "432Hz"
+      - "Theta"
+      - "25:30"
+      - "Deep Sleep"

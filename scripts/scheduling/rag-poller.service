@@ -1,0 +1,25 @@
+[Unit]
+Description=Dreamweaving Notion RAG polling monitor (lightweight)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/rsalars/Projects/dreamweaving
+Environment="PATH=/home/rsalars/Projects/dreamweaving/venv/bin:/usr/local/bin:/usr/bin:/bin"
+EnvironmentFile=/home/rsalars/Projects/dreamweaving/.env
+ExecStart=/home/rsalars/Projects/dreamweaving/venv/bin/python3 scripts/ai/rag_polling_monitor.py --interval 900
+User=rsalars
+Group=rsalars
+Restart=always
+RestartSec=15
+
+# Logging
+StandardOutput=append:/home/rsalars/Projects/dreamweaving/logs/rag_polling_monitor.log
+StandardError=append:/home/rsalars/Projects/dreamweaving/logs/rag_polling_monitor.log
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

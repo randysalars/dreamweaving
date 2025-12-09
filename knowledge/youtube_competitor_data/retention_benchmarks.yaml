@@ -1,0 +1,409 @@
+benchmarks:
+  affirmations:
+    10-20min:
+      avg_engagement: 0.036
+      drop_points:
+      - description: Initial hook period
+        estimated_drop: 0.19
+        recommendation: Strengthen opening hook, avoid slow starts
+        time: 0:30-1:00
+      - description: Induction phase
+        estimated_drop: 0.13
+        recommendation: Add engagement cue or binaural shift
+        time: '5:00'
+      estimated_retention: 0.36
+      top_performers:
+      - duration_minutes: 13
+        engagement: 0.06587442935960759
+        title: '"हर सुबह सुनो – 33 शक्तिशाली Gratitude Affirmations | Spiritual Success
+          #thankyouuniverse #universe'
+        views: 941048
+      - duration_minutes: 13
+        engagement: 0.05772349459111884
+        title: '"हर सुबह सुनो – 33 शक्तिशाली Gratitude Affirmations | Spiritual Success
+          #thankyouuniverse #universe'
+        views: 846016
+      - duration_minutes: 12
+        engagement: 0.05156043974212891
+        title: 9 THINGS TO TELL YOURSELF EVERY MORNING - DENZEL WASHINGTON MOTIVATION
+        views: 725789
+      video_count: 13
+    20-30min:
+      avg_engagement: 0.0272
+      drop_points:
+      - description: Initial hook period
+        estimated_drop: 0.22
+        recommendation: Strengthen opening hook, avoid slow starts
+        time: 0:30-1:00
+      - description: Induction phase
+        estimated_drop: 0.15
+        recommendation: Add engagement cue or binaural shift
+        time: '5:00'
+      estimated_retention: 0.27
+      top_performers:
+      - duration_minutes: 22
+        engagement: 0.06062412930673373
+        title: why DETACHING is the only way to get what you WANT
+        views: 732893
+      - duration_minutes: 22
+        engagement: 0.044620365179062794
+        title: Start Your Day with These Powerful Gratitude Affirmations – Everything
+          Works Out For Me
+        views: 774086
+      - duration_minutes: 21
+        engagement: 0.033000626289258046
+        title: How to Develop an Unbreakable Positive Mental Attitude | Napoleon Hill
+        views: 913316
+      video_count: 11
+    30-60min:
+      avg_engagement: 0.0291
+      drop_points:
+      - description: Initial hook period
+        estimated_drop: 0.21
+        recommendation: Strengthen opening hook, avoid slow starts
+        time: 0:30-1:00
+      - description: Induction phase
+        estimated_drop: 0.14
+        recommendation: Add engagement cue or binaural shift
+        time: '5:00'
+      estimated_retention: 0.29
+      top_performers:
+      - duration_minutes: 50
+        engagement: 0.05137669154192385
+        title: မနက်တိုင်းနား​ထောင်ဖို့ အပြုသဘောဆောင်တဲ့အတွေးများ (Morning Affirmation)
+        views: 818484
+      - duration_minutes: 32
+        engagement: 0.040834934335142375
+        title: This Will Activate Your Mind To Manifest Money Within 24 Hours
+        views: 665729
+      - duration_minutes: 36
+        engagement: 0.03965621713583225
+        title: Train Your Aura to Attract Wealth | Napoleon Hill
+        views: 1373076
+      video_count: 9
+    5-10min:
+      avg_engagement: 0.0236
+      drop_points:
+      - description: Initial hook period
+        estimated_drop: 0.23
+        recommendation: Strengthen opening hook, avoid slow starts
+        time: 0:30-1:00
+      - description: Induction phase
+        estimated_drop: 0.15
+        recommendation: Add engagement cue or binaural shift
+        time: '5:00'
+      estimated_retention: 0.24
+      top_performers:
+      - duration_minutes: 9
+        engagement: 0.07498952753921768
+        title: सिर्फ 48सेकंड मे आएगा उसका Call ॥Powerful Guided Meditation for Love
+          Attraction॥By Mayank Dhairyawan
+        views: 1341614
+      - duration_minutes: 7
+        engagement: 0.02188969656342631
+        title: Heal Your Inner Child with Ho’oponopono | A Soulful Song for Love &
+          Forgiveness
+        views: 763784
+      - duration_minutes: 5
+        engagement: 0.015472989063198796
+        title: 'the fastest INSANE glow up: GUARANTEED. 🌟 everything you could ever
+          want (FULL PACKAGE)'
+        views: 1893881
+      video_count: 5
+    60min+:
+      avg_engagement: 0.0231
+      drop_points:
+      - description: Initial hook period
+        estimated_drop: 0.23
+        recommendation: Strengthen opening hook, avoid slow starts
+        time: 0:30-1:00
+      - description: Induction phase
+        estimated_drop: 0.15
+        recommendation: Add engagement cue or binaural shift
+        time: '5:00'
+      estimated_retention: 0.23
+      top_performers:
+      - duration_minutes: 64
+        engagement: 0.03888865550750422
+        title: 8 Things To Tell Yourself Every Morning
+        views: 880771
+      - duration_minutes: 111
+        engagement: 0.03669192690973935
+        title: The MOST POWERFUL Audio to Reprogram Your Subconscious While You Sleep
+          | Dr. Joe Dispenza
+        views: 1246623
+      - duration_minutes: 105
+        engagement: 0.029734946582479483
+        title: This Audio Will Give You SO MUCH LUCK It'll Seem ILLEGAL | SUBCONSCIOUS
+          REPROGRAMMING - Joe Dispenza
+        views: 557963
+      video_count: 15
+  binaural_beats:
+    10-20min:
+      avg_engagement: 0.0316
+      drop_points: []
+      estimated_retention: 0.32
+      top_performers:
+      - duration_minutes: 13
+        engagement: 0.053182187593281346
+        title: Remember Everything You Read 🤯| Memorize Fast and Easily | Prashant
+          Kirad
+        views: 9179220
+      - duration_minutes: 17
+        engagement: 0.04126846631923243
+        title: 'HEALING CHANTS TO RAISE YOUR VIBRATION WITH © ZAFYRO PLEIADIAN MANTRAS®
+          #healingmusic #meditation'
+        views: 1267578
+      - duration_minutes: 12
+        engagement: 0.000441380899636488
+        title: Ocean & The Stars - Calming Meditation (Theta 6Hz)
+        views: 3228504
+      video_count: 3
+    60min+:
+      avg_engagement: 0.0154
+      drop_points: []
+      estimated_retention: 0.15
+      top_performers:
+      - duration_minutes: 212
+        engagement: 0.042678084054302436
+        title: ДЕНЬГИ ПЕРЕЙДУТ ВАМ БЕЗ ОСТАНОВКИ ЧЕРЕЗ 3 МИНУТЫ | ВСЕ СБЫВАЕТСЯ СЕГОДНЯ
+          - 888 Гц
+        views: 1298137
+      - duration_minutes: 720
+        engagement: 0.031450535742318125
+        title: RESETTING YOUR VAGUS NERVE FOR SLEEP | Music for Calming Your Nervous
+          System Before Bed
+        views: 2618143
+      - duration_minutes: 65
+        engagement: 0.026298531011546434
+        title: Present Moment (777 Hz) | 1 hour handpan music | Malte Marten
+        views: 1157327
+      video_count: 58
+  hypnosis:
+    20-30min:
+      avg_engagement: 0.0289
+      drop_points:
+      - description: Initial hook period
+        estimated_drop: 0.21
+        recommendation: Strengthen opening hook, avoid slow starts
+        time: 0:30-1:00
+      - description: Induction phase
+        estimated_drop: 0.14
+        recommendation: Add engagement cue or binaural shift
+        time: '5:00'
+      - description: Mid-journey
+        estimated_drop: 0.11
+        recommendation: Pattern interrupt or scene change
+        time: '90:00'
+      - description: Pre-integration
+        estimated_drop: 0.07
+        recommendation: Re-engagement cue before closing
+        time: '135:00'
+      estimated_retention: 0.29
+      top_performers:
+      - duration_minutes: 21
+        engagement: 0.05107147409151358
+        title: I Got Hypnotized To See If It's Fake
+        views: 5821606
+      - duration_minutes: 24
+        engagement: 0.04022770996940739
+        title: Deep Nervous System Reset Hypnosis | Heal the Gut, Quiet the Mind,
+          Nourish the Soul
+        views: 443898
+      - duration_minutes: 29
+        engagement: 0.029090501194731753
+        title: ASMR Dream Hypnosis (be sitting down)
+        views: 472491
+      video_count: 8
+    30-60min:
+      avg_engagement: 0.023
+      drop_points:
+      - description: Initial hook period
+        estimated_drop: 0.23
+        recommendation: Strengthen opening hook, avoid slow starts
+        time: 0:30-1:00
+      - description: Induction phase
+        estimated_drop: 0.15
+        recommendation: Add engagement cue or binaural shift
+        time: '5:00'
+      - description: Mid-journey
+        estimated_drop: 0.12
+        recommendation: Pattern interrupt or scene change
+        time: '90:00'
+      - description: Pre-integration
+        estimated_drop: 0.08
+        recommendation: Re-engagement cue before closing
+        time: '135:00'
+      estimated_retention: 0.23
+      top_performers:
+      - duration_minutes: 46
+        engagement: 0.03846575196056165
+        title: The Science of Hypnosis with David Spiegel
+        views: 374255
+      - duration_minutes: 32
+        engagement: 0.02730264769204573
+        title: Sleep Hypnosis Audio (हिन्दी)| Improve Your Sleep Naturally| Program
+          Your Subconscious Mind
+        views: 428713
+      - duration_minutes: 32
+        engagement: 0.023346478513579
+        title: ASMR Follow My Directions to Sleep | Eyes Closed, Guided Meditation,
+          Light Triggers
+        views: 689226
+      video_count: 8
+    60min+:
+      avg_engagement: 0.0126
+      drop_points:
+      - description: Initial hook period
+        estimated_drop: 0.26
+        recommendation: Strengthen opening hook, avoid slow starts
+        time: 0:30-1:00
+      - description: Induction phase
+        estimated_drop: 0.17
+        recommendation: Add engagement cue or binaural shift
+        time: '5:00'
+      - description: Mid-journey
+        estimated_drop: 0.13
+        recommendation: Pattern interrupt or scene change
+        time: '90:00'
+      - description: Pre-integration
+        estimated_drop: 0.09
+        recommendation: Re-engagement cue before closing
+        time: '135:00'
+      estimated_retention: 0.13
+      top_performers:
+      - duration_minutes: 79
+        engagement: 0.03273541623190753
+        title: How To Get ANYTHING You Want With Power Manifesting and Hypnosis |
+          Paul McKenna Official
+        views: 321059
+      - duration_minutes: 120
+        engagement: 0.025110824413624465
+        title: Release Trauma From the Body Healing Hypnosis (Meditation) with Your
+          Guardian or Spirit Guide
+        views: 533276
+      - duration_minutes: 180
+        engagement: 0.024739509480420255
+        title: Sleep Hypnosis | fall back asleep & stop overthinking (guided visualisation,
+          sleep count down)
+        views: 299723
+      video_count: 46
+  meditation:
+    60min+:
+      avg_engagement: 0.0145
+      drop_points:
+      - description: Initial hook period
+        estimated_drop: 0.26
+        recommendation: Strengthen opening hook, avoid slow starts
+        time: 0:30-1:00
+      - description: Induction phase
+        estimated_drop: 0.17
+        recommendation: Add engagement cue or binaural shift
+        time: '5:00'
+      - description: Mid-journey
+        estimated_drop: 0.13
+        recommendation: Pattern interrupt or scene change
+        time: '107:00'
+      - description: Pre-integration
+        estimated_drop: 0.09
+        recommendation: Re-engagement cue before closing
+        time: '160:00'
+      estimated_retention: 0.15
+      top_performers:
+      - duration_minutes: 720
+        engagement: 0.031450619830291474
+        title: RESETTING YOUR VAGUS NERVE FOR SLEEP | Music for Calming Your Nervous
+          System Before Bed
+        views: 2618136
+      - duration_minutes: 694
+        engagement: 0.02968395379560313
+        title: Scientists CAN'T Explain Why This Audio CURES PEOPLE - The Miraculous
+          Healing Flute In The World
+        views: 4132940
+      - duration_minutes: 192
+        engagement: 0.029035854598794843
+        title: PARASYMPATHETIC NERVOUS SYSTEM Activation | Tibetan Singing Bowl Sound
+          Bath for Stress Relief
+        views: 2469223
+      video_count: 35
+  sleep:
+    60min+:
+      avg_engagement: 0.011
+      drop_points: []
+      estimated_retention: 0.11
+      top_performers:
+      - duration_minutes: 694
+        engagement: 0.02968395379560313
+        title: Scientists CAN'T Explain Why This Audio CURES PEOPLE - The Miraculous
+          Healing Flute In The World
+        views: 4132940
+      - duration_minutes: 180
+        engagement: 0.026551951953076018
+        title: you need to sleep.
+        views: 9083287
+      - duration_minutes: 122
+        engagement: 0.024759192575499425
+        title: You’ll Sleep Like a Child in Hanuman’s Protection | Soft Hanuman Chalisa
+          | हनुमान चालीसा | No Ads
+        views: 3776254
+      video_count: 26
+  spiritual:
+    10-20min:
+      avg_engagement: 0.0312
+      drop_points: []
+      estimated_retention: 0.31
+      top_performers:
+      - duration_minutes: 12
+        engagement: 0.05773070520154982
+        title: It took me 30+ years to realize what I'll tell you in 10 minutes...
+        views: 6339053
+      - duration_minutes: 15
+        engagement: 0.035879633686584006
+        title: The 5 Levels of Dreams
+        views: 3138187
+      - duration_minutes: 16
+        engagement: 0.0306414072750116
+        title: Your Child Is Your Karma – A Spiritual Insight by Paramhansa Yogananda
+        views: 1851351
+      video_count: 5
+    30-60min:
+      avg_engagement: 0.0228
+      drop_points: []
+      estimated_retention: 0.23
+      top_performers:
+      - duration_minutes: 30
+        engagement: 0.0437605385758715
+        title: This Is The Last Video You'll Ever Need About Synchronicities - no
+          bs
+        views: 2001575
+      - duration_minutes: 54
+        engagement: 0.01279965209573231
+        title: Frequency 999Hz Opens All 7 Chakras, attracts miracles, Whole Body
+          Energy Cleansing, Chakra Healing
+        views: 2865156
+      - duration_minutes: 59
+        engagement: 0.011793739382849729
+        title: Remove ALL Negative Energy • Attract Miracles & Good Luck • 7 Chakra
+          Balance & Aura Cleansing
+        views: 1220902
+      video_count: 3
+    60min+:
+      avg_engagement: 0.0262
+      drop_points: []
+      estimated_retention: 0.26
+      top_performers:
+      - duration_minutes: 122
+        engagement: 0.046856192677871944
+        title: The Secret to Hearing Your Spirit Guides | Lee Harris
+        views: 1496259
+      - duration_minutes: 136
+        engagement: 0.04448505728129675
+        title: 'MADONNA EXCLUSIVE: The Side That NOBODY Knows…'
+        views: 2190331
+      - duration_minutes: 88
+        engagement: 0.02951823309245308
+        title: HE MET LORD SHIVA | Babaji Shivananda on Mansarovar Yatra, Shocking
+          Predictions & Miracles | ST 134
+        views: 1562187
+      video_count: 12
+extracted_at: '2025-12-08T16:05:33.768747'
