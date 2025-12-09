@@ -1,0 +1,93 @@
+#!/bin/bash
+# Nightly Generation Script
+#
+# Generates 5 dreamweaving sessions from Notion topics.
+# Scheduled to run at 9pm MST (4am UTC next day).
+#
+# CRON ENTRY (DISABLED - DO NOT ENABLE UNTIL TESTED):
+# 0 4 * * * /home/rsalars/Projects/dreamweaving/cron/nightly-generation.sh
+#
+# Manual test:
+#   ./cron/nightly-generation.sh --dry-run
+#   ./cron/nightly-generation.sh --count 1
+#
+
+set -e
+
+# Configuration
+PROJECT_ROOT="/home/rsalars/Projects/dreamweaving"
+VENV_PATH="${PROJECT_ROOT}/venv"
+LOG_DIR="${PROJECT_ROOT}/data/logs/automation"
+LOG_FILE="${LOG_DIR}/nightly-generation-$(date +%Y%m%d).log"
+
+# Ensure log directory exists
+mkdir -p "${LOG_DIR}"
+
+# Logging function
+log() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "${LOG_FILE}"
+}
+
+# Error handler
+error_handler() {
+    log "ERROR: Script failed on line $1"
+    exit 1
+}
+trap 'error_handler $LINENO' ERR
+
+# Parse arguments
+DRY_RUN=""
+COUNT=""
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --dry-run)
+            DRY_RUN="--dry-run"
+            shift
+            ;;
+        --count)
+            COUNT="--count $2"
+            shift 2
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+log "=========================================="
+log "Starting nightly generation"
+log "=========================================="
+
+# Activate virtual environment
+log "Activating virtual environment..."
+source "${VENV_PATH}/bin/activate"
+
+# Change to project directory
+cd "${PROJECT_ROOT}"
+
+# Load environment variables
+if [ -f "${PROJECT_ROOT}/.env" ]; then
+    log "Loading environment variables..."
+    set -a
+    source "${PROJECT_ROOT}/.env"
+    set +a
+fi
+
+# Run nightly builder
+log "Running nightly builder..."
+python3 -m scripts.automation.nightly_builder ${DRY_RUN} ${COUNT} 2>&1 | tee -a "${LOG_FILE}"
+
+RESULT=$?
+
+if [ $RESULT -eq 0 ]; then
+    log "Nightly generation completed successfully"
+else
+    log "Nightly generation failed with exit code: $RESULT"
+fi
+
+log "=========================================="
+log "Nightly generation finished"
+log "=========================================="
+
+exit $RESULT

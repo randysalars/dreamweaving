@@ -1,0 +1,102 @@
+# Dreamweaving Automation Configuration
+#
+# This file controls the automated video generation and upload pipeline.
+# All times are in MST (Mountain Standard Time).
+
+generation:
+  # Number of sessions to generate each night (9pm-3am MST)
+  target_sessions_per_night: 5
+
+  # Cost optimization mode: budget | standard | premium
+  # - budget:   Minimal AI usage, ~$0.70 per session
+  # - standard: Balanced quality/cost, ~$1.06 per session (recommended)
+  # - premium:  Maximum quality, ~$1.51 per session
+  mode: standard
+
+  # Image generation method: sd | midjourney | stock
+  # - sd:        Local Stable Diffusion (slow but fully automated)
+  # - midjourney: Generate prompts only (requires manual image creation)
+  # - stock:     Search guides for Unsplash/Pexels (requires manual download)
+  image_method: sd
+
+upload:
+  # Video selection strategy: quality | fifo | priority
+  # - quality:  Upload highest quality-scored video first
+  # - fifo:     Upload oldest generated video first
+  # - priority: Manual priority override, then quality
+  selection_strategy: quality
+
+  # Whether to pull optimal upload times from YouTube analytics
+  use_analytics_timing: true
+
+  # Fallback upload times if analytics unavailable (MST)
+  fallback_long_upload_time: "12:00"
+  fallback_shorts_upload_time: "08:00"
+
+  # YouTube video category
+  # 22 = People & Blogs (good for meditation/hypnosis content)
+  category_id: "22"
+
+shorts:
+  # Target duration for shorts (30-60 seconds allowed)
+  duration_seconds: 40
+
+  # Duration of CTA overlay at end
+  cta_duration_seconds: 8
+
+  # Source content for shorts
+  # website_only: Only create shorts from content on website but NOT on YouTube
+  source: website_only
+
+youtube:
+  # Target YouTube channel
+  channel_name: "Randy Salars"
+  channel_url: "https://www.youtube.com/@RandySalars"
+
+  # OAuth credentials directory (relative to project root)
+  # Must contain: client_secret.json
+  # Will create: token.json (after first OAuth flow)
+  credentials_dir: config/youtube_credentials
+
+notion:
+  # Notion database with topic ideas
+  topic_database_id: "2c22bab3-796d-81fb-bdf8-efd2aab0159e"
+
+  # Notion root page for topic hierarchy
+  root_page_id: "1ee2bab3796d80738af6c96bd5077acf"
+
+database:
+  # SQLite database for state tracking
+  path: data/automation_state.db
+
+archive:
+  # Whether to archive uploaded sessions
+  enabled: true
+
+  # Archive directory (relative to project root)
+  archive_dir: archive
+
+  # Archive immediately after YouTube upload
+  archive_after_youtube_upload: true
+
+logging:
+  # Log directory for automation logs
+  log_dir: data/logs/automation
+
+  # Log level: DEBUG | INFO | WARNING | ERROR
+  log_level: INFO
+
+# CRON SCHEDULING
+# ===============
+# DISABLED until manual testing is complete!
+# Set enabled: true after running the full test protocol.
+cron:
+  enabled: false
+
+  # Nightly generation: 9pm MST = 4am UTC next day
+  nightly_generation: "0 4 * * *"
+
+  # Daily upload times will be set from YouTube analytics
+  # These are placeholders until analytics are fetched
+  daily_upload: null
+  daily_shorts: null

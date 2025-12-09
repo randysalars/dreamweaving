@@ -175,3 +175,18 @@ desktop.ini
 
 # Accidental ffmpeg output files
 --output
+
+# Automation System (YouTube upload automation)
+# YouTube OAuth credentials (IMPORTANT: never commit)
+config/youtube_credentials/
+config/youtube_credentials/*.json
+
+# Automation state database
+data/automation_state.db
+data/automation_state.db-*
+
+# Automation logs
+data/logs/automation/
+
+# Archived sessions (moved after YouTube upload)
+archive/
