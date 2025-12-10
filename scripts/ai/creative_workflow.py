@@ -25,10 +25,17 @@ import sys
 import json
 import yaml
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, List, Optional, Tuple, Any, Union
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
 import random
+
+# Import archetype selector for codex-based selection
+try:
+    from scripts.utilities.archetype_selector import ArchetypeSelector, SelectedArchetype
+    ARCHETYPE_SELECTOR_AVAILABLE = True
+except ImportError:
+    ARCHETYPE_SELECTOR_AVAILABLE = False
 
 
 # =============================================================================
@@ -735,9 +742,73 @@ class CreativeWorkflow:
 
         return progression
 
-    def _select_archetypes(self, focus: str, style: str) -> List[Archetype]:
-        """Select 2-4 archetypes appropriate for the journey."""
-        # Determine which archetype roles are most relevant
+    def _select_archetypes(
+        self,
+        focus: str,
+        style: str,
+        use_codex: bool = True,
+        tradition: Optional[str] = None
+    ) -> List[Union[Archetype, 'SelectedArchetype']]:
+        """
+        Select 2-4 archetypes appropriate for the journey.
+
+        Args:
+            focus: Therapeutic focus (e.g., 'healing', 'confidence')
+            style: Journey style (e.g., 'cosmic', 'nature')
+            use_codex: If True and available, use archetype codex system
+            tradition: Optional tradition for archetype naming
+
+        Returns:
+            List of Archetype or SelectedArchetype objects
+        """
+        # Map focus keywords to outcome registry outcomes
+        focus_to_outcome = {
+            'healing': 'healing',
+            'grief': 'healing',
+            'anxiety': 'relaxation',
+            'confidence': 'confidence',
+            'sleep': 'relaxation',
+            'spiritual': 'spiritual_growth',
+            'abundance': 'abundance',
+            'creativity': 'creativity',
+            'transformation': 'transformation',
+            'self_love': 'healing',
+            'forgiveness': 'release',
+            'focus': 'focus',
+            'empowerment': 'empowerment',
+        }
+
+        # Map style to journey phases
+        style_to_phases = {
+            'cosmic': ['journey', 'helm_deep_trance'],
+            'nature': ['induction', 'journey'],
+            'mystical': ['journey', 'integration'],
+            'underwater': ['journey', 'helm_deep_trance'],
+            'inner': ['helm_deep_trance', 'integration'],
+        }
+
+        # Try to use the archetype codex system if available
+        if use_codex and ARCHETYPE_SELECTOR_AVAILABLE:
+            try:
+                selector = ArchetypeSelector()
+                outcome = focus_to_outcome.get(focus, 'healing')
+                phases = style_to_phases.get(style, ['journey'])
+
+                selected = selector.select_archetypes(
+                    outcome=outcome,
+                    journey_phases=phases,
+                    count=3,
+                    prefer_recurring=True,
+                    tradition=tradition
+                )
+
+                if selected:
+                    return selected
+            except Exception as e:
+                # Fall back to legacy system if codex fails
+                print(f"Warning: Archetype codex selection failed ({e}), using legacy system")
+
+        # Legacy fallback: role-based selection from ARCHETYPE_TEMPLATES
         role_priorities = {
             'healing': ['healing', 'guidance', 'higher_self'],
             'grief': ['healing', 'wisdom_keeper', 'higher_self'],
@@ -762,6 +833,38 @@ class CreativeWorkflow:
                 selected.append(archetype)
 
         return selected
+
+    def _archetypes_to_manifest_format(
+        self,
+        archetypes: List[Union[Archetype, 'SelectedArchetype']]
+    ) -> List[Dict]:
+        """
+        Convert archetypes to manifest.yaml format.
+
+        Handles both legacy Archetype objects and new SelectedArchetype objects.
+        """
+        result = []
+        for i, arch in enumerate(archetypes):
+            if hasattr(arch, 'archetype_id'):
+                # New SelectedArchetype from codex
+                result.append({
+                    'archetype_id': arch.archetype_id,
+                    'name': arch.name,
+                    'role': 'primary' if i == 0 else 'secondary' if i == 1 else 'supporting',
+                    'encounter_type': arch.encounter_type,
+                    'relationship_level': arch.relationship_level,
+                    'appearance_section': arch.appearance_section or 'journey',
+                })
+            else:
+                # Legacy Archetype object
+                result.append({
+                    'name': arch.name,
+                    'role': arch.role,
+                    'description': arch.description,
+                    'symbol': arch.symbol,
+                    'qualities': arch.qualities,
+                })
+        return result
 
     def _select_sound_effects(self, style: str) -> List[SoundEffect]:
         """Select sound effects appropriate for the setting style."""
