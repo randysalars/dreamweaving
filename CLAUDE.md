@@ -801,6 +801,7 @@ Claude should read these memories for detailed information:
 | `website_upload_deployment` | Uploading to salars.net, Vercel, R2 storage |
 | `mcp_plugins_integration` | MCP servers, plugins, context window management |
 | `knowledge_base_procedure` | **Adding new knowledge entries to the system** |
+| `dve_module_system` | **Deep Visualization Enhancement (DVE) modules and usage** |
 
 **Usage Pattern:**
 ```
@@ -808,6 +809,105 @@ Claude should read these memories for detailed information:
 2. If need detailed procedure → Read relevant Serena memory
 3. If still unclear → Check .claude/skills/ or .claude/agents/
 ```
+
+---
+
+# DVE (Deep Visualization Enhancement) Quick Reference
+
+The DVE system provides modular enhancement techniques for creating deeper visualization experiences. Use these modules to enhance script quality based on session depth.
+
+## 5-Level Visualization Taxonomy
+
+| Level | Name | DVE Modules | When to Use |
+|-------|------|-------------|-------------|
+| 1 | Foundational | None | Beginner sessions, Layer 1 |
+| 2 | Immersive | DVE-01 | Standard Layer 2 sessions |
+| 3 | Embodied | DVE-01 to DVE-04 | Deep Layer 2, Layer 3 entry |
+| 4 | Interactive | DVE-01 to DVE-05 | Layer 3, Ipsissimus entry |
+| 5 | Hyperimaginal | All (DVE-01 to DVE-07) | Ipsissimus, Advanced only |
+
+## DVE Module Quick Reference
+
+| Module | Name | Duration | Placement | Key Purpose |
+|--------|------|----------|-----------|-------------|
+| DVE-01 | Imaginal Priming | 20s | End of pre_talk | Activates subconscious image-generation |
+| DVE-02 | Hypnagogic Entry | 25s | Middle of induction | Theta-dominant waking-sleeping threshold |
+| DVE-03 | Theater/Temple Construction | 25s | End of deepening | Establishes stable imaginal container |
+| DVE-04 | Embodiment & Proprioception | 25s | Start of journey | Deep body awareness in imaginal space |
+| DVE-05 | Autonomous Agents & Mirrors | 28s | During archetypal encounters | Entities that move independently |
+| DVE-06 | Stabilization Protocols | 18s | Extended visualization | Anti-fade techniques |
+| DVE-07 | Predictive Processing Override | 25s | helm_deep_trance only | Impossible imagery for breakthrough |
+
+## DVE-03 Container Variants
+
+| Variant | Best For | Journey Families |
+|---------|----------|------------------|
+| `temple` | Initiation, sacred work | temple_initiation, cosmic_forge |
+| `garden` | Healing, abundance | eden_garden |
+| `cave` | Shadow work, descent | underworld_descent, ocean_depths |
+| `observatory` | Celestial, cognitive | celestial_journey |
+| `spaceship` | Cosmic travel | celestial_journey |
+| `theater` | Neutral, screen-based | Any |
+
+## Outcome-DVE Quick Match
+
+| Outcome | Min Level | Optimal | Emphasis |
+|---------|-----------|---------|----------|
+| healing | 2 | 3 | DVE-01, DVE-04 |
+| transformation | 3 | 4 | DVE-05 (mirror) |
+| empowerment | 2 | 3 | DVE-01, DVE-04 |
+| self_knowledge | 3 | 4 | DVE-05 (autonomous) |
+| spiritual_growth | 4 | 5 | DVE-05, DVE-07 |
+| creativity | 2 | 3 | DVE-02 |
+| relaxation | 1 | 2 | Light DVE only |
+| confidence | 2 | 3 | DVE-05 (mirror) |
+
+## DVE Contraindications (IMPORTANT)
+
+| Module | Caution For | Action |
+|--------|-------------|--------|
+| DVE-02 | High anxiety, sleep disorders | Use gentler variant |
+| DVE-03 | Claustrophobia | Use garden or open variants |
+| DVE-04 | Body dysmorphia, somatic trauma | Focus on sensation, not appearance |
+| DVE-05 | Dissociative disorders | Use dialogue_framework only |
+| DVE-07 | Psychotic, dissociative, first-time | **DO NOT USE** |
+
+## Manifest DVE Configuration
+
+```yaml
+session:
+  visualization_level: 3
+  dve_config:
+    modules_enabled: [DVE-01, DVE-02, DVE-03, DVE-04]
+    auto_select_from_level: true
+    theater_variant: temple
+```
+
+## DVE Insertion Markers (for scripts)
+
+```
+[DVE:PRIMING_START] ... [DVE:PRIMING_END]
+[DVE:HYPNAGOGIC_START] ... [DVE:HYPNAGOGIC_END]
+[DVE:CONTAINER_START] ... [DVE:CONTAINER_END]
+[DVE:EMBODIMENT_START] ... [DVE:EMBODIMENT_END]
+[DVE:AUTONOMOUS_START] ... [DVE:AUTONOMOUS_END]
+[DVE:MIRROR_START] ... [DVE:MIRROR_END]
+[DVE:STABILIZE_START] ... [DVE:STABILIZE_END]
+[DVE:OVERRIDE_START] ... [DVE:OVERRIDE_END]
+```
+
+## Key DVE Files
+
+| File | Purpose |
+|------|---------|
+| `knowledge/visualization/dve_modules.yaml` | Core module definitions with SSML templates |
+| `knowledge/visualization/scene_architecture.yaml` | Depth layers, scene types, transitions |
+| `knowledge/embodiment/proprioceptive_templates.yaml` | Body awareness templates for DVE-04 |
+| `knowledge/indexes/dve_index.yaml` | Quick reference index |
+| `knowledge/outcome_registry.yaml` | DVE recommendations per outcome |
+| `prompts/hypnotic_dreamweaving_instructions.md` | DVE usage guidelines in master prompt |
+
+> **Full Reference:** Read Serena memory `dve_module_system` for complete documentation.
 
 ---
 

@@ -48,8 +48,8 @@ install_cron_jobs() {
     # Read current crontab (if any)
     CURRENT_CRON=$(crontab -l 2>/dev/null || true)
 
-    # Remove any existing dreamweaving entries
-    FILTERED_CRON=$(echo "${CURRENT_CRON}" | grep -v "dreamweaving" || true)
+    # Remove any existing dreamweaving entries (case-insensitive)
+    FILTERED_CRON=$(echo "${CURRENT_CRON}" | grep -vi "dreamweaving" || true)
 
     # Define new cron entries
     # All times are UTC (server time)
@@ -61,6 +61,7 @@ install_cron_jobs() {
 # === DREAMWEAVING AUTOMATED WORKFLOW ===
 # Installed: $(date '+%Y-%m-%d %H:%M:%S')
 # All times are UTC
+CRON_TZ=UTC # dreamweaving timezone anchor
 
 # Nightly generation: 9pm MST = 4am UTC next day
 # Generates 5 dreamweaving sessions from Notion topics
@@ -82,6 +83,9 @@ install_cron_jobs() {
 # Deep analysis and lesson extraction
 0 10 * * 0 ${CRON_DIR}/weekly-learning.sh >> ${LOG_DIR}/cron.log 2>&1
 # === END DREAMWEAVING ===
+
+# Reset cron timezone to server default after dreamweaving block
+CRON_TZ=America/Denver # dreamweaving timezone reset
 "
 
     # Install new crontab

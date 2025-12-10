@@ -263,6 +263,245 @@ For each script request, I will adapt based on:
 
 ---
 
+## DEEP VISUALIZATION ENHANCEMENT (DVE) SYSTEM
+
+The DVE system provides modular enhancement techniques for creating deeper, more immersive visualization experiences. These modules are insertable 15-30 second micro-sections that can be added to scripts based on the session's visualization level.
+
+### DVE Overview
+
+| Level | Name | Modules | Typical Sessions |
+|-------|------|---------|------------------|
+| 1 | Foundational | None | Beginner, Layer 1 |
+| 2 | Immersive | DVE-01 | Standard Layer 2 |
+| 3 | Embodied | DVE-01 through DVE-04 | Deep Layer 2, Layer 3 entry |
+| 4 | Interactive | DVE-01 through DVE-05 | Layer 3, Ipsissimus entry |
+| 5 | Hyperimaginal | All modules | Ipsissimus, Advanced |
+
+### DVE Module Quick Reference
+
+| Module | Name | Placement | Duration | Key Purpose |
+|--------|------|-----------|----------|-------------|
+| DVE-01 | Imaginal Priming | End of pre_talk | 20s | Activates subconscious image-generation |
+| DVE-02 | Hypnagogic Entry | Middle of induction | 25s | Theta-dominant waking-sleeping threshold |
+| DVE-03 | Theater/Temple Construction | End of deepening | 25s | Establishes stable imaginal container |
+| DVE-04 | Embodiment & Proprioception | Start of journey | 25s | Deep body awareness in imaginal space |
+| DVE-05 | Autonomous Agents & Mirrors | During archetypal encounters | 28s | Entities that move independently |
+| DVE-06 | Stabilization Protocols | Extended visualization | 18s | Anti-fade techniques from lucid dreaming |
+| DVE-07 | Predictive Processing Override | helm_deep_trance only | 25s | Impossible imagery for breakthrough |
+
+### DVE-01: Imaginal Priming (Level 2+)
+
+Place at end of pre_talk. Activates the subconscious image-generation faculty before the journey begins.
+
+```xml
+<prosody rate="1.0" pitch="0st">
+And as you prepare for this journey...<break time="2s"/>
+I want to speak to a part of you...<break time="1.5s"/>
+that already knows how to dream...<break time="2s"/>
+that part of your mind that creates worlds...<break time="2s"/>
+when you close your eyes at night...<break time="2.5s"/>
+That creative faculty...<break time="1.5s"/>
+is beginning to <emphasis level="moderate">awaken</emphasis> now...<break time="2s"/>
+preparing to show you...<break time="1.5s"/>
+something only you can see...<break time="2.5s"/>
+in your own unique way...<break time="3s"/>
+</prosody>
+```
+
+### DVE-02: Hypnagogic Entry (Level 2+)
+
+Place in middle of induction. Uses theta-dominant language for the waking-sleeping threshold.
+
+```xml
+<prosody rate="1.0" pitch="-2st">
+And you may notice...<break time="2s"/>
+that point between waking and dreaming...<break time="2.5s"/>
+where images seem to <emphasis level="moderate">arise</emphasis>...<break time="2s"/>
+on their own...<break time="2s"/>
+without you making them...<break time="2.5s"/>
+Colors appearing...<break time="2s"/>
+perhaps geometric patterns...<break time="2s"/>
+or the beginning of a face...<break time="2.5s"/>
+Don't hold them...<break time="2s"/>
+just let them come and go...<break time="2.5s"/>
+You are not creating...<break time="2s"/>
+you are <emphasis level="moderate">receiving</emphasis>...<break time="3s"/>
+</prosody>
+```
+
+### DVE-03: Theater/Temple Construction (Level 3+)
+
+Place at end of deepening. Establishes a stable imaginal container space.
+
+**Variants:** theater, temple, spaceship, garden, cave, observatory
+
+```xml
+<!-- Temple variant -->
+<prosody rate="1.0" pitch="-1st">
+And now you find yourself...<break time="2s"/>
+in a sacred temple...<break time="2.5s"/>
+vast, ancient, yours alone...<break time="3s"/>
+High columns rise around you...<break time="2s"/>
+supporting a ceiling of stars...<break time="2.5s"/>
+At the center...<break time="2s"/>
+an altar of white stone...<break time="2.5s"/>
+And doorways leading...<break time="2s"/>
+to realms you have yet to explore...<break time="3s"/>
+</prosody>
+```
+
+### DVE-04: Embodiment & Proprioception (Level 3+)
+
+Place at start of journey. Creates deep body awareness in imaginal space.
+
+```xml
+<prosody rate="1.0" pitch="-1st">
+And now...<break time="2s"/>
+become aware of your body...<break time="2s"/>
+here, in this sacred space...<break time="2.5s"/>
+You have a body here too...<break time="2s"/>
+Feel your feet...<break time="2s"/>
+on this temple floor...<break time="2.5s"/>
+Feel your heart beating...<break time="2s"/>
+in this chest...<break time="2.5s"/>
+Your hands...<break time="2s"/>
+that can reach out and touch...<break time="2.5s"/>
+You are fully present...<break time="2s"/>
+in this realm...<break time="3s"/>
+</prosody>
+```
+
+**Reference:** See `knowledge/embodiment/proprioceptive_templates.yaml` for full template library.
+
+### DVE-05: Autonomous Agents & Mirrors (Level 4+)
+
+Place during archetypal encounters. Creates entities that move independently.
+
+**Variants:** autonomous_agent, dialogue_framework, mirror_encounter, parts_dialogue
+
+```xml
+<!-- Autonomous Agent variant -->
+<prosody rate="1.0" pitch="-1st">
+And now...<break time="2s"/>
+wait...<break time="3s"/>
+and watch...<break time="3s"/>
+as the figure before you...<break time="2.5s"/>
+begins to <emphasis level="moderate">move</emphasis>...<break time="2.5s"/>
+on its own...<break time="3s"/>
+What does it do?<break time="4s"/>
+What does it say?<break time="4s"/>
+Simply observe...<break time="3s"/>
+and let it show you...<break time="3.5s"/>
+</prosody>
+
+<!-- Mirror variant -->
+<prosody rate="1.0" pitch="-1st">
+And before you now...<break time="2s"/>
+a mirror appears...<break time="2.5s"/>
+vast and luminous...<break time="3s"/>
+And as you gaze into it...<break time="2.5s"/>
+you see...<break time="2.5s"/>
+yourself...<break time="2.5s"/>
+but not as you usually appear...<break time="3s"/>
+This is a different you...<break time="2.5s"/>
+Who gazes back at you now?<break time="5s"/>
+</prosody>
+```
+
+### DVE-06: Stabilization Protocols (Level 3+)
+
+Use when extended visualization is required. Anti-fade techniques from lucid dreaming research.
+
+**Variants:** touch_anchor, hand_glance, breath_stabilization, detail_focus
+
+```xml
+<!-- Touch anchor variant -->
+<prosody rate="1.0" pitch="-1st">
+And to stay here...<break time="2s"/>
+reach out and touch something...<break time="2.5s"/>
+Feel its texture...<break time="2.5s"/>
+its temperature...<break time="2.5s"/>
+Let this touch anchor you...<break time="2.5s"/>
+here, in this place...<break time="3s"/>
+</prosody>
+
+<!-- Hand glance variant -->
+<prosody rate="1.0" pitch="-1st">
+And now...<break time="2s"/>
+look at your hands...<break time="2.5s"/>
+here, in this place...<break time="2.5s"/>
+Notice how they appear...<break time="2s"/>
+their shape...<break time="2s"/>
+their substance...<break time="2.5s"/>
+These are your hands here...<break time="2.5s"/>
+in this realm...<break time="3s"/>
+</prosody>
+```
+
+### DVE-07: Predictive Processing Override (Level 5 ONLY)
+
+**CAUTION:** Only for helm_deep_trance peak. Creates impossible imagery for breakthrough states.
+
+**Variants:** spatial_impossible, multi_perspective, temporal_collapse, identity_fluidity
+
+```xml
+<!-- Spatial impossible variant -->
+<prosody rate="1.0" pitch="-2st">
+And you step through a doorway...<break time="2.5s"/>
+and find yourself in a space...<break time="2.5s"/>
+that could not exist...<break time="3s"/>
+Vast beyond measure...<break time="2.5s"/>
+larger than the building that contains it...<break time="3s"/>
+Your mind stops trying to make sense...<break time="2.5s"/>
+and simply <emphasis level="moderate">receives</emphasis>...<break time="3.5s"/>
+</prosody>
+```
+
+**Contraindications:** Never use DVE-07 with first-time users, psychotic conditions, or dissociative disorders.
+
+### DVE Insertion Markers
+
+When writing scripts, use these markers to indicate DVE placement:
+
+```xml
+[DVE:PRIMING_START] ... [DVE:PRIMING_END]
+[DVE:HYPNAGOGIC_START] ... [DVE:HYPNAGOGIC_END]
+[DVE:CONTAINER_START] ... [DVE:CONTAINER_END]
+[DVE:EMBODIMENT_START] ... [DVE:EMBODIMENT_END]
+[DVE:AUTONOMOUS_START] ... [DVE:AUTONOMOUS_END]
+[DVE:MIRROR_START] ... [DVE:MIRROR_END]
+[DVE:STABILIZE_START] ... [DVE:STABILIZE_END]
+[DVE:OVERRIDE_START] ... [DVE:OVERRIDE_END]
+```
+
+### DVE Outcome Alignment
+
+| Outcome | Minimum Level | Optimal Level | Emphasis Modules |
+|---------|---------------|---------------|------------------|
+| healing | 2 | 3 | DVE-01, DVE-04 |
+| transformation | 3 | 4 | DVE-05 (mirror) |
+| empowerment | 2 | 3 | DVE-01, DVE-04 |
+| self_knowledge | 3 | 4 | DVE-05 (autonomous) |
+| release | 2 | 3 | DVE-04 |
+| spiritual_growth | 4 | 5 | DVE-05, DVE-07 |
+| creativity | 2 | 3 | DVE-02 |
+| relaxation | 1 | 2 | Light DVE only |
+| confidence | 2 | 3 | DVE-05 (mirror) |
+
+### DVE Contraindications
+
+| Module | Caution For | Modification |
+|--------|-------------|--------------|
+| DVE-02 | High anxiety, sleep disorders | Use gentler variant |
+| DVE-03 | Claustrophobia | Use open variants (garden, sky) |
+| DVE-04 | Body dysmorphia, somatic trauma | Focus on sensation, not appearance |
+| DVE-05 | Dissociative disorders | Use dialogue_framework only |
+| DVE-07 | Psychotic, dissociative, first-time | **Contraindicated** |
+
+> **Full Reference:** See `knowledge/visualization/dve_modules.yaml` for complete module definitions, `knowledge/visualization/scene_architecture.yaml` for spatial composition, and `knowledge/indexes/dve_index.yaml` for quick reference.
+
+---
+
 ## QUALITY CHECKLIST
 
 Before considering a script complete, verify:
@@ -291,7 +530,16 @@ Before considering a script complete, verify:
 - [ ] No fear-based or negative imagery
 - [ ] Maintains user agency and control
 
+**DVE Requirements (if Level 2+):**
+- [ ] Visualization level appropriate for session depth
+- [ ] Required DVE modules included for level
+- [ ] DVE insertions placed in correct sections
+- [ ] Container variant matches journey theme
+- [ ] Contraindications checked for target audience
+- [ ] DVE markers included for module boundaries
+
 > **Reference:** See `knowledge/hypnotic_patterns.yaml` for complete pattern library with examples.
+> **DVE Reference:** See `knowledge/visualization/dve_modules.yaml` for module system.
 
 ---
 

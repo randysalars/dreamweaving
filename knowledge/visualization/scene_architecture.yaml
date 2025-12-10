@@ -1,0 +1,469 @@
+# Scene Architecture Framework
+# Defines spatial layering, visual composition, and depth staging for Dreamweaving visualizations
+# Version: 1.0
+# Created: 2025-12-09
+
+version: "1.0"
+created: "2025-12-09"
+purpose: "Scene architecture and spatial composition guidelines for Dreamweaving visualizations"
+
+# ============================================================================
+# OVERVIEW
+# ============================================================================
+#
+# This framework defines how visual scenes are spatially organized in
+# Dreamweaving sessions. Based on cinematic composition, art theory, and
+# visualization research.
+#
+# Key concepts:
+# - Three-layer depth (foreground, midground, background)
+# - Focal point hierarchy
+# - Scene transition types
+# - Lighting and atmosphere
+# - Spatial anchoring for stabilization
+# ============================================================================
+
+# ============================================================================
+# SCENE DEPTH LAYERS
+# ============================================================================
+
+depth_layers:
+
+  foreground:
+    description: "Immediate surroundings, within arm's reach"
+    typical_elements:
+      - "Hands/body of listener"
+      - "Objects being touched or held"
+      - "Ground/floor surface"
+      - "Nearby symbolic objects"
+      - "Portal edges when entering"
+    sensory_emphasis:
+      - "Tactile (texture, temperature)"
+      - "Proprioceptive (body position)"
+      - "Detail visibility (close examination)"
+    stabilization_power: "High - touch anchors here"
+    ssml_cues:
+      - "Right here before you..."
+      - "Within arm's reach..."
+      - "Feel beneath your feet..."
+      - "In your hands now..."
+
+  midground:
+    description: "Immediate environment, 3-30 feet"
+    typical_elements:
+      - "Guide/archetypal figure"
+      - "Altar, throne, significant furniture"
+      - "Doorways and passages"
+      - "Other entities"
+      - "Central symbols"
+    sensory_emphasis:
+      - "Visual detail (faces, expressions)"
+      - "Auditory (voices, nearby sounds)"
+      - "Relational (interaction space)"
+    stabilization_power: "Medium - gaze and focus"
+    ssml_cues:
+      - "Before you stands..."
+      - "A few steps ahead..."
+      - "You see approaching..."
+      - "In the center of the space..."
+
+  background:
+    description: "Distant environment, atmosphere, boundaries"
+    typical_elements:
+      - "Walls, ceiling, horizon"
+      - "Sky, stars, cosmos"
+      - "Distant landscapes"
+      - "Ambient light sources"
+      - "Far-off sounds"
+    sensory_emphasis:
+      - "Visual (scale, atmosphere)"
+      - "Auditory (ambient, distant)"
+      - "Spatial (containment or vastness)"
+    stabilization_power: "Low - provides context, not anchor"
+    ssml_cues:
+      - "Far beyond..."
+      - "In the distance..."
+      - "The walls of this space..."
+      - "Above you, stretching endlessly..."
+
+# ============================================================================
+# SCENE TYPES
+# ============================================================================
+
+scene_types:
+
+  container_interior:
+    description: "Enclosed sacred space (temple, theater, cave, ship)"
+    depth_emphasis: "Foreground and midground strong; background defines limits"
+    typical_structure:
+      - "Floor/ground (foreground)"
+      - "Central feature - altar, screen, pool (midground)"
+      - "Walls/ceiling as protective boundary (background)"
+    container_variants:
+      temple:
+        key_elements: ["columns", "altar", "sacred geometry", "ceremonial objects"]
+        lighting: "Candlelight, sacred flame, golden light from above"
+        sound_atmosphere: "Stone echo, ceremonial bells, chanting undertone"
+      theater:
+        key_elements: ["curved walls", "central screen", "viewing seat", "domed ceiling"]
+        lighting: "Soft ambient, screen luminosity, starlight through dome"
+        sound_atmosphere: "Reverent silence, soft orchestral undertone"
+      cave:
+        key_elements: ["rough stone", "phosphorescence", "water sounds", "passages"]
+        lighting: "Bioluminescent, torch flicker, inner glow"
+        sound_atmosphere: "Dripping water, deep resonance, mineral hum"
+      spaceship:
+        key_elements: ["viewscreens", "navigation console", "organic-tech hybrid", "stars visible"]
+        lighting: "Console glow, starlight, ambient ship systems"
+        sound_atmosphere: "Engine hum, data sounds, cosmic silence"
+      garden:
+        key_elements: ["trees", "flowers", "water features", "winding paths"]
+        lighting: "Dappled sunlight, golden hour, moonlight options"
+        sound_atmosphere: "Birdsong, water, wind in leaves"
+
+  vast_exterior:
+    description: "Open, expansive environment (sky, ocean, cosmos, desert)"
+    depth_emphasis: "Background dominates; midground sparse; foreground grounding"
+    typical_structure:
+      - "Ground beneath feet (foreground grounding essential)"
+      - "Path, horizon features (midground)"
+      - "Sky, stars, distant landscape (background dominates)"
+    exterior_variants:
+      cosmic:
+        key_elements: ["stars", "nebulae", "planets", "cosmic currents"]
+        lighting: "Starlight, nebular glow, cosmic radiation"
+        scale_suggestion: "Infinite, humbling, awe-inducing"
+      ocean:
+        key_elements: ["waves", "horizon", "depths below", "sky reflection"]
+        lighting: "Sunlight on water, moonlit surface, bioluminescent depths"
+        scale_suggestion: "Vast horizontal, mysterious vertical"
+      forest:
+        key_elements: ["trees", "canopy", "undergrowth", "light shafts"]
+        lighting: "Dappled, green-filtered, mystical clearings"
+        scale_suggestion: "Enclosed yet infinite, maze-like"
+      mountain:
+        key_elements: ["peaks", "valleys", "sky", "rock face"]
+        lighting: "Alpine clarity, sunset gold, storm drama"
+        scale_suggestion: "Vertical aspiration, earthly grounding"
+
+  threshold_liminal:
+    description: "Transition spaces (doorways, bridges, stairs, portals)"
+    depth_emphasis: "Foreground = where you are; midground = passage; background = destination"
+    typical_structure:
+      - "Current location behind (receding foreground)"
+      - "Threshold/passage (midground focus)"
+      - "Destination glimpsed (background draws forward)"
+    threshold_variants:
+      doorway:
+        key_elements: ["frame", "door surface", "light beyond", "symbols on lintel"]
+        transition_feeling: "Permission, choice, commitment"
+      staircase:
+        key_elements: ["steps", "descent/ascent direction", "walls", "destination"]
+        transition_feeling: "Gradual progression, effort, depth change"
+      portal:
+        key_elements: ["energy ring", "shimmering surface", "other-side glimpse"]
+        transition_feeling: "Instant transport, dimensional shift"
+      bridge:
+        key_elements: ["span", "chasm below", "destination ahead", "railings"]
+        transition_feeling: "Courage, commitment, no return"
+
+  impossible_space:
+    description: "Non-Euclidean, paradoxical spaces (DVE-07 only)"
+    depth_emphasis: "All layers may collapse, merge, or contradict"
+    typical_structure:
+      - "Normal spatial rules suspended"
+      - "Bigger inside than outside"
+      - "Multiple simultaneous perspectives"
+      - "Infinite regression"
+    impossible_variants:
+      non_euclidean:
+        key_elements: ["space larger than container", "walls that don't connect", "paradoxical geometry"]
+        mental_effect: "Prediction failure, awe, surrender"
+      recursive:
+        key_elements: ["self-containing images", "fractal depth", "infinite zoom"]
+        mental_effect: "Vertigo, fascination, ego dissolution"
+      omniperspective:
+        key_elements: ["seeing from everywhere", "being multiple viewpoints", "collapsed observer"]
+        mental_effect: "Unity consciousness, boundary dissolution"
+
+# ============================================================================
+# FOCAL POINT HIERARCHY
+# ============================================================================
+
+focal_points:
+
+  primary_focus:
+    description: "Where attention is explicitly directed"
+    typical_elements:
+      - "Guide/archetype face"
+      - "Symbolic object being received"
+      - "Portal/doorway"
+      - "Mirror surface"
+      - "Light source"
+    attention_weight: "60-70% of listener attention"
+    ssml_pattern: "Direct description with emphasis and pause"
+
+  secondary_focus:
+    description: "Supporting elements that enrich without distracting"
+    typical_elements:
+      - "Environment details"
+      - "Background entities"
+      - "Ambient features"
+      - "Sound sources"
+    attention_weight: "20-30% of listener attention"
+    ssml_pattern: "Brief mention, let listener fill in details"
+
+  peripheral_awareness:
+    description: "Implied presence without explicit description"
+    typical_elements:
+      - "Sensed presences"
+      - "Sounds at edges"
+      - "Movements glimpsed"
+      - "Atmospheric shifts"
+    attention_weight: "5-10% of listener attention"
+    ssml_pattern: "Suggestion only ('something stirs', 'you sense')"
+
+# ============================================================================
+# SCENE TRANSITIONS
+# ============================================================================
+
+transition_types:
+
+  dissolve:
+    description: "Scene fades out as new scene fades in"
+    best_for: "Smooth thematic transitions, related scenes"
+    ssml_pattern: |
+      And now the [scene] begins to soften...<break time="2s"/>
+      shifting...<break time="2s"/>
+      transforming...<break time="2.5s"/>
+      into something new...<break time="3s"/>
+    binaural_cue: "Maintain frequency, add subtle sweep"
+
+  portal_entry:
+    description: "Step through doorway/portal into new space"
+    best_for: "Major scene changes, dimensional shifts"
+    ssml_pattern: |
+      Before you, a [doorway/portal] appears...<break time="2s"/>
+      [describe passage]...<break time="2s"/>
+      And as you step through...<break time="2.5s"/>
+      you find yourself...<break time="3s"/>
+      in an entirely new realm...<break time="3s"/>
+    binaural_cue: "Brief frequency shift, then establish new tone"
+
+  descent_ascent:
+    description: "Vertical movement (stairs, elevator, falling, rising)"
+    best_for: "Depth changes, consciousness level shifts"
+    ssml_pattern: |
+      And now you begin to [descend/ascend]...<break time="2s"/>
+      [counting or movement description]...<break time="X"/>
+      going [deeper/higher] with each step...<break time="2s"/>
+      until you arrive...<break time="3s"/>
+    binaural_cue: "Frequency shift matching direction (lower = deeper)"
+
+  sudden_shift:
+    description: "Instant scene change (cut)"
+    best_for: "Shock, revelation, breakthrough moments"
+    ssml_pattern: |
+      And suddenly...<break time="2s"/>
+      everything changes...<break time="2.5s"/>
+      You are now...<break time="2s"/>
+      [new location]...<break time="3s"/>
+    binaural_cue: "Brief silence, then new frequency"
+
+  zoom_in:
+    description: "Move from wide to focused"
+    best_for: "Revealing details, approaching entities"
+    ssml_pattern: |
+      And as you look more closely...<break time="2s"/>
+      you begin to notice...<break time="2s"/>
+      [detailed description]...<break time="2.5s"/>
+    binaural_cue: "Slight frequency intensification"
+
+  perspective_shift:
+    description: "Change viewpoint without moving location"
+    best_for: "Insight moments, seeing differently"
+    ssml_pattern: |
+      And now...<break time="2s"/>
+      see this from a different angle...<break time="2.5s"/>
+      as if you could step outside yourself...<break time="2.5s"/>
+      and observe...<break time="3s"/>
+    binaural_cue: "Subtle phase shift"
+
+# ============================================================================
+# LIGHTING AND ATMOSPHERE
+# ============================================================================
+
+lighting_patterns:
+
+  golden_sacred:
+    description: "Warm, divine light suggesting safety and blessing"
+    color_temperature: "2700-3200K (golden to warm white)"
+    shadow_quality: "Soft, diffuse"
+    best_for: ["Eden garden", "Temple initiation", "Healing journeys"]
+    ssml_descriptors:
+      - "bathed in golden light"
+      - "warm luminosity"
+      - "honey-colored radiance"
+
+  silver_mystical:
+    description: "Cool, mysterious light suggesting mystery and intuition"
+    color_temperature: "5500-7000K (moonlight to silver)"
+    shadow_quality: "Sharp, dramatic"
+    best_for: ["Underworld descent", "Shadow work", "Dream work"]
+    ssml_descriptors:
+      - "silvery moonlight"
+      - "cool luminescence"
+      - "pale, mysterious glow"
+
+  prismatic_celestial:
+    description: "Rainbow/spectrum light suggesting higher dimensions"
+    color_temperature: "Variable, shifting"
+    shadow_quality: "Minimal, light is everywhere"
+    best_for: ["Celestial journey", "Cosmic forge", "Spiritual growth"]
+    ssml_descriptors:
+      - "rainbow light"
+      - "shifting colors"
+      - "light from beyond the visible"
+
+  inner_glow:
+    description: "Light emanating from within objects/beings"
+    color_temperature: "Often warm, sometimes cool by archetype"
+    shadow_quality: "Cast outward from source"
+    best_for: ["Entity encounters", "Symbolic objects", "Inner work"]
+    ssml_descriptors:
+      - "glowing from within"
+      - "radiating light"
+      - "luminous presence"
+
+  darkness_with_points:
+    description: "Primarily dark with point light sources"
+    color_temperature: "Variable points in darkness"
+    shadow_quality: "Dense, enclosing"
+    best_for: ["Deep trance", "Underworld", "Cosmos", "Mystery"]
+    ssml_descriptors:
+      - "vast darkness"
+      - "points of light"
+      - "stars in the void"
+
+atmosphere_qualities:
+
+  clear:
+    visibility: "Maximum"
+    feeling: "Clarity, truth, no hiding"
+
+  misty:
+    visibility: "Soft edges, mystery"
+    feeling: "Dreamlike, uncertain, romantic"
+
+  smoky:
+    visibility: "Obscured, revealing slowly"
+    feeling: "Ancient, ceremonial, transformative"
+
+  crystalline:
+    visibility: "Sharp, geometric"
+    feeling: "Higher dimension, sacred geometry"
+
+  watery:
+    visibility: "Refracted, distorted"
+    feeling: "Emotional, unconscious, depth"
+
+# ============================================================================
+# SPATIAL ANCHORING FOR STABILIZATION
+# ============================================================================
+
+anchoring_points:
+
+  floor_anchor:
+    description: "Sensation of ground beneath feet"
+    stabilization_power: "High"
+    ssml_cue: "Feel the [stone/grass/floor] beneath your feet..."
+    best_when: "Listener may be becoming too 'floaty'"
+
+  hand_anchor:
+    description: "Looking at or touching with hands"
+    stabilization_power: "Very high"
+    ssml_cue: "Look at your hands here... notice how they appear..."
+    best_when: "Scene becoming vague or abstract"
+
+  object_anchor:
+    description: "Touching a specific object in scene"
+    stabilization_power: "High"
+    ssml_cue: "Reach out and touch [object]... feel its texture..."
+    best_when: "Need to ground listener in specific scene"
+
+  wall_anchor:
+    description: "Awareness of scene boundaries"
+    stabilization_power: "Medium"
+    ssml_cue: "Notice the walls of this space... solid and protective..."
+    best_when: "Listener needs sense of containment"
+
+  breath_anchor:
+    description: "Breathing in imaginal body"
+    stabilization_power: "High"
+    ssml_cue: "Take a breath here, in this body, in this space..."
+    best_when: "Listener losing embodiment"
+
+# ============================================================================
+# SCENE COMPLEXITY LEVELS
+# ============================================================================
+
+complexity_levels:
+
+  minimal:
+    description: "One or two key elements only"
+    typical_elements: 2-3
+    best_for: "Deep focus, early induction, simple relaxation"
+    example: "A path. Trees on either side. Nothing more."
+
+  moderate:
+    description: "Complete but not overwhelming scene"
+    typical_elements: 5-7
+    best_for: "Standard journeys, balanced attention"
+    example: "A temple with columns, altar, ceiling, floor, one figure."
+
+  rich:
+    description: "Detailed, multi-layered environment"
+    typical_elements: 10-15
+    best_for: "Extended journeys, Level 3-4 sessions"
+    example: "Garden with paths, water, flowers, trees, animals, structures, figures."
+
+  overwhelming:
+    description: "Intentionally complex to overwhelm rational mind"
+    typical_elements: "Many, rapidly shifting"
+    best_for: "DVE-07 impossible spaces, breakthrough moments"
+    example: "Infinite complexity, too much to process, surrender required."
+
+# ============================================================================
+# INTEGRATION WITH DVE MODULES
+# ============================================================================
+
+dve_scene_integration:
+
+  DVE-01:
+    scene_role: "Prepares for scene emergence"
+    architecture_note: "No scene yet - pre-scene state"
+
+  DVE-02:
+    scene_role: "Scene begins forming spontaneously"
+    architecture_note: "Formless to form transition"
+
+  DVE-03:
+    scene_role: "Establishes container/meta-space"
+    architecture_note: "Full three-layer architecture established"
+    typical_scene_type: "container_interior"
+
+  DVE-04:
+    scene_role: "Grounds listener's body in scene"
+    architecture_note: "Foreground intensified (hands, feet, floor)"
+
+  DVE-05:
+    scene_role: "Populates midground with autonomous entities"
+    architecture_note: "Midground becomes primary focus"
+
+  DVE-06:
+    scene_role: "Anchors and stabilizes wavering scene"
+    architecture_note: "Uses anchoring_points system"
+
+  DVE-07:
+    scene_role: "Breaks normal scene architecture"
+    architecture_note: "impossible_space scene type"

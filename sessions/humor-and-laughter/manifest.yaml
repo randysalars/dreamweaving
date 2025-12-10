@@ -1,0 +1,120 @@
+session:
+  name: humor-and-laughter
+  topic: Humor and laughter
+  duration: 1800
+  style: transformation
+  created: '2025-12-10'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: Humor and Laughter
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: Welcome and introduction to Humor and laughter
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into in a sacred realm where the essence of
+    humor and laughter surrounds you with transformative energy
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a chrysalis ship carrying you to your next evolution'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: emerging as the next evolution of yourself'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Great Physician
+  role: primary
+  description: Supreme healing authority with power over all conditions
+  symbol: ''
+  qualities: []
+  appearance_section: journey
+- name: The Phoenix of Renewal
+  role: secondary
+  description: Archetype of complete destruction and rebirth through sacred fire
+  symbol: ''
+  qualities: []
+  appearance_section: helm_deep_trance
+- name: The Inner Healer
+  role: support
+  description: White Flame archetype for regeneration and cellular intelligence
+  symbol: ''
+  qualities: []
+  appearance_section: integration
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 432
+    preset: abundance_mindset
+    sections:
+    - start: 0
+      end: 144
+      offset_hz: 10.0
+    - start: 144
+      end: 414
+      offset_hz: 8.0
+    - start: 414
+      end: 630
+      offset_hz: 6.0
+    - start: 630
+      end: 990
+      offset_hz: 4.0
+    - start: 990
+      end: 1350
+      offset_hz: 2.5
+    - start: 1350
+      end: 1566
+      offset_hz: 6.0
+    - start: 1566
+      end: 1800
+      offset_hz: 10.0
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: Humor and Laughter | Binaural Beats Meditation
+  subtitle: "432Hz \u2022 Transformation"
+  description: 'A transformational journey: emerging as the next evolution of yourself'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - transformation
+  - cosmic
+fx_timeline:
+- type: gamma_flash
+  time: 1170
+  duration_s: 3.0
+  freq_hz: 40
+  description: Peak insight moment

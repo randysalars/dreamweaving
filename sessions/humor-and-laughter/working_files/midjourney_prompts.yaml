@@ -1,4 +1,4 @@
-session: adventure
+session: humor-and-laughter
 style: abstract
 style_details:
   base_style: flowing forms, energy patterns, consciousness
@@ -20,17 +20,17 @@ thumbnail:
 scenes:
 - scene: opening
   description: Beginning of Hypnotic Journey
-  prompt: 'gateway or threshold, beginning of a journey, your own reflection, but
-    it is different now, flowing forms, energy patterns, consciousness, color palette:
-    prismatic, shifting gradients, mood: inviting, anticipation, safe entry, lighting:
-    inner glow, radiant energy, highly detailed, professional quality, 8k resolution
-    --ar 16:9 --v 6 --style raw --s 250'
+  prompt: 'gateway or threshold, beginning of a journey, warm, golden light, flowing
+    forms, energy patterns, consciousness, color palette: prismatic, shifting gradients,
+    mood: inviting, anticipation, safe entry, lighting: inner glow, radiant energy,
+    highly detailed, professional quality, 8k resolution --ar 16:9 --v 6 --style raw
+    --s 250'
 - scene: journey_1
-  description: the adventurer that has always lived within you
-  prompt: 'the adventurer that has always lived within you, flowing forms, energy
-    patterns, consciousness, color palette: prismatic, shifting gradients, mood: meditative,
-    hypnotic, transformative, lighting: inner glow, radiant energy, highly detailed,
-    professional quality, 8k resolution --ar 16:9 --v 6 --style raw --s 250'
+  description: that you are floating
+  prompt: 'that you are floating, flowing forms, energy patterns, consciousness, color
+    palette: prismatic, shifting gradients, mood: meditative, hypnotic, transformative,
+    lighting: inner glow, radiant energy, highly detailed, professional quality, 8k
+    resolution --ar 16:9 --v 6 --style raw --s 250'
 - scene: closing
   description: Completion of Hypnotic Journey
   prompt: 'peaceful return, integration, wholeness, flowing forms, energy patterns,

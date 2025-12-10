@@ -1,0 +1,618 @@
+# Proprioceptive Templates for DVE-04 (Embodiment & Proprioception)
+# Provides detailed body awareness and internal sensation language for Dreamweaving
+# Version: 1.0
+# Created: 2025-12-09
+
+version: "1.0"
+created: "2025-12-09"
+purpose: "Templates for deep body awareness and proprioceptive activation in imaginal space"
+
+# ============================================================================
+# OVERVIEW
+# ============================================================================
+#
+# Proprioception is the sense of body position and movement in space.
+# These templates help listeners develop awareness of their imaginal body,
+# creating deeper embodiment in the visualization experience.
+#
+# Key concepts:
+# - Interoception: Internal body sensations (heartbeat, breath, temperature)
+# - Proprioception: Body position, movement, spatial orientation
+# - Kinesthesia: Sense of movement and muscle tension
+# - Imaginal body: The experienced body within visualization
+#
+# Integration with DVE-04:
+# These templates provide the language patterns used in DVE-04 module.
+# They can be combined and adapted based on journey context.
+# ============================================================================
+
+# ============================================================================
+# GROUNDING TEMPLATES
+# ============================================================================
+
+grounding_templates:
+
+  feet_anchor:
+    name: "Feet Anchor"
+    description: "Establishes ground connection through imaginal feet"
+    duration_seconds: 20
+    sensory_focus: ["tactile", "proprioceptive"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2s"/>
+      become aware of your feet...<break time="2.5s"/>
+      here, in this sacred space...<break time="2s"/>
+      Feel what is beneath them...<break time="2.5s"/>
+      Perhaps cool stone...<break time="2s"/>
+      or soft earth...<break time="2s"/>
+      or warm sand...<break time="2.5s"/>
+      Whatever ground holds you here...<break time="2s"/>
+      feel its solidity...<break time="2.5s"/>
+      its support...<break time="3s"/>
+      </prosody>
+    variants:
+      stone_floor: "the ancient stone beneath your feet... cool and solid... smoothed by countless footsteps..."
+      earth_ground: "the living earth beneath your feet... rich and welcoming... supporting you completely..."
+      sand: "the warm sand shifting gently beneath your feet... fine grains between your toes..."
+      water: "the shallow water around your ankles... cool and flowing... grounding you in its embrace..."
+      clouds: "the soft cloud substance beneath your feet... surprisingly solid... yet infinitely gentle..."
+    best_for: ["beginning of journey", "after transitions", "grounding anxious listeners"]
+
+  standing_posture:
+    name: "Standing Posture Awareness"
+    description: "Full body standing alignment awareness"
+    duration_seconds: 25
+    sensory_focus: ["proprioceptive", "kinesthetic"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And as you stand here...<break time="2s"/>
+      become aware of your whole body...<break time="2.5s"/>
+      rising from the ground...<break time="2s"/>
+      Your legs strong and stable...<break time="2.5s"/>
+      your spine a pillar of light...<break time="2.5s"/>
+      your shoulders relaxed...<break time="2s"/>
+      your head balanced perfectly...<break time="2.5s"/>
+      as if a golden thread...<break time="2s"/>
+      draws you gently upward...<break time="2.5s"/>
+      from the crown of your head...<break time="3s"/>
+      </prosody>
+    applications: ["temple initiation", "receiving power", "empowerment journeys"]
+
+  seated_posture:
+    name: "Seated Posture Awareness"
+    description: "Awareness for seated/throne positions"
+    duration_seconds: 22
+    sensory_focus: ["proprioceptive", "tactile"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And as you settle into this seat...<break time="2.5s"/>
+      feel your weight supported...<break time="2s"/>
+      your body held...<break time="2.5s"/>
+      The surface beneath you...<break time="2s"/>
+      receiving you completely...<break time="2.5s"/>
+      Your back resting...<break time="2s"/>
+      your hands at ease...<break time="2.5s"/>
+      settled into this place of power...<break time="3s"/>
+      </prosody>
+    variants:
+      throne: "upon this ancient throne... feel the weight of wisdom it confers..."
+      altar_seat: "before this sacred altar... in the posture of the initiate..."
+      meditation_cushion: "on this soft cushion... in the timeless posture of the seeker..."
+      stone_bench: "on this worn stone... where countless seekers have sat before you..."
+
+# ============================================================================
+# INTERNAL AWARENESS TEMPLATES
+# ============================================================================
+
+internal_awareness:
+
+  heartbeat:
+    name: "Heartbeat Awareness"
+    description: "Awareness of heartbeat in imaginal body"
+    duration_seconds: 20
+    sensory_focus: ["interoceptive"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2s"/>
+      turn your awareness inward...<break time="2.5s"/>
+      to the gentle rhythm...<break time="2s"/>
+      of your heart...<break time="2.5s"/>
+      beating here...<break time="2s"/>
+      in this chest...<break time="2.5s"/>
+      in this body...<break time="2s"/>
+      in this sacred space...<break time="3s"/>
+      </prosody>
+    integration_note: "Sync with binaural beat rhythm if possible"
+    best_for: ["healing journeys", "heart opening", "connection with guide"]
+
+  breath_flow:
+    name: "Breath Flow Awareness"
+    description: "Following the breath through imaginal body"
+    duration_seconds: 25
+    sensory_focus: ["interoceptive", "kinesthetic"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And notice your breath...<break time="2s"/>
+      here, in this body...<break time="2.5s"/>
+      how it flows in...<break time="2.5s"/>
+      cool and fresh...<break time="2.5s"/>
+      filling your lungs...<break time="2s"/>
+      expanding your chest...<break time="2.5s"/>
+      And flows out...<break time="2.5s"/>
+      warm and soft...<break time="2.5s"/>
+      releasing...<break time="2s"/>
+      letting go...<break time="3s"/>
+      </prosody>
+    variants:
+      light_breath: "and with each breath, light flows in... golden, radiant light... filling every cell..."
+      healing_breath: "and with each breath, healing energy flows... reaching every part that needs care..."
+      cosmic_breath: "breathing the very substance of the cosmos... starlight and space between breaths..."
+
+  body_temperature:
+    name: "Temperature Awareness"
+    description: "Awareness of warmth/coolness in imaginal body"
+    duration_seconds: 18
+    sensory_focus: ["interoceptive", "tactile"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And notice the temperature...<break time="2s"/>
+      of your body here...<break time="2.5s"/>
+      Perhaps a pleasant warmth...<break time="2.5s"/>
+      radiating from your center...<break time="2.5s"/>
+      Or a refreshing coolness...<break time="2s"/>
+      on your skin...<break time="2.5s"/>
+      Just noticing...<break time="3s"/>
+      </prosody>
+    best_for: ["environment transitions", "energy work", "element-based journeys"]
+
+  energy_centers:
+    name: "Energy Center Awareness"
+    description: "Awareness of major energy centers (non-chakra specific)"
+    duration_seconds: 30
+    sensory_focus: ["interoceptive", "energetic"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2s"/>
+      become aware of the energy...<break time="2.5s"/>
+      moving through this body...<break time="2.5s"/>
+      Perhaps you sense it...<break time="2s"/>
+      at the base of your spine...<break time="2.5s"/>
+      a grounding presence...<break time="2.5s"/>
+      Or in your heart...<break time="2s"/>
+      a warm radiance...<break time="2.5s"/>
+      Or at the crown of your head...<break time="2s"/>
+      an open connection...<break time="2.5s"/>
+      Wherever you feel it most...<break time="2.5s"/>
+      let your awareness rest there now...<break time="3s"/>
+      </prosody>
+    note: "Deliberately non-prescriptive to allow listener's own experience"
+
+# ============================================================================
+# MOVEMENT TEMPLATES
+# ============================================================================
+
+movement_templates:
+
+  walking:
+    name: "Walking Awareness"
+    description: "Embodied walking in imaginal space"
+    duration_seconds: 25
+    sensory_focus: ["kinesthetic", "proprioceptive"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now you begin to move...<break time="2s"/>
+      one step...<break time="2.5s"/>
+      then another...<break time="2.5s"/>
+      Feel the shift of weight...<break time="2s"/>
+      the movement of your legs...<break time="2.5s"/>
+      the natural rhythm...<break time="2s"/>
+      of walking in this place...<break time="2.5s"/>
+      Each step bringing you closer...<break time="2.5s"/>
+      to what awaits...<break time="3s"/>
+      </prosody>
+    best_for: ["transitions between scenes", "approaching entities", "journey progression"]
+
+  reaching:
+    name: "Reaching Gesture"
+    description: "Extending hand/arm in imaginal space"
+    duration_seconds: 18
+    sensory_focus: ["kinesthetic", "proprioceptive", "tactile"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2s"/>
+      slowly...<break time="2.5s"/>
+      reach out your hand...<break time="2.5s"/>
+      Feel your arm extend...<break time="2s"/>
+      your fingers opening...<break time="2.5s"/>
+      reaching toward...<break time="2s"/>
+      what is offered...<break time="3s"/>
+      </prosody>
+    best_for: ["receiving gifts", "touching symbolic objects", "connection with guides"]
+
+  turning:
+    name: "Turning Awareness"
+    description: "Rotational movement awareness"
+    duration_seconds: 18
+    sensory_focus: ["proprioceptive", "vestibular"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2s"/>
+      turn slowly...<break time="2.5s"/>
+      feeling the gentle rotation...<break time="2.5s"/>
+      of your body in space...<break time="2s"/>
+      the world shifting around you...<break time="2.5s"/>
+      until you face...<break time="2.5s"/>
+      a new direction...<break time="3s"/>
+      </prosody>
+    best_for: ["revealing new scenes", "meeting entities", "perspective shifts"]
+
+  ascending_descending:
+    name: "Vertical Movement"
+    description: "Awareness during up/down movement"
+    duration_seconds: 22
+    sensory_focus: ["kinesthetic", "proprioceptive", "vestibular"]
+    ascending_ssml: |
+      <prosody rate="1.0" pitch="-1st">
+      And now you begin to rise...<break time="2.5s"/>
+      feel yourself lifting...<break time="2.5s"/>
+      ascending...<break time="2.5s"/>
+      the sensation of rising...<break time="2s"/>
+      through space...<break time="2.5s"/>
+      upward...<break time="2s"/>
+      ever upward...<break time="3s"/>
+      </prosody>
+    descending_ssml: |
+      <prosody rate="1.0" pitch="-1st">
+      And now you begin to descend...<break time="2.5s"/>
+      feel yourself sinking...<break time="2.5s"/>
+      going deeper...<break time="2.5s"/>
+      the sensation of going down...<break time="2s"/>
+      into the depths...<break time="2.5s"/>
+      deeper...<break time="2s"/>
+      ever deeper...<break time="3s"/>
+      </prosody>
+    best_for: ["staircase transitions", "flight sequences", "underworld/heaven journeys"]
+
+# ============================================================================
+# HAND AWARENESS TEMPLATES
+# ============================================================================
+
+hand_templates:
+
+  hand_gaze:
+    name: "Looking at Hands"
+    description: "DVE-06 stabilization through hand awareness"
+    duration_seconds: 18
+    sensory_focus: ["visual", "proprioceptive"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2s"/>
+      look at your hands...<break time="2.5s"/>
+      here, in this place...<break time="2.5s"/>
+      Notice how they appear...<break time="2s"/>
+      their shape...<break time="2s"/>
+      their substance...<break time="2.5s"/>
+      These are your hands here...<break time="2.5s"/>
+      in this realm...<break time="3s"/>
+      </prosody>
+    note: "From lucid dreaming stabilization research - anchors awareness in imaginal body"
+    best_for: ["scene stabilization", "when visualization is fading", "grounding in imaginal space"]
+
+  hand_touch:
+    name: "Touching with Hands"
+    description: "Using hands to touch and explore"
+    duration_seconds: 20
+    sensory_focus: ["tactile", "proprioceptive"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And with your hand...<break time="2s"/>
+      reach out and touch...<break time="2.5s"/>
+      Feel the surface...<break time="2s"/>
+      beneath your fingertips...<break time="2.5s"/>
+      Its texture...<break time="2s"/>
+      its temperature...<break time="2s"/>
+      its reality...<break time="2.5s"/>
+      Let this touch anchor you here...<break time="3s"/>
+      </prosody>
+    best_for: ["object interaction", "scene anchoring", "receiving sacred objects"]
+
+  hands_receiving:
+    name: "Hands Receiving"
+    description: "Open hands receiving energy, gifts, or blessings"
+    duration_seconds: 22
+    sensory_focus: ["tactile", "proprioceptive", "energetic"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2s"/>
+      turn your palms upward...<break time="2s"/>
+      open...<break time="2s"/>
+      receptive...<break time="2.5s"/>
+      And feel what is placed there...<break time="2.5s"/>
+      Perhaps a warmth...<break time="2s"/>
+      or a gentle weight...<break time="2.5s"/>
+      or a tingling energy...<break time="2.5s"/>
+      Receive what is given...<break time="3s"/>
+      </prosody>
+    best_for: ["receiving gifts from guides", "blessing scenes", "power transmission"]
+
+  hands_blessing:
+    name: "Hands Blessing"
+    description: "Using hands to bless or send energy"
+    duration_seconds: 20
+    sensory_focus: ["proprioceptive", "energetic"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2s"/>
+      raise your hands...<break time="2.5s"/>
+      and feel the energy...<break time="2s"/>
+      flowing through them...<break time="2.5s"/>
+      radiant...<break time="2s"/>
+      powerful...<break time="2.5s"/>
+      Send this blessing outward...<break time="2.5s"/>
+      from your open palms...<break time="3s"/>
+      </prosody>
+    best_for: ["empowerment", "healing others", "blessing scenes"]
+
+# ============================================================================
+# FULL BODY TEMPLATES
+# ============================================================================
+
+full_body_templates:
+
+  body_scan_brief:
+    name: "Brief Body Scan"
+    description: "Quick scan of full imaginal body"
+    duration_seconds: 30
+    sensory_focus: ["proprioceptive", "interoceptive"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And for a moment...<break time="2s"/>
+      become aware of your whole body...<break time="2.5s"/>
+      here in this space...<break time="2.5s"/>
+      From your feet...<break time="2s"/>
+      rooted to this ground...<break time="2.5s"/>
+      Through your legs...<break time="2s"/>
+      your hips...<break time="2s"/>
+      your torso...<break time="2s"/>
+      your arms...<break time="2s"/>
+      your shoulders...<break time="2s"/>
+      your neck...<break time="2s"/>
+      to the crown of your head...<break time="2.5s"/>
+      You are fully present here...<break time="3s"/>
+      </prosody>
+    best_for: ["beginning of journey", "after transitions", "before major encounters"]
+
+  light_body:
+    name: "Light Body Awareness"
+    description: "Awareness of body as light/energy form"
+    duration_seconds: 25
+    sensory_focus: ["energetic", "proprioceptive"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And now...<break time="2s"/>
+      notice something remarkable...<break time="2.5s"/>
+      Your body here...<break time="2.5s"/>
+      is made of light...<break time="2.5s"/>
+      luminous...<break time="2s"/>
+      radiant...<break time="2.5s"/>
+      You can feel the glow...<break time="2s"/>
+      emanating from your form...<break time="2.5s"/>
+      a body of pure light...<break time="3s"/>
+      </prosody>
+    best_for: ["celestial journeys", "spiritual transformation", "cosmic travels"]
+
+  expanded_body:
+    name: "Expanded Body Awareness"
+    description: "Feeling larger or more expansive"
+    duration_seconds: 25
+    sensory_focus: ["proprioceptive", "energetic"]
+    ssml_template: |
+      <prosody rate="1.0" pitch="-1st">
+      And you may notice...<break time="2.5s"/>
+      a subtle expansion...<break time="2.5s"/>
+      as if you are growing...<break time="2.5s"/>
+      your presence expanding...<break time="2s"/>
+      beyond your usual boundaries...<break time="2.5s"/>
+      larger...<break time="2s"/>
+      more vast...<break time="2.5s"/>
+      filling more of this space...<break time="3s"/>
+      </prosody>
+    best_for: ["empowerment", "cosmic consciousness", "integration of power"]
+
+# ============================================================================
+# SENSATION PATTERNS
+# ============================================================================
+
+sensation_patterns:
+
+  warmth_spreading:
+    name: "Spreading Warmth"
+    description: "Warmth radiating through body"
+    ssml_snippet: |
+      a gentle warmth spreading...<break time="2s"/>
+      from your center...<break time="2s"/>
+      outward...<break time="2s"/>
+      through your whole body...<break time="2.5s"/>
+    best_for: ["healing", "heart opening", "receiving blessings"]
+
+  tingling_energy:
+    name: "Tingling Energy"
+    description: "Electric or tingling sensation"
+    ssml_snippet: |
+      a subtle tingling...<break time="2s"/>
+      like gentle electricity...<break time="2s"/>
+      moving through you...<break time="2.5s"/>
+      alive and awakening...<break time="2.5s"/>
+    best_for: ["activation", "empowerment", "energy transmission"]
+
+  heaviness_grounding:
+    name: "Grounding Heaviness"
+    description: "Pleasant heaviness for grounding"
+    ssml_snippet: |
+      a pleasant heaviness...<break time="2s"/>
+      settling into your body...<break time="2.5s"/>
+      grounding you...<break time="2s"/>
+      anchoring you here...<break time="2.5s"/>
+    best_for: ["deepening", "stabilization", "after intense experiences"]
+
+  lightness_lifting:
+    name: "Lifting Lightness"
+    description: "Buoyant, floating sensation"
+    ssml_snippet: |
+      a gentle lightness...<break time="2s"/>
+      as if you could float...<break time="2.5s"/>
+      buoyant...<break time="2s"/>
+      free...<break time="2.5s"/>
+    best_for: ["flight", "ascension", "liberation"]
+
+  pulsing_rhythm:
+    name: "Pulsing Rhythm"
+    description: "Rhythmic pulsation in body"
+    ssml_snippet: |
+      a gentle pulsing...<break time="2s"/>
+      like a heartbeat...<break time="2s"/>
+      moving through your being...<break time="2.5s"/>
+      rhythm of life itself...<break time="2.5s"/>
+    best_for: ["connection with cosmos", "healing", "rhythmic deepening"]
+
+# ============================================================================
+# CONTRAINDICATIONS
+# ============================================================================
+
+contraindications:
+
+  body_dysmorphia:
+    condition: "Body dysmorphia, eating disorders"
+    modification: |
+      - Focus on sensation, not appearance
+      - Avoid descriptions of body shape or size
+      - Emphasize "feeling" rather than "seeing" the body
+      - Use abstract sensory language (warmth, energy, presence)
+    avoid_templates: ["light_body", "expanded_body"]
+    prefer_templates: ["heartbeat", "breath_flow", "warmth_spreading"]
+
+  somatic_trauma:
+    condition: "Somatic trauma, physical abuse history"
+    modification: |
+      - Proceed slowly with body awareness
+      - Always offer choice and control
+      - Use "you may notice" rather than "you will feel"
+      - Provide easy return to external awareness
+    language_adjustments:
+      - Replace "feel" with "notice" or "become aware"
+      - Add "if you choose" after body directives
+      - Include permission language
+
+  chronic_pain:
+    condition: "Chronic pain conditions"
+    modification: |
+      - Focus on comfortable areas of body
+      - Offer "imaginal body" as distinct from physical body
+      - Avoid detailed attention to painful areas
+      - Emphasize lightness, ease, comfort
+    prefer_templates: ["light_body", "lightness_lifting"]
+
+  dissociative_conditions:
+    condition: "Dissociative disorders, depersonalization"
+    modification: |
+      - Use gentle grounding throughout
+      - Maintain connection to physical anchor
+      - Avoid extensive internal exploration
+      - Keep imaginal body closely linked to physical body
+    prefer_templates: ["feet_anchor", "hand_gaze"]
+    caution_templates: ["light_body", "expanded_body"]
+
+# ============================================================================
+# INTEGRATION WITH DVE-04
+# ============================================================================
+
+dve_04_integration:
+
+  placement: "Start of journey section, after deepening"
+  typical_duration: "20-30 seconds"
+
+  standard_sequence:
+    - feet_anchor
+    - standing_posture OR seated_posture
+    - heartbeat OR breath_flow
+    - hand_gaze (optional, for stabilization)
+
+  healing_emphasis:
+    - heartbeat
+    - breath_flow
+    - body_scan_brief
+    - warmth_spreading
+
+  empowerment_emphasis:
+    - standing_posture
+    - energy_centers
+    - expanded_body
+    - tingling_energy
+
+  transformation_emphasis:
+    - body_scan_brief
+    - light_body
+    - walking
+    - reaching
+
+  minimal_grounding:
+    description: "For listeners who need minimal body focus"
+    templates: ["feet_anchor", "breath_flow"]
+    note: "Use when body awareness might be triggering"
+
+# ============================================================================
+# OUTCOME ALIGNMENT
+# ============================================================================
+
+outcome_alignment:
+
+  healing:
+    primary_templates: [heartbeat, breath_flow, body_scan_brief, warmth_spreading]
+    secondary_templates: [hands_receiving, light_body]
+    note: "Focus on gentle, nurturing body awareness"
+
+  transformation:
+    primary_templates: [light_body, expanded_body, walking, reaching]
+    secondary_templates: [energy_centers, tingling_energy]
+    note: "Emphasis on body as vehicle for change"
+
+  empowerment:
+    primary_templates: [standing_posture, energy_centers, hands_blessing]
+    secondary_templates: [expanded_body, tingling_energy]
+    note: "Strong, powerful body awareness"
+
+  self_knowledge:
+    primary_templates: [body_scan_brief, heartbeat, energy_centers]
+    secondary_templates: [hand_gaze, internal awareness]
+    note: "Deep internal exploration"
+
+  release:
+    primary_templates: [breath_flow, lightness_lifting, hands_receiving]
+    secondary_templates: [warmth_spreading]
+    note: "Release through body awareness"
+
+  spiritual_growth:
+    primary_templates: [light_body, energy_centers, ascending_descending]
+    secondary_templates: [expanded_body]
+    note: "Body as spiritual vehicle"
+
+  relaxation:
+    primary_templates: [feet_anchor, breath_flow, heaviness_grounding]
+    secondary_templates: [seated_posture, warmth_spreading]
+    note: "Comfortable, safe body awareness"
+
+  confidence:
+    primary_templates: [standing_posture, expanded_body, hands_blessing]
+    secondary_templates: [walking, reaching]
+    note: "Powerful, commanding body presence"
+
+# ============================================================================
+# RELATED FILES
+# ============================================================================
+
+related_files:
+  dve_modules: "knowledge/visualization/dve_modules.yaml"
+  scene_architecture: "knowledge/visualization/scene_architecture.yaml"
+  dve_index: "knowledge/indexes/dve_index.yaml"
+  outcome_registry: "knowledge/outcome_registry.yaml"
+  hypnotic_patterns: "knowledge/hypnotic_patterns.yaml"

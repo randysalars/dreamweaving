@@ -1,0 +1,1505 @@
+# Dreamweaver Visualization Engine (DVE) Modules
+# Core definitions for advanced active imagination and visualization techniques
+# Version: 1.0
+# Created: 2025-12-09
+
+version: "1.0"
+created: "2025-12-09"
+purpose: "Deep Visualization Enhancement modules for advanced active imagination in Dreamweaving sessions"
+
+# ============================================================================
+# ARCHITECTURE OVERVIEW
+# ============================================================================
+#
+# The DVE system provides 7 modular, insertable micro-sections (15-30 seconds each)
+# that enhance visualization depth without disrupting existing session structure.
+#
+# TIERS:
+#   Tier 1 (Foundation): DVE-01, DVE-02, DVE-03 - Required for Levels 2+
+#   Tier 2 (Intermediate): DVE-04, DVE-05 - Required for Levels 4+
+#   Tier 3 (Hyperimaginal): DVE-06, DVE-07 - Level 5 only
+#
+# VISUALIZATION LEVELS:
+#   Level 1: No DVE modules (standard hypnotic visualization)
+#   Level 2: DVE-01 only (immersive)
+#   Level 3: DVE-01 through DVE-04 (embodied)
+#   Level 4: DVE-01 through DVE-05 (interactive)
+#   Level 5: All modules (hyperimaginal)
+# ============================================================================
+
+# Schema definition for module structure
+schema:
+  module_id:
+    format: "DVE-XX"
+    description: "Unique module identifier"
+
+  name:
+    type: string
+    description: "Human-readable module name"
+
+  tier:
+    type: integer
+    enum: [1, 2, 3]
+    description: "Tier level (1=foundation, 2=intermediate, 3=hyperimaginal)"
+
+  definition:
+    brief: "One-line description"
+    extended: "Detailed explanation with psychological basis"
+    sources: "Reference works (Jung, Desoille, Assagioli, LaBerge, etc.)"
+
+  prerequisites:
+    type: array
+    items: module_id
+    description: "Required prior modules"
+
+  placement:
+    allowed_stages:
+      type: array
+      items: [pre_talk, induction, deepening, journey, helm_deep_trance, integration]
+    optimal_position:
+      type: string
+      description: "Where the module works best"
+    insertion_markers:
+      type: array
+      description: "Script markers for insertion points"
+
+  duration:
+    minimum_seconds: 15
+    maximum_seconds: 30
+    typical_seconds: 20
+
+  templates:
+    standard_ssml: "Default SSML template (rate='1.0')"
+    variant_ssml: "Alternative SSML options"
+    entry_cue: "Script marker before module"
+    exit_cue: "Script marker after module"
+
+  audio_cues:
+    binaural_sync: "Binaural beat recommendation during module"
+    sfx_cue: "Sound effect suggestion"
+
+  visualization_markers:
+    scene_architecture: "none|pre_scene|container_space|body_map|entity_space"
+    sensory_channels: "Which VAK+ channels to activate"
+    submodality_shifts: "Brightness, size, distance modulations"
+
+  relationships:
+    synergies: "Other modules that enhance this one"
+    conflicts: "Modules that shouldn't be combined"
+    outcome_alignment: "Which outcomes benefit most"
+
+  contraindications:
+    conditions: "Populations to use caution with"
+    modifications: "How to adapt for sensitive listeners"
+
+# ============================================================================
+# TIER 1: FOUNDATION MODULES
+# ============================================================================
+
+modules:
+
+  # --------------------------------------------------------------------------
+  # DVE-01: IMAGINAL PRIMING
+  # --------------------------------------------------------------------------
+  DVE-01:
+    module_id: "DVE-01"
+    name: "Imaginal Priming"
+    tier: 1
+
+    definition:
+      brief: "Pre-journey activation of the subconscious image-generation system"
+      extended: |
+        Imaginal priming prepares the visualization faculty before the main journey
+        content arrives. Based on research showing that brief exposure to related
+        imagery or concepts increases subsequent visualization vividness and detail.
+
+        The technique involves:
+        1. Signaling to the unconscious that detailed imagery is about to be requested
+        2. Activating the "render queue" of the imaginal faculty
+        3. Establishing expectation of vivid, personal imagery
+        4. Creating readiness for spontaneous image emergence
+
+        Psychological basis: Predictive processing theory suggests the brain
+        continuously generates predictions. Priming biases these predictions
+        toward rich, detailed imagery rather than abstract concepts.
+
+        Key principle: "You are not creating... you are receiving."
+        This shifts the listener from active construction (effortful) to
+        passive reception (effortless, more vivid).
+
+      sources:
+        - "Active Imagination - Marie-Louise von Franz"
+        - "Imagery in Healing - Jeanne Achterberg"
+        - "Predictive Processing and Consciousness - Andy Clark"
+        - "Hypnagogia: The Unique State - Andreas Mavromatis"
+
+    prerequisites: []
+
+    placement:
+      allowed_stages: [pre_talk, induction]
+      optimal_position: "End of pre_talk, just before induction begins"
+      insertion_markers:
+        - "[DVE:PRIMING_START]"
+        - "[DVE:PRIMING_END]"
+
+    duration:
+      minimum_seconds: 15
+      maximum_seconds: 25
+      typical_seconds: 20
+
+    templates:
+      standard_ssml: |
+        <prosody rate="1.0" pitch="0st">
+        And as you prepare for this journey...<break time="2s"/>
+        I want to speak to a part of you...<break time="1.5s"/>
+        that already knows how to dream...<break time="2s"/>
+        that part of your mind that creates worlds...<break time="2s"/>
+        when you close your eyes at night...<break time="2.5s"/>
+        That creative faculty...<break time="1.5s"/>
+        is beginning to <emphasis level="moderate">awaken</emphasis> now...<break time="2s"/>
+        preparing to show you...<break time="1.5s"/>
+        something only you can see...<break time="2.5s"/>
+        in your own unique way...<break time="3s"/>
+        </prosody>
+
+      variant_light: |
+        <prosody rate="1.0" pitch="0st">
+        And that part of you that dreams...<break time="2s"/>
+        is preparing now...<break time="2s"/>
+        to create something beautiful...<break time="2.5s"/>
+        </prosody>
+
+      variant_deep: |
+        <prosody rate="1.0" pitch="-1st">
+        In the space behind your closed eyes...<break time="2s"/>
+        a screen awaits...<break time="2s"/>
+        vast, empty, ready...<break time="2.5s"/>
+        And your deeper mind...<break time="1.5s"/>
+        that master artist within...<break time="2s"/>
+        already prepares the paints...<break time="2s"/>
+        already knows what must be shown...<break time="2.5s"/>
+        What comes next...<break time="2s"/>
+        will be yours alone...<break time="3s"/>
+        </prosody>
+
+      variant_symbolic: |
+        <prosody rate="1.0" pitch="0st">
+        Deep within your mind...<break time="2s"/>
+        there is a place where symbols come alive...<break time="2.5s"/>
+        where meaning takes form...<break time="2s"/>
+        and wisdom wears a face...<break time="2.5s"/>
+        That place is stirring now...<break time="2s"/>
+        preparing to speak...<break time="2.5s"/>
+        in the language only you understand...<break time="3s"/>
+        </prosody>
+
+      entry_cue: "And as you prepare for this journey..."
+      exit_cue: "...in your own unique way."
+
+    audio_cues:
+      binaural_sync: "Alpha (10 Hz) - optimal for priming receptivity"
+      sfx_cue: "Soft crystalline tones beginning to emerge"
+
+    visualization_markers:
+      scene_architecture: "none"
+      sensory_channels:
+        - "visual_potential"
+        - "kinesthetic_readiness"
+        - "anticipatory_awareness"
+      submodality_shifts:
+        - "Awareness of 'inner screen' or 'canvas'"
+        - "Sense of something about to appear"
+        - "Softening of visual effort"
+
+    relationships:
+      synergies:
+        - "DVE-02 (hypnagogic entry - follows naturally)"
+        - "vagal_activation (priming works better in safety)"
+        - "breath_pacing (settled breath supports reception)"
+      conflicts: []
+      outcome_alignment:
+        - all_outcomes
+
+    contraindications:
+      conditions: []
+      modifications: []
+
+    integration_notes:
+      backward_compatible: true
+      required_for_levels: [2, 3, 4, 5]
+      can_skip_if: "Session is Level 1 only"
+      word_count: 75
+
+  # --------------------------------------------------------------------------
+  # DVE-02: HYPNAGOGIC ENTRY
+  # --------------------------------------------------------------------------
+  DVE-02:
+    module_id: "DVE-02"
+    name: "Hypnagogic Entry"
+    tier: 1
+
+    definition:
+      brief: "Theta-dominant language patterns for accessing the hypnagogic threshold state"
+      extended: |
+        The hypnagogic state is the transitional consciousness between waking and
+        sleeping where imagery becomes autonomous and vivid. This module uses
+        specific language patterns that mimic and induce hypnagogic phenomena:
+
+        Key characteristics to invoke:
+        - Phosphene-like visual phenomena (lights, patterns, colors)
+        - Spontaneous image formation without effort
+        - Sense of witnessing rather than directing
+        - Theta brainwave dominance (4-7 Hz)
+        - Occasional gamma bursts (insight/clarity moments)
+
+        The language emphasizes passivity, emergence, and surprise rather than
+        active construction. Critical phrase: "without you making them."
+
+        Theta-Gamma Coupling: Advanced practitioners may experience "sparks of
+        clarity" - gamma bursts that sharpen specific elements within the
+        theta-dominant state, producing hyper-vivid focal points.
+
+      sources:
+        - "Hypnagogia: The Unique State - Andreas Mavromatis"
+        - "Tibetan Dream Yoga - Tenzin Wangyal Rinpoche"
+        - "Lucid Dreaming: A Concise Guide - Stephen LaBerge"
+        - "The Dreaming Brain - J. Allan Hobson"
+
+    prerequisites:
+      - "DVE-01"
+
+    placement:
+      allowed_stages: [induction, deepening]
+      optimal_position: "Middle of induction, after initial relaxation"
+      insertion_markers:
+        - "[DVE:HYPNAGOGIC_START]"
+        - "[DVE:HYPNAGOGIC_END]"
+
+    duration:
+      minimum_seconds: 20
+      maximum_seconds: 30
+      typical_seconds: 25
+
+    templates:
+      standard_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        And you may notice...<break time="2s"/>
+        that point between waking and dreaming...<break time="2.5s"/>
+        where images seem to <emphasis level="moderate">arise</emphasis>...<break time="2s"/>
+        on their own...<break time="2s"/>
+        without you making them...<break time="2.5s"/>
+        Colors appearing...<break time="2s"/>
+        perhaps geometric patterns...<break time="2s"/>
+        or the beginning of a face...<break time="2.5s"/>
+        Don't hold them...<break time="2s"/>
+        just let them come and go...<break time="2.5s"/>
+        like clouds drifting through a sky...<break time="3s"/>
+        You are not creating...<break time="2s"/>
+        you are <emphasis level="moderate">receiving</emphasis>...<break time="3s"/>
+        </prosody>
+
+      variant_phosphene: |
+        <prosody rate="1.0" pitch="-2st">
+        Behind your closed eyes...<break time="2s"/>
+        soft lights may begin to appear...<break time="2s"/>
+        purple...<break time="1.5s"/>
+        green...<break time="1.5s"/>
+        gold...<break time="2s"/>
+        swirling gently...<break time="2s"/>
+        These are the first whispers...<break time="2s"/>
+        of the dream gate opening...<break time="3s"/>
+        </prosody>
+
+      variant_theta_gamma: |
+        <prosody rate="1.0" pitch="-2st">
+        As your body sinks deeper into rest...<break time="2.5s"/>
+        allow tiny sparks of clarity...<break time="2s"/>
+        to flicker through the softness...<break time="2.5s"/>
+        sharpening a line here...<break time="2s"/>
+        a color there...<break time="2s"/>
+        like lightning illuminating a dark landscape...<break time="3s"/>
+        just for a moment...<break time="2.5s"/>
+        then back to the gentle drift...<break time="3s"/>
+        </prosody>
+
+      variant_witnessing: |
+        <prosody rate="1.0" pitch="-2st">
+        Something interesting is happening now...<break time="2.5s"/>
+        The part of you that watches...<break time="2s"/>
+        becomes aware...<break time="2.5s"/>
+        that images are forming...<break time="2s"/>
+        somewhere just beyond your control...<break time="2.5s"/>
+        You are becoming the witness...<break time="2s"/>
+        not the director...<break time="3s"/>
+        and that is exactly right...<break time="3s"/>
+        </prosody>
+
+      entry_cue: "And you may notice..."
+      exit_cue: "...you are receiving..."
+
+    audio_cues:
+      binaural_sync: "Theta (6 Hz) - optimal for hypnagogic access"
+      sfx_cue: "Subtle pulsing ambient, soft wash of tones"
+
+    visualization_markers:
+      scene_architecture: "pre_scene"
+      sensory_channels:
+        - "visual_spontaneous"
+        - "kinesthetic_floating"
+        - "spatial_undefined"
+      submodality_shifts:
+        - "Images appear without volition"
+        - "Soft-focus, dream-like quality"
+        - "Sense of receiving, not creating"
+        - "Formless becoming formed"
+
+    relationships:
+      synergies:
+        - "DVE-01 (priming prepares the way)"
+        - "DVE-03 (container stabilizes emerging imagery)"
+        - "fractionation_loops (deepens the drift)"
+      conflicts:
+        - "Overly directive language"
+        - "Too-specific imagery requests"
+      outcome_alignment:
+        - spiritual_growth
+        - transformation
+        - creativity
+        - relaxation
+
+    contraindications:
+      conditions:
+        - condition: "High anxiety"
+          reason: "Hypnagogic imagery can be startling or unpredictable"
+          modification: "Use variant_phosphene (gentler) or shorten duration"
+        - condition: "Sleep disorders with hypnagogic hallucinations"
+          reason: "May trigger unwanted hallucinatory experiences"
+          modification: "Skip module or use very brief version"
+      modifications:
+        - "For anxious listeners: add 'you are completely safe' after entry_cue"
+        - "For trauma history: emphasize control ('you can open your eyes anytime')"
+
+    integration_notes:
+      backward_compatible: true
+      required_for_levels: [3, 4, 5]
+      optional_for_levels: [2]
+      word_count: 95
+
+  # --------------------------------------------------------------------------
+  # DVE-03: THEATER/TEMPLE CONSTRUCTION
+  # --------------------------------------------------------------------------
+  DVE-03:
+    module_id: "DVE-03"
+    name: "Theater/Temple Construction"
+    tier: 1
+
+    definition:
+      brief: "Establishing a stable imaginal container space before journey content"
+      extended: |
+        Before populating a scene with characters and narrative, establish the
+        container space itself. This creates a "meta-space" (temenos) that becomes
+        familiar across sessions, deepening with each return.
+
+        Key elements:
+        - Architectural stability (walls, ceiling, boundaries)
+        - Personal ownership ("your temple", "your theater")
+        - Persistent features (altar, screen, doorways)
+        - Nested room potential (doors lead to infinite spaces)
+        - Sensory richness of the space itself
+
+        Based on Desoille's directed daydream work and Jungian active imagination
+        techniques where establishing a "temenos" (sacred container) precedes
+        the encounter with unconscious content.
+
+        The container provides:
+        1. Psychological safety (bounded space)
+        2. Orientation (spatial reference points)
+        3. Narrative coherence (events happen "somewhere")
+        4. Recursive depth (doors within doors)
+        5. Personal meaning (listener's unique version)
+
+        Multiple variants support different journey families:
+        - Temple: sacred, initiatory
+        - Theater: witnessing, receiving
+        - Spaceship: consciousness vehicle, cosmic
+        - Garden: paradise, natural wisdom
+        - Cave: underworld, shadow work
+        - Observatory: celestial, expansive
+
+      sources:
+        - "The Waking Dream in European Psychotherapy - Robert Desoille"
+        - "Active Imagination - Marie-Louise von Franz"
+        - "Psychosynthesis - Roberto Assagioli"
+        - "Inner Work - Robert A. Johnson"
+
+    prerequisites:
+      - "DVE-01"
+      - "DVE-02"
+
+    placement:
+      allowed_stages: [deepening, journey]
+      optimal_position: "End of deepening, before journey narrative begins"
+      insertion_markers:
+        - "[DVE:CONTAINER_START]"
+        - "[DVE:CONTAINER_END]"
+
+    duration:
+      minimum_seconds: 20
+      maximum_seconds: 30
+      typical_seconds: 25
+
+    templates:
+      theater_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you find yourself...<break time="2s"/>
+        in a sacred theater...<break time="2s"/>
+        vast, domed, ancient...<break time="2.5s"/>
+        This is your personal viewing space...<break time="2s"/>
+        where all journeys unfold...<break time="2.5s"/>
+        Notice the curved walls...<break time="2s"/>
+        perhaps carved stone...<break time="1.5s"/>
+        or living light...<break time="2s"/>
+        A great screen awaits before you...<break time="2.5s"/>
+        ready to show you...<break time="2s"/>
+        what your deeper self has prepared...<break time="3s"/>
+        </prosody>
+
+      temple_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        You stand now...<break time="2s"/>
+        in a temple that is yours alone...<break time="2.5s"/>
+        High columns rise around you...<break time="2s"/>
+        supporting a ceiling of stars...<break time="2.5s"/>
+        At the center...<break time="2s"/>
+        an altar of white stone...<break time="2.5s"/>
+        And doorways leading...<break time="2s"/>
+        to rooms you have yet to explore...<break time="2.5s"/>
+        Each door a different world...<break time="3s"/>
+        </prosody>
+
+      spaceship_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        You find yourself now...<break time="2s"/>
+        on the bridge of a vessel...<break time="2s"/>
+        sleek, advanced, organic...<break time="2.5s"/>
+        This ship is your consciousness itself...<break time="2s"/>
+        You are the captain here...<break time="2.5s"/>
+        Viewscreens surround you...<break time="2s"/>
+        ready to show you...<break time="2s"/>
+        any destination you choose...<break time="3s"/>
+        </prosody>
+
+      garden_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you enter...<break time="2s"/>
+        a garden that exists...<break time="2s"/>
+        only for you...<break time="2.5s"/>
+        Ancient trees arch overhead...<break time="2s"/>
+        soft grass beneath your feet...<break time="2.5s"/>
+        Water murmurs somewhere near...<break time="2s"/>
+        Paths wind away in all directions...<break time="2.5s"/>
+        each one leading...<break time="2s"/>
+        to a different kind of wisdom...<break time="3s"/>
+        </prosody>
+
+      cave_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        You descend now...<break time="2s"/>
+        into a cavern of living stone...<break time="2.5s"/>
+        Deep...<break time="1.5s"/>
+        ancient...<break time="1.5s"/>
+        safe...<break time="2s"/>
+        The walls glow with subtle phosphorescence...<break time="2.5s"/>
+        Passages lead deeper still...<break time="2s"/>
+        into mysteries that await your touch...<break time="3s"/>
+        </prosody>
+
+      observatory_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        You find yourself now...<break time="2s"/>
+        in an observatory of light...<break time="2.5s"/>
+        High above the world...<break time="2s"/>
+        where stars wheel through a crystal dome...<break time="2.5s"/>
+        Ancient instruments of seeing...<break time="2s"/>
+        await your gaze...<break time="2.5s"/>
+        Ready to show you...<break time="2s"/>
+        what lies beyond the visible...<break time="3s"/>
+        </prosody>
+
+      standard_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now you find yourself...<break time="2s"/>
+        in a sacred space...<break time="2.5s"/>
+        that exists only for you...<break time="2.5s"/>
+        Take a moment to notice...<break time="2s"/>
+        what kind of place this is...<break time="2.5s"/>
+        The walls...<break time="2s"/>
+        the floor...<break time="2s"/>
+        the quality of light...<break time="2.5s"/>
+        This is your container...<break time="2s"/>
+        your temple...<break time="2s"/>
+        your theater of transformation...<break time="3s"/>
+        </prosody>
+
+      entry_cue: "And now you find yourself..."
+      exit_cue: "...theater of transformation."
+
+    audio_cues:
+      binaural_sync: "Theta (5-6 Hz) - deepening into stable imagery"
+      sfx_cue: "Gentle spatial ambience matching variant (stone echo, nature, cosmic hum)"
+
+    visualization_markers:
+      scene_architecture: "container_space"
+      sensory_channels:
+        - "visual_structural"
+        - "kinesthetic_grounded"
+        - "spatial_bounded"
+        - "proprioceptive_oriented"
+      submodality_shifts:
+        - "Sense of enclosure and safety"
+        - "Awareness of dimensional depth"
+        - "Personal ownership of the space"
+        - "Potential for movement and exploration"
+
+    relationships:
+      synergies:
+        - "DVE-01 (imagery is primed to populate space)"
+        - "DVE-02 (hypnagogic entry leads naturally to container)"
+        - "DVE-04 (embodiment grounds listener in container)"
+        - "archetypal_encounters (container hosts entities)"
+      conflicts:
+        - "Conflicting spatial descriptions later in journey"
+      outcome_alignment:
+        - all_outcomes
+
+    contraindications:
+      conditions:
+        - condition: "Claustrophobia"
+          reason: "Enclosed space imagery may trigger anxiety"
+          modification: "Use garden_ssml or observatory_ssml (open variants)"
+        - condition: "Agoraphobia"
+          reason: "Vast spaces may feel overwhelming"
+          modification: "Use cave_ssml or temple_ssml (more bounded)"
+      modifications:
+        - "For claustrophobia: emphasize openness, 'doors always available'"
+        - "For agoraphobia: emphasize boundaries, 'protected space'"
+
+    variant_selection_guide:
+      celestial_journey: "observatory_ssml or spaceship_ssml"
+      eden_garden: "garden_ssml"
+      underworld_descent: "cave_ssml"
+      temple_initiation: "temple_ssml"
+      cosmic_forge: "temple_ssml with fire elements"
+      ocean_depths: "cave_ssml with water elements"
+      default: "standard_ssml (listener fills in details)"
+
+    integration_notes:
+      backward_compatible: true
+      required_for_levels: [3, 4, 5]
+      optional_for_levels: [2]
+      word_count: 80
+      recurring_space_note: |
+        For series sessions, use the SAME container variant throughout
+        to build familiarity and deepen the imaginal relationship.
+        The container becomes a "home base" for transformation work.
+
+# ============================================================================
+# TIER 2: INTERMEDIATE MODULES
+# ============================================================================
+
+  # --------------------------------------------------------------------------
+  # DVE-04: EMBODIMENT AND PROPRIOCEPTION
+  # --------------------------------------------------------------------------
+  DVE-04:
+    module_id: "DVE-04"
+    name: "Embodiment & Proprioception"
+    tier: 2
+
+    definition:
+      brief: "Deep body awareness including internal organs and imaginal body sensing"
+      extended: |
+        Beyond basic kinesthetic awareness, this module activates:
+
+        1. Internal body sensing (organs, systems, cellular)
+        2. Imaginal body distinct from physical body
+        3. Proprioceptive awareness within the visualized space
+        4. Felt-sense of the imaginal body moving, breathing, touching
+
+        This deepens embodiment from "imagining seeing" to "being fully present
+        in the imaginal body." The listener experiences themselves AS the body
+        in the imaginal space, not as a disembodied observer.
+
+        Key techniques:
+        - "Look at your hands here" (grounds identity in imaginal body)
+        - "Feel the floor beneath your feet" (proprioceptive anchoring)
+        - "Sense your heart beating in this chest" (internal awareness)
+        - "Your breath moves through these lungs" (somatic integration)
+
+        Psychological basis: Gendlin's Focusing, somatic psychology, polyvagal
+        theory, and Tibetan inner heat practices (tummo) all demonstrate that
+        body awareness transforms visualization into embodied experience.
+
+        Critical distinction: Physical body relaxes and recedes; imaginal body
+        activates and becomes primary. This is not dissociation - it's a
+        focused reallocation of attention.
+
+      sources:
+        - "Focusing - Eugene Gendlin"
+        - "The Body Keeps the Score - Bessel van der Kolk"
+        - "Waking the Tiger - Peter Levine"
+        - "The Polyvagal Theory - Stephen Porges"
+        - "Inner Fire Meditation - Reginald Ray"
+
+    prerequisites:
+      - "DVE-03"
+
+    placement:
+      allowed_stages: [journey, helm_deep_trance]
+      optimal_position: "Early journey, immediately after container is established"
+      insertion_markers:
+        - "[DVE:EMBODIMENT_START]"
+        - "[DVE:EMBODIMENT_END]"
+
+    duration:
+      minimum_seconds: 20
+      maximum_seconds: 30
+      typical_seconds: 25
+
+    templates:
+      standard_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2s"/>
+        become aware of your body...<break time="2s"/>
+        here, in this space...<break time="2.5s"/>
+        You have a body here too...<break time="2s"/>
+        Feel your feet...<break time="2s"/>
+        on this ground...<break time="2.5s"/>
+        Feel your heart beating...<break time="2s"/>
+        in this chest...<break time="2.5s"/>
+        Your hands...<break time="2s"/>
+        that can reach out and touch...<break time="2.5s"/>
+        This body is fully present...<break time="2s"/>
+        in this realm...<break time="2.5s"/>
+        Look at your hands...<break time="3s"/>
+        How do they appear here?<break time="3.5s"/>
+        </prosody>
+
+      internal_variant: |
+        <prosody rate="1.0" pitch="-2st">
+        Go deeper now...<break time="2s"/>
+        into this body...<break time="2.5s"/>
+        Feel your breath...<break time="2s"/>
+        moving through your lungs...<break time="2.5s"/>
+        Feel your blood...<break time="2s"/>
+        flowing through your veins...<break time="2.5s"/>
+        Sense your organs...<break time="2s"/>
+        each one alive...<break time="2s"/>
+        each one glowing with awareness...<break time="3s"/>
+        Your body here is made of light...<break time="2.5s"/>
+        and every cell is conscious...<break time="3s"/>
+        </prosody>
+
+      movement_variant: |
+        <prosody rate="1.0" pitch="-1st">
+        And in this space...<break time="2s"/>
+        you can move...<break time="2.5s"/>
+        Lift one hand...<break time="2s"/>
+        slowly...<break time="2.5s"/>
+        Feel the weight of it...<break time="2s"/>
+        the sensation of motion...<break time="2.5s"/>
+        You are not imagining movement...<break time="2s"/>
+        you are <emphasis level="moderate">moving</emphasis>...<break time="2.5s"/>
+        here...<break time="2s"/>
+        in this body...<break time="3s"/>
+        </prosody>
+
+      grounding_variant: |
+        <prosody rate="1.0" pitch="-1st">
+        Notice the weight of your body...<break time="2s"/>
+        here in this space...<break time="2.5s"/>
+        Feel gravity holding you...<break time="2s"/>
+        gently, firmly...<break time="2.5s"/>
+        Your center of gravity...<break time="2s"/>
+        settles low...<break time="2s"/>
+        in your belly...<break time="2.5s"/>
+        Rooted...<break time="2s"/>
+        present...<break time="2s"/>
+        fully here...<break time="3s"/>
+        </prosody>
+
+      entry_cue: "And now... become aware of your body..."
+      exit_cue: "...fully here."
+
+    audio_cues:
+      binaural_sync: "Theta (5 Hz) with subtle low-frequency bass undertone"
+      sfx_cue: "Heartbeat at 60 BPM, very subtle, gradually fading"
+
+    visualization_markers:
+      scene_architecture: "body_map"
+      sensory_channels:
+        - "kinesthetic_deep"
+        - "proprioceptive"
+        - "interoceptive"
+        - "tactile"
+        - "thermal"
+      submodality_shifts:
+        - "Weight and gravity in imaginal body"
+        - "Internal organ awareness"
+        - "Sense of occupying space"
+        - "Hands visible, examinable"
+        - "Feet grounded on surface"
+
+    relationships:
+      synergies:
+        - "DVE-03 (container provides ground for body)"
+        - "DVE-05 (embodied listener can interact with agents)"
+        - "vagal_activation (body awareness deepens safety)"
+        - "healing outcomes (somatic presence supports healing)"
+      conflicts:
+        - "Purely visual narration (breaks embodiment)"
+      outcome_alignment:
+        - healing
+        - transformation
+        - empowerment
+        - self_knowledge
+
+    contraindications:
+      conditions:
+        - condition: "Body dysmorphia"
+          reason: "Intense body awareness may trigger distress"
+          modification: "Focus on sensation only, avoid 'how do they appear' questions"
+        - condition: "Somatic trauma"
+          reason: "May activate body memories prematurely"
+          modification: "Use grounding_variant, pair with DVE-06 stabilization"
+        - condition: "Chronic pain"
+          reason: "Body focus may amplify pain signals"
+          modification: "Use 'imaginal body' language, emphasize it's a different body"
+      modifications:
+        - "For trauma: add 'you are completely safe' and 'you remain in control'"
+        - "For dissociation: emphasize grounding, 'feel the floor'"
+
+    integration_notes:
+      backward_compatible: true
+      required_for_levels: [3, 4, 5]
+      word_count: 90
+
+  # --------------------------------------------------------------------------
+  # DVE-05: AUTONOMOUS AGENTS AND MIRRORS
+  # --------------------------------------------------------------------------
+  DVE-05:
+    module_id: "DVE-05"
+    name: "Autonomous Agents & Mirrors"
+    tier: 2
+
+    definition:
+      brief: "Techniques for entities that move independently and reflective encounters"
+      extended: |
+        This module provides frameworks for:
+
+        1. Autonomous Agents: Entities that move, speak, and act without narrator
+           direction. The listener waits for the entity to act first.
+        2. Dialogue Frameworks: Prompts that invite verbal/telepathic exchange.
+        3. Mirror Encounters: Meeting reflections that show different self-aspects.
+        4. Recursive Depth: Doors within doors, worlds within worlds.
+
+        Key principle: You do NOT control them. They respond, interact, challenge,
+        support, and reveal. The unconscious speaks through these figures.
+
+        Based on Jungian active imagination, where the key is allowing figures
+        to surprise you rather than directing them. The narrator creates
+        the frame ("a figure appears") but the figure's actions/words emerge
+        from the listener's unconscious.
+
+        Autonomous agents activate:
+        - Unpredictability (surprise = engagement)
+        - Symbolic intelligence (unconscious wisdom)
+        - Emotional depth (figures carry feeling)
+        - Relationship (listener engages, not just receives)
+
+        Mirror encounters provide:
+        - Self-reflection without narrator interpretation
+        - Identity exploration (who am I here?)
+        - Shadow integration (seeing hidden aspects)
+        - Future/past self access (temporal mirrors)
+
+      sources:
+        - "Active Imagination - Marie-Louise von Franz"
+        - "Inner Work - Robert A. Johnson"
+        - "The Red Book - C.G. Jung"
+        - "Parts Work - Richard Schwartz (IFS)"
+
+    prerequisites:
+      - "DVE-04"
+
+    placement:
+      allowed_stages: [journey, helm_deep_trance]
+      optimal_position: "During archetypal encounters, mid-to-peak journey"
+      insertion_markers:
+        - "[DVE:AUTONOMOUS_START]"
+        - "[DVE:AUTONOMOUS_END]"
+        - "[DVE:MIRROR_START]"
+        - "[DVE:MIRROR_END]"
+        - "[DVE:DIALOGUE_START]"
+        - "[DVE:DIALOGUE_END]"
+
+    duration:
+      minimum_seconds: 20
+      maximum_seconds: 35
+      typical_seconds: 28
+
+    templates:
+      autonomous_agent_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now...<break time="2s"/>
+        wait...<break time="3s"/>
+        and watch...<break time="3s"/>
+        as the figure before you...<break time="2.5s"/>
+        begins to move...<break time="2.5s"/>
+        on its own...<break time="3s"/>
+        What does it do?<break time="4s"/>
+        What expression crosses its face?<break time="4s"/>
+        Simply observe...<break time="3s"/>
+        and let it show you...<break time="2.5s"/>
+        what it wants you to know...<break time="4s"/>
+        </prosody>
+
+      dialogue_framework_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And if you wish to speak...<break time="2.5s"/>
+        ask your question now...<break time="2.5s"/>
+        silently, in your mind...<break time="3s"/>
+        And wait...<break time="3s"/>
+        for the response...<break time="4s"/>
+        It may come as words...<break time="2.5s"/>
+        or images...<break time="2s"/>
+        or simply...<break time="2s"/>
+        a knowing...<break time="4s"/>
+        </prosody>
+
+      mirror_encounter_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        Before you now...<break time="2s"/>
+        stands a mirror...<break time="2.5s"/>
+        vast, ancient, alive...<break time="3s"/>
+        And as you gaze into it...<break time="2.5s"/>
+        you see...<break time="2s"/>
+        yourself...<break time="2.5s"/>
+        but different...<break time="3s"/>
+        How does this reflection appear?<break time="4s"/>
+        What does this version of you...<break time="2.5s"/>
+        want you to know?<break time="4s"/>
+        </prosody>
+
+      future_self_mirror_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        In the mirror before you...<break time="2.5s"/>
+        you see yourself...<break time="2.5s"/>
+        as you will become...<break time="3s"/>
+        After the transformation is complete...<break time="2.5s"/>
+        What do you notice about this version of you?<break time="4s"/>
+        What has changed?<break time="4s"/>
+        And what message...<break time="2.5s"/>
+        does your future self offer you now?<break time="5s"/>
+        </prosody>
+
+      recursive_depth_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        And your guide gestures...<break time="2s"/>
+        toward a doorway you hadn't noticed...<break time="2.5s"/>
+        As you approach...<break time="2s"/>
+        you see through it...<break time="2.5s"/>
+        another realm entirely...<break time="3s"/>
+        A world within this world...<break time="2.5s"/>
+        Deeper still...<break time="2.5s"/>
+        Do you enter?<break time="4s"/>
+        </prosody>
+
+      parts_dialogue_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And you become aware...<break time="2s"/>
+        that a part of you...<break time="2s"/>
+        has something to say...<break time="2.5s"/>
+        Perhaps a younger part...<break time="2s"/>
+        or a protective part...<break time="2s"/>
+        or a part that has been waiting...<break time="2.5s"/>
+        to be heard...<break time="3s"/>
+        Allow this part to take form...<break time="2.5s"/>
+        What does it look like?<break time="4s"/>
+        What does it want you to know?<break time="5s"/>
+        </prosody>
+
+      entry_cue: "And now... wait..."
+      exit_cue: "...what it wants you to know."
+
+    audio_cues:
+      binaural_sync: "Theta (4-5 Hz) - deepest receptive state"
+      sfx_cue: "Subtle presence indicator (soft chime, breath sound)"
+
+    visualization_markers:
+      scene_architecture: "entity_space"
+      sensory_channels:
+        - "visual_autonomous"
+        - "auditory_receptive"
+        - "kinesthetic_relational"
+        - "intuitive_knowing"
+      submodality_shifts:
+        - "Entity moves independently"
+        - "Surprise and unpredictability"
+        - "Sense of presence beyond self"
+        - "Mirror shows alternative self"
+
+    relationships:
+      synergies:
+        - "DVE-04 (embodied listener can interact)"
+        - "archetypal_encounters (provides the entity)"
+        - "emotional_calibration (opens to parts work)"
+        - "DVE-06 (stabilization if encounter becomes intense)"
+      conflicts:
+        - "Over-direction of entity behavior"
+        - "Rushing past the waiting period"
+      outcome_alignment:
+        - transformation
+        - self_knowledge
+        - healing
+        - spiritual_growth
+
+    contraindications:
+      conditions:
+        - condition: "Dissociative disorders"
+          reason: "Autonomous entities may blur self-boundaries"
+          modification: "Use dialogue_framework only, emphasize 'a part of you'"
+        - condition: "Psychotic conditions"
+          reason: "May increase confusion about internal vs external voices"
+          modification: "Contraindicated - do not use"
+        - condition: "Recent trauma"
+          reason: "Unexpected figures may trigger trauma responses"
+          modification: "Use only with established safe figures (guide, healer)"
+      modifications:
+        - "For anxious: emphasize safety, 'this figure wishes you well'"
+        - "For control-focused: 'you can end this encounter at any time'"
+
+    integration_notes:
+      backward_compatible: true
+      required_for_levels: [4, 5]
+      word_count: 110
+
+# ============================================================================
+# TIER 3: HYPERIMAGINAL MODULES
+# ============================================================================
+
+  # --------------------------------------------------------------------------
+  # DVE-06: STABILIZATION PROTOCOLS
+  # --------------------------------------------------------------------------
+  DVE-06:
+    module_id: "DVE-06"
+    name: "Stabilization Protocols"
+    tier: 3
+
+    definition:
+      brief: "Techniques to prevent visualization fade and maintain image stability"
+      extended: |
+        Advanced techniques from lucid dreaming research for maintaining stable,
+        vivid imagery when it threatens to fade:
+
+        1. Touch-to-Anchor: Touching objects in the scene increases stability
+        2. Hand-Glance: Looking at hands grounds presence in imaginal body
+        3. Spinning: Dream stabilization through motion (advanced)
+        4. Verbal Declaration: Speaking in the scene reinforces presence
+        5. Detail Focus: Zooming into specifics prevents drift
+        6. Breath Stabilization: Deep breath in imaginal body anchors presence
+
+        These are "rescue protocols" when visualization becomes unstable, but
+        also preventive measures during extended deep visualization.
+
+        Mechanism: Each technique anchors attention to sensory detail, preventing
+        the drift toward abstraction or fade-out that occurs when attention
+        becomes diffuse. Specific > vague = stable.
+
+      sources:
+        - "Exploring the World of Lucid Dreaming - Stephen LaBerge"
+        - "A Field Guide to Lucid Dreaming - Dylan Tuccillo"
+        - "Lucid Dreaming: Gateway to the Inner Self - Robert Waggoner"
+
+    prerequisites:
+      - "DVE-05"
+
+    placement:
+      allowed_stages: [journey, helm_deep_trance]
+      optimal_position: "When extended visualization is required; rescue at fade"
+      insertion_markers:
+        - "[DVE:STABILIZE_START]"
+        - "[DVE:STABILIZE_END]"
+
+    duration:
+      minimum_seconds: 15
+      maximum_seconds: 25
+      typical_seconds: 18
+
+    templates:
+      touch_anchor_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And to stay here...<break time="2s"/>
+        reach out and touch something...<break time="2.5s"/>
+        Feel its texture...<break time="2.5s"/>
+        its temperature...<break time="2.5s"/>
+        Let this touch anchor you...<break time="2.5s"/>
+        here, in this place...<break time="3s"/>
+        </prosody>
+
+      hand_glance_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Look at your hands...<break time="2.5s"/>
+        here, in this space...<break time="2.5s"/>
+        Really see them...<break time="2.5s"/>
+        How do they look?<break time="3s"/>
+        And as you notice them...<break time="2.5s"/>
+        everything becomes more solid...<break time="2.5s"/>
+        more real...<break time="3s"/>
+        </prosody>
+
+      breath_stabilization_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Take a deep breath...<break time="2.5s"/>
+        here, in this body...<break time="2.5s"/>
+        Feel the air fill your lungs...<break time="2.5s"/>
+        in this realm...<break time="3s"/>
+        With each breath...<break time="2s"/>
+        the scene becomes clearer...<break time="2.5s"/>
+        more vivid...<break time="2s"/>
+        more present...<break time="3s"/>
+        </prosody>
+
+      detail_focus_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        Choose one thing in this space...<break time="2.5s"/>
+        and look more closely...<break time="2.5s"/>
+        Notice every detail...<break time="2.5s"/>
+        the color...<break time="2s"/>
+        the texture...<break time="2s"/>
+        the way light touches it...<break time="2.5s"/>
+        As you focus...<break time="2s"/>
+        everything sharpens...<break time="3s"/>
+        </prosody>
+
+      verbal_declaration_ssml: |
+        <prosody rate="1.0" pitch="-1st">
+        And now, silently...<break time="2s"/>
+        in your mind...<break time="2s"/>
+        speak these words...<break time="2.5s"/>
+        "I am here."<break time="3s"/>
+        "This is real."<break time="3s"/>
+        "I am present."<break time="3s"/>
+        And feel how these words...<break time="2s"/>
+        anchor you deeper...<break time="3s"/>
+        </prosody>
+
+      entry_cue: "And to stay here..."
+      exit_cue: "...more present."
+
+    audio_cues:
+      binaural_sync: "Maintain current theta; brief gamma burst (40 Hz) optional"
+      sfx_cue: "Subtle clarity tone, crystalline"
+
+    visualization_markers:
+      scene_architecture: "stability_maintenance"
+      sensory_channels:
+        - "tactile_precise"
+        - "visual_detailed"
+        - "kinesthetic_anchored"
+      submodality_shifts:
+        - "Increased detail and clarity"
+        - "Sense of solidity"
+        - "Heightened presence"
+
+    relationships:
+      synergies:
+        - "DVE-04 (embodiment provides body to stabilize with)"
+        - "DVE-05 (stabilization during intense encounters)"
+        - "All extended journey sequences"
+      conflicts: []
+      outcome_alignment:
+        - all_outcomes
+
+    contraindications:
+      conditions: []
+      modifications: []
+
+    integration_notes:
+      backward_compatible: true
+      required_for_levels: [5]
+      optional_for_levels: [3, 4]
+      word_count: 60
+      usage_note: |
+        Use proactively in extended journeys, or reactively when listener
+        may be fading. Multiple stabilization modules can be used in
+        sequence if needed.
+
+  # --------------------------------------------------------------------------
+  # DVE-07: PREDICTIVE PROCESSING OVERRIDE
+  # --------------------------------------------------------------------------
+  DVE-07:
+    module_id: "DVE-07"
+    name: "Predictive Processing Override"
+    tier: 3
+
+    definition:
+      brief: "Impossible imagery and expectation collapse for hyperimaginal states"
+      extended: |
+        The brain constantly predicts what it will perceive. Introducing impossible
+        or expectation-violating imagery collapses these predictions, creating
+        openings for novel, breakthrough experiences:
+
+        1. Spatial Impossibilities: Bigger inside than outside, non-Euclidean
+        2. Temporal Impossibilities: Time running backwards, simultaneity
+        3. Identity Fluidity: Being multiple beings at once
+        4. Material Impossibilities: Walking through walls, breathing underwater
+        5. Perspective Shifts: Seeing from multiple vantage points simultaneously
+        6. Logical Contradictions: Being here and there, self and other
+
+        Mechanism: When predictions fail, the brain enters a more receptive,
+        less filtered state. This creates openings for experiences that cannot
+        be constructed by normal cognition - genuine "impossible" experiences
+        that transcend ordinary consciousness.
+
+        This is the most advanced DVE module and should only be used with
+        experienced practitioners who have developed stable imaginal capacity.
+
+        Warning: These experiences can be destabilizing for unprepared listeners.
+        Always ensure strong grounding before and after.
+
+      sources:
+        - "The Predictive Mind - Jakob Hohwy"
+        - "Surfing Uncertainty - Andy Clark"
+        - "DMT: The Spirit Molecule - Rick Strassman (phenomenology reference)"
+        - "Higher States of Consciousness - Ken Wilber"
+
+    prerequisites:
+      - "DVE-06"
+
+    placement:
+      allowed_stages: [helm_deep_trance]
+      optimal_position: "Peak experience moments only; never early in journey"
+      insertion_markers:
+        - "[DVE:OVERRIDE_START]"
+        - "[DVE:OVERRIDE_END]"
+
+    duration:
+      minimum_seconds: 20
+      maximum_seconds: 30
+      typical_seconds: 25
+
+    templates:
+      spatial_impossible_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        And you step through a doorway...<break time="2.5s"/>
+        and find yourself in a space...<break time="2.5s"/>
+        that could not exist...<break time="3s"/>
+        Vast beyond measure...<break time="2.5s"/>
+        larger than the building that contains it...<break time="3s"/>
+        Your mind stops trying to make sense...<break time="2.5s"/>
+        and simply <emphasis level="moderate">receives</emphasis>...<break time="3.5s"/>
+        </prosody>
+
+      multi_perspective_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        And now...<break time="2.5s"/>
+        you are seeing from everywhere at once...<break time="3s"/>
+        From above...<break time="2s"/>
+        from within...<break time="2s"/>
+        from behind...<break time="2s"/>
+        from the center of everything...<break time="3s"/>
+        A single seeing...<break time="2.5s"/>
+        with infinite eyes...<break time="3.5s"/>
+        </prosody>
+
+      temporal_collapse_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        In this place...<break time="2.5s"/>
+        time behaves strangely...<break time="3s"/>
+        Past and future...<break time="2s"/>
+        seem to meet here...<break time="2.5s"/>
+        You are simultaneously...<break time="2s"/>
+        who you were...<break time="2s"/>
+        who you are...<break time="2s"/>
+        and who you will become...<break time="3s"/>
+        All at once...<break time="2.5s"/>
+        in this eternal moment...<break time="4s"/>
+        </prosody>
+
+      identity_fluidity_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        And for a moment...<break time="2.5s"/>
+        you become aware...<break time="2.5s"/>
+        that you are not only yourself...<break time="3s"/>
+        You are also the space...<break time="2.5s"/>
+        the light...<break time="2s"/>
+        the presence watching...<break time="2.5s"/>
+        the thing being watched...<break time="3s"/>
+        All boundaries soften...<break time="2.5s"/>
+        until there is only this...<break time="4s"/>
+        </prosody>
+
+      recursive_infinity_ssml: |
+        <prosody rate="1.0" pitch="-2st">
+        You look at your hands...<break time="2.5s"/>
+        and see within them...<break time="2.5s"/>
+        smaller versions of yourself...<break time="3s"/>
+        each looking at their hands...<break time="2.5s"/>
+        each containing smaller versions still...<break time="3s"/>
+        Infinite depth...<break time="2.5s"/>
+        in both directions...<break time="2.5s"/>
+        And all of them...<break time="2s"/>
+        are you...<break time="4s"/>
+        </prosody>
+
+      entry_cue: "And you step through..."
+      exit_cue: "...simply receives."
+
+    audio_cues:
+      binaural_sync: "Delta (2-3 Hz) or brief gamma burst (40 Hz)"
+      sfx_cue: "Otherworldly tone, dimensional shift, silence"
+
+    visualization_markers:
+      scene_architecture: "impossible_space"
+      sensory_channels:
+        - "visual_impossible"
+        - "spatial_paradoxical"
+        - "identity_fluid"
+        - "temporal_nonlinear"
+      submodality_shifts:
+        - "Normal physics suspended"
+        - "Identity boundaries dissolve"
+        - "Time becomes malleable"
+        - "Space becomes non-Euclidean"
+
+    relationships:
+      synergies:
+        - "DVE-06 (stabilization essential before/after)"
+        - "helm_deep_trance stage (only appropriate here)"
+        - "spiritual_growth outcomes"
+      conflicts:
+        - "Grounding language (use after, not during)"
+        - "Linear narrative (breaks the impossible)"
+      outcome_alignment:
+        - spiritual_growth
+        - transformation
+        - transcendence
+
+    contraindications:
+      conditions:
+        - condition: "Psychotic conditions"
+          reason: "Reality distortion may worsen symptoms"
+          modification: "Contraindicated - do not use"
+        - condition: "Dissociative disorders"
+          reason: "May worsen depersonalization/derealization"
+          modification: "Contraindicated - do not use"
+        - condition: "High anxiety"
+          reason: "Impossible imagery can be destabilizing"
+          modification: "Avoid entirely or use very brief spatial version only"
+        - condition: "First-time listeners"
+          reason: "Insufficient imaginal capacity developed"
+          modification: "Contraindicated for beginners"
+      modifications:
+        - "Always precede with DVE-06 stabilization"
+        - "Always follow with grounding and DVE-06"
+        - "Use only with experienced practitioners"
+
+    integration_notes:
+      backward_compatible: true
+      required_for_levels: [5]
+      word_count: 70
+      safety_note: |
+        This is the most powerful and potentially destabilizing module.
+        Use only in Level 5 sessions with experienced listeners.
+        Always sandwich between stabilization protocols.
+        Monitor for signs of distress in follow-up.
+
+# ============================================================================
+# LEVEL-TO-MODULE MAPPING
+# ============================================================================
+
+visualization_levels:
+
+  level_1:
+    name: "Foundational"
+    description: "Standard hypnotic visualization, narrator-guided imagery"
+    dve_modules: []
+    typical_sessions: ["Layer 1", "Beginner sessions"]
+    characteristics:
+      - "Narrator describes scenes directly"
+      - "Passive visualization (receiver mode)"
+      - "Single sensory track (usually visual)"
+      - "Linear narrative progression"
+
+  level_2:
+    name: "Immersive"
+    description: "Enhanced VAK rotation with imaginal priming"
+    dve_modules: ["DVE-01"]
+    optional_modules: ["DVE-02"]
+    typical_sessions: ["Layer 2 standard"]
+    characteristics:
+      - "Pre-journey subconscious activation"
+      - "Active VAK rotation throughout"
+      - "Increased break times for rendering"
+      - "Listener begins co-creating"
+
+  level_3:
+    name: "Embodied"
+    description: "Full theater construction with proprioceptive depth"
+    dve_modules: ["DVE-01", "DVE-02", "DVE-03", "DVE-04"]
+    optional_modules: ["DVE-06"]
+    typical_sessions: ["Layer 2 deep", "Layer 3 entry"]
+    characteristics:
+      - "Stable imaginal container (theater/temple)"
+      - "Hypnagogic language patterns"
+      - "Proprioceptive body awareness"
+      - "Scene layers (foreground/midground/background)"
+      - "Internal organ visualization capability"
+
+  level_4:
+    name: "Interactive"
+    description: "Autonomous agents with dialogue frameworks"
+    dve_modules: ["DVE-01", "DVE-02", "DVE-03", "DVE-04", "DVE-05"]
+    optional_modules: ["DVE-06"]
+    typical_sessions: ["Layer 3 standard", "Ipsissimus entry"]
+    characteristics:
+      - "Entities move independently"
+      - "Dialogue prompts with wait-time"
+      - "Mirror encounters and recursion"
+      - "Archetypal field navigation"
+      - "Multi-perspective awareness"
+
+  level_5:
+    name: "Hyperimaginal"
+    description: "Full DVE stack with stabilization and reality override"
+    dve_modules: ["DVE-01", "DVE-02", "DVE-03", "DVE-04", "DVE-05", "DVE-06", "DVE-07"]
+    typical_sessions: ["Ipsissimus full", "Advanced practitioner"]
+    characteristics:
+      - "Touch-to-anchor stabilization"
+      - "Impossible imagery (predictive override)"
+      - "Recursive avatar generation"
+      - "Imaginal OS metaphors"
+      - "Sustained hyperimaginal states"
+    contraindications:
+      - "Dissociative disorders"
+      - "Psychotic conditions"
+      - "First-time users"
+      - "High anxiety without grounding"
+
+# ============================================================================
+# OUTCOME-DVE ALIGNMENT
+# ============================================================================
+
+outcome_dve_recommendations:
+
+  healing:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules:
+      - DVE-01
+      - DVE-04
+    optional_modules:
+      - DVE-03
+      - DVE-06
+    avoid_modules:
+      - DVE-07
+    notes: "Internal body awareness (DVE-04 internal_variant) supports somatic healing"
+
+  transformation:
+    minimum_level: 3
+    optimal_level: 4
+    required_modules:
+      - DVE-01
+      - DVE-02
+      - DVE-03
+      - DVE-05
+    optional_modules:
+      - DVE-06
+      - DVE-07
+    notes: "Mirror encounters (DVE-05) powerful for identity work"
+
+  empowerment:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules:
+      - DVE-01
+      - DVE-04
+    optional_modules:
+      - DVE-03
+      - DVE-05
+    notes: "Embodiment supports felt-sense of power"
+
+  self_knowledge:
+    minimum_level: 3
+    optimal_level: 4
+    required_modules:
+      - DVE-01
+      - DVE-02
+      - DVE-05
+    optional_modules:
+      - DVE-03
+      - DVE-04
+    notes: "Mirror and autonomous agent modules reveal hidden aspects"
+
+  release:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules:
+      - DVE-01
+      - DVE-04
+    optional_modules:
+      - DVE-02
+      - DVE-03
+    notes: "Body awareness supports somatic release"
+
+  spiritual_growth:
+    minimum_level: 4
+    optimal_level: 5
+    required_modules:
+      - DVE-01
+      - DVE-02
+      - DVE-03
+      - DVE-05
+    optional_modules:
+      - DVE-06
+      - DVE-07
+    notes: "Full DVE stack appropriate for advanced spiritual work"
+
+  creativity:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules:
+      - DVE-01
+      - DVE-02
+    optional_modules:
+      - DVE-03
+      - DVE-05
+    notes: "Hypnagogic entry (DVE-02) accesses creative unconscious"
+
+  relaxation:
+    minimum_level: 1
+    optimal_level: 2
+    required_modules: []
+    optional_modules:
+      - DVE-01
+    notes: "Light DVE usage; prioritize vagal activation over imagery depth"
+
+  focus:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules:
+      - DVE-01
+    optional_modules:
+      - DVE-03
+      - DVE-06
+    notes: "Stabilization protocols (DVE-06) support sustained attention"
+
+  confidence:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules:
+      - DVE-01
+      - DVE-04
+    optional_modules:
+      - DVE-05
+    notes: "Future self mirror (DVE-05) powerful for confidence building"

@@ -1,0 +1,257 @@
+# DVE Module Index
+# Cross-reference for Deep Visualization Enhancement modules
+# Version: 1.0
+# Created: 2025-12-09
+
+version: "1.0"
+created: "2025-12-09"
+purpose: "Quick reference index for DVE module system"
+
+# ============================================================================
+# MODULE QUICK REFERENCE
+# ============================================================================
+
+modules:
+
+  DVE-01:
+    name: "Imaginal Priming"
+    tier: 1
+    duration_seconds: 20
+    placement: "End of pre_talk"
+    one_liner: "Activates subconscious image-generation before journey"
+    key_phrase: "That part of you that dreams is preparing now..."
+    file_reference: "knowledge/visualization/dve_modules.yaml"
+
+  DVE-02:
+    name: "Hypnagogic Entry"
+    tier: 1
+    duration_seconds: 25
+    placement: "Middle of induction"
+    one_liner: "Theta-dominant language for the waking-sleeping threshold"
+    key_phrase: "Images seem to arise on their own..."
+    file_reference: "knowledge/visualization/dve_modules.yaml"
+
+  DVE-03:
+    name: "Theater/Temple Construction"
+    tier: 1
+    duration_seconds: 25
+    placement: "End of deepening"
+    one_liner: "Establishes stable imaginal container space"
+    key_phrase: "You find yourself in a sacred space..."
+    variants: [theater, temple, spaceship, garden, cave, observatory]
+    file_reference: "knowledge/visualization/dve_modules.yaml"
+
+  DVE-04:
+    name: "Embodiment & Proprioception"
+    tier: 2
+    duration_seconds: 25
+    placement: "Start of journey"
+    one_liner: "Deep body awareness in imaginal space"
+    key_phrase: "Feel your feet on this ground..."
+    file_reference: "knowledge/visualization/dve_modules.yaml"
+
+  DVE-05:
+    name: "Autonomous Agents & Mirrors"
+    tier: 2
+    duration_seconds: 28
+    placement: "During archetypal encounters"
+    one_liner: "Entities that move independently, dialogue frameworks"
+    key_phrase: "Wait... and watch... as the figure begins to move on its own..."
+    variants: [autonomous_agent, dialogue_framework, mirror_encounter, parts_dialogue]
+    file_reference: "knowledge/visualization/dve_modules.yaml"
+
+  DVE-06:
+    name: "Stabilization Protocols"
+    tier: 3
+    duration_seconds: 18
+    placement: "When extended visualization required"
+    one_liner: "Anti-fade techniques from lucid dreaming"
+    key_phrase: "Reach out and touch something..."
+    variants: [touch_anchor, hand_glance, breath_stabilization, detail_focus]
+    file_reference: "knowledge/visualization/dve_modules.yaml"
+
+  DVE-07:
+    name: "Predictive Processing Override"
+    tier: 3
+    duration_seconds: 25
+    placement: "Peak experience only (helm_deep_trance)"
+    one_liner: "Impossible imagery for breakthrough states"
+    key_phrase: "A space that could not exist..."
+    variants: [spatial_impossible, multi_perspective, temporal_collapse, identity_fluidity]
+    file_reference: "knowledge/visualization/dve_modules.yaml"
+
+# ============================================================================
+# LEVEL-TO-MODULE MAPPING
+# ============================================================================
+
+visualization_levels:
+
+  level_1:
+    name: "Foundational"
+    modules: []
+    description: "Standard hypnotic visualization"
+
+  level_2:
+    name: "Immersive"
+    modules: [DVE-01]
+    optional: [DVE-02]
+    description: "Enhanced VAK with imaginal priming"
+
+  level_3:
+    name: "Embodied"
+    modules: [DVE-01, DVE-02, DVE-03, DVE-04]
+    optional: [DVE-06]
+    description: "Full theater + proprioceptive depth"
+
+  level_4:
+    name: "Interactive"
+    modules: [DVE-01, DVE-02, DVE-03, DVE-04, DVE-05]
+    optional: [DVE-06]
+    description: "Autonomous agents and mirrors"
+
+  level_5:
+    name: "Hyperimaginal"
+    modules: [DVE-01, DVE-02, DVE-03, DVE-04, DVE-05, DVE-06, DVE-07]
+    description: "Full DVE stack with reality override"
+    requires_experience: true
+
+# ============================================================================
+# OUTCOME ALIGNMENT
+# ============================================================================
+
+outcome_recommendations:
+
+  healing:
+    minimum_level: 2
+    optimal_level: 3
+    emphasis: [DVE-01, DVE-04]
+    avoid: [DVE-07]
+
+  transformation:
+    minimum_level: 3
+    optimal_level: 4
+    emphasis: [DVE-05]
+    note: "Mirror encounters powerful for identity work"
+
+  empowerment:
+    minimum_level: 2
+    optimal_level: 3
+    emphasis: [DVE-01, DVE-04]
+
+  self_knowledge:
+    minimum_level: 3
+    optimal_level: 4
+    emphasis: [DVE-05]
+    note: "Autonomous agents reveal hidden aspects"
+
+  release:
+    minimum_level: 2
+    optimal_level: 3
+    emphasis: [DVE-04]
+
+  spiritual_growth:
+    minimum_level: 4
+    optimal_level: 5
+    emphasis: [DVE-05, DVE-07]
+
+  creativity:
+    minimum_level: 2
+    optimal_level: 3
+    emphasis: [DVE-02]
+    note: "Hypnagogic entry accesses creative unconscious"
+
+  relaxation:
+    minimum_level: 1
+    optimal_level: 2
+    emphasis: []
+    note: "Light DVE usage; prioritize vagal activation"
+
+  focus:
+    minimum_level: 2
+    optimal_level: 3
+    emphasis: [DVE-06]
+    note: "Stabilization protocols support sustained attention"
+
+  confidence:
+    minimum_level: 2
+    optimal_level: 3
+    emphasis: [DVE-05]
+    note: "Future self mirror powerful for confidence"
+
+# ============================================================================
+# JOURNEY FAMILY ALIGNMENT
+# ============================================================================
+
+journey_family_containers:
+
+  celestial_journey:
+    recommended_container: observatory_ssml
+    alternate: spaceship_ssml
+
+  eden_garden:
+    recommended_container: garden_ssml
+
+  underworld_descent:
+    recommended_container: cave_ssml
+
+  temple_initiation:
+    recommended_container: temple_ssml
+
+  cosmic_forge:
+    recommended_container: temple_ssml
+    note: "Add fire elements to temple"
+
+  ocean_depths:
+    recommended_container: cave_ssml
+    note: "Add water elements"
+
+# ============================================================================
+# CONTRAINDICATIONS QUICK REFERENCE
+# ============================================================================
+
+contraindications:
+
+  DVE-02:
+    caution_for: [high_anxiety, sleep_disorders]
+    modification: "Use gentler variant or shorten"
+
+  DVE-03:
+    caution_for: [claustrophobia, agoraphobia]
+    modification: "Use open variants for claustrophobia, bounded for agoraphobia"
+
+  DVE-04:
+    caution_for: [body_dysmorphia, somatic_trauma, chronic_pain]
+    modification: "Focus on sensation not appearance; use imaginal body language"
+
+  DVE-05:
+    caution_for: [dissociative_disorders, psychotic_conditions]
+    modification: "Contraindicated for psychotic; use dialogue_framework only for dissociative"
+
+  DVE-07:
+    contraindicated_for: [psychotic_conditions, dissociative_disorders, first_time_users]
+    modification: "Do not use for contraindicated populations"
+
+# ============================================================================
+# INSERTION MARKERS
+# ============================================================================
+
+insertion_markers:
+  DVE-01: ["[DVE:PRIMING_START]", "[DVE:PRIMING_END]"]
+  DVE-02: ["[DVE:HYPNAGOGIC_START]", "[DVE:HYPNAGOGIC_END]"]
+  DVE-03: ["[DVE:CONTAINER_START]", "[DVE:CONTAINER_END]"]
+  DVE-04: ["[DVE:EMBODIMENT_START]", "[DVE:EMBODIMENT_END]"]
+  DVE-05: ["[DVE:AUTONOMOUS_START]", "[DVE:AUTONOMOUS_END]", "[DVE:MIRROR_START]", "[DVE:MIRROR_END]", "[DVE:DIALOGUE_START]", "[DVE:DIALOGUE_END]"]
+  DVE-06: ["[DVE:STABILIZE_START]", "[DVE:STABILIZE_END]"]
+  DVE-07: ["[DVE:OVERRIDE_START]", "[DVE:OVERRIDE_END]"]
+
+# ============================================================================
+# RELATED FILES
+# ============================================================================
+
+related_files:
+  core_definitions: "knowledge/visualization/dve_modules.yaml"
+  scene_architecture: "knowledge/visualization/scene_architecture.yaml"
+  proprioceptive: "knowledge/embodiment/proprioceptive_templates.yaml"
+  manifest_schema: "config/manifest.schema.json"
+  hypnotic_patterns: "knowledge/hypnotic_patterns.yaml"
+  outcome_registry: "knowledge/outcome_registry.yaml"

@@ -1877,6 +1877,284 @@ family_outcome_index:
 
 
 # =============================================================================
+# DVE (DEEP VISUALIZATION ENHANCEMENT) RECOMMENDATIONS
+# =============================================================================
+# Maps outcomes to recommended DVE modules, levels, and configurations
+# Reference: knowledge/visualization/dve_modules.yaml
+
+dve_recommendations:
+
+  healing:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules: [DVE-01]
+    optional_modules: [DVE-04]
+    avoid_modules: [DVE-07]
+    theater_variant: garden
+    emphasis:
+      DVE-04:
+        variant: internal_variant
+        note: "Internal organ awareness supports somatic healing"
+    note: "Focus on gentle, nurturing body awareness"
+
+  transformation:
+    minimum_level: 3
+    optimal_level: 4
+    required_modules: [DVE-01, DVE-02, DVE-03, DVE-04]
+    optional_modules: [DVE-05, DVE-06]
+    avoid_modules: []
+    theater_variant: temple
+    emphasis:
+      DVE-05:
+        variant: mirror_encounter
+        note: "Mirror encounters powerful for identity work"
+    note: "Emphasis on body as vehicle for change"
+
+  empowerment:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules: [DVE-01]
+    optional_modules: [DVE-04]
+    avoid_modules: []
+    theater_variant: temple
+    emphasis:
+      DVE-04:
+        variant: standing_posture
+        note: "Strong, powerful body awareness"
+    note: "Powerful, commanding body presence"
+
+  self_knowledge:
+    minimum_level: 3
+    optimal_level: 4
+    required_modules: [DVE-01, DVE-02, DVE-03, DVE-04]
+    optional_modules: [DVE-05, DVE-06]
+    avoid_modules: []
+    theater_variant: temple
+    emphasis:
+      DVE-05:
+        variant: autonomous_agent
+        note: "Autonomous agents reveal hidden aspects"
+    note: "Deep internal exploration"
+
+  release:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules: [DVE-01]
+    optional_modules: [DVE-04]
+    avoid_modules: []
+    theater_variant: garden
+    emphasis:
+      DVE-04:
+        variant: breath_flow
+        note: "Release through body awareness"
+    note: "Release through body awareness and breath"
+
+  spiritual_growth:
+    minimum_level: 4
+    optimal_level: 5
+    required_modules: [DVE-01, DVE-02, DVE-03, DVE-04, DVE-05]
+    optional_modules: [DVE-06, DVE-07]
+    avoid_modules: []
+    theater_variant: temple
+    emphasis:
+      DVE-05:
+        variant: autonomous_agent
+        note: "Entity encounters for spiritual guidance"
+      DVE-07:
+        variant: spatial_impossible
+        note: "Impossible imagery for transcendent states (experienced users only)"
+    note: "Body as spiritual vehicle; full DVE stack for experienced practitioners"
+
+  creativity:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules: [DVE-01, DVE-02]
+    optional_modules: [DVE-03]
+    avoid_modules: []
+    theater_variant: garden
+    emphasis:
+      DVE-02:
+        note: "Hypnagogic entry accesses creative unconscious"
+    note: "Emphasis on hypnagogic imagery and spontaneous image emergence"
+
+  relaxation:
+    minimum_level: 1
+    optimal_level: 2
+    required_modules: []
+    optional_modules: [DVE-01]
+    avoid_modules: [DVE-05, DVE-07]
+    theater_variant: garden
+    note: "Light DVE usage; prioritize vagal activation over visualization"
+
+  focus:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules: [DVE-01]
+    optional_modules: [DVE-06]
+    avoid_modules: []
+    theater_variant: theater
+    emphasis:
+      DVE-06:
+        variant: detail_focus
+        note: "Stabilization protocols support sustained attention"
+    note: "Stabilization protocols for maintained concentration"
+
+  confidence:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules: [DVE-01]
+    optional_modules: [DVE-04, DVE-05]
+    avoid_modules: []
+    theater_variant: temple
+    emphasis:
+      DVE-05:
+        variant: mirror_encounter
+        note: "Future self mirror powerful for confidence"
+    note: "Mirror work with future confident self"
+
+  abundance:
+    minimum_level: 2
+    optimal_level: 3
+    required_modules: [DVE-01]
+    optional_modules: [DVE-03, DVE-04]
+    avoid_modules: []
+    theater_variant: garden
+    note: "Garden container for abundance themes; embodiment of prosperous self"
+
+  manifestation:
+    minimum_level: 3
+    optimal_level: 4
+    required_modules: [DVE-01, DVE-02, DVE-03, DVE-04]
+    optional_modules: [DVE-05]
+    avoid_modules: []
+    theater_variant: temple
+    emphasis:
+      DVE-04:
+        note: "Embody the version who already has the outcome"
+      DVE-05:
+        variant: mirror_encounter
+        note: "Mirror encounter with manifested self"
+    note: "Full embodiment of desired reality"
+
+  faith:
+    minimum_level: 3
+    optimal_level: 4
+    required_modules: [DVE-01, DVE-02, DVE-03, DVE-04]
+    optional_modules: [DVE-05, DVE-06]
+    avoid_modules: []
+    theater_variant: temple
+    emphasis:
+      DVE-03:
+        variant: temple
+        note: "Sacred container for divine connection"
+      DVE-05:
+        variant: autonomous_agent
+        note: "Divine guardian encounters for faith anchoring"
+    note: "Sacred container and divine entity encounters"
+
+  intuition:
+    minimum_level: 3
+    optimal_level: 4
+    required_modules: [DVE-01, DVE-02, DVE-03, DVE-04]
+    optional_modules: [DVE-05]
+    avoid_modules: []
+    theater_variant: temple
+    emphasis:
+      DVE-02:
+        note: "Hypnagogic entry for receptive intuitive state"
+      DVE-05:
+        variant: dialogue_framework
+        note: "Guide dialogue for intuitive communication"
+    note: "Receptive hypnagogic state for intuitive reception"
+
+  cognitive_enhancement:
+    minimum_level: 3
+    optimal_level: 4
+    required_modules: [DVE-01, DVE-02, DVE-03, DVE-04]
+    optional_modules: [DVE-05, DVE-06]
+    avoid_modules: []
+    theater_variant: observatory
+    emphasis:
+      DVE-03:
+        variant: observatory
+        note: "Cognitive observation deck for mental architecture work"
+      DVE-05:
+        variant: dialogue_framework
+        note: "Inner council dialogue for multiple perspectives"
+    note: "Observatory container for cognitive architecture; parts dialogue for integration"
+
+
+# =============================================================================
+# DVE LEVEL REQUIREMENTS
+# =============================================================================
+# Quick reference for which DVE modules are included at each level
+
+dve_level_modules:
+  level_1:
+    name: "Foundational"
+    modules: []
+    description: "Standard hypnotic visualization, no DVE enhancement"
+
+  level_2:
+    name: "Immersive"
+    modules: [DVE-01]
+    optional: [DVE-02]
+    description: "Enhanced VAK with imaginal priming"
+
+  level_3:
+    name: "Embodied"
+    modules: [DVE-01, DVE-02, DVE-03, DVE-04]
+    optional: [DVE-06]
+    description: "Full theater + proprioceptive depth"
+
+  level_4:
+    name: "Interactive"
+    modules: [DVE-01, DVE-02, DVE-03, DVE-04, DVE-05]
+    optional: [DVE-06]
+    description: "Autonomous agents and mirrors"
+
+  level_5:
+    name: "Hyperimaginal"
+    modules: [DVE-01, DVE-02, DVE-03, DVE-04, DVE-05, DVE-06, DVE-07]
+    description: "Full DVE stack with reality override"
+    requires_experience: true
+    contraindications: [first_time_users, psychotic_conditions, dissociative_disorders]
+
+
+# =============================================================================
+# DVE JOURNEY FAMILY CONTAINERS
+# =============================================================================
+# Recommended theater/container variants for each journey family
+
+dve_journey_containers:
+  celestial_journey:
+    recommended_container: observatory
+    alternate: spaceship
+    note: "Observatory for stargazing; spaceship for cosmic travel"
+
+  eden_garden:
+    recommended_container: garden
+    note: "Natural fit for garden themes"
+
+  underworld_descent:
+    recommended_container: cave
+    note: "Cave for descent and shadow work"
+
+  temple_initiation:
+    recommended_container: temple
+    note: "Sacred temple for initiation ceremonies"
+
+  cosmic_forge:
+    recommended_container: temple
+    alternate: cave
+    note: "Temple with fire elements; cave for volcanic imagery"
+
+  ocean_depths:
+    recommended_container: cave
+    note: "Underwater cave variant with water elements"
+
+
+# =============================================================================
 # VALIDATION RULES
 # =============================================================================
 # Rules for validate_outcome.py to check script compliance

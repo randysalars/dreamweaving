@@ -17,6 +17,7 @@ import {
   Shield,
   Sparkles,
 } from "lucide-react";
+import { NewsletterForm } from "@/components/NewsletterForm";
 
 const traditions = [
   {
@@ -460,17 +461,7 @@ export default function Home() {
               One tradition, one practice, one script snippet. No spam, just
               field-tested prompts and rituals.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <input
-                aria-label="Email"
-                type="email"
-                placeholder="you@example.com"
-                className="h-11 w-full rounded-lg border border-white/20 bg-white/10 px-3 text-sm text-white placeholder:text-slate-300 focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400"
-              />
-              <Button variant="secondary" className="bg-white text-slate-900">
-                Subscribe
-              </Button>
-            </div>
+            <NewsletterForm variant="dark" source="homepage" />
             <p className="text-xs text-slate-300">
               Opt out anytime. Includes integration and safety checklists.
             </p>
