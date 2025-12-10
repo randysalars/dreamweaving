@@ -1,0 +1,118 @@
+session:
+  name: paranormal-powers
+  topic: Paranormal powers
+  duration: 1800
+  style: confidence
+  created: '2025-12-10'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: The Cosmic Confidence Gateway
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: Welcome and introduction to Paranormal powers
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into floating through a luminous nebula of creation
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a starship powered by your inner fire'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: standing in your full power, voice clear and presence
+    magnetic'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: Archangel Michael
+  role: primary
+  description: Supreme warrior archetype of protection and righteous power
+  symbol: ''
+  qualities: []
+  appearance_section: journey
+- name: The Guardian Father
+  role: secondary
+  description: Archetype of protective fathering, safety, and supportive strength
+  symbol: ''
+  qualities: []
+  appearance_section: helm_deep_trance
+- name: The Dream Architect
+  role: support
+  description: Archetype that designs and constructs inner worlds
+  symbol: ''
+  qualities: []
+  appearance_section: integration
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 432
+    preset: empowerment_confidence
+    sections:
+    - start: 0
+      end: 144
+      offset_hz: 10.0
+    - start: 144
+      end: 360
+      offset_hz: 8.0
+    - start: 360
+      end: 630
+      offset_hz: 6.0
+    - start: 630
+      end: 1080
+      offset_hz: 10.0
+    - start: 1080
+      end: 1440
+      offset_hz: 12.0
+    - start: 1440
+      end: 1800
+      offset_hz: 10.0
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: The Cosmic Confidence Gateway | Binaural Beats Meditation
+  subtitle: "432Hz \u2022 Confidence"
+  description: 'A transformational journey: standing in your full power, voice clear
+    and presence magnetic'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - confidence
+  - cosmic
+fx_timeline:
+- type: gamma_flash
+  time: 1080
+  duration_s: 3.0
+  freq_hz: 40
+  description: Peak insight moment

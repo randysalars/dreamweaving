@@ -1,0 +1,67 @@
+session_name: dreamweaving-overall-themes
+topic: Dreamweaving overall themes
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2025-12-10T04:55:46.104255'
+  ended: '2025-12-10T05:52:55.895298'
+  duration_seconds: 3429.8
+stages:
+  completed:
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - package_youtube
+  - generate_thumbnail
+  - upload_website
+  - cleanup
+  - self_improvement
+  failed: []
+  total: 17
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-10T04:55:46.104633'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2025-12-10T04:55:56.698894'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2025-12-10T04:57:47.416167'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2025-12-10T04:57:47.471227'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-10T05:03:27.534428'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/dreamweaving-overall-themes
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/dreamweaving-overall-themes/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/dreamweaving-overall-themes/working_files/script.ssml
+  files:
+  - output/subtitles.vtt
+  - output/dreamweaving_overall_themes_MASTER.mp3
+  - output/seo_metadata.json
+  - output/youtube_thumbnail.png
+  - output/product_schema.json

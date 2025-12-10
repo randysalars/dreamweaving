@@ -1008,3 +1008,56 @@ lessons:
   - Voice generation successful with Neural2-H
   - Hypnotic post-processing applied successfully
   applied: false
+- id: L053
+  date: '2025-12-10'
+  session: dreamweaving-overall-themes
+  category: automation
+  source: auto_generate
+  summary: 'Auto-generated session from topic: Dreamweaving overall themes'
+  details:
+    topic: Dreamweaving overall themes
+    mode: standard
+    duration_target: 30
+    stages_completed: 16
+    stages_failed: 0
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  applied: false
+- id: L054
+  date: '2025-12-10'
+  session: love
+  category: automation
+  source: auto_generate
+  summary: 'Auto-generated session from topic: Love'
+  details:
+    topic: Love
+    mode: standard
+    duration_target: 30
+    stages_completed: 16
+    stages_failed: 0
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  applied: false
+- id: L055
+  date: '2025-12-10'
+  session: paranormal-powers
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: Paranormal powers'
+  details:
+    topic: Paranormal powers
+    mode: standard
+    duration_target: 30
+    stages_completed: 10
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - 'Failed stages: generate_voice'
+  applied: false
