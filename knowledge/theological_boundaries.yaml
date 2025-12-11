@@ -1,0 +1,385 @@
+# =============================================================================
+# THEOLOGICAL BOUNDARIES FOR DREAMWEAVING
+# =============================================================================
+# Based on: salars.net/dreamweaving/forbidden_knowledge (Part IX)
+# Purpose: Ensure all dreamweaving sessions remain Christ-centered
+#
+# This file defines forbidden patterns, required elements, and theological
+# rationale for validating scripts against Christ-centered boundaries.
+# =============================================================================
+
+version: "1.0"
+created: "2025-12-10"
+domain: "theological_safeguards"
+authority_source: "salars.net/dreamweaving/forbidden_knowledge"
+
+# =============================================================================
+# FOUNDATIONAL PRINCIPLES
+# =============================================================================
+
+principles:
+  core_statement: |
+    Dreamweaving engages God-designed imagination, not spirits.
+    It uses metaphor, not invocation.
+    It treats archetypes as psychological metaphors, not spiritual beings.
+    It keeps the will fully active.
+    It honors Scripture as the framework of truth.
+    It strengthens discernment instead of dissolving it.
+    It points people toward Christ.
+
+  theological_frame:
+    imagination_theology: |
+      The imagination is a God-given faculty. When sanctified and directed
+      by Scripture and the Holy Spirit, it becomes a tool for encountering
+      truth, not a portal for spiritual deception.
+
+    will_engagement: |
+      Christ never bypassed human will - He invited. Dreamweaving must
+      likewise keep the will engaged, never seeking to dissolve agency
+      or create empty-mind states vulnerable to suggestion.
+
+    christ_centrality: |
+      All transformation, healing, and insight points to Christ. He is
+      the center of identity, the source of meaning, and the author
+      of all genuine spiritual growth.
+
+# =============================================================================
+# FORBIDDEN PATTERNS (HARD FAIL)
+# =============================================================================
+# If ANY of these patterns are detected, validation FAILS
+
+forbidden:
+
+  # ---------------------------------------------------------------------------
+  # SPIRIT INVOCATION
+  # ---------------------------------------------------------------------------
+  spirit_invocation:
+    description: "Language that summons, invokes, or calls spirits/entities"
+    severity: HARD_FAIL
+    rationale: |
+      Dreamweaving must NOT summon entities or invoke energies. This crosses
+      from psychological work into spiritual invocation, violating the
+      Christ-centered framework.
+    patterns:
+      - 'invoke\s+(the\s+)?(spirit|entity|being|presence)\s+of'
+      - 'summon\s+(forth|the)\s+'
+      - 'call\s+(forth|upon)\s+(the\s+)?(spirit|entity|demon|angel)'
+      - 'i\s+invoke\s+thee'
+      - 'we\s+invoke\s+thee'
+      - 'come\s+(to\s+me|forth),?\s+(spirit|entity)'
+      - 'i\s+summon\s+'
+      - 'by\s+the\s+power\s+of\s+(?!christ|jesus|god|the\s+lord)'
+    examples_forbidden:
+      - "I invoke the spirit of the ancient ones"
+      - "Summon forth the guardian of the threshold"
+      - "Call upon the entity that dwells in this realm"
+      - "By the power of the elements, I command"
+    safe_alternative:
+      instead_of: "invoke the spirit of X"
+      use: "invite awareness of the quality that X represents"
+      example: "Allow yourself to sense the qualities of timelessness and rootedness that an ancient forest might represent"
+
+  # ---------------------------------------------------------------------------
+  # ENTITY COMMUNICATION
+  # ---------------------------------------------------------------------------
+  entity_communication:
+    description: "Language encouraging dialogue with unknown spiritual entities"
+    severity: HARD_FAIL
+    rationale: |
+      Encouraging communication with unidentified spiritual presences opens
+      the door to deception. Only the Holy Spirit should be acknowledged
+      as divine guide.
+    patterns:
+      - 'let\s+(something|a\s+being|an?\s+entity)\s+speak\s+through\s+you'
+      - 'allow\s+(a|the)\s+(spirit|being|entity|presence)\s+to\s+(guide|speak|enter)'
+      - 'open\s+yourself\s+to\s+whoever\s+speaks'
+      - 'whoever\s+(or\s+whatever\s+)?appears.*speak\s+to\s+you'
+      - 'let\s+the\s+(guide|being|spirit)\s+use\s+your\s+voice'
+      - 'channel\s+(the\s+)?(spirit|being|entity|message)'
+      - 'become\s+a\s+(vessel|channel)\s+for'
+      - 'receive\s+messages?\s+from\s+(the\s+)?(spirits?|entities|beings)'
+    examples_forbidden:
+      - "Let whatever appears speak through you"
+      - "Allow the being to guide your thoughts"
+      - "Become a vessel for the ancient wisdom"
+      - "Open yourself to whoever speaks"
+    safe_alternative:
+      instead_of: "let the being speak through you"
+      use: "notice what wisdom arises from within"
+      example: "Notice what wisdom arises from within as you consider this"
+
+  # ---------------------------------------------------------------------------
+  # PASSIVE WILL / EMPTY MIND
+  # ---------------------------------------------------------------------------
+  passive_will:
+    description: "Language that dissolves will, agency, or creates empty-mind vulnerability"
+    severity: HARD_FAIL
+    rationale: |
+      Empty-mind states dissolve discernment and create vulnerability to
+      spiritual deception. Dreamweaving keeps the will engaged as an
+      active participant, never as a passive receptor.
+    patterns:
+      - 'empty\s+your\s+mind\s+(completely|entirely|fully)'
+      - 'become\s+(completely\s+)?empty\s+(and\s+)?receptive'
+      - 'surrender\s+(your\s+)?will\s+(completely|entirely|to)'
+      - 'let\s+go\s+of\s+(all\s+)?control\s+(completely|entirely)'
+      - 'dissolve\s+(all\s+)?(boundaries|self|ego)\s+(completely|entirely)'
+      - 'become\s+nothing\s+(but|except)'
+      - 'lose\s+yourself\s+(completely|entirely|fully)'
+      - 'no\s+longer\s+exist\s+as\s+(yourself|you|an?\s+individual)'
+      - 'cease\s+to\s+(be|exist)'
+      - 'your\s+will\s+(no\s+longer|is\s+not)\s+(your|yours)'
+    examples_forbidden:
+      - "Empty your mind completely and wait"
+      - "Surrender your will to the universe"
+      - "Become nothing but a receiver"
+      - "Dissolve all boundaries of self entirely"
+    safe_alternative:
+      instead_of: "empty your mind completely"
+      use: "allow your thoughts to settle while remaining aware"
+      example: "Allow your thoughts to settle naturally, while remaining gently aware"
+
+  # ---------------------------------------------------------------------------
+  # ARCHETYPES AS LITERAL BEINGS
+  # ---------------------------------------------------------------------------
+  archetypes_literal:
+    description: "Treating psychological archetypes as literal spiritual entities"
+    severity: HARD_FAIL
+    rationale: |
+      Archetypes are psychological metaphors representing aspects of the
+      human experience. Treating them as literal beings with spiritual
+      authority crosses into idolatry and spiritual danger.
+    patterns:
+      - '(the\s+)?(archetype|anima|animus|shadow)\s+(is|are)\s+(a\s+)?(real|literal|actual)\s+(being|entity|spirit)'
+      - 'worship\s+(the\s+)?(archetype|anima|animus|shadow)'
+      - '(archetype|anima|animus)\s+(has|have)\s+(spiritual\s+)?authority\s+over'
+      - 'pledge\s+(yourself|allegiance)\s+to\s+(the\s+)?(archetype|anima|animus|shadow)'
+      - 'serve\s+(the\s+)?(archetype|guide|being)\s+as\s+(your\s+)?(master|lord)'
+      - '(the\s+)?(archetype|anima|animus)\s+commands\s+you\s+to'
+      - 'obey\s+(the\s+)?(archetype|anima|animus|shadow)'
+    examples_forbidden:
+      - "The anima is a real being who governs your soul"
+      - "Pledge yourself to the Shadow as your guide"
+      - "The archetype commands you to act"
+      - "Worship the great mother archetype"
+    safe_alternative:
+      instead_of: "the Shadow commands you"
+      use: "the shadow quality within you invites attention"
+      example: "This shadow aspect of yourself invites your compassionate attention"
+
+  # ---------------------------------------------------------------------------
+  # SPIRITUAL AUTHORITY OUTSIDE CHRIST
+  # ---------------------------------------------------------------------------
+  false_authority:
+    description: "Granting spiritual authority to symbols, objects, or non-Christ entities"
+    severity: HARD_FAIL
+    rationale: |
+      Only Christ has ultimate spiritual authority. Granting authority to
+      symbols, objects, elements, or non-Christ entities is a form of
+      idolatry and spiritual danger.
+    patterns:
+      - '(this\s+)?(symbol|sigil|object|element)\s+(has|holds|possesses)\s+(power|authority)\s+over'
+      - 'grant\s+(this|the)\s+(symbol|object|element)\s+power\s+over\s+you'
+      - 'the\s+(elements?|directions?|ancestors?)\s+(have|has)\s+authority\s+over'
+      - 'submit\s+(yourself\s+)?to\s+(the\s+)?(symbol|sigil|element|direction)'
+      - 'the\s+(pentagram|triangle|circle|sigil)\s+protects?\s+you\s+from'
+      - 'swear\s+(allegiance|loyalty)\s+to\s+(the\s+)?(symbol|element|direction)'
+    examples_forbidden:
+      - "This sigil has power over your destiny"
+      - "Submit yourself to the elements"
+      - "The pentagram protects you from all harm"
+      - "The ancestors have authority over your life"
+    safe_alternative:
+      instead_of: "the symbol has power over you"
+      use: "the symbol represents and reminds you of"
+      example: "This symbol represents Christ's protection, reminding you that you are held"
+
+# =============================================================================
+# WARNING PATTERNS
+# =============================================================================
+# These patterns trigger warnings but do not fail validation
+
+warnings:
+
+  # ---------------------------------------------------------------------------
+  # MISSING CHRIST-CENTERED LANGUAGE
+  # ---------------------------------------------------------------------------
+  missing_christ_reference:
+    description: "Script lacks explicit Christ-centered language"
+    check_type: ABSENCE
+    min_occurrences: 2
+    patterns_to_check:
+      - 'christ|jesus|lord|holy\s+spirit|father\s+god|heavenly\s+father'
+      - 'god.s?\s+(love|presence|light|peace|grace)'
+      - 'divine\s+(love|presence|light|grace)'
+    warning_message: "Consider adding explicit Christ-centered language for grounding"
+
+  # ---------------------------------------------------------------------------
+  # UNFRAMED ARCHETYPES
+  # ---------------------------------------------------------------------------
+  unframed_archetypes:
+    description: "Archetype mentioned without 'metaphor' or 'symbol' framing"
+    check_type: CONTEXT
+    trigger_patterns:
+      - '(archetype|anima|animus|shadow)\s+(?!.*?(metaphor|symbol|represent|psychological))'
+    warning_message: "Archetype mentioned without explicit metaphor/symbol framing"
+
+  # ---------------------------------------------------------------------------
+  # GUIDE WITHOUT SPIRIT CLARIFICATION
+  # ---------------------------------------------------------------------------
+  ambiguous_guide:
+    description: "Inner guide invoked without clarifying Holy Spirit's role"
+    check_type: CONTEXT
+    trigger_patterns:
+      - '(inner\s+guide|guide\s+appears?|meet\s+your\s+guide)\s+(?!.*?holy\s+spirit)'
+    warning_message: "Inner guide invoked - consider clarifying this represents Holy Spirit's leading or psychological wisdom"
+
+  # ---------------------------------------------------------------------------
+  # PASSIVE RELAXATION WITHOUT AGENCY
+  # ---------------------------------------------------------------------------
+  passive_relaxation:
+    description: "Relaxation language without will engagement cues"
+    check_type: BALANCE
+    passive_patterns:
+      - 'let\s+go\s+(of\s+)?everything'
+      - 'completely\s+surrender'
+      - 'total\s+release'
+    agency_patterns:
+      - 'you\s+choose'
+      - 'you\s+remain\s+aware'
+      - 'at\s+any\s+time\s+you\s+can'
+      - 'your\s+choice'
+      - 'you\s+decide'
+    ratio_warning: "passive patterns detected - ensure agency language is also present"
+
+# =============================================================================
+# REQUIRED PATTERNS
+# =============================================================================
+# Scripts MUST contain these elements to pass validation
+
+required:
+
+  # ---------------------------------------------------------------------------
+  # SAFETY & CONSENT CLAUSE
+  # ---------------------------------------------------------------------------
+  safety_clause:
+    description: "Explicit statement that listener maintains control"
+    severity: HARD_FAIL
+    min_occurrences: 1
+    placement: "first_500_words"
+    patterns:
+      - 'you\s+(remain|stay)\s+(in\s+)?(complete\s+)?(control|charge)'
+      - 'you\s+can\s+(return|come\s+back|awaken)\s+at\s+any\s+time'
+      - 'at\s+any\s+moment.*can.*(return|awaken|open\s+your\s+eyes)'
+      - 'only\s+(suggestions?|ideas?)\s+that\s+(serve|benefit|align)'
+      - 'your\s+(unconscious|subconscious)\s+(mind\s+)?(will\s+)?(only\s+)?accept\s+what'
+    examples_required:
+      - "You remain in complete control throughout this experience"
+      - "At any time, you can return to full waking awareness"
+      - "Your unconscious will only accept what serves your highest good"
+
+  # ---------------------------------------------------------------------------
+  # WILL ENGAGEMENT LANGUAGE
+  # ---------------------------------------------------------------------------
+  will_engagement:
+    description: "Language affirming listener's active participation"
+    severity: WARNING
+    min_occurrences: 3
+    placement: "throughout"
+    patterns:
+      - 'you\s+choose'
+      - 'you\s+decide'
+      - 'you\s+may\s+(want\s+to|choose\s+to)'
+      - 'in\s+your\s+own\s+way'
+      - 'in\s+your\s+own\s+time'
+      - 'as\s+feels\s+right\s+(to|for)\s+you'
+      - 'you\s+remain\s+aware'
+      - 'your\s+discernment'
+      - 'you\s+are\s+an\s+active\s+participant'
+      - 'your\s+(choice|decision|agency)'
+    examples_required:
+      - "You choose to go deeper, in your own time"
+      - "As feels right to you, you may..."
+      - "You remain aware throughout"
+
+  # ---------------------------------------------------------------------------
+  # CHRIST-CENTERED ANCHOR (for explicitly Christian sessions)
+  # ---------------------------------------------------------------------------
+  christ_anchor:
+    description: "Explicit reference to Christ as center of identity/meaning"
+    severity: CONDITIONAL
+    condition: "manifest.session.spiritual_framework == 'christian'"
+    min_occurrences: 2
+    patterns:
+      - 'christ\s+(is|remains|dwells)\s+(at\s+the\s+)?(center|core|heart)'
+      - 'rooted\s+in\s+christ'
+      - 'held\s+(by|in)\s+christ'
+      - 'christ.s\s+(presence|love|peace|light)'
+      - 'in\s+christ\s+you\s+(are|have|find)'
+      - 'christ\s+(goes|walks)\s+with\s+you'
+      - 'holy\s+spirit\s+(guides?|leads?|is\s+with)'
+    examples_required:
+      - "Christ remains at the center of who you are"
+      - "Held in Christ's unwavering love"
+      - "The Holy Spirit guides this journey"
+
+  # ---------------------------------------------------------------------------
+  # ARCHETYPE METAPHOR FRAMING
+  # ---------------------------------------------------------------------------
+  archetype_framing:
+    description: "Archetypes explicitly framed as psychological/metaphorical"
+    severity: WARNING
+    condition: "script contains archetype|anima|animus|shadow"
+    min_occurrences: 1
+    patterns:
+      - '(archetype|anima|animus|shadow)\s+(as\s+a\s+)?(symbol|metaphor|represent)'
+      - 'psychological\s+(symbol|metaphor|pattern)'
+      - 'inner\s+(aspect|part|quality)\s+of\s+(yourself|you)'
+      - 'part\s+of\s+your\s+(own\s+)?(psyche|mind|self)'
+      - 'represents?\s+an?\s+(aspect|part|quality)\s+of\s+you'
+    examples_required:
+      - "The shadow, as a psychological metaphor, represents..."
+      - "This archetype symbolizes an inner quality"
+      - "A part of your own psyche that has..."
+
+  # ---------------------------------------------------------------------------
+  # DISCERNMENT AFFIRMATION
+  # ---------------------------------------------------------------------------
+  discernment:
+    description: "Affirms listener's discernment is strengthened, not dissolved"
+    severity: WARNING
+    min_occurrences: 1
+    placement: "integration_or_closing"
+    patterns:
+      - 'your\s+discernment\s+(is\s+)?(stronger|sharper|clearer)'
+      - 'ability\s+to\s+discern'
+      - 'wisdom\s+to\s+(recognize|discern|know)'
+      - 'clarity\s+(to\s+)?distinguish'
+      - 'test\s+(all\s+things|everything)'
+    examples_required:
+      - "Your discernment is sharpened"
+      - "The wisdom to recognize truth from deception"
+
+# =============================================================================
+# VALIDATION CONFIGURATION
+# =============================================================================
+
+validation_config:
+  enabled: true
+  fail_on_forbidden: true
+  fail_on_missing_required: true
+  warn_on_missing_suggested: true
+
+  # For explicitly Christian sessions
+  christian_mode:
+    enabled_when: "manifest.session.spiritual_framework == 'christian'"
+    additional_requirements:
+      - christ_anchor
+      - holy_spirit_guide
+    stricter_warnings: true
+
+  # Integration with existing validators
+  integration:
+    call_from: "validate_ssml.py"
+    call_order: "after_syntax_before_patterns"
+    pass_forward_results: true

@@ -554,9 +554,10 @@ class UploadScheduler:
         Returns:
             Path to thumbnail or None
         """
+        # Priority: youtube_thumbnail.png (with text overlay) > youtube_package > others
         candidates = [
+            session_path / 'output' / 'youtube_thumbnail.png',  # Canonical - with text
             session_path / 'output' / 'youtube_package' / 'thumbnail.png',
-            session_path / 'output' / 'youtube_thumbnail.png',
             session_path / 'output' / 'thumbnail.png',
             session_path / 'images' / 'thumbnail.png',
         ]

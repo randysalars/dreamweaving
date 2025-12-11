@@ -590,6 +590,43 @@ def validate_ssml(file_path):
 
     print()
 
+    # =========================================================================
+    # GOOGLE TTS NEURAL2 COMPATIBILITY CHECK
+    # =========================================================================
+    print("🔊 Google TTS Neural2 Compatibility:")
+    print()
+
+    neural2_issues = []
+
+    # Check for nested tags inside emphasis (Neural2 doesn't support this)
+    emphasis_with_nested = re.findall(
+        r'<emphasis[^>]*>([^<]*(?:<[^/][^>]*>[^<]*)+)</emphasis>',
+        content,
+        re.DOTALL
+    )
+    if emphasis_with_nested:
+        neural2_issues.append(f"Found {len(emphasis_with_nested)} <emphasis> tags with nested SSML tags inside")
+        print(f"   ❌ Found {len(emphasis_with_nested)} <emphasis> tags containing other tags")
+        print("      Neural2 voices don't support nested tags inside <emphasis>")
+        print("      Move <break> tags outside of <emphasis> blocks:")
+        print()
+        print("      WRONG:  <emphasis>text<break time=\"2s\"/>more</emphasis>")
+        print("      RIGHT:  <emphasis>text</emphasis><break time=\"2s\"/><emphasis>more</emphasis>")
+        print()
+    else:
+        print("   ✅ No nested tags inside <emphasis>")
+
+    # Check for nested emphasis tags
+    nested_emphasis = re.findall(r'<emphasis[^>]*>[^<]*<emphasis[^>]*>', content)
+    if nested_emphasis:
+        neural2_issues.append(f"Found {len(nested_emphasis)} nested <emphasis> tags")
+        print(f"   ❌ Found {len(nested_emphasis)} nested <emphasis> tags")
+        print("      Neural2 doesn't support emphasis within emphasis")
+    else:
+        print("   ✅ No nested <emphasis> tags")
+
+    print()
+
     # Check for common issues
     issues_found = False
 
@@ -725,11 +762,68 @@ def validate_ssml(file_path):
 
             print()
 
+    # =========================================================================
+    # CHRIST-CENTERED VALIDATION
+    # =========================================================================
+    christ_centered_valid = True
+
+    if session_path and session_path.exists():
+        manifest_path = session_path / 'manifest.yaml'
+        if manifest_path.exists():
+            print("✝️  Christ-Centered Validation:")
+            print()
+
+            try:
+                from validate_christ_centered import validate_christ_centered
+
+                cc_result = validate_christ_centered(str(session_path))
+
+                if cc_result.hard_fails:
+                    christ_centered_valid = False
+                    print(f"   ❌ HARD FAIL: {len(cc_result.hard_fails)} forbidden pattern(s) detected")
+                    for fail in cc_result.hard_fails[:3]:  # Show first 3
+                        match_preview = fail['match'][:40] + "..." if len(fail['match']) > 40 else fail['match']
+                        print(f"      └── [{fail['category']}] \"{match_preview}\"")
+                    if len(cc_result.hard_fails) > 3:
+                        print(f"      ... and {len(cc_result.hard_fails) - 3} more")
+
+                if cc_result.required_missing:
+                    christ_centered_valid = False
+                    print(f"   ❌ Missing {len(cc_result.required_missing)} required element(s)")
+                    for missing in cc_result.required_missing:
+                        print(f"      └── {missing['name']}: {missing['description']}")
+
+                if cc_result.required_present:
+                    for present in cc_result.required_present:
+                        print(f"   ✅ {present['name']}: {present['occurrences']} occurrences")
+
+                if cc_result.warnings:
+                    print(f"   ⚠️  {len(cc_result.warnings)} warning(s):")
+                    for warning in cc_result.warnings[:3]:
+                        print(f"      └── [{warning['category']}] {warning['message']}")
+
+                if cc_result.valid and not cc_result.warnings:
+                    print("   ✅ Script maintains Christ-centered theological boundaries")
+
+                if not cc_result.valid:
+                    print()
+                    print("   Run: python scripts/utilities/validate_christ_centered.py " + str(session_path) + " -v")
+                    print("   for detailed Christ-centered validation report")
+
+            except ImportError:
+                print("   ℹ️  Christ-centered validator not available")
+            except Exception as e:
+                print(f"   ⚠️  Christ-centered validation error: {e}")
+
+            print()
+
     print("=" * 70)
-    if outcome_valid:
+    if outcome_valid and christ_centered_valid:
         print("✅ Validation Complete")
+    elif not christ_centered_valid:
+        print("❌ Validation FAILED - Christ-centered boundaries violated")
     else:
-        print("⚠️  Validation Complete (outcome warnings)")
+        print("⚠️  Validation Complete (warnings present)")
     print("=" * 70)
     print()
 

@@ -129,11 +129,12 @@ def ensure_output_directories(session_path: Path) -> Dict[str, Path]:
 
     output_dir.mkdir(parents=True, exist_ok=True)
     thumbnails_dir.mkdir(parents=True, exist_ok=True)
+    youtube_dir.mkdir(parents=True, exist_ok=True)  # Always create youtube_package
 
     return {
         "output": output_dir,
         "thumbnails": thumbnails_dir,
-        "youtube_package": youtube_dir if youtube_dir.exists() else None
+        "youtube_package": youtube_dir
     }
 
 

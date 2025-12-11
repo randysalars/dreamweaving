@@ -163,7 +163,8 @@ def main():
     parser.add_argument("--voice", default="en-US-Neural2-D", help="Voice name (default: Google Neural2-D).")
     parser.add_argument("--tts-provider", choices=["google"], default="google", help="TTS provider (Google Cloud TTS only).")
     parser.add_argument("--target-minutes", type=float, default=None, help="Target duration (minutes).")
-    parser.add_argument("--match-mode", choices=["bed_to_voice", "voice_to_target"], default="voice_to_target")
+    parser.add_argument("--match-mode", choices=["bed_to_voice", "voice_to_target"], default="bed_to_voice",
+                       help="bed_to_voice (default): binaural matches actual voice duration; voice_to_target: extends to target-minutes")
     parser.add_argument("--beat-hz", type=validate_binaural_offset, default=7.83, help="Binaural beat frequency (0.5-100 Hz).")
     parser.add_argument("--carrier-hz", type=validate_frequency, default=432.0, help="Carrier frequency (0.1-20000 Hz).")
     parser.add_argument("--bed-gain-db", type=validate_volume_db, default=-12.0, help="Bed gain (-40 to +10 dB). Default: -12 dB (best practice).")

@@ -352,15 +352,24 @@ TOPIC_KEYWORDS = {
     'grief': ['healing', 'loss', 'release', 'memories', 'letting go', 'peace', 'acceptance'],
     'anxiety': ['calm', 'peace', 'safety', 'grounding', 'breath', 'present', 'stillness'],
     'confidence': ['power', 'strength', 'voice', 'presence', 'worth', 'capability', 'shine'],
-    'sleep': ['rest', 'peace', 'surrender', 'drift', 'comfort', 'warmth', 'release'],
-    'abundance': ['flow', 'receiving', 'wealth', 'prosperity', 'deserving', 'open', 'attract'],
-    'healing': ['restoration', 'wholeness', 'light', 'repair', 'renewal', 'cellular', 'energy'],
-    'spiritual': ['connection', 'divine', 'source', 'higher', 'consciousness', 'awakening', 'unity'],
-    'creativity': ['flow', 'inspiration', 'muse', 'expression', 'ideas', 'birth', 'channel'],
-    'forgiveness': ['release', 'peace', 'freedom', 'compassion', 'understanding', 'letting go'],
-    'transformation': ['change', 'becoming', 'evolution', 'shedding', 'emergence', 'new'],
-    'self_love': ['acceptance', 'compassion', 'worth', 'nurturing', 'embrace', 'kindness'],
-    'focus': ['clarity', 'attention', 'concentration', 'laser', 'precision', 'single-pointed'],
+    'sleep': ['rest', 'peace', 'surrender', 'drift', 'comfort', 'warmth', 'release', 'sleep', 'dream'],
+    'abundance': ['flow', 'receiving', 'wealth', 'prosperity', 'deserving', 'open', 'attract', 'money', 'success'],
+    'healing': ['restoration', 'wholeness', 'light', 'repair', 'renewal', 'cellular', 'energy', 'health', 'recover'],
+    'spiritual': ['connection', 'divine', 'source', 'higher', 'consciousness', 'awakening', 'unity', 'soul', 'sacred'],
+    'creativity': ['flow', 'inspiration', 'muse', 'expression', 'ideas', 'birth', 'channel', 'art', 'create', 'imagination'],
+    'forgiveness': ['release', 'peace', 'freedom', 'compassion', 'understanding', 'letting go', 'forgive'],
+    'transformation': ['change', 'becoming', 'evolution', 'shedding', 'emergence', 'new', 'metamorphosis', 'rebirth'],
+    'self_love': ['acceptance', 'compassion', 'worth', 'nurturing', 'embrace', 'kindness', 'self', 'love', 'heart'],
+    'focus': ['clarity', 'attention', 'concentration', 'laser', 'precision', 'single-pointed', 'mind', 'mental'],
+    # Extended categories for better topic matching
+    'relaxation': ['relax', 'calm', 'stress', 'unwind', 'tension', 'ease', 'soothe', 'serenity'],
+    'joy': ['joy', 'happiness', 'bliss', 'delight', 'pleasure', 'humor', 'laughter', 'play', 'fun', 'cheerful'],
+    'empowerment': ['empower', 'power', 'strong', 'courage', 'brave', 'fearless', 'warrior', 'champion'],
+    'wisdom': ['wisdom', 'knowledge', 'insight', 'understanding', 'truth', 'learn', 'enlighten', 'awareness'],
+    'protection': ['protect', 'safe', 'shield', 'guard', 'secure', 'boundary', 'defense'],
+    'connection': ['connect', 'relationship', 'bond', 'unity', 'together', 'community', 'tribe'],
+    'purpose': ['purpose', 'meaning', 'mission', 'calling', 'destiny', 'path', 'direction', 'vision'],
+    'manifestation': ['manifest', 'attract', 'create', 'intention', 'law of attraction', 'desire', 'wish'],
 }
 
 
@@ -408,6 +417,7 @@ class CreativeWorkflow:
         Returns:
             Tuple of (primary_focus, relevant_keywords)
         """
+        import random
         topic_lower = topic.lower()
 
         # Score each therapeutic category
@@ -423,8 +433,16 @@ class CreativeWorkflow:
         if max(scores.values()) > 0:
             primary = max(scores, key=scores.get)
         else:
-            # Default to transformation for unknown topics
-            primary = 'transformation'
+            # For generic topics, rotate through diverse outcomes
+            # This ensures variety instead of always defaulting to 'transformation'
+            diverse_defaults = [
+                'transformation', 'spiritual', 'healing', 'empowerment',
+                'wisdom', 'joy', 'creativity', 'connection'
+            ]
+            # Use topic hash to ensure same topic always gets same category
+            # but different topics get different categories
+            topic_hash = hash(topic) % len(diverse_defaults)
+            primary = diverse_defaults[topic_hash]
 
         # Collect relevant keywords found
         relevant = []
@@ -490,6 +508,15 @@ class CreativeWorkflow:
             'self_love': ['inner', 'nature', 'mystical'],
             'forgiveness': ['nature', 'inner', 'underwater'],
             'focus': ['cosmic', 'mystical', 'inner'],
+            # Extended categories
+            'relaxation': ['nature', 'underwater', 'inner'],
+            'joy': ['nature', 'cosmic', 'mystical'],
+            'empowerment': ['cosmic', 'mystical', 'inner'],
+            'wisdom': ['cosmic', 'mystical', 'inner'],
+            'protection': ['mystical', 'inner', 'cosmic'],
+            'connection': ['nature', 'inner', 'mystical'],
+            'purpose': ['cosmic', 'mystical', 'inner'],
+            'manifestation': ['cosmic', 'mystical', 'nature'],
         }
         return style_mappings.get(therapeutic_focus, ['cosmic', 'nature', 'mystical', 'inner'])
 
@@ -513,8 +540,8 @@ class CreativeWorkflow:
         # Generate metaphor
         metaphor = self._generate_metaphor(therapeutic_focus, setting_style)
 
-        # Select binaural progression
-        binaural = self._select_binaural_progression(therapeutic_focus)
+        # Select binaural progression (now varies by style too)
+        binaural = self._select_binaural_progression(therapeutic_focus, setting_style)
 
         # Select archetypes (2-4 per journey)
         archetypes = self._select_archetypes(therapeutic_focus, setting_style)
@@ -715,8 +742,15 @@ class CreativeWorkflow:
         # Default metaphor
         return f"a sacred journey through {style} realms toward {focus.replace('_', ' ')}"
 
-    def _select_binaural_progression(self, focus: str) -> BinauralProgression:
-        """Select the best binaural progression for the therapeutic focus."""
+    def _select_binaural_progression(self, focus: str, style: str = "mystical") -> BinauralProgression:
+        """
+        Select the best binaural progression for the therapeutic focus.
+
+        Now includes randomization of frequencies and gamma burst timing for variety.
+        """
+        import copy
+        import random
+
         # Map therapeutic focus to binaural template
         focus_to_template = {
             'healing': 'healing',
@@ -731,14 +765,51 @@ class CreativeWorkflow:
             'self_love': 'healing',
             'forgiveness': 'healing',
             'focus': 'confidence',
+            'relaxation': 'healing',
+            'empowerment': 'confidence',
+            'joy': 'confidence',
         }
 
         template_name = focus_to_template.get(focus, 'deep_journey')
         template = BINAURAL_TEMPLATES[template_name]
 
-        # Create a copy with slight randomization for variety
-        import copy
+        # Create a copy with randomization for variety
         progression = copy.deepcopy(template)
+
+        # Randomize frequencies slightly (±0.5 Hz) for each section
+        for section_name, config in progression.sections.items():
+            original_freq = config['offset_hz']
+            jitter = random.uniform(-0.5, 0.5)
+            config['offset_hz'] = round(original_freq + jitter, 1)
+
+        # Vary carrier frequency based on style
+        carrier_options = {
+            'cosmic': [200, 216, 256, 288],
+            'nature': [174, 196, 220, 285],
+            'mystical': [396, 417, 432, 528],
+            'technological': [200, 256, 288, 320],
+            'underwater': [174, 196, 285, 396],
+            'inner': [396, 417, 432, 528],
+        }
+        carriers = carrier_options.get(style, [432])
+        progression.base_hz = random.choice(carriers)
+
+        # Vary gamma burst timing based on focus (outcome-specific)
+        gamma_timing = {
+            'healing': (0.55, 0.65),        # Earlier, sustained
+            'transformation': (0.70, 0.80),  # Later, climactic
+            'confidence': (0.58, 0.68),      # Mid-journey empowerment
+            'spiritual': (0.60, 0.70),       # Transcendence window
+            'sleep': (0.0, 0.0),             # No gamma for sleep
+            'creativity': (0.50, 0.60),      # Early insight
+        }
+
+        if progression.gamma_burst_enabled:
+            timing_range = gamma_timing.get(focus, (0.65, 0.75))
+            if timing_range[0] > 0:
+                progression.gamma_burst_time_ratio = random.uniform(*timing_range)
+            else:
+                progression.gamma_burst_enabled = False
 
         return progression
 
@@ -776,6 +847,14 @@ class CreativeWorkflow:
             'forgiveness': 'release',
             'focus': 'focus',
             'empowerment': 'empowerment',
+            # Extended categories
+            'relaxation': 'relaxation',
+            'joy': 'creativity',  # Joy maps to creative/light energy
+            'wisdom': 'spiritual_growth',
+            'protection': 'empowerment',
+            'connection': 'healing',
+            'purpose': 'spiritual_growth',
+            'manifestation': 'abundance',
         }
 
         # Map style to journey phases
@@ -1322,16 +1401,33 @@ class CreativeWorkflow:
             },
         }
 
-        # Add FX timeline if gamma burst enabled
+        # Add FX timeline if gamma burst enabled (use values from sound_bed config)
         if concept.binaural_progression.gamma_burst_enabled:
-            gamma_time = int(duration_seconds * concept.binaural_progression.gamma_burst_time_ratio)
-            manifest['fx_timeline'] = [{
-                'type': 'gamma_flash',
-                'time': gamma_time,
-                'duration_s': 3.0,
-                'freq_hz': 40,
-                'description': 'Peak insight moment',
-            }]
+            gamma_config = manifest['sound_bed']['binaural'].get('gamma_burst', {})
+            fx_timeline = []
+
+            if gamma_config.get('enabled'):
+                fx_timeline.append({
+                    'type': 'gamma_flash',
+                    'time': gamma_config.get('time', int(duration_seconds * 0.7)),
+                    'duration_s': round(gamma_config.get('duration_s', 3.0), 1),
+                    'freq_hz': gamma_config.get('frequency', 40),
+                    'description': gamma_config.get('description', 'Peak insight moment'),
+                })
+
+            # Add secondary gamma burst if configured
+            secondary_config = manifest['sound_bed']['binaural'].get('gamma_burst_secondary', {})
+            if secondary_config.get('enabled'):
+                fx_timeline.append({
+                    'type': 'gamma_flash',
+                    'time': secondary_config.get('time', int(duration_seconds * 0.88)),
+                    'duration_s': round(secondary_config.get('duration_s', 2.5), 1),
+                    'freq_hz': secondary_config.get('frequency', 60),
+                    'description': secondary_config.get('description', 'Integration activation'),
+                })
+
+            if fx_timeline:
+                manifest['fx_timeline'] = fx_timeline
 
         return manifest
 
@@ -1385,6 +1481,9 @@ class CreativeWorkflow:
         """
         Build sound_bed configuration, preferring YAML presets when available.
 
+        Now includes gamma burst configuration with outcome-specific timing
+        and multi-layer settings for deeper sessions.
+
         Args:
             concept: The journey concept
             duration_seconds: Total duration in seconds
@@ -1392,6 +1491,8 @@ class CreativeWorkflow:
         Returns:
             Dict with binaural, pink_noise, and nature configuration
         """
+        import random
+
         # Try to select a YAML preset based on the concept
         preset_name = self._select_binaural_preset(concept)
 
@@ -1408,6 +1509,46 @@ class CreativeWorkflow:
         else:
             # No preset found, use concept's binaural progression
             binaural_config['sections'] = concept.binaural_progression.to_manifest_format(duration_seconds)
+
+        # Add gamma burst configuration if enabled
+        if concept.binaural_progression.gamma_burst_enabled:
+            gamma_time = int(duration_seconds * concept.binaural_progression.gamma_burst_time_ratio)
+            binaural_config['gamma_burst'] = {
+                'enabled': True,
+                'time': gamma_time,
+                'frequency': random.choice([40, 42, 44]),  # Vary gamma frequency
+                'duration_s': random.uniform(2.5, 4.0),
+                'description': 'Peak insight activation'
+            }
+
+            # Add second gamma burst for transformation/confidence outcomes
+            goal_lower = concept.therapeutic_goal.lower()
+            if any(kw in goal_lower for kw in ['transform', 'confidence', 'empower', 'courage']):
+                second_ratio = random.uniform(0.85, 0.92)
+                binaural_config['gamma_burst_secondary'] = {
+                    'enabled': True,
+                    'time': int(duration_seconds * second_ratio),
+                    'frequency': random.choice([60, 70, 80]),  # Higher gamma for integration
+                    'duration_s': random.uniform(2.0, 3.5),
+                    'description': 'Integration activation'
+                }
+
+        # Configure multi-layer binaural for longer/deeper sessions
+        if concept.target_duration_minutes >= 25:
+            binaural_config['multi_layer'] = {
+                'enabled': True,
+                'delta_foundation': {
+                    'frequency': 1.5,
+                    'carrier_offset': 60,
+                    'level_db': -6
+                }
+            }
+            if concept.target_duration_minutes >= 35:
+                binaural_config['multi_layer']['alpha_cushion'] = {
+                    'frequency': 10,
+                    'carrier_offset': 30,
+                    'level_db': -8
+                }
 
         return {
             'binaural': binaural_config,

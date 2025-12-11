@@ -32,6 +32,8 @@ import time
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+from urllib3.exceptions import ProtocolError
+from requests.exceptions import ConnectionError, ChunkedEncodingError
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).parent.parent.parent
@@ -43,8 +45,43 @@ load_dotenv(PROJECT_ROOT / '.env')
 from scripts.automation.config_loader import load_config, setup_logging
 from scripts.automation.state_db import StateDatabase
 from scripts.automation.quality_scorer import compute_quality_score
+from scripts.automation.topic_validator import validate_topic, TopicValidation
 
 logger = logging.getLogger(__name__)
+
+
+def retry_on_connection_error(max_retries: int = 3, delay: float = 5.0):
+    """Decorator to retry on connection errors.
+
+    Args:
+        max_retries: Maximum number of retry attempts
+        delay: Delay between retries in seconds
+
+    Returns:
+        Decorated function
+    """
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            last_error = None
+            for attempt in range(max_retries):
+                try:
+                    return func(*args, **kwargs)
+                except (ConnectionError, ProtocolError, ChunkedEncodingError,
+                        OSError) as e:
+                    last_error = e
+                    if attempt < max_retries - 1:
+                        logger.warning(
+                            f"Connection error on attempt {attempt + 1}/{max_retries}: {e}. "
+                            f"Retrying in {delay}s..."
+                        )
+                        time.sleep(delay)
+                    else:
+                        logger.error(
+                            f"Connection error after {max_retries} attempts: {e}"
+                        )
+            raise last_error
+        return wrapper
+    return decorator
 
 
 def slugify(text: str) -> str:
@@ -106,6 +143,99 @@ class NightlyBuilder:
 
         return self.notion_manager
 
+    @retry_on_connection_error(max_retries=3, delay=5.0)
+    def _fetch_topic_from_notion(self) -> Dict[str, Any]:
+        """Fetch a random unused topic from Notion with retry logic.
+
+        Returns:
+            Topic data dict with 'title', 'id', etc.
+        """
+        notion = self._get_notion_manager()
+        return notion.pick_random_unused()
+
+    def _mark_topic_invalid(self, topic_data: Dict[str, Any], reason: str) -> None:
+        """Mark a topic as invalid in Notion so it won't be picked again.
+
+        Args:
+            topic_data: Topic data from Notion
+            reason: Why the topic is invalid
+        """
+        try:
+            notion = self._get_notion_manager()
+            page_id = topic_data.get('id')
+            if not page_id:
+                return
+
+            # Update the topic with "Invalid" status
+            updates = {
+                "properties": {
+                    "Status": {"select": {"name": "Invalid"}},
+                }
+            }
+
+            # Also add a note if there's a Notes property
+            if topic_data.get('is_db_row'):
+                updates["properties"]["Used At"] = {
+                    "date": {"start": datetime.now().isoformat()}
+                }
+
+            notion.session.patch(
+                f"https://api.notion.com/v1/pages/{page_id}",
+                headers=notion._headers(),
+                json=updates,
+                timeout=notion.timeout,
+            )
+            logger.info(f"Marked topic as invalid: {reason}")
+        except Exception as e:
+            logger.warning(f"Failed to mark topic as invalid: {e}")
+
+    def _fetch_validated_topic(self, max_attempts: int = 10) -> Optional[Dict[str, Any]]:
+        """Fetch a validated dreamweaving topic from Notion.
+
+        Tries multiple topics until finding a valid one, marking invalid ones
+        so they won't be picked again.
+
+        Args:
+            max_attempts: Maximum topics to try before giving up
+
+        Returns:
+            Validated topic data or None if no valid topics found
+        """
+        attempted_ids = set()
+
+        for attempt in range(max_attempts):
+            try:
+                topic_data = self._fetch_topic_from_notion()
+                topic_id = topic_data.get('id')
+
+                # Avoid re-checking same topic
+                if topic_id in attempted_ids:
+                    continue
+                attempted_ids.add(topic_id)
+
+                topic_title = topic_data.get('title', '')
+                logger.info(f"Validating topic ({attempt + 1}/{max_attempts}): {topic_title}")
+
+                # Validate the topic
+                validation = validate_topic(topic_title, use_llm=True)
+
+                if validation.is_valid:
+                    logger.info(f"Topic validated: {validation.reason}")
+                    return topic_data
+                else:
+                    logger.warning(f"Topic invalid: {validation.reason}")
+                    # Mark as invalid in Notion
+                    self._mark_topic_invalid(topic_data, validation.reason)
+
+            except RuntimeError as e:
+                if "No unused topics" in str(e):
+                    logger.error("No more unused topics available in Notion")
+                    return None
+                raise
+
+        logger.error(f"Could not find valid topic after {max_attempts} attempts")
+        return None
+
     def run(
         self,
         count: int = 5,
@@ -139,8 +269,16 @@ class NightlyBuilder:
                     topic_title = topics[i]
                     topic_data = {'title': topic_title, 'id': None, 'is_manual': True}
                 else:
-                    notion = self._get_notion_manager()
-                    topic_data = notion.pick_random_unused()
+                    # Fetch and validate topic from Notion
+                    topic_data = self._fetch_validated_topic()
+                    if topic_data is None:
+                        logger.error("Could not find a valid dreamweaving topic")
+                        results.append({
+                            'session': None,
+                            'status': 'skipped',
+                            'error': 'No valid topics available',
+                        })
+                        continue
                     topic_title = topic_data['title']
 
                 session_name = slugify(topic_title)

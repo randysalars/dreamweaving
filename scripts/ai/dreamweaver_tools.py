@@ -16,10 +16,11 @@ Usage:
 
 import json
 import os
+import random
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List, Dict, Any
 import yaml
 
 
@@ -333,73 +334,277 @@ def generate_ssml_wrapper(
 
 
 def suggest_audio_bed(
-    target_state: str = "trance",
     duration_minutes: int = 30,
-    environment: str = "sacred_space"
+    environment: str = "sacred_space",
+    therapeutic_outcome: str = "healing",
+    depth_level: str = "Layer2",
+    style: str = "mystical"
 ) -> AudioPlan:
     """
     Generate an audio bed plan with binaural beats, ambience, and SFX.
 
     This follows the dreamweaver.suggest_audio_bed pattern from CLAUDE.md.
+    Now includes outcome-specific gamma bursts, style-matched SFX, timing jitter,
+    and multi-layer binaural for deeper sessions.
 
     Args:
         target_state: relaxation, trance, deep_trance, or integration
         duration_minutes: Total duration of the journey
         environment: Environment label (e.g., "garden", "temple", "starship")
+        therapeutic_outcome: healing, transformation, confidence, relaxation, etc.
+        depth_level: Layer1, Layer2, Layer3, or Ipsissimus
+        style: cosmic, nature, mystical, technological, elemental
 
     Returns:
         AudioPlan: Complete audio bed configuration
     """
-    # Binaural frequency curves based on target state
-    binaural_curves = {
-        "relaxation": {"start": 12, "mid": 10, "deep": 8, "end": 10},
-        "trance": {"start": 10, "mid": 7, "deep": 5, "end": 8},
-        "deep_trance": {"start": 10, "mid": 5, "deep": 4, "end": 7},
-        "integration": {"start": 8, "mid": 6, "deep": 4, "end": 10}
+    # ==========================================================================
+    # OUTCOME-SPECIFIC BINAURAL PRESETS (from knowledge/audio/binaural_presets.yaml)
+    # ==========================================================================
+    outcome_to_preset = {
+        "healing": "healing_deep",
+        "transformation": "transformation_alchemical",
+        "confidence": "confidence_radiant",
+        "empowerment": "confidence_radiant",
+        "relaxation": "relaxation_gentle",
+        "spiritual_growth": "spiritual_transcendence",
+        "creativity": "creativity_flow",
+        "sleep": "sleep_delta_descent",
+        "grief": "healing_gentle",
+        "anxiety": "relaxation_gentle",
+        "abundance": "abundance_mindset",
+        "self_love": "healing_gentle",
+        "forgiveness": "healing_deep",
+        "focus": "focus_laser",
     }
 
-    curve = binaural_curves.get(target_state, binaural_curves["trance"])
+    # Binaural frequency curves based on therapeutic outcome (more varied than target_state)
+    outcome_curves = {
+        "healing": {
+            "start": 10, "induction": 8, "deep1": 6, "deep2": 4, "deepest": 2,
+            "return1": 4, "return2": 6, "end": 10,
+            "gamma_burst": True, "gamma_ratio": random.uniform(0.55, 0.65)
+        },
+        "transformation": {
+            "start": 10, "induction": 8, "deep1": 6, "deep2": 4.5, "deepest": 3,
+            "return1": 2.5, "return2": 4, "end": 8,
+            "gamma_burst": True, "gamma_ratio": random.uniform(0.70, 0.80),
+            "double_burst": True, "second_burst_ratio": random.uniform(0.85, 0.92)
+        },
+        "confidence": {
+            "start": 12, "induction": 10, "deep1": 14, "deep2": 10, "deepest": 7,
+            "return1": 10, "return2": 12, "end": 14,
+            "gamma_burst": True, "gamma_ratio": random.uniform(0.58, 0.68),
+            "double_burst": True, "second_burst_ratio": random.uniform(0.78, 0.85)
+        },
+        "relaxation": {
+            "start": 10, "induction": 9, "deep1": 8, "deep2": 7, "deepest": 6,
+            "return1": 7, "return2": 8, "end": 10,
+            "gamma_burst": False
+        },
+        "spiritual_growth": {
+            "start": 10, "induction": 7.83, "deep1": 6, "deep2": 4, "deepest": 3,
+            "return1": 4, "return2": 6, "end": 10,
+            "gamma_burst": True, "gamma_ratio": random.uniform(0.60, 0.70)
+        },
+        "creativity": {
+            "start": 10, "induction": 8, "deep1": 7, "deep2": 5, "deepest": 7,
+            "return1": 8, "return2": 10, "end": 10,
+            "gamma_burst": True, "gamma_ratio": random.uniform(0.50, 0.60)
+        },
+        "sleep": {
+            "start": 8, "induction": 6, "deep1": 4, "deep2": 2.5, "deepest": 1.5,
+            "return1": 1.5, "return2": 1.5, "end": 1.5,
+            "gamma_burst": False
+        },
+        "abundance": {
+            "start": 10, "induction": 8, "deep1": 6, "deep2": 4, "deepest": 6,
+            "return1": 8, "return2": 10, "end": 12,
+            "gamma_burst": True, "gamma_ratio": random.uniform(0.65, 0.75)
+        },
+    }
 
-    # Calculate transition times
-    t1 = "0:00"
-    t2 = f"{duration_minutes // 4}:00"
-    t3 = f"{duration_minutes // 2}:00"
-    t4 = f"{3 * duration_minutes // 4}:00"
-    t5 = f"{duration_minutes - 2}:00"
+    # Get outcome curve or fall back to healing
+    curve = outcome_curves.get(therapeutic_outcome, outcome_curves["healing"])
+
+    # Add small random variations to frequencies (±0.5 Hz)
+    def jitter_freq(freq: float, amount: float = 0.5) -> float:
+        return round(freq + random.uniform(-amount, amount), 1)
+
+    # Calculate transition times with slight jitter (±15 seconds)
+    def jitter_time(minutes: int, seconds: int = 0, jitter_secs: int = 15) -> str:
+        total_secs = minutes * 60 + seconds + random.randint(-jitter_secs, jitter_secs)
+        total_secs = max(0, total_secs)  # Don't go negative
+        return f"{total_secs // 60}:{total_secs % 60:02d}"
+
+    # Build 8-point binaural progression
+    transitions = [
+        {"time": "0:00", "freq": curve["start"], "state": "alpha"},
+        {"time": jitter_time(duration_minutes // 8), "freq": jitter_freq(curve["induction"]), "state": "low_alpha"},
+        {"time": jitter_time(duration_minutes // 4), "freq": jitter_freq(curve["deep1"]), "state": "theta_entry"},
+        {"time": jitter_time(duration_minutes * 3 // 8), "freq": jitter_freq(curve["deep2"]), "state": "theta"},
+        {"time": jitter_time(duration_minutes // 2), "freq": jitter_freq(curve["deepest"]), "state": "deep_theta"},
+        {"time": jitter_time(duration_minutes * 5 // 8), "freq": jitter_freq(curve["return1"]), "state": "theta"},
+        {"time": jitter_time(duration_minutes * 3 // 4), "freq": jitter_freq(curve["return2"]), "state": "low_alpha"},
+        {"time": f"{duration_minutes - 2}:00", "freq": curve["end"], "state": "alpha"}
+    ]
+
+    # Carrier frequency selection (varies by style)
+    carrier_frequencies = {
+        "cosmic": random.choice([200, 216, 256]),  # Varied cosmic carriers
+        "nature": random.choice([174, 196, 220]),  # Grounding frequencies
+        "mystical": random.choice([396, 417, 432]),  # Sacred frequencies
+        "technological": random.choice([200, 256, 288]),  # Neural frequencies
+        "elemental": random.choice([174, 285, 396]),  # Elemental frequencies
+    }
+    carrier = carrier_frequencies.get(style, 432)
 
     binaural = {
-        "carrier_frequency": 200,
+        "carrier_frequency": carrier,
+        "preset": outcome_to_preset.get(therapeutic_outcome, "healing_deep"),
         "start_hz": curve["start"],
         "end_hz": curve["end"],
-        "transitions": [
-            {"time": t1, "freq": curve["start"], "state": "alpha"},
-            {"time": t2, "freq": curve["mid"], "state": "low_alpha"},
-            {"time": t3, "freq": curve["deep"], "state": "theta"},
-            {"time": t4, "freq": curve["mid"], "state": "theta"},
-            {"time": t5, "freq": curve["end"], "state": "alpha"}
-        ]
+        "transitions": transitions
     }
 
-    # Environment-based ambience
+    # ==========================================================================
+    # MULTI-LAYER BINAURAL FOR DEEPER SESSIONS
+    # ==========================================================================
+    if depth_level in ("Layer3", "Ipsissimus"):
+        # Add secondary delta foundation layer
+        binaural["multi_layer"] = {
+            "enabled": True,
+            "layers": [
+                {
+                    "name": "delta_foundation",
+                    "frequency": 1.5,
+                    "carrier_offset": 60,  # 60 Hz above main carrier
+                    "level_db": -6
+                }
+            ]
+        }
+        if depth_level == "Ipsissimus":
+            # Add alpha cushion for deepest work
+            binaural["multi_layer"]["layers"].append({
+                "name": "alpha_cushion",
+                "frequency": 10,
+                "carrier_offset": 30,
+                "level_db": -8
+            })
+
+    # ==========================================================================
+    # GAMMA BURST CONFIGURATION (outcome-specific timing)
+    # ==========================================================================
+    gamma_config = None
+    if curve.get("gamma_burst"):
+        gamma_time = int(duration_minutes * 60 * curve["gamma_ratio"])
+        gamma_config = {
+            "enabled": True,
+            "bursts": [
+                {
+                    "time": gamma_time,
+                    "frequency": random.choice([40, 42, 44]),  # Slight frequency variation
+                    "duration_s": random.uniform(2.5, 4.0),
+                    "description": "Primary insight activation"
+                }
+            ]
+        }
+        # Add second burst for transformation/confidence
+        if curve.get("double_burst"):
+            second_time = int(duration_minutes * 60 * curve["second_burst_ratio"])
+            gamma_config["bursts"].append({
+                "time": second_time,
+                "frequency": random.choice([60, 70, 80]),  # Higher gamma for integration
+                "duration_s": random.uniform(2.0, 3.5),
+                "description": "Integration activation"
+            })
+
+    if gamma_config:
+        binaural["gamma_bursts"] = gamma_config
+
+    # ==========================================================================
+    # ENVIRONMENT-BASED AMBIENCE (expanded)
+    # ==========================================================================
     ambience_presets = {
-        "garden": {"base": "garden_with_water", "layers": ["birds", "gentle_wind"]},
-        "temple": {"base": "cathedral_reverb", "layers": ["distant_bells", "sacred_hum"]},
-        "starship": {"base": "ship_ambient", "layers": ["subtle_engines", "electronic_hum"]},
-        "forest": {"base": "forest_night", "layers": ["crickets", "owl", "stream"]},
-        "ocean": {"base": "ocean_waves", "layers": ["seagulls", "wind"]},
-        "sacred_space": {"base": "ethereal_pad", "layers": ["soft_chimes", "breath"]}
+        "garden": {"base": "garden_with_water", "layers": random.sample(["birds", "gentle_wind", "bees", "leaves_rustle"], 2)},
+        "temple": {"base": "cathedral_reverb", "layers": random.sample(["distant_bells", "sacred_hum", "monks_chant", "incense_crackle"], 2)},
+        "starship": {"base": "ship_ambient", "layers": random.sample(["subtle_engines", "electronic_hum", "scanner_beeps", "life_support"], 2)},
+        "forest": {"base": "forest_night", "layers": random.sample(["crickets", "owl", "stream", "frogs", "wind_trees"], 2)},
+        "ocean": {"base": "ocean_waves", "layers": random.sample(["seagulls", "wind", "dolphins", "underwater_bubbles"], 2)},
+        "cave": {"base": "cave_drip", "layers": random.sample(["underground_stream", "distant_echo", "mineral_resonance"], 2)},
+        "mountain": {"base": "mountain_wind", "layers": random.sample(["eagles", "rock_settle", "distant_thunder"], 2)},
+        "sacred_space": {"base": "ethereal_pad", "layers": random.sample(["soft_chimes", "breath", "crystal_bowls", "angelic_hum"], 2)},
     }
 
     ambience = ambience_presets.get(environment, ambience_presets["sacred_space"])
 
-    # Default SFX timeline
-    sfx_timeline = [
-        {"time": "0:30", "effect": "soft_chime", "duration": 2},
-        {"time": f"{duration_minutes // 4}:00", "effect": "deep_bell", "duration": 4},
-        {"time": f"{duration_minutes // 2}:00", "effect": "ethereal_tone", "duration": 3},
-        {"time": f"{3 * duration_minutes // 4}:00", "effect": "crystal_bowl", "duration": 5},
-        {"time": f"{duration_minutes - 3}:00", "effect": "awakening_chime", "duration": 3}
-    ]
+    # ==========================================================================
+    # STYLE-MATCHED SFX WITH TIMING JITTER
+    # ==========================================================================
+    # SFX pools by style
+    sfx_pools = {
+        "cosmic": ["starfield_sparkle", "ascending_pad", "nebula_pulse", "warp_shimmer", "cosmic_breath"],
+        "nature": ["oceanic_whisper", "forest_chime", "water_drop", "leaf_flutter", "birdsong_echo"],
+        "mystical": ["golden_bell", "halo_reverb", "crystal_shimmer", "choir_texture", "sacred_drone"],
+        "technological": ["data_stream", "neural_pulse", "interface_tone", "quantum_hum", "circuit_cascade"],
+        "elemental": ["fire_crackle", "water_flow", "earth_rumble", "wind_gust", "lightning_distant"],
+    }
+
+    # Select SFX pool based on style
+    pool = sfx_pools.get(style, sfx_pools["mystical"])
+
+    # Generate varied SFX timeline with jitter
+    sfx_timeline = []
+
+    # Opening effect (first 30-60 seconds)
+    sfx_timeline.append({
+        "time": jitter_time(0, 30, jitter_secs=10),
+        "effect": random.choice(pool),
+        "duration": random.uniform(2.0, 3.5)
+    })
+
+    # Induction marker
+    sfx_timeline.append({
+        "time": jitter_time(duration_minutes // 6),
+        "effect": random.choice(pool),
+        "duration": random.uniform(3.0, 5.0)
+    })
+
+    # Deep journey entry
+    sfx_timeline.append({
+        "time": jitter_time(duration_minutes // 3),
+        "effect": random.choice(pool),
+        "duration": random.uniform(3.5, 5.5)
+    })
+
+    # Deepest point (helm)
+    sfx_timeline.append({
+        "time": jitter_time(duration_minutes // 2),
+        "effect": random.choice(pool),
+        "duration": random.uniform(4.0, 6.0)
+    })
+
+    # Integration marker
+    sfx_timeline.append({
+        "time": jitter_time(duration_minutes * 2 // 3),
+        "effect": random.choice(pool),
+        "duration": random.uniform(3.0, 4.5)
+    })
+
+    # Return phase
+    sfx_timeline.append({
+        "time": jitter_time(duration_minutes * 5 // 6),
+        "effect": random.choice(pool),
+        "duration": random.uniform(3.0, 4.0)
+    })
+
+    # Awakening chime (always include, but varied)
+    awakening_effects = ["awakening_chime", "sunrise_tone", "crystal_clear", "gentle_bell", "return_signal"]
+    sfx_timeline.append({
+        "time": f"{duration_minutes - random.randint(2, 4)}:00",
+        "effect": random.choice(awakening_effects),
+        "duration": random.uniform(2.5, 4.0)
+    })
 
     return AudioPlan(
         binaural=binaural,
@@ -595,7 +800,13 @@ def create_session_scaffold(
     outline_path = save_outline(outline, str(session_path))
 
     # Generate and save audio plan
-    audio_plan = suggest_audio_bed("trance", duration_minutes, "sacred_space")
+    audio_plan = suggest_audio_bed(
+        duration_minutes=duration_minutes,
+        environment="sacred_space",
+        therapeutic_outcome="healing",
+        depth_level=depth_level,
+        style="mystical"
+    )
     audio_path = save_audio_plan(audio_plan, str(session_path))
 
     # Generate and save YouTube package
@@ -659,7 +870,13 @@ if __name__ == "__main__":
     print(outline.to_json())
 
     # Generate audio plan
-    audio = suggest_audio_bed("deep_trance", 30, "garden")
+    audio = suggest_audio_bed(
+        duration_minutes=30,
+        environment="garden",
+        therapeutic_outcome="spiritual_growth",
+        depth_level="Layer2",
+        style="nature"
+    )
     print("\nGenerated Audio Plan:")
     print(audio.to_json())
 

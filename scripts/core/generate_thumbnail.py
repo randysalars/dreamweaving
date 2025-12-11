@@ -1008,12 +1008,12 @@ def generate_thumbnail(
     img = img.convert('RGB')
     img.save(output_path, 'PNG', optimize=True)
 
-    # Also save to youtube_package if it exists
+    # Also save to youtube_package (create if needed)
     youtube_package_dir = session_path / "output" / "youtube_package"
-    if youtube_package_dir.exists():
-        package_thumbnail = youtube_package_dir / "thumbnail.png"
-        img.save(package_thumbnail, 'PNG', optimize=True)
-        print(f"Also saved to: {package_thumbnail}")
+    youtube_package_dir.mkdir(parents=True, exist_ok=True)
+    package_thumbnail = youtube_package_dir / "thumbnail.png"
+    img.save(package_thumbnail, 'PNG', optimize=True)
+    print(f"Also saved to: {package_thumbnail}")
 
     print()
     print("✓ THUMBNAIL GENERATED")

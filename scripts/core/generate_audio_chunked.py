@@ -23,6 +23,102 @@ from google.cloud import texttospeech
 from pydub import AudioSegment
 from pydub.exceptions import CouldntDecodeError
 
+
+def sanitize_ssml_for_neural2(ssml_content):
+    """
+    Sanitize SSML for Google TTS Neural2 voice compatibility.
+
+    Neural2 voices have stricter SSML requirements:
+    - No nested tags inside <emphasis> (e.g., <break> inside <emphasis>)
+    - No nested <emphasis> tags
+
+    This function automatically fixes these issues.
+
+    Args:
+        ssml_content: Raw SSML string
+
+    Returns:
+        Sanitized SSML string compatible with Neural2 voices
+    """
+    fixes_made = []
+
+    # Fix 1: First, flatten nested emphasis tags
+    # Pattern: <emphasis ...>...<emphasis ...>text</emphasis>...</emphasis>
+    # Result:  <emphasis ...>...text...</emphasis>
+    nested_count = 0
+    while True:
+        # Keep removing nested emphasis until none remain
+        pattern = r'(<emphasis[^>]*>)(.*?)<emphasis[^>]*>(.*?)</emphasis>(.*?)(</emphasis>)'
+        new_content = re.sub(pattern, r'\1\2\3\4\5', ssml_content, flags=re.DOTALL)
+        if new_content == ssml_content:
+            break
+        nested_count += ssml_content.count('<emphasis') - new_content.count('<emphasis')
+        ssml_content = new_content
+
+    if nested_count > 0:
+        fixes_made.append(f"Flattened {nested_count} nested <emphasis> tags")
+
+    # Fix 2: Move <break> tags outside of <emphasis> blocks
+    # Pattern: <emphasis ...>text<break .../>more text</emphasis>
+    # Result:  <emphasis ...>text</emphasis><break .../><emphasis ...>more text</emphasis>
+
+    def fix_emphasis_with_breaks(match):
+        """Replace emphasis containing breaks with properly separated tags."""
+        full_match = match.group(0)
+        attrs = match.group(1)  # e.g., level="moderate"
+        inner = match.group(2)  # content inside emphasis
+
+        # Check if there are any break tags inside
+        if '<break' not in inner:
+            return full_match
+
+        # Split by break tags, keeping the break tags
+        parts = re.split(r'(<break[^>]*/>)', inner)
+
+        result = []
+        text_buffer = []
+
+        for part in parts:
+            if part.startswith('<break'):
+                # Flush any accumulated text as an emphasis block
+                if text_buffer:
+                    text = ''.join(text_buffer).strip()
+                    if text:
+                        result.append(f'<emphasis {attrs}>{text}</emphasis>')
+                    text_buffer = []
+                # Add the break tag outside emphasis
+                result.append(part)
+            else:
+                text_buffer.append(part)
+
+        # Flush remaining text
+        if text_buffer:
+            text = ''.join(text_buffer).strip()
+            if text:
+                result.append(f'<emphasis {attrs}>{text}</emphasis>')
+
+        return ''.join(result)
+
+    # Apply the break fix - use a simpler pattern that matches any emphasis with breaks
+    break_fix_count = 0
+    prev = ssml_content
+    # Match emphasis tags and their content (non-greedy)
+    pattern = r'<emphasis\s+([^>]*)>(.*?)</emphasis>'
+    ssml_content = re.sub(pattern, fix_emphasis_with_breaks, ssml_content, flags=re.DOTALL)
+
+    if ssml_content != prev:
+        break_fix_count = len(re.findall(r'<emphasis[^>]*>[^<]*<break', prev))
+        if break_fix_count > 0:
+            fixes_made.append(f"Fixed {break_fix_count} <emphasis> tags containing <break> tags")
+
+    if fixes_made:
+        print("   🔧 Auto-sanitization applied:")
+        for fix in fixes_made:
+            print(f"      - {fix}")
+
+    return ssml_content
+
+
 def print_header():
     """Print a simple header"""
     print("=" * 70)
@@ -207,7 +303,10 @@ def synthesize_ssml_file_chunked(
     print(f"📖 Reading SSML from: {ssml_filepath}")
     with open(ssml_filepath, 'r', encoding='utf-8') as f:
         ssml_content = f.read()
-    
+
+    # Sanitize SSML for Neural2 compatibility (auto-fix common issues)
+    ssml_content = sanitize_ssml_for_neural2(ssml_content)
+
     # Calculate character count
     char_count = len(ssml_content)
     byte_count = len(ssml_content.encode('utf-8'))

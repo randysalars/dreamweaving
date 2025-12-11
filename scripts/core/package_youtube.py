@@ -99,9 +99,97 @@ def get_audio_duration(audio_path):
 
 
 def create_thumbnail(session_dir, manifest, output_dir):
+    """
+    Generate YouTube thumbnail with text overlays using generate_thumbnail.py.
+    Falls back to simple ffmpeg resize if the generator fails.
+    """
     print("\n=== Creating YouTube Thumbnail ===")
     youtube_config = manifest.get("youtube", {})
-    
+    session_config = manifest.get("session", {})
+
+    output_file = output_dir / "youtube_thumbnail.png"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+
+    # Build command for generate_thumbnail.py (with text overlays)
+    cmd = [
+        sys.executable, "scripts/core/generate_thumbnail.py",
+        str(session_dir) + "/"
+    ]
+
+    # Generate smart title if not specified
+    title = youtube_config.get("thumbnail_title")
+    if not title:
+        # Try to extract a short, punchy title from topic or session name
+        topic = session_config.get("topic", "")
+        if topic:
+            # Extract first meaningful phrase (before colon or period)
+            if ":" in topic:
+                title = topic.split(":")[0].strip()
+            elif "." in topic:
+                title = topic.split(".")[0].strip()
+            else:
+                # Take first 3-4 words
+                words = topic.split()[:4]
+                title = " ".join(words)
+
+        # Clean up and limit length
+        if title:
+            title = title.upper()
+            # Limit to ~25 chars for readability
+            if len(title) > 30:
+                words = title.split()
+                title = " ".join(words[:3])
+
+    if title:
+        cmd.extend(["--title", title])
+
+    # Add custom subtitle if specified
+    if youtube_config.get("thumbnail_subtitle"):
+        cmd.extend(["--subtitle", youtube_config["thumbnail_subtitle"]])
+
+    # Add custom features if specified
+    if youtube_config.get("thumbnail_features"):
+        for feature in youtube_config["thumbnail_features"]:
+            cmd.extend(["--features", feature])
+
+    # Add palette if specified
+    if youtube_config.get("thumbnail_palette"):
+        cmd.extend(["--palette", youtube_config["thumbnail_palette"]])
+
+    # Add template if specified
+    if youtube_config.get("thumbnail_template"):
+        cmd.extend(["--template", youtube_config["thumbnail_template"]])
+
+    try:
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            cwd=str(Path(__file__).parent.parent.parent),
+            timeout=120
+        )
+
+        if result.returncode == 0 and output_file.exists():
+            file_size = output_file.stat().st_size / (1024 * 1024)
+            print(f"✅ Thumbnail created with text overlays: {output_file} ({file_size:.2f} MB)")
+            return output_file
+        else:
+            print(f"⚠️  generate_thumbnail.py failed: {result.stderr[:200] if result.stderr else 'Unknown error'}")
+            print("   Falling back to simple thumbnail...")
+    except subprocess.TimeoutExpired:
+        print("⚠️  Thumbnail generation timed out, falling back to simple thumbnail...")
+    except Exception as e:
+        print(f"⚠️  Thumbnail generation error: {e}")
+        print("   Falling back to simple thumbnail...")
+
+    # Fallback: Simple ffmpeg resize without text
+    return _create_simple_thumbnail(session_dir, manifest, output_file)
+
+
+def _create_simple_thumbnail(session_dir, manifest, output_file):
+    """Fallback: Create simple thumbnail without text overlays."""
+    youtube_config = manifest.get("youtube", {})
+
     # Find source image
     if "thumbnail_source" in youtube_config:
         source_image = session_dir / youtube_config["thumbnail_source"]
@@ -116,30 +204,26 @@ def create_thumbnail(session_dir, manifest, output_dir):
             return None
         # Use middle or important image
         for img in images:
-            if any(w in img.stem.lower() for w in ["helm", "attunement", "climax"]):
+            if any(w in img.stem.lower() for w in ["helm", "attunement", "climax", "journey", "awakening"]):
                 source_image = img
                 break
         else:
             source_image = images[len(images) // 2]
-    
+
     if not source_image.exists():
         print(f"❌ Source image not found: {source_image}")
         return None
-    
-    output_file = output_dir / "youtube_thumbnail.png"
-    output_file.parent.mkdir(parents=True, exist_ok=True)
 
-    # Simple thumbnail without text overlay (to avoid escaping issues)
     cmd = [
         "ffmpeg", "-y", "-i", str(source_image),
         "-vf", "scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720",
         "-frames:v", "1", str(output_file)
     ]
-    
+
     try:
         subprocess.run(cmd, check=True, capture_output=True)
         file_size = output_file.stat().st_size / (1024 * 1024)
-        print(f"✅ Thumbnail created: {output_file} ({file_size:.2f} MB)")
+        print(f"✅ Simple thumbnail created (no text): {output_file} ({file_size:.2f} MB)")
         return output_file
     except subprocess.CalledProcessError:
         print("❌ Failed to create thumbnail")

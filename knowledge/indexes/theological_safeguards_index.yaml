@@ -1,0 +1,191 @@
+# =============================================================================
+# THEOLOGICAL SAFEGUARDS QUICK REFERENCE INDEX
+# =============================================================================
+# Purpose: Quick lookup for script generation and validation
+# Full details: knowledge/theological_boundaries.yaml
+# Authority: salars.net/dreamweaving/forbidden_knowledge
+# =============================================================================
+
+version: "1.0"
+last_updated: "2025-12-10"
+
+# =============================================================================
+# FORBIDDEN LANGUAGE EXAMPLES (HARD FAIL)
+# =============================================================================
+# If ANY of these patterns appear, the script FAILS validation
+
+forbidden_examples:
+  spirit_invocation:
+    - "invoke the spirit of"
+    - "summon forth"
+    - "call upon the entity"
+    - "I invoke thee"
+    - "by the power of [non-Christ]"
+    - "in the name of [non-Christ]"
+
+  entity_communication:
+    - "let the being speak through you"
+    - "allow the entity to guide"
+    - "open yourself to whoever speaks"
+    - "become a vessel for"
+    - "channel the spirit"
+    - "receive messages from spirits"
+
+  passive_will:
+    - "empty your mind completely"
+    - "surrender your will entirely"
+    - "dissolve all boundaries"
+    - "become nothing but"
+    - "lose yourself completely"
+    - "cease to exist"
+
+  archetypes_literal:
+    - "the archetype is a real being"
+    - "worship the shadow"
+    - "the anima commands you"
+    - "pledge allegiance to the archetype"
+    - "obey the shadow"
+
+  false_authority:
+    - "this sigil has power over you"
+    - "the elements have authority"
+    - "submit to the symbol"
+    - "the pentagram protects you"
+
+# =============================================================================
+# REQUIRED LANGUAGE EXAMPLES
+# =============================================================================
+# Scripts MUST include these patterns
+
+required_examples:
+
+  # HARD FAIL if missing (must be in first 500 words)
+  safety_clause:
+    required_in: "first_500_words"
+    examples:
+      - "You remain in complete control"
+      - "You can return at any time"
+      - "At any moment you can awaken"
+      - "You are safe and supported"
+      - "Fully aware and in control"
+
+  # WARNING if insufficient (need 3+)
+  will_engagement:
+    min_count: 3
+    examples:
+      - "you choose"
+      - "you decide"
+      - "in your own way"
+      - "in your own time"
+      - "as feels right to you"
+      - "you remain aware"
+      - "your choice"
+
+  # REQUIRED for Christian sessions (need 2+)
+  christ_anchor:
+    condition: "spiritual_framework == christian"
+    min_count: 2
+    examples:
+      - "Christ remains at the center"
+      - "Held in Christ's love"
+      - "Holy Spirit guides"
+      - "In Christ you find"
+      - "God's presence"
+      - "Divine love"
+
+  # WARNING if archetypes used without framing
+  archetype_framing:
+    condition: "archetypes mentioned"
+    examples:
+      - "as a psychological metaphor"
+      - "this inner aspect of yourself"
+      - "part of your own psyche"
+      - "represents an aspect of you"
+      - "symbolic of"
+
+  # WARNING if missing in closing
+  discernment:
+    placement: "integration_or_closing"
+    examples:
+      - "your discernment is strengthened"
+      - "wisdom to recognize truth"
+      - "ability to discern"
+      - "clarity to distinguish"
+
+# =============================================================================
+# SAFE ALTERNATIVES
+# =============================================================================
+# When forbidden patterns are detected, suggest these rewrites
+
+safe_alternatives:
+
+  invocation_to_awareness:
+    forbidden: "invoke the spirit of X"
+    safe: "invite awareness of the quality that X represents"
+    example: "Allow yourself to sense the qualities of timelessness that an ancient forest might represent"
+
+  entity_to_inner:
+    forbidden: "let the being speak through you"
+    safe: "notice what wisdom arises from within"
+    example: "Notice what wisdom arises from within as you consider this"
+
+  empty_to_settle:
+    forbidden: "empty your mind completely"
+    safe: "allow your thoughts to settle while remaining aware"
+    example: "Allow your thoughts to settle naturally, while remaining gently aware"
+
+  command_to_invite:
+    forbidden: "the Shadow commands you"
+    safe: "this shadow aspect invites your attention"
+    example: "This shadow aspect of yourself invites your compassionate attention"
+
+  power_to_remind:
+    forbidden: "this sigil has power over you"
+    safe: "this symbol reminds you of Christ's protection"
+    example: "This symbol represents Christ's protection, reminding you that you are held"
+
+# =============================================================================
+# VALIDATION QUICK CHECK
+# =============================================================================
+
+validation_checklist:
+  hard_fail_triggers:
+    - "Any spirit invocation language"
+    - "Entity communication/channeling"
+    - "Empty mind / passive will language"
+    - "Archetypes as literal beings"
+    - "Non-Christ spiritual authority"
+    - "Missing safety clause in first 500 words"
+
+  warning_triggers:
+    - "Missing Christ references (all sessions)"
+    - "Archetypes without metaphor framing"
+    - "Will engagement < 3 occurrences"
+    - "Missing discernment affirmation"
+    - "Passive language exceeds agency language"
+
+# =============================================================================
+# THEOLOGICAL PRINCIPLE (CORE)
+# =============================================================================
+
+core_principle: |
+  Dreamweaving engages God-designed imagination - not spirits.
+  It uses metaphor, not invocation.
+  It treats archetypes as psychological metaphors, not spiritual beings.
+  It keeps the will fully active.
+  It honors Scripture as the framework of truth.
+  It strengthens discernment instead of dissolving it.
+  It points people toward Christ.
+
+# =============================================================================
+# USAGE
+# =============================================================================
+#
+# Validation command:
+#   python3 scripts/utilities/validate_christ_centered.py sessions/{session}/
+#
+# During script generation:
+#   - Check forbidden_examples before writing
+#   - Include required_examples as you write
+#   - Use safe_alternatives for rewrites
+#   - Refer to core_principle for guidance

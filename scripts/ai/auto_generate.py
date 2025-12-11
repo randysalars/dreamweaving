@@ -70,6 +70,7 @@ import yaml
 from dotenv import load_dotenv
 
 # Add project root to path
+# NOTE: Import archetype_selector after path setup (below)
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -81,6 +82,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 from scripts.ai.creative_workflow import CreativeWorkflow
 from scripts.utilities.estimate_duration import estimate_duration
+from scripts.utilities.archetype_selector import ArchetypeSelector, SelectedArchetype
 
 DEFAULT_NOTION_ROOT_PAGE_ID = os.getenv(
     "NOTION_ROOT_PAGE_ID", "1ee2bab3796d80738af6c96bd5077acf"
@@ -1407,12 +1409,49 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.log(f"Voice generation failed: {e}", "error")
             self.stages_failed.append("generate_voice")
 
+    def _get_voice_duration(self) -> float:
+        """Get the actual duration of the generated voice file in seconds.
+
+        Returns:
+            Duration in seconds, or fallback to self.duration_minutes * 60
+        """
+        output_dir = self.session_path / "output"
+
+        # Check voice files in preference order
+        for name in ["voice_enhanced.wav", "voice_enhanced.mp3", "voice.wav", "voice.mp3"]:
+            voice_file = output_dir / name
+            if voice_file.exists():
+                try:
+                    result = subprocess.run(
+                        [
+                            "ffprobe", "-v", "error",
+                            "-show_entries", "format=duration",
+                            "-of", "default=noprint_wrappers=1:nokey=1",
+                            str(voice_file)
+                        ],
+                        capture_output=True,
+                        text=True,
+                        timeout=30
+                    )
+                    if result.returncode == 0 and result.stdout.strip():
+                        duration = float(result.stdout.strip())
+                        self.log(f"Voice duration detected: {duration/60:.1f} minutes", "info")
+                        return duration
+                except (ValueError, subprocess.TimeoutExpired, Exception) as e:
+                    self.log(f"Could not read voice duration: {e}", "warning")
+
+        # Fallback to target duration
+        self.log(f"Using target duration: {self.duration_minutes} minutes", "info")
+        return self.duration_minutes * 60
+
     def _stage_generate_binaural(self):
         """Generate binaural beats using YAML presets, manifest, or fallback."""
         self.log("Generating binaural beats", "stage")
 
         output_path = self.session_path / "output" / "binaural_dynamic.wav"
-        duration_seconds = self.duration_minutes * 60
+
+        # Use actual voice duration instead of fixed target
+        duration_seconds = self._get_voice_duration()
 
         manifest_path = self.session_path / "manifest.yaml"
         base_freq = 200  # Hz carrier frequency
@@ -1623,7 +1662,8 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.log("Voice only (no binaural/SFX found)", "warning")
         else:
             amix_inputs = "".join(f"[{a}]" for a in stream_aliases)
-            filters.append(f"{amix_inputs}amix=inputs={len(stream_aliases)}:duration=longest:normalize=0[mixed]")
+            # Use duration=first so final mix matches voice duration (voice is always first input)
+            filters.append(f"{amix_inputs}amix=inputs={len(stream_aliases)}:duration=first:normalize=0[mixed]")
             filter_complex = ";".join(filters)
             cmd.extend([
                 "-filter_complex", filter_complex,
@@ -2151,9 +2191,127 @@ Topic: {self.topic}
                 yaml.dump({'lessons': lessons}, f, default_flow_style=False, sort_keys=False)
 
             self.log(f"Recorded lesson {new_lesson['id']}", "success")
-            self.stages_completed.append("self_improvement")
         except Exception as e:
             self.log(f"Failed to record lesson: {e}", "warning")
+
+        # Update archetype history for diversity tracking
+        self._update_archetype_history()
+
+        self.stages_completed.append("self_improvement")
+
+    def _update_archetype_history(self):
+        """Update archetype history for diversity tracking across sessions.
+
+        This ensures the archetype selector can apply recency penalties
+        and avoid selecting the same archetypes in consecutive sessions.
+        """
+        try:
+            # Load manifest to get archetypes
+            manifest_path = self.session_path / "manifest.yaml"
+            if not manifest_path.exists():
+                self.log("No manifest found, skipping archetype history update", "warning")
+                return
+
+            with open(manifest_path, 'r') as f:
+                manifest = yaml.safe_load(f)
+
+            archetypes_data = manifest.get('archetypes', [])
+            if not archetypes_data:
+                self.log("No archetypes in manifest, skipping history update", "info")
+                return
+
+            # Get outcome/style from manifest
+            session_info = manifest.get('session', {})
+            outcome = session_info.get('style', 'transformation')
+
+            # Initialize selector for codex lookup
+            selector = ArchetypeSelector(project_root=self.project_root)
+
+            # Convert manifest archetypes to SelectedArchetype objects
+            selected_archetypes = []
+
+            for arch_data in archetypes_data:
+                arch_name = arch_data.get('name', '')
+                arch_role = arch_data.get('role', 'support')
+
+                # Try to find the canonical archetype ID from the codex
+                # The codex uses format: family.archetype_name
+                arch_id, family = self._lookup_archetype_id(selector, arch_name)
+
+                selected_arch = SelectedArchetype(
+                    archetype_id=arch_id,
+                    name=arch_name,
+                    family=family,
+                    role=arch_role,
+                    encounter_type='first_encounter',  # Default, will be updated by history
+                    relationship_level=1,
+                    appearance_section=arch_data.get('appearance_section', 'journey'),
+                    templates={},
+                    attributes={},
+                    description=arch_data.get('description', ''),
+                    symbol=arch_data.get('symbol', ''),
+                    qualities=arch_data.get('qualities', []),
+                )
+                selected_archetypes.append(selected_arch)
+
+            # Update history
+            selector.update_history(
+                session_id=self.session_name,
+                archetypes_used=selected_archetypes,
+                session_outcome=outcome,
+                notes=f"Auto-generated from topic: {self.topic}"
+            )
+
+            self.log(f"Updated archetype history with {len(selected_archetypes)} archetypes", "success")
+
+        except Exception as e:
+            self.log(f"Failed to update archetype history: {e}", "warning")
+
+    def _lookup_archetype_id(self, selector: ArchetypeSelector, archetype_name: str) -> tuple:
+        """Look up the canonical archetype ID from the codex.
+
+        Args:
+            selector: ArchetypeSelector instance with loaded codex
+            archetype_name: Display name (e.g., "The Great Physician")
+
+        Returns:
+            Tuple of (archetype_id, family)
+        """
+        # Normalize the name for matching
+        name_normalized = archetype_name.lower().replace('the ', '').replace(' ', '_')
+
+        # Search codex for matching archetype
+        for arch_id, arch_data in selector.codex.items():
+            codex_name = arch_data.get('name', '').lower().replace('the ', '').replace(' ', '_')
+            if codex_name == name_normalized or name_normalized in arch_id:
+                return arch_id, arch_data.get('family', 'general')
+
+        # Fallback: construct ID using family inference
+        family = self._infer_archetype_family(archetype_name)
+        simple_id = name_normalized
+        return f"{family}.{simple_id}", family
+
+    def _infer_archetype_family(self, archetype_name: str) -> str:
+        """Infer archetype family from name for history tracking."""
+        name_lower = archetype_name.lower()
+
+        # Map common archetypes to families
+        family_keywords = {
+            'divine_light_healing': ['healer', 'physician', 'healing', 'light'],
+            'transformation_alchemy': ['phoenix', 'renewal', 'transformation', 'alchemist'],
+            'warrior_power': ['warrior', 'michael', 'strength', 'power', 'guardian'],
+            'sacred_feminine': ['mother', 'goddess', 'feminine', 'rose', 'mary'],
+            'wisdom_guidance': ['sage', 'wisdom', 'guide', 'mentor', 'teacher'],
+            'shadow_integration': ['shadow', 'dark', 'underworld', 'death'],
+            'nature_spirits': ['nature', 'forest', 'animal', 'earth', 'green'],
+            'cosmic_consciousness': ['cosmic', 'star', 'celestial', 'universal'],
+        }
+
+        for family, keywords in family_keywords.items():
+            if any(kw in name_lower for kw in keywords):
+                return family
+
+        return 'general'
 
     def _generate_report(self) -> Dict:
         """Generate execution report."""

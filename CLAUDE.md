@@ -49,6 +49,11 @@ The system uses 8 specialized AI agents that work together:
 | `/review-code` | Review and improve codebase |
 | `/show-lessons` | Display accumulated learnings |
 
+### Website Content
+| Command | Description |
+|---------|-------------|
+| `/write-article <path>` | Create and deploy an article to salars.net (see below) |
+
 ---
 
 ## Automated Video Generation (NEW)
@@ -461,6 +466,7 @@ dreamweaving/
 | [docs/YOUTUBE_PACKAGING_SOP.md](docs/YOUTUBE_PACKAGING_SOP.md) | Complete YouTube packaging workflow (thumbnails, titles, VTT) |
 | [docs/THUMBNAIL_DESIGN_GUIDE.md](docs/THUMBNAIL_DESIGN_GUIDE.md) | Expert thumbnail design principles |
 | [docs/YOUTUBE_TITLE_GUIDE.md](docs/YOUTUBE_TITLE_GUIDE.md) | High-CTR title optimization |
+| [docs/WEBPAGE_FORMAT_GUIDE.md](docs/WEBPAGE_FORMAT_GUIDE.md) | **REQUIRED for all webpage generation** - colors, typography, layout |
 | [docs/QUICK_START.md](docs/QUICK_START.md) | 5-minute quick start |
 | [prompts/hypnotic_dreamweaving_instructions.md](prompts/hypnotic_dreamweaving_instructions.md) | Master script prompt |
 | [docs/INDEX.md](docs/INDEX.md) | Complete documentation index |
@@ -678,6 +684,7 @@ Session Published → Analytics Collected → Lessons Extracted → Applied to N
 7. **Production files** go in `sessions/{name}/output/`
 8. **Working files** go in `sessions/{name}/working_files/`
 9. **Refer to skills** for detailed procedures
+10. **WEBPAGE GENERATION**: Always read `docs/WEBPAGE_FORMAT_GUIDE.md` BEFORE generating any webpage, landing page, or web content. This ensures consistent dark backgrounds, white text, gold accents, and proper Sacred Digital Dreamweaver branding.
 
 ---
 
@@ -1755,6 +1762,68 @@ done
 | Client crash on archetypes | JSONB objects vs strings | Frontend handles both types now |
 
 **Serena Memory:** See `website_upload_deployment` for complete architecture and troubleshooting guide.
+
+---
+
+## Website Article Creation (`/write-article`)
+
+Create and deploy articles to salars.net with consistent styling and automatic Vercel deployment.
+
+### Usage
+```bash
+/write-article dreamweaving/my-new-article "My Article Title"
+```
+
+### Process
+1. **Provide content** - User gives article content in any format (markdown, outline, raw text)
+2. **Create page file** - Claude creates `page.js` at `/media/rsalars/elements/Projects/salarsu/frontend/app/{path}/`
+3. **Apply styling** - Uses standard classes from `docs/WEBPAGE_FORMAT_GUIDE.md`
+4. **Add related links** - Updates parent/related pages with cross-links
+5. **Deploy** - Commits and pushes to trigger Vercel auto-deployment
+
+### Standard Page Structure
+```jsx
+import Link from 'next/link';
+
+export const metadata = {
+  title: '{Title} | Salars Dreamweaver',
+  description: '{155 chars}',
+  // ... openGraph
+};
+
+export default function ArticlePage() {
+  return (
+    <div className='container mx-auto px-4 py-8 max-w-4xl'>
+      <Link href='{back}' className='text-primary hover:underline mb-4 inline-block'>
+        &larr; Back
+      </Link>
+      <article className='prose prose-lg dark:prose-invert max-w-none'>
+        {/* H1, sections, related articles */}
+      </article>
+    </div>
+  );
+}
+```
+
+### Key Styling Classes
+| Element | Class |
+|---------|-------|
+| H1 | `text-4xl md:text-5xl font-bold mb-2 text-foreground` |
+| H2 | `text-3xl font-bold mb-4 text-foreground` |
+| H3 | `text-2xl font-semibold mb-3 text-foreground mt-8` |
+| Paragraph | `text-lg text-foreground mb-4` |
+| Blockquote | `border-l-4 border-primary pl-4 my-4 italic text-lg text-foreground` |
+| Callout | `bg-card/50 p-4 rounded-lg border mb-4` |
+| Related box | `bg-card/70 text-card-foreground border p-6 rounded-lg` |
+
+### Existing Articles
+| Path | Title |
+|------|-------|
+| `dreamweaving/christianity_and_hypnosis` | Christianity and Hypnosis |
+| `dreamweaving/christianity_and_archetypes` | Christianity and Archetypes |
+| `dreamweaving/forbidden_knowledge` | Forbidden Knowledge |
+
+**Serena Memory:** See `website_article_workflow` for complete styling guide and templates.
 
 ---
 
