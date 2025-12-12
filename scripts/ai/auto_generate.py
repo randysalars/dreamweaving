@@ -651,6 +651,8 @@ class AutoGenerator:
             if not self.dry_run:
                 # Stage 5: Generate voice
                 self._stage_generate_voice()
+                if "generate_voice" in self.stages_failed:
+                    raise RuntimeError("generate_voice failed; aborting pipeline (audio stages depend on voice)")
 
                 # Stage 6: Generate binaural
                 self._stage_generate_binaural()

@@ -46,6 +46,7 @@ from scripts.automation.config_loader import load_config, setup_logging
 from scripts.automation.state_db import StateDatabase
 from scripts.automation.quality_scorer import compute_quality_score
 from scripts.automation.topic_validator import validate_topic, TopicValidation
+from scripts.automation.topic_enhancer import enhance_topic, TopicEnhancement
 
 logger = logging.getLogger(__name__)
 
@@ -152,6 +153,21 @@ class NightlyBuilder:
         """
         notion = self._get_notion_manager()
         return notion.pick_random_unused()
+
+    @retry_on_connection_error(max_retries=3, delay=5.0)
+    def _mark_topic_used_with_retry(self, topic_data: Dict[str, Any]) -> None:
+        """Mark a Notion topic as used with retry logic.
+
+        Args:
+            topic_data: Topic data from Notion
+
+        Note: This method recreates the Notion manager to handle stale connections
+        after long-running session generation (50+ minutes).
+        """
+        # Recreate Notion manager to avoid stale connection after long session
+        self.notion_manager = None
+        notion = self._get_notion_manager()
+        notion.mark_used(topic_data)
 
     def _mark_topic_invalid(self, topic_data: Dict[str, Any], reason: str) -> None:
         """Mark a topic as invalid in Notion so it won't be picked again.
@@ -281,6 +297,18 @@ class NightlyBuilder:
                         continue
                     topic_title = topic_data['title']
 
+                # Enhance topic if it's generic or needs improvement
+                enhancement = enhance_topic(topic_title, use_llm=True)
+                if enhancement.was_enhanced:
+                    logger.info(f"Topic enhanced: '{topic_title}' → '{enhancement.enhanced_title}'")
+                    topic_title = enhancement.enhanced_title
+                    # Store original for reference
+                    topic_data['original_title'] = topic_data.get('title', '')
+                    topic_data['title'] = topic_title
+                    topic_data['seo_title'] = enhancement.seo_title
+                    topic_data['theme_category'] = enhancement.theme_category
+                    topic_data['suggested_tags'] = enhancement.suggested_tags
+
                 session_name = slugify(topic_title)
 
                 # Check if already exists
@@ -314,8 +342,7 @@ class NightlyBuilder:
                     # Mark Notion topic as used (if from Notion)
                     if not topic_data.get('is_manual') and topic_data.get('id'):
                         try:
-                            notion = self._get_notion_manager()
-                            notion.mark_used(topic_data)
+                            self._mark_topic_used_with_retry(topic_data)
                             logger.info("Marked Notion topic as used")
                         except Exception as e:
                             logger.warning(f"Failed to mark topic as used: {e}")

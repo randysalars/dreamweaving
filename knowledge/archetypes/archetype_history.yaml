@@ -1,9 +1,9 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2025-12-10'
-  total_sessions_tracked: 4
-  unique_archetypes_used: 6
+  updated: '2025-12-11'
+  total_sessions_tracked: 5
+  unique_archetypes_used: 8
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
     Manual edits should be avoided unless correcting errors.
@@ -83,6 +83,23 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Backfilled from topic: Paranormal powers'
+- session_id: eastern-religious-dreamweavings
+  date: '2025-12-11'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Eastern Religious Dreamweavings'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 3
@@ -113,7 +130,7 @@ listener_relationships:
     last_session_date: '2025-12-10'
     relationship_level: 2
   divine_light_healing.inner_healer:
-    total_encounters: 3
+    total_encounters: 4
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -123,9 +140,11 @@ listener_relationships:
       type: first_encounter
     - session: love
       type: first_encounter
-    last_session: love
-    last_session_date: '2025-12-10'
-    relationship_level: 2
+    - session: eastern-religious-dreamweavings
+      type: first_encounter
+    last_session: eastern-religious-dreamweavings
+    last_session_date: '2025-12-11'
+    relationship_level: 3
   warrior_power.archangel_michael:
     total_encounters: 1
     first_session: paranormal-powers-retry
@@ -156,6 +175,26 @@ listener_relationships:
     last_session: paranormal-powers-retry
     last_session_date: '2025-12-10'
     relationship_level: 1
+  divine_feminine.rose_mother:
+    total_encounters: 1
+    first_session: eastern-religious-dreamweavings
+    first_session_date: '2025-12-11'
+    encounter_history:
+    - session: eastern-religious-dreamweavings
+      type: first_encounter
+    last_session: eastern-religious-dreamweavings
+    last_session_date: '2025-12-11'
+    relationship_level: 1
+  shamanic_earth.world_tree_guardian:
+    total_encounters: 1
+    first_session: eastern-religious-dreamweavings
+    first_session_date: '2025-12-11'
+    encounter_history:
+    - session: eastern-religious-dreamweavings
+      type: first_encounter
+    last_session: eastern-religious-dreamweavings
+    last_session_date: '2025-12-11'
+    relationship_level: 1
 relationship_levels:
   1:
     name: New
@@ -185,23 +224,28 @@ recency_data:
   - dreamweaving-overall-themes
   - love
   - paranormal-powers-retry
+  - eastern-religious-dreamweavings
   archetype_cooldowns:
-    divine_light_healing.great_physician: 1
-    transformation_alchemy.phoenix_renewal: 1
-    divine_light_healing.inner_healer: 1
-    warrior_power.archangel_michael: 0
-    divine_masculine.guardian_father: 0
-    dreamweaver_meta.dream_architect: 0
+    divine_light_healing.great_physician: 2
+    transformation_alchemy.phoenix_renewal: 2
+    divine_light_healing.inner_healer: 0
+    warrior_power.archangel_michael: 1
+    divine_masculine.guardian_father: 1
+    dreamweaver_meta.dream_architect: 1
+    divine_feminine.rose_mother: 0
+    shamanic_earth.world_tree_guardian: 0
 selection_weights: {}
 family_rotation:
   last_session_families:
-  - warrior_power
-  - divine_masculine
-  - dreamweaver_meta
+  - divine_light_healing
+  - divine_feminine
+  - shamanic_earth
   family_usage_counts:
-    divine_light_healing: 6
+    divine_light_healing: 7
     transformation_alchemy: 3
     warrior_power: 1
     divine_masculine: 1
     dreamweaver_meta: 1
+    divine_feminine: 1
+    shamanic_earth: 1
 effective_pairings: []

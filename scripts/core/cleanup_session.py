@@ -2,30 +2,28 @@
 """
 Session Cleanup Module
 
-Removes intermediate files while preserving final deliverables.
+Removes ALL files except the YouTube package for maximum space savings.
 This is Stage 8 of the production workflow.
 
 Files PRESERVED:
-- output/youtube_package/* (final YouTube package)
-- output/video/session_final.mp4 (final video)
-- output/*_MASTER.mp3 (final mastered audio)
-- manifest.yaml
-- working_files/script*.ssml
-- images/uploaded/* (source images)
+- output/youtube_package/* (final YouTube package with video, audio, thumbnail, VTT)
+- manifest.yaml (session configuration)
 
-Files REMOVED:
-- output/*.wav (intermediate audio stems)
-- output/voice.mp3 (raw TTS, enhanced version exists)
-- output/video/solid_background.mp4 (generated fallback)
-- output/video/video_summary.json (metadata, not needed for delivery)
-- working_files/*.json (intermediate configs)
+Files REMOVED (everything else):
+- output/*.wav, *.mp3 (all intermediate and master audio)
+- output/video/* (intermediate video files)
+- working_files/* (all working files - scripts, configs, prompts)
+- images/* (all images - they're embedded in video or in youtube_package)
+- All other intermediate files
 
 Usage:
     python3 scripts/core/cleanup_session.py sessions/{session}/
     python3 scripts/core/cleanup_session.py sessions/{session}/ --dry-run
+    python3 scripts/core/cleanup_session.py sessions/{session}/ --keep-scripts  # Also preserve SSML scripts
 """
 
 import argparse
+import shutil
 import sys
 from pathlib import Path
 
@@ -39,155 +37,193 @@ def format_size(bytes_size: int) -> str:
     return f"{bytes_size:.1f} TB"
 
 
-def cleanup_session(session_path: Path, dry_run: bool = False) -> dict:
-    """
-    Clean up intermediate files from a session.
+def get_dir_size(path: Path) -> int:
+    """Get total size of a directory."""
+    if not path.exists():
+        return 0
+    return sum(f.stat().st_size for f in path.rglob("*") if f.is_file())
 
-    Returns dict with cleanup statistics.
+
+def cleanup_session(session_path: Path, dry_run: bool = False, keep_scripts: bool = False) -> dict:
+    """
+    Aggressively clean up a session, keeping only youtube_package and manifest.
+
+    Args:
+        session_path: Path to session directory
+        dry_run: If True, show what would be removed without removing
+        keep_scripts: If True, also preserve SSML scripts in working_files
+
+    Returns:
+        dict with cleanup statistics
     """
     if not session_path.exists():
         print(f"Session not found: {session_path}")
         return {"error": "Session not found"}
 
     output_path = session_path / "output"
-    if not output_path.exists():
-        print(f"No output directory found in {session_path}")
-        return {"error": "No output directory"}
-
     youtube_pkg = output_path / "youtube_package"
-    youtube_pkg.mkdir(parents=True, exist_ok=True)
+
+    if not youtube_pkg.exists():
+        print(f"WARNING: No youtube_package found in {session_path}")
+        print("This session may not be ready for cleanup.")
+        return {"error": "No youtube_package found"}
+
+    # Calculate initial size
+    initial_size = get_dir_size(session_path)
 
     # Track what we're doing
-    files_to_remove = []
+    items_to_remove = []  # (path, size, type)
     bytes_to_free = 0
-    preserved_files = []
+    preserved_items = []
 
-    # Files/patterns to remove from output/
-    output_remove_patterns = [
-        "*.wav",           # All WAV intermediates (including MASTER.wav if MP3 exists)
-        "voice.mp3",       # Raw TTS (keep enhanced only if no MASTER)
-        "voice_enhanced.mp3",  # Keep only MASTER
-    ]
+    # Always preserve
+    preserved_items.append(("output/youtube_package/", get_dir_size(youtube_pkg)))
+    if (session_path / "manifest.yaml").exists():
+        preserved_items.append(("manifest.yaml", (session_path / "manifest.yaml").stat().st_size))
 
-    # Move any YouTube package files into youtube_package/ before cleanup
-    # so they are never deleted by pattern matching.
-    for yt_file in output_path.glob("YOUTUBE_*.md"):
-        target = youtube_pkg / yt_file.name
-        if target.exists():
-            # Keep existing copy; remove stray duplicate in output/
-            yt_file.unlink()
-        else:
-            yt_file.rename(target)
-        preserved_files.append(target)
+    # Optionally preserve scripts
+    if keep_scripts:
+        working_path = session_path / "working_files"
+        if working_path.exists():
+            for ssml_file in working_path.glob("*.ssml"):
+                preserved_items.append((f"working_files/{ssml_file.name}", ssml_file.stat().st_size))
 
-    # Check if MASTER.mp3 exists (then we can remove MASTER.wav too)
-    master_mp3_exists = list(output_path.glob("*_MASTER.mp3"))
+    # Remove everything in output/ EXCEPT youtube_package
+    if output_path.exists():
+        for item in output_path.iterdir():
+            if item.name == "youtube_package":
+                continue  # Preserve
 
-    # Check output/ directory
-    for pattern in output_remove_patterns:
-        for file_path in output_path.glob(pattern):
-            # Handle MASTER files specially
-            if "_MASTER" in file_path.name:
-                # Keep MASTER.mp3, remove MASTER.wav if MP3 exists
-                if file_path.suffix == ".mp3":
-                    preserved_files.append(file_path)
-                    continue
-                elif file_path.suffix == ".wav" and master_mp3_exists:
-                    # Remove WAV since MP3 exists
-                    files_to_remove.append(file_path)
-                    bytes_to_free += file_path.stat().st_size
-                    continue
-                else:
-                    # Keep WAV if no MP3
-                    preserved_files.append(file_path)
-                    continue
+            if item.is_file():
+                size = item.stat().st_size
+                items_to_remove.append((item, size, "file"))
+                bytes_to_free += size
+            elif item.is_dir():
+                size = get_dir_size(item)
+                items_to_remove.append((item, size, "dir"))
+                bytes_to_free += size
 
-            # Skip voice files if no MASTER exists (fallback)
-            if file_path.name in ("voice.mp3", "voice_enhanced.mp3"):
-                if not master_mp3_exists:
-                    preserved_files.append(file_path)
-                    continue
-
-            files_to_remove.append(file_path)
-            bytes_to_free += file_path.stat().st_size
-
-    # Check output/video/ for intermediates
-    video_path = output_path / "video"
-    if video_path.exists():
-        video_remove_patterns = [
-            "solid_background.mp4",
-            "background_gradient.mp4",
-            "video_summary.json",
-            "*_audio.mp3",
-            "*_audio.aac",
-        ]
-        for pattern in video_remove_patterns:
-            for file_path in video_path.glob(pattern):
-                files_to_remove.append(file_path)
-                bytes_to_free += file_path.stat().st_size
-
-        # Preserve session_final.mp4
-        final_video = video_path / "session_final.mp4"
-        if final_video.exists():
-            preserved_files.append(final_video)
-
-    # Check working_files/ for large intermediates
+    # Remove working_files/ (except scripts if --keep-scripts)
     working_path = session_path / "working_files"
     if working_path.exists():
-        working_remove_patterns = [
-            "*.wav",       # Audio intermediates
-            "*.mp3",       # Audio intermediates
-        ]
-        for pattern in working_remove_patterns:
-            for file_path in working_path.glob(pattern):
-                files_to_remove.append(file_path)
-                bytes_to_free += file_path.stat().st_size
+        if keep_scripts:
+            # Remove everything except *.ssml
+            for item in working_path.iterdir():
+                if item.is_file() and item.suffix == ".ssml":
+                    continue  # Preserve
+                if item.is_file():
+                    size = item.stat().st_size
+                    items_to_remove.append((item, size, "file"))
+                    bytes_to_free += size
+                elif item.is_dir():
+                    size = get_dir_size(item)
+                    items_to_remove.append((item, size, "dir"))
+                    bytes_to_free += size
+        else:
+            # Remove entire directory
+            size = get_dir_size(working_path)
+            items_to_remove.append((working_path, size, "dir"))
+            bytes_to_free += size
+
+    # Remove images/
+    images_path = session_path / "images"
+    if images_path.exists():
+        size = get_dir_size(images_path)
+        items_to_remove.append((images_path, size, "dir"))
+        bytes_to_free += size
+
+    # Remove any stray large files in session root
+    for item in session_path.iterdir():
+        if item.name in ("manifest.yaml", "output", "working_files", "images"):
+            continue  # Already handled
+        if item.name.startswith("."):
+            continue  # Skip hidden files
+
+        if item.is_file():
+            # Remove large files (> 1MB), keep small ones like notes
+            if item.stat().st_size > 1_000_000:
+                size = item.stat().st_size
+                items_to_remove.append((item, size, "file"))
+                bytes_to_free += size
+            else:
+                preserved_items.append((item.name, item.stat().st_size))
+        elif item.is_dir():
+            # Remove any other directories
+            size = get_dir_size(item)
+            items_to_remove.append((item, size, "dir"))
+            bytes_to_free += size
 
     # Report
     print("=" * 60)
-    print("SESSION CLEANUP - STAGE 8")
+    print("SESSION CLEANUP - AGGRESSIVE MODE")
     print("=" * 60)
     print(f"\nSession: {session_path.name}")
     print(f"Mode: {'DRY RUN' if dry_run else 'LIVE'}")
+    print(f"Initial size: {format_size(initial_size)}")
     print()
 
     # Show what will be preserved
-    print("PRESERVED (Final Deliverables):")
-    if youtube_pkg.exists():
-        pkg_size = sum(f.stat().st_size for f in youtube_pkg.rglob("*") if f.is_file())
-        print(f"  youtube_package/ ({format_size(pkg_size)})")
-        for f in sorted(youtube_pkg.iterdir()):
-            print(f"    - {f.name}")
-
-    for f in preserved_files:
-        if f.is_file():
-            print(f"  {f.relative_to(session_path)} ({format_size(f.stat().st_size)})")
+    print("PRESERVED:")
+    for name, size in preserved_items:
+        print(f"  {name} ({format_size(size)})")
 
     print()
-    print("TO BE REMOVED (Intermediates):")
-    if not files_to_remove:
+    print("TO BE REMOVED:")
+    if not items_to_remove:
         print("  (none - session already clean)")
     else:
-        for f in files_to_remove:
-            print(f"  {f.relative_to(session_path)} ({format_size(f.stat().st_size)})")
+        # Group by type for cleaner output
+        dirs_to_remove = [(p, s) for p, s, t in items_to_remove if t == "dir"]
+        files_to_remove = [(p, s) for p, s, t in items_to_remove if t == "file"]
+
+        if dirs_to_remove:
+            print("  Directories:")
+            for path, size in dirs_to_remove:
+                rel_path = path.relative_to(session_path)
+                print(f"    {rel_path}/ ({format_size(size)})")
+
+        if files_to_remove:
+            print("  Files:")
+            # Show first 10, summarize rest
+            for path, size in files_to_remove[:10]:
+                rel_path = path.relative_to(session_path)
+                print(f"    {rel_path} ({format_size(size)})")
+            if len(files_to_remove) > 10:
+                remaining = len(files_to_remove) - 10
+                remaining_size = sum(s for _, s in files_to_remove[10:])
+                print(f"    ... and {remaining} more files ({format_size(remaining_size)})")
 
     print()
     print("-" * 60)
     print(f"Space to free: {format_size(bytes_to_free)}")
+    expected_final = initial_size - bytes_to_free
+    print(f"Expected final size: {format_size(expected_final)}")
+    savings_pct = (bytes_to_free / initial_size * 100) if initial_size > 0 else 0
+    print(f"Space savings: {savings_pct:.1f}%")
     print("-" * 60)
 
     # Execute removal
-    if not dry_run and files_to_remove:
+    if not dry_run and items_to_remove:
         print("\nRemoving files...")
         removed_count = 0
-        for f in files_to_remove:
+        errors = []
+
+        for path, size, item_type in items_to_remove:
             try:
-                f.unlink()
+                if item_type == "dir":
+                    shutil.rmtree(path)
+                else:
+                    path.unlink()
                 removed_count += 1
             except Exception as e:
-                print(f"  Failed to remove {f.name}: {e}")
+                errors.append(f"{path.name}: {e}")
 
-        print(f"\nRemoved {removed_count} files, freed {format_size(bytes_to_free)}")
+        if errors:
+            print("\nErrors:")
+            for err in errors:
+                print(f"  {err}")
+
+        print(f"\nRemoved {removed_count} items, freed {format_size(bytes_to_free)}")
     elif dry_run:
         print("\n(Dry run - no files removed)")
 
@@ -198,20 +234,24 @@ def cleanup_session(session_path: Path, dry_run: bool = False) -> dict:
 
     # Calculate final size
     if not dry_run:
-        final_size = sum(f.stat().st_size for f in session_path.rglob("*") if f.is_file())
+        final_size = get_dir_size(session_path)
+        actual_freed = initial_size - final_size
         print(f"\nFinal session size: {format_size(final_size)}")
+        print(f"Actual space freed: {format_size(actual_freed)}")
 
     return {
-        "files_removed": len(files_to_remove) if not dry_run else 0,
+        "items_removed": len(items_to_remove) if not dry_run else 0,
         "bytes_freed": bytes_to_free if not dry_run else 0,
-        "files_preserved": len(preserved_files),
-        "dry_run": dry_run
+        "items_preserved": len(preserved_items),
+        "dry_run": dry_run,
+        "initial_size": initial_size,
+        "expected_final_size": initial_size - bytes_to_free
     }
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Clean up intermediate files from a session (Stage 8)"
+        description="Aggressively clean up session, keeping only youtube_package (Stage 8)"
     )
     parser.add_argument(
         "session",
@@ -222,11 +262,16 @@ def main():
         action="store_true",
         help="Show what would be removed without actually removing"
     )
+    parser.add_argument(
+        "--keep-scripts",
+        action="store_true",
+        help="Also preserve SSML scripts in working_files/"
+    )
 
     args = parser.parse_args()
 
     session_path = Path(args.session).resolve()
-    result = cleanup_session(session_path, dry_run=args.dry_run)
+    result = cleanup_session(session_path, dry_run=args.dry_run, keep_scripts=args.keep_scripts)
 
     if "error" in result:
         sys.exit(1)
