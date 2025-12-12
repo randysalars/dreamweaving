@@ -17,7 +17,7 @@ generation:
   # - sd:        Local Stable Diffusion (slow but fully automated)
   # - midjourney: Generate prompts only (requires manual image creation)
   # - stock:     Search guides for Unsplash/Pexels (requires manual download)
-  image_method: sd
+  image_method: pil
 
 upload:
   # Video selection strategy: quality | fifo | priority

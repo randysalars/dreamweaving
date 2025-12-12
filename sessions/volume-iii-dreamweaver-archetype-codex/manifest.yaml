@@ -1,13 +1,13 @@
 session:
-  name: eastern-religious-dreamweavings
-  topic: Eastern Religious Dreamweavings
+  name: volume-iii-dreamweaver-archetype-codex
+  topic: "\U0001F4D7 Volume III \u2014 Dreamweaver Archetype Codex"
   duration: 1800
   style: sleep
-  created: '2025-12-11'
+  created: '2025-12-12'
 voice:
   provider: google
   voice_name: en-US-Neural2-F
-  description: Eastern Religious Dreamweavings
+  description: "\U0001F4D7 Volume III \u2014 Dreamweaver Archetype Codex"
   rate: 0.85
   pitch: -2st
 sections:
@@ -15,7 +15,8 @@ sections:
   start: 0
   end: 144
   brainwave_target: alpha
-  description: Welcome and introduction to Eastern Religious Dreamweavings
+  description: "Welcome and introduction to \U0001F4D7 Volume III \u2014 Dreamweaver\
+    \ Archetype Codex"
 - name: induction
   start: 144
   end: 414
@@ -44,39 +45,39 @@ archetypes:
   symbol: ''
   qualities: []
   appearance_section: journey
-- name: The Rose Mother
+- name: The Heart Flame Tender
   role: secondary
-  description: Archetype of unconditional love, nurturing, and maternal protection
+  description: Archetype that tends and purifies the heart's flame
   symbol: ''
   qualities: []
   appearance_section: helm_deep_trance
-- name: The World Tree Guardian
+- name: The Rose Mother
   role: support
-  description: Archetype of the cosmic tree connecting all realms
+  description: Archetype of unconditional love, nurturing, and maternal protection
   symbol: ''
   qualities: []
   appearance_section: integration
 sound_bed:
   binaural:
     enabled: true
-    base_hz: 285
+    base_hz: 396
     preset: healing_deep
     sections:
     - start: 0
       end: 90
-      offset_hz: 8.4
+      offset_hz: 7.6
     - start: 90
       end: 360
-      offset_hz: 6.0
+      offset_hz: 5.7
     - start: 360
       end: 720
-      offset_hz: 4.0
+      offset_hz: 4.2
     - start: 720
       end: 1170
-      offset_hz: 2.3
+      offset_hz: 2.5
     - start: 1170
       end: 1800
-      offset_hz: 1.5
+      offset_hz: 1.9
     multi_layer:
       enabled: true
       delta_foundation:
@@ -102,7 +103,8 @@ outputs:
   - wav
   - mp3
 youtube:
-  title: Eastern Religious Dreamweavings | Binaural Beats Meditation
+  title: "\U0001F4D7 Volume III \u2014 Dreamweaver Archetype Codex | Binaural Beats\
+    \ Meditation"
   subtitle: "432Hz \u2022 Sleep"
   description: 'A transformational journey: surrendering into the deepest, most restorative
     rest'
