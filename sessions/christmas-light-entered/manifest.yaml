@@ -1,7 +1,7 @@
 session:
   name: christmas-light-entered
   topic: "The Light That Entered the World Now Enters You - A Christmas Mystical Journey"
-  duration: 1500
+  duration: 2100
   style: deep_journey
   created: "2025-12-12"
   desired_outcome: spiritual_growth
@@ -33,32 +33,32 @@ sections:
     description: "Welcome, safety, intention for receiving divine light"
   - name: induction
     start: 150
-    end: 450
+    end: 600
     brainwave_target: alpha_to_theta
     description: "Progressive relaxation, descent into primordial darkness"
   - name: descent
-    start: 450
-    end: 600
+    start: 600
+    end: 750
     brainwave_target: theta
     description: "The silent world before Christ's birth, humanity's longing"
   - name: incarnation
-    start: 600
-    end: 900
+    start: 750
+    end: 1200
     brainwave_target: theta
     description: "The dawn of eternal light, Logos becoming flesh, Emmanuel arrives"
   - name: indwelling
-    start: 900
-    end: 1200
+    start: 1200
+    end: 1650
     brainwave_target: theta_delta
     description: "The light enters personally, heart-opening, healing, transformation"
   - name: integration
-    start: 1200
-    end: 1380
+    start: 1650
+    end: 1980
     brainwave_target: theta_to_alpha
     description: "Divine commissioning, carrying light into the world"
   - name: closing
-    start: 1380
-    end: 1500
+    start: 1980
+    end: 2100
     brainwave_target: alpha
     description: "Final benediction, gentle return"
 
@@ -112,22 +112,22 @@ sound_bed:
         end: 150
         offset_hz: 10.0
       - start: 150
-        end: 450
-        offset_hz: 7.0
-      - start: 450
         end: 600
-        offset_hz: 5.0
+        offset_hz: 7.0
       - start: 600
-        end: 900
-        offset_hz: 4.0
-      - start: 900
+        end: 750
+        offset_hz: 5.0
+      - start: 750
         end: 1200
-        offset_hz: 3.5
+        offset_hz: 4.0
       - start: 1200
-        end: 1380
+        end: 1650
+        offset_hz: 3.5
+      - start: 1650
+        end: 1980
         offset_hz: 6.0
-      - start: 1380
-        end: 1500
+      - start: 1980
+        end: 2100
         offset_hz: 10.0
 
 fx_timeline:
@@ -136,19 +136,19 @@ fx_timeline:
     duration_s: 4
     description: "Deep ceremonial bell at induction start"
   - type: ambient_layer
-    time: 600
+    time: 750
     duration_s: 6
     description: "Soft angelic choir pad for Incarnation"
   - type: chime
-    time: 750
+    time: 900
     duration_s: 3
     description: "Crystal shimmer as light expands"
   - type: transition
-    time: 900
+    time: 1200
     duration_s: 5
     description: "Warm heart resonance tone for indwelling"
   - type: chime
-    time: 1200
+    time: 1650
     duration_s: 4
     description: "Gentle ascending chimes for integration"
 

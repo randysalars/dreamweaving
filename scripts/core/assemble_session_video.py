@@ -212,7 +212,7 @@ def build_filter_complex(images_timed, title, subtitle, fade_seconds=2.0):
                 f"x=(w-text_w)/2:y=200:shadowcolor=black@0.6:shadowx=2:shadowy=2"
             )
         chain = ",".join(text_filters)
-        filters.append(f"{draw}{',' if chain else ''}{chain}[out]")
+        filters.append(f"{draw}{chain}[out]")
 
     output_label = "[out]" if (title or subtitle or images_timed) else "[0:v]"
     filter_complex = "; ".join(filters)

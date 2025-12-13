@@ -140,12 +140,14 @@ def _mix_tracks(voice_path: Path, bed_path: Path, output_path: Path, voice_gain_
     voice = AudioSegment.from_file(voice_path)
     bed = AudioSegment.from_file(bed_path)
 
-    # Match durations to voice (voice is always the reference)
+    # Match durations
     if len(bed) < len(voice):
         padding = AudioSegment.silent(duration=len(voice) - len(bed))
         bed = bed + padding
     elif len(bed) > len(voice):
-        bed = bed[:len(voice)]
+        # Bed is longer (target duration reached), so pad voice with silence
+        padding = AudioSegment.silent(duration=len(bed) - len(voice))
+        voice = voice + padding
 
     voice = voice + voice_gain_db
     bed = bed + bed_gain_db

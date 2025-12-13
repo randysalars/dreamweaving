@@ -1,9 +1,9 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2025-12-12'
-  total_sessions_tracked: 6
-  unique_archetypes_used: 10
+  updated: '2025-12-13'
+  total_sessions_tracked: 7
+  unique_archetypes_used: 11
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
     Manual edits should be avoided unless correcting errors.
@@ -117,9 +117,26 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: Eleven Labs Commands'
+- session_id: life-of-presidents-of-us
+  date: '2025-12-13'
+  outcome: connection
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_light_healing.great_physician
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Life Of Presidents Of Us'
 listener_relationships:
   divine_light_healing.great_physician:
-    total_encounters: 4
+    total_encounters: 5
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -131,8 +148,10 @@ listener_relationships:
       type: first_encounter
     - session: eleven-labs-commands
       type: first_encounter
-    last_session: eleven-labs-commands
-    last_session_date: '2025-12-12'
+    - session: life-of-presidents-of-us
+      type: first_encounter
+    last_session: life-of-presidents-of-us
+    last_session_date: '2025-12-13'
     relationship_level: 3
   transformation_alchemy.phoenix_renewal:
     total_encounters: 3
@@ -149,7 +168,7 @@ listener_relationships:
     last_session_date: '2025-12-10'
     relationship_level: 2
   divine_light_healing.inner_healer:
-    total_encounters: 4
+    total_encounters: 5
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -161,8 +180,10 @@ listener_relationships:
       type: first_encounter
     - session: eastern-religious-dreamweavings
       type: first_encounter
-    last_session: eastern-religious-dreamweavings
-    last_session_date: '2025-12-11'
+    - session: life-of-presidents-of-us
+      type: first_encounter
+    last_session: life-of-presidents-of-us
+    last_session_date: '2025-12-13'
     relationship_level: 3
   warrior_power.archangel_michael:
     total_encounters: 1
@@ -234,6 +255,16 @@ listener_relationships:
     last_session: eleven-labs-commands
     last_session_date: '2025-12-12'
     relationship_level: 1
+  emotional_heart.heart_flame_tender:
+    total_encounters: 1
+    first_session: life-of-presidents-of-us
+    first_session_date: '2025-12-13'
+    encounter_history:
+    - session: life-of-presidents-of-us
+      type: first_encounter
+    last_session: life-of-presidents-of-us
+    last_session_date: '2025-12-13'
+    relationship_level: 1
 relationship_levels:
   1:
     name: New
@@ -259,30 +290,31 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - dreamweaving-overall-themes
   - love
   - paranormal-powers-retry
   - eastern-religious-dreamweavings
   - eleven-labs-commands
+  - life-of-presidents-of-us
   archetype_cooldowns:
     divine_light_healing.great_physician: 0
-    transformation_alchemy.phoenix_renewal: 3
-    divine_light_healing.inner_healer: 1
-    warrior_power.archangel_michael: 2
-    divine_masculine.guardian_father: 2
-    dreamweaver_meta.dream_architect: 2
-    divine_feminine.rose_mother: 1
-    shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 0
-    divine_feminine.sophia_wisdom: 0
+    transformation_alchemy.phoenix_renewal: 4
+    divine_light_healing.inner_healer: 0
+    warrior_power.archangel_michael: 3
+    divine_masculine.guardian_father: 3
+    dreamweaver_meta.dream_architect: 3
+    divine_feminine.rose_mother: 2
+    shamanic_earth.world_tree_guardian: 2
+    oracle_seer.oracle_of_light: 1
+    divine_feminine.sophia_wisdom: 1
+    emotional_heart.heart_flame_tender: 0
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - oracle_seer
-  - divine_feminine
+  - emotional_heart
+  - divine_light_healing
   family_usage_counts:
-    divine_light_healing: 8
+    divine_light_healing: 10
     transformation_alchemy: 3
     warrior_power: 1
     divine_masculine: 1
@@ -290,4 +322,5 @@ family_rotation:
     divine_feminine: 2
     shamanic_earth: 1
     oracle_seer: 1
+    emotional_heart: 1
 effective_pairings: []
