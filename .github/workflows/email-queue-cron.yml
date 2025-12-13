@@ -1,0 +1,20 @@
+name: Process Email Queue (cron)
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  run-cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hit cron endpoint
+        run: |
+          if [ -z "${CRON_EMAIL_QUEUE_TOKEN}" ]; then
+            echo "CRON_EMAIL_QUEUE_TOKEN not set; skipping."
+            exit 1
+          fi
+          curl -fsSL "https://www.salars.net/api/cron/process-email-queue?token=${CRON_EMAIL_QUEUE_TOKEN}"
+        env:
+          CRON_EMAIL_QUEUE_TOKEN: ${{ secrets.CRON_EMAIL_QUEUE_TOKEN }}
