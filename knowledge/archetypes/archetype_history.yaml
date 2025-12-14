@@ -1,9 +1,9 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2025-12-13'
-  total_sessions_tracked: 7
-  unique_archetypes_used: 11
+  updated: '2025-12-14'
+  total_sessions_tracked: 8
+  unique_archetypes_used: 12
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
     Manual edits should be avoided unless correcting errors.
@@ -134,6 +134,23 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: Life Of Presidents Of Us'
+- session_id: constellation-journey
+  date: '2025-12-14'
+  outcome: empowerment
+  archetypes_used:
+  - archetype_id: transformation_alchemy.phoenix_renewal
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: warrior_power.archangel_michael
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: warrior_power.solar_king
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Constellation Journey'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 5
@@ -154,7 +171,7 @@ listener_relationships:
     last_session_date: '2025-12-13'
     relationship_level: 3
   transformation_alchemy.phoenix_renewal:
-    total_encounters: 3
+    total_encounters: 4
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -164,9 +181,11 @@ listener_relationships:
       type: first_encounter
     - session: love
       type: first_encounter
-    last_session: love
-    last_session_date: '2025-12-10'
-    relationship_level: 2
+    - session: constellation-journey
+      type: first_encounter
+    last_session: constellation-journey
+    last_session_date: '2025-12-14'
+    relationship_level: 3
   divine_light_healing.inner_healer:
     total_encounters: 5
     first_session: humor-and-laughter
@@ -186,15 +205,17 @@ listener_relationships:
     last_session_date: '2025-12-13'
     relationship_level: 3
   warrior_power.archangel_michael:
-    total_encounters: 1
+    total_encounters: 2
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
     - session: paranormal-powers-retry
       type: first_encounter
-    last_session: paranormal-powers-retry
-    last_session_date: '2025-12-10'
-    relationship_level: 1
+    - session: constellation-journey
+      type: first_encounter
+    last_session: constellation-journey
+    last_session_date: '2025-12-14'
+    relationship_level: 2
   divine_masculine.guardian_father:
     total_encounters: 1
     first_session: paranormal-powers-retry
@@ -265,6 +286,16 @@ listener_relationships:
     last_session: life-of-presidents-of-us
     last_session_date: '2025-12-13'
     relationship_level: 1
+  warrior_power.solar_king:
+    total_encounters: 1
+    first_session: constellation-journey
+    first_session_date: '2025-12-14'
+    encounter_history:
+    - session: constellation-journey
+      type: first_encounter
+    last_session: constellation-journey
+    last_session_date: '2025-12-14'
+    relationship_level: 1
 relationship_levels:
   1:
     name: New
@@ -290,33 +321,34 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - love
   - paranormal-powers-retry
   - eastern-religious-dreamweavings
   - eleven-labs-commands
   - life-of-presidents-of-us
+  - constellation-journey
   archetype_cooldowns:
-    divine_light_healing.great_physician: 0
-    transformation_alchemy.phoenix_renewal: 4
-    divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 3
-    divine_masculine.guardian_father: 3
-    dreamweaver_meta.dream_architect: 3
-    divine_feminine.rose_mother: 2
-    shamanic_earth.world_tree_guardian: 2
-    oracle_seer.oracle_of_light: 1
-    divine_feminine.sophia_wisdom: 1
-    emotional_heart.heart_flame_tender: 0
+    divine_light_healing.great_physician: 1
+    transformation_alchemy.phoenix_renewal: 0
+    divine_light_healing.inner_healer: 1
+    warrior_power.archangel_michael: 0
+    divine_masculine.guardian_father: 4
+    dreamweaver_meta.dream_architect: 4
+    divine_feminine.rose_mother: 3
+    shamanic_earth.world_tree_guardian: 3
+    oracle_seer.oracle_of_light: 2
+    divine_feminine.sophia_wisdom: 2
+    emotional_heart.heart_flame_tender: 1
+    warrior_power.solar_king: 0
 selection_weights: {}
 family_rotation:
   last_session_families:
-  - divine_light_healing
-  - emotional_heart
-  - divine_light_healing
+  - transformation_alchemy
+  - warrior_power
+  - warrior_power
   family_usage_counts:
     divine_light_healing: 10
-    transformation_alchemy: 3
-    warrior_power: 1
+    transformation_alchemy: 4
+    warrior_power: 3
     divine_masculine: 1
     dreamweaver_meta: 1
     divine_feminine: 2

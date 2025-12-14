@@ -8,7 +8,7 @@ interface NewsletterFormProps {
   showName?: boolean;
   source?: string;
   className?: string;
-  onSuccess?: (data: any) => void;
+  onSuccess?: (data: unknown) => void;
 }
 
 export function NewsletterForm({
