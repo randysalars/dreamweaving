@@ -188,5 +188,8 @@ data/automation_state.db-*
 # Automation logs
 data/logs/automation/
 
+# Notion exports (may contain secrets; do not commit)
+knowledge/notion_export/
+
 # Archived sessions (moved after YouTube upload)
 archive/
