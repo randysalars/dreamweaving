@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "description": "Inspect a live Chromium browser via Chrome DevTools Protocol (performance/network/console) over MCP",
+      "command": "bash",
+      "args": ["scripts/mcp/run_chrome_devtools_mcp_server.sh"]
+    },
+    "dreamweaving-rag": {
+      "description": "Semantic retrieval + sync for Dreamweaving Notion RAG (local Qdrant index)",
+      "command": "bash",
+      "args": ["scripts/mcp/run_dreamweaving_rag_mcp_server.sh"]
+    },
+    "notion": {
+      "description": "Read/write Sacred Digital Dreamweaver workspace via Notion official MCP server",
+      "command": "bash",
+      "args": ["scripts/mcp/run_notion_mcp_server.sh"]
+    }
+  }
+}

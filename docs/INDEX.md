@@ -65,6 +65,9 @@ For complete details, see: [CANONICAL_WORKFLOW.md](CANONICAL_WORKFLOW.md)
 - **[HYPNOTIC_VOICE_ENHANCEMENT.md](HYPNOTIC_VOICE_ENHANCEMENT.md)** - Voice enhancement processing
 - **[HYPNOTIC_PACING.md](HYPNOTIC_PACING.md)** - Timing and pacing techniques
 - **[BINAURAL_FREQUENCY_GUIDE.md](BINAURAL_FREQUENCY_GUIDE.md)** - Comprehensive binaural beats reference
+- **[CODEX_NOTION_RAG.md](CODEX_NOTION_RAG.md)** - Use Codex in VS Code with the Notion RAG (MCP)
+- **[CHROME_DEVTOOLS_MCP.md](CHROME_DEVTOOLS_MCP.md)** - Browser-truth audits via Chrome DevTools MCP
+- **[PRE_LAUNCH_MCP_CHECKLIST.md](PRE_LAUNCH_MCP_CHECKLIST.md)** - Pre-launch checklist for web performance/analytics/payments
 - `../config/` - Configuration and settings reference
 
 ### AI & Self-Learning System

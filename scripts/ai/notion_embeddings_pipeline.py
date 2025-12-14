@@ -61,6 +61,14 @@ CONFIG_PATH = PROJECT_ROOT / "config" / "notion_config.yaml"
 VECTOR_DB_PATH = PROJECT_ROOT / "knowledge" / "vector_db"
 FILE_MANIFEST_PATH = VECTOR_DB_PATH / "file_manifest.json"
 
+# Load .env automatically for local/IDE runs.
+try:
+    from dotenv import load_dotenv  # type: ignore
+except Exception:
+    load_dotenv = None
+if load_dotenv is not None:
+    load_dotenv(PROJECT_ROOT / ".env")
+
 
 def load_config() -> Dict[str, Any]:
     """Load configuration with environment variable resolution."""

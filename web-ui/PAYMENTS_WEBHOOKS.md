@@ -29,6 +29,32 @@ On `payment_completed`:
   - `POST /api/webhooks/paypal`
   - `POST /api/webhooks/bitcoin`
 
+## Frontend checkout truth test (Chrome DevTools MCP)
+Use this when you want evidence that the UI triggers the provider flow and no client-side errors block payments.
+
+Prereq: enable `chrome-devtools` MCP for this workspace (see `docs/CHROME_DEVTOOLS_MCP.md`).
+
+What to verify:
+- Love-offering buttons are visible, not overlapped, and clickable (also keyboard-focusable)
+- Provider scripts load successfully (Stripe/PayPal)
+- Checkout-triggering requests fire once (no duplicate initiations)
+- No console errors during checkout start (hydration/runtime errors)
+
+Copy/paste prompt:
+```text
+Use Chrome DevTools MCP.
+
+Load https://www.salars.net/dreamweaving/light.
+
+1) Verify the love-offering buttons are visible and clickable (no overlays).
+2) Click to start checkout.
+3) Inspect Network for Stripe/PayPal script loads and any checkout requests.
+4) Confirm no duplicate initiations.
+5) Capture console warnings/errors during the flow.
+
+Report only what you observe, including key request URLs + status codes.
+```
+
 ## 0) Create an order first (recommended)
 Client/server calls:
 `POST /api/orders` with JSON:

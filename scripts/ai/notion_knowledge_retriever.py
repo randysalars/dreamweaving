@@ -41,6 +41,14 @@ except ImportError:
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 CONFIG_PATH = PROJECT_ROOT / "config" / "notion_config.yaml"
 
+# Load .env automatically for local/IDE runs (systemd already injects EnvironmentFile).
+try:
+    from dotenv import load_dotenv  # type: ignore
+except Exception:
+    load_dotenv = None
+if load_dotenv is not None:
+    load_dotenv(PROJECT_ROOT / ".env")
+
 
 def load_config() -> Dict[str, Any]:
     """Load Notion configuration from YAML."""

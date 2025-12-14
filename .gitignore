@@ -146,6 +146,7 @@ temp_chunk_*.mp3
 
 # Google Cloud credentials
 *.json
+!mcp.json
 credentials/
 service-account-*.json
 
@@ -190,6 +191,13 @@ data/logs/automation/
 
 # Notion exports (may contain secrets; do not commit)
 knowledge/notion_export/
+knowledge/vector_db/
+
+# DevTools MCP audit artifacts (keep reports, ignore heavy traces/logs)
+audits/devtools/**/artifacts/
+
+# Local-only MCP pinning (no secrets, but machine-specific)
+config/devtools_mcp.env
 
 # Archived sessions (moved after YouTube upload)
 archive/

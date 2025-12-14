@@ -105,6 +105,33 @@ See `web-ui/PAYMENTS_WEBHOOKS.md` for the provider event mapping and verificatio
 2. Confirm requests to `/api/track` succeed (Vercel logs).
 3. Confirm events are in Neon.
 
+### Browser-truth verification (Chrome DevTools MCP)
+Use this when you want high confidence that tracking is firing exactly once and carrying attribution correctly.
+
+Prereq: enable `chrome-devtools` MCP for this workspace (see `docs/CHROME_DEVTOOLS_MCP.md`).
+
+What to check (in Network):
+- `POST /api/track` fires:
+  - `page_view` once per route load
+  - `landing_view` once per browser load
+  - `cta_click` once per click (no double-fires)
+- Payload includes attribution snapshot keys when present (`utm_*`, `gclid`, `fbclid`, `landing_path`, `referrer`)
+- No bursts caused by hydration or rerenders
+
+Copy/paste prompt:
+```text
+Use Chrome DevTools MCP.
+
+Load https://www.salars.net/dreamweaving/light.
+
+Inspect Network and confirm:
+- POST /api/track fires expected events exactly once
+- No duplicate event bursts on hydration/route changes
+- UTM attribution keys persist across navigation
+
+Report only observed request counts + key payload fields (no raw PII).
+```
+
 ## 7) Reporting
 Start with 3 queries/dashboards (Metabase/Superset/Grafana/SQL):
 - Funnel: `landing_view → cta_click → payment_completed`

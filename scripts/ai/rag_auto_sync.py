@@ -31,6 +31,14 @@ from typing import Dict, Any, Optional
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+# Load .env automatically for local/IDE runs (systemd already injects EnvironmentFile).
+try:
+    from dotenv import load_dotenv  # type: ignore
+except Exception:
+    load_dotenv = None
+if load_dotenv is not None:
+    load_dotenv(PROJECT_ROOT / ".env")
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
