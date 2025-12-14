@@ -1,0 +1,35 @@
+# Blessing clip automation defaults
+#
+# All paths are relative to the project root unless noted.
+input_video: input/full_video.mp4
+input_audio: null  # optional; if set, skips audio extraction
+work_dir: output/blessing_clips/work
+transcript_dir: output/blessing_clips/transcripts
+output_root: output/blessing_clips
+
+whisper_model: medium  # tiny | base | small | medium | large-v3
+language: en
+
+# Segment detection
+keywords:
+  - light
+  - peace
+  - christ
+  - heart
+  - stillness
+  - blessing
+pause_gap_seconds: 1.8
+pad_pre_seconds: 2.0
+pad_post_seconds: 8.0
+min_len_seconds: 10.0
+max_len_seconds: 20.0
+max_clips: 60
+
+# Rendering
+burn_subtitles: true
+overlay_enabled: true
+overlay:
+  brightness: 0.05
+  saturation: 1.1
+  fade_duration: 0.4
+fallback_reencode: true  # if stream copy fails, re-encode with x264+aac

@@ -4,8 +4,8 @@
 # All times are in MST (Mountain Standard Time).
 
 generation:
-  # Number of sessions to generate each night (9pm-3am MST)
-  target_sessions_per_night: 5
+  # Number of sessions to generate each day (12am MST)
+  target_sessions_per_night: 1
 
   # Cost optimization mode: budget | standard | premium
   # - budget:   Minimal AI usage, ~$0.70 per session
@@ -92,19 +92,19 @@ logging:
 cron:
   enabled: true
 
-  # Nightly generation: 9pm MST = 4am UTC next day
-  nightly_generation: "0 4 * * *"
+  # Daily generation: 12am MST = 7am UTC
+  nightly_generation: "0 7 * * *"
 
-  # Daily upload: 12pm MST = 7pm UTC
-  daily_upload: "0 19 * * *"
+  # YouTube uploads disabled
+  daily_upload: null
 
-  # Daily shorts: 8am MST = 3pm UTC
-  daily_shorts: "0 15 * * *"
+  # Shorts uploads disabled
+  daily_shorts: null
 
   # Automated learning jobs (collects analytics and updates knowledge base)
   # Daily: Fetch analytics for videos uploaded 48+ hours ago
   # Runs at 3pm MST = 10pm UTC (after most daily views are recorded)
-  daily_analytics: "0 22 * * *"
+  daily_analytics: null
 
   # Weekly: Deep analysis and lesson extraction
   # Runs Sunday at 3am MST = 10am UTC

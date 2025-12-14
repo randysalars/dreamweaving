@@ -1,8 +1,8 @@
 #!/bin/bash
 # Nightly Generation Script
 #
-# Generates 5 dreamweaving sessions from Notion topics.
-# Scheduled to run at 9pm MST (4am UTC next day).
+# Generates a single dreamweaving session from the static topic list.
+# Scheduled to run daily at 12am MST (7am UTC).
 #
 # CRON ENTRY (DISABLED - DO NOT ENABLE UNTIL TESTED):
 # 0 4 * * * /home/rsalars/Projects/dreamweaving/cron/nightly-generation.sh
@@ -37,7 +37,7 @@ trap 'error_handler $LINENO' ERR
 
 # Parse arguments
 DRY_RUN=""
-COUNT=""
+COUNT=1
 while [[ $# -gt 0 ]]; do
     case $1 in
         --dry-run)
@@ -45,7 +45,7 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         --count)
-            COUNT="--count $2"
+            COUNT="$2"
             shift 2
             ;;
         *)
@@ -58,6 +58,17 @@ done
 log "=========================================="
 log "Starting nightly generation"
 log "=========================================="
+
+# Select topic from static list (if available)
+TOPIC_FILE="${PROJECT_ROOT}/config/dreamweaving_topics.txt"
+TOPIC_ARG=()
+if [ -s "${TOPIC_FILE}" ]; then
+    SELECTED_TOPIC=$(shuf -n 1 "${TOPIC_FILE}" | tr -d '\r')
+    log "Selected topic: ${SELECTED_TOPIC}"
+    TOPIC_ARG=(--topic "${SELECTED_TOPIC}")
+else
+    log "Topic file missing or empty: ${TOPIC_FILE}"
+fi
 
 # Activate virtual environment
 log "Activating virtual environment..."
@@ -76,7 +87,13 @@ fi
 
 # Run nightly builder
 log "Running nightly builder..."
-python3 -m scripts.automation.nightly_builder ${DRY_RUN} ${COUNT} 2>&1 | tee -a "${LOG_FILE}"
+CMD=(python3 -m scripts.automation.nightly_builder --count "${COUNT}")
+if [ -n "${DRY_RUN}" ]; then
+    CMD+=("--dry-run")
+fi
+CMD+=("${TOPIC_ARG[@]}")
+
+"${CMD[@]}" 2>&1 | tee -a "${LOG_FILE}"
 
 RESULT=$?
 

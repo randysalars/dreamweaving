@@ -1,0 +1,26 @@
+# Denser segmentation for short-form runs (aim: 40+ clips from ~35m talk)
+input_video: input/full_video.mp4
+input_audio: null
+work_dir: output/blessing_clips_dense/work
+transcript_dir: output/blessing_clips_dense/transcripts
+output_root: output/blessing_clips_dense
+
+whisper_model: medium
+language: en
+
+# Detection tuned for more windows
+keywords: [light, peace, christ, heart, stillness, blessing]
+pause_gap_seconds: 0.9
+pad_pre_seconds: 0.8
+pad_post_seconds: 4.0
+min_len_seconds: 8.0
+max_len_seconds: 14.0
+max_clips: 80
+
+burn_subtitles: true
+overlay_enabled: true
+overlay:
+  brightness: 0.05
+  saturation: 1.1
+  fade_duration: 0.4
+fallback_reencode: true

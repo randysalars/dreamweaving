@@ -9,11 +9,7 @@
 #   ./scripts/utilities/install_cron_jobs.sh --remove # Remove dreamweaving cron jobs
 #
 # Schedule (MST timezone):
-#   9:00 PM - Nightly generation (5 sessions)
-#   8:00 AM - Daily shorts upload
-#   12:00 PM - Daily long-form upload
-#   3:00 PM - Daily analytics collection
-#   3:00 AM Sunday - Weekly learning
+#   12:00 AM - Daily single-session generation (no YouTube upload)
 
 set -e
 
@@ -63,25 +59,9 @@ install_cron_jobs() {
 # All times are UTC
 CRON_TZ=UTC # dreamweaving timezone anchor
 
-# Nightly generation: 9pm MST = 4am UTC next day
-# Generates 5 dreamweaving sessions from Notion topics
-0 4 * * * ${CRON_DIR}/nightly-generation.sh >> ${LOG_DIR}/cron.log 2>&1
-
-# Daily shorts: 8am MST = 3pm UTC
-# Creates and uploads a YouTube Short with website CTA
-0 15 * * * ${CRON_DIR}/daily-shorts.sh >> ${LOG_DIR}/cron.log 2>&1
-
-# Daily upload: 12pm MST = 7pm UTC
-# Uploads one long-form video to YouTube
-0 19 * * * ${CRON_DIR}/daily-upload.sh >> ${LOG_DIR}/cron.log 2>&1
-
-# Daily analytics: 3pm MST = 10pm UTC
-# Fetches YouTube analytics for videos 48+ hours old
-0 22 * * * ${CRON_DIR}/daily-analytics.sh >> ${LOG_DIR}/cron.log 2>&1
-
-# Weekly learning: 3am MST Sunday = 10am UTC Sunday
-# Deep analysis and lesson extraction
-0 10 * * 0 ${CRON_DIR}/weekly-learning.sh >> ${LOG_DIR}/cron.log 2>&1
+# Daily generation: 12am MST = 7am UTC
+# Generates one dreamweaving session from the static topic list (no YouTube upload)
+0 7 * * * ${CRON_DIR}/nightly-generation.sh >> ${LOG_DIR}/cron.log 2>&1
 # === END DREAMWEAVING ===
 
 # Reset cron timezone to server default after dreamweaving block
@@ -94,11 +74,7 @@ CRON_TZ=America/Denver # dreamweaving timezone reset
     echo -e "${GREEN}Cron jobs installed successfully!${NC}"
     echo ""
     echo "Schedule (MST timezone):"
-    echo "  9:00 PM  - Nightly generation (5 sessions)"
-    echo "  8:00 AM  - Daily shorts upload"
-    echo "  12:00 PM - Daily long-form upload"
-    echo "  3:00 PM  - Daily analytics collection"
-    echo "  3:00 AM Sunday - Weekly learning"
+    echo "  12:00 AM - Daily single-session generation (no YouTube upload)"
     echo ""
     echo "Logs: ${LOG_DIR}/cron.log"
     echo ""
