@@ -61,7 +61,7 @@ Guidelines:
 ```
 Use Chrome DevTools MCP.
 
-Load: https://www.salars.net/dreamweaving/light
+Load: https://www.salars.net/xmas/light
 
 Do:
 1) Mobile viewport; cache disabled
@@ -81,7 +81,7 @@ Output:
 ```
 Use Chrome DevTools MCP.
 
-Load: https://www.salars.net/dreamweaving/light
+Load: https://www.salars.net/xmas/light
 
 Do:
 1) Verify love-offering buttons are visible, not overlapped, and clickable
@@ -102,7 +102,7 @@ Output:
 ```
 Use Chrome DevTools MCP.
 
-Load: https://www.salars.net/dreamweaving/light
+Load: https://www.salars.net/xmas/light
 
 Do:
 1) Confirm POST /api/track events fire as expected:
@@ -129,6 +129,6 @@ Output:
 ## Recording audits
 
 Scaffold a report folder:
-- `./scripts/utilities/new_devtools_audit.sh "<slug>" --url "https://www.salars.net/dreamweaving/light"`
+- `./scripts/utilities/new_devtools_audit.sh "<slug>" --url "https://www.salars.net/xmas/light"`
 
 Reports live under `audits/devtools/<YYYY-MM-DD>/<slug>/report.md` (artifacts are ignored by git).

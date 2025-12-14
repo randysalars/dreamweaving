@@ -44,7 +44,7 @@ Copy/paste prompt:
 ```text
 Use Chrome DevTools MCP.
 
-Load https://www.salars.net/dreamweaving/light.
+Load https://www.salars.net/xmas/light.
 
 1) Verify the love-offering buttons are visible and clickable (no overlays).
 2) Click to start checkout.

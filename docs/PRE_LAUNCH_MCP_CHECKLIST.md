@@ -20,8 +20,8 @@ Also run:
 
 ## Targets (fill these in)
 
-- Primary landing: `https://www.salars.net/dreamweaving/light`
-- Any campaign landing(s): `https://www.salars.net/xmas/light` (example)
+- Primary landing: `https://www.salars.net/xmas/light`
+- Any campaign landing(s): (add as needed)
 - Checkout start: (button click on landing)
 - Confirmation/thank-you: (provider-dependent)
 
@@ -80,7 +80,7 @@ Reference: `web-ui/PAYMENTS_WEBHOOKS.md`
 ## 5) Record an audit (recommended)
 
 Create an audit folder + report template:
-- `./scripts/utilities/new_devtools_audit.sh "<slug>" --url "https://www.salars.net/dreamweaving/light"`
+- `./scripts/utilities/new_devtools_audit.sh "<slug>" --url "https://www.salars.net/xmas/light"`
 
 Then paste MCP findings (counts, request URLs/statuses, console errors) into the report.
 

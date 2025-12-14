@@ -1,7 +1,7 @@
 # DevTools MCP Audit: dw-light-prelaunch
 
 - Date: 2025-12-14
-- Target URL: https://www.salars.net/dreamweaving/light
+- Target URL: https://www.salars.net/xmas/light
 - Device profiles: Mobile first, then Desktop
 - Cache: Fresh profile per run (`--isolated`); cache not explicitly disabled
 - Browser profile: Clean (no extensions) recommended
@@ -15,7 +15,6 @@
 ## Findings (summary)
 
 - High:
-  - `https://www.salars.net/dreamweaving/light` returns `404` (requested audit target appears to be a broken/missing route).
   - Stripe.js fails to load on `https://www.salars.net/xmas/light` (1 request observed; console error present).
   - CSP blocks `https://ep2.adtrafficquality.google/sodar/sodar2.js` (console error) and triggers CSP “blocks some resources” issue.
 - Medium:
@@ -30,16 +29,7 @@
 ### Performance + trust
 - Runs were executed with Chrome DevTools MCP in `--headless --isolated` mode (fresh profile per run).
 
-#### Target (requested): `https://www.salars.net/dreamweaving/light`
-- Status: `404` on both mobile + desktop.
-- Mobile (390×844): LCP `304ms`, CLS `0.0`.
-- Desktop (1365×768): LCP `281ms`, CLS `0.0`.
-- Render-blocking (sample):
-  - `https://www.salars.net/_next/static/css/4616f9c78ff70dfd.css`
-  - `https://www.salars.net/dreamweaving/light`
-  - `https://www.salars.net/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js`
-
-#### Fallback (working): `https://www.salars.net/xmas/light`
+#### Landing (correct): `https://www.salars.net/xmas/light`
 - Status: `200` on both mobile + desktop.
 - Mobile (390×844): LCP `623ms`, CLS `0.0`; LCP resource `https://www.salars.net/dreamweaving/light-hero-image.png`
 - Desktop (1365×768): LCP `834ms`, CLS `0.0`; LCP resource `https://www.salars.net/dreamweaving/light-hero-image.png`
@@ -48,6 +38,9 @@
 - Top third-party transfer sizes (sample):
   - Google Tag Manager ~`497.7 kB`
   - Google/Doubleclick Ads ~`391.3 kB`
+
+#### Note (bad URL): `https://www.salars.net/dreamweaving/light`
+- Status: `404` (route appears missing).
 
 ### Analytics integrity (Network)
 - `POST /api/track` observed: `0` (all runs).

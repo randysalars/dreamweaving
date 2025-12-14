@@ -122,7 +122,7 @@ Copy/paste prompt:
 ```text
 Use Chrome DevTools MCP.
 
-Load https://www.salars.net/dreamweaving/light.
+Load https://www.salars.net/xmas/light.
 
 Inspect Network and confirm:
 - POST /api/track fires expected events exactly once
