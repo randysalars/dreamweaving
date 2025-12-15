@@ -23,6 +23,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 from pydub import AudioSegment
@@ -55,6 +56,15 @@ except ImportError:
     validate_frequency = float
     validate_volume_db = float
     validate_percentage = float
+
+# Import logging
+try:
+    from utilities.logging_config import get_logger
+except ImportError:
+    import logging
+    get_logger = lambda name: logging.getLogger(name)
+
+logger = get_logger(__name__)
 
 
 def _ensure_dir(path: Path):
@@ -242,7 +252,10 @@ def main():
 
     # Step 1: Generate voice
     speaking_rate = args.speaking_rate
-    print("\n=== STEP 1: Synthesizing voice track ===")
+    logger.info("=" * 70)
+    logger.info("STEP 1: Synthesizing voice track")
+    logger.info("=" * 70)
+    start_time = time.time()
 
     def synthesize_current(rate: float):
         # Google Cloud TTS only (Edge TTS removed from production workflow)
@@ -266,14 +279,16 @@ def main():
         # Google Cloud TTS respects SSML breaks, so we can adjust speaking rate
         adjusted_rate, changed = _maybe_adjust_rate(speaking_rate, voice_duration, target_seconds)
         if changed:
-            print(f"\n🔄 Re-synthesizing voice to better match target length ({args.target_minutes} min)")
-            print(f"   Current duration: {voice_duration/60:.2f} min; new speaking rate: {adjusted_rate:.3f}")
+            logger.info(f"Re-synthesizing voice to better match target length ({args.target_minutes} min)")
+            logger.info(f"Current duration: {voice_duration/60:.2f} min; new speaking rate: {adjusted_rate:.3f}")
             speaking_rate = adjusted_rate
             synthesize_current(speaking_rate)
             voice_duration = _audio_duration_seconds(voice_out)
 
     # Step 2: Build binaural bed to match desired length
-    print("\n=== STEP 2: Generating binaural bed ===")
+    logger.info("-" * 70)
+    logger.info("STEP 2: Generating binaural bed")
+    logger.info("-" * 70)
     target_bed_duration = voice_duration
     if args.target_minutes and args.match_mode == "voice_to_target":
         target_bed_duration = max(target_bed_duration, args.target_minutes * 60)
@@ -286,7 +301,7 @@ def main():
             raw = Path(args.beat_schedule).read_text() if Path(args.beat_schedule).exists() else args.beat_schedule
             schedule = json.loads(raw)
         except Exception as e:
-            print(f"❌ Failed to parse beat schedule '{args.beat_schedule}': {e}")
+            logger.error(f"Failed to parse beat schedule '{args.beat_schedule}': {e}")
             sys.exit(1)
 
         # Extract gamma bursts from fx_timeline if present
@@ -298,7 +313,7 @@ def main():
                         'duration': float(fx.get('duration_s', fx.get('duration', 3.0))),
                         'frequency': float(fx.get('freq_hz', fx.get('frequency', 40)))
                     })
-                    print(f"   Detected gamma burst: {fx.get('freq_hz', 40)}Hz at {fx.get('time')}s")
+                    logger.debug(f"Detected gamma burst: {fx.get('freq_hz', 40)}Hz at {fx.get('time')}s")
 
             # If schedule is a dict, extract binaural sections from it
             # Check for manifest format: sound_bed.binaural.sections
@@ -397,7 +412,7 @@ def main():
                     }
                 )
         except Exception as e:
-            print(f"⚠️  Failed to parse SFX config '{args.sfx_config}': {e}")
+            logger.warning(f"Failed to parse SFX config '{args.sfx_config}': {e}")
 
     if sfx_layers:
         target_ms = len(bed_segment)
@@ -409,10 +424,10 @@ def main():
                     repeats = (target_ms // len(sfx)) + 1
                     sfx = (sfx * int(repeats))[:target_ms]
                 position_ms = max(0, int(layer.get("start_sec", 0) * 1000))
-                print(f"Adding SFX {layer['path']} at {position_ms/1000:.2f}s (gain {layer['gain_db']} dB, loop={layer.get('loop', False)})")
+                logger.info(f"Adding SFX {layer['path']} at {position_ms/1000:.2f}s (gain {layer['gain_db']} dB, loop={layer.get('loop', False)})")
                 bed_segment = bed_segment.overlay(sfx, position=position_ms)
             except Exception as e:
-                print(f"⚠️  Failed to apply SFX '{layer}': {e}")
+                logger.warning(f"Failed to apply SFX '{layer}': {e}")
 
         bed_segment.export(bed_out, format="wav")
 
@@ -422,7 +437,9 @@ def main():
     final_mix_duration = None
     mix_stats = None
     if mix_out:
-        print("\n=== STEP 3: Mixing voice + bed ===")
+        logger.info("-" * 70)
+        logger.info("STEP 3: Mixing voice + bed")
+        logger.info("-" * 70)
         final_mix_duration = _mix_tracks(
             voice_out,
             bed_out,
@@ -458,17 +475,21 @@ def main():
     with open(out_dir / "audio_summary.json", "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
 
-    print("\n" + "=" * 70)
-    print("✅ Session audio generation complete")
-    print("=" * 70)
-    print(f"Voice: {voice_out} ({voice_duration/60:.2f} min @ rate {speaking_rate:.3f})")
-    print(f"Binaural bed: {bed_out} ({bed_duration/60:.2f} min, {args.beat_hz} Hz on {args.carrier_hz} Hz carrier)")
+    # Calculate total duration
+    total_duration = time.time() - start_time
+
+    logger.info("=" * 70)
+    logger.info("SESSION AUDIO GENERATION COMPLETE")
+    logger.info("=" * 70)
+    logger.info(f"Voice: {voice_out} ({voice_duration/60:.2f} min @ rate {speaking_rate:.3f})")
+    logger.info(f"Binaural bed: {bed_out} ({bed_duration/60:.2f} min, {args.beat_hz} Hz on {args.carrier_hz} Hz carrier)")
     if mix_out:
-        print(f"Mix: {mix_out} ({(final_mix_duration or 0)/60:.2f} min, voice ref)")
+        logger.info(f"Mix: {mix_out} ({(final_mix_duration or 0)/60:.2f} min)")
         if mix_stats:
-            print(f"Mix peak: {mix_stats['peak_dbfs']:.1f} dBFS, RMS: {mix_stats['rms_dbfs']:.1f} dBFS")
-    print(f"Summary: {out_dir/'audio_summary.json'}")
-    print("=" * 70 + "\n")
+            logger.info(f"Mix peak: {mix_stats['peak_dbfs']:.1f} dBFS, RMS: {mix_stats['rms_dbfs']:.1f} dBFS")
+    logger.info(f"Summary: {out_dir/'audio_summary.json'}")
+    logger.info(f"Total generation time: {total_duration:.1f}s")
+    logger.info("=" * 70)
 
 
 if __name__ == "__main__":

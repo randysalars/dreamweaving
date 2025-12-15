@@ -1,0 +1,88 @@
+# Pre-commit hooks for Dreamweaving project
+# Install: pip install pre-commit && pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: \.md$
+      - id: end-of-file-fixer
+        exclude: \.md$
+      - id: check-yaml
+        args: [--unsafe]  # Allow custom tags
+      - id: check-json
+      - id: check-added-large-files
+        args: ['--maxkb=5000']  # 5MB limit (audio files excluded)
+        exclude: '\.(mp3|wav|mp4|png|jpg)$'
+      - id: check-merge-conflict
+      - id: detect-private-key
+
+  # Python linting - critical errors only
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args:
+          - '--select=E9,F63,F7,F82'  # Critical errors only
+          - '--show-source'
+          - '--statistics'
+        files: ^scripts/
+
+  # Local hooks for project-specific validation
+  - repo: local
+    hooks:
+      # Validate SSML files
+      - id: validate-ssml
+        name: Validate SSML syntax
+        entry: python3 scripts/utilities/validate_ssml.py
+        language: system
+        files: '\.ssml$'
+        pass_filenames: true
+
+      # Validate manifest files
+      - id: validate-manifest
+        name: Validate manifest.yaml
+        entry: python3 scripts/utilities/validate_manifest.py
+        language: system
+        files: 'manifest\.yaml$'
+        pass_filenames: true
+
+      # Check for secrets in code
+      - id: no-secrets
+        name: Check for secrets
+        entry: bash -c 'grep -rn "API_KEY\|SECRET_KEY\|PASSWORD\|PRIVATE_KEY" "$@" && exit 1 || exit 0'
+        language: system
+        files: '\.(py|yaml|yml|json|md)$'
+        exclude: '(\.env\.example|CLAUDE\.md|\.pre-commit-config\.yaml)$'
+
+      # Ensure voice_enhanced is used, not raw voice
+      - id: no-raw-voice
+        name: Check for raw voice.mp3 usage
+        entry: bash -c 'grep -rn "voice\.mp3" "$@" | grep -v "voice_enhanced" | grep -v "#" && exit 1 || exit 0'
+        language: system
+        files: '\.(py|sh)$'
+        exclude: '(generate_voice\.py|CLAUDE\.md)$'
+
+      # Check SSML rate values (should be 1.0)
+      - id: ssml-rate-check
+        name: Check SSML rate is 1.0
+        entry: bash -c 'grep -n "rate=\"0\." "$@" && echo "ERROR: SSML rate should be 1.0, use breaks for pacing" && exit 1 || exit 0'
+        language: system
+        files: '\.ssml$'
+
+# Configuration
+default_language_version:
+  python: python3
+
+# Skip hooks for specific files
+exclude: |
+  (?x)^(
+    venv/.*|
+    \.git/.*|
+    sessions/.*/output/.*|
+    sessions/.*/images/.*|
+    knowledge/notion_export/.*
+  )$

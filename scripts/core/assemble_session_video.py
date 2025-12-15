@@ -27,6 +27,7 @@ import argparse
 import json
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 from pydub import AudioSegment
@@ -35,6 +36,17 @@ try:
     import yaml  # type: ignore
 except ImportError:
     yaml = None
+
+# Import logging
+try:
+    script_dir = Path(__file__).parent.parent
+    sys.path.insert(0, str(script_dir))
+    from utilities.logging_config import get_logger
+except ImportError:
+    import logging
+    get_logger = lambda name: logging.getLogger(name)
+
+logger = get_logger(__name__)
 
 
 def load_manifest_sections(session_dir: Path):
@@ -231,11 +243,16 @@ def _probe_duration(path: Path):
 
 
 def assemble(session_dir: Path, audio_path: Path, background_path: Path | None, title: str, subtitle: str, fade_seconds: float):
+    logger.info("=" * 70)
+    logger.info("VIDEO ASSEMBLY")
+    logger.info("=" * 70)
+    start_time = time.time()
+
     audio_duration = get_audio_duration_seconds(audio_path)
     base_video = ensure_background_video(session_dir, audio_duration, background_path)
 
     if (session_dir / "manifest.yaml").exists() and yaml is None:
-        print("ℹ️ manifest.yaml present but PyYAML not installed; falling back to even image spacing.")
+        logger.warning("manifest.yaml present but PyYAML not installed; falling back to even image spacing.")
 
     manifest_sections = load_manifest_sections(session_dir)
     images = collect_images(session_dir)
@@ -310,18 +327,19 @@ def assemble(session_dir: Path, audio_path: Path, background_path: Path | None, 
     ])
 
     # Debug info
-    print("\nInputs:")
-    print(f"  Video: {base_video}")
-    print(f"  Audio: {audio_path}")
-    print(f"  Images: {len(images_timed)}")
+    logger.info("-" * 70)
+    logger.info("INPUTS")
+    logger.info("-" * 70)
+    logger.info(f"Video: {base_video}")
+    logger.info(f"Audio: {audio_path}")
+    logger.info(f"Images: {len(images_timed)}")
     if manifest_sections:
-        print("  Timing source: manifest.yaml sections")
+        logger.info("Timing source: manifest.yaml sections")
     else:
-        print("  Timing source: even distribution")
+        logger.info("Timing source: even distribution")
 
     if filter_complex:
-        print("\nFilter preview (truncated):")
-        print(filter_complex[:400] + ("..." if len(filter_complex) > 400 else ""))
+        logger.debug(f"Filter preview: {filter_complex[:400]}{'...' if len(filter_complex) > 400 else ''}")
 
     subprocess.run(cmd, check=True)
 
@@ -345,11 +363,18 @@ def assemble(session_dir: Path, audio_path: Path, background_path: Path | None, 
     with open(out_dir / "video_summary.json", "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
 
-    print("\n✅ Session video created:")
-    print(f"   {output_path}")
+    # Calculate total assembly time
+    assembly_time = time.time() - start_time
+
+    logger.info("=" * 70)
+    logger.info("VIDEO ASSEMBLY COMPLETE")
+    logger.info("=" * 70)
+    logger.info(f"Output: {output_path}")
     if video_duration:
-        print(f"   Video duration: {video_duration/60:.2f} min; Audio: {audio_duration/60:.2f} min; Δ={delta:.2f} sec")
-    print(f"Summary: {out_dir/'video_summary.json'}")
+        logger.info(f"Video duration: {video_duration/60:.2f} min; Audio: {audio_duration/60:.2f} min; Delta: {delta:.2f} sec")
+    logger.info(f"Summary: {out_dir/'video_summary.json'}")
+    logger.info(f"Assembly time: {assembly_time:.1f}s")
+    logger.info("=" * 70)
 
 
 def main():
@@ -364,7 +389,7 @@ def main():
 
     session_dir = Path(args.session).resolve()
     if not session_dir.exists():
-        print(f"❌ Session not found: {session_dir}")
+        logger.error(f"Session not found: {session_dir}")
         sys.exit(1)
 
     # Resolve audio path - prefer MASTER (post-processed) audio over raw mix
@@ -391,7 +416,7 @@ def main():
         for candidate in audio_candidates:
             if candidate.exists():
                 audio_path = candidate
-                print(f"  Using audio: {candidate.name}")
+                logger.info(f"Using audio: {candidate.name}")
                 break
 
         # Fallback: any MP3 in output
@@ -401,18 +426,18 @@ def main():
             all_audio = mp3_files + wav_files
             if all_audio:
                 audio_path = all_audio[0]
-                print(f"  Using fallback audio: {audio_path.name}")
+                logger.info(f"Using fallback audio: {audio_path.name}")
             else:
-                print("❌ Audio file not provided and none found in session/output")
+                logger.error("Audio file not provided and none found in session/output")
                 sys.exit(1)
     audio_path = audio_path.resolve()
     if not audio_path.exists():
-        print(f"❌ Audio file not found: {audio_path}")
+        logger.error(f"Audio file not found: {audio_path}")
         sys.exit(1)
 
     background_path = Path(args.background).resolve() if args.background else None
     if background_path and not background_path.exists():
-        print(f"⚠️ Background not found, will auto-fallback: {background_path}")
+        logger.warning(f"Background not found, will auto-fallback: {background_path}")
         background_path = None
 
     assemble(

@@ -20,6 +20,7 @@ Usage:
 
 import argparse
 import sys
+import time
 from pathlib import Path
 
 from generate_session_audio import main as audio_main  # reuse CLI
@@ -29,6 +30,30 @@ try:
     import yaml  # type: ignore
 except ImportError:
     yaml = None
+
+# Import logging and audit
+try:
+    script_dir = Path(__file__).parent.parent
+    sys.path.insert(0, str(script_dir))
+    from utilities.logging_config import get_logger
+    from utilities.audit_logger import log_event, log_error, AuditContext
+except ImportError:
+    # Fallback if audit logger not available
+    import logging
+    get_logger = lambda name: logging.getLogger(name)
+    log_event = lambda *args, **kwargs: None
+    log_error = lambda *args, **kwargs: None
+
+    class AuditContext:
+        """Fallback no-op context manager when audit_logger unavailable."""
+        def __init__(self, prefix=""):
+            self.prefix = prefix  # Store prefix for compatibility
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            return False
+
+logger = get_logger(__name__)
 
 # Import validation utilities
 try:
@@ -183,80 +208,123 @@ def main():
     # args.session and args.ssml are already validated by validate_dir_exists/validate_file_exists
     session_dir = Path(args.session).resolve()
     ssml_path = Path(args.ssml).resolve()
+    session_name = session_dir.name
+    build_start = time.time()
 
-    manifest_defaults = load_manifest_defaults(session_dir)
-    manifest_data = manifest_defaults.get("manifest_data")
+    # Start audit context for correlated logging
+    with AuditContext("build"):
+        logger.info(f"Starting session build: {session_name}")
+        log_event("session_build_started", session_name, {
+            "ssml_path": str(ssml_path),
+            "voice": args.voice,
+            "target_minutes": args.target_minutes,
+        })
 
-    # Apply manifest defaults
-    if manifest_defaults and args.target_minutes is None:
-        args.target_minutes = manifest_defaults.get("target_minutes", None)
-    if manifest_defaults and args.voice == parser.get_default("voice") and manifest_defaults.get("voice"):
-        args.voice = manifest_defaults["voice"]
-    if manifest_defaults and args.tts_provider == parser.get_default("tts_provider") and manifest_defaults.get("tts_provider"):
-        args.tts_provider = manifest_defaults["tts_provider"]
-    if manifest_defaults and args.carrier_hz == parser.get_default("carrier_hz") and manifest_defaults.get("carrier_hz"):
-        args.carrier_hz = manifest_defaults["carrier_hz"]
+        manifest_defaults = load_manifest_defaults(session_dir)
+        manifest_data = manifest_defaults.get("manifest_data")
 
-    if args.target_minutes is None:
-        args.target_minutes = 25.0
-    if args.mix_name is None:
-        args.mix_name = "final_mix.mp3"
-    if (session_dir / "manifest.yaml").exists() and yaml is None:
-        print("ℹ️ manifest.yaml present but PyYAML not installed; defaults may not be auto-applied.")
+        # Apply manifest defaults
+        if manifest_defaults and args.target_minutes is None:
+            args.target_minutes = manifest_defaults.get("target_minutes", None)
+        if manifest_defaults and args.voice == parser.get_default("voice") and manifest_defaults.get("voice"):
+            args.voice = manifest_defaults["voice"]
+        if manifest_defaults and args.tts_provider == parser.get_default("tts_provider") and manifest_defaults.get("tts_provider"):
+            args.tts_provider = manifest_defaults["tts_provider"]
+        if manifest_defaults and args.carrier_hz == parser.get_default("carrier_hz") and manifest_defaults.get("carrier_hz"):
+            args.carrier_hz = manifest_defaults["carrier_hz"]
 
-    # Run audio with manifest data for beat schedule
-    run_audio(args, manifest_data)
+        if args.target_minutes is None:
+            args.target_minutes = 25.0
+        if args.mix_name is None:
+            args.mix_name = "final_mix.mp3"
+        if (session_dir / "manifest.yaml").exists() and yaml is None:
+            logger.warning("manifest.yaml present but PyYAML not installed; defaults may not be auto-applied.")
 
-    # Locate mixed audio
-    output_dir = Path(args.output_dir) if args.output_dir else ssml_path.parent / "output"
-    preferred_mix = output_dir / args.mix_name
-    if preferred_mix.exists():
-        mixed_candidates = [preferred_mix]
-    else:
-        mixed_candidates = sorted(output_dir.glob("*.mp3"), key=lambda p: p.stat().st_mtime, reverse=True)
-    if not mixed_candidates:
-        print("❌ Mixed audio not found in output/.")
-        sys.exit(1)
-    audio_path = mixed_candidates[0]
-
-    # Run video assembly
-    run_video(args, session_dir, audio_path)
-
-    video_path = session_dir / 'output' / 'video' / 'session_final.mp4'
-
-    # Optional: Auto-package for YouTube
-    if args.auto_package:
-        print("\n=== AUTO-PACKAGING FOR YOUTUBE ===")
+        # Run audio with manifest data for beat schedule
+        logger.info("Starting audio generation...")
         try:
-            import subprocess
-            subprocess.run([
-                "python3", "scripts/core/package_youtube.py",
-                "--session", str(session_dir),
-                "--audio", str(audio_path)
-            ], check=True)
-            print("✅ YouTube package created")
+            run_audio(args, manifest_data)
+            log_event("audio_generated", session_name, {"mix_name": args.mix_name})
         except Exception as e:
-            print(f"⚠️  YouTube packaging failed: {e}")
+            log_error(session_name, e, {"stage": "audio_generation"})
+            logger.error(f"Audio generation failed: {e}")
+            raise
 
-        # Run cleanup
-        print("\n=== RUNNING CLEANUP ===")
+        # Locate mixed audio
+        output_dir = Path(args.output_dir) if args.output_dir else ssml_path.parent / "output"
+        preferred_mix = output_dir / args.mix_name
+        if preferred_mix.exists():
+            mixed_candidates = [preferred_mix]
+        else:
+            mixed_candidates = sorted(output_dir.glob("*.mp3"), key=lambda p: p.stat().st_mtime, reverse=True)
+        if not mixed_candidates:
+            logger.error("Mixed audio not found in output/.")
+            log_error(session_name, FileNotFoundError("Mixed audio not found"), {"stage": "audio_location"})
+            sys.exit(1)
+        audio_path = mixed_candidates[0]
+
+        # Run video assembly
+        logger.info("Starting video assembly...")
         try:
-            subprocess.run([
-                "bash", "scripts/core/cleanup_session_assets.sh",
-                str(session_dir)
-            ], check=True)
-            print("✅ Cleanup complete")
+            run_video(args, session_dir, audio_path)
+            log_event("video_assembled", session_name, {"audio_path": str(audio_path)})
         except Exception as e:
-            print(f"⚠️  Cleanup failed: {e}")
+            log_error(session_name, e, {"stage": "video_assembly"})
+            logger.error(f"Video assembly failed: {e}")
+            raise
 
-    print("\n" + "=" * 70)
-    print("✅ BUILD COMPLETE")
-    print("=" * 70)
-    print(f"Audio: {audio_path}")
-    print(f"Video: {video_path}")
-    if args.auto_package:
-        print(f"YouTube Package: {session_dir / 'output' / 'YOUTUBE_PACKAGE_README.md'}")
-    print("=" * 70)
+        video_path = session_dir / 'output' / 'video' / 'session_final.mp4'
+
+        # Optional: Auto-package for YouTube
+        if args.auto_package:
+            logger.info("Auto-packaging for YouTube...")
+            try:
+                import subprocess
+                subprocess.run([
+                    "python3", "scripts/core/package_youtube.py",
+                    "--session", str(session_dir),
+                    "--audio", str(audio_path)
+                ], check=True)
+                logger.info("YouTube package created")
+                log_event("youtube_packaged", session_name, {"audio_path": str(audio_path)})
+            except Exception as e:
+                logger.warning(f"YouTube packaging failed: {e}")
+                log_error(session_name, e, {"stage": "youtube_packaging"})
+
+            # Run cleanup
+            logger.info("Running cleanup...")
+            try:
+                subprocess.run([
+                    "bash", "scripts/core/cleanup_session_assets.sh",
+                    str(session_dir)
+                ], check=True)
+                logger.info("Cleanup complete")
+                log_event("cleanup_performed", session_name, {})
+            except Exception as e:
+                logger.warning(f"Cleanup failed: {e}")
+
+        # Calculate build duration
+        build_duration = time.time() - build_start
+
+        # Log completion
+        log_event("session_build_completed", session_name, {
+            "audio_path": str(audio_path),
+            "video_path": str(video_path),
+            "duration_seconds": round(build_duration, 1),
+            "auto_packaged": args.auto_package,
+        })
+
+        print("\n" + "=" * 70)
+        print("✅ BUILD COMPLETE")
+        print("=" * 70)
+        print(f"Audio: {audio_path}")
+        print(f"Video: {video_path}")
+        print(f"Duration: {build_duration:.1f}s")
+        if args.auto_package:
+            print(f"YouTube Package: {session_dir / 'output' / 'YOUTUBE_PACKAGE_README.md'}")
+        print("=" * 70)
+
+        logger.info(f"Build complete for {session_name} in {build_duration:.1f}s")
 
 
 if __name__ == "__main__":

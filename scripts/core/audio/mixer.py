@@ -7,11 +7,24 @@ Combines multiple audio stems with level control and sidechain ducking
 from __future__ import annotations
 
 import os
+import sys
+from pathlib import Path
 from typing import Any, Dict, List, Optional, TypedDict, Union
 
 import numpy as np
 from numpy.typing import NDArray
 from scipy.io import wavfile
+
+# Import logging
+try:
+    scripts_dir = Path(__file__).parent.parent.parent
+    sys.path.insert(0, str(scripts_dir))
+    from utilities.logging_config import get_logger
+except ImportError:
+    import logging
+    get_logger = lambda name: logging.getLogger(name)
+
+logger = get_logger(__name__)
 
 # Type aliases
 StereoAudio = NDArray[np.float32]  # Shape: (samples, 2)
@@ -59,9 +72,9 @@ def mix_stems(
         numpy array of mixed stereo audio (float32), shape (samples, 2)
     """
 
-    print("\n" + "="*70)
-    print("UNIVERSAL AUDIO MIXER")
-    print("="*70 + "\n")
+    logger.info("=" * 70)
+    logger.info("UNIVERSAL AUDIO MIXER")
+    logger.info("=" * 70)
 
     total_samples = int(sample_rate * duration_sec)
     mixed = np.zeros((total_samples, 2), dtype=np.float32)
@@ -75,7 +88,7 @@ def mix_stems(
         elif 'path' in config:
             # Load from file
             if os.path.exists(config['path']):
-                print(f"Loading: {name} from {config['path']}")
+                logger.info(f"Loading: {name} from {config['path']}")
                 sr, audio = wavfile.read(config['path'])
 
                 # Normalize based on original dtype BEFORE converting to float32
@@ -92,11 +105,11 @@ def mix_stems(
                     audio = np.stack([audio, audio], axis=1)
 
                 if sr != sample_rate:
-                    print(f"  Warning: {name} sample rate {sr} != {sample_rate}")
-                    print(f"  Continuing anyway (proper resampling recommended)")
+                    logger.warning(f"{name} sample rate {sr} != {sample_rate}")
+                    logger.warning("Continuing anyway (proper resampling recommended)")
             else:
-                print(f"⚠️  Stem not found: {config['path']}")
-                print(f"  Creating silent track for {name}")
+                logger.warning(f"Stem not found: {config['path']}")
+                logger.info(f"Creating silent track for {name}")
                 audio = np.zeros((total_samples, 2), dtype=np.float32)
         else:
             raise ValueError(f"Stem {name} must have 'audio' or 'path' key")
@@ -121,13 +134,13 @@ def mix_stems(
             'is_voice': name.lower() in ['voice', 'narration', 'vocals']
         }
 
-        print(f"✓ {name}: {gain_db} dB (gain: {gain_linear:.4f})")
+        logger.info(f"Loaded {name}: {gain_db} dB (gain: {gain_linear:.4f})")
 
     # Apply sidechain ducking if enabled
     if sidechain_enabled and 'voice' in loaded_stems:
-        print("\n" + "-"*70)
-        print("SIDECHAIN DUCKING")
-        print("-"*70 + "\n")
+        logger.info("-" * 70)
+        logger.info("SIDECHAIN DUCKING")
+        logger.info("-" * 70)
 
         voice_audio = loaded_stems['voice']['audio']
 
@@ -144,50 +157,49 @@ def mix_stems(
             # Convert threshold to linear
             threshold_linear = 10 ** (sidechain_threshold / 20.0)
 
-            print(f"Voice threshold: {sidechain_threshold} dB (linear: {threshold_linear:.6f})")
-            print(f"Ducking ratio: {sidechain_ratio * 100:.0f}%")
-            print(f"Targets: {', '.join(sidechain_targets)}")
-            print()
+            logger.info(f"Voice threshold: {sidechain_threshold} dB (linear: {threshold_linear:.6f})")
+            logger.info(f"Ducking ratio: {sidechain_ratio * 100:.0f}%")
+            logger.info(f"Targets: {', '.join(sidechain_targets)}")
 
             # Apply ducking to each target
             for name in sidechain_targets:
                 if name in loaded_stems:
-                    print(f"  Ducking {name}...")
+                    logger.debug(f"Ducking {name}...")
                     ducking_gain = _calculate_ducking_gain(
                         voice_envelope, threshold_linear, sidechain_ratio
                     )
                     loaded_stems[name]['audio'] = loaded_stems[name]['audio'] * ducking_gain
 
-            print(f"\n✓ Sidechain ducking applied to {len(sidechain_targets)} stems")
+            logger.info(f"Sidechain ducking applied to {len(sidechain_targets)} stems")
         else:
-            print("No sidechain targets specified")
+            logger.info("No sidechain targets specified")
 
     # Mix all stems
-    print("\n" + "-"*70)
-    print("MIXING")
-    print("-"*70 + "\n")
+    logger.info("-" * 70)
+    logger.info("MIXING")
+    logger.info("-" * 70)
 
     for name, data in loaded_stems.items():
         mixed += data['audio']
-        print(f"  + {name}")
+        logger.debug(f"Added stem: {name}")
 
     # Check for clipping
     peak = np.max(np.abs(mixed))
-    print(f"\nPeak level: {peak:.4f}")
+    logger.info(f"Peak level: {peak:.4f}")
 
     if peak > 0.98:
-        print(f"⚠️  Clipping detected! Normalizing to 0.95...")
+        logger.warning("Clipping detected! Normalizing to 0.95...")
         mixed = mixed * (0.95 / peak)
         peak = 0.95
 
     # Calculate RMS
     rms = np.sqrt(np.mean(mixed ** 2))
-    print(f"RMS level: {rms:.4f}")
-    print(f"Estimated LUFS: ~{20 * np.log10(rms):.1f} dB")
+    logger.info(f"RMS level: {rms:.4f}")
+    logger.info(f"Estimated LUFS: ~{20 * np.log10(rms):.1f} dB")
 
-    print("\n" + "="*70)
-    print("✓ MIXING COMPLETE")
-    print("="*70)
+    logger.info("=" * 70)
+    logger.info("MIXING COMPLETE")
+    logger.info("=" * 70)
 
     return mixed
 
@@ -293,7 +305,7 @@ def save_mix(
     wavfile.write(path, sample_rate, audio_int)
 
     file_size = os.path.getsize(path) / (1024 * 1024)
-    print(f"\n✓ Saved mix: {path} ({file_size:.1f} MB)")
+    logger.info(f"Saved mix: {path} ({file_size:.1f} MB)")
 
 
 def mix_from_manifest(
@@ -310,9 +322,9 @@ def mix_from_manifest(
     Returns:
         Path to mixed output file
     """
-    print("\n" + "="*70)
-    print("MIXING FROM MANIFEST")
-    print("="*70 + "\n")
+    logger.info("=" * 70)
+    logger.info("MIXING FROM MANIFEST")
+    logger.info("=" * 70)
 
     duration = manifest['session']['duration']
     mixing_config = manifest.get('mixing', {})

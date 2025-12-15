@@ -205,8 +205,99 @@ Display accumulated learnings and recommendations.
        ↓
 6. Best Practices Updated
        ↓
-7. Next Session Benefits from Learnings
+7. Memory Card Created (.ai/memory/)
+       ↓
+8. Next Session Benefits from Learnings
 ```
+
+## Auto-Memory Creation
+
+When an incident is resolved or a significant lesson is learned, automatically create a memory card in `.ai/memory/`.
+
+### Trigger Conditions
+
+Create a memory card when:
+1. **Error Resolved**: A bug or error was debugged and fixed
+2. **Performance Insight**: Analytics reveal actionable correlation
+3. **Code Improvement**: Significant code change with lessons
+4. **Process Discovery**: New workflow or pattern discovered
+5. **Configuration Fix**: Settings change that solved an issue
+
+### Memory Card Generation
+
+Use this template (from `.ai/memory/TEMPLATE.md`):
+
+```markdown
+# [Concise Title]
+
+**Date:** YYYY-MM-DD
+**Category:** audio|ssml|video|api|deployment|theme|code|content
+**Keywords:** keyword1, keyword2, keyword3
+
+## Symptom
+What was observed (errors, performance issues, user feedback)
+
+## Root Cause
+The underlying reason discovered
+
+## Fix Pattern
+The exact solution applied
+
+## Verification
+How to confirm the fix worked
+
+## Prevention
+What to do to avoid recurrence
+
+## Links
+- File: `path/to/file.py:line`
+- Session: `sessions/session-name`
+- Related: `.ai/memory/other-memory.md`
+```
+
+### Auto-Generation Command
+
+After resolving an incident:
+```bash
+# Create memory card
+python3 scripts/ai/learning/create_memory_card.py \
+    --title "Silent Audio After Mix" \
+    --category audio \
+    --keywords "mix,silent,stems,levels" \
+    --symptom "Output audio was silent after mixing" \
+    --root-cause "Stems not normalized before mixing" \
+    --fix "Check dtype before conversion in mixer.py:82" \
+    --session garden-of-eden
+```
+
+### Integration with Error Router
+
+When `error_router.py` matches an error and a fix is applied:
+1. Route error to appropriate agent
+2. Agent applies fix
+3. Verify fix worked
+4. Auto-create memory card linking:
+   - Error catalog entry
+   - Fix applied
+   - Session affected
+   - Files modified
+
+### Memory Naming Convention
+
+Format: `YYYY-MM-DD__category-short-title.md`
+
+Examples:
+- `2025-12-14__audio-silent-mix-output.md`
+- `2025-12-14__ssml-rate-causes-robotic.md`
+- `2025-12-14__code-mixer-dtype-fix.md`
+
+### Cross-Reference Updates
+
+After creating a memory card:
+1. Update `.ai/memory/INDEX.md` with new entry
+2. Add to error catalog if it's a new error type
+3. Update `.ai/TRIGGER_MAPS.md` with new keywords
+4. Link from related existing memories
 
 ## Correlation Analysis
 

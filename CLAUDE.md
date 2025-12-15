@@ -793,6 +793,56 @@ ffmpeg -i voice.wav -i binaural.wav \
 
 ---
 
+# AI Troubleshooting System
+
+The project includes a self-learning troubleshooting system in `.ai/`:
+
+## Quick Reference
+
+| File | Purpose | When to Use |
+|------|---------|-------------|
+| `.ai/CONTEXT.md` | 1-page repo map | First time working on project |
+| `.ai/CONVENTIONS.md` | Coding standards | Before any code change |
+| `.ai/DEBUGGING.md` | Top 10 failure playbooks | When debugging issues |
+| `.ai/RUBRIC.md` | Code review checklist | Before committing |
+| `.ai/TRIGGER_MAPS.md` | Symptom → keyword mapping | Finding related issues |
+| `.ai/RETRIEVE_PROTOCOL.md` | Search-first workflow | **Before any troubleshooting** |
+| `.ai/memory/` | Incident memories | Learning from past fixes |
+
+## Troubleshooting Commands
+
+```bash
+# Run full diagnostic
+python3 scripts/utilities/doctor.py
+
+# Route an error to appropriate agent
+python3 scripts/ai/error_router.py "describe symptom here"
+
+# Search incident memory
+rg -n "keyword1|keyword2" .ai/memory/
+
+# Quick system check
+python3 scripts/utilities/doctor.py --quick
+```
+
+## The Retrieve-First Protocol
+
+**CRITICAL:** Before proposing any fix, always:
+
+1. Search `.ai/memory/` for related incidents
+2. Run `python3 scripts/ai/error_router.py "symptom"`
+3. Check relevant Serena memories
+4. Read `.ai/DEBUGGING.md` if matches known issue
+5. Then proceed with fix
+
+This prevents repeating past mistakes and leverages accumulated knowledge.
+
+## After Significant Fixes
+
+Create a memory card: `cp .ai/memory/TEMPLATE.md .ai/memory/$(date +%Y-%m-%d)__title.md`
+
+---
+
 # Serena Memory Quick Reference
 
 Claude should read these memories for detailed information:

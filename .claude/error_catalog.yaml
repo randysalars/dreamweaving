@@ -1,0 +1,457 @@
+# Dreamweaving Error Catalog
+#
+# Structure for each error:
+#   - id: unique identifier (category.name)
+#   - symptoms: list of observable signs
+#   - keywords: search terms for matching
+#   - severity: critical | high | medium | low
+#   - agent: which AI agent should handle this
+#   - checks: commands/steps to diagnose
+#   - root_causes: common causes
+#   - fix_pattern: how to resolve
+#   - prevention: how to prevent recurrence
+#   - memory_refs: related Serena memories
+#   - playbook_ref: link to .ai/DEBUGGING.md section if applicable
+
+errors:
+  # =============================================================================
+  # AUDIO ERRORS
+  # =============================================================================
+
+  audio.silent_output:
+    symptoms:
+      - "Output audio file is silent"
+      - "No waveform in mixed audio"
+      - "session_mixed.wav plays but no sound"
+      - "max_volume: -inf dB"
+    keywords: [audio, silent, mix, stems, volume, waveform, -inf]
+    severity: high
+    agent: audio-engineer
+    checks:
+      - "ffprobe -v error -show_format sessions/{session}/output/voice_enhanced.mp3"
+      - "ffprobe -v error -show_format sessions/{session}/output/binaural_dynamic.wav"
+      - "ffmpeg -i sessions/{session}/output/session_mixed.wav -af volumedetect -f null /dev/null 2>&1 | grep max_volume"
+    root_causes:
+      - "Input file paths incorrect or files missing"
+      - "Stems at wrong dB levels (too low)"
+      - "amix filter with normalize=1 squashing output"
+      - "Sample rate mismatch between stems"
+    fix_pattern: |
+      1. Verify all input files exist and have audio:
+         ffprobe -v error -show_format {input_file}
+      2. Check mixer command uses correct levels:
+         voice: -6dB, binaural: -6dB, SFX: 0dB
+      3. Ensure normalize=0 in amix filter
+      4. Re-run mix with standard command from CONVENTIONS.md
+    prevention:
+      - "Validate audio levels post-mix"
+      - "Use standard mix command template"
+    memory_refs:
+      - "audio_production_methodology"
+    playbook_ref: ".ai/DEBUGGING.md#issue-1-silent-or-inaudible-audio-output"
+
+  audio.clipping:
+    symptoms:
+      - "Audio distortion or crackling"
+      - "Waveform shows flat tops"
+      - "max_volume: 0.0 dB or positive"
+      - "Harsh sound on loud passages"
+    keywords: [clipping, distortion, crackling, peaks, 0dB, limiter]
+    severity: high
+    agent: audio-engineer
+    checks:
+      - "ffmpeg -i {file} -af volumedetect -f null /dev/null 2>&1 | grep max_volume"
+      - "ffmpeg -i {file} -af loudnorm=print_format=json -f null /dev/null 2>&1"
+    root_causes:
+      - "Stems mixed at 0dB instead of -6dB"
+      - "Voice enhancement gain too high"
+      - "Missing headroom in mix"
+    fix_pattern: |
+      1. Re-mix with correct levels: voice -6dB, binaural -6dB
+      2. Add limiter if needed: -af "alimiter=limit=0.9"
+      3. Target -14 LUFS, -1.5 dBTP max
+    prevention:
+      - "Always use standard stem levels"
+      - "Post-mix level validation"
+    memory_refs:
+      - "audio_production_methodology"
+
+  audio.binaural_inaudible:
+    symptoms:
+      - "Can't hear binaural beats in mix"
+      - "Only voice audible"
+      - "Binaural level too quiet"
+    keywords: [binaural, inaudible, quiet, beats, missing]
+    severity: medium
+    agent: audio-engineer
+    checks:
+      - "ffprobe -v error -show_format sessions/{session}/output/binaural_dynamic.wav"
+      - "Listen to binaural_dynamic.wav in isolation"
+    root_causes:
+      - "Binaural at -12dB (old config) instead of -6dB"
+      - "Binaural file not generated properly"
+      - "Wrong file path in mix command"
+    fix_pattern: |
+      1. Verify binaural file exists and has audio
+      2. Set binaural to -6dB in mix (not -12dB)
+      3. Re-run mix
+    prevention:
+      - "Use updated stem levels"
+    memory_refs:
+      - "audio_production_methodology"
+
+  audio.voice_not_enhanced:
+    symptoms:
+      - "Voice sounds thin or harsh"
+      - "Missing warmth or depth"
+      - "Using voice.mp3 instead of voice_enhanced.mp3"
+    keywords: [voice, enhancement, warmth, thin, harsh, raw]
+    severity: medium
+    agent: audio-engineer
+    checks:
+      - "ls -la sessions/{session}/output/voice*.mp3"
+      - "Check which file is used in mix command"
+    root_causes:
+      - "Using raw voice.mp3 instead of voice_enhanced.mp3"
+      - "Enhancement script not run"
+    fix_pattern: |
+      1. Run voice enhancement:
+         python3 scripts/core/generate_voice.py ...
+         (includes enhancement by default)
+      2. Use voice_enhanced.mp3 in mix, never voice.mp3
+    prevention:
+      - "Always use voice_enhanced.mp3"
+      - "Check file names in mix commands"
+    memory_refs:
+      - "audio_production_methodology"
+      - "voice_pacing_guidelines"
+
+  # =============================================================================
+  # SSML ERRORS
+  # =============================================================================
+
+  ssml.tts_reads_markers:
+    symptoms:
+      - "TTS reads '[SFX:' or 'SFX colon' aloud"
+      - "Sound effect descriptions spoken"
+      - "Markers in audio output"
+    keywords: [ssml, sfx, markers, tts, reads, spoken]
+    severity: medium
+    agent: script-writer
+    checks:
+      - "grep -n '\\[SFX:' sessions/{session}/working_files/script_voice_clean.ssml"
+    root_causes:
+      - "SFX markers not stripped from voice script"
+      - "Using script_production.ssml for TTS instead of script_voice_clean.ssml"
+    fix_pattern: |
+      1. Create clean script:
+         sed 's/\\[SFX:[^]]*\\]//g' script_production.ssml > script_voice_clean.ssml
+      2. Regenerate voice from clean script
+    prevention:
+      - "Always create separate production and clean scripts"
+      - "Validate no markers in voice script"
+    memory_refs:
+      - "script_production_workflow"
+    playbook_ref: ".ai/DEBUGGING.md#issue-2-tts-reads-sfx-aloud"
+
+  ssml.robotic_voice:
+    symptoms:
+      - "TTS sounds mechanical or unnatural"
+      - "Pacing feels wrong"
+      - "Words stretched oddly"
+    keywords: [robotic, mechanical, unnatural, rate, slow, stretched]
+    severity: medium
+    agent: script-writer
+    checks:
+      - "grep -n 'rate=\"0\\.' sessions/{session}/working_files/script_voice_clean.ssml"
+    root_causes:
+      - "Using rate values below 1.0 (0.85, 0.88, etc.)"
+      - "Neural2 voices don't handle slow rates well"
+    fix_pattern: |
+      1. Change all rate="0.XX" to rate="1.0"
+      2. Add <break> tags for pacing instead
+      3. Regenerate voice
+    prevention:
+      - "Always use rate='1.0'"
+      - "Validate SSML rate values"
+    memory_refs:
+      - "script_production_workflow"
+      - "voice_pacing_guidelines"
+    playbook_ref: ".ai/DEBUGGING.md#issue-3-voice-sounds-roboticunnatural"
+
+  ssml.validation_failed:
+    symptoms:
+      - "validate_ssml.py reports errors"
+      - "TTS API rejects script"
+      - "XML parsing errors"
+    keywords: [ssml, validation, xml, parsing, unclosed, tag]
+    severity: high
+    agent: script-writer
+    checks:
+      - "python3 scripts/utilities/validate_ssml.py sessions/{session}/working_files/script.ssml -v"
+    root_causes:
+      - "Unclosed tags (missing </prosody>, </speak>)"
+      - "Invalid attribute names"
+      - "Break duration too long (>10s)"
+      - "Unescaped special characters (& vs &amp;)"
+    fix_pattern: |
+      1. Run validation to see specific errors
+      2. Fix each issue (close tags, escape chars, etc.)
+      3. Re-validate until clean
+    prevention:
+      - "Run validation before any TTS generation"
+      - "Use SSML-aware editor"
+    memory_refs:
+      - "script_production_workflow"
+    playbook_ref: ".ai/DEBUGGING.md#issue-5-ssml-validation-fails"
+
+  ssml.break_too_long:
+    symptoms:
+      - "Error: break duration exceeds maximum"
+      - "TTS fails on long pauses"
+    keywords: [break, duration, pause, long, maximum]
+    severity: low
+    agent: script-writer
+    checks:
+      - "grep -oE 'time=\"[0-9]+s\"' {script} | sort -t'\"' -k2 -nr | head -5"
+    root_causes:
+      - "Break durations over 10 seconds"
+    fix_pattern: |
+      1. Find breaks over 10s: grep for time="XXs" where XX > 10
+      2. Split into multiple breaks: <break time="5s"/><break time="5s"/>
+    prevention:
+      - "Keep breaks under 10 seconds"
+      - "Validation flags this"
+
+  # =============================================================================
+  # BUILD/ENVIRONMENT ERRORS
+  # =============================================================================
+
+  env.venv_not_activated:
+    symptoms:
+      - "ModuleNotFoundError"
+      - "Command not found: python3"
+      - "Using system Python instead of venv"
+    keywords: [venv, module, import, activate, environment]
+    severity: high
+    agent: quality-control
+    checks:
+      - "which python3"
+      - "echo $VIRTUAL_ENV"
+    root_causes:
+      - "Virtual environment not activated"
+    fix_pattern: |
+      source venv/bin/activate
+    prevention:
+      - "Always activate venv first"
+      - "Add to shell profile"
+    playbook_ref: ".ai/DEBUGGING.md#issue-6-works-locally-fails-on-build"
+
+  env.google_auth_failed:
+    symptoms:
+      - "Could not automatically determine credentials"
+      - "Permission denied from TTS API"
+      - "401/403 errors"
+    keywords: [google, auth, credentials, permission, 401, 403, tts]
+    severity: critical
+    agent: quality-control
+    checks:
+      - "echo $GOOGLE_APPLICATION_CREDENTIALS"
+      - "ls -la $GOOGLE_APPLICATION_CREDENTIALS"
+      - "gcloud auth application-default print-access-token"
+    root_causes:
+      - "GOOGLE_APPLICATION_CREDENTIALS not set"
+      - "Credentials file missing or invalid"
+      - "Service account lacks permissions"
+    fix_pattern: |
+      1. Set credentials:
+         export GOOGLE_APPLICATION_CREDENTIALS="/path/to/service-account.json"
+      2. Or authenticate:
+         gcloud auth application-default login
+    prevention:
+      - "Add to shell profile or .env"
+      - "Preflight check validates auth"
+    playbook_ref: ".ai/DEBUGGING.md#issue-7-google-cloud-tts-auth-fails"
+
+  env.ffmpeg_not_found:
+    symptoms:
+      - "ffmpeg: command not found"
+      - "Unknown encoder errors"
+      - "Invalid option errors"
+    keywords: [ffmpeg, command, encoder, codec, not found]
+    severity: critical
+    agent: quality-control
+    checks:
+      - "which ffmpeg"
+      - "ffmpeg -version"
+      - "ffmpeg -encoders | grep libx264"
+    root_causes:
+      - "FFmpeg not installed"
+      - "FFmpeg not in PATH"
+      - "Missing codecs"
+    fix_pattern: |
+      # Ubuntu/Debian
+      sudo apt install ffmpeg libavcodec-extra
+      # macOS
+      brew install ffmpeg
+    prevention:
+      - "Doctor script checks FFmpeg"
+    playbook_ref: ".ai/DEBUGGING.md#issue-8-ffmpeg-not-found-or-fails"
+
+  env.disk_full:
+    symptoms:
+      - "No space left on device"
+      - "Build hangs"
+      - "Partial files created"
+    keywords: [disk, space, full, storage, timeout, hang]
+    severity: critical
+    agent: quality-control
+    checks:
+      - "df -h"
+      - "du -sh sessions/*"
+    root_causes:
+      - "Disk full from large audio/video files"
+      - "Old sessions not cleaned up"
+    fix_pattern: |
+      1. Check space: df -h
+      2. Find large dirs: du -sh sessions/* | sort -h
+      3. Clean old sessions: python3 scripts/core/cleanup_session.py sessions/{old}/
+    prevention:
+      - "Regular cleanup after YouTube upload"
+      - "Doctor script warns on low space"
+    playbook_ref: ".ai/DEBUGGING.md#issue-9-session-build-hangs-or-times-out"
+
+  # =============================================================================
+  # VIDEO ERRORS
+  # =============================================================================
+
+  video.av_sync:
+    symptoms:
+      - "Voice doesn't match video timing"
+      - "VTT subtitles offset"
+      - "Audio ends before/after video"
+    keywords: [sync, timing, offset, vtt, subtitles, duration]
+    severity: medium
+    agent: video-producer
+    checks:
+      - "ffprobe -v error -show_entries format=duration sessions/{session}/output/{session}_MASTER.mp3"
+      - "ffprobe -v error -show_entries format=duration sessions/{session}/output/youtube_package/final_video.mp4"
+    root_causes:
+      - "Audio and video durations don't match"
+      - "VTT generated from wrong audio"
+    fix_pattern: |
+      1. Compare durations (should be within 0.5s)
+      2. If audio shorter: pad or trim video
+      3. If video shorter: extend or trim audio
+      4. Regenerate VTT from correct audio
+    prevention:
+      - "Validate durations match before packaging"
+    playbook_ref: ".ai/DEBUGGING.md#issue-10-videoaudio-sync-issues"
+
+  video.encoding_failed:
+    symptoms:
+      - "FFmpeg encoding error"
+      - "Invalid codec"
+      - "Video file corrupted"
+    keywords: [encoding, codec, h264, aac, corrupt, video]
+    severity: high
+    agent: video-producer
+    checks:
+      - "ffprobe -v error sessions/{session}/output/youtube_package/final_video.mp4"
+    root_causes:
+      - "Missing codec libraries"
+      - "Invalid input files"
+      - "Insufficient resources"
+    fix_pattern: |
+      1. Verify codecs available: ffmpeg -encoders | grep -E "libx264|aac"
+      2. Check input files are valid
+      3. Re-run video assembly
+    prevention:
+      - "Validate all inputs before assembly"
+
+  # =============================================================================
+  # MANIFEST/SESSION ERRORS
+  # =============================================================================
+
+  manifest.missing:
+    symptoms:
+      - "Session has no manifest.yaml"
+      - "KeyError on session config"
+    keywords: [manifest, yaml, missing, config, session]
+    severity: high
+    agent: manifest-architect
+    checks:
+      - "ls -la sessions/{session}/manifest.yaml"
+    root_causes:
+      - "Session not properly initialized"
+      - "Manifest deleted or moved"
+    fix_pattern: |
+      1. Create manifest from template or generate:
+         /generate-manifest {session}
+    prevention:
+      - "Always use /new-session to create sessions"
+
+  manifest.invalid:
+    symptoms:
+      - "YAML parsing error"
+      - "Schema validation failed"
+      - "Missing required fields"
+    keywords: [manifest, yaml, schema, validation, invalid]
+    severity: medium
+    agent: manifest-architect
+    checks:
+      - "python3 scripts/utilities/validate_manifest.py sessions/{session}/manifest.yaml"
+    root_causes:
+      - "YAML syntax errors"
+      - "Missing required fields"
+      - "Invalid field values"
+    fix_pattern: |
+      1. Run validation to see errors
+      2. Fix YAML syntax
+      3. Add missing required fields
+    prevention:
+      - "Validate after any manifest changes"
+
+  # =============================================================================
+  # DEPLOYMENT ERRORS
+  # =============================================================================
+
+  deploy.upload_failed:
+    symptoms:
+      - "Upload to website failed"
+      - "API error on deploy"
+      - "Missing files for upload"
+    keywords: [deploy, upload, website, api, vercel, blob]
+    severity: medium
+    agent: video-producer
+    checks:
+      - "ls -la sessions/{session}/output/youtube_package/"
+      - "echo $SALARSU_API_TOKEN"
+    root_causes:
+      - "Missing required files (audio, thumbnail)"
+      - "API token not set"
+      - "Network issues"
+    fix_pattern: |
+      1. Verify all required files exist
+      2. Check environment variables set
+      3. Run dry-run first: --dry-run flag
+    prevention:
+      - "Validate before upload"
+    memory_refs:
+      - "website_upload_deployment"
+
+# =============================================================================
+# SEVERITY DEFINITIONS
+# =============================================================================
+#
+# critical: Blocks all work, must fix immediately
+#   Examples: FFmpeg not installed, disk full, auth failed
+#
+# high: Major functionality broken
+#   Examples: Silent audio, validation fails, encoding fails
+#
+# medium: Noticeable issues but workarounds exist
+#   Examples: Robotic voice, sync issues, suboptimal quality
+#
+# low: Minor issues, cosmetic or edge cases
+#   Examples: Break too long, minor validation warnings
