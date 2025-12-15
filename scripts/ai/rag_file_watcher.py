@@ -23,7 +23,7 @@ import logging
 import signal
 import argparse
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Set, Optional
 from threading import Timer
 
@@ -54,10 +54,15 @@ class RAGFileWatcher(FileSystemEventHandler):
     - Debouncing: Waits for changes to settle before re-indexing
     - Filtering: Only watches .md, .yaml, .json files
     - Batching: Combines rapid changes into single re-index
+    - Retry limits: Stops after consecutive failures to prevent infinite loops
+    - Backoff: Exponential backoff between retries
     """
 
     DEBOUNCE_SECONDS = 5.0  # Wait 5 seconds after last change
     WATCHED_EXTENSIONS = {'.md', '.yaml', '.yml', '.json'}
+    MAX_CONSECUTIVE_FAILURES = 3  # Stop after 3 consecutive failures
+    MIN_RETRY_DELAY_SECONDS = 60  # Wait at least 1 min before retry after failure
+    MAX_RETRY_DELAY_SECONDS = 3600  # Max 1 hour backoff
 
     def __init__(self, test_mode: bool = False):
         super().__init__()
@@ -65,6 +70,9 @@ class RAGFileWatcher(FileSystemEventHandler):
         self.pending_changes: Set[str] = set()
         self.debounce_timer: Optional[Timer] = None
         self.last_index_time: Optional[datetime] = None
+        self.consecutive_failures = 0
+        self.last_failure_time: Optional[datetime] = None
+        self.current_backoff_seconds = self.MIN_RETRY_DELAY_SECONDS
         self._syncer = None
 
     @property
@@ -85,6 +93,15 @@ class RAGFileWatcher(FileSystemEventHandler):
 
         # Skip __pycache__ and similar
         if '__pycache__' in path or '.pyc' in path:
+            return False
+
+        # CRITICAL: Skip vector DB directory to prevent feedback loops
+        # The watcher modifying the DB triggers more events = infinite loop
+        if 'vector_db' in path or 'embeddings_cache' in path:
+            return False
+
+        # Skip other generated/temporary directories
+        if any(exclude in path for exclude in ['__pycache__', '.pytest_cache', 'node_modules']):
             return False
 
         # Only watch specific extensions
@@ -109,9 +126,31 @@ class RAGFileWatcher(FileSystemEventHandler):
         logger.debug(f"Re-index scheduled in {self.DEBOUNCE_SECONDS}s")
 
     def _execute_reindex(self):
-        """Execute the re-indexing operation."""
+        """Execute the re-indexing operation with retry limits and backoff."""
         if not self.pending_changes:
             return
+
+        # Check if we're in backoff period after failures
+        if self.consecutive_failures >= self.MAX_CONSECUTIVE_FAILURES:
+            logger.error(
+                f"Skipping re-index: {self.MAX_CONSECUTIVE_FAILURES} consecutive failures. "
+                f"Manual intervention required. Restart watcher after fixing issues."
+            )
+            return
+
+        # Check if we need to wait before retrying after a recent failure
+        if self.last_failure_time:
+            time_since_failure = (datetime.now() - self.last_failure_time).total_seconds()
+            if time_since_failure < self.current_backoff_seconds:
+                wait_time = self.current_backoff_seconds - time_since_failure
+                logger.warning(
+                    f"Backing off: waiting {wait_time:.0f}s before retry "
+                    f"(attempt {self.consecutive_failures + 1}/{self.MAX_CONSECUTIVE_FAILURES})"
+                )
+                # Re-schedule after backoff period
+                self.debounce_timer = Timer(wait_time, self._execute_reindex)
+                self.debounce_timer.start()
+                return
 
         changes = list(self.pending_changes)
         self.pending_changes.clear()
@@ -136,11 +175,61 @@ class RAGFileWatcher(FileSystemEventHandler):
                     f"in {result.get('duration_seconds', 0):.1f}s"
                 )
                 self.last_index_time = datetime.now()
+                # Reset failure tracking on success
+                self.consecutive_failures = 0
+                self.last_failure_time = None
+                self.current_backoff_seconds = self.MIN_RETRY_DELAY_SECONDS
+            elif result.get("status") == "skipped":
+                # No changes detected - this is fine, not a failure
+                logger.info(f"Re-index skipped: {result.get('reason', 'no changes')}")
+                self.consecutive_failures = 0
+                self.last_failure_time = None
             else:
-                logger.warning(f"Re-index result: {result}")
+                # Failed or unexpected status
+                error_msg = result.get("error", "Unknown error")
+                self._handle_reindex_failure(error_msg, changes)
 
         except Exception as e:
-            logger.error(f"Re-index failed: {e}")
+            self._handle_reindex_failure(str(e), changes)
+
+    def _handle_reindex_failure(self, error: str, changes: list):
+        """Handle re-indexing failure with backoff logic."""
+        self.consecutive_failures += 1
+        self.last_failure_time = datetime.now()
+        
+        # Exponential backoff: double the delay each time, up to max
+        self.current_backoff_seconds = min(
+            self.current_backoff_seconds * 2,
+            self.MAX_RETRY_DELAY_SECONDS
+        )
+
+        # Detect specific error types and provide helpful messages
+        if "already accessed by another instance" in error.lower():
+            logger.error(
+                f"Re-index failed: Vector DB is locked by another process. "
+                f"Stop other Qdrant clients or use Qdrant server for concurrent access."
+            )
+        elif "rate limit" in error.lower():
+            logger.error(
+                f"Re-index failed: Notion API rate limit hit. "
+                f"Will retry with backoff after {self.current_backoff_seconds:.0f}s."
+            )
+        else:
+            logger.error(f"Re-index failed: {error}")
+
+        logger.warning(
+            f"Failure {self.consecutive_failures}/{self.MAX_CONSECUTIVE_FAILURES}. "
+            f"Next retry in {self.current_backoff_seconds:.0f}s."
+        )
+
+        # Re-add changes to pending so they can be retried
+        self.pending_changes.update(changes)
+
+        if self.consecutive_failures >= self.MAX_CONSECUTIVE_FAILURES:
+            logger.error(
+                "MAX FAILURES REACHED. Watcher will no longer process changes. "
+                "Fix the underlying issue and restart the watcher."
+            )
 
     def on_created(self, event: FileSystemEvent):
         """Handle file creation."""

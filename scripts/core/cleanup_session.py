@@ -44,7 +44,7 @@ def get_dir_size(path: Path) -> int:
     return sum(f.stat().st_size for f in path.rglob("*") if f.is_file())
 
 
-def cleanup_session(session_path: Path, dry_run: bool = False, keep_scripts: bool = False) -> dict:
+def cleanup_session(session_path: Path, dry_run: bool = False, keep_scripts: bool = False, aggressive: bool = False) -> dict:
     """
     Aggressively clean up a session, keeping only youtube_package and manifest.
 
@@ -52,6 +52,7 @@ def cleanup_session(session_path: Path, dry_run: bool = False, keep_scripts: boo
         session_path: Path to session directory
         dry_run: If True, show what would be removed without removing
         keep_scripts: If True, also preserve SSML scripts in working_files
+        aggressive: If True, remove EVERYTHING including youtube_package and manifest (nightly mode)
 
     Returns:
         dict with cleanup statistics
@@ -63,7 +64,8 @@ def cleanup_session(session_path: Path, dry_run: bool = False, keep_scripts: boo
     output_path = session_path / "output"
     youtube_pkg = output_path / "youtube_package"
 
-    if not youtube_pkg.exists():
+    # In aggressive mode, we don't require youtube_package
+    if not aggressive and not youtube_pkg.exists():
         print(f"WARNING: No youtube_package found in {session_path}")
         print("This session may not be ready for cleanup.")
         return {"error": "No youtube_package found"}
@@ -76,24 +78,41 @@ def cleanup_session(session_path: Path, dry_run: bool = False, keep_scripts: boo
     bytes_to_free = 0
     preserved_items = []
 
-    # Always preserve
-    preserved_items.append(("output/youtube_package/", get_dir_size(youtube_pkg)))
-    if (session_path / "manifest.yaml").exists():
-        preserved_items.append(("manifest.yaml", (session_path / "manifest.yaml").stat().st_size))
+    # In aggressive mode, remove EVERYTHING - no preserves
+    if aggressive:
+        # Remove entire output directory
+        if output_path.exists():
+            size = get_dir_size(output_path)
+            items_to_remove.append((output_path, size, "dir"))
+            bytes_to_free += size
 
-    # Optionally preserve scripts
-    if keep_scripts:
+        # Remove manifest.yaml
+        manifest_file = session_path / "manifest.yaml"
+        if manifest_file.exists():
+            size = manifest_file.stat().st_size
+            items_to_remove.append((manifest_file, size, "file"))
+            bytes_to_free += size
+
+        # Remove working_files entirely
         working_path = session_path / "working_files"
         if working_path.exists():
-            for ssml_file in working_path.glob("*.ssml"):
-                preserved_items.append((f"working_files/{ssml_file.name}", ssml_file.stat().st_size))
+            size = get_dir_size(working_path)
+            items_to_remove.append((working_path, size, "dir"))
+            bytes_to_free += size
 
-    # Remove everything in output/ EXCEPT youtube_package
-    if output_path.exists():
-        for item in output_path.iterdir():
-            if item.name == "youtube_package":
-                continue  # Preserve
+        # Remove images entirely
+        images_path = session_path / "images"
+        if images_path.exists():
+            size = get_dir_size(images_path)
+            items_to_remove.append((images_path, size, "dir"))
+            bytes_to_free += size
 
+        # Remove any other files/dirs in session root
+        for item in session_path.iterdir():
+            if item in [p for p, _, _ in items_to_remove]:
+                continue  # Already added
+            if item.name.startswith("."):
+                continue  # Skip hidden files
             if item.is_file():
                 size = item.stat().st_size
                 items_to_remove.append((item, size, "file"))
@@ -102,15 +121,26 @@ def cleanup_session(session_path: Path, dry_run: bool = False, keep_scripts: boo
                 size = get_dir_size(item)
                 items_to_remove.append((item, size, "dir"))
                 bytes_to_free += size
+    else:
+        # Standard mode: preserve youtube_package and manifest
+        if youtube_pkg.exists():
+            preserved_items.append(("output/youtube_package/", get_dir_size(youtube_pkg)))
+        if (session_path / "manifest.yaml").exists():
+            preserved_items.append(("manifest.yaml", (session_path / "manifest.yaml").stat().st_size))
 
-    # Remove working_files/ (except scripts if --keep-scripts)
-    working_path = session_path / "working_files"
-    if working_path.exists():
+        # Optionally preserve scripts
         if keep_scripts:
-            # Remove everything except *.ssml
-            for item in working_path.iterdir():
-                if item.is_file() and item.suffix == ".ssml":
+            working_path = session_path / "working_files"
+            if working_path.exists():
+                for ssml_file in working_path.glob("*.ssml"):
+                    preserved_items.append((f"working_files/{ssml_file.name}", ssml_file.stat().st_size))
+
+        # Remove everything in output/ EXCEPT youtube_package
+        if output_path.exists():
+            for item in output_path.iterdir():
+                if item.name == "youtube_package":
                     continue  # Preserve
+
                 if item.is_file():
                     size = item.stat().st_size
                     items_to_remove.append((item, size, "file"))
@@ -119,43 +149,61 @@ def cleanup_session(session_path: Path, dry_run: bool = False, keep_scripts: boo
                     size = get_dir_size(item)
                     items_to_remove.append((item, size, "dir"))
                     bytes_to_free += size
-        else:
-            # Remove entire directory
-            size = get_dir_size(working_path)
-            items_to_remove.append((working_path, size, "dir"))
-            bytes_to_free += size
 
-    # Remove images/
-    images_path = session_path / "images"
-    if images_path.exists():
-        size = get_dir_size(images_path)
-        items_to_remove.append((images_path, size, "dir"))
-        bytes_to_free += size
-
-    # Remove any stray large files in session root
-    for item in session_path.iterdir():
-        if item.name in ("manifest.yaml", "output", "working_files", "images"):
-            continue  # Already handled
-        if item.name.startswith("."):
-            continue  # Skip hidden files
-
-        if item.is_file():
-            # Remove large files (> 1MB), keep small ones like notes
-            if item.stat().st_size > 1_000_000:
-                size = item.stat().st_size
-                items_to_remove.append((item, size, "file"))
-                bytes_to_free += size
+        # Remove working_files/ (except scripts if --keep-scripts)
+        working_path = session_path / "working_files"
+        if working_path.exists():
+            if keep_scripts:
+                # Remove everything except *.ssml
+                for item in working_path.iterdir():
+                    if item.is_file() and item.suffix == ".ssml":
+                        continue  # Preserve
+                    if item.is_file():
+                        size = item.stat().st_size
+                        items_to_remove.append((item, size, "file"))
+                        bytes_to_free += size
+                    elif item.is_dir():
+                        size = get_dir_size(item)
+                        items_to_remove.append((item, size, "dir"))
+                        bytes_to_free += size
             else:
-                preserved_items.append((item.name, item.stat().st_size))
-        elif item.is_dir():
-            # Remove any other directories
-            size = get_dir_size(item)
-            items_to_remove.append((item, size, "dir"))
+                # Remove entire directory
+                size = get_dir_size(working_path)
+                items_to_remove.append((working_path, size, "dir"))
+                bytes_to_free += size
+
+        # Remove images/
+        images_path = session_path / "images"
+        if images_path.exists():
+            size = get_dir_size(images_path)
+            items_to_remove.append((images_path, size, "dir"))
             bytes_to_free += size
+
+        # Remove any stray large files in session root
+        for item in session_path.iterdir():
+            if item.name in ("manifest.yaml", "output", "working_files", "images"):
+                continue  # Already handled
+            if item.name.startswith("."):
+                continue  # Skip hidden files
+
+            if item.is_file():
+                # Remove large files (> 1MB), keep small ones like notes
+                if item.stat().st_size > 1_000_000:
+                    size = item.stat().st_size
+                    items_to_remove.append((item, size, "file"))
+                    bytes_to_free += size
+                else:
+                    preserved_items.append((item.name, item.stat().st_size))
+            elif item.is_dir():
+                # Remove any other directories
+                size = get_dir_size(item)
+                items_to_remove.append((item, size, "dir"))
+                bytes_to_free += size
 
     # Report
     print("=" * 60)
-    print("SESSION CLEANUP - AGGRESSIVE MODE")
+    mode_label = "NIGHTLY/AGGRESSIVE" if aggressive else "STANDARD"
+    print(f"SESSION CLEANUP - {mode_label} MODE")
     print("=" * 60)
     print(f"\nSession: {session_path.name}")
     print(f"Mode: {'DRY RUN' if dry_run else 'LIVE'}")
@@ -267,11 +315,16 @@ def main():
         action="store_true",
         help="Also preserve SSML scripts in working_files/"
     )
+    parser.add_argument(
+        "--aggressive",
+        action="store_true",
+        help="Remove EVERYTHING including youtube_package and manifest (for nightly builds)"
+    )
 
     args = parser.parse_args()
 
     session_path = Path(args.session).resolve()
-    result = cleanup_session(session_path, dry_run=args.dry_run, keep_scripts=args.keep_scripts)
+    result = cleanup_session(session_path, dry_run=args.dry_run, keep_scripts=args.keep_scripts, aggressive=args.aggressive)
 
     if "error" in result:
         sys.exit(1)

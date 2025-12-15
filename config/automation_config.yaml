@@ -13,8 +13,9 @@ generation:
   # - premium:  Maximum quality, ~$1.51 per session
   mode: standard
 
-  # Image generation method: sd | midjourney | stock
-  # - sd:        Local Stable Diffusion (slow but fully automated)
+  # Image generation method: sd | midjourney | stock | pil
+  # - sd:        Local Stable Diffusion (slow but fully automated, best quality)
+  # - pil:       Fast procedural PIL generation (uses generate_video_images.py)
   # - midjourney: Generate prompts only (requires manual image creation)
   # - stock:     Search guides for Unsplash/Pexels (requires manual download)
   image_method: pil
@@ -89,11 +90,12 @@ logging:
 # CRON SCHEDULING
 # ===============
 # Automation enabled as of 2025-12-09
+# Fixed 2025-12-15: Changed to local time (CRON_TZ was being ignored)
 cron:
   enabled: true
 
-  # Daily generation: 12am MST = 7am UTC
-  nightly_generation: "0 7 * * *"
+  # Daily generation: 12am MST (midnight local time)
+  nightly_generation: "0 0 * * *"
 
   # YouTube uploads disabled
   daily_upload: null

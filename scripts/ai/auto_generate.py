@@ -558,6 +558,8 @@ class AutoGenerator:
         image_method: str = 'sd',
         image_performance: str = 'speed',
         stock_platform: str = 'unsplash',
+        nightly: bool = False,
+        skip_youtube: bool = False,
     ):
         self.topic = topic
         self.mode = mode
@@ -572,6 +574,8 @@ class AutoGenerator:
         self.image_method = image_method
         self.image_performance = image_performance
         self.stock_platform = stock_platform
+        self.nightly = nightly
+        self.skip_youtube = skip_youtube or nightly  # Nightly mode implies skip_youtube
 
         # Generate session name from topic if not provided
         if session_name:
@@ -631,11 +635,32 @@ class AutoGenerator:
         self.log(f"Session: {self.session_name}")
 
         if self.dry_run:
-            self.log("DRY RUN - No files will be created", "warning")
+            self.log("DRY RUN - Plan will be created, no generation", "warning")
 
         try:
+            # Stage 0: Create execution plan (ALWAYS runs first)
+            plan = self._stage_create_plan()
+
+            if plan.has_blockers():
+                self.log(f"Planning found {len(plan.blockers)} blocker(s)", "error")
+                for blocker in plan.blockers:
+                    self.log(f"  BLOCKER: {blocker}", "error")
+                raise RuntimeError(f"Planning found blockers: {plan.blockers}")
+
+            # In dry-run mode, stop after planning
+            if self.dry_run:
+                self.log("DRY RUN complete - Plan created, stopping", "warning")
+                self.end_time = datetime.now()
+                return self._generate_plan_only_report(plan)
+
             # Stage 1: Create session structure
             self._stage_create_session()
+
+            # Save the execution plan now that session directory exists
+            if hasattr(self, 'generation_plan') and self.generation_plan:
+                plan_path = self.session_path / "working_files" / "generation_plan.yaml"
+                self.generation_plan.save(plan_path)
+                self.log(f"Plan saved to: {plan_path}", "info")
 
             # Stage 2: Generate manifest
             manifest = self._stage_generate_manifest()
@@ -676,8 +701,11 @@ class AutoGenerator:
                     # Stage 11: Assemble video
                     self._stage_assemble_video()
 
-                    # Stage 12: Package for YouTube
-                    self._stage_package_youtube()
+                    # Stage 12: Package for YouTube (skip in nightly mode)
+                    if not self.skip_youtube:
+                        self._stage_package_youtube()
+                    else:
+                        self.log("Skipping YouTube package (nightly mode)", "info")
 
                     # Stage 12.5: Generate thumbnail
                     self._stage_generate_thumbnail()
@@ -705,6 +733,113 @@ class AutoGenerator:
         self._save_report(report)
 
         return report
+
+    def _stage_create_plan(self) -> 'GenerationPlan':
+        """Stage 0: Create execution plan before any generation.
+
+        This is the first stage in the pipeline. It:
+        1. Runs pre-flight checks (Claude CLI, Google TTS, FFmpeg, etc.)
+        2. Validates resources (disk space, SD model, API tokens)
+        3. Consults the knowledge base for relevant lessons
+        4. Estimates costs
+        5. Assesses topic feasibility
+        6. Builds execution roadmap
+        7. Identifies risks and fallbacks
+
+        Returns:
+            GenerationPlan with all checks, estimates, and roadmap
+        """
+        self.log("Creating execution plan", "stage")
+
+        from scripts.ai.generation_planner import GenerationPlanner, GenerationPlan
+
+        planner = GenerationPlanner(
+            project_root=self.project_root,
+            mode=self.mode,
+        )
+
+        plan = planner.create_plan(
+            topic=self.topic,
+            duration_minutes=self.duration_minutes,
+            mode=self.mode,
+            image_method=self.image_method,
+            audio_only=self.audio_only,
+            session_name=self.session_name,
+        )
+
+        # Store plan for later use
+        self.generation_plan = plan
+
+        # Log plan summary
+        self.log(f"Pre-flight: {sum(1 for c in plan.preflight_checks if c.passed)}/{len(plan.preflight_checks)} checks passed", "info")
+
+        if plan.cost_estimate:
+            self.log(f"Cost estimate: ${plan.cost_estimate.total_usd:.2f} ({plan.cost_estimate.mode} mode)", "info")
+
+        self.log(f"Stages planned: {len(plan.stages)}", "info")
+        self.log(f"Feasibility score: {plan.feasibility_score:.0%}", "info")
+
+        if plan.risks:
+            self.log(f"Risks identified: {len(plan.risks)}", "info")
+
+        # Log warnings
+        for warning in plan.warnings:
+            self.log(f"Warning: {warning}", "warning")
+
+        # Log knowledge context
+        if plan.lessons_applied:
+            self.log(f"Lessons applied: {len(plan.lessons_applied)}", "info")
+
+        self.stages_completed.append("create_plan")
+        self.log("Execution plan created", "success")
+
+        return plan
+
+    def _generate_plan_only_report(self, plan: 'GenerationPlan') -> Dict:
+        """Generate report for dry-run mode (plan only, no execution).
+
+        Args:
+            plan: The generated execution plan
+
+        Returns:
+            Report dict with plan details
+        """
+        # Save plan to working_files if session directory exists
+        plan_path = self.session_path / "working_files" / "generation_plan.yaml"
+        if not self.session_path.exists():
+            # Create minimal structure for plan storage
+            (self.session_path / "working_files").mkdir(parents=True, exist_ok=True)
+
+        plan.save(plan_path)
+        self.log(f"Plan saved to: {plan_path}", "success")
+
+        duration = (self.end_time - self.start_time).total_seconds() if self.end_time else 0
+
+        return {
+            "session_name": self.session_name,
+            "topic": self.topic,
+            "mode": self.mode,
+            "dry_run": True,
+            "execution": {
+                "started": self.start_time.isoformat() if self.start_time else None,
+                "ended": self.end_time.isoformat() if self.end_time else None,
+                "duration_seconds": int(duration),
+            },
+            "plan": {
+                "path": str(plan_path),
+                "ready_to_execute": not plan.has_blockers(),
+                "blockers": plan.blockers,
+                "warnings": plan.warnings,
+                "cost_estimate_usd": plan.cost_estimate.total_usd if plan.cost_estimate else 0,
+                "stages_count": len(plan.stages),
+                "estimated_duration_minutes": plan._estimate_total_duration(),
+                "feasibility_score": plan.feasibility_score,
+            },
+            "stages": {
+                "completed": self.stages_completed,
+                "failed": self.stages_failed,
+            },
+        }
 
     def _stage_create_session(self):
         """Create session directory structure."""
@@ -2110,14 +2245,22 @@ Topic: {self.topic}
 
     def _stage_cleanup(self):
         """Cleanup intermediate files to save disk space."""
-        self.log("Cleaning up intermediate files", "stage")
+        if self.nightly:
+            self.log("Cleaning up ALL files (nightly/aggressive mode)", "stage")
+        else:
+            self.log("Cleaning up intermediate files", "stage")
 
         try:
+            cmd = [
+                self.python_cmd, "scripts/core/cleanup_session.py",
+                str(self.session_path) + "/"
+            ]
+            # In nightly mode, use aggressive cleanup to remove everything
+            if self.nightly:
+                cmd.append("--aggressive")
+
             result = subprocess.run(
-                [
-                    self.python_cmd, "scripts/core/cleanup_session.py",
-                    str(self.session_path) + "/"
-                ],
+                cmd,
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
@@ -2390,9 +2533,30 @@ Topic: {self.topic}
             for stage in report['stages']['failed']:
                 print(f"  ✗ {stage}")
 
-        print(f"\nEstimated Cost: ${report['costs']['total_usd']:.2f}")
+        # Handle both full report and plan-only report formats
+        if 'costs' in report:
+            print(f"\nEstimated Cost: ${report['costs']['total_usd']:.2f}")
+        elif 'plan' in report:
+            # Plan-only report (dry-run mode)
+            plan = report['plan']
+            print(f"\nPlan Summary:")
+            print(f"  Cost Estimate: ${plan.get('cost_estimate_usd', 0):.2f}")
+            print(f"  Stages Planned: {plan.get('stages_count', 0)}")
+            print(f"  Est. Duration: {plan.get('estimated_duration_minutes', 0)} min")
+            print(f"  Feasibility: {plan.get('feasibility_score', 0):.0%}")
+            if plan.get('blockers'):
+                print(f"\n  Blockers:")
+                for blocker in plan['blockers']:
+                    print(f"    ✗ {blocker}")
+            if plan.get('warnings'):
+                print(f"\n  Warnings:")
+                for warning in plan['warnings']:
+                    print(f"    ⚠ {warning}")
+            print(f"\n  Plan saved to: {plan.get('path', 'N/A')}")
+            return  # Skip rest of summary for plan-only mode
 
-        print(f"\nSession Path: {report['outputs']['session_path']}")
+        if 'outputs' in report:
+            print(f"\nSession Path: {report['outputs']['session_path']}")
 
         if not report['dry_run']:
             print("\nNext Steps:")
@@ -2464,6 +2628,10 @@ Note: Requires Claude Code extension for VS Code (uses your Claude subscription)
     parser.add_argument('--stock-platform', default='unsplash',
                        choices=['unsplash', 'pexels', 'pixabay'],
                        help='Stock image platform (default: unsplash)')
+    parser.add_argument('--nightly', action='store_true',
+                       help='Nightly mode: skip YouTube package, aggressive cleanup (remove everything)')
+    parser.add_argument('--skip-youtube', action='store_true',
+                       help='Skip YouTube package stage (video/thumbnail still generated)')
 
     args = parser.parse_args()
 
@@ -2488,6 +2656,8 @@ Note: Requires Claude Code extension for VS Code (uses your Claude subscription)
         image_method=args.image_method,
         image_performance=args.image_performance,
         stock_platform=args.stock_platform,
+        nightly=args.nightly,
+        skip_youtube=args.skip_youtube,
     )
 
     report = generator.run()

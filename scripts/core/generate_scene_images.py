@@ -1326,9 +1326,81 @@ Examples:
                 sys.exit(1)
 
     elif args.method == "pil":
-        print("PIL procedural generation not yet implemented in unified script")
-        print("Use scripts/core/generate_video_images.py for procedural backgrounds")
-        sys.exit(1)
+        # PIL procedural generation - fast fallback using generate_video_images.py
+        print("Using PIL procedural image generation...")
+
+        # Add project root to path for imports
+        project_root = Path(__file__).resolve().parent.parent.parent
+        if str(project_root) not in sys.path:
+            sys.path.insert(0, str(project_root))
+
+        # Import the video images generator
+        try:
+            from scripts.core.generate_video_images import (
+                generate_scene_background,
+                IMAGE_SPECS,
+                ImageType,
+                PALETTES,
+            )
+        except ImportError as e:
+            print(f"ERROR: Could not import generate_video_images module: {e}")
+            print("Ensure scripts/core/generate_video_images.py exists")
+            sys.exit(1)
+
+        # Create output directory
+        output_dir = session_dir / "images" / "uploaded"
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Load manifest for context
+        manifest = None
+        manifest_path = session_dir / "manifest.yaml"
+        if manifest_path.exists():
+            with open(manifest_path) as f:
+                manifest = yaml.safe_load(f)
+
+        # Detect palette from session name or manifest
+        palette_name = "sacred_light"  # Default
+        session_name = session_dir.name.lower()
+        if "cosmic" in session_name or "space" in session_name or "star" in session_name:
+            palette_name = "cosmic_journey"
+        elif "garden" in session_name or "eden" in session_name or "nature" in session_name:
+            palette_name = "garden_eden"
+        elif "temple" in session_name or "ancient" in session_name:
+            palette_name = "ancient_temple"
+        elif "neural" in session_name or "mind" in session_name:
+            palette_name = "neural_network"
+        elif "fire" in session_name or "forge" in session_name or "volcanic" in session_name:
+            palette_name = "volcanic_forge"
+        elif "elven" in session_name or "forest" in session_name or "woodland" in session_name:
+            palette_name = "garden_eden"
+        palette = PALETTES.get(palette_name, PALETTES["sacred_light"])
+        print(f"Using palette: {palette_name}")
+
+        # Generate scene backgrounds (5 images for typical video)
+        spec = IMAGE_SPECS[ImageType.SCENE_BACKGROUND]
+        generated_count = 0
+
+        for i in range(1, 6):
+            try:
+                output_path = generate_scene_background(
+                    session_dir, palette, spec, i, None
+                )
+                if output_path and output_path.exists():
+                    # Copy to images/uploaded/ for video assembly
+                    dest_path = output_dir / f"scene_{i:02d}.png"
+                    import shutil
+                    shutil.copy(output_path, dest_path)
+                    generated_count += 1
+                    print(f"  Generated: {dest_path.name}")
+            except Exception as e:
+                print(f"  Warning: Scene {i} failed: {e}")
+
+        if generated_count > 0:
+            print(f"\nGenerated {generated_count} scene images in {output_dir}")
+            sys.exit(0)
+        else:
+            print("\nNo images generated")
+            sys.exit(1)
 
 
 if __name__ == "__main__":

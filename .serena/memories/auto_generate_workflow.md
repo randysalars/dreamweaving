@@ -4,6 +4,78 @@
 
 The `/auto-generate` command (or `python3 scripts/ai/auto_generate.py`) produces complete YouTube-ready sessions from just a topic.
 
+## NEW: Planning Stage (December 2025)
+
+**Every session now starts with a planning stage (Stage 0)** that runs before any generation:
+
+### What the Planning Stage Does
+
+1. **Pre-flight checks**: Verifies Claude CLI, Google TTS, FFmpeg, disk space
+2. **Resource validation**: Checks SD model, API tokens, memory
+3. **Knowledge base consultation**: Queries lessons_learned.yaml, best_practices.md
+4. **Cost estimation**: Calculates expected costs by stage
+5. **Feasibility assessment**: Scores topic viability (0-100%)
+6. **Execution roadmap**: Defines all stages with timing estimates
+7. **Risk assessment**: Identifies blockers and mitigation strategies
+
+### Planning Output
+
+Every session now includes `working_files/generation_plan.yaml`:
+
+```yaml
+meta:
+  session_name: journey-to-inner-peace-20251215
+  topic: "Journey to Inner Peace"
+  mode: standard
+  duration_target: 30
+
+preflight:
+  - name: claude_cli
+    passed: true
+    message: "Claude CLI available"
+  # ... more checks
+
+cost_estimate:
+  mode: standard
+  total_usd: 1.06
+  breakdown:
+    manifest_generation: 0.05
+    script_generation: 0.35
+    # ...
+
+summary:
+  blockers: []
+  warnings: ["SD model is CPU-only"]
+  ready_to_execute: true
+  estimated_total_duration_minutes: 45
+```
+
+### Dry-Run Mode
+
+Use `--dry-run` to create a plan without executing:
+
+```bash
+python3 scripts/ai/auto_generate.py --topic "Test Topic" --dry-run
+```
+
+This:
+- Creates the execution plan
+- Saves it to `working_files/generation_plan.yaml`
+- Reports blockers, warnings, and cost estimate
+- Stops without generating any content
+
+### Blockers
+
+If planning finds blockers (missing Claude CLI, TTS creds, etc.), the pipeline **aborts before any generation starts**. This prevents wasted API calls and partial sessions.
+
+### Nightly Builder Integration
+
+The nightly builder (`scripts/automation/nightly_builder.py`) now:
+1. Sets status to 'planning' before each session
+2. Runs `_create_session_plan()` to validate resources
+3. Only spawns the generation subprocess if no blockers found
+4. Logs cost estimates and feasibility scores
+
 ## Key Fixes Applied (December 2025)
 
 ### 1. Topic/Title Fix

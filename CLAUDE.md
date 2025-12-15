@@ -58,6 +58,44 @@ The system uses 8 specialized AI agents that work together:
 
 ## Automated Video Generation (NEW)
 
+### Planning Stage (Stage 0)
+
+**Every auto-generate and nightly build now starts with a planning stage** that creates a comprehensive execution plan before any generation begins.
+
+#### What the Planning Stage Does
+
+1. **Pre-flight checks**: Verifies Claude CLI, Google TTS, FFmpeg, disk space
+2. **Resource validation**: Checks SD model availability, API tokens
+3. **Knowledge base consultation**: Queries `lessons_learned.yaml`, `best_practices.md`
+4. **Cost estimation**: Calculates expected costs by stage and mode
+5. **Feasibility assessment**: Scores topic viability (0-100%)
+6. **Execution roadmap**: Defines all stages with timing estimates
+7. **Risk assessment**: Identifies potential blockers and mitigation strategies
+
+#### Plan Output
+
+Every session includes `working_files/generation_plan.yaml` with:
+- Pre-flight check results
+- Resource warnings
+- Cost breakdown by stage
+- Feasibility score and notes
+- Complete stage roadmap
+- Risk assessment and fallbacks
+
+#### Dry-Run Mode
+
+Use `--dry-run` to create a plan without executing:
+
+```bash
+python3 scripts/ai/auto_generate.py --topic "Test Topic" --dry-run
+```
+
+This creates the plan, reports blockers/warnings/costs, and stops without generating content.
+
+#### Blocker Handling
+
+If planning finds blockers (missing Claude CLI, TTS creds, etc.), the pipeline **aborts before any generation starts**. This prevents wasted API calls and partial sessions.
+
 ### Single Command: Topic → YouTube Package
 
 The `/auto-generate` command produces a complete YouTube-ready video from just a topic:

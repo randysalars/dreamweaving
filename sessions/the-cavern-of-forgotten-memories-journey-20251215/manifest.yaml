@@ -1,0 +1,134 @@
+session:
+  name: the-cavern-of-forgotten-memories-journey-20251215
+  topic: "The Cavern of Forgotten Memories Journey: Descend into an underground cave\
+    \ where walls are inscribed with your earliest unremembered experiences. Shadow\
+    \ guides help retrieve hidden memories.Archetypes: The Child, The Shadow, The\
+    \ Forgotten Mentor Sound: Dripping water, low resonance tones, subtle delta-theta\
+    \ entrainment (3\u20136 Hz)"
+  duration: 1800
+  style: grief
+  created: '2025-12-15'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-C
+  description: "The Cavern of Forgotten Memories Journey: Descend Into an Underground\
+    \ Cave Where Walls Are Inscribed with Your Earliest Unremembered Experiences.\
+    \ Shadow Guides Help Retrieve Hidden Memories.archetypes: the Child, the Shadow,\
+    \ the Forgotten Mentor Sound: Dripping Water, Low Resonance Tones, Subtle Delta-theta\
+    \ Entrainment (3\u20136 Hz)"
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: "Welcome and introduction to The Cavern of Forgotten Memories Journey:\
+    \ Descend into an underground cave where walls are inscribed with your earliest\
+    \ unremembered experiences. Shadow guides help retrieve hidden memories.Archetypes:\
+    \ The Child, The Shadow, The Forgotten Mentor Sound: Dripping water, low resonance\
+    \ tones, subtle delta-theta entrainment (3\u20136 Hz)"
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into in the luminous depths of a sacred ocean,
+    where crystalline waters hold healing energy and ancient mysteries
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a sacred chamber where tears become stars'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: releasing with love and finding peace within the memories'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Inner Healer
+  role: primary
+  description: White Flame archetype for regeneration and cellular intelligence
+  symbol: ''
+  qualities: []
+  appearance_section: journey
+- name: The Rose Mother
+  role: secondary
+  description: Archetype of unconditional love, nurturing, and maternal protection
+  symbol: ''
+  qualities: []
+  appearance_section: helm_deep_trance
+- name: The Guardian Father
+  role: support
+  description: Archetype of protective fathering, safety, and supportive strength
+  symbol: ''
+  qualities: []
+  appearance_section: integration
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 528
+    preset: abundance_wealth_resonance
+    sections:
+    - start: 0
+      end: 180
+      offset_hz: 9.7
+    - start: 180
+      end: 450
+      offset_hz: 6.6
+    - start: 450
+      end: 900
+      offset_hz: 3.9
+    - start: 900
+      end: 1260
+      offset_hz: 1.8
+    - start: 1260
+      end: 1530
+      offset_hz: 5.0
+    - start: 1530
+      end: 1800
+      offset_hz: 8.7
+    multi_layer:
+      enabled: true
+      delta_foundation:
+        frequency: 1.5
+        carrier_offset: 60
+        level_db: -6
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: "The Cavern of Forgotten Memories Journey: Descend Into an Underground Cave\
+    \ Where Walls Are Inscribed with Your Earliest Unremembered Experiences. Shadow\
+    \ Guides Help Retrieve Hidden Memories.archetypes: the Child, the Shadow, the\
+    \ Forgotten Mentor Sound: Dripping Water, Low Resonance Tones, Subtle Delta-theta\
+    \ Entrainment (3\u20136 Hz) | Binaural Beats Meditation"
+  subtitle: "432Hz \u2022 Grief"
+  description: 'A transformational journey: releasing with love and finding peace
+    within the memories'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - grief
+  - inner

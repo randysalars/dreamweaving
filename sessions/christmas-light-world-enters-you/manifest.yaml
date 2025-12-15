@@ -1,0 +1,240 @@
+session:
+  name: christmas-light-world-enters-you
+  topic: "The Light That Entered the World Now Enters You - A Christmas Mystical Journey"
+  duration: 1213  # ~20.2 minutes (actual voice duration)
+  style: deep_journey
+  created: "2025-12-15"
+  desired_outcome: spiritual_growth
+  outcome_subcategory: "divine_indwelling"
+  target_transformation: "From spiritual longing → divine light indwelling"
+  success_metrics:
+    - "Tears of joy during the indwelling section"
+    - "Warmth in the heart center"
+    - "Sense of being personally loved by God"
+    - "Feeling of carrying divine light"
+  visualization_level: 3
+  dve_config:
+    modules_enabled: [DVE-01, DVE-02, DVE-03, DVE-04]
+    auto_select_from_level: true
+    theater_variant: temple
+
+voice:
+  provider: google
+  voice_name: en-US-Neural2-H
+  description: "Bright, clear female voice for sacred meditation"
+  rate: 0.88
+  pitch: "0st"
+
+sections:
+  - name: arrival_sacred_safety
+    start: 0
+    end: 145
+    brainwave_target: alpha
+    description: "Trust, nervous-system settling, prayerful consent"
+  - name: world_before_light
+    start: 145
+    end: 340
+    brainwave_target: alpha_to_theta
+    description: "Collective longing, shared ache, primordial darkness"
+  - name: human_story_rescue
+    start: 340
+    end: 510
+    brainwave_target: theta
+    description: "Gentle salvation arc without shame"
+  - name: first_appearance_light
+    start: 510
+    end: 655
+    brainwave_target: theta
+    description: "Revelation that feels safe and personal"
+  - name: promise_fulfilled
+    start: 655
+    end: 755
+    brainwave_target: theta_delta
+    description: "Incarnation made intimate - Emmanuel"
+  - name: light_enters_heart
+    start: 755
+    end: 945
+    brainwave_target: theta_delta
+    description: "HELM - Emotional release, forgiveness, encounter"
+  - name: resting_emmanuel
+    start: 945
+    end: 1070
+    brainwave_target: theta
+    description: "Abiding, communion, wordless prayer"
+  - name: christmas_blessing_sending
+    start: 1070
+    end: 1165
+    brainwave_target: theta_to_alpha
+    description: "Integration and reassurance"
+  - name: post_journey_integration
+    start: 1165
+    end: 1190
+    brainwave_target: alpha
+    description: "Seal the experience inwardly"
+  - name: final_christmas_blessing
+    start: 1190
+    end: 1213
+    brainwave_target: alpha
+    description: "Seal, comfort, and send"
+
+archetypes:
+  - archetype_id: divine_light_healing.radiant_presence
+    name: "The Radiant Light"
+    role: primary
+    encounter_type: first_encounter
+    appearance_section: first_appearance_light
+    tradition: christian
+    description: "The eternal Light of Christ entering the world"
+    symbol: "Golden sphere of living light"
+    qualities:
+      - unconditional love
+      - divine warmth
+      - healing presence
+      - eternal compassion
+  - archetype_id: divine_messengers.angelic_host
+    name: "The Angelic Host"
+    role: secondary
+    encounter_type: first_encounter
+    appearance_section: promise_fulfilled
+    tradition: christian
+    description: "Angels heralding the Incarnation"
+    symbol: "Wings of light tracing sacred patterns"
+    qualities:
+      - holy messengers
+      - divine presence
+      - sacred witness
+  - archetype_id: divine_light_healing.inner_healer
+    name: "The Inner Healer"
+    role: supporting
+    encounter_type: transformation
+    appearance_section: light_enters_heart
+    tradition: christian
+    description: "The healing aspect of divine light touching wounds"
+    qualities:
+      - gentle healing
+      - dissolving shame
+      - restoring wholeness
+
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 200
+    layer_name: "Divine Light Carrier"
+    description: "Spiritual progression for Christmas indwelling experience"
+    character: "Sacred, warm, transcendent"
+    sections:
+      - start: 0
+        end: 145
+        offset_hz: 10.0    # Alpha (arrival)
+      - start: 145
+        end: 340
+        offset_hz: 8.0     # Alpha-theta transition
+      - start: 340
+        end: 510
+        offset_hz: 6.0     # Theta
+      - start: 510
+        end: 755
+        offset_hz: 4.5     # Deep theta
+      - start: 755
+        end: 945
+        offset_hz: 3.0     # Theta-delta (HELM)
+      - start: 945
+        end: 1070
+        offset_hz: 5.0     # Rising theta
+      - start: 1070
+        end: 1165
+        offset_hz: 7.0     # Theta-alpha
+      - start: 1165
+        end: 1213
+        offset_hz: 10.0    # Alpha return
+
+fx_timeline:
+  - type: bell
+    time: 145
+    duration_s: 4
+    description: "Deep ceremonial bell at induction start"
+  - type: ambient_layer
+    time: 510
+    duration_s: 6
+    description: "Soft angelic choir pad for First Appearance"
+  - type: chime
+    time: 655
+    duration_s: 3
+    description: "Crystal shimmer as light expands"
+  - type: transition
+    time: 755
+    duration_s: 5
+    description: "Warm heart resonance tone for indwelling"
+  - type: chime
+    time: 1070
+    duration_s: 4
+    description: "Gentle ascending chimes for integration"
+
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -22
+  sidechain:
+    enabled: true
+    targets:
+      - binaural
+
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+
+voice_enhancement:
+  enabled: true
+  warmth_drive: 0.25
+  deessing: true
+  whisper_overlay: true
+  whisper_db: -22
+  subharmonic: true
+  subharmonic_db: -12
+  double_voice: true
+  double_db: -14
+  double_delay_ms: 8
+  room_tone: true
+  room_amount: 0.04
+  cuddle_waves: true
+  cuddle_frequency: 0.05
+  cuddle_depth_db: 1.5
+
+outputs:
+  formats:
+    - wav
+    - mp3
+
+youtube:
+  title: "The Light That Entered the World Now Enters You | Christmas Meditation"
+  subtitle: "A Sacred Journey of Divine Indwelling"
+  description: |
+    Experience a profound Christmas meditation where the eternal light of Christ enters your heart personally.
+
+    This sacred journey guides you through:
+    - The primordial silence before the Incarnation
+    - The moment when the Logos became flesh
+    - A personal heart-opening where divine light enters you
+    - The healing of shame, fear, and loneliness
+    - Divine commissioning to carry this light into the world
+
+    Best experienced with headphones in a quiet, sacred space.
+
+    Duration: 25 minutes
+    Binaural beats: Theta (4-7 Hz) for deep spiritual connection
+
+    Safety: Do not listen while driving or operating machinery.
+  tags:
+    - christmas meditation
+    - guided meditation
+    - christian meditation
+    - divine light
+    - spiritual journey
+    - binaural beats
+    - theta waves
+    - healing meditation
+    - christ consciousness
+    - incarnation
+    - sacred experience
+  category: "Spirituality"

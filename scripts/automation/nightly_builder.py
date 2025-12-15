@@ -403,6 +403,55 @@ class NightlyBuilder:
 
         return results
 
+    def _create_session_plan(self, topic: str, session_name: str) -> Dict[str, Any]:
+        """Create execution plan before spawning generation subprocess.
+
+        This pre-flight check ensures all resources are available before
+        committing to a full generation run.
+
+        Args:
+            topic: Session topic
+            session_name: Session identifier
+
+        Returns:
+            Dict with plan results including blockers, warnings, cost estimate
+        """
+        try:
+            from scripts.ai.generation_planner import GenerationPlanner
+
+            planner = GenerationPlanner(
+                project_root=PROJECT_ROOT,
+                mode=self.config['generation']['mode'],
+            )
+
+            plan = planner.create_plan(
+                topic=topic,
+                duration_minutes=self.config['generation'].get('duration', 30),
+                mode=self.config['generation']['mode'],
+                image_method=self.config['generation']['image_method'],
+                session_name=session_name,
+            )
+
+            return {
+                'success': True,
+                'has_blockers': plan.has_blockers(),
+                'blockers': plan.blockers if plan.has_blockers() else [],
+                'warnings': plan.warnings,
+                'cost_estimate': plan.cost_estimate.total_usd if plan.cost_estimate else 0,
+                'stages_count': len(plan.stages),
+                'feasibility_score': plan.feasibility_score,
+            }
+
+        except Exception as e:
+            logger.error(f"Planning failed: {e}")
+            return {
+                'success': False,
+                'has_blockers': True,
+                'blockers': [f"Planning error: {e}"],
+                'warnings': [],
+                'cost_estimate': 0,
+            }
+
     def _generate_session(self, session_name: str, topic: str) -> Dict[str, Any]:
         """Run auto_generate.py for a single session.
 
@@ -413,6 +462,29 @@ class NightlyBuilder:
         Returns:
             Result dict with success status and details
         """
+        # First, run planning check
+        self.db.update_status(session_name, 'planning')
+        logger.info(f"Creating execution plan for: {topic}")
+
+        plan_result = self._create_session_plan(topic, session_name)
+
+        if plan_result.get('has_blockers'):
+            blockers = plan_result.get('blockers', ['Unknown blocker'])
+            logger.error(f"Planning found blockers: {blockers}")
+            return {
+                'success': False,
+                'error': f"Planning blockers: {'; '.join(blockers)}",
+                'plan_result': plan_result,
+            }
+
+        # Log plan summary
+        logger.info(f"Plan created: ${plan_result.get('cost_estimate', 0):.2f} estimated cost")
+        logger.info(f"Feasibility score: {plan_result.get('feasibility_score', 0):.0%}")
+
+        for warning in plan_result.get('warnings', []):
+            logger.warning(f"Plan warning: {warning}")
+
+        # Proceed with generation
         self.db.update_status(session_name, 'generating')
 
         start_time = time.time()
@@ -425,6 +497,7 @@ class NightlyBuilder:
             '--name', session_name,
             '--mode', self.config['generation']['mode'],
             '--image-method', self.config['generation']['image_method'],
+            '--nightly',  # Skip YouTube package, use aggressive cleanup
         ]
 
         logger.info(f"Running: {' '.join(cmd)}")

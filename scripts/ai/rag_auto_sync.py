@@ -24,7 +24,7 @@ import json
 import logging
 import yaml
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Dict, Any, Optional
 
 # Add project root to path
@@ -47,7 +47,10 @@ logger = logging.getLogger(__name__)
 
 
 class RAGAutoSync:
-    """Automatic RAG synchronization manager."""
+    """Automatic RAG synchronization manager with rate limiting."""
+
+    # Rate limiting for Notion API to prevent throttling
+    MIN_EXPORT_INTERVAL_SECONDS = 300  # 5 minutes between Notion exports
 
     def __init__(self, export_dir: str = "knowledge/notion_export"):
         self.export_dir = PROJECT_ROOT / export_dir
@@ -118,10 +121,11 @@ class RAGAutoSync:
                 logger.warning("Failed to parse sync state, starting fresh")
         return {}
 
-    def save_state(self, content_hash: str, stats: Dict[str, Any]):
+    def save_state(self, content_hash: str, stats: Dict[str, Any], last_export_time: Optional[str] = None):
         """Save sync state for future comparisons."""
         state = {
             "last_sync": datetime.now().isoformat(),
+            "last_export": last_export_time or datetime.now().isoformat(),
             "content_hash": content_hash,
             "pages_count": stats.get("pages", 0),
             "vectors_count": stats.get("vectors", 0)
@@ -129,14 +133,59 @@ class RAGAutoSync:
         self.state_file.write_text(json.dumps(state, indent=2))
         logger.info(f"Sync state saved to {self.state_file}")
 
-    def export_notion_content(self) -> bool:
-        """Export latest content from Notion."""
+    def export_notion_content(self, skip_rate_limit_check: bool = False) -> bool:
+        """Export latest content from Notion with rate limiting.
+        
+        Args:
+            skip_rate_limit_check: If True, bypass rate limit check (for forced syncs)
+            
+        Returns:
+            True if export succeeded, False otherwise
+        """
+        # Check rate limit unless explicitly skipped
+        if not skip_rate_limit_check:
+            state = self.load_state()
+            last_export_str = state.get("last_export")
+            
+            if last_export_str:
+                try:
+                    last_export = datetime.fromisoformat(last_export_str)
+                    time_since_export = (datetime.now() - last_export).total_seconds()
+                    
+                    if time_since_export < self.MIN_EXPORT_INTERVAL_SECONDS:
+                        wait_time = self.MIN_EXPORT_INTERVAL_SECONDS - time_since_export
+                        logger.warning(
+                            f"Rate limit: Last Notion export was {time_since_export:.0f}s ago. "
+                            f"Minimum interval is {self.MIN_EXPORT_INTERVAL_SECONDS}s. "
+                            f"Skipping export (retry in {wait_time:.0f}s)."
+                        )
+                        return False
+                except (ValueError, TypeError) as e:
+                    logger.warning(f"Could not parse last_export time: {e}")
+        
         try:
             logger.info("Exporting Notion content...")
             self.retriever.export_all_content(str(self.export_dir))
+            
+            # Update last export time in state
+            state = self.load_state()
+            state["last_export"] = datetime.now().isoformat()
+            self.state_file.write_text(json.dumps(state, indent=2))
+            
             return True
         except Exception as e:
-            logger.error(f"Notion export failed: {e}")
+            error_str = str(e)
+            
+            # Provide specific guidance for known errors
+            if "rate limit" in error_str.lower():
+                logger.error(
+                    f"Notion API rate limit exceeded: {e}. "
+                    f"Minimum {self.MIN_EXPORT_INTERVAL_SECONDS}s between exports. "
+                    f"Consider increasing MIN_EXPORT_INTERVAL_SECONDS."
+                )
+            else:
+                logger.error(f"Notion export failed: {e}")
+            
             return False
 
     def check_for_changes(self) -> bool:
