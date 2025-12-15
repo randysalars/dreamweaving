@@ -147,6 +147,8 @@ temp_chunk_*.mp3
 # Google Cloud credentials
 *.json
 !mcp.json
+!package.json
+!package-lock.json
 credentials/
 service-account-*.json
 
