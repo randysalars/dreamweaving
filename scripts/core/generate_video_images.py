@@ -1236,19 +1236,40 @@ def generate_scene_background(
     base_image_path: Optional[Path] = None,
     output_path: Optional[Path] = None
 ) -> Path:
-    """Generate a scene background (no text, for video composition)."""
+    """Generate a scene background (no text, for video composition).
+
+    Each scene gets a unique variation through:
+    - Different gradient center positions
+    - Varied color intensities
+    - Different glow positions and intensities
+    - Subtle noise patterns for texture
+    """
+    import random
+    import math
+
     width, height = spec.width, spec.height
+
+    # Seed randomness with scene_number for reproducibility but variation
+    random.seed(scene_number * 42 + hash(str(session_path.name)))
 
     # Load or create base
     if base_image_path and base_image_path.exists():
         base_img = Image.open(base_image_path)
         img = process_base_image(base_img, width, height, darken=0.8)
     else:
-        img = create_gradient_background(width, height, palette, "radial")
+        # Create varied gradient per scene
+        img = _create_varied_gradient(width, height, palette, scene_number)
 
-    # Apply subtle effects
-    img = apply_vignette(img, spec.vignette_strength)
-    img = apply_center_glow(img, palette, intensity=0.15)
+    # Apply effects with scene-based variation
+    vignette_strength = spec.vignette_strength * (0.8 + random.random() * 0.4)  # ±20%
+    img = apply_vignette(img, vignette_strength)
+
+    # Vary glow intensity and position per scene
+    glow_intensity = 0.10 + (scene_number % 5) * 0.03  # 0.10 to 0.22
+    img = _apply_varied_glow(img, palette, scene_number, intensity=glow_intensity)
+
+    # Add subtle noise/grain for texture (varies per scene)
+    img = _add_subtle_noise(img, intensity=0.02 + (scene_number % 3) * 0.01)
 
     # Save
     if output_path is None:
@@ -1259,8 +1280,125 @@ def generate_scene_background(
     img = img.convert('RGB')
     img.save(output_path, spec.output_format, optimize=True)
 
-    logger.info(f"Generated scene background: {output_path}")
+    logger.info(f"Generated scene background {scene_number}: {output_path}")
     return output_path
+
+
+def _create_varied_gradient(width: int, height: int, palette: Dict, scene_number: int) -> Image.Image:
+    """Create a gradient with scene-based variation in center position and colors."""
+    import random
+    import math
+
+    img = Image.new('RGB', (width, height))
+
+    bg_color = hex_to_rgb(palette["background"])
+    primary = hex_to_rgb(palette["primary"])
+    secondary = hex_to_rgb(palette.get("secondary", palette["primary"]))
+
+    # Vary gradient center position based on scene (creates visual variety)
+    # Scene 1: center, Scene 2: upper-left, Scene 3: upper-right, etc.
+    center_offsets = [
+        (0.5, 0.5),    # Scene 1: center
+        (0.35, 0.4),   # Scene 2: upper-left
+        (0.65, 0.4),   # Scene 3: upper-right
+        (0.4, 0.6),    # Scene 4: lower-left
+        (0.6, 0.55),   # Scene 5: lower-right
+        (0.5, 0.35),   # Scene 6: upper-center
+        (0.45, 0.65),  # Scene 7: lower-center
+    ]
+    offset_idx = (scene_number - 1) % len(center_offsets)
+    cx_ratio, cy_ratio = center_offsets[offset_idx]
+    center_x = int(width * cx_ratio)
+    center_y = int(height * cy_ratio)
+
+    # Vary color blend between primary and secondary based on scene
+    color_blend = (scene_number % 3) / 3.0  # 0, 0.33, or 0.66
+    mixed_primary = tuple(
+        int(primary[i] * (1 - color_blend) + secondary[i] * color_blend)
+        for i in range(3)
+    )
+
+    # Vary intensity based on scene
+    intensity_factor = 0.15 + (scene_number % 5) * 0.03  # 0.15 to 0.27
+
+    max_dist = ((width / 2) ** 2 + (height / 2) ** 2) ** 0.5
+
+    for y in range(height):
+        for x in range(width):
+            dist = ((x - center_x) ** 2 + (y - center_y) ** 2) ** 0.5
+            ratio = min(dist / max_dist, 1.0)
+            r = int(mixed_primary[0] * intensity_factor * (1 - ratio) + bg_color[0] * ratio)
+            g = int(mixed_primary[1] * intensity_factor * (1 - ratio) + bg_color[1] * ratio)
+            b = int(mixed_primary[2] * intensity_factor * (1 - ratio) + bg_color[2] * ratio)
+            img.putpixel((x, y), (r, g, b))
+
+    return img
+
+
+def _apply_varied_glow(img: Image.Image, palette: Dict, scene_number: int, intensity: float = 0.15) -> Image.Image:
+    """Apply center glow with scene-based position variation."""
+    width, height = img.size
+    glow_color = hex_to_rgba(palette.get("glow", palette["primary"]), 100)
+
+    # Vary glow position per scene
+    glow_offsets = [
+        (0.5, 0.45),   # Center-upper
+        (0.4, 0.5),    # Left-center
+        (0.6, 0.5),    # Right-center
+        (0.5, 0.55),   # Center-lower
+        (0.45, 0.4),   # Upper-left
+    ]
+    offset_idx = (scene_number - 1) % len(glow_offsets)
+    gx_ratio, gy_ratio = glow_offsets[offset_idx]
+
+    center_x = int(width * gx_ratio)
+    center_y = int(height * gy_ratio)
+
+    # Create glow layer
+    glow = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    glow_draw = ImageDraw.Draw(glow)
+
+    # Draw radial glow with varied radius
+    max_radius = 250 + (scene_number % 4) * 30  # 250 to 340
+    for radius in range(max_radius, 0, -5):
+        alpha = int(glow_color[3] * (radius / max_radius) * intensity)
+        glow_draw.ellipse(
+            [(center_x - radius, center_y - radius),
+             (center_x + radius, center_y + radius)],
+            fill=(*glow_color[:3], alpha)
+        )
+
+    # Blur the glow
+    glow = glow.filter(ImageFilter.GaussianBlur(radius=25 + scene_number * 2))
+
+    # Composite
+    if img.mode != 'RGBA':
+        img = img.convert('RGBA')
+
+    return Image.alpha_composite(img, glow)
+
+
+def _add_subtle_noise(img: Image.Image, intensity: float = 0.02) -> Image.Image:
+    """Add subtle noise for texture variation."""
+    import random
+
+    if img.mode != 'RGB':
+        img = img.convert('RGB')
+
+    pixels = img.load()
+    width, height = img.size
+
+    for y in range(height):
+        for x in range(width):
+            r, g, b = pixels[x, y]
+            # Add subtle noise (±intensity * 255)
+            noise = int((random.random() - 0.5) * 2 * intensity * 255)
+            r = max(0, min(255, r + noise))
+            g = max(0, min(255, g + noise))
+            b = max(0, min(255, b + noise))
+            pixels[x, y] = (r, g, b)
+
+    return img
 
 
 # =============================================================================
