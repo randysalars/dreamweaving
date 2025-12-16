@@ -14,6 +14,25 @@ triggers:
   - user_intent
   - /full-build
   - /new-session
+skills_required:
+  tier1:  # Always loaded - core capabilities
+    - hypnotic-language      # Language patterns for all content
+    - symbolic-mapping       # Archetypes and theological alignment
+    - audio-somatic          # Audio layering standards
+  tier2:  # Activated on triggers - safety override
+    - psychological-stability  # Mental integration monitoring
+    - christian-discernment    # Theological boundary enforcement
+    - ethical-framing          # Consent and agency protection
+  tier3:  # Loaded per task - production operations
+    - session-creation       # When creating new sessions
+    - ssml-generation        # When generating scripts
+    - voice-synthesis        # When producing audio
+    - audio-mixing           # When mixing stems
+    - video-assembly         # When assembling video
+    - youtube-packaging      # When packaging for upload
+  tier4:  # Conditional - growth and learning
+    - analytics-learning     # When processing metrics
+    - feedback-integration   # When analyzing comments
 context_files:
   - prompts/hypnotic_dreamweaving_instructions.md
   - docs/CANONICAL_WORKFLOW.md

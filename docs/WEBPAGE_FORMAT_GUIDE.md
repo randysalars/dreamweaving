@@ -41,13 +41,13 @@ Dark mode is the PRIMARY theme for Dreamweaver content - it creates the sacred, 
 
 ```css
 /* Light Mode - Alternative */
---background: oklch(1 0 0);            /* Pure white */
+--background: oklch(0.985 0 0);        /* Slightly off-white so cards/popovers separate */
 --foreground: oklch(0.145 0 0);        /* Dark charcoal text */
 --card: oklch(1 0 0);                  /* White cards */
 --card-foreground: oklch(0.145 0 0);   /* Dark text */
 --muted: oklch(0.97 0 0);              /* Light gray */
 --muted-foreground: oklch(0.556 0 0);  /* Gray text */
---border: oklch(0.922 0 0);            /* Very light gray */
+--border: oklch(0.9 0 0);              /* Stronger separators on near-white surfaces */
 ```
 
 ### 1.3 Sacred Color Palettes
@@ -660,10 +660,81 @@ Every webpage MUST pass this checklist:
 
 ---
 
+## 13. Anti-Patterns (NEVER Use)
+
+**CRITICAL:** These patterns break theme switching and cause unreadable text. Never use them at page level.
+
+### 13.1 Forbidden Color Classes
+
+| Pattern | Why It's Wrong | Use Instead |
+|---------|----------------|-------------|
+| `text-white` | Becomes invisible in light mode | `text-foreground` |
+| `bg-white` | Breaks in dark mode | `bg-background` |
+| `text-black` | Becomes invisible in dark mode | `text-foreground` |
+| `bg-black` | Breaks in light mode | `bg-background` |
+| `text-gray-*` | Ignores theme tokens | `text-muted-foreground` |
+| `bg-gray-*` | Ignores theme tokens | `bg-muted` or `bg-card` |
+| `bg-[#hex]` | Hardcoded color | Use CSS variable |
+| `dark:text-white` | Redundant with semantic tokens | `text-foreground` |
+| `dark:bg-black` | Redundant with semantic tokens | `bg-background` |
+
+### 13.2 When Hardcoded Colors ARE Acceptable
+
+- **Inside self-contained components** with their own background (e.g., a card that is always dark regardless of theme)
+- **Brand colors** that must remain constant (logos)
+- **Decorative elements** that don't affect readability
+- **Gradient color stops** where CSS variables aren't practical
+
+### 13.3 Semantic Token Quick Reference
+
+| Need | Use This |
+|------|----------|
+| Page background | `bg-background` |
+| Primary text | `text-foreground` |
+| Secondary/muted text | `text-muted-foreground` |
+| Card background | `bg-card` |
+| Card text | `text-card-foreground` |
+| Border color | `border-border` |
+| Input background | `bg-input` |
+| Success state | `text-success` / `bg-success` |
+| Warning state | `text-warning` / `bg-warning` |
+| Error/destructive | `text-destructive` / `bg-destructive` |
+| Primary accent | `text-primary` / `bg-primary` |
+
+### 13.4 Body Default (Already Configured)
+
+The body element in globals.css already applies:
+```css
+body {
+  @apply bg-background text-foreground;
+}
+```
+
+This means most pages automatically inherit correct theme colors. Only use explicit color classes when you need to override within a section.
+
+### 13.5 Common Migration Examples
+
+**Before (WRONG):**
+```tsx
+<div className="bg-[#0D0221] text-white">
+  <p className="text-gray-300">Muted text</p>
+</div>
+```
+
+**After (CORRECT):**
+```tsx
+<div className="bg-background text-foreground">
+  <p className="text-muted-foreground">Muted text</p>
+</div>
+```
+
+---
+
 ## Version History
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.1 | 2025-12 | Added Anti-Patterns section (Section 13) |
 | 1.0 | 2024-12 | Initial release |
 
 ---

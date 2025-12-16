@@ -12,10 +12,9 @@ scripts:
   - scripts/ai/learning/code_reviewer.py
   - scripts/ai/learning/lessons_manager.py
 skills_required:
-  - analyze-analytics
-  - analyze-comments
-  - code-review
-  - apply-lessons
+  tier4:  # Growth and learning
+    - analytics-learning     # Process YouTube metrics
+    - feedback-integration   # Analyze viewer comments
 ---
 
 # Learning Agent

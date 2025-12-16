@@ -1,0 +1,314 @@
+# Dreamweaver 12-Month Email Rhythm
+# Based on "Build Dreamweaver Business" Notion strategy
+#
+# Core Rules (Non-Negotiable):
+# - 1 email every 7-14 days maximum
+# - Some months = 1 email only
+# - Ritual emails override cadence
+# - Silence is intentional, not failure
+# - Invitations appear only after trust is reinforced
+#
+# Usage:
+#   python3 scripts/email/seasonal_scheduler.py --check-today
+#   python3 scripts/email/seasonal_scheduler.py --month january
+
+# Default settings
+defaults:
+  max_emails_per_month: 3
+  min_days_between_emails: 7
+  send_time: "06:00"  # 6 AM local time
+  timezone: "America/Los_Angeles"
+
+# =============================================================================
+# 12-MONTH EMAIL CALENDAR
+# =============================================================================
+
+months:
+  # ---------------------------------------------------------------------------
+  # JANUARY - Orientation & Return
+  # Emotional state: Quiet resolve, fatigue, inward reset
+  # ---------------------------------------------------------------------------
+  january:
+    theme: "Orientation & Return"
+    emotional_state: "Quiet resolve, fatigue, inward reset"
+    emails:
+      - day: 3
+        template: dreamweaver_ritual_newyear
+        subject_override: null  # Use template default
+        notes: "New Year ritual - entering gently"
+      - day: 17
+        template: dreamweaver_correspondence
+        subject_override: "A thought for January"
+        notes: "Reflection on direction without pressure"
+    optional_invitation:
+      enabled: false
+      template: dreamweaver_invitation
+      notes: "A 'Beginning Again' Dreamweaving (soft invite)"
+
+  # ---------------------------------------------------------------------------
+  # FEBRUARY - Rest & the Inner Life
+  # Emotional state: Weariness, winter heaviness, emotional honesty
+  # ---------------------------------------------------------------------------
+  february:
+    theme: "Rest & the Inner Life"
+    emotional_state: "Weariness, winter heaviness, emotional honesty"
+    emails:
+      - day: 10
+        template: dreamweaver_correspondence
+        subject_override: "On carrying what we carry"
+        notes: "Correspondence only - no selling this month"
+    optional_invitation:
+      enabled: false
+      notes: "No selling this month unless organic - builds deep trust"
+
+  # ---------------------------------------------------------------------------
+  # MARCH - Examination & Attention
+  # Emotional state: Awareness, inner inventory, pre-spring tension
+  # ---------------------------------------------------------------------------
+  march:
+    theme: "Examination & Attention"
+    emotional_state: "Awareness, inner inventory, pre-spring tension"
+    emails:
+      - day: 5
+        template: dreamweaver_correspondence
+        subject_override: "Noticing what has been neglected"
+        notes: "Inner inventory"
+      - day: 19
+        template: dreamweaver_ritual_easter
+        subject_override: "Entering a reflective season"
+        notes: "Pre-Easter/Lent-like reflection"
+    optional_invitation:
+      enabled: true
+      template: dreamweaver_invitation
+      notes: "A Dreamweaving focused on release or clarity"
+
+  # ---------------------------------------------------------------------------
+  # APRIL - Renewal Without Hurry
+  # Emotional state: Hope emerging, cautious optimism
+  # ---------------------------------------------------------------------------
+  april:
+    theme: "Renewal Without Hurry"
+    emotional_state: "Hope emerging, cautious optimism"
+    emails:
+      - day: 7
+        template: dreamweaver_ritual_easter
+        subject_override: null  # Use template default
+        notes: "Easter/renewal ritual"
+      - day: 21
+        template: dreamweaver_correspondence
+        subject_override: "On slow resurrection"
+        notes: "Hopeful but restrained - never hype renewal"
+    optional_invitation:
+      enabled: false
+      notes: "Let renewal arrive naturally"
+
+  # ---------------------------------------------------------------------------
+  # MAY - Presence & Gratitude
+  # Emotional state: Re-engagement with life, beauty, creativity
+  # ---------------------------------------------------------------------------
+  may:
+    theme: "Presence & Gratitude"
+    emotional_state: "Re-engagement with life, beauty, creativity"
+    emails:
+      - day: 12
+        template: dreamweaver_correspondence
+        subject_override: "A quiet moment of gratitude"
+        notes: "Low-noise month - one email only"
+    optional_invitation:
+      enabled: true
+      template: dreamweaver_invitation
+      notes: "Creative or imagination-centered Dreamweaving (soft)"
+
+  # ---------------------------------------------------------------------------
+  # JUNE - Attention & Simplicity
+  # Emotional state: Busyness rising, distraction creeping in
+  # ---------------------------------------------------------------------------
+  june:
+    theme: "Attention & Simplicity"
+    emotional_state: "Busyness rising, distraction creeping in"
+    emails:
+      - day: 5
+        template: dreamweaver_correspondence
+        subject_override: "Reclaiming attention"
+        notes: "Protective of inner life"
+      - day: 19
+        template: dreamweaver_invitation
+        subject_override: "An invitation for summer"
+        notes: "Summer Dreamweaving (rest/simplicity)"
+    optional_invitation:
+      enabled: false
+      notes: "Invitation already included this month"
+
+  # ---------------------------------------------------------------------------
+  # JULY - Silence & Spaciousness
+  # Emotional state: Disruption of routine, desire for space
+  # ---------------------------------------------------------------------------
+  july:
+    theme: "Silence & Spaciousness"
+    emotional_state: "Disruption of routine, desire for space"
+    emails:
+      - day: 14
+        template: dreamweaver_correspondence
+        subject_override: "A very short note"
+        notes: "Very short letter - teaches that absence != abandonment"
+    optional_invitation:
+      enabled: false
+      notes: "No selling unless requested"
+
+  # ---------------------------------------------------------------------------
+  # AUGUST - Reorientation
+  # Emotional state: Quiet anxiety about fall, transitions approaching
+  # ---------------------------------------------------------------------------
+  august:
+    theme: "Reorientation"
+    emotional_state: "Quiet anxiety about fall, transitions approaching"
+    emails:
+      - day: 7
+        template: dreamweaver_correspondence
+        subject_override: "Noticing thresholds"
+        notes: "Acknowledging transitions"
+      - day: 21
+        template: dreamweaver_invitation
+        subject_override: "Preparing the inner ground"
+        notes: "Strong conversion month - handled gently"
+    optional_invitation:
+      enabled: false
+      notes: "Invitation already included this month"
+
+  # ---------------------------------------------------------------------------
+  # SEPTEMBER - Return & Focus
+  # Emotional state: Structure returning, openness to guidance
+  # ---------------------------------------------------------------------------
+  september:
+    theme: "Return & Focus"
+    emotional_state: "Structure returning, openness to guidance"
+    emails:
+      - day: 9
+        template: dreamweaver_correspondence
+        subject_override: "On returning to structure"
+        notes: "High-engagement month"
+      - day: 23
+        template: dreamweaver_invitation
+        subject_override: "A grounding journey"
+        notes: "Learning/grounding Dreamweaving"
+    optional_invitation:
+      enabled: false
+      notes: "Invitation already included this month"
+
+  # ---------------------------------------------------------------------------
+  # OCTOBER - Depth & Mortality
+  # Emotional state: Introspection, memory, loss, mystery
+  # ---------------------------------------------------------------------------
+  october:
+    theme: "Depth & Mortality"
+    emotional_state: "Introspection, memory, loss, mystery"
+    emails:
+      - day: 8
+        template: dreamweaver_correspondence
+        subject_override: "On letting go"
+        notes: "Honest, grounded, non-sentimental"
+      - day: 28
+        template: dreamweaver_ritual_advent  # Reuse for All Souls
+        subject_override: "A moment for remembrance"
+        notes: "All Souls/remembrance ritual - deepens loyalty"
+    optional_invitation:
+      enabled: false
+      notes: "Focus on depth, not selling"
+
+  # ---------------------------------------------------------------------------
+  # NOVEMBER - Gratitude & Gathering
+  # Emotional state: Reflection, relational awareness, fatigue
+  # ---------------------------------------------------------------------------
+  november:
+    theme: "Gratitude & Gathering"
+    emotional_state: "Reflection, relational awareness, fatigue"
+    emails:
+      - day: 10
+        template: dreamweaver_correspondence
+        subject_override: "Gratitude without denial"
+        notes: "Gratitude that acknowledges difficulty"
+      - day: 24
+        template: dreamweaver_invitation
+        subject_override: "For the Advent season"
+        notes: "Advent/Winter Dreamweaving - NEVER use Black Friday language"
+    optional_invitation:
+      enabled: false
+      notes: "NEVER use Black Friday language. Ever."
+
+  # ---------------------------------------------------------------------------
+  # DECEMBER - Advent, Light, Gift
+  # Emotional state: Longing, loneliness, meaning-hunger
+  # THIS IS YOUR MOST SACRED MONTH
+  # ---------------------------------------------------------------------------
+  december:
+    theme: "Advent, Light, Gift"
+    emotional_state: "Longing, loneliness, meaning-hunger"
+    emails:
+      - day: 1
+        template: dreamweaver_ritual_advent
+        subject_override: "Advent begins"
+        notes: "Entering the season"
+      - day: 15
+        template: dreamweaver_correspondence
+        subject_override: "Holding light in darkness"
+        notes: "For those who struggle this season"
+      - day: 22
+        template: dreamweaver_invitation
+        subject_override: "A gift for someone you love"
+        notes: "Dreamweaver as gift - revenue follows reverence"
+    optional_invitation:
+      enabled: false
+      notes: "Already 3 emails including gift invitation"
+
+# =============================================================================
+# SPECIAL DATES (Override normal calendar)
+# =============================================================================
+
+special_dates:
+  # Easter is calculated dynamically - these are backup patterns
+  easter_backup_range: "march-april"
+
+  # Fixed holidays that might warrant adjustment
+  christmas:
+    window_start: "12-20"
+    window_end: "12-26"
+    behavior: "no_emails"
+    notes: "Respect the holy days - no emails in this window"
+
+  new_years:
+    window_start: "12-31"
+    window_end: "01-02"
+    behavior: "no_emails"
+    notes: "Let New Year email arrive after the first"
+
+# =============================================================================
+# ANTI-PATTERNS (What NOT to do)
+# =============================================================================
+
+anti_patterns:
+  - "Never send an email just to 'stay top of mind'"
+  - "Never send because a calendar says so if you have nothing worth saying"
+  - "Never use urgency language"
+  - "Never use countdown timers"
+  - "Never use Black Friday language"
+  - "Never send more than 3 emails in any month"
+  - "Never batch completions - space them out"
+  - "Silence is part of the relationship"
+
+# =============================================================================
+# SUCCESS METRICS
+# =============================================================================
+
+metrics:
+  primary_kpi: "reply_rate"
+  secondary_kpis:
+    - "open_rate"  # But don't optimize for this
+    - "unsubscribe_rate"  # Should stay low
+  anti_kpis:
+    - "click_rate"  # Not the goal
+    - "conversion_rate"  # Don't optimize for sales
+
+  healthy_indicators:
+    reply_rate: ">5%"
+    unsubscribe_rate: "<0.5%"
+    complaints: "0"

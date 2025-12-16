@@ -1,0 +1,14 @@
+[Unit]
+Description=Dreamweaver Seasonal Email Timer
+Requires=seasonal-email.service
+
+[Timer]
+# Run daily at 6:00 AM
+OnCalendar=*-*-* 06:00:00
+Persistent=true
+
+# Add some randomization to avoid exact timing
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

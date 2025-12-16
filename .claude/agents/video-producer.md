@@ -10,9 +10,9 @@ output_files:
   - sessions/{name}/output/video/final.mp4
   - sessions/{name}/output/youtube_package/
 skills_required:
-  - video-assembly
-  - vtt-generation
-  - youtube-packaging
+  tier3:  # Task-specific
+    - video-assembly         # Video assembly and encoding
+    - youtube-packaging      # Metadata, thumbnails, descriptions
 context_files:
   - knowledge/lessons_learned.yaml
 ---

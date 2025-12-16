@@ -17,27 +17,25 @@ Usage:
 
 Part of Phase 8: Automatic RAG Indexing System
 """
-import os
-import sys
-import hashlib
 import json
 import logging
-import yaml
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Dict, Any, Optional
 
-# Add project root to path
-PROJECT_ROOT = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(PROJECT_ROOT))
+# Use shared utilities
+from scripts.ai.rag_utils import (
+    PROJECT_ROOT,
+    setup_project_path,
+    load_dotenv_safe,
+    get_notion_config,
+    load_state_file,
+    save_state_file,
+    get_content_hash,
+)
 
-# Load .env automatically for local/IDE runs (systemd already injects EnvironmentFile).
-try:
-    from dotenv import load_dotenv  # type: ignore
-except Exception:
-    load_dotenv = None
-if load_dotenv is not None:
-    load_dotenv(PROJECT_ROOT / ".env")
+setup_project_path()
+load_dotenv_safe()
 
 logging.basicConfig(
     level=logging.INFO,
@@ -47,16 +45,25 @@ logger = logging.getLogger(__name__)
 
 
 class RAGAutoSync:
-    """Automatic RAG synchronization manager with rate limiting."""
+    """Automatic RAG synchronization manager with rate limiting.
 
-    # Rate limiting for Notion API to prevent throttling
-    MIN_EXPORT_INTERVAL_SECONDS = 300  # 5 minutes between Notion exports
+    Args:
+        export_dir: Directory for Notion export (relative to project root).
+        quiet: If True, suppress progress output from embeddings pipeline.
+    """
 
-    def __init__(self, export_dir: str = "knowledge/notion_export"):
+    def __init__(self, export_dir: str = "knowledge/notion_export", quiet: bool = False):
         self.export_dir = PROJECT_ROOT / export_dir
         self.state_file = self.export_dir / ".sync_state.json"
         self.config_path = PROJECT_ROOT / "config" / "notion_config.yaml"
         self.logs_dir = PROJECT_ROOT / "logs"
+        self.quiet = quiet
+
+        # Load config for rate limiting
+        config = get_notion_config()
+        sync_config = config.get("sync", {})
+        # Rate limiting for Notion API (from config or default 5 minutes)
+        self.min_export_interval = sync_config.get("min_export_interval_seconds", 300)
 
         # Ensure directories exist
         self.export_dir.mkdir(parents=True, exist_ok=True)
@@ -80,11 +87,11 @@ class RAGAutoSync:
 
     @property
     def pipeline(self):
-        """Lazy load NotionEmbeddingsPipeline."""
+        """Lazy load NotionEmbeddingsPipeline with quiet mode."""
         if self._pipeline is None:
             try:
                 from scripts.ai.notion_embeddings_pipeline import NotionEmbeddingsPipeline
-                self._pipeline = NotionEmbeddingsPipeline()
+                self._pipeline = NotionEmbeddingsPipeline(quiet=self.quiet)
             except ImportError as e:
                 logger.error(f"Failed to import NotionEmbeddingsPipeline: {e}")
                 raise
@@ -151,12 +158,12 @@ class RAGAutoSync:
                 try:
                     last_export = datetime.fromisoformat(last_export_str)
                     time_since_export = (datetime.now() - last_export).total_seconds()
-                    
-                    if time_since_export < self.MIN_EXPORT_INTERVAL_SECONDS:
-                        wait_time = self.MIN_EXPORT_INTERVAL_SECONDS - time_since_export
+
+                    if time_since_export < self.min_export_interval:
+                        wait_time = self.min_export_interval - time_since_export
                         logger.warning(
                             f"Rate limit: Last Notion export was {time_since_export:.0f}s ago. "
-                            f"Minimum interval is {self.MIN_EXPORT_INTERVAL_SECONDS}s. "
+                            f"Minimum interval is {self.min_export_interval}s. "
                             f"Skipping export (retry in {wait_time:.0f}s)."
                         )
                         return False
@@ -180,8 +187,8 @@ class RAGAutoSync:
             if "rate limit" in error_str.lower():
                 logger.error(
                     f"Notion API rate limit exceeded: {e}. "
-                    f"Minimum {self.MIN_EXPORT_INTERVAL_SECONDS}s between exports. "
-                    f"Consider increasing MIN_EXPORT_INTERVAL_SECONDS."
+                    f"Minimum {self.min_export_interval}s between exports. "
+                    f"Consider increasing min_export_interval_seconds in config."
                 )
             else:
                 logger.error(f"Notion export failed: {e}")

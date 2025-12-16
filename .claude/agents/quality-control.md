@@ -11,9 +11,15 @@ quality_thresholds:
   true_peak_dbtp: -1.5
   duration_tolerance_sec: 30
 skills_required:
-  - ssml-validation
-  - manifest-validation
-  - quality-checks
+  tier1:  # Always loaded for validation context
+    - hypnotic-language/validation  # Depth checks, forbidden patterns
+    - symbolic-mapping/validation   # Theological validation
+  tier2:  # Safety validation
+    - psychological-stability       # Dissociation guards check
+    - christian-discernment         # Theological boundary check
+    - ethical-framing               # Consent language verification
+  tier3:  # Production validation
+    - ssml-generation               # SSML syntax validation
 context_files:
   - config/manifest.schema.json
   - knowledge/best_practices.md

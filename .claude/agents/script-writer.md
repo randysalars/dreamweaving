@@ -6,9 +6,15 @@ system_prompt_file: prompts/hypnotic_dreamweaving_instructions.md
 output_format: ssml
 validation_script: scripts/utilities/validate_ssml.py
 skills_required:
-  - ssml-basics
-  - hypnotic-patterns
-  - ai-script-generation
+  tier1:  # Always loaded
+    - hypnotic-language      # Language patterns, induction, emergence
+    - symbolic-mapping       # Archetypes, symbols, theological filters
+  tier2:  # Triggered on safety concerns
+    - psychological-stability  # Dissociation guards, depth limits
+    - christian-discernment    # Theological alignment
+    - ethical-framing          # Consent and agency
+  tier3:  # Task-specific
+    - ssml-generation        # SSML formatting and validation
 context_files:
   - prompts/hypnotic_dreamweaving_instructions.md
   - prompts/nlp_dreamweaving_techniques.md

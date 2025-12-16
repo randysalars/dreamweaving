@@ -182,9 +182,115 @@ sessions:
 
 ---
 
-## Skills (SOPs)
+## Skills System (4-Tier Architecture)
 
-Skills are located in `.claude/skills/` and provide standard operating procedures:
+Skills are composable, reloadable competencies located in `.claude/skills/`. They follow a **4-tier architecture** designed for safe, effective guided altered-state experiences.
+
+### Tier Overview
+
+| Tier | Name | Purpose | Load Policy |
+|------|------|---------|-------------|
+| **Tier 1** | Neural Core | Always-on foundation | Always loaded |
+| **Tier 2** | Immune System | Safety & boundaries | Triggered/Always |
+| **Tier 3** | Operations | Production pipeline | Task-specific |
+| **Tier 4** | Growth | Business automation | Conditional |
+
+### Tier 1: Neural Core Skills (Always Loaded)
+
+These three skills **must load together** for every script/content generation task:
+
+| Skill | Directory | Purpose |
+|-------|-----------|---------|
+| **Hypnotic Language** | `tier1-neural-core/hypnotic-language/` | Attention guidance, trance navigation, safe suggestion |
+| **Symbolic Mapping** | `tier1-neural-core/symbolic-mapping/` | Meaning engine, archetype roles, theological filters |
+| **Audio Somatic** | `tier1-neural-core/audio-somatic/` | Nervous system regulation, breath pacing, embodiment |
+
+> **Key Rule**: "Remove one, and the other two become dangerous."
+
+### Tier 2: Safety Skills (Override Authority)
+
+When triggered, these skills **override** other content to protect safety:
+
+| Skill | Directory | Triggers |
+|-------|-----------|----------|
+| **Psychological Stability** | `tier2-safety/psychological-stability/` | Deep trance, identity work, trauma-adjacent content |
+| **Christian Discernment** | `tier2-safety/christian-discernment/` | Spiritual content, entity imagery, transformation |
+| **Ethical Framing** | `tier2-safety/ethical-framing/` | Always on - consent, agency, non-coercion |
+
+**Response Levels**: Yellow (redirect) → Orange (stabilize) → Red (emergency exit)
+
+### Tier 3: Production Skills (Task-Specific)
+
+| Skill | Purpose |
+|-------|---------|
+| `ssml-generation/` | SSML script production |
+| `voice-synthesis/` | TTS workflow |
+| `audio-mixing/` | Stem levels, mixing |
+| `video-assembly/` | FFmpeg assembly |
+| `youtube-packaging/` | Final package |
+
+### Tier 4: Growth Skills (Conditional)
+
+| Skill | Purpose |
+|-------|---------|
+| `analytics-learning/` | YouTube metrics analysis |
+| `feedback-integration/` | Comment analysis, lesson extraction |
+
+### SKILL.md Structure
+
+Every skill folder contains a `SKILL.md` with:
+
+```yaml
+---
+name: Skill Name
+tier: 1|2|3|4
+load_policy: always|triggered|task-specific
+description: One-line purpose
+---
+
+## Purpose
+## Must Always
+## Never
+## Sub-Skills (links to sub-folders)
+## Integration (dependencies)
+## Quality Rubric
+```
+
+### Key Sub-Skills Reference
+
+**Hypnotic Language**:
+- `induction/`: soft-entry, attention-pacing, permissive-language
+- `deepening/`: fractionation, time-distortion, imagery-coupling
+- `suggestion/`: indirect-suggestion, values-alignment, metaphor-framing
+- `emergence/`: reorientation, grounding, memory-integration
+- `validation/`: depth-checks, dissociation-guards, forbidden-patterns
+
+**Symbolic Mapping**:
+- `symbols/`: elemental, light-dark, path-threshold
+- `archetypes/`: guide (never commands), pilgrim (always listener), healer, witness
+- `theological-filters/`: christian-safe, forbidden-frames
+
+**Audio Somatic**:
+- `breath-regulation/`: inhale-exhale-pacing, coherence-ratios
+- `somatic-anchoring/`: heaviness, warmth, grounded-contact
+- `arousal-control/`: calming-curves, intensity-ceilings
+
+### Skill System Quick Reference
+
+| Task | Skills Loaded |
+|------|--------------|
+| Script generation | Tier 1 (all) + Tier 2 (all) + Tier 3 (ssml) |
+| Audio production | Tier 3 (audio-mixing, voice-synthesis) |
+| Deep healing session | Tier 1 + Tier 2 (elevated) |
+| First-time listener | Tier 1 + Tier 2 (conservative thresholds) |
+
+**Serena Memory**: `skill_system_architecture` - Complete system documentation
+
+---
+
+## Legacy Skills (SOPs)
+
+The following skills are being migrated to the tiered system:
 
 ### Session Creation
 - `create-session.md` - Basic session scaffolding

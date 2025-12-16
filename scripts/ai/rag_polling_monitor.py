@@ -15,14 +15,14 @@ Examples:
 import argparse
 import logging
 import signal
-import sys
 import time
-from pathlib import Path
 from typing import Optional
 
-# Add project root to path for intra-project imports
-PROJECT_ROOT = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(PROJECT_ROOT))
+# Use shared utilities for project setup
+from scripts.ai.rag_utils import setup_project_path, load_dotenv_safe, get_notion_config
+
+setup_project_path()
+load_dotenv_safe()
 
 from scripts.ai.rag_auto_sync import RAGAutoSync  # noqa: E402
 
@@ -70,6 +70,11 @@ def parse_args() -> argparse.Namespace:
         choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
         help="Logging level (default: INFO).",
     )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Suppress progress output from embeddings pipeline.",
+    )
     return parser.parse_args()
 
 
@@ -98,7 +103,11 @@ def main():
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
 
-    syncer = RAGAutoSync(export_dir=args.export_dir)
+    # Load quiet mode from config if not explicitly set
+    config = get_notion_config()
+    quiet_mode = args.quiet or config.get("watcher", {}).get("quiet_mode", False)
+
+    syncer = RAGAutoSync(export_dir=args.export_dir, quiet=quiet_mode)
     stop_requested = False
 
     def handle_signal(signum, frame):

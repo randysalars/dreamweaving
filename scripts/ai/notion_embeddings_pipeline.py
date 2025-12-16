@@ -101,12 +101,21 @@ class NotionEmbeddingsPipeline:
     3. Generate embeddings via OpenAI
     4. Store in Qdrant vector database
     5. Enable semantic search across all content
+
+    Args:
+        quiet: If True, suppress progress output (useful when called from watcher).
     """
 
-    def __init__(self):
+    def __init__(self, quiet: bool = False):
         self.config = load_config()
+        self.quiet = quiet
         self._init_clients()
         self._init_collection()
+
+    def _log(self, message: str):
+        """Print message unless in quiet mode."""
+        if not self.quiet:
+            print(message)
 
     def _init_clients(self):
         """Initialize embedding model and Qdrant clients."""
@@ -120,13 +129,13 @@ class NotionEmbeddingsPipeline:
             self.embedding_dims = 384
             self.sentence_model = SentenceTransformer(self.embedding_model)
             self.use_local = True
-            print(f"Using local embeddings: {self.embedding_model} (FREE)")
+            self._log(f"Using local embeddings: {self.embedding_model} (FREE)")
         elif HAS_OPENAI:
             self.openai = OpenAI()
             self.embedding_model = self.config["embeddings"]["model"]
             self.embedding_dims = self.config["embeddings"]["dimensions"]
             self.use_local = False
-            print(f"Using OpenAI embeddings: {self.embedding_model}")
+            self._log(f"Using OpenAI embeddings: {self.embedding_model}")
         else:
             raise ImportError(
                 "No embedding backend available. Install one of:\n"
@@ -147,7 +156,7 @@ class NotionEmbeddingsPipeline:
         collection_names = [c.name for c in collections]
 
         if self.collection_name not in collection_names:
-            print(f"Creating collection: {self.collection_name}")
+            self._log(f"Creating collection: {self.collection_name}")
             self.qdrant.create_collection(
                 collection_name=self.collection_name,
                 vectors_config=VectorParams(
@@ -191,7 +200,7 @@ class NotionEmbeddingsPipeline:
                     stats["pages"] += 1
                     stats["chunks"] += len(chunks)
                 except Exception as e:
-                    print(f"Error processing {md_file.name}: {e}")
+                    self._log(f"Error processing {md_file.name}: {e}")
 
         # Index database entries
         db_dir = export_dir / "databases"
@@ -209,7 +218,7 @@ class NotionEmbeddingsPipeline:
                             stats["entries"] += 1
                             stats["chunks"] += len(chunks)
                         except Exception as e:
-                            print(f"Error processing {md_file.name}: {e}")
+                            self._log(f"Error processing {md_file.name}: {e}")
 
         # Batch upsert to Qdrant
         if all_points:
@@ -316,7 +325,7 @@ class NotionEmbeddingsPipeline:
                 FILE_MANIFEST_PATH.unlink()
             return True
         except Exception as e:
-            print(f"Error clearing index: {e}")
+            self._log(f"Error clearing index: {e}")
             return False
 
     # ========== Incremental Update Methods ==========
@@ -327,7 +336,7 @@ class NotionEmbeddingsPipeline:
             try:
                 return json.loads(FILE_MANIFEST_PATH.read_text())
             except json.JSONDecodeError:
-                print("Warning: Failed to parse file manifest, starting fresh")
+                self._log("Warning: Failed to parse file manifest, starting fresh")
         return {"files": {}, "last_sync": None, "statistics": {}}
 
     def save_file_manifest(self, manifest: Dict[str, Any]):
@@ -403,7 +412,7 @@ class NotionEmbeddingsPipeline:
         total_changes = len(changes["added"]) + len(changes["modified"]) + len(changes["deleted"])
 
         if total_changes == 0:
-            print("No changes detected - index is up to date")
+            self._log("No changes detected - index is up to date")
             return {
                 "status": "no_changes",
                 "added": 0,
@@ -413,7 +422,7 @@ class NotionEmbeddingsPipeline:
                 "vectors_removed": 0
             }
 
-        print(f"Detected changes: +{len(changes['added'])} added, "
+        self._log(f"Detected changes: +{len(changes['added'])} added, "
               f"~{len(changes['modified'])} modified, -{len(changes['deleted'])} deleted")
 
         manifest = self.load_file_manifest()
@@ -477,7 +486,7 @@ class NotionEmbeddingsPipeline:
                 }
 
             except Exception as e:
-                print(f"Error processing {filepath.name}: {e}")
+                self._log(f"Error processing {filepath.name}: {e}")
 
         # 3. Update statistics
         manifest["statistics"] = {
@@ -501,7 +510,7 @@ class NotionEmbeddingsPipeline:
                 points_selector=PointIdsList(points=vector_ids)
             )
         except Exception as e:
-            print(f"Warning: Failed to delete vectors: {e}")
+            self._log(f"Warning: Failed to delete vectors: {e}")
 
     def rebuild_manifest_from_index(self, export_dir: Optional[Path] = None) -> Dict[str, Any]:
         """
@@ -513,7 +522,7 @@ class NotionEmbeddingsPipeline:
         if export_dir is None:
             export_dir = PROJECT_ROOT / "knowledge" / "notion_export"
 
-        print("Rebuilding file manifest from export directory...")
+        self._log("Rebuilding file manifest from export directory...")
         manifest = {"files": {}, "statistics": {}}
 
         for md_file in export_dir.glob("**/*.md"):
@@ -532,7 +541,7 @@ class NotionEmbeddingsPipeline:
         }
 
         self.save_file_manifest(manifest)
-        print(f"Manifest rebuilt with {len(manifest['files'])} files")
+        self._log(f"Manifest rebuilt with {len(manifest['files'])} files")
 
         return manifest
 
@@ -643,9 +652,10 @@ class NotionEmbeddingsPipeline:
         """Generate embeddings using local model or OpenAI API."""
         if self.use_local:
             # Use sentence-transformers (FREE, local)
+            # Show progress bar only if not in quiet mode and processing many texts
             embeddings = self.sentence_model.encode(
                 texts,
-                show_progress_bar=len(texts) > 10,
+                show_progress_bar=not self.quiet and len(texts) > 10,
                 convert_to_numpy=True
             )
             return [emb.tolist() for emb in embeddings]
@@ -830,6 +840,11 @@ def main():
         help="Clear the index (delete all vectors)"
     )
     parser.add_argument(
+        "--rebuild-manifest",
+        action="store_true",
+        help="Rebuild file manifest from export directory (use after cleanup)"
+    )
+    parser.add_argument(
         "--verbose", "-v",
         action="store_true",
         help="Verbose output"
@@ -904,6 +919,17 @@ def main():
                     print("Failed to clear index.")
             else:
                 print("Cancelled.")
+
+        elif args.rebuild_manifest:
+            export_dir = Path(args.export_dir) if args.export_dir else None
+            print("Rebuilding file manifest...")
+            manifest = pipeline.rebuild_manifest_from_index(export_dir)
+
+            if args.json:
+                print(json.dumps(manifest.get("statistics", {}), indent=2))
+            else:
+                stats = manifest.get("statistics", {})
+                print(f"  Total files: {stats.get('total_files', 0)}")
 
         else:
             parser.print_help()

@@ -1,0 +1,18 @@
+[Unit]
+Description=Dreamweaver Seasonal Email Scheduler
+After=network.target
+
+[Service]
+Type=oneshot
+User=rsalars
+WorkingDirectory=/home/rsalars/Projects/dreamweaving
+Environment="PATH=/home/rsalars/Projects/dreamweaving/venv/bin:/usr/bin"
+EnvironmentFile=/home/rsalars/Projects/dreamweaving/.env
+ExecStart=/home/rsalars/Projects/dreamweaving/venv/bin/python3 scripts/email/seasonal_scheduler.py --check-today
+
+# Logging
+StandardOutput=append:/home/rsalars/Projects/dreamweaving/logs/seasonal-email.log
+StandardError=append:/home/rsalars/Projects/dreamweaving/logs/seasonal-email.log
+
+[Install]
+WantedBy=multi-user.target

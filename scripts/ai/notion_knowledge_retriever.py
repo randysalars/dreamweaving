@@ -25,8 +25,9 @@ import sys
 import json
 import argparse
 import yaml
+import re
 from pathlib import Path
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Dict, Any, Set
 from datetime import datetime
 
 try:
@@ -256,14 +257,18 @@ class NotionKnowledgeRetriever:
         output_dir.mkdir(parents=True, exist_ok=True)
 
         stats = {"pages": 0, "databases": 0, "entries": 0, "skipped": 0}
-        exported_ids = set()  # Track to avoid duplicates
 
         # Export pages
         pages_dir = output_dir / "pages"
         pages_dir.mkdir(exist_ok=True)
 
+        # Pre-scan existing files to avoid creating duplicates
+        print("Scanning existing exports for Page IDs...")
+        exported_ids = self._scan_existing_page_ids(pages_dir)
+        print(f"  Found {len(exported_ids)} existing pages (will skip these)")
+
         # Method 1: Search API (finds most accessible pages)
-        print("Phase 1: Searching workspace via API...")
+        print("\nPhase 1: Searching workspace via API...")
         search_results = self.search_workspace("", limit=100)
 
         for item in search_results:
@@ -491,6 +496,142 @@ class NotionKnowledgeRetriever:
         safe = "".join(c for c in safe if c.isalnum() or c in " -_")
         return safe[:50].strip() or "untitled"
 
+    def _scan_existing_page_ids(self, pages_dir: Path) -> Set[str]:
+        """
+        Scan existing exported files to extract their Page IDs.
+
+        This allows us to pre-populate exported_ids and avoid creating
+        duplicate files on subsequent export runs.
+
+        Returns:
+            Set of Page IDs found in existing exported files
+        """
+        existing_ids: Set[str] = set()
+        page_id_pattern = re.compile(r'^Page ID: ([a-f0-9-]+)$', re.MULTILINE)
+
+        if not pages_dir.exists():
+            return existing_ids
+
+        for md_file in pages_dir.glob("*.md"):
+            try:
+                # Read just the first 500 bytes (header contains Page ID)
+                with open(md_file, "r") as f:
+                    header = f.read(500)
+
+                match = page_id_pattern.search(header)
+                if match:
+                    existing_ids.add(match.group(1))
+            except Exception:
+                # Skip files we can't read
+                continue
+
+        return existing_ids
+
+    def cleanup_duplicate_exports(self, pages_dir: Path, dry_run: bool = True) -> Dict[str, Any]:
+        """
+        Remove duplicate exported files, keeping only one file per Page ID.
+
+        For each Page ID with multiple files, keeps the file with the
+        shortest name (the original without numbered suffix).
+
+        Args:
+            pages_dir: Directory containing exported pages
+            dry_run: If True, only report what would be deleted without deleting
+
+        Returns:
+            Statistics about the cleanup operation
+        """
+        page_id_pattern = re.compile(r'^Page ID: ([a-f0-9-]+)$', re.MULTILINE)
+
+        # Group files by Page ID
+        files_by_page_id: Dict[str, List[Path]] = {}
+        files_without_id: List[Path] = []
+
+        print(f"Scanning {pages_dir} for duplicates...")
+
+        for md_file in pages_dir.glob("*.md"):
+            try:
+                with open(md_file, "r") as f:
+                    header = f.read(500)
+
+                match = page_id_pattern.search(header)
+                if match:
+                    page_id = match.group(1)
+                    if page_id not in files_by_page_id:
+                        files_by_page_id[page_id] = []
+                    files_by_page_id[page_id].append(md_file)
+                else:
+                    files_without_id.append(md_file)
+            except Exception as e:
+                print(f"  Warning: Could not read {md_file.name}: {e}")
+
+        # Find duplicates
+        stats = {
+            "unique_page_ids": len(files_by_page_id),
+            "files_scanned": sum(len(files) for files in files_by_page_id.values()) + len(files_without_id),
+            "duplicates_found": 0,
+            "files_to_delete": 0,
+            "files_deleted": 0,
+            "files_kept": 0,
+            "bytes_freed": 0,
+            "dry_run": dry_run
+        }
+
+        files_to_delete: List[Path] = []
+
+        for page_id, files in files_by_page_id.items():
+            if len(files) > 1:
+                stats["duplicates_found"] += 1
+                # Sort by filename length, keep shortest (original without suffix)
+                files_sorted = sorted(files, key=lambda f: len(f.name))
+                # Keep first (shortest name), delete rest
+                delete_files = files_sorted[1:]
+
+                stats["files_kept"] += 1
+                stats["files_to_delete"] += len(delete_files)
+                files_to_delete.extend(delete_files)
+            else:
+                stats["files_kept"] += 1
+
+        # Report findings
+        print("\nScan complete:")
+        print(f"  Unique Page IDs: {stats['unique_page_ids']}")
+        print(f"  Total files scanned: {stats['files_scanned']}")
+        print(f"  Files with duplicates: {stats['duplicates_found']}")
+        print(f"  Files to delete: {stats['files_to_delete']}")
+        print(f"  Files to keep: {stats['files_kept']}")
+
+        if files_without_id:
+            print(f"  Files without Page ID: {len(files_without_id)}")
+
+        # Calculate bytes to free
+        for f in files_to_delete:
+            stats["bytes_freed"] += f.stat().st_size
+
+        print(f"  Space to free: {stats['bytes_freed'] / 1024 / 1024:.2f} MB")
+
+        if dry_run:
+            print("\n[DRY RUN] No files deleted. Run with --cleanup (without --dry-run) to delete.")
+            if stats["files_to_delete"] > 0:
+                print("\nSample files that would be deleted:")
+                for f in files_to_delete[:10]:
+                    print(f"  {f.name}")
+                if len(files_to_delete) > 10:
+                    print(f"  ... and {len(files_to_delete) - 10} more")
+        else:
+            # Actually delete
+            print("\nDeleting duplicate files...")
+            for f in files_to_delete:
+                try:
+                    f.unlink()
+                    stats["files_deleted"] += 1
+                except Exception as e:
+                    print(f"  Error deleting {f.name}: {e}")
+
+            print(f"  Deleted {stats['files_deleted']} files")
+
+        return stats
+
     def _export_single_page(
         self,
         item: Dict,
@@ -638,6 +779,21 @@ def main():
         help="Export all content to directory"
     )
     parser.add_argument(
+        "--cleanup",
+        action="store_true",
+        help="Clean up duplicate exported files (keeps one per Page ID)"
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Show what would be deleted without actually deleting (use with --cleanup)"
+    )
+    parser.add_argument(
+        "--export-dir",
+        default="knowledge/notion_export",
+        help="Directory for exports (default: knowledge/notion_export)"
+    )
+    parser.add_argument(
         "--json",
         action="store_true",
         help="Output as JSON"
@@ -696,11 +852,26 @@ def main():
 
         elif args.export:
             stats = retriever.export_all_content(Path(args.export))
-            print(f"\nExport complete:")
+            print("\nExport complete:")
             print(f"  Pages: {stats['pages']}")
             print(f"  Databases: {stats['databases']}")
             print(f"  Entries: {stats['entries']}")
             print(f"\nSaved to: {args.export}")
+
+        elif args.cleanup:
+            export_dir = Path(args.export_dir)
+            pages_dir = export_dir / "pages"
+
+            if not pages_dir.exists():
+                print(f"Error: Pages directory not found: {pages_dir}")
+                sys.exit(1)
+
+            # Note: cleanup doesn't need Notion API access, just file operations
+            dry_run = getattr(args, 'dry_run', True)
+            stats = retriever.cleanup_duplicate_exports(pages_dir, dry_run=dry_run)
+
+            if args.json:
+                print(json.dumps(stats, indent=2))
 
         else:
             parser.print_help()

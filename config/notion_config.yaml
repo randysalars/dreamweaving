@@ -107,6 +107,57 @@ sync:
   webhook_enabled: false
   webhook_secret: "${NOTION_WEBHOOK_SECRET}"
 
+  # Rate limiting for Notion API
+  min_export_interval_seconds: 300  # 5 min between Notion exports
+
+# File watcher settings (Phase 8: Automatic RAG Indexing System)
+watcher:
+  # Debouncing - wait for changes to settle before re-indexing
+  debounce_seconds: 5.0
+
+  # File filtering - only watch these extensions
+  watched_extensions:
+    - ".md"
+    - ".yaml"
+    - ".yml"
+    - ".json"
+
+  # Paths to watch (relative to project root)
+  watch_paths:
+    - "knowledge"
+    - "prompts"
+
+  # Paths to ignore (prevents feedback loops)
+  # Note: vector_db path is automatically added from vector_db.path
+  ignore_paths:
+    - "vector_db"
+    - "embeddings_cache"
+    - "__pycache__"
+    - ".pytest_cache"
+    - "node_modules"
+    - ".git"
+
+  # Specific files to always ignore (state files that change during indexing)
+  ignore_files:
+    - ".sync_state.json"
+    - "file_manifest.json"
+    - "index_metadata.json"
+    - ".lock"
+
+  # Retry/backoff settings to prevent infinite loops
+  max_consecutive_failures: 3
+  min_retry_delay_seconds: 60
+  max_retry_delay_seconds: 3600
+
+  # Suppress embedding progress output when running via watcher
+  quiet_mode: true
+
+  # Health check endpoint (disabled by default for security)
+  health_endpoint:
+    enabled: false
+    host: "127.0.0.1"
+    port: 8765
+
 # Database schemas for reference
 # Use these when creating databases in Notion
 schemas:

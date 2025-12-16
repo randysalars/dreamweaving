@@ -10,10 +10,13 @@ primary_scripts:
   - scripts/core/audio/mastering.py
   - scripts/core/audio/voice_enhancement.py
 skills_required:
-  - voice-synthesis
-  - binaural-generation
-  - mixing-mastering
-  - voice-enhancement
+  tier1:  # Always loaded
+    - audio-somatic          # Audio layering, breath regulation, somatic cues
+  tier2:  # Triggered on safety concerns
+    - psychological-stability  # Arousal control, dissociation prevention
+  tier3:  # Task-specific
+    - voice-synthesis        # Google TTS generation
+    - audio-mixing           # Stem mixing and mastering
 context_files:
   - config/voice_config.yaml
   - knowledge/lessons_learned.yaml

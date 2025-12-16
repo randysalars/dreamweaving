@@ -1205,29 +1205,42 @@ lessons:
   - Voice generation successful with Neural2-H
   - Hypnotic post-processing applied successfully
   applied: false
-
 - id: L064
   date: '2025-12-15'
   session: christmas-light-world-enters-you
   category: audio
   source: manual_production
   summary: Voice/binaural duration mismatch - script word count and TTS timing critical
-  finding: |
-    Script word count must match target duration. Initial script had ~1,490 words
+  finding: 'Script word count must match target duration. Initial script had ~1,490
+    words
+
     producing only 16 minutes of voice, while binaural was generated for 25 minutes.
+
     Google TTS with Neural2 voices processes faster than estimated - breaks control
+
     pacing more than word count alone.
-  evidence: |
-    - Target: 25 minutes (~3,745 words estimated)
+
+    '
+  evidence: '- Target: 25 minutes (~3,745 words estimated)
+
     - Actual v1: 16 minutes (1,490 words)
+
     - Actual v2: 20.2 minutes (expanded script with longer breaks)
-  action: |
-    Before generating audio, always:
+
+    '
+  action: 'Before generating audio, always:
+
     1. Estimate word count needed: ~150 words/minute for hypnotic pacing
+
     2. Generate voice FIRST, then match binaural/SFX duration to actual voice length
+
     3. Update manifest section timings to match actual voice duration
+
     4. Regenerate binaural to match voice duration exactly
+
     5. Use sfx_sync.py to align SFX markers to actual voice timing
+
+    '
   technical_notes:
     stem_levels:
       voice: -6dB
@@ -1245,11 +1258,29 @@ lessons:
       7: Apply hypnotic post-processing
   confidence: high
   tags:
-    - audio
-    - duration
-    - synchronization
-    - tts
-    - critical
+  - audio
+  - duration
+  - synchronization
+  - tts
+  - critical
   priority: critical
   applied_to:
-    - christmas-light-world-enters-you
+  - christmas-light-world-enters-you
+- id: L065
+  date: '2025-12-16'
+  session: taoist-yin-and-yang-pathworking
+  category: automation
+  source: auto_generate
+  summary: 'Auto-generated session from topic: Taoist Yin And Yang Pathworking'
+  details:
+    topic: Taoist Yin And Yang Pathworking
+    mode: standard
+    duration_target: 30
+    stages_completed: 16
+    stages_failed: 0
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  applied: false
