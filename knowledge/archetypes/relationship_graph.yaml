@@ -1,0 +1,329 @@
+# Archetype Relationship Graph
+# Reference for the Archetype Codex Agent
+# Maps relationships between archetypes for journey design
+
+---
+
+# Archetype Relationship Types
+relationship_types:
+  complementary: "Work together harmoniously"
+  polar: "Opposites that create tension and growth"
+  evolutionary: "One evolves into the other"
+  shadow_pair: "Each is the shadow of the other"
+  dynamic: "Create energy through interaction"
+  transformative: "One transforms the other"
+
+---
+
+# Core Archetype Relationships
+archetype_relations:
+
+  # Wisdom Lineage
+  - archetype_a: wise_elder
+    archetype_b: innocent
+    relation_type: complementary
+    dynamics: "Elder guides innocent; innocent reminds elder of wonder"
+    narrative_potential: "Mentorship stories, wisdom transmission"
+    journey_use: "Opening (innocent) to closing (elder within)"
+
+  - archetype_a: wise_elder
+    archetype_b: divine_child
+    relation_type: evolutionary
+    dynamics: "Child becomes elder; elder remembers child"
+    narrative_potential: "Life cycle completion, potential becoming wisdom"
+    journey_use: "Full transformation arc"
+
+  # Healing Relationships
+  - archetype_a: healer
+    archetype_b: warrior
+    relation_type: complementary
+    dynamics: "Warrior protects healing space; healer mends warrior"
+    narrative_potential: "Protection of sacred space, healing after battle"
+    journey_use: "Shadow integration with protective boundary"
+
+  - archetype_a: healer
+    archetype_b: shadow
+    relation_type: transformative
+    dynamics: "Healer helps integrate shadow; shadow provides healing power"
+    narrative_potential: "Wounded healer archetype, shadow integration"
+    journey_use: "Deep healing work"
+
+  # Shadow Integration
+  - archetype_a: shadow
+    archetype_b: innocent
+    relation_type: polar
+    dynamics: "Shadow holds what innocent denies; integration restores both"
+    narrative_potential: "Shadow work, reclaiming lost parts"
+    journey_use: "Requires careful bridging archetype"
+
+  - archetype_a: shadow
+    archetype_b: warrior
+    relation_type: dynamic
+    dynamics: "Warrior confronts shadow; shadow tests warrior's courage"
+    narrative_potential: "Facing fears, claiming power"
+    journey_use: "Empowerment through shadow confrontation"
+
+  # Parental Archetypes
+  - archetype_a: mother
+    archetype_b: father
+    relation_type: complementary
+    dynamics: "Nurturing and structure; receptive and active"
+    narrative_potential: "Inner parenting, self-care and self-discipline"
+    journey_use: "Reparenting work, self-nurturing"
+
+  - archetype_a: mother
+    archetype_b: divine_child
+    relation_type: evolutionary
+    dynamics: "Mother births child; child carries mother's blessing"
+    narrative_potential: "Creative birth, nurturing potential"
+    journey_use: "Creativity, new beginnings"
+
+  # Soul Images (Anima/Animus)
+  - archetype_a: anima
+    archetype_b: animus
+    relation_type: polar
+    dynamics: "Inner feminine and masculine; integration leads to wholeness"
+    narrative_potential: "Inner marriage, sacred union"
+    journey_use: "Integration work, wholeness"
+
+  - archetype_a: anima
+    archetype_b: shadow
+    relation_type: dynamic
+    dynamics: "Anima can guide to shadow; shadow may hide behind anima projection"
+    narrative_potential: "Deep unconscious exploration"
+    journey_use: "Advanced integration work"
+
+  # Trickster Dynamics
+  - archetype_a: trickster
+    archetype_b: threshold_guardian
+    relation_type: dynamic
+    dynamics: "Trickster bypasses what guardian protects; creative problem solving"
+    narrative_potential: "Finding unexpected solutions, sacred mischief"
+    journey_use: "Overcoming obstacles creatively"
+
+  - archetype_a: trickster
+    archetype_b: wise_elder
+    relation_type: polar
+    dynamics: "Trickster disrupts elder's structure; elder contains trickster's chaos"
+    narrative_potential: "Balance of order and creative chaos"
+    journey_use: "Breaking old patterns while maintaining safety"
+
+  # Shapeshifter Relationships
+  - archetype_a: shapeshifter
+    archetype_b: anima
+    relation_type: shadow_pair
+    dynamics: "Shapeshifter embodies changing projections of anima"
+    narrative_potential: "Understanding projection, finding true soul"
+    journey_use: "Working with projections"
+
+  - archetype_a: shapeshifter
+    archetype_b: shadow
+    relation_type: dynamic
+    dynamics: "Shapeshifter can reveal shadow in changing forms"
+    narrative_potential: "Shadow appearing in unexpected guises"
+    journey_use: "Gradual shadow revelation"
+
+  # Journey Companions
+  - archetype_a: threshold_guardian
+    archetype_b: healer
+    relation_type: complementary
+    dynamics: "Guardian tests; healer restores after passage"
+    narrative_potential: "Initiation and recovery"
+    journey_use: "Classic initiation structure"
+
+  - archetype_a: threshold_guardian
+    archetype_b: innocent
+    relation_type: transformative
+    dynamics: "Guardian's test transforms innocent into initiate"
+    narrative_potential: "Coming of age, loss of innocence, growth"
+    journey_use: "Major transitions"
+
+---
+
+# Archetype Clusters for Common Outcomes
+outcome_clusters:
+
+  healing:
+    primary: healer
+    supporting: [mother, wise_elder, innocent]
+    shadow_work: shadow  # Optional deeper work
+    dynamics: "Nurturing container with gentle wisdom"
+    cautions: ["Don't force shadow work", "Honor listener's pace"]
+
+  transformation:
+    primary: shadow
+    supporting: [threshold_guardian, shapeshifter, divine_child]
+    bridge: healer  # For safe container
+    dynamics: "Confrontation and rebirth with protective frame"
+    cautions: ["Require safe return path", "Test readiness"]
+
+  empowerment:
+    primary: warrior
+    supporting: [father, threshold_guardian, animus]
+    integration: healer  # For wounded warrior
+    dynamics: "Claiming power through challenge"
+    cautions: ["Balance strength with wisdom", "Avoid aggression"]
+
+  self_knowledge:
+    primary: shadow
+    supporting: [anima, animus, wise_elder]
+    bridge: shapeshifter  # For shifting perspectives
+    dynamics: "Meeting hidden aspects with wisdom guidance"
+    cautions: ["Go slowly", "Multiple sessions may be needed"]
+
+  spiritual_growth:
+    primary: wise_elder
+    supporting: [divine_child, anima, animus]
+    advanced: shadow  # For deeper levels
+    dynamics: "Integration of inner polarities toward wholeness"
+    cautions: ["Avoid spiritual bypass", "Ground in body"]
+
+  creativity:
+    primary: divine_child
+    supporting: [trickster, anima, shapeshifter]
+    structure: father  # For grounding creative chaos
+    dynamics: "Unleashing potential with playful energy"
+    cautions: ["Balance freedom with form"]
+
+  confidence:
+    primary: warrior
+    supporting: [father, threshold_guardian]
+    soften_with: mother  # Prevent harshness
+    dynamics: "Building inner strength through challenge"
+    cautions: ["Include self-compassion"]
+
+  relaxation:
+    primary: mother
+    supporting: [healer, innocent]
+    avoid: [shadow, threshold_guardian, warrior]
+    dynamics: "Nurturing, accepting, peaceful"
+    cautions: ["Keep light and gentle"]
+
+---
+
+# Journey Phase Archetype Assignments
+journey_phase_archetypes:
+
+  ordinary_world:
+    primary: [innocent, mother, father]
+    purpose: "Establish baseline, show what listener is leaving"
+
+  call_to_adventure:
+    primary: [herald, trickster, divine_child]
+    purpose: "Disrupt ordinary, invite to journey"
+
+  refusal:
+    primary: [shadow, threshold_guardian]
+    purpose: "Show resistance, honor hesitation"
+
+  meeting_mentor:
+    primary: [wise_elder, healer, guide]
+    purpose: "Receive wisdom, tools, blessing"
+
+  crossing_threshold:
+    primary: [threshold_guardian]
+    secondary: [trickster, warrior]
+    purpose: "Test commitment, transform to enter special world"
+
+  tests_allies_enemies:
+    primary: [trickster, shapeshifter, warrior]
+    secondary: [healer, wise_elder]
+    purpose: "Learn rules of special world, meet helpers"
+
+  approach:
+    primary: [shadow, anima, animus]
+    secondary: [shapeshifter]
+    purpose: "Prepare for ordeal, face inner aspects"
+
+  ordeal:
+    primary: [shadow, threshold_guardian]
+    support: [healer, wise_elder]
+    purpose: "Face greatest fear, death/rebirth"
+
+  reward:
+    primary: [divine_child, healer]
+    secondary: [mother, wise_elder]
+    purpose: "Claim transformation, receive gift"
+
+  road_back:
+    primary: [threshold_guardian, trickster]
+    purpose: "Return journey, test integration"
+
+  resurrection:
+    primary: [divine_child, warrior]
+    secondary: [healer, father]
+    purpose: "Final transformation, new identity"
+
+  return_with_elixir:
+    primary: [wise_elder, healer]
+    secondary: [innocent, mother]
+    purpose: "Share gift, complete cycle"
+
+---
+
+# Cast Design Guidelines
+cast_guidelines:
+
+  minimum_cast:
+    - description: "Simplest effective cast"
+      archetypes: [guide, one_other]
+      use_for: "Short sessions, focused work"
+
+  standard_cast:
+    - description: "Balanced journey cast"
+      archetypes: [guide, ally, challenger, transformative]
+      use_for: "Full sessions"
+
+  shadow_work_cast:
+    - description: "For shadow integration"
+      archetypes: [safe_guide, shadow, healer, wise_witness]
+      use_for: "Deep shadow work"
+
+  hero_journey_cast:
+    - description: "Full hero's journey"
+      archetypes: [mentor, threshold_guardian, shapeshifter, shadow, divine_child]
+      use_for: "Epic transformational journeys"
+
+  rules:
+    - "Always include a guiding presence"
+    - "Balance challengers with allies"
+    - "Include healer for shadow work"
+    - "Don't overwhelm with too many archetypes (max 5)"
+    - "Let archetypes evolve through journey"
+
+---
+
+# Voice Quality Guidelines by Archetype
+archetype_voice_qualities:
+
+  wise_elder:
+    qualities: [deep, measured, patient, ancient]
+    prosody: "pitch: -2st, rate: 1.0, breaks: generous"
+
+  healer:
+    qualities: [warm, soothing, gentle, compassionate]
+    prosody: "pitch: -1st, rate: 1.0, breaks: medium"
+
+  warrior:
+    qualities: [strong, direct, fierce, protective]
+    prosody: "pitch: -1st, rate: 1.0, breaks: shorter"
+
+  shadow:
+    qualities: [varied, echoing, mysterious]
+    prosody: "pitch: varies, rate: 1.0, can echo listener"
+
+  mother:
+    qualities: [warm, embracing, accepting, nurturing]
+    prosody: "pitch: 0st, rate: 1.0, breaks: gentle"
+
+  trickster:
+    qualities: [playful, irreverent, quicksilver, mischievous]
+    prosody: "pitch: varies, rate: 1.0, rhythmic variation"
+
+  innocent:
+    qualities: [light, wondering, open, curious]
+    prosody: "pitch: +1st, rate: 1.0, breaks: short"
+
+  divine_child:
+    qualities: [bright, full_of_wonder, pure, hopeful]
+    prosody: "pitch: 0st, rate: 1.0, breaks: medium"

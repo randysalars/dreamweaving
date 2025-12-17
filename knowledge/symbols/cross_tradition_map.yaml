@@ -1,0 +1,329 @@
+# Cross-Tradition Symbol Map
+# Reference for the Symbolic Lexicon Agent
+# Maps equivalent and related symbols across spiritual traditions
+
+---
+
+# Primary Symbol Equivalences
+cross_tradition_equivalences:
+
+  # Solar/Gold Symbols
+  solar_consciousness:
+    description: "Solar/gold consciousness across traditions"
+    symbols:
+      alchemy: gold
+      kabbalah: tiphareth
+      tarot: the_sun
+      christian: light_of_christ
+      egyptian: ra
+      hindu: surya
+      greek: apollo
+    unified_meaning: "Divine consciousness, illumination, spiritual perfection"
+    element: fire
+    archetype: illuminated_one
+
+  # Lunar/Silver Symbols
+  lunar_receptivity:
+    description: "Lunar/receptive principle across traditions"
+    symbols:
+      alchemy: silver
+      kabbalah: binah
+      tarot: high_priestess
+      egyptian: thoth
+      hindu: chandra
+      greek: artemis
+    unified_meaning: "Intuition, hidden knowledge, receptive consciousness"
+    element: water
+    archetype: oracle
+
+  # Transformation Agents
+  transformation_catalyst:
+    description: "Agents of transformation and communication"
+    symbols:
+      alchemy: mercury
+      tarot: magician
+      greek: hermes
+      egyptian: thoth
+      norse: odin
+      roman: mercury
+    unified_meaning: "Bridge between realms, transformation, communication"
+    element: air
+    archetype: messenger
+
+  # Death-Rebirth Cycle
+  death_rebirth:
+    description: "Death and rebirth symbolism"
+    symbols:
+      alchemy: nigredo_to_rubedo
+      tarot: death_card
+      egyptian: osiris
+      christian: resurrection
+      norse: ragnarok
+      greek: persephone
+    unified_meaning: "Transformation through dissolution, rebirth"
+    element: earth_to_fire
+    archetype: phoenix
+
+  # Divine Feminine
+  divine_feminine:
+    description: "Sacred feminine principle"
+    symbols:
+      kabbalah: shekinah
+      christian: mary
+      egyptian: isis
+      hindu: shakti
+      greek: aphrodite
+      gnostic: sophia
+    unified_meaning: "Divine feminine wisdom, nurturing, creation"
+    element: water
+    archetype: goddess
+
+  # World Tree / Axis Mundi
+  axis_mundi:
+    description: "World axis connecting realms"
+    symbols:
+      norse: yggdrasil
+      kabbalah: tree_of_life
+      shamanic: world_tree
+      christian: cross
+      buddhist: bodhi_tree
+      mesoamerican: ceiba
+    unified_meaning: "Connection between worlds, spiritual ascent/descent"
+    element: all_four
+    archetype: pillar
+
+  # Wisdom Serpent
+  wisdom_serpent:
+    description: "Serpent as wisdom and transformation"
+    symbols:
+      hermetic: ouroboros
+      hindu: kundalini
+      egyptian: uraeus
+      greek: python
+      gnostic: sophia_serpent
+      mesoamerican: quetzalcoatl
+    unified_meaning: "Wisdom, eternal cycles, life force"
+    element: fire_and_water
+    archetype: guardian_of_wisdom
+
+  # Sacred Marriage
+  hieros_gamos:
+    description: "Divine union of opposites"
+    symbols:
+      alchemy: chemical_wedding
+      kabbalah: union_of_sefirot
+      hindu: shiva_shakti
+      tarot: lovers
+      christian: mystical_marriage
+      gnostic: bridal_chamber
+    unified_meaning: "Union of opposites, wholeness, sacred integration"
+    element: spirit
+    archetype: sacred_couple
+
+---
+
+# Element Correspondences Across Traditions
+elemental_correspondences:
+
+  fire:
+    alchemical: sulfur
+    kabbalistic: atziluth
+    tarot: wands
+    hindu: tejas
+    greek: pyros
+    direction: south
+    qualities: [transformation, will, passion, illumination]
+    archetypes: [warrior, creator, phoenix]
+
+  water:
+    alchemical: mercury
+    kabbalistic: briah
+    tarot: cups
+    hindu: apas
+    greek: hydor
+    direction: west
+    qualities: [emotion, intuition, flow, purification]
+    archetypes: [healer, oracle, mermaid]
+
+  air:
+    alchemical: mercury_volatile
+    kabbalistic: yetzirah
+    tarot: swords
+    hindu: vayu
+    greek: aer
+    direction: east
+    qualities: [thought, communication, breath, freedom]
+    archetypes: [messenger, sage, bird]
+
+  earth:
+    alchemical: salt
+    kabbalistic: assiah
+    tarot: pentacles
+    hindu: prithvi
+    greek: ge
+    direction: north
+    qualities: [stability, manifestation, body, grounding]
+    archetypes: [guardian, builder, tree]
+
+  spirit:
+    alchemical: quinta_essentia
+    kabbalistic: kether
+    tarot: major_arcana
+    hindu: akasha
+    greek: aether
+    direction: center
+    qualities: [unity, transcendence, source, void]
+    archetypes: [divine_self, cosmic_being]
+
+---
+
+# Journey Stage Symbol Mappings
+journey_symbol_mappings:
+
+  threshold:
+    symbols: [door, gate, veil, bridge, rainbow]
+    traditions_using:
+      - shamanic: "portal between worlds"
+      - greek: "gates of horn and ivory"
+      - celtic: "thin places"
+      - kabbalistic: "parokhet veil"
+    recommended_use: "Transition points in journey"
+
+  descent:
+    symbols: [cave, well, underworld, darkness, roots]
+    traditions_using:
+      - greek: "katabasis to Hades"
+      - norse: "descent to Hel"
+      - shamanic: "lower world journey"
+      - egyptian: "passage through Duat"
+    recommended_use: "Shadow work, deep transformation"
+
+  center:
+    symbols: [heart, sun, throne, temple, mountain peak]
+    traditions_using:
+      - hindu: "mount meru"
+      - greek: "omphalos"
+      - kabbalistic: "tiphareth"
+      - christian: "sacred heart"
+    recommended_use: "Core transformation, meeting divine"
+
+  ascent:
+    symbols: [ladder, stairway, wings, light, crown]
+    traditions_using:
+      - kabbalistic: "jacob's ladder"
+      - shamanic: "upper world journey"
+      - christian: "ascension"
+      - buddhist: "enlightenment"
+    recommended_use: "Spiritual elevation, integration"
+
+  return:
+    symbols: [path, road, river, sunrise, homecoming]
+    traditions_using:
+      - greek: "nostos"
+      - celtic: "return from otherworld"
+      - shamanic: "return with power"
+      - hero_journey: "return with elixir"
+    recommended_use: "Integration, grounding transformation"
+
+---
+
+# Color Correspondences
+color_symbolism:
+
+  white:
+    alchemical: albedo
+    spiritual: purity, spirit, initiation
+    traditions: [christian, hindu, buddhist]
+    journey_use: "Beginning, purification, spirit contact"
+
+  black:
+    alchemical: nigredo
+    spiritual: void, potential, shadow
+    traditions: [alchemical, kabbalistic]
+    journey_use: "Shadow work, descent, dissolution"
+
+  red:
+    alchemical: rubedo
+    spiritual: life force, passion, blood
+    traditions: [christian, hindu, alchemical]
+    journey_use: "Transformation complete, vitality, sacrifice"
+
+  gold:
+    alchemical: completion
+    spiritual: divine consciousness, perfection
+    traditions: [all major traditions]
+    journey_use: "Divine encounter, illumination, success"
+
+  blue:
+    alchemical: water element
+    spiritual: truth, depth, devotion
+    traditions: [christian, hindu, egyptian]
+    journey_use: "Emotional healing, truth seeking, peace"
+
+  green:
+    alchemical: vegetation
+    spiritual: growth, nature, heart
+    traditions: [celtic, islamic, christian]
+    journey_use: "Healing, growth, nature connection"
+
+  purple:
+    alchemical: royalty
+    spiritual: transformation, royalty, mystery
+    traditions: [christian, roman, hermetic]
+    journey_use: "Spiritual authority, deep transformation"
+
+---
+
+# Coherence Rules for Symbol Blending
+coherence_rules:
+
+  always_safe:
+    - description: "Universal symbols that work across traditions"
+      symbols: [light, water, tree, mountain, path]
+
+  requires_bridging:
+    - description: "Tradition-specific symbols needing context"
+      examples:
+        - symbols: [cross, ankh]
+          bridge: "Both represent life and divine intersection"
+        - symbols: [dragon_east, dragon_west]
+          bridge: "Eastern (wisdom) vs Western (chaos to overcome)"
+
+  avoid_mixing:
+    - description: "Symbols that conflict or cause confusion"
+      examples:
+        - pair: [satanic_symbols, christian_symbols]
+          reason: "Fundamental opposition"
+        - pair: [nazi_symbols, any]
+          reason: "Harmful associations"
+
+  elemental_balance:
+    - description: "Balance opposing elements"
+      rule: "If using fire symbols, include water for balance"
+      example: "Volcanic transformation + healing waters"
+
+---
+
+# Usage Notes for Session Design
+usage_notes:
+
+  general_principles:
+    - "Start with unified meaning, then select tradition-specific expression"
+    - "Use no more than 3 traditions per session for coherence"
+    - "Bridge traditions through universal themes (death/rebirth, journey, union)"
+    - "When blending, favor symbols from compatible_traditions list"
+    - "Always check coherence_rules before combining symbols"
+
+  for_outcomes:
+    healing:
+      primary_symbols: [water, light, hands, heart]
+      traditions_favored: [shamanic, christian, egyptian]
+    transformation:
+      primary_symbols: [fire, phoenix, serpent, cocoon]
+      traditions_favored: [alchemical, egyptian, hindu]
+    empowerment:
+      primary_symbols: [sword, sun, lion, mountain]
+      traditions_favored: [norse, greek, hindu]
+    spiritual_growth:
+      primary_symbols: [tree, ladder, light, crown]
+      traditions_favored: [kabbalistic, christian, buddhist]

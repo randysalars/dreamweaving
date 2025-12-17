@@ -1,0 +1,399 @@
+# Initiation Stages Knowledge Base
+# Reference for the Initiation Path Agent
+
+---
+
+# Universal Initiation Structure
+universal_stages:
+  separation:
+    description: Leaving the ordinary world
+    alternate_names: [departure, calling, threshold]
+    psychological_function: Letting go of old identity
+    common_imagery:
+      - Crossing a threshold
+      - Entering a forest
+      - Descending stairs
+      - Going through a door
+    emotional_arc: anticipation → uncertainty → surrender
+    duration_pct: 15-20
+
+  liminal:
+    description: Betwixt and between states
+    alternate_names: [ordeal, trial, transformation]
+    psychological_function: Identity dissolution and reformation
+    common_imagery:
+      - Darkness/void
+      - Tests and challenges
+      - Meeting guides/monsters
+      - Death and rebirth
+    emotional_arc: fear → struggle → breakthrough
+    duration_pct: 50-60
+
+  incorporation:
+    description: Return transformed
+    alternate_names: [return, integration, reborn]
+    psychological_function: New identity stabilization
+    common_imagery:
+      - Emerging into light
+      - Receiving gifts/symbols
+      - New name/role
+      - Community welcoming
+    emotional_arc: relief → gratitude → empowerment
+    duration_pct: 20-25
+
+---
+
+# Mystery School Traditions
+traditions:
+
+  eleusinian:
+    origin: Ancient Greece
+    deity_focus: Demeter, Persephone
+    core_myth: Descent and return of Persephone
+    stages:
+      lesser_mysteries:
+        - Purification
+        - Fasting
+        - Sacrifice
+      greater_mysteries:
+        - Night vigil
+        - Katabasis (descent)
+        - Viewing sacred objects
+        - Epopteia (revelation)
+    symbols: [grain, torch, pomegranate, pig]
+    appropriate_for: [healing, transformation, death_rebirth]
+    ssml_elements:
+      opening: "In the ancient way of Eleusis..."
+      threshold: "You descend now, as Persephone once descended..."
+      return: "Rising again, as the grain rises from the earth..."
+
+  egyptian:
+    origin: Ancient Egypt
+    deity_focus: Osiris, Isis, Thoth
+    core_myth: Death and resurrection of Osiris
+    stages:
+      - Ritual purification (water)
+      - Symbolic death
+      - Hall of Ma'at (judgment)
+      - Resurrection as Osiris
+    symbols: [ankh, djed, eye_of_horus, scarab, feather]
+    appropriate_for: [transformation, spiritual_growth, self_knowledge]
+    ssml_elements:
+      opening: "In the ancient land of Khem..."
+      threshold: "Before you stands the Hall of Ma'at..."
+      return: "You rise as Osiris rose, transformed..."
+
+  hermetic:
+    origin: Hellenistic Egypt
+    deity_focus: Hermes Trismegistus, planetary intelligences
+    core_myth: Ascent through the seven spheres
+    stages:
+      - Earth (body mastery)
+      - Moon (emotional mastery)
+      - Mercury (mental mastery)
+      - Venus (relational mastery)
+      - Sun (heart/will integration)
+      - Mars (power mastery)
+      - Jupiter (wisdom reception)
+      - Saturn (temporal transcendence)
+      - Fixed Stars (cosmic awareness)
+    symbols: [caduceus, emerald_tablet, planetary_seals]
+    appropriate_for: [spiritual_growth, self_knowledge, empowerment]
+    ssml_elements:
+      opening: "As above, so below... as within, so without..."
+      threshold: "You begin your ascent through the spheres..."
+      return: "Descending now with the wisdom of the stars..."
+
+  kabbalistic:
+    origin: Jewish mysticism
+    deity_focus: Ein Sof, Archangels
+    core_myth: Descent of light, ascent of soul
+    stages:
+      - Malkuth (kingdom/body)
+      - Yesod (foundation/dreams)
+      - Tiphareth (beauty/heart)
+      - Kether (crown/unity)
+    symbols: [tree_of_life, hebrew_letters, metatrons_cube]
+    appropriate_for: [spiritual_growth, transformation]
+    christian_safe: true
+    ssml_elements:
+      opening: "The Tree of Life rises before you..."
+      threshold: "You begin to ascend the middle pillar..."
+      return: "Light descends through you to Malkuth..."
+
+  celtic:
+    origin: Ancient Celtic lands
+    deity_focus: Brigid, Cernunnos, the Morrigan
+    core_myth: Cauldron mysteries, Otherworld journey
+    stages:
+      - Crossing the veil
+      - Journey to the Otherworld
+      - Meeting the ancestors/fae
+      - Drinking from the cauldron
+      - Return with gifts
+    symbols: [cauldron, torc, spiral, salmon, crane]
+    appropriate_for: [healing, creativity, ancestor_work]
+    ssml_elements:
+      opening: "The veil between worlds grows thin..."
+      threshold: "You step now into the Otherworld..."
+      return: "Carrying gifts from beyond the veil..."
+
+  rosicrucian:
+    origin: 17th century Europe
+    deity_focus: Christ, Sophia, cosmic intelligences
+    core_myth: Chemical Wedding
+    stages:
+      - Calling (trumpet summons)
+      - Purification (bath)
+      - Trial (weighing)
+      - Death of old self
+      - Marriage (sacred union)
+      - Resurrection (new being)
+    symbols: [rose_cross, pelican, phoenix]
+    appropriate_for: [transformation, spiritual_growth]
+    christian_safe: true
+    ssml_elements:
+      opening: "The rose blooms upon the cross..."
+      threshold: "The sacred marriage awaits within..."
+      return: "Transformed by the chemical wedding..."
+
+---
+
+# Trial Types
+trial_types:
+
+  fire:
+    element: fire
+    quality: will/courage
+    challenges:
+      - Walking through flames
+      - Facing the dragon
+      - Forging in the furnace
+    gifts_won: [courage, purification, will]
+    appropriate_for: [empowerment, confidence, transformation]
+    imagery_notes: "Emphasize warmth over destruction"
+
+  water:
+    element: water
+    quality: emotion/intuition
+    challenges:
+      - Diving into depths
+      - Crossing the river
+      - Surviving the flood
+    gifts_won: [intuition, emotional_mastery, flow]
+    appropriate_for: [healing, release, self_knowledge]
+    imagery_notes: "Emphasize cleansing over drowning"
+
+  earth:
+    element: earth
+    quality: endurance/patience
+    challenges:
+      - Descending into cave
+      - Long journey through tunnel
+      - Being buried/planted
+    gifts_won: [stability, patience, grounding]
+    appropriate_for: [grounding, transformation, shadow_work]
+    imagery_notes: "Emphasize gestation over entrapment"
+
+  air:
+    element: air
+    quality: truth/clarity
+    challenges:
+      - Crossing the abyss
+      - Flight into unknown
+      - Standing in the wind
+    gifts_won: [clarity, freedom, truth]
+    appropriate_for: [self_knowledge, spiritual_growth, release]
+    imagery_notes: "Emphasize liberation over falling"
+
+---
+
+# Initiator Archetypes
+initiator_archetypes:
+
+  hierophant:
+    role: Keeper of mysteries
+    voice: Authoritative, solemn, ritualistic
+    appearance: Robed, with symbols of office
+    speaks_of: Tradition, sacred law, proper procedure
+    appropriate_for: Formal initiations, mystery school work
+    ssml_pitch: "-1st"
+    example_speech: |
+      "You who seek the mysteries...
+      know that you stand at the threshold of the sacred...
+      Are you prepared to receive what awaits?"
+
+  elder:
+    role: Wisdom keeper
+    voice: Gentle, knowing, patient
+    appearance: Aged but vital, kind eyes
+    speaks_of: Life wisdom, patience, cycles
+    appropriate_for: Healing, life transitions, ancestor work
+    ssml_pitch: "0st"
+    example_speech: |
+      "Come, child...
+      sit with me awhile...
+      I have something to share with you..."
+
+  guardian:
+    role: Threshold keeper
+    voice: Challenging but fair
+    appearance: Powerful, often armored or fierce
+    speaks_of: Worthiness, readiness, tests
+    appropriate_for: Trial sequences, boundary setting
+    ssml_pitch: "-2st"
+    example_speech: |
+      "Who approaches this gate?
+      What do you seek?
+      And what are you willing to release?"
+
+  divine_parent:
+    role: Bestower of blessing
+    voice: Loving, powerful, nurturing
+    appearance: Radiant, often with open arms
+    speaks_of: Love, acceptance, blessing
+    appropriate_for: Healing, reparenting, empowerment
+    ssml_pitch: "0st"
+    example_speech: |
+      "My beloved child...
+      I have waited for you...
+      Come, receive what has always been yours..."
+
+  messenger:
+    role: Announcer of truth
+    voice: Clear, luminous, otherworldly
+    appearance: Angelic, often with wings or light
+    speaks_of: Divine messages, revelations, callings
+    appropriate_for: Spiritual revelation, calling discovery
+    ssml_pitch: "+1st"
+    christian_safe: true
+    example_speech: |
+      "Hear now the word that comes for you...
+      That which has been hidden is now revealed..."
+
+  inner_teacher:
+    role: Voice of Higher Self
+    voice: Intimate, familiar, your own but wiser
+    appearance: Often a future/higher version of self
+    speaks_of: Personal truth, inner knowing
+    appropriate_for: Self-knowledge, integration, guidance
+    ssml_pitch: "0st"
+    example_speech: |
+      "You know this already, don't you?
+      Deep down, you've always known...
+      Let yourself remember..."
+
+---
+
+# Ritual Elements
+ritual_elements:
+
+  opening:
+    cast_circle:
+      purpose: Create sacred boundary
+      ssml: |
+        A circle of light forms around you now...
+        sacred space... protected... held...
+        Within this circle, transformation is possible...
+
+    call_directions:
+      purpose: Honor the four quarters
+      ssml: |
+        To the East, the power of Air and new beginnings...
+        To the South, the power of Fire and passion...
+        To the West, the power of Water and emotion...
+        To the North, the power of Earth and stability...
+
+    invoke_presence:
+      purpose: Call witness/guide
+      ssml: |
+        And into this sacred space...
+        you invite the presence of your highest guidance...
+        whatever form that takes for you...
+        to witness and support this journey...
+
+  closing:
+    gratitude:
+      purpose: Honor what was received
+      ssml: |
+        With deep gratitude now...
+        for all that has been shown...
+        for the guidance received...
+        for the transformation begun...
+
+    seal_work:
+      purpose: Lock in changes
+      ssml: |
+        And you seal this work now...
+        in your heart, in your body, in your cells...
+        knowing the transformation continues...
+        even as you return to ordinary awareness...
+
+    open_circle:
+      purpose: Return to ordinary
+      ssml: |
+        The circle opens now...
+        but is never broken...
+        the sacred remains within you...
+        as you return to the world...
+        changed, blessed, renewed...
+
+---
+
+# Symbolic Objects of Initiation
+initiation_objects:
+
+  key:
+    meaning: Access to mysteries
+    received_at: After first trial
+    ssml: |
+      And here, offered to you now...
+      a key... ancient... golden...
+      the key that opens what was locked...
+      Take it in your hand...
+
+  robe:
+    meaning: New identity
+    received_at: Death-rebirth moment
+    ssml: |
+      And a robe is placed upon your shoulders...
+      [color] and luminous...
+      the garment of your new self...
+      Feel its weight, its meaning...
+
+  crown:
+    meaning: Sovereignty, completion
+    received_at: Final stage
+    ssml: |
+      And upon your head now...
+      a crown is placed...
+      not of material gold...
+      but of inner sovereignty...
+      You are crowned in your own being...
+
+  staff:
+    meaning: Authority, guidance power
+    received_at: Teacher/leader initiations
+    ssml: |
+      A staff is placed in your hand...
+      the mark of one who guides...
+      Feel its weight, its power...
+      the responsibility it represents...
+
+  cup:
+    meaning: Receptivity, mystery
+    received_at: Feminine mystery initiations
+    ssml: |
+      The sacred cup is offered...
+      filled with the waters of wisdom...
+      And if you choose to drink...
+      you receive what it contains...
+
+  sword:
+    meaning: Discrimination, truth
+    received_at: Warrior/truth initiations
+    ssml: |
+      A sword of light is placed in your hand...
+      the blade of discernment...
+      to cut through illusion...
+      to protect what is sacred...

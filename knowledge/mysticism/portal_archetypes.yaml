@@ -1,0 +1,475 @@
+# Portal Archetypes Knowledge Base
+# Reference for the Portal Builder Agent
+
+---
+
+# Portal Types
+portal_types:
+
+  doorway:
+    symbolism: Conscious choice, agency
+    visual_elements:
+      - Frame (wood, stone, metal)
+      - Handle/knob
+      - Light beyond
+    sensory_details:
+      visual: "Ancient wooden door, carved with symbols"
+      tactile: "Cool handle, smooth from countless hands"
+      auditory: "Gentle creak as it opens"
+    transition_technique: step_through
+    best_for: [empowerment, agency, new_beginnings]
+    ssml_template: |
+      And before you now...
+      a doorway appears...
+      [DESCRIPTION]...
+      And when you're ready...
+      you can reach out...
+      turn the handle...
+      and step through...
+
+  gate:
+    symbolism: Permission, readiness, threshold
+    visual_elements:
+      - Iron or golden bars
+      - Guardian presence (optional)
+      - Garden/sacred space beyond
+    sensory_details:
+      visual: "Wrought iron gate, roses climbing"
+      tactile: "Cool metal, intricate patterns"
+      auditory: "Soft click as it unlatches"
+    transition_technique: permission_granted
+    best_for: [initiation, transformation, spiritual_entry]
+    may_include_guardian: true
+    ssml_template: |
+      A gate stands before you...
+      [DESCRIPTION]...
+      [GUARDIAN if applicable]...
+      The gate opens now...
+      and you may pass through...
+
+  threshold:
+    symbolism: Natural transition, liminal moment
+    visual_elements:
+      - Line between spaces
+      - Change in lighting
+      - Change in atmosphere
+    sensory_details:
+      visual: "Where forest meets clearing"
+      tactile: "A shift in the air"
+      auditory: "Sounds changing as you cross"
+    transition_technique: step_across
+    best_for: [life_changes, growth, subtle_shifts]
+    ssml_template: |
+      And here, you notice a threshold...
+      where [SPACE A] meets [SPACE B]...
+      You can feel the change in the air...
+      And with a single step...
+      you cross over...
+
+  veil:
+    symbolism: Hidden mysteries, revelation
+    visual_elements:
+      - Thin fabric
+      - Shimmering/translucent
+      - Mystery beyond
+    sensory_details:
+      visual: "Gossamer thin, shimmering like moonlight"
+      tactile: "Light as breath, parts easily"
+      auditory: "Whisper as it moves"
+    transition_technique: parting
+    best_for: [spiritual_revelation, mystery_work, hidden_truths]
+    ssml_template: |
+      Before you hangs a veil...
+      thin as moonlight...
+      [DESCRIPTION]...
+      And as you reach out...
+      gently parting the veil...
+      what was hidden is revealed...
+
+  mirror:
+    symbolism: Self-reflection, truth, passage
+    visual_elements:
+      - Reflective surface
+      - Frame (ornate/simple)
+      - Rippling transformation
+    sensory_details:
+      visual: "Silver surface, rippling like water"
+      tactile: "Cool, then yielding"
+      auditory: "Soft ripple sound"
+    transition_technique: step_through_reflection
+    best_for: [self_knowledge, shadow_work, identity]
+    ssml_template: |
+      A mirror stands before you...
+      [DESCRIPTION]...
+      Your reflection gazes back...
+      but different somehow...
+      And the surface begins to ripple...
+      soften...
+      and you can step through...
+      into the space beyond the mirror...
+
+  spiral:
+    symbolism: Descent/ascent, cyclical journey
+    visual_elements:
+      - Spiral staircase or path
+      - Torches or lights
+      - Downward or upward motion
+    sensory_details:
+      visual: "Stone steps worn smooth, spiraling down"
+      tactile: "Cool stone, hand on wall"
+      auditory: "Echo of footsteps"
+    transition_technique: walking_the_spiral
+    best_for: [inner_journey, depth_work, transformation]
+    ssml_template: |
+      A spiral [stairway/path] [descends/ascends] before you...
+      [DESCRIPTION]...
+      And with each step...
+      you go [deeper/higher]...
+      round and round...
+      [deeper/higher] still...
+
+  bridge:
+    symbolism: Connection, crossing, integration
+    visual_elements:
+      - Bridge structure
+      - Two sides/realms
+      - What lies below
+    sensory_details:
+      visual: "Ancient stone bridge spanning the void"
+      tactile: "Solid beneath feet"
+      auditory: "Wind in the chasm below"
+    transition_technique: crossing
+    best_for: [integration, relationship, connecting_parts]
+    ssml_template: |
+      A bridge extends before you...
+      spanning [WHAT IT SPANS]...
+      [DESCRIPTION]...
+      And step by step...
+      you cross over...
+      to what waits on the other side...
+
+  tunnel:
+    symbolism: Birth/death, passage, transformation
+    visual_elements:
+      - Enclosed passage
+      - Darkness then light
+      - Emergence point
+    sensory_details:
+      visual: "Darkness ahead, light visible at the end"
+      tactile: "Smooth walls, gradual narrowing/widening"
+      auditory: "Muffled sounds, then emergence"
+    transition_technique: moving_through
+    best_for: [transformation, birth, healing]
+    ssml_template: |
+      Before you, a tunnel...
+      [DESCRIPTION]...
+      And you begin to move through...
+      feeling the passage...
+      toward the light ahead...
+      until you emerge...
+
+  waterfall:
+    symbolism: Purification, cleansing, release
+    visual_elements:
+      - Falling water
+      - Space behind/through
+      - Mist and light
+    sensory_details:
+      visual: "Crystal water cascading, rainbows in mist"
+      tactile: "Cool, refreshing, cleansing"
+      auditory: "Roar softening as you pass"
+    transition_technique: stepping_through_curtain
+    best_for: [cleansing, release, new_beginnings]
+    ssml_template: |
+      A waterfall curtains before you...
+      [DESCRIPTION]...
+      And stepping through...
+      feeling the water wash over you...
+      cleansing, refreshing...
+      you emerge on the other side...
+      renewed...
+
+  stargate:
+    symbolism: Cosmic travel, transcendence
+    visual_elements:
+      - Ring of light/stars
+      - Cosmic imagery
+      - Vast space beyond
+    sensory_details:
+      visual: "Ring of shimmering stars, cosmos visible"
+      tactile: "Tingling as you approach"
+      auditory: "Cosmic hum, frequency shift"
+    transition_technique: entering_the_light
+    best_for: [cosmic_journeys, spiritual_expansion, transcendence]
+    ssml_template: |
+      Before you opens a portal of light...
+      a ring of stars...
+      [DESCRIPTION]...
+      And as you step into the light...
+      you are carried...
+      through the vastness...
+      to where you need to be...
+
+---
+
+# Liminal Spaces
+liminal_spaces:
+
+  mist:
+    characteristics: Boundaries dissolved, formless
+    creates: Openness, possibility, transition
+    sensory_details:
+      visual: "Soft grey-white mist, nothing solid"
+      tactile: "Cool moisture on skin"
+      auditory: "Muffled sounds, silence"
+    use_between: Any two scenes
+    ssml_template: |
+      And the scene begins to soften...
+      mist rising...
+      obscuring what was...
+      until only the mist remains...
+      [pause]
+      And through the mist now...
+      a new scene begins to form...
+
+  twilight:
+    characteristics: Neither day nor night
+    creates: Magic, transformation, mystery
+    sensory_details:
+      visual: "Purple-gold sky, first stars appearing"
+      tactile: "Air cooling, day's warmth fading"
+      auditory: "Night creatures beginning"
+    use_between: Ordinary and magical scenes
+    ssml_template: |
+      The light shifts now...
+      to that magical time...
+      between day and night...
+      when anything is possible...
+
+  shoreline:
+    characteristics: Neither land nor sea
+    creates: Transition, edge work, emotion
+    sensory_details:
+      visual: "Where waves meet sand"
+      tactile: "Wet sand beneath feet, water lapping"
+      auditory: "Rhythmic waves, seabirds"
+    use_between: Emotional transitions
+    ssml_template: |
+      You find yourself at the shore...
+      where the water meets the land...
+      neither one nor the other...
+      a place of change...
+
+  forest_edge:
+    characteristics: Neither wild nor tamed
+    creates: Threshold awareness, adventure
+    sensory_details:
+      visual: "Trees begin, light changes"
+      tactile: "Temperature shift, ground softens"
+      auditory: "Forest sounds begin"
+    use_between: Ordinary and journey worlds
+    ssml_template: |
+      At the edge of the forest now...
+      where the known meets the unknown...
+      the trees waiting...
+      an invitation into mystery...
+
+  dawn:
+    characteristics: Night ending, day beginning
+    creates: New beginnings, hope, emergence
+    sensory_details:
+      visual: "First light, colors emerging"
+      tactile: "Cool air warming"
+      auditory: "Birds beginning to sing"
+    use_for: Return sequences, new life
+    ssml_template: |
+      And light begins to grow...
+      the first light of dawn...
+      a new day beginning...
+      as you begin your return...
+
+  cave_entrance:
+    characteristics: Light meets dark
+    creates: Descent beginning, inner journey
+    sensory_details:
+      visual: "Darkness ahead, light behind"
+      tactile: "Cool air from within, stone"
+      auditory: "Echo, dripping water"
+    use_for: Descent sequences
+    ssml_template: |
+      Before you, the mouth of a cave...
+      darkness within...
+      the light of the outer world behind...
+      an invitation to go deeper...
+
+---
+
+# Transition Techniques
+transition_techniques:
+
+  step_through:
+    description: Active agency, walking through
+    pacing: Medium (15-25 seconds)
+    energy: Active, willful
+    ssml_elements:
+      - "You step forward..."
+      - "Crossing the threshold..."
+      - "Moving through..."
+    best_for: Doorways, gates, mirrors
+
+  dissolve:
+    description: Boundaries soften, scene changes
+    pacing: Slow (25-40 seconds)
+    energy: Passive, receptive
+    ssml_elements:
+      - "The edges begin to soften..."
+      - "Dissolving now..."
+      - "Transforming into..."
+    best_for: Mist transitions, dream shifts
+
+  breath_bridge:
+    description: Use breath to link states
+    pacing: Medium (15-25 seconds)
+    energy: Centered, rhythmic
+    ssml_elements:
+      - "With this breath..."
+      - "Breathing yourself into..."
+      - "On the exhale, releasing..."
+    best_for: State changes, emotional shifts
+
+  zoom_through:
+    description: Rapid movement transition
+    pacing: Quick (8-15 seconds)
+    energy: Dynamic, swift
+    ssml_elements:
+      - "Moving quickly now..."
+      - "Flying through..."
+      - "Instantly arriving..."
+    best_for: Scene to scene, time jumps
+
+  spiral_descent:
+    description: Gradual deepening spiral
+    pacing: Slow (30-45 seconds)
+    energy: Deepening, grounding
+    ssml_elements:
+      - "Round and round..."
+      - "Deeper with each turn..."
+      - "Spiraling down..."
+    best_for: Deepening sequences, inner journey
+
+  rise_up:
+    description: Gradual elevation
+    pacing: Slow (30-45 seconds)
+    energy: Lightening, expanding
+    ssml_elements:
+      - "Rising now..."
+      - "Lighter, higher..."
+      - "Ascending through..."
+    best_for: Return sequences, spiritual expansion
+
+  fade_in_out:
+    description: Cinematic fade transition
+    pacing: Medium (20-30 seconds)
+    energy: Smooth, cinematic
+    ssml_elements:
+      - "The scene fades..."
+      - "And now, emerging..."
+      - "A new scene appears..."
+    best_for: Major scene changes
+
+---
+
+# Portal Sequences by Outcome
+portal_recommendations:
+
+  healing:
+    entry_portals: [garden_gate, waterfall, soft_doorway]
+    internal_transitions: [mist_dissolve, breath_bridge]
+    exit_portals: [sunrise_emergence, garden_path_return]
+    notes: "Keep portals gentle, inviting"
+
+  transformation:
+    entry_portals: [mirror, cave_entrance, gate_with_guardian]
+    internal_transitions: [spiral_descent, dissolve]
+    exit_portals: [stairs_ascending, phoenix_emergence]
+    notes: "Include challenge elements"
+
+  shadow_work:
+    entry_portals: [cave_entrance, mirror, twilight_threshold]
+    internal_transitions: [spiral_descent, tunnel]
+    exit_portals: [light_at_end, stairs_up, dawn]
+    notes: "Always include clear exit"
+
+  spiritual_growth:
+    entry_portals: [stargate, temple_doors, veil]
+    internal_transitions: [light_bridge, rise_up]
+    exit_portals: [gentle_descent, landing_softly]
+    notes: "Strong grounding at end"
+
+  empowerment:
+    entry_portals: [gate_with_guardian, doorway_of_choice, bridge]
+    internal_transitions: [step_through, zoom_through]
+    exit_portals: [triumphant_emergence, sunlit_return]
+    notes: "Emphasize agency throughout"
+
+  relaxation:
+    entry_portals: [garden_gate, soft_threshold, mist]
+    internal_transitions: [gentle_dissolve, breath_bridge]
+    exit_portals: [gradual_brightening, easy_awakening]
+    notes: "Keep all transitions smooth, slow"
+
+---
+
+# Guardian Archetypes for Gates
+gate_guardians:
+
+  sphinx:
+    appearance: Lion body, human face, wings
+    challenge_type: Riddle/wisdom test
+    voice: Ancient, knowing
+    ssml_example: |
+      And before the gate...
+      the Sphinx rests...
+      ancient eyes regarding you...
+      "Answer me this," it speaks,
+      "and you may pass..."
+
+  angel:
+    appearance: Luminous, wings of light
+    challenge_type: Heart/intention check
+    voice: Gentle but powerful
+    christian_safe: true
+    ssml_example: |
+      A being of light guards this gate...
+      "What do you seek?"
+      the presence asks...
+      Not demanding... simply... knowing...
+
+  dragon:
+    appearance: Scaled, powerful, ancient
+    challenge_type: Courage test
+    voice: Deep, rumbling
+    ssml_example: |
+      The dragon regards you...
+      eyes like ancient fires...
+      Not hostile... but measuring...
+      your worthiness to pass...
+
+  old_woman:
+    appearance: Cloaked, bent, wise eyes
+    challenge_type: Kindness/respect test
+    voice: Cracked but knowing
+    ssml_example: |
+      An old woman sits by the gate...
+      She looks up as you approach...
+      "And what brings you here, child?"
+
+  mirror_self:
+    appearance: Your own reflection, slightly different
+    challenge_type: Self-honesty test
+    voice: Your own, but truer
+    ssml_example: |
+      Your own reflection stands at the gate...
+      but different... somehow more real...
+      "Are you ready to see?" it asks...
+      "Are you ready to know?"

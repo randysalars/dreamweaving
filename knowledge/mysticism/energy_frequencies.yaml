@@ -1,0 +1,396 @@
+# Energy Frequencies Knowledge Base
+# Reference for the Energetic Attunement Agent
+
+---
+
+# Brainwave Frequencies
+brainwave_states:
+  delta:
+    range_hz: [0.5, 3]
+    state: deep_sleep
+    consciousness: unconscious
+    benefits:
+      - Deep healing
+      - Regeneration
+      - HGH release
+      - Immune boost
+    journey_use: healing, trauma integration
+    cautions: May cause sleepiness
+
+  theta:
+    range_hz: [4, 7]
+    state: dreaming
+    consciousness: hypnagogic
+    benefits:
+      - Vivid visualization
+      - Deep meditation
+      - Memory access
+      - Creative insight
+    journey_use: main journey work
+    optimal_for: [visualization, shadow_work, transformation]
+
+  alpha:
+    range_hz: [8, 12]
+    state: relaxed_awareness
+    consciousness: calm_alert
+    benefits:
+      - Light relaxation
+      - Learning enhancement
+      - Stress reduction
+      - Bridge state
+    journey_use: induction, return
+    optimal_for: [relaxation, light_meditation]
+
+  beta:
+    range_hz: [13, 30]
+    state: alert_focused
+    consciousness: active_mind
+    benefits:
+      - Focus
+      - Problem solving
+      - Active thinking
+    journey_use: pre-talk, awakening
+    optimal_for: [confidence, focus_sessions]
+
+  gamma:
+    range_hz: [30, 100]
+    state: peak_experience
+    consciousness: expanded
+    benefits:
+      - Unity experience
+      - Insight
+      - Peak states
+    journey_use: spiritual_peak (brief)
+    cautions: Not sustained, may cause anxiety
+
+---
+
+# Solfeggio Frequencies
+solfeggio:
+  174:
+    name: Foundation
+    purpose: Pain reduction
+    chakra: below_root
+    application: Physical healing sessions
+    ssml_reference: "174 hertz, the frequency of foundation"
+
+  285:
+    name: Quantum Cognition
+    purpose: Tissue regeneration
+    chakra: root_sacral
+    application: Deep healing, cellular work
+    ssml_reference: "285 hertz, the frequency of regeneration"
+
+  396:
+    name: UT - Liberation
+    purpose: Liberation from fear and guilt
+    chakra: root
+    application: Shadow work, release sessions
+    ssml_reference: "396 hertz, the liberating tone"
+
+  417:
+    name: RE - Change
+    purpose: Facilitating change
+    chakra: sacral
+    application: Transformation, unsticking
+    ssml_reference: "417 hertz, the frequency of change"
+
+  528:
+    name: MI - Miracles
+    purpose: DNA repair, love frequency
+    chakra: heart
+    application: Healing, love journeys
+    ssml_reference: "528 hertz, the love frequency"
+
+  639:
+    name: FA - Relationships
+    purpose: Connecting relationships
+    chakra: heart_throat
+    application: Heart opening, forgiveness
+    ssml_reference: "639 hertz, the frequency of connection"
+
+  741:
+    name: SOL - Awakening
+    purpose: Awakening intuition
+    chakra: throat_third_eye
+    application: Third eye work, expression
+    ssml_reference: "741 hertz, the awakening tone"
+
+  852:
+    name: LA - Spiritual Order
+    purpose: Returning to spiritual order
+    chakra: third_eye
+    application: Higher consciousness
+    ssml_reference: "852 hertz, the tone of spiritual order"
+
+  963:
+    name: SI - Divine Connection
+    purpose: Divine consciousness
+    chakra: crown
+    application: Unity, crown activation
+    ssml_reference: "963 hertz, the frequency of oneness"
+
+---
+
+# Chakra Frequencies
+chakra_frequencies:
+  root:
+    primary_hz: 256
+    solfeggio: 396
+    note: C
+    color: red
+    element: earth
+    qualities: [safety, grounding, survival, stability]
+    location: base of spine
+    imbalance_signs: [anxiety, fear, disconnection]
+    balancing_themes: [safety, belonging, support]
+
+  sacral:
+    primary_hz: 288
+    solfeggio: 417
+    note: D
+    color: orange
+    element: water
+    qualities: [creativity, pleasure, flow, emotion]
+    location: below navel
+    imbalance_signs: [blocked_creativity, guilt, rigidity]
+    balancing_themes: [flow, pleasure, creation]
+
+  solar_plexus:
+    primary_hz: 320
+    solfeggio: 528
+    note: E
+    color: yellow
+    element: fire
+    qualities: [power, will, confidence, identity]
+    location: upper abdomen
+    imbalance_signs: [powerlessness, shame, anger]
+    balancing_themes: [empowerment, self-worth, boundaries]
+
+  heart:
+    primary_hz: 341
+    solfeggio: 639
+    note: F
+    color: green
+    secondary_color: pink
+    element: air
+    qualities: [love, compassion, healing, connection]
+    location: center of chest
+    imbalance_signs: [grief, isolation, closed_heart]
+    balancing_themes: [love, forgiveness, opening]
+
+  throat:
+    primary_hz: 384
+    solfeggio: 741
+    note: G
+    color: blue
+    element: ether
+    qualities: [expression, truth, voice, communication]
+    location: throat
+    imbalance_signs: [suppression, lying, fear_of_speaking]
+    balancing_themes: [truth, expression, authenticity]
+
+  third_eye:
+    primary_hz: 426
+    solfeggio: 852
+    note: A
+    color: indigo
+    element: light
+    qualities: [intuition, vision, insight, clarity]
+    location: between brows
+    imbalance_signs: [confusion, disconnection, denial]
+    balancing_themes: [clarity, vision, inner_sight]
+
+  crown:
+    primary_hz: 480
+    solfeggio: 963
+    note: B
+    color: violet
+    secondary_color: white
+    element: thought/cosmic
+    qualities: [unity, transcendence, spiritual_connection]
+    location: top of head
+    imbalance_signs: [disconnection, materialism, spiritual_bypass]
+    balancing_themes: [unity, surrender, divine_connection]
+
+---
+
+# Frequency Arcs for Journey Phases
+journey_frequency_arcs:
+
+  healing_arc:
+    description: Heart-centered healing journey
+    phases:
+      - name: grounding
+        pct: 0-10
+        target_hz: 10
+        state: alpha
+      - name: descent
+        pct: 10-30
+        target_hz: 6
+        state: theta
+      - name: deep_healing
+        pct: 30-60
+        target_hz: 4
+        state: deep_theta
+      - name: integration
+        pct: 60-85
+        target_hz: 7
+        state: theta
+      - name: return
+        pct: 85-100
+        target_hz: 10
+        state: alpha
+    solfeggio_layer: 528
+
+  transformation_arc:
+    description: Deep transformation work
+    phases:
+      - name: preparation
+        pct: 0-15
+        target_hz: 10
+        state: alpha
+      - name: descent
+        pct: 15-30
+        target_hz: 5
+        state: theta
+      - name: depths
+        pct: 30-50
+        target_hz: 3
+        state: delta_theta
+      - name: rebirth
+        pct: 50-70
+        target_hz: 6
+        state: theta
+      - name: emergence
+        pct: 70-100
+        target_hz: 10
+        state: alpha
+    solfeggio_layer: 417
+
+  spiritual_expansion_arc:
+    description: Crown-focused spiritual growth
+    phases:
+      - name: grounding
+        pct: 0-15
+        target_hz: 10
+        state: alpha
+      - name: ascent
+        pct: 15-40
+        target_hz: 7
+        state: theta
+      - name: unity
+        pct: 40-60
+        target_hz: 40
+        state: gamma_burst
+      - name: integration
+        pct: 60-85
+        target_hz: 7
+        state: theta
+      - name: grounding_return
+        pct: 85-100
+        target_hz: 10
+        state: alpha
+    solfeggio_layer: 963
+
+  relaxation_arc:
+    description: Deep relaxation and rest
+    phases:
+      - name: settling
+        pct: 0-20
+        target_hz: 10
+        state: alpha
+      - name: deepening
+        pct: 20-40
+        target_hz: 8
+        state: alpha_theta
+      - name: rest
+        pct: 40-80
+        target_hz: 6
+        state: theta
+      - name: gentle_return
+        pct: 80-100
+        target_hz: 10
+        state: alpha
+    solfeggio_layer: 528
+
+---
+
+# Outcome to Frequency Mapping
+outcome_frequency_map:
+  healing:
+    primary_chakra: heart
+    binaural_target: theta_4-6
+    solfeggio: 528
+    arc: healing_arc
+
+  transformation:
+    primary_chakra: solar_plexus
+    binaural_target: deep_theta_3-5
+    solfeggio: 417
+    arc: transformation_arc
+
+  empowerment:
+    primary_chakra: solar_plexus
+    binaural_target: alpha_theta_7-10
+    solfeggio: 396
+    arc: transformation_arc
+
+  spiritual_growth:
+    primary_chakra: crown
+    binaural_target: theta_with_gamma_burst
+    solfeggio: 963
+    arc: spiritual_expansion_arc
+
+  relaxation:
+    primary_chakra: heart
+    binaural_target: alpha_theta_7-9
+    solfeggio: 528
+    arc: relaxation_arc
+
+  confidence:
+    primary_chakra: solar_plexus
+    binaural_target: alpha_10-12
+    solfeggio: 396
+    arc: relaxation_arc
+
+  self_knowledge:
+    primary_chakra: third_eye
+    binaural_target: theta_5-7
+    solfeggio: 852
+    arc: transformation_arc
+
+  release:
+    primary_chakra: sacral
+    binaural_target: theta_4-6
+    solfeggio: 396
+    arc: healing_arc
+
+---
+
+# Carrier Frequency Options
+carrier_frequencies:
+  standard:
+    hz: 200
+    quality: neutral
+    best_for: general_use
+
+  warm:
+    hz: 150
+    quality: grounding
+    best_for: healing, relaxation
+
+  bright:
+    hz: 250
+    quality: activating
+    best_for: confidence, empowerment
+
+  ethereal:
+    hz: 300
+    quality: spacious
+    best_for: spiritual_growth
+
+  deep:
+    hz: 100
+    quality: primordial
+    best_for: shadow_work, transformation

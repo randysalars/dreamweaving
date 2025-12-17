@@ -1,0 +1,450 @@
+# Shadow Patterns Knowledge Base
+# Reference for the Shadow Integration Agent
+
+---
+
+# Shadow Types
+shadow_types:
+
+  rejected_self:
+    description: Qualities we've pushed away as "not me"
+    origin: Social conditioning, shame, fear of rejection
+    common_forms:
+      - The angry one
+      - The sexual one
+      - The selfish one
+      - The ambitious one
+    approach: Gentle meeting, curiosity
+    gifts_hidden: [authenticity, wholeness, energy]
+    integration_language:
+      - "A part of you that was pushed away..."
+      - "Qualities you learned to hide..."
+      - "What you were told was 'too much'..."
+
+  wounded_child:
+    description: Young parts carrying early pain
+    origin: Childhood neglect, trauma, unmet needs
+    common_forms:
+      - The abandoned child
+      - The criticized child
+      - The invisible child
+      - The overwhelmed child
+    approach: Compassion, reparenting
+    gifts_hidden: [innocence, joy, wonder, creativity]
+    integration_language:
+      - "A younger part of you..."
+      - "The child who learned to hide..."
+      - "Little one who still waits..."
+
+  angry_self:
+    description: Suppressed rage and frustration
+    origin: Not safe to express anger, powerlessness
+    common_forms:
+      - The furious one
+      - The resentful one
+      - The bitter one
+    approach: Safe expression, honoring
+    gifts_hidden: [boundaries, power, assertiveness, protection]
+    integration_language:
+      - "The fire that wasn't safe to express..."
+      - "Rage that had nowhere to go..."
+      - "The protector who was silenced..."
+
+  fearful_self:
+    description: Avoided terrors and anxieties
+    origin: Overwhelming experiences, lack of safety
+    common_forms:
+      - The terrified one
+      - The vigilant one
+      - The frozen one
+    approach: Companionship, courage
+    gifts_hidden: [presence, aliveness, discernment]
+    integration_language:
+      - "The part that learned the world wasn't safe..."
+      - "Fear that became constant companion..."
+      - "The one who watches, always watches..."
+
+  shameful_self:
+    description: Deep sense of unworthiness
+    origin: Toxic shame, criticism, failure
+    common_forms:
+      - The worthless one
+      - The damaged one
+      - The imposter
+    approach: Unconditional acceptance, love
+    gifts_hidden: [self-love, worth, belonging]
+    integration_language:
+      - "The part that believes 'I am wrong'..."
+      - "Deep sense of being flawed..."
+      - "The one who hides in shame..."
+
+  dark_power:
+    description: Disowned strength and aggression
+    origin: Taught that power is bad/dangerous
+    common_forms:
+      - The dominator
+      - The manipulator
+      - The destroyer
+    approach: Respect, conscious integration
+    gifts_hidden: [vitality, leadership, assertiveness]
+    integration_language:
+      - "Power that learned to hide..."
+      - "Strength that seemed too dangerous..."
+      - "The force you were afraid of..."
+    caution: Requires strong container
+
+  unlived_life:
+    description: Unexpressed potential and dreams
+    origin: Circumstances, fear, practical constraints
+    common_forms:
+      - The artist never expressed
+      - The adventurer never freed
+      - The lover never risked
+    approach: Recognition, invitation
+    gifts_hidden: [creativity, purpose, passion]
+    integration_language:
+      - "Dreams that were set aside..."
+      - "The life you didn't get to live..."
+      - "Potential waiting in the wings..."
+
+---
+
+# Safe Descent Framework
+descent_framework:
+
+  phase_1_resourcing:
+    name: Building Safety First
+    duration_min: 3-4
+    purpose: Establish stable foundation
+    required_elements:
+      safe_place:
+        description: Internal sanctuary for retreat
+        ssml: |
+          Before we begin this inner journey...
+          let's create a safe haven...
+          a place within where you can always return...
+          Imagine now a place where you feel completely safe...
+          completely at peace...
+          It might be a place you know...
+          or somewhere your imagination creates...
+          [pause for visualization]
+          Notice the details of this safe place...
+          what you see... what you hear...
+          how your body feels here...
+          This place is yours...
+          You can return here anytime...
+
+      inner_ally:
+        description: Protective/supportive presence
+        ssml: |
+          And perhaps you sense a presence with you...
+          a guide, a protector, a wise companion...
+          human or animal, angel or ancestor...
+          whoever feels right...
+          They walk beside you on this journey...
+          always there when needed...
+
+      exit_route:
+        description: Clear escape option
+        ssml: |
+          And know that at any time...
+          if anything feels too intense...
+          you can simply open your eyes...
+          or return to your safe place...
+          You remain fully in control...
+          This is your journey...
+
+  phase_2_approach:
+    name: Gradual Meeting
+    duration_min: 3-4
+    purpose: Titrated contact with shadow
+    techniques:
+      - Permission-based approach
+      - Gradual darkening/descent
+      - Noticing from distance first
+
+  phase_3_contact:
+    name: Gentle Encounter
+    duration_min: 4-6
+    purpose: Face-to-face with shadow aspect
+    techniques:
+      - Maintaining observer position
+      - Curiosity over judgment
+      - Parts language ("a part")
+
+  phase_4_dialogue:
+    name: Understanding
+    duration_min: 4-5
+    purpose: Hear shadow's message
+    techniques:
+      - Open questions
+      - Listening for need
+      - Finding original function
+
+  phase_5_integration:
+    name: Welcoming Home
+    duration_min: 3-4
+    purpose: Bring shadow into wholeness
+    techniques:
+      - Gift recognition
+      - Acceptance statements
+      - Symbolic union
+
+  phase_6_return:
+    name: Bringing Back
+    duration_min: 3-4
+    purpose: Ground the transformation
+    techniques:
+      - Gradual lightening
+      - Embodiment of gift
+      - Strong grounding
+
+---
+
+# Shadow Dialogue Templates
+dialogue_templates:
+
+  approaching:
+    template: |
+      And as you notice this presence...
+      this part of you that has been here...
+      perhaps all along...
+      you can stay exactly where you are...
+      no need to move closer...
+      unless it feels right...
+      Just noticing...
+      with curiosity...
+      without judgment...
+
+  first_question:
+    template: |
+      And if you were to ask this part...
+      with genuine curiosity...
+      "What do you need me to know?"...
+      [long pause]
+      And then simply listen...
+      whatever arises is valuable...
+
+  understanding_origin:
+    template: |
+      And perhaps you can sense...
+      how long this part has been here...
+      When did it first appear?...
+      What was happening then?...
+      [pause]
+      This part learned to be this way...
+      for a reason...
+
+  finding_function:
+    template: |
+      And what was this part trying to do for you?...
+      What was it protecting?...
+      What was it trying to prevent?...
+      [pause]
+      Even shadow serves a purpose...
+      until there's a better way...
+
+  receiving_gift:
+    template: |
+      And now you begin to see...
+      what this shadow has been protecting...
+      what treasure lies beneath...
+      a gift you can now receive...
+      a quality, a strength, a truth...
+      that was yours all along...
+
+  integration:
+    template: |
+      And this part of you...
+      so long in exile...
+      can come home now...
+      welcomed back into wholeness...
+      no longer shadow...
+      but simply another facet...
+      of who you truly are...
+
+---
+
+# Journey Structures
+shadow_journey_structures:
+
+  cave_of_shadows:
+    description: Classic descent for general shadow work
+    stages:
+      - preparation: Build resources (3-4 min)
+      - threshold: Stand at cave entrance (2-3 min)
+      - descent: Go down into darkness (4-5 min)
+      - encounter: Meet what waits (5-7 min)
+      - integration: Find the gift (3-4 min)
+      - return: Ascend with gift (3-4 min)
+    imagery_notes:
+      - Cave entrance with light source
+      - Gradual darkening
+      - Shape emerging from darkness
+      - Gift/light discovered
+      - Path back illuminated
+
+  mirror_of_truth:
+    description: Self-confrontation and acceptance
+    stages:
+      - approach: Before the mirror (2-3 min)
+      - deepening: Beyond surface (3-4 min)
+      - recognition: Seeing shadow self (4-5 min)
+      - dialogue: Conversation (4-5 min)
+      - embrace: Accepting wholly (3-4 min)
+      - new_reflection: Seeing anew (2-3 min)
+    imagery_notes:
+      - Silver mirror, ornate frame
+      - Reflection that shows more
+      - Shadow self in mirror
+      - Merging with reflection
+      - New, whole reflection
+
+  dark_forest:
+    description: Meeting fear-based shadows
+    stages:
+      - edge: At forest edge with guide (2-3 min)
+      - entering: Into the trees (3-4 min)
+      - deep_forest: Heart of darkness (4-5 min)
+      - clearing: Hidden sanctuary (4-5 min)
+      - return_path: Way illuminating (3-4 min)
+    imagery_notes:
+      - Forest edge at twilight
+      - Darkness between trees
+      - Guide presence throughout
+      - Secret clearing with light
+      - Path appearing behind
+
+---
+
+# Safety Protocols
+safety_protocols:
+
+  pre_descent_checklist:
+    - "[ ] Safe place established"
+    - "[ ] Exit route stated clearly"
+    - "[ ] Inner ally/protector present"
+    - "[ ] Listener agency emphasized"
+    - "[ ] Permissive language used"
+
+  during_encounter:
+    witness_position:
+      purpose: Maintain healthy distance
+      language: "Observing from a safe distance..."
+    permission_asking:
+      purpose: Respect listener autonomy
+      language: "Only if it feels right..."
+    pacing_control:
+      purpose: Allow listener to regulate
+      language: "At whatever pace feels comfortable..."
+    titration:
+      purpose: Manage intensity
+      language: "Just a little at a time..."
+    parts_language:
+      purpose: Avoid identification
+      language: "A part of you that carries..."
+
+  emergency_return:
+    trigger: If intensity becomes too much
+    script: |
+      And if at any moment you need to return...
+      simply take three deep breaths...
+      feel your feet on the ground...
+      notice your body in the chair...
+      and open your eyes...
+      knowing you can return to this journey...
+      whenever you're ready...
+
+  contraindications:
+    - condition: Active trauma crisis
+      avoid: Deep shadow work
+      use_instead: Grounding, resourcing only
+
+    - condition: Psychotic features
+      avoid: Descent imagery
+      use_instead: Light, nature, safety
+
+    - condition: Severe dissociation
+      avoid: Tunnel/void imagery
+      use_instead: Embodiment, present moment
+
+    - condition: Acute suicidal ideation
+      avoid: Death imagery
+      use_instead: Life-affirming, connection
+
+    - condition: First-time listener
+      avoid: Intense shadow work
+      use_instead: Light self-exploration
+
+---
+
+# Integration Techniques
+integration_techniques:
+
+  gift_recognition:
+    description: Name what the shadow held
+    ssml: |
+      And what is the gift this shadow held for you?...
+      [pause]
+      Perhaps [QUALITY]...
+      or [QUALITY]...
+      or something else entirely...
+      Trust what arises...
+
+  symbolic_merging:
+    description: Visual union imagery
+    ssml: |
+      And now, if it feels right...
+      you can move toward this part...
+      opening your arms...
+      welcoming it home...
+      feeling it merge with you...
+      becoming whole...
+
+  light_integration:
+    description: Light transforms shadow
+    ssml: |
+      And light begins to flow...
+      from your heart...
+      toward this shadow self...
+      not destroying...
+      but illuminating...
+      revealing the gold within...
+
+  name_receiving:
+    description: Shadow gives/receives new name
+    ssml: |
+      And this part of you...
+      what name does it carry now?...
+      Now that it's welcomed home?...
+      [pause]
+      Remember this name...
+
+---
+
+# Post-Journey Elements
+post_journey:
+
+  integration_actions:
+    - Journaling about the experience
+    - Creating art representing the shadow
+    - Writing a letter to the shadow self
+    - Body movement to embody the gift
+    - Meditation on the new quality
+
+  follow_up_suggestions:
+    - Return to meet the shadow again
+    - Notice the quality appearing in daily life
+    - Practice the new capacity
+    - Share with trusted other (optional)
+
+  grounding_script: |
+    And now, returning fully...
+    feeling your feet on the ground...
+    your body in the chair...
+    the weight of your hands...
+    Taking a deep breath...
+    wiggling fingers and toes...
+    Knowing that this work continues...
+    gently, over time...
+    as you integrate what you've discovered...
