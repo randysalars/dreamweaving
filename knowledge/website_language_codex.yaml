@@ -1,0 +1,1255 @@
+# =============================================================================
+# WEBSITE LANGUAGE CODEX - High-Integrity Ethical Persuasion System
+# =============================================================================
+# This file defines the authoritative language patterns for salars.net and
+# all Sacred Digital Dreamweaver web content.
+#
+# Core Philosophy: "Never use language to create a need that your language
+# then satisfies." This is persuasion through resonance, not extraction.
+#
+# Source: Notion "Website Language to use" page
+# =============================================================================
+
+version: "1.0"
+last_updated: "2025-12-18"
+
+# =============================================================================
+# VOICE LAWS (Non-Negotiable)
+# These govern ALL website copy. No exceptions.
+# =============================================================================
+voice_laws:
+  - id: agency_first
+    rule: "Agency first - 'if you want / at your pace' precedes any ask"
+    test: "Does this increase or reduce choice?"
+
+  - id: low_demand
+    rule: "Low demand - no hype, no forced outcomes, no 'must'"
+    test: "Does this raise or lower expected pressure?"
+
+  - id: trust_calibration
+    rule: "Trust calibration - 'what this is / isn't' is always present on offer pages"
+    test: "Am I being honest about limitations?"
+
+  - id: timelessness
+    rule: "Timelessness - remove urgency language; prefer 'return / remain'"
+    test: "Would this still work if read a year from now?"
+
+  - id: exit_forward
+    rule: "Exit-forward - unsub/leave is dignified, obvious, one click"
+    test: "Is leaving as easy as staying?"
+
+  - id: meaning_open
+    rule: "Meaning-open - avoid over-explaining; allow ambiguity + rest lines"
+    test: "Am I finishing their thought for them?"
+
+  - id: no_extraction
+    rule: "No extraction - never create a need you then satisfy"
+    test: "Does this feel manipulative to a tired, grieving, or vulnerable reader?"
+
+# =============================================================================
+# FORBIDDEN LANGUAGE (Hard No List)
+# These patterns are NEVER allowed on our site
+# =============================================================================
+forbidden_language:
+  urgency_patterns:
+    - "countdown timers"
+    - "Only X spots left"
+    - "Don't miss out"
+    - "Last chance"
+    - "Limited time"
+    - "Act now"
+    - "Hurry"
+    - "Expires soon"
+
+  scarcity_fake:
+    - "false deadlines"
+    - "manufactured scarcity"
+    - "artificial limits"
+
+  emotional_manipulation:
+    - "emotional guilt ('support us or else...')"
+    - "identity shaming ('people like you do...')"
+    - "fear-based framing"
+    - "FOMO language"
+
+  hyperbolic_claims:
+    - "This will change your life"
+    - "Guaranteed results"
+    - "Never seen before"
+    - "Revolutionary"
+    - "Life-changing"
+
+  commands:
+    - "You will now..."
+    - "You must..."
+    - "You need to..."
+    - "Don't forget to..."
+
+# =============================================================================
+# PHRASE CATEGORIES
+# 45+ categories organized by psychological function
+# =============================================================================
+phrase_categories:
+
+  # ---------------------------------------------------------------------------
+  # I. SAFETY & LOW-DEMAND PHRASES
+  # Usage: Early on pages, above the fold, email openings
+  # Purpose: Tell the nervous system nothing is being demanded
+  # ---------------------------------------------------------------------------
+  safety_low_demand:
+    id: I
+    purpose: "Tell the nervous system nothing is being demanded"
+    usage: "Early on pages, above the fold, email openings"
+    phrases:
+      - "There's nothing you need to decide right now."
+      - "You don't have to figure anything out here."
+      - "This will still be here when you return."
+      - "No pressure. No rush."
+      - "Take your time with this."
+      - "You can pause here as long as you like."
+      - "Nothing is expected of you."
+      - "This is a good place to stop for a moment."
+      - "Nothing else needs to happen here."
+      - "You can rest your attention."
+
+  # ---------------------------------------------------------------------------
+  # II. AUTONOMY & CONSENT LANGUAGE
+  # Usage: Before CTAs, signup forms, offers
+  # Purpose: Preserve agency and reduce resistance
+  # ---------------------------------------------------------------------------
+  autonomy_consent:
+    id: II
+    purpose: "Preserve agency and reduce resistance"
+    usage: "Before CTAs, signup forms, offers"
+    phrases:
+      - "If you want..."
+      - "Only if it feels right..."
+      - "You're welcome to explore..."
+      - "This is optional."
+      - "Choose your own pace."
+      - "You can change your mind anytime."
+      - "You're free to ignore this."
+      - "At your own pace."
+      - "When you're ready."
+      - "No obligation."
+
+  # ---------------------------------------------------------------------------
+  # III. IDENTITY RESONANCE (Without Labels)
+  # Usage: Signal "this is for people like you" without boxing them in
+  # Purpose: Activate identity-based motivation without capture
+  # ---------------------------------------------------------------------------
+  identity_resonance:
+    id: III
+    purpose: "Activate identity-based motivation without capture"
+    usage: "Signal 'this is for people like you' without boxing them in"
+    phrases:
+      - "Some people find themselves drawn to quieter spaces."
+      - "If you tend to notice what others overlook..."
+      - "This often resonates with people who value depth over noise."
+      - "For those who sense there's more beneath the surface..."
+      - "If meaning tends to arrive quietly for you..."
+      - "People who return here usually aren't in a hurry."
+      - "If you're someone who values stillness..."
+      - "For those who already believe that depth matters..."
+      - "You might resonate with this if..."
+      - "This is for people who sense there's more available."
+
+  # ---------------------------------------------------------------------------
+  # IV. APOPHATIC / UNSAYING PHRASES
+  # Usage: Sparingly - powerful, rare
+  # Purpose: Meaning revealed by absence, not assertion
+  # ---------------------------------------------------------------------------
+  apophatic_unsaying:
+    id: IV
+    purpose: "Meaning revealed by absence, not assertion"
+    usage: "Sparingly - these are powerful and rare"
+    phrases:
+      - "This isn't meant to fix anything."
+      - "Nothing here needs improvement."
+      - "This isn't about becoming someone else."
+      - "There's nothing to optimize here."
+      - "This isn't an answer. It's a place."
+      - "Not everything meaningful needs explanation."
+      - "This doesn't need a reason."
+      - "Usefulness isn't the point."
+      - "This isn't here to help."
+      - "No outcome is required."
+
+  # ---------------------------------------------------------------------------
+  # V. LIMINAL & THRESHOLD LANGUAGE
+  # Usage: Between sections, scroll breaks, transitions
+  # Purpose: Place the reader between states
+  # ---------------------------------------------------------------------------
+  liminal_threshold:
+    id: V
+    purpose: "Place the reader between states"
+    usage: "Between sections, scroll breaks, transitions"
+    phrases:
+      - "Before you go any further..."
+      - "Between one moment and the next..."
+      - "At the edge of what's familiar..."
+      - "You don't have to cross this threshold."
+      - "You can simply notice it."
+      - "Some things begin before we name them."
+      - "Before you decide..."
+      - "On the threshold..."
+      - "At the boundary between..."
+      - "In the space between..."
+
+  # ---------------------------------------------------------------------------
+  # VI. MEANING-OPENING PHRASES
+  # Usage: Create resonance without closing interpretation
+  # Purpose: Open meaning, don't close it
+  # ---------------------------------------------------------------------------
+  meaning_opening:
+    id: VI
+    purpose: "Create resonance without closing interpretation"
+    usage: "To open meaning, not close it"
+    phrases:
+      - "Meaning tends to reveal itself over time."
+      - "What this becomes is up to you."
+      - "Take what's useful. Leave the rest."
+      - "This may land differently on different days."
+      - "You'll know what matters here."
+      - "Let it mean what it needs to mean."
+      - "You don't need to understand this yet."
+      - "Understanding can wait."
+      - "This might make sense later."
+      - "Let it sit."
+
+  # ---------------------------------------------------------------------------
+  # VII. NARRATIVE GRAVITY / PLACE-BASED LANGUAGE
+  # Usage: Homepage, about page, brand presence
+  # Purpose: Turn your site into a place people return to
+  # ---------------------------------------------------------------------------
+  narrative_gravity:
+    id: VII
+    purpose: "Turn your site into a place people return to"
+    usage: "Homepage, about page, brand presence"
+    phrases:
+      - "This is a place for returning."
+      - "People come back here when they need quiet."
+      - "This space exists for slowing down."
+      - "Nothing here is urgent."
+      - "You're welcome to stay awhile."
+      - "This isn't meant to be consumed."
+      - "This is a place people return to when they want to remember what matters."
+      - "A place where meaning is given space."
+      - "This waits."
+      - "This space favors quiet."
+
+  # ---------------------------------------------------------------------------
+  # VIII. EMAIL OPENERS (Non-Promotional)
+  # Usage: Beginning of email communications
+  # Purpose: Relational, not transactional
+  # ---------------------------------------------------------------------------
+  email_openers:
+    id: VIII
+    purpose: "Relational, not transactional"
+    usage: "Beginning of email communications"
+    phrases:
+      - "Just leaving this here for you."
+      - "No response needed."
+      - "I thought you might appreciate this."
+      - "Read this whenever it's convenient."
+      - "This isn't time-sensitive."
+      - "A quiet invitation."
+      - "Something you can return to anytime."
+      - "No urgency here."
+      - "When you have a moment."
+      - "I wanted to leave this here for you."
+
+  # ---------------------------------------------------------------------------
+  # IX. EMAIL CLOSINGS (Trust-Building)
+  # Usage: End of email communications
+  # Purpose: Build trust through warmth
+  # ---------------------------------------------------------------------------
+  email_closings:
+    id: IX
+    purpose: "Build trust through warmth"
+    usage: "End of email communications"
+    phrases:
+      - "Take care."
+      - "Until next time."
+      - "This will be here."
+      - "No need to reply."
+      - "Wishing you a quieter moment."
+      - "No reply needed."
+      - "Rest well."
+      - "With warmth."
+      - "Gently."
+      - "Be well."
+
+  # ---------------------------------------------------------------------------
+  # X. CTAs THAT DON'T FEEL LIKE CTAs
+  # Usage: Action buttons, form submissions
+  # Purpose: Outperform "Sign up" in trust-based brands
+  # ---------------------------------------------------------------------------
+  ethical_ctas:
+    id: X
+    purpose: "Outperform 'Sign up' in trust-based brands"
+    usage: "Action buttons, form submissions"
+    phrases:
+      - "Enter"
+      - "Begin gently"
+      - "Explore"
+      - "Receive reflections"
+      - "Stay connected"
+      - "Return here"
+      - "Continue if you want"
+      - "Begin when ready"
+      - "Receive"
+      - "Explore this space"
+
+  # ---------------------------------------------------------------------------
+  # XI. EXIT & UNFOLLOW LANGUAGE
+  # Usage: Unsubscribe pages, exit points
+  # Purpose: Huge trust signal - almost no one does this well
+  # ---------------------------------------------------------------------------
+  exit_forward:
+    id: XI
+    purpose: "Build trust by dignifying leaving"
+    usage: "Unsubscribe pages, exit points"
+    phrases:
+      - "You can step away anytime."
+      - "No hard feelings."
+      - "This door stays open."
+      - "Unsubscribe whenever you like."
+      - "We'll still be here."
+      - "You can leave now."
+      - "Nothing more is expected."
+      - "Close this whenever you like."
+      - "This doesn't need completion."
+      - "The door stays open."
+
+  # ---------------------------------------------------------------------------
+  # XII. TRUST CALIBRATION PHRASES
+  # Usage: Offer pages, product descriptions
+  # Purpose: Future-proof persuasion through honest constraints
+  # ---------------------------------------------------------------------------
+  trust_calibration:
+    id: XII
+    purpose: "Build trust through honest constraints"
+    usage: "Offer pages, product descriptions"
+    phrases:
+      - "Here's what this is."
+      - "Here's what it isn't."
+      - "This may not be for everyone."
+      - "If you're looking for quick results, this won't help."
+      - "This works best when revisited slowly."
+      - "What this is / What this isn't"
+      - "Works best when..."
+      - "Not recommended if..."
+      - "This tends to help people who..."
+      - "Honestly, this isn't for everyone."
+
+  # ---------------------------------------------------------------------------
+  # XIII. ONE-LINE SIGNAL FIRES (Social Posts)
+  # Usage: Social media posts
+  # Purpose: Signal values, not drive clicks
+  # ---------------------------------------------------------------------------
+  signal_fires:
+    id: XIII
+    purpose: "Signal values, not drive clicks"
+    usage: "Social media posts"
+    phrases:
+      - "Not everything meaningful is loud."
+      - "Some things arrive when we stop chasing them."
+      - "Depth doesn't hurry."
+      - "You don't need permission to slow down."
+      - "Returning is underrated."
+      - "Not everything needs interpretation to be real."
+      - "Some peace arrives only when it isn't pursued."
+      - "Not everything meaningful announces itself."
+      - "Depth over noise."
+      - "Some things only make sense once you stop trying to optimize them."
+
+  # ---------------------------------------------------------------------------
+  # XIV. SILENCE MARKERS
+  # Usage: Between sections, before forms, before CTAs
+  # Purpose: Create pause without saying "pause"
+  # ---------------------------------------------------------------------------
+  silence_markers:
+    id: XIV
+    purpose: "Create pause without saying 'pause'"
+    usage: "Between sections, before forms, before CTAs"
+    phrases:
+      - "—"
+      - "This is a good place to stop for a moment."
+      - "Nothing else needs to happen here."
+      - "You can rest your attention."
+      - "Let this be enough for now."
+      - "..."
+      - "[space]"
+      - "A moment."
+      - "Here."
+      - "Pause if you like."
+
+  # ---------------------------------------------------------------------------
+  # XV. REFUSAL-FIRST LANGUAGE
+  # Usage: Before offers, with CTAs
+  # Purpose: Give permission to say no - earns trust
+  # ---------------------------------------------------------------------------
+  refusal_first:
+    id: XV
+    purpose: "Give permission to say no - earns trust"
+    usage: "Before offers, with CTAs"
+    phrases:
+      - "This may not be for you."
+      - "It's okay if this doesn't resonate."
+      - "You won't miss anything by leaving."
+      - "Not everyone needs this."
+      - "You don't owe this your attention."
+      - "If this isn't for you, that's fine."
+      - "Feel free to skip this."
+      - "This isn't trying to convince you."
+      - "No need to agree."
+      - "You're welcome to disagree."
+
+  # ---------------------------------------------------------------------------
+  # XVI. TEMPORAL VERBS (Time-Shaping Language)
+  # Usage: Throughout site copy
+  # Purpose: Words that slow or widen time perception
+  # ---------------------------------------------------------------------------
+  temporal_verbs:
+    id: XVI
+    purpose: "Slow or widen time perception"
+    usage: "Throughout site copy"
+    verbs:
+      - "return"
+      - "remain"
+      - "linger"
+      - "notice"
+      - "dwell"
+      - "arrive"
+      - "stay"
+      - "settle"
+      - "rest"
+      - "abide"
+    example_phrases:
+      - "You're welcome to remain here."
+      - "Some things arrive when we linger."
+      - "Return whenever it makes sense."
+
+  # ---------------------------------------------------------------------------
+  # XVII. NON-INSTRUMENTAL CTAs
+  # Usage: Instead of standard action buttons
+  # Purpose: Action without instruction
+  # ---------------------------------------------------------------------------
+  non_instrumental_ctas:
+    id: XVII
+    purpose: "Action without instruction"
+    usage: "Instead of standard action buttons"
+    phrases:
+      - "Enter if you like."
+      - "Stay with this."
+      - "Begin where you are."
+      - "Receive, or don't."
+      - "Continue, or close the page."
+    rule: "If the CTA still works when ignored, it's correct."
+
+  # ---------------------------------------------------------------------------
+  # XVIII. MEANING SCAFFOLDS
+  # Usage: After complex content
+  # Purpose: Support meaning without defining it
+  # ---------------------------------------------------------------------------
+  meaning_scaffolds:
+    id: XVIII
+    purpose: "Support meaning without defining it"
+    usage: "After complex content"
+    phrases:
+      - "You don't need to understand this yet."
+      - "Meaning doesn't always arrive fully formed."
+      - "This can stay undefined."
+      - "Let this remain unfinished."
+      - "Clarity is optional."
+      - "Some things reveal themselves slowly."
+      - "Understanding isn't required."
+      - "Let this pass through."
+      - "You don't have to hold this in mind."
+      - "Nothing here needs analysis."
+
+  # ---------------------------------------------------------------------------
+  # XIX. MIRROR-WITHOUT-CAPTURE PHRASES
+  # Usage: Instead of "you are..." statements
+  # Purpose: Reflect the reader without enclosing them
+  # ---------------------------------------------------------------------------
+  mirror_without_capture:
+    id: XIX
+    purpose: "Reflect the reader without enclosing them"
+    usage: "Instead of 'you are...' statements"
+    phrases:
+      - "You may recognize this feeling."
+      - "This might feel familiar."
+      - "Some people notice a quiet recognition here."
+      - "If this echoes, you'll know."
+      - "If this resonates, fine."
+      - "If it doesn't, also fine."
+      - "Either way is okay."
+      - "No conclusion is required."
+      - "You don't have to respond."
+    rule: "No diagnosis. No labeling. No enclosure."
+
+  # ---------------------------------------------------------------------------
+  # XX. COGNITIVE OFF-RAMPS
+  # Usage: After intellectually demanding content
+  # Purpose: Let the thinking mind step aside
+  # ---------------------------------------------------------------------------
+  cognitive_offramps:
+    id: XX
+    purpose: "Let the thinking mind step aside"
+    usage: "After intellectually demanding content"
+    phrases:
+      - "You don't have to hold this in mind."
+      - "Nothing here needs analysis."
+      - "Understanding isn't required."
+      - "Let this pass through."
+      - "You can set this down."
+      - "No need to figure this out."
+      - "Let your mind rest on this."
+      - "Don't try to grasp it."
+      - "Let it wash over you."
+      - "No need to retain anything."
+
+  # ---------------------------------------------------------------------------
+  # XXI. RITUAL LANGUAGE (Without Ceremony)
+  # Usage: Newsletter rhythm, return visits
+  # Purpose: Create return behavior without habits or streaks
+  # ---------------------------------------------------------------------------
+  ritual_language:
+    id: XXI
+    purpose: "Create return behavior without habits or streaks"
+    usage: "Newsletter rhythm, return visits"
+    phrases:
+      - "Return when it makes sense."
+      - "This waits."
+      - "No rhythm to keep."
+      - "Not daily."
+      - "Come back when it calls."
+      - "People return when they need to."
+      - "This isn't daily."
+      - "There's no rhythm to keep."
+      - "This has no schedule."
+      - "Whenever feels right."
+
+  # ---------------------------------------------------------------------------
+  # XXII. ATTENTION SANCTIFICATION
+  # Usage: Site-wide philosophy
+  # Purpose: Treat attention as sacred, not harvestable
+  # ---------------------------------------------------------------------------
+  attention_sanctification:
+    id: XXII
+    purpose: "Treat attention as sacred, not harvestable"
+    usage: "Site-wide philosophy"
+    phrases:
+      - "Your attention matters."
+      - "This doesn't deserve your focus if you're tired."
+      - "Close this if it's not helping."
+      - "Rest matters more than reading."
+      - "Protect your attention."
+      - "~2 minutes"
+      - "Skimmable."
+      - "Stop whenever."
+      - "Your presence is enough."
+      - "You've already given enough."
+
+  # ---------------------------------------------------------------------------
+  # XXIII. FIELD-SETTING STATEMENTS
+  # Usage: Page headers, section intros
+  # Purpose: Define the "weather" of the space
+  # ---------------------------------------------------------------------------
+  field_setting:
+    id: XXIII
+    purpose: "Define the 'weather' of the space"
+    usage: "Page headers, section intros"
+    phrases:
+      - "Nothing here moves quickly."
+      - "This space favors quiet."
+      - "Depth matters more than speed."
+      - "There's room here."
+      - "This isn't crowded."
+      - "Slowness is welcome here."
+      - "This place isn't trying to impress you."
+      - "Simplicity is valued here."
+      - "Nothing here is competing for your attention."
+      - "This is unhurried."
+
+  # ---------------------------------------------------------------------------
+  # XXIV. ANTI-CLIMAX LINES
+  # Usage: End of sections, page conclusions
+  # Purpose: Intentionally avoid crescendo
+  # ---------------------------------------------------------------------------
+  anti_climax:
+    id: XXIV
+    purpose: "Intentionally avoid crescendo"
+    usage: "End of sections, page conclusions"
+    phrases:
+      - "And that's enough."
+      - "Nothing more needs to be said."
+      - "We can stop here."
+      - "This doesn't build."
+      - "This simply continues."
+      - "That's all."
+      - "It's okay."
+      - "Here we are."
+      - "This is fine as it is."
+      - "End."
+
+  # ---------------------------------------------------------------------------
+  # XXV. EXPECTANCY INTERRUPTION
+  # Usage: After marketing-sounding language
+  # Purpose: Break persuasion patterns without startling
+  # ---------------------------------------------------------------------------
+  expectancy_interruption:
+    id: XXV
+    purpose: "Break persuasion patterns without startling"
+    usage: "After marketing-sounding language"
+    phrases:
+      - "—actually, no."
+      - "That's not the point."
+      - "But this isn't about that."
+      - "Still, nothing here is asking you to agree."
+      - "And even that might be too much to say."
+      - "But that's not why you're here."
+      - "Ignore that if it sounds like marketing."
+      - "That came out wrong."
+      - "Let me try again."
+      - "Simpler: ..."
+
+  # ---------------------------------------------------------------------------
+  # XXVI. PREDICTION-DISARMING OPENERS
+  # Usage: Page beginnings
+  # Purpose: Cancel expected pressure before it forms
+  # ---------------------------------------------------------------------------
+  prediction_disarming:
+    id: XXVI
+    purpose: "Cancel expected pressure before it forms"
+    usage: "Page beginnings"
+    phrases:
+      - "This isn't a pitch."
+      - "Nothing here is trying to convince you."
+      - "You won't be asked for anything."
+      - "This doesn't end in a request."
+      - "There's no call to action at the end of this."
+      - "This isn't selling anything."
+      - "No signup required."
+      - "Nothing to buy here."
+      - "This is just... here."
+      - "No persuasion incoming."
+
+  # ---------------------------------------------------------------------------
+  # XXVII. TEMPORAL ELASTICITY
+  # Usage: Throughout site
+  # Purpose: Remove deadlines, widen the present
+  # ---------------------------------------------------------------------------
+  temporal_elasticity:
+    id: XXVII
+    purpose: "Remove deadlines, widen the present"
+    usage: "Throughout site"
+    phrases:
+      - "There's no right moment for this."
+      - "This doesn't expire."
+      - "It makes sense at different times."
+      - "Return whenever."
+      - "This isn't linear."
+      - "No deadline."
+      - "Timeless."
+      - "Still relevant."
+      - "Evergreen."
+      - "No rush."
+
+  # ---------------------------------------------------------------------------
+  # XXVIII. MEANING LATENCY
+  # Usage: After deep content
+  # Purpose: Explicitly delay interpretation
+  # ---------------------------------------------------------------------------
+  meaning_latency:
+    id: XXVIII
+    purpose: "Explicitly delay interpretation"
+    usage: "After deep content"
+    phrases:
+      - "You don't have to know what this means yet."
+      - "Understanding can wait."
+      - "This might make sense later."
+      - "Let it sit."
+      - "Some things reveal themselves slowly."
+      - "Give it time."
+      - "Sleep on it."
+      - "No conclusions required."
+      - "Marinate in this."
+      - "Let it unfold."
+
+  # ---------------------------------------------------------------------------
+  # XXIX. META-CONSENT
+  # Usage: Complex content, long pages
+  # Purpose: Consent about consent itself
+  # ---------------------------------------------------------------------------
+  meta_consent:
+    id: XXIX
+    purpose: "Consent about consent itself"
+    usage: "Complex content, long pages"
+    phrases:
+      - "You can choose how much attention to give this."
+      - "You decide how deeply to engage."
+      - "Skim, pause, or leave—any of these are fine."
+      - "There's no correct way to read this."
+      - "You're in control of the depth here."
+      - "Go as deep or shallow as you like."
+      - "Your level of engagement is yours."
+      - "No obligation to finish."
+      - "Partial reading is fine."
+      - "Take what serves you."
+
+  # ---------------------------------------------------------------------------
+  # XXX. ANTI-PATTERN SELF-AWARENESS
+  # Usage: Sparingly, like salt
+  # Purpose: Disarm skepticism preemptively
+  # ---------------------------------------------------------------------------
+  anti_pattern_awareness:
+    id: XXX
+    purpose: "Disarm skepticism preemptively"
+    usage: "Sparingly, like salt"
+    phrases:
+      - "Yes, this might sound abstract."
+      - "This is quieter than most things online."
+      - "This isn't optimized."
+      - "This won't appeal to everyone."
+      - "This asks for less, not more."
+      - "I know this sounds different."
+      - "This is intentionally slow."
+      - "We're not trying to go viral."
+      - "This won't trend."
+      - "This is deliberately unhurried."
+
+  # ---------------------------------------------------------------------------
+  # XXXI. TRUST THERMODYNAMICS
+  # Usage: Throughout interactions
+  # Purpose: Give more energy than you take
+  # ---------------------------------------------------------------------------
+  trust_thermodynamics:
+    id: XXXI
+    purpose: "Give more energy than you take"
+    usage: "Throughout interactions"
+    phrases:
+      - "You don't owe this anything."
+      - "Take this and go."
+      - "This doesn't need reciprocity."
+      - "Keep what's useful."
+      - "Nothing is required in return."
+      - "This is freely given."
+      - "No strings."
+      - "Use this however you like."
+      - "Share if you want, or don't."
+      - "This belongs to you now."
+
+  # ---------------------------------------------------------------------------
+  # XXXII. SEMANTIC ENTROPY
+  # Usage: Instead of slogans
+  # Purpose: Disperse meaning back into the reader
+  # ---------------------------------------------------------------------------
+  semantic_entropy:
+    id: XXXII
+    purpose: "Disperse meaning back into the reader"
+    usage: "Instead of slogans"
+    phrases:
+      - "This can mean different things to different people."
+      - "It doesn't need agreement."
+      - "It doesn't need to be shared."
+      - "It doesn't need amplification."
+      - "It doesn't need an audience."
+      - "Interpret freely."
+      - "Make it yours."
+      - "What it means to you is what it means."
+      - "No official interpretation."
+      - "Your reading is valid."
+
+  # ---------------------------------------------------------------------------
+  # XXXIII. ANTI-PERSISTENCE
+  # Usage: Follow-up communications
+  # Purpose: Don't chase the reader
+  # ---------------------------------------------------------------------------
+  anti_persistence:
+    id: XXXIII
+    purpose: "Don't chase the reader"
+    usage: "Follow-up communications"
+    phrases:
+      - "We won't remind you."
+      - "There are no follow-ups."
+      - "This won't repeat."
+      - "This doesn't need reinforcement."
+      - "One encounter is enough."
+      - "No drip campaign."
+      - "No retargeting."
+      - "We won't chase you."
+      - "This is the only message."
+      - "No sequences."
+
+  # ---------------------------------------------------------------------------
+  # XXXIV. EXPECTATION COLLAPSE
+  # Usage: End of pages
+  # Purpose: Erase "what happens next?" reflex
+  # ---------------------------------------------------------------------------
+  expectation_collapse:
+    id: XXXIV
+    purpose: "Erase 'what happens next?' reflex"
+    usage: "End of pages"
+    phrases:
+      - "Nothing follows this."
+      - "There's no next step."
+      - "This doesn't lead anywhere."
+      - "This is complete as it is."
+      - "We can end here."
+      - "That's the end."
+      - "No part two."
+      - "This is whole."
+      - "Nothing more coming."
+      - "Finished."
+
+  # ---------------------------------------------------------------------------
+  # XXXV. PRE-AGENCY RESTORATION
+  # Usage: Before offers
+  # Purpose: Give control back before choice exists
+  # ---------------------------------------------------------------------------
+  pre_agency_restoration:
+    id: XXXV
+    purpose: "Give control back before choice exists"
+    usage: "Before offers"
+    phrases:
+      - "You don't have to want this."
+      - "You don't have to like this."
+      - "You don't even have to finish reading."
+      - "Your reaction doesn't matter here."
+      - "Nothing is expected."
+      - "You're not being tested."
+      - "No right answer."
+      - "Your response is yours."
+      - "Feel however you feel."
+      - "All reactions welcome."
+
+  # ---------------------------------------------------------------------------
+  # XXXVI. TIME NEUTRALIZATION
+  # Usage: Offer pages
+  # Purpose: Remove chronological pressure entirely
+  # ---------------------------------------------------------------------------
+  time_neutralization:
+    id: XXXVI
+    purpose: "Remove chronological pressure entirely"
+    usage: "Offer pages"
+    phrases:
+      - "This isn't time-bound."
+      - "This doesn't belong to a schedule."
+      - "There's no right moment."
+      - "This isn't early or late."
+      - "It arrives when it arrives."
+      - "Outside of time."
+      - "No clock here."
+      - "When you're ready, not before."
+      - "Time doesn't apply."
+      - "Whenever."
+
+  # ---------------------------------------------------------------------------
+  # XXXVII. MEANING DISSOLUTION
+  # Usage: After complex content
+  # Purpose: Undo the need to interpret
+  # ---------------------------------------------------------------------------
+  meaning_dissolution:
+    id: XXXVII
+    purpose: "Undo the need to interpret"
+    usage: "After complex content"
+    phrases:
+      - "This doesn't need to make sense."
+      - "You don't have to understand this."
+      - "Understanding can get in the way."
+      - "Let it be unclear."
+      - "Clarity isn't necessary."
+      - "Mystery is fine."
+      - "Don't try to figure it out."
+      - "Let it remain strange."
+      - "Confusion is allowed."
+      - "Not knowing is okay."
+
+  # ---------------------------------------------------------------------------
+  # XXXVIII. NON-OWNERSHIP DECLARATIONS
+  # Usage: Throughout site
+  # Purpose: Refuse possession of the reader
+  # ---------------------------------------------------------------------------
+  non_ownership:
+    id: XXXVIII
+    purpose: "Refuse possession of the reader"
+    usage: "Throughout site"
+    phrases:
+      - "This isn't ours to keep you."
+      - "We don't need your attention."
+      - "You're not meant to stay."
+      - "You're free to leave."
+      - "This doesn't belong to us."
+      - "You belong to yourself."
+      - "We're not collecting you."
+      - "This isn't a trap."
+      - "No loyalty required."
+      - "Come and go freely."
+
+  # ---------------------------------------------------------------------------
+  # XXXIX. SACRED RHETORIC (Without Religion)
+  # Usage: Brand voice, key pages
+  # Purpose: Slows time, removes utility pressure, emphasizes presence
+  # ---------------------------------------------------------------------------
+  sacred_rhetoric:
+    id: XXXIX
+    purpose: "Slows time, removes utility pressure, emphasizes presence"
+    usage: "Brand voice, key pages"
+    markers:
+      - "timeless verbs: return, remain, witness, abide"
+      - "spatial metaphors: here, within, this place"
+      - "non-transactional tone"
+    example_phrases:
+      - "This isn't meant to be consumed. It's meant to be returned to."
+      - "Something to witness, not possess."
+      - "A place to dwell, not pass through."
+      - "Not content. Presence."
+      - "Here, in this moment."
+
+  # ---------------------------------------------------------------------------
+  # XL. ANTI-SLOGAN LINES
+  # Usage: Brand positioning
+  # Purpose: Statements that cannot be turned into marketing
+  # ---------------------------------------------------------------------------
+  anti_slogan:
+    id: XL
+    purpose: "Statements that cannot be turned into marketing"
+    usage: "Brand positioning"
+    phrases:
+      - "This doesn't scale."
+      - "This won't be for everyone."
+      - "This isn't efficient."
+      - "This isn't optimized."
+      - "This is slower than most things."
+      - "This won't go viral."
+      - "This isn't for mass consumption."
+      - "Deliberately small."
+      - "Intentionally limited."
+      - "Quality over quantity."
+
+# =============================================================================
+# COGNITIVE BIAS PATTERNS (Ethical Use)
+# Layer 1: What to use, how to phrase it
+# =============================================================================
+cognitive_biases:
+
+  commitment_consistency:
+    description: "People want alignment with who they already believe they are"
+    pattern: "If you're someone who values ___, ... / For those who already believe that ___ matters..."
+    examples:
+      - "If you already value stillness, reflection, and meaning—this was created for you."
+      - "For those who already believe that depth matters..."
+      - "If you're someone who values quiet transformation..."
+
+  identity_based_motivation:
+    description: "Speak to identity, not behavior - extremely powerful, low risk"
+    pattern: "This is for people who... / You might resonate with this if..."
+    examples:
+      - "This space is for people who sense there's more depth available than what most content offers."
+      - "You might resonate with this if meaning tends to arrive quietly for you."
+      - "This is for people who notice what others overlook."
+
+  social_proof_ethical:
+    description: "Without pressure, no fake urgency or inflated numbers"
+    pattern: "Others have shared that... / Many people tell us this helped them..."
+    examples:
+      - "Many people describe feeling calmer, clearer, and more grounded after their first experience."
+      - "Others have shared that this became a place they return to."
+      - "Some people find this becomes part of their rhythm."
+
+  loss_aversion_reframed:
+    description: "Highlight missed benefits, not fear - never threaten"
+    pattern: "You may miss the chance to... / Without moments like this, it's easy to..."
+    examples:
+      - "Without intentional pauses, it's easy for meaning to quietly slip into the background."
+      - "You may miss the chance to notice what's already present."
+      - "Without this kind of space, depth can be crowded out."
+
+# =============================================================================
+# NLP PATTERNS (Clean Use)
+# Layer 2: Milton-model-style softness, not control
+# =============================================================================
+nlp_patterns:
+
+  pacing_leading:
+    description: "State something undeniably true, then gently invite next step"
+    structure: "1. Undeniable truth → 2. Gentle invitation"
+    example: |
+      "You're reading this right now.
+      And as you do, you may notice a subtle slowing."
+
+  presuppositions:
+    description: "Invitation-based, not assumed compliance"
+    pattern: "When you choose to... / As you explore this..."
+    examples:
+      - "As you explore this experience, you might discover what resonates most."
+      - "When you choose to return, something may be different."
+      - "As you settle into this, notice what arrives."
+
+  sensory_language:
+    description: "Grounding, not hypnotic - gentle cues, never commands"
+    examples:
+      - "Notice the warmth..."
+      - "A quiet sense of space..."
+      - "The feeling of settling..."
+      - "A gentle opening..."
+
+# =============================================================================
+# COPYWRITING FRAMEWORKS (Ethical Versions)
+# Layer 3: Frameworks that respect the reader
+# =============================================================================
+copywriting_frameworks:
+
+  pas_soft:
+    name: "Problem-Agitation-Solution (Soft Version)"
+    modified_to: "Situation → Tension → Invitation"
+    example: |
+      "Life rarely slows on its own.
+      That tension accumulates quietly.
+      This offers a place to set it down."
+
+  aida_consent_first:
+    name: "AIDA (Consent-First Rewrite)"
+    structure:
+      attention: "curiosity, not shock"
+      interest: "relevance, not hype"
+      desire: "alignment, not craving"
+      action: "invitation, not pressure"
+    cta_examples:
+      - "Explore at your own pace"
+      - "Receive this when you're ready"
+      - "Enter if you like"
+      - "Begin gently"
+
+  invitation_arc:
+    name: "The Invitation Arc (Instead of AIDA)"
+    structure:
+      - "Recognition – 'You may recognize this feeling...'"
+      - "Reflection – 'It often goes unnamed...'"
+      - "Permission – 'It's okay not to resolve it...'"
+      - "Presence – 'This offers a place to sit with it.'"
+      - "Optional Next Step – 'If you want.'"
+    note: "This mirrors motivational interviewing, not sales."
+
+# =============================================================================
+# PAGE ARCHETYPES
+# Fixed archetypes so every page knows its role
+# =============================================================================
+page_archetypes:
+
+  field_pages:
+    purpose: "Set tone"
+    examples: ["homepage", "about"]
+    rules:
+      - "No offers above the fold"
+      - "At least one refusal-first line"
+      - "One anti-utility statement"
+      - "Use field-setting statements"
+      - "Narrative gravity language"
+
+  invitation_pages:
+    purpose: "Soft engagement"
+    examples: ["newsletter", "library", "explore"]
+    rules:
+      - "Consent gradient visible"
+      - "No scarcity language"
+      - "Exit-forward microcopy present"
+      - "Multiple engagement levels"
+
+  offering_pages:
+    purpose: "Exchange"
+    examples: ["dreamweavings", "store", "sessions"]
+    rules:
+      - "'What this is / isn't' mandatory"
+      - "'For whom / not for whom' required"
+      - "No outcome guarantees"
+      - "CTA cluster (soft → direct)"
+      - "Trust calibration block"
+
+  threshold_pages:
+    purpose: "Transitions"
+    examples: ["checkout", "confirmation", "thank you"]
+    rules:
+      - "Anxiety-reducing language"
+      - "Explicit permission to leave"
+      - "Clear next step or rest"
+      - "No upsells that pressure"
+
+# =============================================================================
+# CTA TRANSFORMATIONS
+# Standard → Ethical mappings
+# =============================================================================
+cta_transformations:
+  "Sign up": "Receive"
+  "Buy now": "Begin"
+  "Submit": "Send"
+  "Learn more": "Explore"
+  "Get started": "Enter"
+  "Join": "Stay connected"
+  "Subscribe": "Receive reflections"
+  "Download": "Access"
+  "Register": "Join gently"
+  "Add to cart": "Choose this"
+
+# =============================================================================
+# CONSENT GRADIENT LEVELS
+# Progressive commitment, not binary yes/no
+# =============================================================================
+consent_gradient:
+  - level: 0
+    name: "Browse"
+    asks: "nothing"
+    markers: []
+
+  - level: 1
+    name: "Receive"
+    asks: "newsletter, soft"
+    markers:
+      - "Receive reflections like this"
+      - "Stay connected (optional)"
+
+  - level: 2
+    name: "Return"
+    asks: "bookmark, follow, save"
+    markers:
+      - "Return when ready"
+      - "This will be here"
+
+  - level: 3
+    name: "Engage"
+    asks: "listen/watch/read full piece"
+    markers:
+      - "~25 minutes"
+      - "Find a quiet space"
+
+  - level: 4
+    name: "Offer"
+    asks: "purchase/donate"
+    markers:
+      - "Begin when ready"
+      - "Enter"
+      - "Choose this experience"
+
+  - level: 5
+    name: "Belong"
+    asks: "membership/community"
+    markers:
+      - "Join this space"
+      - "Become part of this"
+
+  rule: "Never jump from Level 0 → Level 4 on the same screen."
+
+# =============================================================================
+# CHANNEL-SPECIFIC LANGUAGE
+# Different contexts require different approaches
+# =============================================================================
+channel_language:
+
+  website:
+    approach: "Ambient persuasion"
+    rules:
+      - "Use open loops without urgency"
+      - "Speak in second person, gently"
+      - "CTAs = verbs of agency, not compliance"
+      - "White space is persuasion"
+      - "Fewer CTAs = more trust"
+    good_ctas:
+      - "Enter"
+      - "Begin gently"
+      - "Explore this space"
+
+  email:
+    approach: "Relational, not promotional"
+    subject_line_style:
+      - "A quiet invitation"
+      - "Something you can return to anytime"
+      - "Just leaving this here"
+      - "No urgency"
+    body_language:
+      - "Short paragraphs"
+      - "Reflective tone"
+      - "Optional next step"
+    unsubscribe_language:
+      - "You can step away anytime."
+      - "No hard feelings."
+
+  social:
+    approach: "Signal > persuasion"
+    goal: "Resonance, not conversion"
+    language_style: "Statements, not arguments. Reflection, not instruction."
+    example: "Not everything meaningful needs to be loud."
+    principle: "Your posts should signal values, not drive clicks."
+
+# =============================================================================
+# ETHICAL SAFEGUARDS
+# Built-in protections for all copy
+# =============================================================================
+ethical_safeguards:
+  always_include:
+    - "Explicit choice language ('if,' 'when,' 'you may')"
+    - "Easy exits"
+    - "No false urgency"
+    - "No identity shaming"
+    - "No fear-based framing"
+
+  golden_rule: "Never say something that would still work if the user removed their agency."
+
+  consent_test: "Would this language still feel respectful if the reader were vulnerable, tired, or grieving?"
+
+  deepest_test: "Would this language still feel right if the reader never bought anything?"
+
+  final_law: "Never use language to create a need that your language then satisfies."
+
+# =============================================================================
+# LANGUAGE METABOLISM RULES
+# How language enters, lives, and retires
+# =============================================================================
+language_metabolism:
+
+  birth_rules:
+    description: "Every new phrase must pass three gates"
+    gates:
+      - name: "Agency Gate"
+        test: "Does it increase or reduce choice?"
+      - name: "Prediction Gate"
+        test: "Does it raise or lower expected pressure?"
+      - name: "Residue Gate"
+        test: "Will anything quiet remain after reading?"
+    action: "If it fails one → rewrite. If it fails two → discard."
+
+  life_rules:
+    description: "Language should circulate, not accumulate"
+    actions:
+      - "Rotate phrases quarterly"
+      - "Remove lines that start to 'sound good'"
+      - "Prefer underwritten sections"
+      - "Replace explanations with space"
+    rule: "If a sentence starts to feel clever, it's dying."
+
+  retirement_rules:
+    description: "Most teams never delete copy. You must."
+    schedule: "Every 90 days, remove 10-20% of words on core pages"
+    action: "Do not replace them immediately. Let absence do work."
+    purpose: "Preserves meaning latency—space where the reader completes the thought."
+
+# =============================================================================
+# MEASUREMENT (Trust Metrics)
+# Track metrics that reward trust, not pressure
+# =============================================================================
+trust_metrics:
+  track:
+    - "Return rate (7/14/30 days)"
+    - "Email reply rate (warmth signal)"
+    - "Unsubscribe rate after promotions"
+    - "Time-to-first-return"
+    - "Conversion rate by consent level"
+
+  avoid_optimizing:
+    - "pop-up capture rate alone"
+    - "urgency-driven spikes"
+    - "immediate conversion"
+
+  note: "Those metrics poison the field long-term."

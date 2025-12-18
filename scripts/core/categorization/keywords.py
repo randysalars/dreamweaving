@@ -177,6 +177,24 @@ CATEGORY_KEYWORDS = {
         ],
         "priority": 200,
     },
+    "eastern-philosophy": {
+        "primary": [
+            "taoist", "taoism", "dao", "daoism",
+            "buddhist", "buddhism", "zen", "zen meditation",
+            "hindu", "vedic", "vedas", "yoga philosophy",
+            "yin", "yang", "yin-yang", "yin and yang",
+            "eastern", "oriental philosophy"
+        ],
+        "secondary": [
+            "confucian", "confucius",
+            "sufi", "sufism",
+            "dharma", "karma", "chakra",
+            "mantra", "om", "meditation",
+            "wu wei", "middle way", "enlightenment",
+            "balance", "polarity", "philosophy"
+        ],
+        "priority": 205,
+    },
     "spiritual-religious": {
         "primary": [
             "christian", "biblical", "gnostic", "spiritual",
@@ -410,3 +428,68 @@ FREQUENCY_CATEGORIES = {
     # Gamma (30-100 Hz) - Peak awareness
     "gamma": ["consciousness-exploration", "higher-realms"],
 }
+
+# Map keywords.py category slugs to actual database category slugs
+# The database has fewer categories than keywords.py, so we need to map them
+SLUG_TO_DB_CATEGORY = {
+    # Direct matches (same slug in both)
+    "eastern-philosophy": "eastern-philosophy",
+    "archetypal": "archetypal",
+    "relaxation": "relaxation",
+    "confidence": "confidence",
+    "healing": "healing",
+    "shadow-work": "shadow-work",
+    "nature-forest": "nature-forest",
+    "cosmic-space": "cosmic-space",
+    "sacred-spiritual": "sacred-spiritual",
+    "layer-1": "layer-1",
+
+    # Map keywords.py slugs -> database slugs
+    "healing-journeys": "healing",
+    "healing-wellness": "healing",
+    "spiritual-religious": "sacred-spiritual",
+    "higher-realms": "sacred-spiritual",
+    "shadow-depths": "shadow-work",
+    "nature-elements": "nature-forest",
+    "microscopic-cosmic": "cosmic-space",
+    "personal-development": "confidence",
+    "mindfulness-pathworkings": "relaxation",
+    "soundscapes": "relaxation",
+    "guided-visualization": "archetypal",
+    "archetypal-encounters": "archetypal",
+    "shamanic-journeying": "archetypal",
+    "active-imagination": "archetypal",
+    "lucid-dream-induction": "relaxation",
+    "creative-inspiration": "archetypal",
+    "elemental-journeys": "nature-forest",
+    "mythic-storywork": "archetypal",
+    "collective-dreamweavings": "archetypal",
+    "future-self-encounters": "archetypal",
+    "integration-pathworkings": "healing",
+    "cultural-traditions": "sacred-spiritual",
+    "mythology-archetypes": "archetypal",
+    "creative-arts": "archetypal",
+    "science-exploration": "cosmic-space",
+    "paranormal-esoteric": "cosmic-space",
+    "historical-journeys": "archetypal",
+    "entertainment-inspired": "archetypal",
+    "sensory-body": "relaxation",
+    "consciousness-exploration": "cosmic-space",
+    "scientific-dimensional": "cosmic-space",
+}
+
+
+def get_db_category(keywords_slug: str) -> str:
+    """
+    Convert a keywords.py category slug to the corresponding database category slug.
+
+    The keywords.py file has many more granular categories than the database.
+    This function maps them to the 10 database categories.
+
+    Args:
+        keywords_slug: The category slug from the auto-categorization system
+
+    Returns:
+        The corresponding database category slug, or 'archetypal' as fallback
+    """
+    return SLUG_TO_DB_CATEGORY.get(keywords_slug, "archetypal")

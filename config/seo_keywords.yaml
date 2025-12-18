@@ -1,0 +1,233 @@
+# =============================================================================
+# DREAMWEAVER SEO KEYWORDS CONFIGURATION
+# =============================================================================
+#
+# Target audience: People searching for spiritual/emotional support
+# Focus: Long-tail emotional intent keywords, not commercial high-volume terms
+#
+# Philosophy: Attract people who would benefit, not just anyone who would click
+# =============================================================================
+
+meta:
+  version: "1.0"
+  created: "2025-12-18"
+  strategy: "Emotional intent matching over volume"
+
+# =============================================================================
+# PRIMARY KEYWORDS (Core Focus)
+# =============================================================================
+primary:
+  # Faith & Spiritual Struggle
+  - "when faith feels thin"
+  - "struggling with faith"
+  - "spiritual doubt"
+  - "faith crisis"
+  - "losing faith"
+
+  # Meaning & Purpose
+  - "something feels missing"
+  - "spiritual longing"
+  - "searching for meaning"
+  - "meaning crisis"
+  - "purpose of life spiritual"
+
+  # Rest & Fatigue
+  - "spiritual fatigue"
+  - "soul tired"
+  - "exhausted soul"
+  - "spiritually drained"
+  - "inner exhaustion"
+
+  # Meditation & Practice
+  - "guided meditation meaning"
+  - "meditation for loneliness"
+  - "spiritual meditation practice"
+  - "contemplative meditation"
+  - "meditation for seekers"
+
+  # Inner Life
+  - "inner life neglected"
+  - "quiet spiritual reflection"
+  - "interior life"
+  - "cultivating inner life"
+
+# =============================================================================
+# SECONDARY KEYWORDS (Supporting Content)
+# =============================================================================
+secondary:
+  # Seasonal (High Intent)
+  - "Christmas loneliness"
+  - "alone at Christmas"
+  - "Advent reflection"
+  - "Easter hope"
+  - "New Year spiritual"
+  - "winter solstice meditation"
+
+  # Emotional States
+  - "feeling spiritually empty"
+  - "emotional numbness spiritual"
+  - "grief and spirituality"
+  - "anxiety and faith"
+  - "depression spiritual meaning"
+
+  # Seeking & Journey
+  - "spiritual seeker"
+  - "inner journey"
+  - "path of meaning"
+  - "quiet spirituality"
+  - "contemplative life"
+
+  # Rest & Permission
+  - "permission to rest"
+  - "spiritual rest"
+  - "sabbath for the soul"
+  - "letting go spiritually"
+  - "surrender meditation"
+
+# =============================================================================
+# LONG-TAIL PHRASES (Specific Intent)
+# =============================================================================
+long_tail:
+  faith_doubt:
+    - "I feel far from God"
+    - "can't feel God anymore"
+    - "faith feels empty"
+    - "spiritual dryness"
+    - "dark night of the soul"
+
+  meaning_search:
+    - "why do I feel like something is missing"
+    - "life feels meaningless"
+    - "searching for purpose"
+    - "what is the meaning of my life"
+    - "feeling lost spiritually"
+
+  exhaustion:
+    - "too tired to pray"
+    - "spiritually burned out"
+    - "can't meditate anymore"
+    - "overwhelmed by life"
+    - "need spiritual rest"
+
+  loneliness:
+    - "feeling alone in faith"
+    - "spiritual loneliness"
+    - "no one understands my spiritual journey"
+    - "isolated in beliefs"
+
+# =============================================================================
+# KEYWORDS TO AVOID (Wrong Audience)
+# =============================================================================
+avoid:
+  - "best meditation app"
+  - "meditation for productivity"
+  - "how to be more successful"
+  - "manifest money"
+  - "law of attraction wealth"
+  - "binaural beats study"
+  - "focus music"
+  - "ASMR tingles"
+  - "sleep music 10 hours"
+
+  reasons:
+    - "Attracts productivity-seekers, not meaning-seekers"
+    - "Attracts consumers, not companions"
+    - "Attracts quick-fix mentality"
+    - "Misaligns with Dreamweaver's contemplative depth"
+
+# =============================================================================
+# KEYWORD CLUSTERS BY ARTICLE TYPE
+# =============================================================================
+clusters:
+  quiet_reflection:
+    primary: ["quiet spiritual reflection", "contemplative meditation"]
+    secondary: ["inner stillness", "peaceful reflection", "mindful awareness"]
+    intent: "Person seeking a moment of peace and perspective"
+
+  faith_exploration:
+    primary: ["when faith feels thin", "struggling with faith"]
+    secondary: ["spiritual doubt", "faith questions", "believing again"]
+    intent: "Person questioning or wrestling with faith"
+
+  seasonal:
+    christmas:
+      primary: ["Christmas loneliness", "Christmas reflection spiritual"]
+      secondary: ["holiday spiritual meaning", "Christmas for seekers"]
+      intent: "Person feeling complex emotions during holidays"
+
+    advent:
+      primary: ["Advent reflection", "Advent meditation"]
+      secondary: ["waiting spiritually", "anticipation spiritual"]
+      intent: "Person in a season of waiting or preparation"
+
+    easter:
+      primary: ["Easter hope", "resurrection meaning"]
+      secondary: ["renewal spiritual", "new beginnings faith"]
+      intent: "Person seeking renewal or transformation"
+
+  inner_life:
+    primary: ["inner life", "interior journey"]
+    secondary: ["cultivating soul", "deep inner work"]
+    intent: "Person wanting to develop their interior world"
+
+  symbolic_story:
+    primary: ["mythic spirituality", "symbolic meaning"]
+    secondary: ["archetypes spiritual", "story and meaning"]
+    intent: "Person drawn to narrative and symbol"
+
+# =============================================================================
+# CONTENT MAPPING
+# =============================================================================
+content_mapping:
+  article_topics:
+    "when faith feels thin":
+      article_type: "faith_exploration"
+      emotional_state: "Doubt, distance from belief, questioning"
+      angle: "Permission to doubt, companioning in uncertainty"
+
+    "spiritual fatigue":
+      article_type: "quiet_reflection"
+      emotional_state: "Exhaustion, overwhelm, depletion"
+      angle: "Permission to rest, not fixing but acknowledgment"
+
+    "something feels missing":
+      article_type: "inner_life"
+      emotional_state: "Vague longing, incompleteness, searching"
+      angle: "Naming the ache without prescribing solutions"
+
+    "Christmas loneliness":
+      article_type: "seasonal"
+      emotional_state: "Isolation, grief, holiday pressure"
+      angle: "Honest acknowledgment, gentle companioning"
+
+    "meditation for loneliness":
+      article_type: "guided_journey"
+      emotional_state: "Isolation, disconnection, ache for belonging"
+      angle: "Not fixing loneliness but being present with it"
+
+# =============================================================================
+# SEO STRATEGY NOTES
+# =============================================================================
+strategy_notes:
+  approach: |
+    Dreamweaver's SEO strategy is about matching emotional intent,
+    not capturing commercial traffic. We want the person searching
+    at 2am because something feels wrong, not the person looking
+    for a productivity hack.
+
+  content_requirements:
+    - "Content must help even if reader never returns"
+    - "No calls to action in articles"
+    - "Recognition before request"
+    - "End with blessing, not pitch"
+
+  ranking_approach:
+    - "Target long-tail emotional queries"
+    - "Optimize for search intent satisfaction"
+    - "Build topical authority in spiritual/meaning space"
+    - "Let quality and helpfulness drive organic links"
+
+  meta_description_formula: |
+    [Acknowledge the feeling] + [What the article offers] + [No pressure]
+    Example: "When faith feels distant, you're not alone. A gentle
+    reflection for those carrying questions quietly."

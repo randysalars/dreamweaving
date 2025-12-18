@@ -5,8 +5,7 @@ lessons:
   category: audio
   finding: Static binaural frequencies miss the hypnotic arc - dynamic progressions
     are essential
-  evidence: "Compared v3 (static 6 Hz) with original (12\u21928\u21927\u21926\u2192\
-    40\u21927\u219210 Hz progression)"
+  evidence: Compared v3 (static 6 Hz) with original (12→8→7→6→40→7→10 Hz progression)
   action: Implement dynamic binaural generation that reads frequency maps from manifest
   confidence: high
   tags:
@@ -14,7 +13,12 @@ lessons:
   - effectiveness
   - critical
   priority: critical
-  applied_to: []
+  applied_to:
+  - deep-sleep-test-20251217
+  - gandalfs-wisdom-journey-pathworking
+  - truth-concepts-dreamweaving
+  applied_count: 3
+  last_applied: '2025-12-18'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -30,13 +34,18 @@ lessons:
   - gamma
   - integration
   priority: high
-  applied_to: []
+  applied_to:
+  - deep-sleep-test-20251217
+  - gandalfs-wisdom-journey-pathworking
+  - truth-concepts-dreamweaving
+  applied_count: 3
+  last_applied: '2025-12-18'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
   category: audio
-  finding: "Micro-modulation (\xB10.3 Hz at 0.05 Hz rate) during theta sections enhances\
-    \ entrainment"
+  finding: Micro-modulation (±0.3 Hz at 0.05 Hz rate) during theta sections enhances
+    entrainment
   evidence: Original frequency map specifies subtle 20-second oscillation cycle
   action: Add micro-modulation option to binaural generator for journey sections
   confidence: medium
@@ -45,7 +54,12 @@ lessons:
   - modulation
   - enhancement
   priority: medium
-  applied_to: []
+  applied_to:
+  - deep-sleep-test-20251217
+  - gandalfs-wisdom-journey-pathworking
+  - truth-concepts-dreamweaving
+  applied_count: 3
+  last_applied: '2025-12-18'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -61,7 +75,12 @@ lessons:
   - duration
   - workflow
   priority: high
-  applied_to: []
+  applied_to:
+  - deep-sleep-test-20251217
+  - gandalfs-wisdom-journey-pathworking
+  - truth-concepts-dreamweaving
+  applied_count: 3
+  last_applied: '2025-12-18'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -75,7 +94,12 @@ lessons:
   - voice
   - documentation
   priority: low
-  applied_to: []
+  applied_to:
+  - deep-sleep-test-20251217
+  - gandalfs-wisdom-journey-pathworking
+  - truth-concepts-dreamweaving
+  applied_count: 3
+  last_applied: '2025-12-18'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -530,21 +554,21 @@ lessons:
   applied: false
 - id: L032
   date: '2025-12-04'
-  session: "journey-to-t\xEDr-na-n\xF3g-the-land-of-eterna-20251204"
+  session: journey-to-tír-na-nóg-the-land-of-eterna-20251204
   category: automation
   source: auto_generate
-  summary: "Auto-generated session from topic: Journey to T\xEDr na n\xD3g \u2014\
-    \ The Land of Eternal Youth | Journey: You pass through an ancient hazel grove\
-    \ and into the shimmering youth-realm where time flows like mist. You meet radiant\
-    \ beings who dissolve aging, fear, and inertia | Archetypes: The Shining Ones,\
-    \ Eternal Child, The Hazel Maiden | Audio: 4 Hz theta; soft fae chimes; reversed\
-    \ harp glissandos; distant ocean-wind"
+  summary: 'Auto-generated session from topic: Journey to Tír na nÓg — The Land of
+    Eternal Youth | Journey: You pass through an ancient hazel grove and into the
+    shimmering youth-realm where time flows like mist. You meet radiant beings who
+    dissolve aging, fear, and inertia | Archetypes: The Shining Ones, Eternal Child,
+    The Hazel Maiden | Audio: 4 Hz theta; soft fae chimes; reversed harp glissandos;
+    distant ocean-wind'
   details:
-    topic: "Journey to T\xEDr na n\xD3g \u2014 The Land of Eternal Youth | Journey:\
-      \ You pass through an ancient hazel grove and into the shimmering youth-realm\
-      \ where time flows like mist. You meet radiant beings who dissolve aging, fear,\
-      \ and inertia | Archetypes: The Shining Ones, Eternal Child, The Hazel Maiden\
-      \ | Audio: 4 Hz theta; soft fae chimes; reversed harp glissandos; distant ocean-wind"
+    topic: 'Journey to Tír na nÓg — The Land of Eternal Youth | Journey: You pass
+      through an ancient hazel grove and into the shimmering youth-realm where time
+      flows like mist. You meet radiant beings who dissolve aging, fear, and inertia
+      | Archetypes: The Shining Ones, Eternal Child, The Hazel Maiden | Audio: 4 Hz
+      theta; soft fae chimes; reversed harp glissandos; distant ocean-wind'
     mode: standard
     duration_target: 30
     stages_completed: 12
@@ -560,19 +584,19 @@ lessons:
   session: ascent-to-olympus-the-throne-of-zeus-exp-20251204
   category: automation
   source: auto_generate
-  summary: "Auto-generated session from topic: Ascent to Olympus: The Throne of Zeus\
-    \ | Explore Zeus\u2019 sky-realm of thunder, divine law, and sovereignty | Journey:\
-    \ Rise through storm clouds toward a vast marble citadel, receive lightning-wisdom,\
-    \ and learn the power of decisive authority | Archetypes: The Sovereign, The Sky\
-    \ Father, The Judge | Binaural Beats: ~4\u20136 Hz (theta) for awe + steady low-frequency\
-    \ rumble | Sound Effects: Thunder rolls, wind currents, distant eagle calls"
+  summary: 'Auto-generated session from topic: Ascent to Olympus: The Throne of Zeus
+    | Explore Zeus’ sky-realm of thunder, divine law, and sovereignty | Journey: Rise
+    through storm clouds toward a vast marble citadel, receive lightning-wisdom, and
+    learn the power of decisive authority | Archetypes: The Sovereign, The Sky Father,
+    The Judge | Binaural Beats: ~4–6 Hz (theta) for awe + steady low-frequency rumble
+    | Sound Effects: Thunder rolls, wind currents, distant eagle calls'
   details:
-    topic: "Ascent to Olympus: The Throne of Zeus | Explore Zeus\u2019 sky-realm of\
-      \ thunder, divine law, and sovereignty | Journey: Rise through storm clouds\
-      \ toward a vast marble citadel, receive lightning-wisdom, and learn the power\
-      \ of decisive authority | Archetypes: The Sovereign, The Sky Father, The Judge\
-      \ | Binaural Beats: ~4\u20136 Hz (theta) for awe + steady low-frequency rumble\
-      \ | Sound Effects: Thunder rolls, wind currents, distant eagle calls"
+    topic: 'Ascent to Olympus: The Throne of Zeus | Explore Zeus’ sky-realm of thunder,
+      divine law, and sovereignty | Journey: Rise through storm clouds toward a vast
+      marble citadel, receive lightning-wisdom, and learn the power of decisive authority
+      | Archetypes: The Sovereign, The Sky Father, The Judge | Binaural Beats: ~4–6
+      Hz (theta) for awe + steady low-frequency rumble | Sound Effects: Thunder rolls,
+      wind currents, distant eagle calls'
     mode: standard
     duration_target: 30
     stages_completed: 14
@@ -867,21 +891,21 @@ lessons:
   session: the-astral-gate-of-the-adept-journeyyou--20251206
   category: automation
   source: auto_generate
-  summary: "Auto-generated session from topic: The Astral Gate of the Adept \u2014\
-    \ Journey:You approach a luminous gate floating in the astral realm, guarded by\
-    \ four elemental angels. Passing through requires attuning your inner vibrations\
-    \ to each element sequentially. Beyond the gate lies a hall of mirrors, each reflecting\
-    \ your past, present, and potential future mastery of magic-Archetypes:- Elemental\
-    \ Guardians, Astral Gatekeeper, Inner Adept- Sound: Harmonic wind, elemental pulses,\
-    \ soft celestial hums synchronizing with theta-gamma frequencies"
+  summary: 'Auto-generated session from topic: The Astral Gate of the Adept — Journey:You
+    approach a luminous gate floating in the astral realm, guarded by four elemental
+    angels. Passing through requires attuning your inner vibrations to each element
+    sequentially. Beyond the gate lies a hall of mirrors, each reflecting your past,
+    present, and potential future mastery of magic-Archetypes:- Elemental Guardians,
+    Astral Gatekeeper, Inner Adept- Sound: Harmonic wind, elemental pulses, soft celestial
+    hums synchronizing with theta-gamma frequencies'
   details:
-    topic: "The Astral Gate of the Adept \u2014 Journey:You approach a luminous gate\
-      \ floating in the astral realm, guarded by four elemental angels. Passing through\
-      \ requires attuning your inner vibrations to each element sequentially. Beyond\
-      \ the gate lies a hall of mirrors, each reflecting your past, present, and potential\
-      \ future mastery of magic-Archetypes:- Elemental Guardians, Astral Gatekeeper,\
-      \ Inner Adept- Sound: Harmonic wind, elemental pulses, soft celestial hums synchronizing\
-      \ with theta-gamma frequencies"
+    topic: 'The Astral Gate of the Adept — Journey:You approach a luminous gate floating
+      in the astral realm, guarded by four elemental angels. Passing through requires
+      attuning your inner vibrations to each element sequentially. Beyond the gate
+      lies a hall of mirrors, each reflecting your past, present, and potential future
+      mastery of magic-Archetypes:- Elemental Guardians, Astral Gatekeeper, Inner
+      Adept- Sound: Harmonic wind, elemental pulses, soft celestial hums synchronizing
+      with theta-gamma frequencies'
     mode: standard
     duration_target: 30
     stages_completed: 14
@@ -915,15 +939,15 @@ lessons:
   session: the-eclipse-gate-ritual-of-transformatio-20251207
   category: automation
   source: auto_generate
-  summary: "Auto-generated session from topic: The Eclipse Gate \u2014 Ritual of Transformation-During\
-    \ a total lunar eclipse, a portal opens to a parallel moon realm- The red moon\
-    \ purges deep karmic patterns- Eclipse energy rewrites your subconscious- You\
-    \ return reborn, eyes glowing with power"
+  summary: 'Auto-generated session from topic: The Eclipse Gate — Ritual of Transformation-During
+    a total lunar eclipse, a portal opens to a parallel moon realm- The red moon purges
+    deep karmic patterns- Eclipse energy rewrites your subconscious- You return reborn,
+    eyes glowing with power'
   details:
-    topic: "The Eclipse Gate \u2014 Ritual of Transformation-During a total lunar\
-      \ eclipse, a portal opens to a parallel moon realm- The red moon purges deep\
-      \ karmic patterns- Eclipse energy rewrites your subconscious- You return reborn,\
-      \ eyes glowing with power"
+    topic: The Eclipse Gate — Ritual of Transformation-During a total lunar eclipse,
+      a portal opens to a parallel moon realm- The red moon purges deep karmic patterns-
+      Eclipse energy rewrites your subconscious- You return reborn, eyes glowing with
+      power
     mode: standard
     duration_target: 30
     stages_completed: 14
@@ -1283,4 +1307,68 @@ lessons:
   learnings:
   - Voice generation successful with Neural2-H
   - Hypnotic post-processing applied successfully
+  applied: false
+- id: L066
+  date: '2025-12-16'
+  session: the-cavern-of-forgotten-memories-journey-20251216
+  category: automation
+  source: auto_generate
+  summary: 'Auto-generated session from topic: The Cavern of Forgotten Memories Journey:
+    Descend into an underground cave where walls are inscribed with your earliest
+    unremembered experiences. Shadow guides help retrieve hidden memories.Archetypes:
+    The Child, The Shadow, The Forgotten Mentor Sound: Dripping water, low resonance
+    tones, subtle delta-theta entrainment (3–6 Hz)'
+  details:
+    topic: 'The Cavern of Forgotten Memories Journey: Descend into an underground
+      cave where walls are inscribed with your earliest unremembered experiences.
+      Shadow guides help retrieve hidden memories.Archetypes: The Child, The Shadow,
+      The Forgotten Mentor Sound: Dripping water, low resonance tones, subtle delta-theta
+      entrainment (3–6 Hz)'
+    mode: standard
+    duration_target: 30
+    stages_completed: 17
+    stages_failed: 0
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  applied: false
+- id: L067
+  date: '2025-12-17'
+  session: sacred-places-journey
+  category: automation
+  source: auto_generate
+  summary: 'Auto-generated session from topic: Sacred Places Journey'
+  details:
+    topic: Sacred Places Journey
+    mode: standard
+    duration_target: 30
+    stages_completed: 13
+    stages_failed: 0
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  applied: false
+- id: L068
+  date: '2025-12-17'
+  session: quantum-reality-exploring-the-mysteries-of-quantum
+  category: debugging
+  source: auto_generate
+  summary: 'Auto-generated session from topic: [[Quantum Reality]]: Exploring the
+    mysteries of quantum physics, bridging the gap between science and spirituality.'
+  details:
+    topic: '[[Quantum Reality]]: Exploring the mysteries of quantum physics, bridging
+      the gap between science and spirituality.'
+    mode: standard
+    duration_target: 30
+    stages_completed: 15
+    stages_failed: 1
+    execution_time_seconds: 0
+    estimated_cost_usd: 0.7
+  learnings:
+  - Voice generation successful with Neural2-H
+  - Hypnotic post-processing applied successfully
+  - 'Failed stages: upload_website'
   applied: false

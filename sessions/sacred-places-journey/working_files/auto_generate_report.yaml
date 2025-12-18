@@ -1,0 +1,59 @@
+session_name: sacred-places-journey
+topic: Sacred Places Journey
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2025-12-17T00:00:03.403254'
+  ended: '2025-12-17T00:06:27.679414'
+  duration_seconds: 384.3
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - generate_vtt
+  - generate_images
+  - generate_thumbnail
+  - cleanup
+  - self_improvement
+  failed: []
+  total: 14
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-17T00:00:04.364292'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2025-12-17T00:00:28.988802'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2025-12-17T00:02:22.470303'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2025-12-17T00:02:22.519638'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-17T00:05:44.970861'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/sacred-places-journey
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/sacred-places-journey/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/sacred-places-journey/working_files/script.ssml
+  files: []

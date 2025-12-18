@@ -84,6 +84,21 @@ from scripts.ai.creative_workflow import CreativeWorkflow
 from scripts.utilities.estimate_duration import estimate_duration
 from scripts.utilities.archetype_selector import ArchetypeSelector, SelectedArchetype
 
+# Recursive improvement agent (lazy-loaded for performance)
+_recursive_agent = None
+
+def _get_recursive_agent():
+    """Get or create the DreamweaverRecursiveAgent (lazy-loaded)."""
+    global _recursive_agent
+    if _recursive_agent is None:
+        try:
+            from scripts.ai.agents.dreamweaver_recursive import DreamweaverRecursiveAgent
+            _recursive_agent = DreamweaverRecursiveAgent(project_root=PROJECT_ROOT)
+        except ImportError as e:
+            print(f"Warning: Could not import recursive agent: {e}")
+            return None
+    return _recursive_agent
+
 DEFAULT_NOTION_ROOT_PAGE_ID = os.getenv(
     "NOTION_ROOT_PAGE_ID", "1ee2bab3796d80738af6c96bd5077acf"
 )
@@ -598,6 +613,11 @@ class AutoGenerator:
         self.stages_completed: List[str] = []
         self.stages_failed: List[str] = []
 
+        # Recursive improvement tracking
+        self.applied_lessons: List[str] = []
+        self.lessons_context: str = ""
+        self.generation_plan = None
+
     def _generate_session_name(self, topic: str) -> str:
         """Generate a kebab-case session name from topic."""
         # Remove special characters and convert to kebab-case
@@ -786,9 +806,28 @@ class AutoGenerator:
         for warning in plan.warnings:
             self.log(f"Warning: {warning}", "warning")
 
-        # Log knowledge context
+        # Log knowledge context (from generation_planner)
         if plan.lessons_applied:
-            self.log(f"Lessons applied: {len(plan.lessons_applied)}", "info")
+            self.log(f"Lessons from planner: {len(plan.lessons_applied)}", "info")
+
+        # Use recursive improvement agent to get ranked lessons
+        try:
+            agent = _get_recursive_agent()
+            if agent:
+                applied = agent.prepare_generation(
+                    topic=self.topic,
+                    duration_minutes=self.duration_minutes,
+                    desired_outcome=None,  # Will be set from manifest later
+                )
+                self.applied_lessons = applied.lesson_ids
+                self.lessons_context = applied.lessons_context
+
+                if self.applied_lessons:
+                    self.log(f"Ranked lessons applied: {len(self.applied_lessons)}", "info")
+                    # Also add to plan for reference
+                    plan.lessons_applied = list(set(plan.lessons_applied + self.applied_lessons))
+        except Exception as e:
+            self.log(f"Warning: Could not get ranked lessons: {e}", "warning")
 
         self.stages_completed.append("create_plan")
         self.log("Execution plan created", "success")
@@ -1850,10 +1889,21 @@ Do NOT include any explanation or commentary before or after the SSML.
                 self.log("Applied hypnotic post-processing", "success")
                 self.stages_completed.append("hypnotic_post_process")
             else:
-                self.log(f"Post-processing warning: {result.stderr[:100]}", "warning")
+                error_msg = result.stderr[:200] if result.stderr else "Unknown error"
+                self.log(f"Post-processing FAILED: {error_msg}", "error")
+                self.stages_failed.append("hypnotic_post_process")
+                raise RuntimeError(f"Hypnotic post-processing failed (required for MASTER audio): {error_msg}")
 
+        except subprocess.TimeoutExpired:
+            self.log("Post-processing timed out after 10 minutes", "error")
+            self.stages_failed.append("hypnotic_post_process")
+            raise RuntimeError("Hypnotic post-processing timed out")
+        except RuntimeError:
+            raise  # Re-raise our own errors
         except Exception as e:
-            self.log(f"Post-processing skipped: {e}", "warning")
+            self.log(f"Post-processing failed: {e}", "error")
+            self.stages_failed.append("hypnotic_post_process")
+            raise RuntimeError(f"Hypnotic post-processing failed: {e}")
 
     def _stage_generate_vtt(self):
         """Generate VTT subtitles."""
@@ -2207,10 +2257,15 @@ Topic: {self.topic}
             break
 
         if not master_audio:
-            self.log("No master audio found, skipping website upload", "warning")
+            self.log("No master audio found - cannot upload to website (hypnotic_post_process may have failed)", "error")
+            self.stages_failed.append("upload_website")
             return
 
         try:
+            # Need PYTHONPATH for the import to work properly
+            env = os.environ.copy()
+            env["PYTHONPATH"] = str(self.project_root)
+
             result = subprocess.run(
                 [
                     self.python_cmd, "scripts/core/upload_to_website.py",
@@ -2221,6 +2276,7 @@ Topic: {self.topic}
                 text=True,
                 cwd=str(self.project_root),
                 timeout=600,
+                env=env,
             )
 
             if result.returncode == 0:
@@ -2234,14 +2290,16 @@ Topic: {self.topic}
                             break
             else:
                 err_output = (result.stderr or "").strip() or (result.stdout or "").strip()
-                snippet = err_output[:200] if err_output else "Unknown error"
-                self.log(f"Website upload warning: {snippet}", "warning")
+                snippet = err_output[:200] if err_output else "Upload returned non-zero exit code"
+                self.log(f"Website upload failed: {snippet}", "error")
+                self.stages_failed.append("upload_website")
 
         except subprocess.TimeoutExpired:
-            self.log("Website upload timed out", "error")
+            self.log("Website upload timed out after 10 minutes", "error")
             self.stages_failed.append("upload_website")
         except Exception as e:
-            self.log(f"Website upload skipped: {e}", "warning")
+            self.log(f"Website upload failed: {e}", "error")
+            self.stages_failed.append("upload_website")
 
     def _stage_cleanup(self):
         """Cleanup intermediate files to save disk space."""
@@ -2328,6 +2386,11 @@ Topic: {self.topic}
             new_lesson['learnings'].append(f"Failed stages: {', '.join(self.stages_failed)}")
             new_lesson['category'] = 'debugging'
 
+        # Track which lessons were applied
+        if self.applied_lessons:
+            new_lesson['applied_lessons'] = self.applied_lessons
+            new_lesson['learnings'].append(f"Applied {len(self.applied_lessons)} ranked lessons from recursive improvement system")
+
         # Append and save
         lessons.append(new_lesson)
 
@@ -2338,6 +2401,49 @@ Topic: {self.topic}
             self.log(f"Recorded lesson {new_lesson['id']}", "success")
         except Exception as e:
             self.log(f"Failed to record lesson: {e}", "warning")
+
+        # Record outcome to recursive improvement system
+        try:
+            agent = _get_recursive_agent()
+            if agent and self.applied_lessons:
+                # Calculate quality score based on completion rate
+                total_stages = len(self.stages_completed) + len(self.stages_failed)
+                quality_score = (len(self.stages_completed) / max(total_stages, 1)) * 100 if total_stages > 0 else 50.0
+
+                metrics = {
+                    'generation_success': len(self.stages_failed) == 0,
+                    'quality_score': quality_score,
+                    'stages_completed': self.stages_completed,
+                    'stages_failed': self.stages_failed,
+                    'execution_time_seconds': (self.end_time - self.start_time).total_seconds() if self.end_time else 0,
+                    'estimated_cost_usd': self.cost_tracker.get_total(),
+                }
+
+                # Create AppliedLessons container
+                from scripts.ai.agents.dreamweaver_recursive import AppliedLessons
+                applied = AppliedLessons(
+                    lesson_ids=self.applied_lessons,
+                    lessons_context=self.lessons_context,
+                    categories={},
+                )
+
+                outcome_id = agent.record_generation_outcome(
+                    session_name=self.session_name,
+                    applied_lessons=applied,
+                    metrics=metrics,
+                    youtube_video_id=None,  # Set later when video is uploaded to YouTube
+                    manifest_path=self.session_path / "manifest.yaml",
+                )
+
+                # Update manifest with applied lessons
+                agent.update_manifest_with_lessons(
+                    manifest_path=self.session_path / "manifest.yaml",
+                    applied_lessons=applied,
+                )
+
+                self.log(f"Recorded outcome {outcome_id} to recursive improvement system", "success")
+        except Exception as e:
+            self.log(f"Warning: Could not record recursive improvement outcome: {e}", "warning")
 
         # Update archetype history for diversity tracking
         self._update_archetype_history()

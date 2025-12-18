@@ -18,7 +18,10 @@ Usage:
 Part of Phase 8: Automatic RAG Indexing System
 """
 import json
+import hashlib
 import logging
+import sys
+import yaml
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Dict, Any, Optional

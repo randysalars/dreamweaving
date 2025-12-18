@@ -213,8 +213,34 @@ class LessonsManager:
 
         return stats
 
-    def mark_lesson_applied(self, category: str, lesson_text: str):
-        """Mark a lesson as applied (increment counter)."""
+    def mark_lesson_applied(self, category: str = None, lesson_text: str = None,
+                            lesson_id: str = None, session_name: str = None):
+        """
+        Mark a lesson as applied (increment counter).
+
+        Can be called with either:
+        - category + lesson_text (legacy API)
+        - lesson_id + session_name (new ID-based API)
+        """
+        if lesson_id:
+            # ID-based lookup - search all categories
+            for cat in self.lessons:
+                if isinstance(self.lessons[cat], list):
+                    for lesson in self.lessons[cat]:
+                        if lesson.get("id") == lesson_id:
+                            lesson["applied_count"] = lesson.get("applied_count", 0) + 1
+                            lesson["last_applied"] = datetime.now().isoformat()[:10]
+                            if session_name:
+                                applied_to = lesson.get("applied_to", [])
+                                if session_name not in applied_to:
+                                    applied_to.append(session_name)
+                                    # Keep last 20 sessions
+                                    lesson["applied_to"] = applied_to[-20:]
+                            self._save_lessons()
+                            return True
+            return False
+
+        # Legacy text-based lookup
         if category in self.lessons:
             for lesson in self.lessons[category]:
                 if lesson.get("lesson") == lesson_text:

@@ -21,5 +21,13 @@ StandardError=append:/home/rsalars/Projects/dreamweaving/logs/rag_polling_monito
 NoNewPrivileges=true
 PrivateTmp=true
 
+# Resource limits to prevent CPU saturation
+# Limit to 200% CPU (2 cores max) to leave resources for other tasks
+CPUQuota=200%
+# Memory limit to prevent OOM issues with large models
+MemoryMax=4G
+# Nice value for lower priority
+Nice=10
+
 [Install]
 WantedBy=multi-user.target

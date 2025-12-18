@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Invitation</title>
+  <style>
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.8;
+      color: #2c2c2c;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: #faf9f7;
+    }
+    .content {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 4px;
+    }
+    p {
+      margin: 0 0 20px 0;
+    }
+    .link-container {
+      margin: 30px 0;
+      text-align: center;
+    }
+    .gentle-link {
+      color: #5c5c5c;
+      text-decoration: underline;
+      font-style: italic;
+    }
+    .signature {
+      margin-top: 40px;
+      font-style: italic;
+      color: #5c5c5c;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <p>Hello,</p>
+
+    <p>I wanted to let you know about something that now exists.</p>
+
+    <!-- OFFERING_DESCRIPTION: Brief, non-pushy description
+         Guidelines:
+         - Describe who it's for, not what it is
+         - Use "for those who..." framing
+         - Focus on the inner state it serves
+         - 2-3 sentences maximum
+    -->
+    {{OFFERING_DESCRIPTION}}
+
+    <p>There's no urgency.<br>
+    No expectation.</p>
+
+    <div class="link-container">
+      <p>If it feels like something you'd like to spend time with, you can find it here:</p>
+      <p><a href="{{OFFERING_URL}}" class="gentle-link">{{OFFERING_LINK_TEXT}}</a></p>
+    </div>
+
+    <p>If not, that's completely okay.<br>
+    These letters will continue either way.</p>
+
+    <p class="signature">Thank you for being here,<br>
+    — Dreamweaver</p>
+  </div>
+</body>
+</html>
+
+<!--
+INVITATION EMAIL GUIDELINES
+============================
+
+Use sparingly — only after trust is established.
+
+Subject Line Options:
+- An invitation, if it serves you
+- Something that may meet you where you are
+- A quiet offering
+
+Structural Rules:
+- ONE link only
+- Never scarcity-based
+- No fake deadlines
+- No manipulation
+- Language preserves dignity and choice
+
+Key Insight:
+Invitation emails work BECAUSE of all the emails that didn't ask for anything.
+
+Sample Offering Descriptions:
+
+For a Dreamweaving:
+"It's a Dreamweaving created for those who've been feeling stretched thin —
+a guided inner journey focused on rest, meaning, and return."
+
+For a seasonal collection:
+"This is a collection of four Dreamweavings for the winter season —
+for those seeking quiet companionship through the darker months."
+
+For a course/program:
+"This is a series of guided practices for those who want to rebuild
+their relationship with their inner life — slowly, without pressure."
+
+Variables:
+- {{OFFERING_DESCRIPTION}} - 2-3 sentences about who it serves
+- {{OFFERING_URL}} - The link to the offering
+- {{OFFERING_LINK_TEXT}} - Text for the link (e.g., "View the Dreamweaving")
+
+Frequency Rules:
+- Maximum 1 invitation email per month
+- Only after at least 2 correspondence emails
+- Never back-to-back invitations
+-->

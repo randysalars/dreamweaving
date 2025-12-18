@@ -37,7 +37,7 @@ trap 'error_handler $LINENO' ERR
 
 # Parse arguments
 DRY_RUN=""
-COUNT=1
+COUNT=""  # Empty means use config file value (target_sessions_per_night)
 while [[ $# -gt 0 ]]; do
     case $1 in
         --dry-run)
@@ -87,7 +87,11 @@ fi
 
 # Run nightly builder
 log "Running nightly builder..."
-CMD=(python3 -m scripts.automation.nightly_builder --count "${COUNT}")
+CMD=(python3 -m scripts.automation.nightly_builder)
+# Only add --count if explicitly specified (otherwise use config file value)
+if [ -n "${COUNT}" ]; then
+    CMD+=(--count "${COUNT}")
+fi
 if [ -n "${DRY_RUN}" ]; then
     CMD+=("--dry-run")
 fi

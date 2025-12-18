@@ -1,0 +1,138 @@
+# =============================================================================
+# DREAMWEAVER FACEBOOK GROUPS CONFIG
+# =============================================================================
+#
+# Track Facebook groups for posting.
+# Temperature indicates how receptive the group has been.
+#
+# Categories:
+# - meditation: General meditation groups
+# - spiritual: Spiritual growth, faith-based
+# - sleep: Sleep improvement, insomnia support
+# - healing: Emotional healing, trauma recovery
+# - wellness: General wellness, self-care
+# - hypnosis: Hypnotherapy, guided hypnosis
+#
+# Temperature:
+# - cold: New or unresponsive
+# - warming: Some engagement
+# - warm: Good engagement
+# - hot: High engagement, loyal followers
+#
+# =============================================================================
+
+meta:
+  version: "1.0"
+  last_updated: "2025-12-18"
+  notes: "Add groups as you discover them. Update temperature based on engagement."
+
+# =============================================================================
+# GROUPS (Add your groups here)
+# =============================================================================
+groups:
+
+  # Example structure (replace with real groups):
+  #
+  # example_group_id:
+  #   name: "Example Meditation Group"
+  #   category: "meditation"
+  #   temperature: "cold"
+  #   max_posts_per_week: 3
+  #   allows_links: true
+  #   link_in_comments_only: true
+  #   notes: "Very strict about self-promotion. Value-only posts work best."
+
+  # Placeholder groups - replace with actual group IDs
+  meditation_community_1:
+    name: "Meditation Community (Placeholder)"
+    category: "meditation"
+    temperature: "cold"
+    max_posts_per_week: 3
+    allows_links: true
+    link_in_comments_only: true
+    notes: "Replace with actual group"
+
+# =============================================================================
+# CATEGORY DEFAULTS
+# =============================================================================
+category_defaults:
+
+  meditation:
+    max_posts_per_week: 3
+    best_times: ["6:00", "12:00", "21:00"]
+    best_post_types: ["value_only", "engagement"]
+
+  spiritual:
+    max_posts_per_week: 2
+    best_times: ["7:00", "19:00"]
+    best_post_types: ["value_only", "soft_share"]
+
+  sleep:
+    max_posts_per_week: 3
+    best_times: ["20:00", "21:00", "22:00"]
+    best_post_types: ["value_only", "soft_share"]
+
+  healing:
+    max_posts_per_week: 2
+    best_times: ["9:00", "19:00"]
+    best_post_types: ["value_only", "engagement"]
+    notes: "Extra sensitivity required. Never sell directly."
+
+  wellness:
+    max_posts_per_week: 3
+    best_times: ["7:00", "12:00", "18:00"]
+    best_post_types: ["value_only", "soft_share"]
+
+  hypnosis:
+    max_posts_per_week: 4
+    best_times: ["10:00", "14:00", "20:00"]
+    best_post_types: ["soft_share", "session_share"]
+    notes: "More receptive to direct shares"
+
+# =============================================================================
+# ENGAGEMENT TRACKING THRESHOLDS
+# =============================================================================
+engagement_thresholds:
+  # Engagement rate = total engagements / total posts
+
+  hot: 10.0      # 10+ engagements per post average
+  warm: 5.0      # 5-10 engagements per post
+  warming: 2.0   # 2-5 engagements per post
+  cold: 0.0      # Less than 2 engagements per post
+
+# =============================================================================
+# POSTING SCHEDULE DEFAULTS
+# =============================================================================
+schedule_defaults:
+  min_minutes_between_posts: 10
+  max_minutes_between_posts: 15
+  max_daily_posts: 30
+  preferred_start_time: "08:00"
+  preferred_end_time: "22:00"
+
+# =============================================================================
+# NOTES FOR ADDING GROUPS
+# =============================================================================
+#
+# How to add a new group:
+#
+# 1. Find the group's URL: facebook.com/groups/GROUP_ID
+# 2. Add entry under 'groups:' section
+# 3. Start with temperature: "cold"
+# 4. Note any special rules in 'notes' field
+# 5. Post value-only content first to gauge reception
+# 6. Update temperature based on engagement
+#
+# Red flags (avoid these groups):
+# - Heavily moderated against any external links
+# - Dominated by spam/promotion
+# - Very small (<1000 members)
+# - Inactive (few posts per week)
+#
+# Green flags (prioritize these groups):
+# - Active discussions
+# - Genuine community feel
+# - Members asking for resources
+# - Moderators who engage positively
+#
+# =============================================================================

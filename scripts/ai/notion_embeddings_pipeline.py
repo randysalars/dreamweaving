@@ -30,6 +30,7 @@ from pathlib import Path
 from typing import Optional, List, Dict, Any, Tuple
 from datetime import datetime
 import re
+import threading
 
 # Try sentence-transformers first (FREE, local)
 try:
@@ -124,9 +125,21 @@ class NotionEmbeddingsPipeline:
 
         # Prefer sentence-transformers (FREE, local) over OpenAI (paid)
         if HAS_SENTENCE_TRANSFORMERS:
-            # Use all-MiniLM-L6-v2: fast, good quality, 384 dims
-            self.embedding_model = "all-MiniLM-L6-v2"
-            self.embedding_dims = 384
+            # Get local embedding settings from config
+            local_config = self.config.get("embeddings", {}).get("local", {})
+            self.embedding_model = local_config.get("model", "all-MiniLM-L6-v2")
+            self.embedding_dims = local_config.get("dimensions", 384)
+            self.local_batch_size = local_config.get("batch_size", 32)
+            max_threads = local_config.get("max_threads", 2)
+
+            # Limit CPU threads to prevent saturation
+            if max_threads > 0:
+                import torch
+                torch.set_num_threads(max_threads)
+                os.environ["OMP_NUM_THREADS"] = str(max_threads)
+                os.environ["MKL_NUM_THREADS"] = str(max_threads)
+                self._log(f"CPU threads limited to {max_threads}")
+
             self.sentence_model = SentenceTransformer(self.embedding_model)
             self.use_local = True
             self._log(f"Using local embeddings: {self.embedding_model} (FREE)")
@@ -653,10 +666,13 @@ class NotionEmbeddingsPipeline:
         if self.use_local:
             # Use sentence-transformers (FREE, local)
             # Show progress bar only if not in quiet mode and processing many texts
+            # Use configured batch_size for memory efficiency
+            batch_size = getattr(self, 'local_batch_size', 32)
             embeddings = self.sentence_model.encode(
                 texts,
                 show_progress_bar=not self.quiet and len(texts) > 10,
-                convert_to_numpy=True
+                convert_to_numpy=True,
+                batch_size=batch_size
             )
             return [emb.tolist() for emb in embeddings]
         else:

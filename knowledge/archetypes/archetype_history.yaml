@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2025-12-15'
-  total_sessions_tracked: 10
+  updated: '2025-12-16'
+  total_sessions_tracked: 11
   unique_archetypes_used: 13
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -185,6 +185,27 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: Taoist Philosophy Inspired Pathworking'
+- session_id: the-cavern-of-forgotten-memories-journey-20251216
+  date: '2025-12-16'
+  outcome: grief
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_masculine.guardian_father
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Cavern of Forgotten Memories Journey: Descend
+    into an underground cave where walls are inscribed with your earliest unremembered
+    experiences. Shadow guides help retrieve hidden memories.Archetypes: The Child,
+    The Shadow, The Forgotten Mentor Sound: Dripping water, low resonance tones, subtle
+    delta-theta entrainment (3–6 Hz)'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 7
@@ -225,7 +246,7 @@ listener_relationships:
     last_session_date: '2025-12-14'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 5
+    total_encounters: 6
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -239,8 +260,10 @@ listener_relationships:
       type: first_encounter
     - session: life-of-presidents-of-us
       type: first_encounter
-    last_session: life-of-presidents-of-us
-    last_session_date: '2025-12-13'
+    - session: the-cavern-of-forgotten-memories-journey-20251216
+      type: first_encounter
+    last_session: the-cavern-of-forgotten-memories-journey-20251216
+    last_session_date: '2025-12-16'
     relationship_level: 3
   warrior_power.archangel_michael:
     total_encounters: 2
@@ -255,15 +278,17 @@ listener_relationships:
     last_session_date: '2025-12-14'
     relationship_level: 2
   divine_masculine.guardian_father:
-    total_encounters: 1
+    total_encounters: 2
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
     - session: paranormal-powers-retry
       type: first_encounter
-    last_session: paranormal-powers-retry
-    last_session_date: '2025-12-10'
-    relationship_level: 1
+    - session: the-cavern-of-forgotten-memories-journey-20251216
+      type: first_encounter
+    last_session: the-cavern-of-forgotten-memories-journey-20251216
+    last_session_date: '2025-12-16'
+    relationship_level: 2
   dreamweaver_meta.dream_architect:
     total_encounters: 1
     first_session: paranormal-powers-retry
@@ -275,15 +300,17 @@ listener_relationships:
     last_session_date: '2025-12-10'
     relationship_level: 1
   divine_feminine.rose_mother:
-    total_encounters: 1
+    total_encounters: 2
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
     - session: eastern-religious-dreamweavings
       type: first_encounter
-    last_session: eastern-religious-dreamweavings
-    last_session_date: '2025-12-11'
-    relationship_level: 1
+    - session: the-cavern-of-forgotten-memories-journey-20251216
+      type: first_encounter
+    last_session: the-cavern-of-forgotten-memories-journey-20251216
+    last_session_date: '2025-12-16'
+    relationship_level: 2
   shamanic_earth.world_tree_guardian:
     total_encounters: 1
     first_session: eastern-religious-dreamweavings
@@ -375,38 +402,38 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - eleven-labs-commands
   - life-of-presidents-of-us
   - constellation-journey
   - legolas-elven-perspective-pathworking
   - taoist-philosophy-inspired-pathworking
+  - the-cavern-of-forgotten-memories-journey-20251216
   archetype_cooldowns:
-    divine_light_healing.great_physician: 0
-    transformation_alchemy.phoenix_renewal: 2
-    divine_light_healing.inner_healer: 3
-    warrior_power.archangel_michael: 2
-    divine_masculine.guardian_father: 6
-    dreamweaver_meta.dream_architect: 6
-    divine_feminine.rose_mother: 5
-    shamanic_earth.world_tree_guardian: 5
-    oracle_seer.oracle_of_light: 0
-    divine_feminine.sophia_wisdom: 0
-    emotional_heart.heart_flame_tender: 3
-    warrior_power.solar_king: 2
-    divine_masculine.logos_bearer: 1
+    divine_light_healing.great_physician: 1
+    transformation_alchemy.phoenix_renewal: 3
+    divine_light_healing.inner_healer: 0
+    warrior_power.archangel_michael: 3
+    divine_masculine.guardian_father: 0
+    dreamweaver_meta.dream_architect: 7
+    divine_feminine.rose_mother: 0
+    shamanic_earth.world_tree_guardian: 6
+    oracle_seer.oracle_of_light: 1
+    divine_feminine.sophia_wisdom: 1
+    emotional_heart.heart_flame_tender: 4
+    warrior_power.solar_king: 3
+    divine_masculine.logos_bearer: 2
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - oracle_seer
   - divine_feminine
+  - divine_masculine
   family_usage_counts:
-    divine_light_healing: 12
+    divine_light_healing: 13
     transformation_alchemy: 4
     warrior_power: 3
-    divine_masculine: 2
+    divine_masculine: 3
     dreamweaver_meta: 1
-    divine_feminine: 3
+    divine_feminine: 4
     shamanic_earth: 1
     oracle_seer: 3
     emotional_heart: 1

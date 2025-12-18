@@ -1,0 +1,360 @@
+# =============================================================================
+# DREAMWEAVER CUSTOMER JOURNEY METRICS
+# =============================================================================
+#
+# Philosophy: Track depth, not scale. Measure trust, not clicks.
+#
+# "We don't optimize for conversions.
+#  We optimize for the kind of people who would notice if we stopped."
+#
+# Core Principle: Reply rate is our true north, not open rate.
+#
+# =============================================================================
+
+meta:
+  version: "1.0"
+  created: "2025-12-18"
+  philosophy: "Depth over scale. Trust over transactions."
+
+# =============================================================================
+# JOURNEY TYPES
+# =============================================================================
+# Five natural paths people take to Dreamweaver
+
+journey_types:
+
+  quiet_seeker:
+    name: "Quiet Seeker"
+    description: "Found us through search, article, or quiet recommendation"
+    typical_path:
+      - "Discovers article via search"
+      - "Reads deeply (scroll >70%)"
+      - "Subscribes to newsletter"
+      - "Opens most emails, doesn't click"
+      - "Trust builds over 2-6 months"
+      - "Eventually purchases when need arises"
+    timeline: "2-6 months to first purchase"
+    key_signals:
+      - "High scroll depth on articles"
+      - "Consistent email opens"
+      - "Returns to same articles"
+    selling_approach: "Never push. Seasonal gentle offers only."
+    conversion_rate_expectation: "5-8% over 6 months"
+
+  gift_giver:
+    name: "Gift-Giver"
+    description: "Buys Dreamweaving as gift for someone else"
+    typical_path:
+      - "Searches for meaningful gift"
+      - "Finds gift page"
+      - "Purchases for loved one"
+      - "May subscribe themselves"
+      - "Becomes future buyer for self"
+    timeline: "Immediate purchase, self-subscription varies"
+    key_signals:
+      - "Direct to gift page"
+      - "Purchase without prior engagement"
+      - "Often subscribes after gifting"
+    selling_approach: "Gift page should do the work. Trust the product."
+    conversion_rate_expectation: "High immediate (10-15%), repeat varies"
+
+  returner:
+    name: "Returner"
+    description: "Old subscriber who returns after absence"
+    typical_path:
+      - "Subscribed months/years ago"
+      - "Went quiet (60+ days no engagement)"
+      - "Seasonal or life event triggers return"
+      - "Opens email or visits site"
+      - "Often ready to purchase immediately"
+    timeline: "Immediate or very fast conversion"
+    key_signals:
+      - "Gap of 60+ days then engagement"
+      - "Returns during meaningful season"
+      - "High intent when they return"
+    selling_approach: "Welcome back gently. Offer if it serves them."
+    conversion_rate_expectation: "15-25% of returners"
+
+  slow_buyer:
+    name: "Slow Buyer"
+    description: "Takes 6-12 months of trust building before purchase"
+    typical_path:
+      - "Multiple article visits over months"
+      - "Subscribes but doesn't reply"
+      - "Steady email engagement"
+      - "Researches thoroughly before deciding"
+      - "Purchases when truly ready"
+    timeline: "6-12 months"
+    key_signals:
+      - "Consistent but quiet engagement"
+      - "Returns to specific content repeatedly"
+      - "High trust, low urgency"
+    selling_approach: "Never rush. Trust their timing."
+    conversion_rate_expectation: "3-5% but very loyal after"
+
+  replier:
+    name: "Reply-er"
+    description: "Subscriber who replies to emails"
+    typical_path:
+      - "Subscribes via any channel"
+      - "Reads email that resonates"
+      - "Takes rare step of replying"
+      - "Personal connection forms"
+      - "Becomes deeply loyal"
+      - "Often becomes repeat customer"
+    timeline: "Varies, but reply is inflection point"
+    key_signals:
+      - "Email reply (huge signal)"
+      - "Personal, thoughtful responses"
+      - "Shares how content affected them"
+    selling_approach: "Never sell to reply-ers directly. They know when they need something."
+    conversion_rate_expectation: "30-50% over time, highest loyalty"
+
+# =============================================================================
+# METRICS TO TRACK (Anti-Vanity)
+# =============================================================================
+
+good_metrics:
+  # These tell us if we're building real relationships
+
+  reply_rate:
+    description: "Percentage of subscribers who have ever replied"
+    why_it_matters: "Replies indicate genuine connection, not just consumption"
+    target: ">3%"
+    calculation: "subscribers_who_replied / total_subscribers * 100"
+    note: "This is our TRUE north star metric"
+
+  return_rate:
+    description: "Subscribers who return after 60+ day absence"
+    why_it_matters: "Shows content has lasting value, not just novelty"
+    target: ">10% of inactive"
+    calculation: "returned_after_absence / subscribers_60day_inactive * 100"
+
+  repeat_purchase_rate:
+    description: "Buyers who purchase again"
+    why_it_matters: "Indicates product delivers real value"
+    target: ">25%"
+    calculation: "purchasers_with_2plus / total_purchasers * 100"
+
+  deep_scroll_rate:
+    description: "Article visitors who scroll >70%"
+    why_it_matters: "Shows content is worth reading, not just clicking"
+    target: ">40%"
+    calculation: "sessions_with_70plus_scroll / total_article_sessions * 100"
+
+  organic_referral_rate:
+    description: "New subscribers from word-of-mouth"
+    why_it_matters: "Best subscribers come from people who love you"
+    target: ">15%"
+    calculation: "source_referral / total_new_subscribers * 100"
+
+  subscriber_longevity:
+    description: "Average subscription duration before unsubscribe"
+    why_it_matters: "Long tenure = sustained value"
+    target: ">12 months"
+    calculation: "avg(unsubscribe_date - subscribe_date)"
+
+bad_metrics:
+  # These can mislead us into manipulation
+
+  open_rate:
+    why_its_misleading: "Apple privacy inflates it. Doesn't indicate connection."
+    note: "Track for hygiene only, don't optimize for it"
+
+  click_through_rate:
+    why_its_misleading: "We rarely include links. Low CTR is intentional."
+    note: "Only relevant for invitation emails"
+
+  raw_subscriber_count:
+    why_its_misleading: "100 engaged > 10,000 passive"
+    note: "Quality over quantity, always"
+
+  virality_metrics:
+    why_its_misleading: "Viral content often attracts wrong audience"
+    note: "Slow organic growth is healthier"
+
+  conversion_speed:
+    why_its_misleading: "Fast conversion often means premature selling"
+    note: "6-month journey is healthy, not a problem"
+
+# =============================================================================
+# READINESS SIGNALS (Before Offering)
+# =============================================================================
+
+readiness_signals:
+  # Only offer when these signals are present
+
+  required_before_any_offer:
+    - signal: "subscription_duration"
+      minimum: "180 days"
+      reason: "Trust takes time to build"
+
+    - signal: "email_opens"
+      minimum: "4 emails"
+      reason: "Shows genuine interest in content"
+
+  strong_positive_signals:
+    - signal: "email_reply"
+      weight: 3.0
+      reason: "Strongest indicator of connection"
+
+    - signal: "return_after_absence"
+      weight: 2.0
+      reason: "High intent, genuine need"
+
+    - signal: "deep_scroll"
+      weight: 1.5
+      reason: "Engaged with content meaningfully"
+
+    - signal: "repeat_article_visit"
+      weight: 1.5
+      reason: "Returned for specific value"
+
+    - signal: "previous_purchase"
+      weight: 2.5
+      reason: "Already trusts the product"
+
+  anti_signals:
+    # Do NOT offer to people with these patterns
+
+    - signal: "new_subscriber"
+      threshold: "<30 days"
+      action: "Never offer"
+
+    - signal: "low_engagement"
+      threshold: "<30% open rate"
+      action: "Trust building only"
+
+    - signal: "never_opened"
+      action: "Focus on re-engagement, not selling"
+
+    - signal: "unsubscribed_resubscribed"
+      action: "Respect their hesitation, extra gentle"
+
+# =============================================================================
+# REVENUE STAGES
+# =============================================================================
+
+revenue_stages:
+  # When different types of revenue become appropriate
+
+  stage_0_trust_building:
+    timeline: "0-6 months"
+    revenue_type: "None"
+    focus: "Build genuine connection"
+    allowed_actions:
+      - "Welcome email"
+      - "Correspondence emails"
+      - "Ritual/seasonal emails"
+    forbidden_actions:
+      - "Any sales email"
+      - "Product mentions"
+      - "Links to offerings"
+
+  stage_1_awareness:
+    timeline: "6-12 months"
+    revenue_type: "Love-offering or seasonal gifts"
+    focus: "Gentle awareness, no pressure"
+    allowed_actions:
+      - "Soft mention in relevant context"
+      - "Gift-giving season invitations"
+      - "Single invitation email per quarter"
+    forbidden_actions:
+      - "Multiple CTAs"
+      - "Urgency language"
+      - "Re-targeting based on page views"
+
+  stage_2_consideration:
+    timeline: "12-24 months"
+    revenue_type: "Repeat seasonal purchases"
+    focus: "Available when they need it"
+    allowed_actions:
+      - "Invitation emails (1/month max)"
+      - "Personalized recommendations"
+      - "Reply-triggered personal offers"
+    forbidden_actions:
+      - "Countdown timers"
+      - "Scarcity tactics"
+      - "Aggressive follow-up sequences"
+
+  stage_3_loyalty:
+    timeline: "24+ months"
+    revenue_type: "Higher-priced offerings"
+    focus: "Deep service to committed community"
+    allowed_actions:
+      - "Early access to new content"
+      - "Community-only offerings"
+      - "Personal consultation options"
+    forbidden_actions:
+      - "Taking loyalty for granted"
+      - "Reducing content quality"
+      - "Any manipulation tactics"
+
+# =============================================================================
+# TRACKING IMPLEMENTATION
+# =============================================================================
+
+tracking_implementation:
+
+  email_events:
+    - "email_sent"
+    - "email_opened"
+    - "email_clicked"
+    - "email_replied"
+    - "email_unsubscribed"
+
+  website_events:
+    - "article_viewed"
+    - "article_scroll_depth"
+    - "youtube_clicked"
+    - "gift_page_viewed"
+    - "purchase_completed"
+
+  subscriber_attributes:
+    - "source"  # article, youtube, gift, direct, social
+    - "interests"  # light, rest, faith, imagination
+    - "engagement_level"  # passive, moderate, engaged, replier
+    - "journey_type"  # quiet_seeker, gift_giver, etc.
+    - "readiness_stage"  # not_ready, early_signals, warming, ready, loyal
+
+# =============================================================================
+# REPORTING CADENCE
+# =============================================================================
+
+reporting:
+
+  weekly:
+    - "New subscribers by source"
+    - "Replies received"
+    - "Readiness stage changes"
+
+  monthly:
+    - "Journey type distribution"
+    - "Reply rate trend"
+    - "Return rate"
+    - "Subscriber longevity"
+
+  quarterly:
+    - "Conversion by journey type"
+    - "Revenue by stage"
+    - "Deep engagement metrics"
+    - "Organic referral rate"
+
+  annually:
+    - "Subscriber lifetime analysis"
+    - "Content performance correlation"
+    - "Season-over-season comparison"
+
+# =============================================================================
+# THE CORE RULE
+# =============================================================================
+
+core_rule:
+  text: "Track the people who would notice if you stopped."
+  implementation: |
+    Before any metric optimization, ask:
+    - Does this help us serve our community better?
+    - Does this respect the trust they've placed in us?
+    - Would we be proud to explain this to our most loyal subscriber?
+
+    If the answer to any is "no", don't do it.

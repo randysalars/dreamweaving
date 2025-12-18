@@ -47,6 +47,9 @@ from pathlib import Path
 from datetime import datetime, timezone
 from urllib.parse import quote
 
+# Import SEO title generator
+from scripts.core.seo_title_generator import generate_seo_title, generate_seo_metadata as generate_seo_package
+
 # Load environment variables from .env file
 try:
     from dotenv import load_dotenv
@@ -120,9 +123,14 @@ def _convert_slug_to_title(slug: str) -> str:
 # Import the enhanced categorization system
 try:
     from categorization import ContentAnalyzer, categorize_session, get_available_categories
+    from categorization.keywords import get_db_category
     ENHANCED_CATEGORIZATION = True
 except ImportError:
     ENHANCED_CATEGORIZATION = False
+    # Provide a fallback get_db_category function
+    def get_db_category(slug: str) -> str:
+        """Fallback mapping when categorization module unavailable."""
+        return slug  # Return as-is if module not available
     # Fallback simple mapping (used only if categorization module unavailable)
     CATEGORY_MAPPING = {
         "forest": "nature-elements", "nature": "nature-elements", "garden": "nature-elements",
@@ -1077,12 +1085,14 @@ class DreamweavingUploader:
         sku = f"DW-{cat_code}-{theme_code}-{hash_num:02d}"
 
         # === PHASE 2: SEO Page Template ===
-        # Meta title (≤60 chars)
-        base_meta_title = f"{title} | Dreamweaver Journey"
-        if len(base_meta_title) <= 60:
-            meta_title = base_meta_title
-        else:
-            meta_title = title[:57] + "..." if len(title) > 57 else title
+        # Meta title (≤60 chars) - use optimized SEO title generator
+        # This extracts the core concept and strips redundant phrases
+        meta_title = generate_seo_title(
+            full_title=title,
+            topic=description,
+            category=category,
+            archetypes=archetypes
+        )
 
         # Meta description (≤160 chars)
         if description:
@@ -1406,9 +1416,9 @@ class DreamweavingUploader:
                 print(f"  Override: {category_slug}")
             else:
                 cat_result = self.detect_category(data)
-                category_slug = cat_result["category"]
+                raw_category = cat_result["category"]
                 confidence = cat_result.get("confidence", 0)
-                print(f"  Detected: {category_slug}")
+                print(f"  Detected: {raw_category}")
                 print(f"  Confidence: {confidence:.0%}")
                 if cat_result.get("alternatives"):
                     print(f"  Alternatives: {', '.join(cat_result['alternatives'][:3])}")
@@ -1416,6 +1426,11 @@ class DreamweavingUploader:
                     print("  Note: Manual review suggested")
                 if cat_result.get("message"):
                     print(f"  {cat_result['message']}")
+
+                # Map the detected category to database category
+                category_slug = get_db_category(raw_category)
+                if category_slug != raw_category:
+                    print(f"  Mapped to DB: {category_slug}")
 
             # Step 5: Build payload
             print("\n=== Building API Payload ===")

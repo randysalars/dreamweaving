@@ -241,3 +241,209 @@ meta_descriptions:
   spiritual_growth: "{title} - Expand your consciousness in {duration} minutes. Sacred journey with binaural beats and archetypal wisdom traditions."
   abundance: "{title} - Open to abundance in {duration} minutes. Hypnotic journey to shift from scarcity to overflow using ancient and modern techniques."
   default: "{title} - A {duration}-minute Dreamweaver journey combining binaural beats, hypnotic guidance, and archetypal symbolism for deep transformation."
+
+# -----------------------------------------------------------------------------
+# ETHICAL PERSUASION SECTION
+# High-integrity language patterns from the Website Language Codex
+# Reference: knowledge/website_language_codex.yaml for complete system
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# COGNITIVE BIAS LANGUAGE (Ethical Use)
+# -----------------------------------------------------------------------------
+cognitive_bias_patterns:
+  commitment_consistency:
+    description: "Align with existing identity"
+    templates:
+      - "If you're someone who values {value}..."
+      - "For those who already believe that {belief} matters..."
+      - "If you already value stillness, reflection, and meaning—this was created for you."
+
+  identity_based:
+    description: "Speak to identity, not behavior"
+    templates:
+      - "This is for people who {identity_marker}..."
+      - "You might resonate with this if {recognition}..."
+      - "This space is for people who sense there's more depth available."
+
+  social_proof_ethical:
+    description: "Without pressure or false numbers"
+    templates:
+      - "Many people describe feeling {outcome} after their first experience."
+      - "Others have shared that {benefit}..."
+      - "Some people find this becomes part of their rhythm."
+
+# -----------------------------------------------------------------------------
+# NLP PATTERNS (Clean/Ethical Forms)
+# -----------------------------------------------------------------------------
+nlp_patterns_ethical:
+  pacing_leading:
+    structure: "State undeniable truth → Gently invite next step"
+    example: |
+      "You're reading this right now.
+      And as you do, you may notice a subtle slowing."
+
+  presuppositions:
+    description: "Invitation-based, not assumed compliance"
+    templates:
+      - "As you explore this experience, you might discover {outcome}..."
+      - "When you choose to {action}, {possibility}..."
+
+  sensory_grounding:
+    description: "Grounding cues, not hypnotic commands"
+    phrases:
+      - "Notice the warmth..."
+      - "A quiet sense of space..."
+      - "The feeling of settling..."
+
+# -----------------------------------------------------------------------------
+# TRUST CALIBRATION BLOCKS
+# "What this is / What this isn't" - required on offer pages
+# -----------------------------------------------------------------------------
+trust_calibration:
+  healing:
+    what_it_is:
+      - "A guided space for emotional release"
+      - "25 minutes of intentional stillness"
+      - "Binaural frequencies designed to support nervous system regulation"
+    what_it_isnt:
+      - "Not a replacement for therapy or medical treatment"
+      - "Not a quick fix"
+      - "Not something you need to 'do right'"
+    works_best_when:
+      - "You have uninterrupted time"
+      - "You're open to what arises"
+      - "You return more than once"
+
+  transformation:
+    what_it_is:
+      - "A journey into archetypal patterns"
+      - "An invitation to meet aspects of yourself"
+      - "A symbolic experience designed for integration"
+    what_it_isnt:
+      - "Not instant transformation"
+      - "Not prescriptive or diagnostic"
+      - "Not the same as traditional meditation"
+    works_best_when:
+      - "You're ready for change, even if you don't know what kind"
+      - "You've created space before and after"
+      - "You approach with curiosity rather than goals"
+
+  default:
+    what_it_is:
+      - "A guided inner journey using sound and voice"
+      - "A place to slow down and reconnect"
+      - "Designed to work with your natural capacity for imagination"
+    what_it_isnt:
+      - "Not a cure or treatment"
+      - "Not something to push through"
+      - "Not meant to be intellectually analyzed"
+    works_best_when:
+      - "You find a quiet, comfortable space"
+      - "You listen with headphones"
+      - "You give yourself permission to simply receive"
+
+# -----------------------------------------------------------------------------
+# EXIT-FORWARD MICROCOPY
+# Dignifying leaving builds trust
+# -----------------------------------------------------------------------------
+exit_forward_microcopy:
+  unsubscribe:
+    - "You can step away anytime. No hard feelings."
+    - "This door stays open. Unsubscribe whenever you like."
+    - "We'll still be here if you return."
+
+  page_exit:
+    - "Close this whenever you like."
+    - "Nothing more is expected."
+    - "You're free to leave."
+
+  newsletter:
+    - "Change your mind anytime—one click to unsubscribe."
+    - "Your inbox, your choice."
+
+# -----------------------------------------------------------------------------
+# CHANNEL-SPECIFIC TEMPLATES
+# Different contexts, different approaches
+# -----------------------------------------------------------------------------
+channel_templates:
+  website:
+    hero_patterns:
+      - "A place for returning."
+      - "Nothing here is urgent."
+      - "This space exists for slowing down."
+
+    cta_patterns:
+      soft: "Explore"
+      medium: "Begin gently"
+      direct: "Enter"
+
+  email:
+    subject_lines:
+      - "A quiet invitation"
+      - "Something you can return to anytime"
+      - "Just leaving this here"
+      - "No urgency"
+
+    openers:
+      - "Just leaving this here for you."
+      - "No response needed."
+      - "Read this whenever it's convenient."
+
+    closings:
+      - "Take care."
+      - "No need to reply."
+      - "This will be here."
+
+  social:
+    signal_fire_templates:
+      - "Not everything meaningful is loud."
+      - "Some things arrive when we stop chasing them."
+      - "Depth doesn't hurry."
+      - "You don't need permission to slow down."
+
+# -----------------------------------------------------------------------------
+# CONSENT GRADIENT CTAs
+# Progressive commitment levels
+# -----------------------------------------------------------------------------
+consent_gradient_ctas:
+  level_1_browse:
+    ctas: []
+    note: "No asks at this level"
+
+  level_2_receive:
+    ctas:
+      - "Receive reflections"
+      - "Stay connected (optional)"
+
+  level_3_engage:
+    ctas:
+      - "Explore this"
+      - "Listen when ready"
+
+  level_4_offer:
+    ctas:
+      - "Begin"
+      - "Enter"
+      - "Choose this experience"
+
+# -----------------------------------------------------------------------------
+# FORBIDDEN LANGUAGE REFERENCE
+# Never use these patterns
+# -----------------------------------------------------------------------------
+forbidden_patterns:
+  urgency:
+    - "countdown timers"
+    - "Only X spots left"
+    - "Don't miss out"
+    - "Last chance"
+    - "Limited time"
+  manipulation:
+    - "emotional guilt"
+    - "identity shaming"
+    - "fear-based framing"
+    - "FOMO language"
+  hyperbole:
+    - "This will change your life"
+    - "Guaranteed results"
+    - "Revolutionary"

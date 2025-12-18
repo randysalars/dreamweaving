@@ -1,0 +1,355 @@
+# =============================================================================
+# DREAMWEAVER FACEBOOK POST TEMPLATES
+# =============================================================================
+#
+# Philosophy: Presence without noise. Service without manipulation.
+#
+# Core Rules:
+# - Links ONLY in first comment (never in post body)
+# - Value first, always
+# - 10-15 minute spacing between posts
+# - Max 30 posts per day across all groups
+# - Respect group culture
+#
+# =============================================================================
+
+meta:
+  version: "1.0"
+  created: "2025-12-18"
+  philosophy: "We show up to serve, not to sell."
+
+# =============================================================================
+# VALUE-ONLY POSTS (No links, pure service)
+# =============================================================================
+# Use these to build trust. 70% of posts should be value-only.
+
+value_only_templates:
+
+  - type: value_only
+    name: "Permission Post"
+    content: |
+      A quiet reminder for anyone who needs it today:
+
+      You don't have to have it all figured out.
+      You don't have to feel better by a deadline.
+      You don't have to perform healing for anyone else's comfort.
+
+      Sometimes the bravest thing is just being where you are.
+
+  - type: value_only
+    name: "Breath Invitation"
+    content: |
+      If you're reading this, pause for a moment.
+
+      One breath.
+      Just one.
+
+      Not to fix anything.
+      Not to achieve anything.
+      Just to remember you're here.
+
+      That's enough.
+
+  - type: value_only
+    name: "For the Weary"
+    content: |
+      For those carrying a lot today:
+
+      Your exhaustion is not failure.
+      Your need for rest is not weakness.
+      Your quiet moments are not wasted time.
+
+      The world asks a lot of you.
+      You're allowed to ask for gentleness in return.
+
+  - type: value_only
+    name: "Night Thoughts"
+    content: |
+      For those awake when the world is quiet:
+
+      The darkness isn't empty.
+      It's holding space for something.
+      Maybe for you to finally exhale.
+
+      Rest, if you can.
+      Be here, if you can't.
+
+  - type: value_only
+    name: "Morning Reflection"
+    content: |
+      Before the day begins its demands:
+
+      You are not behind.
+      You are not failing.
+      You are simply here, at this moment.
+
+      That is where you're supposed to be.
+
+  - type: value_only
+    name: "Simple Question"
+    content: |
+      A question worth sitting with today:
+
+      What would change if you treated yourself
+      the way you treat the people you love most?
+
+  - type: value_only
+    name: "Seasonal Acknowledgment"
+    content: |
+      This time of year can be complicated.
+
+      Joy and grief can sit together.
+      Celebration and loneliness can share the same room.
+      You don't have to choose between them.
+
+      Whatever you're holding today is allowed.
+
+# =============================================================================
+# SOFT SHARE POSTS (Value + gentle mention)
+# =============================================================================
+# Use these occasionally (20% of posts). Link goes in FIRST COMMENT ONLY.
+
+soft_share_templates:
+
+  - type: soft_share
+    name: "Guided Rest Offer"
+    content: |
+      Some days, the kindest thing you can do for yourself
+      is let someone else guide you into rest.
+
+      Not a podcast. Not a video to watch.
+      Just a voice, leading you somewhere quiet.
+
+      If that sounds like something you need,
+      I've been creating guided journeys for exactly this.
+    first_comment: |
+      I share them on YouTube — no cost, no catch.
+      Just rest, if you want it: [LINK]
+
+  - type: soft_share
+    name: "Sleep Support"
+    content: |
+      If sleep has been difficult lately,
+      you're not alone.
+
+      Sometimes what we need isn't another technique,
+      but permission to stop trying so hard.
+
+      I've been making guided journeys
+      that help with exactly that.
+    first_comment: |
+      Free on YouTube if it might help: [LINK]
+
+  - type: soft_share
+    name: "For the Spiritual Seekers"
+    content: |
+      There's a certain kind of tiredness
+      that rest alone doesn't fix.
+
+      It's the soul asking for something.
+      Meaning. Connection. A moment of the sacred.
+
+      If that resonates, I create guided journeys
+      for this kind of seeking.
+    first_comment: |
+      All free on YouTube. Here if you need them: [LINK]
+
+# =============================================================================
+# SESSION SHARE POSTS (Sharing specific content)
+# =============================================================================
+# Use sparingly (10% of posts). Always lead with value.
+
+session_share_templates:
+
+  - type: session_share
+    name: "New Journey Announcement"
+    content: |
+      Something new, for those who need it:
+
+      "{{SESSION_NAME}}"
+
+      {{SESSION_DESCRIPTION_SHORT}}
+
+      Created for those carrying {{TARGET_FEELING}}.
+      If that's you, it's here for you.
+    first_comment: |
+      Free to listen: [LINK]
+
+  - type: session_share
+    name: "Seasonal Journey"
+    content: |
+      For this season — a guided journey:
+
+      "{{SESSION_NAME}}"
+
+      {{SEASONAL_CONTEXT}}
+
+      Sometimes we need someone to walk us through
+      what we can't walk through alone.
+    first_comment: |
+      Here if you need it: [LINK]
+
+# =============================================================================
+# ENGAGEMENT POSTS (Questions, discussions)
+# =============================================================================
+# Use to build community. Great for warm groups.
+
+engagement_templates:
+
+  - type: engagement
+    name: "Reflection Question"
+    content: |
+      A question I've been sitting with:
+
+      What does "rest" actually mean to you?
+      Not vacation. Not sleep.
+      But real rest — the kind that reaches your soul.
+
+      I'd love to hear what comes up for you.
+
+  - type: engagement
+    name: "Experience Share"
+    content: |
+      I'm curious:
+
+      What helps you when nothing seems to help?
+
+      Not productivity tips.
+      The real things that bring you back to yourself.
+
+  - type: engagement
+    name: "Community Connection"
+    content: |
+      Sometimes the most powerful thing
+      is knowing you're not alone.
+
+      If you're going through something right now,
+      you don't have to share what it is.
+      Just know that others here understand.
+
+      What's one word for how you're feeling today?
+
+# =============================================================================
+# SEASONAL CAMPAIGN TEMPLATES
+# =============================================================================
+# Pre-written for specific seasons. December 15-25 campaign included.
+
+seasonal_campaigns:
+
+  december_15_25:
+    name: "December Light Campaign"
+    description: "Gentle presence during the holiday season"
+    posts:
+
+      - day: 15
+        type: value_only
+        content: |
+          As December deepens:
+
+          Not everyone is celebrating.
+          Not everyone feels the cheer.
+          Some of us are just trying to make it through.
+
+          Wherever you are today, you're not alone in it.
+
+      - day: 17
+        type: value_only
+        content: |
+          A reminder as the season gets louder:
+
+          You don't owe anyone your joy.
+          You don't owe anyone your participation.
+          Your peace matters more than performance.
+
+      - day: 19
+        type: soft_share
+        content: |
+          For those who find this season hard:
+
+          The pressure to feel a certain way
+          can be the heaviest weight of all.
+
+          I've been creating guided journeys
+          for moments exactly like this.
+        first_comment: |
+          Free, if it might help: [LINK]
+
+      - day: 21
+        type: value_only
+        content: |
+          Winter Solstice.
+          The longest night.
+
+          In many traditions, this is a sacred threshold.
+          The moment when darkness reaches its peak
+          and light begins its quiet return.
+
+          May something return for you tonight.
+
+      - day: 23
+        type: engagement
+        content: |
+          Two days before Christmas:
+
+          What are you hoping for?
+          Not presents. Not things.
+
+          What does your heart actually need right now?
+
+      - day: 24
+        type: value_only
+        content: |
+          Christmas Eve.
+
+          For those waiting.
+          For those remembering.
+          For those just trying to get through.
+
+          May light find you tonight,
+          in whatever form you need it.
+
+      - day: 25
+        type: value_only
+        content: |
+          Christmas Day.
+
+          May this day hold whatever you need it to hold.
+          Rest, if you can.
+          Grace, if you can't.
+
+          You made it here.
+          That matters.
+
+# =============================================================================
+# POSTING RULES (Reference)
+# =============================================================================
+posting_rules:
+  link_placement: "FIRST COMMENT ONLY - Never in main post"
+  spacing_minutes: "10-15 between posts"
+  max_daily_posts: 30
+  value_to_promo_ratio: "70% value, 20% soft share, 10% session share"
+
+  forbidden:
+    - "Links in main post body"
+    - "Urgency language (limited time, act now)"
+    - "Hype or excessive enthusiasm"
+    - "Multiple links"
+    - "Asking for shares/likes"
+    - "Posting same content twice in a week"
+
+  best_practices:
+    - "Read group rules before posting"
+    - "Observe group culture first"
+    - "Respond to comments genuinely"
+    - "Thank people who engage"
+    - "Never argue or defend"
+
+# =============================================================================
+# TEMPLATE VARIABLES
+# =============================================================================
+template_variables:
+  SESSION_NAME: "Journey name from manifest"
+  SESSION_DESCRIPTION_SHORT: "1-2 sentence description"
+  TARGET_FEELING: "What the listener might be feeling"
+  SEASONAL_CONTEXT: "Why this journey fits the season"
+  LINK: "YouTube or website link (for first comment)"

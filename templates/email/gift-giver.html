@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Gift Has Been Received</title>
+  <style>
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.8;
+      color: #2c2c2c;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: #faf9f7;
+    }
+    .content {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 4px;
+    }
+    p {
+      margin: 0 0 20px 0;
+    }
+    .gift-details {
+      margin: 30px 0;
+      padding: 20px;
+      background-color: #fdfcf8;
+      border-radius: 4px;
+      font-size: 0.95em;
+      color: #5c5c5c;
+    }
+    .signature {
+      margin-top: 40px;
+      font-style: italic;
+      color: #5c5c5c;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <p>Hello,</p>
+
+    <p>Thank you for the gift you've given.</p>
+
+    <div class="gift-details">
+      <p><strong>Gift:</strong> {{GIFT_NAME}}</p>
+      <p><strong>For:</strong> {{RECIPIENT_NAME}}</p>
+      <p><strong>Delivery:</strong> {{DELIVERY_DATE}}</p>
+    </div>
+
+    <p>It will be delivered at the time you chose, quietly and respectfully.<br>
+    Nothing more is required from you.</p>
+
+    <p>Gifts like this matter more than we often realize.<br>
+    They create space.<br>
+    They offer rest.<br>
+    They remind someone they're not alone.</p>
+
+    <p>Thank you for choosing to give in this way.</p>
+
+    <p class="signature">With gratitude,<br>
+    — Dreamweaver</p>
+  </div>
+</body>
+</html>
+
+<!--
+GIFT-GIVER EMAIL GUIDELINES
+============================
+
+Sent immediately after someone purchases a gift for another person.
+
+Subject Line Options:
+- Your gift has been received
+- Thank you for your generosity
+- Your gift is ready
+
+Purpose:
+- Confirm the transaction
+- Affirm the meaning of their action
+- Plant seed for potential self-subscription
+
+Variables:
+- {{GIFT_NAME}} - Name of the Dreamweaving or collection
+- {{RECIPIENT_NAME}} - Name of person receiving the gift
+- {{DELIVERY_DATE}} - When the gift will be delivered
+
+Important:
+- Gift-givers often become future customers themselves
+- This email should feel dignified, not transactional
+- No upsells, no "you might also like"
+- The tone should make them proud of their choice
+
+Secondary Conversion Path:
+After sending this email, the giver receives:
+1. A gentle invitation to subscribe (not sell)
+2. Future correspondence emails
+3. Often purchases for themselves later
+-->

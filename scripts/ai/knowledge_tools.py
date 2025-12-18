@@ -1214,6 +1214,267 @@ def search_lore(
     return unique_results[:limit]
 
 
+# =============================================================================
+# DEEP RELATIONSHIP TRAVERSAL (for Recursive RAG Agent)
+# =============================================================================
+# These functions implement recursive relationship traversal for richer
+# context retrieval. They follow archetype → realm → frequency chains.
+# =============================================================================
+
+
+def get_archetype_deep(
+    name: str,
+    depth: int = 2,
+    include_realms: bool = True,
+    include_frequencies: bool = True,
+    include_rituals: bool = False,
+    _visited: Optional[set] = None
+) -> Optional[Dict[str, Any]]:
+    """
+    Recursively traverse archetype relationships for rich context.
+
+    Follows relationship chains up to specified depth:
+    - Archetype → Associated Realms → Guardian archetypes
+    - Archetype → Related Frequencies → Brainwave states
+    - Archetype → Associated Rituals (optional)
+
+    Args:
+        name: Archetype name (Navigator, Guardian, etc.)
+        depth: How deep to traverse relationships (0 = no expansion)
+        include_realms: Expand realm relationships
+        include_frequencies: Expand frequency relationships
+        include_rituals: Expand ritual relationships
+        _visited: Internal set to prevent cycles
+
+    Returns:
+        Archetype data with expanded relationships
+
+    Example:
+        >>> nav = get_archetype_deep("Navigator", depth=2)
+        >>> print(nav["realms_expanded"][0]["Name"])
+        >>> print(nav["frequencies_expanded"][0]["Brainwave State"])
+    """
+    if _visited is None:
+        _visited = set()
+
+    if name in _visited:
+        return None  # Prevent cycles
+    _visited.add(name)
+
+    # Get base archetype
+    archetype = get_archetype(name, include_relations=False)
+    if not archetype or "error" in archetype:
+        return archetype
+
+    if depth <= 0:
+        return archetype
+
+    # Expand realms
+    if include_realms and archetype.get("Associated Realms"):
+        realm_ids = archetype.get("Associated Realms", [])
+        archetype["realms_expanded"] = []
+
+        for realm_ref in realm_ids[:3]:  # Limit to 3 realms
+            # realm_ref might be an ID or name
+            realm_name = realm_ref if isinstance(realm_ref, str) else realm_ref.get("name", "")
+            if realm_name:
+                realm_data = get_realm_deep(
+                    realm_name,
+                    depth=depth - 1,
+                    _visited=_visited.copy()
+                )
+                if realm_data and "error" not in realm_data:
+                    archetype["realms_expanded"].append(realm_data)
+
+    # Expand frequencies
+    if include_frequencies and archetype.get("Related Frequencies"):
+        freq_refs = archetype.get("Related Frequencies", [])
+        archetype["frequencies_expanded"] = []
+
+        for freq_ref in freq_refs[:3]:  # Limit to 3 frequencies
+            freq_name = freq_ref if isinstance(freq_ref, str) else freq_ref.get("name", "")
+            if freq_name:
+                freq_data = get_frequency(freq_name)
+                if freq_data and "error" not in freq_data:
+                    archetype["frequencies_expanded"].append(freq_data)
+
+    # Expand rituals (optional, can be heavy)
+    if include_rituals and archetype.get("Associated Rituals"):
+        ritual_refs = archetype.get("Associated Rituals", [])
+        archetype["rituals_expanded"] = []
+
+        for ritual_ref in ritual_refs[:2]:  # Limit to 2 rituals
+            ritual_name = ritual_ref if isinstance(ritual_ref, str) else ritual_ref.get("name", "")
+            if ritual_name:
+                ritual_data = get_ritual(ritual_name)
+                if ritual_data and "error" not in ritual_data:
+                    archetype["rituals_expanded"].append(ritual_data)
+
+    return archetype
+
+
+def get_realm_deep(
+    name: str,
+    depth: int = 1,
+    include_guardian: bool = True,
+    include_frequencies: bool = True,
+    _visited: Optional[set] = None
+) -> Optional[Dict[str, Any]]:
+    """
+    Recursively traverse realm relationships.
+
+    Follows relationship chains:
+    - Realm → Guardian archetype
+    - Realm → Associated frequencies
+
+    Args:
+        name: Realm name
+        depth: Traversal depth
+        include_guardian: Expand guardian archetype
+        include_frequencies: Expand frequency relationships
+        _visited: Internal cycle prevention
+
+    Returns:
+        Realm data with expanded relationships
+    """
+    if _visited is None:
+        _visited = set()
+
+    if name in _visited:
+        return None
+    _visited.add(name)
+
+    realm = get_realm(name, include_guardian=False)
+    if not realm or "error" in realm:
+        return realm
+
+    if depth <= 0:
+        return realm
+
+    # Expand guardian
+    if include_guardian and realm.get("Guardian"):
+        guardian_refs = realm.get("Guardian", [])
+        if guardian_refs:
+            guardian_name = guardian_refs[0] if isinstance(guardian_refs[0], str) else guardian_refs[0].get("name", "")
+            if guardian_name:
+                guardian_data = get_archetype(guardian_name, include_relations=False)
+                if guardian_data and "error" not in guardian_data:
+                    realm["guardian_expanded"] = guardian_data
+
+    # Expand frequencies if present
+    if include_frequencies and realm.get("Frequencies"):
+        freq_refs = realm.get("Frequencies", [])
+        realm["frequencies_expanded"] = []
+
+        for freq_ref in freq_refs[:2]:
+            freq_name = freq_ref if isinstance(freq_ref, str) else freq_ref.get("name", "")
+            if freq_name:
+                freq_data = get_frequency(freq_name)
+                if freq_data and "error" not in freq_data:
+                    realm["frequencies_expanded"].append(freq_data)
+
+    return realm
+
+
+def build_rich_context(
+    topic: str,
+    desired_outcome: Optional[str] = None,
+    archetypes: Optional[List[str]] = None,
+    depth: int = 2,
+    max_tokens_estimate: int = 2000
+) -> Dict[str, Any]:
+    """
+    Build rich context by traversing knowledge relationships.
+
+    This is the main entry point for RAG context building.
+    Uses deep traversal to gather comprehensive context.
+
+    Args:
+        topic: Session topic/theme
+        desired_outcome: Desired transformation outcome
+        archetypes: Specific archetypes to include
+        depth: Relationship traversal depth
+        max_tokens_estimate: Rough token budget (will truncate if exceeded)
+
+    Returns:
+        Rich context dict with:
+        - archetypes_data: Expanded archetype information
+        - realms_data: Related realms
+        - frequencies_data: Brainwave/sound recommendations
+        - lore_data: Relevant mythic elements
+        - suggested_queries: Effective query patterns for this context
+
+    Example:
+        >>> ctx = build_rich_context(
+        ...     topic="Finding Inner Peace",
+        ...     desired_outcome="relaxation",
+        ...     archetypes=["Navigator", "Healer"]
+        ... )
+    """
+    context = {
+        'topic': topic,
+        'desired_outcome': desired_outcome,
+        'archetypes_data': [],
+        'realms_data': [],
+        'frequencies_data': [],
+        'lore_data': [],
+        'suggested_queries': [],
+        'token_estimate': 0,
+    }
+
+    estimated_tokens = 0
+    token_per_entry = 150  # Rough estimate
+
+    # Expand archetypes
+    if archetypes:
+        for arch_name in archetypes[:4]:  # Max 4 archetypes
+            if estimated_tokens > max_tokens_estimate:
+                break
+            arch_data = get_archetype_deep(arch_name, depth=depth)
+            if arch_data and "error" not in arch_data:
+                context['archetypes_data'].append(arch_data)
+                estimated_tokens += token_per_entry * (1 + len(arch_data.get('realms_expanded', [])))
+
+    # Search for relevant lore
+    if topic and estimated_tokens < max_tokens_estimate:
+        lore_results = search_lore(topic, limit=3)
+        context['lore_data'] = lore_results
+        estimated_tokens += token_per_entry * len(lore_results)
+
+    # Get frequencies based on outcome
+    if desired_outcome and estimated_tokens < max_tokens_estimate:
+        freq_map = {
+            'relaxation': ['Alpha Bridge', 'Theta Drop'],
+            'healing': ['Theta Drop', 'Delta Rest'],
+            'transformation': ['Gamma Flash', 'Theta Drop'],
+            'empowerment': ['Beta Focus', 'Gamma Flash'],
+            'spiritual_growth': ['Theta Drop', 'Delta Rest'],
+        }
+        freq_names = freq_map.get(desired_outcome, ['Alpha Bridge'])
+        for freq_name in freq_names[:2]:
+            freq_data = get_frequency(freq_name)
+            if freq_data and "error" not in freq_data:
+                context['frequencies_data'].append(freq_data)
+                estimated_tokens += token_per_entry
+
+    # Add suggested queries from RAG feedback
+    try:
+        from .rag_feedback import create_rag_feedback_tracker
+        tracker = create_rag_feedback_tracker(PROJECT_ROOT)
+        suggestions = tracker.suggest_queries(
+            topic=topic,
+            desired_outcome=desired_outcome,
+            limit=3
+        )
+        context['suggested_queries'] = suggestions
+    except Exception:
+        pass
+
+    context['token_estimate'] = estimated_tokens
+
+    return context
+
+
 def get_script_component(
     section_type: Optional[str] = None,
     name: Optional[str] = None

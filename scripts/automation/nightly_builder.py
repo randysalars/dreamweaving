@@ -361,9 +361,21 @@ class NightlyBuilder:
                         duration_seconds=result.get('duration_seconds'),
                     )
 
-                    # Check if uploaded to website (auto_generate does this)
-                    website_url = f"https://www.salars.net/dreamweavings/{session_name}"
-                    self.db.mark_website_uploaded(session_name, website_url)
+                    # Only mark as uploaded if we can verify the upload succeeded
+                    # Check auto_generate report for upload_website in stages_completed
+                    report_path = session_path / 'working_files' / 'auto_generate_report.yaml'
+                    if report_path.exists():
+                        import yaml
+                        with open(report_path) as f:
+                            report = yaml.safe_load(f)
+                        if 'upload_website' in report.get('stages', {}).get('completed', []):
+                            website_url = f"https://www.salars.net/dreamweavings/{session_name}"
+                            self.db.mark_website_uploaded(session_name, website_url)
+                            logger.info(f"Verified website upload: {website_url}")
+                        else:
+                            logger.warning(f"Website upload not in completed stages for {session_name}")
+                    else:
+                        logger.warning(f"No auto_generate report found for {session_name} - cannot verify upload")
 
                     results.append({
                         'session': session_name,
@@ -560,7 +572,7 @@ class NightlyBuilder:
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(description='Nightly Builder')
-    parser.add_argument('--count', type=int, default=5, help='Number of sessions to generate')
+    parser.add_argument('--count', type=int, default=None, help='Number of sessions to generate (default: from config)')
     parser.add_argument('--dry-run', action='store_true', help='Dry run (no actual generation)')
     parser.add_argument('--topic', type=str, action='append', help='Specific topic (can be repeated)')
     parser.add_argument('--list-topics', action='store_true', help='List pending Notion topics')
@@ -571,6 +583,9 @@ def main():
     # Load config and setup logging
     config = load_config(Path(args.config) if args.config else None)
     setup_logging(config)
+
+    # Determine count: CLI arg > config file > default (5)
+    count = args.count if args.count is not None else config['generation'].get('target_sessions_per_night', 5)
 
     # Initialize database
     db = StateDatabase(Path(config['database']['path']))
@@ -589,7 +604,7 @@ def main():
 
     # Run generation
     results = builder.run(
-        count=args.count,
+        count=count,
         dry_run=args.dry_run,
         topics=args.topic,
     )

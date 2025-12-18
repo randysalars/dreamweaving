@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<speak version="1.1" xmlns="http://www.w3.org/2001/10/synthesis">
+<prosody rate="1.0" pitch="0st">
+
+<!-- Slide 1: Opening Title -->
+The Light That Entered the World...
+<break time="1.2s"/>
+Now Enters <emphasis level="moderate">You</emphasis>.
+<break time="3s"/>
+
+<!-- Slide 2: Setting -->
+On a Silent Night...
+<break time="800ms"/>
+A holy Light... changed <emphasis level="moderate">everything</emphasis>.
+<break time="2.5s"/>
+
+<!-- Slide 3: Invitation -->
+Step Into the Stillness...
+<break time="800ms"/>
+Before the world held its breath.
+<break time="2.5s"/>
+
+<!-- Slide 4: The Light Appears -->
+A Golden Light Appears...
+<break time="800ms"/>
+Warm. <break time="400ms"/> Gentle. <break time="400ms"/> Divine.
+<break time="2.5s"/>
+
+<!-- Slide 5: Drawing Near -->
+And Now... <break time="600ms"/> It Draws Near...
+<break time="800ms"/>
+Resting before your heart.
+<break time="2.5s"/>
+
+<!-- Slide 6: Transformation -->
+<emphasis level="moderate">Christ's Light</emphasis> Enters You.
+<break time="1s"/>
+Peace. <break time="400ms"/> Presence. <break time="400ms"/> Renewal.
+<break time="3s"/>
+
+<!-- Slide 7: Call to Action -->
+A Christmas You'll Never Forget.
+<break time="1.2s"/>
+Experience it now.
+<break time="600ms"/>
+Give as a sacred gift.
+
+</prosody>
+</speak>

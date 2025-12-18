@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Gift for You</title>
+  <style>
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.8;
+      color: #2c2c2c;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: #faf9f7;
+    }
+    .content {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 4px;
+    }
+    p {
+      margin: 0 0 20px 0;
+    }
+    .gift-info {
+      margin: 30px 0;
+      padding: 25px;
+      background-color: #fdfcf8;
+      border-left: 3px solid #d4af37;
+      border-radius: 0 4px 4px 0;
+    }
+    .gift-info p {
+      margin: 0 0 10px 0;
+    }
+    .gift-info p:last-child {
+      margin-bottom: 0;
+    }
+    .receive-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #5c5c5c;
+      text-decoration: underline;
+      font-style: italic;
+    }
+    .signature {
+      margin-top: 40px;
+      font-style: italic;
+      color: #5c5c5c;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <p>Hello,</p>
+
+    <p>Someone offered this Dreamweaving for you.</p>
+
+    <div class="gift-info">
+      <p><strong>{{GIFT_NAME}}</strong></p>
+      <p><em>{{GIFT_DESCRIPTION}}</em></p>
+    </div>
+
+    <p>There's no expectation attached to it.<br>
+    No response required.<br>
+    No timeline to follow.</p>
+
+    <p>It's simply an invitation to pause, when and if you wish.</p>
+
+    <p>You can receive it here:<br>
+    <a href="{{GIFT_URL}}" class="receive-link">{{GIFT_LINK_TEXT}}</a></p>
+
+    <p class="signature">May it meet you kindly,<br>
+    — Dreamweaver</p>
+  </div>
+</body>
+</html>
+
+<!--
+GIFT-RECIPIENT EMAIL GUIDELINES
+================================
+
+Sent to the person receiving a gift at the scheduled delivery time.
+
+Subject Line Options:
+- A gift for you
+- Someone thought of you
+- A quiet gift
+
+Purpose:
+- Deliver the gift with dignity
+- No pressure to engage immediately
+- Preserve the mystery/surprise if sender chose anonymous
+
+Variables:
+- {{GIFT_NAME}} - Name of the Dreamweaving
+- {{GIFT_DESCRIPTION}} - 1-2 sentence description
+- {{GIFT_URL}} - Link to receive/access the gift
+- {{GIFT_LINK_TEXT}} - Text for the link (e.g., "Receive your gift")
+
+Critical Rules:
+- Never reveal the giver unless they opted to be identified
+- No sales pitch
+- No "explore more" suggestions
+- Let the gift stand alone
+
+Conversion Path:
+Recipients who enjoy the gift often:
+1. Explore the website
+2. Subscribe to the newsletter
+3. Later purchase for themselves or gift to others
+
+This is a trust-building moment, not a sales moment.
+-->

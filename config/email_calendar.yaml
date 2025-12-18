@@ -1,0 +1,457 @@
+# =============================================================================
+# DREAMWEAVER 12-MONTH EMAIL RHYTHM
+# =============================================================================
+#
+# Philosophy: "We write when there is something worth sitting with."
+#
+# Core Rules (Non-Negotiable):
+# - 1 email every 7-14 days
+# - Some months = 1 email only
+# - Ritual emails override cadence
+# - Silence is intentional, not failure
+# - Invitations appear only after trust is reinforced
+#
+# Think: monastic bell schedule, not campaign calendar.
+#
+# Annual Total: ~18-22 emails (half of most newsletters, twice the trust)
+# =============================================================================
+
+meta:
+  version: "1.0"
+  created: "2025-12-18"
+  last_updated: "2025-12-18"
+  annual_email_target: "18-22"
+  philosophy: "We write when there is something worth sitting with."
+
+# =============================================================================
+# JANUARY - Orientation & Return
+# =============================================================================
+january:
+  emotional_state: "Quiet resolve, fatigue, inward reset"
+  email_count: 2
+  types:
+    - ritual
+    - correspondence
+
+  emails:
+    - type: ritual
+      timing: "Week 1 (Jan 1-3)"
+      subject_options:
+        - "Entering the year gently"
+        - "A quiet beginning"
+        - "On starting again"
+      theme: "Permission to not perform New Year enthusiasm"
+      tone: "Grounded, permission-giving"
+
+    - type: correspondence
+      timing: "Week 2-3"
+      theme: "Reflection on direction without pressure"
+
+  optional_invitation:
+    product: "Beginning Again Dreamweaving"
+    timing: "Week 3-4 only if correspondence well-received"
+    note: "Soft invite only"
+
+  search_resonance:
+    - "beginning the year spiritually"
+    - "quiet new year reflection"
+
+# =============================================================================
+# FEBRUARY - Rest & the Inner Life
+# =============================================================================
+february:
+  emotional_state: "Weariness, winter heaviness, emotional honesty"
+  email_count: "1-2"
+  types:
+    - correspondence
+
+  emails:
+    - type: correspondence
+      timing: "Mid-month"
+      theme: "Companioning through the heavier days"
+      tone: "Compassionate, companioning"
+
+  selling: false
+  note: "No selling this month. This month builds deep trust."
+
+# =============================================================================
+# MARCH - Examination & Attention
+# =============================================================================
+march:
+  emotional_state: "Awareness, inner inventory, pre-spring tension"
+  email_count: 2
+  types:
+    - correspondence
+    - ritual
+
+  emails:
+    - type: correspondence
+      timing: "Week 1-2"
+      theme: "Noticing what has been neglected"
+
+    - type: ritual
+      timing: "Lent season (varies)"
+      subject_options:
+        - "Entering a reflective season"
+        - "On examination"
+        - "A season for noticing"
+      theme: "Lent-like reflection (non-denominational)"
+
+  optional_invitation:
+    product: "Release or Clarity Dreamweaving"
+
+# =============================================================================
+# APRIL - Renewal Without Hurry
+# =============================================================================
+april:
+  emotional_state: "Hope emerging, cautious optimism"
+  email_count: "1-2"
+  types:
+    - ritual
+    - correspondence
+
+  emails:
+    - type: ritual
+      timing: "Easter weekend (varies)"
+      subject_options:
+        - "On renewal"
+        - "A quiet Easter"
+        - "Light returning"
+      theme: "Resurrection/renewal themes"
+      tone: "Hopeful but restrained"
+
+    - type: correspondence
+      timing: "Mid-month"
+      theme: "Slow resurrection, hope without performance"
+
+  note: "Never hype renewal. Let it arrive."
+
+# =============================================================================
+# MAY - Presence & Gratitude
+# =============================================================================
+may:
+  emotional_state: "Re-engagement with life, beauty, creativity"
+  email_count: 1
+  types:
+    - correspondence
+
+  emails:
+    - type: correspondence
+      timing: "Mid-month"
+      theme: "Gratitude, beauty, presence"
+
+  optional_invitation:
+    product: "Creative or Imagination-centered Dreamweaving"
+
+  note: "This is a low-noise month."
+
+# =============================================================================
+# JUNE - Attention & Simplicity
+# =============================================================================
+june:
+  emotional_state: "Busyness rising, distraction creeping in"
+  email_count: 2
+  types:
+    - correspondence
+    - invitation
+
+  emails:
+    - type: correspondence
+      timing: "Week 1-2"
+      theme: "Reclaiming attention"
+      tone: "Protective of inner life"
+
+    - type: invitation
+      timing: "Week 3-4"
+      product: "Summer Rest/Simplicity Dreamweaving"
+
+  ritual_opportunity:
+    event: "Summer Solstice (June 21)"
+    optional: true
+
+# =============================================================================
+# JULY - Silence & Spaciousness
+# =============================================================================
+july:
+  emotional_state: "Disruption of routine, desire for space"
+  email_count: 1
+  types:
+    - correspondence
+
+  emails:
+    - type: correspondence
+      timing: "Any week"
+      theme: "Brief, spacious"
+      length: "Short - 3-4 paragraphs maximum"
+
+  selling: false
+  note: "This month teaches subscribers that absence ≠ abandonment."
+
+# =============================================================================
+# AUGUST - Reorientation
+# =============================================================================
+august:
+  emotional_state: "Quiet anxiety about fall, transitions approaching"
+  email_count: 2
+  types:
+    - correspondence
+    - invitation
+
+  emails:
+    - type: correspondence
+      timing: "Week 1-2"
+      theme: "Noticing thresholds"
+
+    - type: invitation
+      timing: "Week 3-4"
+      product: "Preparing the Inner Ground Dreamweaving"
+
+  note: "Strong conversion month - gently handled."
+
+# =============================================================================
+# SEPTEMBER - Return & Focus
+# =============================================================================
+september:
+  emotional_state: "Structure returning, openness to guidance"
+  email_count: 2
+  types:
+    - correspondence
+    - invitation
+
+  emails:
+    - type: correspondence
+      timing: "Week 1-2"
+      theme: "Return, rhythm, grounding"
+
+    - type: invitation
+      timing: "Week 3-4"
+      product: "Learning/Grounding Dreamweaving"
+      optional: true
+
+  ritual_opportunity:
+    event: "Autumn Equinox (Sept 22)"
+    optional: true
+
+  note: "This is a high-engagement month."
+
+# =============================================================================
+# OCTOBER - Depth & Mortality
+# =============================================================================
+october:
+  emotional_state: "Introspection, memory, loss, mystery"
+  email_count: "1-2"
+  types:
+    - correspondence
+    - ritual
+
+  emails:
+    - type: correspondence
+      timing: "Week 1-2"
+      theme: "Letting go, honoring what has passed"
+      tone: "Honest, grounded, non-sentimental"
+
+    - type: ritual
+      timing: "Late October (All Souls)"
+      subject_options:
+        - "On remembrance"
+        - "For those we carry"
+        - "A quiet honoring"
+      theme: "All Souls / remembrance"
+      optional: true
+
+  note: "This month deepens loyalty."
+
+# =============================================================================
+# NOVEMBER - Gratitude & Gathering
+# =============================================================================
+november:
+  emotional_state: "Reflection, relational awareness, fatigue"
+  email_count: 2
+  types:
+    - correspondence
+    - invitation
+
+  emails:
+    - type: correspondence
+      timing: "Week 1-2"
+      theme: "Gratitude without denial"
+      tone: "Honest gratitude, acknowledging complexity"
+
+    - type: invitation
+      timing: "Week 3-4"
+      product: "Advent/Winter Dreamweaving"
+
+  forbidden:
+    - "Black Friday language"
+    - "Cyber Monday references"
+    - "Any urgency tactics"
+
+# =============================================================================
+# DECEMBER - Advent, Light, Gift
+# =============================================================================
+december:
+  emotional_state: "Longing, loneliness, meaning-hunger"
+  email_count: 3
+  types:
+    - ritual
+    - correspondence
+    - invitation
+
+  emails:
+    - type: ritual
+      timing: "Week 1 (Advent beginning)"
+      subject_options:
+        - "As Advent begins"
+        - "On waiting"
+        - "Light in darkness"
+      theme: "Advent as sacred waiting"
+
+    - type: correspondence
+      timing: "Week 2-3"
+      theme: "Holding light in darkness"
+      tone: "Tender, honest about the season's complexity"
+
+    - type: invitation
+      timing: "Week 2-3"
+      product: "Dreamweaver as Gift"
+      note: "Gift giving invitation"
+
+  optional_ritual:
+    timing: "December 24-25"
+    theme: "Christmas blessing"
+
+  note: "This is your most sacred month. Revenue follows reverence."
+
+# =============================================================================
+# ANNUAL SUMMARY
+# =============================================================================
+annual_summary:
+  total_emails: "18-22"
+  ritual_emails: "6-8"
+  correspondence_emails: "12-14"
+  invitation_emails: "6-8"
+
+  high_engagement_months:
+    - january
+    - september
+    - december
+
+  trust_building_months:
+    - february
+    - may
+    - july
+
+  conversion_appropriate_months:
+    - june
+    - august
+    - september
+    - november
+    - december
+
+# =============================================================================
+# CONTENT THEMES BY SEASON
+# =============================================================================
+seasonal_themes:
+  winter:
+    months: [december, january, february]
+    themes:
+      - rest
+      - reflection
+      - light in darkness
+      - waiting
+      - hope without hype
+
+  spring:
+    months: [march, april, may]
+    themes:
+      - renewal without pressure
+      - slow emergence
+      - gratitude
+      - examination
+      - growth
+
+  summer:
+    months: [june, july, august]
+    themes:
+      - simplicity
+      - attention
+      - spaciousness
+      - threshold preparation
+      - rest
+
+  autumn:
+    months: [september, october, november]
+    themes:
+      - return
+      - depth
+      - mortality awareness
+      - letting go
+      - honest gratitude
+
+# =============================================================================
+# SUBJECT LINE PATTERNS
+# =============================================================================
+subject_line_patterns:
+  correspondence:
+    good:
+      - "A thought I wanted to share"
+      - "A quiet reflection"
+      - "For those carrying a lot lately"
+      - "Something I've been sitting with"
+    avoid:
+      - "Don't miss this!"
+      - "Exciting news!"
+      - "You won't believe..."
+      - Anything with emojis
+      - Anything with numbers
+
+  ritual:
+    good:
+      - "As the season turns"
+      - "A moment for this time of year"
+      - "On entering this season"
+      - "[Season] blessing"
+    avoid:
+      - "Happy [Holiday]!"
+      - "Celebrating [Event]"
+      - Anything performative
+
+  invitation:
+    good:
+      - "An invitation, if it serves you"
+      - "Something that may meet you where you are"
+      - "A quiet offering"
+    avoid:
+      - "Limited time!"
+      - "Special offer!"
+      - "Don't miss out!"
+      - Any urgency language
+
+# =============================================================================
+# FREQUENCY RULES
+# =============================================================================
+frequency_rules:
+  minimum_days_between_emails: 7
+  maximum_emails_per_month: 3
+  maximum_invitations_per_month: 1
+  silence_permitted: true
+  silence_max_days: 21  # Maximum intentional silence
+
+  exceptions:
+    - "Transactional emails (gifts) exempt from frequency rules"
+    - "Ritual emails can override regular cadence"
+
+# =============================================================================
+# WHY THIS RHYTHM WORKS
+# =============================================================================
+philosophy_notes:
+  - "Aligns with human emotional seasons"
+  - "Prevents subscriber fatigue"
+  - "Builds anticipation instead of annoyance"
+  - "Allows content reuse year after year"
+  - "Creates natural sales windows without pressure"
+
+  related_concepts:
+    - "seasonal marketing psychology"
+    - "liturgical calendar rhythm"
+    - "slow business models"

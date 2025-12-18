@@ -39,6 +39,13 @@ embeddings:
   chunk_overlap: 200  # Overlap between chunks
   batch_size: 100  # Embeddings per API call
 
+  # Local sentence-transformers settings (used when available)
+  local:
+    model: "all-MiniLM-L6-v2"  # Fast, good quality, 384 dims
+    dimensions: 384
+    batch_size: 32  # Smaller batches for memory efficiency
+    max_threads: 2  # Limit CPU threads (0 = auto/all cores)
+
 # Vector database configuration
 vector_db:
   type: "qdrant"  # Options: qdrant, pgvector, chromadb, lancedb
