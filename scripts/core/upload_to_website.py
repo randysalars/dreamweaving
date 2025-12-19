@@ -59,7 +59,7 @@ except ImportError:
 
 # Configuration
 DEFAULT_API_URL = "https://www.salars.net"
-SALARSU_PROJECT_PATH = "/media/rsalars/elements/Projects/salarsu"
+SALARSU_PROJECT_PATH = "/home/rsalars/Projects/salarsu"
 
 # Category mapping based on session themes/keywords
 def extract_display_title(topic: str, slug: str) -> str:

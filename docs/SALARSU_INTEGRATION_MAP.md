@@ -3,7 +3,7 @@
 Reference for using dream categories, dreamweavings, and store functionality from the Salarsu project inside this repository.
 
 ## Locations
-- Salarsu repo: `/media/rsalars/elements/Projects/salarsu`
+- Salarsu repo: `/home/rsalars/Projects/salarsu`
 - Dreamweaving repo (this project): `/home/rsalars/Projects/dreamweaving`
 - Salarsu frontend stack: Next 15 (React 19), ESM, Prisma, Neon/Postgres; path alias `@/` points at `frontend/`.
 

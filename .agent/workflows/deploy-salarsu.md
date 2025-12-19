@@ -15,7 +15,7 @@ This workflow deploys changes to the salars.net website hosted on Vercel.
 
 1. Navigate to the salarsu frontend directory:
 ```bash
-cd /media/rsalars/elements/Projects/salarsu/frontend
+cd /home/rsalars/Projects/salarsu/frontend
 ```
 
 2. Test the build locally (optional but recommended):
@@ -27,22 +27,22 @@ npm run build
 3. Check git status for changes:
 // turbo
 ```bash
-git -C /media/rsalars/elements/Projects/salarsu status
+git -C /home/rsalars/Projects/salarsu status
 ```
 
 4. Add all changes:
 ```bash
-git -C /media/rsalars/elements/Projects/salarsu add .
+git -C /home/rsalars/Projects/salarsu add .
 ```
 
 5. Commit with a descriptive message:
 ```bash
-git -C /media/rsalars/elements/Projects/salarsu commit -m "Your commit message here"
+git -C /home/rsalars/Projects/salarsu commit -m "Your commit message here"
 ```
 
 6. Push to main branch (triggers auto-deploy):
 ```bash
-git -C /media/rsalars/elements/Projects/salarsu push origin main
+git -C /home/rsalars/Projects/salarsu push origin main
 ```
 
 7. Vercel will automatically build and deploy. Check deploy status at:

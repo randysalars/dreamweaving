@@ -29,7 +29,7 @@ from typing import Dict, List, Any
 # Try Salarsu .env first (has DATABASE_URL), then dreamweaving .env
 try:
     from dotenv import load_dotenv
-    salarsu_env = Path("/media/rsalars/elements/Projects/salarsu/frontend/.env")
+    salarsu_env = Path("/home/rsalars/Projects/salarsu/frontend/.env")
     dreamweaving_env = Path(__file__).parent.parent.parent / ".env"
 
     if salarsu_env.exists():

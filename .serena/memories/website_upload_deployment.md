@@ -191,7 +191,7 @@ Binaural config requires explicit type casting:
 Vercel auto-deploys from GitHub main branch:
 
 ```bash
-cd /media/rsalars/elements/Projects/salarsu/frontend
+cd /home/rsalars/Projects/salarsu/frontend
 git add .
 git commit -m "feat: Add new feature"
 git push origin main
@@ -345,7 +345,7 @@ python3 scripts/core/upload_to_website.py --session sessions/{name}/ --dry-run
 python3 scripts/core/upload_to_website.py --session sessions/{name}/ --category cosmic-space
 
 # Git push to trigger Vercel deploy
-cd /media/rsalars/elements/Projects/salarsu/frontend && git push origin main
+cd /home/rsalars/Projects/salarsu/frontend && git push origin main
 
 # Check deployment status
 # Visit: https://vercel.com/randysalars/salars/deployments

@@ -454,7 +454,7 @@ If API returns 401 Unauthorized:
 **Manual Fallback (if API auth fails):**
 ```javascript
 // Run from salarsu project directory
-cd /media/rsalars/elements/Projects/salarsu
+cd /home/rsalars/Projects/salarsu
 node insert_session.mjs
 ```
 

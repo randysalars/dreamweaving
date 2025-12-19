@@ -1970,7 +1970,7 @@ Create and deploy articles to salars.net with consistent styling and automatic V
 
 ### Process
 1. **Provide content** - User gives article content in any format (markdown, outline, raw text)
-2. **Create page file** - Claude creates `page.js` at `/media/rsalars/elements/Projects/salarsu/frontend/app/{path}/`
+2. **Create page file** - Claude creates `page.js` at `/home/rsalars/Projects/salarsu/frontend/app/{path}/`
 3. **Apply styling** - Uses standard classes from `docs/WEBPAGE_FORMAT_GUIDE.md`
 4. **Add related links** - Updates parent/related pages with cross-links
 5. **Deploy** - Commits and pushes to trigger Vercel auto-deployment

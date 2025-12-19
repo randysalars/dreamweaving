@@ -5,7 +5,7 @@ Reference documentation for working with the Salarsu website repository from the
 ## Repository Location
 
 ```
-/media/rsalars/elements/Projects/salarsu
+/home/rsalars/Projects/salarsu
 ```
 
 > [!IMPORTANT]
@@ -64,7 +64,7 @@ salarsu/
 
 ```bash
 # Navigate to the salarsu repo
-cd /media/rsalars/elements/Projects/salarsu/frontend
+cd /home/rsalars/Projects/salarsu/frontend
 
 # Install dependencies
 npm install --legacy-peer-deps
@@ -98,7 +98,7 @@ git commit -m "Your commit message"
 git push origin main
 
 # Manual Vercel deployment (if needed)
-cd /media/rsalars/elements/Projects/salarsu
+cd /home/rsalars/Projects/salarsu
 vercel --prod
 ```
 
@@ -106,7 +106,7 @@ vercel --prod
 
 ## Vercel Configuration
 
-Located at `/media/rsalars/elements/Projects/salarsu/vercel.json`:
+Located at `/home/rsalars/Projects/salarsu/vercel.json`:
 
 ```json
 {
@@ -186,7 +186,7 @@ AUTO_BACKUP_ENABLED=true
 
 To add a new page to the website:
 
-1. Create a new directory in `/media/rsalars/elements/Projects/salarsu/frontend/app/`
+1. Create a new directory in `/home/rsalars/Projects/salarsu/frontend/app/`
 2. Add a `page.js` or `page.tsx` file
 3. Build and test locally with `npm run dev`
 4. Commit and push to deploy
@@ -194,11 +194,11 @@ To add a new page to the website:
 Example for a new page at `/newpage`:
 
 ```bash
-mkdir -p /media/rsalars/elements/Projects/salarsu/frontend/app/newpage
+mkdir -p /home/rsalars/Projects/salarsu/frontend/app/newpage
 ```
 
 ```javascript
-// /media/rsalars/elements/Projects/salarsu/frontend/app/newpage/page.js
+// /home/rsalars/Projects/salarsu/frontend/app/newpage/page.js
 export default function NewPage() {
   return (
     <div className="container mx-auto px-4 py-8">
@@ -224,8 +224,8 @@ The website already has dreamweaving-related content:
 - `/dreamweavings/` - List of dreamweavings
 
 These are located at:
-- `/media/rsalars/elements/Projects/salarsu/frontend/app/dreamweaving/`
-- `/media/rsalars/elements/Projects/salarsu/frontend/app/dreamweavings/`
+- `/home/rsalars/Projects/salarsu/frontend/app/dreamweaving/`
+- `/home/rsalars/Projects/salarsu/frontend/app/dreamweavings/`
 
 ---
 
@@ -233,16 +233,16 @@ These are located at:
 
 ```bash
 # Check status
-git -C /media/rsalars/elements/Projects/salarsu status
+git -C /home/rsalars/Projects/salarsu status
 
 # Pull latest changes
-git -C /media/rsalars/elements/Projects/salarsu pull origin main
+git -C /home/rsalars/Projects/salarsu pull origin main
 
 # Push changes
-git -C /media/rsalars/elements/Projects/salarsu push origin main
+git -C /home/rsalars/Projects/salarsu push origin main
 
 # View recent commits
-git -C /media/rsalars/elements/Projects/salarsu log -n 5 --oneline
+git -C /home/rsalars/Projects/salarsu log -n 5 --oneline
 ```
 
 ---

@@ -25,8 +25,8 @@ This documents the complete workflow for creating and deploying articles to sala
 
 | Resource | Path |
 |----------|------|
-| Website Frontend | `/media/rsalars/elements/Projects/salarsu/frontend/` |
-| Article Pages | `/media/rsalars/elements/Projects/salarsu/frontend/app/{category}/{slug}/page.js` |
+| Website Frontend | `/home/rsalars/Projects/salarsu/frontend/` |
+| Article Pages | `/home/rsalars/Projects/salarsu/frontend/app/{category}/{slug}/page.js` |
 | Styling Guide | `/home/rsalars/Projects/dreamweaving/docs/WEBPAGE_FORMAT_GUIDE.md` |
 | Slash Command | `/home/rsalars/Projects/dreamweaving/.claude/commands/write-article.md` |
 
@@ -148,7 +148,7 @@ export default function {ComponentName}Page() {
 1. **Create the page file**
    ```bash
    # Create directory if needed
-   mkdir -p /media/rsalars/elements/Projects/salarsu/frontend/app/{path}/
+   mkdir -p /home/rsalars/Projects/salarsu/frontend/app/{path}/
    
    # Create page.js with content
    ```
@@ -158,7 +158,7 @@ export default function {ComponentName}Page() {
 
 3. **Commit and push**
    ```bash
-   cd /media/rsalars/elements/Projects/salarsu/frontend
+   cd /home/rsalars/Projects/salarsu/frontend
    git add app/{path}/
    git add {modified_files}
    git commit -m "Add article: {title}

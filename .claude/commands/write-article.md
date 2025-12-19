@@ -52,7 +52,7 @@ Based on content, identify:
 
 ### 4. Create the Page File
 
-**Location:** `/media/rsalars/elements/Projects/salarsu/frontend/app/{path}/page.js`
+**Location:** `/home/rsalars/Projects/salarsu/frontend/app/{path}/page.js`
 
 **Required Structure:**
 ```jsx
@@ -143,7 +143,7 @@ If the article should be linked from existing pages:
 ### 8. Deploy to Vercel
 
 ```bash
-cd /media/rsalars/elements/Projects/salarsu/frontend
+cd /home/rsalars/Projects/salarsu/frontend
 git add app/{path}/
 git add {any_modified_files}
 git commit -m "Add article: {title}

@@ -37,7 +37,7 @@ import yaml
 # Load environment variables
 try:
     from dotenv import load_dotenv
-    salarsu_env = Path("/media/rsalars/elements/Projects/salarsu/frontend/.env")
+    salarsu_env = Path("/home/rsalars/Projects/salarsu/frontend/.env")
     dreamweaving_env = Path(__file__).parent.parent.parent / ".env"
 
     if salarsu_env.exists():
