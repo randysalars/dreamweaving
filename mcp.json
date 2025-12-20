@@ -14,6 +14,11 @@
       "description": "Read/write Sacred Digital Dreamweaver workspace via Notion official MCP server",
       "command": "bash",
       "args": ["scripts/mcp/run_notion_mcp_server.sh"]
+    },
+    "coin-rag": {
+      "description": "Specialized semantic search for rare coin knowledge (Morgan/Peace dollars, junk silver, key dates, pricing, grading)",
+      "command": "bash",
+      "args": ["scripts/mcp/run_coin_rag_mcp_server.sh"]
     }
   }
 }
