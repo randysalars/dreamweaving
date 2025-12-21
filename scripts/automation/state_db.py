@@ -156,6 +156,18 @@ class StateDatabase:
             )
         """)
 
+        # Used topics tracking - prevent reuse of topics from text files
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS used_topics (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                topic_text TEXT NOT NULL,
+                source_file TEXT NOT NULL,
+                used_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                session_name TEXT,
+                UNIQUE(topic_text, source_file)
+            )
+        """)
+
         # Create indexes for common queries
         cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_sessions_status
@@ -168,6 +180,10 @@ class StateDatabase:
         cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_sessions_quality
             ON sessions(quality_score DESC)
+        """)
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_used_topics_file
+            ON used_topics(source_file, used_at DESC)
         """)
 
         self.conn.commit()
@@ -486,6 +502,98 @@ class StateDatabase:
         """, (video_id, datetime.now().isoformat(), session_name))
         self.conn.commit()
         logger.info(f"Marked shorts uploaded for {session_name}: {video_id}")
+
+    # ==================== Used Topics Management ====================
+
+    def is_topic_used(self, topic_text: str, source_file: str) -> bool:
+        """Check if a topic has already been used.
+        
+        Args:
+            topic_text: The topic string
+            source_file: Source file path or identifier
+            
+        Returns:
+            True if topic was already used
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            SELECT COUNT(*) FROM used_topics
+            WHERE topic_text = ? AND source_file = ?
+        """, (topic_text, source_file))
+        count = cursor.fetchone()[0]
+        return count > 0
+
+    def mark_topic_used(self, topic_text: str, source_file: str, session_name: str):
+        """Mark a topic as used.
+        
+        Args:
+            topic_text: The topic string
+            source_file: Source file path or identifier  
+            session_name: Associated session name
+        """
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute("""
+                INSERT INTO used_topics (topic_text, source_file, session_name)
+                VALUES (?, ?, ?)
+            """, (topic_text, source_file, session_name))
+            self.conn.commit()
+            logger.info(f"Marked topic as used: {topic_text} from {source_file}")
+        except sqlite3.IntegrityError:
+            # Topic already marked as used, that's fine
+            logger.debug(f"Topic already marked as used: {topic_text}")
+
+    def get_unused_topics(self, all_topics: List[str], source_file: str) -> List[str]:
+        """Filter out already-used topics from a list.
+        
+        Args:
+            all_topics: List of all available topics
+            source_file: Source file identifier
+            
+        Returns:
+            List of unused topics
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            SELECT topic_text FROM used_topics
+            WHERE source_file = ?
+        """, (source_file,))
+        used = {row['topic_text'] for row in cursor.fetchall()}
+        return [t for t in all_topics if t not in used]
+
+    def reset_used_topics(self, source_file: Optional[str] = None):
+        """Reset used topics (clear the tracking table).
+        
+        Args:
+            source_file: If provided, only reset topics from this file.
+                        If None, reset all topics.
+        """
+        cursor = self.conn.cursor()
+        if source_file:
+            cursor.execute("""
+                DELETE FROM used_topics WHERE source_file = ?
+            """, (source_file,))
+            logger.info(f"Reset used topics for: {source_file}")
+        else:
+            cursor.execute("DELETE FROM used_topics")
+            logger.info("Reset all used topics")
+        self.conn.commit()
+
+    def get_used_topics_count(self, source_file: str) -> int:
+        """Get count of used topics from a source file.
+        
+        Args:
+            source_file: Source file identifier
+            
+        Returns:
+            Count of used topics
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            SELECT COUNT(*) FROM used_topics
+            WHERE source_file = ?
+        """, (source_file,))
+        return cursor.fetchone()[0]
 
     # ==================== Archive Management ====================
 

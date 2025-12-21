@@ -1,0 +1,54 @@
+name: "Poetry & Creative Expression"
+slug: "poetry"
+description: "Exploring the power of language, art, and the creative spirit."
+emails:
+  - index: 1
+    subject: "The Weight of a Word"
+    theme: "Precision and power of language in creative expression."
+    tone: "Poetic, precise"
+    content_id: "poetry_001"
+  - index: 2
+    subject: "The Art of Noticing"
+    theme: "Creativity as the byproduct of deep observation."
+    tone: "Observational, artistic"
+    content_id: "poetry_002"
+  - index: 3
+    subject: "Beyond Logic: The Language of the Soul"
+    theme: "Poetry as a bridge to what logic cannot reach."
+    tone: "Mystical, soulful"
+    content_id: "poetry_003"
+  - index: 4
+    subject: "The Value of the Unfinished"
+    theme: "Embracing the process and the beauty of rough drafts."
+    tone: "Supportive, process-oriented"
+    content_id: "poetry_004"
+  - index: 5
+    subject: "Creative Block as a Sacred Pause"
+    theme: "Reclaiming 'stuck-ness' as necessary incubation time."
+    tone: "Patient, encouraging"
+    content_id: "poetry_005"
+  - index: 6
+    subject: "The Inner Critic vs. The Creative Child"
+    theme: "Navigating internal resistance and reclaiming wonder."
+    tone: "Empowering, inner-child focused"
+    content_id: "poetry_006"
+  - index: 7
+    subject: "Poetry and Silence"
+    theme: "The relationship between what is said and what is left out."
+    tone: "Quiet, profound"
+    content_id: "poetry_007"
+  - index: 8
+    subject: "Art as an Act of Service"
+    theme: "Contributing beauty to a world that needs it."
+    tone: "Servant-oriented, creative"
+    content_id: "poetry_008"
+  - index: 9
+    subject: "Finding Your Individual Voice"
+    theme: "The journey toward authentic self-expression."
+    tone: "Authentic, investigative"
+    content_id: "poetry_009"
+  - index: 10
+    subject: "A Final Word on the Creative Life"
+    theme: "Creativity as a way of being in the world."
+    tone: "Final, comprehensive"
+    content_id: "poetry_010"

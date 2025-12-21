@@ -58,6 +58,7 @@ import json
 import os
 import random
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -629,6 +630,15 @@ class AutoGenerator:
         # Add timestamp suffix for uniqueness
         timestamp = datetime.now().strftime('%Y%m%d')
         return f"{name}-{timestamp}"
+
+    def _get_subprocess_env(self):
+        """Get environment with proper PYTHONPATH for subprocess calls.
+        
+        This ensures child processes can import project modules.
+        """
+        env = os.environ.copy()
+        env['PYTHONPATH'] = str(self.project_root)
+        return env
 
     def log(self, message: str, level: str = "info"):
         """Log a message."""
@@ -1530,6 +1540,7 @@ Do NOT include any explanation or commentary before or after the SSML.
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
+                env=self._get_subprocess_env(),
             )
 
             if result.returncode == 0:
@@ -1558,28 +1569,40 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.log("No SSML script found, skipping voice generation", "warning")
             return
 
+        # Use Coqui TTS (free, open-source alternative to Google Cloud TTS)
+        coqui_python = self.project_root / "venv_coqui" / "bin" / "python"
+        coqui_script = self.project_root / "scripts" / "core" / "generate_voice_coqui_simple.py"
+        
+        if not coqui_python.exists():
+            self.log("Coqui TTS not installed. Run: python3.11 -m venv venv_coqui && venv_coqui/bin/pip install TTS pydub", "error")
+            self.stages_failed.append("generate_voice")
+            return
+
         try:
+            self.log("Using Coqui TTS (this may take 5-10 minutes)...", "info")
             result = subprocess.run(
                 [
-                    self.python_cmd, "scripts/core/generate_voice.py",
+                    str(coqui_python),
+                    str(coqui_script),
                     str(ssml_path),
                     str(output_dir)
                 ],
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
-                timeout=600,  # 10 minute timeout
+                timeout=1200,  # 20 minute timeout for Coqui
+                env=self._get_subprocess_env(),
             )
 
             if result.returncode == 0:
-                self.log("Generated voice audio", "success")
+                self.log("Generated voice audio with Coqui TTS", "success")
                 self.stages_completed.append("generate_voice")
             else:
                 self.log(f"Voice generation error: {result.stderr[:200]}", "error")
                 self.stages_failed.append("generate_voice")
 
         except subprocess.TimeoutExpired:
-            self.log("Voice generation timed out", "error")
+            self.log("Voice generation timed out (>20 minutes)", "error")
             self.stages_failed.append("generate_voice")
         except Exception as e:
             self.log(f"Voice generation failed: {e}", "error")
@@ -1929,7 +1952,7 @@ Do NOT include any explanation or commentary before or after the SSML.
             self.log(f"VTT generation skipped: {e}", "warning")
 
     def _stage_generate_images(self):
-        """Generate scene images using configured method (sd, stock, midjourney, or pil)."""
+        """Generate scene images using configured method (sd, stock, midjourney, pil, or random)."""
         self.log("Generating scene images", "stage")
         self.log(f"Image method: {self.image_method}", "info")
 
@@ -1937,7 +1960,11 @@ Do NOT include any explanation or commentary before or after the SSML.
         success = False
 
         try:
-            success = self._try_generate_images(method)
+            # NEW: Use random images from project images folder if method is 'random'
+            if method == "random":
+                success = self._copy_random_images()
+            else:
+                success = self._try_generate_images(method)
 
             # If SD failed, log guidance but don't fail the pipeline
             if not success and method == "sd":
@@ -1949,6 +1976,73 @@ Do NOT include any explanation or commentary before or after the SSML.
 
         if success:
             self.stages_completed.append("generate_images")
+
+    def _copy_random_images(self) -> bool:
+        """Copy random images from project images folder to session uploaded folder.
+        
+        Returns:
+            True if images were successfully copied, False otherwise.
+        """
+        source_dir = self.project_root / "images"
+        target_dir = self.session_path / "images" / "uploaded"
+        
+        # Ensure target directory exists
+        target_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Get all image files from source directory
+        image_extensions = ['*.jpg', '*.jpeg', '*.png', '*.JPG', '*.JPEG', '*.PNG']
+        source_images = []
+        for ext in image_extensions:
+            source_images.extend(source_dir.glob(ext))
+        
+        if not source_images:
+            self.log(f"No images found in {source_dir}", "error")
+            return False
+        
+        # Determine how many images we need
+        # Try to get count from manifest sections, default to 5-8 images
+        manifest_path = self.session_path / "manifest.yaml"
+        num_images = random.randint(5, 8)  # default
+        
+        if manifest_path.exists():
+            try:
+                with open(manifest_path, 'r') as f:
+                    manifest = yaml.safe_load(f)
+                    sections = manifest.get('sections', [])
+                    if sections:
+                        num_images = len(sections)
+            except Exception as e:
+                self.log(f"Could not read manifest for image count: {e}", "warning")
+        
+        # Don't request more images than we have available
+        num_images = min(num_images, len(source_images))
+        
+        # Randomly select images
+        selected_images = random.sample(source_images, num_images)
+        
+        self.log(f"Copying {num_images} random images from project folder", "info")
+        
+        # Copy images with sequential naming
+        copied_count = 0
+        for i, source_image in enumerate(selected_images, 1):
+            # Create a clean filename: scene_01.png, scene_02.png, etc.
+            target_filename = f"scene_{i:02d}.png"
+            target_path = target_dir / target_filename
+            
+            try:
+                # Use shutil to copy the file
+                shutil.copy2(source_image, target_path)
+                copied_count += 1
+                self.log(f"  [{i}/{num_images}] Copied {source_image.name} -> {target_filename}", "info")
+            except Exception as e:
+                self.log(f"  Failed to copy {source_image.name}: {e}", "warning")
+        
+        if copied_count > 0:
+            self.log(f"Successfully copied {copied_count} images", "success")
+            return True
+        else:
+            self.log("No images were copied", "error")
+            return False
 
     def _try_generate_images(self, method: str) -> bool:
         """Attempt image generation with specified method. Returns True on success."""
@@ -2726,8 +2820,8 @@ Note: Requires Claude Code extension for VS Code (uses your Claude subscription)
     parser.add_argument('--json', action='store_true',
                        help='Output report as JSON')
     parser.add_argument('--image-method', default='sd',
-                       choices=['stock', 'sd', 'midjourney', 'pil'],
-                       help='Image sourcing method: sd (default, Stable Diffusion), stock (guide only), midjourney (prompts only), pil (fast procedural)')
+                       choices=['stock', 'sd', 'midjourney', 'pil', 'random'],
+                       help='Image sourcing method: sd (default, Stable Diffusion), stock (guide only), midjourney (prompts only), pil (fast procedural), random (use existing project images)')
     parser.add_argument('--image-performance', default='speed',
                         choices=['quality', 'balanced', 'speed', 'turbo'],
                         help='Stable Diffusion performance preset (default: speed)')

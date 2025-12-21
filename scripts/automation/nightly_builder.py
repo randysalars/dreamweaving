@@ -25,6 +25,7 @@ Usage:
 import argparse
 import logging
 import os
+import random
 import re
 import subprocess
 import sys
@@ -256,7 +257,8 @@ class NightlyBuilder:
         self,
         count: int = 5,
         dry_run: bool = False,
-        topics: Optional[List[str]] = None
+        topics: Optional[List[str]] = None,
+        source_file: Optional[str] = None
     ) -> List[Dict[str, Any]]:
         """Run nightly generation.
 
@@ -264,6 +266,7 @@ class NightlyBuilder:
             count: Number of sessions to generate
             dry_run: If True, don't actually generate
             topics: Optional list of specific topics (instead of Notion)
+            source_file: Optional source file identifier for topic tracking
 
         Returns:
             List of result dicts with status for each session
@@ -283,7 +286,12 @@ class NightlyBuilder:
                 # Get topic
                 if topics and i < len(topics):
                     topic_title = topics[i]
-                    topic_data = {'title': topic_title, 'id': None, 'is_manual': True}
+                    topic_data = {
+                        'title': topic_title,
+                        'id': None,
+                        'is_manual': True,
+                        'source_file': source_file  # Include source file for tracking
+                    }
                 else:
                     # Fetch and validate topic from Notion
                     topic_data = self._fetch_validated_topic()
@@ -346,6 +354,18 @@ class NightlyBuilder:
                             logger.info("Marked Notion topic as used")
                         except Exception as e:
                             logger.warning(f"Failed to mark topic as used: {e}")
+                    
+                    # Mark file topic as used (if from topics file)
+                    if topic_data.get('is_manual') and topics:
+                        try:
+                            # Get the topics file path from args - we need it in scope
+                            # Store it in topic_data when we select it from file
+                            source_file = topic_data.get('source_file')
+                            if source_file:
+                                self.db.mark_topic_used(topic_title, source_file, session_name)
+                                logger.info(f"Marked file topic as used: {topic_title}")
+                        except Exception as e:
+                            logger.warning(f"Failed to mark file topic as used: {e}")
 
                     # Compute quality score
                     session_path = PROJECT_ROOT / 'sessions' / session_name
@@ -576,6 +596,7 @@ def main():
     parser.add_argument('--dry-run', action='store_true', help='Dry run (no actual generation)')
     parser.add_argument('--topic', type=str, action='append', help='Specific topic (can be repeated)')
     parser.add_argument('--list-topics', action='store_true', help='List pending Notion topics')
+    parser.add_argument('--topics-file', type=str, help='Path to a text file containing topics (one per line)')
     parser.add_argument('--config', type=str, help='Config file path')
 
     args = parser.parse_args()
@@ -602,11 +623,45 @@ def main():
         print(f"\nTotal pending: {len(topics)}")
         return
 
+    # Determine topics if using a file
+    manual_topics = args.topic or []
+    if args.topics_file:
+        topics_path = Path(args.topics_file)
+        if topics_path.exists():
+            with open(topics_path, 'r', encoding='utf-8') as f:
+                file_topics = [line.strip() for line in f if line.strip() and not line.strip().startswith('#')]
+            
+            # Filter out already-used topics using the state database
+            source_file_id = str(topics_path.name)  # Use filename as identifier
+            unused_topics = db.get_unused_topics(file_topics, source_file_id)
+            
+            if len(unused_topics) == 0:
+                logger.warning(f"All topics from {args.topics_file} have been used!")
+                logger.info("Resetting topic tracking to allow reuse...")
+                db.reset_used_topics(source_file_id)
+                unused_topics = file_topics
+            
+            logger.info(f"Topics available: {len(unused_topics)}/{len(file_topics)} unused")
+            
+            # Randomly select 'count' topics from unused topics
+            if len(unused_topics) > 0:
+                random.shuffle(unused_topics)
+                selected_topics = unused_topics[:count] if len(unused_topics) >= count else unused_topics
+                manual_topics.extend(selected_topics)
+                logger.info(f"Randomly selected {len(selected_topics)} unused topics from {args.topics_file}")
+            else:
+                logger.error(f"Topics file is empty: {args.topics_file}")
+                sys.exit(1)
+        else:
+            logger.error(f"Topics file not found: {args.topics_file}")
+            sys.exit(1)
+
     # Run generation
     results = builder.run(
         count=count,
         dry_run=args.dry_run,
-        topics=args.topic,
+        topics=manual_topics if manual_topics else None,
+        source_file=source_file_id if args.topics_file else None,
     )
 
     # Print summary

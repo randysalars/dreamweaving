@@ -1,0 +1,54 @@
+name: "Treasure & Discovery"
+slug: "treasure"
+description: "The search for meaning, hidden value, and the joy of finding."
+emails:
+  - index: 1
+    subject: "The Archetype of the Seeker"
+    theme: "The internal drive to find what is hidden and valuable."
+    tone: "Exploratory, driven"
+    content_id: "treasure_001"
+  - index: 2
+    subject: "Hidden Values in Plain Sight"
+    theme: "Discovery as an act of seeing what is already here."
+    tone: "Observational, insightful"
+    content_id: "treasure_002"
+  - index: 3
+    subject: "The Map vs. The Territory"
+    theme: "Understanding that the search is rarely a straight line."
+    tone: "Analytical, adventurous"
+    content_id: "treasure_003"
+  - index: 4
+    subject: "The Value of Persistence"
+    theme: "Treasure is rarely found on the surface; the need to dig."
+    tone: "Persistent, deep"
+    content_id: "treasure_004"
+  - index: 5
+    subject: "Wisdom as the Ultimate Treasure"
+    theme: "Reflecting on intangible wealth vs material finding."
+    tone: "Wise, philosophical"
+    content_id: "treasure_005"
+  - index: 6
+    subject: "The Thrill of the Find"
+    theme: "Reclaiming the joy and excitement of new discovery."
+    tone: "Exciting, joyful"
+    content_id: "treasure_006"
+  - index: 7
+    subject: "Stories Behind the Objects"
+    theme: "History and meaning as the true value of any 'find'."
+    tone: "Narrative, meaningful"
+    content_id: "treasure_007"
+  - index: 8
+    subject: "Connecting the Dots"
+    theme: "Synthesis and pattern recognition as tools of discovery."
+    tone: "Intellectual, synthetic"
+    content_id: "treasure_008"
+  - index: 9
+    subject: "Leaving a Legacy of Value"
+    theme: "What treasures we leave behind for others to find."
+    tone: "Legacy-focused, thoughtful"
+    content_id: "treasure_009"
+  - index: 10
+    subject: "A Final Word on the Search"
+    theme: "The goal being the person you become while searching."
+    tone: "Final, reflective"
+    content_id: "treasure_010"

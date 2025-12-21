@@ -1,0 +1,54 @@
+name: "Survival & Self-Reliance"
+slug: "survival"
+description: "Skills, mindset, and philosophies of independence and resilience."
+emails:
+  - index: 1
+    subject: "The Psychology of Resilience"
+    theme: "Why mindset is the most important survival tool."
+    tone: "Empowering, competent, Randy's voice"
+    content_id: "survival_001"
+  - index: 2
+    subject: "The Trap of the 'Gear List'"
+    theme: "Skills outweigh gear; knowledge that doesn't weigh anything."
+    tone: "Grounded, authoritative"
+    content_id: "survival_002"
+  - index: 3
+    subject: "Survival as a Community Act"
+    theme: "Myth of the 'lone wolf'; community as foundation of true self-reliance."
+    tone: "Connective, community-focused"
+    content_id: "survival_003"
+  - index: 4
+    subject: "The Intelligence of the Hand"
+    theme: "Value of manual skills in a digital world; fixing things as freedom."
+    tone: "Practical, empowering"
+    content_id: "survival_004"
+  - index: 5
+    subject: "On Being Prepared vs. Being Paranoid"
+    theme: "Line between healthy preparedness and fear-driven obsession."
+    tone: "Life-affirming, calm"
+    content_id: "survival_005"
+  - index: 6
+    subject: "The Lessons of the Wild"
+    theme: "Nature teaching limits, cycles, and patience."
+    tone: "Naturalistic, patient"
+    content_id: "survival_006"
+  - index: 7
+    subject: "Urban Self-Reliance"
+    theme: "Resilience in cities; resourcefulness and hidden opportunities."
+    tone: "Adaptive, clever"
+    content_id: "survival_007"
+  - index: 8
+    subject: "The Luxury of Fragility"
+    theme: "Modern conveniences and fragility; joy of the difficult."
+    tone: "Satisfying, challenging"
+    content_id: "survival_008"
+  - index: 9
+    subject: "Ancestral Wisdom for Modern Problems"
+    theme: "Old world skills for a new era; reclaiming previous generations' ways."
+    tone: "Historical, wise"
+    content_id: "survival_009"
+  - index: 10
+    subject: "A Note on Lasting Security"
+    theme: "Defining true security as capability and peace of mind."
+    tone: "Secure, concluding"
+    content_id: "survival_010"

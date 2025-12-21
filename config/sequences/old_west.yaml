@@ -1,0 +1,54 @@
+name: "Old West"
+slug: "old_west"
+description: "Lessons in resilience, freedom, and the pioneer spirit."
+emails:
+  - index: 1
+    subject: "The Spirit of the Frontier"
+    theme: "Reclaiming the courage and grit of the early pioneers."
+    tone: "Rugged, courageous"
+    content_id: "old_west_001"
+  - index: 2
+    subject: "Freedom and Responsibility on the Range"
+    theme: "The direct link between personal liberty and capability."
+    tone: "Individualistic, responsible"
+    content_id: "old_west_002"
+  - index: 3
+    subject: "The Wisdom of the Trail"
+    theme: "Lessons in patience, direction, and endurance."
+    tone: "Wise, enduring"
+    content_id: "old_west_003"
+  - index: 4
+    subject: "The Code of the West"
+    theme: "Honor, integrity, and the weight of a person's word."
+    tone: "Integrity-focused, firm"
+    content_id: "old_west_004"
+  - index: 5
+    subject: "Survival in the Wilds"
+    theme: "Skills and mindset for overcoming harsh environments."
+    tone: "Survivalist, competent"
+    content_id: "old_west_005"
+  - index: 6
+    subject: "Community Among Strangers"
+    theme: "Mutual aid and trust in a frontier landscape."
+    tone: "Community-driven, trust-building"
+    content_id: "old_west_006"
+  - index: 7
+    subject: "The Lessons of the Land"
+    theme: "Respect for nature and understanding its cycles."
+    tone: "Naturalistic, respectful"
+    content_id: "old_west_007"
+  - index: 8
+    subject: "Grit: The Ability to Keep Going"
+    theme: "Perseverance in the face of inevitable difficulty."
+    tone: "Resilient, gritty"
+    content_id: "old_west_008"
+  - index: 9
+    subject: "The Myth vs. The Reality"
+    theme: "Separating Hollywood from the true history of the West."
+    tone: "Historical, analytical"
+    content_id: "old_west_009"
+  - index: 10
+    subject: "A Final Word on Lasting Independence"
+    theme: "Reclaiming the pioneer spirit in a modern world."
+    tone: "Independent, final"
+    content_id: "old_west_010"

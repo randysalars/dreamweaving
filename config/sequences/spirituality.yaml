@@ -1,0 +1,54 @@
+name: "Spirituality & Inner Growth"
+slug: "spirituality"
+description: "Exploring the sacred, the mysterious, and the cultivation of the soul."
+emails:
+  - index: 1
+    subject: "Entering the Silence"
+    theme: "The importance of quiet in hearing the inner voice."
+    tone: "Quiet, sacred"
+    content_id: "spirituality_001"
+  - index: 2
+    subject: "The Path of the Soul"
+    theme: "Spirituality as a personal, unfolding journey."
+    tone: "Exploratory, personal"
+    content_id: "spirituality_002"
+  - index: 3
+    subject: "Finding the Sacred in Every Day"
+    theme: "Breaking the divide between sacred and secular."
+    tone: "Integrative, observant"
+    content_id: "spirituality_003"
+  - index: 4
+    subject: "The Wisdom of Tradition"
+    theme: "Learning from the masters while keeping one's own voice."
+    tone: "Respectful, wise"
+    content_id: "spirituality_004"
+  - index: 5
+    subject: "On Faith and Doubt"
+    theme: "Doubt as a companion to deep, honest faith."
+    tone: "Honest, companioning"
+    content_id: "spirituality_005"
+  - index: 6
+    subject: "The Practice of Presence"
+    theme: "Spirituality as staying here, right now."
+    tone: "Present, focused"
+    content_id: "spirituality_006"
+  - index: 7
+    subject: "Navigating the Dark Night"
+    theme: "Finding meaning and growth in times of spiritual dryness."
+    tone: "Supportive, deep"
+    content_id: "spirituality_007"
+  - index: 8
+    subject: "Contribution as Worship"
+    theme: "Serving the world as an expression of the spirit."
+    tone: "Servant-oriented, spiritual"
+    content_id: "spirituality_008"
+  - index: 9
+    subject: "The Mystery of the Divine"
+    theme: "Embracing what cannot be fully named or known."
+    tone: "Mysterious, humble"
+    content_id: "spirituality_009"
+  - index: 10
+    subject: "A Final Word on Inner Peace"
+    theme: "The destination being the journey itself."
+    tone: "Peaceful, final"
+    content_id: "spirituality_010"

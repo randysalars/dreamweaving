@@ -1,0 +1,54 @@
+name: "Health & Wellness"
+slug: "health"
+description: "Holistic well-being from a perspective of personal empowerment."
+emails:
+  - index: 1
+    subject: "Health as Harmony, Not Optimization"
+    theme: "Difference between optimization and harmony mindsets."
+    tone: "Compassionate, grounded"
+    content_id: "health_001"
+  - index: 2
+    subject: "The Quiet Power of Rest"
+    theme: "Rest as a fundamental necessity; different types of rest."
+    tone: "Calming, biological"
+    content_id: "health_002"
+  - index: 3
+    subject: "Listening to the Body’s Whispers"
+    theme: "Subtle signals bodies send; daily somatic check-ins."
+    tone: "Somatic, intuitive"
+    content_id: "health_003"
+  - index: 4
+    subject: "Beyond the Plateau: The Value of Consistency"
+    theme: "Boring side of health; daily habits and the 'long game'."
+    tone: "Supportive, long-term"
+    content_id: "health_004"
+  - index: 5
+    subject: "Nutrition as Nourishment, Not Restriction"
+    theme: "Food as information, fuel, and earth connection."
+    tone: "Nourishing, earth-based"
+    content_id: "health_005"
+  - index: 6
+    subject: "The Movement of Life"
+    theme: "Movement beyond the gym; fluidity and variety."
+    tone: "Fluid, life-centered"
+    content_id: "health_006"
+  - index: 7
+    subject: "Navigating the Information Overload"
+    theme: "Returning to primary principles: sleep, sun, real food, intuition."
+    tone: "Analytical, grounded"
+    content_id: "health_007"
+  - index: 8
+    subject: "Stress as a Teacher"
+    theme: "Resilience vs stress elimination; dancing with stress."
+    tone: "Resilient, flexible"
+    content_id: "health_008"
+  - index: 9
+    subject: "The Healing Power of Nature"
+    theme: "Forest bathing and biological necessity of nature contact."
+    tone: "Natural, healing"
+    content_id: "health_009"
+  - index: 10
+    subject: "A Letter Offering Permission to be Human"
+    theme: "Inevitability of illness and aging; health as a journey."
+    tone: "Human, final"
+    content_id: "health_010"

@@ -1,0 +1,54 @@
+name: "Artificial Intelligence"
+slug: "ai"
+description: "Reflections on living and working alongside digital intelligence."
+emails:
+  - index: 1
+    subject: "The Mirror in the Machine"
+    theme: "AI reflecting human biases, hopes, and fears."
+    tone: "Letter-like, Trust-building, Evergreen"
+    content_id: "ai_001"
+  - index: 2
+    subject: "The Loss of the 'Ugly First Draft'"
+    theme: "The friction-less nature of AI generation vs. human struggle."
+    tone: "Reflective, philosophical"
+    content_id: "ai_002"
+  - index: 3
+    subject: "Will AI Replace Meaning?"
+    theme: "Distinguishing between output and meaning."
+    tone: "Reassuring, analytical"
+    content_id: "ai_003"
+  - index: 4
+    subject: "The Art of the Question (Prompting as Prayer)"
+    theme: "Prompting as an ancient art of framing questions."
+    tone: "Exploratory, poetic"
+    content_id: "ai_004"
+  - index: 5
+    subject: "On Being a 'Passive Observer'"
+    theme: "Overwhelm of the AI news cycle; intentional integration."
+    tone: "Calming, protective"
+    content_id: "ai_005"
+  - index: 6
+    subject: "The Ghost of Human Touch"
+    theme: "Value of 'hand-made' and human imperfections."
+    tone: "Nostalgic, appreciative"
+    content_id: "ai_006"
+  - index: 7
+    subject: "AI as an Intellectual Bicycle"
+    theme: "AI as a tool that amplifies human intent."
+    tone: "Thoughtful, empowering"
+    content_id: "ai_007"
+  - index: 8
+    subject: "The Ethics of the Invisible"
+    theme: "Human labor and data origins behind AI models."
+    tone: "Grounded, ethical"
+    content_id: "ai_008"
+  - index: 9
+    subject: "Learning to Learn Again"
+    theme: "How AI changes education and synthesis."
+    tone: "Future-facing, adaptive"
+    content_id: "ai_009"
+  - index: 10
+    subject: "A Quiet Invitation to Unplug"
+    theme: "Reconnecting with nature and the body."
+    tone: "Paradoxical, peaceful"
+    content_id: "ai_010"

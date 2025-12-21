@@ -1,0 +1,54 @@
+name: "Happiness & Joy"
+slug: "happiness"
+description: "Cultivating sustainable joy and finding meaning in the everyday."
+emails:
+  - index: 1
+    subject: "The Pursuit of Contentment"
+    theme: "Happiness as a byproduct of presence, not a destination."
+    tone: "Content, grounded"
+    content_id: "happiness_001"
+  - index: 2
+    subject: "Finding Joy in the Ordinary"
+    theme: "Locating the sacred in the mundane and overlooked."
+    tone: "Observational, grateful"
+    content_id: "happiness_002"
+  - index: 3
+    subject: "The Paradox of Choice"
+    theme: "How fewer options can lead to more satisfaction."
+    tone: "Simplifying, clarifying"
+    content_id: "happiness_003"
+  - index: 4
+    subject: "On Cultivating Wonder"
+    theme: "Reclaiming the child-like ability to be amazed."
+    tone: "Wondrous, open"
+    content_id: "happiness_004"
+  - index: 5
+    subject: "Happiness and Resilience"
+    theme: "Joy that stays even through difficult seasons."
+    tone: "Strong, resilient"
+    content_id: "happiness_005"
+  - index: 6
+    subject: "The Value of Play"
+    theme: "Reclaiming leisure and non-productive joy."
+    tone: "Playful, light"
+    content_id: "happiness_006"
+  - index: 7
+    subject: "Gratitude as an Anchor"
+    theme: "The practice of noticing what is already enough."
+    tone: "Grateful, anchoring"
+    content_id: "happiness_007"
+  - index: 8
+    subject: "The Social Bond of Joy"
+    theme: "Shared laughter and the collective experience of joy."
+    tone: "Collective, warm"
+    content_id: "happiness_008"
+  - index: 9
+    subject: "On Letting Light In"
+    theme: "Opening the windows of the soul to positive experience."
+    tone: "Bright, welcoming"
+    content_id: "happiness_009"
+  - index: 10
+    subject: "A Final Reflection on Lasting Peace"
+    theme: "The difference between temporary highs and deep joy."
+    tone: "Peaceful, final"
+    content_id: "happiness_010"

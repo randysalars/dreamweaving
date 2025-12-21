@@ -59,17 +59,6 @@ log "=========================================="
 log "Starting nightly generation"
 log "=========================================="
 
-# Select topic from static list (if available)
-TOPIC_FILE="${PROJECT_ROOT}/config/dreamweaving_topics.txt"
-TOPIC_ARG=()
-if [ -s "${TOPIC_FILE}" ]; then
-    SELECTED_TOPIC=$(shuf -n 1 "${TOPIC_FILE}" | tr -d '\r')
-    log "Selected topic: ${SELECTED_TOPIC}"
-    TOPIC_ARG=(--topic "${SELECTED_TOPIC}")
-else
-    log "Topic file missing or empty: ${TOPIC_FILE}"
-fi
-
 # Activate virtual environment
 log "Activating virtual environment..."
 source "${VENV_PATH}/bin/activate"
@@ -85,9 +74,19 @@ if [ -f "${PROJECT_ROOT}/.env" ]; then
     set +a
 fi
 
-# Run nightly builder
+# Use topics.txt file for ALL sessions (bypass Notion entirely)
+TOPIC_FILE="${PROJECT_ROOT}/config/dreamweaving_topics.txt"
+if [ ! -s "${TOPIC_FILE}" ]; then
+    log "ERROR: Topic file missing or empty: ${TOPIC_FILE}"
+    exit 1
+fi
+
+log "Using topics from file: ${TOPIC_FILE}"
+
+# Run nightly builder with topics-file argument to use ONLY the text file
 log "Running nightly builder..."
 CMD=(python3 -m scripts.automation.nightly_builder)
+CMD+=(--topics-file "${TOPIC_FILE}")
 # Only add --count if explicitly specified (otherwise use config file value)
 if [ -n "${COUNT}" ]; then
     CMD+=(--count "${COUNT}")
@@ -95,7 +94,6 @@ fi
 if [ -n "${DRY_RUN}" ]; then
     CMD+=("--dry-run")
 fi
-CMD+=("${TOPIC_ARG[@]}")
 
 "${CMD[@]}" 2>&1 | tee -a "${LOG_FILE}"
 

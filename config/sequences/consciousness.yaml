@@ -1,0 +1,54 @@
+name: "Learning & Consciousness"
+slug: "consciousness"
+description: "Exploring the inner frontier of the mind and awareness."
+emails:
+  - index: 1
+    subject: "The Art of Unlearning"
+    theme: "Letting go of old mental models for new growth."
+    tone: "Philosophical, open"
+    content_id: "consciousness_001"
+  - index: 2
+    subject: "Attention as Your Primary Currency"
+    theme: "Cultivating deep attention in a distracted world."
+    tone: "Reflective, focused"
+    content_id: "consciousness_002"
+  - index: 3
+    subject: "The Wisdom of the Body"
+    theme: "Somatic intelligence vs purely intellectual learning."
+    tone: "Grounded, intuitive"
+    content_id: "consciousness_003"
+  - index: 4
+    subject: "Curiosity Without an Agenda"
+    theme: "The joy of learning something 'useless' for its own sake."
+    tone: "Playful, non-pressured"
+    content_id: "consciousness_004"
+  - index: 5
+    subject: "On Being a Beginner (Again)"
+    theme: "The power and freedom of 'beginner's mind'."
+    tone: "Vulnerable, empowering"
+    content_id: "consciousness_005"
+  - index: 6
+    subject: "The Architecture of Silence"
+    theme: "Relationship between quiet moments and mental integration."
+    tone: "Quiet, deep"
+    content_id: "consciousness_006"
+  - index: 7
+    subject: "Navigating the Inner Landscape"
+    theme: "Various states of consciousness experienced daily."
+    tone: "Gentle, exploratory"
+    content_id: "consciousness_007"
+  - index: 8
+    subject: "The Trap of 'Betterment'"
+    theme: "Awareness of current reality over fixed 'self-improvement'."
+    tone: "Analytical, honest"
+    content_id: "consciousness_008"
+  - index: 9
+    subject: "Learning as a Relational Act"
+    theme: "Interconnectedness of all knowledge and learning from others."
+    tone: "Spiritual, connected"
+    content_id: "consciousness_009"
+  - index: 10
+    subject: "A Letter Offering Permission to Simply Be"
+    theme: "Reminding the reader they are already whole."
+    tone: "Peaceful, final"
+    content_id: "consciousness_010"

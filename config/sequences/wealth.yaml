@@ -1,0 +1,54 @@
+name: "Wealth & Abundance"
+slug: "wealth"
+description: "Philosophy of wealth, psychology of money, and abundance mindset."
+emails:
+  - index: 1
+    subject: "The Value of Inner Wealth"
+    theme: "External wealth built on character, knowledge, and peace."
+    tone: "Wise, balanced"
+    content_id: "wealth_001"
+  - index: 2
+    subject: "Scarcity vs. Abundance: A Mental Shift"
+    theme: "Psychology of scarcity vs abundance perception."
+    tone: "Abundant, shifting"
+    content_id: "wealth_002"
+  - index: 3
+    subject: "Money as a Mirror"
+    theme: "Spending patterns reflecting beliefs about worth and security."
+    tone: "Analytical, study-oriented"
+    content_id: "wealth_003"
+  - index: 4
+    subject: "The Wealth of Time"
+    theme: "Trading earning for time; time as ultimate non-renewable resource."
+    tone: "Temporal, valuing"
+    content_id: "wealth_004"
+  - index: 5
+    subject: "On Being a 'Steward' of Resources"
+    theme: "Stewardship vs ownership; using resources for value and love."
+    tone: "Stewardly, caring"
+    content_id: "wealth_005"
+  - index: 6
+    subject: "The Trap of 'Enough'"
+    theme: "Defining 'enough' independent of cultural comparison."
+    tone: "Contented, independent"
+    content_id: "wealth_006"
+  - index: 7
+    subject: "Wealth and Contribution"
+    theme: "Creating value for others; wealth as byproduct of service."
+    tone: "Servant-oriented, productive"
+    content_id: "wealth_007"
+  - index: 8
+    subject: "The Psychology of Risk and Safety"
+    theme: "Fear of loss vs psychological safety in wealth-building."
+    tone: "Safe, psychological"
+    content_id: "wealth_008"
+  - index: 9
+    subject: "Generosity as an Abundance Practice"
+    theme: "Paradox of giving; breaking poverty mindset via generosity."
+    tone: "Generous, practice-oriented"
+    content_id: "wealth_009"
+  - index: 10
+    subject: "A Note on the Limitations of Money"
+    theme: "What money can't buy; money as container for life."
+    tone: "Limiting, final"
+    content_id: "wealth_010"

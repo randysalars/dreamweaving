@@ -1,0 +1,54 @@
+name: "Love & Relationships"
+slug: "love"
+description: "Reflections on deep connection, intimacy, and the art of relating."
+emails:
+  - index: 1
+    subject: "The Mirror of Relationship"
+    theme: "How our closest bonds reflect our own inner state."
+    tone: "Intimate, reflective"
+    content_id: "love_001"
+  - index: 2
+    subject: "Love as a Practice, Not a Feeling"
+    theme: "Love as a deliberate choice and daily action."
+    tone: "Commitment-focused, practical"
+    content_id: "love_002"
+  - index: 3
+    subject: "The Value of Conscious Conflict"
+    theme: "Using disagreement as a tool for deeper understanding."
+    tone: "Analytical, growth-oriented"
+    content_id: "love_003"
+  - index: 4
+    subject: "On Deep Listening"
+    theme: "The transformative power of truly hearing another."
+    tone: "Quiet, presence-based"
+    content_id: "love_004"
+  - index: 5
+    subject: "The Architecture of Intimacy"
+    theme: "Building trust through small, consistent moments."
+    tone: "Trust-building, gentle"
+    content_id: "love_005"
+  - index: 6
+    subject: "On Letting Go and Holding Fast"
+    theme: "The balance between attachment and freedom."
+    tone: "Balanced, wise"
+    content_id: "love_006"
+  - index: 7
+    subject: "The Language of Needs"
+    theme: "Communicating desires without blame or expectation."
+    tone: "Clear, compassionate"
+    content_id: "love_007"
+  - index: 8
+    subject: "Love and Forgiveness"
+    theme: "Releasing the past to make room for the present."
+    tone: "Healing, forgiving"
+    content_id: "love_008"
+  - index: 9
+    subject: "The Community of the Heart"
+    theme: "Beyond the romantic: the importance of deep friendship."
+    tone: "Expansive, warm"
+    content_id: "love_009"
+  - index: 10
+    subject: "A Reflection on Eternal Connection"
+    theme: "The lasting impact of love beyond time and space."
+    tone: "Eternal, final"
+    content_id: "love_010"
