@@ -96,6 +96,17 @@ function extractAmount(resource: Record<string, unknown> | undefined): { amount:
   return { amount: Number.isFinite(n) ? n : null, currency };
 }
 
+function extractDisputeTxnId(resource: Record<string, unknown> | undefined): string | null {
+  // PayPal dispute webhooks typically include disputed_transactions[].seller_transaction_id
+  const byPath =
+    readNestedString(resource, ["disputed_transactions", "0", "seller_transaction_id"]) ||
+    readNestedString(resource, ["disputed_transactions", "0", "transaction_id"]) ||
+    readNestedString(resource, ["disputed_transactions", "0", "paypal_transaction_id"]) ||
+    null;
+  if (byPath) return byPath;
+  return readString(resource, "dispute_id") || readString(resource, "id") || null;
+}
+
 function tryParseCustom(customId: string | null): Record<string, unknown> {
   if (!customId) return {};
   const trimmed = customId.trim();
@@ -148,6 +159,15 @@ export async function POST(request: NextRequest) {
 
   const { amount, currency } = extractAmount(resource);
 
+  const customerEmail =
+    readNestedString(resource, ["payer", "email_address"]) ||
+    readNestedString(resource, ["payer", "payer_info", "email"]) ||
+    null;
+  const customerPhone =
+    readNestedString(resource, ["payer", "phone", "phone_number", "national_number"]) ||
+    readNestedString(resource, ["payer", "payer_info", "phone"]) ||
+    null;
+
   const customId =
     readString(resource, "custom_id") ||
     readNestedString(resource, ["purchase_units", "0", "custom_id"]) ||
@@ -178,19 +198,27 @@ export async function POST(request: NextRequest) {
         ? "pending"
         : eventType === "PAYMENT.CAPTURE.REFUNDED"
           ? "refund_issued"
-          : eventType === "PAYMENT.CAPTURE.DENIED" || eventType === "CHECKOUT.PAYMENT-APPROVAL.REVERSED"
-            ? "failed"
+        : eventType === "PAYMENT.CAPTURE.DENIED" || eventType === "CHECKOUT.PAYMENT-APPROVAL.REVERSED"
+          ? "failed"
+        : eventType === "CUSTOMER.DISPUTE.CREATED" || eventType === "CUSTOMER.DISPUTE.UPDATED"
+          ? "chargeback_received"
+          : eventType === "CUSTOMER.DISPUTE.RESOLVED"
+            ? "chargeback_received"
             : null;
 
   if (!status) {
     return NextResponse.json({ ok: true, ignored: true });
   }
 
+  // For dispute events, providerTxnId should map to the seller_transaction_id / capture id where possible.
+  const resolvedProviderTxnId =
+    eventType.startsWith("CUSTOMER.DISPUTE.") ? extractDisputeTxnId(resource) || providerTxnId : providerTxnId;
+
   await applyPaymentEvent({
     provider: "paypal",
     providerEventId: providerEventId,
     providerEventType: eventType,
-    providerTxnId: providerTxnId,
+    providerTxnId: resolvedProviderTxnId,
     orderId: orderId,
     sessionId: sessionId,
     userId: null,
@@ -198,6 +226,8 @@ export async function POST(request: NextRequest) {
     amount,
     currency,
     productSku,
+    customerEmail,
+    customerPhone,
     attrib,
     raw: event as unknown as Record<string, unknown>,
   });

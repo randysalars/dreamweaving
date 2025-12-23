@@ -23,6 +23,8 @@ function statusFromStripeEventType(type: string): PaymentStatus | null {
       return "refund_issued";
     case "charge.dispute.created":
       return "chargeback_received";
+    case "early_fraud_warning.created":
+      return "early_fraud_warning";
     default:
       return null;
   }
@@ -44,6 +46,42 @@ function readMetadata(obj: unknown): Record<string, string> {
     if (typeof v === "string") out[k] = v;
   }
   return out;
+}
+
+function readString(obj: unknown, key: string): string | null {
+  if (!obj || typeof obj !== "object") return null;
+  const rec = obj as Record<string, unknown>;
+  const v = rec[key];
+  return typeof v === "string" && v ? v : null;
+}
+
+function readNestedString(obj: unknown, path: string[]): string | null {
+  let cur: unknown = obj;
+  for (const part of path) {
+    if (cur && typeof cur === "object" && part in (cur as Record<string, unknown>)) {
+      cur = (cur as Record<string, unknown>)[part];
+    } else {
+      return null;
+    }
+  }
+  return typeof cur === "string" && cur ? cur : null;
+}
+
+function extractEmailAndPhone(obj: unknown): { email: string | null; phone: string | null } {
+  // Checkout Session:
+  const sessionEmail =
+    readNestedString(obj, ["customer_details", "email"]) || readString(obj, "customer_email") || null;
+  const sessionPhone = readNestedString(obj, ["customer_details", "phone"]) || null;
+  if (sessionEmail || sessionPhone) return { email: sessionEmail, phone: sessionPhone };
+
+  // PaymentIntent / Charge:
+  const chargeEmail = readNestedString(obj, ["charges", "data", "0", "billing_details", "email"]);
+  const chargePhone = readNestedString(obj, ["charges", "data", "0", "billing_details", "phone"]);
+  return { email: chargeEmail, phone: chargePhone };
+}
+
+function isRecord(v: unknown): v is Record<string, unknown> {
+  return Boolean(v) && typeof v === "object";
 }
 
 export async function POST(request: NextRequest) {
@@ -73,6 +111,7 @@ export async function POST(request: NextRequest) {
   const orderId = metadata.order_id || null;
   const sessionId = metadata.session_id || null;
   const productSku = metadata.product_sku || null;
+  const { email: customerEmail, phone: customerPhone } = extractEmailAndPhone(object);
 
   let providerTxnId: string | null = null;
   let amount: number | null = null;
@@ -90,6 +129,15 @@ export async function POST(request: NextRequest) {
     providerTxnId = (object.payment_intent as string | undefined) || (object.id as string | undefined) || null;
     amount = numFromCents(object.amount_refunded ?? object.amount);
     currency = (typeof object.currency === "string" && object.currency) || null;
+  } else if ((event.type as string) === "early_fraud_warning.created") {
+    providerTxnId =
+      (object.payment_intent as string | undefined) ||
+      (object.charge as string | undefined) ||
+      (object.id as string | undefined) ||
+      null;
+    const chargeObj = isRecord(object.charge) ? (object.charge as Record<string, unknown>) : null;
+    amount = chargeObj ? numFromCents(chargeObj.amount) : null;
+    currency = chargeObj && typeof chargeObj.currency === "string" ? chargeObj.currency : null;
   }
 
   const attrib = {
@@ -116,6 +164,8 @@ export async function POST(request: NextRequest) {
     amount,
     currency,
     productSku,
+    customerEmail,
+    customerPhone,
     attrib,
     raw: event as unknown as Record<string, unknown>,
   });

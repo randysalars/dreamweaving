@@ -16,6 +16,12 @@ This is a first-party, privacy-respecting tracking stack for Dreamweaver on Verc
    - `web-ui/migrations/002_dw_events_nullable_session.sql`
    - `web-ui/migrations/003_dw_webhook_events.sql`
    - `web-ui/migrations/004_dw_fulfillments.sql`
+   - `web-ui/migrations/005_dw_risk.sql`
+   - `web-ui/migrations/006_dw_order_confirmations.sql`
+   - `web-ui/migrations/007_dw_evidence_artifacts.sql`
+   - `web-ui/migrations/008_dw_fulfillment_revocation.sql`
+   - `web-ui/migrations/009_dw_device_signals.sql`
+   - `web-ui/migrations/010_dw_device_signals_ip_reputation.sql`
 
 Neon console: paste + run each file in the SQL editor.
 
@@ -30,6 +36,7 @@ Optional (PayPal webhooks):
 - `PAYPAL_CLIENT_SECRET`
 - `PAYPAL_WEBHOOK_ID`
 - `PAYPAL_ALLOW_UNVERIFIED_WEBHOOKS` = `true` (development only; do not enable in production)
+These are also used for PayPal refunds via the admin/cron workflows.
 
 Optional (Stripe webhooks):
 - `STRIPE_SECRET_KEY`
@@ -37,6 +44,35 @@ Optional (Stripe webhooks):
 
 Optional (Bitcoin invoice webhooks):
 - `BTC_WEBHOOK_SECRET` (HMAC secret for `x-dw-signature`)
+
+Optional (Admin / chargeback prevention):
+- `DW_ADMIN_TOKEN` (shared secret for `/api/admin/*` endpoints)
+
+Optional (Order confirmation / webhooks):
+- `DW_PUBLIC_BASE_URL` (e.g. `https://www.salars.net`; used to generate confirmation links in webhooks)
+- `DW_CONFIRM_SUCCESS_URL` (optional redirect after confirm; e.g. `https://www.salars.net/thank-you`)
+- `DW_CONFIRMATION_WEBHOOK_URL` (optional: POST payload to your email sender service)
+- `DW_CONFIRMATION_WEBHOOK_SECRET` (optional: sent as `x-dw-signature`)
+- `DW_CONFIRM_TOKEN_SALT` (optional; defaults to `DW_IP_HASH_SALT`)
+- `DW_CONFIRM_TOKEN_TTL_HOURS` (optional; default `48`)
+
+Optional (Receipt / evidence artifacts):
+- `DW_MERCHANT_DESCRIPTOR` (exact statement descriptor / merchant name)
+- `DW_POLICY_URL` (refund/terms page URL)
+- `DW_SUPPORT_EMAIL` and/or `DW_SUPPORT_URL`
+- `DW_RECEIPT_WEBHOOK_URL` and `DW_RECEIPT_WEBHOOK_SECRET` (optional: send receipt artifact to an email service)
+
+Stage 4 (pre-dispute interception / auto-refunds):
+- `DW_CRON_SECRET` (required for `/api/admin/cron/*` endpoints; sent as `x-dw-cron-secret`)
+- `DW_AUTO_REFUND_UNCONFIRMED_HOURS` (default `24`)
+- `DW_CRON_BATCH_LIMIT` (default `50`)
+
+Stage 1 (device/bot scoring):
+- `RECAPTCHA_SECRET_KEY` (required to verify reCAPTCHA v3 tokens server-side)
+- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` (used in the browser to generate tokens)
+- `DW_IP_REPUTATION_URL` (optional; POST `{ip}` and return JSON with `vpn_suspected/proxy_suspected/tor_suspected/ip_risk_score/ip_country/ip_asn/ip_org`)
+- `DW_IP_REPUTATION_TOKEN` (optional bearer token)
+- `DW_IP_REPUTATION_CACHE_TTL_MS` (optional; default ~10m)
 
 ## 3) Client tracking (already wired)
 `web-ui/src/components/Analytics.tsx` is mounted in `web-ui/src/app/layout.tsx`.
@@ -88,6 +124,11 @@ This repo includes:
 - `POST /api/orders` to create a `dw_orders` row and return `paypal_custom_id` + `stripe_metadata` for attribution.
 - `POST /api/webhooks/paypal`, `POST /api/webhooks/stripe`, `POST /api/webhooks/bitcoin` to emit canonical server-side events.
 - Fulfillment: on `payment_completed` the server issues an idempotent unlock token in `dw_fulfillments` and emits `content_unlock`.
+
+## 5c) Delivery proof (digital goods)
+To generate dispute-grade evidence, your product delivery layer can call:
+- `POST /api/unlock` (simple: validates `unlock_token`, logs `content_access`)
+- `POST /api/content/event` (richer: `play_start`, `play_end`, `download`, durations)
 
 See `web-ui/PAYMENTS_WEBHOOKS.md` for the provider event mapping and verification rules.
 

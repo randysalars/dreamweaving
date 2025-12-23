@@ -22,6 +22,34 @@ On `payment_completed`:
 - Issue one unlock token in `dw_fulfillments(order_id)` (unique)
 - Emit `dw_events: content_unlock` with `{ order_id, product_sku, unlock_token }`
 
+## Chargeback prevention (risk holds)
+On `payment_completed`, the server runs a risk check and may hold fulfillment:
+- `dw_events: risk_assessed` (score + decision)
+- `dw_events: fulfillment_held` when held (manual release required)
+
+If the decision is `require_email_confirmation`, fulfillment is held until the buyer clicks an email confirmation link:
+- `POST /api/orders/:orderId/request-confirmation` (generates a token + confirm URL for sending)
+- UI confirm: `/confirm?token=...&order_id=...` (page POSTs token to server and releases fulfillment)
+- (Legacy) `GET /api/orders/confirm?token=...&order_id=...` (still supported)
+
+Manual release endpoint:
+- `POST /api/admin/orders/:orderId/release-hold` (requires `DW_ADMIN_TOKEN` header `x-dw-admin-token`)
+
+Evidence packet (admin):
+- `GET /api/admin/orders/:orderId/evidence-packet` (requires `DW_ADMIN_TOKEN`)
+
+Manual review helpers (admin):
+- `GET /api/admin/orders/holds` (requires `DW_ADMIN_TOKEN`)
+- `POST /api/admin/orders/:orderId/refund` (Stripe/PayPal; requires `DW_ADMIN_TOKEN`)
+- `POST /api/admin/orders/:orderId/resend-confirmation` (email-confirm holds; requires `DW_ADMIN_TOKEN`)
+- UI: `/admin/holds` (paste token; review/release/refund + view evidence packet)
+
+reCAPTCHA verification (optional helper):
+- `POST /api/verify/recaptcha` (server-side verify; requires `RECAPTCHA_SECRET_KEY`)
+
+Auto-refund cron (unconfirmed email holds):
+- `POST /api/admin/cron/process-holds` (requires `DW_CRON_SECRET` header `x-dw-cron-secret`)
+
 ## Shared primitives
 - Create an order: `POST /api/orders`
 - Webhooks:
@@ -59,7 +87,17 @@ Report only what you observe, including key request URLs + status codes.
 Client/server calls:
 `POST /api/orders` with JSON:
 ```json
-{ "provider":"stripe", "amount":25, "currency":"USD", "product_sku":"xmas_light", "attrib": { "utm_source":"facebook" } }
+{
+  "provider":"stripe",
+  "amount":25,
+  "currency":"USD",
+  "product_sku":"xmas_light",
+  "policy_version":"v1",
+  "recaptcha_token":"<client_token>",
+  "recaptcha_action":"checkout_start",
+  "device_signals": { "vpn_suspected": false },
+  "attrib": { "utm_source":"facebook" }
+}
 ```
 
 Response includes:
@@ -68,6 +106,19 @@ Response includes:
 - `stripe_metadata` (object for Stripe metadata)
 
 Use these as the “attribution snapshot” you attach to the provider checkout object so webhooks can map back to your `dw_orders`.
+
+### reCAPTCHA v3 (optional, recommended)
+If you have a browser frontend that calls `POST /api/orders`, generate a token client-side and send it as `recaptcha_token` + `recaptcha_action`.
+
+Helper (client): `web-ui/src/lib/analytics/recaptchaClient.ts`
+```ts
+import { getRecaptchaToken } from "@/lib/analytics/recaptchaClient";
+
+const token = await getRecaptchaToken({
+  siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
+  action: "checkout_start",
+});
+```
 
 ## Stripe
 
@@ -107,6 +158,9 @@ To attach attribution, set Stripe metadata when creating Checkout Session / Paym
 - `CHECKOUT.ORDER.APPROVED` (optional signal; not “paid”)
 - `CHECKOUT.PAYMENT-APPROVAL.REVERSED` (optional)
 - `PAYMENT.CAPTURE.REFUNDED` (refund)
+- `CUSTOMER.DISPUTE.CREATED` (dispute)
+- `CUSTOMER.DISPUTE.UPDATED` (dispute)
+- `CUSTOMER.DISPUTE.RESOLVED` (dispute)
 
 ### Verify
 PayPal signature verification via PayPal API:
