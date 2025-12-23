@@ -3,7 +3,7 @@
 Dreamweaving Production Voice Generator
 
 This is the CANONICAL script for generating voice tracks. It automatically:
-1. Uses the production standard voice (en-US-Neural2-H - bright female)
+1. Uses Coqui TTS (XTTS v2) as the default provider (free, local)
 2. Applies voice enhancement for natural, warm sound
 3. Outputs both WAV and MP3 formats
 
@@ -14,18 +14,21 @@ Usage:
     python scripts/core/generate_voice.py sessions/my-session/working_files/script.ssml sessions/my-session/output
 
 Options:
-    --voice         Override voice (default: en-US-Neural2-H)
-    --rate          Speaking rate (default: 0.88)
+    --provider      TTS provider: 'coqui' (default) or 'google'
+    --rate          Speaking rate (default: 0.95 for coqui, 0.88 for google)
     --pitch         Pitch in semitones (default: 0)
     --skip-enhance  Skip voice enhancement (not recommended)
     --enhance-only  Only run enhancement on existing voice.mp3
 
 Examples:
-    # Standard production voice generation
+    # Standard production voice generation (uses Coqui)
     python scripts/core/generate_voice.py sessions/iron-soul-forge/working_files/script.ssml sessions/iron-soul-forge/output
 
+    # Use Google Cloud TTS instead
+    python scripts/core/generate_voice.py script.ssml output/ --provider google
+
     # Custom settings (still applies enhancement)
-    python scripts/core/generate_voice.py script.ssml output/ --rate 0.85 --pitch -1
+    python scripts/core/generate_voice.py script.ssml output/ --rate 0.90
 """
 
 import argparse
@@ -39,21 +42,35 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.core.generate_audio_chunked import synthesize_ssml_file_chunked
 from scripts.core.audio.voice_enhancement import enhance_voice
 
 
 # =============================================================================
-# PRODUCTION VOICE SETTINGS
+# PRODUCTION SETTINGS
 # =============================================================================
 
-PRODUCTION_VOICE = {
-    'name': 'en-US-Neural2-H',      # Bright, clear female voice
-    'speaking_rate': 0.88,           # Slightly slow for clarity
-    'pitch': 0.0,                    # Natural pitch (not lowered)
-    'sample_rate_hz': 24000,
-    'effects_profile': ['headphone-class-device'],
+# Default TTS provider
+DEFAULT_PROVIDER = 'coqui'
+DEFAULT_QUALITY = 'hypnotic'  # Quality preset for Coqui TTS
+
+# Provider-specific settings
+PROVIDER_SETTINGS = {
+    'coqui': {
+        'speaking_rate': 0.95,      # Slightly slower for natural pacing
+        'pitch': 0.0,
+        'quality_preset': 'hypnotic',  # Default quality preset
+    },
+    'google': {
+        'name': 'en-US-Neural2-H',  # Bright, clear female voice
+        'speaking_rate': 0.88,      # Google needs slower rate
+        'pitch': 0.0,
+        'sample_rate_hz': 24000,
+        'effects_profile': ['headphone-class-device'],
+    }
 }
+
+# Quality presets for Coqui TTS (affects naturalness and consistency)
+QUALITY_PRESETS = ['hypnotic', 'natural', 'expressive']
 
 ENHANCEMENT_SETTINGS = {
     'apply_warmth': True,
@@ -75,19 +92,19 @@ ENHANCEMENT_SETTINGS = {
 }
 
 
-def print_header():
+def print_header(provider: str):
     """Print script header."""
     print("=" * 70)
     print("   DREAMWEAVING PRODUCTION VOICE GENERATOR")
-    print("   Consistent voice + automatic enhancement")
+    print(f"   Provider: {provider.upper()} | Enhancement: Enabled")
     print("=" * 70)
     print()
 
 
-def print_settings(voice_name, speaking_rate, pitch, enhance):
+def print_settings(provider, speaking_rate, pitch, enhance):
     """Print current settings."""
     print("Production Settings:")
-    print(f"  Voice: {voice_name}")
+    print(f"  Provider: {provider}")
     print(f"  Speaking Rate: {speaking_rate}x")
     print(f"  Pitch: {pitch} semitones")
     print(f"  Enhancement: {'Enabled' if enhance else 'Disabled'}")
@@ -97,11 +114,12 @@ def print_settings(voice_name, speaking_rate, pitch, enhance):
 def generate_voice(
     ssml_path: str,
     output_dir: str,
-    voice_name: str = None,
+    provider: str = None,
     speaking_rate: float = None,
     pitch: float = None,
     apply_enhancement: bool = True,
-    enhance_only: bool = False
+    enhance_only: bool = False,
+    quality_preset: str = None
 ) -> dict:
     """
     Generate production-quality voice track with enhancement.
@@ -109,19 +127,25 @@ def generate_voice(
     Args:
         ssml_path: Path to SSML script
         output_dir: Output directory
-        voice_name: Override voice (default: production voice)
+        provider: TTS provider ('coqui' or 'google')
         speaking_rate: Override speaking rate
         pitch: Override pitch
         apply_enhancement: Whether to apply voice enhancement
         enhance_only: Only run enhancement on existing voice.mp3
+        quality_preset: Quality preset for Coqui ('hypnotic', 'natural', 'expressive')
 
     Returns:
         Dict with output file paths and metadata
     """
-    # Use production defaults if not overridden
-    voice_name = voice_name or PRODUCTION_VOICE['name']
-    speaking_rate = speaking_rate if speaking_rate is not None else PRODUCTION_VOICE['speaking_rate']
-    pitch = pitch if pitch is not None else PRODUCTION_VOICE['pitch']
+    # Import provider here to avoid loading TTS unless needed
+    from scripts.core.tts_provider import get_tts_provider
+
+    # Use defaults if not specified
+    provider = provider or DEFAULT_PROVIDER
+    quality_preset = quality_preset or DEFAULT_QUALITY
+    provider_settings = PROVIDER_SETTINGS.get(provider, PROVIDER_SETTINGS['coqui'])
+    speaking_rate = speaking_rate if speaking_rate is not None else provider_settings['speaking_rate']
+    pitch = pitch if pitch is not None else provider_settings.get('pitch', 0.0)
 
     # Ensure output directory exists
     output_dir = Path(output_dir)
@@ -136,10 +160,11 @@ def generate_voice(
         'voice_raw': str(voice_raw_mp3),
         'voice_enhanced_wav': str(voice_enhanced_wav),
         'voice_enhanced_mp3': str(voice_enhanced_mp3),
-        'voice_name': voice_name,
+        'provider': provider,
         'speaking_rate': speaking_rate,
         'pitch': pitch,
         'enhanced': apply_enhancement,
+        'quality_preset': quality_preset,
     }
 
     # Step 1: Generate raw TTS voice (unless enhance_only)
@@ -147,15 +172,22 @@ def generate_voice(
         print("STEP 1: Generating TTS voice...")
         print("-" * 40)
 
-        synthesize_ssml_file_chunked(
-            ssml_filepath=ssml_path,
-            output_filepath=str(voice_raw_mp3),
-            voice_name=voice_name,
-            speaking_rate=speaking_rate,
-            pitch=pitch,
-            sample_rate_hz=PRODUCTION_VOICE['sample_rate_hz'],
-            effects_profile_id=PRODUCTION_VOICE['effects_profile']
-        )
+        try:
+            tts = get_tts_provider(provider)
+            print(f"Using {tts.get_name()} TTS provider")
+
+            tts.synthesize(
+                ssml_path=Path(ssml_path),
+                output_path=voice_raw_mp3,
+                speaking_rate=speaking_rate,
+                pitch=pitch,
+                quality_preset=quality_preset,
+                **({k: v for k, v in provider_settings.items()
+                    if k not in ['speaking_rate', 'pitch', 'quality_preset']})
+            )
+        except Exception as e:
+            print(f"ERROR: TTS synthesis failed: {e}")
+            return None
 
         if not voice_raw_mp3.exists():
             print("ERROR: Voice generation failed!")
@@ -194,9 +226,9 @@ def generate_voice(
         subprocess.run(cmd, capture_output=True)
 
         if voice_enhanced_mp3.exists():
-            print(f"  ✓ MP3 created: {voice_enhanced_mp3}")
+            print(f"  Created: {voice_enhanced_mp3}")
         else:
-            print("  ✗ MP3 conversion failed")
+            print("  MP3 conversion failed")
 
     # Get duration
     try:
@@ -223,11 +255,14 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Standard production voice
+  # Standard production voice (uses Coqui TTS - free, local)
   python generate_voice.py sessions/my-session/working_files/script.ssml sessions/my-session/output
 
-  # Custom rate and pitch
-  python generate_voice.py script.ssml output/ --rate 0.85 --pitch -1
+  # Use Google Cloud TTS instead
+  python generate_voice.py script.ssml output/ --provider google
+
+  # Custom rate
+  python generate_voice.py script.ssml output/ --rate 0.90
 
   # Only enhance existing voice.mp3
   python generate_voice.py script.ssml output/ --enhance-only
@@ -236,12 +271,14 @@ Examples:
 
     parser.add_argument('ssml_path', help="Path to SSML script file")
     parser.add_argument('output_dir', help="Output directory for voice files")
-    parser.add_argument('--voice', default=None,
-                       help=f"Voice name (default: {PRODUCTION_VOICE['name']})")
+    parser.add_argument('--provider', choices=['coqui', 'google'], default=DEFAULT_PROVIDER,
+                       help=f"TTS provider (default: {DEFAULT_PROVIDER})")
+    parser.add_argument('--quality', choices=QUALITY_PRESETS, default=DEFAULT_QUALITY,
+                       help=f"Voice quality preset for Coqui: hypnotic (stable), natural (balanced), expressive (varied). Default: {DEFAULT_QUALITY}")
     parser.add_argument('--rate', type=float, default=None,
-                       help=f"Speaking rate (default: {PRODUCTION_VOICE['speaking_rate']})")
+                       help="Speaking rate (default: 0.95 for coqui, 0.88 for google)")
     parser.add_argument('--pitch', type=float, default=None,
-                       help=f"Pitch in semitones (default: {PRODUCTION_VOICE['pitch']})")
+                       help="Pitch in semitones (default: 0)")
     parser.add_argument('--skip-enhance', action='store_true',
                        help="Skip voice enhancement (not recommended)")
     parser.add_argument('--enhance-only', action='store_true',
@@ -254,28 +291,32 @@ Examples:
         print(f"ERROR: SSML file not found: {args.ssml_path}")
         sys.exit(1)
 
-    print_header()
-    print_settings(
-        args.voice or PRODUCTION_VOICE['name'],
-        args.rate or PRODUCTION_VOICE['speaking_rate'],
-        args.pitch or PRODUCTION_VOICE['pitch'],
-        not args.skip_enhance
-    )
+    # Get provider settings for defaults
+    provider_settings = PROVIDER_SETTINGS.get(args.provider, PROVIDER_SETTINGS['coqui'])
+    rate = args.rate or provider_settings['speaking_rate']
+    pitch = args.pitch or provider_settings.get('pitch', 0.0)
+
+    print_header(args.provider)
+    print_settings(args.provider, rate, pitch, not args.skip_enhance)
+    if args.provider == 'coqui':
+        print(f"  Quality Preset: {args.quality}")
+        print()
 
     result = generate_voice(
         ssml_path=args.ssml_path,
         output_dir=args.output_dir,
-        voice_name=args.voice,
+        provider=args.provider,
         speaking_rate=args.rate,
         pitch=args.pitch,
         apply_enhancement=not args.skip_enhance,
-        enhance_only=args.enhance_only
+        enhance_only=args.enhance_only,
+        quality_preset=args.quality  # Pass quality preset to provider
     )
 
     if result:
         print()
         print("=" * 70)
-        print("✅ VOICE GENERATION COMPLETE")
+        print("VOICE GENERATION COMPLETE")
         print("=" * 70)
         print()
         print("Output Files:")
@@ -285,12 +326,14 @@ Examples:
             print(f"  Enhanced (MP3): {result['voice_enhanced_mp3']}")
         print()
         print(f"Duration: {result['duration_minutes']:.1f} minutes")
-        print(f"Voice: {result['voice_name']}")
+        print(f"Provider: {result['provider']}")
+        if result.get('quality_preset'):
+            print(f"Quality: {result['quality_preset']}")
         print()
-        print("🎧 Use the enhanced MP3 for production!")
+        print("Use the enhanced MP3 for production!")
     else:
         print()
-        print("❌ Voice generation failed!")
+        print("Voice generation failed!")
         sys.exit(1)
 
 

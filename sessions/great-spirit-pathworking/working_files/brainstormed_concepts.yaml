@@ -1,0 +1,1297 @@
+- title: Great Spirit Pathworking
+  theme: Great Spirit Pathworking
+  metaphor: a sacred journey through cosmic realms toward purpose
+  therapeutic_goal: purpose
+  setting: on a sacred path that winds through realms of transformation, where each
+    step brings you closer to your truest self
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: oracle_seer.oracle_of_light
+    name: The Oracle of Light
+    family: oracle_seer
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, in the distance...<break time="2s"/>
+
+        you see a figure clothed in light...<break time="2s"/>
+
+        The Oracle approaches...<break time="1.5s"/>
+
+        with eyes that see beyond time...<break time="2s"/>
+
+        beyond space...<break time="1.5s"/>
+
+        beyond all illusion...<break time="2s"/>
+
+        and those eyes now rest upon you...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Oracle returns...<break time="1.5s"/>
+
+        those luminous eyes you know...<break time="2s"/>
+
+        your ability to hear truth...<break time="1.5s"/>
+
+        growing stronger with each meeting...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Oracle speaks now...<break time="2s"/>
+
+        and what you hear...<break time="1.5s"/>
+
+        is something you already knew...<break time="2s"/>
+
+        but had forgotten...<break time="2s"/>
+
+        truth returning home...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Crystal singing bowl, wind chimes, ethereal tones
+      visual_imagery: Silver-robed figure, luminous third eye, swirling mists
+    attributes:
+      primary_color: silver
+      secondary_color: violet
+      hex_codes:
+      - '#C0C0C0'
+      - '#8A2BE2'
+      frequency_hz: 852
+      brainwave_target: alpha
+      element: air
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: receptive
+    description: Archetype of clear seeing, prophecy, and truth revelation
+    symbol: ''
+    qualities: []
+    score: 1.4
+  - archetype_id: divine_light_healing.great_physician
+    name: The Great Physician
+    family: divine_light_healing
+    role: secondary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        And now a presence approaches...<break time="2s"/>
+
+        one of such profound compassion...<break time="2s"/>
+
+        that tears might come to your eyes...<break time="2.5s"/>
+
+        The Great Physician...<break time="1.5s"/>
+
+        who has healed millions...<break time="2s"/>
+
+        across all time...<break time="2s"/>
+
+        now turns to you...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        And you recognize the presence...<break time="1.5s"/>
+
+        of the Great Physician returning...<break time="2s"/>
+
+        that same compassion, that same power...<break time="2s"/>
+
+        your relationship deepening each time...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Great Physician extends a hand...<break time="2s"/>
+
+        and speaks words you feel more than hear...<break time="2s"/>
+
+        <emphasis level="moderate">Be healed</emphasis>...<break time="3s"/>
+
+        and something shifts in the very fabric of your being...<break time="3.5s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Angelic chorus, golden bell tones
+      visual_imagery: Brilliant gold and white robes, radiant face, healing hands
+    attributes:
+      primary_color: gold
+      secondary_color: white
+      hex_codes:
+      - '#FFD700'
+      - '#FFFFFF'
+      frequency_hz: 432
+      brainwave_target: theta
+      element: spirit
+      chakra: crown
+      intensity: strong
+      energy_quality: active
+    description: Supreme healing authority with power over all conditions
+    symbol: ''
+    qualities: []
+    score: 1.4000000000000001
+  - archetype_id: divine_feminine.sophia_wisdom
+    name: Sophia - Divine Wisdom
+    family: divine_feminine
+    role: support
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, in this space...<break time="2s"/>
+
+        you become aware of a queenly presence...<break time="2s"/>
+
+        Sophia, Divine Wisdom...<break time="1.5s"/>
+
+        robed in stars and deep blue light...<break time="2s"/>
+
+        who has known the answers...<break time="2s"/>
+
+        since before time began...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        Sophia touches your forehead...<break time="2s"/>
+
+        and understanding begins to flow...<break time="2.5s"/>
+
+        not knowledge from outside...<break time="2s"/>
+
+        but wisdom awakening within...<break time="2s"/>
+
+        you begin to <emphasis level="moderate">know</emphasis>...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Harp glissando, starlight tones, gentle bells
+      visual_imagery: Queenly figure in blue, starry crown, ancient book, wise eyes
+    attributes:
+      primary_color: royal_blue
+      secondary_color: violet
+      hex_codes:
+      - '#4169E1'
+      - '#9400D3'
+      frequency_hz: 852
+      brainwave_target: alpha
+      element: water
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: receptive
+    description: Feminine archetype of divine wisdom and sacred knowledge
+    symbol: ''
+    qualities: []
+    score: 1.3499999999999999
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 9.6
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.3
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 6.2
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 4.1
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.3
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.5
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 9.5
+        duration_ratio: 0.13
+    base_hz: 200
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6685215315753708
+  sound_effects:
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: cosmic
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Great Spirit Pathworking
+  theme: Great Spirit Pathworking
+  metaphor: a sacred journey through mystical realms toward purpose
+  therapeutic_goal: purpose
+  setting: on a sacred path that winds through realms of transformation, where each
+    step brings you closer to your truest self
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: divine_feminine.sophia_wisdom
+    name: Sophia - Divine Wisdom
+    family: divine_feminine
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, in this space...<break time="2s"/>
+
+        you become aware of a queenly presence...<break time="2s"/>
+
+        Sophia, Divine Wisdom...<break time="1.5s"/>
+
+        robed in stars and deep blue light...<break time="2s"/>
+
+        who has known the answers...<break time="2s"/>
+
+        since before time began...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        Sophia touches your forehead...<break time="2s"/>
+
+        and understanding begins to flow...<break time="2.5s"/>
+
+        not knowledge from outside...<break time="2s"/>
+
+        but wisdom awakening within...<break time="2s"/>
+
+        you begin to <emphasis level="moderate">know</emphasis>...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Harp glissando, starlight tones, gentle bells
+      visual_imagery: Queenly figure in blue, starry crown, ancient book, wise eyes
+    attributes:
+      primary_color: royal_blue
+      secondary_color: violet
+      hex_codes:
+      - '#4169E1'
+      - '#9400D3'
+      frequency_hz: 852
+      brainwave_target: alpha
+      element: water
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: receptive
+    description: Feminine archetype of divine wisdom and sacred knowledge
+    symbol: ''
+    qualities: []
+    score: 1.4
+  - archetype_id: abundance_destiny.providence_angel
+    name: The Providence Angel
+    family: abundance_destiny
+    role: secondary
+    encounter_type: first_encounter
+    relationship_level: 1
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now appears a doorway...<break time="2s"/>
+
+        and beside it, the Providence Angel...<break time="2s"/>
+
+        holding keys of gold...<break time="2s"/>
+
+        ready to open doors...<break time="1.5s"/>
+
+        you didn''t even know existed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Angel hands you a golden key...<break time="2s"/>
+
+        and you understand...<break time="2s"/>
+
+        abundance flows toward you naturally...<break time="2s"/>
+
+        doors open at the right time...<break time="2s"/>
+
+        you are provided for, always...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Key in lock, door opening, abundant tones
+      visual_imagery: Angel with golden keys, opening doorways, golden light flowing
+    attributes:
+      primary_color: gold
+      secondary_color: green
+      hex_codes:
+      - '#FFD700'
+      - '#228B22'
+      frequency_hz: 417
+      brainwave_target: alpha
+      element: earth
+      chakra: solar
+      intensity: moderate
+      energy_quality: active
+    description: Archetype that opens doors and brings providential opportunities
+    symbol: ''
+    qualities: []
+    score: 1.4000000000000001
+  - archetype_id: divine_masculine.logos_bearer
+    name: The Logos Bearer
+    family: divine_masculine
+    role: support
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, a voice sounds through the space...<break time="2s"/>
+
+        not heard with ears...<break time="1.5s"/>
+
+        but felt in the heart...<break time="2s"/>
+
+        The Logos Bearer approaches...<break time="2s"/>
+
+        the one whose words shape reality...<break time="2s"/>
+
+        and who carries that power for you...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="0st">
+
+        And the Logos Bearer speaks your name...<break time="2.5s"/>
+
+        and you feel the creative power of words...<break time="2s"/>
+
+        moving through you now...<break time="2s"/>
+
+        you too can speak things into being...<break time="2s"/>
+
+        your words have power...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Deep resonant tone, voice reverb, harmonic overtones
+      visual_imagery: Radiant masculine figure, words becoming light, creative speech
+    attributes:
+      primary_color: white
+      secondary_color: gold
+      hex_codes:
+      - '#FFFFFF'
+      - '#FFD700'
+      frequency_hz: 432
+      brainwave_target: alpha
+      element: spirit
+      chakra: throat
+      intensity: strong
+      energy_quality: active
+    description: Archetype of divine word, creative speech, and reality-shaping power
+    symbol: ''
+    qualities: []
+    score: 1.35
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 10.4
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 7.8
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 6.5
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 4.0
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.9
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 6.4
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 9.6
+        duration_ratio: 0.13
+    base_hz: 396
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.7469969684485308
+  sound_effects:
+  - name: Singing Bowls
+    type: tone
+    description: Tibetan bowl harmonics
+    character: rich overtones
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
+  - name: Angelic Choir
+    type: texture
+    description: Ethereal voices
+    character: wordless harmony
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: mystical
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Great Spirit Pathworking
+  theme: Great Spirit Pathworking
+  metaphor: a sacred journey through inner realms toward purpose
+  therapeutic_goal: purpose
+  setting: on a sacred path that winds through realms of transformation, where each
+    step brings you closer to your truest self
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: oracle_seer.oracle_of_light
+    name: The Oracle of Light
+    family: oracle_seer
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, in the distance...<break time="2s"/>
+
+        you see a figure clothed in light...<break time="2s"/>
+
+        The Oracle approaches...<break time="1.5s"/>
+
+        with eyes that see beyond time...<break time="2s"/>
+
+        beyond space...<break time="1.5s"/>
+
+        beyond all illusion...<break time="2s"/>
+
+        and those eyes now rest upon you...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Oracle returns...<break time="1.5s"/>
+
+        those luminous eyes you know...<break time="2s"/>
+
+        your ability to hear truth...<break time="1.5s"/>
+
+        growing stronger with each meeting...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Oracle speaks now...<break time="2s"/>
+
+        and what you hear...<break time="1.5s"/>
+
+        is something you already knew...<break time="2s"/>
+
+        but had forgotten...<break time="2s"/>
+
+        truth returning home...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Crystal singing bowl, wind chimes, ethereal tones
+      visual_imagery: Silver-robed figure, luminous third eye, swirling mists
+    attributes:
+      primary_color: silver
+      secondary_color: violet
+      hex_codes:
+      - '#C0C0C0'
+      - '#8A2BE2'
+      frequency_hz: 852
+      brainwave_target: alpha
+      element: air
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: receptive
+    description: Archetype of clear seeing, prophecy, and truth revelation
+    symbol: ''
+    qualities: []
+    score: 1.2499999999999998
+  - archetype_id: divine_feminine.sophia_wisdom
+    name: Sophia - Divine Wisdom
+    family: divine_feminine
+    role: secondary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, in this space...<break time="2s"/>
+
+        you become aware of a queenly presence...<break time="2s"/>
+
+        Sophia, Divine Wisdom...<break time="1.5s"/>
+
+        robed in stars and deep blue light...<break time="2s"/>
+
+        who has known the answers...<break time="2s"/>
+
+        since before time began...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        Sophia touches your forehead...<break time="2s"/>
+
+        and understanding begins to flow...<break time="2.5s"/>
+
+        not knowledge from outside...<break time="2s"/>
+
+        but wisdom awakening within...<break time="2s"/>
+
+        you begin to <emphasis level="moderate">know</emphasis>...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Harp glissando, starlight tones, gentle bells
+      visual_imagery: Queenly figure in blue, starry crown, ancient book, wise eyes
+    attributes:
+      primary_color: royal_blue
+      secondary_color: violet
+      hex_codes:
+      - '#4169E1'
+      - '#9400D3'
+      frequency_hz: 852
+      brainwave_target: alpha
+      element: water
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: receptive
+    description: Feminine archetype of divine wisdom and sacred knowledge
+    symbol: ''
+    qualities: []
+    score: 1.3499999999999999
+  - archetype_id: divine_light_healing.great_physician
+    name: The Great Physician
+    family: divine_light_healing
+    role: support
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        And now a presence approaches...<break time="2s"/>
+
+        one of such profound compassion...<break time="2s"/>
+
+        that tears might come to your eyes...<break time="2.5s"/>
+
+        The Great Physician...<break time="1.5s"/>
+
+        who has healed millions...<break time="2s"/>
+
+        across all time...<break time="2s"/>
+
+        now turns to you...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        And you recognize the presence...<break time="1.5s"/>
+
+        of the Great Physician returning...<break time="2s"/>
+
+        that same compassion, that same power...<break time="2s"/>
+
+        your relationship deepening each time...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Great Physician extends a hand...<break time="2s"/>
+
+        and speaks words you feel more than hear...<break time="2s"/>
+
+        <emphasis level="moderate">Be healed</emphasis>...<break time="3s"/>
+
+        and something shifts in the very fabric of your being...<break time="3.5s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Angelic chorus, golden bell tones
+      visual_imagery: Brilliant gold and white robes, radiant face, healing hands
+    attributes:
+      primary_color: gold
+      secondary_color: white
+      hex_codes:
+      - '#FFD700'
+      - '#FFFFFF'
+      frequency_hz: 432
+      brainwave_target: theta
+      element: spirit
+      chakra: crown
+      intensity: strong
+      energy_quality: active
+    description: Supreme healing authority with power over all conditions
+    symbol: ''
+    qualities: []
+    score: 1.25
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 10.1
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.5
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 5.6
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 4.4
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.9
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.6
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 10.3
+        duration_ratio: 0.13
+    base_hz: 396
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.7475187771276764
+  sound_effects:
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: inner
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Great Spirit Pathworking
+  theme: Great Spirit Pathworking
+  metaphor: a sacred journey through cosmic realms toward purpose
+  therapeutic_goal: purpose
+  setting: on a sacred path that winds through realms of transformation, where each
+    step brings you closer to your truest self
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: oracle_seer.oracle_of_light
+    name: The Oracle of Light
+    family: oracle_seer
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, in the distance...<break time="2s"/>
+
+        you see a figure clothed in light...<break time="2s"/>
+
+        The Oracle approaches...<break time="1.5s"/>
+
+        with eyes that see beyond time...<break time="2s"/>
+
+        beyond space...<break time="1.5s"/>
+
+        beyond all illusion...<break time="2s"/>
+
+        and those eyes now rest upon you...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Oracle returns...<break time="1.5s"/>
+
+        those luminous eyes you know...<break time="2s"/>
+
+        your ability to hear truth...<break time="1.5s"/>
+
+        growing stronger with each meeting...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Oracle speaks now...<break time="2s"/>
+
+        and what you hear...<break time="1.5s"/>
+
+        is something you already knew...<break time="2s"/>
+
+        but had forgotten...<break time="2s"/>
+
+        truth returning home...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Crystal singing bowl, wind chimes, ethereal tones
+      visual_imagery: Silver-robed figure, luminous third eye, swirling mists
+    attributes:
+      primary_color: silver
+      secondary_color: violet
+      hex_codes:
+      - '#C0C0C0'
+      - '#8A2BE2'
+      frequency_hz: 852
+      brainwave_target: alpha
+      element: air
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: receptive
+    description: Archetype of clear seeing, prophecy, and truth revelation
+    symbol: ''
+    qualities: []
+    score: 1.4
+  - archetype_id: divine_light_healing.great_physician
+    name: The Great Physician
+    family: divine_light_healing
+    role: secondary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        And now a presence approaches...<break time="2s"/>
+
+        one of such profound compassion...<break time="2s"/>
+
+        that tears might come to your eyes...<break time="2.5s"/>
+
+        The Great Physician...<break time="1.5s"/>
+
+        who has healed millions...<break time="2s"/>
+
+        across all time...<break time="2s"/>
+
+        now turns to you...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        And you recognize the presence...<break time="1.5s"/>
+
+        of the Great Physician returning...<break time="2s"/>
+
+        that same compassion, that same power...<break time="2s"/>
+
+        your relationship deepening each time...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Great Physician extends a hand...<break time="2s"/>
+
+        and speaks words you feel more than hear...<break time="2s"/>
+
+        <emphasis level="moderate">Be healed</emphasis>...<break time="3s"/>
+
+        and something shifts in the very fabric of your being...<break time="3.5s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Angelic chorus, golden bell tones
+      visual_imagery: Brilliant gold and white robes, radiant face, healing hands
+    attributes:
+      primary_color: gold
+      secondary_color: white
+      hex_codes:
+      - '#FFD700'
+      - '#FFFFFF'
+      frequency_hz: 432
+      brainwave_target: theta
+      element: spirit
+      chakra: crown
+      intensity: strong
+      energy_quality: active
+    description: Supreme healing authority with power over all conditions
+    symbol: ''
+    qualities: []
+    score: 1.4000000000000001
+  - archetype_id: divine_feminine.sophia_wisdom
+    name: Sophia - Divine Wisdom
+    family: divine_feminine
+    role: support
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, in this space...<break time="2s"/>
+
+        you become aware of a queenly presence...<break time="2s"/>
+
+        Sophia, Divine Wisdom...<break time="1.5s"/>
+
+        robed in stars and deep blue light...<break time="2s"/>
+
+        who has known the answers...<break time="2s"/>
+
+        since before time began...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        Sophia touches your forehead...<break time="2s"/>
+
+        and understanding begins to flow...<break time="2.5s"/>
+
+        not knowledge from outside...<break time="2s"/>
+
+        but wisdom awakening within...<break time="2s"/>
+
+        you begin to <emphasis level="moderate">know</emphasis>...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Harp glissando, starlight tones, gentle bells
+      visual_imagery: Queenly figure in blue, starry crown, ancient book, wise eyes
+    attributes:
+      primary_color: royal_blue
+      secondary_color: violet
+      hex_codes:
+      - '#4169E1'
+      - '#9400D3'
+      frequency_hz: 852
+      brainwave_target: alpha
+      element: water
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: receptive
+    description: Feminine archetype of divine wisdom and sacred knowledge
+    symbol: ''
+    qualities: []
+    score: 1.3499999999999999
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 10.4
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 7.8
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 5.6
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 3.8
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.8
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 6.0
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 9.6
+        duration_ratio: 0.13
+    base_hz: 288
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6645666861534636
+  sound_effects:
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: cosmic
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Great Spirit Pathworking
+  theme: Great Spirit Pathworking
+  metaphor: a sacred journey through mystical realms toward purpose
+  therapeutic_goal: purpose
+  setting: on a sacred path that winds through realms of transformation, where each
+    step brings you closer to your truest self
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: divine_feminine.sophia_wisdom
+    name: Sophia - Divine Wisdom
+    family: divine_feminine
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, in this space...<break time="2s"/>
+
+        you become aware of a queenly presence...<break time="2s"/>
+
+        Sophia, Divine Wisdom...<break time="1.5s"/>
+
+        robed in stars and deep blue light...<break time="2s"/>
+
+        who has known the answers...<break time="2s"/>
+
+        since before time began...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        Sophia touches your forehead...<break time="2s"/>
+
+        and understanding begins to flow...<break time="2.5s"/>
+
+        not knowledge from outside...<break time="2s"/>
+
+        but wisdom awakening within...<break time="2s"/>
+
+        you begin to <emphasis level="moderate">know</emphasis>...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Harp glissando, starlight tones, gentle bells
+      visual_imagery: Queenly figure in blue, starry crown, ancient book, wise eyes
+    attributes:
+      primary_color: royal_blue
+      secondary_color: violet
+      hex_codes:
+      - '#4169E1'
+      - '#9400D3'
+      frequency_hz: 852
+      brainwave_target: alpha
+      element: water
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: receptive
+    description: Feminine archetype of divine wisdom and sacred knowledge
+    symbol: ''
+    qualities: []
+    score: 1.4
+  - archetype_id: abundance_destiny.providence_angel
+    name: The Providence Angel
+    family: abundance_destiny
+    role: secondary
+    encounter_type: first_encounter
+    relationship_level: 1
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now appears a doorway...<break time="2s"/>
+
+        and beside it, the Providence Angel...<break time="2s"/>
+
+        holding keys of gold...<break time="2s"/>
+
+        ready to open doors...<break time="1.5s"/>
+
+        you didn''t even know existed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Angel hands you a golden key...<break time="2s"/>
+
+        and you understand...<break time="2s"/>
+
+        abundance flows toward you naturally...<break time="2s"/>
+
+        doors open at the right time...<break time="2s"/>
+
+        you are provided for, always...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Key in lock, door opening, abundant tones
+      visual_imagery: Angel with golden keys, opening doorways, golden light flowing
+    attributes:
+      primary_color: gold
+      secondary_color: green
+      hex_codes:
+      - '#FFD700'
+      - '#228B22'
+      frequency_hz: 417
+      brainwave_target: alpha
+      element: earth
+      chakra: solar
+      intensity: moderate
+      energy_quality: active
+    description: Archetype that opens doors and brings providential opportunities
+    symbol: ''
+    qualities: []
+    score: 1.4000000000000001
+  - archetype_id: divine_masculine.logos_bearer
+    name: The Logos Bearer
+    family: divine_masculine
+    role: support
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, a voice sounds through the space...<break time="2s"/>
+
+        not heard with ears...<break time="1.5s"/>
+
+        but felt in the heart...<break time="2s"/>
+
+        The Logos Bearer approaches...<break time="2s"/>
+
+        the one whose words shape reality...<break time="2s"/>
+
+        and who carries that power for you...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="0st">
+
+        And the Logos Bearer speaks your name...<break time="2.5s"/>
+
+        and you feel the creative power of words...<break time="2s"/>
+
+        moving through you now...<break time="2s"/>
+
+        you too can speak things into being...<break time="2s"/>
+
+        your words have power...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Deep resonant tone, voice reverb, harmonic overtones
+      visual_imagery: Radiant masculine figure, words becoming light, creative speech
+    attributes:
+      primary_color: white
+      secondary_color: gold
+      hex_codes:
+      - '#FFFFFF'
+      - '#FFD700'
+      frequency_hz: 432
+      brainwave_target: alpha
+      element: spirit
+      chakra: throat
+      intensity: strong
+      energy_quality: active
+    description: Archetype of divine word, creative speech, and reality-shaping power
+    symbol: ''
+    qualities: []
+    score: 1.35
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 9.9
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.1
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 5.6
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 3.7
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.7
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 6.3
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 10.1
+        duration_ratio: 0.13
+    base_hz: 396
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6598242704494415
+  sound_effects:
+  - name: Singing Bowls
+    type: tone
+    description: Tibetan bowl harmonics
+    character: rich overtones
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Angelic Choir
+    type: texture
+    description: Ethereal voices
+    character: wordless harmony
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: mystical
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0

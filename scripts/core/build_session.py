@@ -186,7 +186,7 @@ def main():
     parser.add_argument("--session", type=validate_dir_exists, required=True, help="Session directory.")
     parser.add_argument("--ssml", type=validate_file_exists, required=True, help="Path to SSML file.")
     parser.add_argument("--voice", default="en-US-Neural2-D", help="Voice name (default: Google Neural2-D).")
-    parser.add_argument("--tts-provider", choices=["google"], default="google", help="TTS provider (Google Cloud TTS only).")
+    parser.add_argument("--tts-provider", choices=["coqui", "google"], default="coqui", help="TTS provider: coqui (free, local) or google (paid, cloud).")
     parser.add_argument("--target-minutes", type=float, default=None, help="Target duration (minutes).")
     parser.add_argument("--match-mode", choices=["bed_to_voice", "voice_to_target"], default="bed_to_voice",
                        help="bed_to_voice (default): binaural matches actual voice duration; voice_to_target: extends to target-minutes")

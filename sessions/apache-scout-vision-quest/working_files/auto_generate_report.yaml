@@ -1,0 +1,48 @@
+session_name: apache-scout-vision-quest
+topic: Apache Scout Vision Quest
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2025-12-22T07:04:25.987041'
+  ended: '2025-12-22T07:26:45.165273'
+  duration_seconds: 1339.2
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  failed:
+  - generate_voice
+  - generate_voice failed; aborting pipeline (audio stages depend on voice)
+  total: 7
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-22T07:04:27.541308'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2025-12-22T07:04:52.511584'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2025-12-22T07:06:44.707331'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2025-12-22T07:06:44.762288'
+  total_usd: 0.65
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/apache-scout-vision-quest
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/apache-scout-vision-quest/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/apache-scout-vision-quest/working_files/script.ssml
+  files: []

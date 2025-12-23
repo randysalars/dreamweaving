@@ -1,0 +1,99 @@
+Generate a complete SSML hypnotic script for the following session:
+
+**Topic:** Gandalf's Wisdom Journey Pathworking
+**Target Duration:** 30 minutes
+**Target Word Count:** 2193-2680 words (hypnotic pace ~130 wpm with pauses)
+**Session Name:** gandalfs-wisdom-journey-pathworking-20251222
+
+**Archetypes to incorporate:** The Oracle of Light, The Great Physician, Sophia - Divine Wisdom
+
+**Section Timing:**
+- pretalk: 0 minutes
+- induction: 0 minutes
+- journey: 0 minutes
+- integration: 0 minutes
+- awakening: 0 minutes
+
+
+---
+## CANONICAL DREAMWEAVING KNOWLEDGE (from your knowledge base)
+Use this context to ensure the script aligns with YOUR established definitions, archetypes, and patterns:
+
+### Relevant Knowledge from Your Canon
+- **2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance ** (relevance: 0.70)
+  Title: 2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance 
+
+ady, count slowly from 1 to 5, bringing awareness back to your body, the room, and this present moment. Wiggle fin...
+- **2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance ** (relevance: 0.69)
+  Title: 2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance 
+
+he Grey, the wandering guardian of Middle-Earth.
+
+ Around you, rolling green hills, soft mists, and far-off villag...
+- **2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance ** (relevance: 0.68)
+  Title: 2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance 
+
+against evil.
+
+(table)
+
+---
+
+🧙‍♂️ Gandalf’s Wisdom Journey Pathworking
+
+Below is a ready-to-use journey you can re...
+- **2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance ** (relevance: 0.67)
+  Title: 2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance 
+
+that direction in the next 24 hours.
+1. Remembering the “Why”
+ - Use Scene 5 at the end of hard days to reconnect ...
+- **2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance ** (relevance: 0.66)
+  Title: 2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance 
+
+y on you.
+As you go through each scene, you can literally ask:
+
+> “Which archetype is speaking right now? Which is...
+
+### Related Mythology/Symbols
+- **2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance **: Title: 2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of m...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+insights into spiritual energy, awakening, and enlightenment.
+ - 10. Masonic Royal Arch Expedition: Navigate throug...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+insights into spiritual energy, awakening, and enlightenment.
+ - 10. Masonic Royal Arch Expedition: Navigate throug...
+
+### Binaural/Frequency Guidance
+- Title: 2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance 
+
+layers:
+
+1. Ba...
+- Title: 2. [[Gandalf's Wisdom Journey Pathworking]]: As Gandalf, navigate through Middle-Earth imparting wisdom and facing dark, addressing themes of mentorship, wisdom, and resistance 
+
+against evil.
+...
+---
+
+**CRITICAL REQUIREMENTS:**
+1. Match the Section Timing above within ±10%; expand MAIN JOURNEY and INTEGRATION first if you need more time.
+2. Keep total length within 2193-2680 words to land near 30 minutes. If you are short, add sensory detail and deepen the MAIN JOURNEY; if long, trim gently.
+3. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
+4. Use <break time="Xs"/> tags liberally for hypnotic pacing, favoring slightly longer pauses: 2-3s for normal beats, 3-5s for deeper drops, 1s for countdown ticks
+5. Include rich sensory language engaging all 5 senses
+6. Embed hypnotic suggestions naturally throughout
+7. Include 3-5 post-hypnotic anchors in the closing
+
+**SFX MARKERS (REQUIRED):**
+- Embed natural language SFX cues using [SFX: ...] (or [[SFX:...]]). Keep each marker concise (<140 chars) and place it exactly where the sound should trigger.
+- Provide at least 5 markers covering the journey arc: opening/entry tone, induction ambience, deepening texture, main journey accent(s), and integration/return chime.
+- Markers must describe sound character and duration (e.g., "Deep bronze bell, warm, 3s decay"), live on their own line, and avoid SSML tags inside the marker.
+- Keep markers within the <speak> body; they'll be stripped for voice synthesis but used to render the SFX track.
+
+**OUTPUT FORMAT:**
+Output ONLY the SSML script, starting with <?xml version="1.0" encoding="UTF-8"?>
+Do NOT include any explanation or commentary before or after the SSML.

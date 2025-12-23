@@ -2,7 +2,7 @@
 
 ## System Overview
 
-**Sacred Digital Dreamweaver** is an AI-powered creative operating system for producing hypnotic journey videos. This system combines professional audio generation (Google Cloud TTS), multi-layer audio mixing, video assembly, and a self-learning feedback loop.
+**Sacred Digital Dreamweaver** is an AI-powered creative operating system for producing hypnotic journey videos. This system combines professional audio generation (Coqui TTS / XTTS v2), multi-layer audio mixing, video assembly, and a self-learning feedback loop.
 
 **Mode**: Fully automated with final review only
 **Execution**: Supports headless/scheduled operation
@@ -466,7 +466,7 @@ SSML Script Generation (AI)
     ↓
 Midjourney Prompts (AI) → [User creates images on Midjourney]
     ↓
-Audio Generation (Google Cloud TTS)
+Audio Generation (Coqui TTS)
     ↓
 Audio Mixing
     ↓
@@ -622,18 +622,27 @@ dreamweaving/
 
 ## Voice Options
 
-**PRODUCTION STANDARD:** Use `en-US-Neural2-H` (bright female) for all sessions.
+### TTS Provider
 
-> **Note:** The `generate_voice.py` script automatically uses this voice. Do not override unless specifically requested.
+**DEFAULT:** Coqui TTS (XTTS v2) - Free, local, high-quality voice synthesis.
 
-### Female (recommended for hypnosis)
-- `en-US-Neural2-H` - Bright, clear **(DEFAULT - Production Standard)**
+| Provider | Cost | Quality | Speed | Command |
+|----------|------|---------|-------|---------|
+| **Coqui** (default) | Free | High | ~5-10 min/session | `python3 scripts/core/generate_voice.py script.ssml output/` |
+| Google Cloud | ~$0.016/1M chars | High | Fast | `python3 scripts/core/generate_voice.py script.ssml output/ --provider google` |
+
+> **Note:** The `generate_voice.py` script uses Coqui TTS by default. Use `--provider google` for Google Cloud TTS.
+
+### Google Cloud TTS Voices (when using --provider google)
+
+#### Female (recommended for hypnosis)
+- `en-US-Neural2-H` - Bright, clear **(Recommended for Google)**
 - `en-US-Neural2-E` - Deep, resonant (alternative for darker themes)
 - `en-US-Neural2-C` - Soft, gentle
 - `en-US-Neural2-F` - Clear, articulate
 - `en-US-Neural2-G` - Warm, approachable
 
-### Male
+#### Male
 - `en-US-Neural2-A` - Calm, neutral
 - `en-US-Neural2-D` - Deep, authoritative
 - `en-US-Neural2-I` - Warm, compassionate
@@ -723,21 +732,27 @@ cd ~/Projects/dreamweaving && source venv/bin/activate
 
 ### Voice Generation (ALWAYS USE THIS)
 ```bash
-# CANONICAL voice generation command - uses production voice + enhancement
+# CANONICAL voice generation command - uses Coqui TTS (free, local) + enhancement
 python3 scripts/core/generate_voice.py \
     sessions/{session}/working_files/script.ssml \
     sessions/{session}/output
+
+# Or use Google Cloud TTS (paid, faster)
+python3 scripts/core/generate_voice.py \
+    sessions/{session}/working_files/script.ssml \
+    sessions/{session}/output \
+    --provider google
 ```
 
 This automatically:
-- Uses **en-US-Neural2-H** (bright female voice)
-- Speaking rate: 0.88x, Pitch: 0 semitones
+- Uses **Coqui TTS (XTTS v2)** by default (free, local)
+- Speaking rate: 0.95x for Coqui, 0.88x for Google
 - Applies voice enhancement (warmth, room, layers)
 - Outputs both `voice.mp3` and `voice_enhanced.mp3`
 
 **Always use `voice_enhanced.mp3` for production!**
 
-> **Note:** Despite SSML using `rate="1.0"`, the TTS engine applies 0.88x for natural hypnotic pacing. The `rate="1.0"` in SSML prevents additional slowing on top of this baseline.
+> **Note:** Coqui TTS takes ~5-10 minutes per session but is completely free. Use `--provider google` for faster generation (requires billing enabled).
 
 ### Audio Mixing (CRITICAL)
 
@@ -776,11 +791,15 @@ python3 scripts/core/build_session.py sessions/{session}
 
 ## Dependencies
 
-- Python 3.8+ with venv
+- Python 3.8+ with venv (main), Python 3.11 with venv_coqui (TTS)
 - FFmpeg (audio/video processing)
+- Coqui TTS (XTTS v2) - installed in `venv_coqui/`
+- Serena MCP Server (http://127.0.0.1:24283)
+
+### Optional (for Google Cloud TTS)
 - Google Cloud SDK (authentication)
 - Google Cloud TTS API enabled
-- Serena MCP Server (http://127.0.0.1:24283)
+- `GOOGLE_APPLICATION_CREDENTIALS` environment variable
 
 ---
 

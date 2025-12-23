@@ -597,6 +597,7 @@ def main():
     parser.add_argument('--topic', type=str, action='append', help='Specific topic (can be repeated)')
     parser.add_argument('--list-topics', action='store_true', help='List pending Notion topics')
     parser.add_argument('--topics-file', type=str, help='Path to a text file containing topics (one per line)')
+    parser.add_argument('--reset-topics', action='store_true', help='Reset used topics tracking (allows reuse)')
     parser.add_argument('--config', type=str, help='Config file path')
 
     args = parser.parse_args()
@@ -615,6 +616,24 @@ def main():
     # Create builder
     builder = NightlyBuilder(config, db)
 
+    if args.reset_topics:
+        # Determine which topics file to reset
+        topics_file_to_reset = args.topics_file
+        if not topics_file_to_reset and config.get('topics', {}).get('use_file', False):
+            topics_file_to_reset = config['topics'].get('file')
+
+        if topics_file_to_reset:
+            source_file_id = Path(topics_file_to_reset).name
+            used_count = db.get_used_topics_count(source_file_id)
+            db.reset_used_topics(source_file_id)
+            print(f"\n✓ Reset {used_count} used topics from {source_file_id}")
+            print("All topics are now available for generation.\n")
+        else:
+            db.reset_used_topics()
+            print("\n✓ Reset all used topics tracking.\n")
+        db.close()
+        return
+
     if args.list_topics:
         print("\n=== Pending Notion Topics ===")
         topics = builder.get_pending_topics(count=10)
@@ -623,10 +642,19 @@ def main():
         print(f"\nTotal pending: {len(topics)}")
         return
 
-    # Determine topics if using a file
+    # Determine topics source: CLI arg > config file > Notion
     manual_topics = args.topic or []
-    if args.topics_file:
-        topics_path = Path(args.topics_file)
+    topics_file_path = args.topics_file
+
+    # If no CLI topics file specified, check config for file-based topics
+    if not topics_file_path and config.get('topics', {}).get('use_file', False):
+        topics_file_path = config['topics'].get('file')
+        if topics_file_path:
+            topics_file_path = str(PROJECT_ROOT / topics_file_path)
+            logger.info(f"Using topics file from config: {topics_file_path}")
+
+    if topics_file_path:
+        topics_path = Path(topics_file_path)
         if topics_path.exists():
             with open(topics_path, 'r', encoding='utf-8') as f:
                 file_topics = [line.strip() for line in f if line.strip() and not line.strip().startswith('#')]
@@ -636,11 +664,20 @@ def main():
             unused_topics = db.get_unused_topics(file_topics, source_file_id)
             
             if len(unused_topics) == 0:
-                logger.warning(f"All topics from {args.topics_file} have been used!")
-                logger.info("Resetting topic tracking to allow reuse...")
-                db.reset_used_topics(source_file_id)
-                unused_topics = file_topics
-            
+                logger.error(f"OUT OF TOPICS: All {len(file_topics)} topics from {topics_path.name} have been used!")
+                logger.error("Add new topics to the file or manually reset with: --reset-topics")
+                print("\n" + "="*60)
+                print("ERROR: OUT OF TOPICS")
+                print("="*60)
+                print(f"All {len(file_topics)} topics in {topics_path.name} have been used.")
+                print(f"Used topics are tracked in: {config['database']['path']}")
+                print("\nOptions:")
+                print("  1. Add new topics to the topics file")
+                print("  2. Reset tracking: python -m scripts.automation.nightly_builder --reset-topics")
+                print("="*60 + "\n")
+                db.close()
+                sys.exit(1)
+
             logger.info(f"Topics available: {len(unused_topics)}/{len(file_topics)} unused")
             
             # Randomly select 'count' topics from unused topics
@@ -661,7 +698,7 @@ def main():
         count=count,
         dry_run=args.dry_run,
         topics=manual_topics if manual_topics else None,
-        source_file=source_file_id if args.topics_file else None,
+        source_file=source_file_id if topics_file_path else None,
     )
 
     # Print summary

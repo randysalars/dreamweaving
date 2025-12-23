@@ -30,7 +30,7 @@ from pydub import AudioSegment
 
 # Local imports
 from audio.binaural import generate as generate_binaural, save_stem
-from generate_audio_chunked import synthesize_ssml_file_chunked
+from tts_provider import get_tts_provider
 
 # Import validation utilities
 try:
@@ -195,9 +195,9 @@ def main():
     parser.add_argument("--pitch", type=validate_pitch, default=-2.5, help="Pitch in semitones (-20 to +20, default: -2.5st).")
     parser.add_argument(
         "--tts-provider",
-        choices=["google"],
-        default="google",
-        help="TTS provider (Google Cloud TTS only).",
+        choices=["coqui", "google"],
+        default="coqui",
+        help="TTS provider: coqui (free, local) or google (paid, cloud).",
     )
     parser.add_argument("--target-minutes", type=float, default=None, help="Optional target session length in minutes.")
     parser.add_argument(
@@ -258,14 +258,15 @@ def main():
     start_time = time.time()
 
     def synthesize_current(rate: float):
-        # Google Cloud TTS only (Edge TTS removed from production workflow)
-        synthesize_ssml_file_chunked(
-            ssml_path,
-            voice_out,
-            voice_name=args.voice,
+        # Use configured TTS provider (coqui = free local, google = paid cloud)
+        provider = get_tts_provider(args.tts_provider)
+        logger.info(f"Using TTS provider: {provider.get_name()}")
+        provider.synthesize(
+            ssml_path=ssml_path,
+            output_path=voice_out,
             speaking_rate=rate,
             pitch=args.pitch,
-            max_bytes=args.max_bytes,
+            voice_name=args.voice,
             sample_rate_hz=args.sample_rate,
         )
 

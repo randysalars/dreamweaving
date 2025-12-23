@@ -61,11 +61,22 @@ youtube:
   credentials_dir: config/youtube_credentials
 
 notion:
-  # Notion database with topic ideas
+  # Notion database with topic ideas (disabled - using topics file instead)
   topic_database_id: "2c22bab3-796d-81fb-bdf8-efd2aab0159e"
 
   # Notion root page for topic hierarchy
   root_page_id: "1ee2bab3796d80738af6c96bd5077acf"
+
+  # Disable Notion topic fetching - use file-based topics instead
+  enabled: false
+
+# Topic source configuration
+topics:
+  # Path to topics file (relative to project root)
+  file: config/dreamweaving_topics.txt
+
+  # Use this file instead of Notion
+  use_file: true
 
 database:
   # SQLite database for state tracking

@@ -3,8 +3,9 @@
 # This is the single source of truth for all voice settings.
 # Consolidates voice_config.yaml and voice_profiles.json.
 #
-# Provider: Google Cloud Text-to-Speech (Neural2 voices)
-# Note: Edge TTS is deprecated - use Google Cloud for production
+# Default Provider: Coqui TTS (XTTS v2) - Free, local, high-quality
+# Alternative: Google Cloud TTS (Neural2 voices) - Paid, cloud-based
+# Note: Edge TTS is deprecated
 
 # =============================================================================
 # VOICE PROFILES
@@ -207,15 +208,58 @@ audio:
 # =============================================================================
 
 provider:
-  name: "google"
-  service: "Google Cloud Text-to-Speech"
-  api_version: "v1"
+  # Default provider (coqui = free local, google = paid cloud)
+  default: "coqui"
   language_code: "en-US"
+
+  # Coqui TTS settings (XTTS v2)
+  coqui:
+    model: "tts_models/multilingual/multi-dataset/xtts_v2"
+    speaking_rate: 0.95        # Slightly slower for natural pacing
+    default_quality: "hypnotic"  # Quality preset: hypnotic, natural, expressive
+    description: "Free, local, high-quality voice synthesis using XTTS v2"
+
+    # Quality Presets for XTTS v2
+    # Use --quality flag: python generate_voice.py script.ssml output/ --quality hypnotic
+    quality_presets:
+      hypnotic:
+        temperature: 0.45        # Low for consistent, stable voice
+        repetition_penalty: 3.0  # Reduce phrase repetition
+        top_p: 0.75              # Focused token selection
+        top_k: 50                # Limit vocabulary per step
+        speed: 0.92              # Slightly slower for trance
+        description: "Optimized for hypnotic/trance content - stable, consistent voice"
+
+      natural:
+        temperature: 0.55        # Balanced naturalness
+        repetition_penalty: 2.5
+        top_p: 0.80
+        top_k: 50
+        speed: 0.95
+        description: "Balanced preset for general content"
+
+      expressive:
+        temperature: 0.70        # More variation
+        repetition_penalty: 2.0
+        top_p: 0.85
+        top_k: 50
+        speed: 1.0
+        description: "More expressive variation for dynamic content"
+
+  # Google Cloud TTS settings (Neural2)
+  google:
+    service: "Google Cloud Text-to-Speech"
+    api_version: "v1"
+    default_voice: "en-US-Neural2-H"
+    speaking_rate: 0.88
+    sample_rate_hz: 24000
+    effects_profile: ["headphone-class-device"]
+    description: "Paid cloud service with Neural2 voices"
 
   # Deprecated providers (for reference only)
   deprecated:
     - name: "edge-tts"
-      reason: "Removed from codebase - use Google Cloud instead"
+      reason: "Removed from codebase"
       migration_date: "2025-01"
 
 # =============================================================================
@@ -223,21 +267,38 @@ provider:
 # =============================================================================
 
 notes: |
-  VOICE SELECTION GUIDE:
+  TTS PROVIDER GUIDE:
 
-  For most sessions, use the 'default' profile (en-US-Neural2-F).
-  For deep trance/sleep, use 'deep_female' profile (en-US-Neural2-E).
+  DEFAULT: Coqui TTS (XTTS v2)
+    - Free, runs locally, no API costs
+    - High-quality natural voice synthesis
+    - Uses XTTS v2 model (best open-source TTS)
+    - Command: python scripts/core/generate_voice.py script.ssml output/
 
-  To select a voice programmatically:
-    from scripts.config.voice_config import get_voice_profile
-    profile = get_voice_profile('warm_male')
-    voice_name = profile['name']
+  QUALITY PRESETS (Coqui only):
+    - hypnotic (DEFAULT): Low temperature (0.45), stable voice, optimized for trance
+    - natural: Balanced temperature (0.55), good for general content
+    - expressive: Higher variation (0.70), more dynamic delivery
+    - Command: python scripts/core/generate_voice.py script.ssml output/ --quality natural
 
-  Voice characteristics by type:
-    - Female voices: Better for nurturing, healing, emotional work
-    - Male voices: Better for grounding, authority, transformation
-    - Deeper voices: Better for deep trance states
-    - Clearer voices: Better for confidence, empowerment
+  QUALITY PARAMETERS EXPLAINED:
+    - temperature: Controls randomness (0.3-0.8). Lower = more consistent
+    - repetition_penalty: Prevents repeated phrases (2.0-4.0). Higher = less repetition
+    - top_p: Nucleus sampling threshold (0.7-0.9). Lower = more focused
+    - top_k: Vocabulary limit per token (40-80). Lower = more predictable
+    - speed: Post-synthesis speed adjustment (0.9-1.1)
+
+  ALTERNATIVE: Google Cloud TTS
+    - Paid service (~$0.016 per 1M characters)
+    - Requires GOOGLE_APPLICATION_CREDENTIALS
+    - Multiple voice options (Neural2-A through Neural2-J)
+    - Command: python scripts/core/generate_voice.py script.ssml output/ --provider google
+
+  VOICE PROFILES (Google only):
+    - Female Neural2: C, E, F, G, H
+    - Male Neural2: A, D, I, J
+    - For deep trance/sleep: use 'deep_female' (Neural2-E)
+    - For empowerment: use 'clear_female' (Neural2-F)
 
   HYPNOTIC PACING APPROACH:
     - Use 1.0x speaking rate (normal speed)
@@ -246,9 +307,9 @@ notes: |
     - Medium break: 900ms (between ideas)
     - Long break: 1200ms+ (between sections)
     - Add commas before breaks for natural endings
-    - Use ellipsis (...) for breath counts and countdowns
 
   IMPORTANT:
-    - Always use Google Cloud TTS for production
-    - Edge TTS is deprecated and should not be used
-    - Test voices before full session generation
+    - Coqui TTS is now the default (free, local)
+    - Use --provider google for Google Cloud TTS
+    - Voice enhancement is applied automatically to both providers
+    - Use --quality flag to select quality preset for Coqui

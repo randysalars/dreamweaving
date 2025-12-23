@@ -1579,7 +1579,7 @@ Do NOT include any explanation or commentary before or after the SSML.
             return
 
         try:
-            self.log("Using Coqui TTS (this may take 5-10 minutes)...", "info")
+            self.log("Using Coqui TTS (this may take 10-20 minutes on CPU)...", "info")
             result = subprocess.run(
                 [
                     str(coqui_python),
@@ -1590,7 +1590,7 @@ Do NOT include any explanation or commentary before or after the SSML.
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
-                timeout=1200,  # 20 minute timeout for Coqui
+                timeout=2400,  # 40 minute timeout for Coqui on CPU
                 env=self._get_subprocess_env(),
             )
 
@@ -1602,7 +1602,7 @@ Do NOT include any explanation or commentary before or after the SSML.
                 self.stages_failed.append("generate_voice")
 
         except subprocess.TimeoutExpired:
-            self.log("Voice generation timed out (>20 minutes)", "error")
+            self.log("Voice generation timed out (>40 minutes)", "error")
             self.stages_failed.append("generate_voice")
         except Exception as e:
             self.log(f"Voice generation failed: {e}", "error")
@@ -1762,9 +1762,9 @@ Do NOT include any explanation or commentary before or after the SSML.
         script_path = self.session_path / "working_files" / "script.ssml"
         output_dir = self.session_path / "output"
 
-        # Use same voice file selection as mixing
+        # Use same voice file selection as mixing (including Coqui output)
         voice_file = None
-        for name in ["voice_enhanced.wav", "voice_enhanced.mp3", "voice.wav", "voice.mp3"]:
+        for name in ["voice_enhanced.wav", "voice_enhanced.mp3", "voice.wav", "voice.mp3", "voice_synth.mp3", "voice_synth.wav"]:
             candidate = output_dir / name
             if candidate.exists():
                 voice_file = candidate
@@ -1815,9 +1815,9 @@ Do NOT include any explanation or commentary before or after the SSML.
         output_dir = self.session_path / "output"
         mixed_file = output_dir / "session_mixed.wav"
 
-        # Find voice file (prefer enhanced, fall back to others)
+        # Find voice file (prefer enhanced, fall back to others including Coqui output)
         voice_file = None
-        for name in ["voice_enhanced.wav", "voice_enhanced.mp3", "voice.wav", "voice.mp3"]:
+        for name in ["voice_enhanced.wav", "voice_enhanced.mp3", "voice.wav", "voice.mp3", "voice_synth.mp3", "voice_synth.wav"]:
             candidate = output_dir / name
             if candidate.exists():
                 voice_file = candidate
