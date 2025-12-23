@@ -1,0 +1,122 @@
+# Peace Dollar - Bullion Grade Random Date
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.peace_bullion_random
+sku: PEACE-BULLION-RANDOM
+category: coins
+subcategory: silver_dollars
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "Circulated Peace Dollar (Random Date)"
+headline: "Circulated Peace Silver Dollar — Honest, Heavy Silver"
+short_description: "Classic American silver. Straightforward pricing."
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: spot_plus_premium
+  premium_usd: 7.00
+  display_format: |
+    Spot: $XX.XX
+    Premium: $7.00
+    Price: $XX.XX + shipping
+
+# =============================================================================
+# SPECIFICATIONS
+# =============================================================================
+specs:
+  metal: silver
+  purity: 0.900
+  actual_silver_oz: 0.7734
+  weight_grams: 26.73
+  diameter_mm: 38.1
+  year_range: "1922-1935"
+  mints_included: ["P", "S"]
+  notes: "D mint acceptable for most dates"
+
+# =============================================================================
+# CONDITION & GRADING
+# =============================================================================
+condition:
+  grade_range: "VG-VF"
+  description: "Circulated, no luster"
+  what_to_expect:
+    - "Honest wear from circulation"
+    - "Flat high points typical"
+    - "Original surfaces, may have toning"
+    - "All dates/mints readable"
+  never_included:
+    - "1921 (high relief, key date)"
+    - "1927-D (semi-key)"
+    - "1928 (key date)"
+    - "1934-S, 1935-S (semi-keys)"
+    - "AU or better condition"
+
+# =============================================================================
+# SAFE BULLION YEARS
+# =============================================================================
+safe_years:
+  always_safe: [1922, 1923, 1924, 1925, 1926]
+  usually_safe: [1927]  # P mint only, D is semi-key
+  never_bullion:
+    - { year: 1921, reason: "High relief variety, always premium" }
+    - { year: 1927, mint: "D", reason: "Semi-key, low mintage" }
+    - { year: 1928, reason: "Key date, very low mintage" }
+    - { year: 1934, mint: "S", reason: "Semi-key" }
+    - { year: 1935, mint: "S", reason: "Semi-key" }
+
+# =============================================================================
+# LISTING LANGUAGE
+# =============================================================================
+listing:
+  do_say:
+    - "Circulated"
+    - "Dates vary"
+    - "Bullion-grade"
+    - "Priced by silver content"
+  never_say:
+    - "AU"
+    - "XF"
+    - "BU"
+    - "Choice"
+    - "Rare"
+    - "Key date"
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "All silver verified by weight & dimensions"
+  - "Photos show representative condition"
+  - "Authenticity guaranteed or full refund"
+  - "Ships within 24-48 hours"
+  - "Key dates excluded — pure bullion pricing"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "2x2 flip in padded envelope"
+  insurance: included
+  tracking: always
+
+# =============================================================================
+# BUYER PROFILE
+# =============================================================================
+target_buyer:
+  primary: "Bullion stackers"
+  secondary: "History enthusiasts"
+  friction_level: ultra_low
+  repeat_purchase: medium
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - MORGAN-BULLION-RANDOM
+  - 90-QUARTERS-10FV
+  - PREPAREDNESS-STACK

@@ -1,0 +1,285 @@
+# E-Commerce Product Catalog
+# Based on: Notion page "3. Coins, stamps, basic supplies — Curated, not broad"
+# Purpose: Master product catalog structure for velocity e-commerce
+
+entry_id: ecommerce.product_catalog
+name: Velocity Catalog Product Structure
+category: ecommerce
+description: >
+  A "Velocity Catalog" - not a store. Focus on movement, not variety.
+  Your first goal is not variety. It is MOVEMENT.
+
+# =============================================================================
+# CORE PRINCIPLE
+# =============================================================================
+core_principle:
+  statement: "Build a Velocity Catalog, not a store"
+  optimize_for:
+    - "Fast turnover (cash flow)"
+    - "Low dispute risk (trust)"
+    - "Easy fulfillment (time)"
+  first_products_should: "Let a buyer confidently say 'yes' without needing you to be a famous dealer"
+
+# =============================================================================
+# CATEGORY STRUCTURE
+# =============================================================================
+categories:
+  # ---------------------------------------------------------------------------
+  # CORE SINGLES (Clean, fast-moving)
+  # ---------------------------------------------------------------------------
+  singles:
+    description: "Individual items for fast cash flow"
+
+    silver_dollars:
+      - sku: MORGAN-BULLION-RANDOM
+        name: "Circulated Morgan Dollar (Random Date)"
+        headline: "Circulated Morgan Silver Dollar — Bullion Grade"
+        category: coin
+        subcategory: silver_dollar
+        pricing_type: spot_plus_premium
+        premium_usd: 8.00
+
+      - sku: PEACE-BULLION-RANDOM
+        name: "Circulated Peace Dollar (Random Date)"
+        headline: "Circulated Peace Silver Dollar — Honest, Heavy Silver"
+        category: coin
+        subcategory: silver_dollar
+        pricing_type: spot_plus_premium
+        premium_usd: 7.00
+
+    junk_silver:
+      - sku: 90-DIMES-5FV
+        name: "90% Silver Dimes — $5 FV"
+        headline: "90% U.S. Silver Dimes — $5 Face Value"
+        category: junk_silver
+        face_value: 5.00
+        silver_oz: 3.575
+        pricing_type: fv_multiplier
+
+      - sku: 90-QUARTERS-10FV
+        name: "90% Silver Quarters — $10 FV"
+        headline: "90% U.S. Silver Quarters — $10 Face Value"
+        category: junk_silver
+        face_value: 10.00
+        silver_oz: 7.15
+        pricing_type: fv_multiplier
+
+      - sku: 90-MIXED-10FV
+        name: "Mixed 90% Silver — $10 FV"
+        headline: "Mixed U.S. 90% Silver — $10 Face Value"
+        category: junk_silver
+        face_value: 10.00
+        silver_oz: 7.15
+        pricing_type: fv_multiplier
+
+    mexican_silver:
+      - sku: MEXICAN-PESO-RANDOM
+        name: "Mexican Silver Peso (Random)"
+        headline: "Mexican Circulation Silver — Random Peso Coin"
+        category: coin
+        subcategory: mexican
+        pricing_type: silver_content
+
+      - sku: LIBERTAD-1OZ
+        name: "1 Onza Libertad"
+        headline: "1 Onza Libertad — .999 Fine Mexican Silver"
+        category: bullion
+        subcategory: sovereign
+        silver_oz: 1.0
+        purity: 0.999
+        pricing_type: spot_plus_premium
+        premium_usd: 6.00
+
+  # ---------------------------------------------------------------------------
+  # BUNDLES (Where velocity + trust compound)
+  # ---------------------------------------------------------------------------
+  bundles:
+    description: "Curated bundles for higher AOV and faster conversion"
+
+    - sku: STARTER-SILVER-STACK
+      name: "Starter Silver Stack"
+      headline: "Starter Silver Stack — Simple, Real, Understandable"
+      contents:
+        - "1 Morgan Dollar"
+        - "$5 FV 90% Silver"
+      why_works:
+        - "Big silver + small silver"
+        - "Easy to grasp"
+        - "Gift-friendly"
+        - "No overthinking required"
+      target_buyer: "First-time buyers"
+
+    - sku: PREPAREDNESS-STACK
+      name: "Preparedness Stack"
+      headline: "Preparedness Silver Stack — Flexibility Over Flash"
+      contents:
+        - "2 Peace Dollars"
+        - "$10 FV 90% Silver"
+      why_works:
+        - "Substantial silver weight"
+        - "Fractional usability"
+        - "Recognizability across experience levels"
+      target_buyer: "Preppers, scenario thinkers"
+
+    - sku: SOUND-MONEY-BUNDLE
+      name: "Sound Money Bundle"
+      headline: "Sound Money Bundle — Three Traditions, One Stack"
+      contents:
+        - "1 Morgan Dollar"
+        - "1 Peace Dollar"
+        - "Mexican Silver (1 coin)"
+      why_works:
+        - "Not tied to one system"
+        - "Visually credible"
+        - "Historically grounded"
+      target_buyer: "Long-term thinkers"
+
+    - sku: JUNK-SILVER-ROLL-PACK
+      name: "Junk Silver Roll Pack"
+      headline: "Junk Silver Roll Pack — Fractional, Functional Silver"
+      contents:
+        - "$20 FV Mixed 90% Silver"
+      why_works:
+        - "Strong silver weight"
+        - "Lower premium per ounce"
+        - "Fewer transactions"
+      target_buyer: "Repeat buyers, serious stackers"
+
+    - sku: MEXICAN-SILVER-LOT
+      name: "Mexican Silver Lot"
+      headline: "Mexican Silver Lot — Internationally Trusted Silver"
+      contents:
+        - "5-10 Mexican Silver Coins (clearly weighed)"
+      why_works:
+        - "Visual credibility"
+        - "Cross-border trust"
+        - "Often overlooked value"
+      target_buyer: "Diversification-minded, preppers"
+
+  # ---------------------------------------------------------------------------
+  # STARTER KITS (High conversion, high AOV)
+  # ---------------------------------------------------------------------------
+  starter_kits:
+    description: "Solve clear problems with curated kits"
+
+    - sku: COIN-STARTER-KIT
+      name: "Coin Starter Kit"
+      headline: "Complete Coin Collecting Starter Kit"
+      contents:
+        - "Coin flips (assorted)"
+        - "Binder pages"
+        - "10x Magnifier"
+        - "Cotton gloves"
+      target_buyer: "New collectors"
+
+    - sku: STAMP-STARTER-KIT
+      name: "Stamp Starter Kit"
+      headline: "Complete Stamp Collecting Starter Kit"
+      contents:
+        - "Stamp tongs"
+        - "Stock book"
+        - "Mounts"
+        - "Glassine envelopes"
+      target_buyer: "New philatelists"
+
+    - sku: GIFT-STARTER-KIT
+      name: "Gift Starter Kit"
+      headline: "World Coin Gift Set — Perfect First Collection"
+      contents:
+        - "First 50 World Coins"
+        - "Storage supplies"
+        - "Care guide (PDF)"
+      target_buyer: "Gift buyers"
+
+    - sku: CARE-KIT
+      name: "Coin Care Kit"
+      headline: "Coin Care & Protection Kit"
+      contents:
+        - "Gloves"
+        - "Soft cloth"
+        - "Capsule set"
+        - "Storage box"
+      target_buyer: "Existing collectors (upsell)"
+
+  # ---------------------------------------------------------------------------
+  # SUPPLIES (Repeat purchase revenue)
+  # ---------------------------------------------------------------------------
+  supplies:
+    description: "Repeat-purchase items for steady cash flow"
+
+    coin_storage:
+      - { sku: FLIPS-2X2-100, name: "2x2 Coin Flips (100 pack)" }
+      - { sku: CAPSULES-38MM-25, name: "Coin Capsules 38mm (25 pack)" }
+      - { sku: TUBES-DOLLAR-10, name: "Dollar Storage Tubes (10 pack)" }
+      - { sku: ALBUM-MORGAN, name: "Morgan Dollar Album" }
+
+    stamp_storage:
+      - { sku: TONGS-STRAIGHT, name: "Stamp Tongs (Straight)" }
+      - { sku: MOUNTS-ASSORTED, name: "Stamp Mounts (Assorted)" }
+      - { sku: STOCKBOOK-32, name: "Stock Book (32 page)" }
+
+    accessories:
+      - { sku: LOUPE-10X, name: "10x Magnifier Loupe" }
+      - { sku: GLOVES-COTTON-6, name: "Cotton Gloves (6 pair)" }
+      - { sku: SCALE-DIGITAL, name: "Digital Gram Scale" }
+
+# =============================================================================
+# MINIMUM VIABLE CATALOG
+# =============================================================================
+minimum_viable_catalog:
+  description: "Enough to look real, rank in search, and learn what sells"
+  counts:
+    supply_skus: 15
+    starter_kits: 5
+    curated_coin_lots: 10
+    curated_stamp_lots: 10
+    recognizable_bullion: 5
+
+# =============================================================================
+# PRICING TYPES
+# =============================================================================
+pricing_types:
+  spot_plus_premium:
+    formula: "Spot price + fixed premium"
+    display: "Spot + $X.XX"
+    builds: "Instant trust"
+
+  fv_multiplier:
+    formula: "Face value × multiplier"
+    display: "Spot × FV multiplier"
+    example: "If multiplier is 20× and $10 FV, price = $200"
+
+  silver_content:
+    formula: "Silver oz × spot + small premium"
+    for: "Non-standard items (Mexican circulation, etc.)"
+
+  fixed:
+    for: "Supplies, kits"
+    approach: "Price competitively, focus on bundles for margin"
+
+# =============================================================================
+# LISTING REQUIREMENTS
+# =============================================================================
+listing_requirements:
+  every_listing:
+    - "Exact photos of actual item (both sides)"
+    - "Plain condition statement (no hype)"
+    - "Clear return policy"
+  coins:
+    - "Weight/diameter when relevant"
+  stamps:
+    - "Mint/used status"
+    - "Gum notes"
+    - "Faults disclosed"
+
+# =============================================================================
+# DEALER COVENANT (ADD TO EVERY LISTING)
+# =============================================================================
+dealer_covenant:
+  display: "Add as visible block on every product page"
+  statements:
+    - "No hype descriptions."
+    - "Defects disclosed."
+    - "Photos are of the exact item."
+    - "Fair returns."
+  purpose: "Reduces buyer anxiety, eliminates disputes, signals honesty"

@@ -1,0 +1,131 @@
+# Sound Money Bundle
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.sound_money_bundle
+sku: SOUND-MONEY-BUNDLE
+category: bundles
+subcategory: diversified
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "Sound Money Bundle"
+headline: "Sound Money Bundle — Three Traditions, One Stack"
+short_description: "American, Mexican, and junk silver. True diversification."
+
+# =============================================================================
+# BUNDLE CONTENTS
+# =============================================================================
+contents:
+  - item: "Morgan Silver Dollar"
+    quantity: 1
+    sku_ref: MORGAN-BULLION-RANDOM
+    silver_oz: 0.7734
+    represents: "American tradition (1878-1921)"
+
+  - item: "Peace Silver Dollar"
+    quantity: 1
+    sku_ref: PEACE-BULLION-RANDOM
+    silver_oz: 0.7734
+    represents: "American tradition (1921-1935)"
+
+  - item: "Mexican Silver Peso (Random)"
+    quantity: 1
+    sku_ref: MEXICAN-PESO-RANDOM
+    silver_oz: 0.3856  # approximate average
+    represents: "International silver"
+
+total_silver_oz: 1.9324  # approximate
+
+# =============================================================================
+# WHY THIS BUNDLE WORKS
+# =============================================================================
+why_works:
+  - "Not tied to one monetary system"
+  - "Visually credible and diverse"
+  - "Historically grounded"
+  - "Appeals to long-term thinkers"
+  - "Natural conversation starter"
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: bundle
+  strategy: "Sum of components minus small discount"
+  target_margin: "18-22%"
+  psychology: |
+    "Tells a story of monetary history.
+    Three coins, three eras, one truth:
+    Silver has always been money."
+
+# =============================================================================
+# TARGET BUYER
+# =============================================================================
+target_buyer:
+  primary: "Long-term thinkers"
+  secondary: "Monetary history enthusiasts"
+  use_cases:
+    - "Building diversified stack"
+    - "Gift with meaning"
+    - "Teaching about sound money"
+  mindset:
+    - "Understands monetary history"
+    - "Values diversification"
+    - "Appreciates symbolism"
+
+# =============================================================================
+# MARKETING
+# =============================================================================
+marketing:
+  emotional_appeal:
+    - "Money as it was meant to be"
+    - "Three nations, one truth"
+    - "Hold history in your hands"
+  search_terms:
+    - "sound money"
+    - "silver variety set"
+    - "historic silver coins"
+    - "monetary history coins"
+    - "silver dollar collection"
+  story_angle: |
+    "From the Wild West to the Jazz Age to the Americas —
+    this bundle represents over a century of real money.
+    When paper came and went, silver remained."
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "All coins verified authentic"
+  - "Represents three monetary traditions"
+  - "Substantial silver weight"
+  - "Ships in protective packaging"
+  - "Full refund if not satisfied"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "Presentation pouch with coin info card"
+  insurance: included
+  tracking: always
+
+# =============================================================================
+# BUNDLE PSYCHOLOGY
+# =============================================================================
+psychology:
+  reduces: "Paralysis of choice"
+  increases: "Perceived expertise of buyer"
+  feels: "Intentional and educational"
+  gift_appeal: "Perfect for someone learning about silver"
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - STARTER-SILVER-STACK
+  - PREPAREDNESS-STACK
+  - MEXICAN-SILVER-LOT
+  - LIBERTAD-1OZ

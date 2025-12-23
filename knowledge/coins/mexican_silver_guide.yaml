@@ -1,0 +1,168 @@
+# Mexican Silver Guide
+# Based on: Notion page "3. Coins, stamps, basic supplies — Curated, not broad"
+# Purpose: Guide for Mexican silver coins
+
+entry_id: coins.mexican_silver
+name: Mexican Silver Complete Guide
+category: bullion
+description: >
+  Mexican silver coins are trusted beyond the U.S., visually substantial,
+  and often undervalued relative to silver weight. Excellent for
+  international diversification and preparedness.
+
+# =============================================================================
+# OVERVIEW
+# =============================================================================
+overview:
+  advantages:
+    - "Trusted beyond the U.S."
+    - "Visually substantial"
+    - "Often undervalued relative to silver weight"
+    - "Internationally recognizable"
+  buyer_profile:
+    - "Diversification-minded stackers"
+    - "Preppers (international acceptance)"
+    - "Value hunters"
+
+# =============================================================================
+# LIBERTAD (PREMIUM BULLION)
+# =============================================================================
+libertad:
+  name: "Mexican Libertad"
+  aka: "1 Onza Libertad"
+  purity: 0.999
+  weight_oz: 1.0
+  mint: "Casa de Moneda de Mexico"
+
+  description: |
+    The iconic Mexican Libertad: one troy ounce of .999 fine silver,
+    government minted and globally recognized.
+
+  why_different:
+    - "Pure silver bullion (.999 fine)"
+    - "Limited mintages (often lower than ASE)"
+    - "Strong international demand"
+    - "No face value (pure bullion)"
+
+  pricing:
+    note: "Premium bullion coin"
+    typical_premium: "Higher than generic rounds, comparable to ASE"
+
+  listing_language:
+    title: "1 Onza Libertad — .999 Fine Mexican Silver"
+    points:
+      - "One troy ounce of .999 fine silver"
+      - "Government minted"
+      - "Globally recognized"
+      - "A premium bullion coin for long-term holders"
+
+# =============================================================================
+# CIRCULATION PESOS (VALUE BULLION)
+# =============================================================================
+circulation_pesos:
+  name: "Mexican Circulation Silver"
+  description: |
+    Authentic Mexican silver circulation coins valued for international
+    recognizability and silver content, not numismatic rarity.
+
+  common_denominations:
+    un_peso:
+      name: "Un Peso"
+      years: "Various (1920s-1940s most common)"
+      silver_content: "Varies by year"
+      note: "Check specific year for content"
+
+    cinco_pesos:
+      name: "Cinco Pesos"
+      years: "Various"
+      common_silver_years: ["1947", "1948"]
+      silver_content_grams: 30
+
+    diez_pesos:
+      name: "Diez Pesos"
+      years: "1955-1956"
+      silver_content_oz: 0.8359
+
+    veinticinco_pesos:
+      name: "Veinticinco Pesos"
+      years: "1968 Olympics"
+      silver_content_oz: 0.5208
+
+  pricing:
+    formula: "Silver content × spot + small premium"
+    note: "Priced by metal, not hype"
+
+  listing_language:
+    title: "Mexican Circulation Silver — Random Peso Coin"
+    points:
+      - "Authentic Mexican silver circulation coin"
+      - "Designs and dates vary"
+      - "Valued for international recognizability and silver content"
+      - "Not numismatic rarity"
+      - "Silver content clearly disclosed"
+
+# =============================================================================
+# BUNDLES
+# =============================================================================
+bundles:
+  mexican_silver_lot:
+    name: "Mexican Silver Lot"
+    contents: "5-10 Mexican Silver Coins (clearly weighed)"
+    description: |
+      A hand-assembled lot of authentic Mexican silver coins.
+      Each lot is clearly weighed and priced by actual silver content.
+
+    why_sells:
+      - "Visual credibility"
+      - "Cross-border trust"
+      - "Often overlooked value"
+      - "Excellent for diversification"
+      - "Preparedness-minded buyers"
+
+# =============================================================================
+# SORTING & GRADING
+# =============================================================================
+sorting:
+  for_sale:
+    - "Verify silver content for each type/year"
+    - "Weigh lots accurately"
+    - "Photograph clearly"
+    - "Disclose any damage"
+
+  caution:
+    - "Some Mexican coins have low or no silver (modern pesos)"
+    - "Verify silver content before listing"
+    - "When in doubt, weigh and test"
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  include:
+    - "Authentic Mexican government mint"
+    - "Silver content verified by weight"
+    - "International recognizability"
+    - "Priced by metal content"
+
+# =============================================================================
+# MARKET POSITION
+# =============================================================================
+market_position:
+  undervaluation:
+    reason: "Often overlooked by U.S. stackers"
+    opportunity: "Buy at lower premiums, sell to international buyers"
+
+  international_acceptance:
+    note: "Recognized throughout Americas and beyond"
+    prepper_value: "Valuable if U.S.-centric coins face limitations"
+
+# =============================================================================
+# MENTAL MODEL
+# =============================================================================
+mental_model:
+  mexican_silver_is: "Internationally diversified precious metal holding"
+  best_for:
+    - "Stackers wanting geographic diversification"
+    - "Preppers thinking beyond U.S. borders"
+    - "Value hunters finding underpriced silver"
+  position: "Complement to U.S. junk silver and bullion dollars"

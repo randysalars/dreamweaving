@@ -1,0 +1,103 @@
+# 90% Silver Quarters - $10 Face Value
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.90_quarters_10fv
+sku: 90-QUARTERS-10FV
+category: junk_silver
+subcategory: quarters
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "90% Silver Quarters — $10 Face Value"
+headline: "90% U.S. Silver Quarters — $10 Face Value"
+short_description: "Classic Washington quarters. Real silver."
+
+# =============================================================================
+# SILVER MATH
+# =============================================================================
+silver_content:
+  face_value: 10.00
+  silver_oz: 7.15
+  calculation: "40 quarters × 0.17875 oz per quarter"
+  per_dollar_fv: 0.715
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: fv_multiplier
+  example_calculation: |
+    If multiplier is 20×:
+    $10 FV × 20 = $200.00
+  display_format: |
+    Face Value: $10.00
+    Silver Content: 7.15 oz
+    Spot: $XX.XX
+    Multiplier: XX×
+    Price: $XX.XX
+
+# =============================================================================
+# SPECIFICATIONS
+# =============================================================================
+specs:
+  metal: silver
+  purity: 0.900
+  coin_count: 40
+  years_included: "Pre-1965"
+  types_may_include:
+    - "Washington (1932-1964)"
+    - "Standing Liberty (1916-1930)"
+    - "Barber (1892-1916)"
+  notes: "Mostly Washington, older types bonus"
+
+# =============================================================================
+# CONDITION
+# =============================================================================
+condition:
+  description: "Average circulated"
+  what_to_expect:
+    - "Mix of dates and mints"
+    - "Normal circulation wear"
+    - "Standing Liberty quarters may have weak dates"
+    - "Full silver content guaranteed"
+  never_included:
+    - "Slick or cull coins"
+    - "Holed or damaged"
+    - "Clad coins (1965+)"
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "Genuine U.S. 90% silver"
+  - "Sold by face value"
+  - "Circulated condition, no cherry-picking"
+  - "Priced transparently vs spot"
+  - "Ships insured & discreet"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "Coin tube or canvas bag"
+  insurance: included
+  tracking: always
+
+# =============================================================================
+# BUYER PROFILE
+# =============================================================================
+target_buyer:
+  primary: "Silver stackers"
+  secondary: "Preppers"
+  friction_level: ultra_low
+  repeat_purchase: high
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - 90-DIMES-5FV
+  - 90-MIXED-10FV
+  - PREPAREDNESS-STACK

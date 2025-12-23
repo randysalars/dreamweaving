@@ -1,0 +1,170 @@
+# Peace Dollar Sorting Guide
+# Based on: Notion page "3. Coins, stamps, basic supplies — Curated, not broad"
+# Purpose: Classify Peace dollars as bullion-grade vs numismatic
+
+entry_id: coins.peace_dollar
+name: Peace Dollar Classification Guide
+category: numismatic_sorting
+description: >
+  Complete guide for sorting Peace silver dollars (1921-1935) into
+  bullion-grade (sell fast) vs numismatic (sell later) categories.
+
+# =============================================================================
+# KEY DATES - NEVER SELL AS BULLION
+# =============================================================================
+key_dates:
+  absolute_key:
+    description: "Never bullion unless damaged beyond collector interest"
+    dates:
+      - year: 1921
+        mint: P
+        note: "High-relief first year - always numismatic"
+      - year: 1927
+        mint: D
+        note: "Low mintage, strong collector demand"
+      - year: 1928
+        mint: P
+        note: "Philadelphia only, low mintage"
+      - year: 1934
+        mint: S
+        note: "Scarce in all grades"
+      - year: 1935
+        mint: S
+        note: "Last year, low mintage at SF"
+
+  semi_key:
+    description: "Can look bullion-ish but often carry premiums"
+    dates:
+      - { year: 1924, mint: S }
+      - { year: 1925, mint: S }
+      - { year: 1926, mint: S }
+      - { year: 1927, mint: S }
+
+# =============================================================================
+# SAFE BULLION-GRADE DATES
+# =============================================================================
+safe_bullion_dates:
+  description: "Almost always bullion when circulated - heavily minted and widely circulated"
+
+  all_mints_safe:
+    years:
+      - 1922  # all mints
+      - 1923  # all mints
+      - 1924  # Philadelphia mint only
+      - 1925  # Philadelphia mint only
+      - 1926  # Philadelphia and Denver
+      - 1927  # Philadelphia only (NOT Denver!)
+
+  specific_safe:
+    - { year: 1922, mint: P, safe: true }
+    - { year: 1922, mint: D, safe: true }
+    - { year: 1922, mint: S, safe: true }
+    - { year: 1923, mint: P, safe: true }
+    - { year: 1923, mint: D, safe: true }
+    - { year: 1923, mint: S, safe: true }
+    - { year: 1924, mint: P, safe: true }
+    - { year: 1925, mint: P, safe: true }
+    - { year: 1926, mint: P, safe: true }
+    - { year: 1926, mint: D, safe: true }
+    - { year: 1927, mint: P, safe: true }
+    - { year: 1934, mint: D, note: "Check condition carefully" }
+
+# =============================================================================
+# PEACE DOLLAR SPECIFIC TRAPS
+# =============================================================================
+traps:
+  strike_quality:
+    description: "Peace dollars are notorious for weak strikes and uneven luster"
+    implication: "A well-struck Peace dollar is far more valuable than it looks"
+    action: "If strike is sharp and even, pull for evaluation"
+
+  luster_trap:
+    description: "Many Peace dollars retain cartwheel luster even when worn"
+    action: "Don't be fooled by surface wear - check for luster"
+
+# =============================================================================
+# CONDITION RULES
+# =============================================================================
+condition_rules:
+  bullion_characteristics:
+    - "Flat, worn details"
+    - "No cartwheel luster"
+    - "Gray or toned patina"
+    - "Obvious circulation wear"
+
+  numismatic_characteristics:
+    - "Strong cartwheel luster"
+    - "Sharp strike details"
+    - "Clean fields"
+    - "Attractive eye appeal"
+    - "AU or better appearance"
+
+# =============================================================================
+# TRIAGE METHOD
+# =============================================================================
+triage_method:
+  step_1:
+    action: "Separate by year and mint"
+    immediate_pull:
+      - "1921 (any)"
+      - "1927-D"
+      - "1928"
+      - "1934-S"
+      - "1935-S"
+
+  step_2:
+    action: "From remaining, check condition"
+    pull_if:
+      - "Lustrous"
+      - "Sharp strike"
+      - "Attractive"
+
+  step_3:
+    action: "What remains is bullion-grade"
+
+# =============================================================================
+# LISTING LANGUAGE
+# =============================================================================
+listing_guidance:
+  correct_title: "Circulated Peace Silver Dollar — Honest, Heavy Silver"
+  description_points:
+    - "Original U.S. Peace silver dollar, circulated condition"
+    - "Valued for silver content, not collector premium"
+    - "Slightly higher silver content feel than junk"
+    - "Less hype, more substance"
+    - "Excellent bridge between bullion and junk silver"
+  never_claim:
+    - "Uncirculated"
+    - "Choice"
+    - "High-grade"
+    - "Rare"
+
+# =============================================================================
+# SILVER CONTENT
+# =============================================================================
+silver_content:
+  weight_troy_oz: 0.7734
+  purity: 0.900
+  actual_silver_oz: 0.77344
+  diameter_mm: 38.1
+  weight_grams: 26.73
+  note: "Same silver content as Morgan dollars"
+
+# =============================================================================
+# PRICING NOTES
+# =============================================================================
+pricing:
+  bullion_grade:
+    formula: "Spot silver × 0.77344 oz + premium"
+    premium_range: "$2-5 over melt depending on market"
+  numismatic:
+    note: "Consult price guides - can be 5-50x bullion value"
+    sell_strategy: "Wait for calm markets, sell through specialists"
+
+# =============================================================================
+# MENTAL MODEL
+# =============================================================================
+mental_model:
+  peace_dollar_position: "Bridge coin between pure bullion and numismatic"
+  buyer_psychology: "Buyers want substance without collector complexity"
+  selling_approach: "Emphasize silver weight and recognizability"

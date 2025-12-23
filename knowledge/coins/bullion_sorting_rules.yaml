@@ -1,0 +1,233 @@
+# Bullion Sorting Rules - Master Guide
+# Based on: Notion page "3. Coins, stamps, basic supplies — Curated, not broad"
+# Purpose: Fast triage method for sorting coins into bullion vs numismatic
+
+entry_id: coins.bullion_sorting
+name: Bullion vs Numismatic Sorting Master Guide
+category: sorting_methodology
+description: >
+  Fast, practical methodology for sorting silver coins into
+  bullion-grade (sell fast) vs numismatic (sell later) categories.
+  The core truth: You are not selling coins. You are selling liquidity.
+
+# =============================================================================
+# THE MASTER RULE
+# =============================================================================
+master_rule:
+  statement: "You are not selling coins. You are selling liquidity."
+  every_decision_answers: "Will this move in days, not months?"
+
+# =============================================================================
+# BUYER FRICTION HIERARCHY
+# =============================================================================
+friction_levels:
+  ultra_low:
+    description: "Sell FIRST - fastest cash flow"
+    items:
+      - "1 oz government bullion (ASE, Maple, Britannia, Philharmonic)"
+      - "Generic 1 oz rounds"
+      - "10 oz bars (recognized mints)"
+      - "Pre-1965 U.S. junk silver (90%)"
+
+  medium:
+    description: "Sell SECOND"
+    items:
+      - "Proofs (modern)"
+      - "Branded rounds"
+      - "Semi-numismatic bullion"
+
+  high:
+    description: "WAIT - don't lead with these"
+    items:
+      - "Rare dates"
+      - "Heavily graded numismatics"
+      - "Odd weights / obscure mints"
+      - "Slabbed coins"
+      - "Varieties / errors"
+
+  rule: "Cash flow comes from ultra-low friction, not high friction"
+
+# =============================================================================
+# MORGAN DOLLAR QUICK REFERENCE
+# =============================================================================
+morgan_quick_sort:
+  stop_immediately:
+    - "Any CC mintmark (Carson City)"
+    - "1893 (any mint)"
+    - "1895 (any mint)"
+
+  safe_bullion:
+    condition: "VG-VF, common date, no luster"
+    safe_years_p: [1879, 1880, 1881, 1882, 1883, 1884, 1885, 1886, 1887, 1888, 1889, 1890, 1891, 1896, 1897, 1898, 1899, 1900, 1901, 1902, 1903, 1904]
+    safe_years_o: [1879, 1880, 1881, 1882, 1883, 1884, 1885, 1886, 1887, 1888, 1889, 1890, 1891, 1896, 1897, 1898]
+
+# =============================================================================
+# PEACE DOLLAR QUICK REFERENCE
+# =============================================================================
+peace_quick_sort:
+  stop_immediately:
+    - "1921 (any)"
+    - "1927-D"
+    - "1928"
+    - "1934-S"
+    - "1935-S"
+
+  safe_bullion:
+    condition: "Circulated, no luster"
+    safe_years: [1922, 1923, 1924, 1925, 1926, 1927]
+    note: "P mint only for 1927 - D is semi-key"
+
+# =============================================================================
+# "LOOKS TOO NICE" RULE
+# =============================================================================
+looks_too_nice:
+  description: "If any of these apply, it is NOT bullion-grade"
+  pull_if:
+    - "Strong cartwheel luster"
+    - "Looks AU or better"
+    - "Clean fields"
+    - "Eye appeal"
+    - "Sharp strike"
+  reason: "Nice common dates still bring premiums"
+  action: "Do not sell as bullion, even if date is common"
+
+# =============================================================================
+# FAST TRIAGE METHOD (3 STEPS)
+# =============================================================================
+triage_method:
+  step_1:
+    name: "Sort by date/mint ONLY (no grading yet)"
+    create_piles:
+      pile_1: "Safe dates"
+      pile_2: "Questionable"
+      pile_3: "Stop immediately (key/semi-key)"
+
+  step_2:
+    name: "Condition sweep"
+    from_pile: "Safe dates"
+    remove_if:
+      - "Shiny"
+      - "Lightly worn"
+      - "Attractive"
+
+  step_3:
+    name: "Final bullion pile"
+    what_remains:
+      - "Flat detail"
+      - "Gray patina"
+      - "Honest wear"
+    result: "This pile is safe to sell fast"
+
+# =============================================================================
+# VARIETY & ERROR WARNINGS
+# =============================================================================
+variety_warnings:
+  types:
+    - "VAM varieties"
+    - "Doubled dies"
+    - "Overdates"
+    - "Repunched mintmarks"
+  warning_signs:
+    - "Odd mintmark shape"
+    - "Doubled letters"
+    - "Unusual die cracks"
+  action: "Set aside - could be worth multiples of bullion"
+
+# =============================================================================
+# LISTING LANGUAGE
+# =============================================================================
+listing_language:
+  do_say:
+    - "Circulated"
+    - "Dates vary"
+    - "Bullion-grade"
+    - "Priced by silver content"
+
+  never_say:
+    - "AU"
+    - "XF"
+    - "BU"
+    - "Choice"
+    - "Rare"
+    - "Uncirculated"
+
+  benefit: "Reduces disputes and increases velocity"
+
+# =============================================================================
+# TWO VAULTS MENTAL MODEL
+# =============================================================================
+two_vaults:
+  vault_1:
+    name: "Liquid Metal"
+    contents:
+      - "Junk silver"
+      - "Bullion-grade dollars"
+      - "Rounds & bars"
+    strategy: "Sell for SPEED"
+    timing: "Now"
+
+  vault_2:
+    name: "Historical Value"
+    contents:
+      - "Key dates"
+      - "High-grade coins"
+      - "Varieties"
+      - "Slabbed pieces"
+    strategy: "Sell for OUTCOMES"
+    timing: "Wait for calm markets"
+
+  golden_rule: "Never cross the streams"
+
+# =============================================================================
+# COMMON MISTAKES
+# =============================================================================
+mistakes:
+  sellers_make:
+    - "Dumping 1893-O as bullion"
+    - "Selling CC coins by weight"
+    - "Underpricing nice AU common dates"
+    - "Cherry-picking junk silver (kills trust)"
+    - "Mixing 40% Kennedy halves with 90%"
+
+  one_error_cost: "Months of profits"
+
+  correct_sorting_enables:
+    - "Sell fast"
+    - "Keep upside"
+    - "Fund production assets"
+    - "Restock later"
+
+# =============================================================================
+# VELOCITY CATALOG PRINCIPLE
+# =============================================================================
+velocity_catalog:
+  core_principle: "Your first goal is not variety. It is MOVEMENT."
+  ideal_starter_catalog:
+    sku_count: "10-15 max"
+    items:
+      - "1 oz Silver Round (random design)"
+      - "1 oz American Silver Eagle"
+      - "5 oz Silver Bar"
+      - "10 oz Silver Bar"
+      - "$10 FV Junk Silver"
+      - "$100 FV Junk Silver"
+      - "Beginner Silver Stack (bundle)"
+      - "Preparedness Silver Kit (bundle)"
+  looks: "Credible without being overwhelming"
+
+# =============================================================================
+# WHEN TO SELL NUMISMATICS
+# =============================================================================
+numismatic_timing:
+  numismatic_value_driven_by:
+    - "Collector confidence"
+    - "Disposable income"
+    - "Strong markets"
+    - "Stable shipping & insurance"
+    - "Functioning grading services"
+
+  in_chaos_or_panic:
+    - "Numismatic premiums collapse"
+    - "Bullion premiums dominate"
+
+  rule: "Wait for calm to sell collectibles"

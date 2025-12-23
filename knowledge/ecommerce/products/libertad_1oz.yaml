@@ -1,0 +1,115 @@
+# 1 oz Libertad
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.libertad_1oz
+sku: LIBERTAD-1OZ
+category: bullion
+subcategory: sovereign
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "1 Onza Libertad"
+headline: "1 Onza Libertad — .999 Fine Mexican Silver"
+short_description: "Mexico's iconic silver bullion. Beautiful and liquid."
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: spot_plus_premium
+  premium_usd: 6.00
+  display_format: |
+    Silver Spot: $XX.XX
+    Premium: $6.00/oz
+    Total: $XX.XX
+
+# =============================================================================
+# SPECIFICATIONS
+# =============================================================================
+specs:
+  metal: silver
+  purity: 0.999
+  silver_oz: 1.0
+  weight_grams: 31.103
+  diameter_mm: 36
+  thickness_mm: 3
+  mint: "Casa de Moneda de México"
+  design:
+    obverse: "Winged Victory (Angel of Independence)"
+    reverse: "Mexican National Coat of Arms"
+
+# =============================================================================
+# CONDITION
+# =============================================================================
+condition:
+  grade: "BU (Brilliant Uncirculated)"
+  what_to_expect:
+    - "Fresh from mint tube"
+    - "Light handling marks possible"
+    - "Full luster"
+  notes: "May have light toning or milk spots (natural)"
+
+# =============================================================================
+# VALUE PROPOSITION
+# =============================================================================
+value_proposition:
+  why_libertads:
+    - "Lower mintage than ASE or Maple"
+    - "Highly sought by collectors"
+    - "Beautiful classic design"
+    - "International recognition"
+  compared_to:
+    ASE: "Usually lower premium, comparable liquidity"
+    Maple: "Similar premium, different collector base"
+    Generic: "Higher premium but much more collectible"
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "Official Mexican Mint product"
+  - "Weight and purity guaranteed"
+  - "Ships in protective flip or capsule"
+  - "Authenticity guaranteed or full refund"
+
+# =============================================================================
+# TARGET BUYER
+# =============================================================================
+target_buyer:
+  primary: "Bullion collectors"
+  secondary: "International diversifiers"
+  friction_level: ultra_low
+  repeat_purchase: high
+  why_buy:
+    - "Government-backed purity"
+    - "Beautiful design"
+    - "Lower mintage collectibility"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "Capsule or protective flip"
+  insurance: included
+  tracking: always
+
+# =============================================================================
+# MARKETING
+# =============================================================================
+marketing:
+  search_terms:
+    - "1 oz libertad"
+    - "mexican silver coin"
+    - "libertad silver"
+    - "onza plata"
+    - "mexico silver bullion"
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - MEXICAN-PESO-RANDOM
+  - MEXICAN-SILVER-LOT
+  - SOUND-MONEY-BUNDLE

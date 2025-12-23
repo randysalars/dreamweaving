@@ -1,0 +1,248 @@
+# E-Commerce Pricing Strategy
+# Based on: Notion page "3. Coins, stamps, basic supplies — Curated, not broad"
+# Purpose: Transparent pricing models for velocity e-commerce
+
+entry_id: ecommerce.pricing_strategy
+name: Velocity Catalog Pricing Strategy
+category: ecommerce
+description: >
+  Price for speed, not ego. Cash velocity beats margin perfection.
+  Build instant trust through transparent pricing.
+
+# =============================================================================
+# CORE PRINCIPLE
+# =============================================================================
+core_principle:
+  early_mistake: "I'll wait for top dollar."
+  correct_mindset: "Cash velocity beats margin perfection."
+  golden_rule: "Transparency builds trust. Trust builds repeat buyers."
+
+# =============================================================================
+# PRICING MODELS
+# =============================================================================
+pricing_models:
+  # ---------------------------------------------------------------------------
+  # Spot + Premium (for bullion items)
+  # ---------------------------------------------------------------------------
+  spot_plus_premium:
+    formula: "Spot price (live) + fixed premium + shipping"
+    example: "Spot + $3.99 per ounce"
+    display_format: |
+      Silver Spot: $XX.XX
+      Premium: $X.XX/oz
+      Total: $XX.XX
+    builds: "Instant trust"
+
+    avoid:
+      - "Auction-style pricing"
+      - "Vague 'market pricing'"
+      - "Hidden premiums"
+
+    premiums_by_product:
+      generic_round_1oz: 3.99
+      ase_1oz: 5.99
+      maple_1oz: 4.99
+      libertad_1oz: 6.00
+      morgan_bullion: 8.00
+      peace_bullion: 7.00
+      bar_10oz: 2.50  # per oz
+
+  # ---------------------------------------------------------------------------
+  # Face Value Multiplier (for junk silver)
+  # ---------------------------------------------------------------------------
+  fv_multiplier:
+    formula: "Face Value × Multiplier"
+    silver_math:
+      one_dollar_fv: 0.715  # troy oz silver
+      ten_dollar_fv: 7.15
+      hundred_dollar_fv: 71.5
+
+    multiplier_calculation:
+      formula: "(Spot × 0.715) + premium markup"
+      example: |
+        Spot = $25
+        $1 FV melt = $17.88
+        Multiplier = 18× to 22× (varies by market)
+
+    display_format: |
+      Face Value: $X.XX
+      Multiplier: XX×
+      Total: $XX.XX
+
+    current_market_range:
+      low: 18
+      typical: 20
+      high: 22
+
+  # ---------------------------------------------------------------------------
+  # Silver Content (for Mexican/foreign)
+  # ---------------------------------------------------------------------------
+  silver_content:
+    formula: "Actual silver oz × spot + small premium"
+    use_for:
+      - "Mexican circulation pesos"
+      - "Foreign silver"
+      - "Non-standard weights"
+    display: "Clearly disclose silver content"
+
+  # ---------------------------------------------------------------------------
+  # Fixed Pricing (for supplies)
+  # ---------------------------------------------------------------------------
+  fixed:
+    use_for: "Supplies, kits, non-metal items"
+    approach:
+      singles: "Price competitively"
+      bundles: "Stronger margin, sell convenience"
+
+# =============================================================================
+# SEGMENT-SPECIFIC PRICING
+# =============================================================================
+segment_pricing:
+  supplies:
+    strategy: "Price competitively"
+    focus: "Bundles to improve margin"
+    repeat_purchase: true
+
+  coins_stamps:
+    simple_rule:
+      fast_mover_commodity: "Tight margins, move volume"
+      curated_lot_giftable: "Stronger margin, sell story"
+      high_value: "Only once you have buyer trust + traffic"
+
+  bullion:
+    priority: "Speed over maximum margin"
+    principle: "Fair price → fast sale → reinvest"
+
+# =============================================================================
+# BUNDLE PRICING
+# =============================================================================
+bundle_pricing:
+  principle: "Bundles convert far better than singles"
+  margin_target: "15-20%"
+  value_proposition: "Convenience + curation"
+
+  psychology:
+    - "Increases average order value"
+    - "Reduces choice paralysis"
+    - "Feels intentional"
+
+  pricing_approach:
+    - "Sum of components minus small discount"
+    - "Round to clean number"
+    - "Show value vs buying separately"
+
+# =============================================================================
+# TRUST SIGNALS (More important than pricing)
+# =============================================================================
+trust_signals:
+  silver_trust_block:
+    display: "Add to EVERY silver product"
+    elements:
+      - "All silver verified by weight & dimensions"
+      - "Photos show the exact item"
+      - "Authenticity guaranteed or full refund"
+      - "Ships within 24-48 hours"
+    impact: "Reduces checkout friction dramatically"
+
+  junk_silver_trust:
+    elements:
+      - "Genuine U.S. 90% silver"
+      - "Sold by face value"
+      - "Circulated condition, no cherry-picking"
+      - "Priced transparently vs spot"
+      - "Ships insured & discreet"
+    impact: "Can double conversion"
+
+  dealer_covenant:
+    display: "Sitewide block"
+    statements:
+      - "No hype descriptions."
+      - "Defects disclosed."
+      - "Photos are of the exact item."
+      - "Fair returns."
+
+# =============================================================================
+# SHIPPING PRICING
+# =============================================================================
+shipping:
+  best_practices:
+    - "Flat-rate shipping"
+    - "Insurance included"
+    - "Tracking always"
+    - "Discreet packaging"
+
+  messaging: "Ships discreetly, fully insured, with tracking."
+  importance: "Matters more than design"
+
+  options:
+    standard:
+      cost_to_display: "Flat rate or free over $X"
+      includes: ["Insurance", "Tracking", "Discreet packaging"]
+
+# =============================================================================
+# PRICING DISPLAY BEST PRACTICES
+# =============================================================================
+display_best_practices:
+  always_show:
+    - "Current spot price (for metal)"
+    - "Your premium or multiplier"
+    - "Total price"
+    - "Silver content (oz)"
+
+  never_do:
+    - "Hide the premium"
+    - "Use vague 'market price'"
+    - "Auction-style pricing"
+    - "Per-coin pricing for junk silver"
+
+  format_example:
+    silver_dollar: |
+      Circulated Morgan Silver Dollar
+      Silver Content: 0.77 oz
+      Spot: $25.00
+      Premium: $8.00
+      Price: $27.28
+
+    junk_silver: |
+      $10 Face Value 90% Silver
+      Silver Content: 7.15 oz
+      Spot: $25.00
+      Multiplier: 20×
+      Price: $200.00
+
+# =============================================================================
+# COMPETITIVE POSITIONING
+# =============================================================================
+positioning:
+  not_competing_on:
+    - "Lowest price"
+    - "Biggest selection"
+    - "Fastest shipping"
+
+  competing_on:
+    - "Transparency"
+    - "Trust"
+    - "Simplicity"
+    - "Fair dealing"
+
+  message: "Calm pricing. No drama. No hype."
+
+# =============================================================================
+# MARGIN GUIDELINES
+# =============================================================================
+margins:
+  supplies:
+    target: "30-50%"
+    note: "Competitive but profitable"
+
+  bullion_singles:
+    target: "5-15%"
+    note: "Volume over margin"
+
+  bundles:
+    target: "15-25%"
+    note: "Value-add justifies margin"
+
+  high_value_numismatic:
+    target: "20-40%"
+    note: "Only after established trust"

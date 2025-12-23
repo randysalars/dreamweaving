@@ -1,0 +1,277 @@
+# Coin & Stamp Supplies Catalog
+# Based on: Notion page "3. Coins, stamps, basic supplies — Curated, not broad"
+# Purpose: Curated supplies for collectors - repeat purchase revenue
+
+entry_id: coins.supplies
+name: Collector Supplies Catalog
+category: supplies
+description: >
+  Curated supply SKUs that create repeat customers. Supplies are the
+  beginning of your "return loop" — they create repeat customers
+  while you learn the coin/stamp side.
+
+# =============================================================================
+# WHY SUPPLIES MATTER
+# =============================================================================
+supplies_value:
+  advantages:
+    - "Easy to understand"
+    - "Easy to ship"
+    - "Repeatable (people come back)"
+    - "Low dispute risk"
+    - "Consistent cash flow"
+  position: "Beginning of your return loop"
+
+# =============================================================================
+# COIN SUPPLIES
+# =============================================================================
+coin_supplies:
+  storage:
+    coin_flips:
+      name: "2x2 Coin Flips"
+      description: "Cardboard holders with mylar windows"
+      sizes: ["Cent", "Nickel", "Dime", "Quarter", "Half", "Dollar", "Large"]
+      packaging: ["50 pack", "100 pack", "500 pack"]
+      repeat_rate: high
+
+    coin_capsules:
+      name: "Coin Capsules"
+      description: "Airtight plastic capsules"
+      sizes: ["38mm (silver dollar)", "40mm (ASE)", "26mm (quarter)", "21mm (nickel)"]
+      packaging: ["10 pack", "25 pack", "50 pack"]
+      repeat_rate: high
+
+    storage_tubes:
+      name: "Coin Storage Tubes"
+      description: "Clear plastic tubes for stacking"
+      sizes: ["Dollar", "Half", "Quarter", "Dime", "Cent"]
+      packaging: ["5 pack", "10 pack"]
+      repeat_rate: medium
+
+    albums:
+      name: "Coin Albums"
+      types:
+        - "Dansco albums"
+        - "Whitman folders"
+        - "Generic binder albums"
+      popular_series:
+        - "Morgan Dollar"
+        - "Peace Dollar"
+        - "State Quarters"
+        - "Lincoln Cents"
+      repeat_rate: low  # but high AOV
+
+    album_pages:
+      name: "Coin Album Pages"
+      description: "Replacement and expansion pages"
+      formats: ["2x2 pocket", "3x3 pocket", "mixed sizes"]
+      packaging: ["5 pack", "10 pack"]
+      repeat_rate: medium
+
+  handling:
+    magnifiers:
+      name: "Coin Magnifiers"
+      types:
+        - { name: "10x loupe", note: "Basic, portable" }
+        - { name: "30x jeweler's loupe", note: "For grading" }
+        - { name: "LED illuminated loupe", note: "Premium" }
+      repeat_rate: low
+
+    gloves:
+      name: "Cotton Coin Gloves"
+      description: "White cotton gloves for handling"
+      packaging: ["3 pair", "6 pair", "12 pair"]
+      repeat_rate: medium
+
+    cleaning_cloth:
+      name: "Microfiber Cleaning Cloth"
+      description: "For holders and cases, NOT coins"
+      note: "Clearly state: never clean coins"
+      repeat_rate: medium
+
+  measuring:
+    scales:
+      name: "Digital Gram Scale"
+      accuracy: "0.01g"
+      capacity: "100g-500g"
+      use: "Weighing silver content"
+      repeat_rate: low
+
+    calipers:
+      name: "Digital Calipers"
+      use: "Measuring coin diameter for authentication"
+      repeat_rate: low
+
+# =============================================================================
+# STAMP SUPPLIES
+# =============================================================================
+stamp_supplies:
+  handling:
+    stamp_tongs:
+      name: "Stamp Tongs"
+      description: "Pointed tips for handling stamps"
+      types:
+        - { name: "Straight tip", note: "General use" }
+        - { name: "Spade tip", note: "Precision" }
+      repeat_rate: low
+
+  mounting:
+    hinges:
+      name: "Stamp Hinges"
+      description: "Gummed hinges for mounting"
+      packaging: ["100 pack", "500 pack", "1000 pack"]
+      repeat_rate: high
+
+    mounts:
+      name: "Stamp Mounts"
+      description: "Clear protective mounts"
+      types: ["Pre-cut", "Cut-to-size strips"]
+      repeat_rate: high
+
+  storage:
+    stock_books:
+      name: "Stamp Stock Books"
+      description: "Albums with glassine strips"
+      sizes: ["16 page", "32 page", "64 page"]
+      repeat_rate: medium
+
+    stock_pages:
+      name: "Stock Pages"
+      description: "Loose pages with pockets"
+      formats: ["1 row", "2 row", "4 row", "6 row"]
+      repeat_rate: medium
+
+    glassine_envelopes:
+      name: "Glassine Envelopes"
+      description: "Translucent envelopes for stamp storage"
+      sizes: ["#1", "#2", "#3", "#4"]
+      packaging: ["100 pack", "500 pack"]
+      repeat_rate: high
+
+# =============================================================================
+# STARTER KITS (HIGH CONVERSION)
+# =============================================================================
+starter_kits:
+  coin_starter_kit:
+    name: "Coin Starter Kit"
+    contents:
+      - "Assorted 2x2 flips"
+      - "Binder with album pages"
+      - "10x magnifier"
+      - "Cotton gloves"
+    why_sells:
+      - "Increases AOV"
+      - "Reduces decision fatigue"
+      - "Perfect for SEO"
+      - "Gift-friendly"
+
+  stamp_starter_kit:
+    name: "Stamp Starter Kit"
+    contents:
+      - "Stamp tongs"
+      - "Stock book (16 page)"
+      - "Assorted mounts"
+      - "Glassine envelopes"
+    why_sells:
+      - "Complete beginner solution"
+      - "Higher margin than singles"
+
+  gift_starter_kit:
+    name: "Gift Starter Kit"
+    contents:
+      - "First 50 World Coins"
+      - "Coin album or stock book"
+      - "10x loupe"
+      - "Care guide (PDF)"
+    why_sells:
+      - "Gift market"
+      - "Entry point for new collectors"
+
+  care_kit:
+    name: "Coin Care Kit"
+    contents:
+      - "Cotton gloves (2 pair)"
+      - "Microfiber cloth"
+      - "Capsule set (assorted sizes)"
+      - "Storage box"
+    why_sells:
+      - "Upsell to existing customers"
+      - "Repeat purchase driver"
+
+# =============================================================================
+# ARCHIVAL & PROTECTION
+# =============================================================================
+archival:
+  acid_free_sleeves:
+    name: "Acid-Free Sleeves"
+    description: "Archival storage for valuable items"
+    use: "Long-term preservation"
+    repeat_rate: medium
+
+  silica_gel:
+    name: "Silica Gel Packets"
+    description: "Moisture absorbers"
+    packaging: ["10 pack", "25 pack"]
+    repeat_rate: high
+
+  storage_boxes:
+    name: "Coin Storage Boxes"
+    types:
+      - "2x2 flip boxes (holds 100)"
+      - "Slab boxes (PCGS/NGC)"
+      - "Tube boxes"
+    repeat_rate: low
+
+# =============================================================================
+# BUNDLING STRATEGY
+# =============================================================================
+bundling:
+  principle: "Bundles convert far better than singles"
+  benefits:
+    - "Increase average order value"
+    - "Reduce decision fatigue"
+    - "Feel intentional"
+    - "Perfect for SEO"
+
+  examples:
+    - name: "Complete Starter Bundle"
+      margin: higher
+      components: ["kit + album + extra supplies"]
+
+    - name: "Refill Bundle"
+      target: "Repeat customers"
+      components: ["Flips + capsules + gloves"]
+
+# =============================================================================
+# PRICING NOTES
+# =============================================================================
+pricing:
+  singles:
+    approach: "Price competitively"
+    focus: "Volume over margin"
+
+  bundles:
+    approach: "Strong margin, sell convenience"
+    value_add: "Story of completeness"
+
+# =============================================================================
+# CURATED LADDER (PROGRESSION)
+# =============================================================================
+ladder:
+  tier_1:
+    name: "Supplies + starter lots"
+    timeline: "Weeks 1-4"
+    skus:
+      supplies: "10-25"
+      lots: "10-20"
+      kits: "3-5"
+
+  tier_2:
+    name: "Recognizable named items"
+    timeline: "Weeks 4-8"
+    items: "Items people search directly (bullion, proof sets)"
+
+  tier_3:
+    name: "Higher-value collectibles"
+    timeline: "After proven demand"
+    condition: "Only after consistent traffic + returns + low dispute rate"

@@ -1,0 +1,120 @@
+# Preparedness Stack Bundle
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.preparedness_stack
+sku: PREPAREDNESS-STACK
+category: bundles
+subcategory: preparedness
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "Preparedness Stack"
+headline: "Preparedness Silver Stack — Flexibility Over Flash"
+short_description: "Serious silver for serious planning. Fractional and recognizable."
+
+# =============================================================================
+# BUNDLE CONTENTS
+# =============================================================================
+contents:
+  - item: "Peace Silver Dollar"
+    quantity: 2
+    sku_ref: PEACE-BULLION-RANDOM
+    silver_oz: 1.5468  # 0.7734 × 2
+
+  - item: "90% Silver (Mixed)"
+    quantity: "$10 FV"
+    sku_ref: 90-MIXED-10FV
+    silver_oz: 7.15
+
+total_silver_oz: 8.6968
+
+# =============================================================================
+# WHY THIS BUNDLE WORKS
+# =============================================================================
+why_works:
+  - "Substantial silver weight"
+  - "Fractional usability for barter scenarios"
+  - "Recognizable across experience levels"
+  - "Versatile in uncertain times"
+  - "No numismatic premium to worry about"
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: bundle
+  strategy: "Sum of components minus small discount"
+  target_margin: "15-20%"
+  value_proposition: "Convenience + curation + quantity discount"
+
+# =============================================================================
+# TARGET BUYER
+# =============================================================================
+target_buyer:
+  primary: "Preppers, scenario thinkers"
+  secondary: "Serious stackers"
+  use_cases:
+    - "Emergency preparedness"
+    - "Barter-ready holdings"
+    - "Building a serious position"
+  friction_level: low
+  mindset:
+    - "Plans for uncertainty"
+    - "Values function over aesthetics"
+    - "Wants recognizable, tradeable metal"
+
+# =============================================================================
+# MARKETING
+# =============================================================================
+marketing:
+  emotional_appeal:
+    - "Real money for uncertain times"
+    - "Fractional = flexible"
+    - "Recognized everywhere"
+  search_terms:
+    - "prepper silver"
+    - "barter silver"
+    - "survival silver"
+    - "emergency silver stack"
+    - "fractional silver lot"
+  avoid_terms:
+    - "SHTF" (too aggressive)
+    - "Collapse" (negative)
+    - "Doomsday" (off-putting)
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "All U.S. silver verified authentic"
+  - "90% junk silver — universally recognized"
+  - "Fractional for practical use"
+  - "Ships discreetly, fully insured"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "Sturdy box with tubes/flips"
+  insurance: included
+  tracking: always
+  discreet: true
+
+# =============================================================================
+# BUNDLE PSYCHOLOGY
+# =============================================================================
+psychology:
+  reduces: "Analysis paralysis for preppers"
+  increases: "Confidence in holdings"
+  feels: "Practical and serious"
+  converts: "Better than piecemeal buying"
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - JUNK-SILVER-ROLL-PACK
+  - SOUND-MONEY-BUNDLE
+  - MEXICAN-SILVER-LOT

@@ -1,0 +1,127 @@
+# Coin Starter Kit
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.coin_starter_kit
+sku: COIN-STARTER-KIT
+category: kits
+subcategory: coin_collecting
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "Coin Starter Kit"
+headline: "Complete Coin Collecting Starter Kit"
+short_description: "Everything a new collector needs. One box."
+
+# =============================================================================
+# KIT CONTENTS
+# =============================================================================
+contents:
+  - item: "2x2 Coin Flips (assorted sizes)"
+    quantity: 100
+    purpose: "Store and organize coins safely"
+
+  - item: "Binder Album with Pages"
+    quantity: 1
+    purpose: "Display and organize collection"
+
+  - item: "10x Magnifier Loupe"
+    quantity: 1
+    purpose: "Examine details and grades"
+
+  - item: "Cotton Gloves"
+    quantity: 2  # pairs
+    purpose: "Handle coins without leaving oils"
+
+# =============================================================================
+# WHY THIS KIT WORKS
+# =============================================================================
+why_works:
+  - "Increases average order value"
+  - "Reduces decision fatigue for beginners"
+  - "Perfect for SEO targeting"
+  - "Gift-friendly — complete package"
+  - "Natural upsell from single item purchases"
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: fixed
+  strategy: "Price competitively for traffic, margin on convenience"
+  target_margin: "30-40%"
+  value_proposition: |
+    "Everything you need to start collecting coins.
+    Bought separately: $X
+    Kit price: $Y
+    Save: $Z + get started immediately"
+
+# =============================================================================
+# TARGET BUYER
+# =============================================================================
+target_buyer:
+  primary: "New collectors"
+  secondary: "Gift buyers (parents, grandparents)"
+  use_cases:
+    - "Starting a collection"
+    - "Gift for young numismatist"
+    - "Upgrading from disorganized storage"
+  friction_level: ultra_low
+
+# =============================================================================
+# MARKETING
+# =============================================================================
+marketing:
+  emotional_appeal:
+    - "Start your collection right"
+    - "Look like a real collector"
+    - "Protect your coins properly"
+  search_terms:
+    - "coin collecting starter kit"
+    - "beginner coin supplies"
+    - "coin collecting set for beginners"
+    - "coin collecting gift"
+    - "coin album starter"
+  seo_landing_pages:
+    - "/supplies/coin-starter-kit"
+    - "/guides/getting-started-coin-collecting"
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "Curated by collectors for collectors"
+  - "Quality supplies, not cheap knockoffs"
+  - "Complete kit — nothing else needed to start"
+  - "Perfect gift — ready to use"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "Presentation box or gift wrap available"
+  insurance: included
+  tracking: always
+
+# =============================================================================
+# REPEAT PURCHASE PATH
+# =============================================================================
+repeat_purchases:
+  after_kit:
+    - "Additional flips (100 pack)"
+    - "Extra album pages"
+    - "Coin capsules for special pieces"
+    - "First coins (world coin lot)"
+  upsells:
+    - GIFT-STARTER-KIT  # with coins included
+    - CARE-KIT
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - STAMP-STARTER-KIT
+  - GIFT-STARTER-KIT
+  - CARE-KIT
+  - FLIPS-2X2-100

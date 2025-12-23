@@ -1,0 +1,249 @@
+# Morgan Dollar Sorting Guide
+# Based on: Notion page "3. Coins, stamps, basic supplies — Curated, not broad"
+# Purpose: Classify Morgan dollars as bullion-grade vs numismatic
+
+entry_id: coins.morgan_dollar
+name: Morgan Dollar Classification Guide
+category: numismatic_sorting
+description: >
+  Complete guide for sorting Morgan silver dollars (1878-1921) into
+  bullion-grade (sell fast) vs numismatic (sell later) categories.
+
+# =============================================================================
+# CORE PRINCIPLE
+# =============================================================================
+# A bullion-grade Morgan is valued for silver content + recognizability,
+# NOT rarity, condition premium, or collector demand.
+# If a collector would argue about grade, luster, strike, or surface
+# preservation — it is NOT bullion-grade.
+
+# =============================================================================
+# BULLET-PROOF BULLION CRITERIA (ALL must apply)
+# =============================================================================
+bullion_grade_criteria:
+  all_must_apply:
+    - "Common date"
+    - "Common mint (or no mint)"
+    - "Circulated condition (VF or lower preferred)"
+    - "No strong luster"
+    - "No obvious premium eye appeal"
+    - "No known key/semi-key date"
+    - "No varieties or errors"
+    - "Not slabbed (raw only)"
+  if_any_fails: "Pull aside for separate evaluation"
+
+# =============================================================================
+# KEY DATES - NEVER SELL AS BULLION
+# =============================================================================
+key_dates:
+  absolute_key:
+    description: "Cornerstone collector coins - never bullion even if damaged"
+    dates:
+      - year: 1893
+        mint: S
+        note: "Holy grail - rarest regular issue"
+      - year: 1895
+        mint: P
+        note: "Proof only year - no business strikes exist"
+      - year: 1895
+        mint: O
+        note: "Low mintage, high collector demand"
+      - year: 1895
+        mint: S
+        note: "Scarce in all grades"
+
+  semi_key:
+    description: "Frequently get accidentally dumped as bullion - watch for these"
+    rule: "If it says CC → STOP. If it says 1893 → STOP. If it says 1895 → STOP."
+    dates:
+      # Carson City mints - ALL are semi-key or better
+      - { year: 1878, mint: CC }
+      - { year: 1879, mint: CC }
+      - { year: 1880, mint: CC }
+      - { year: 1881, mint: CC }
+      - { year: 1885, mint: CC }
+      - { year: 1889, mint: CC, note: "Very scarce" }
+      - { year: 1890, mint: CC }
+      - { year: 1891, mint: CC }
+      - { year: 1892, mint: CC }
+      - { year: 1893, mint: CC }
+      # San Francisco semi-keys (post-1892 especially)
+      - { year: 1892, mint: S }
+      - { year: 1893, mint: O }
+      - { year: 1894, mint: P }
+      - { year: 1896, mint: S }
+      - { year: 1897, mint: S }
+      - { year: 1898, mint: S }
+      - { year: 1899, mint: S }
+      - { year: 1901, mint: S }
+      - { year: 1902, mint: S }
+      - { year: 1903, mint: S }
+
+# =============================================================================
+# SAFE BULLION-GRADE DATES
+# =============================================================================
+safe_bullion_dates:
+  description: "High-mintage, low-premium dates when circulated"
+  note: "In VG-VF condition, these are almost always bullion-grade"
+
+  philadelphia:
+    mint: P
+    mintmark: none
+    years:
+      - 1878  # common sub-types only
+      - 1879
+      - 1880
+      - 1881
+      - 1882
+      - 1883
+      - 1884
+      - 1885
+      - 1886
+      - 1887
+      - 1888
+      - 1889
+      - 1890
+      - 1891
+      - 1896
+      - 1897
+      - 1898
+      - 1899
+      - 1900
+      - 1901
+      - 1902
+      - 1903
+      - 1904
+
+  san_francisco:
+    mint: S
+    note: "Only bullion-grade if HEAVILY circulated. If it looks nice, pull it."
+    years:
+      - 1881
+      - 1882
+      - 1883
+      - 1884
+
+  new_orleans:
+    mint: O
+    note: "Generally safe bullion when worn"
+    years:
+      - 1879
+      - 1880
+      - 1881
+      - 1882
+      - 1883
+      - 1884
+      - 1885
+      - 1886
+      - 1887
+      - 1888
+      - 1889
+      - 1890
+      - 1891
+      - 1892  # check carefully
+      - 1896
+      - 1897
+      - 1898
+
+  denver:
+    mint: D
+    note: "Only 1921 - safe bullion when circulated"
+    years:
+      - 1921
+
+# =============================================================================
+# "LOOKS TOO NICE" RULE (CRITICAL)
+# =============================================================================
+condition_rules:
+  pull_if_any:
+    - "Strong cartwheel luster"
+    - "Looks AU or better"
+    - "Clean fields"
+    - "Eye appeal"
+  reason: "Even common dates bring premiums in nice condition"
+  action: "Do not sell as bullion, even if date is common"
+
+# =============================================================================
+# VARIETIES & ERRORS (HIDDEN VALUE)
+# =============================================================================
+varieties:
+  description: "Many Morgans have varieties worth multiples of bullion"
+  types:
+    - "VAM varieties"
+    - "Doubled dies"
+    - "Overdates"
+    - "Repunched mintmarks"
+  warning_signs:
+    - "Odd mintmark shape"
+    - "Doubled letters"
+    - "Unusual die cracks"
+  action: "Set aside for expert evaluation"
+
+# =============================================================================
+# FAST TRIAGE METHOD
+# =============================================================================
+triage_method:
+  step_1:
+    name: "Sort by mint/date only (no grading yet)"
+    create_piles:
+      - "Safe dates"
+      - "Questionable"
+      - "Stop immediately (key/semi-key)"
+
+  step_2:
+    name: "Condition sweep"
+    action: "From 'safe dates', remove anything:"
+    remove_if:
+      - "Shiny"
+      - "Lightly worn"
+      - "Attractive"
+
+  step_3:
+    name: "Final bullion pile"
+    what_remains:
+      - "Flat detail"
+      - "Gray patina"
+      - "Honest wear"
+    result: "This pile is safe to sell fast"
+
+# =============================================================================
+# LISTING LANGUAGE
+# =============================================================================
+listing_guidance:
+  correct_title: "Circulated Morgan Silver Dollar — Bullion Grade"
+  never_say:
+    - "AU"
+    - "XF"
+    - "BU"
+    - "Choice"
+    - "Rare"
+  always_say:
+    - "Circulated"
+    - "Dates vary"
+    - "Bullion-grade"
+    - "Priced by silver content"
+  benefit: "Reduces disputes and increases velocity"
+
+# =============================================================================
+# MENTAL MODEL
+# =============================================================================
+mental_model:
+  vault_1:
+    name: "Liquid metal"
+    contains: ["junk silver", "bullion-grade dollars", "rounds & bars"]
+    strategy: "Sell for speed"
+  vault_2:
+    name: "Historical value"
+    contains: ["key dates", "high-grade coins", "varieties", "slabbed pieces"]
+    strategy: "Sell for outcomes (wait for calm markets)"
+  rule: "Never cross the streams"
+
+# =============================================================================
+# SILVER CONTENT
+# =============================================================================
+silver_content:
+  weight_troy_oz: 0.7734
+  purity: 0.900
+  actual_silver_oz: 0.77344
+  diameter_mm: 38.1
+  weight_grams: 26.73

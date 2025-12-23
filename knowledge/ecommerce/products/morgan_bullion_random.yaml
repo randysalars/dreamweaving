@@ -1,0 +1,108 @@
+# Morgan Dollar - Bullion Grade Random Date
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.morgan_bullion_random
+sku: MORGAN-BULLION-RANDOM
+category: coins
+subcategory: silver_dollars
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "Circulated Morgan Dollar (Random Date)"
+headline: "Circulated Morgan Silver Dollar — Bullion Grade"
+short_description: "Honest silver, honest wear. Sold for metal content."
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: spot_plus_premium
+  premium_usd: 8.00
+  display_format: |
+    Spot: $XX.XX
+    Premium: $8.00
+    Price: $XX.XX + shipping
+
+# =============================================================================
+# SPECIFICATIONS
+# =============================================================================
+specs:
+  metal: silver
+  purity: 0.900
+  actual_silver_oz: 0.7734
+  weight_grams: 26.73
+  diameter_mm: 38.1
+  year_range: "1878-1921"
+  mints_included: ["P", "O", "S"]
+  mints_excluded: ["CC"]  # Never bullion-grade
+
+# =============================================================================
+# CONDITION & GRADING
+# =============================================================================
+condition:
+  grade_range: "VG-VF"
+  description: "Circulated, honest wear, no luster"
+  what_to_expect:
+    - "Flat detail from circulation"
+    - "Gray patina typical"
+    - "May have rim bumps or light scratches"
+    - "All dates/mints are readable"
+  never_included:
+    - "CC (Carson City) mintmarks"
+    - "Key dates (1893-S, 1895, etc.)"
+    - "AU or better condition"
+    - "Coins with strong luster"
+
+# =============================================================================
+# LISTING LANGUAGE
+# =============================================================================
+listing:
+  do_say:
+    - "Circulated"
+    - "Dates vary"
+    - "Bullion-grade"
+    - "Priced by silver content"
+  never_say:
+    - "AU"
+    - "XF"
+    - "BU"
+    - "Choice"
+    - "Rare"
+    - "Uncirculated"
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "All silver verified by weight & dimensions"
+  - "Photos show representative condition"
+  - "Authenticity guaranteed or full refund"
+  - "Ships within 24-48 hours"
+  - "No cherry-picking — dates/mints random"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "2x2 flip in padded envelope"
+  insurance: included
+  tracking: always
+
+# =============================================================================
+# BUYER PROFILE
+# =============================================================================
+target_buyer:
+  primary: "Bullion stackers"
+  secondary: "Gift buyers"
+  friction_level: ultra_low
+  repeat_purchase: medium
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - PEACE-BULLION-RANDOM
+  - 90-DIMES-5FV
+  - STARTER-SILVER-STACK

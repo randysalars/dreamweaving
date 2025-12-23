@@ -1,0 +1,279 @@
+# Junk Silver Guide
+# Based on: Notion page "3. Coins, stamps, basic supplies — Curated, not broad"
+# Purpose: Complete guide for 90% U.S. silver coins
+
+entry_id: coins.junk_silver
+name: U.S. Junk Silver Complete Guide
+category: bullion
+description: >
+  The most liquid form of small-denomination silver on earth.
+  Junk silver = U.S. coins minted for circulation that contain 90% silver
+  and carry no collector premium. Called "junk" because condition doesn't
+  matter, dates usually don't matter - traded by face value, not rarity.
+
+# =============================================================================
+# DEFINITION
+# =============================================================================
+definition:
+  what_it_is: >
+    U.S. coins minted for circulation containing 90% silver,
+    valued by face value, not collector interest.
+  why_called_junk: >
+    Condition doesn't matter. Dates (usually) don't matter.
+    Traded by face value, not rarity.
+  not_junk_in: "usefulness - most liquid small-denomination silver on earth"
+
+# =============================================================================
+# DENOMINATIONS
+# =============================================================================
+denominations:
+  dimes:
+    types:
+      - name: "Mercury Dimes"
+        years: "1916-1945"
+        note: "Winged Liberty Head design"
+      - name: "Roosevelt Dimes"
+        years: "1946-1964"
+        note: "FDR portrait"
+    silver_per_coin_oz: 0.0715
+    face_value: 0.10
+
+  quarters:
+    types:
+      - name: "Washington Quarters"
+        years: "1932-1964"
+        note: "Most common junk silver quarter"
+      - name: "Standing Liberty Quarters"
+        years: "1916-1930"
+        note: "Less common, same silver content"
+    silver_per_coin_oz: 0.1788
+    face_value: 0.25
+
+  half_dollars:
+    types:
+      - name: "Walking Liberty Halves"
+        years: "1916-1947"
+        note: "Beautiful design, popular with collectors too"
+      - name: "Franklin Halves"
+        years: "1948-1963"
+        note: "Ben Franklin design"
+      - name: "Kennedy Halves"
+        years: "1964 only"
+        note: "ONLY 1964 is 90% silver"
+    silver_per_coin_oz: 0.3575
+    face_value: 0.50
+
+  warning:
+    forty_percent:
+      description: "1965-1970 Kennedy halves are 40% silver"
+      action: "SEPARATE CATEGORY - do not mix with 90%"
+      silver_content: 0.1479
+
+# =============================================================================
+# SILVER CONTENT MATH (MEMORIZE THIS)
+# =============================================================================
+silver_math:
+  per_dollar_fv:
+    silver_oz: 0.715
+    note: "Worn coins still average very close to this"
+    examples:
+      - fv: 1
+        silver_oz: 0.715
+      - fv: 10
+        silver_oz: 7.15
+      - fv: 100
+        silver_oz: 71.5
+
+  pricing_formula:
+    formula: "Face Value × Multiplier"
+    example: "If multiplier is 20× and you have $10 FV, price = $200"
+
+  multiplier_guide:
+    low: 18
+    typical: 20
+    high: 22
+    note: "Varies with spot price and market conditions"
+
+# =============================================================================
+# WHY JUNK SILVER IS KING
+# =============================================================================
+advantages:
+  vs_rounds_bars:
+    - "Instantly recognizable"
+    - "Fractional by nature"
+    - "No assays needed"
+    - "Trusted by average people"
+
+  vs_silver_dollars:
+    - "Easier to trade"
+    - "Smaller increments"
+    - "Lower single-item risk"
+    - "Better for barter logic"
+
+  who_loves_it:
+    - "Preppers"
+    - "Dealers"
+    - "Repeat buyers"
+
+# =============================================================================
+# SORTING RULES
+# =============================================================================
+sorting:
+  step_1:
+    action: "Separate by denomination"
+    create_piles:
+      - dimes
+      - quarters
+      - halves
+    note: "Never sell mixed piles unless intentional"
+
+  step_2:
+    action: "Pull anything that is NOT junk"
+    remove:
+      - "Slick key-date coins (rare but possible)"
+      - "Proofs"
+      - "Damaged/holed coins (sell separately)"
+      - "40% halves (1965-1970 Kennedy)"
+
+  step_3:
+    action: "Decide your 'barter fraction'"
+    common_strategy:
+      sell: ["quarters", "halves"]
+      keep: ["dimes"]
+      reason: "Dimes are most practical unit in disruption scenarios"
+
+  cherry_picking:
+    rule: "DO NOT cherry-pick dates"
+    reason: "Cherry-picking kills trust"
+    buyer_expectation: "randomness, honesty, average wear"
+
+# =============================================================================
+# BUNDLES (HIGH VELOCITY)
+# =============================================================================
+bundles:
+  five_fv_dime_pack:
+    name: "$5 FV Dime Pack"
+    face_value: 5
+    silver_oz: 3.575
+    velocity: high
+    why_sells:
+      - "Lowest entry price"
+      - "Perfect first purchase"
+      - "Prepper favorite"
+
+  ten_fv_mixed:
+    name: "$10 FV Mixed Junk"
+    face_value: 10
+    silver_oz: 7.15
+    contents: "dimes + quarters (or all quarters)"
+    velocity: high
+    why_sells:
+      - "Feels substantial"
+      - "Affordable"
+      - "Common benchmark"
+
+  twenty_fv_preparedness:
+    name: "$20 FV Preparedness Pack"
+    face_value: 20
+    silver_oz: 14.3
+    velocity: medium_high
+    why_sells:
+      - "Serious buyers"
+      - "Lower premium per oz"
+      - "Fewer transactions"
+
+  dimes_only_barter:
+    name: "Dimes-Only Barter Pack"
+    positioning: "Small-denomination silver for flexibility"
+    note: "Outsells mixed junk among preppers"
+    velocity: high
+
+  family_stack:
+    name: "Family Stack ($50-$100 FV)"
+    face_value_range: "50-100"
+    velocity: medium
+    why_sells:
+      - "Wealth transfer"
+      - "Inheritance mindset"
+      - "Repeat customers"
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  correct_model:
+    formula: "Spot × Face Value Multiplier"
+    display_elements:
+      - "Current spot"
+      - "Your multiplier"
+      - "Total FV"
+    benefit: "Builds instant trust"
+
+  wrong_approaches:
+    - "Price by 'per coin'"
+    - "Hide the multiplier"
+    - "Over-hype scarcity"
+    - "Mix 40% in"
+
+  example:
+    spot_silver: 25
+    dollar_fv_melt: 17.88
+    market_multiplier_range: "18×-22× FV"
+
+# =============================================================================
+# LISTING LANGUAGE
+# =============================================================================
+listing:
+  correct_language: |
+    90% U.S. Silver — Junk Silver
+    Circulated condition
+    Sold by face value
+    Priced relative to spot
+
+  never_say:
+    - "rare"
+    - "uncirculated"
+    - "collector-grade"
+
+  benefit: "Keeps disputes near zero"
+
+# =============================================================================
+# TRUST BLOCK (ADD TO ALL LISTINGS)
+# =============================================================================
+trust_block:
+  elements:
+    - "Genuine U.S. 90% silver"
+    - "Sold by face value"
+    - "Circulated condition, no cherry-picking"
+    - "Priced transparently vs spot"
+    - "Ships insured & discreet"
+  benefit: "Can double conversion rate"
+
+# =============================================================================
+# WHEN TO SELL VS HOLD
+# =============================================================================
+timing:
+  sell_when:
+    - "Premiums spike"
+    - "You need liquidity"
+    - "Funding production assets"
+    - "Restocking later is possible"
+
+  hold_when:
+    - "Premiums are crushed"
+    - "Supply chains feel brittle"
+    - "Barter flexibility matters"
+
+  common_strategy: "Rotate junk silver, never eliminate entirely"
+
+# =============================================================================
+# MENTAL MODEL
+# =============================================================================
+mental_model:
+  junk_silver_is: "Fractional money with no story attached"
+  characteristics:
+    - "Fast"
+    - "Quiet"
+    - "Practical"
+    - "Boring (that's good)"
+  position: "If bullion dollars are liquidity bridges and numismatics are slow capital, junk silver is daily-use money"

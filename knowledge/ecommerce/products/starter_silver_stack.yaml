@@ -1,0 +1,114 @@
+# Starter Silver Stack Bundle
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.starter_silver_stack
+sku: STARTER-SILVER-STACK
+category: bundles
+subcategory: starter
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "Starter Silver Stack"
+headline: "Starter Silver Stack — Simple, Real, Understandable"
+short_description: "Your first silver. Big and small. No overthinking."
+
+# =============================================================================
+# BUNDLE CONTENTS
+# =============================================================================
+contents:
+  - item: "Morgan Silver Dollar"
+    quantity: 1
+    sku_ref: MORGAN-BULLION-RANDOM
+    silver_oz: 0.7734
+
+  - item: "90% Silver Dimes"
+    quantity: "$5 FV"
+    sku_ref: 90-DIMES-5FV
+    silver_oz: 3.575
+
+total_silver_oz: 4.3484
+
+# =============================================================================
+# WHY THIS BUNDLE WORKS
+# =============================================================================
+why_works:
+  - "Big silver + small silver"
+  - "Easy to grasp concept"
+  - "Gift-friendly presentation"
+  - "No overthinking required"
+  - "Instant credibility for new stacker"
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: bundle
+  strategy: "Sum of components minus small discount"
+  target_margin: "15-20%"
+  display_approach: |
+    Show value vs buying separately:
+    "Value if bought separately: $X
+     Bundle price: $Y
+     You save: $Z"
+
+# =============================================================================
+# TARGET BUYER
+# =============================================================================
+target_buyer:
+  primary: "First-time silver buyers"
+  secondary: "Gift buyers"
+  use_cases:
+    - "Starting a stack"
+    - "Gift for young collector"
+    - "Teaching someone about silver"
+  friction_level: ultra_low
+
+# =============================================================================
+# MARKETING
+# =============================================================================
+marketing:
+  emotional_appeal:
+    - "Your first real silver"
+    - "Heavy in the hand"
+    - "History you can hold"
+  search_terms:
+    - "starter silver"
+    - "first silver purchase"
+    - "silver stacking beginner"
+    - "silver gift set"
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "All silver verified authentic"
+  - "Includes both classic and fractional silver"
+  - "Perfect introduction to precious metals"
+  - "Ships in protective packaging"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "Presentation-ready box or pouch"
+  insurance: included
+  tracking: always
+
+# =============================================================================
+# BUNDLE PSYCHOLOGY
+# =============================================================================
+psychology:
+  reduces: "Choice paralysis"
+  increases: "Average order value"
+  feels: "Intentional and curated"
+  converts: "Better than singles"
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - PREPAREDNESS-STACK
+  - SOUND-MONEY-BUNDLE
+  - COIN-STARTER-KIT

@@ -1,0 +1,122 @@
+# 90% Silver Dimes - $5 Face Value
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.90_dimes_5fv
+sku: 90-DIMES-5FV
+category: junk_silver
+subcategory: dimes
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "90% Silver Dimes — $5 Face Value"
+headline: "90% U.S. Silver Dimes — $5 Face Value"
+short_description: "Fractional silver for practical stacking."
+
+# =============================================================================
+# SILVER MATH
+# =============================================================================
+silver_content:
+  face_value: 5.00
+  silver_oz: 3.575
+  calculation: "50 dimes × 0.0715 oz per dime"
+  per_dollar_fv: 0.715
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: fv_multiplier
+  example_calculation: |
+    If multiplier is 20×:
+    $5 FV × 20 = $100.00
+  display_format: |
+    Face Value: $5.00
+    Silver Content: 3.575 oz
+    Spot: $XX.XX
+    Multiplier: XX×
+    Price: $XX.XX
+
+# =============================================================================
+# SPECIFICATIONS
+# =============================================================================
+specs:
+  metal: silver
+  purity: 0.900
+  coin_count: 50
+  years_included: "Pre-1965"
+  types_may_include:
+    - "Roosevelt (1946-1964)"
+    - "Mercury (1916-1945)"
+    - "Barber (1892-1916)"
+  notes: "Mix of dates and types typical"
+
+# =============================================================================
+# CONDITION
+# =============================================================================
+condition:
+  description: "Average circulated"
+  what_to_expect:
+    - "Mix of dates and types"
+    - "Normal wear from circulation"
+    - "Some pieces may be cleaned"
+    - "Full silver content guaranteed"
+  never_included:
+    - "Slick or cull coins"
+    - "Holed or damaged"
+    - "Clad coins"
+
+# =============================================================================
+# LISTING LANGUAGE
+# =============================================================================
+listing:
+  do_say:
+    - "Genuine U.S. 90% silver"
+    - "Sold by face value"
+    - "Circulated condition"
+    - "Mix of dates typical"
+  never_say:
+    - "BU"
+    - "Uncirculated"
+    - "Key dates included"
+    - "Hand-selected"
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "Genuine U.S. 90% silver"
+  - "Sold by face value"
+  - "Circulated condition, no cherry-picking"
+  - "Priced transparently vs spot"
+  - "Ships insured & discreet"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "Coin tube or canvas bag"
+  insurance: included
+  tracking: always
+
+# =============================================================================
+# BUYER PROFILE
+# =============================================================================
+target_buyer:
+  primary: "Preppers, stackers"
+  secondary: "Fractional silver buyers"
+  friction_level: ultra_low
+  repeat_purchase: high
+  why_buy:
+    - "Small denominations for barter scenarios"
+    - "Easy to divide and trade"
+    - "Recognizable everywhere"
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - 90-QUARTERS-10FV
+  - 90-MIXED-10FV
+  - JUNK-SILVER-ROLL-PACK

@@ -1,0 +1,123 @@
+# Stamp Starter Kit
+# Based on: Velocity Catalog Strategy
+
+entry_id: products.stamp_starter_kit
+sku: STAMP-STARTER-KIT
+category: kits
+subcategory: stamp_collecting
+
+# =============================================================================
+# PRODUCT INFO
+# =============================================================================
+name: "Stamp Starter Kit"
+headline: "Complete Stamp Collecting Starter Kit"
+short_description: "Everything to start your philatelic journey. One kit."
+
+# =============================================================================
+# KIT CONTENTS
+# =============================================================================
+contents:
+  - item: "Stamp Tongs (straight tip)"
+    quantity: 1
+    purpose: "Handle stamps without damage"
+
+  - item: "Stock Book (16 page)"
+    quantity: 1
+    purpose: "Store and display stamps safely"
+
+  - item: "Stamp Mounts (assorted)"
+    quantity: 50
+    purpose: "Protect and mount stamps"
+
+  - item: "Glassine Envelopes (assorted sizes)"
+    quantity: 50
+    purpose: "Organize and store loose stamps"
+
+# =============================================================================
+# WHY THIS KIT WORKS
+# =============================================================================
+why_works:
+  - "Complete beginner solution"
+  - "Higher margin than singles"
+  - "Reduces friction for new hobbyists"
+  - "Gift-friendly complete package"
+  - "SEO opportunity for philately terms"
+
+# =============================================================================
+# PRICING
+# =============================================================================
+pricing:
+  type: fixed
+  strategy: "Convenience premium justified"
+  target_margin: "30-40%"
+  value_proposition: |
+    "Start collecting stamps today.
+    Everything you need in one box."
+
+# =============================================================================
+# TARGET BUYER
+# =============================================================================
+target_buyer:
+  primary: "New philatelists"
+  secondary: "Gift buyers"
+  use_cases:
+    - "Starting stamp collection"
+    - "Gift for aspiring collector"
+    - "Returning to hobby after hiatus"
+  friction_level: ultra_low
+
+# =============================================================================
+# MARKETING
+# =============================================================================
+marketing:
+  emotional_appeal:
+    - "Join a tradition centuries old"
+    - "Handle history with the right tools"
+    - "Start your collection properly"
+  search_terms:
+    - "stamp collecting starter kit"
+    - "beginner stamp supplies"
+    - "stamp collecting set"
+    - "philately starter kit"
+    - "stamp album starter"
+    - "stamp tongs and album"
+
+# =============================================================================
+# TRUST SIGNALS
+# =============================================================================
+trust_signals:
+  - "Quality tools, not cheap substitutes"
+  - "Same supplies serious collectors use"
+  - "Complete kit — nothing else needed"
+  - "Ready to start immediately"
+
+# =============================================================================
+# FULFILLMENT
+# =============================================================================
+fulfillment:
+  ships_in: "24-48 hours"
+  packaging: "Compact box or gift wrap option"
+  insurance: included
+  tracking: always
+
+# =============================================================================
+# REPEAT PURCHASE PATH
+# =============================================================================
+repeat_purchases:
+  after_kit:
+    - "Additional stock pages"
+    - "More mounts and hinges"
+    - "Larger stock book"
+    - "First stamps (world lot)"
+  upsells:
+    - GIFT-STARTER-KIT
+    - STOCKBOOK-32
+
+# =============================================================================
+# RELATED PRODUCTS
+# =============================================================================
+related_products:
+  - COIN-STARTER-KIT
+  - GIFT-STARTER-KIT
+  - STOCKBOOK-32
+  - MOUNTS-ASSORTED
