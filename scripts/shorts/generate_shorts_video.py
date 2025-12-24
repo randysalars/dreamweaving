@@ -303,7 +303,7 @@ def generate_images_with_sd(topic: str, num_images: int, output_dir: str) -> boo
     pipe = pipe.to("cpu")
     try:
         pipe.enable_attention_slicing()
-    except:
+    except (AttributeError, RuntimeError):
         pass
 
     # Style suffix for Christmas/spiritual content
@@ -595,11 +595,20 @@ def get_audio_durations(slides_dir: str, num_slides: int) -> list:
 
 def concatenate_audio(slides_dir: str, output_path: str, num_slides: int):
     """Concatenate all slide audio files."""
-    inputs = ' '.join([f"-i {os.path.join(slides_dir, f'slide{i}.mp3')}" for i in range(1, num_slides + 1)])
-    filter_inputs = ''.join([f"[{i}:a]" for i in range(num_slides)])
+    # Build input arguments as list (avoids shell=True security risk)
+    inputs = []
+    for i in range(1, num_slides + 1):
+        inputs.extend(['-i', os.path.join(slides_dir, f'slide{i}.mp3')])
 
-    cmd = f"ffmpeg -y {inputs} -filter_complex \"{filter_inputs}concat=n={num_slides}:v=0:a=1[out]\" -map \"[out]\" {output_path}"
-    subprocess.run(cmd, shell=True, capture_output=True)
+    filter_inputs = ''.join([f"[{i}:a]" for i in range(num_slides)])
+    filter_complex = f"{filter_inputs}concat=n={num_slides}:v=0:a=1[out]"
+
+    cmd = ['ffmpeg', '-y'] + inputs + [
+        '-filter_complex', filter_complex,
+        '-map', '[out]',
+        output_path
+    ]
+    subprocess.run(cmd, capture_output=True)
     print(f"Concatenated audio: {output_path}")
 
 

@@ -127,7 +127,7 @@ def load_pipeline(model_path: str = None) -> StableDiffusionPipeline:
     # Enable memory efficient attention if available
     try:
         pipe.enable_attention_slicing()
-    except:
+    except (AttributeError, RuntimeError):
         pass
 
     return pipe

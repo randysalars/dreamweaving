@@ -42,6 +42,9 @@ def _send(proc: subprocess.Popen, msg: Dict[str, Any]) -> None:
 
 
 def _run(command: str, timeout_s: float) -> Tuple[bool, str]:
+    # SECURITY NOTE: shell=True used here for testing utility.
+    # Command comes from hardcoded config, not user input.
+    # Safe in this context but do not use for production code.
     proc = subprocess.Popen(
         command,
         shell=True,

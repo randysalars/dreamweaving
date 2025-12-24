@@ -529,7 +529,7 @@ class NotionYouTubeSync:
             try:
                 date_obj = datetime.fromisoformat(pub_date.replace("Z", "+00:00"))
                 pub_date = date_obj.strftime("%Y-%m-%d")
-            except:
+            except ValueError:
                 pub_date = None
 
         properties = {
@@ -741,7 +741,7 @@ class NotionYouTubeSync:
             try:
                 date_obj = datetime.fromisoformat(pub_date.replace("Z", "+00:00"))
                 pub_date = date_obj.strftime("%Y-%m-%d")
-            except:
+            except ValueError:
                 pub_date = None
 
         properties = {
@@ -902,7 +902,7 @@ class NotionYouTubeSync:
                         t.get("plain_text", "") for t in response.get("title", [])
                     )
                     status["databases"][db_name]["accessible"] = True
-                except:
+                except Exception:
                     status["databases"][db_name]["accessible"] = False
 
         # Check data files

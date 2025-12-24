@@ -1211,7 +1211,7 @@ class DreamweavingUploader:
             "meta_title": meta_title,
             "meta_description": meta_description,
             "h1_title": title,
-            "long_description": "\n".join(long_desc_parts),
+            "long_description": long_description,
             "product_schema": product_schema,
             "related_sessions": [],
             "alt_text": alt_text,
