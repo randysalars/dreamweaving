@@ -14,9 +14,24 @@ Examples:
 """
 import argparse
 import logging
+import os
 import signal
 import time
 from typing import Optional
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RESOURCE OPTIMIZATION - Limit thread usage for scheduled polling
+# This process should be lightweight and not compete with TTS generation
+# These MUST be set BEFORE importing torch/numpy/any ML libraries
+# ═══════════════════════════════════════════════════════════════════════════════
+MAX_RAG_THREADS = 2  # Minimal threads for background indexing
+
+os.environ["OMP_NUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["MKL_NUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["OPENBLAS_NUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["VECLIB_MAXIMUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["NUMEXPR_NUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # Use shared utilities for project setup
 from scripts.ai.rag_utils import setup_project_path, load_dotenv_safe, get_notion_config

@@ -66,6 +66,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+from PIL import Image
+
 import requests
 import yaml
 from dotenv import load_dotenv
@@ -698,6 +700,7 @@ class AutoGenerator:
             # Stage 3: Generate SSML script
             self._stage_generate_script()
             if "generate_script" in self.stages_failed:
+                print("STAGE_FATAL: generate_script failed - check Claude CLI/API", file=sys.stderr)
                 raise RuntimeError("generate_script failed; aborting pipeline")
 
             # Stage 4: Generate image prompts
@@ -707,6 +710,7 @@ class AutoGenerator:
                 # Stage 5: Generate voice
                 self._stage_generate_voice()
                 if "generate_voice" in self.stages_failed:
+                    print("STAGE_FATAL: generate_voice failed - check TTS credentials", file=sys.stderr)
                     raise RuntimeError("generate_voice failed; aborting pipeline (audio stages depend on voice)")
 
                 # Stage 6: Generate binaural
@@ -754,6 +758,8 @@ class AutoGenerator:
 
         except Exception as e:
             self.log(f"Pipeline failed: {e}", "error")
+            # CRITICAL: Print to stderr so nightly builder captures it
+            print(f"PIPELINE_FATAL: {e}", file=sys.stderr)
             self.stages_failed.append(str(e))
 
         self.end_time = datetime.now()
@@ -1590,7 +1596,7 @@ Do NOT include any explanation or commentary before or after the SSML.
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
-                timeout=2400,  # 40 minute timeout for Coqui on CPU
+                timeout=3600,  # 60 minute timeout for Coqui on CPU (resource-constrained)
                 env=self._get_subprocess_env(),
             )
 
@@ -1894,13 +1900,14 @@ Do NOT include any explanation or commentary before or after the SSML.
 
     def _stage_hypnotic_post_process(self):
         """Apply hypnotic post-processing (MANDATORY)."""
-        self.log("Applying hypnotic post-processing", "stage")
+        self.log("Applying hypnotic post-processing (FFmpeg mode for low memory)", "stage")
 
         try:
             result = subprocess.run(
                 [
                     self.python_cmd, "scripts/core/hypnotic_post_process.py",
-                    "--session", str(self.session_path) + "/"
+                    "--session", str(self.session_path) + "/",
+                    "--ffmpeg-only"  # Use FFmpeg mode to avoid OOM on long sessions
                 ],
                 capture_output=True,
                 text=True,
@@ -1914,6 +1921,7 @@ Do NOT include any explanation or commentary before or after the SSML.
             else:
                 error_msg = result.stderr[:200] if result.stderr else "Unknown error"
                 self.log(f"Post-processing FAILED: {error_msg}", "error")
+                print(f"STAGE_FATAL: hypnotic_post_process failed: {error_msg}", file=sys.stderr)
                 self.stages_failed.append("hypnotic_post_process")
                 raise RuntimeError(f"Hypnotic post-processing failed (required for MASTER audio): {error_msg}")
 
@@ -2022,20 +2030,39 @@ Do NOT include any explanation or commentary before or after the SSML.
         
         self.log(f"Copying {num_images} random images from project folder", "info")
         
-        # Copy images with sequential naming
+        # Copy images with sequential naming, converting to PNG format
         copied_count = 0
         for i, source_image in enumerate(selected_images, 1):
             # Create a clean filename: scene_01.png, scene_02.png, etc.
             target_filename = f"scene_{i:02d}.png"
             target_path = target_dir / target_filename
-            
+
             try:
-                # Use shutil to copy the file
-                shutil.copy2(source_image, target_path)
+                # Convert to PNG format for consistency (video assembly expects PNG)
+                with Image.open(source_image) as img:
+                    # Convert to RGB if needed (handles RGBA, palette modes, etc.)
+                    if img.mode in ('RGBA', 'LA'):
+                        # Preserve transparency by keeping RGBA
+                        img.save(target_path, 'PNG')
+                    elif img.mode == 'P':
+                        # Palette mode - convert to RGB
+                        img = img.convert('RGB')
+                        img.save(target_path, 'PNG')
+                    else:
+                        # RGB or L mode - save directly
+                        if img.mode != 'RGB':
+                            img = img.convert('RGB')
+                        img.save(target_path, 'PNG')
                 copied_count += 1
-                self.log(f"  [{i}/{num_images}] Copied {source_image.name} -> {target_filename}", "info")
+                self.log(f"  [{i}/{num_images}] Converted {source_image.name} -> {target_filename}", "info")
             except Exception as e:
-                self.log(f"  Failed to copy {source_image.name}: {e}", "warning")
+                # Fallback to simple copy if conversion fails
+                try:
+                    shutil.copy2(source_image, target_path)
+                    copied_count += 1
+                    self.log(f"  [{i}/{num_images}] Copied {source_image.name} -> {target_filename} (no conversion)", "warning")
+                except Exception as copy_error:
+                    self.log(f"  Failed to process {source_image.name}: {e}", "warning")
         
         if copied_count > 0:
             self.log(f"Successfully copied {copied_count} images", "success")
@@ -2383,9 +2410,29 @@ Topic: {self.topic}
                             self.log(f"URL: {line.strip()}", "info")
                             break
             else:
-                err_output = (result.stderr or "").strip() or (result.stdout or "").strip()
-                snippet = err_output[:200] if err_output else "Upload returned non-zero exit code"
-                self.log(f"Website upload failed: {snippet}", "error")
+                # Capture and log detailed error information
+                stdout_output = (result.stdout or "").strip()
+                stderr_output = (result.stderr or "").strip()
+
+                # Look for FATAL or error lines in stdout (where upload_to_website.py prints errors)
+                error_found = False
+                if stdout_output:
+                    for line in stdout_output.split('\n'):
+                        if 'FATAL' in line or 'Error:' in line or 'error:' in line.lower():
+                            self.log(f"Upload error: {line.strip()[:300]}", "error")
+                            error_found = True
+                            break
+
+                # If no specific error found, log last part of output
+                if not error_found:
+                    combined = stderr_output or stdout_output
+                    snippet = combined[-500:] if combined else "Upload returned non-zero exit code"
+                    self.log(f"Website upload failed: {snippet}", "error")
+
+                # Also log stderr if present (for Python tracebacks)
+                if stderr_output and stderr_output != stdout_output:
+                    self.log(f"Upload stderr: {stderr_output[:500]}", "debug")
+
                 self.stages_failed.append("upload_website")
 
         except subprocess.TimeoutExpired:

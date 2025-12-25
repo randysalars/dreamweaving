@@ -529,7 +529,8 @@ class NightlyBuilder:
             '--name', session_name,
             '--mode', self.config['generation']['mode'],
             '--image-method', self.config['generation']['image_method'],
-            '--nightly',  # Skip YouTube package, use aggressive cleanup
+            '--nightly',  # Nightly mode flags
+            '--no-cleanup',  # Keep all files for manual review/upload
         ]
 
         logger.info(f"Running: {' '.join(cmd)}")
@@ -555,10 +556,20 @@ class NightlyBuilder:
                 }
             else:
                 logger.error(f"Generation failed with return code {result.returncode}")
-                logger.error(f"stderr: {result.stderr[-1000:] if result.stderr else 'N/A'}")
+                # Capture both stdout and stderr - actual errors often go to stdout
+                output_parts = []
+                if result.stdout:
+                    output_parts.append(f"=== STDOUT (last 1500 chars) ===\n{result.stdout[-1500:]}")
+                if result.stderr:
+                    output_parts.append(f"=== STDERR (last 500 chars) ===\n{result.stderr[-500:]}")
+                combined_output = '\n'.join(output_parts) if output_parts else 'No output captured'
+                logger.error(combined_output)
+
+                # Store a useful error summary (prefer stdout since that's where pipeline errors go)
+                error_summary = result.stdout[-500:] if result.stdout else result.stderr[-500:] if result.stderr else f'Return code: {result.returncode}'
                 return {
                     'success': False,
-                    'error': result.stderr[-2000:] if result.stderr else f'Return code: {result.returncode}',
+                    'error': error_summary,
                     'duration_seconds': int(duration),
                 }
 

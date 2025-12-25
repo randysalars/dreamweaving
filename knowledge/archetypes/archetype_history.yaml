@@ -1,9 +1,9 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2025-12-16'
-  total_sessions_tracked: 11
-  unique_archetypes_used: 13
+  updated: '2025-12-25'
+  total_sessions_tracked: 15
+  unique_archetypes_used: 14
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
     Manual edits should be avoided unless correcting errors.
@@ -206,6 +206,74 @@ session_history:
     experiences. Shadow guides help retrieve hidden memories.Archetypes: The Child,
     The Shadow, The Forgotten Mentor Sound: Dripping water, low resonance tones, subtle
     delta-theta entrainment (3–6 Hz)'
+- session_id: the-electric-bazaar-dreamweaving
+  date: '2025-12-24'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_light_healing.shekinah_restorer
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Electric Bazaar Dreamweaving'
+- session_id: the-emerald-city-of-emotional-vision-dreamweaving
+  date: '2025-12-25'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Emerald City Of Emotional Vision Dreamweaving'
+- session_id: the-celtic-forest-dreamweaving
+  date: '2025-12-25'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Celtic Forest Dreamweaving'
+- session_id: the-acorn-grove-dreamweaving
+  date: '2025-12-25'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Acorn Grove Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 7
@@ -246,7 +314,7 @@ listener_relationships:
     last_session_date: '2025-12-14'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 6
+    total_encounters: 10
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -262,9 +330,17 @@ listener_relationships:
       type: first_encounter
     - session: the-cavern-of-forgotten-memories-journey-20251216
       type: first_encounter
-    last_session: the-cavern-of-forgotten-memories-journey-20251216
-    last_session_date: '2025-12-16'
-    relationship_level: 3
+    - session: the-electric-bazaar-dreamweaving
+      type: first_encounter
+    - session: the-emerald-city-of-emotional-vision-dreamweaving
+      type: first_encounter
+    - session: the-celtic-forest-dreamweaving
+      type: first_encounter
+    - session: the-acorn-grove-dreamweaving
+      type: first_encounter
+    last_session: the-acorn-grove-dreamweaving
+    last_session_date: '2025-12-25'
+    relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 2
     first_session: paranormal-powers-retry
@@ -300,7 +376,7 @@ listener_relationships:
     last_session_date: '2025-12-10'
     relationship_level: 1
   divine_feminine.rose_mother:
-    total_encounters: 2
+    total_encounters: 6
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -308,19 +384,33 @@ listener_relationships:
       type: first_encounter
     - session: the-cavern-of-forgotten-memories-journey-20251216
       type: first_encounter
-    last_session: the-cavern-of-forgotten-memories-journey-20251216
-    last_session_date: '2025-12-16'
-    relationship_level: 2
+    - session: the-electric-bazaar-dreamweaving
+      type: first_encounter
+    - session: the-emerald-city-of-emotional-vision-dreamweaving
+      type: first_encounter
+    - session: the-celtic-forest-dreamweaving
+      type: first_encounter
+    - session: the-acorn-grove-dreamweaving
+      type: first_encounter
+    last_session: the-acorn-grove-dreamweaving
+    last_session_date: '2025-12-25'
+    relationship_level: 3
   shamanic_earth.world_tree_guardian:
-    total_encounters: 1
+    total_encounters: 4
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
     - session: eastern-religious-dreamweavings
       type: first_encounter
-    last_session: eastern-religious-dreamweavings
-    last_session_date: '2025-12-11'
-    relationship_level: 1
+    - session: the-emerald-city-of-emotional-vision-dreamweaving
+      type: first_encounter
+    - session: the-celtic-forest-dreamweaving
+      type: first_encounter
+    - session: the-acorn-grove-dreamweaving
+      type: first_encounter
+    last_session: the-acorn-grove-dreamweaving
+    last_session_date: '2025-12-25'
+    relationship_level: 3
   oracle_seer.oracle_of_light:
     total_encounters: 3
     first_session: eleven-labs-commands
@@ -377,6 +467,16 @@ listener_relationships:
     last_session: legolas-elven-perspective-pathworking
     last_session_date: '2025-12-15'
     relationship_level: 1
+  divine_light_healing.shekinah_restorer:
+    total_encounters: 1
+    first_session: the-electric-bazaar-dreamweaving
+    first_session_date: '2025-12-24'
+    encounter_history:
+    - session: the-electric-bazaar-dreamweaving
+      type: first_encounter
+    last_session: the-electric-bazaar-dreamweaving
+    last_session_date: '2025-12-24'
+    relationship_level: 1
 relationship_levels:
   1:
     name: New
@@ -402,39 +502,40 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - life-of-presidents-of-us
-  - constellation-journey
-  - legolas-elven-perspective-pathworking
-  - taoist-philosophy-inspired-pathworking
   - the-cavern-of-forgotten-memories-journey-20251216
+  - the-electric-bazaar-dreamweaving
+  - the-emerald-city-of-emotional-vision-dreamweaving
+  - the-celtic-forest-dreamweaving
+  - the-acorn-grove-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 1
-    transformation_alchemy.phoenix_renewal: 3
+    divine_light_healing.great_physician: 5
+    transformation_alchemy.phoenix_renewal: 7
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 3
-    divine_masculine.guardian_father: 0
-    dreamweaver_meta.dream_architect: 7
+    warrior_power.archangel_michael: 7
+    divine_masculine.guardian_father: 4
+    dreamweaver_meta.dream_architect: 11
     divine_feminine.rose_mother: 0
-    shamanic_earth.world_tree_guardian: 6
-    oracle_seer.oracle_of_light: 1
-    divine_feminine.sophia_wisdom: 1
-    emotional_heart.heart_flame_tender: 4
-    warrior_power.solar_king: 3
-    divine_masculine.logos_bearer: 2
+    shamanic_earth.world_tree_guardian: 0
+    oracle_seer.oracle_of_light: 5
+    divine_feminine.sophia_wisdom: 5
+    emotional_heart.heart_flame_tender: 8
+    warrior_power.solar_king: 7
+    divine_masculine.logos_bearer: 6
+    divine_light_healing.shekinah_restorer: 3
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
   - divine_feminine
-  - divine_masculine
+  - shamanic_earth
   family_usage_counts:
-    divine_light_healing: 13
+    divine_light_healing: 18
     transformation_alchemy: 4
     warrior_power: 3
     divine_masculine: 3
     dreamweaver_meta: 1
-    divine_feminine: 4
-    shamanic_earth: 1
+    divine_feminine: 8
+    shamanic_earth: 4
     oracle_seer: 3
     emotional_heart: 1
 effective_pairings: []

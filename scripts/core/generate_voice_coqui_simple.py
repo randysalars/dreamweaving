@@ -23,14 +23,36 @@ import argparse
 import re
 import sys
 import os
+import gc
 from pathlib import Path
 from typing import List, Tuple
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RESOURCE OPTIMIZATION FOR CPU-ONLY SYSTEMS
+# System has 16 cores / 29GB RAM - limit to prevent resource starvation
+# These MUST be set BEFORE importing torch/numpy/any ML libraries
+# ═══════════════════════════════════════════════════════════════════════════════
+MAX_TTS_THREADS = 8  # Use 8 of 16 cores (50%), leaving room for system processes
+
+# Set thread limits for all numeric libraries
+os.environ["OMP_NUM_THREADS"] = str(MAX_TTS_THREADS)
+os.environ["MKL_NUM_THREADS"] = str(MAX_TTS_THREADS)
+os.environ["OPENBLAS_NUM_THREADS"] = str(MAX_TTS_THREADS)
+os.environ["VECLIB_MAXIMUM_THREADS"] = str(MAX_TTS_THREADS)
+os.environ["NUMEXPR_NUM_THREADS"] = str(MAX_TTS_THREADS)
+
+# Reduce HuggingFace tokenizer parallelism overhead
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # Suppress TensorFlow warnings
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 try:
     import torch
+
+    # Apply torch thread limits (must be done after import)
+    torch.set_num_threads(MAX_TTS_THREADS)
+    torch.set_num_interop_threads(2)  # Limit inter-op parallelism
 
     # Fix for PyTorch 2.6+ security changes with torch.load
     # XTTS v2 model checkpoint contains many custom classes that need to be
@@ -162,6 +184,10 @@ def generate_audio_with_breaks(tts, segments: List[Tuple[str, int]], voice_sampl
         if i % 20 == 0 or i == total_segments:
             print(f"   [{i}/{total_segments}] {text[:40]}... (pause: {break_ms}ms)")
 
+        # Periodic garbage collection to prevent memory bloat (every 50 segments)
+        if i % 50 == 0:
+            gc.collect()
+
         with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as tmp:
             tmp_path = tmp.name
 
@@ -268,6 +294,9 @@ def main():
             print("   (XTTS v2 requires a reference voice file for cloning)")
             args.model = 'jenny'
             voice_sample = None
+
+    # Memory optimization: clear any cached memory before loading large model
+    gc.collect()
 
     # Select and load model
     if args.model == 'xtts':

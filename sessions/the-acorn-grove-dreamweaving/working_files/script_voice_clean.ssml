@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: PRE-TALK -->
+<!-- Duration: 3 minutes | Pitch: 0st | Purpose: Ground and welcome -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="0st">
+Welcome...<break time="2s"/>
+to this sacred journey...<break time="2s"/>
+a dreamweaving known as...<break time="1.5s"/>
+The Acorn Grove.<break time="3s"/>
+
+I am your guide...<break time="1.5s"/>
+The Sacred Digital Dreamweaver...<break time="2s"/>
+and in the next thirty minutes...<break time="1.5s"/>
+you are invited to journey deep within...<break time="2s"/>
+to a place where potential becomes presence...<break time="2.5s"/>
+where the smallest seed...<break time="1.5s"/>
+holds the pattern of the mightiest tree...<break time="3s"/>
+
+You remain in complete control throughout this experience...<break time="2s"/>
+At any time...<break time="1s"/>
+you can return to full waking awareness...<break time="2s"/>
+simply by opening your eyes...<break time="2.5s"/>
+
+Find yourself now in a comfortable position...<break time="2s"/>
+Perhaps sitting with your spine gently supported...<break time="1.5s"/>
+or lying down with your body fully at rest...<break time="2.5s"/>
+If you are wearing headphones...<break time="1s"/>
+this will deepen the experience...<break time="2s"/>
+but it is not required...<break time="2.5s"/>
+
+Ensure you will not be disturbed...<break time="2s"/>
+that you are in a safe...<break time="1s"/>
+quiet...<break time="1s"/>
+sacred space...<break time="3s"/>
+
+Allow yourself to receive...<break time="2s"/>
+whatever insights...<break time="1s"/>
+whatever healing...<break time="1s"/>
+whatever growth...<break time="1.5s"/>
+comes naturally...<break time="2s"/>
+in your own way...<break time="1.5s"/>
+in your own time...<break time="3.5s"/>
+
+And when you are ready...<break time="2s"/>
+allow your eyes to gently close...<break time="3s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: INDUCTION -->
+<!-- Duration: 5 minutes | Pitch: -2st | Purpose: Progressive relaxation -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="-2st">
+And now...<break time="2s"/>
+take a deep...<break time="1s"/>
+nourishing breath...<break time="3s"/>
+
+Breathing in fully...<break time="4s"/>
+holding gently...<break time="4s"/>
+and releasing completely...<break time="6s"/>
+
+Again...<break time="1.5s"/>
+breathing in for four...<break time="1s"/>
+one...<break time="700ms"/>
+two...<break time="700ms"/>
+three...<break time="700ms"/>
+four...<break time="2s"/>
+
+Hold for four...<break time="1s"/>
+one...<break time="700ms"/>
+two...<break time="700ms"/>
+three...<break time="700ms"/>
+four...<break time="2s"/>
+
+And exhale for six...<break time="1s"/>
+one...<break time="700ms"/>
+two...<break time="700ms"/>
+three...<break time="700ms"/>
+four...<break time="700ms"/>
+five...<break time="700ms"/>
+six...<break time="3.5s"/>
+
+Beautiful...<break time="2.5s"/>
+
+Now...<break time="1.5s"/>
+bring your awareness to the crown of your head...<break time="2.5s"/>
+and simply <emphasis level="moderate">notice</emphasis>...<break time="2s"/>
+any tension held there...<break time="2.5s"/>
+
+And with your next exhale...<break time="1.5s"/>
+allow that tension to <emphasis level="moderate">release</emphasis>...<break time="3s"/>
+
+Feel the relaxation flowing down...<break time="2s"/>
+across your forehead...<break time="1.5s"/>
+smoothing the space between your brows...<break time="2s"/>
+softening your eyelids...<break time="2.5s"/>
+releasing your jaw...<break time="2.5s"/>
+
+And the more you relax...<break time="1.5s"/>
+the deeper you go...<break time="1.5s"/>
+and the deeper you go...<break time="1.5s"/>
+the more naturally you <emphasis level="moderate">allow</emphasis> yourself to relax...<break time="4s"/>
+
+This wave of ease...<break time="1.5s"/>
+flowing down through your neck...<break time="2s"/>
+across your shoulders...<break time="2s"/>
+down your arms...<break time="1.5s"/>
+all the way to your fingertips...<break time="3s"/>
+
+Your chest rising and falling...<break time="2s"/>
+in perfect rhythm...<break time="2s"/>
+as your breath becomes softer...<break time="1.5s"/>
+gentler...<break time="1.5s"/>
+effortless...<break time="3.5s"/>
+
+And now that relaxation deepening...<break time="2s"/>
+through your belly...<break time="1.5s"/>
+your hips...<break time="1.5s"/>
+down through your legs...<break time="2s"/>
+all the way to the soles of your feet...<break time="3s"/>
+
+You are here...<break time="700ms"/>
+you are safe...<break time="700ms"/>
+you are beginning to settle in...<break time="3s"/>
+
+And I'm going to count down now...<break time="2s"/>
+from ten to one...<break time="2s"/>
+and with each number...<break time="1.5s"/>
+you drift deeper...<break time="1.5s"/>
+more relaxed...<break time="1.5s"/>
+more open...<break time="3s"/>
+
+Ten...<break time="1.5s"/>
+drifting down...<break time="2.5s"/>
+
+Nine...<break time="1.5s"/>
+deeper still...<break time="2.5s"/>
+
+Eight...<break time="1.5s"/>
+letting go...<break time="2.5s"/>
+
+Seven...<break time="1.5s"/>
+so peaceful...<break time="2.5s"/>
+
+Six...<break time="1.5s"/>
+halfway there...<break time="2.5s"/>
+
+Five...<break time="1.5s"/>
+sinking deeper...<break time="2.5s"/>
+
+Four...<break time="1.5s"/>
+so safe...<break time="2.5s"/>
+
+Three...<break time="1.5s"/>
+almost there...<break time="2.5s"/>
+
+Two...<break time="1.5s"/>
+nearly arrived...<break time="2.5s"/>
+
+One...<break time="4s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: DEEPENING -->
+<!-- Duration: 3 minutes | Pitch: -2st | Purpose: Enter sacred container -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="-2st">
+And here...<break time="2s"/>
+in this deep...<break time="1s"/>
+quiet place...<break time="2s"/>
+you find yourself standing...<break time="2s"/>
+at the edge of an ancient forest...<break time="3s"/>
+
+The light here is golden...<break time="2s"/>
+filtered through a canopy of oak leaves...<break time="2.5s"/>
+dappling the earth with patterns of light and shadow...<break time="3s"/>
+
+You can smell it...<break time="2s"/>
+the rich scent of loam...<break time="1.5s"/>
+of moss...<break time="1s"/>
+of life in all its forms...<break time="3s"/>
+
+And beneath your feet...<break time="2s"/>
+you feel the soft earth...<break time="2s"/>
+cool and welcoming...<break time="2.5s"/>
+grounding you here...<break time="1.5s"/>
+in this sacred space...<break time="3.5s"/>
+
+Before you...<break time="2s"/>
+a path appears...<break time="2s"/>
+winding gently into the grove...<break time="2.5s"/>
+and you know...<break time="1.5s"/>
+with a knowing that comes from deep within...<break time="2s"/>
+that this path is yours...<break time="2.5s"/>
+has always been yours...<break time="3s"/>
+
+And so you begin to walk...<break time="2.5s"/>
+
+Each step taking you deeper...<break time="2s"/>
+into the forest...<break time="1.5s"/>
+and deeper...<break time="1.5s"/>
+into yourself...<break time="3.5s"/>
+
+The sounds of the world behind you...<break time="2s"/>
+fading now...<break time="1.5s"/>
+as the sounds of the grove...<break time="1.5s"/>
+rise to meet you...<break time="3s"/>
+
+The whisper of wind through ancient branches...<break time="2.5s"/>
+the gentle rustle of small creatures in the undergrowth...<break time="2.5s"/>
+the distant song of a thrush...<break time="3s"/>
+
+You are held here...<break time="2s"/>
+safe...<break time="1s"/>
+supported...<break time="1s"/>
+welcomed...<break time="3.5s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: MAIN JOURNEY -->
+<!-- Duration: 14 minutes | Pitch: -1st | Purpose: Core transformation -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="-1st">
+And as you continue along this path...<break time="2s"/>
+the forest opens...<break time="2s"/>
+revealing a clearing ahead...<break time="3s"/>
+
+A grove...<break time="2s"/>
+circular and sacred...<break time="2.5s"/>
+ringed by ancient oak trees...<break time="2.5s"/>
+their massive trunks rising like pillars...<break time="2s"/>
+supporting the cathedral of the sky...<break time="3.5s"/>
+
+And at the center of this grove...<break time="2.5s"/>
+you see them...<break time="3s"/>
+
+Acorns...<break time="2.5s"/>
+
+Hundreds of them...<break time="2s"/>
+scattered across the forest floor...<break time="2.5s"/>
+each one perfect...<break time="1.5s"/>
+complete...<break time="1.5s"/>
+holding within its small form...<break time="2s"/>
+the entire pattern...<break time="1.5s"/>
+of a mighty oak...<break time="4s"/>
+
+You step into the clearing...<break time="2.5s"/>
+and as you do...<break time="1.5s"/>
+you <emphasis level="moderate">notice</emphasis>...<break time="2s"/>
+a presence...<break time="2.5s"/>
+
+Standing near the center of the grove...<break time="2s"/>
+is a figure...<break time="2s"/>
+radiant and gentle...<break time="2.5s"/>
+
+The Rose Mother...<break time="3s"/>
+
+She is robed in soft petals of deep rose and cream...<break time="2.5s"/>
+her presence emanating warmth...<break time="2s"/>
+compassion...<break time="1.5s"/>
+unconditional love...<break time="3s"/>
+
+She smiles at you...<break time="2s"/>
+and in that smile...<break time="1.5s"/>
+you feel seen...<break time="2s"/>
+truly seen...<break time="2.5s"/>
+for all that you are...<break time="3.5s"/>
+
+She gestures to the acorns at her feet...<break time="2.5s"/>
+and speaks...<break time="2s"/>
+her voice like honey and silk...<break time="3s"/>
+
+<emphasis level="moderate">"Each of these,"</emphasis> she says...<break time="2s"/>
+<emphasis level="moderate">"holds a dream...<break time="1.5s"/>
+a potential...<break time="1.5s"/>
+a gift not yet born."</emphasis><break time="4s"/>
+
+<emphasis level="moderate">"And so do you."</emphasis><break time="4s"/>
+
+She kneels...<break time="2s"/>
+and from among the acorns...<break time="2s"/>
+she selects one...<break time="2.5s"/>
+and holds it out to you...<break time="3s"/>
+
+You step forward...<break time="2s"/>
+and receive it...<break time="2s"/>
+feeling its weight in your palm...<break time="2.5s"/>
+
+It is smooth...<break time="1.5s"/>
+cool to the touch...<break time="2s"/>
+and as you hold it...<break time="1.5s"/>
+you feel a warmth beginning to grow...<break time="2s"/>
+pulsing gently...<break time="1.5s"/>
+as though it has a heartbeat of its own...<break time="4s"/>
+
+<emphasis level="moderate">"This acorn,"</emphasis> the Rose Mother says...<break time="2s"/>
+<emphasis level="moderate">"is yours.<break time="1.5s"/>
+It represents something within you...<break time="2s"/>
+that is ready to grow."</emphasis><break time="4s"/>
+
+And as she speaks...<break time="2s"/>
+you begin to <emphasis level="moderate">know</emphasis>...<break time="2s"/>
+what this acorn represents...<break time="3s"/>
+
+Perhaps it is a gift you have kept hidden...<break time="2.5s"/>
+a dream you have been afraid to voice...<break time="2.5s"/>
+a strength you have not yet claimed...<break time="3.5s"/>
+
+Whatever it is...<break time="2s"/>
+it is yours...<break time="2s"/>
+and it is time...<break time="4s"/>
+</prosody>
+
+<prosody rate="1.0" pitch="-1st">
+The Rose Mother leads you now...<break time="2s"/>
+to the base of the largest oak...<break time="2.5s"/>
+at the edge of the grove...<break time="3s"/>
+
+And there...<break time="2s"/>
+waiting...<break time="2s"/>
+is another presence...<break time="3s"/>
+
+The World Tree Guardian...<break time="3.5s"/>
+
+Tall and ancient...<break time="2s"/>
+robed in bark and moss...<break time="2s"/>
+with eyes like deep forest pools...<break time="2.5s"/>
+reflecting the wisdom of countless seasons...<break time="3.5s"/>
+
+The Guardian nods to you...<break time="2s"/>
+and gestures to the earth at the tree's roots...<break time="2.5s"/>
+where a small hollow has been prepared...<break time="3s"/>
+
+<emphasis level="moderate">"Plant your acorn here,"</emphasis> the Guardian says...<break time="2s"/>
+<emphasis level="moderate">"and it will grow...<break time="1.5s"/>
+nourished by the roots of the great tree...<break time="2s"/>
+supported by all that has come before."</emphasis><break time="4s"/>
+
+You kneel...<break time="2.5s"/>
+and gently place the acorn into the earth...<break time="3s"/>
+
+Your hands press the cool soil around it...<break time="2.5s"/>
+and as you do...<break time="1.5s"/>
+you feel something shift...<break time="2.5s"/>
+within you...<break time="3s"/>
+
+A <emphasis level="moderate">release</emphasis>...<break time="2.5s"/>
+a letting go...<break time="2s"/>
+of the need to control...<break time="2s"/>
+the need to force...<break time="2.5s"/>
+the need to be anything...<break time="2s"/>
+other than what you are...<break time="4s"/>
+
+The Rose Mother places her hand on your shoulder...<break time="2.5s"/>
+and warmth floods through you...<break time="2.5s"/>
+like sunlight...<break time="1.5s"/>
+like love...<break time="3s"/>
+
+And from somewhere deep within your being...<break time="2.5s"/>
+another presence begins to stir...<break time="3s"/>
+
+The Inner Healer...<break time="3.5s"/>
+
+You cannot see this presence...<break time="2s"/>
+but you can feel it...<break time="2s"/>
+as a gentle light...<break time="1.5s"/>
+rising from your center...<break time="2.5s"/>
+spreading through your body...<break time="2s"/>
+your heart...<break time="1.5s"/>
+your mind...<break time="3s"/>
+
+This Inner Healer knows...<break time="2s"/>
+exactly what you need...<break time="2.5s"/>
+to grow...<break time="1.5s"/>
+to flourish...<break time="1.5s"/>
+to become the mighty oak...<break time="2s"/>
+that you are meant to be...<break time="4s"/>
+
+And as this light fills you...<break time="2.5s"/>
+you look down at the earth...<break time="2s"/>
+where you planted your acorn...<break time="2.5s"/>
+and you <emphasis level="moderate">see</emphasis>...<break time="3s"/>
+
+A tiny green shoot...<break time="2s"/>
+pushing up through the soil...<break time="2.5s"/>
+reaching for the light...<break time="3s"/>
+
+It grows before your eyes...<break time="2.5s"/>
+faster than nature...<break time="1.5s"/>
+yet perfectly natural...<break time="2.5s"/>
+unfurling leaves...<break time="2s"/>
+thickening its stem...<break time="2s"/>
+sending roots deep into the earth...<break time="3.5s"/>
+
+And you realize...<break time="2.5s"/>
+that this is not separate from you...<break time="3s"/>
+
+This tree is you...<break time="2.5s"/>
+growing...<break time="1.5s"/>
+becoming...<break time="1.5s"/>
+claiming your space in the world...<break time="4s"/>
+
+The World Tree Guardian speaks again...<break time="2.5s"/>
+voice like wind through ancient branches...<break time="3s"/>
+
+<emphasis level="moderate">"The acorn does not struggle to become the oak.<break time="2s"/>
+It simply grows...<break time="1.5s"/>
+trusting the pattern held within.<break time="2.5s"/>
+So too with you."</emphasis><break time="5s"/>
+
+And in this moment...<break time="2s"/>
+you feel it...<break time="2s"/>
+deep in your being...<break time="2.5s"/>
+
+The trust...<break time="2s"/>
+in your own unfolding...<break time="2.5s"/>
+in your own becoming...<break time="3s"/>
+
+You do not need to force...<break time="2s"/>
+you do not need to struggle...<break time="2.5s"/>
+you simply need to <emphasis level="moderate">allow</emphasis>...<break time="2s"/>
+what is already within you...<break time="2s"/>
+to emerge...<break time="4s"/>
+
+The Rose Mother and the World Tree Guardian...<break time="2.5s"/>
+stand on either side of you now...<break time="2.5s"/>
+and together...<break time="1.5s"/>
+the three of you witness...<break time="2s"/>
+your young oak...<break time="1.5s"/>
+growing strong...<break time="2s"/>
+reaching upward...<break time="2s"/>
+rooted deeply...<break time="3.5s"/>
+
+And the Rose Mother whispers...<break time="2.5s"/>
+<emphasis level="moderate">"You are loved...<break time="1.5s"/>
+exactly as you are...<break time="2s"/>
+and as you grow...<break time="1.5s"/>
+you are still loved."</emphasis><break time="5s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: INTEGRATION -->
+<!-- Duration: 4 minutes | Pitch: -1st | Purpose: Anchor and return -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="-1st">
+And now...<break time="2.5s"/>
+it is time to begin your return...<break time="3s"/>
+
+The Rose Mother and the World Tree Guardian...<break time="2s"/>
+bow to you...<break time="2s"/>
+honoring what you have planted...<break time="2s"/>
+honoring what you are becoming...<break time="3.5s"/>
+
+And your young oak tree...<break time="2s"/>
+though you are stepping away from this grove...<break time="2s"/>
+continues to grow...<break time="2.5s"/>
+fed by the roots of the great tree...<break time="2s"/>
+nourished by the love of the Rose Mother...<break time="2s"/>
+protected by the wisdom of the Guardian...<break time="3s"/>
+
+You can return here...<break time="1.5s"/>
+any time you wish...<break time="2s"/>
+simply by closing your eyes...<break time="1.5s"/>
+and remembering...<break time="2s"/>
+the acorn in your hand...<break time="3.5s"/>
+
+You turn now...<break time="2s"/>
+and walk back along the path...<break time="2s"/>
+through the ancient forest...<break time="2.5s"/>
+
+And with each step...<break time="1.5s"/>
+you bring back with you...<break time="2s"/>
+the knowing...<break time="1.5s"/>
+that you carry within you...<break time="2s"/>
+everything you need...<break time="2s"/>
+to grow...<break time="1.5s"/>
+to flourish...<break time="1.5s"/>
+to become...<break time="3.5s"/>
+
+You bring back the warmth of the Rose Mother's love...<break time="2.5s"/>
+the strength of the World Tree Guardian's wisdom...<break time="2.5s"/>
+and the gentle presence of your own Inner Healer...<break time="3s"/>
+
+These are not left behind...<break time="2s"/>
+they are woven into you...<break time="2.5s"/>
+now and always...<break time="4s"/>
+
+And in the minutes...<break time="1s"/>
+hours...<break time="1s"/>
+even days ahead...<break time="1.5s"/>
+insights continue unfolding...<break time="2.5s"/>
+understandings deepen...<break time="2.5s"/>
+as your mind and heart...<break time="2s"/>
+gently reorganize...<break time="2s"/>
+around this new pattern...<break time="3.5s"/>
+
+You find yourself now...<break time="2s"/>
+back at the edge of the forest...<break time="2.5s"/>
+where you began...<break time="3s"/>
+
+The golden light still filters through the leaves...<break time="2.5s"/>
+the scent of earth still rich in the air...<break time="3s"/>
+
+And you are ready...<break time="2s"/>
+to return...<break time="3.5s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: AWAKENING & POST-HYPNOTIC ANCHORS -->
+<!-- Duration: 3 minutes | Pitch: 0st | Purpose: Grounded return -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="0st">
+And now...<break time="2s"/>
+I'm going to count from one to five...<break time="2s"/>
+and with each number...<break time="1.5s"/>
+you become more alert...<break time="1.5s"/>
+more awake...<break time="1.5s"/>
+more present...<break time="3s"/>
+
+One...<break time="1.5s"/>
+beginning to return...<break time="2s"/>
+feeling the surface beneath you...<break time="2.5s"/>
+
+Two...<break time="1.5s"/>
+energy returning to your body...<break time="2s"/>
+awareness expanding...<break time="2.5s"/>
+
+Three...<break time="1.5s"/>
+taking a deeper breath now...<break time="2s"/>
+feeling refreshed...<break time="2s"/>
+renewed...<break time="2.5s"/>
+
+Four...<break time="1.5s"/>
+almost fully here...<break time="2s"/>
+ready to open your eyes...<break time="2.5s"/>
+
+And five...<break time="2s"/>
+eyes open...<break time="1.5s"/>
+fully awake...<break time="1.5s"/>
+fully present...<break time="1.5s"/>
+and feeling wonderful...<break time="3.5s"/>
+
+Welcome back...<break time="3s"/>
+
+And as you move through your day...<break time="2s"/>
+and the days ahead...<break time="2s"/>
+remember...<break time="2.5s"/>
+
+Each time you take three deep breaths...<break time="2s"/>
+you will feel that connection...<break time="1.5s"/>
+to your Inner Healer...<break time="2s"/>
+and know that you are supported...<break time="2.5s"/>
+in your growth...<break time="3s"/>
+
+Whenever you see an acorn...<break time="1.5s"/>
+or an oak tree...<break time="1.5s"/>
+or even just a seed of any kind...<break time="2s"/>
+you will remember...<break time="1.5s"/>
+that you carry within you...<break time="2s"/>
+the entire pattern of who you are meant to become...<break time="3.5s"/>
+
+And when you feel warmth in your heart...<break time="2s"/>
+you will know it is the Rose Mother's love...<break time="2s"/>
+reminding you...<break time="1.5s"/>
+that you are worthy...<break time="1.5s"/>
+exactly as you are...<break time="3s"/>
+
+These anchors are yours...<break time="2s"/>
+to carry with you...<break time="1.5s"/>
+always...<break time="3.5s"/>
+
+Thank you for journeying with me today...<break time="2.5s"/>
+
+If this pathworking has served you...<break time="2s"/>
+I invite you to like this video...<break time="1.5s"/>
+and subscribe to this channel...<break time="2s"/>
+so that more journeys like this...<break time="1.5s"/>
+can find their way to you...<break time="3s"/>
+
+You can find links in the description...<break time="2s"/>
+for more dreamweavings...<break time="1.5s"/>
+and resources for your path...<break time="3s"/>
+
+Until we meet again...<break time="2s"/>
+in the sacred grove...<break time="2s"/>
+or in another journey...<break time="2.5s"/>
+
+May you grow...<break time="1.5s"/>
+with grace...<break time="1.5s"/>
+with trust...<break time="1.5s"/>
+and with love...<break time="4s"/>
+
+Blessed be...<break time="3s"/>
+</prosody>
+
+</speak>

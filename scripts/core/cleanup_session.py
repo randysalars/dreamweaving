@@ -2,24 +2,35 @@
 """
 Session Cleanup Module
 
-Removes ALL files except the YouTube package for maximum space savings.
+Removes intermediate files while preserving final deliverables.
 This is Stage 8 of the production workflow.
 
-Files PRESERVED:
-- output/youtube_package/* (final YouTube package with video, audio, thumbnail, VTT)
-- manifest.yaml (session configuration)
+STANDARD MODE (default):
+  Preserved:
+  - output/youtube_package/* (final video, thumbnail, subtitles)
+  - manifest.yaml (session configuration)
 
-Files REMOVED (everything else):
-- output/*.wav, *.mp3 (all intermediate and master audio)
-- output/video/* (intermediate video files)
-- working_files/* (all working files - scripts, configs, prompts)
-- images/* (all images - they're embedded in video or in youtube_package)
-- All other intermediate files
+  Removed:
+  - output/*.wav, *.mp3 (intermediate audio)
+  - output/video/* (intermediate video)
+  - working_files/* (scripts, configs, prompts)
+  - images/* (embedded in video)
+
+AGGRESSIVE MODE (--aggressive, used by nightly builds):
+  Preserved:
+  - output/youtube_package/* (final video, thumbnail, subtitles)
+  - output/*_MASTER.mp3 (final mastered audio)
+  - manifest.yaml (session configuration)
+  - working_files/auto_generate_report.yaml (build report)
+
+  Removed:
+  - All intermediate files
 
 Usage:
     python3 scripts/core/cleanup_session.py sessions/{session}/
     python3 scripts/core/cleanup_session.py sessions/{session}/ --dry-run
-    python3 scripts/core/cleanup_session.py sessions/{session}/ --keep-scripts  # Also preserve SSML scripts
+    python3 scripts/core/cleanup_session.py sessions/{session}/ --keep-scripts
+    python3 scripts/core/cleanup_session.py sessions/{session}/ --aggressive
 """
 
 import argparse
@@ -78,46 +89,96 @@ def cleanup_session(session_path: Path, dry_run: bool = False, keep_scripts: boo
     bytes_to_free = 0
     preserved_items = []
 
-    # In aggressive mode, remove EVERYTHING - no preserves
+    # In aggressive mode, remove intermediate files but preserve final deliverables
     if aggressive:
-        # Remove entire output directory
+        # PRESERVE these key files:
+        # - output/youtube_package/* (final video, thumbnail, subtitles)
+        # - output/*_MASTER.mp3 (final mastered audio)
+        # - manifest.yaml (session configuration)
+        # - working_files/auto_generate_report.yaml (build report)
+
+        # Track preserved items
+        if youtube_pkg.exists():
+            preserved_items.append(("output/youtube_package/", get_dir_size(youtube_pkg)))
+        if (session_path / "manifest.yaml").exists():
+            preserved_items.append(("manifest.yaml", (session_path / "manifest.yaml").stat().st_size))
+
+        # Files to always preserve (even outside youtube_package)
+        preserve_patterns = [
+            "_MASTER.mp3",         # Master audio
+            "youtube_thumbnail",    # Thumbnail
+            "subtitles.vtt",       # Subtitles
+            "final_video.mp4",     # Final video (if not in youtube_package)
+            "session_final.mp4",   # Alternative video name
+        ]
+
+        # Remove everything in output/ EXCEPT youtube_package and key deliverables
         if output_path.exists():
-            size = get_dir_size(output_path)
-            items_to_remove.append((output_path, size, "dir"))
-            bytes_to_free += size
+            for item in output_path.iterdir():
+                if item.name == "youtube_package":
+                    continue  # Preserve youtube package
 
-        # Remove manifest.yaml
-        manifest_file = session_path / "manifest.yaml"
-        if manifest_file.exists():
-            size = manifest_file.stat().st_size
-            items_to_remove.append((manifest_file, size, "file"))
-            bytes_to_free += size
+                # Check if this file should be preserved
+                should_preserve = False
+                if item.is_file():
+                    for pattern in preserve_patterns:
+                        if pattern in item.name:
+                            preserved_items.append((f"output/{item.name}", item.stat().st_size))
+                            should_preserve = True
+                            break
 
-        # Remove working_files entirely
+                if should_preserve:
+                    continue
+
+                if item.is_file():
+                    size = item.stat().st_size
+                    items_to_remove.append((item, size, "file"))
+                    bytes_to_free += size
+                elif item.is_dir():
+                    size = get_dir_size(item)
+                    items_to_remove.append((item, size, "dir"))
+                    bytes_to_free += size
+
+        # Remove working_files EXCEPT auto_generate_report.yaml
         working_path = session_path / "working_files"
         if working_path.exists():
-            size = get_dir_size(working_path)
-            items_to_remove.append((working_path, size, "dir"))
-            bytes_to_free += size
+            for item in working_path.iterdir():
+                if item.name == "auto_generate_report.yaml":
+                    preserved_items.append((f"working_files/{item.name}", item.stat().st_size))
+                    continue  # Preserve build report
+                if item.is_file():
+                    size = item.stat().st_size
+                    items_to_remove.append((item, size, "file"))
+                    bytes_to_free += size
+                elif item.is_dir():
+                    size = get_dir_size(item)
+                    items_to_remove.append((item, size, "dir"))
+                    bytes_to_free += size
 
-        # Remove images entirely
+        # Remove images/
         images_path = session_path / "images"
         if images_path.exists():
             size = get_dir_size(images_path)
             items_to_remove.append((images_path, size, "dir"))
             bytes_to_free += size
 
-        # Remove any other files/dirs in session root
+        # Remove any other large files in session root (keep small files like notes)
         for item in session_path.iterdir():
-            if item in [p for p, _, _ in items_to_remove]:
-                continue  # Already added
+            if item.name in ("manifest.yaml", "output", "working_files", "images"):
+                continue  # Already handled
             if item.name.startswith("."):
                 continue  # Skip hidden files
+
             if item.is_file():
-                size = item.stat().st_size
-                items_to_remove.append((item, size, "file"))
-                bytes_to_free += size
+                # Remove large files (> 1MB), keep small ones like notes
+                if item.stat().st_size > 1_000_000:
+                    size = item.stat().st_size
+                    items_to_remove.append((item, size, "file"))
+                    bytes_to_free += size
+                else:
+                    preserved_items.append((item.name, item.stat().st_size))
             elif item.is_dir():
+                # Remove any other directories
                 size = get_dir_size(item)
                 items_to_remove.append((item, size, "dir"))
                 bytes_to_free += size
@@ -318,7 +379,7 @@ def main():
     parser.add_argument(
         "--aggressive",
         action="store_true",
-        help="Remove EVERYTHING including youtube_package and manifest (for nightly builds)"
+        help="Aggressive cleanup for nightly builds (preserves youtube_package, MASTER audio, manifest, and report)"
     )
 
     args = parser.parse_args()

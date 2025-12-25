@@ -39,6 +39,7 @@ import argparse
 import json
 import os
 import sys
+import traceback
 import requests
 import yaml
 import hashlib
@@ -362,7 +363,8 @@ class R2Storage:
 
         content_type = content_types.get(file_type, "application/octet-stream")
         extension = extensions.get(file_type, "bin")
-        object_key = f"dreamweavings/{slug}/{file_type}.{extension}"
+        # Object key is path within bucket (bucket name 'dreamweavings' is added by S3 client)
+        object_key = f"{slug}/{file_type}.{extension}"
 
         # Try boto3 first (handles multipart uploads for large files)
         s3_client = self._get_s3_client()
@@ -1574,6 +1576,8 @@ Environment Variables for Vercel Blob:
         sys.exit(0)
     except Exception as e:
         print(f"\nFATAL: {e}")
+        # Print traceback to stderr for debugging (captured by auto_generate.py)
+        print(f"Traceback:\n{traceback.format_exc()}", file=sys.stderr)
         sys.exit(1)
 
 

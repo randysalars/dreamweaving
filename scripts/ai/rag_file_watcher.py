@@ -29,6 +29,20 @@ from datetime import datetime
 from typing import Set, Optional, Dict, Any
 from threading import Timer
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# RESOURCE OPTIMIZATION - Limit thread usage for background watcher
+# This process should be lightweight and not compete with TTS generation
+# These MUST be set BEFORE importing torch/numpy/any ML libraries
+# ═══════════════════════════════════════════════════════════════════════════════
+MAX_RAG_THREADS = 2  # Minimal threads for background indexing
+
+os.environ["OMP_NUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["MKL_NUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["OPENBLAS_NUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["VECLIB_MAXIMUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["NUMEXPR_NUM_THREADS"] = str(MAX_RAG_THREADS)
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 # Set up project path before importing project modules
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
