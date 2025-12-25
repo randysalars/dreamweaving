@@ -386,7 +386,10 @@ class R2Storage:
             use_threads=True,
         )
 
-        extra_args = {'ContentType': content_type}
+        extra_args = {
+            'ContentType': content_type,
+            'CacheControl': 'public, max-age=31536000, immutable',  # 1 year cache for media
+        }
 
         s3_client.upload_file(
             str(file_path),
@@ -414,6 +417,7 @@ class R2Storage:
         headers = {
             "content-type": content_type,
             "content-length": str(len(file_content)),
+            "cache-control": "public, max-age=31536000, immutable",  # 1 year cache for media
         }
 
         # Sign the request
