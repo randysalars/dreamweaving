@@ -429,53 +429,98 @@ FREQUENCY_CATEGORIES = {
     "gamma": ["consciousness-exploration", "higher-realms"],
 }
 
-# Map keywords.py category slugs to actual database category slugs
-# The database has fewer categories than keywords.py, so we need to map them
+# Map keywords.py category slugs to actual database category slugs.
+# The database now has all 50+ categories, so most map directly to themselves.
+# This mapping handles any edge cases and provides backwards compatibility.
 SLUG_TO_DB_CATEGORY = {
-    # Direct matches (same slug in both)
+    # ==========================================================================
+    # CORE TYPES (from /dreamweavings/types) - Direct 1:1 mappings
+    # ==========================================================================
+    "guided-visualization": "guided-visualization",
+    "shamanic-journeying": "shamanic-journeying",
+    "active-imagination": "active-imagination",
+    "mindfulness-pathworkings": "mindfulness-pathworkings",
+    "archetypal-encounters": "archetypal-encounters",
+    "healing-journeys": "healing-journeys",
+    "creative-inspiration": "creative-inspiration",
+    "lucid-dream-induction": "lucid-dream-induction",
+
+    # ==========================================================================
+    # EXTENDED TYPES (from /dreamweavings/more) - Direct 1:1 mappings
+    # ==========================================================================
+    "elemental-journeys": "elemental-journeys",
+    "mythic-storywork": "mythic-storywork",
+    "soundscapes": "soundscapes",
+    "collective-dreamweavings": "collective-dreamweavings",
+    "future-self-encounters": "future-self-encounters",
+    "integration-pathworkings": "integration-pathworkings",
+
+    # ==========================================================================
+    # THEME CATEGORIES - Direct 1:1 mappings
+    # ==========================================================================
+    "cultural-traditions": "cultural-traditions",
     "eastern-philosophy": "eastern-philosophy",
-    "archetypal": "archetypal",
-    "relaxation": "relaxation",
-    "confidence": "confidence",
-    "healing": "healing",
-    "shadow-work": "shadow-work",
+    "spiritual-religious": "spiritual-religious",
+    "nature-elements": "nature-elements",
+    "mythology-archetypes": "mythology-archetypes",
+    "healing-wellness": "healing-wellness",
+    "personal-development": "personal-development",
+    "creative-arts": "creative-arts",
+    "science-exploration": "science-exploration",
+    "paranormal-esoteric": "paranormal-esoteric",
+    "historical-journeys": "historical-journeys",
+    "entertainment-inspired": "entertainment-inspired",
+    "sensory-body": "sensory-body",
+    "shadow-depths": "shadow-depths",
+    "higher-realms": "higher-realms",
+
+    # ==========================================================================
+    # GROWTH/EXPERIENCE CATEGORIES - Direct 1:1 mappings
+    # ==========================================================================
+    "consciousness-exploration": "consciousness-exploration",
+    "scientific-dimensional": "scientific-dimensional",
+    "microscopic-cosmic": "microscopic-cosmic",
+
+    # ==========================================================================
+    # ADDITIONAL CATEGORIES - Direct 1:1 mappings
+    # ==========================================================================
+    "womens-wisdom-journeys": "womens-wisdom-journeys",
+    "mens-wisdom-journeys": "mens-wisdom-journeys",
+    "mindfulness-explorations": "mindfulness-explorations",
+    "truth-honesty-explorations": "truth-honesty-explorations",
+    "knowledge-wisdom-quests": "knowledge-wisdom-quests",
+    "love-connection-journeys": "love-connection-journeys",
+    "human-connection-journeys": "human-connection-journeys",
+    "world-issues-explorations": "world-issues-explorations",
+    "understanding-different-personalities": "understanding-different-personalities",
+    "travel-adventure-journeys": "travel-adventure-journeys",
+    "adventure-exploration-journeys": "adventure-exploration-journeys",
+    "pirate-buccaneer-adventures": "pirate-buccaneer-adventures",
+    "merchant-prosperity-journeys": "merchant-prosperity-journeys",
+    "wisdom-quests": "wisdom-quests",
+    "overcoming-worry-overthinking": "overcoming-worry-overthinking",
+    "love-happiness-gratitude-journeys": "love-happiness-gratitude-journeys",
+    "relationship-connection-journeys": "relationship-connection-journeys",
+    "initiation-rite-of-passage-journeys": "initiation-rite-of-passage-journeys",
+    "thinking-intuition-journeys": "thinking-intuition-journeys",
+    "practical-guided-journeys": "practical-guided-journeys",
+    "addictive-theme-explorations": "addictive-theme-explorations",
+    "meditation-mindfulness-articles": "meditation-mindfulness-articles",
+    "popular-online-trends-keywords": "popular-online-trends-keywords",
+    "viral-video-adventures": "viral-video-adventures",
+
+    # ==========================================================================
+    # ORIGINAL 10 CATEGORIES (backwards compatibility)
+    # ==========================================================================
     "nature-forest": "nature-forest",
     "cosmic-space": "cosmic-space",
+    "healing": "healing",
+    "shadow-work": "shadow-work",
+    "archetypal": "archetypal",
     "sacred-spiritual": "sacred-spiritual",
+    "confidence": "confidence",
+    "relaxation": "relaxation",
     "layer-1": "layer-1",
-
-    # Map keywords.py slugs -> database slugs
-    "healing-journeys": "healing",
-    "healing-wellness": "healing",
-    "spiritual-religious": "sacred-spiritual",
-    "higher-realms": "sacred-spiritual",
-    "shadow-depths": "shadow-work",
-    "nature-elements": "nature-forest",
-    "microscopic-cosmic": "cosmic-space",
-    "personal-development": "confidence",
-    "mindfulness-pathworkings": "relaxation",
-    "soundscapes": "relaxation",
-    "guided-visualization": "archetypal",
-    "archetypal-encounters": "archetypal",
-    "shamanic-journeying": "archetypal",
-    "active-imagination": "archetypal",
-    "lucid-dream-induction": "relaxation",
-    "creative-inspiration": "archetypal",
-    "elemental-journeys": "nature-forest",
-    "mythic-storywork": "archetypal",
-    "collective-dreamweavings": "archetypal",
-    "future-self-encounters": "archetypal",
-    "integration-pathworkings": "healing",
-    "cultural-traditions": "sacred-spiritual",
-    "mythology-archetypes": "archetypal",
-    "creative-arts": "archetypal",
-    "science-exploration": "cosmic-space",
-    "paranormal-esoteric": "cosmic-space",
-    "historical-journeys": "archetypal",
-    "entertainment-inspired": "archetypal",
-    "sensory-body": "relaxation",
-    "consciousness-exploration": "cosmic-space",
-    "scientific-dimensional": "cosmic-space",
 }
 
 
@@ -483,13 +528,13 @@ def get_db_category(keywords_slug: str) -> str:
     """
     Convert a keywords.py category slug to the corresponding database category slug.
 
-    The keywords.py file has many more granular categories than the database.
-    This function maps them to the 10 database categories.
+    The database now has all 50+ categories that match the website display.
+    Most slugs map directly to themselves; this function provides fallback handling.
 
     Args:
         keywords_slug: The category slug from the auto-categorization system
 
     Returns:
-        The corresponding database category slug, or 'archetypal' as fallback
+        The corresponding database category slug, or 'guided-visualization' as fallback
     """
-    return SLUG_TO_DB_CATEGORY.get(keywords_slug, "archetypal")
+    return SLUG_TO_DB_CATEGORY.get(keywords_slug, "guided-visualization")
