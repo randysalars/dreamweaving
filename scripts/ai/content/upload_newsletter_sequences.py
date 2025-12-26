@@ -59,10 +59,23 @@ def upload_email(email: dict, api_base: str, api_token: str, dry_run: bool = Fal
         return True
 
     try:
-        response = requests.post(url, json=payload, headers=headers, timeout=30)
+        response = requests.post(url, json=payload, headers=headers, timeout=30, allow_redirects=False)
 
         if response.status_code == 200:
-            return True
+            # Verify the response is JSON with success field
+            try:
+                data = response.json()
+                if data.get('success'):
+                    return True
+                else:
+                    print(f"    API Error: {data.get('error', 'Unknown error')}")
+                    return False
+            except ValueError:
+                print("    API Error: Non-JSON response (likely auth redirect)")
+                return False
+        elif response.status_code in (301, 302, 307, 308):
+            print(f"    API Error: Redirect to {response.headers.get('location', 'unknown')} - auth failed")
+            return False
         else:
             print(f"    API Error {response.status_code}: {response.text[:200]}")
             return False
