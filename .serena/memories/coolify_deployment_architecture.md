@@ -112,9 +112,40 @@ cmd = "npm run start"
 | Mistake | Why It Fails | Solution |
 |---------|--------------|----------|
 | Script in root `scripts/` | Root not deployed | Move to `frontend/scripts/` |
-| Importing from `../lib` | Path doesn't exist in container | Use `@/lib` or relative from frontend |
+| Wrong import path after moving | `../frontend/lib/...` still used | Change to `../lib/...` |
+| Importing from `../lib` when in root | Path doesn't exist | Use relative from frontend |
 | Missing Prisma client | Not generated in container | Script imports from `@prisma/client` |
 | Using `require()` | ESM modules need `import` | Use `.mjs` extension and `import` |
+
+### Critical: Fix Import Paths When Moving Scripts
+
+When copying a script from root `scripts/` to `frontend/scripts/`, you **MUST update import paths**:
+
+**Before (in root scripts/):**
+```javascript
+import { prisma } from '../frontend/lib/prisma.js';
+```
+
+**After (in frontend/scripts/):**
+```javascript
+import { prisma } from '../lib/prisma.js';
+```
+
+The `frontend/` part must be removed since the script is now inside frontend/.
+
+### Real Example: Dec 2024 Dreamweaving Categories Fix
+
+**Problem:** Nightly builds failing at upload_website stage with "Invalid category slug"
+
+**Root cause:** DreamweavingCategory table was empty - seed never ran on Coolify
+
+**Fix journey:**
+1. Script was in `scripts/seed-dreamweaving-categories.mjs` (root) - **not deployed to container**
+2. Copied to `frontend/scripts/seed-dreamweaving-categories.mjs` - **deployed but failed**
+3. Error: `Cannot find module '/app/frontend/lib/prisma.js'`
+4. Cause: Import path still had `../frontend/lib/prisma.js` from when it was in root
+5. Fix: Changed import to `../lib/prisma.js`
+6. Result: Successfully seeded 65 categories to production
 
 ## Environment Variables
 
