@@ -1,0 +1,108 @@
+Generate a complete SSML hypnotic script for the following session:
+
+**Topic:** Sushibi Senses Dreamweaving
+**Target Duration:** 30 minutes
+**Target Word Count:** 2193-2680 words (hypnotic pace ~130 wpm with pauses)
+**Session Name:** sushibi-senses-dreamweaving
+
+**Archetypes to incorporate:** The Inner Healer, The Rose Mother, The World Tree Guardian
+
+**Section Timing:**
+- pretalk: 0 minutes
+- induction: 0 minutes
+- journey: 0 minutes
+- integration: 0 minutes
+- awakening: 0 minutes
+
+
+---
+## CANONICAL DREAMWEAVING KNOWLEDGE (from your knowledge base)
+Use this context to ensure the script aligns with YOUR established definitions, archetypes, and patterns:
+
+### Relevant Knowledge from Your Canon
+- **Dreamweaving Ideas** (relevance: 0.63)
+  Title: Dreamweaving Ideas
+
+ry and visual feast.
+ - 4. Textures of Tatami: A pathworking experience themed around walking barefoot on Tatami mats, connecting with the unique texture and scent and invoking feelings of simplicity and mindful living.
+ - 5. Kimon Call: Wander through a gallery of kimonos...
+- **More Dreamweaving Ideas** (relevance: 0.62)
+  Title: More Dreamweaving Ideas
+
+ry and visual feast.
+ - 4. Textures of Tatami: A pathworking experience themed around walking barefoot on Tatami mats, connecting with the unique texture and scent and invoking feelings of simplicity and mindful living.
+ - 5. Kimon Call: Wander through a gallery of ki...
+- **Sacred Digital Dreamweaver** (relevance: 0.61)
+  Title: Sacred Digital Dreamweaver
+
+ry and visual feast.
+ - 4. Textures of Tatami: A pathworking experience themed around walking barefoot on Tatami mats, connecting with the unique texture and scent and invoking feelings of simplicity and mindful living.
+ - 5. Kimon Call: Wander through a gallery of...
+- **Sacred Digital Dreamweaver** (relevance: 0.61)
+  Title: Sacred Digital Dreamweaver
+
+ry and visual feast.
+ - 4. Textures of Tatami: A pathworking experience themed around walking barefoot on Tatami mats, connecting with the unique texture and scent and invoking feelings of simplicity and mindful living.
+ - 5. Kimon Call: Wander through a gallery of...
+- **Sacred Digital Dreamweaver** (relevance: 0.61)
+  Title: Sacred Digital Dreamweaver
+
+ry and visual feast.
+ - 4. Textures of Tatami: A pathworking experience themed around walking barefoot on Tatami mats, connecting with the unique texture and scent and invoking feelings of simplicity and mindful living.
+ - 5. Kimon Call: Wander through a gallery of...
+
+### Related Mythology/Symbols
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+ry and visual feast.
+ - 4. Textures of Tatami: A pathworking experience themed around walking barefoot on Tatami ma...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+ry and visual feast.
+ - 4. Textures of Tatami: A pathworking experience themed around walking barefoot on Tatami ma...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+ry and visual feast.
+ - 4. Textures of Tatami: A pathworking experience themed around walking barefoot on Tatami ma...
+
+### Binaural/Frequency Guidance
+- Title: 3i Atlas
+
+4️⃣ Harmonic Light-Chord Drone (111 Hz)
+
+Purpose: Stimulate frontal midline theta; associated with mystical states.
+
+Sound: A glowing, angelic metallic ring.
+
+### 5️⃣ Sub-Bass Oscilla...
+- Title: Dreamweaving Ideas
+
+nances / health / calling.”).
+
+ ---
+
+ ## 3. Sound Design: Binaural Beats & Effects
+
+ Here’s a practical layout you can give to a sound designer or use to hunt for tracks.
+
+ ...
+---
+
+**CRITICAL REQUIREMENTS:**
+1. Match the Section Timing above within ±10%; expand MAIN JOURNEY and INTEGRATION first if you need more time.
+2. Keep total length within 2193-2680 words to land near 30 minutes. If you are short, add sensory detail and deepen the MAIN JOURNEY; if long, trim gently.
+3. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
+4. Use <break time="Xs"/> tags liberally for hypnotic pacing, favoring slightly longer pauses: 2-3s for normal beats, 3-5s for deeper drops, 1s for countdown ticks
+5. Include rich sensory language engaging all 5 senses
+6. Embed hypnotic suggestions naturally throughout
+7. Include 3-5 post-hypnotic anchors in the closing
+
+**SFX MARKERS (REQUIRED):**
+- Embed natural language SFX cues using [SFX: ...] (or [[SFX:...]]). Keep each marker concise (<140 chars) and place it exactly where the sound should trigger.
+- Provide at least 5 markers covering the journey arc: opening/entry tone, induction ambience, deepening texture, main journey accent(s), and integration/return chime.
+- Markers must describe sound character and duration (e.g., "Deep bronze bell, warm, 3s decay"), live on their own line, and avoid SSML tags inside the marker.
+- Keep markers within the <speak> body; they'll be stripped for voice synthesis but used to render the SFX track.
+
+**OUTPUT FORMAT:**
+Output ONLY the SSML script, starting with <?xml version="1.0" encoding="UTF-8"?>
+Do NOT include any explanation or commentary before or after the SSML.
