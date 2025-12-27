@@ -1,0 +1,69 @@
+session_name: the-abyss-as-a-living-archive
+topic: The Abyss As A Living Archive
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2025-12-27T01:13:04.053654'
+  ended: '2025-12-27T01:49:48.193500'
+  duration_seconds: 2204.1
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - generate_thumbnail
+  - self_improvement
+  failed:
+  - upload_website
+  total: 16
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-27T01:13:05.765041'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2025-12-27T01:13:16.502688'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2025-12-27T01:15:10.736972'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2025-12-27T01:15:10.793742'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-27T01:30:39.564408'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/the-abyss-as-a-living-archive
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/the-abyss-as-a-living-archive/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/the-abyss-as-a-living-archive/working_files/script.ssml
+  files:
+  - output/the_abyss_as_a_living_archive_MASTER.wav
+  - output/subtitles.vtt
+  - output/voice.mp3
+  - output/the_abyss_as_a_living_archive_MASTER.mp3
+  - output/sfx.wav
+  - output/youtube_thumbnail.png
+  - output/session_mixed.wav
+  - output/binaural_dynamic.wav

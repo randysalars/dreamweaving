@@ -1,0 +1,69 @@
+session_name: exploring-the-tree-of-life-an-initiates-guide-to-k
+topic: 'Exploring the Tree of Life: An Initiate''s Guide to Kabbalah Dreamweaving'
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2025-12-27T00:34:36.750886'
+  ended: '2025-12-27T01:13:01.833742'
+  duration_seconds: 2305.1
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - generate_thumbnail
+  - self_improvement
+  failed:
+  - upload_website
+  total: 16
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-27T00:34:38.274400'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2025-12-27T00:34:50.074424'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2025-12-27T00:36:47.017592'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2025-12-27T00:36:47.063481'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2025-12-27T00:52:37.624171'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/exploring-the-tree-of-life-an-initiates-guide-to-k
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/exploring-the-tree-of-life-an-initiates-guide-to-k/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/exploring-the-tree-of-life-an-initiates-guide-to-k/working_files/script.ssml
+  files:
+  - output/subtitles.vtt
+  - output/voice.mp3
+  - output/sfx.wav
+  - output/exploring_the_tree_of_life_an_initiates_guide_to_k_MASTER.wav
+  - output/youtube_thumbnail.png
+  - output/session_mixed.wav
+  - output/binaural_dynamic.wav
+  - output/exploring_the_tree_of_life_an_initiates_guide_to_k_MASTER.mp3

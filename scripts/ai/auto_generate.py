@@ -2382,6 +2382,21 @@ Topic: {self.topic}
             self.stages_failed.append("upload_website")
             return
 
+        # Validate required environment variables before attempting upload
+        required_env_vars = {
+            "R2": ["R2_ACCOUNT_ID", "R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY", "R2_PUBLIC_URL"],
+            "API": ["SALARSU_API_TOKEN"]
+        }
+        missing_vars = []
+        for category, vars in required_env_vars.items():
+            for var in vars:
+                if not os.environ.get(var):
+                    missing_vars.append(f"{var} ({category})")
+
+        if missing_vars:
+            self.log(f"Missing required environment variables: {', '.join(missing_vars)}", "error")
+            self.log("Ensure .env is loaded. Upload will likely fail.", "warning")
+
         try:
             # Need PYTHONPATH for the import to work properly
             env = os.environ.copy()
@@ -2396,7 +2411,7 @@ Topic: {self.topic}
                 capture_output=True,
                 text=True,
                 cwd=str(self.project_root),
-                timeout=600,
+                timeout=1200,  # 20 minutes for large video uploads
                 env=env,
             )
 
@@ -2414,11 +2429,12 @@ Topic: {self.topic}
                 stdout_output = (result.stdout or "").strip()
                 stderr_output = (result.stderr or "").strip()
 
-                # Look for FATAL or error lines in stdout (where upload_to_website.py prints errors)
+                # Look for specific error patterns in output
+                error_patterns = ['FATAL', 'Error:', 'error:', '401', '403', '500', 'Unauthorized', 'ConnectionError', 'Timeout']
                 error_found = False
                 if stdout_output:
                     for line in stdout_output.split('\n'):
-                        if 'FATAL' in line or 'Error:' in line or 'error:' in line.lower():
+                        if any(pattern in line for pattern in error_patterns):
                             self.log(f"Upload error: {line.strip()[:300]}", "error")
                             error_found = True
                             break
@@ -2426,17 +2442,21 @@ Topic: {self.topic}
                 # If no specific error found, log last part of output
                 if not error_found:
                     combined = stderr_output or stdout_output
-                    snippet = combined[-500:] if combined else "Upload returned non-zero exit code"
+                    snippet = combined[-800:] if combined else "Upload returned non-zero exit code"
                     self.log(f"Website upload failed: {snippet}", "error")
 
                 # Also log stderr if present (for Python tracebacks)
                 if stderr_output and stderr_output != stdout_output:
-                    self.log(f"Upload stderr: {stderr_output[:500]}", "debug")
+                    # Look for the actual exception in traceback
+                    if 'Exception:' in stderr_output or 'Error:' in stderr_output:
+                        self.log(f"Upload stderr: {stderr_output[-800:]}", "error")
+                    else:
+                        self.log(f"Upload stderr: {stderr_output[-500:]}", "debug")
 
                 self.stages_failed.append("upload_website")
 
         except subprocess.TimeoutExpired:
-            self.log("Website upload timed out after 10 minutes", "error")
+            self.log("Website upload timed out after 20 minutes", "error")
             self.stages_failed.append("upload_website")
         except Exception as e:
             self.log(f"Website upload failed: {e}", "error")
