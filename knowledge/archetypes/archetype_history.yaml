@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2025-12-27'
-  total_sessions_tracked: 21
+  updated: '2025-12-28'
+  total_sessions_tracked: 24
   unique_archetypes_used: 15
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -378,6 +378,57 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: The Abyss As A Living Archive'
+- session_id: astrological-alignments-celestial-dance-of-planets
+  date: '2025-12-28'
+  outcome: connection
+  archetypes_used:
+  - archetype_id: divine_masculine.guardian_father
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_light_healing.shekinah_restorer
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_light_healing.inner_healer
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Astrological Alignments: Celestial Dance of Planets'
+- session_id: the-ice-lake-of-reflection-dreamweaving
+  date: '2025-12-28'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Ice Lake Of Reflection Dreamweaving'
+- session_id: the-lighthouse-of-commitment-dreamweaving
+  date: '2025-12-28'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Lighthouse Of Commitment Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 8
@@ -422,7 +473,7 @@ listener_relationships:
     last_session_date: '2025-12-27'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 14
+    total_encounters: 17
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -454,8 +505,14 @@ listener_relationships:
       type: first_encounter
     - session: the-abyss-as-a-living-archive
       type: first_encounter
-    last_session: the-abyss-as-a-living-archive
-    last_session_date: '2025-12-27'
+    - session: astrological-alignments-celestial-dance-of-planets
+      type: first_encounter
+    - session: the-ice-lake-of-reflection-dreamweaving
+      type: first_encounter
+    - session: the-lighthouse-of-commitment-dreamweaving
+      type: first_encounter
+    last_session: the-lighthouse-of-commitment-dreamweaving
+    last_session_date: '2025-12-28'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 2
@@ -470,7 +527,7 @@ listener_relationships:
     last_session_date: '2025-12-14'
     relationship_level: 2
   divine_masculine.guardian_father:
-    total_encounters: 2
+    total_encounters: 3
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
@@ -478,8 +535,10 @@ listener_relationships:
       type: first_encounter
     - session: the-cavern-of-forgotten-memories-journey-20251216
       type: first_encounter
-    last_session: the-cavern-of-forgotten-memories-journey-20251216
-    last_session_date: '2025-12-16'
+    - session: astrological-alignments-celestial-dance-of-planets
+      type: first_encounter
+    last_session: astrological-alignments-celestial-dance-of-planets
+    last_session_date: '2025-12-28'
     relationship_level: 2
   dreamweaver_meta.dream_architect:
     total_encounters: 1
@@ -492,7 +551,7 @@ listener_relationships:
     last_session_date: '2025-12-10'
     relationship_level: 1
   divine_feminine.rose_mother:
-    total_encounters: 8
+    total_encounters: 10
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -512,11 +571,15 @@ listener_relationships:
       type: first_encounter
     - session: exploring-the-tree-of-life-an-initiates-guide-to-k
       type: first_encounter
-    last_session: exploring-the-tree-of-life-an-initiates-guide-to-k
-    last_session_date: '2025-12-27'
+    - session: the-ice-lake-of-reflection-dreamweaving
+      type: first_encounter
+    - session: the-lighthouse-of-commitment-dreamweaving
+      type: first_encounter
+    last_session: the-lighthouse-of-commitment-dreamweaving
+    last_session_date: '2025-12-28'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 7
+    total_encounters: 8
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -534,8 +597,10 @@ listener_relationships:
       type: first_encounter
     - session: exploring-the-tree-of-life-an-initiates-guide-to-k
       type: first_encounter
-    last_session: exploring-the-tree-of-life-an-initiates-guide-to-k
-    last_session_date: '2025-12-27'
+    - session: the-ice-lake-of-reflection-dreamweaving
+      type: first_encounter
+    last_session: the-ice-lake-of-reflection-dreamweaving
+    last_session_date: '2025-12-28'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 3
@@ -568,15 +633,17 @@ listener_relationships:
     last_session_date: '2025-12-26'
     relationship_level: 3
   emotional_heart.heart_flame_tender:
-    total_encounters: 1
+    total_encounters: 2
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
     - session: life-of-presidents-of-us
       type: first_encounter
-    last_session: life-of-presidents-of-us
-    last_session_date: '2025-12-13'
-    relationship_level: 1
+    - session: the-lighthouse-of-commitment-dreamweaving
+      type: first_encounter
+    last_session: the-lighthouse-of-commitment-dreamweaving
+    last_session_date: '2025-12-28'
+    relationship_level: 2
   warrior_power.solar_king:
     total_encounters: 1
     first_session: constellation-journey
@@ -602,7 +669,7 @@ listener_relationships:
     last_session_date: '2025-12-26'
     relationship_level: 2
   divine_light_healing.shekinah_restorer:
-    total_encounters: 2
+    total_encounters: 3
     first_session: the-electric-bazaar-dreamweaving
     first_session_date: '2025-12-24'
     encounter_history:
@@ -610,8 +677,10 @@ listener_relationships:
       type: first_encounter
     - session: sun-dance-with-amaterasu-dreamweaving
       type: first_encounter
-    last_session: sun-dance-with-amaterasu-dreamweaving
-    last_session_date: '2025-12-27'
+    - session: astrological-alignments-celestial-dance-of-planets
+      type: first_encounter
+    last_session: astrological-alignments-celestial-dance-of-planets
+    last_session_date: '2025-12-28'
     relationship_level: 2
   emotional_heart.joy_child:
     total_encounters: 2
@@ -650,41 +719,41 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - sushibi-senses-dreamweaving
-  - the-river-where-every-current-leads-to-good-fortun
-  - sun-dance-with-amaterasu-dreamweaving
   - exploring-the-tree-of-life-an-initiates-guide-to-k
   - the-abyss-as-a-living-archive
+  - astrological-alignments-celestial-dance-of-planets
+  - the-ice-lake-of-reflection-dreamweaving
+  - the-lighthouse-of-commitment-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 0
-    transformation_alchemy.phoenix_renewal: 0
+    divine_light_healing.great_physician: 3
+    transformation_alchemy.phoenix_renewal: 3
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 13
-    divine_masculine.guardian_father: 10
-    dreamweaver_meta.dream_architect: 17
-    divine_feminine.rose_mother: 1
+    warrior_power.archangel_michael: 16
+    divine_masculine.guardian_father: 2
+    dreamweaver_meta.dream_architect: 20
+    divine_feminine.rose_mother: 0
     shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 11
-    divine_feminine.sophia_wisdom: 3
-    emotional_heart.heart_flame_tender: 14
-    warrior_power.solar_king: 13
-    divine_masculine.logos_bearer: 3
+    oracle_seer.oracle_of_light: 14
+    divine_feminine.sophia_wisdom: 6
+    emotional_heart.heart_flame_tender: 0
+    warrior_power.solar_king: 16
+    divine_masculine.logos_bearer: 6
     divine_light_healing.shekinah_restorer: 2
-    emotional_heart.joy_child: 3
+    emotional_heart.joy_child: 6
 selection_weights: {}
 family_rotation:
   last_session_families:
-  - transformation_alchemy
   - divine_light_healing
-  - divine_light_healing
+  - emotional_heart
+  - divine_feminine
   family_usage_counts:
-    divine_light_healing: 24
+    divine_light_healing: 28
     transformation_alchemy: 5
     warrior_power: 3
-    divine_masculine: 5
+    divine_masculine: 6
     dreamweaver_meta: 1
-    divine_feminine: 12
-    shamanic_earth: 7
+    divine_feminine: 14
+    shamanic_earth: 8
     oracle_seer: 3
-    emotional_heart: 3
+    emotional_heart: 4
 effective_pairings: []
