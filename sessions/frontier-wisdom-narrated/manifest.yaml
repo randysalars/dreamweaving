@@ -1,0 +1,30 @@
+# Frontier Wisdom Collection - Narrated Audio
+# Single 30-minute narration of key frontier stories and wisdom
+
+session:
+  name: "Frontier Wisdom Narrated"
+  slug: "frontier-wisdom-narrated"
+  duration_target: 30
+  depth_level: "Layer1"
+  desired_outcome: "self_knowledge"
+  description: "Atmospheric narration of legendary frontier stories, distilling timeless wisdom from the American Old West"
+  themes: [frontier, wisdom, stories, Old West, perseverance, character]
+
+structure:
+  introduction: { duration: 3, purpose: "Set the scene and theme" }
+  story_1: { duration: 7, purpose: "The Cattleman's Patience" }
+  story_2: { duration: 7, purpose: "The Pioneer Woman's Strength" }
+  story_3: { duration: 7, purpose: "The Lawman's Code" }
+  story_4: { duration: 4, purpose: "The Wanderer's Peace" }
+  closing: { duration: 2, purpose: "Reflection and wisdom synthesis" }
+
+audio:
+  binaural: null  # No binaural for narration
+  ambience: { base: "campfire_crackle", layers: ["night_wind", "distant_coyote"] }
+
+notes: |
+  This is atmospheric storytelling, not a meditation.
+  Think: campfire tales under the stars.
+  Voice should be warm, wise, slightly weathered.
+  Each story illustrates a different frontier virtue.
+  No trance work - just compelling narration.

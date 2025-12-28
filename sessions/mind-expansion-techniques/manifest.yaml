@@ -1,0 +1,88 @@
+# Mind Expansion Techniques - Audio Pack Manifest
+# 8 progressive sessions for cognitive enhancement and mental mastery
+# Total duration: ~2.5 hours
+
+pack:
+  name: "Mind Expansion Techniques"
+  slug: "mind-expansion-techniques"
+  description: "8 progressive audio sessions designed to unlock your mental potential through guided visualization, brainwave entrainment, and cognitive enhancement techniques"
+  total_sessions: 8
+  total_duration_estimate: 150  # minutes
+  progression: "linear"  # Sessions build on each other
+
+sessions:
+  - slug: "01-mental-clearing"
+    name: "Mental Clearing"
+    duration_target: 15
+    depth_level: "Layer1"
+    desired_outcome: "relaxation"
+    description: "Clear mental clutter and establish a calm, focused baseline"
+    binaural: { carrier_frequency: 200, start_hz: 12, end_hz: 10 }
+
+  - slug: "02-focus-enhancement"
+    name: "Focus Enhancement"
+    duration_target: 18
+    depth_level: "Layer1"
+    desired_outcome: "empowerment"
+    description: "Sharpen concentration and develop laser-like focus"
+    binaural: { carrier_frequency: 200, start_hz: 14, end_hz: 12 }
+
+  - slug: "03-creative-visualization"
+    name: "Creative Visualization"
+    duration_target: 20
+    depth_level: "Layer2"
+    desired_outcome: "creativity"
+    description: "Develop powerful visualization skills for manifestation"
+    binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 7 }
+
+  - slug: "04-memory-palace"
+    name: "Memory Palace"
+    duration_target: 20
+    depth_level: "Layer2"
+    desired_outcome: "self_knowledge"
+    description: "Build an internal architecture for enhanced memory"
+    binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 8 }
+
+  - slug: "05-intuition-activation"
+    name: "Intuition Activation"
+    duration_target: 20
+    depth_level: "Layer2"
+    desired_outcome: "spiritual_growth"
+    description: "Awaken and strengthen your intuitive capabilities"
+    binaural: { carrier_frequency: 200, start_hz: 8, end_hz: 6 }
+
+  - slug: "06-problem-solving"
+    name: "Problem-Solving State"
+    duration_target: 18
+    depth_level: "Layer2"
+    desired_outcome: "transformation"
+    description: "Access creative solutions to challenges"
+    binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 7 }
+
+  - slug: "07-cognitive-flexibility"
+    name: "Cognitive Flexibility"
+    duration_target: 18
+    depth_level: "Layer2"
+    desired_outcome: "transformation"
+    description: "Develop mental agility and adaptive thinking"
+    binaural: { carrier_frequency: 200, start_hz: 12, end_hz: 8 }
+
+  - slug: "08-genius-state"
+    name: "The Genius State"
+    duration_target: 25
+    depth_level: "Layer3"
+    desired_outcome: "empowerment"
+    description: "Access flow states and peak mental performance"
+    binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 5 }
+
+audio_defaults:
+  ambience: { base: "neural_network", layers: ["crystalline_tones", "soft_pulse"] }
+
+notes: |
+  This pack focuses on cognitive enhancement through:
+  - Brainwave optimization (alpha/theta states)
+  - Visualization techniques
+  - Memory enhancement methods
+  - Intuitive development
+  - Creative problem-solving
+  - Flow state access

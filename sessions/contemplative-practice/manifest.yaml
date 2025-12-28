@@ -1,0 +1,65 @@
+# Contemplative Practice Manual - Audio Pack Manifest
+# 5 sessions rooted in Christian contemplative traditions
+# Total duration: ~75 minutes
+
+pack:
+  name: "Contemplative Practice Manual"
+  slug: "contemplative-practice"
+  description: "5 guided meditation tracks rooted in Christian contemplative traditions - prayer, lectio divina, centering prayer, and awareness of divine presence"
+  total_sessions: 5
+  total_duration_estimate: 75  # minutes
+  progression: "standalone"  # Each session can be used independently
+
+sessions:
+  - slug: "01-sacred-stillness"
+    name: "Sacred Stillness"
+    duration_target: 12
+    depth_level: "Layer1"
+    desired_outcome: "relaxation"
+    description: "Foundation practice for quieting the mind and entering contemplative space"
+    binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 7 }
+
+  - slug: "02-lectio-divina"
+    name: "Lectio Divina"
+    duration_target: 18
+    depth_level: "Layer2"
+    desired_outcome: "spiritual_growth"
+    description: "Sacred reading practice - meditative engagement with scripture"
+    binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 6 }
+
+  - slug: "03-centering-prayer"
+    name: "Centering Prayer"
+    duration_target: 20
+    depth_level: "Layer2"
+    desired_outcome: "spiritual_growth"
+    description: "Classic contemplative prayer practice with sacred word"
+    binaural: { carrier_frequency: 200, start_hz: 8, end_hz: 5 }
+
+  - slug: "04-contemplative-examination"
+    name: "Contemplative Examination"
+    duration_target: 15
+    depth_level: "Layer2"
+    desired_outcome: "self_knowledge"
+    description: "Ignatian examen adapted for contemplative practice"
+    binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 7 }
+
+  - slug: "05-divine-presence"
+    name: "Resting in Divine Presence"
+    duration_target: 15
+    depth_level: "Layer2"
+    desired_outcome: "spiritual_growth"
+    description: "Deep surrender into the presence of God"
+    binaural: { carrier_frequency: 200, start_hz: 8, end_hz: 4 }
+
+audio_defaults:
+  ambience: { base: "sacred_space", layers: ["soft_choir", "gentle_bells"] }
+
+notes: |
+  This pack draws from Christian contemplative traditions:
+  - Desert Fathers and Mothers
+  - Carmelite spirituality (John of the Cross, Teresa of Avila)
+  - Centering Prayer movement (Thomas Keating)
+  - Ignatian spirituality
+
+  Language is explicitly Christian but accessible to all seekers.
+  Emphasis on surrender, receptivity, and divine encounter.

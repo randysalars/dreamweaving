@@ -1,0 +1,61 @@
+# Session 2: The Breath Gateway
+# Part of the Consciousness Expansion Audio Pack
+
+session:
+  name: "The Breath Gateway"
+  slug: "breath-gateway"
+  duration_target: 20
+  depth_level: "Layer1"
+  desired_outcome: "relaxation"
+
+  description: |
+    Building on the foundation, this session uses conscious breathing
+    to naturally shift awareness. Introduces three breathing techniques
+    for energy cultivation and deeper states.
+
+  target_audience: "Building on foundation, energy cultivation"
+
+  themes:
+    - breathwork
+    - energy cultivation
+    - conscious breathing
+    - prana awareness
+    - state shifting
+
+structure:
+  pre_talk:
+    duration: 2
+    purpose: "Introduction to breath as gateway, safety"
+
+  induction:
+    duration: 4
+    purpose: "Foundation review, breath awareness deepening"
+
+  journey:
+    duration: 10
+    purpose: "Three breath techniques - calming, balancing, energizing"
+
+  integration:
+    duration: 3
+    purpose: "Anchoring the breath practices"
+
+  closing:
+    duration: 1
+    purpose: "Daily practice guidance"
+
+audio:
+  binaural:
+    carrier_frequency: 200
+    start_hz: 10
+    end_hz: 8
+    curve: "gentle_descent"
+
+  ambience:
+    base: "gentle_stream"
+    layers:
+      - "soft_wind"
+
+voice:
+  provider: "coqui"
+  style: "warm_guiding"
+  pace: "rhythmic"

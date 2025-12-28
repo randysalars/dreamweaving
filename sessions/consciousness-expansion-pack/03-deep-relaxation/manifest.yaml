@@ -1,0 +1,61 @@
+# Session 3: Deep Relaxation Journey
+# Part of the Consciousness Expansion Audio Pack
+
+session:
+  name: "Deep Relaxation Journey"
+  slug: "deep-relaxation-journey"
+  duration_target: 25
+  depth_level: "Layer2"
+  desired_outcome: "healing"
+
+  description: |
+    A progressive relaxation into theta brainwave states.
+    Deeper than previous sessions, this journey guides you
+    into profound rest and opens access to insight.
+
+  target_audience: "Deep rest, insight access, healing"
+
+  themes:
+    - progressive relaxation
+    - theta states
+    - deep rest
+    - inner stillness
+    - healing space
+
+structure:
+  pre_talk:
+    duration: 2
+    purpose: "Set intention for deep work"
+
+  induction:
+    duration: 6
+    purpose: "Extended progressive relaxation"
+
+  journey:
+    duration: 12
+    purpose: "Theta state experience, inner stillness"
+
+  integration:
+    duration: 4
+    purpose: "Slow, gentle return"
+
+  closing:
+    duration: 1
+    purpose: "Integration guidance"
+
+audio:
+  binaural:
+    carrier_frequency: 200
+    start_hz: 10
+    end_hz: 6
+    curve: "gradual_descent"
+
+  ambience:
+    base: "deep_ocean"
+    layers:
+      - "soft_crystalline_tones"
+
+voice:
+  provider: "coqui"
+  style: "deep_nurturing"
+  pace: "very_slow"

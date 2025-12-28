@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.1" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SESSION 5: RESTORATIVE SLEEP -->
+<!-- Duration: 18 minutes | Depth: Layer2 | Outcome: Relaxation -->
+<!-- Gentle transition into deep, healing sleep -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<!-- PRE-TALK (2 minutes) -->
+
+<prosody rate="1.0" pitch="0st">
+Welcome to Restorative Sleep. <break time="1.5s"/>
+
+Sleep is when your body does its deepest healing. <break time="2s"/>
+Tissues repair. <break time="1s"/>
+Memories consolidate. <break time="1s"/>
+The mind processes the day. <break time="2s"/>
+
+This session will gently guide you from wakefulness into deep, restorative sleep. <break time="2s"/>
+
+You don't need to try to fall asleep. <break time="1.5s"/>
+Simply follow my voice... and let sleep find you. <break time="2s"/>
+
+Lie comfortably in your bed. <break time="1.5s"/>
+Let your eyes close. <break time="1.5s"/>
+
+The night welcomes you.
+</prosody>
+<break time="3s"/>
+
+<!-- SETTLING (3 minutes) -->
+
+<prosody rate="1.0" pitch="-2st">
+Take a deep breath in... <break time="3s"/>
+And as you exhale... release the day. <break time="4s"/>
+
+Whatever happened today... it's done. <break time="3s"/>
+You can set it all aside now. <break time="3s"/>
+
+Another breath... letting go even more. <break time="4s"/>
+
+Your body knows how to sleep. <break time="2s"/>
+You've done it thousands of times. <break time="2s"/>
+Tonight is no different. <break time="3s"/>
+
+Let your body become heavy. <break time="2s"/>
+Sinking into the mattress. <break time="2s"/>
+Supported. <break time="2s"/>
+Safe. <break time="4s"/>
+
+The temperature is just right. <break time="2s"/>
+The covers embrace you. <break time="2s"/>
+Everything is prepared for deep rest.
+</prosody>
+<break time="4s"/>
+
+<!-- DEEPENING (10 minutes) -->
+
+<prosody rate="1.0" pitch="-2st">
+Imagine you're on a slow escalator... descending gently into sleep. <break time="3s"/>
+
+Each moment... you sink a little deeper. <break time="3s"/>
+
+Your thoughts become softer... more distant. <break time="3s"/>
+Like voices in another room. <break time="3s"/>
+You hear them... but they don't concern you. <break time="4s"/>
+
+Deeper now. <break time="3s"/>
+
+Your body feels pleasantly heavy. <break time="2s"/>
+Your limbs don't want to move. <break time="2s"/>
+There's no need to move. <break time="4s"/>
+
+The muscles of your face relax completely. <break time="3s"/>
+Your jaw loosens. <break time="2s"/>
+Your eyelids are so heavy. <break time="3s"/>
+
+Deeper. <break time="4s"/>
+
+Think of this moment as a gift. <break time="2s"/>
+All day long... you've been doing. <break time="2s"/>
+Now... you simply get to be. <break time="4s"/>
+
+Nothing to do. <break time="2s"/>
+Nothing to fix. <break time="2s"/>
+Nothing to figure out. <break time="3s"/>
+
+Just rest. <break time="4s"/>
+
+Deeper still. <break time="3s"/>
+
+Imagine a soft, warm darkness surrounding you. <break time="3s"/>
+Not scary... but comforting. <break time="2s"/>
+Like a velvet blanket of night. <break time="4s"/>
+
+This darkness is peaceful. <break time="2s"/>
+It asks nothing of you. <break time="2s"/>
+It simply holds you. <break time="4s"/>
+
+Let yourself dissolve into it. <break time="4s"/>
+
+Your breath slows. <break time="3s"/>
+Your heart slows. <break time="3s"/>
+Everything slows down. <break time="4s"/>
+
+Deeper. <break time="4s"/>
+
+You might notice dreams beginning to form at the edges of your awareness. <break time="4s"/>
+This is good. <break time="2s"/>
+Your dreaming mind is waking up as your conscious mind falls asleep. <break time="5s"/>
+
+Let the dreams come. <break time="3s"/>
+
+Deeper. <break time="4s"/>
+
+Soon... my voice will fade. <break time="3s"/>
+And you will sleep. <break time="3s"/>
+Deep, restorative sleep. <break time="3s"/>
+All through the night. <break time="4s"/>
+
+Your body will heal. <break time="2s"/>
+Your mind will refresh. <break time="2s"/>
+And you will wake tomorrow renewed. <break time="5s"/>
+
+Deeper now. <break time="4s"/>
+
+Sleep. <break time="5s"/>
+</prosody>
+<break time="5s"/>
+
+<!-- FADE TO SILENCE (3 minutes) -->
+
+<prosody rate="1.0" pitch="-2st">
+Sleep. <break time="6s"/>
+
+Rest. <break time="6s"/>
+
+Peace. <break time="8s"/>
+
+All is well. <break time="8s"/>
+
+Sleep now. <break time="10s"/>
+
+Deep... <break time="4s"/>
+
+Restorative... <break time="4s"/>
+
+Sleep. <break time="10s"/>
+</prosody>
+
+</speak>

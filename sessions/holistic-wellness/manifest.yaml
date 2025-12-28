@@ -1,0 +1,66 @@
+# Holistic Wellness Protocol - Audio Pack Manifest
+# 5 guided wellness meditations for body, mind, and spirit
+# Total duration: ~75 minutes
+
+pack:
+  name: "Holistic Wellness Protocol"
+  slug: "holistic-wellness"
+  description: "5 guided audio meditations designed to promote physical wellness, stress reduction, and restorative healing through mind-body connection"
+  total_sessions: 5
+  total_duration_estimate: 75  # minutes
+  progression: "standalone"  # Each session can be used independently
+
+sessions:
+  - slug: "01-body-scan"
+    name: "Complete Body Scan"
+    duration_target: 15
+    depth_level: "Layer1"
+    desired_outcome: "relaxation"
+    description: "Systematic awareness journey through the body for deep relaxation"
+    binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 7 }
+
+  - slug: "02-breath-vitality"
+    name: "Breath of Vitality"
+    duration_target: 12
+    depth_level: "Layer1"
+    desired_outcome: "empowerment"
+    description: "Energizing breathwork to increase vitality and clarity"
+    binaural: { carrier_frequency: 200, start_hz: 12, end_hz: 10 }
+
+  - slug: "03-healing-visualization"
+    name: "Healing Light Visualization"
+    duration_target: 18
+    depth_level: "Layer2"
+    desired_outcome: "healing"
+    description: "Guided imagery for cellular healing and immune support"
+    binaural: { carrier_frequency: 200, start_hz: 8, end_hz: 5 }
+
+  - slug: "04-stress-release"
+    name: "Stress Release Protocol"
+    duration_target: 15
+    depth_level: "Layer2"
+    desired_outcome: "healing"
+    description: "Targeted release of accumulated stress and tension"
+    binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 6 }
+
+  - slug: "05-restorative-sleep"
+    name: "Restorative Sleep"
+    duration_target: 18
+    depth_level: "Layer2"
+    desired_outcome: "relaxation"
+    description: "Gentle transition into deep, healing sleep"
+    binaural: { carrier_frequency: 200, start_hz: 8, end_hz: 3 }
+
+audio_defaults:
+  ambience: { base: "gentle_nature", layers: ["soft_wind", "distant_water"] }
+
+notes: |
+  This pack focuses on holistic wellness through:
+  - Mind-body awareness
+  - Breath optimization
+  - Visualization for healing
+  - Stress reduction techniques
+  - Sleep enhancement
+
+  Evidence-informed techniques from relaxation response research,
+  positive psychology, and psychoneuroimmunology.

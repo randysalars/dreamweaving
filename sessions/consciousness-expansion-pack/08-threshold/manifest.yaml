@@ -1,0 +1,25 @@
+# Session 8: The Threshold
+session:
+  name: "The Threshold"
+  slug: "threshold"
+  duration_target: 35
+  depth_level: "Layer3"
+  desired_outcome: "spiritual_growth"
+  description: "Extended journey into expanded awareness - the culmination of the pack"
+  themes: [expanded awareness, breakthrough, deep exploration, transcendence]
+
+structure:
+  pre_talk: { duration: 3, purpose: "Prepare for deep work" }
+  induction: { duration: 7, purpose: "Extended progressive relaxation" }
+  journey: { duration: 18, purpose: "Threshold crossing experience" }
+  integration: { duration: 5, purpose: "Slow, careful return" }
+  closing: { duration: 2, purpose: "Honoring the journey" }
+
+audio:
+  binaural: { carrier_frequency: 200, start_hz: 10, end_hz: 4 }
+  ambience: { base: "cosmic_space", layers: ["ethereal_choir", "deep_resonance"] }
+
+visualization_level: 4
+dve_config:
+  modules_enabled: [DVE-01, DVE-02, DVE-03, DVE-04, DVE-05]
+  theater_variant: temple
