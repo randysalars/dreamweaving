@@ -184,7 +184,6 @@ class ContentProcessor:
 
             # Check if running interactively
             try:
-                import sys
                 if sys.stdin.isatty():
                     print(f"\n[?] Where should the card for '{title}' be located? (e.g. /ai)")
                     print("    (Press Enter to skip card generation)")

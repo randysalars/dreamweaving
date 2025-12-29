@@ -182,7 +182,7 @@ class NotionAdapter(NotionKnowledgeRetriever):
         return {
             "id": cid,
             "properties": {
-                "Name": {"title": [{"text": {"content": title}}]},
+                "Name": {"title": [{"type": "text", "text": {"content": title}, "plain_text": title}]},
                 "Status": {"select": {"name": "Manual Discovery"}},
                 "Type": source_type
             },
