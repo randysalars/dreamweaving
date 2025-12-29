@@ -352,10 +352,17 @@ export default function HubPage() {{
             article_page_path = os.path.join(article_dir, "page.tsx")
             
             # Escape content for TSX
-            # Simple escape for backticks and braces which might confuse React
-            # For a robust solution, we might pass raw content to a component, but here we inline it.
-            # actually, using a component is safer.
-            
+            # Escape content for TSX template literals
+            # Order matters: escape backslashes first, then special characters
+            escaped_content = (
+                content
+                .replace('\\', '\\\\')  # Escape backslashes first
+                .replace('`', '\\`')    # Escape backticks
+                .replace('$', '\\$')    # Escape dollar signs
+                .replace('{', '\\{')    # Escape opening braces
+                .replace('}', '\\}')    # Escape closing braces
+            )
+
             ts_content = f"""import React from "react";
 import ReactMarkdown from "react-markdown";
 import {{ Card, CardContent }} from "@/components/ui/card";
@@ -363,7 +370,7 @@ import {{ Button }} from "@/components/ui/button";
 import {{ ArrowLeft }} from "lucide-react";
 import Link from "next/link";
 
-const content = `{content.replace('`', '\`').replace('$', '\$')}`;
+const content = `{escaped_content}`;
 
 export default function ArticlePage() {{
   return (

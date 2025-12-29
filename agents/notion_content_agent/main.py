@@ -1,9 +1,36 @@
+#!/usr/bin/env python3
+"""
+Notion Content Agent - Main Entry Point
+
+An automated content generation pipeline that monitors Notion databases
+for articles marked "Ready to Write" and generates SEO-optimized content.
+
+Usage:
+    # Standard polling mode
+    python main.py
+
+    # With custom settings
+    python main.py --concurrent 5 --poll-interval 120
+
+    # Dry run (no actual processing)
+    python main.py --dry-run
+
+    # Test mode (limited articles)
+    python main.py --test
+
+    # Batch mode (process once, no polling)
+    python main.py --batch
+"""
+
 import sys
 import os
-import time
 import signal
 import re
 import logging
+import argparse
+import asyncio
+from typing import Optional
+
 from rich.console import Console
 from rich.logging import RichHandler
 
@@ -12,6 +39,11 @@ from notion_adapter import NotionAdapter
 from monetization import MonetizationEngine
 from codex_client import CodexClient
 from processor import ContentProcessor
+from constants import Defaults, LogMessages, NotionStatus
+from models import ProcessingResult
+from core.orchestrator import AsyncOrchestrator, BatchOrchestrator
+from ui.interactive import InteractiveUI
+from utils.metrics import MetricsTracker
 
 # Setup Logging
 logging.basicConfig(
@@ -23,100 +55,277 @@ logging.basicConfig(
 logger = logging.getLogger("notion_agent")
 console = Console()
 
+# Global orchestrator reference for signal handling
+_orchestrator: Optional[AsyncOrchestrator] = None
+
+
+def signal_handler(signum, frame):
+    """Handle shutdown signals gracefully."""
+    logger.info(LogMessages.SHUTDOWN_SIGNAL.format(signum=signum))
+    if _orchestrator:
+        _orchestrator.request_shutdown()
+
+
+# Register signal handlers
+signal.signal(signal.SIGTERM, signal_handler)
+signal.signal(signal.SIGINT, signal_handler)
+
+
 def extract_id_from_url(url: str) -> str:
     """Extract UUID from Notion URL."""
-    # Match last 32 hex characters
     match = re.search(r'([a-f0-9]{32})', url.replace("-", ""))
     if match:
         raw_id = match.group(1)
-        # Format as UUID
         return f"{raw_id[:8]}-{raw_id[8:12]}-{raw_id[12:16]}-{raw_id[16:20]}-{raw_id[20:]}"
     return url
 
-def main():
-    console.print("[bold green]Starting Notion Content Agent...[/]")
-    
-    # 1. Validate Config
-    if not Config.validate():
-        pass
 
-    try:
-        # 2. Initialize Components
-        codex = CodexClient(Config.OPENAI_API_KEY, Config.OPENAI_MODEL, Config.OPENAI_BASE_URL)
-        monetization = MonetizationEngine(os.path.join(os.getcwd(), "content_templates"))
-        
-        # Interactive Setup: If DB ID is missing or empty, ask user.
-        db_id = Config.NOTION_DB_ID
-        if not db_id:
-            print("\n[!] Notion Database ID not found in configuration.")
-            while not db_id:
-                try:
-                    url = input(">>> Please paste the URL of the Notion Page or Database to monitor: ").strip()
-                except KeyboardInterrupt:
-                    print("\nExiting.")
-                    sys.exit(0)
-                    
-                if url:
-                    extracted = extract_id_from_url(url)
-                    if extracted == url and "-" not in extracted and len(extracted) != 32:
-                        logger.error("Invalid URL or ID format. Could not extract UUID.")
-                        continue
-                    db_id = extracted
-                    logger.info(f"Using extracted ID: {db_id}")
-                else:
-                    logger.error("No URL provided. Exiting.")
-                    sys.exit(1)
-                
-        
-        # Pass Codex so Adapter can use it for page reasoning
-        notion = NotionAdapter(Config.NOTION_TOKEN, db_id, codex_client=codex)
-        
-        processor = ContentProcessor(notion, codex, monetization)
-        
-        logger.info("Agent initialized. Entering main loop...")
+def parse_args() -> argparse.Namespace:
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Notion Content Agent - Automated content generation pipeline",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python main.py                     # Standard polling mode
+  python main.py --concurrent 5      # Process 5 articles concurrently
+  python main.py --dry-run           # Simulate without processing
+  python main.py --batch             # Process once, no polling
+  python main.py --test              # Test mode (max 3 articles)
+        """
+    )
 
-        # 3. Main Loop
-        while True:
-            try:
-                # Poll Notion
-                articles = notion.get_pending_articles()
-                
-                if not articles:
-                    logger.info("No 'Ready to Write' articles found. Sleeping for 60s...")
-                    # Sleep in small chunks to allow Interrupt
-                    for _ in range(12): 
-                       time.sleep(5)
-                    continue
+    parser.add_argument(
+        "--concurrent", "-c",
+        type=int,
+        default=Defaults.MAX_CONCURRENT,
+        help=f"Maximum concurrent article processing (default: {Defaults.MAX_CONCURRENT})"
+    )
 
-                processed_count = 0
-                for article in articles:
-                    processor.process_article(article)
-                    processed_count += 1
-                    
-                    if Config.TEST_MODE and processed_count >= 3:
-                        logger.info("[TEST MODE] Limit of 3 articles reached. Exiting.")
-                        sys.exit(0)
-                        
-                    time.sleep(2)
-                    
-            except KeyboardInterrupt:
-                raise # Re-raise to outer block
-            except Exception as e:
-                logger.error(f"Error in main loop: {e}", exc_info=True)
-                time.sleep(30) # Backoff on error
+    parser.add_argument(
+        "--poll-interval", "-i",
+        type=int,
+        default=Defaults.POLL_INTERVAL_SECONDS,
+        help=f"Polling interval in seconds (default: {Defaults.POLL_INTERVAL_SECONDS})"
+    )
 
-    except KeyboardInterrupt:
-        logger.info("\nAgent stopped by user.")
-        sys.exit(0)
-    except Exception as ie:
-        logger.critical(f"Initialization failure: {ie}", exc_info=True)
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Simulate processing without making changes"
+    )
+
+    parser.add_argument(
+        "--batch",
+        action="store_true",
+        help="Process once and exit (no continuous polling)"
+    )
+
+    parser.add_argument(
+        "--test",
+        action="store_true",
+        help="Test mode - limit to 3 articles with auto-processing"
+    )
+
+    parser.add_argument(
+        "--database-id", "-d",
+        type=str,
+        help="Notion database ID (overrides config)"
+    )
+
+    parser.add_argument(
+        "--no-interactive",
+        action="store_true",
+        help="Disable interactive prompts (use defaults)"
+    )
+
+    parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Enable verbose logging"
+    )
+
+    return parser.parse_args()
+
+
+def get_database_id(args: argparse.Namespace, ui: InteractiveUI) -> str:
+    """Get database ID from args, config, or user input."""
+    # Priority: CLI arg > Config > Interactive prompt
+    if args.database_id:
+        db_id = extract_id_from_url(args.database_id)
+        logger.info(f"Using database ID from CLI: {db_id}")
+        return db_id
+
+    if Config.NOTION_DB_ID:
+        logger.info("Using database ID from config")
+        return Config.NOTION_DB_ID
+
+    # Interactive prompt
+    if args.no_interactive:
+        logger.error("No database ID configured and --no-interactive specified")
         sys.exit(1)
 
+    url = ui.prompt_for_database_url()
+    if not url:
+        logger.error("No database ID provided. Exiting.")
+        sys.exit(1)
+
+    db_id = extract_id_from_url(url)
+    if db_id == url and "-" not in db_id and len(db_id) != 32:
+        logger.error("Invalid URL or ID format. Could not extract UUID.")
+        sys.exit(1)
+
+    logger.info(f"Using extracted ID: {db_id}")
+    return db_id
+
+
+def create_process_fn(processor: ContentProcessor, dry_run: bool = False):
+    """Create the article processing function for the orchestrator."""
+
+    def process_article(article: dict) -> ProcessingResult:
+        """Process a single article."""
+        page_id = article.get("id", "unknown")
+
+        if dry_run:
+            title = "Unknown"
+            try:
+                props = article.get("properties", {})
+                title_prop = props.get("Name") or props.get("Title") or {}
+                if title_prop.get("title"):
+                    title = title_prop["title"][0].get("plain_text", "Unknown")
+            except Exception:
+                pass
+
+            logger.info(f"[DRY-RUN] Would process: '{title}' ({page_id})")
+            return ProcessingResult(
+                article_id=page_id,
+                success=True,
+                output_path="[DRY-RUN]"
+            )
+
+        try:
+            processor.process_article(article)
+            return ProcessingResult(
+                article_id=page_id,
+                success=True
+            )
+        except Exception as e:
+            logger.error(f"Failed to process article {page_id}: {e}")
+            return ProcessingResult(
+                article_id=page_id,
+                success=False,
+                error=str(e)
+            )
+
+    return process_article
+
+
+async def run_async(args: argparse.Namespace):
+    """Run the agent in async mode."""
+    global _orchestrator
+
+    console.print("[bold green]Starting Notion Content Agent...[/]")
+
+    # Validate config
+    if not Config.validate():
+        logger.critical("Configuration validation failed. Exiting.")
+        sys.exit(1)
+
+    # Initialize UI
+    ui = InteractiveUI(console)
+
+    # Get database ID
+    db_id = get_database_id(args, ui)
+
+    try:
+        # Initialize components
+        codex = CodexClient(
+            Config.OPENAI_API_KEY,
+            Config.OPENAI_MODEL,
+            Config.OPENAI_BASE_URL
+        )
+        monetization = MonetizationEngine(
+            os.path.join(os.path.dirname(__file__), "content_templates")
+        )
+        notion = NotionAdapter(Config.NOTION_TOKEN, db_id, codex_client=codex)
+        processor = ContentProcessor(notion, codex, monetization)
+
+        # Create processing function
+        process_fn = create_process_fn(processor, dry_run=args.dry_run)
+
+        # Configure test mode
+        article_limit = Defaults.TEST_MODE_ARTICLE_LIMIT if args.test else None
+
+        if args.batch:
+            # Batch mode - process once and exit
+            logger.info("Running in batch mode (process once, no polling)")
+
+            orchestrator = BatchOrchestrator(
+                process_fn=process_fn,
+                max_concurrent=args.concurrent,
+                article_limit=article_limit
+            )
+            _orchestrator = orchestrator
+
+            articles = notion.get_pending_articles()
+            if not articles:
+                logger.info("No pending articles found.")
+                return
+
+            def on_progress(current: int, total: int):
+                ui.show_progress(current, total, f"Article {current}")
+
+            results = await orchestrator.run(articles, on_progress=on_progress)
+
+            # Print summary
+            success_count = sum(1 for r in results if r.success)
+            logger.info(f"Batch complete: {success_count}/{len(results)} successful")
+
+        else:
+            # Polling mode - continuous processing
+            logger.info(
+                f"Running in polling mode "
+                f"(interval: {args.poll_interval}s, concurrent: {args.concurrent})"
+            )
+
+            orchestrator = AsyncOrchestrator(
+                process_fn=process_fn,
+                max_concurrent=args.concurrent,
+                dry_run=args.dry_run
+            )
+            _orchestrator = orchestrator
+
+            # Run polling loop
+            await orchestrator.run_polling_loop(
+                fetch_fn=notion.get_pending_articles,
+                interval=args.poll_interval
+            )
+
+    except KeyboardInterrupt:
+        logger.info(LogMessages.AGENT_STOPPED)
+    except Exception as e:
+        logger.critical(f"Fatal error: {e}", exc_info=True)
+        sys.exit(1)
+
+
+def main():
+    """Main entry point."""
+    args = parse_args()
+
+    # Configure logging level
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
+
+    # Store test mode in config for compatibility
+    Config.TEST_MODE = args.test
+
+    # Run async main
+    try:
+        asyncio.run(run_async(args))
+    except KeyboardInterrupt:
+        logger.info(LogMessages.AGENT_STOPPED)
+        sys.exit(0)
+
+
 if __name__ == "__main__":
-    if "--test" in sys.argv:
-        print("[TEST MODE] Limiting to 3 articles with auto-generation.")
-        Config.TEST_MODE = True
-    else:
-        Config.TEST_MODE = False
-    
     main()
