@@ -80,7 +80,7 @@ class NotionAdapter(NotionKnowledgeRetriever):
                         all_articles.append({
                             "id": f"ai-task-{fake_id}", 
                             "properties": {
-                                "Name": {"title": [{"text": {"content": task['title']}}]},
+                                "Name": {"title": [{"type": "text", "text": {"content": task['title']}, "plain_text": task['title']}]},
                                 "Status": {"select": {"name": "AI Discovery"}},
                                 "Type": "AI Task",
                                 "Instructions": task.get('instructions', '')

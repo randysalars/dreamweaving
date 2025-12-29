@@ -23,14 +23,6 @@ logging.basicConfig(
 logger = logging.getLogger("notion_agent")
 console = Console()
 
-RUNNING = True
-
-def handle_signal(signum, frame):
-    """Graceful shutdown handler"""
-    global RUNNING
-    logger.info("\n[bold red]Stopping agent gracefully...[/]", extra={"markup": True})
-    RUNNING = False
-
 def extract_id_from_url(url: str) -> str:
     """Extract UUID from Notion URL."""
     # Match last 32 hex characters
@@ -42,18 +34,10 @@ def extract_id_from_url(url: str) -> str:
     return url
 
 def main():
-    # Signal handlers for Ctrl+C / SIGTERM
-    signal.signal(signal.SIGINT, handle_signal)
-    signal.signal(signal.SIGTERM, handle_signal)
-
     console.print("[bold green]Starting Notion Content Agent...[/]")
     
     # 1. Validate Config
     if not Config.validate():
-        # Fallback: prompt for config if missing? For now exit.
-        # But wait, we want to allow missing DB ID. 
-        # Config.validate() likely checks DB ID. We might need to relax Config validation or bypass it.
-        # Let's check config.py later. For now, assume it passes or we fix it.
         pass
 
     try:
@@ -66,15 +50,17 @@ def main():
         if not db_id:
             print("\n[!] Notion Database ID not found in configuration.")
             while not db_id:
-                url = input(">>> Please paste the URL of the Notion Page or Database to monitor: ").strip()
+                try:
+                    url = input(">>> Please paste the URL of the Notion Page or Database to monitor: ").strip()
+                except KeyboardInterrupt:
+                    print("\nExiting.")
+                    sys.exit(0)
+                    
                 if url:
                     extracted = extract_id_from_url(url)
                     if extracted == url and "-" not in extracted and len(extracted) != 32:
-                        # Only accept if it looks like a UUID or was extracted
-                        # If extract_id_from_url returns self and self is NOT a UUID, it failed.
                         logger.error("Invalid URL or ID format. Could not extract UUID.")
                         continue
-                    
                     db_id = extracted
                     logger.info(f"Using extracted ID: {db_id}")
                 else:
@@ -90,34 +76,47 @@ def main():
         logger.info("Agent initialized. Entering main loop...")
 
         # 3. Main Loop
-        while RUNNING:
+        while True:
             try:
                 # Poll Notion
                 articles = notion.get_pending_articles()
                 
                 if not articles:
                     logger.info("No 'Ready to Write' articles found. Sleeping for 60s...")
-                    # Sleep in small chunks to remain responsive to stop signals
+                    # Sleep in small chunks to allow Interrupt
                     for _ in range(12): 
-                        if not RUNNING: break
-                        time.sleep(5)
+                       time.sleep(5)
                     continue
 
+                processed_count = 0
                 for article in articles:
-                    if not RUNNING: break
                     processor.process_article(article)
-                    # Small breath between articles
+                    processed_count += 1
+                    
+                    if Config.TEST_MODE and processed_count >= 3:
+                        logger.info("[TEST MODE] Limit of 3 articles reached. Exiting.")
+                        sys.exit(0)
+                        
                     time.sleep(2)
                     
+            except KeyboardInterrupt:
+                raise # Re-raise to outer block
             except Exception as e:
                 logger.error(f"Error in main loop: {e}", exc_info=True)
                 time.sleep(30) # Backoff on error
 
+    except KeyboardInterrupt:
+        logger.info("\nAgent stopped by user.")
+        sys.exit(0)
     except Exception as ie:
         logger.critical(f"Initialization failure: {ie}", exc_info=True)
         sys.exit(1)
-        
-    logger.info("Agent stopped.")
 
 if __name__ == "__main__":
+    if "--test" in sys.argv:
+        print("[TEST MODE] Limiting to 3 articles with auto-generation.")
+        Config.TEST_MODE = True
+    else:
+        Config.TEST_MODE = False
+    
     main()
