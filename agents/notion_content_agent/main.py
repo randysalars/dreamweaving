@@ -452,7 +452,10 @@ def main():
 
     # Enable batch mode when --batch or --no-interactive is used
     # This disables ALL interactive prompts (path, section, confirmation)
-    Config.BATCH_MODE = args.batch or args.no_interactive
+    # Polling mode (default, no --batch) should also be non-interactive
+    # because prompts don't work with concurrent article processing
+    is_polling_mode = not args.batch
+    Config.BATCH_MODE = args.batch or args.no_interactive or is_polling_mode
 
     # Run async main
     try:
