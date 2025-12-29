@@ -30,6 +30,22 @@ class Config:
     
     # Paths
     OUTPUT_DIR = os.getenv("OUTPUT_DIR", os.path.join(os.getcwd(), "output"))
+    
+    # Website Integration Path
+    # 1. Env Var overwrite
+    # 2. Check for 'salarsu' peer project
+    # 3. Check for 'web-ui' (legacy)
+    _dreamweaving = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+    _projects = os.path.dirname(_dreamweaving) # /home/rsalars/Projects
+    _salarsu = os.path.join(_projects, "salarsu", "src", "app")
+    _webui = os.path.join(_dreamweaving, "web-ui", "src", "app")
+    
+    if os.path.exists(_salarsu):
+        DEFAULT_WEB_ROOT = _salarsu
+    else:
+        DEFAULT_WEB_ROOT = _webui
+        
+    WEBSITE_ROOT = os.getenv("WEBSITE_ROOT", DEFAULT_WEB_ROOT)
 
     @classmethod
     def validate(cls):

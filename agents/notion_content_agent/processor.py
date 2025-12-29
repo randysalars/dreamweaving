@@ -231,16 +231,9 @@ class ContentProcessor:
         """
         try:
             # Resolve Base Path
-            # Assuming agent is in agents/notion_content_agent/
-            # and web-ui is in projects/dreamweaving/web-ui/
-            
-            # We are at: /home/rsalars/Projects/dreamweaving/agents/notion_content_agent/processor.py
-            # Config.OUTPUT_DIR is likely somewhere? 
-            # Let's resolve relative to current working directory (usually agent dir)
-            
-            # Better to find project root.
-            project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-            web_ui_root = os.path.join(project_root, "web-ui", "src", "app")
+            # Uses Config.WEBSITE_ROOT for stability across environments
+            web_ui_root = Config.WEBSITE_ROOT
+            logger.info(f"Targeting Website Root: {web_ui_root}")
             
             # Clean target path
             clean_path = target_path_segment.strip("/")
