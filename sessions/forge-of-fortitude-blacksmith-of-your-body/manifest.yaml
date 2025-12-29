@@ -1,0 +1,145 @@
+session:
+  name: forge-of-fortitude-blacksmith-of-your-body
+  topic: 'Forge of Fortitude: Blacksmith of Your Body'
+  duration: 1800
+  style: spiritual
+  created: '2025-12-29'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: 'Forge of Fortitude: Blacksmith of Your Body'
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: 'Welcome and introduction to Forge of Fortitude: Blacksmith of Your
+    Body'
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: 'Relaxation and descent into in a sacred realm where the essence of
+    forge of fortitude: blacksmith of your body surrounds you with transformative
+    energy'
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a vessel traveling to the source of all consciousness'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: awakening to your cosmic nature and divine connection'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Oracle of Light
+  role: primary
+  description: Archetype of clear seeing, prophecy, and truth revelation
+  symbol: ''
+  qualities: []
+  appearance_section: journey
+- name: The Great Physician
+  role: secondary
+  description: Supreme healing authority with power over all conditions
+  symbol: ''
+  qualities: []
+  appearance_section: helm_deep_trance
+- name: Sophia - Divine Wisdom
+  role: support
+  description: Feminine archetype of divine wisdom and sacred knowledge
+  symbol: ''
+  qualities: []
+  appearance_section: integration
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 256
+    preset: creativity_muse_contact
+    sections:
+    - start: 0
+      end: 144
+      offset_hz: 10.3
+    - start: 144
+      end: 360
+      offset_hz: 7.5
+    - start: 360
+      end: 630
+      offset_hz: 5.9
+    - start: 630
+      end: 1080
+      offset_hz: 3.9
+    - start: 1080
+      end: 1350
+      offset_hz: 3.3
+    - start: 1350
+      end: 1566
+      offset_hz: 5.7
+    - start: 1566
+      end: 1800
+      offset_hz: 9.5
+    gamma_burst:
+      enabled: true
+      time: 1167
+      frequency: 42
+      duration_s: 2.849170172930972
+      description: Peak insight activation
+    multi_layer:
+      enabled: true
+      delta_foundation:
+        frequency: 1.5
+        carrier_offset: 60
+        level_db: -6
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: 'Forge of Fortitude: Blacksmith of Your Body | Binaural Beats Meditation'
+  subtitle: "432Hz \u2022 Spiritual"
+  description: 'A transformational journey: awakening to your cosmic nature and divine
+    connection'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - spiritual
+  - cosmic
+fx_timeline:
+- type: gamma_flash
+  time: 1167
+  duration_s: 2.8
+  freq_hz: 42
+  description: Peak insight activation
+recursive_improvement:
+  applied_lessons:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  lesson_count: 5
+  categories: {}
+  applied_at: '2025-12-29T00:37:48.883303'

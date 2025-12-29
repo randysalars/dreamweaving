@@ -1,92 +1,92 @@
 records:
 - lesson_id: L004
-  times_applied: 20
-  times_successful: 9
-  success_rate: 0.45
-  avg_quality_impact: 97.72077913843903
+  times_applied: 22
+  times_successful: 10
+  success_rate: 0.45454545454545453
+  avg_quality_impact: 97.48318177783511
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 31.769905066825206
-  _quality_m2: 603.6281962696789
+  quality_variance: 29.494995893930597
+  _quality_m2: 619.3949137725425
   first_applied: '2025-12-17T10:50:34.767859'
-  last_applied: '2025-12-28T01:57:49.159749'
-  last_successful: '2025-12-28T01:57:49.159753'
+  last_applied: '2025-12-29T01:19:10.763184'
+  last_successful: '2025-12-29T01:19:10.763188'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 97.70083107186463
+    general: 97.47340722521366
   effectiveness_score: 50.0
 - lesson_id: L001
-  times_applied: 19
-  times_successful: 8
-  success_rate: 0.42105263157894735
-  avg_quality_impact: 97.72077913843903
+  times_applied: 21
+  times_successful: 9
+  success_rate: 0.42857142857142855
+  avg_quality_impact: 97.48318177783511
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 33.534899792759944
-  _quality_m2: 603.6281962696789
+  quality_variance: 30.969745688627125
+  _quality_m2: 619.3949137725425
   first_applied: '2025-12-17T10:51:30.508427'
-  last_applied: '2025-12-28T01:57:49.204443'
-  last_successful: '2025-12-28T01:57:49.204447'
+  last_applied: '2025-12-29T01:19:10.808903'
+  last_successful: '2025-12-29T01:19:10.808905'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 97.6922819004756
+    general: 97.46921813123303
   effectiveness_score: 50.0
 - lesson_id: L002
-  times_applied: 19
-  times_successful: 8
-  success_rate: 0.42105263157894735
-  avg_quality_impact: 97.72077913843903
+  times_applied: 21
+  times_successful: 9
+  success_rate: 0.42857142857142855
+  avg_quality_impact: 97.48318177783511
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 33.534899792759944
-  _quality_m2: 603.6281962696789
+  quality_variance: 30.969745688627125
+  _quality_m2: 619.3949137725425
   first_applied: '2025-12-17T10:51:30.545092'
-  last_applied: '2025-12-28T01:57:49.250118'
-  last_successful: '2025-12-28T01:57:49.250122'
+  last_applied: '2025-12-29T01:19:10.855504'
+  last_successful: '2025-12-29T01:19:10.855507'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 97.6922819004756
+    general: 97.46921813123303
   effectiveness_score: 50.0
 - lesson_id: L003
-  times_applied: 19
-  times_successful: 8
-  success_rate: 0.42105263157894735
-  avg_quality_impact: 97.72077913843903
+  times_applied: 21
+  times_successful: 9
+  success_rate: 0.42857142857142855
+  avg_quality_impact: 97.48318177783511
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 33.534899792759944
-  _quality_m2: 603.6281962696789
+  quality_variance: 30.969745688627125
+  _quality_m2: 619.3949137725425
   first_applied: '2025-12-17T10:51:30.583702'
-  last_applied: '2025-12-28T01:57:49.295400'
-  last_successful: '2025-12-28T01:57:49.295405'
+  last_applied: '2025-12-29T01:19:10.901951'
+  last_successful: '2025-12-29T01:19:10.901954'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 97.6922819004756
+    general: 97.46921813123303
   effectiveness_score: 50.0
 - lesson_id: L005
-  times_applied: 19
-  times_successful: 8
-  success_rate: 0.42105263157894735
-  avg_quality_impact: 97.72077913843903
+  times_applied: 21
+  times_successful: 9
+  success_rate: 0.42857142857142855
+  avg_quality_impact: 97.48318177783511
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 33.534899792759944
-  _quality_m2: 603.6281962696789
+  quality_variance: 30.969745688627125
+  _quality_m2: 619.3949137725425
   first_applied: '2025-12-17T10:51:30.628100'
-  last_applied: '2025-12-28T01:57:49.341365'
-  last_successful: '2025-12-28T01:57:49.341370'
+  last_applied: '2025-12-29T01:19:10.948676'
+  last_successful: '2025-12-29T01:19:10.948682'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 97.6922819004756
+    general: 97.46921813123303
   effectiveness_score: 50.0
-last_updated: '2025-12-28T01:57:49.341431'
+last_updated: '2025-12-29T01:19:10.948763'

@@ -58,6 +58,8 @@ def main():
 
     try:
         # 2. Initialize Components
+        codex = CodexClient(Config.OPENAI_API_KEY, Config.OPENAI_MODEL, Config.OPENAI_BASE_URL)
+        monetization = MonetizationEngine(os.path.join(os.getcwd(), "content_templates"))
         
         # Interactive Setup: If DB ID is missing or empty, ask user.
         db_id = Config.NOTION_DB_ID
@@ -71,9 +73,9 @@ def main():
                 logger.error("No URL provided. Exiting.")
                 sys.exit(1)
                 
-        notion = NotionAdapter(Config.NOTION_TOKEN, db_id)
-        monetization = MonetizationEngine(os.path.join(os.getcwd(), "content_templates"))
-        codex = CodexClient(Config.OPENAI_API_KEY, Config.OPENAI_MODEL, Config.OPENAI_BASE_URL)
+        
+        # Pass Codex so Adapter can use it for page reasoning
+        notion = NotionAdapter(Config.NOTION_TOKEN, db_id, codex_client=codex)
         
         processor = ContentProcessor(notion, codex, monetization)
         

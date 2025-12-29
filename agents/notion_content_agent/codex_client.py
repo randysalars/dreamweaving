@@ -68,3 +68,33 @@ class CodexClient:
         """
         prompt = f"Write a high-converting {type} based on this context: '{context_snippet}'"
         return self.generate_article_content(prompt, system_instruction="You are a direct-response copywriter focused on conversion.")
+    def extract_tasks_from_page(self, page_content: str) -> list:
+        """
+        Uses LLM to analyze a Notion page's content and extract actionable article tasks.
+        Returns a list of dicts: identifier, title, instructions, status.
+        """
+        prompt = (
+            "Analyze the following Notion page content and identify any tasks, articles, or topics "
+            "that are clearly marked as 'Ready to Write', 'To Do', or represent pending content work. "
+            "Ignore items already marked as Done.\n\n"
+            "Return ONLY a raw JSON list of objects with these keys: 'title', 'instructions' (context), 'status'.\n"
+            "If the page contains a list of links, treat them as research references unless explicitly tasked.\n"
+            "If the page just lists concepts, infer if they are article topics.\n\n"
+            f"--- PAGE CONTENT ---\n{page_content[:20000]}\n--- END CONTENT ---"
+        )
+        
+        system_instruction = "You are a project manager parsing a document for tasks. Output valid JSON only."
+        
+        try:
+            response_text = self.generate_article_content(prompt, system_instruction)
+            # Naive cleanup for Code Blocks if LLM wraps in ```json ... ```
+            clean_text = response_text.replace("```json", "").replace("```", "").strip()
+            
+            import json
+            tasks = json.loads(clean_text)
+            if isinstance(tasks, list):
+                return tasks
+            return []
+        except Exception as e:
+            logger.warning(f"Failed to extract tasks via LLM: {e}")
+            return []

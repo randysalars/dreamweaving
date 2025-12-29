@@ -23,81 +23,113 @@ class NotionAdapter(NotionKnowledgeRetriever):
     Extends the existing NotionKnowledgeRetriever to add specific 
     functionality for the Content Agent (status tracking, identifying 'Ready to Write').
     """
-    def __init__(self, api_key: str, database_id: str):
-        # Initialize the parent retriever (loads config, sets up client)
-        # Note: The parent __init__ loads from config/env, but we can override/ensure 
-        # the client is set if we passed specific args, or just trust the shared config.
-        # We passed api_key/db_id from our agent config, so we explicitly set auth 
-        # if the parent didn't already pick it up from the same env source.
-        
+    def __init__(self, api_key: str, database_id: str, codex_client=None):
         super().__init__()
-        
-        # If the parent loaded a client, great. If we want to force our key:
         if api_key:
              self.client.options.auth = api_key
-             
         self.database_id = database_id
+        self.codex_client = codex_client
 
     def get_pending_articles(self) -> List[Dict[str, Any]]:
         """
-        Fetch articles from the database (or nested databases) with Status='Ready to Write'.
-        Handles cases where self.database_id is a Page containing Databases.
+        Fetch articles.
+        1. Try Database Query (Status='Ready to Write').
+        2. If that fails or finds nothing, and we have an LLM attached:
+           READ THE FULL PAGE CONTENT and use LLM to identifying tasks.
+        3. Fallback: Recursive scan of subpages.
         """
         all_articles = []
         
         # 1. Try treating the configured ID as a direct Database
         try:
             articles = self._query_db_for_status(self.database_id)
-            all_articles.extend(articles)
-            return all_articles
-        except Exception as e:
-            # 400 Error likely means it's a Page, not a DB.
-            logger.info(f"Configured ID {self.database_id} is likely a Page, scanning for nested databases... ({e})")
-
-        # 2. scan for nested databases
-        found_dbs = self._find_nested_databases(self.database_id)
-        
-        if not found_dbs:
-            logger.warning(f"No databases found inside page {self.database_id}.")
-            return []
-            
-        logger.info(f"Found {len(found_dbs)} nested databases: {found_dbs}")
-        
-        # 3. Query each found DB
-        for db_id in found_dbs:
-            try:
-                articles = self._query_db_for_status(db_id)
+            if articles:
+                logger.info(f"Found {len(articles)} articles via Database Query.")
                 all_articles.extend(articles)
+                return all_articles
+        except Exception as e:
+            logger.debug(f"Direct DB query failed: {e}")
+
+        # 2. AI Reasoning / Page Reading
+        if self.codex_client:
+            logger.info(f"Reading full content of page {self.database_id} for AI analysis...")
+            try:
+                # We reuse the recursive fetcher to get all text
+                full_text = self.get_recursive_page_content(self.database_id)
+                if not full_text:
+                    logger.warning("Page content is empty.")
+                else:
+                    logger.info("Content fetched. Analyzing with AI...")
+                    ai_tasks = self.codex_client.extract_tasks_from_page(full_text)
+                    logger.info(f"AI identified {len(ai_tasks)} potential articles.")
+                    
+                    # Convert AI tasks to "Article" objects
+                    for task in ai_tasks:
+                        # Create a mock ID using hash of title to ensure uniqueness?
+                        # Or just use the Page ID but with metadata?
+                        # We use the Page ID as the ID, but we set a custom "property" 
+                        # so that processor knows to use the AI context.
+                        # Wait, we need distinct IDs for distinct tasks.
+                        # We can't really "update status" on them if they don't have real Notion Block IDs.
+                        # BUT, maybe the AI can return Block IDs? 
+                        # Not robustly.
+                        # For now, we return virtual objects. Update Status will fail, but Processor handles that.
+                        import hashlib
+                        fake_id = hashlib.md5(task['title'].encode()).hexdigest()
+                        
+                        all_articles.append({
+                            "id": f"ai-task-{fake_id}", 
+                            "properties": {
+                                "Name": {"title": [{"text": {"content": task['title']}}]},
+                                "Status": {"select": {"name": "AI Discovery"}},
+                                "Type": "AI Task",
+                                "Instructions": task.get('instructions', '')
+                            },
+                            "url": f"https://notion.so/{self.database_id}"
+                        })
+                    
+                    if all_articles:
+                        return all_articles
             except Exception as e:
-                logger.warning(f"Failed to query nested DB {db_id}: {e}")
-                
-        logger.info(f"Total pending articles found across all databases: {len(all_articles)}")
-        return all_articles
+                logger.error(f"AI Analysis failed: {e}")
+
+        # 3. Fallback: Recursively find all subpages/blocks (Mechanistic)
+        logger.info(f"Fallback: Scanning page {self.database_id} recursively for subpages...")
+        subpages = self._scan_page_tree_for_articles(self.database_id)
+        
+        # Deduplicate
+        unique_pages = {p['id']: p for p in subpages}.values()
+        return list(unique_pages)
 
     def _query_db_for_status(self, db_id: str) -> List[Dict[str, Any]]:
         """Helper to query a specific DB for Ready to Write status."""
-        logger.info(f"Querying Database: {db_id}")
-        # Use direct request to bypass client version issues
-        response = self.client.request(
-            path=f"databases/{db_id}/query",
-            method="POST",
-            body={
-                "filter": {
-                    "property": "Status",
-                    "status": {
-                        "equals": "Ready to Write"
+        # ... (same as before) ...
+        # But suppress errors to allow fallback
+        try:
+            response = self.client.request(
+                path=f"databases/{db_id}/query",
+                method="POST",
+                body={
+                    "filter": {
+                        "property": "Status",
+                        "status": {
+                            "equals": "Ready to Write"
+                        }
                     }
                 }
-            }
-        )
-        return response.get("results", [])
+            )
+            return response.get("results", [])
+        except:
+            return []
 
-    def _find_nested_databases(self, block_id: str, depth: int = 0, max_depth: int = 3) -> List[str]:
-        """Recursive search for child_database blocks."""
+    def _scan_page_tree_for_articles(self, block_id: str, depth: int = 0, max_depth: int = 3) -> List[Dict[str, Any]]:
+        """
+        Recursively find ANY child_page OR text list item and treat it as an article candidate.
+        """
         if depth > max_depth:
             return []
             
-        found_ids = []
+        articles = []
         cursor = None
         
         try:
@@ -107,13 +139,34 @@ class NotionAdapter(NotionKnowledgeRetriever):
                 for block in response.get("results", []):
                     btype = block.get("type")
                     
-                    if btype == "child_database":
-                        found_ids.append(block["id"])
-                    
-                    # Recurse into pages to find nested DBs
-                    elif btype == "child_page":
-                        # DFS recursion
-                        found_ids.extend(self._find_nested_databases(block["id"], depth + 1, max_depth))
+                    # 1. Child Pages (existing logic)
+                    if btype == "child_page":
+                        page_title = block.get("child_page", {}).get("title", "Untitled")
+                        articles.append(self._create_candidate(block["id"], page_title, "Page"))
+                        # Recurse
+                        articles.extend(self._scan_page_tree_for_articles(block["id"], depth + 1, max_depth))
+                        
+                    # 2. List Items / Checkboxes (New Logic: Treat lines as tasks/articles)
+                    elif btype in ["to_do", "bulleted_list_item", "numbered_list_item"]:
+                        content = block.get(btype, {})
+                        text_objs = content.get("rich_text", [])
+                        plain_text = "".join([t.get("plain_text", "") for t in text_objs]).strip()
+                        
+                        # Only consider if substantial text (avoid empty lines)
+                        # Also check if checked? Maybe ignore checked items?
+                        is_checked = content.get("checked", False)
+                        
+                        if plain_text and not is_checked:
+                             # Use the text as the title/spec
+                             articles.append(self._create_candidate(block["id"], plain_text, "Block Item"))
+                             
+                        # Recurse (items can have nested sub-items)
+                        if block.get("has_children"):
+                             articles.extend(self._scan_page_tree_for_articles(block["id"], depth + 1, max_depth))
+
+                    # 3. Layout Blocks (recurse transparently)
+                    elif btype in ["column_list", "column"]:
+                        articles.extend(self._scan_page_tree_for_articles(block["id"], depth, max_depth)) 
                         
                 if not response.get("has_more"):
                     break
@@ -122,7 +175,19 @@ class NotionAdapter(NotionKnowledgeRetriever):
         except Exception as e:
             logger.debug(f"Error scanning block {block_id}: {e}")
             
-        return found_ids
+        return articles
+
+    def _create_candidate(self, cid: str, title: str, source_type: str) -> Dict[str, Any]:
+        """Helper to format a candidate article object."""
+        return {
+            "id": cid,
+            "properties": {
+                "Name": {"title": [{"text": {"content": title}}]},
+                "Status": {"select": {"name": "Manual Discovery"}},
+                "Type": source_type
+            },
+            "url": f"https://notion.so/{cid.replace('-', '')}"
+        }
 
     def get_recursive_page_content(self, page_id: str) -> str:
         """

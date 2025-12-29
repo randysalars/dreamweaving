@@ -32,16 +32,44 @@ try:
     client = Client(auth=Config.NOTION_TOKEN)
     db_id = Config.NOTION_DB_ID
     
+    # Updated ID from user
+    db_id = "2d62bab3-796d-80cb-a6d6-c88d76987fa9"
     print(f"Testing ID: {db_id}")
     
-    try:
-        print("Inspecting child: 2d52bab3-796d-80ee-b6d8-f5a75a681746 (Ways to find work)")
-        child = client.pages.retrieve("2d52bab3-796d-80ee-b6d8-f5a75a681746")
-        pprint(child.get("properties"))
-        pprint(child.get("parent"))
+    # Scan children
+    print(f"\nScanning children of Page {db_id}...")
     
-    except Exception as ie:
-        print(f"Inner Error: {ie}")
+    cursor = None
+    count = 0
+    found_candidates = []
+    
+    while True:
+        children = client.blocks.children.list(block_id=db_id, start_cursor=cursor)
+        
+        for block in children.get("results", []):
+            count += 1
+            btype = block.get("type")
+            
+            # Print content of check boxes or bullets
+            if btype in ["to_do", "bulleted_list_item", "paragraph"]:
+                text_objs = block.get(btype, {}).get("rich_text", [])
+                plain_text = "".join([t.get("plain_text", "") for t in text_objs])
+                checked = block.get(btype, {}).get("checked")
+                
+                check_mark = "[x]" if checked else "[ ]" if checked is not None else ""
+                if "Ready to Write" in plain_text or "Status" in plain_text or "http" in plain_text:
+                     print(f"MATCH: {check_mark} {plain_text}")
+                     # Print links?
+                     for t in text_objs:
+                         if t.get("href"):
+                             print(f"  -> LINK: {t.get('href')}")
+
+        if not children.get("has_more"):
+            break
+        cursor = children.get("next_cursor")
+        
+    print(f"Total blocks scanned: {count}")
+
 
 except Exception as e:
     print(f"Outer Error: {e}")

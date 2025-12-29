@@ -104,10 +104,19 @@ class ContentProcessor:
             # Use 'Topic' or 'Category' property if available, else derive from title
             topic = title 
             
-            logger.info(f"Processing article: '{title}' ({page_id})")
-            
-            # Update status to In Progress
-            self.notion.update_status(page_id, "In Progress")
+            logger.info(f"Processing candidate: '{title}' ({page_id})")
+
+            # Interactive Confirmation
+            if sys.stdin.isatty():
+                confirm = input(f"\n[?] Found candidate article: '{title}'. Generate content? [y/N] ").strip().lower()
+                if confirm != 'y':
+                    logger.info(f"Skipping '{title}' by user request.")
+                    return
+
+            # Update status to In Progress (ONLY if it's a real DB item)
+            is_manual = properties.get("Status", {}).get("select", {}).get("name") == "Manual Discovery"
+            if not is_manual:
+                self.notion.update_status(page_id, "In Progress")
 
             # 2. Fetch Spec Content (Recursive!)
             # We use recursive fetch to ensure subpages are included as context
@@ -117,9 +126,15 @@ class ContentProcessor:
                 spec_content = self.notion.get_page_content(page_id)
 
             if not spec_content:
-                logger.warning(f"No content found for '{title}'. Skipping.")
-                self.notion.update_status(page_id, "Error") 
-                return
+                # Fallback: if it's a "Block Item" (single line task), the title IS the content.
+                if properties.get("Type") == "Block Item":
+                    logger.info("Using block text as spec content.")
+                    spec_content = title
+                else:
+                    logger.warning(f"No content found for '{title}'. Skipping.")
+                    # self.notion.update_status(page_id, "Error") 
+                    if not is_manual: self.notion.update_status(page_id, "Error")
+                    return
 
             # 3. Detect Monetization
             needs_monetization = False
@@ -160,7 +175,8 @@ class ContentProcessor:
             logger.info(f"Saved generated article to: {output_path}")
 
             # 8. Update Status to Done
-            self.notion.update_status(page_id, "Done")
+            if not is_manual:
+                self.notion.update_status(page_id, "Done")
 
             # 9. Interactive Website Integration
             slug = safe_filename.replace(".md", "")
