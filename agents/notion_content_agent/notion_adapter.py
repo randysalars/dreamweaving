@@ -5,7 +5,8 @@ from typing import List, Dict, Any
 
 # Add project root to path to allow importing scripts
 current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.abspath(os.path.join(current_dir, "../../../"))
+# Go up 2 levels: agents -> dreamweaving
+project_root = os.path.abspath(os.path.join(current_dir, "../../"))
 if project_root not in sys.path:
     sys.path.append(project_root)
 
@@ -39,27 +40,89 @@ class NotionAdapter(NotionKnowledgeRetriever):
 
     def get_pending_articles(self) -> List[Dict[str, Any]]:
         """
-        Fetch articles from the database with Status='Ready to Write'.
+        Fetch articles from the database (or nested databases) with Status='Ready to Write'.
+        Handles cases where self.database_id is a Page containing Databases.
         """
+        all_articles = []
+        
+        # 1. Try treating the configured ID as a direct Database
         try:
-            logger.info(f"Querying Notion Database: {self.database_id}")
-            response = self.client.databases.query(
-                **{
-                    "database_id": self.database_id,
-                    "filter": {
-                        "property": "Status",
-                        "status": {
-                            "equals": "Ready to Write"
-                        }
+            articles = self._query_db_for_status(self.database_id)
+            all_articles.extend(articles)
+            return all_articles
+        except Exception as e:
+            # 400 Error likely means it's a Page, not a DB.
+            logger.info(f"Configured ID {self.database_id} is likely a Page, scanning for nested databases... ({e})")
+
+        # 2. scan for nested databases
+        found_dbs = self._find_nested_databases(self.database_id)
+        
+        if not found_dbs:
+            logger.warning(f"No databases found inside page {self.database_id}.")
+            return []
+            
+        logger.info(f"Found {len(found_dbs)} nested databases: {found_dbs}")
+        
+        # 3. Query each found DB
+        for db_id in found_dbs:
+            try:
+                articles = self._query_db_for_status(db_id)
+                all_articles.extend(articles)
+            except Exception as e:
+                logger.warning(f"Failed to query nested DB {db_id}: {e}")
+                
+        logger.info(f"Total pending articles found across all databases: {len(all_articles)}")
+        return all_articles
+
+    def _query_db_for_status(self, db_id: str) -> List[Dict[str, Any]]:
+        """Helper to query a specific DB for Ready to Write status."""
+        logger.info(f"Querying Database: {db_id}")
+        # Use direct request to bypass client version issues
+        response = self.client.request(
+            path=f"databases/{db_id}/query",
+            method="POST",
+            body={
+                "filter": {
+                    "property": "Status",
+                    "status": {
+                        "equals": "Ready to Write"
                     }
                 }
-            )
-            results = response.get("results", [])
-            logger.info(f"Found {len(results)} pending articles.")
-            return results
+            }
+        )
+        return response.get("results", [])
+
+    def _find_nested_databases(self, block_id: str, depth: int = 0, max_depth: int = 3) -> List[str]:
+        """Recursive search for child_database blocks."""
+        if depth > max_depth:
+            return []
+            
+        found_ids = []
+        cursor = None
+        
+        try:
+            while True:
+                response = self.client.blocks.children.list(block_id=block_id, start_cursor=cursor)
+                
+                for block in response.get("results", []):
+                    btype = block.get("type")
+                    
+                    if btype == "child_database":
+                        found_ids.append(block["id"])
+                    
+                    # Recurse into pages to find nested DBs
+                    elif btype == "child_page":
+                        # DFS recursion
+                        found_ids.extend(self._find_nested_databases(block["id"], depth + 1, max_depth))
+                        
+                if not response.get("has_more"):
+                    break
+                cursor = response.get("next_cursor")
+                
         except Exception as e:
-            logger.error(f"Failed to fetch pending articles: {e}")
-            raise
+            logger.debug(f"Error scanning block {block_id}: {e}")
+            
+        return found_ids
 
     def get_recursive_page_content(self, page_id: str) -> str:
         """

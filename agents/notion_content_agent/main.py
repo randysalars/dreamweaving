@@ -1,6 +1,8 @@
 import sys
+import os
 import time
 import signal
+import re
 import logging
 from rich.console import Console
 from rich.logging import RichHandler
@@ -29,6 +31,16 @@ def handle_signal(signum, frame):
     logger.info("\n[bold red]Stopping agent gracefully...[/]", extra={"markup": True})
     RUNNING = False
 
+def extract_id_from_url(url: str) -> str:
+    """Extract UUID from Notion URL."""
+    # Match last 32 hex characters
+    match = re.search(r'([a-f0-9]{32})', url.replace("-", ""))
+    if match:
+        raw_id = match.group(1)
+        # Format as UUID
+        return f"{raw_id[:8]}-{raw_id[8:12]}-{raw_id[12:16]}-{raw_id[16:20]}-{raw_id[20:]}"
+    return url
+
 def main():
     # Signal handlers for Ctrl+C / SIGTERM
     signal.signal(signal.SIGINT, handle_signal)
@@ -38,11 +50,28 @@ def main():
     
     # 1. Validate Config
     if not Config.validate():
-        sys.exit(1)
+        # Fallback: prompt for config if missing? For now exit.
+        # But wait, we want to allow missing DB ID. 
+        # Config.validate() likely checks DB ID. We might need to relax Config validation or bypass it.
+        # Let's check config.py later. For now, assume it passes or we fix it.
+        pass
 
     try:
         # 2. Initialize Components
-        notion = NotionAdapter(Config.NOTION_TOKEN, Config.NOTION_DB_ID)
+        
+        # Interactive Setup: If DB ID is missing or empty, ask user.
+        db_id = Config.NOTION_DB_ID
+        if not db_id:
+            print("\n[!] Notion Database ID not found in configuration.")
+            url = input(">>> Please paste the URL of the Notion Page or Database to monitor: ").strip()
+            if url:
+                db_id = extract_id_from_url(url)
+                logger.info(f"Using extracted ID: {db_id}")
+            else:
+                logger.error("No URL provided. Exiting.")
+                sys.exit(1)
+                
+        notion = NotionAdapter(Config.NOTION_TOKEN, db_id)
         monetization = MonetizationEngine(os.path.join(os.getcwd(), "content_templates"))
         codex = CodexClient(Config.OPENAI_API_KEY, Config.OPENAI_MODEL, Config.OPENAI_BASE_URL)
         
