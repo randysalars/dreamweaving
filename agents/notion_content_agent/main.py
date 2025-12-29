@@ -97,27 +97,95 @@ def extract_id_from_url(url: str) -> str:
 def save_database_id_to_env(db_id: str) -> bool:
     """Save database ID to .env file for future use."""
     try:
-        # Get the project root .env path (same location config.py uses)
         project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
         dotenv_path = os.path.join(project_root, ".env")
 
-        # Check if NOTION_DB_ID already exists in .env
         if os.path.exists(dotenv_path):
             with open(dotenv_path, 'r') as f:
                 content = f.read()
-                if 'NOTION_DB_ID=' in content:
-                    logger.info("NOTION_DB_ID already exists in .env, not overwriting")
-                    return False
 
-        # Append to .env file
-        with open(dotenv_path, 'a') as f:
-            f.write(f"\n# Auto-saved from interactive prompt\nNOTION_DB_ID={db_id}\n")
+            # Replace existing or append
+            if 'NOTION_DB_ID=' in content:
+                content = re.sub(r'NOTION_DB_ID=.*', f'NOTION_DB_ID={db_id}', content)
+                with open(dotenv_path, 'w') as f:
+                    f.write(content)
+            else:
+                with open(dotenv_path, 'a') as f:
+                    f.write(f"\n# Auto-saved from interactive prompt\nNOTION_DB_ID={db_id}\n")
+        else:
+            with open(dotenv_path, 'w') as f:
+                f.write(f"# Auto-saved from interactive prompt\nNOTION_DB_ID={db_id}\n")
 
         logger.info(f"Saved database ID to {dotenv_path}")
         return True
     except Exception as e:
         logger.warning(f"Could not save database ID to .env: {e}")
         return False
+
+
+def save_target_path_to_env(target_path: str) -> bool:
+    """Save target path to .env file for future use."""
+    try:
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+        dotenv_path = os.path.join(project_root, ".env")
+
+        if os.path.exists(dotenv_path):
+            with open(dotenv_path, 'r') as f:
+                content = f.read()
+
+            # Replace existing or append
+            if 'DEFAULT_TARGET_PATH=' in content:
+                content = re.sub(r'DEFAULT_TARGET_PATH=.*', f'DEFAULT_TARGET_PATH={target_path}', content)
+                with open(dotenv_path, 'w') as f:
+                    f.write(content)
+            else:
+                with open(dotenv_path, 'a') as f:
+                    f.write(f"\n# Auto-saved from interactive prompt\nDEFAULT_TARGET_PATH={target_path}\n")
+        else:
+            with open(dotenv_path, 'w') as f:
+                f.write(f"# Auto-saved from interactive prompt\nDEFAULT_TARGET_PATH={target_path}\n")
+
+        logger.info(f"Saved target path to {dotenv_path}")
+        return True
+    except Exception as e:
+        logger.warning(f"Could not save target path to .env: {e}")
+        return False
+
+
+def get_target_path(args: argparse.Namespace) -> str:
+    """Get target path from args, config, or user input."""
+    # Priority: CLI arg > Interactive prompt > Config default
+    if hasattr(args, 'target_path') and args.target_path:
+        path = args.target_path
+        logger.info(f"Using target path from CLI: {path}")
+        return path if path.startswith('/') else '/' + path
+
+    # In batch/no-interactive mode, use config without prompting
+    if args.no_interactive or args.batch:
+        path = Config.DEFAULT_TARGET_PATH or '/ai'
+        logger.info(f"Using target path from config: {path}")
+        return path
+
+    # Interactive prompt - ALWAYS ask in interactive mode
+    default_path = Config.DEFAULT_TARGET_PATH or '/ai'
+    print("\n[?] Website Integration Setup")
+    print("    Enter the target path for articles (e.g., /ai, /operations)")
+    print("    Just enter the page name with a slash (e.g., /mypage)")
+    target_path = input(f"    Path [{default_path}]: ").strip()
+
+    if not target_path:
+        target_path = default_path
+
+    # Ensure path starts with /
+    if not target_path.startswith('/'):
+        target_path = '/' + target_path
+
+    logger.info(f"Using target path: {target_path}")
+
+    # Auto-save to .env for future runs
+    save_target_path_to_env(target_path)
+
+    return target_path
 
 
 def parse_args() -> argparse.Namespace:
@@ -174,6 +242,12 @@ Examples:
     )
 
     parser.add_argument(
+        "--target-path", "-t",
+        type=str,
+        help="Website target path for articles (e.g., /ai/operations)"
+    )
+
+    parser.add_argument(
         "--no-interactive",
         action="store_true",
         help="Disable interactive prompts (use defaults)"
@@ -190,25 +264,34 @@ Examples:
 
 def get_database_id(args: argparse.Namespace, ui: InteractiveUI) -> str:
     """Get database ID from args, config, or user input."""
-    # Priority: CLI arg > Config > Interactive prompt
+    # Priority: CLI arg > Interactive prompt > Config
     if args.database_id:
         db_id = extract_id_from_url(args.database_id)
         logger.info(f"Using database ID from CLI: {db_id}")
         return db_id
 
-    if Config.NOTION_DB_ID:
+    # In batch/no-interactive mode, use config without prompting
+    if args.no_interactive or args.batch:
+        if not Config.NOTION_DB_ID:
+            logger.error("No database ID configured and --batch/--no-interactive specified")
+            sys.exit(1)
         logger.info("Using database ID from config")
         return Config.NOTION_DB_ID
 
-    # Interactive prompt
-    if args.no_interactive:
-        logger.error("No database ID configured and --no-interactive specified")
-        sys.exit(1)
+    # Interactive prompt - ALWAYS ask, show saved value as default
+    default_id = Config.NOTION_DB_ID or ""
+    print("\n[?] Notion Database Setup")
+    if default_id:
+        print(f"    Current: {default_id}")
+    url = input(f"    Enter Notion database URL or ID [{default_id or 'required'}]: ").strip()
 
-    url = ui.prompt_for_database_url()
     if not url:
-        logger.error("No database ID provided. Exiting.")
-        sys.exit(1)
+        if default_id:
+            logger.info("Using saved database ID from config")
+            return default_id
+        else:
+            logger.error("No database ID provided. Exiting.")
+            sys.exit(1)
 
     db_id = extract_id_from_url(url)
     if db_id == url and "-" not in db_id and len(db_id) != 32:
@@ -217,7 +300,7 @@ def get_database_id(args: argparse.Namespace, ui: InteractiveUI) -> str:
 
     logger.info(f"Using extracted ID: {db_id}")
 
-    # Auto-save to .env for future runs
+    # Auto-save to .env for future runs (will update if changed)
     save_database_id_to_env(db_id)
 
     return db_id
@@ -281,6 +364,10 @@ async def run_async(args: argparse.Namespace):
     # Get database ID
     db_id = get_database_id(args, ui)
 
+    # Get target path (will prompt if not configured and not in batch mode)
+    target_path = get_target_path(args)
+    Config.DEFAULT_TARGET_PATH = target_path  # Update runtime config
+
     try:
         # Initialize components
         codex = CodexClient(
@@ -292,7 +379,7 @@ async def run_async(args: argparse.Namespace):
             os.path.join(os.path.dirname(__file__), "content_templates")
         )
         notion = NotionAdapter(Config.NOTION_TOKEN, db_id, codex_client=codex)
-        processor = ContentProcessor(notion, codex, monetization)
+        processor = ContentProcessor(notion, codex, monetization, target_path=target_path)
 
         # Create processing function
         process_fn = create_process_fn(processor, dry_run=args.dry_run)

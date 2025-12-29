@@ -13,7 +13,7 @@ from publishers.hub import HubPageManager
 logger = logging.getLogger(__name__)
 
 class ContentProcessor:
-    def __init__(self, notion: NotionAdapter, codex: CodexClient, monetization: MonetizationEngine):
+    def __init__(self, notion: NotionAdapter, codex: CodexClient, monetization: MonetizationEngine, target_path: Optional[str] = None):
         self.notion = notion
         self.codex = codex
         self.monetization = monetization
@@ -23,8 +23,8 @@ class ContentProcessor:
         else:
             self.hub_manager = None
 
-        # Session-level cache for target path (reuse across articles)
-        self._cached_target_path: Optional[str] = None
+        # Session-level cache for target path (pre-set from main.py or reused across articles)
+        self._cached_target_path: Optional[str] = target_path
 
     def _humanize_path_segment(self, segment: str) -> str:
         return segment.replace("-", " ").replace("_", " ").strip().title() or "Hub"
@@ -342,17 +342,9 @@ export default function HubPage() {{
                                 section_input = "General"
                                 print(f"    ✓ [BATCH] Using default section: {section_input}")
                     else:
-                        # INTERACTIVE MODE: Ask for path on first article only
-                        if self._cached_target_path:
-                            target_path_input = self._cached_target_path
-                            print(f"    ✓ Using path: {target_path_input}")
-                        else:
-                            # First article only - ask for path once
-                            print("    Target Path (e.g. '/ai') - will apply to ALL articles")
-                            target_path_input = input("    Path [Skip]: ").strip()
-                            if target_path_input:
-                                print(f"    ✓ Path set: {target_path_input} (applies to all articles)")
-                                self._cached_target_path = target_path_input
+                        # INTERACTIVE MODE: Use pre-configured path from main.py
+                        target_path_input = self._cached_target_path or getattr(Config, 'DEFAULT_TARGET_PATH', '/ai')
+                        print(f"    ✓ Using path: {target_path_input}")
 
                         if target_path_input:
                             # Auto-categorize using AI if hub manager is available
