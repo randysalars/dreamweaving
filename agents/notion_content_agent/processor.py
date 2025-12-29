@@ -2,12 +2,13 @@ import os
 import sys
 import logging
 import datetime
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 from config import Config
 from notion_adapter import NotionAdapter
 from monetization import MonetizationEngine
 from codex_client import CodexClient
+from publishers.hub import HubPageManager
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +17,14 @@ class ContentProcessor:
         self.notion = notion
         self.codex = codex
         self.monetization = monetization
+        # Initialize hub manager if website root is configured
+        if Config.WEBSITE_ROOT:
+            self.hub_manager = HubPageManager(website_root=Config.WEBSITE_ROOT)
+        else:
+            self.hub_manager = None
+
+        # Session-level cache for target path (reuse across articles)
+        self._cached_target_path: Optional[str] = None
 
     def _humanize_path_segment(self, segment: str) -> str:
         return segment.replace("-", " ").replace("_", " ").strip().title() or "Hub"
@@ -295,29 +304,76 @@ export default function HubPage() {{
             slug = safe_filename.replace(".md", "")
             summary = "" # Placeholder
 
-            # Check if running interactively
+            # Check if running interactively or in batch mode
             try:
-                if sys.stdin.isatty():
-                    # 9a. Prompt for Target Path if not already set (conceptually, we might want to do this once per batch in main.py, 
-                    # but doing it here allows per-article flexibility or we can use a class-level cache)
-                    
-                    # For this implementation, we'll ask locally if not provided in env, 
-                    # OR we keeps it simple: Ask every time or use a default? 
-                    # The user request implies a sequential flow: Source -> Target Path -> Section.
-                    # Let's prompt.
-                    
+                # Batch mode: No interactive prompts, auto-accept everything
+                is_batch_mode = getattr(Config, 'BATCH_MODE', False)
+                is_interactive = sys.stdin.isatty() and not is_batch_mode
+
+                if is_interactive or is_batch_mode:
                     print(f"\n[?] Website Integration for '{title}'")
-                    
+
                     if Config.TEST_MODE:
                         logger.info("[TEST MODE] Auto-filling website params: /ai/operations | Daily Work")
                         target_path_input = "/ai/operations"
                         section_input = "Daily Work"
-                    else:
-                        print("    Target Path (e.g. '/ai') or local path relative to web-ui/src/app")
-                        target_path_input = input("    Path [Skip]: ").strip()
+                    elif is_batch_mode:
+                        # BATCH MODE: No prompts, use cached or default path
+                        if self._cached_target_path:
+                            target_path_input = self._cached_target_path
+                        else:
+                            target_path_input = getattr(Config, 'DEFAULT_TARGET_PATH', '/ai')
+                            self._cached_target_path = target_path_input
+                        print(f"    ✓ [BATCH] Using path: {target_path_input}")
+
                         if target_path_input:
-                            section_input = input("    Section Name (e.g. 'Daily Work'): ").strip()
-                    
+                            # Auto-categorize using AI (no override prompt in batch mode)
+                            if self.hub_manager and getattr(Config, 'AUTO_CATEGORIZE', True):
+                                print("    ⏳ Auto-categorizing article...")
+                                existing_sections = self.hub_manager.get_existing_sections(target_path_input)
+                                section_input = self.codex.categorize_article(
+                                    title=title,
+                                    content=generated_content,
+                                    available_sections=existing_sections
+                                )
+                                print(f"    ✓ [BATCH] Category: {section_input}")
+                            else:
+                                # Default section in batch mode
+                                section_input = "General"
+                                print(f"    ✓ [BATCH] Using default section: {section_input}")
+                    else:
+                        # INTERACTIVE MODE: Ask for path on first article only
+                        if self._cached_target_path:
+                            target_path_input = self._cached_target_path
+                            print(f"    ✓ Using path: {target_path_input}")
+                        else:
+                            # First article only - ask for path once
+                            print("    Target Path (e.g. '/ai') - will apply to ALL articles")
+                            target_path_input = input("    Path [Skip]: ").strip()
+                            if target_path_input:
+                                print(f"    ✓ Path set: {target_path_input} (applies to all articles)")
+                                self._cached_target_path = target_path_input
+
+                        if target_path_input:
+                            # Auto-categorize using AI if hub manager is available
+                            if self.hub_manager and getattr(Config, 'AUTO_CATEGORIZE', True):
+                                print("    ⏳ Auto-categorizing article...")
+                                existing_sections = self.hub_manager.get_existing_sections(target_path_input)
+                                section_input = self.codex.categorize_article(
+                                    title=title,
+                                    content=generated_content,
+                                    available_sections=existing_sections
+                                )
+                                print(f"    ✓ Category: {section_input}")
+
+                                # Allow manual override in interactive mode only
+                                override = input(f"    Section: '{section_input}' [Enter to accept, or type new]: ").strip()
+                                if override:
+                                    section_input = override
+                            else:
+                                # Fallback to manual input
+                                section_input = input("    Section Name (e.g. 'Daily Work'): ").strip()
+
                     if target_path_input:
                         self.generate_website_artefacts(title, generated_content, slug, target_path_input, section_input, summary)
 

@@ -5,11 +5,13 @@ Handles creation and updating of hub pages that link to articles.
 """
 
 import os
+import re
 import logging
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 
 from models import HubCard
+from config import Config
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +24,9 @@ class HubPageManager:
     individual articles. This class handles creating new hubs and adding
     cards to existing hubs.
     """
+
+    # Constants
+    PAGE_FILENAME = "page.tsx"
 
     # Markers used to find insertion points in hub pages
     HUB_CARDS_START = "{/* HUB_CARDS_START */}"
@@ -84,7 +89,7 @@ class HubPageManager:
         """
         clean_path = path.strip("/")
         hub_dir = self.website_root / clean_path
-        hub_page_path = hub_dir / "page.tsx"
+        hub_page_path = hub_dir / self.PAGE_FILENAME
 
         if hub_page_path.exists():
             return hub_page_path
@@ -136,6 +141,31 @@ export default function HubPage() {{
 }}
 '''
 
+    def get_existing_sections(self, hub_path: str) -> List[str]:
+        """
+        Extract existing section names from hub page.
+
+        Args:
+            hub_path: Relative path to the hub (e.g., "ai/operations")
+
+        Returns:
+            List of section names found in the hub page, or DEFAULT_SECTIONS if none exist
+        """
+        hub_file = self.website_root / hub_path.strip("/") / self.PAGE_FILENAME
+
+        # Use Config.DEFAULT_SECTIONS to give AI better categorization options
+        default_sections = getattr(Config, 'DEFAULT_SECTIONS', ["General"])
+
+        if not hub_file.exists():
+            return default_sections
+
+        content = hub_file.read_text(encoding="utf-8")
+
+        # Parse <h2> section headers
+        sections = re.findall(r'<h2[^>]*>([^<]+)</h2>', content)
+
+        return sections if sections else default_sections
+
     def add_card_to_hub(self, hub_path: str, card: HubCard) -> bool:
         """
         Add a card to an existing hub page.
@@ -148,7 +178,7 @@ export default function HubPage() {{
             True if card was added successfully, False otherwise
         """
         clean_path = hub_path.strip("/")
-        hub_page_path = self.website_root / clean_path / "page.tsx"
+        hub_page_path = self.website_root / clean_path / self.PAGE_FILENAME
 
         if not hub_page_path.exists():
             logger.warning(f"Hub page does not exist: {hub_page_path}")
@@ -186,6 +216,71 @@ export default function HubPage() {{
             f"Card snippet saved to: {snippet_path}"
         )
         return False
+
+    def add_card_to_section(self, hub_path: str, section_name: str, card: HubCard) -> bool:
+        """
+        Add a card to a specific section in a hub page.
+
+        If the section doesn't exist, creates a new section with the card.
+
+        Args:
+            hub_path: Relative path to the hub (e.g., "ai/operations")
+            section_name: Name of the section to add the card to
+            card: HubCard to add
+
+        Returns:
+            True if card was added successfully, False otherwise
+        """
+        clean_path = hub_path.strip("/")
+        hub_page_path = self.website_root / clean_path / self.PAGE_FILENAME
+
+        if not hub_page_path.exists():
+            logger.warning(f"Hub page does not exist: {hub_page_path}")
+            return False
+
+        with open(hub_page_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        # Check if card already exists
+        if card.href in content:
+            logger.info(f"Card already exists in hub for: {card.href}")
+            return True
+
+        card_tsx = self.generate_hub_card(card)
+
+        # Try to find the section by <h2> header
+        section_pattern = rf'(<h2[^>]*>{re.escape(section_name)}</h2>.*?<div[^>]*grid[^>]*>)(.*?)(</div>\s*</section>)'
+        match = re.search(section_pattern, content, re.DOTALL | re.IGNORECASE)
+
+        if match:
+            # Insert card into existing section's grid
+            new_content = match.group(1) + match.group(2) + card_tsx + match.group(3)
+            content = content[:match.start()] + new_content + content[match.end():]
+        else:
+            # Section doesn't exist - create new section before closing tags
+            new_section = self._generate_new_section(section_name, card)
+
+            # Insert before final closing </div></div>); pattern
+            closing_pattern = r'(\s*</div>\s*</div>\s*\);\s*\})'
+            content = re.sub(closing_pattern, new_section + r'\1', content)
+
+        with open(hub_page_path, "w", encoding="utf-8") as f:
+            f.write(content)
+
+        logger.info(f"Added card to section '{section_name}' in hub: {hub_page_path}")
+        return True
+
+    def _generate_new_section(self, section_name: str, card: HubCard) -> str:
+        """Generate TSX for a new section with one card."""
+        card_tsx = self.generate_hub_card(card)
+        return f'''
+        <section className="space-y-6">
+          <h2 className="text-2xl font-semibold">{section_name}</h2>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {card_tsx}
+          </div>
+        </section>
+'''
 
     def ensure_parent_links_child(self, child_path: str) -> None:
         """

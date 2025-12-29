@@ -27,6 +27,17 @@ class Config:
     
     # Feature Flags
     ENABLE_MONETIZATION = os.getenv("ENABLE_MONETIZATION", "true").lower() == "true"
+    AUTO_CATEGORIZE = os.getenv("AUTO_CATEGORIZE", "true").lower() == "true"
+
+    # Batch Mode - disables ALL interactive prompts, auto-accepts AI suggestions
+    # Set via env var or --batch CLI flag
+    BATCH_MODE = os.getenv("BATCH_MODE", "false").lower() == "true"
+
+    # Default target path for batch mode (when no interactive prompt available)
+    DEFAULT_TARGET_PATH = os.getenv("DEFAULT_TARGET_PATH", "/ai")
+
+    # Auto-categorization settings
+    DEFAULT_SECTIONS = ["Daily Work", "Automation", "Strategy", "Resources", "General"]
     
     # Paths
     OUTPUT_DIR = os.getenv("OUTPUT_DIR", os.path.join(os.getcwd(), "output"))

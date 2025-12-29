@@ -59,11 +59,25 @@ console = Console()
 _orchestrator: Optional[AsyncOrchestrator] = None
 
 
+_shutdown_count = 0
+
+
 def signal_handler(signum, frame):
     """Handle shutdown signals gracefully."""
+    global _shutdown_count
+    _shutdown_count += 1
     logger.info(LogMessages.SHUTDOWN_SIGNAL.format(signum=signum))
+
+    if _shutdown_count >= 2:
+        # Force exit on second Ctrl+C - use os._exit() to bypass input() blocking
+        logger.warning("Forced shutdown requested. Exiting immediately...")
+        os._exit(1)
+
     if _orchestrator:
         _orchestrator.request_shutdown()
+    else:
+        # No orchestrator, exit directly
+        sys.exit(0)
 
 
 # Register signal handlers
@@ -78,6 +92,32 @@ def extract_id_from_url(url: str) -> str:
         raw_id = match.group(1)
         return f"{raw_id[:8]}-{raw_id[8:12]}-{raw_id[12:16]}-{raw_id[16:20]}-{raw_id[20:]}"
     return url
+
+
+def save_database_id_to_env(db_id: str) -> bool:
+    """Save database ID to .env file for future use."""
+    try:
+        # Get the project root .env path (same location config.py uses)
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+        dotenv_path = os.path.join(project_root, ".env")
+
+        # Check if NOTION_DB_ID already exists in .env
+        if os.path.exists(dotenv_path):
+            with open(dotenv_path, 'r') as f:
+                content = f.read()
+                if 'NOTION_DB_ID=' in content:
+                    logger.info("NOTION_DB_ID already exists in .env, not overwriting")
+                    return False
+
+        # Append to .env file
+        with open(dotenv_path, 'a') as f:
+            f.write(f"\n# Auto-saved from interactive prompt\nNOTION_DB_ID={db_id}\n")
+
+        logger.info(f"Saved database ID to {dotenv_path}")
+        return True
+    except Exception as e:
+        logger.warning(f"Could not save database ID to .env: {e}")
+        return False
 
 
 def parse_args() -> argparse.Namespace:
@@ -176,6 +216,10 @@ def get_database_id(args: argparse.Namespace, ui: InteractiveUI) -> str:
         sys.exit(1)
 
     logger.info(f"Using extracted ID: {db_id}")
+
+    # Auto-save to .env for future runs
+    save_database_id_to_env(db_id)
+
     return db_id
 
 
@@ -318,6 +362,10 @@ def main():
 
     # Store test mode in config for compatibility
     Config.TEST_MODE = args.test
+
+    # Enable batch mode when --batch or --no-interactive is used
+    # This disables ALL interactive prompts (path, section, confirmation)
+    Config.BATCH_MODE = args.batch or args.no_interactive
 
     # Run async main
     try:

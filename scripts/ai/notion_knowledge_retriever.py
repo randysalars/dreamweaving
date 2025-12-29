@@ -27,14 +27,19 @@ import argparse
 import yaml
 import re
 from pathlib import Path
-from typing import Optional, List, Dict, Any, Set
+from typing import Optional, List, Dict, Any, Set, TYPE_CHECKING
 from datetime import datetime
+
+# Import Client for type checking only (avoids NameError when notion-client not installed)
+if TYPE_CHECKING:
+    from notion_client import Client
 
 try:
     from notion_client import Client
     HAS_NOTION = True
 except ImportError:
     HAS_NOTION = False
+    Client = None  # type: ignore
     print("Warning: notion-client not installed. Run: pip install notion-client")
 
 
