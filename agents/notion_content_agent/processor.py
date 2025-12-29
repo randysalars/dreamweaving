@@ -9,6 +9,7 @@ from notion_adapter import NotionAdapter
 from monetization import MonetizationEngine
 from codex_client import CodexClient
 from publishers.hub import HubPageManager
+from models import HubCard
 
 logger = logging.getLogger(__name__)
 
@@ -443,97 +444,34 @@ export default function ArticlePage() {{
                 f.write(ts_content)
             logger.info(f"Created Article Page: {article_page_path}")
 
-            # Ensure parent hub links to this hub path (e.g. /ai -> /ai/operations)
-            self._ensure_parent_hub_lists_child_hub(web_ui_root, clean_path)
+            # --- 2. Update/Create Hub Page using HubPageManager ---
+            if self.hub_manager:
+                # Ensure hub page exists
+                self.hub_manager.ensure_hub_exists(clean_path)
 
-            # --- 2. Update/Create Hub Page ---
-            hub_page_path = os.path.join(target_dir, "page.tsx")
-            
-            if not os.path.exists(hub_page_path):
-                # Create Default Hub Page
-                os.makedirs(target_dir, exist_ok=True)
-                default_hub = f"""import React from "react";
-import Link from "next/link";
-import {{ Card, CardHeader, CardTitle, CardDescription, CardFooter }} from "@/components/ui/card";
-import {{ Button }} from "@/components/ui/button";
-import {{ ArrowRight }} from "lucide-react";
+                # Create article card
+                card = HubCard(
+                    title=title,
+                    description=summary or "Read full article...",
+                    href=f"/{clean_path}/{slug}",
+                    emoji="📄"
+                )
 
-export default function HubPage() {{
-  return (
-    <div className="min-h-screen bg-slate-50 py-12 px-6">
-      <div className="max-w-6xl mx-auto space-y-12">
-        <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900">{clean_path.split('/')[-1].title()} Hub</h1>
-            <p className="text-lg text-slate-600">Generated content and resources.</p>
-        </div>
-        
-        {self._generate_section_snippet(section_name, title, slug, summary)}
-      </div>
-    </div>
-  );
-}}
-"""
-                with open(hub_page_path, "w") as f:
-                    f.write(default_hub)
-                logger.info(f"Created New Hub Page: {hub_page_path}")
-                
+                # Add article to the appropriate section
+                success = self.hub_manager.add_article_to_section(clean_path, section_name, card)
+
+                if success:
+                    logger.info(f"Added article card to hub section '{section_name}'")
+                else:
+                    logger.warning(f"Failed to add article card to hub - check hub page structure")
+
+                # Ensure parent hub links to this hub path (e.g. /ai -> /ai/operations)
+                self.hub_manager.ensure_parent_links_child(clean_path)
             else:
-                # Append to existing
-                # For naive implementation: Read, check if section exists, inject card.
-                # Parsing standard TSX is hard with regex. 
-                # We will append a simplistic placeholder comment or just verify manual entry needed
-                # BUT the user asked for automation.
-                # Let's try to append AFTER the last </section> or inside the last </div> if we can parse it?
-                # Simpler: Append to a known list?
-                # Safest for now: Append to END of file inside invalid comment? No that breaks build.
-                
-                # Let's read file, look for our Section Heading.
-                with open(hub_page_path, "r") as f:
-                    hub_content = f.read()
-                
-                card_snippet = f"""
-        {self._generate_section_snippet(section_name, title, slug, summary)}
-"""
-                # Naive injection: Insert before last </div> </div> (closing main tags)
-                # This is risky.
-                
-                # Safer Strategy: Warn user?
-                # Or simplistic regex replacement ?
-                
-                # Let's just log instructions for now to avoid breaking existing complex pages.
-                # actually, lets append it to a "autogen.log" in the dir so they can copy paste
-                
-                snippet_path = os.path.join(target_dir, "new_cards.snippet.txt")
-                with open(snippet_path, "a") as f:
-                    f.write(card_snippet)
-                
-                logger.info(f"Hub Page exists. Appended card snippet to: {snippet_path}")
-                print(f"[!] Hub page exists. Code snippet saved to {snippet_path} for manual insertion.")
+                logger.warning("No hub_manager configured - skipping hub page integration")
 
         except Exception as e:
             logger.error(f"Failed to generate website integration: {e}")
-
-    def _generate_section_snippet(self, section, title, slug, summary=""):
-        return f"""
-        <section className="space-y-6">
-            <h2 className="text-2xl font-semibold">{section}</h2>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                 <Card className="bg-white border-slate-200 hover:shadow-md transition-shadow">
-                    <CardHeader>
-                        <CardTitle className="text-lg line-clamp-2">{title}</CardTitle>
-                        <CardDescription className="line-clamp-3">{summary or "Read full article..."}</CardDescription>
-                    </CardHeader>
-                    <CardFooter>
-                        <Link href="{slug}" className="w-full">
-                            <Button variant="ghost" className="w-full justify-between gap-2">
-                                Read Article <ArrowRight className="h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardFooter>
-                 </Card>
-            </div>
-        </section>
-        """
 
     def _construct_prompt(self, title: str, specs: str, monetization: bool) -> str:
         base_prompt = (

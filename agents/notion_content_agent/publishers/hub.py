@@ -47,7 +47,7 @@ class HubPageManager:
 
     def generate_hub_card(self, card: HubCard) -> str:
         """
-        Generate TSX code for a hub card component.
+        Generate TSX code for a hub card component (links to sub-hubs).
 
         Args:
             card: HubCard with title, description, and href
@@ -74,6 +74,36 @@ class HubPageManager:
                 </Link>
               </CardFooter>
             </Card>
+"""
+
+    def generate_article_card(self, card: HubCard) -> str:
+        """
+        Generate TSX code for an article card component (links to articles).
+
+        Args:
+            card: HubCard with title, description, and href
+
+        Returns:
+            TSX code string for the card
+        """
+        # Sanitize inputs for TSX
+        safe_title = card.title.replace("{", "").replace("}", "")
+        safe_description = card.description.replace("{", "").replace("}", "")
+        safe_href = card.href if card.href.startswith("/") else f"/{card.href.lstrip('/')}"
+
+        return f"""                <Card className="bg-white border-slate-200 hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg line-clamp-2">{safe_title}</CardTitle>
+                    <CardDescription className="line-clamp-3">{safe_description}</CardDescription>
+                  </CardHeader>
+                  <CardFooter>
+                    <Link href="{safe_href}" className="w-full">
+                      <Button variant="ghost" className="w-full justify-between gap-2">
+                        Read Article <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardFooter>
+                </Card>
 """
 
     def ensure_hub_exists(self, path: str, title: Optional[str] = None) -> Path:
@@ -217,7 +247,7 @@ export default function HubPage() {{
         )
         return False
 
-    def add_card_to_section(self, hub_path: str, section_name: str, card: HubCard) -> bool:
+    def add_card_to_section(self, hub_path: str, section_name: str, card: HubCard, is_article: bool = False) -> bool:
         """
         Add a card to a specific section in a hub page.
 
@@ -227,6 +257,8 @@ export default function HubPage() {{
             hub_path: Relative path to the hub (e.g., "ai/operations")
             section_name: Name of the section to add the card to
             card: HubCard to add
+            is_article: If True, generates article card (Read Article button),
+                       otherwise hub card (Open Hub button)
 
         Returns:
             True if card was added successfully, False otherwise
@@ -246,7 +278,11 @@ export default function HubPage() {{
             logger.info(f"Card already exists in hub for: {card.href}")
             return True
 
-        card_tsx = self.generate_hub_card(card)
+        # Generate appropriate card type
+        if is_article:
+            card_tsx = self.generate_article_card(card)
+        else:
+            card_tsx = self.generate_hub_card(card)
 
         # Try to find the section by <h2> header
         section_pattern = rf'(<h2[^>]*>{re.escape(section_name)}</h2>.*?<div[^>]*grid[^>]*>)(.*?)(</div>\s*</section>)'
@@ -258,7 +294,7 @@ export default function HubPage() {{
             content = content[:match.start()] + new_content + content[match.end():]
         else:
             # Section doesn't exist - create new section before closing tags
-            new_section = self._generate_new_section(section_name, card)
+            new_section = self._generate_new_section(section_name, card, is_article)
 
             # Insert before final closing </div></div>); pattern
             closing_pattern = r'(\s*</div>\s*</div>\s*\);\s*\})'
@@ -270,9 +306,28 @@ export default function HubPage() {{
         logger.info(f"Added card to section '{section_name}' in hub: {hub_page_path}")
         return True
 
-    def _generate_new_section(self, section_name: str, card: HubCard) -> str:
+    def add_article_to_section(self, hub_path: str, section_name: str, card: HubCard) -> bool:
+        """
+        Add an article card to a specific section in a hub page.
+
+        Convenience method that calls add_card_to_section with is_article=True.
+
+        Args:
+            hub_path: Relative path to the hub (e.g., "ai")
+            section_name: Name of the section to add the card to
+            card: HubCard with article info
+
+        Returns:
+            True if card was added successfully, False otherwise
+        """
+        return self.add_card_to_section(hub_path, section_name, card, is_article=True)
+
+    def _generate_new_section(self, section_name: str, card: HubCard, is_article: bool = False) -> str:
         """Generate TSX for a new section with one card."""
-        card_tsx = self.generate_hub_card(card)
+        if is_article:
+            card_tsx = self.generate_article_card(card)
+        else:
+            card_tsx = self.generate_hub_card(card)
         return f'''
         <section className="space-y-6">
           <h2 className="text-2xl font-semibold">{section_name}</h2>
