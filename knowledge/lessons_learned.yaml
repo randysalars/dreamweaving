@@ -14,7 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - gandalfs-wisdom-journey-pathworking
   - truth-concepts-dreamweaving
   - gandalfs-wisdom-journey-pathworking-0741
   - venus-ascent-rising-as-a-symbol-of-elegance-and-be
@@ -34,7 +33,8 @@ lessons:
   - the-lighthouse-of-commitment-dreamweaving
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
-  applied_count: 21
+  - lady-gagas-extravagant-show-dreamweaving
+  applied_count: 22
   last_applied: '2025-12-29'
 - id: L002
   date: 2024-12-01
@@ -52,7 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - gandalfs-wisdom-journey-pathworking
   - truth-concepts-dreamweaving
   - gandalfs-wisdom-journey-pathworking-0741
   - venus-ascent-rising-as-a-symbol-of-elegance-and-be
@@ -72,7 +71,8 @@ lessons:
   - the-lighthouse-of-commitment-dreamweaving
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
-  applied_count: 21
+  - lady-gagas-extravagant-show-dreamweaving
+  applied_count: 22
   last_applied: '2025-12-29'
 - id: L003
   date: 2024-12-01
@@ -89,7 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - gandalfs-wisdom-journey-pathworking
   - truth-concepts-dreamweaving
   - gandalfs-wisdom-journey-pathworking-0741
   - venus-ascent-rising-as-a-symbol-of-elegance-and-be
@@ -109,7 +108,8 @@ lessons:
   - the-lighthouse-of-commitment-dreamweaving
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
-  applied_count: 21
+  - lady-gagas-extravagant-show-dreamweaving
+  applied_count: 22
   last_applied: '2025-12-29'
 - id: L004
   date: 2024-12-01
@@ -127,7 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - gandalfs-wisdom-journey-pathworking
   - truth-concepts-dreamweaving
   - gandalfs-wisdom-journey-pathworking-0741
   - venus-ascent-rising-as-a-symbol-of-elegance-and-be
@@ -147,7 +146,8 @@ lessons:
   - the-lighthouse-of-commitment-dreamweaving
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
-  applied_count: 21
+  - lady-gagas-extravagant-show-dreamweaving
+  applied_count: 22
   last_applied: '2025-12-29'
 - id: L005
   date: 2024-12-01
@@ -163,7 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - gandalfs-wisdom-journey-pathworking
   - truth-concepts-dreamweaving
   - gandalfs-wisdom-journey-pathworking-0741
   - venus-ascent-rising-as-a-symbol-of-elegance-and-be
@@ -183,7 +182,8 @@ lessons:
   - the-lighthouse-of-commitment-dreamweaving
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
-  applied_count: 21
+  - lady-gagas-extravagant-show-dreamweaving
+  applied_count: 22
   last_applied: '2025-12-29'
 - id: L006
   date: 2024-12-01

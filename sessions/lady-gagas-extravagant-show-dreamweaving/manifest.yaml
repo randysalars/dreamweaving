@@ -113,3 +113,13 @@ youtube:
   - guided meditation
   - sleep
   - underwater
+recursive_improvement:
+  applied_lessons:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  lesson_count: 5
+  categories: {}
+  applied_at: '2025-12-29T01:57:08.786539'

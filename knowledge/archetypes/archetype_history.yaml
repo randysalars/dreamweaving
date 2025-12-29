@@ -2,7 +2,7 @@ metadata:
   version: '1.0'
   created: '2025-12-09'
   updated: '2025-12-29'
-  total_sessions_tracked: 26
+  total_sessions_tracked: 27
   unique_archetypes_used: 15
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -463,6 +463,23 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: The Elysian Fields Of Emotional Harmony Dreamweaving'
+- session_id: lady-gagas-extravagant-show-dreamweaving
+  date: '2025-12-29'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Lady Gaga''s Extravagant Show Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 9
@@ -509,7 +526,7 @@ listener_relationships:
     last_session_date: '2025-12-27'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 17
+    total_encounters: 18
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -547,8 +564,10 @@ listener_relationships:
       type: first_encounter
     - session: the-lighthouse-of-commitment-dreamweaving
       type: first_encounter
-    last_session: the-lighthouse-of-commitment-dreamweaving
-    last_session_date: '2025-12-28'
+    - session: lady-gagas-extravagant-show-dreamweaving
+      type: first_encounter
+    last_session: lady-gagas-extravagant-show-dreamweaving
+    last_session_date: '2025-12-29'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 2
@@ -587,7 +606,7 @@ listener_relationships:
     last_session_date: '2025-12-10'
     relationship_level: 1
   divine_feminine.rose_mother:
-    total_encounters: 10
+    total_encounters: 11
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -611,8 +630,10 @@ listener_relationships:
       type: first_encounter
     - session: the-lighthouse-of-commitment-dreamweaving
       type: first_encounter
-    last_session: the-lighthouse-of-commitment-dreamweaving
-    last_session_date: '2025-12-28'
+    - session: lady-gagas-extravagant-show-dreamweaving
+      type: first_encounter
+    last_session: lady-gagas-extravagant-show-dreamweaving
+    last_session_date: '2025-12-29'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
     total_encounters: 9
@@ -675,7 +696,7 @@ listener_relationships:
     last_session_date: '2025-12-29'
     relationship_level: 3
   emotional_heart.heart_flame_tender:
-    total_encounters: 3
+    total_encounters: 4
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -685,9 +706,11 @@ listener_relationships:
       type: first_encounter
     - session: the-elysian-fields-of-emotional-harmony-dreamweavi
       type: first_encounter
-    last_session: the-elysian-fields-of-emotional-harmony-dreamweavi
+    - session: lady-gagas-extravagant-show-dreamweaving
+      type: first_encounter
+    last_session: lady-gagas-extravagant-show-dreamweaving
     last_session_date: '2025-12-29'
-    relationship_level: 2
+    relationship_level: 3
   warrior_power.solar_king:
     total_encounters: 1
     first_session: constellation-journey
@@ -765,41 +788,41 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - astrological-alignments-celestial-dance-of-planets
   - the-ice-lake-of-reflection-dreamweaving
   - the-lighthouse-of-commitment-dreamweaving
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
+  - lady-gagas-extravagant-show-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 1
-    transformation_alchemy.phoenix_renewal: 5
-    divine_light_healing.inner_healer: 2
-    warrior_power.archangel_michael: 18
-    divine_masculine.guardian_father: 4
-    dreamweaver_meta.dream_architect: 22
-    divine_feminine.rose_mother: 2
-    shamanic_earth.world_tree_guardian: 0
-    oracle_seer.oracle_of_light: 1
-    divine_feminine.sophia_wisdom: 1
+    divine_light_healing.great_physician: 2
+    transformation_alchemy.phoenix_renewal: 6
+    divine_light_healing.inner_healer: 0
+    warrior_power.archangel_michael: 19
+    divine_masculine.guardian_father: 5
+    dreamweaver_meta.dream_architect: 23
+    divine_feminine.rose_mother: 0
+    shamanic_earth.world_tree_guardian: 1
+    oracle_seer.oracle_of_light: 2
+    divine_feminine.sophia_wisdom: 2
     emotional_heart.heart_flame_tender: 0
-    warrior_power.solar_king: 18
-    divine_masculine.logos_bearer: 8
-    divine_light_healing.shekinah_restorer: 0
-    emotional_heart.joy_child: 8
+    warrior_power.solar_king: 19
+    divine_masculine.logos_bearer: 9
+    divine_light_healing.shekinah_restorer: 1
+    emotional_heart.joy_child: 9
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
+  - divine_feminine
   - emotional_heart
-  - shamanic_earth
   family_usage_counts:
-    divine_light_healing: 30
+    divine_light_healing: 31
     transformation_alchemy: 5
     warrior_power: 3
     divine_masculine: 6
     dreamweaver_meta: 1
-    divine_feminine: 15
+    divine_feminine: 16
     shamanic_earth: 9
     oracle_seer: 4
-    emotional_heart: 5
+    emotional_heart: 6
 effective_pairings: []

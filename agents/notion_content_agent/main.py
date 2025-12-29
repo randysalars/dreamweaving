@@ -65,13 +65,21 @@ def main():
         db_id = Config.NOTION_DB_ID
         if not db_id:
             print("\n[!] Notion Database ID not found in configuration.")
-            url = input(">>> Please paste the URL of the Notion Page or Database to monitor: ").strip()
-            if url:
-                db_id = extract_id_from_url(url)
-                logger.info(f"Using extracted ID: {db_id}")
-            else:
-                logger.error("No URL provided. Exiting.")
-                sys.exit(1)
+            while not db_id:
+                url = input(">>> Please paste the URL of the Notion Page or Database to monitor: ").strip()
+                if url:
+                    extracted = extract_id_from_url(url)
+                    if extracted == url and "-" not in extracted and len(extracted) != 32:
+                        # Only accept if it looks like a UUID or was extracted
+                        # If extract_id_from_url returns self and self is NOT a UUID, it failed.
+                        logger.error("Invalid URL or ID format. Could not extract UUID.")
+                        continue
+                    
+                    db_id = extracted
+                    logger.info(f"Using extracted ID: {db_id}")
+                else:
+                    logger.error("No URL provided. Exiting.")
+                    sys.exit(1)
                 
         
         # Pass Codex so Adapter can use it for page reasoning
