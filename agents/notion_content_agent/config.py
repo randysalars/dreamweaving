@@ -48,7 +48,7 @@ class Config:
     # 3. Check for 'web-ui' (legacy)
     _dreamweaving = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
     _projects = os.path.dirname(_dreamweaving) # /home/rsalars/Projects
-    _salarsu = os.path.join(_projects, "salarsu", "src", "app")
+    _salarsu = os.path.join(_projects, "salarsu", "frontend", "app")
     _webui = os.path.join(_dreamweaving, "web-ui", "src", "app")
     
     if os.path.exists(_salarsu):
