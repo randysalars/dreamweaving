@@ -17,6 +17,112 @@ class ContentProcessor:
         self.codex = codex
         self.monetization = monetization
 
+    def _humanize_path_segment(self, segment: str) -> str:
+        return segment.replace("-", " ").replace("_", " ").strip().title() or "Hub"
+
+    def _generate_hub_card(self, title: str, description: str, href: str) -> str:
+        safe_title = title.replace("{", "").replace("}", "")
+        safe_description = description.replace("{", "").replace("}", "")
+        safe_href = href if href.startswith("/") else f"/{href.lstrip('/')}"
+        return f"""
+            <Card className="border-slate-200 bg-white transition-shadow hover:shadow-md">
+              <CardHeader>
+                <CardTitle className="text-lg">{safe_title}</CardTitle>
+                <CardDescription className="line-clamp-3">{safe_description}</CardDescription>
+              </CardHeader>
+              <CardFooter>
+                <Link href="{safe_href}" className="w-full">
+                  <Button variant="ghost" className="w-full justify-between gap-2">
+                    Open Hub <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
+"""
+
+    def _ensure_parent_hub_lists_child_hub(self, web_ui_root: str, child_clean_path: str):
+        """
+        Ensures parent hub pages contain a card linking to this hub.
+        Example: when generating `/ai/operations/...`, ensure `/ai` has a card for `/ai/operations`.
+        """
+        parts = [p for p in child_clean_path.split("/") if p]
+        if len(parts) < 2:
+            return
+
+        parent_clean_path = "/".join(parts[:-1])
+        child_segment = parts[-1]
+        child_title = self._humanize_path_segment(child_segment)
+        child_href = f"/{child_clean_path}"
+        child_description = f"Browse {child_title} content and resources."
+
+        parent_dir = os.path.join(web_ui_root, parent_clean_path)
+        parent_page_path = os.path.join(parent_dir, "page.tsx")
+        os.makedirs(parent_dir, exist_ok=True)
+
+        if not os.path.exists(parent_page_path):
+            parent_title = self._humanize_path_segment(parts[-2])
+            default_parent = f"""import React from "react";
+import Link from "next/link";
+import {{ Card, CardDescription, CardFooter, CardHeader, CardTitle }} from "@/components/ui/card";
+import {{ Button }} from "@/components/ui/button";
+import {{ ArrowRight }} from "lucide-react";
+
+export default function HubPage() {{
+  return (
+    <div className="min-h-screen bg-slate-50 py-12 px-6">
+      <div className="mx-auto max-w-6xl space-y-12">
+        <div className="space-y-4">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900">{parent_title} Hub</h1>
+          <p className="text-lg text-slate-600">Explore content hubs and generated resources.</p>
+        </div>
+
+        <section className="space-y-6">
+          <h2 className="text-2xl font-semibold">Sections</h2>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {{/* HUB_CARDS_START */}}
+{self._generate_hub_card(child_title, child_description, child_href)}
+            {{/* HUB_CARDS_END */}}
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}}
+"""
+            with open(parent_page_path, "w", encoding="utf-8") as f:
+                f.write(default_parent)
+            logger.info(f"Created Parent Hub Page: {parent_page_path}")
+            return
+
+        with open(parent_page_path, "r", encoding="utf-8") as f:
+            parent_content = f.read()
+
+        if child_href in parent_content:
+            return
+
+        if "HUB_CARDS_START" in parent_content and "HUB_CARDS_END" in parent_content:
+            end_marker = "{/* HUB_CARDS_END */}"
+            if end_marker not in parent_content:
+                end_marker = "{/* HUB_CARDS_END*/}"
+            insert_at = parent_content.index(end_marker)
+            card = self._generate_hub_card(child_title, child_description, child_href)
+            updated = parent_content[:insert_at] + card + parent_content[insert_at:]
+            with open(parent_page_path, "w", encoding="utf-8") as f:
+                f.write(updated)
+            logger.info(f"Updated Parent Hub Page with card: {parent_page_path} -> {child_href}")
+            return
+
+        snippet_path = os.path.join(parent_dir, "new_hubs.snippet.txt")
+        with open(snippet_path, "a", encoding="utf-8") as f:
+            f.write(self._generate_hub_card(child_title, child_description, child_href))
+        logger.info(
+            f"Parent hub exists but has no HUB_CARDS markers; appended snippet to: {snippet_path}"
+        )
+        print(
+            f"[!] Parent hub page exists but has no HUB_CARDS markers. "
+            f"Card snippet saved to {snippet_path} for manual insertion."
+        )
+
     def generate_website_card_snippet(self, title: str, summary: str, slug: str, section_path: str = "/ai"):
         """
         Generates a Next.js code snippet for an AnimatedCard.
@@ -282,6 +388,8 @@ export default function ArticlePage() {{
                 f.write(ts_content)
             logger.info(f"Created Article Page: {article_page_path}")
 
+            # Ensure parent hub links to this hub path (e.g. /ai -> /ai/operations)
+            self._ensure_parent_hub_lists_child_hub(web_ui_root, clean_path)
 
             # --- 2. Update/Create Hub Page ---
             hub_page_path = os.path.join(target_dir, "page.tsx")
@@ -340,7 +448,7 @@ export default function HubPage() {{
                 # Let's just log instructions for now to avoid breaking existing complex pages.
                 # actually, lets append it to a "autogen.log" in the dir so they can copy paste
                 
-                snippet_path = os.path.join(target_dir, "new_cards.snippet.tsx")
+                snippet_path = os.path.join(target_dir, "new_cards.snippet.txt")
                 with open(snippet_path, "a") as f:
                     f.write(card_snippet)
                 
