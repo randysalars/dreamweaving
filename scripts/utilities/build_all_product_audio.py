@@ -27,12 +27,12 @@ PRODUCTS = {
     "mind-expansion-techniques": {
         "sessions": [
             "01-mental-clearing",
-            "02-focus-beam",
-            "03-memory-palace",
-            "04-creative-flow",
-            "05-problem-solving",
-            "06-intuition-access",
-            "07-peak-performance",
+            "02-focus-enhancement",
+            "03-creative-visualization",
+            "04-memory-palace",
+            "05-intuition-activation",
+            "06-problem-solving",
+            "07-cognitive-flexibility",
             "08-genius-state"
         ]
     },
@@ -41,17 +41,17 @@ PRODUCTS = {
             "01-sacred-stillness",
             "02-lectio-divina",
             "03-centering-prayer",
-            "04-contemplative-examen",
+            "04-contemplative-examination",
             "05-divine-presence"
         ]
     },
     "holistic-wellness": {
         "sessions": [
             "01-body-scan",
-            "02-breath-regulation",
-            "03-sleep-preparation",
-            "04-energy-restoration",
-            "05-holistic-integration"
+            "02-breath-vitality",
+            "03-healing-visualization",
+            "04-stress-release",
+            "05-restorative-sleep"
         ]
     },
     "daily-joy-activation": {
