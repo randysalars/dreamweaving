@@ -3,7 +3,7 @@
 Insert Dreamweaver Email Templates into Salarsu Database
 
 This script inserts the email templates from the "Build Dreamweaver Business"
-Notion page into the EmailTemplate table in the Neon PostgreSQL database.
+Notion page into the EmailTemplate table in the PostgreSQL database.
 
 Templates follow the 4-layer email architecture:
 1. Initiation - Welcome, sets tone

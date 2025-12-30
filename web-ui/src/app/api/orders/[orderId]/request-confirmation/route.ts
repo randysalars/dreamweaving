@@ -27,13 +27,15 @@ export async function POST(request: NextRequest, context: { params: Promise<{ or
   const sessionId = request.cookies.get(SESSION_COOKIE)?.value || null;
 
   const sql = getSql();
-  const rows = (await sql`
+  const rows = await sql<
+    { order_id: string; session_id: string | null; user_id: string | null; customer_email: string | null; risk_score: number | null }[]
+  >`
     select order_id::text as order_id, session_id, user_id, customer_email, risk_score
     from dw_orders
     where order_id = ${orderId}::uuid
     limit 1
-  `) as unknown as Array<{ order_id: string; session_id: string | null; user_id: string | null; customer_email: string | null; risk_score: number | null }>;
-  const order = Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+  `;
+  const order = rows.length > 0 ? rows[0] : null;
   if (!order) return NextResponse.json({ ok: false, error: "order_not_found" }, { status: 404 });
 
   const email =

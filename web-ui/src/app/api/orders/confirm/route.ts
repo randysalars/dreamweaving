@@ -35,13 +35,15 @@ async function processConfirm(request: NextRequest, input: { token: string; orde
 
   const resolvedOrderId = confirmed.order_id || orderIdHint;
 
-  const rows = (await sql`
+  const rows = await sql<
+    { order_id: string; session_id: string | null; user_id: string | null; product_sku: string | null }[]
+  >`
     select order_id::text as order_id, session_id, user_id, product_sku
     from dw_orders
     where order_id = ${resolvedOrderId}::uuid
     limit 1
-  `) as unknown as Array<{ order_id: string; session_id: string | null; user_id: string | null; product_sku: string | null }>;
-  const order = Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+  `;
+  const order = rows.length > 0 ? rows[0] : null;
   if (!order) return NextResponse.json({ ok: false, error: "order_not_found" }, { status: 404, headers });
 
   if (order.session_id) {

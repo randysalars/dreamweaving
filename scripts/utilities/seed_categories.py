@@ -3,7 +3,7 @@
 Seed dreamweaving categories into the database.
 
 This script reads the master category configuration from config/categories.yaml
-and inserts or updates categories in the Neon PostgreSQL database.
+and inserts or updates categories in the PostgreSQL database.
 
 Usage:
     python3 scripts/utilities/seed_categories.py

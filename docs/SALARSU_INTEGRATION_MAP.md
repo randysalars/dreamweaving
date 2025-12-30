@@ -5,7 +5,7 @@ Reference for using dream categories, dreamweavings, and store functionality fro
 ## Locations
 - Salarsu repo: `/home/rsalars/Projects/salarsu`
 - Dreamweaving repo (this project): `/home/rsalars/Projects/dreamweaving`
-- Salarsu frontend stack: Next 15 (React 19), ESM, Prisma, Neon/Postgres; path alias `@/` points at `frontend/`.
+- Salarsu frontend stack: Next (React 19), ESM, Prisma, Postgres (self-hosted via Coolify); path alias `@/` points at `frontend/`.
 
 ## Dreamweaving (categories + journeys)
 - Data models: `frontend/prisma/schema.prisma`
@@ -49,7 +49,7 @@ Reference for using dream categories, dreamweavings, and store functionality fro
 - `frontend/lib/categoryUtils.js`: utilities for category/subcategory pages (breadcrumb helpers, page generators).
 
 ## Environment & dependencies
-- Required env: `DATABASE_URL` (Postgres/Neon), `DREAMWEAVING_API_TOKEN` (protects dreamweaving create/update/delete and unpublished access).
+- Required env: `DATABASE_URL` (Postgres), `DREAMWEAVING_API_TOKEN` (protects dreamweaving create/update/delete and unpublished access).
 - ESM project (`"type": "module"`); Node >= 18; Prisma Client `^6.11`.
 - Path alias `@/` resolves to `frontend/` in Salarsu; adjust imports if reusing modules here.
 
@@ -65,5 +65,5 @@ Reference for using dream categories, dreamweavings, and store functionality fro
 
 ## Compatibility notes
 - UI helpers expect a Next/React environment; if you only need data, prefer API or Prisma access.
-- Store APIs mix Prisma and raw Neon SQL; keep migrations in sync before cross-project writes.
+- Store APIs mix Prisma and raw SQL; keep migrations in sync before cross-project writes.
 - Dreamweaving GET returns only `status=published` unless the token is provided; drafts require auth.

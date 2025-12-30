@@ -30,13 +30,12 @@ export async function POST(request: NextRequest, context: { params: Promise<{ or
   const sessionId = request.cookies.get(SESSION_COOKIE)?.value || null;
   const sql = getSql();
 
-  const row = await sql`
+  const rows = await sql<{ order_id: string; session_id: string | null; user_id: string | null }[]>`
     select order_id::text as order_id, session_id, user_id
     from dw_orders
     where order_id = ${orderId}::uuid
     limit 1
   `;
-  const rows = Array.isArray(row) ? (row as Array<{ order_id: string; session_id: string | null; user_id: string | null }>) : [];
   const order = rows.length > 0 ? rows[0] : null;
   if (!order) return NextResponse.json({ ok: false, error: "order_not_found" }, { status: 404 });
 
@@ -61,4 +60,3 @@ export async function POST(request: NextRequest, context: { params: Promise<{ or
 
   return NextResponse.json({ ok: true, order_id: orderId, policy_version: policyVersion });
 }
-

@@ -1,6 +1,6 @@
 # Dreamweaver First-Party Analytics (salars.net)
 
-This is a first-party, privacy-respecting tracking stack for Dreamweaver on Vercel + Neon Postgres.
+This is a first-party, privacy-respecting tracking stack for Dreamweaver on **Coolify** (self-hosted) + **Postgres**.
 
 ## What you get
 - A **first-party** collector on your own domain: `POST /api/track`
@@ -8,9 +8,9 @@ This is a first-party, privacy-respecting tracking stack for Dreamweaver on Verc
 - Client-side tracking for: `page_view`, `landing_view`, `cta_click`, `outbound_click`
 - A PayPal **webhook stub**: `POST /api/webhooks/paypal` that writes authoritative `payment_completed`/`payment_failed` events
 
-## 1) Provision Postgres (Neon)
-1. Create a Neon Postgres database.
-2. Copy your connection string as `DATABASE_URL`.
+## 1) Provision Postgres (Coolify)
+1. Create a Postgres service in Coolify (or bring an external Postgres).
+2. Copy your connection string as `DATABASE_URL` (Coolify typically provides one).
 3. Apply migrations in order:
    - `web-ui/migrations/001_dw_analytics.sql`
    - `web-ui/migrations/002_dw_events_nullable_session.sql`
@@ -23,11 +23,11 @@ This is a first-party, privacy-respecting tracking stack for Dreamweaver on Verc
    - `web-ui/migrations/009_dw_device_signals.sql`
    - `web-ui/migrations/010_dw_device_signals_ip_reputation.sql`
 
-Neon console: paste + run each file in the SQL editor.
+Run migrations with your preferred Postgres tooling (psql, Adminer, DBeaver, etc.). In Coolify you can also connect to the database container and run `psql`.
 
 ## 2) Set required environment variables
-In Vercel (Project → Settings → Environment Variables):
-- `DATABASE_URL` = Neon connection string
+In Coolify (Service → Environment Variables):
+- `DATABASE_URL` = Postgres connection string
 - `DW_IP_HASH_SALT` = a long random secret (used to hash IP + UA; do not rotate often)
 
 Optional (PayPal webhooks):
@@ -137,14 +137,14 @@ See `web-ui/PAYMENTS_WEBHOOKS.md` for the provider event mapping and verificatio
 1. `cd web-ui`
 2. `npm run dev`
 3. Open the site and click around.
-4. Query Neon:
+4. Query Postgres:
    - `select * from dw_events order by ts desc limit 50;`
    - `select * from dw_sessions order by last_seen desc limit 50;`
 
 ### Production
-1. Deploy to Vercel.
-2. Confirm requests to `/api/track` succeed (Vercel logs).
-3. Confirm events are in Neon.
+1. Deploy via Coolify.
+2. Confirm requests to `/api/track` succeed (Coolify logs).
+3. Confirm events are in Postgres.
 
 ### Browser-truth verification (Chrome DevTools MCP)
 Use this when you want high confidence that tracking is firing exactly once and carrying attribution correctly.

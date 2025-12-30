@@ -7,7 +7,7 @@ including media files (audio, video, thumbnail, subtitles) and metadata.
 
 Supports two storage backends:
   - Cloudflare R2 (recommended - free egress, cheap storage)
-  - Vercel Blob (legacy - limited to 1GB on hobby plan)
+  - Vercel Blob (legacy - deprecated; pre-Coolify era)
 
 Usage:
     python3 scripts/core/upload_to_website.py --session sessions/forest-of-lost-instincts/
@@ -31,7 +31,7 @@ Environment Variables (for R2 - recommended):
     R2_PUBLIC_URL       Public URL for the bucket (e.g., https://media.salars.net)
 
 Environment Variables (for Vercel Blob - legacy):
-    BLOB_READ_WRITE_TOKEN  Vercel Blob token
+    BLOB_READ_WRITE_TOKEN  Vercel Blob token (deprecated)
     SALARSU_API_TOKEN      API authentication token
 """
 
@@ -821,17 +821,17 @@ class DreamweavingUploader:
         if "audio" not in files:
             errors.append("Missing master audio file (*_MASTER.mp3)")
 
-        # Check file sizes (only enforce limits for Vercel Blob)
+        # Check file sizes (only enforce limits for legacy Vercel Blob mode)
         if self.storage_backend == "vercel":
             if files.get("audio"):
                 size_mb = files["audio"].stat().st_size / (1024 * 1024)
                 if size_mb > 100:
-                    errors.append(f"Audio file too large: {size_mb:.1f}MB (max 100MB for Vercel)")
+                    errors.append(f"Audio file too large: {size_mb:.1f}MB (max 100MB for legacy Vercel Blob mode)")
 
             if files.get("video"):
                 size_mb = files["video"].stat().st_size / (1024 * 1024)
                 if size_mb > 500:
-                    errors.append(f"Video file too large: {size_mb:.1f}MB (max 500MB for Vercel)")
+                    errors.append(f"Video file too large: {size_mb:.1f}MB (max 500MB for legacy Vercel Blob mode)")
 
         # Check storage backend configuration
         if not self.dry_run and not self.storage.is_configured():
@@ -1489,7 +1489,7 @@ def main():
         epilog="""
 Storage Backends:
   r2      Cloudflare R2 (recommended - free egress, unlimited storage)
-  vercel  Vercel Blob (legacy - 1GB limit on hobby plan)
+  vercel  Vercel Blob (legacy/deprecated)
 
 Environment Variables for R2:
   R2_ACCOUNT_ID         Cloudflare account ID
@@ -1498,8 +1498,8 @@ Environment Variables for R2:
   R2_BUCKET_NAME        Bucket name (default: dreamweavings)
   R2_PUBLIC_URL         Public URL (e.g., https://media.salars.net)
 
-Environment Variables for Vercel Blob:
-  BLOB_READ_WRITE_TOKEN  Vercel Blob token
+Environment Variables for Vercel Blob (legacy):
+  BLOB_READ_WRITE_TOKEN  Vercel Blob token (deprecated)
   SALARSU_API_TOKEN      API authentication
         """,
         formatter_class=argparse.RawDescriptionHelpFormatter,

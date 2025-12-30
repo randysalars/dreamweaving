@@ -57,7 +57,7 @@ vector_db:
     distance: "Cosine"  # Options: Cosine, Euclid, Dot
     on_disk: true  # Store vectors on disk for large datasets
 
-  # pgvector settings (if using Neon Postgres)
+  # pgvector settings (if using Postgres)
   pgvector:
     connection_string: "${DATABASE_URL}"
     table_name: "notion_embeddings"

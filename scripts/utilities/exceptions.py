@@ -45,7 +45,7 @@ class APIError(DreamweavingError):
     - Google Cloud TTS
     - Notion API
     - YouTube API
-    - Vercel/deployment APIs
+    - Deployment platform APIs (historically Vercel; now Coolify/self-hosted)
     """
 
     def __init__(

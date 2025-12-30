@@ -6,7 +6,7 @@ import net from "node:net";
 import process from "node:process";
 
 import Stripe from "stripe";
-import { neon } from "@neondatabase/serverless";
+import postgres from "postgres";
 
 function requireEnv(name) {
   const v = process.env[name];
@@ -117,7 +117,7 @@ async function main() {
     if (!server.killed) server.kill("SIGKILL");
   };
 
-  const sql = neon(databaseUrl);
+  const sql = postgres(databaseUrl, { max: 1, prepare: false });
   const created = {
     session_id: null,
     order_id: null,

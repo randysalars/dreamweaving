@@ -1018,7 +1018,7 @@ Claude should read these memories for detailed information:
 | `dreamweaving_project_overview` | Understanding project architecture |
 | `session_learnings_system` | Before generating new sessions |
 | `production_workflow_stages` | Full stage-by-stage production workflow |
-| `website_upload_deployment` | Uploading to salars.net, Vercel, R2 storage |
+| `website_upload_deployment` | Uploading to salars.net (Coolify), R2 storage |
 | `mcp_plugins_integration` | MCP servers, plugins, context window management |
 | `knowledge_base_procedure` | **Adding new knowledge entries to the system** |
 | `dve_module_system` | **Deep Visualization Enhancement (DVE) modules and usage** |
@@ -1159,7 +1159,7 @@ Your output must follow: [STYLE + FORMAT RULES].
 **Examples:**
 
 * "You are *The Sacred Digital Dreamweaver*, a narrative architect of mythic, religious, and futuristic consciousness journeys."
-* "You are a *Senior Next.js Systems Engineer* specializing in TypeScript, Tailwind, Neon Postgres, and agent pipelines."
+* "You are a *Senior Next.js Systems Engineer* specializing in TypeScript, Tailwind, Postgres, and agent pipelines."
 
 Role = stability.
 Mission = precision.
@@ -1904,13 +1904,17 @@ python3 scripts/core/cleanup_session.py sessions/{session}/
 
 ## Website Upload (Stage 9 - Optional)
 
-Upload completed sessions to https://www.salars.net/dreamweavings for public access.
+Upload completed sessions to https://www.salars.net/dreamweavings for public access (deployed via Coolify).
 
 **Environment Setup:**
 ```bash
 # Add to .env file
 SALARSU_API_TOKEN=your-api-token
-BLOB_READ_WRITE_TOKEN=your-vercel-blob-token
+R2_ACCOUNT_ID=your-cloudflare-account-id
+R2_ACCESS_KEY_ID=your-r2-access-key-id
+R2_SECRET_ACCESS_KEY=your-r2-secret
+R2_BUCKET_NAME=dreamweavings
+R2_PUBLIC_URL=https://media.salars.net
 ```
 
 **Commands:**
@@ -1928,10 +1932,10 @@ python3 scripts/core/upload_to_website.py --session sessions/{session}/ --catego
 **What Gets Uploaded:**
 | File Type | Max Size | Destination |
 |-----------|----------|-------------|
-| Audio (.mp3) | 100 MB | Vercel Blob |
-| Video (.mp4) | 500 MB | Vercel Blob |
-| Thumbnail (.png) | 10 MB | Vercel Blob |
-| Subtitles (.vtt) | 1 MB | Vercel Blob |
+| Audio (.mp3) | 100 MB | Cloudflare R2 |
+| Video (.mp4) | 500 MB | Cloudflare R2 |
+| Thumbnail (.png) | 10 MB | Cloudflare R2 |
+| Subtitles (.vtt) | 1 MB | Cloudflare R2 |
 
 **Category Auto-Detection:**
 Categories are auto-detected from session keywords:
@@ -1946,8 +1950,8 @@ Categories are auto-detected from session keywords:
 
 **Output:**
 - Session available at: `https://www.salars.net/dreamweavings/{slug}`
-- Media stored in Vercel Blob
-- Database record in Neon PostgreSQL
+- Media stored in Cloudflare R2
+- Database record in Postgres (Coolify)
 
 **Batch Upload Pattern:**
 ```bash
@@ -1980,7 +1984,7 @@ done
 
 ## Website Article Creation (`/write-article`)
 
-Create and deploy articles to salars.net with consistent styling and automatic Vercel deployment.
+Create and deploy articles to salars.net with consistent styling and Coolify deployment.
 
 ### Usage
 ```bash
@@ -1992,7 +1996,7 @@ Create and deploy articles to salars.net with consistent styling and automatic V
 2. **Create page file** - Claude creates `page.js` at `/home/rsalars/Projects/salarsu/frontend/app/{path}/`
 3. **Apply styling** - Uses standard classes from `docs/WEBPAGE_FORMAT_GUIDE.md`
 4. **Add related links** - Updates parent/related pages with cross-links
-5. **Deploy** - Commits and pushes to trigger Vercel auto-deployment
+5. **Deploy** - Push changes, then redeploy in Coolify (or rely on webhook auto-deploy if configured)
 
 ### Standard Page Structure
 ```jsx

@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
 
   const sql = getSql();
 
-  const inserted = await sql`
+  const inserted = await sql<{ order_id: string }[]>`
     insert into dw_orders (session_id, provider, status, amount, currency, product_sku, customer_email, customer_phone, policy_version, policy_ack_at, attrib, updated_at)
     values (
       ${sessionId},
@@ -96,8 +96,7 @@ export async function POST(request: NextRequest) {
     returning order_id
   `;
 
-  const rows = Array.isArray(inserted) ? (inserted as Array<{ order_id: string }>) : [];
-  const orderId = rows.length > 0 ? rows[0].order_id : null;
+  const orderId = inserted.length > 0 ? inserted[0].order_id : null;
   if (!orderId) return NextResponse.json({ ok: false, error: "order_create_failed" }, { status: 500 });
 
   const reputation = await lookupIpReputation(request.headers);

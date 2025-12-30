@@ -21,9 +21,7 @@ Reference documentation for working with the Salarsu website repository from the
 | **React Version** | 19.0.0 |
 | **Styling** | TailwindCSS 3.3.2 |
 | **Database** | PostgreSQL via Prisma |
-| **Deployment** | Vercel (auto-deploy on push) |
-| **Vercel Project ID** | `prj_gFcyoJX1NB7LOTW7COHvSOSpptj8` |
-| **Vercel Region** | `iad1` (Washington DC) |
+| **Deployment** | Coolify (self-hosted) |
 
 ---
 
@@ -31,7 +29,7 @@ Reference documentation for working with the Salarsu website repository from the
 
 ```
 salarsu/
-├── frontend/                 # Main application (rootDirectory for Vercel)
+├── frontend/                 # Main application
 │   ├── app/                 # Next.js App Router pages
 │   │   ├── api/             # API routes
 │   │   ├── about/           # About page
@@ -51,8 +49,6 @@ salarsu/
 │   └── package.json         # Frontend dependencies
 ├── prisma/                   # Database schema
 ├── scripts/                  # Build & automation scripts
-├── .vercel/                  # Vercel configuration
-├── vercel.json              # Vercel deployment config
 └── package.json             # Root dependencies
 ```
 
@@ -92,46 +88,14 @@ npm run ci:simulate
 ### Deployment
 
 ```bash
-# Vercel auto-deploys on push to main branch
+# Coolify deployment (typical flow)
+# 1) Push changes to the repo branch Coolify tracks
 git add .
 git commit -m "Your commit message"
 git push origin main
 
-# Manual Vercel deployment (if needed)
-cd /home/rsalars/Projects/salarsu
-vercel --prod
+# 2) In Coolify, trigger a redeploy for the service (or rely on webhook auto-deploy if configured).
 ```
-
----
-
-## Vercel Configuration
-
-Located at `/home/rsalars/Projects/salarsu/vercel.json`:
-
-```json
-{
-  "buildCommand": "npm run build",
-  "installCommand": "npm install --legacy-peer-deps --include=dev",
-  "framework": "nextjs",
-  "outputDirectory": ".next",
-  "rootDirectory": "frontend",
-  "functions": {
-    "app/api/**/*.js": {
-      "maxDuration": 30
-    }
-  },
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "github": {
-    "autoDeployment": true
-  },
-  "regions": ["iad1"]
-}
-```
-
-> [!NOTE]
-> The `rootDirectory` is `frontend`, so all paths in Vercel are relative to that directory.
 
 ---
 
@@ -148,7 +112,7 @@ Located at `/home/rsalars/Projects/salarsu/vercel.json`:
 - **Resend** - Email service
 - **Redis** - Caching
 - **OpenAI** - AI features
-- **Vercel Analytics** - Analytics
+- **First-party Analytics** - Events stored in Postgres
 
 ---
 
@@ -158,7 +122,7 @@ Example env variables needed (from `.env.example`):
 
 ```bash
 # Database
-DATABASE_URL=your_neon_database_url
+DATABASE_URL=your_postgres_database_url
 
 # Authentication
 NEXTAUTH_URL=https://salars.net
@@ -250,6 +214,6 @@ git -C /home/rsalars/Projects/salarsu log -n 5 --oneline
 ## Notes
 
 - The external drive path `/media/rsalars/elements/` must be accessible
-- Vercel auto-deploys when pushing to the `main` branch
+- Coolify can auto-deploy on push if a webhook is configured; otherwise redeploy manually in the Coolify UI
 - The site uses legacy peer deps (`--legacy-peer-deps`) for npm installs
 - API routes have a max duration of 30 seconds configured
