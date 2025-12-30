@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://salars.net"),
   title:
     "Dreamweaving Traditions, Archetypes, and Guided Journeys | Sacred Digital Dreamweaver",
   description:

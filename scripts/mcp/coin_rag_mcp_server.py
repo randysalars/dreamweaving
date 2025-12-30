@@ -16,10 +16,55 @@ import os
 import sys
 import traceback
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
 
+import yaml
+
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+
+# =============================================================================
+# PRICING CONFIG LOADER
+# =============================================================================
+
+def _load_pricing_config() -> Dict[str, Any]:
+    """Load pricing configuration from YAML file."""
+    config_path = PROJECT_ROOT / 'config' / 'coin_pricing.yaml'
+    if config_path.exists():
+        try:
+            return yaml.safe_load(config_path.read_text())
+        except Exception as e:
+            _log(f"Warning: Failed to load pricing config: {e}")
+    # Return defaults if config doesn't exist
+    return {
+        'defaults': {
+            'junk_silver_multiplier': 20,
+            'morgan_premium_usd': 8.00,
+            'peace_premium_usd': 7.00,
+        },
+        'market_conditions': {
+            'multiplier_floor': 18,
+            'multiplier_ceiling': 24,
+        }
+    }
+
+
+def _save_pricing_config(config: Dict[str, Any]) -> bool:
+    """Save pricing configuration to YAML file."""
+    config_path = PROJECT_ROOT / 'config' / 'coin_pricing.yaml'
+    try:
+        config_path.parent.mkdir(parents=True, exist_ok=True)
+        config_path.write_text(yaml.dump(config, default_flow_style=False, sort_keys=False))
+        return True
+    except Exception as e:
+        _log(f"Error saving pricing config: {e}")
+        return False
+
+
+# Global config - loaded at startup, can be modified at runtime
+PRICING_CONFIG = _load_pricing_config()
 
 
 def _try_load_dotenv() -> None:
@@ -391,10 +436,13 @@ def _tool_bullion_sort(args: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _tool_junk_silver_calculator(args: Dict[str, Any]) -> Dict[str, Any]:
-    """Calculate silver content and pricing for junk silver by face value."""
+    """Calculate silver content and pricing for junk silver by face value.
+
+    Now auto-fetches spot price if not provided and uses config multiplier.
+    """
     face_value = args.get("face_value")
     spot_price = args.get("spot_price")
-    multiplier = args.get("multiplier", 20)
+    multiplier = args.get("multiplier")
 
     if face_value is None:
         raise JsonRpcError(-32602, "Missing required argument: face_value")
@@ -408,16 +456,47 @@ def _tool_junk_silver_calculator(args: Dict[str, Any]) -> Dict[str, Any]:
         "silver_math": f"${fv} FV × 0.715 oz/$ = {round(silver_oz, 3)} oz"
     }
 
+    # Auto-fetch spot price if not provided
+    spot_source = None
+    spot_cached = False
+    spot_age_minutes = None
+
+    if spot_price is None:
+        try:
+            sys.path.insert(0, str(PROJECT_ROOT))
+            from scripts.utilities.spot_price_fetcher import get_spot_prices
+            prices = get_spot_prices()
+            if prices.get('silver'):
+                spot_price = prices['silver']
+                spot_source = prices.get('source', 'fetched')
+                spot_cached = prices.get('cached', False)
+                spot_age_minutes = prices.get('cache_age_minutes')
+        except Exception as e:
+            _log(f"Warning: Could not auto-fetch spot price: {e}")
+
+    # Use config multiplier if not provided
+    if multiplier is None:
+        multiplier = PRICING_CONFIG.get('defaults', {}).get('junk_silver_multiplier', 20)
+
     if spot_price:
         spot = float(spot_price)
         melt_value = silver_oz * spot
         result["spot_price"] = spot
         result["melt_value"] = round(melt_value, 2)
 
+        # Include spot source info if auto-fetched
+        if spot_source:
+            result["spot_source"] = spot_source
+            result["spot_cached"] = spot_cached
+            if spot_age_minutes is not None:
+                result["spot_age_minutes"] = spot_age_minutes
+
         mult = float(multiplier)
         result["multiplier"] = mult
         result["suggested_price"] = round(fv * mult, 2)
         result["premium_over_melt"] = round((fv * mult) - melt_value, 2)
+    else:
+        result["note"] = "Spot price not available. Provide spot_price for full calculation."
 
     return result
 
@@ -557,6 +636,116 @@ def _tool_bundle_recommendation(args: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _tool_get_spot_price(args: Dict[str, Any]) -> Dict[str, Any]:
+    """Fetch current silver and gold spot prices."""
+    force_refresh = args.get("force_refresh", False)
+
+    try:
+        sys.path.insert(0, str(PROJECT_ROOT))
+        from scripts.utilities.spot_price_fetcher import get_spot_prices
+        return get_spot_prices(force_refresh=force_refresh)
+    except ImportError as e:
+        raise JsonRpcError(-32000, f"Spot price fetcher not available: {e}")
+    except Exception as e:
+        raise JsonRpcError(-32000, f"Failed to fetch spot prices: {e}")
+
+
+def _tool_update_multiplier(args: Dict[str, Any]) -> Dict[str, Any]:
+    """Update the junk silver multiplier (persisted to config and database)."""
+    global PRICING_CONFIG
+
+    new_multiplier = args.get("multiplier")
+    reason = args.get("reason", "Manual adjustment")
+
+    if new_multiplier is None:
+        raise JsonRpcError(-32602, "Missing required argument: multiplier")
+
+    new_multiplier = float(new_multiplier)
+
+    # Validate bounds
+    floor = PRICING_CONFIG.get('market_conditions', {}).get('multiplier_floor', 18)
+    ceiling = PRICING_CONFIG.get('market_conditions', {}).get('multiplier_ceiling', 24)
+
+    if not (floor <= new_multiplier <= ceiling):
+        raise JsonRpcError(
+            -32602,
+            f"Multiplier must be between {floor} and {ceiling}. Got: {new_multiplier}"
+        )
+
+    old_multiplier = PRICING_CONFIG.get('defaults', {}).get('junk_silver_multiplier', 20)
+
+    # Update in-memory config
+    if 'defaults' not in PRICING_CONFIG:
+        PRICING_CONFIG['defaults'] = {}
+    PRICING_CONFIG['defaults']['junk_silver_multiplier'] = new_multiplier
+
+    # Save to config file
+    if not _save_pricing_config(PRICING_CONFIG):
+        raise JsonRpcError(-32000, "Failed to save config file")
+
+    # Log to database
+    try:
+        sys.path.insert(0, str(PROJECT_ROOT))
+        from scripts.automation.state_db import StateDatabase
+        db = StateDatabase()
+        db.init_schema()  # Ensure tables exist
+        db.save_multiplier(new_multiplier, reason)
+        db.close()
+    except Exception as e:
+        _log(f"Warning: Could not log multiplier to database: {e}")
+
+    return {
+        "success": True,
+        "old_multiplier": old_multiplier,
+        "new_multiplier": new_multiplier,
+        "reason": reason,
+        "config_saved": True
+    }
+
+
+def _tool_get_pricing_config(args: Dict[str, Any]) -> Dict[str, Any]:
+    """Get current pricing configuration."""
+    # Reload config to ensure we have latest
+    config = _load_pricing_config()
+
+    # Also get current multiplier from database if available
+    db_multiplier = None
+    try:
+        sys.path.insert(0, str(PROJECT_ROOT))
+        from scripts.automation.state_db import StateDatabase
+        db = StateDatabase()
+        db_multiplier = db.get_current_multiplier()
+        db.close()
+    except Exception:
+        pass
+
+    result = {
+        "config": config,
+        "current_multiplier": config.get('defaults', {}).get('junk_silver_multiplier', 20),
+    }
+
+    if db_multiplier is not None:
+        result["db_multiplier"] = db_multiplier
+
+    return result
+
+
+def _tool_get_multiplier_history(args: Dict[str, Any]) -> Dict[str, Any]:
+    """Get history of multiplier changes."""
+    limit = int(args.get("limit", 20))
+
+    try:
+        sys.path.insert(0, str(PROJECT_ROOT))
+        from scripts.automation.state_db import StateDatabase
+        db = StateDatabase()
+        db.init_schema()
+        history = db.get_multiplier_history(limit=limit)
+        db.close()
+        return {"history": history, "count": len(history)}
+    except Exception as e:
+        raise JsonRpcError(-32000, f"Failed to get multiplier history: {e}")
+
+
 TOOLS: Dict[str, Tuple[str, Any]] = {
     "coin_search": (
         "Semantic search over the rare coin knowledge base (Morgan/Peace dollars, junk silver, bullion, key dates, pricing, grading).",
@@ -579,7 +768,7 @@ TOOLS: Dict[str, Tuple[str, Any]] = {
         _tool_bullion_sort,
     ),
     "coin_junk_silver_calc": (
-        "Calculate silver content and pricing for junk silver by face value. Optionally include spot price for full pricing.",
+        "Calculate silver content and pricing for junk silver by face value. Auto-fetches spot price if not provided. Uses config multiplier by default.",
         _tool_junk_silver_calculator,
     ),
     "coin_listing_generator": (
@@ -589,6 +778,22 @@ TOOLS: Dict[str, Tuple[str, Any]] = {
     "coin_bundle_recommendation": (
         "Recommend product bundles based on available inventory (Morgan/Peace dollars, junk silver, Mexican silver).",
         _tool_bundle_recommendation,
+    ),
+    "coin_get_spot_price": (
+        "Fetch current silver and gold spot prices from web sources (APMEX, JM Bullion, Kitco). Cached for 15 minutes.",
+        _tool_get_spot_price,
+    ),
+    "coin_update_multiplier": (
+        "Update the junk silver multiplier used for pricing. Persists to config file and logs to database.",
+        _tool_update_multiplier,
+    ),
+    "coin_get_pricing_config": (
+        "Get current pricing configuration including multiplier, premiums, and market condition bounds.",
+        _tool_get_pricing_config,
+    ),
+    "coin_get_multiplier_history": (
+        "Get history of multiplier changes with timestamps and reasons.",
+        _tool_get_multiplier_history,
     ),
 }
 
@@ -703,12 +908,11 @@ def _tools_list() -> Dict[str, Any]:
                         },
                         "spot_price": {
                             "type": "number",
-                            "description": "Current silver spot price per oz (optional)"
+                            "description": "Silver spot price per oz (optional - auto-fetched if not provided)"
                         },
                         "multiplier": {
                             "type": "number",
-                            "default": 20,
-                            "description": "Market multiplier for pricing (default 20)"
+                            "description": "Market multiplier for pricing (optional - uses config value if not provided)"
                         },
                     },
                     "required": ["face_value"],
@@ -746,6 +950,57 @@ def _tools_list() -> Dict[str, Any]:
                         },
                     },
                     "required": ["inventory"],
+                },
+            },
+            {
+                "name": "coin_get_spot_price",
+                "description": TOOLS["coin_get_spot_price"][0],
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "force_refresh": {
+                            "type": "boolean",
+                            "default": False,
+                            "description": "Force fresh fetch, bypassing cache"
+                        },
+                    },
+                },
+            },
+            {
+                "name": "coin_update_multiplier",
+                "description": TOOLS["coin_update_multiplier"][0],
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "multiplier": {
+                            "type": "number",
+                            "description": "New multiplier value (must be between floor and ceiling from config)"
+                        },
+                        "reason": {
+                            "type": "string",
+                            "description": "Reason for the change (for audit trail)"
+                        },
+                    },
+                    "required": ["multiplier"],
+                },
+            },
+            {
+                "name": "coin_get_pricing_config",
+                "description": TOOLS["coin_get_pricing_config"][0],
+                "inputSchema": {"type": "object", "properties": {}},
+            },
+            {
+                "name": "coin_get_multiplier_history",
+                "description": TOOLS["coin_get_multiplier_history"][0],
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "limit": {
+                            "type": "integer",
+                            "default": 20,
+                            "description": "Maximum number of records to return"
+                        },
+                    },
                 },
             },
         ]

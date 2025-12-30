@@ -168,10 +168,35 @@ class StateDatabase:
             )
         """)
 
+        # Spot price cache - for storing fetched metal prices
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS spot_price_cache (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                metal TEXT NOT NULL,
+                price_usd REAL NOT NULL,
+                source TEXT NOT NULL,
+                fetched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+
+        # Multiplier history - track changes to pricing multiplier
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS multiplier_history (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                multiplier REAL NOT NULL,
+                changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                reason TEXT
+            )
+        """)
+
         # Create indexes for common queries
         cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_sessions_status
             ON sessions(generation_status)
+        """)
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_spot_metal_time
+            ON spot_price_cache(metal, fetched_at DESC)
         """)
         cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_sessions_youtube
@@ -674,6 +699,135 @@ class StateDatabase:
         """)
         row = cursor.fetchone()
         return dict(row) if row else None
+
+    # ==================== Spot Price Cache ====================
+
+    def save_spot_price(self, metal: str, price: float, source: str):
+        """Save a fetched spot price to cache.
+
+        Args:
+            metal: Metal type ('silver' or 'gold')
+            price: Price in USD per oz
+            source: Source of the price ('apmex', 'jmbullion', 'kitco')
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            INSERT INTO spot_price_cache (metal, price_usd, source)
+            VALUES (?, ?, ?)
+        """, (metal.lower(), price, source))
+        self.conn.commit()
+        logger.debug(f"Cached {metal} spot price: ${price} from {source}")
+
+    def get_latest_spot_price(self, metal: str) -> Optional[Dict[str, Any]]:
+        """Get the most recent cached spot price for a metal.
+
+        Args:
+            metal: Metal type ('silver' or 'gold')
+
+        Returns:
+            Dict with price_usd, source, fetched_at or None if no cache
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            SELECT price_usd, source, fetched_at
+            FROM spot_price_cache
+            WHERE metal = ?
+            ORDER BY fetched_at DESC
+            LIMIT 1
+        """, (metal.lower(),))
+        row = cursor.fetchone()
+        return dict(row) if row else None
+
+    def get_spot_price_history(
+        self,
+        metal: str,
+        limit: int = 100
+    ) -> List[Dict[str, Any]]:
+        """Get historical spot prices for a metal.
+
+        Args:
+            metal: Metal type ('silver' or 'gold')
+            limit: Maximum number of records to return
+
+        Returns:
+            List of price records (newest first)
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            SELECT price_usd, source, fetched_at
+            FROM spot_price_cache
+            WHERE metal = ?
+            ORDER BY fetched_at DESC
+            LIMIT ?
+        """, (metal.lower(), limit))
+        return [dict(row) for row in cursor.fetchall()]
+
+    def cleanup_old_spot_prices(self, keep_days: int = 30):
+        """Remove spot price records older than specified days.
+
+        Args:
+            keep_days: Number of days of history to keep
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            DELETE FROM spot_price_cache
+            WHERE fetched_at < datetime('now', ?)
+        """, (f'-{keep_days} days',))
+        deleted = cursor.rowcount
+        self.conn.commit()
+        if deleted > 0:
+            logger.info(f"Cleaned up {deleted} old spot price records")
+
+    # ==================== Multiplier History ====================
+
+    def save_multiplier(self, multiplier: float, reason: Optional[str] = None):
+        """Save a multiplier change to history.
+
+        Args:
+            multiplier: The new multiplier value
+            reason: Optional reason for the change
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            INSERT INTO multiplier_history (multiplier, reason)
+            VALUES (?, ?)
+        """, (multiplier, reason))
+        self.conn.commit()
+        logger.info(f"Saved multiplier change: {multiplier} (reason: {reason})")
+
+    def get_current_multiplier(self) -> Optional[float]:
+        """Get the most recent multiplier value.
+
+        Returns:
+            The current multiplier or None if never set
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            SELECT multiplier
+            FROM multiplier_history
+            ORDER BY changed_at DESC
+            LIMIT 1
+        """)
+        row = cursor.fetchone()
+        return row['multiplier'] if row else None
+
+    def get_multiplier_history(self, limit: int = 50) -> List[Dict[str, Any]]:
+        """Get multiplier change history.
+
+        Args:
+            limit: Maximum number of records to return
+
+        Returns:
+            List of multiplier records (newest first)
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            SELECT multiplier, changed_at, reason
+            FROM multiplier_history
+            ORDER BY changed_at DESC
+            LIMIT ?
+        """, (limit,))
+        return [dict(row) for row in cursor.fetchall()]
 
     # ==================== Utility Methods ====================
 
