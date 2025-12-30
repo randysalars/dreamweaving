@@ -33,7 +33,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 This project is deployed via **Coolify** (self-hosted), with a **Postgres** database.
 
-High-level checklist:
+**Full Runbook:** See [docs/COOLIFY_RUNBOOK.md](../docs/COOLIFY_RUNBOOK.md) for complete deployment steps, environment variables, and troubleshooting.
+
+### Quick Checklist
 
 1. Create/attach a **Postgres** service in Coolify.
 2. Configure environment variables in Coolify (at minimum `DATABASE_URL`, plus any payment/webhook secrets used by `/api/*` routes).
