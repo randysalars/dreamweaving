@@ -4,6 +4,7 @@ import logging
 import threading
 from typing import List, Optional
 from openai import OpenAI, OpenAIError
+import requests
 
 logger = logging.getLogger(__name__)
 
@@ -46,19 +47,33 @@ class RateLimiter:
 class CodexClient:
     """
     Interface for the Content Generation AI.
-    "Codex" here refers to the LLM backend (GPT-4/o1 via OpenAI API).
+    Supports OpenAI API and local Ollama backends.
     """
 
     def __init__(
         self,
         api_key: str = None,
-        model: str = "gpt-4",
+        model: str = None,
         base_url: str = None,
         requests_per_minute: int = 20
     ):
-        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
         self.base_url = base_url or os.getenv("OPENAI_BASE_URL")
-        self.model = model
+        self.is_ollama = self._detect_ollama(self.base_url)
+
+        # Auto-select model based on backend
+        if model:
+            self.model = model
+        elif self.is_ollama:
+            self.model = os.getenv("OLLAMA_MODEL", "llama3.2")
+        else:
+            self.model = os.getenv("OPENAI_MODEL", "gpt-4")
+
+        # Handle API key - Ollama doesn't need a real key
+        if self.is_ollama:
+            self.api_key = api_key or os.getenv("OPENAI_API_KEY") or "ollama"
+            logger.info(f"Using Ollama backend at {self.base_url} with model '{self.model}'")
+        else:
+            self.api_key = api_key or os.getenv("OPENAI_API_KEY")
 
         # Rate limiting
         self.rate_limiter = RateLimiter(requests_per_minute)
@@ -67,8 +82,71 @@ class CodexClient:
         if not self.api_key and not self.base_url:
             logger.warning("No API Key or Base URL provided. CodexClient might fail.")
 
+        # Validate Ollama connection before initializing client
+        if self.is_ollama:
+            self._validate_ollama_connection()
+
         # Initialize client with optional base_url for flexible backend support
         self.client = OpenAI(api_key=self.api_key, base_url=self.base_url) if (self.api_key or self.base_url) else None
+
+    def _detect_ollama(self, base_url: str) -> bool:
+        """Check if base_url points to Ollama."""
+        url = base_url or ""
+        return "ollama" in url.lower() or ":11434" in url
+
+    def _validate_ollama_connection(self):
+        """Verify Ollama server is running and model is available."""
+        try:
+            # Check server is up - strip /v1 suffix for API endpoint
+            api_base = self.base_url.rstrip("/")
+            if api_base.endswith("/v1"):
+                api_base = api_base[:-3]
+
+            response = requests.get(f"{api_base}/api/tags", timeout=5)
+            response.raise_for_status()
+
+            # Check model is available - Ollama requires FULL model name including tag
+            models_data = response.json().get("models", [])
+            available_models = [m.get("name", "") for m in models_data]
+
+            # Try exact match first
+            if self.model in available_models:
+                logger.info(f"Ollama validation passed: model '{self.model}' is available")
+                return
+
+            # Try with :latest suffix
+            if f"{self.model}:latest" in available_models:
+                self.model = f"{self.model}:latest"
+                logger.info(f"Ollama validation passed: resolved model to '{self.model}'")
+                return
+
+            # Try finding any model that starts with the base name
+            model_base = self.model.split(":")[0]
+            matching_models = [m for m in available_models if m.startswith(f"{model_base}:")]
+
+            if matching_models:
+                # Use the first matching model
+                self.model = matching_models[0]
+                logger.info(f"Ollama validation passed: resolved model to '{self.model}'")
+                return
+
+            # No match found
+            available_str = ", ".join(available_models[:8]) if available_models else "none"
+            raise RuntimeError(
+                f"Model '{self.model}' not found in Ollama. "
+                f"Available: {available_str}. Run: ollama pull {self.model}"
+            )
+
+        except requests.exceptions.ConnectionError:
+            raise RuntimeError(
+                "Cannot connect to Ollama at {}. "
+                "Ensure it's running: ollama serve".format(self.base_url)
+            )
+        except requests.exceptions.Timeout:
+            raise RuntimeError(
+                "Ollama server at {} is not responding. "
+                "Check if it's running: ollama serve".format(self.base_url)
+            )
 
     def generate_article_content(self, prompt: str, system_instruction: str = None) -> str:
         """

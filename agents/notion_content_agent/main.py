@@ -370,10 +370,11 @@ async def run_async(args: argparse.Namespace):
 
     try:
         # Initialize components
+        # Let CodexClient auto-detect the model based on backend (Ollama vs OpenAI)
         codex = CodexClient(
-            Config.OPENAI_API_KEY,
-            Config.OPENAI_MODEL,
-            Config.OPENAI_BASE_URL
+            api_key=Config.OPENAI_API_KEY,
+            base_url=Config.OPENAI_BASE_URL
+            # model is auto-selected: OLLAMA_MODEL for Ollama, OPENAI_MODEL for OpenAI
         )
         monetization = MonetizationEngine(
             os.path.join(os.path.dirname(__file__), "content_templates")

@@ -22,8 +22,18 @@ class Config:
     # AI Configuration
     # Defaults to using OpenAI API directly as the most stable "Codex" interface
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-    OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL") # Support for custom endpoints (e.g. Ollama, updates)
+    OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL")  # Support for custom endpoints (e.g. Ollama)
     OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4")
+
+    # Ollama Configuration (auto-detected when OPENAI_BASE_URL points to Ollama)
+    OLLAMA_BASE_URL = "http://localhost:11434/v1"
+    OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
+
+    @classmethod
+    def is_ollama_backend(cls) -> bool:
+        """Detect if we're using Ollama based on base URL."""
+        base_url = cls.OPENAI_BASE_URL or ""
+        return "ollama" in base_url.lower() or ":11434" in base_url
     
     # Feature Flags
     ENABLE_MONETIZATION = os.getenv("ENABLE_MONETIZATION", "true").lower() == "true"

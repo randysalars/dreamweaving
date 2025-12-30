@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2025-12-29'
-  total_sessions_tracked: 27
+  updated: '2025-12-30'
+  total_sessions_tracked: 30
   unique_archetypes_used: 15
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -480,6 +480,58 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: Lady Gaga''s Extravagant Show Dreamweaving'
+- session_id: galadriels-gaze-exploring-inner-light-and-shadow-t
+  date: '2025-12-30'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Galadriel''s Gaze: Exploring Inner Light and
+    Shadow through Elven Dreamweaving'
+- session_id: double-helix-empathy-ladder-dreamweaving
+  date: '2025-12-30'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.shekinah_restorer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Double-Helix Empathy Ladder Dreamweaving'
+- session_id: sun-dance-with-amaterasu-dreamweaving-0106
+  date: '2025-12-30'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Sun Dance With Amaterasu Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 9
@@ -526,7 +578,7 @@ listener_relationships:
     last_session_date: '2025-12-27'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 18
+    total_encounters: 20
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -566,8 +618,12 @@ listener_relationships:
       type: first_encounter
     - session: lady-gagas-extravagant-show-dreamweaving
       type: first_encounter
-    last_session: lady-gagas-extravagant-show-dreamweaving
-    last_session_date: '2025-12-29'
+    - session: galadriels-gaze-exploring-inner-light-and-shadow-t
+      type: first_encounter
+    - session: sun-dance-with-amaterasu-dreamweaving-0106
+      type: first_encounter
+    last_session: sun-dance-with-amaterasu-dreamweaving-0106
+    last_session_date: '2025-12-30'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 2
@@ -606,7 +662,7 @@ listener_relationships:
     last_session_date: '2025-12-10'
     relationship_level: 1
   divine_feminine.rose_mother:
-    total_encounters: 11
+    total_encounters: 12
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -632,11 +688,13 @@ listener_relationships:
       type: first_encounter
     - session: lady-gagas-extravagant-show-dreamweaving
       type: first_encounter
-    last_session: lady-gagas-extravagant-show-dreamweaving
-    last_session_date: '2025-12-29'
+    - session: double-helix-empathy-ladder-dreamweaving
+      type: first_encounter
+    last_session: double-helix-empathy-ladder-dreamweaving
+    last_session_date: '2025-12-30'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 9
+    total_encounters: 11
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -658,8 +716,12 @@ listener_relationships:
       type: first_encounter
     - session: the-elysian-fields-of-emotional-harmony-dreamweavi
       type: first_encounter
-    last_session: the-elysian-fields-of-emotional-harmony-dreamweavi
-    last_session_date: '2025-12-29'
+    - session: galadriels-gaze-exploring-inner-light-and-shadow-t
+      type: first_encounter
+    - session: sun-dance-with-amaterasu-dreamweaving-0106
+      type: first_encounter
+    last_session: sun-dance-with-amaterasu-dreamweaving-0106
+    last_session_date: '2025-12-30'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 4
@@ -696,7 +758,7 @@ listener_relationships:
     last_session_date: '2025-12-29'
     relationship_level: 3
   emotional_heart.heart_flame_tender:
-    total_encounters: 4
+    total_encounters: 7
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -708,9 +770,15 @@ listener_relationships:
       type: first_encounter
     - session: lady-gagas-extravagant-show-dreamweaving
       type: first_encounter
-    last_session: lady-gagas-extravagant-show-dreamweaving
-    last_session_date: '2025-12-29'
-    relationship_level: 3
+    - session: galadriels-gaze-exploring-inner-light-and-shadow-t
+      type: first_encounter
+    - session: double-helix-empathy-ladder-dreamweaving
+      type: first_encounter
+    - session: sun-dance-with-amaterasu-dreamweaving-0106
+      type: first_encounter
+    last_session: sun-dance-with-amaterasu-dreamweaving-0106
+    last_session_date: '2025-12-30'
+    relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 1
     first_session: constellation-journey
@@ -736,7 +804,7 @@ listener_relationships:
     last_session_date: '2025-12-26'
     relationship_level: 2
   divine_light_healing.shekinah_restorer:
-    total_encounters: 4
+    total_encounters: 5
     first_session: the-electric-bazaar-dreamweaving
     first_session_date: '2025-12-24'
     encounter_history:
@@ -748,8 +816,10 @@ listener_relationships:
       type: first_encounter
     - session: the-elysian-fields-of-emotional-harmony-dreamweavi
       type: first_encounter
-    last_session: the-elysian-fields-of-emotional-harmony-dreamweavi
-    last_session_date: '2025-12-29'
+    - session: double-helix-empathy-ladder-dreamweaving
+      type: first_encounter
+    last_session: double-helix-empathy-ladder-dreamweaving
+    last_session_date: '2025-12-30'
     relationship_level: 3
   emotional_heart.joy_child:
     total_encounters: 2
@@ -788,41 +858,41 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - the-ice-lake-of-reflection-dreamweaving
-  - the-lighthouse-of-commitment-dreamweaving
-  - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
+  - galadriels-gaze-exploring-inner-light-and-shadow-t
+  - double-helix-empathy-ladder-dreamweaving
+  - sun-dance-with-amaterasu-dreamweaving-0106
   archetype_cooldowns:
-    divine_light_healing.great_physician: 2
-    transformation_alchemy.phoenix_renewal: 6
+    divine_light_healing.great_physician: 5
+    transformation_alchemy.phoenix_renewal: 9
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 19
-    divine_masculine.guardian_father: 5
-    dreamweaver_meta.dream_architect: 23
-    divine_feminine.rose_mother: 0
-    shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 2
-    divine_feminine.sophia_wisdom: 2
+    warrior_power.archangel_michael: 22
+    divine_masculine.guardian_father: 8
+    dreamweaver_meta.dream_architect: 26
+    divine_feminine.rose_mother: 1
+    shamanic_earth.world_tree_guardian: 0
+    oracle_seer.oracle_of_light: 5
+    divine_feminine.sophia_wisdom: 5
     emotional_heart.heart_flame_tender: 0
-    warrior_power.solar_king: 19
-    divine_masculine.logos_bearer: 9
+    warrior_power.solar_king: 22
+    divine_masculine.logos_bearer: 12
     divine_light_healing.shekinah_restorer: 1
-    emotional_heart.joy_child: 9
+    emotional_heart.joy_child: 12
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - divine_feminine
   - emotional_heart
+  - shamanic_earth
   family_usage_counts:
-    divine_light_healing: 31
+    divine_light_healing: 34
     transformation_alchemy: 5
     warrior_power: 3
     divine_masculine: 6
     dreamweaver_meta: 1
-    divine_feminine: 16
-    shamanic_earth: 9
+    divine_feminine: 17
+    shamanic_earth: 11
     oracle_seer: 4
-    emotional_heart: 6
+    emotional_heart: 9
 effective_pairings: []

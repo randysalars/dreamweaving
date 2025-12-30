@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - truth-concepts-dreamweaving
-  - gandalfs-wisdom-journey-pathworking-0741
-  - venus-ascent-rising-as-a-symbol-of-elegance-and-be
   - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
@@ -34,8 +31,11 @@ lessons:
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
-  applied_count: 22
-  last_applied: '2025-12-29'
+  - galadriels-gaze-exploring-inner-light-and-shadow-t
+  - double-helix-empathy-ladder-dreamweaving
+  - sun-dance-with-amaterasu-dreamweaving-0106
+  applied_count: 25
+  last_applied: '2025-12-30'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - truth-concepts-dreamweaving
-  - gandalfs-wisdom-journey-pathworking-0741
-  - venus-ascent-rising-as-a-symbol-of-elegance-and-be
   - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
@@ -72,8 +69,11 @@ lessons:
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
-  applied_count: 22
-  last_applied: '2025-12-29'
+  - galadriels-gaze-exploring-inner-light-and-shadow-t
+  - double-helix-empathy-ladder-dreamweaving
+  - sun-dance-with-amaterasu-dreamweaving-0106
+  applied_count: 25
+  last_applied: '2025-12-30'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - truth-concepts-dreamweaving
-  - gandalfs-wisdom-journey-pathworking-0741
-  - venus-ascent-rising-as-a-symbol-of-elegance-and-be
   - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
@@ -109,8 +106,11 @@ lessons:
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
-  applied_count: 22
-  last_applied: '2025-12-29'
+  - galadriels-gaze-exploring-inner-light-and-shadow-t
+  - double-helix-empathy-ladder-dreamweaving
+  - sun-dance-with-amaterasu-dreamweaving-0106
+  applied_count: 25
+  last_applied: '2025-12-30'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - truth-concepts-dreamweaving
-  - gandalfs-wisdom-journey-pathworking-0741
-  - venus-ascent-rising-as-a-symbol-of-elegance-and-be
   - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
@@ -147,8 +144,11 @@ lessons:
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
-  applied_count: 22
-  last_applied: '2025-12-29'
+  - galadriels-gaze-exploring-inner-light-and-shadow-t
+  - double-helix-empathy-ladder-dreamweaving
+  - sun-dance-with-amaterasu-dreamweaving-0106
+  applied_count: 25
+  last_applied: '2025-12-30'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - truth-concepts-dreamweaving
-  - gandalfs-wisdom-journey-pathworking-0741
-  - venus-ascent-rising-as-a-symbol-of-elegance-and-be
   - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
@@ -183,8 +180,11 @@ lessons:
   - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
-  applied_count: 22
-  last_applied: '2025-12-29'
+  - galadriels-gaze-exploring-inner-light-and-shadow-t
+  - double-helix-empathy-ladder-dreamweaving
+  - sun-dance-with-amaterasu-dreamweaving-0106
+  applied_count: 25
+  last_applied: '2025-12-30'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
