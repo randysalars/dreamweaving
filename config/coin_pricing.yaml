@@ -1,118 +1,56 @@
-# =============================================================================
-# COIN PRICING CONFIGURATION
-# =============================================================================
-#
-# This file controls pricing parameters for the coin store.
-# Edit this file to adjust multipliers, premiums, and spot fetching settings.
-#
-# The MCP tool `coin_update_multiplier` can also adjust the multiplier at runtime.
-# =============================================================================
-
-# -----------------------------------------------------------------------------
-# DEFAULT PRICING PARAMETERS
-# -----------------------------------------------------------------------------
 defaults:
-  # Junk silver multiplier: Face Value × this = retail price
-  # Example: $10 FV × 20 = $200 retail price
-  junk_silver_multiplier: 20
-
-  # Fixed premiums for bullion items (added to spot × silver content)
-  morgan_premium_usd: 8.00
-  peace_premium_usd: 7.00
-  libertad_premium_usd: 6.00
-  silver_eagle_premium_usd: 5.00
-  generic_round_premium_usd: 2.00
-
-# -----------------------------------------------------------------------------
-# MARKET CONDITION BOUNDS
-# -----------------------------------------------------------------------------
-# These define the allowed range for the multiplier.
-# The MCP tool will reject values outside this range.
+  junk_silver_multiplier: 20.0
+  morgan_premium_usd: 8.0
+  peace_premium_usd: 7.0
+  libertad_premium_usd: 6.0
+  silver_eagle_premium_usd: 5.0
+  generic_round_premium_usd: 2.0
 market_conditions:
-  multiplier_floor: 18      # Minimum allowed multiplier
-  multiplier_ceiling: 24    # Maximum allowed multiplier
-
-  # Notes on multiplier selection:
-  # - 18x: Bear market, high inventory, need to move fast
-  # - 20x: Normal market conditions (default)
-  # - 22x: Bull market, low inventory, premium acceptable
-  # - 24x: Supply shortage, exceptional demand
-
-# -----------------------------------------------------------------------------
-# SPOT PRICE FETCHING
-# -----------------------------------------------------------------------------
+  multiplier_floor: 18
+  multiplier_ceiling: 24
 spot_fetching:
-  # Primary source for scraping (apmex, jmbullion, kitco)
-  primary_source: "apmex"
-
-  # Fallback if primary fails
+  primary_source: apmex
   fallback_sources:
-    - "jmbullion"
-    - "kitco"
-
-  # Cache duration in minutes (avoid hammering sites)
+  - jmbullion
+  - kitco
   cache_minutes: 15
-
-  # Request timeout in seconds
   timeout_seconds: 10
-
-  # User agent for requests
-  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-
-# -----------------------------------------------------------------------------
-# BUNDLE DEFINITIONS
-# -----------------------------------------------------------------------------
-# Pre-configured product bundles for recommendations
+  user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 bundles:
   starter_silver_stack:
-    name: "Starter Silver Stack"
+    name: Starter Silver Stack
     contents:
       morgan_dollars: 1
       junk_silver_fv: 5
-    target_buyer: "first-time buyers"
-
+    target_buyer: first-time buyers
   preparedness_stack:
-    name: "Preparedness Stack"
+    name: Preparedness Stack
     contents:
       peace_dollars: 2
       junk_silver_fv: 10
-    target_buyer: "preppers"
-
+    target_buyer: preppers
   sound_money_bundle:
-    name: "Sound Money Bundle"
+    name: Sound Money Bundle
     contents:
       morgan_dollars: 1
       peace_dollars: 1
       mexican_silver: 1
-    target_buyer: "long-term thinkers"
-
+    target_buyer: long-term thinkers
   junk_silver_roll_pack:
-    name: "Junk Silver Roll Pack"
+    name: Junk Silver Roll Pack
     contents:
       junk_silver_fv: 20
-    target_buyer: "serious stackers"
-
-# -----------------------------------------------------------------------------
-# SILVER MATH CONSTANTS
-# -----------------------------------------------------------------------------
-# These are physical constants - don't change unless you know what you're doing
+    target_buyer: serious stackers
 silver_math:
-  oz_per_dollar_fv: 0.715     # Silver oz per $1 face value (90% coins)
-  dime_oz: 0.0715             # Silver oz per dime
-  quarter_oz: 0.17875         # Silver oz per quarter
-  half_dollar_oz: 0.3575      # Silver oz per half dollar
-  silver_dollar_oz: 0.7734    # Silver oz per Morgan/Peace dollar
-
-# -----------------------------------------------------------------------------
-# PRICING DISPLAY FORMAT
-# -----------------------------------------------------------------------------
+  oz_per_dollar_fv: 0.715
+  dime_oz: 0.0715
+  quarter_oz: 0.17875
+  half_dollar_oz: 0.3575
+  silver_dollar_oz: 0.7734
 display:
-  # How to show prices in listings
   show_spot_price: true
   show_silver_content: true
   show_melt_value: true
   show_premium_over_melt: true
-
-  # Currency formatting
-  currency_symbol: "$"
+  currency_symbol: $
   decimal_places: 2

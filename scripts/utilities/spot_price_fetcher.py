@@ -75,41 +75,40 @@ def _parse_price(text: str) -> Optional[float]:
     return None
 
 
-def _fetch_metals_dev() -> Optional[Dict[str, float]]:
+def _fetch_goldprice_api() -> Optional[Dict[str, float]]:
     """
-    Fetch spot prices from metals.dev API (free, no key required for basic use).
+    Fetch spot prices from goldprice.org data API (free, no key required).
 
-    This is the primary source - it's a reliable API that provides
+    This is the primary source - a reliable JSON API that provides
     real-time precious metals prices.
+
+    Returns prices in USD per troy ounce.
     """
-    url = "https://api.metals.dev/v1/latest"
+    url = "https://data-asg.goldprice.org/dbXRates/USD"
     headers = {'User-Agent': DEFAULT_USER_AGENT}
 
     try:
-        logger.debug(f"Fetching spot prices from metals.dev: {url}")
-        # metals.dev provides free access for basic queries
-        resp = requests.get(
-            url,
-            params={'api_key': 'demo', 'currency': 'USD', 'unit': 'toz'},
-            headers=headers,
-            timeout=REQUEST_TIMEOUT
-        )
+        logger.debug(f"Fetching spot prices from goldprice.org API: {url}")
+        resp = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
 
         if resp.status_code == 200:
             data = resp.json()
-            metals = data.get('metals', {})
-            silver_price = metals.get('silver')
-            gold_price = metals.get('gold')
+            items = data.get('items', [])
+            if items:
+                item = items[0]
+                # xauPrice = gold price, xagPrice = silver price
+                gold_price = item.get('xauPrice')
+                silver_price = item.get('xagPrice')
 
-            if silver_price and gold_price:
-                logger.info(f"metals.dev spot prices: Silver=${silver_price}, Gold=${gold_price}")
-                return {'silver': float(silver_price), 'gold': float(gold_price)}
+                if silver_price and gold_price:
+                    logger.info(f"goldprice.org API: Silver=${silver_price:.2f}, Gold=${gold_price:.2f}")
+                    return {'silver': float(silver_price), 'gold': float(gold_price)}
 
-        logger.warning(f"metals.dev: Unexpected response {resp.status_code}")
+        logger.warning(f"goldprice.org API: Unexpected response {resp.status_code}")
         return None
 
     except Exception as e:
-        logger.error(f"metals.dev fetch failed: {e}")
+        logger.error(f"goldprice.org API fetch failed: {e}")
         return None
 
 
@@ -434,22 +433,22 @@ def get_spot_prices(force_refresh: bool = False) -> Dict[str, Any]:
     result = None
     source = None
 
-    # Try metals.dev API first (most reliable)
-    result = _fetch_metals_dev()
+    # Try goldprice.org API first (most reliable - direct JSON endpoint)
+    result = _fetch_goldprice_api()
     if result and result.get('silver'):
-        source = 'metals.dev'
+        source = 'goldprice.org'
 
-    # Fallback to goldprice.org
-    if not result or not result.get('silver'):
-        result = _scrape_goldprice_org()
-        if result and result.get('silver'):
-            source = 'goldprice.org'
-
-    # Fallback to APMEX
+    # Fallback to APMEX (may be blocked)
     if not result or not result.get('silver'):
         result = _scrape_apmex()
         if result and result.get('silver'):
             source = 'apmex'
+
+    # Fallback to JM Bullion
+    if not result or not result.get('silver'):
+        result = _scrape_jmbullion()
+        if result and result.get('silver'):
+            source = 'jmbullion'
 
     # Fallback to Kitco
     if not result or not result.get('silver'):
@@ -512,7 +511,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Fetch live spot prices for silver and gold')
     parser.add_argument('--force', '-f', action='store_true', help='Force fresh fetch (bypass cache)')
     parser.add_argument('--debug', '-d', action='store_true', help='Enable debug logging')
-    parser.add_argument('--source', '-s', choices=['metals.dev', 'goldprice', 'apmex', 'jmbullion', 'kitco'],
+    parser.add_argument('--source', '-s', choices=['goldprice-api', 'apmex', 'jmbullion', 'kitco'],
                        help='Test specific source only')
 
     args = parser.parse_args()
@@ -526,7 +525,9 @@ if __name__ == '__main__':
     if args.source:
         # Test specific source
         print(f"Testing {args.source} only...\n")
-        if args.source == 'apmex':
+        if args.source == 'goldprice-api':
+            result = _fetch_goldprice_api()
+        elif args.source == 'apmex':
             result = _scrape_apmex()
         elif args.source == 'jmbullion':
             result = _scrape_jmbullion()
