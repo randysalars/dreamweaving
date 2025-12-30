@@ -71,8 +71,7 @@ class ContentProcessor:
 
         if not os.path.exists(parent_page_path):
             parent_title = self._humanize_path_segment(parts[-2])
-            default_parent = f"""import React from "react";
-import Link from "next/link";
+            default_parent = f"""import Link from "next/link";
 import {{ Card, CardDescription, CardFooter, CardHeader, CardTitle }} from "@/components/ui/card";
 import {{ Button }} from "@/components/ui/button";
 import {{ ArrowRight }} from "lucide-react";
@@ -412,8 +411,7 @@ export default function HubPage() {{
                 .replace('}', '\\}')    # Escape closing braces
             )
 
-            ts_content = f"""import React from "react";
-import ReactMarkdown from "react-markdown";
+            ts_content = f"""import ReactMarkdown from "react-markdown";
 import {{ Card, CardContent }} from "@/components/ui/card";
 import {{ Button }} from "@/components/ui/button";
 import {{ ArrowLeft }} from "lucide-react";
