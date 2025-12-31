@@ -1,6 +1,27 @@
 # Dreamweaving Project Configuration for Serena
 # Sacred Digital Dreamweaver - Hypnotic audio/video session production workflow
 
+# ==============================================================================
+# LANGUAGE SERVER PREREQUISITES
+# ==============================================================================
+# Serena's semantic tools (find_symbol, replace_symbol_body, etc.) require
+# language servers to be installed BEFORE starting the MCP server.
+#
+# Required installations (run once):
+#   pipx install python-lsp-server          # For Python
+#   npm install --prefix ~/.local bash-language-server yaml-language-server
+#   ln -sf ~/.local/node_modules/.bin/bash-language-server ~/.local/bin/
+#   ln -sf ~/.local/node_modules/.bin/yaml-language-server ~/.local/bin/
+#
+# Verify with:
+#   which pylsp bash-language-server yaml-language-server
+#
+# If you see "language server manager is not initialized":
+#   1. Install missing language servers (above)
+#   2. Restart VS Code to restart Serena MCP servers
+#   3. Or manually restart Serena processes
+# ==============================================================================
+
 # Languages for which language servers are started
 # Python for the audio/video scripts, bash for shell scripts, yaml for manifests
 languages: ["python", "bash", "yaml"]

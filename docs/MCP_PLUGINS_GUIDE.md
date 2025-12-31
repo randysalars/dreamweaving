@@ -467,6 +467,33 @@ npx claude-plugins skills install @mrgoonie/claudekit-skills/media-processing --
 3. Clear conversation history with `/clear`
 4. Use subagents for isolated tasks
 
+### Serena "Language Server Manager Not Initialized"
+
+This error occurs when Serena's semantic code tools (`find_symbol`, `replace_symbol_body`, etc.) are used but the required language servers are not installed.
+
+**Required Language Servers:**
+
+```bash
+# Install Python LSP
+pipx install python-lsp-server
+
+# Install Bash and YAML LSPs
+npm install --prefix ~/.local bash-language-server yaml-language-server
+ln -sf ~/.local/node_modules/.bin/bash-language-server ~/.local/bin/
+ln -sf ~/.local/node_modules/.bin/yaml-language-server ~/.local/bin/
+```
+
+**Verify installation:**
+```bash
+which pylsp bash-language-server yaml-language-server
+```
+
+**After installing:**
+1. Restart VS Code (this restarts the Serena MCP server)
+2. Or manually kill and restart Serena processes
+
+**Note:** Memory operations (`read_memory`, `write_memory`, `list_memories`) work without language servers - only semantic code tools require them.
+
 ---
 
 ## 8. Notion MCP Integration (Knowledge Base RAG)

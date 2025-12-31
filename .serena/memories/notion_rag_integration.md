@@ -1,3 +1,58 @@
+# CLAUDE: How to Read Notion Pages
+
+When the user asks you to "read", "pull", "fetch", or "check" a Notion page, follow this protocol:
+
+## Quick Decision Tree
+
+```
+User wants Notion content
+    │
+    ├─► Conceptual/semantic search? (e.g., "find shadow healing content")
+    │   └─► python3 -m scripts.ai.notion_embeddings_pipeline --search "query"
+    │
+    ├─► Specific page by exact title?
+    │   └─► python3 -m scripts.ai.notion_knowledge_retriever --page "Title"
+    │
+    ├─► Search by keyword?
+    │   └─► python3 -m scripts.ai.notion_knowledge_retriever --search "keyword"
+    │
+    ├─► Database query (Archetypes, Realms, etc.)?
+    │   └─► python3 -m scripts.ai.notion_knowledge_retriever --db <dbname>
+    │
+    └─► Need fresh data (re-sync from Notion)?
+        └─► python3 -m scripts.ai.notion_knowledge_retriever --export knowledge/notion_export/
+            python3 -m scripts.ai.notion_embeddings_pipeline --index
+```
+
+## Commands Reference
+
+| Task | Command |
+|------|---------|
+| Semantic search | `python3 -m scripts.ai.notion_embeddings_pipeline --search "query"` |
+| Get page by title | `python3 -m scripts.ai.notion_knowledge_retriever --page "Title"` |
+| Title keyword search | `python3 -m scripts.ai.notion_knowledge_retriever --search "keyword"` |
+| Query database | `python3 -m scripts.ai.notion_knowledge_retriever --db archetypes` |
+| Check index stats | `python3 -m scripts.ai.notion_embeddings_pipeline --stats` |
+| Full export + reindex | `--export` then `--index` (see above) |
+
+## Where Content Lives
+
+| Content Type | Location |
+|--------------|----------|
+| Exported markdown | `knowledge/notion_export/` |
+| Vector index | `knowledge/vector_db/` |
+| Index stats | `knowledge/vector_db/index_metadata.json` |
+| Config | `config/notion_config.yaml` |
+
+## Important Notes
+
+1. **Semantic search is preferred** - It's fast, works offline, and finds conceptually related content
+2. **Index has 197K+ chunks** - Comprehensive coverage of the entire workspace
+3. **Title search is limited** - Notion API only searches titles, not page content (use semantic for full-text)
+4. **Re-sync rarely needed** - Index is auto-synced; only force sync if you know content changed recently
+
+---
+
 # Notion RAG Integration for Dreamweaving
 
 ## Overview

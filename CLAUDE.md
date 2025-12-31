@@ -1032,6 +1032,26 @@ Claude should read these memories for detailed information:
 
 ---
 
+# Reading Notion Pages (Quick Reference)
+
+When user asks to read/pull/fetch Notion content:
+
+| Task | Command |
+|------|---------|
+| **Semantic search** | `python3 -m scripts.ai.notion_embeddings_pipeline --search "query"` |
+| **Get specific page** | `python3 -m scripts.ai.notion_knowledge_retriever --page "Title"` |
+| **Keyword search** | `python3 -m scripts.ai.notion_knowledge_retriever --search "keyword"` |
+| **Query database** | `python3 -m scripts.ai.notion_knowledge_retriever --db archetypes` |
+| **Check stats** | `python3 -m scripts.ai.notion_embeddings_pipeline --stats` |
+
+**Prefer semantic search** - It searches full content, not just titles.
+
+**Exported content:** `knowledge/notion_export/`
+
+**Serena Memory:** `notion_rag_integration` has full documentation.
+
+---
+
 # DVE (Deep Visualization Enhancement) Quick Reference
 
 The DVE system provides modular enhancement techniques for creating deeper visualization experiences. Use these modules to enhance script quality based on session depth.
