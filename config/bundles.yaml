@@ -1,0 +1,316 @@
+# =============================================================================
+# BUNDLES CONFIGURATION
+# Fixed-price bundles for digital products and dreamweaving sessions
+# =============================================================================
+#
+# Bundles use FIXED PRICING (not love-offering) as per user decision.
+# This provides clear value propositions for curated collections.
+#
+# Bundle Types:
+# - category_bundle: All products in a category
+# - curated_bundle: Hand-picked selection
+# - complete_library: All-access passes
+# - seasonal_bundle: Limited-time offerings
+# =============================================================================
+
+bundles:
+  # ---------------------------------------------------------------------------
+  # Dreamweaving Session Bundles
+  # ---------------------------------------------------------------------------
+
+  dreamweaving_starter:
+    sku: "bundle-dw-starter"
+    name: "Dreamweaving Starter Pack"
+    description: "Perfect introduction to Sacred Digital Dreamweaver with 5 foundational sessions"
+    type: curated_bundle
+    price: 44.00
+    original_value: 75.00  # Sum of individual session suggested prices
+    savings_display: "Save 41%"
+    includes:
+      - dw-affirmations-001
+      - dw-daily-joy-activation-001
+      - dw-holistic-wellness-001
+      - dw-relaxation-foundation-001
+      - dw-confidence-builder-001
+    features:
+      - "5 complete hypnotic journey sessions"
+      - "Over 2 hours of guided meditation"
+      - "Instant digital download"
+      - "Lifetime access"
+    best_for: "Beginners new to hypnotic meditation"
+    image: "/images/bundles/starter-pack.jpg"
+
+  dreamweaving_healing:
+    sku: "bundle-dw-healing"
+    name: "Healing Journey Collection"
+    description: "Deep healing sessions for emotional restoration and inner peace"
+    type: curated_bundle
+    price: 77.00
+    original_value: 132.00
+    savings_display: "Save 42%"
+    includes:
+      - dw-holistic-wellness-001
+      - dw-double-helix-empathy-001
+      - dw-elysian-fields-001
+      - dw-ice-lake-reflection-001
+      - dw-forest-lost-instincts-001
+    features:
+      - "5 healing-focused sessions"
+      - "Somatic release techniques"
+      - "Emotional integration work"
+      - "Vagal regulation focus"
+    best_for: "Those seeking emotional healing and restoration"
+    image: "/images/bundles/healing-collection.jpg"
+
+  dreamweaving_transformation:
+    sku: "bundle-dw-transform"
+    name: "Transformation Bundle"
+    description: "Powerful sessions for deep identity-level change and growth"
+    type: curated_bundle
+    price: 111.00
+    original_value: 198.00
+    savings_display: "Save 44%"
+    includes:
+      - dw-forge-of-fortitude-001
+      - dw-iron-soul-forge-001
+      - dw-galadriels-gaze-001
+      - dw-symphony-of-shadows-001
+      - dw-abyss-living-archive-001
+      - dw-tree-of-life-001
+    features:
+      - "6 deep transformation sessions"
+      - "Shadow work integration"
+      - "Identity-level change"
+      - "Advanced archetypal journeys"
+    best_for: "Experienced practitioners ready for deep work"
+    image: "/images/bundles/transformation-bundle.jpg"
+
+  dreamweaving_complete:
+    sku: "bundle-dw-complete"
+    name: "Complete Dreamweaving Library"
+    description: "Access to all current and future dreamweaving sessions"
+    type: complete_library
+    price: 222.00
+    original_value: 440.00
+    savings_display: "Save 50%"
+    includes: all_dreamweavings
+    features:
+      - "All 22 current dreamweaving sessions"
+      - "Access to all future releases"
+      - "Priority access to new sessions"
+      - "Exclusive patron-only content"
+      - "Community access"
+    best_for: "Dedicated practitioners and supporters"
+    image: "/images/bundles/complete-library.jpg"
+
+  # ---------------------------------------------------------------------------
+  # Digital Product Bundles
+  # ---------------------------------------------------------------------------
+
+  digital_wealth_consciousness:
+    sku: "bundle-digital-wealth"
+    name: "Wealth & Consciousness Bundle"
+    description: "Financial freedom meets expanded consciousness"
+    type: curated_bundle
+    price: 44.00
+    original_value: 74.97
+    savings_display: "Save 41%"
+    includes:
+      - digital-financial-freedom-blueprints
+      - digital-mind-expansion-techniques
+      - digital-consciousness-expansion-pack
+    features:
+      - "Financial freedom frameworks"
+      - "Consciousness expansion techniques"
+      - "Mindset transformation tools"
+    best_for: "Those aligning wealth with spiritual growth"
+    image: "/images/bundles/wealth-consciousness.jpg"
+
+  digital_wellness_complete:
+    sku: "bundle-digital-wellness"
+    name: "Complete Wellness Protocol"
+    description: "Holistic health and daily joy practices"
+    type: curated_bundle
+    price: 55.00
+    original_value: 89.97
+    savings_display: "Save 39%"
+    includes:
+      - digital-holistic-wellness-protocol
+      - digital-daily-joy-protocol
+      - digital-contemplative-practice-manual
+    features:
+      - "Comprehensive wellness framework"
+      - "Daily practice routines"
+      - "Contemplative techniques"
+    best_for: "Those building sustainable wellness habits"
+    image: "/images/bundles/wellness-complete.jpg"
+
+  digital_creative_explorer:
+    sku: "bundle-digital-creative"
+    name: "Creative Explorer Bundle"
+    description: "Poetry, treasure hunting, and frontier wisdom"
+    type: curated_bundle
+    price: 33.00
+    original_value: 52.97
+    savings_display: "Save 38%"
+    includes:
+      - digital-poets-craft-toolkit
+      - digital-treasure-hunters-research-guide
+      - digital-frontier-wisdom-collection
+    features:
+      - "Poetry craft development"
+      - "Research methodologies"
+      - "Historical wisdom collection"
+    best_for: "Creative minds and curious explorers"
+    image: "/images/bundles/creative-explorer.jpg"
+
+  digital_survival_prep:
+    sku: "bundle-digital-survival"
+    name: "Emergency Preparedness Pack"
+    description: "Essential survival and AI integration guides"
+    type: curated_bundle
+    price: 25.00
+    original_value: 42.98
+    savings_display: "Save 42%"
+    includes:
+      - digital-emergency-preparedness-essentials
+      - digital-ai-integration-playbook
+    features:
+      - "Emergency preparedness framework"
+      - "AI tool integration guides"
+      - "Practical action checklists"
+    best_for: "Those preparing for uncertainty"
+    image: "/images/bundles/survival-prep.jpg"
+
+  # ---------------------------------------------------------------------------
+  # All-Access Bundles
+  # ---------------------------------------------------------------------------
+
+  complete_digital_library:
+    sku: "bundle-all-digital"
+    name: "Complete Digital Library"
+    description: "Every digital product in one comprehensive package"
+    type: complete_library
+    price: 144.00
+    original_value: 249.88  # Sum of all 12 digital products
+    savings_display: "Save 42%"
+    includes: all_digital_products
+    features:
+      - "All 12 digital guides and toolkits"
+      - "Lifetime access"
+      - "Future updates included"
+      - "Bonus: Priority support"
+    best_for: "Comprehensive personal development"
+    image: "/images/bundles/digital-library.jpg"
+
+  ultimate_collection:
+    sku: "bundle-ultimate"
+    name: "Ultimate Sacred Digital Collection"
+    description: "Complete access to all dreamweavings AND all digital products"
+    type: complete_library
+    price: 333.00
+    original_value: 689.88  # All dreamweavings + all digital products
+    savings_display: "Save 52%"
+    includes:
+      - all_dreamweavings
+      - all_digital_products
+    features:
+      - "22 dreamweaving sessions"
+      - "12 digital guides"
+      - "All future releases"
+      - "Lifetime updates"
+      - "VIP community access"
+      - "Monthly live sessions (when available)"
+    best_for: "True believers and dedicated practitioners"
+    image: "/images/bundles/ultimate-collection.jpg"
+
+  # ---------------------------------------------------------------------------
+  # Seasonal / Limited-Time Bundles
+  # ---------------------------------------------------------------------------
+
+  winter_solstice_2024:
+    sku: "bundle-winter-2024"
+    name: "Winter Solstice Special 2024"
+    description: "Seasonal bundle for the darkest and most magical time of year"
+    type: seasonal_bundle
+    price: 55.00
+    original_value: 99.00
+    savings_display: "Limited time: Save 44%"
+    includes:
+      - dw-xmas-light-001
+      - dw-tree-of-life-001
+      - digital-contemplative-practice-manual
+    features:
+      - "Holiday-themed dreamweaving"
+      - "Spiritual growth session"
+      - "Contemplative practice guide"
+    availability:
+      start: "2024-12-01"
+      end: "2025-01-06"
+    best_for: "Holiday gift or personal winter practice"
+    image: "/images/bundles/winter-solstice.jpg"
+
+# =============================================================================
+# Bundle Display Settings
+# =============================================================================
+
+display_settings:
+  homepage_featured:
+    - bundle-dw-starter
+    - bundle-ultimate
+    - bundle-digital-wellness
+
+  store_order:
+    - bundle-dw-complete
+    - bundle-ultimate
+    - bundle-dw-starter
+    - bundle-dw-healing
+    - bundle-dw-transform
+    - bundle-all-digital
+    - bundle-digital-wealth
+    - bundle-digital-wellness
+    - bundle-digital-creative
+    - bundle-digital-survival
+
+  seasonal_highlight: bundle-winter-2024
+
+# =============================================================================
+# Bundle Benefits (shared across bundles)
+# =============================================================================
+
+shared_benefits:
+  all_bundles:
+    - "Instant digital delivery"
+    - "Lifetime access"
+    - "30-day money-back guarantee"
+    - "No recurring fees"
+
+  library_bundles:
+    - "Access to all future releases"
+    - "Priority customer support"
+    - "Exclusive member updates"
+
+  dreamweaving_bundles:
+    - "Professional binaural audio"
+    - "Multiple format options (MP3/MP4)"
+    - "Accompanying visual journeys"
+
+  digital_bundles:
+    - "PDF and digital formats"
+    - "Printable worksheets included"
+    - "Regular content updates"
+
+# =============================================================================
+# Pricing Notes
+# =============================================================================
+#
+# Bundle pricing follows these principles:
+# 1. Bundles offer 38-52% savings vs individual purchase
+# 2. Entry bundles start at $25-44 (accessible)
+# 3. Complete libraries at $144-333 (high value, high commitment)
+# 4. Ultimate bundle at $333 (sacred number, maximum value)
+#
+# All prices are FIXED (not love-offering) per user decision.
+# Individual products within bundles still use love-offering when
+# purchased separately.
+# =============================================================================

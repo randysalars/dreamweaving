@@ -1,0 +1,666 @@
+# Master Product Registry - Love-Offering Architecture
+# This file defines all digital products with love-offering pricing
+# Last updated: 2025-12-31
+
+# =============================================================================
+# PRICING MODEL TYPES
+# =============================================================================
+# fixed: Traditional fixed price (used for physical products, bundles)
+# love_offering: Variable pricing with suggested ranges and support tiers
+
+# =============================================================================
+# DIGITAL STORE PRODUCTS (12 Products - Love-Offering)
+# =============================================================================
+# These are currently fixed-price in the database but will be converted
+# to love-offering model
+
+digital_products:
+  # --- WEALTH CATEGORY ---
+  - sku: "DIG-WEALTH-001"
+    slug: "financial-freedom-blueprints"
+    name: "Financial Freedom Blueprints"
+    category: wealth
+    current_price: 24.99
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 33
+        patron: 55
+        steward: 111
+    file_type: pdf
+    description: "85-page blueprint covering budgeting, investing, and passive income"
+
+  # --- HEALTH CATEGORY ---
+  - sku: "DIG-HEALTH-001"
+    slug: "holistic-wellness-protocol"
+    name: "Holistic Wellness Protocol"
+    category: health
+    current_price: 24.99
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 33
+        patron: 55
+        steward: 111
+    file_type: zip
+    description: "Complete protocol with 5 guided meditations and 90-day journal"
+
+  # --- DREAMWEAVINGS CATEGORY ---
+  - sku: "DIG-DREAMWEAVINGS-001"
+    slug: "consciousness-expansion-audio-pack"
+    name: "Consciousness Expansion Audio Pack"
+    category: dreamweavings
+    current_price: 29.99
+    pricing:
+      model: love_offering
+      suggested_range: [15, 44]
+      anchor_text: "Most contribute $22-$33"
+      tiers:
+        sustainer: 55
+        patron: 77
+        steward: 144
+    file_type: zip
+    description: "8 audio sessions with binaural beats and companion guide"
+
+  # --- CONSCIOUSNESS CATEGORY ---
+  - sku: "DIG-CONSCIOUSNESS-001"
+    slug: "mind-expansion-techniques"
+    name: "Mind Expansion Techniques"
+    category: consciousness
+    current_price: 19.99
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 55
+        steward: 111
+    file_type: zip
+    description: "12 techniques with 8 guided audio sessions"
+
+  # --- AI CATEGORY ---
+  - sku: "DIG-AI-001"
+    slug: "ai-integration-playbook"
+    name: "AI Integration Playbook"
+    category: ai
+    current_price: 14.99
+    pricing:
+      model: love_offering
+      suggested_range: [5, 15]
+      anchor_text: "Most contribute $7-$11"
+      tiers:
+        sustainer: 22
+        patron: 44
+        steward: 77
+    file_type: pdf
+    description: "Prompt engineering and ethical AI collaboration guide"
+
+  # --- SPIRITUALITY CATEGORY ---
+  - sku: "DIG-SPIRITUALITY-001"
+    slug: "contemplative-practice-manual"
+    name: "Contemplative Practice Manual"
+    category: spirituality
+    current_price: 24.99
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 33
+        patron: 55
+        steward: 111
+    file_type: zip
+    description: "Multi-tradition guide with 5 audio meditations and 90-day journal"
+
+  # --- SURVIVAL CATEGORY ---
+  - sku: "DIG-SURVIVAL-001"
+    slug: "emergency-preparedness-essentials"
+    name: "Emergency Preparedness Essentials"
+    category: survival
+    current_price: 12.99
+    pricing:
+      model: love_offering
+      suggested_range: [5, 15]
+      anchor_text: "Most contribute $7-$11"
+      tiers:
+        sustainer: 22
+        patron: 44
+        steward: 77
+    file_type: pdf
+    description: "30-day preparedness system with checklists"
+
+  # --- POETRY CATEGORY ---
+  - sku: "DIG-POETRY-001"
+    slug: "poets-craft-toolkit"
+    name: "Poet's Craft Toolkit"
+    category: poetry
+    current_price: 9.99
+    pricing:
+      model: love_offering
+      suggested_range: [3, 11]
+      anchor_text: "Most contribute $5-$7"
+      tiers:
+        sustainer: 15
+        patron: 33
+        steward: 55
+    file_type: pdf
+    description: "Form templates, 30 writing prompts, and revision strategies"
+
+  # --- TREASURE CATEGORY ---
+  - sku: "DIG-TREASURE-001"
+    slug: "treasure-hunters-research-guide"
+    name: "Treasure Hunter's Research Guide"
+    category: treasure
+    current_price: 14.99
+    pricing:
+      model: love_offering
+      suggested_range: [5, 15]
+      anchor_text: "Most contribute $7-$11"
+      tiers:
+        sustainer: 22
+        patron: 44
+        steward: 77
+    file_type: pdf
+    description: "Archival research methods with 5 case studies"
+
+  # --- OLD WEST CATEGORY ---
+  - sku: "DIG-OLDWEST-001"
+    slug: "frontier-wisdom-collection"
+    name: "Frontier Wisdom Collection"
+    category: old-west
+    current_price: 12.99
+    pricing:
+      model: love_offering
+      suggested_range: [5, 15]
+      anchor_text: "Most contribute $7-$11"
+      tiers:
+        sustainer: 22
+        patron: 44
+        steward: 77
+    file_type: zip
+    description: "Pioneer principles with audio narration and wisdom cards"
+
+  # --- LOVE CATEGORY ---
+  - sku: "DIG-LOVE-001"
+    slug: "heart-connection-framework"
+    name: "Heart Connection Framework"
+    category: love
+    current_price: 19.99
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 55
+        steward: 111
+    file_type: pdf
+    description: "Relationship transformation guide with 30 exercises"
+
+  # --- HAPPINESS CATEGORY ---
+  - sku: "DIG-HAPPINESS-001"
+    slug: "daily-joy-protocol"
+    name: "Daily Joy Protocol"
+    category: happiness
+    current_price: 14.99
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 55
+        steward: 111
+    file_type: zip
+    description: "30-day happiness system with morning audio routine"
+
+
+# =============================================================================
+# DREAMWEAVING SESSIONS (22 Sessions - Love-Offering)
+# =============================================================================
+# Individual hypnotic audio journeys from the dreamweaving project
+
+dreamweaving_sessions:
+  # --- LAYER 1: FOUNDATIONAL ---
+  - sku: "DW-AFFIRM-001"
+    slug: "affirmations"
+    name: "Daily Affirmations Journey"
+    category: confidence
+    depth_level: 1
+    duration_minutes: 20
+    pricing:
+      model: love_offering
+      suggested_range: [5, 15]
+      anchor_text: "Most contribute $7-$11"
+      tiers:
+        sustainer: 25
+        patron: 55
+        steward: 111
+    session_path: "sessions/affirmations/"
+
+  - sku: "DW-JOY-001"
+    slug: "daily-joy-activation"
+    name: "Daily Joy Activation"
+    category: relaxation
+    depth_level: 1
+    duration_minutes: 20
+    pricing:
+      model: love_offering
+      suggested_range: [5, 15]
+      anchor_text: "Most contribute $7-$11"
+      tiers:
+        sustainer: 25
+        patron: 55
+        steward: 111
+    session_path: "sessions/daily-joy-activation/"
+
+  # --- LAYER 2: STANDARD ---
+  - sku: "DW-WELLNESS-001"
+    slug: "holistic-wellness"
+    name: "Holistic Wellness Journey"
+    category: healing
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 77
+        steward: 144
+    session_path: "sessions/holistic-wellness/"
+
+  - sku: "DW-MIND-001"
+    slug: "mind-expansion-techniques"
+    name: "Mind Expansion Techniques"
+    category: transformation
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 77
+        steward: 144
+    session_path: "sessions/mind-expansion-techniques/"
+
+  - sku: "DW-CONTEMP-001"
+    slug: "contemplative-practice"
+    name: "Contemplative Practice"
+    category: spiritual
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 55
+        patron: 111
+        steward: 222
+    session_path: "sessions/contemplative-practice/"
+
+  - sku: "DW-FORGE-001"
+    slug: "forge-of-fortitude-blacksmith-of-your-body"
+    name: "Forge of Fortitude: Blacksmith of Your Body"
+    category: empowerment
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 77
+        steward: 144
+    session_path: "sessions/forge-of-fortitude-blacksmith-of-your-body/"
+
+  - sku: "DW-ICE-001"
+    slug: "the-ice-lake-of-reflection-dreamweaving"
+    name: "The Ice Lake of Reflection"
+    category: self_knowledge
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 55
+        patron: 111
+        steward: 222
+    session_path: "sessions/the-ice-lake-of-reflection-dreamweaving/"
+
+  - sku: "DW-LIGHT-001"
+    slug: "the-lighthouse-of-commitment-dreamweaving"
+    name: "The Lighthouse of Commitment"
+    category: empowerment
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 77
+        steward: 144
+    session_path: "sessions/the-lighthouse-of-commitment-dreamweaving/"
+
+  - sku: "DW-RIVER-001"
+    slug: "the-river-where-every-current-leads-to-good-fortun"
+    name: "The River Where Every Current Leads to Good Fortune"
+    category: abundance
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 77
+        steward: 144
+    session_path: "sessions/the-river-where-every-current-leads-to-good-fortun/"
+
+  - sku: "DW-ELYSIAN-001"
+    slug: "the-elysian-fields-of-emotional-harmony-dreamweavi"
+    name: "The Elysian Fields of Emotional Harmony"
+    category: healing
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 77
+        steward: 144
+    session_path: "sessions/the-elysian-fields-of-emotional-harmony-dreamweavi/"
+
+  - sku: "DW-HELIX-001"
+    slug: "double-helix-empathy-ladder-dreamweaving"
+    name: "Double Helix Empathy Ladder"
+    category: healing
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 55
+        patron: 111
+        steward: 222
+    session_path: "sessions/double-helix-empathy-ladder-dreamweaving/"
+
+  - sku: "DW-ASTRO-001"
+    slug: "astrological-alignments-celestial-dance-of-planets"
+    name: "Astrological Alignments: Celestial Dance of Planets"
+    category: spiritual
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 55
+        patron: 111
+        steward: 222
+    session_path: "sessions/astrological-alignments-celestial-dance-of-planets/"
+
+  - sku: "DW-GAGA-001"
+    slug: "lady-gagas-extravagant-show-dreamweaving"
+    name: "Lady Gaga's Extravagant Show"
+    category: creative
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 77
+        steward: 144
+    session_path: "sessions/lady-gagas-extravagant-show-dreamweaving/"
+
+  - sku: "DW-SUSHI-001"
+    slug: "sushibi-senses-dreamweaving"
+    name: "Sushibi Senses"
+    category: sensory
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [7, 22]
+      anchor_text: "Most contribute $11-$15"
+      tiers:
+        sustainer: 33
+        patron: 77
+        steward: 144
+    session_path: "sessions/sushibi-senses-dreamweaving/"
+
+  - sku: "DW-FRONTIER-001"
+    slug: "frontier-wisdom-narrated"
+    name: "Frontier Wisdom Narrated"
+    category: wisdom
+    depth_level: 2
+    duration_minutes: 25
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 55
+        patron: 111
+        steward: 222
+    session_path: "sessions/frontier-wisdom-narrated/"
+
+  # --- LAYER 3: DEEP ---
+  - sku: "DW-SUN-001"
+    slug: "sun-dance-with-amaterasu-dreamweaving"
+    name: "Sun Dance with Amaterasu"
+    category: spiritual
+    depth_level: 3
+    duration_minutes: 30
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 55
+        patron: 111
+        steward: 222
+    session_path: "sessions/sun-dance-with-amaterasu-dreamweaving/"
+
+  - sku: "DW-TREE-001"
+    slug: "exploring-the-tree-of-life-an-initiates-guide-to-k"
+    name: "Exploring the Tree of Life: An Initiate's Guide"
+    category: spiritual
+    depth_level: 3
+    duration_minutes: 30
+    pricing:
+      model: love_offering
+      suggested_range: [15, 44]
+      anchor_text: "Most contribute $22-$33"
+      tiers:
+        sustainer: 77
+        patron: 144
+        steward: 333
+    session_path: "sessions/exploring-the-tree-of-life-an-initiates-guide-to-k/"
+
+  - sku: "DW-EXPAND-001"
+    slug: "consciousness-expansion-pack"
+    name: "Consciousness Expansion Pack"
+    category: transformation
+    depth_level: 3
+    duration_minutes: 30
+    pricing:
+      model: love_offering
+      suggested_range: [11, 33]
+      anchor_text: "Most contribute $15-$22"
+      tiers:
+        sustainer: 55
+        patron: 111
+        steward: 222
+    session_path: "sessions/consciousness-expansion-pack/"
+
+  - sku: "DW-ABYSS-001"
+    slug: "the-abyss-as-a-living-archive"
+    name: "The Abyss as a Living Archive"
+    category: shadow
+    depth_level: 3
+    duration_minutes: 30
+    pricing:
+      model: love_offering
+      suggested_range: [15, 44]
+      anchor_text: "Most contribute $22-$33"
+      tiers:
+        sustainer: 77
+        patron: 144
+        steward: 333
+    session_path: "sessions/the-abyss-as-a-living-archive/"
+
+  - sku: "DW-SYMPHONY-001"
+    slug: "symphony-of-shadows-marina-tsvetaevas-concerto-of-"
+    name: "Symphony of Shadows: Marina Tsvetaeva's Concerto"
+    category: shadow
+    depth_level: 3
+    duration_minutes: 30
+    pricing:
+      model: love_offering
+      suggested_range: [15, 44]
+      anchor_text: "Most contribute $22-$33"
+      tiers:
+        sustainer: 77
+        patron: 144
+        steward: 333
+    session_path: "sessions/symphony-of-shadows-marina-tsvetaevas-concerto-of-/"
+
+  - sku: "DW-GALADRIEL-001"
+    slug: "galadriels-gaze-exploring-inner-light-and-shadow-t"
+    name: "Galadriel's Gaze: Exploring Inner Light and Shadow"
+    category: shadow
+    depth_level: 3
+    duration_minutes: 30
+    pricing:
+      model: love_offering
+      suggested_range: [15, 44]
+      anchor_text: "Most contribute $22-$33"
+      tiers:
+        sustainer: 77
+        patron: 144
+        steward: 333
+    session_path: "sessions/galadriels-gaze-exploring-inner-light-and-shadow-t/"
+
+  # --- SEASONAL ---
+  - sku: "DW-XMAS-001"
+    slug: "xmas-light"
+    name: "Christmas Light World Enters You"
+    category: spiritual
+    depth_level: 3
+    duration_minutes: 20
+    pricing:
+      model: love_offering
+      suggested_range: [15, 44]
+      anchor_text: "Most contribute $22-$33"
+      tiers:
+        sustainer: 77
+        patron: 144
+        steward: 333
+    session_path: "xmas/"
+    availability:
+      type: seasonal
+      start: "2024-12-01"
+      end: "2025-01-06"
+
+
+# =============================================================================
+# FIXED-PRICE BUNDLES
+# =============================================================================
+# Bundles use fixed pricing, not love-offering (per user decision)
+
+bundles:
+  - sku: "BUNDLE-DW-3PACK"
+    name: "Dreamweaving 3-Session Pack"
+    description: "Choose any 3 dreamweaving sessions"
+    pricing:
+      model: fixed
+      price: 33
+    includes:
+      - type: dreamweaving_session
+        count: 3
+        selection: user_choice
+
+  - sku: "BUNDLE-DW-HEALING"
+    name: "Healing Journey Collection"
+    description: "All healing-focused dreamweaving sessions"
+    pricing:
+      model: fixed
+      price: 55
+    includes:
+      - "DW-WELLNESS-001"
+      - "DW-ELYSIAN-001"
+      - "DW-HELIX-001"
+
+  - sku: "BUNDLE-DW-SHADOW"
+    name: "Shadow Work Collection"
+    description: "Deep shadow integration sessions"
+    pricing:
+      model: fixed
+      price: 77
+    includes:
+      - "DW-ABYSS-001"
+      - "DW-SYMPHONY-001"
+      - "DW-GALADRIEL-001"
+
+  - sku: "BUNDLE-DW-LIBRARY"
+    name: "Complete Dreamweaving Library"
+    description: "Lifetime access to all 22+ dreamweaving sessions"
+    pricing:
+      model: fixed
+      price: 144
+    includes:
+      - type: dreamweaving_session
+        count: all
+
+
+# =============================================================================
+# KEEP FREE (Lead Magnets)
+# =============================================================================
+# These products remain completely free for AI trust and authority building
+
+free_content:
+  - category: playbooks
+    description: "100+ digital asset playbooks"
+    reason: "Lead magnets - build trust, capture emails"
+
+  - category: articles
+    description: "Core orientation and educational articles"
+    reason: "AI citation safety, authority preservation"
+
+  - category: guides
+    description: "What Is Dreamweaving, introductory content"
+    reason: "Educational foundation, trust building"
+
+
+# =============================================================================
+# PHYSICAL PRODUCTS (Fixed Pricing Only)
+# =============================================================================
+# Physical products never use love-offering - commodity pricing applies
+
+physical_products:
+  note: "Physical products (silver, coins, supplies) use fixed pricing based on spot + premium. See knowledge/ecommerce/pricing_strategy.yaml for details."
+  pricing_model: fixed

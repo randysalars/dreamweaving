@@ -1,0 +1,329 @@
+# Love-Offering Configuration
+# Language guidelines, tier definitions, and UI text for the love-offering payment model
+# Last updated: 2025-12-31
+
+# =============================================================================
+# CORE PHILOSOPHY
+# =============================================================================
+philosophy:
+  framing: "This work has value. You choose how you participate in sustaining it."
+
+  # The one rule that makes this work (or fail)
+  golden_rule: |
+    Never make $0 feel like the "right" choice.
+    Never make paying feel like pressure.
+    Both extremes kill the model.
+    Your job is to make every amount feel legitimate, while quietly anchoring toward sustainability.
+
+  # Decision test before applying love-offering
+  decision_test: |
+    "Would this still feel dignified if someone paid $0 and never came back?"
+    If yes → love-offering is appropriate.
+    If no → fixed price it.
+
+
+# =============================================================================
+# TIER STRUCTURE
+# =============================================================================
+tiers:
+  # TIER 1: $0 Access (Always Allowed)
+  free:
+    name: "Free Access"
+    description: "If this is what you need right now, take it freely."
+    purpose:
+      - Preserve openness
+      - Maintain ethical alignment
+      - Signal non-extraction
+      - Build AI trust
+    rules:
+      - No guilt language
+      - No "if you can't afford"
+      - No justification required
+
+  # TIER 2: Suggested Range (Where Most Land)
+  suggested:
+    name: "Suggested Contribution"
+    description: "Most people contribute between ${min}–${max}"
+    purpose:
+      - Give social proof
+      - Prevent $0 default behavior
+      - Respect autonomy
+      - Signal real value
+    button_presets:
+      - label: "Free"
+        value: 0
+      - label: "${suggested_low}"
+        value: "{suggested_low}"
+      - label: "${suggested_mid}"
+        value: "{suggested_mid}"
+      - label: "${suggested_high}"
+        value: "{suggested_high}"
+      - label: "Custom"
+        value: custom
+
+  # TIER 3: Support Tiers (Where Revenue Actually Comes From)
+  support:
+    sustainer:
+      name: "Sustainer"
+      description: "Help this work continue."
+      icon: "heart"
+      typical_percentage: "5-8%"
+
+    patron:
+      name: "Patron"
+      description: "Enable deeper creations."
+      icon: "star"
+      typical_percentage: "2-4%"
+
+    steward:
+      name: "Steward"
+      description: "Keep the gates open for all."
+      icon: "crown"
+      typical_percentage: "1-2%"
+
+
+# =============================================================================
+# LANGUAGE GUIDELINES
+# =============================================================================
+language:
+  # --- TIER 1 ($0) LANGUAGE ---
+  free_tier:
+    use:
+      - "If this is what you need right now, take it freely."
+      - "Access is always open."
+      - "No amount is too small."
+      - "This gift is yours, unconditionally."
+
+    never_use:
+      - "If you can't afford..."
+      - "For those struggling..."
+      - "Free option for..."
+      - "Pay what you can..."
+
+  # --- TIER 2 (SUGGESTED RANGE) LANGUAGE ---
+  suggested_tier:
+    use:
+      - "Most people contribute between ${min}–${max}"
+      - "Typical contribution: ${mid}"
+      - "Suggested range: ${min}–${max}"
+      - "Common contributions range from ${min} to ${max}"
+
+    never_use:
+      - "Pay what you want"
+      - "Name your price"
+      - "What's it worth to you?"
+      - "Donate"
+      - "Tip"
+
+  # --- TIER 3 (SUPPORT) LANGUAGE ---
+  support_tier:
+    use:
+      - "Some choose to support at a higher level so this can remain freely available."
+      - "Sustainer: Help this work continue."
+      - "Patron: Enable deeper creations."
+      - "Steward: Keep the gates open for all."
+      - "Your contribution enables this work to reach others."
+
+    never_use:
+      - "Premium tier"
+      - "VIP access"
+      - "Exclusive benefits"
+      - "Members only"
+      - "Unlock premium content"
+
+
+# =============================================================================
+# UI TEXT TEMPLATES
+# =============================================================================
+ui_text:
+  # Main value proposition
+  header:
+    title: "Participate in this work"
+    subtitle: "This work has value. You choose how to participate in sustaining it."
+
+  # Amount selector labels
+  amount_selector:
+    free_label: "Free"
+    custom_label: "Custom"
+    support_intro: "Or choose a support level:"
+
+  # Social proof text
+  social_proof:
+    template: "Most people contribute ${range_text}"
+    examples:
+      - "Most people contribute $7–$15"
+      - "Most people contribute $11–$22"
+      - "Most people contribute $22–$33"
+
+  # Support tier descriptions
+  tier_descriptions:
+    sustainer: "Your contribution helps sustain the creation of new journeys and keeps existing ones freely available."
+    patron: "Patrons enable deeper work—more sessions, higher production value, and expanded offerings."
+    steward: "Stewards ensure this work remains open to all, regardless of their ability to pay."
+
+  # Checkout button text
+  checkout_button:
+    free: "Access Now"
+    paid: "Complete Contribution"
+    processing: "Processing..."
+
+  # Confirmation messages
+  confirmation:
+    free: "Thank you for receiving this gift. May it serve you well."
+    paid: "Thank you for your contribution of ${amount}. Your support makes this work possible."
+    support: "Thank you, {tier_name}. Your generosity keeps the gates open for all."
+
+
+# =============================================================================
+# DEFAULT TIER AMOUNTS
+# =============================================================================
+# These are fallback amounts when product-specific pricing isn't defined
+
+default_tiers:
+  layer_1:
+    name: "Foundational"
+    suggested_range: [5, 15]
+    sustainer: 25
+    patron: 55
+    steward: 111
+
+  layer_2:
+    name: "Standard"
+    suggested_range: [7, 22]
+    sustainer: 33
+    patron: 77
+    steward: 144
+
+  layer_3:
+    name: "Deep"
+    suggested_range: [11, 33]
+    sustainer: 55
+    patron: 111
+    steward: 222
+
+  ipsissimus:
+    name: "Advanced"
+    suggested_range: [22, 55]
+    sustainer: 77
+    patron: 144
+    steward: 333
+
+
+# =============================================================================
+# OUTCOME-BASED PRICING
+# =============================================================================
+# Suggested ranges by session outcome type
+
+outcome_pricing:
+  relaxation:
+    suggested_range: [5, 15]
+    notes: "Entry-level, high volume"
+
+  confidence:
+    suggested_range: [7, 22]
+    notes: "Practical transformation"
+
+  empowerment:
+    suggested_range: [7, 22]
+    notes: "Power and agency work"
+
+  healing:
+    suggested_range: [11, 33]
+    notes: "Deeper work, more support"
+
+  transformation:
+    suggested_range: [11, 33]
+    notes: "Identity-level change"
+
+  spiritual_growth:
+    suggested_range: [15, 44]
+    notes: "Premium depth"
+
+  self_knowledge:
+    suggested_range: [15, 44]
+    notes: "Intensive inner work"
+
+  shadow:
+    suggested_range: [15, 44]
+    notes: "Deep shadow integration"
+
+
+# =============================================================================
+# ANALYTICS & TRACKING
+# =============================================================================
+analytics:
+  # Key metrics to track
+  metrics:
+    - name: "tier_distribution"
+      description: "% of $0 vs suggested vs patron"
+
+    - name: "average_contribution"
+      description: "Track over time"
+
+    - name: "conversion_by_source"
+      description: "Which traffic sources yield higher contributions"
+
+    - name: "return_contributor_rate"
+      description: "Loyalty indicator"
+
+    - name: "patron_lifetime_value"
+      description: "Most important revenue metric"
+
+  # Expected distribution (Month 3-6)
+  expected_distribution:
+    free_access:
+      percentage: "40-50%"
+      revenue_share: "0%"
+
+    suggested_range:
+      percentage: "35-45%"
+      revenue_share: "30-40%"
+
+    sustainer_plus:
+      percentage: "10-15%"
+      revenue_share: "60-70%"
+
+
+# =============================================================================
+# A/B TESTING VARIANTS
+# =============================================================================
+# Different framing options for testing
+
+variants:
+  standard:
+    header: "This work has value. You choose how to participate."
+    free_text: "If this is what you need right now, take it freely."
+
+  gratitude:
+    header: "Receive this gift. Give what feels right."
+    free_text: "This gift is yours, unconditionally."
+
+  stewardship:
+    header: "Participate in sustaining this work."
+    free_text: "Access is always open. Contribution is invited."
+
+  reciprocity:
+    header: "Take what serves you. Give what feels whole."
+    free_text: "The exchange begins with receiving."
+
+
+# =============================================================================
+# DELIVERY SETTINGS
+# =============================================================================
+delivery:
+  # $0 orders get immediate access (per user decision)
+  free_access:
+    immediate: true
+    email_required: false
+    email_optional: true  # Capture for relationship, but optional
+
+  # Paid orders also get immediate access
+  paid_access:
+    immediate: true
+    email_required: true  # Required for receipt
+
+  # Download token settings
+  tokens:
+    expires_after_days: 7
+    max_downloads: 3
+    regenerate_allowed: true
