@@ -19,6 +19,10 @@
       "description": "Specialized semantic search for rare coin knowledge (Morgan/Peace dollars, junk silver, key dates, pricing, grading)",
       "command": "bash",
       "args": ["scripts/mcp/run_coin_rag_mcp_server.sh"]
+    },
+    "serena": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context", "ide-assistant"]
     }
   }
 }
