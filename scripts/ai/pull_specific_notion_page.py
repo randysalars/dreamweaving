@@ -18,7 +18,7 @@ from scripts.ai.notion_knowledge_retriever import NotionKnowledgeRetriever
 
 def main():
     # The Notion Page ID provided by the user
-    target_page_id = "2d62bab3796d80468a5ff781e6b68b12"
+    target_page_id = "2d62bab3796d80fc989bccde20994923"
     
     # Output directory (consistent with existing RAG)
     export_dir = project_root / "knowledge" / "notion_export"
