@@ -94,7 +94,7 @@ class RAGFileWatcher(FileSystemEventHandler):
     DEFAULT_MAX_FAILURES = 3
     DEFAULT_MIN_RETRY_DELAY = 60
     DEFAULT_MAX_RETRY_DELAY = 3600
-    DEFAULT_IGNORE_PATHS = {'vector_db', 'embeddings_cache', '__pycache__', '.pytest_cache', 'node_modules', '.git'}
+    DEFAULT_IGNORE_PATHS = {'vector_db', 'embeddings_cache', '__pycache__', '.pytest_cache', 'node_modules', '.git', 'notion_export'}
     DEFAULT_IGNORE_FILES = {'.sync_state.json', 'file_manifest.json', 'index_metadata.json', '.lock'}
 
     def __init__(self, config: Optional[Dict[str, Any]] = None, test_mode: bool = False):
@@ -533,6 +533,19 @@ The watcher monitors:
 
         sys.stdout = open(log_file, 'a')
         sys.stderr = sys.stdout
+
+        # Re-configure logging to write to the file
+        # Remove existing handlers (which might be pointing to the old stdout)
+        root = logging.getLogger()
+        if root.handlers:
+            for handler in root.handlers:
+                root.removeHandler(handler)
+        
+        logging.basicConfig(
+            filename=str(log_file),
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s'
+        )
 
     run_watcher(
         watch_paths,

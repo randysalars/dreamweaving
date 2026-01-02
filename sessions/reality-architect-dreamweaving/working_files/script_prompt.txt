@@ -1,0 +1,154 @@
+Generate a complete SSML hypnotic script for the following session:
+
+**Topic:** Reality Architect Dreamweaving
+**Target Duration:** 30 minutes
+**Target Word Count:** 2193-2680 words (hypnotic pace ~130 wpm with pauses)
+**Session Name:** reality-architect-dreamweaving
+
+**Archetypes to incorporate:** The Inner Healer, The Rose Mother, The World Tree Guardian
+
+**Section Timing:**
+- pretalk: 0 minutes
+- induction: 0 minutes
+- journey: 0 minutes
+- integration: 0 minutes
+- awakening: 0 minutes
+
+
+---
+## CANONICAL DREAMWEAVING KNOWLEDGE (from your knowledge base)
+Use this context to ensure the script aligns with YOUR established definitions, archetypes, and patterns:
+
+### Relevant Knowledge from Your Canon
+- **Dreamworks Dreamweavings** (relevance: 0.71)
+  Title: Dreamworks Dreamweavings
+
+...
+- **Dreamweaver Marketing Plan** (relevance: 0.70)
+  Title: Dreamweaver Marketing Plan
+
+ssion
+ This is your God-Identity.
+
+ ---
+
+ ## 🌌🌟 13. The Ceremony of Infinite Versions
+
+ You encounter every version of yourself across infinite timelines.
+
+ All bow to you.
+
+ They merge into your body
+
+ as the one who contains them all.
+
+ ---
+
+ ## 💠🜁 14. The Creati...
+- **Dreamweaver Marketing Plan** (relevance: 0.69)
+  Title: Dreamweaver Marketing Plan
+
+consciousness as you have known it.
+
+ This is where the Dreamweaver becomes more than a journey-maker…
+
+ you become the FORCE that dreams reality into being.
+
+ This is the most advanced layer of all:
+
+ the Creator Layer, the Source Layer, the Architect Layer.
+
+ Her...
+- **Dreamweaving Ideas** (relevance: 0.69)
+  Title: Dreamweaving Ideas
+
+wers.
+
+ We are entering the domain of:
+
+ # META-REALITY ENGINEERING
+
+ Here, Dreamweavings don’t give powers.
+
+ They alter the structure of the reality you operate in.
+
+ These are hyper-abilities that:
+
+ - rewrite rules
+ - change metaphysical physics
+ - modify cause-and-eff...
+- **More dreamweaving** (relevance: 0.68)
+  Title: More dreamweaving
+
+wers.
+
+ We are entering the domain of:
+
+ # META-REALITY ENGINEERING
+
+ Here, Dreamweavings don’t give powers.
+
+ They alter the structure of the reality you operate in.
+
+ These are hyper-abilities that:
+
+ - rewrite rules
+ - change metaphysical physics
+ - modify cause-and-effe...
+
+### Related Mythology/Symbols
+- **Dreamweaver Symbolism**: Title: Dreamweaver Symbolism
+
+on*, *myth-making theory*, and *experience design*. Outline cosmology, rituals, doctrine, role of AI, ethics, and commun...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+- “Notice any symbol that seems to carry Christ’s peace, and stay with it.”
+ 1. Offer “translation layers” for mult...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+- “Notice any symbol that seems to carry Christ’s peace, and stay with it.”
+ 1. Offer “translation layers” for mult...
+
+### Binaural/Frequency Guidance
+- Title: Dreamweaving Ideas
+
+nances / health / calling.”).
+
+ ---
+
+ ## 3. Sound Design: Binaural Beats & Effects
+
+ Here’s a practical layout you can give to a sound designer or use to hunt for tracks.
+
+ ...
+- Title: Dreamweaving Ideas
+
+nances / health / calling.”).
+
+ ---
+
+ ## 3. Sound Design: Binaural Beats & Effects
+
+ Here’s a practical layout you can give to a sound designer or use to hunt for tracks.
+
+ ...
+---
+
+**CRITICAL REQUIREMENTS:**
+1. Match the Section Timing above within ±10%; expand MAIN JOURNEY and INTEGRATION first if you need more time.
+2. Keep total length within 2193-2680 words to land near 30 minutes. If you are short, add sensory detail and deepen the MAIN JOURNEY; if long, trim gently.
+3. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
+4. Use <break time="Xs"/> tags liberally for hypnotic pacing, favoring slightly longer pauses: 2-3s for normal beats, 3-5s for deeper drops, 1s for countdown ticks
+5. Include rich sensory language engaging all 5 senses
+6. Embed hypnotic suggestions naturally throughout
+7. Include 3-5 post-hypnotic anchors in the closing
+
+**SFX MARKERS (REQUIRED):**
+- Embed natural language SFX cues using [SFX: ...] (or [[SFX:...]]). Keep each marker concise (<140 chars) and place it exactly where the sound should trigger.
+- Provide at least 5 markers covering the journey arc: opening/entry tone, induction ambience, deepening texture, main journey accent(s), and integration/return chime.
+- Markers must describe sound character and duration (e.g., "Deep bronze bell, warm, 3s decay"), live on their own line, and avoid SSML tags inside the marker.
+- Keep markers within the <speak> body; they'll be stripped for voice synthesis but used to render the SFX track.
+
+**OUTPUT FORMAT:**
+Output ONLY the SSML script, starting with <?xml version="1.0" encoding="UTF-8"?>
+Do NOT include any explanation or commentary before or after the SSML.
