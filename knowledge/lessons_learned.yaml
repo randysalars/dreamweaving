@@ -447,7 +447,7 @@ lessons:
   date: 2025-12-04
   session: website-upload-batch
   category: deployment
-  finding: (Historical: Vercel era) DATABASE_URL was unavailable at build time and only available at runtime from platform integrations
+  finding: "(Historical: Vercel era) DATABASE_URL was unavailable at build time and only available at runtime from platform integrations"
   evidence: Build failed with 'No database connection string' until dummy URL provided
   action: On Coolify, prefer setting `DATABASE_URL` at build/runtime consistently via service env vars; avoid build-time hacks unless your pipeline requires it
   confidence: high
@@ -499,7 +499,7 @@ lessons:
   date: 2025-12-04
   session: website-upload-batch
   category: deployment
-  finding: (Historical: Vercel era) Media files were uploaded via a Vercel Blob helper; current deployment uses Cloudflare R2 directly
+  finding: "(Historical: Vercel era) Media files were uploaded via a Vercel Blob helper; current deployment uses Cloudflare R2 directly"
   evidence: All 5 sessions uploaded successfully, media accessible at pub-597c626a4d494bf29fc3845a78267095.r2.dev
   action: Use upload_to_website.py for R2 upload - handles chunking and CDN URL generation
     automatically
@@ -535,7 +535,7 @@ lessons:
   date: 2025-12-04
   session: website-upload-batch
   category: deployment
-  finding: (Historical: Vercel era) Deployments were auto-triggered on push; current deployments are managed by Coolify (webhook auto-deploy or manual redeploy)
+  finding: "(Historical: Vercel era) Deployments were auto-triggered on push; current deployments are managed by Coolify (webhook auto-deploy or manual redeploy)"
   evidence: All frontend changes deployed within 1-2 minutes after git push origin
     main
   action: Push changes to the tracked branch and redeploy in Coolify (or enable webhook auto-deploy)
