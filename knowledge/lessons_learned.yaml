@@ -14,7 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
   - the-celtic-forest-dreamweaving
@@ -34,8 +33,9 @@ lessons:
   - galadriels-gaze-exploring-inner-light-and-shadow-t
   - double-helix-empathy-ladder-dreamweaving
   - sun-dance-with-amaterasu-dreamweaving-0106
-  applied_count: 25
-  last_applied: '2025-12-30'
+  - reality-architect-dreamweaving
+  applied_count: 26
+  last_applied: '2026-01-02'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,7 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
   - the-celtic-forest-dreamweaving
@@ -72,8 +71,9 @@ lessons:
   - galadriels-gaze-exploring-inner-light-and-shadow-t
   - double-helix-empathy-ladder-dreamweaving
   - sun-dance-with-amaterasu-dreamweaving-0106
-  applied_count: 25
-  last_applied: '2025-12-30'
+  - reality-architect-dreamweaving
+  applied_count: 26
+  last_applied: '2026-01-02'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,7 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
   - the-celtic-forest-dreamweaving
@@ -109,8 +108,9 @@ lessons:
   - galadriels-gaze-exploring-inner-light-and-shadow-t
   - double-helix-empathy-ladder-dreamweaving
   - sun-dance-with-amaterasu-dreamweaving-0106
-  applied_count: 25
-  last_applied: '2025-12-30'
+  - reality-architect-dreamweaving
+  applied_count: 26
+  last_applied: '2026-01-02'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,7 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
   - the-celtic-forest-dreamweaving
@@ -147,8 +146,9 @@ lessons:
   - galadriels-gaze-exploring-inner-light-and-shadow-t
   - double-helix-empathy-ladder-dreamweaving
   - sun-dance-with-amaterasu-dreamweaving-0106
-  applied_count: 25
-  last_applied: '2025-12-30'
+  - reality-architect-dreamweaving
+  applied_count: 26
+  last_applied: '2026-01-02'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,7 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - prosperity-pulsars-a-supernova-inspired-wealth-cre
   - the-electric-bazaar-dreamweaving
   - the-emerald-city-of-emotional-vision-dreamweaving
   - the-celtic-forest-dreamweaving
@@ -183,8 +182,9 @@ lessons:
   - galadriels-gaze-exploring-inner-light-and-shadow-t
   - double-helix-empathy-ladder-dreamweaving
   - sun-dance-with-amaterasu-dreamweaving-0106
-  applied_count: 25
-  last_applied: '2025-12-30'
+  - reality-architect-dreamweaving
+  applied_count: 26
+  last_applied: '2026-01-02'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -447,9 +447,11 @@ lessons:
   date: 2025-12-04
   session: website-upload-batch
   category: deployment
-  finding: "(Historical: Vercel era) DATABASE_URL was unavailable at build time and only available at runtime from platform integrations"
+  finding: '(Historical: Vercel era) DATABASE_URL was unavailable at build time and
+    only available at runtime from platform integrations'
   evidence: Build failed with 'No database connection string' until dummy URL provided
-  action: On Coolify, prefer setting `DATABASE_URL` at build/runtime consistently via service env vars; avoid build-time hacks unless your pipeline requires it
+  action: On Coolify, prefer setting `DATABASE_URL` at build/runtime consistently
+    via service env vars; avoid build-time hacks unless your pipeline requires it
   confidence: high
   tags:
   - vercel
@@ -499,7 +501,8 @@ lessons:
   date: 2025-12-04
   session: website-upload-batch
   category: deployment
-  finding: "(Historical: Vercel era) Media files were uploaded via a Vercel Blob helper; current deployment uses Cloudflare R2 directly"
+  finding: '(Historical: Vercel era) Media files were uploaded via a Vercel Blob helper;
+    current deployment uses Cloudflare R2 directly'
   evidence: All 5 sessions uploaded successfully, media accessible at pub-597c626a4d494bf29fc3845a78267095.r2.dev
   action: Use upload_to_website.py for R2 upload - handles chunking and CDN URL generation
     automatically
@@ -535,10 +538,12 @@ lessons:
   date: 2025-12-04
   session: website-upload-batch
   category: deployment
-  finding: "(Historical: Vercel era) Deployments were auto-triggered on push; current deployments are managed by Coolify (webhook auto-deploy or manual redeploy)"
+  finding: '(Historical: Vercel era) Deployments were auto-triggered on push; current
+    deployments are managed by Coolify (webhook auto-deploy or manual redeploy)'
   evidence: All frontend changes deployed within 1-2 minutes after git push origin
     main
-  action: Push changes to the tracked branch and redeploy in Coolify (or enable webhook auto-deploy)
+  action: Push changes to the tracked branch and redeploy in Coolify (or enable webhook
+    auto-deploy)
   confidence: high
   tags:
   - vercel
