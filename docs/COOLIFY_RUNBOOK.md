@@ -128,6 +128,26 @@ DATABASE_URL=postgresql://...
 NODE_ENV=production
 ```
 
+#### `NODE_OPTIONS` (optional)
+
+If you set `NODE_OPTIONS`, do **not** wrap the value in quotes or escaped quotes. This is a common cause of build failures like:
+
+`node: invalid value for NODE_OPTIONS (unterminated string)`
+
+Use:
+
+```
+NODE_OPTIONS=--max-old-space-size=2048
+```
+
+Avoid:
+
+```
+NODE_OPTIONS="--max-old-space-size=2048"
+NODE_OPTIONS="\"--max-old-space-size=2048\""
+NODE_OPTIONS=\\\"--max-old-space-size=2048\\\"
+```
+
 ---
 
 ## Troubleshooting
