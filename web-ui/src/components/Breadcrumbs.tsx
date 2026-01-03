@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { ChevronRight } from "lucide-react";
 
 export type BreadcrumbItem = {
@@ -36,4 +35,3 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
     </nav>
   );
 }
-
