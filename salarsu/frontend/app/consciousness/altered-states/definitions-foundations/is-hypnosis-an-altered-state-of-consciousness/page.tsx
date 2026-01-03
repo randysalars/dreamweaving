@@ -7,11 +7,11 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/definitions-founda
 
 export const metadata: Metadata = {
   title: "Is hypnosis an altered state of consciousness? | Salars Consciousness",
-  description: "Exploring is hypnosis an altered state of consciousness - understanding consciousness and awareness.",
+  description: "Yes, hypnosis is an altered state featuring heightened suggestibility, focused attention, reduced critical thinking, and distinct brain activity patterns, though debate continues about its precise mechanisms.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Is hypnosis an altered state of consciousness?",
-    description: "Exploring is hypnosis an altered state of consciousness - understanding consciousness and awareness.",
+    description: "Yes, hypnosis is an altered state featuring heightened suggestibility, focused attention, reduced critical thinking, and distinct brain activity patterns, though debate continues about its precise mechanisms.",
     url: pageUrl,
     type: "article",
   },
@@ -46,7 +46,7 @@ export default function IsHypnosisAnAlteredStateOfConsciousnessPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write a 20-35 word direct answer to: Is hypnosis an altered state of consciousness?]
+              Yes, hypnosis is considered an altered state characterized by heightened suggestibility, intensely focused attention, reduced critical thinking, and measurable changes in brain activity, though scientific debate continues about its exact mechanisms.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function IsHypnosisAnAlteredStateOfConsciousnessPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Explain in 2-4 sentences why is hypnosis an altered state of consciousness matters and what mechanisms are involved]
+              Understanding hypnosis as an altered state matters because it demonstrates how suggestion and focused attention can profoundly modify perception, memory, and even pain experience. Brain imaging studies show that hypnosis produces distinct patterns of activation, particularly reduced activity in the anterior cingulate cortex (involved in error detection and critical evaluation) alongside increased connectivity between motor and sensory regions. This altered neural configuration enables phenomena like hypnotic analgesia, where pain signals reach the brain but aren't processed as suffering, revealing consciousness as more flexible than everyday experience suggests. The state occurs through guided attention narrowing and progressive relaxation that shifts normal executive control.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function IsHypnosisAnAlteredStateOfConsciousnessPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Add 1-3 sentences about when this changes or what limits exist]
+              Some researchers argue hypnosis isn't a distinct state but rather heightened compliance and role-playing without fundamental consciousness changes. Hypnotizability varies dramatically—roughly 10-15% of people are highly hypnotizable while another 10-15% resist induction entirely, suggesting individual differences in baseline suggestibility. Light hypnosis may not differ significantly from focused meditation or absorbed attention, making the "altered state" designation depend on depth and the specific phenomena produced.
             </p>
           </section>
 

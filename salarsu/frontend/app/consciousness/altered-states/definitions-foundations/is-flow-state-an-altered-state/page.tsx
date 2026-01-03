@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/definitions-founda
 
 export const metadata: Metadata = {
   title: "Is flow state an altered state? | Salars Consciousness",
-  description: "Exploring is flow state an altered state - understanding consciousness and awareness.",
+  description: "Yes, flow is an altered state marked by time distortion, effortless action, diminished self-awareness, and neurological changes including reduced prefrontal activity and elevated dopamine.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Is flow state an altered state?",
-    description: "Exploring is flow state an altered state - understanding consciousness and awareness.",
+    description: "Yes, flow is an altered state marked by time distortion, effortless action, diminished self-awareness, and neurological changes including reduced prefrontal activity and elevated dopamine.",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["altered states", "consciousness", "awareness", "state", "altered", "state"],
+  keywords: ["altered states", "consciousness", "awareness", "flow", "flow state", "peak performance"],
 };
 
 export default function IsFlowStateAnAlteredStatePage() {
@@ -46,7 +46,7 @@ export default function IsFlowStateAnAlteredStatePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write a 20-35 word direct answer to: Is flow state an altered state?]
+              Yes, flow is considered an altered state characterized by complete absorption in activity, time distortion, effortless action, diminished self-consciousness, and measurable neurological changes including reduced prefrontal cortex activity and elevated dopamine.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function IsFlowStateAnAlteredStatePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Explain in 2-4 sentences why is flow state an altered state matters and what mechanisms are involved]
+              Understanding flow as an altered state matters because it demonstrates that peak performance emerges when normal self-monitoring consciousness quiets. During flow, the brain's default mode network (responsible for self-referential thinking and mind-wandering) decreases activity while task-relevant regions intensify, creating a neurological signature distinct from ordinary waking awareness. This state arises when skill level precisely matches challenge level, triggering dopamine and norepinephrine release that sharpens focus while reducing the mental "chatter" of self-doubt. Flow reveals that optimal functioning often requires temporarily altering the standard configuration of consciousness.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function IsFlowStateAnAlteredStatePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Add 1-3 sentences about when this changes or what limits exist]
+              Flow exists on a spectrum from mild absorption (like getting lost in a good book) to deep flow states where hours pass unnoticed and performance transcends normal capacity. Not all focused concentration constitutes flow—tasks that are too easy create boredom rather than altered consciousness, while excessive challenge produces anxiety instead. The "altered" designation depends on intensity: shallow flow may not differ much from sustained attention, but deep flow involves profound shifts in time perception, sense of self, and perceived effort.
             </p>
           </section>
 

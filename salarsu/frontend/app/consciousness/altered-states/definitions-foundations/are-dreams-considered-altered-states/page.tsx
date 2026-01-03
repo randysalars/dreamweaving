@@ -7,11 +7,11 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/definitions-founda
 
 export const metadata: Metadata = {
   title: "Are dreams considered altered states? | Salars Consciousness",
-  description: "Exploring are dreams considered altered states - understanding consciousness and awareness.",
+  description: "Yes, dreams are altered states of consciousness with distinct brain activity patterns, suspended critical reasoning, vivid imagery, and disconnection from external reality during REM sleep.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are dreams considered altered states?",
-    description: "Exploring are dreams considered altered states - understanding consciousness and awareness.",
+    description: "Yes, dreams are altered states of consciousness with distinct brain activity patterns, suspended critical reasoning, vivid imagery, and disconnection from external reality during REM sleep.",
     url: pageUrl,
     type: "article",
   },
@@ -46,7 +46,7 @@ export default function AreDreamsConsideredAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write a 20-35 word direct answer to: Are dreams considered altered states?]
+              Yes, dreams are altered states of consciousness characterized by distinct brain activity patterns, suspended critical reasoning, vivid hallucinatory imagery, and disconnection from external sensory reality during REM sleep.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreDreamsConsideredAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Explain in 2-4 sentences why are dreams considered altered states matters and what mechanisms are involved]
+              Understanding dreams as altered states matters because it reveals how consciousness fundamentally shifts during sleep cycles. During REM sleep, the prefrontal cortex (responsible for logic and reality testing) becomes less active while the visual cortex and limbic system intensify, resulting in bizarre narratives accepted without question. Neurotransmitter shifts—particularly reduced norepinephrine and serotonin alongside increased acetylcholine—create the neurochemical signature that produces dream consciousness. This natural nightly transition demonstrates that altered states don't require external triggers and occur through predictable biological mechanisms.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreDreamsConsideredAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Add 1-3 sentences about when this changes or what limits exist]
+              The classification becomes less clear during lucid dreaming, where critical reasoning partially returns and the dreamer gains awareness of the dream state while remaining asleep. Similarly, the hypnagogic and hypnopompic states (transitions into and out of sleep) represent intermediate zones between waking and dream consciousness. Not all sleep stages produce the same degree of alteration—deep non-REM sleep involves minimal mental activity rather than the vivid alternative reality of REM dreams.
             </p>
           </section>
 
