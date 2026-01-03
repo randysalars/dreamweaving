@@ -1,0 +1,87 @@
+topic: 'Merging Traditions: The Story of a Spiritual AI in Japan Dreamweaving'
+formatted_context: "## COMPETITOR INSIGHTS (spiritual)\n\n### Top Competitor Channels\n\
+  - **CNN**: 18,900,000 subscribers\n- **Sadhguru**: 12,500,000 subscribers\n- **Haminations**:\
+  \ 8,410,000 subscribers\n- **\u041D\u0430\u0441\u0442\u044F, \u044D\u0442\u043E\
+  \ \u0433\u0434\u0435?**: 7,070,000 subscribers\n- **Meditative Mind**: 6,360,000\
+  \ subscribers\n\n### Top-Performing Title Patterns\n- \"[PART 1] | [PART 2]\" -\
+  \ Est. CTR: 1.1%\n  Example: Farming in the Rain \U0001F326\u26A1\uFE0F | Heavy\
+  \ Rain fall #deepsleep #rain #asmrrain #shorts\n  Example: I Cant Sleep | Nursery\
+  \ Rhymes & Kids Songs | Happy Tots Preschool #nurseryrhymes #childrensongs\n- \"\
+  [BENEFIT] [FREQUENCY]\" - Est. CTR: 49.0%\n  Example: Healthy Nuskhey \U0001F64F\
+  \ #chakras #meditationmusic#432hz #health #healthtips #omletarcade#quotes #gyan\
+  \ #new\n  Example: HealthyTipsDairy\U0001F64F #chakras #meditationmusic#432hz #health\
+  \ #healthtips #omletarcade#quotes #gyan #new\n\n### Engagement Benchmarks\n- Avg\
+  \ Engagement Rate: 0.00%\n- Target Retention: 45%\n"
+title_patterns:
+- avg_likes: 70577
+  avg_views: 6401708
+  categories:
+  - sleep
+  - spiritual
+  - hypnosis
+  - affirmations
+  - meditation
+  - binaural_beats
+  engagement_rate: 0.011
+  estimated_ctr: 1.1
+  examples:
+  - channel: nature-world7331
+    title: "Farming in the Rain \U0001F326\u26A1\uFE0F | Heavy Rain fall #deepsleep\
+      \ #rain #asmrrain #shorts"
+    views: 139629885
+  - channel: Happy Tots Preschool - Learn And Play
+    title: 'I Cant Sleep | Nursery Rhymes & Kids Songs | Happy Tots Preschool #nurseryrhymes
+      #childrensongs'
+    views: 65294045
+  - channel: Indra Mourya Vlog
+    title: 'Baby Crying All Night | Mom Awake, Dad Sleeps Like Kumbhkaran | #baby
+      Funny  #parenthoodmoments'
+    views: 61536727
+  - channel: Kr Balram
+    title: '"Alakh Niranjan Song with Aghori Sadhu Chanchal Nath & Naga Sadhu | Divine
+      Spiritual Journey" #song'
+    views: 50917269
+  - channel: kunjidg 11
+    title: "ASMR World Relaxation \u23E9Soft Gentle Rain Sounds for Deep Sleep | #villagelife"
+    views: 44127395
+  name: pipe_separator
+  template: '[PART 1] | [PART 2]'
+  video_count: 215
+- avg_likes: 34971
+  avg_views: 7080047
+  categories:
+  - sleep
+  - spiritual
+  - hypnosis
+  - affirmations
+  - meditation
+  - binaural_beats
+  engagement_rate: 0.0049
+  estimated_ctr: 0.49
+  examples:
+  - channel: Healthy Nuskhey
+    title: "Healthy Nuskhey \U0001F64F #chakras #meditationmusic#432hz #health #healthtips\
+      \ #omletarcade#quotes #gyan #new"
+    views: 23032981
+  - channel: 'Healthy Tips Dairy '
+    title: "HealthyTipsDairy\U0001F64F #chakras #meditationmusic#432hz #health #healthtips\
+      \ #omletarcade#quotes #gyan #new"
+    views: 16521483
+  - channel: Healthy Nuskhey
+    title: "Healthy Nuskhey \U0001F64F #chakras #meditationmusic#432hz #health #healthtips\
+      \ #omletarcade#quotes #gyan #new"
+    views: 16372127
+  - channel: Healthy Nuskhey
+    title: "Healthy Nuskhey \U0001F64F #chakras #meditationmusic#432hz #health #healthtips\
+      \ #omletarcade#quotes #gyan #new"
+    views: 15042846
+  - channel: Healthy Nuskhey
+    title: "Healthy Nuskhey \U0001F64F #chakras #meditationmusic#432hz #health #healthtips\
+      \ #omletarcade#quotes #gyan #new"
+    views: 15042839
+  name: benefit_frequency
+  template: '[BENEFIT] [FREQUENCY]'
+  video_count: 27
+tag_recommendations: []
+seasonal_themes: {}
+title_suggestions: []
