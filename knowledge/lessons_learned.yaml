@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - the-acorn-grove-dreamweaving
-  - symphony-of-shadows-marina-tsvetaevas-concerto-of-
-  - sushibi-senses-dreamweaving
   - the-river-where-every-current-leads-to-good-fortun
   - sun-dance-with-amaterasu-dreamweaving
   - exploring-the-tree-of-life-an-initiates-guide-to-k
@@ -34,8 +31,11 @@ lessons:
   - the-aurora-bridge-of-transcendent-flow-dreamweavin
   - merging-traditions-the-story-of-a-spiritual-ai-in-
   - morias-mysteries-understanding-the-hidden-riches-o
-  applied_count: 29
-  last_applied: '2026-01-03'
+  - galactic-gateway-dreamweaving
+  - the-path-of-behind-the-scenes-dreamweaving
+  - climate-change-climb-dreamweaving
+  applied_count: 32
+  last_applied: '2026-01-04'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - the-acorn-grove-dreamweaving
-  - symphony-of-shadows-marina-tsvetaevas-concerto-of-
-  - sushibi-senses-dreamweaving
   - the-river-where-every-current-leads-to-good-fortun
   - sun-dance-with-amaterasu-dreamweaving
   - exploring-the-tree-of-life-an-initiates-guide-to-k
@@ -72,8 +69,11 @@ lessons:
   - the-aurora-bridge-of-transcendent-flow-dreamweavin
   - merging-traditions-the-story-of-a-spiritual-ai-in-
   - morias-mysteries-understanding-the-hidden-riches-o
-  applied_count: 29
-  last_applied: '2026-01-03'
+  - galactic-gateway-dreamweaving
+  - the-path-of-behind-the-scenes-dreamweaving
+  - climate-change-climb-dreamweaving
+  applied_count: 32
+  last_applied: '2026-01-04'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - the-acorn-grove-dreamweaving
-  - symphony-of-shadows-marina-tsvetaevas-concerto-of-
-  - sushibi-senses-dreamweaving
   - the-river-where-every-current-leads-to-good-fortun
   - sun-dance-with-amaterasu-dreamweaving
   - exploring-the-tree-of-life-an-initiates-guide-to-k
@@ -109,8 +106,11 @@ lessons:
   - the-aurora-bridge-of-transcendent-flow-dreamweavin
   - merging-traditions-the-story-of-a-spiritual-ai-in-
   - morias-mysteries-understanding-the-hidden-riches-o
-  applied_count: 29
-  last_applied: '2026-01-03'
+  - galactic-gateway-dreamweaving
+  - the-path-of-behind-the-scenes-dreamweaving
+  - climate-change-climb-dreamweaving
+  applied_count: 32
+  last_applied: '2026-01-04'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - the-acorn-grove-dreamweaving
-  - symphony-of-shadows-marina-tsvetaevas-concerto-of-
-  - sushibi-senses-dreamweaving
   - the-river-where-every-current-leads-to-good-fortun
   - sun-dance-with-amaterasu-dreamweaving
   - exploring-the-tree-of-life-an-initiates-guide-to-k
@@ -147,8 +144,11 @@ lessons:
   - the-aurora-bridge-of-transcendent-flow-dreamweavin
   - merging-traditions-the-story-of-a-spiritual-ai-in-
   - morias-mysteries-understanding-the-hidden-riches-o
-  applied_count: 29
-  last_applied: '2026-01-03'
+  - galactic-gateway-dreamweaving
+  - the-path-of-behind-the-scenes-dreamweaving
+  - climate-change-climb-dreamweaving
+  applied_count: 32
+  last_applied: '2026-01-04'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - the-acorn-grove-dreamweaving
-  - symphony-of-shadows-marina-tsvetaevas-concerto-of-
-  - sushibi-senses-dreamweaving
   - the-river-where-every-current-leads-to-good-fortun
   - sun-dance-with-amaterasu-dreamweaving
   - exploring-the-tree-of-life-an-initiates-guide-to-k
@@ -183,8 +180,11 @@ lessons:
   - the-aurora-bridge-of-transcendent-flow-dreamweavin
   - merging-traditions-the-story-of-a-spiritual-ai-in-
   - morias-mysteries-understanding-the-hidden-riches-o
-  applied_count: 29
-  last_applied: '2026-01-03'
+  - galactic-gateway-dreamweaving
+  - the-path-of-behind-the-scenes-dreamweaving
+  - climate-change-climb-dreamweaving
+  applied_count: 32
+  last_applied: '2026-01-04'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3

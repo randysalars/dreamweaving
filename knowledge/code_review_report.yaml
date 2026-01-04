@@ -1,10 +1,10 @@
-timestamp: '2025-12-28T01:00:05.185395'
+timestamp: '2026-01-04T01:00:05.270648'
 summary:
-  total_issues: 5683
+  total_issues: 5960
   errors: 0
-  warnings: 102
-  info: 5581
-  files_reviewed: 184
+  warnings: 109
+  info: 5851
+  files_reviewed: 202
 by_severity:
   errors: []
   warnings:
@@ -141,7 +141,7 @@ by_severity:
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 294
+    line: 339
     type: deep_nesting
     description: Function '_tool_bullion_sort' has deep nesting (7 levels)
     severity: warning
@@ -212,6 +212,12 @@ by_severity:
     description: Function 'apply_fixes' has deep nesting (6 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
+  - file: scripts/utilities/generate_store_images.py
+    line: 14
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
   - file: scripts/utilities/audio_library.py
     line: 187
     type: deep_nesting
@@ -224,12 +230,30 @@ by_severity:
     description: Function 'print_report' has deep nesting (5 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 216
+    type: deep_nesting
+    description: Function '_scrape_jmbullion' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
   - file: scripts/utilities/validate_ssml.py
     line: 238
     type: deep_nesting
     description: Function 'validate_ssml' has deep nesting (7 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
+  - file: scripts/utilities/package_products.py
+    line: 119
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/utilities/package_products.py
+    line: 120
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
   - file: scripts/utilities/expand_archetypes.py
     line: 298
     type: deep_nesting
@@ -258,6 +282,24 @@ by_severity:
     line: 331
     type: deep_nesting
     description: Function 'validate_script_archetypes' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/generation/track_content_progress.py
+    line: 208
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/generation/validate_content_quality.py
+    line: 301
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/generation/validate_content_quality.py
+    line: 179
+    type: deep_nesting
+    description: Function 'validate_all_pages' has deep nesting (7 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/youtube_competitor_analyzer.py
@@ -327,31 +369,31 @@ by_severity:
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 757
+    line: 762
     type: deep_nesting
     description: Function 'main' has deep nesting (9 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 242
+    line: 247
     type: deep_nesting
     description: Function 'export_all_content' has deep nesting (6 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 361
+    line: 366
     type: deep_nesting
     description: Function '_blocks_to_markdown' has deep nesting (13 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 441
+    line: 446
     type: deep_nesting
     description: Function '_parse_entry' has deep nesting (10 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 677
+    line: 682
     type: deep_nesting
     description: Function '_crawl_and_export_children' has deep nesting (6 levels)
     severity: warning
@@ -622,7 +664,7 @@ by_severity:
     suggestion: Consider refactoring to reduce complexity
 by_type:
   print_statement:
-    count: 3592
+    count: 3805
     examples:
     - file: scripts/test_basic_mixing.py
       line: 35
@@ -643,7 +685,7 @@ by_type:
       severity: info
       suggestion: Consider using logging module for production code
   missing_docstring:
-    count: 238
+    count: 252
     examples:
     - file: scripts/test_basic_mixing.py
       line: 104
@@ -664,7 +706,7 @@ by_type:
       severity: info
       suggestion: ''
   magic_number:
-    count: 1283
+    count: 1303
     examples:
     - file: scripts/test_basic_mixing.py
       line: 110
@@ -685,7 +727,7 @@ by_type:
       severity: info
       suggestion: ''
   hardcoded_path:
-    count: 4
+    count: 9
     examples:
     - file: scripts/email/insert_dreamweaver_templates.py
       line: 32
@@ -706,7 +748,7 @@ by_type:
       severity: warning
       suggestion: Use Path.home() or configuration for paths
   line_length:
-    count: 418
+    count: 441
     examples:
     - file: scripts/email/insert_dreamweaver_templates.py
       line: 285
@@ -727,7 +769,7 @@ by_type:
       severity: info
       suggestion: Consider breaking into multiple lines
   deep_nesting:
-    count: 95
+    count: 97
     examples:
     - file: scripts/email/seasonal_scheduler.py
       line: 380
@@ -10631,141 +10673,135 @@ by_file:
     suggestion: ''
   scripts/mcp/coin_rag_mcp_server.py:
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 435
+    line: 514
     type: line_length
     description: Line too long (214 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 442
+    line: 521
     type: line_length
     description: Line too long (187 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 443
+    line: 522
     type: line_length
     description: Line too long (154 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 448
+    line: 527
     type: line_length
     description: Line too long (136 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 449
+    line: 528
     type: line_length
     description: Line too long (129 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 454
+    line: 533
     type: line_length
     description: Line too long (140 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 460
+    line: 539
     type: line_length
     description: Line too long (139 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 469
+    line: 548
     type: line_length
     description: Line too long (121 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 562
+    line: 751
     type: line_length
     description: Line too long (135 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 578
+    line: 767
     type: line_length
     description: Line too long (141 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 582
+    line: 771
     type: line_length
-    description: Line too long (126 chars)
+    description: Line too long (154 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 657
-    type: line_length
-    description: Line too long (127 chars)
-    severity: info
-    suggestion: Consider breaking into multiple lines
-  - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 739
+    line: 862
     type: line_length
     description: Line too long (127 chars)
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 61
+    line: 915
+    type: line_length
+    description: Line too long (121 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 943
+    type: line_length
+    description: Line too long (127 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 106
     type: missing_docstring
     description: Class 'JsonRpcError' missing docstring
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 294
+    line: 339
     type: deep_nesting
     description: Function '_tool_bullion_sort' has deep nesting (7 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 809
+    line: 1064
     type: missing_docstring
     description: Function 'main' missing docstring
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 139
+    line: 184
     type: magic_number
     description: Magic number 715 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 140
+    line: 185
     type: magic_number
     description: Magic number 715 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 141
+    line: 186
     type: magic_number
     description: Magic number 17875 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 142
+    line: 187
     type: magic_number
     description: Magic number 3575 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 188
+    line: 233
     type: magic_number
     description: Magic number 32602 should be a named constant
-    severity: info
-    suggestion: ''
-  - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 222
-    type: magic_number
-    description: Magic number 32602 should be a named constant
-    severity: info
-    suggestion: ''
-  - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 250
-    type: magic_number
-    description: Magic number 500 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
@@ -10775,61 +10811,109 @@ by_file:
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 280
+    line: 295
+    type: magic_number
+    description: Magic number 500 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 312
+    type: magic_number
+    description: Magic number 32602 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 325
     type: magic_number
     description: Magic number 800 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 302
+    line: 347
     type: magic_number
     description: Magic number 32602 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 400
+    line: 448
     type: magic_number
     description: Magic number 32602 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 408
+    line: 456
     type: magic_number
     description: Magic number 715 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 430
+    line: 509
     type: magic_number
     description: Magic number 32602 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 566
-    type: magic_number
-    description: Magic number 1893 should be a named constant
-    severity: info
-    suggestion: ''
-  - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 566
-    type: magic_number
-    description: Magic number 1916 should be a named constant
-    severity: info
-    suggestion: ''
-  - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 759
-    type: magic_number
-    description: Magic number 32601 should be a named constant
-    severity: info
-    suggestion: ''
-  - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 767
+    line: 648
     type: magic_number
     description: Magic number 32000 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/mcp/coin_rag_mcp_server.py
-    line: 806
+    line: 650
+    type: magic_number
+    description: Magic number 32000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 661
+    type: magic_number
+    description: Magic number 32602 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 671
+    type: magic_number
+    description: Magic number 32602 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 684
+    type: magic_number
+    description: Magic number 32000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 746
+    type: magic_number
+    description: Magic number 32000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 755
+    type: magic_number
+    description: Magic number 1893 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 755
+    type: magic_number
+    description: Magic number 1916 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 1014
+    type: magic_number
+    description: Magic number 32601 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 1022
+    type: magic_number
+    description: Magic number 32000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/mcp/coin_rag_mcp_server.py
+    line: 1061
     type: magic_number
     description: Magic number 32601 should be a named constant
     severity: info
@@ -13682,6 +13766,187 @@ by_file:
     description: Magic number 1800 should be a named constant
     severity: info
     suggestion: ''
+  scripts/utilities/generate_store_images.py:
+  - file: scripts/utilities/generate_store_images.py
+    line: 14
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/utilities/generate_store_images.py
+    line: 27
+    type: line_length
+    description: Line too long (252 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/generate_store_images.py
+    line: 31
+    type: line_length
+    description: Line too long (257 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/generate_store_images.py
+    line: 35
+    type: line_length
+    description: Line too long (233 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/generate_store_images.py
+    line: 39
+    type: line_length
+    description: Line too long (244 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/generate_store_images.py
+    line: 43
+    type: line_length
+    description: Line too long (244 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/generate_store_images.py
+    line: 47
+    type: line_length
+    description: Line too long (245 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/generate_store_images.py
+    line: 51
+    type: line_length
+    description: Line too long (242 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/generate_store_images.py
+    line: 55
+    type: line_length
+    description: Line too long (239 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/generate_store_images.py
+    line: 59
+    type: line_length
+    description: Line too long (241 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/generate_store_images.py
+    line: 67
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 71
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 84
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 86
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 101
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 104
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 119
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 123
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 129
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 130
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 131
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 144
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 147
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 148
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 149
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 153
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 166
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 167
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 168
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/generate_store_images.py
+    line: 169
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
   scripts/utilities/smoke_mcp_server.py:
   - file: scripts/utilities/smoke_mcp_server.py
     line: 111
@@ -14619,6 +14884,151 @@ by_file:
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
+  scripts/utilities/spot_price_fetcher.py:
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 19
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 20
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 47
+    type: line_length
+    description: Line too long (134 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 523
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 527
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 538
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 539
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 541
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 546
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 547
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 548
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 549
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 550
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 552
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 554
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 556
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 216
+    type: deep_nesting
+    description: Function '_scrape_jmbullion' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 94
+    type: magic_number
+    description: Magic number 200 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 177
+    type: magic_number
+    description: Magic number 403 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 178
+    type: magic_number
+    description: Magic number 403 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 196
+    type: magic_number
+    description: Magic number 5000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 243
+    type: magic_number
+    description: Magic number 5000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 258
+    type: magic_number
+    description: Magic number 5000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/spot_price_fetcher.py
+    line: 312
+    type: magic_number
+    description: Magic number 5000 should be a named constant
+    severity: info
+    suggestion: ''
   scripts/utilities/expand_anchors.py:
   - file: scripts/utilities/expand_anchors.py
     line: 32
@@ -14714,6 +15124,37 @@ by_file:
     line: 111
     type: missing_docstring
     description: Function 'replace_tag' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/utilities/build_all_product_audio.py:
+  - file: scripts/utilities/build_all_product_audio.py
+    line: 67
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/build_all_product_audio.py
+    line: 65
+    type: missing_docstring
+    description: Function 'log' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/build_all_product_audio.py
+    line: 153
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/build_all_product_audio.py
+    line: 100
+    type: magic_number
+    description: Magic number 900 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/build_all_product_audio.py
+    line: 107
+    type: magic_number
+    description: Magic number 200 should be a named constant
     severity: info
     suggestion: ''
   scripts/utilities/validate_ssml.py:
@@ -15947,6 +16388,37 @@ by_file:
     description: Magic number 500 should be a named constant
     severity: info
     suggestion: ''
+  scripts/utilities/package_products.py:
+  - file: scripts/utilities/package_products.py
+    line: 119
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/utilities/package_products.py
+    line: 120
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/utilities/package_products.py
+    line: 126
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/utilities/package_products.py
+    line: 124
+    type: missing_docstring
+    description: Function 'log' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/utilities/package_products.py
+    line: 222
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
   scripts/utilities/expand_archetypes.py:
   - file: scripts/utilities/expand_archetypes.py
     line: 38
@@ -16835,6 +17307,799 @@ by_file:
     description: Magic number 200 should be a named constant
     severity: info
     suggestion: ''
+  scripts/generation/track_content_progress.py:
+  - file: scripts/generation/track_content_progress.py
+    line: 119
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 120
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 121
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 131
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 132
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 133
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 134
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 135
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 136
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 144
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 146
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 147
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 160
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 161
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 164
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 168
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 170
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 172
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 178
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 179
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 180
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 181
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 182
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 208
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/generation/track_content_progress.py
+    line: 216
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 222
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 229
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 231
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 232
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 233
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 234
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/track_content_progress.py
+    line: 199
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/generation/generate_category_pages_from_yaml.py:
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 44
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 45
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 85
+    type: line_length
+    description: Line too long (126 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 118
+    type: line_length
+    description: Line too long (132 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 149
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 150
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 155
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 173
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 175
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 176
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 180
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 184
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 185
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 186
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 187
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 188
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 189
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 213
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages_from_yaml.py
+    line: 192
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/generation/generate_all_pages.py:
+  - file: scripts/generation/generate_all_pages.py
+    line: 103
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 142
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 143
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 144
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 147
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 149
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 164
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 165
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 173
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 179
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 183
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 202
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 206
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 209
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 210
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 211
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 212
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 213
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 214
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 217
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 218
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 219
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 220
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 221
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 260
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_all_pages.py
+    line: 224
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/generation/generate_sample_pages.py:
+  - file: scripts/generation/generate_sample_pages.py
+    line: 108
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 120
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 135
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 138
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 139
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 140
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 143
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 145
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 146
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 147
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 148
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 149
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_sample_pages.py
+    line: 107
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/generation/fix_category_pages.py:
+  - file: scripts/generation/fix_category_pages.py
+    line: 33
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/fix_category_pages.py
+    line: 35
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  scripts/generation/validate_content_quality.py:
+  - file: scripts/generation/validate_content_quality.py
+    line: 247
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 248
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 249
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 258
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 259
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 260
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 261
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 262
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 263
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 264
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 265
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 268
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 269
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 273
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 274
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 275
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 278
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 280
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 283
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 285
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 288
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 290
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 292
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 301
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/generation/validate_content_quality.py
+    line: 309
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 315
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/validate_content_quality.py
+    line: 179
+    type: deep_nesting
+    description: Function 'validate_all_pages' has deep nesting (7 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/generation/validate_content_quality.py
+    line: 294
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/generation/generate_category_pages.py:
+  - file: scripts/generation/generate_category_pages.py
+    line: 105
+    type: line_length
+    description: Line too long (126 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generate_category_pages.py
+    line: 135
+    type: line_length
+    description: Line too long (132 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generate_category_pages.py
+    line: 168
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages.py
+    line: 179
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages.py
+    line: 183
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages.py
+    line: 185
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages.py
+    line: 187
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages.py
+    line: 188
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages.py
+    line: 190
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages.py
+    line: 193
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generate_category_pages.py
+    line: 167
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
   scripts/ai/dreamweaver_cli.py:
   - file: scripts/ai/dreamweaver_cli.py
     line: 33
@@ -17650,6 +18915,61 @@ by_file:
     description: Magic number 180 should be a named constant
     severity: info
     suggestion: ''
+  scripts/ai/export_notion_page_tree.py:
+  - file: scripts/ai/export_notion_page_tree.py
+    line: 74
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_notion_page_tree.py
+    line: 75
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_notion_page_tree.py
+    line: 76
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_notion_page_tree.py
+    line: 89
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_notion_page_tree.py
+    line: 93
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_notion_page_tree.py
+    line: 102
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_notion_page_tree.py
+    line: 103
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_notion_page_tree.py
+    line: 104
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_notion_page_tree.py
+    line: 35
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
   scripts/ai/notion_embeddings_pipeline.py:
   - file: scripts/ai/notion_embeddings_pipeline.py
     line: 119
@@ -17847,6 +19167,85 @@ by_file:
     line: 810
     type: magic_number
     description: Magic number 200 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/ai/pull_strategy_hub.py:
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 26
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 27
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 28
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 33
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 39
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 61
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 65
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 67
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 69
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 79
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 83
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 84
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_strategy_hub.py
+    line: 17
+    type: missing_docstring
+    description: Function 'main' missing docstring
     severity: info
     suggestion: ''
   scripts/ai/error_router.py:
@@ -18965,19 +20364,7 @@ by_file:
     suggestion: ''
   scripts/ai/notion_knowledge_retriever.py:
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 38
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 266
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 268
+    line: 43
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -18989,55 +20376,37 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 280
+    line: 273
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 318
+    line: 276
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 550
+    line: 285
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 566
+    line: 323
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 597
+    line: 555
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 598
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 599
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 600
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 601
+    line: 571
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -19049,19 +20418,37 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
+    line: 603
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 604
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
     line: 605
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 611
+    line: 606
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 614
+    line: 607
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 610
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -19073,13 +20460,13 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 618
+    line: 619
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 620
+    line: 621
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -19091,79 +20478,73 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 629
+    line: 625
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 631
+    line: 628
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 669
+    line: 634
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 673
+    line: 636
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 693
+    line: 674
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 736
+    line: 678
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 754
+    line: 698
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 805
+    line: 741
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 806
+    line: 759
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 812
+    line: 810
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 819
+    line: 811
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 821
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 823
+    line: 817
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -19175,31 +20556,43 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 830
+    line: 826
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 832
+    line: 828
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 833
+    line: 829
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 834
+    line: 835
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 836
+    line: 837
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 838
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 839
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -19211,25 +20604,19 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 843
+    line: 846
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 845
+    line: 848
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
     line: 850
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 851
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -19247,97 +20634,109 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 857
+    line: 860
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 858
+    line: 861
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 859
+    line: 862
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 866
+    line: 863
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 874
+    line: 864
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 880
+    line: 871
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 757
+    line: 879
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 885
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 762
     type: missing_docstring
     description: Function 'main' missing docstring
     severity: info
     suggestion: ''
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 757
+    line: 762
     type: deep_nesting
     description: Function 'main' has deep nesting (9 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 63
+    line: 68
     type: missing_docstring
     description: Function 'resolve_env' missing docstring
     severity: info
     suggestion: ''
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 242
+    line: 247
     type: deep_nesting
     description: Function 'export_all_content' has deep nesting (6 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 361
+    line: 366
     type: deep_nesting
     description: Function '_blocks_to_markdown' has deep nesting (13 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 441
+    line: 446
     type: deep_nesting
     description: Function '_parse_entry' has deep nesting (10 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 677
+    line: 682
     type: deep_nesting
     description: Function '_crawl_and_export_children' has deep nesting (6 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 517
+    line: 522
     type: magic_number
     description: Magic number 500 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 519
+    line: 524
     type: magic_number
     description: Magic number 500 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 555
+    line: 560
     type: magic_number
     description: Magic number 500 should be a named constant
     severity: info
@@ -19554,6 +20953,12 @@ by_file:
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
+  - file: scripts/ai/rag_file_watcher.py
+    line: 97
+    type: line_length
+    description: Line too long (133 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
   - file: scripts/ai/rag_file_watcher.py
     line: 520
     type: print_statement
@@ -20442,6 +21847,103 @@ by_file:
     description: Magic number 155 should be a named constant
     severity: info
     suggestion: ''
+  scripts/ai/pull_specific_notion_page.py:
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 28
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 29
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 30
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 35
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 46
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 75
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 79
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 81
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 83
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 93
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 97
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 98
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 99
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 100
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 101
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/pull_specific_notion_page.py
+    line: 19
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
   scripts/ai/rag_auto_sync.py:
   - file: scripts/ai/rag_auto_sync.py
     line: 423
@@ -20670,6 +22172,31 @@ by_file:
     line: 295
     type: magic_number
     description: Magic number 200 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/ai/fetch_page_by_id.py:
+  - file: scripts/ai/fetch_page_by_id.py
+    line: 8
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/fetch_page_by_id.py
+    line: 11
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/fetch_page_by_id.py
+    line: 13
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/fetch_page_by_id.py
+    line: 5
+    type: missing_docstring
+    description: Function 'main' missing docstring
     severity: info
     suggestion: ''
   scripts/ai/rag_feedback.py:
@@ -22985,73 +24512,73 @@ by_file:
     suggestion: ''
   scripts/automation/state_db.py:
   - file: scripts/automation/state_db.py
-    line: 780
+    line: 934
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/automation/state_db.py
-    line: 784
+    line: 938
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/automation/state_db.py
-    line: 785
+    line: 939
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/automation/state_db.py
-    line: 786
+    line: 940
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/automation/state_db.py
-    line: 787
+    line: 941
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/automation/state_db.py
-    line: 788
+    line: 942
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/automation/state_db.py
-    line: 789
+    line: 943
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/automation/state_db.py
-    line: 790
+    line: 944
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/automation/state_db.py
-    line: 236
+    line: 261
     type: too_many_args
     description: Function 'mark_complete' has 11 parameters
     severity: info
     suggestion: Consider using a config object or dataclass
   - file: scripts/automation/state_db.py
-    line: 298
+    line: 323
     type: magic_number
     description: Magic number 5000 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/automation/state_db.py
-    line: 298
+    line: 323
     type: magic_number
     description: Magic number 5000 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/automation/state_db.py
-    line: 300
+    line: 325
     type: magic_number
     description: Magic number 200 should be a named constant
     severity: info
@@ -29252,6 +30779,201 @@ by_file:
     line: 538
     type: magic_number
     description: Magic number 999 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/generation/generators/page_generator.py:
+  - file: scripts/generation/generators/page_generator.py
+    line: 53
+    type: line_length
+    description: Line too long (121 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generators/page_generator.py
+    line: 97
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generators/page_generator.py
+    line: 101
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generators/page_generator.py
+    line: 108
+    type: line_length
+    description: Line too long (215 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generators/page_generator.py
+    line: 109
+    type: line_length
+    description: Line too long (127 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generators/page_generator.py
+    line: 144
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generators/page_generator.py
+    line: 173
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generators/page_generator.py
+    line: 211
+    type: line_length
+    description: Line too long (131 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generators/page_generator.py
+    line: 220
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/generators/page_generator.py
+    line: 150
+    type: magic_number
+    description: Magic number 155 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/generation/generators/page_generator.py
+    line: 150
+    type: magic_number
+    description: Magic number 155 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/generation/generators/simple_generator.py:
+  - file: scripts/generation/generators/simple_generator.py
+    line: 54
+    type: line_length
+    description: Line too long (136 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generators/simple_generator.py
+    line: 63
+    type: line_length
+    description: Line too long (121 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generators/simple_generator.py
+    line: 129
+    type: line_length
+    description: Line too long (131 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/generators/simple_generator.py
+    line: 134
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  scripts/generation/parsers/marketing_parser.py:
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 97
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 119
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 207
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 211
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 215
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 221
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 223
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 225
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 227
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 230
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 233
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 235
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 237
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 238
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 6
+    type: magic_number
+    description: Magic number 124 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 7
+    type: magic_number
+    description: Magic number 120 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/generation/parsers/marketing_parser.py
+    line: 7
+    type: magic_number
+    description: Magic number 180 should be a named constant
     severity: info
     suggestion: ''
   scripts/ai/website/analytics_client.py:

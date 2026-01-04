@@ -1,0 +1,71 @@
+session_name: climate-change-climb-dreamweaving
+topic: Climate Change Climb Dreamweaving
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2026-01-04T01:04:07.840127'
+  ended: '2026-01-04T01:43:02.842202'
+  duration_seconds: 2335.0
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - generate_thumbnail
+  - upload_website
+  - self_improvement
+  failed: []
+  total: 16
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-01-04T01:04:09.762025'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2026-01-04T01:04:24.586218'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2026-01-04T01:06:18.849100'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2026-01-04T01:06:18.908412'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-01-04T01:23:09.243533'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/climate-change-climb-dreamweaving
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/climate-change-climb-dreamweaving/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/climate-change-climb-dreamweaving/working_files/script.ssml
+  files:
+  - output/climate_change_climb_dreamweaving_MASTER.mp3
+  - output/subtitles.vtt
+  - output/voice.mp3
+  - output/sfx.wav
+  - output/seo_metadata.json
+  - output/youtube_thumbnail.png
+  - output/session_mixed.wav
+  - output/climate_change_climb_dreamweaving_MASTER.wav
+  - output/binaural_dynamic.wav
+  - output/product_schema.json
