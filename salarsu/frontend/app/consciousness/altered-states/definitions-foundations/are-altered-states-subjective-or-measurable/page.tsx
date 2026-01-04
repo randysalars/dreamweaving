@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/definitions-founda
 
 export const metadata: Metadata = {
   title: "Are altered states subjective or measurable? | Salars Consciousness",
-  description: "Are altered states subjective or measurable?",
+  description: "Altered states are both subjective experiences and measurable phenomena, with brain imaging, EEG, and physiological markers providing objective correlates of reported consciousness changes.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states subjective or measurable?",
-    description: "Are altered states subjective or measurable?",
+    description: "Altered states are both subjective experiences and measurable phenomena, with brain imaging, EEG, and physiological markers providing objective correlates of reported consciousness changes.",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["altered states", "measurement", "subjective experience", "neuroscience", "EEG", "brain imaging"],
 };
 
 export default function AreAlteredStatesSubjectiveOrMeasurablePage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesSubjectiveOrMeasurablePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states subjective or measurable?"]
+              Altered states are both subjective experiences and measurable phenomena, with brain imaging, EEG patterns, heart rate variability, and biochemical markers providing objective correlates of reported consciousness changes.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesSubjectiveOrMeasurablePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Understanding this duality matters because it bridges the gap between first-person experience and third-person science. Subjectively, altered states involve qualitative shifts in how awareness feels—time may slow, colors intensify, or self-boundaries dissolve. These subjective reports can be correlated with objective measurements: theta brainwaves during deep meditation, reduced default mode network activity during psychedelic states, or elevated cortisol during acute stress states. This correlation doesn't reduce the experience to brain activity but demonstrates that consciousness changes leave measurable signatures, allowing researchers to study states that were once considered purely mystical or unmeasurable.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesSubjectiveOrMeasurablePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The correlation weakens for subtle states where physiological changes are minimal or for unique experiences that don't map onto existing measurement frameworks. Two people can show identical EEG signatures yet report vastly different subjective experiences, demonstrating that objective measures capture correlates but not the full phenomenology of consciousness.
             </p>
           </section>
 
