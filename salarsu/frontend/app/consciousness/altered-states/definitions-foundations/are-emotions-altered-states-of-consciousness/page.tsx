@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/definitions-founda
 
 export const metadata: Metadata = {
   title: "Are emotions altered states of consciousness? | Salars Consciousness",
-  description: "Exploring are emotions altered states of consciousness - understanding consciousness and awareness.",
+  description: "Intense emotions can temporarily alter consciousness through neurochemical shifts and attentional narrowing, but they differ from classical altered states in duration and controllability.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are emotions altered states of consciousness?",
-    description: "Exploring are emotions altered states of consciousness - understanding consciousness and awareness.",
+    description: "Intense emotions can temporarily alter consciousness through neurochemical shifts and attentional narrowing, but they differ from classical altered states in duration and controllability.",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["altered states", "consciousness", "awareness", "emotions", "altered", "states"],
+  keywords: ["altered states", "emotions", "consciousness", "affect", "neurochemistry", "arousal"],
 };
 
 export default function AreEmotionsAlteredStatesOfConsciousnessPage() {
@@ -46,27 +46,27 @@ export default function AreEmotionsAlteredStatesOfConsciousnessPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write a 20-35 word direct answer to: Are emotions altered states of consciousness?]
+              Intense emotions can temporarily alter consciousness through neurochemical shifts, attentional narrowing, and physiological arousal, but they differ from classical altered states in duration, depth of perceptual change, and degree of controllability.
             </p>
           </section>
 
-          {/* Context Paragraph */}
+          {/* Why This Matters */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Explain in 2-4 sentences why are emotions altered states of consciousness matters and what mechanisms are involved]
+              Understanding emotions as consciousness-altering phenomena matters because it reveals how everyday affective experiences operate through similar neurobiological mechanisms as recognized altered states. Peak emotional moments trigger dopamine, norepinephrine, and cortisol cascades that reshape attention, memory encoding, and decision-making, resulting in temporary shifts away from baseline awareness. This recognition helps distinguish between transient emotional states (anger, fear, ecstasy) and sustained altered states (meditation, hypnosis), where the depth and duration of perceptual transformation differ significantly. Emotions demonstrate that consciousness exists on a spectrum rather than in discrete categories.
             </p>
           </section>
 
-          {/* Boundary Paragraph */}
+          {/* Where This Changes */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Add 1-3 sentences about when this changes or what limits exist]
+              The classification becomes less clear during extreme emotional experiences like mystical awe, overwhelming grief, or euphoric joy, where consciousness shifts can approach the depth of psychedelic or meditative states. Chronic emotional conditions like anxiety disorders or mania represent sustained alterations rather than temporary shifts. Conversely, mild emotions (contentment, mild irritation) create minimal consciousness change and wouldn't qualify as altered states despite involving similar neural pathways at lower intensity.
             </p>
           </section>
 

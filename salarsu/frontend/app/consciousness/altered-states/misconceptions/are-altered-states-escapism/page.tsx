@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/misconceptions/are
 
 export const metadata: Metadata = {
   title: "Are altered states escapism? | Salars Consciousness",
-  description: "Exploring are altered states escapism - understanding consciousness and awareness.",
+  description: "Are altered states escapism?",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states escapism?",
-    description: "Exploring are altered states escapism - understanding consciousness and awareness.",
+    description: "Are altered states escapism?",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["altered states", "consciousness", "awareness", "altered", "states", "escapism"],
+  keywords: ["consciousness", "awareness", "perception"],
 };
 
 export default function AreAlteredStatesEscapismPage() {
@@ -46,27 +46,27 @@ export default function AreAlteredStatesEscapismPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write a 20-35 word direct answer to: Are altered states escapism?]
+              [Claude: Write 20-35 word answer to "Are altered states escapism?"]
             </p>
           </section>
 
-          {/* Context Paragraph */}
+          {/* Why This Matters */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Explain in 2-4 sentences why are altered states escapism matters and what mechanisms are involved]
+              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
             </p>
           </section>
 
-          {/* Boundary Paragraph */}
+          {/* Where This Changes */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Add 1-3 sentences about when this changes or what limits exist]
+              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
             </p>
           </section>
 

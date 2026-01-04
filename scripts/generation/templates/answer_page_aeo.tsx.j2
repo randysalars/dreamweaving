@@ -1,0 +1,106 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft, HelpCircle } from "lucide-react";
+import { getSiteUrl } from "@/lib/siteUrl";
+
+const pageUrl = `${getSiteUrl()}{{ canonical_path }}`;
+
+export const metadata: Metadata = {
+  title: "{{ title }}",
+  description: "{{ description }}",
+  alternates: { canonical: pageUrl },
+  openGraph: {
+    title: "{{ question }}",
+    description: "{{ description }}",
+    url: pageUrl,
+    type: "article",
+  },
+  keywords: {{ keywords_json }},
+};
+
+export default function {{ component_name }}() {
+  return (
+    <div className="min-h-screen bg-background">
+      <main className="container mx-auto px-4 py-12">
+        <div className="mx-auto max-w-3xl space-y-8">
+
+          {/* Breadcrumb */}
+          <div className="space-y-2">
+            <Link
+              href="{{ back_url }}"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to {{ category_name }}
+            </Link>
+          </div>
+
+          {/* Question Title */}
+          <h1 className="text-4xl font-semibold tracking-tight text-foreground">
+            {{ question }}
+          </h1>
+
+          {/* Short Answer Block */}
+          <section className="rounded-2xl border border-border bg-card/40 p-6">
+            <p className="text-sm font-semibold uppercase tracking-wide text-primary mb-3">
+              Short Answer
+            </p>
+            <p className="text-lg text-foreground leading-relaxed">
+              {{ short_answer }}
+            </p>
+          </section>
+
+          {/* Why This Matters */}
+          <section className="space-y-3">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+              Why This Matters
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              {{ why_this_matters }}
+            </p>
+          </section>
+
+          {/* Where This Changes */}
+          <section className="space-y-3">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+              Where This Changes
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              {{ where_this_changes }}
+            </p>
+          </section>
+
+          {/* Related Questions */}
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+              Related Questions
+            </h2>
+            <div className="grid gap-3">
+              {% for related in related_questions %}
+              <Link
+                href="{{ related.url }}"
+                className="flex items-start gap-3 rounded-lg border border-border bg-card/30 p-4 transition-colors hover:bg-card/50"
+              >
+                <HelpCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <span className="text-foreground">{{ related.text }}</span>
+              </Link>
+              {% endfor %}
+            </div>
+          </section>
+
+          {/* Back to Category */}
+          <section className="pt-6 border-t border-border">
+            <Link
+              href="{{ category_url }}"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              View all {{ category_name }} questions
+              <ArrowLeft className="h-4 w-4 rotate-180" />
+            </Link>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  );
+}

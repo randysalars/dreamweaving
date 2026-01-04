@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can sensory overload cause altered states? | Salars Consciousness",
-  description: "Exploring can sensory overload cause altered states - understanding consciousness and awareness.",
+  description: "Can sensory overload cause altered states?",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can sensory overload cause altered states?",
-    description: "Exploring can sensory overload cause altered states - understanding consciousness and awareness.",
+    description: "Can sensory overload cause altered states?",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["altered states", "consciousness", "awareness", "sensory", "overload", "cause"],
+  keywords: ["consciousness", "awareness", "perception"],
 };
 
 export default function CanSensoryOverloadCauseAlteredStatesPage() {
@@ -46,27 +46,27 @@ export default function CanSensoryOverloadCauseAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write a 20-35 word direct answer to: Can sensory overload cause altered states?]
+              [Claude: Write 20-35 word answer to "Can sensory overload cause altered states?"]
             </p>
           </section>
 
-          {/* Context Paragraph */}
+          {/* Why This Matters */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Explain in 2-4 sentences why can sensory overload cause altered states matters and what mechanisms are involved]
+              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
             </p>
           </section>
 
-          {/* Boundary Paragraph */}
+          {/* Where This Changes */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Add 1-3 sentences about when this changes or what limits exist]
+              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
             </p>
           </section>
 

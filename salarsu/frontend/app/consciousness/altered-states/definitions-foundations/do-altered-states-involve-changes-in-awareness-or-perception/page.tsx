@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/definitions-founda
 
 export const metadata: Metadata = {
   title: "Do altered states involve changes in awareness or perception? | Salars Consciousness",
-  description: "Exploring do altered states involve changes in awareness or perception - understanding consciousness and awareness.",
+  description: "Altered states involve changes in both awareness (how we attend and process information) and perception (how sensory data is interpreted), with different states emphasizing one dimension more than the other.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states involve changes in awareness or perception?",
-    description: "Exploring do altered states involve changes in awareness or perception - understanding consciousness and awareness.",
+    description: "Altered states involve changes in both awareness (how we attend and process information) and perception (how sensory data is interpreted), with different states emphasizing one dimension more than the other.",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["altered states", "consciousness", "awareness", "altered", "states", "involve"],
+  keywords: ["altered states", "awareness", "perception", "consciousness", "attention", "sensory processing"],
 };
 
 export default function DoAlteredStatesInvolveChangesInAwarenessOrPerceptionPage() {
@@ -46,27 +46,27 @@ export default function DoAlteredStatesInvolveChangesInAwarenessOrPerceptionPage
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write a 20-35 word direct answer to: Do altered states involve changes in awareness or perception?]
+              Altered states involve changes in both awareness (the spotlight and scope of attention) and perception (how sensory information is filtered and interpreted), with different states emphasizing one dimension more than the other.
             </p>
           </section>
 
-          {/* Context Paragraph */}
+          {/* Why This Matters */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Explain in 2-4 sentences why do altered states involve changes in awareness or perception matters and what mechanisms are involved]
+              Understanding this dual nature matters because it reveals the two primary pathways through which consciousness shifts. Awareness changes involve where attention focuses (narrow vs. diffuse), how information is processed (analytical vs. holistic), and the sense of self-location (inside the body vs. expanded). Perceptual changes involve how sensory input is filtered, enhanced, or distorted—colors may intensify, sounds take on new textures, or time perception stretches and compresses. Some states like deep meditation primarily alter awareness while leaving perception intact, whereas psychedelics dramatically reshape perception while awareness remains lucid, demonstrating that these dimensions can shift independently.
             </p>
           </section>
 
-          {/* Boundary Paragraph */}
+          {/* Where This Changes */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Add 1-3 sentences about when this changes or what limits exist]
+              The distinction blurs in states that powerfully transform both dimensions simultaneously, such as high-dose psychedelic experiences or advanced mystical states where awareness expands beyond ordinary boundaries while perception becomes radically altered. Conversely, subtle states like light relaxation may involve minimal changes to either dimension, raising questions about whether they qualify as altered states at all.
             </p>
           </section>
 

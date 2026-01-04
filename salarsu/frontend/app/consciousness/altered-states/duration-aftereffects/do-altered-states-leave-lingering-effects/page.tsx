@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/duration-aftereffe
 
 export const metadata: Metadata = {
   title: "Do altered states leave lingering effects? | Salars Consciousness",
-  description: "Exploring do altered states leave lingering effects - understanding consciousness and awareness.",
+  description: "Do altered states leave lingering effects?",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states leave lingering effects?",
-    description: "Exploring do altered states leave lingering effects - understanding consciousness and awareness.",
+    description: "Do altered states leave lingering effects?",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["altered states", "consciousness", "awareness", "altered", "states", "leave"],
+  keywords: ["consciousness", "awareness", "perception"],
 };
 
 export default function DoAlteredStatesLeaveLingeringEffectsPage() {
@@ -46,27 +46,27 @@ export default function DoAlteredStatesLeaveLingeringEffectsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write a 20-35 word direct answer to: Do altered states leave lingering effects?]
+              [Claude: Write 20-35 word answer to "Do altered states leave lingering effects?"]
             </p>
           </section>
 
-          {/* Context Paragraph */}
+          {/* Why This Matters */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Explain in 2-4 sentences why do altered states leave lingering effects matters and what mechanisms are involved]
+              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
             </p>
           </section>
 
-          {/* Boundary Paragraph */}
+          {/* Where This Changes */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Add 1-3 sentences about when this changes or what limits exist]
+              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
             </p>
           </section>
 

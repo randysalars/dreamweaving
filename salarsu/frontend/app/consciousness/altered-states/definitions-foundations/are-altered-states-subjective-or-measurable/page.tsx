@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/definitions-founda
 
 export const metadata: Metadata = {
   title: "Are altered states subjective or measurable? | Salars Consciousness",
-  description: "Exploring are altered states subjective or measurable - understanding consciousness and awareness.",
+  description: "Are altered states subjective or measurable?",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states subjective or measurable?",
-    description: "Exploring are altered states subjective or measurable - understanding consciousness and awareness.",
+    description: "Are altered states subjective or measurable?",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["altered states", "consciousness", "awareness", "altered", "states", "subjective"],
+  keywords: ["consciousness", "awareness", "perception"],
 };
 
 export default function AreAlteredStatesSubjectiveOrMeasurablePage() {
@@ -46,27 +46,27 @@ export default function AreAlteredStatesSubjectiveOrMeasurablePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write a 20-35 word direct answer to: Are altered states subjective or measurable?]
+              [Claude: Write 20-35 word answer to "Are altered states subjective or measurable?"]
             </p>
           </section>
 
-          {/* Context Paragraph */}
+          {/* Why This Matters */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Explain in 2-4 sentences why are altered states subjective or measurable matters and what mechanisms are involved]
+              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
             </p>
           </section>
 
-          {/* Boundary Paragraph */}
+          {/* Where This Changes */}
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Add 1-3 sentences about when this changes or what limits exist]
+              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
             </p>
           </section>
 
