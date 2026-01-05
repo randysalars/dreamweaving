@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/misconceptions/do-
 
 export const metadata: Metadata = {
   title: "Do altered states require substances? | Salars Consciousness",
-  description: "Do altered states require substances?",
+  description: "No, altered states occur naturally through meditation, sleep, sensory deprivation, breathwork, fasting, intense physical activity, and various psychologica",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states require substances?",
-    description: "Do altered states require substances?",
+    description: "No, altered states occur naturally through meditation, sleep, sensory deprivation, breathwork, fasting, intense physical activity, and various psychologica",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["natural altered states", "meditation consciousness", "breathwork", "sensory deprivation", "flow states", "lucid dreaming", "mystical experiences", "non-drug consciousness"],
 };
 
 export default function DoAlteredStatesRequireSubstancesPage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesRequireSubstancesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states require substances?"]
+              No, altered states occur naturally through meditation, sleep, sensory deprivation, breathwork, fasting, intense physical activity, and various psychological techniques without any substances.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesRequireSubstancesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              The brain naturally produces altered states because consciousness operates on a spectrum of arousal and awareness levels. Changes in neurotransmitter activity, brainwave patterns, and neural network connectivity occur through internal biological processes and environmental influences. This demonstrates that consciousness modification represents a fundamental capacity of the nervous system rather than requiring external chemical intervention.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesRequireSubstancesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Substance-induced states may produce more dramatic or rapid shifts in consciousness compared to natural methods. Some naturally occurring altered states, like those in severe mental illness or neurological conditions, can be as profound as any chemically induced experience.
             </p>
           </section>
 

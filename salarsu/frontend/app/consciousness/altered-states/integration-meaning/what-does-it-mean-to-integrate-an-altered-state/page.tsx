@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/integration-meanin
 
 export const metadata: Metadata = {
   title: "What does it mean to integrate an altered state? | Salars Consciousness",
-  description: "What does it mean to integrate an altered state?",
+  description: "Integrating an altered state means translating insights, perspectives, or experiences from non-ordinary consciousness into practical understanding and beha",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "What does it mean to integrate an altered state?",
-    description: "What does it mean to integrate an altered state?",
+    description: "Integrating an altered state means translating insights, perspectives, or experiences from non-ordinary consciousness into practical understanding and beha",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["meaning-making", "psychedelic integration", "post-experience processing", "behavioral change", "neuroplasticity", "contemplative practice", "therapeutic integration", "consciousness transformation"],
 };
 
 export default function WhatDoesItMeanToIntegrateAnAlteredStatePage() {
@@ -46,7 +46,7 @@ export default function WhatDoesItMeanToIntegrateAnAlteredStatePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What does it mean to integrate an altered state?"]
+              Integrating an altered state means translating insights, perspectives, or experiences from non-ordinary consciousness into practical understanding and behavioral changes in everyday life.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatDoesItMeanToIntegrateAnAlteredStatePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Without integration, altered state experiences often remain disconnected from daily functioning, leading to a compartmentalization that limits their potential benefits. The brain's default mode network, which governs self-referential thinking, typically reasserts its patterns once the altered state subsides. Integration work helps encode new neural pathways and cognitive frameworks because it involves conscious reflection, meaning-making, and deliberate practice of new perspectives or behaviors. This process bridges the gap between the temporary neuroplasticity of altered states and lasting psychological change.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatDoesItMeanToIntegrateAnAlteredStatePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Integration becomes more challenging with extremely intense or disorienting experiences that resist immediate comprehension. Some insights may take months or years to fully understand, while others integrate spontaneously without conscious effort.
             </p>
           </section>
 

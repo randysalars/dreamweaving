@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/w
 
 export const metadata: Metadata = {
   title: "When can altered states become destabilizing? | Salars Consciousness",
-  description: "When can altered states become destabilizing?",
+  description: "Altered states become destabilizing when they exceed cognitive tolerance limits, occur without proper preparation, or interact with existing psychological ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "When can altered states become destabilizing?",
-    description: "When can altered states become destabilizing?",
+    description: "Altered states become destabilizing when they exceed cognitive tolerance limits, occur without proper preparation, or interact with existing psychological ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["psychological vulnerability", "cognitive tolerance", "integration difficulties", "trauma triggers", "psychotic episodes", "grounding techniques", "set and setting", "psychological preparation"],
 };
 
 export default function WhenCanAlteredStatesBecomeDestabilizingPage() {
@@ -46,7 +46,7 @@ export default function WhenCanAlteredStatesBecomeDestabilizingPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "When can altered states become destabilizing?"]
+              Altered states become destabilizing when they exceed cognitive tolerance limits, occur without proper preparation, or interact with existing psychological vulnerabilities.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhenCanAlteredStatesBecomeDestabilizingPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Destabilization occurs because altered states temporarily disrupt normal neural processing patterns and executive function. This disruption can trigger latent psychological conditions, overwhelm coping mechanisms, or create lasting perceptual distortions. The brain's homeostatic systems may struggle to reintegrate these experiences, particularly when the altered state is intense, prolonged, or occurs in psychologically vulnerable individuals.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhenCanAlteredStatesBecomeDestabilizingPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The threshold for destabilization varies significantly based on individual psychological resilience, experience level, environmental factors, and the specific method used to induce the altered state. Some people maintain stability through intense experiences while others become destabilized by mild alterations.
             </p>
           </section>
 

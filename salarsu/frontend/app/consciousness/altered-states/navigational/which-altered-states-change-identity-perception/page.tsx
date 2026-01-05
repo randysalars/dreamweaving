@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/navigational/which
 
 export const metadata: Metadata = {
   title: "Which altered states change identity perception? | Salars Consciousness",
-  description: "Which altered states change identity perception?",
+  description: "Psychedelic experiences, dissociative states, deep meditation, ego dissolution episodes, and certain mystical experiences fundamentally alter how individua",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Which altered states change identity perception?",
-    description: "Which altered states change identity perception?",
+    description: "Psychedelic experiences, dissociative states, deep meditation, ego dissolution episodes, and certain mystical experiences fundamentally alter how individua",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["ego dissolution", "self-dissolution", "mystical experiences", "default mode network", "dissociative states", "depersonalization", "transpersonal experiences", "unity consciousness"],
 };
 
 export default function WhichAlteredStatesChangeIdentityPerceptionPage() {
@@ -46,7 +46,7 @@ export default function WhichAlteredStatesChangeIdentityPerceptionPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Which altered states change identity perception?"]
+              Psychedelic experiences, dissociative states, deep meditation, ego dissolution episodes, and certain mystical experiences fundamentally alter how individuals perceive their sense of self and personal boundaries.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhichAlteredStatesChangeIdentityPerceptionPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These states disrupt the default mode network in the brain, which normally maintains our sense of continuous selfhood and personal narrative. The disruption occurs because altered states reduce activity in brain regions responsible for self-referential thinking, leading to experiences where the boundary between self and environment dissolves. This demonstrates that identity perception is a constructed neural process rather than a fixed feature of consciousness.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhichAlteredStatesChangeIdentityPerceptionPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity of identity shifts varies significantly based on the depth of the altered state, individual brain chemistry, and environmental context. Some states produce subtle shifts in self-perception while others can temporarily eliminate the sense of being a separate individual entirely.
             </p>
           </section>
 

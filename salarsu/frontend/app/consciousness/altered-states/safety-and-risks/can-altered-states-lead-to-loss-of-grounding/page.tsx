@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/c
 
 export const metadata: Metadata = {
   title: "Can altered states lead to loss of grounding? | Salars Consciousness",
-  description: "Can altered states lead to loss of grounding?",
+  description: "Yes, altered states can lead to loss of grounding through disruption of normal perceptual anchoring, dissociation from body awareness, and weakened connect",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states lead to loss of grounding?",
-    description: "Can altered states lead to loss of grounding?",
+    description: "Yes, altered states can lead to loss of grounding through disruption of normal perceptual anchoring, dissociation from body awareness, and weakened connect",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["dissociation", "derealization", "depersonalization", "grounding techniques", "reality testing", "anchoring", "somatic awareness", "dissociative states"],
 };
 
 export default function CanAlteredStatesLeadToLossOfGroundingPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesLeadToLossOfGroundingPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states lead to loss of grounding?"]
+              Yes, altered states can lead to loss of grounding through disruption of normal perceptual anchoring, dissociation from body awareness, and weakened connection to immediate reality.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesLeadToLossOfGroundingPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Grounding relies on stable sensory input and consistent self-referential processing to maintain orientation in time, space, and identity. Altered states disrupt these baseline neural networks because they modify the default mode network and alter the brain's filtering mechanisms. This results in reduced capacity to distinguish between internal experiences and external reality, leading to feelings of detachment or floating disconnection from the physical world.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesLeadToLossOfGroundingPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The degree of grounding loss varies significantly based on the type, intensity, and duration of the altered state. Some mild altered states may enhance rather than diminish grounding, while others can cause complete dissociative episodes.
             </p>
           </section>
 

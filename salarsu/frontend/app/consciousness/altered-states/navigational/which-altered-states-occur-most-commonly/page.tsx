@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/navigational/which
 
 export const metadata: Metadata = {
   title: "Which altered states occur most commonly? | Salars Consciousness",
-  description: "Which altered states occur most commonly?",
+  description: "Sleep states, meditation, daydreaming, and flow states occur most commonly, with sleep representing the most frequent altered state that all humans experie",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Which altered states occur most commonly?",
-    description: "Which altered states occur most commonly?",
+    description: "Sleep states, meditation, daydreaming, and flow states occur most commonly, with sleep representing the most frequent altered state that all humans experie",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["sleep cycles", "meditation states", "flow experience", "daydreaming", "default mode network", "circadian rhythms", "consciousness spectrum", "attention regulation"],
 };
 
 export default function WhichAlteredStatesOccurMostCommonlyPage() {
@@ -46,7 +46,7 @@ export default function WhichAlteredStatesOccurMostCommonlyPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Which altered states occur most commonly?"]
+              Sleep states, meditation, daydreaming, and flow states occur most commonly, with sleep representing the most frequent altered state that all humans experience daily.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhichAlteredStatesOccurMostCommonlyPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These states emerge because the brain naturally cycles through different modes of consciousness based on circadian rhythms, attention patterns, and neural network activity. Sleep occurs due to adenosine buildup and circadian clock regulation, while meditative and flow states result from focused attention that shifts default mode network activity. These common altered states demonstrate that consciousness operates on a spectrum rather than as a fixed baseline condition.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhichAlteredStatesOccurMostCommonlyPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Frequency varies significantly across individuals and cultures, with some people experiencing meditation or flow states regularly while others encounter them rarely. Certain conditions like insomnia, ADHD, or depression can alter the natural occurrence patterns of these states.
             </p>
           </section>
 

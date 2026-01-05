@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/navigational/which
 
 export const metadata: Metadata = {
   title: "Which altered states require the most care? | Salars Consciousness",
-  description: "Which altered states require the most care?",
+  description: "Psychedelic states, dissociative experiences, and deep meditative states require the most care due to heightened vulnerability, reduced cognitive control, ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Which altered states require the most care?",
-    description: "Which altered states require the most care?",
+    description: "Psychedelic states, dissociative experiences, and deep meditative states require the most care due to heightened vulnerability, reduced cognitive control, ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["psychedelic safety", "set and setting", "integration support", "dissociative states", "ego dissolution", "neuroplasticity", "consciousness navigation", "therapeutic context"],
 };
 
 export default function WhichAlteredStatesRequireTheMostCarePage() {
@@ -46,7 +46,7 @@ export default function WhichAlteredStatesRequireTheMostCarePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Which altered states require the most care?"]
+              Psychedelic states, dissociative experiences, and deep meditative states require the most care due to heightened vulnerability, reduced cognitive control, and potential for lasting psychological impact.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhichAlteredStatesRequireTheMostCarePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These states involve significant alterations to default brain networks and executive functioning, which reduces the person's ability to process threats or make sound decisions. The dissolution of ego boundaries and altered perception of reality that characterizes these experiences can lead to psychological distress, retraumatization of past experiences, or integration difficulties. Because these states often involve profound shifts in consciousness architecture, they create windows of heightened neuroplasticity that can consolidate both positive and negative experiences with unusual intensity.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhichAlteredStatesRequireTheMostCarePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The level of care required depends on dosage, setting, individual psychological stability, and presence of trained guides or therapists. Mild altered states like light meditation or breathwork typically require minimal precautions compared to high-dose psychedelic experiences or intensive spiritual practices.
             </p>
           </section>
 

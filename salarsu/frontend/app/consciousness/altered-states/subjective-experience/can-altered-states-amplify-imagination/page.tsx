@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Can altered states amplify imagination? | Salars Consciousness",
-  description: "Can altered states amplify imagination?",
+  description: "Altered states can amplify imagination by reducing cognitive filtering, increasing associative thinking, and weakening logical constraints that normally li",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states amplify imagination?",
-    description: "Can altered states amplify imagination?",
+    description: "Altered states can amplify imagination by reducing cognitive filtering, increasing associative thinking, and weakening logical constraints that normally li",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["default mode network", "cognitive disinhibition", "associative thinking", "creative cognition", "prefrontal cortex", "reality testing", "divergent thinking", "psychedelic creativity"],
 };
 
 export default function CanAlteredStatesAmplifyImaginationPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesAmplifyImaginationPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states amplify imagination?"]
+              Altered states can amplify imagination by reducing cognitive filtering, increasing associative thinking, and weakening logical constraints that normally limit creative mental processes.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesAmplifyImaginationPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This amplification occurs because altered states often suppress the default mode network and prefrontal cortex regions responsible for executive control and reality testing. The reduced cognitive inhibition allows more remote associations to form between concepts, while decreased critical evaluation permits unusual ideas to emerge and develop. These neurological changes create conditions where imaginative processes operate with fewer constraints than during ordinary waking consciousness.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesAmplifyImaginationPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The degree of amplification varies significantly based on the specific altered state, individual neurochemistry, and set and setting. Some states may actually impair imagination through excessive disorganization or cognitive fragmentation.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "Can altered states be measured scientifically? | Salars Consciousness",
-  description: "Can altered states be measured scientifically?",
+  description: "Yes, altered states can be measured through neuroimaging, EEG, physiological markers, and standardized assessment scales that track brain activity and subj",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states be measured scientifically?",
-    description: "Can altered states be measured scientifically?",
+    description: "Yes, altered states can be measured through neuroimaging, EEG, physiological markers, and standardized assessment scales that track brain activity and subj",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["neuroimaging", "EEG measurement", "consciousness metrics", "psychedelic research", "meditation studies", "brain connectivity", "phenomenology", "neural correlates"],
 };
 
 export default function CanAlteredStatesBeMeasuredScientificallyPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesBeMeasuredScientificallyPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states be measured scientifically?"]
+              Yes, altered states can be measured through neuroimaging, EEG, physiological markers, and standardized assessment scales that track brain activity and subjective experiences.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesBeMeasuredScientificallyPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Scientific measurement of altered states occurs because consciousness changes produce detectable neural signatures and physiological responses. Brain imaging reveals altered connectivity patterns, neurotransmitter activity, and regional activation during meditation, psychedelic experiences, or sleep states. These measurable changes demonstrate that subjective experiences correspond to objective neurobiological processes, enabling researchers to map how different interventions affect consciousness.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesBeMeasuredScientificallyPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Measurement precision varies significantly across different altered states and individual responses. Subjective experiences often exceed what current technology can fully capture, particularly for complex phenomenological aspects like mystical experiences or deep meditative states.
             </p>
           </section>
 

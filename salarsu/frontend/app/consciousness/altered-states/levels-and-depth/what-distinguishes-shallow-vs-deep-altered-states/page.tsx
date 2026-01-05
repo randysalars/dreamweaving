@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/levels-and-depth/w
 
 export const metadata: Metadata = {
   title: "What distinguishes shallow vs deep altered states? | Salars Consciousness",
-  description: "What distinguishes shallow vs deep altered states?",
+  description: "Shallow altered states involve mild changes in awareness with retained cognitive control, while deep states feature profound consciousness shifts with dimi",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "What distinguishes shallow vs deep altered states?",
-    description: "What distinguishes shallow vs deep altered states?",
+    description: "Shallow altered states involve mild changes in awareness with retained cognitive control, while deep states feature profound consciousness shifts with dimi",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["consciousness spectrum", "thalamic-cortical loops", "default mode network", "executive function", "reality testing", "neuroplasticity", "meditation depths", "psychedelic intensity"],
 };
 
 export default function WhatDistinguishesShallowVsDeepAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function WhatDistinguishesShallowVsDeepAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What distinguishes shallow vs deep altered states?"]
+              Shallow altered states involve mild changes in awareness with retained cognitive control, while deep states feature profound consciousness shifts with diminished self-awareness and reality testing.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatDistinguishesShallowVsDeepAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This distinction reflects the degree of neurological disruption in different brain networks. Shallow states typically affect attention and sensory processing while preserving executive function, because cortical activity remains largely intact. Deep states result from more extensive changes in thalamic-cortical loops and default mode network activity, which leads to fundamental alterations in self-perception and reality processing. Understanding these differences helps map the spectrum of human consciousness and its underlying neural mechanisms.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatDistinguishesShallowVsDeepAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The boundary shifts based on individual neurochemistry, prior experience, and the specific induction method used. Some people reach deep states through techniques that produce only shallow changes in others.
             </p>
           </section>
 

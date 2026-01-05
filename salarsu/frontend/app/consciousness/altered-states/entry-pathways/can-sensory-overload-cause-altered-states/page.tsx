@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can sensory overload cause altered states? | Salars Consciousness",
-  description: "Can sensory overload cause altered states?",
+  description: "Sensory overload can trigger altered states by overwhelming the brain's processing capacity, leading to perceptual distortions, dissociation, and shifts in",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can sensory overload cause altered states?",
-    description: "Can sensory overload cause altered states?",
+    description: "Sensory overload can trigger altered states by overwhelming the brain's processing capacity, leading to perceptual distortions, dissociation, and shifts in",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["sensory deprivation", "overstimulation", "dissociation", "perceptual distortion", "neural overload", "consciousness disruption", "sensory flooding", "altered perception"],
 };
 
 export default function CanSensoryOverloadCauseAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanSensoryOverloadCauseAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can sensory overload cause altered states?"]
+              Sensory overload can trigger altered states by overwhelming the brain's processing capacity, leading to perceptual distortions, dissociation, and shifts in consciousness.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanSensoryOverloadCauseAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              When sensory input exceeds the brain's ability to process information effectively, neural networks become dysregulated and default processing patterns break down. This sensory flooding forces the nervous system into protective modes that can include dissociative responses, altered time perception, and changes in self-awareness. The phenomenon demonstrates how consciousness depends on balanced sensory integration, because disrupting this balance through excessive stimulation results in measurable shifts in cognitive and perceptual functioning.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanSensoryOverloadCauseAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Individual thresholds for sensory overload vary significantly based on neurological differences, prior experience, and current stress levels. Some people may experience profound alterations from moderate stimulation, while others require extreme conditions to trigger noticeable consciousness shifts.
             </p>
           </section>
 

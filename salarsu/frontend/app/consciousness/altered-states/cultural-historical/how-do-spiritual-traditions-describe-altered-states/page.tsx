@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "How do spiritual traditions describe altered states? | Salars Consciousness",
-  description: "How do spiritual traditions describe altered states?",
+  description: "Spiritual traditions describe altered states as sacred experiences involving union with divine consciousness, transcendence of ordinary reality, and access",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "How do spiritual traditions describe altered states?",
-    description: "How do spiritual traditions describe altered states?",
+    description: "Spiritual traditions describe altered states as sacred experiences involving union with divine consciousness, transcendence of ordinary reality, and access",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["mystical experience", "religious ecstasy", "contemplative states", "shamanic consciousness", "divine union", "transcendent awareness", "spiritual visions", "sacred trance"],
 };
 
 export default function HowDoSpiritualTraditionsDescribeAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function HowDoSpiritualTraditionsDescribeAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How do spiritual traditions describe altered states?"]
+              Spiritual traditions describe altered states as sacred experiences involving union with divine consciousness, transcendence of ordinary reality, and access to higher knowledge or spiritual realms.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoSpiritualTraditionsDescribeAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These descriptions provide systematic frameworks for understanding non-ordinary consciousness because spiritual traditions have developed detailed phenomenological maps over millennia. Different traditions categorize similar experiences through their cultural lens, which demonstrates how altered states interface with belief systems and interpretive frameworks. The consistency of certain reported features across cultures suggests underlying neurological mechanisms that produce recognizable patterns of consciousness alteration.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoSpiritualTraditionsDescribeAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Descriptions vary significantly between contemplative traditions that emphasize gradual development versus ecstatic traditions that value intense peak experiences. Some traditions focus on emptiness and dissolution while others emphasize visions and encounters with spiritual entities.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "How did ancient cultures interpret altered states? | Salars Consciousness",
-  description: "How did ancient cultures interpret altered states?",
+  description: "Ancient cultures typically interpreted altered states as spiritual communications, divine possession, shamanic journeys, or contact with ancestral realms r",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "How did ancient cultures interpret altered states?",
-    description: "How did ancient cultures interpret altered states?",
+    description: "Ancient cultures typically interpreted altered states as spiritual communications, divine possession, shamanic journeys, or contact with ancestral realms r",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["shamanism", "divine possession", "mystical experiences", "religious ceremonies", "ancestral communication", "traditional healing", "spiritual visions", "sacred rituals"],
 };
 
 export default function HowDidAncientCulturesInterpretAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function HowDidAncientCulturesInterpretAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How did ancient cultures interpret altered states?"]
+              Ancient cultures typically interpreted altered states as spiritual communications, divine possession, shamanic journeys, or contact with ancestral realms rather than neurological phenomena.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDidAncientCulturesInterpretAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These interpretations developed because altered states often produced vivid visions, mystical experiences, and profound psychological insights that seemed to transcend ordinary reality. Ancient societies lacked modern neuroscience frameworks, so they explained these phenomena through their existing religious and cosmological worldviews. This led to the integration of altered states into healing practices, religious ceremonies, and social governance because they were viewed as accessing sacred knowledge or divine guidance.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDidAncientCulturesInterpretAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Interpretations varied significantly across cultures - some emphasized healing and divination while others focused on warrior initiation or artistic inspiration. The advent of scientific materialism in recent centuries shifted dominant interpretations toward psychological and neurochemical explanations, though traditional spiritual frameworks persist in many cultures.
             </p>
           </section>
 

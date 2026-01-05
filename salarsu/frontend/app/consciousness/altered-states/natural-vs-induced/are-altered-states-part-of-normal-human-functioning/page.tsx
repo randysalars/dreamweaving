@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/natural-vs-induced
 
 export const metadata: Metadata = {
   title: "Are altered states part of normal human functioning? | Salars Consciousness",
-  description: "Are altered states part of normal human functioning?",
+  description: "Altered states occur naturally through sleep, dreaming, meditation, and intense focus. The brain regularly shifts between different modes of consciousness ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states part of normal human functioning?",
-    description: "Are altered states part of normal human functioning?",
+    description: "Altered states occur naturally through sleep, dreaming, meditation, and intense focus. The brain regularly shifts between different modes of consciousness ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["flow states", "REM sleep", "default mode network", "meditation states", "hypnotic states", "circadian rhythms", "lucid dreaming", "mindfulness"],
 };
 
 export default function AreAlteredStatesPartOfNormalHumanFunctioningPage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesPartOfNormalHumanFunctioningPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states part of normal human functioning?"]
+              Altered states occur naturally through sleep, dreaming, meditation, and intense focus. The brain regularly shifts between different modes of consciousness as part of healthy functioning.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesPartOfNormalHumanFunctioningPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Natural altered states result from the brain's evolved ability to optimize different cognitive functions for survival and adaptation. Sleep cycles produce altered consciousness because the brain consolidates memories and processes emotions. Deep focus states emerge because attention networks can suppress default mode activity, leading to flow experiences and reduced self-awareness. These mechanisms demonstrate that consciousness operates on a spectrum rather than a fixed state.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesPartOfNormalHumanFunctioningPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Pathological altered states differ from natural ones when they impair daily functioning, occur involuntarily, or result from neurological dysfunction. The boundary becomes clinical when altered states cause distress or prevent normal activities.
             </p>
           </section>
 

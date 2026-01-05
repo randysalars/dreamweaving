@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "Were altered states used in ritual or initiation? | Salars Consciousness",
-  description: "Were altered states used in ritual or initiation?",
+  description: "Most traditional cultures incorporated altered states into rituals and initiations through psychoactive plants, rhythmic practices, fasting, and sensory ma",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Were altered states used in ritual or initiation?",
-    description: "Were altered states used in ritual or initiation?",
+    description: "Most traditional cultures incorporated altered states into rituals and initiations through psychoactive plants, rhythmic practices, fasting, and sensory ma",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["shamanism", "vision quest", "psychoactive plants", "ritual transformation", "initiation ceremonies", "spiritual practices", "consciousness alteration", "traditional medicine"],
 };
 
 export default function WereAlteredStatesUsedInRitualOrInitiationPage() {
@@ -46,7 +46,7 @@ export default function WereAlteredStatesUsedInRitualOrInitiationPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Were altered states used in ritual or initiation?"]
+              Most traditional cultures incorporated altered states into rituals and initiations through psychoactive plants, rhythmic practices, fasting, and sensory manipulation to facilitate spiritual transformation and social transitions.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WereAlteredStatesUsedInRitualOrInitiationPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states served crucial functions in traditional societies because they provided direct experiential access to spiritual realms and facilitated psychological transformation during major life transitions. The neurological changes induced by these practices resulted in profound shifts in identity, worldview, and social bonding that reinforced cultural values and group cohesion. These experiences demonstrated the malleable nature of consciousness and created shared meaning systems that unified communities around common spiritual beliefs.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WereAlteredStatesUsedInRitualOrInitiationPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The specific methods and contexts vary dramatically across cultures, from ayahuasca ceremonies in the Amazon to vision quests among Plains tribes. Some traditions rely primarily on plant medicines while others use purely behavioral techniques like meditation, chanting, or extreme physical practices.
             </p>
           </section>
 

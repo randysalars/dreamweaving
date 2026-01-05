@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can rhythmic sound or music induce altered states? | Salars Consciousness",
-  description: "Can rhythmic sound or music induce altered states?",
+  description: "Rhythmic sound and music can induce altered states through brainwave entrainment, where repetitive auditory patterns synchronize neural oscillations and mo",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can rhythmic sound or music induce altered states?",
-    description: "Can rhythmic sound or music induce altered states?",
+    description: "Rhythmic sound and music can induce altered states through brainwave entrainment, where repetitive auditory patterns synchronize neural oscillations and mo",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["brainwave entrainment", "binaural beats", "rhythmic entrainment", "neural oscillations", "shamanic drumming", "frequency following response", "auditory driving", "theta waves"],
 };
 
 export default function CanRhythmicSoundOrMusicInduceAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanRhythmicSoundOrMusicInduceAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can rhythmic sound or music induce altered states?"]
+              Rhythmic sound and music can induce altered states through brainwave entrainment, where repetitive auditory patterns synchronize neural oscillations and modify consciousness.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanRhythmicSoundOrMusicInduceAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This occurs because rhythmic stimuli at specific frequencies can entrain brainwaves to match the external rhythm, particularly in the alpha, theta, and delta ranges. The auditory system's direct connections to the brainstem and limbic structures allow rhythmic patterns to influence arousal, attention, and emotional processing. This mechanism explains why drumming, chanting, and binaural beats can produce trance-like states, heightened focus, or deep relaxation across cultures.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanRhythmicSoundOrMusicInduceAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Effectiveness varies with individual sensitivity, specific frequencies used, duration of exposure, and baseline mental state. Some people show stronger entrainment responses, while others may require longer exposure or specific frequency combinations to experience noticeable shifts in consciousness.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "What happens in the brain during altered states? | Salars Consciousness",
-  description: "What happens in the brain during altered states?",
+  description: "Altered states involve changes in neural network connectivity, neurotransmitter activity, and brainwave patterns that shift normal information processing a",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "What happens in the brain during altered states?",
-    description: "What happens in the brain during altered states?",
+    description: "Altered states involve changes in neural network connectivity, neurotransmitter activity, and brainwave patterns that shift normal information processing a",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["default mode network", "neural connectivity", "neurotransmitters", "brainwave patterns", "psychedelics", "meditation states", "neural plasticity", "consciousness research"],
 };
 
 export default function WhatHappensInTheBrainDuringAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function WhatHappensInTheBrainDuringAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What happens in the brain during altered states?"]
+              Altered states involve changes in neural network connectivity, neurotransmitter activity, and brainwave patterns that shift normal information processing and conscious awareness.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatHappensInTheBrainDuringAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These neurological shifts occur because psychoactive substances, meditation, or other triggers disrupt the brain's default mode network—the system responsible for self-referential thinking and maintaining ordinary awareness. This disruption leads to increased connectivity between normally separate brain regions, resulting in novel patterns of neural communication. The changes demonstrate how consciousness emerges from specific neural configurations that can be systematically modified.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatHappensInTheBrainDuringAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity and type of neural changes vary significantly based on the method of induction, individual brain chemistry, and environmental factors. Some altered states produce minimal disruption while others create profound reorganization of neural activity.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Do altered states change emotional intensity? | Salars Consciousness",
-  description: "Do altered states change emotional intensity?",
+  description: "Altered states frequently amplify or diminish emotional intensity through changes in neurotransmitter activity and altered processing in limbic brain regio",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states change emotional intensity?",
-    description: "Do altered states change emotional intensity?",
+    description: "Altered states frequently amplify or diminish emotional intensity through changes in neurotransmitter activity and altered processing in limbic brain regio",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["emotional regulation", "limbic system", "neurotransmitters", "psychedelic therapy", "meditation effects", "dissociation", "mood enhancement", "emotional blunting"],
 };
 
 export default function DoAlteredStatesChangeEmotionalIntensityPage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesChangeEmotionalIntensityPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states change emotional intensity?"]
+              Altered states frequently amplify or diminish emotional intensity through changes in neurotransmitter activity and altered processing in limbic brain regions.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesChangeEmotionalIntensityPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states modify emotional intensity because they directly affect neurotransmitter systems like serotonin, dopamine, and GABA that regulate mood and arousal. These neurochemical changes alter activity in the amygdala, hippocampus, and prefrontal cortex, which process emotional responses and their regulation. This demonstrates how consciousness and emotional experience are fundamentally interconnected through shared neural pathways.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesChangeEmotionalIntensityPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The direction and magnitude of emotional changes varies significantly between different altered states - meditation typically reduces emotional reactivity, while psychedelics often intensify emotions, and dissociative states may blunt emotional responses entirely. Individual factors like baseline mental state, dosage, and environmental context also influence these effects.
             </p>
           </section>
 

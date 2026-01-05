@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/natural-vs-induced
 
 export const metadata: Metadata = {
   title: "What are induced altered states? | Salars Consciousness",
-  description: "What are induced altered states?",
+  description: "Induced altered states are deliberate modifications of consciousness achieved through external methods like drugs, meditation, sensory deprivation, or spec",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "What are induced altered states?",
-    description: "What are induced altered states?",
+    description: "Induced altered states are deliberate modifications of consciousness achieved through external methods like drugs, meditation, sensory deprivation, or spec",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["psychoactive substances", "meditation techniques", "sensory deprivation", "binaural beats", "hypnosis", "breathwork", "neurofeedback", "consciousness modification"],
 };
 
 export default function WhatAreInducedAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function WhatAreInducedAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are induced altered states?"]
+              Induced altered states are deliberate modifications of consciousness achieved through external methods like drugs, meditation, sensory deprivation, or specific techniques that shift normal awareness patterns.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreInducedAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These states occur because external interventions disrupt normal neural activity patterns, altering neurotransmitter levels, brain wave frequencies, or sensory processing mechanisms. The controlled nature of induced states allows researchers to study consciousness systematically and demonstrates the malleable nature of human awareness. This research reveals how different brain regions contribute to various aspects of conscious experience and helps map the neural correlates of different states of mind.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreInducedAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity and characteristics of induced states vary significantly based on the method used, individual brain chemistry, and environmental factors. Some techniques produce subtle shifts in awareness while others create profound alterations in perception, memory, and self-awareness.
             </p>
           </section>
 

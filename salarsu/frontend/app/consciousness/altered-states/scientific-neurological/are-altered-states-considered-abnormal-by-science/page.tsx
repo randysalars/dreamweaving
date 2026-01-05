@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "Are altered states considered abnormal by science? | Salars Consciousness",
-  description: "Are altered states considered abnormal by science?",
+  description: "Modern science generally views altered states as natural variations in consciousness rather than abnormal conditions, representing different neural network",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states considered abnormal by science?",
-    description: "Are altered states considered abnormal by science?",
+    description: "Modern science generally views altered states as natural variations in consciousness rather than abnormal conditions, representing different neural network",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["consciousness spectrum", "neural connectivity", "brain wave patterns", "psychedelic research", "meditation neuroscience", "REM sleep", "default mode network", "neurotransmitter systems"],
 };
 
 export default function AreAlteredStatesConsideredAbnormalBySciencePage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesConsideredAbnormalBySciencePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states considered abnormal by science?"]
+              Modern science generally views altered states as natural variations in consciousness rather than abnormal conditions, representing different neural network configurations and brain wave patterns.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesConsideredAbnormalBySciencePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This shift occurred because neuroimaging reveals that altered states involve measurable changes in brain connectivity, neurotransmitter activity, and neural oscillations rather than pathological dysfunction. Research demonstrates that states like meditation, REM sleep, and even psychedelic experiences follow predictable neurobiological patterns that serve adaptive functions. These findings have led scientists to recognize altered states as part of consciousness's normal spectrum, resulting in increased research into their therapeutic and cognitive benefits.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesConsideredAbnormalBySciencePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The distinction becomes important when altered states impair daily functioning, occur involuntarily, or stem from underlying medical conditions. Clinical contexts may classify certain persistent altered states as disorders requiring intervention.
             </p>
           </section>
 

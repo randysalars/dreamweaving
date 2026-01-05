@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Can altered states silence internal dialogue? | Salars Consciousness",
-  description: "Can altered states silence internal dialogue?",
+  description: "Yes, altered states can significantly reduce or temporarily eliminate internal dialogue through changes in brain regions responsible for self-referential t",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states silence internal dialogue?",
-    description: "Can altered states silence internal dialogue?",
+    description: "Yes, altered states can significantly reduce or temporarily eliminate internal dialogue through changes in brain regions responsible for self-referential t",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["default mode network", "self-referential thinking", "meditative states", "psychedelic consciousness", "verbal thought suppression", "narrative self", "non-dual awareness", "mindfulness"],
 };
 
 export default function CanAlteredStatesSilenceInternalDialoguePage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesSilenceInternalDialoguePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states silence internal dialogue?"]
+              Yes, altered states can significantly reduce or temporarily eliminate internal dialogue through changes in brain regions responsible for self-referential thinking and verbal processing.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesSilenceInternalDialoguePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This occurs because altered states often suppress activity in the default mode network, particularly areas like the medial prefrontal cortex that generate self-talk and narrative thinking. Reduced activity in language centers like Broca's area also contributes to quieting verbal thought processes. This demonstrates how consciousness can shift from its typical verbal-narrative mode to more direct, non-linguistic awareness states.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesSilenceInternalDialoguePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The degree of internal dialogue suppression varies significantly across different altered states and individuals. Some states may only reduce the volume or frequency of self-talk rather than eliminating it entirely.
             </p>
           </section>
 

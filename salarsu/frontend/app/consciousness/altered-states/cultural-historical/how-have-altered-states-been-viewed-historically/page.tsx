@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "How have altered states been viewed historically? | Salars Consciousness",
-  description: "How have altered states been viewed historically?",
+  description: "Historically, altered states have been viewed as sacred pathways to divine knowledge, dangerous mental illnesses, or natural phenomena requiring scientific",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "How have altered states been viewed historically?",
-    description: "How have altered states been viewed historically?",
+    description: "Historically, altered states have been viewed as sacred pathways to divine knowledge, dangerous mental illnesses, or natural phenomena requiring scientific",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["shamanism", "mystical experiences", "psychopathology", "religious ecstasy", "trance states", "meditation traditions", "psychedelic renaissance", "consciousness studies"],
 };
 
 export default function HowHaveAlteredStatesBeenViewedHistoricallyPage() {
@@ -46,7 +46,7 @@ export default function HowHaveAlteredStatesBeenViewedHistoricallyPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How have altered states been viewed historically?"]
+              Historically, altered states have been viewed as sacred pathways to divine knowledge, dangerous mental illnesses, or natural phenomena requiring scientific study, depending on cultural context.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowHaveAlteredStatesBeenViewedHistoricallyPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These varying interpretations reflect fundamental differences in how societies understand consciousness and reality. Ancient cultures typically regarded altered states as spiritual gifts that provided access to otherworldly wisdom, because they observed consistent patterns of insight and healing associated with these experiences. The rise of medical materialism in the 19th century reframed these same states as pathological symptoms, leading to widespread suppression and stigmatization. Modern neuroscience approaches altered states as measurable brain phenomena, which has renewed scientific interest while challenging both mystical and purely pathological frameworks.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowHaveAlteredStatesBeenViewedHistoricallyPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Views shift dramatically across cultures, historical periods, and social contexts. Indigenous societies often maintain reverence for altered states while Western medical establishments focus on therapeutic applications, creating ongoing tension between traditional and clinical perspectives.
             </p>
           </section>
 

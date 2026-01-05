@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/misconceptions/are
 
 export const metadata: Metadata = {
   title: "Are altered states hallucinations? | Salars Consciousness",
-  description: "Are altered states hallucinations?",
+  description: "Altered states are not hallucinations, though they may include hallucinatory experiences. Altered states encompass broader changes in consciousness, percep",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states hallucinations?",
-    description: "Are altered states hallucinations?",
+    description: "Altered states are not hallucinations, though they may include hallucinatory experiences. Altered states encompass broader changes in consciousness, percep",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["psychedelic experiences", "meditation states", "lucid dreaming", "sensory deprivation", "consciousness research", "perceptual distortions", "non-ordinary states", "phenomenology"],
 };
 
 export default function AreAlteredStatesHallucinationsPage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesHallucinationsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states hallucinations?"]
+              Altered states are not hallucinations, though they may include hallucinatory experiences. Altered states encompass broader changes in consciousness, perception, and cognition beyond sensory distortions.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesHallucinationsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This distinction matters because altered states involve systematic shifts in multiple aspects of consciousness - attention, memory, sense of self, and temporal perception - while hallucinations specifically refer to sensory experiences without external stimuli. Altered states can occur through meditation, sleep deprivation, or breathwork without any hallucinatory component. The confusion arises because some altered states, particularly those induced by psychedelics, do produce hallucinations as one feature among many broader cognitive and perceptual changes.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesHallucinationsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The overlap becomes significant with psychedelic-induced altered states, where hallucinations are prominent features. Some altered states like lucid dreaming or deep meditation may include visual or auditory phenomena that blur the line between altered perception and hallucination.
             </p>
           </section>
 

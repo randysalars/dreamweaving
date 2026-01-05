@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/navigational/which
 
 export const metadata: Metadata = {
   title: "Which altered states are hardest to describe? | Salars Consciousness",
-  description: "Which altered states are hardest to describe?",
+  description: "Deep meditative states, ego dissolution experiences, and certain psychedelic states rank among the most difficult to describe because they transcend ordina",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Which altered states are hardest to describe?",
-    description: "Which altered states are hardest to describe?",
+    description: "Deep meditative states, ego dissolution experiences, and certain psychedelic states rank among the most difficult to describe because they transcend ordina",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["ineffability", "mystical experiences", "ego dissolution", "psychedelic states", "deep meditation", "phenomenology", "consciousness research", "contemplative traditions"],
 };
 
 export default function WhichAlteredStatesAreHardestToDescribePage() {
@@ -46,7 +46,7 @@ export default function WhichAlteredStatesAreHardestToDescribePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Which altered states are hardest to describe?"]
+              Deep meditative states, ego dissolution experiences, and certain psychedelic states rank among the most difficult to describe because they transcend ordinary conceptual frameworks and language structures.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhichAlteredStatesAreHardestToDescribePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These states challenge description because they often involve the dissolution of the subject-object distinction that underlies normal language use. When the sense of self that typically narrates experience becomes altered or absent, the usual cognitive tools for creating coherent descriptions break down. This creates what researchers call the 'ineffability problem' - the gap between direct experiential knowledge and communicable linguistic representation.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhichAlteredStatesAreHardestToDescribePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Milder altered states like light meditation or moderate intoxication remain more describable because core cognitive structures stay intact. The difficulty intensifies with states involving complete ego dissolution, mystical experiences, or profound alterations in time and space perception.
             </p>
           </section>
 

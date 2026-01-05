@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can intense focus create altered states? | Salars Consciousness",
-  description: "Can intense focus create altered states?",
+  description: "Intense focus can trigger altered states through attentional narrowing, neural synchronization, and reduced default mode network activity that shifts ordin",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can intense focus create altered states?",
-    description: "Can intense focus create altered states?",
+    description: "Intense focus can trigger altered states through attentional narrowing, neural synchronization, and reduced default mode network activity that shifts ordin",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["flow states", "concentration meditation", "attentional narrowing", "default mode network", "gamma waves", "absorption", "mindfulness", "contemplative practices"],
 };
 
 export default function CanIntenseFocusCreateAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanIntenseFocusCreateAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can intense focus create altered states?"]
+              Intense focus can trigger altered states through attentional narrowing, neural synchronization, and reduced default mode network activity that shifts ordinary consciousness patterns.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanIntenseFocusCreateAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Sustained concentration leads to measurable changes in brainwave patterns, particularly increased gamma and theta activity, while simultaneously reducing activity in the brain's default mode network. This neurological shift results in altered perception of time, reduced self-awareness, and heightened absorption in the present moment. The phenomenon demonstrates how voluntary attention control can directly influence consciousness states without external substances or interventions.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanIntenseFocusCreateAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity and duration of focus required varies significantly between individuals based on training, natural aptitude, and the specific task. Some people enter flow states within minutes of concentrated effort, while others may require extended meditation practice to achieve comparable alterations.
             </p>
           </section>
 

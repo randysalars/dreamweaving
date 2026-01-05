@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Can altered states dull sensation? | Salars Consciousness",
-  description: "Can altered states dull sensation?",
+  description: "Altered states can significantly dull sensation by disrupting normal sensory processing pathways in the brain, reducing awareness of physical stimuli like ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states dull sensation?",
-    description: "Can altered states dull sensation?",
+    description: "Altered states can significantly dull sensation by disrupting normal sensory processing pathways in the brain, reducing awareness of physical stimuli like ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["sensory deprivation", "anesthesia", "pain perception", "thalamus function", "somatosensory cortex", "dissociative states", "meditation effects", "psychedelic sensory changes"],
 };
 
 export default function CanAlteredStatesDullSensationPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesDullSensationPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states dull sensation?"]
+              Altered states can significantly dull sensation by disrupting normal sensory processing pathways in the brain, reducing awareness of physical stimuli like pain, touch, and temperature.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesDullSensationPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This sensory dulling occurs because altered states modify neurotransmitter activity and alter communication between brain regions responsible for processing sensory input. Substances like anesthetics, psychedelics, and meditation states can suppress activity in the thalamus and somatosensory cortex, which normally relay and interpret sensory signals. This demonstrates how consciousness and sensory perception are interconnected processes that can be selectively modified.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesDullSensationPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The degree of sensory dulling varies based on the type and intensity of the altered state. Some states enhance certain sensations while dulling others, and individual neurochemistry affects sensitivity to these changes.
             </p>
           </section>
 

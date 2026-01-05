@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/levels-and-depth/c
 
 export const metadata: Metadata = {
   title: "Can a person control the depth of an altered state? | Salars Consciousness",
-  description: "Can a person control the depth of an altered state?",
+  description: "Yes, people can influence the depth of altered states through techniques like breathing control, meditation focus, dosage regulation, and environmental man",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can a person control the depth of an altered state?",
-    description: "Can a person control the depth of an altered state?",
+    description: "Yes, people can influence the depth of altered states through techniques like breathing control, meditation focus, dosage regulation, and environmental man",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["state regulation", "meditation depth", "dosage control", "set and setting", "breathing techniques", "consciousness modulation", "trance induction", "mindfulness intensity"],
 };
 
 export default function CanAPersonControlTheDepthOfAnAlteredStatePage() {
@@ -46,7 +46,7 @@ export default function CanAPersonControlTheDepthOfAnAlteredStatePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can a person control the depth of an altered state?"]
+              Yes, people can influence the depth of altered states through techniques like breathing control, meditation focus, dosage regulation, and environmental manipulation.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAPersonControlTheDepthOfAnAlteredStatePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Control mechanisms work because altered states exist on a spectrum rather than as binary on/off switches. Breathing patterns directly affect brain oxygenation and neural activity, while focused attention can deepen meditative states by reducing default mode network activity. Environmental factors like music, lighting, and setting influence neurotransmitter release and sensory processing, which determines how profound the state becomes.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAPersonControlTheDepthOfAnAlteredStatePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Control diminishes with higher doses of substances or during spontaneous mystical experiences. Some altered states, particularly those induced by powerful psychedelics or occurring during seizures, resist conscious direction once they reach certain thresholds.
             </p>
           </section>
 

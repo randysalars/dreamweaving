@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/w
 
 export const metadata: Metadata = {
   title: "What is the difference between dissociation and altered states? | Salars Consciousness",
-  description: "What is the difference between dissociation and altered states?",
+  description: "Dissociation is a specific psychological mechanism where awareness detaches from experience, while altered states encompass any significant change from ord",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "What is the difference between dissociation and altered states?",
-    description: "What is the difference between dissociation and altered states?",
+    description: "Dissociation is a specific psychological mechanism where awareness detaches from experience, while altered states encompass any significant change from ord",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["depersonalization", "derealization", "trance states", "consciousness modification", "psychological dissociation", "mindfulness detachment", "ego dissolution", "awareness fragmentation"],
 };
 
 export default function WhatIsTheDifferenceBetweenDissociationAndAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function WhatIsTheDifferenceBetweenDissociationAndAlteredStatesPa
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the difference between dissociation and altered states?"]
+              Dissociation is a specific psychological mechanism where awareness detaches from experience, while altered states encompass any significant change from ordinary waking consciousness.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheDifferenceBetweenDissociationAndAlteredStatesPa
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Dissociation represents a protective mental process that creates distance between the self and overwhelming experiences, often involving disconnection from thoughts, feelings, or memories. Altered states include a broader spectrum of consciousness changes that can result from meditation, substances, sleep deprivation, or spiritual practices. This distinction matters because dissociation typically indicates psychological stress responses, while altered states can be intentionally induced for therapeutic, spiritual, or exploratory purposes.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheDifferenceBetweenDissociationAndAlteredStatesPa
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The boundary blurs when dissociation occurs within deliberately induced altered states, such as during deep meditation or psychedelic therapy. Some altered states naturally include dissociative elements, making the distinction more about context and intention than discrete categories.
             </p>
           </section>
 

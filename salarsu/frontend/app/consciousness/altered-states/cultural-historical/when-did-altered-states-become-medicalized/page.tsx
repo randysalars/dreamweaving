@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "When did altered states become medicalized? | Salars Consciousness",
-  description: "When did altered states become medicalized?",
+  description: "Altered states became medicalized during the late 19th and early 20th centuries, when psychiatric institutions began classifying non-ordinary consciousness",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "When did altered states become medicalized?",
-    description: "When did altered states become medicalized?",
+    description: "Altered states became medicalized during the late 19th and early 20th centuries, when psychiatric institutions began classifying non-ordinary consciousness",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["psychiatric classification", "pathologizing consciousness", "indigenous healing suppression", "medical authority", "psychedelic medicalization", "shamanic persecution", "consciousness pathology", "traditional healing criminalization"],
 };
 
 export default function WhenDidAlteredStatesBecomeMedicalizedPage() {
@@ -46,7 +46,7 @@ export default function WhenDidAlteredStatesBecomeMedicalizedPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "When did altered states become medicalized?"]
+              Altered states became medicalized during the late 19th and early 20th centuries, when psychiatric institutions began classifying non-ordinary consciousness as pathological conditions requiring medical intervention.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhenDidAlteredStatesBecomeMedicalizedPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This medicalization occurred because emerging psychiatric disciplines needed to establish professional authority and legitimacy within scientific medicine. The process transformed culturally accepted spiritual and ritualistic practices into symptoms of mental illness, leading to the systematic suppression of indigenous healing traditions. Medical institutions gained control over consciousness experiences that had previously been managed by religious or community leaders, fundamentally reshaping how societies understood and responded to altered states.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhenDidAlteredStatesBecomeMedicalizedPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The medicalization varies significantly across cultures, with some societies maintaining traditional frameworks alongside medical models. Contemporary psychedelic research and integrative medicine approaches are beginning to challenge purely pathological interpretations of certain altered states.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/duration-aftereffe
 
 export const metadata: Metadata = {
   title: "Can altered states change mood afterward? | Salars Consciousness",
-  description: "Can altered states change mood afterward?",
+  description: "Altered states frequently produce lasting mood changes, typically improving emotional well-being for days to months through neurochemical shifts and enhanc",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states change mood afterward?",
-    description: "Can altered states change mood afterward?",
+    description: "Altered states frequently produce lasting mood changes, typically improving emotional well-being for days to months through neurochemical shifts and enhanc",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["neuroplasticity", "serotonin", "default mode network", "emotional regulation", "integration", "neurotransmitters", "depression", "anxiety"],
 };
 
 export default function CanAlteredStatesChangeMoodAfterwardPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesChangeMoodAfterwardPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states change mood afterward?"]
+              Altered states frequently produce lasting mood changes, typically improving emotional well-being for days to months through neurochemical shifts and enhanced neural plasticity.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesChangeMoodAfterwardPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These mood changes occur because altered states trigger the release of neurotransmitters like serotonin and dopamine while promoting neuroplasticity in emotional regulation centers. The brain's default mode network becomes less rigid during these experiences, allowing new neural pathways to form that can sustain improved emotional patterns. Research demonstrates that single sessions can reduce depression and anxiety symptoms for extended periods, suggesting fundamental shifts in how the brain processes emotional information.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesChangeMoodAfterwardPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Duration and intensity vary significantly based on the type of altered state, individual brain chemistry, and integration practices afterward. Some people experience minimal mood changes, while others report profound shifts lasting months.
             </p>
           </section>
 

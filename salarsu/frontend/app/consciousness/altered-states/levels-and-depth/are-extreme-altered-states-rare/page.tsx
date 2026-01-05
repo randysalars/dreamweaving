@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/levels-and-depth/a
 
 export const metadata: Metadata = {
   title: "Are extreme altered states rare? | Salars Consciousness",
-  description: "Are extreme altered states rare?",
+  description: "Extreme altered states occur infrequently in most populations, though prevalence varies significantly based on cultural context, intentional practices, and",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are extreme altered states rare?",
-    description: "Are extreme altered states rare?",
+    description: "Extreme altered states occur infrequently in most populations, though prevalence varies significantly based on cultural context, intentional practices, and",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["mystical experiences", "psychedelic states", "dissociative episodes", "transcendent consciousness", "peak experiences", "non-ordinary states", "consciousness disruption", "neuroplasticity"],
 };
 
 export default function AreExtremeAlteredStatesRarePage() {
@@ -46,7 +46,7 @@ export default function AreExtremeAlteredStatesRarePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are extreme altered states rare?"]
+              Extreme altered states occur infrequently in most populations, though prevalence varies significantly based on cultural context, intentional practices, and individual neurological factors.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreExtremeAlteredStatesRarePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Extreme altered states require substantial neurochemical disruption or intense psychological conditions that don't arise during normal daily functioning. These states typically result from specific triggers like high-dose psychedelics, prolonged meditation, severe trauma, or certain medical conditions because they involve dramatic shifts in brain network connectivity and neurotransmitter activity. Their rarity demonstrates the brain's tendency toward homeostatic regulation and the significant energy required to maintain such dramatically altered patterns of consciousness.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreExtremeAlteredStatesRarePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Frequency increases substantially in populations with specific mental health conditions, dedicated spiritual practitioners, or those in cultures with ritualistic use of consciousness-altering substances. Individual neurological sensitivity and genetic factors also create significant variation in both susceptibility and intensity thresholds.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "Do cultural beliefs shape altered state experiences? | Salars Consciousness",
-  description: "Do cultural beliefs shape altered state experiences?",
+  description: "Cultural beliefs significantly shape altered state experiences by providing interpretive frameworks, expectation patterns, and symbolic meaning systems tha",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do cultural beliefs shape altered state experiences?",
-    description: "Do cultural beliefs shape altered state experiences?",
+    description: "Cultural beliefs significantly shape altered state experiences by providing interpretive frameworks, expectation patterns, and symbolic meaning systems tha",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["set and setting", "cultural priming", "religious experiences", "expectation effects", "phenomenology", "shamanic traditions", "psychedelic therapy", "consciousness interpretation"],
 };
 
 export default function DoCulturalBeliefsShapeAlteredStateExperiencesPage() {
@@ -46,7 +46,7 @@ export default function DoCulturalBeliefsShapeAlteredStateExperiencesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do cultural beliefs shape altered state experiences?"]
+              Cultural beliefs significantly shape altered state experiences by providing interpretive frameworks, expectation patterns, and symbolic meaning systems that influence both subjective content and physiological responses.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoCulturalBeliefsShapeAlteredStateExperiencesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Cultural conditioning creates neural pathways and expectation sets that filter and organize altered state perceptions. Religious frameworks lead to mystical interpretations of the same physiological changes that secular contexts frame as psychological phenomena. This demonstrates how top-down cognitive processing shapes bottom-up sensory experiences, because cultural schemas provide the conceptual vocabulary and meaning structures through which consciousness interprets non-ordinary states.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoCulturalBeliefsShapeAlteredStateExperiencesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Individual brain chemistry and genetic factors can override cultural programming in extreme altered states. Cross-cultural exposure and personal psychology sometimes produce experiences that contradict dominant cultural interpretations.
             </p>
           </section>
 

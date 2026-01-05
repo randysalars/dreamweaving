@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/natural-vs-induced
 
 export const metadata: Metadata = {
   title: "Do altered states occur during illness or fever? | Salars Consciousness",
-  description: "Do altered states occur during illness or fever?",
+  description: "Yes, illness and fever commonly trigger altered states of consciousness through brain chemistry changes, inflammation responses, and disrupted neural netwo",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states occur during illness or fever?",
-    description: "Do altered states occur during illness or fever?",
+    description: "Yes, illness and fever commonly trigger altered states of consciousness through brain chemistry changes, inflammation responses, and disrupted neural netwo",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["fever dreams", "delirium", "illness-induced hallucinations", "inflammatory consciousness", "medical altered states", "pathological consciousness", "fever hallucinations", "sickness behavior"],
 };
 
 export default function DoAlteredStatesOccurDuringIllnessOrFeverPage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesOccurDuringIllnessOrFeverPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states occur during illness or fever?"]
+              Yes, illness and fever commonly trigger altered states of consciousness through brain chemistry changes, inflammation responses, and disrupted neural networks that affect perception and cognition.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesOccurDuringIllnessOrFeverPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Fever-induced altered states occur because elevated body temperature directly affects neurotransmitter function and increases inflammatory cytokines that cross the blood-brain barrier. This physiological stress leads to hallucinations, delirium, and disorientation as the brain's normal processing patterns become disrupted. These states demonstrate how physical health conditions can fundamentally alter consciousness without external substances or intentional practices.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesOccurDuringIllnessOrFeverPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity varies with fever severity, individual susceptibility, and underlying health conditions. Some people experience mild confusion at low-grade fevers, while others develop full delirium with vivid hallucinations at higher temperatures.
             </p>
           </section>
 

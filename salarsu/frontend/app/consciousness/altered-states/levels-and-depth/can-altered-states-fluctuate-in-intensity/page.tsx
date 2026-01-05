@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/levels-and-depth/c
 
 export const metadata: Metadata = {
   title: "Can altered states fluctuate in intensity? | Salars Consciousness",
-  description: "Can altered states fluctuate in intensity?",
+  description: "Altered states naturally fluctuate in intensity throughout their duration, shifting between deeper and lighter phases based on neurochemical changes, exter",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states fluctuate in intensity?",
-    description: "Can altered states fluctuate in intensity?",
+    description: "Altered states naturally fluctuate in intensity throughout their duration, shifting between deeper and lighter phases based on neurochemical changes, exter",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["consciousness fluctuation", "neurochemical dynamics", "default mode network", "attention regulation", "psychedelic waves", "meditative depth", "brain state transitions", "awareness intensity"],
 };
 
 export default function CanAlteredStatesFluctuateInIntensityPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesFluctuateInIntensityPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states fluctuate in intensity?"]
+              Altered states naturally fluctuate in intensity throughout their duration, shifting between deeper and lighter phases based on neurochemical changes, external stimuli, and individual physiological responses.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesFluctuateInIntensityPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These fluctuations occur because altered states depend on dynamic brain chemistry that responds to multiple variables simultaneously. Neurotransmitter levels rise and fall, attention shifts between internal and external awareness, and the brain's default mode network alternates between suppression and reactivation. This creates waves of intensity rather than static experiences, demonstrating that consciousness operates as a fluid system rather than fixed states.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesFluctuateInIntensityPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some pharmaceutical interventions can maintain more consistent intensity levels for specific durations. Experienced practitioners of meditation or breathwork may develop greater control over fluctuation patterns through trained attention regulation.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/c
 
 export const metadata: Metadata = {
   title: "Can altered states worsen mental health conditions? | Salars Consciousness",
-  description: "Can altered states worsen mental health conditions?",
+  description: "Yes, altered states can worsen existing mental health conditions by destabilizing psychological defenses, triggering episodes, and intensifying symptoms in",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states worsen mental health conditions?",
-    description: "Can altered states worsen mental health conditions?",
+    description: "Yes, altered states can worsen existing mental health conditions by destabilizing psychological defenses, triggering episodes, and intensifying symptoms in",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["psychotic episodes", "bipolar triggers", "PTSD flashbacks", "psychiatric medication interactions", "mental health screening", "psychological stability", "neurochemical disruption", "contraindications"],
 };
 
 export default function CanAlteredStatesWorsenMentalHealthConditionsPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesWorsenMentalHealthConditionsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states worsen mental health conditions?"]
+              Yes, altered states can worsen existing mental health conditions by destabilizing psychological defenses, triggering episodes, and intensifying symptoms in vulnerable individuals.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesWorsenMentalHealthConditionsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states temporarily disrupt normal cognitive filters and emotional regulation mechanisms that help manage psychiatric symptoms. This disruption can trigger psychotic episodes in those with schizophrenia, intensify manic episodes in bipolar disorder, or activate trauma responses in PTSD. The brain's altered neurochemistry during these states can overwhelm already compromised mental health systems, because conditions like depression and anxiety often involve dysregulated neurotransmitter pathways that altered states further destabilize.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesWorsenMentalHealthConditionsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Risk varies significantly based on the specific condition, its current stability, the type and intensity of altered state, and individual neurochemistry. Some individuals with well-managed conditions may experience minimal impact, while others in acute phases face substantial risk.
             </p>
           </section>
 

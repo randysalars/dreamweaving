@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/misconceptions/are
 
 export const metadata: Metadata = {
   title: "Are altered states the goal or a byproduct? | Salars Consciousness",
-  description: "Are altered states the goal or a byproduct?",
+  description: "Altered states can be either goal or byproduct depending on context. In therapeutic and spiritual practices, they're often intentional targets. In other si",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states the goal or a byproduct?",
-    description: "Are altered states the goal or a byproduct?",
+    description: "Altered states can be either goal or byproduct depending on context. In therapeutic and spiritual practices, they're often intentional targets. In other si",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["intentional induction", "spontaneous states", "therapeutic outcomes", "spiritual bypassing", "state-dependent learning", "consciousness exploration", "mystical experiences", "psychedelic integration"],
 };
 
 export default function AreAlteredStatesTheGoalOrAByproductPage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesTheGoalOrAByproductPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states the goal or a byproduct?"]
+              Altered states can be either goal or byproduct depending on context. In therapeutic and spiritual practices, they're often intentional targets. In other situations, they emerge as unintended consequences.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesTheGoalOrAByproductPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This distinction matters because it determines how altered states are approached, measured, and integrated. When altered states are the goal, practitioners develop specific techniques and frameworks to achieve and navigate them safely. When they're byproducts, they may catch people unprepared, leading to confusion or distress. Understanding the intent behind altered state induction helps predict outcomes and guides appropriate preparation or response strategies.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesTheGoalOrAByproductPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The boundary shifts based on individual awareness and training. Experienced meditators may initially seek altered states as goals but eventually view them as natural byproducts of deeper practice. Clinical contexts typically frame altered states as therapeutic tools rather than end goals.
             </p>
           </section>
 

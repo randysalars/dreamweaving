@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Do altered states affect sensory clarity? | Salars Consciousness",
-  description: "Do altered states affect sensory clarity?",
+  description: "Altered states typically reduce sensory clarity through disrupted neural processing, though some states can heighten specific sensory channels while dimini",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states affect sensory clarity?",
-    description: "Do altered states affect sensory clarity?",
+    description: "Altered states typically reduce sensory clarity through disrupted neural processing, though some states can heighten specific sensory channels while dimini",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["sensory processing", "perceptual distortion", "thalamic filtering", "neural connectivity", "attention allocation", "psychedelic effects", "meditation states", "consciousness filtering"],
 };
 
 export default function DoAlteredStatesAffectSensoryClarityPage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesAffectSensoryClarityPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states affect sensory clarity?"]
+              Altered states typically reduce sensory clarity through disrupted neural processing, though some states can heighten specific sensory channels while diminishing others.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesAffectSensoryClarityPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Most altered states affect the brain's sensory processing networks, particularly the thalamus and cortical areas that filter and interpret incoming information. Substances like psychedelics disrupt normal neural communication patterns, leading to distorted perception, while states like meditation can shift attention allocation between sensory channels. These changes demonstrate how consciousness actively constructs our sensory experience rather than passively receiving it.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesAffectSensoryClarityPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Certain focused states like flow or deep meditation can enhance clarity in specific sensory domains while reducing others. Some individuals report heightened sensory acuity during mild altered states before clarity degrades with deeper alterations.
             </p>
           </section>
 

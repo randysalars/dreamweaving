@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/integration-meanin
 
 export const metadata: Metadata = {
   title: "Why is integration important after altered states? | Salars Consciousness",
-  description: "Why is integration important after altered states?",
+  description: "Integration translates altered state experiences into lasting psychological changes by consciously processing insights, emotions, and perceptions through r",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Why is integration important after altered states?",
-    description: "Why is integration important after altered states?",
+    description: "Integration translates altered state experiences into lasting psychological changes by consciously processing insights, emotions, and perceptions through r",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["psychedelic integration", "meaning-making", "consciousness processing", "peak experience", "therapeutic integration", "mystical experience", "psychological growth", "altered consciousness"],
 };
 
 export default function WhyIsIntegrationImportantAfterAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function WhyIsIntegrationImportantAfterAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Why is integration important after altered states?"]
+              Integration translates altered state experiences into lasting psychological changes by consciously processing insights, emotions, and perceptions through reflection, discussion, and behavioral application.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhyIsIntegrationImportantAfterAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states often produce fragmented or symbolic experiences that require conscious interpretation to become meaningful. Without integration, profound insights remain isolated from everyday awareness because the neurochemical conditions that enabled the experience differ from normal waking consciousness. Integration bridges this gap by creating narrative coherence and connecting peak experiences to practical life changes, allowing temporary shifts in consciousness to create permanent psychological growth.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhyIsIntegrationImportantAfterAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Integration becomes less critical when altered states are mild or when individuals have extensive experience processing non-ordinary consciousness. Some spontaneous mystical experiences integrate naturally without deliberate effort, while traumatic or overwhelming altered states may require professional therapeutic support rather than standard integration practices.
             </p>
           </section>
 

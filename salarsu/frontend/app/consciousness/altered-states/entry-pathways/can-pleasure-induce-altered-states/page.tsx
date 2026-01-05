@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can pleasure induce altered states? | Salars Consciousness",
-  description: "Can pleasure induce altered states?",
+  description: "Intense pleasure can trigger altered states by flooding the brain with dopamine, endorphins, and other neurochemicals that modify normal consciousness patt",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can pleasure induce altered states?",
-    description: "Can pleasure induce altered states?",
+    description: "Intense pleasure can trigger altered states by flooding the brain with dopamine, endorphins, and other neurochemicals that modify normal consciousness patt",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["dopamine release", "endorphin rush", "flow states", "euphoria", "reward system", "neurochemical flooding", "peak experiences", "consciousness modification"],
 };
 
 export default function CanPleasureInduceAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanPleasureInduceAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can pleasure induce altered states?"]
+              Intense pleasure can trigger altered states by flooding the brain with dopamine, endorphins, and other neurochemicals that modify normal consciousness patterns.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanPleasureInduceAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Pleasure activates the brain's reward system, releasing neurotransmitters that alter perception, time sense, and self-awareness. This neurochemical cascade creates similar brain states to those found in meditation, flow states, and mild psychedelic experiences. The intensity of pleasure directly correlates with the degree of consciousness alteration because higher pleasure levels produce more dramatic shifts in neural activity patterns.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanPleasureInduceAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The threshold varies significantly between individuals based on neurochemical sensitivity, tolerance levels, and baseline consciousness states. Extreme pleasure can occasionally produce dissociative experiences or temporary ego dissolution in highly sensitive individuals.
             </p>
           </section>
 

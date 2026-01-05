@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/duration-aftereffe
 
 export const metadata: Metadata = {
   title: "Can altered states end suddenly? | Salars Consciousness",
-  description: "Can altered states end suddenly?",
+  description: "Altered states can end abruptly or gradually, depending on the type, cause, and individual physiology. Natural states like dreaming typically transition sm",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states end suddenly?",
-    description: "Can altered states end suddenly?",
+    description: "Altered states can end abruptly or gradually, depending on the type, cause, and individual physiology. Natural states like dreaming typically transition sm",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["state transitions", "consciousness shifts", "neurochemical clearance", "brain wave changes", "awakening patterns", "metabolic processing", "baseline consciousness", "state stability"],
 };
 
 export default function CanAlteredStatesEndSuddenlyPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesEndSuddenlyPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states end suddenly?"]
+              Altered states can end abruptly or gradually, depending on the type, cause, and individual physiology. Natural states like dreaming typically transition smoothly while substance-induced states may terminate suddenly.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesEndSuddenlyPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              The termination pattern reflects underlying neurochemical mechanisms and brain state transitions. Gradual endings occur because neurotransmitter levels decline slowly or natural circadian processes restore baseline consciousness. Sudden endings result from rapid metabolic changes, external interruptions, or abrupt shifts in brain wave patterns that destabilize the altered state.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesEndSuddenlyPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Meditation-induced states often end gradually as attention shifts, while psychedelic experiences may terminate suddenly when metabolic processes clear active compounds. Sleep states demonstrate both patterns - REM sleep can end abruptly with awakening or transition smoothly between sleep stages.
             </p>
           </section>
 

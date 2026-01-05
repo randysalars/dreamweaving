@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "How do indigenous traditions approach altered states? | Salars Consciousness",
-  description: "How do indigenous traditions approach altered states?",
+  description: "Indigenous traditions typically view altered states as sacred pathways to spiritual realms, ancestral communication, and healing, integrated into ceremonia",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "How do indigenous traditions approach altered states?",
-    description: "How do indigenous traditions approach altered states?",
+    description: "Indigenous traditions typically view altered states as sacred pathways to spiritual realms, ancestral communication, and healing, integrated into ceremonia",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["shamanism", "plant medicine", "ritual healing", "ancestral communication", "sacred ceremonies", "traditional knowledge", "spiritual realms", "community healing"],
 };
 
 export default function HowDoIndigenousTraditionsApproachAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function HowDoIndigenousTraditionsApproachAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How do indigenous traditions approach altered states?"]
+              Indigenous traditions typically view altered states as sacred pathways to spiritual realms, ancestral communication, and healing, integrated into ceremonial practices rather than isolated experiences.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoIndigenousTraditionsApproachAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These approaches demonstrate how altered states function as structured cultural technologies because they're embedded within specific rituals, community guidance, and cosmological frameworks. Indigenous practices show that set and setting extend beyond individual psychology to include generational knowledge transmission, where altered states serve as bridges between ordinary reality and spiritual dimensions. This integration results in altered states being viewed as functional tools for community healing, divination, and maintaining cultural continuity rather than recreational or purely therapeutic activities.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoIndigenousTraditionsApproachAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Practices vary significantly across different indigenous cultures, from Amazonian ayahuasca ceremonies to Native American sweat lodges to Australian Aboriginal dreamtime practices. The degree of community involvement, specific substances or techniques used, and underlying spiritual beliefs create distinct approaches even when the fundamental reverence for altered states remains consistent.
             </p>
           </section>
 

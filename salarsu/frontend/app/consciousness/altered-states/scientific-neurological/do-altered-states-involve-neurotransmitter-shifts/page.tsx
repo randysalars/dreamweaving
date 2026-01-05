@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "Do altered states involve neurotransmitter shifts? | Salars Consciousness",
-  description: "Do altered states involve neurotransmitter shifts?",
+  description: "Yes, altered states of consciousness consistently involve significant shifts in neurotransmitter systems, particularly dopamine, serotonin, GABA, and gluta",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states involve neurotransmitter shifts?",
-    description: "Do altered states involve neurotransmitter shifts?",
+    description: "Yes, altered states of consciousness consistently involve significant shifts in neurotransmitter systems, particularly dopamine, serotonin, GABA, and gluta",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["neurotransmitters", "serotonin receptors", "dopamine pathways", "GABA systems", "psychedelics brain effects", "meditation neurochemistry", "consciousness biochemistry", "neural networks"],
 };
 
 export default function DoAlteredStatesInvolveNeurotransmitterShiftsPage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesInvolveNeurotransmitterShiftsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states involve neurotransmitter shifts?"]
+              Yes, altered states of consciousness consistently involve significant shifts in neurotransmitter systems, particularly dopamine, serotonin, GABA, and glutamate levels and receptor activity.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesInvolveNeurotransmitterShiftsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These neurotransmitter changes occur because consciousness emerges from coordinated neural network activity that depends on chemical signaling between neurons. When external factors like psychedelics, meditation, or sleep deprivation alter neurotransmitter balance, they disrupt normal information processing patterns and create distinct subjective experiences. This demonstrates that consciousness operates through measurable biochemical mechanisms rather than mysterious processes.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesInvolveNeurotransmitterShiftsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The specific neurotransmitters involved vary by the type of altered state - psychedelics primarily affect serotonin receptors, while anesthetics target GABA systems. Some meditation states show more subtle neurotransmitter fluctuations compared to pharmacologically induced changes.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/duration-aftereffe
 
 export const metadata: Metadata = {
   title: "Can altered states affect memory afterward? | Salars Consciousness",
-  description: "Can altered states affect memory afterward?",
+  description: "Altered states frequently disrupt memory formation and retrieval, creating gaps in episodic memory, distorted recollections, or enhanced recall of specific",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states affect memory afterward?",
-    description: "Can altered states affect memory afterward?",
+    description: "Altered states frequently disrupt memory formation and retrieval, creating gaps in episodic memory, distorted recollections, or enhanced recall of specific",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["memory consolidation", "hippocampus function", "blackout episodes", "state-dependent learning", "retrograde amnesia", "psychedelic memory", "dissociative amnesia", "flashback memories"],
 };
 
 export default function CanAlteredStatesAffectMemoryAfterwardPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesAffectMemoryAfterwardPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states affect memory afterward?"]
+              Altered states frequently disrupt memory formation and retrieval, creating gaps in episodic memory, distorted recollections, or enhanced recall of specific experiences.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesAffectMemoryAfterwardPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Memory disruption occurs because altered states modify neurotransmitter activity in the hippocampus and prefrontal cortex, regions critical for memory consolidation. Different states affect memory through distinct mechanisms - alcohol blocks encoding pathways, psychedelics alter temporal perception and narrative construction, while meditative states can enhance certain types of memory formation. These effects demonstrate how consciousness and memory systems are deeply interconnected.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesAffectMemoryAfterwardPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Memory effects vary dramatically by substance, dosage, and individual brain chemistry. Some altered states like certain meditation practices or mild psychedelic experiences can actually improve memory consolidation and recall.
             </p>
           </section>
 

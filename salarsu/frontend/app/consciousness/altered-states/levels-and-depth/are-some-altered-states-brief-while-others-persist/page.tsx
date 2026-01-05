@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/levels-and-depth/a
 
 export const metadata: Metadata = {
   title: "Are some altered states brief while others persist? | Salars Consciousness",
-  description: "Are some altered states brief while others persist?",
+  description: "Altered states vary dramatically in duration, from seconds-long microsleep episodes to permanent changes in consciousness from psychedelic experiences or m",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are some altered states brief while others persist?",
-    description: "Are some altered states brief while others persist?",
+    description: "Altered states vary dramatically in duration, from seconds-long microsleep episodes to permanent changes in consciousness from psychedelic experiences or m",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["state duration", "neuroplasticity", "consciousness persistence", "hypnagogic states", "psychedelic integration", "meditation effects", "microsleep", "flow states"],
 };
 
 export default function AreSomeAlteredStatesBriefWhileOthersPersistPage() {
@@ -46,7 +46,7 @@ export default function AreSomeAlteredStatesBriefWhileOthersPersistPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are some altered states brief while others persist?"]
+              Altered states vary dramatically in duration, from seconds-long microsleep episodes to permanent changes in consciousness from psychedelic experiences or meditation practice.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreSomeAlteredStatesBriefWhileOthersPersistPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Duration differences result from distinct neurochemical mechanisms and brain network disruptions. Brief states like hypnagogic hallucinations occur during rapid neurotransmitter fluctuations, while persistent states involve structural brain changes or lasting receptor modifications. This demonstrates that consciousness operates across multiple timescales, with some alterations requiring sustained neuroplastic changes to maintain their effects.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreSomeAlteredStatesBriefWhileOthersPersistPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The boundary between brief and persistent states becomes unclear with repeated exposure, as frequent brief alterations can accumulate into lasting changes. Some individuals show heightened sensitivity to brief states that others barely notice.
             </p>
           </section>
 

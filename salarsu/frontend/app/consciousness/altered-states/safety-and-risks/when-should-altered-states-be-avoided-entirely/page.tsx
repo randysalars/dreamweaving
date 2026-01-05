@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/w
 
 export const metadata: Metadata = {
   title: "When should altered states be avoided entirely? | Salars Consciousness",
-  description: "When should altered states be avoided entirely?",
+  description: "Altered states should be avoided during active psychosis, severe mental health crises, pregnancy, certain medications, major life instability, and without ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "When should altered states be avoided entirely?",
-    description: "When should altered states be avoided entirely?",
+    description: "Altered states should be avoided during active psychosis, severe mental health crises, pregnancy, certain medications, major life instability, and without ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["contraindications", "psychological vulnerability", "set and setting", "mental health screening", "pregnancy safety", "medication interactions", "crisis states", "therapeutic supervision"],
 };
 
 export default function WhenShouldAlteredStatesBeAvoidedEntirelyPage() {
@@ -46,7 +46,7 @@ export default function WhenShouldAlteredStatesBeAvoidedEntirelyPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "When should altered states be avoided entirely?"]
+              Altered states should be avoided during active psychosis, severe mental health crises, pregnancy, certain medications, major life instability, and without proper preparation or support systems.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhenShouldAlteredStatesBeAvoidedEntirelyPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These conditions create heightened vulnerability because altered states can amplify existing psychological distress, interact unpredictably with medications, or trigger latent mental health issues. During pregnancy, substances that induce altered states may harm fetal development, while psychological instability can be exacerbated by the disorienting effects of consciousness changes. The absence of proper set, setting, and support increases risks of psychological trauma or dangerous behavior during vulnerable states.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhenShouldAlteredStatesBeAvoidedEntirelyPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Risk levels vary significantly based on the specific method of induction, individual psychological resilience, and quality of preparation and integration support. Some therapeutic contexts with professional supervision may warrant calculated risks even during certain contraindicated conditions.
             </p>
           </section>
 

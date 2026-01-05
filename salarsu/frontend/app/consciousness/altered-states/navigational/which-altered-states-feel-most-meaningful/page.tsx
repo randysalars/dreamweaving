@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/navigational/which
 
 export const metadata: Metadata = {
   title: "Which altered states feel most meaningful? | Salars Consciousness",
-  description: "Which altered states feel most meaningful?",
+  description: "Deep meditative states, psychedelic experiences, and flow states rank highest for reported meaningfulness because they involve dissolution of ego boundarie",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Which altered states feel most meaningful?",
-    description: "Which altered states feel most meaningful?",
+    description: "Deep meditative states, psychedelic experiences, and flow states rank highest for reported meaningfulness because they involve dissolution of ego boundarie",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["mystical experiences", "flow states", "psychedelic therapy", "meditation depth", "ego dissolution", "default mode network", "transpersonal psychology", "peak experiences"],
 };
 
 export default function WhichAlteredStatesFeelMostMeaningfulPage() {
@@ -46,7 +46,7 @@ export default function WhichAlteredStatesFeelMostMeaningfulPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Which altered states feel most meaningful?"]
+              Deep meditative states, psychedelic experiences, and flow states rank highest for reported meaningfulness because they involve dissolution of ego boundaries and enhanced pattern recognition.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhichAlteredStatesFeelMostMeaningfulPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These states activate the default mode network differently than ordinary consciousness, reducing self-referential thinking while increasing connectivity between brain regions that normally operate independently. This leads to experiences of unity, interconnectedness, and profound insight that participants consistently rate as among the most meaningful events of their lives. The combination of reduced ego activity and enhanced neural integration creates conditions where new perspectives and emotional breakthroughs can emerge.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhichAlteredStatesFeelMostMeaningfulPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Meaningfulness varies significantly based on set, setting, personal history, and integration practices afterward. Some individuals find certain states distressing rather than meaningful, particularly without proper preparation or support.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "How has modern society reframed altered states? | Salars Consciousness",
-  description: "How has modern society reframed altered states?",
+  description: "Modern society has medicalized and scientifically legitimized altered states, shifting them from primarily spiritual or ritualistic contexts to therapeutic",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "How has modern society reframed altered states?",
-    description: "How has modern society reframed altered states?",
+    description: "Modern society has medicalized and scientifically legitimized altered states, shifting them from primarily spiritual or ritualistic contexts to therapeutic",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["psychedelic therapy", "meditation research", "consciousness studies", "cultural appropriation", "medicalization", "indigenous practices", "therapeutic applications", "neuroscience validation"],
 };
 
 export default function HowHasModernSocietyReframedAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function HowHasModernSocietyReframedAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How has modern society reframed altered states?"]
+              Modern society has medicalized and scientifically legitimized altered states, shifting them from primarily spiritual or ritualistic contexts to therapeutic, research, and wellness frameworks.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowHasModernSocietyReframedAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This reframing occurs because contemporary culture prioritizes empirical validation and clinical applications over traditional mystical explanations. Scientific research into psychedelics, meditation, and consciousness has provided neurobiological mechanisms that make altered states more acceptable to mainstream institutions. The shift results in greater integration into healthcare, psychology, and neuroscience while often stripping away indigenous cultural contexts and meanings.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowHasModernSocietyReframedAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The reframing varies significantly across cultures, with Western societies emphasizing medical models while many indigenous communities maintain traditional frameworks. Legal and regulatory environments create stark boundaries between accepted therapeutic uses and criminalized recreational or spiritual practices.
             </p>
           </section>
 

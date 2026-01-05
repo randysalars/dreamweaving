@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/w
 
 export const metadata: Metadata = {
   title: "What role does preparation play in safety? | Salars Consciousness",
-  description: "What role does preparation play in safety?",
+  description: "Preparation reduces risks in altered states by establishing safety protocols, creating supportive environments, screening for contraindications, and buildi",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "What role does preparation play in safety?",
-    description: "What role does preparation play in safety?",
+    description: "Preparation reduces risks in altered states by establishing safety protocols, creating supportive environments, screening for contraindications, and buildi",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["set and setting", "harm reduction", "psychological screening", "safety protocols", "trip sitting", "contraindications", "risk assessment", "environmental control"],
 };
 
 export default function WhatRoleDoesPreparationPlayInSafetyPage() {
@@ -46,7 +46,7 @@ export default function WhatRoleDoesPreparationPlayInSafetyPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What role does preparation play in safety?"]
+              Preparation reduces risks in altered states by establishing safety protocols, creating supportive environments, screening for contraindications, and building psychological readiness before consciousness shifts occur.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatRoleDoesPreparationPlayInSafetyPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states can impair judgment, reduce physical coordination, and trigger unexpected psychological responses, making individuals vulnerable to accidents or adverse reactions. Preparation addresses these vulnerabilities by identifying potential risks beforehand, establishing clear boundaries, and ensuring appropriate supervision is available. This proactive approach significantly reduces the likelihood of physical harm, psychological distress, or dangerous decision-making during altered consciousness experiences.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatRoleDoesPreparationPlayInSafetyPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Emergency situations or spontaneous altered states offer little opportunity for advance preparation. Some experienced practitioners may require less extensive preparation protocols, while individuals with certain medical or psychological conditions need more comprehensive safety measures.
             </p>
           </section>
 

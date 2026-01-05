@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "Do altered states increase neural plasticity? | Salars Consciousness",
-  description: "Do altered states increase neural plasticity?",
+  description: "Research indicates altered states of consciousness can enhance neural plasticity by promoting neurogenesis, increasing BDNF levels, and facilitating new sy",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states increase neural plasticity?",
-    description: "Do altered states increase neural plasticity?",
+    description: "Research indicates altered states of consciousness can enhance neural plasticity by promoting neurogenesis, increasing BDNF levels, and facilitating new sy",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["neuroplasticity", "BDNF", "default mode network", "neurogenesis", "synaptic plasticity", "meditation research", "psychedelic neuroscience", "brain connectivity"],
 };
 
 export default function DoAlteredStatesIncreaseNeuralPlasticityPage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesIncreaseNeuralPlasticityPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states increase neural plasticity?"]
+              Research indicates altered states of consciousness can enhance neural plasticity by promoting neurogenesis, increasing BDNF levels, and facilitating new synaptic connections.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesIncreaseNeuralPlasticityPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states appear to reduce activity in the default mode network while increasing neurotropic factors like BDNF (brain-derived neurotrophic factor), which supports the growth of new neurons and synapses. This neurochemical environment facilitates learning and memory consolidation because it creates optimal conditions for neural rewiring. Studies of meditation, psychedelics, and sensory deprivation demonstrate measurable increases in dendritic branching and synaptic density following these experiences.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesIncreaseNeuralPlasticityPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The plasticity enhancement varies significantly based on the type, duration, and intensity of the altered state. Some states may temporarily reduce plasticity during the acute phase while increasing it during recovery periods.
             </p>
           </section>
 

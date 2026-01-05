@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/misconceptions/can
 
 export const metadata: Metadata = {
   title: "Can altered states be faked or imagined? | Salars Consciousness",
-  description: "Can altered states be faked or imagined?",
+  description: "Altered states involve measurable physiological changes in brain activity, heart rate, and hormone levels that cannot be consciously faked, though subjecti",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states be faked or imagined?",
-    description: "Can altered states be faked or imagined?",
+    description: "Altered states involve measurable physiological changes in brain activity, heart rate, and hormone levels that cannot be consciously faked, though subjecti",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["neuroimaging", "brainwave patterns", "physiological markers", "neurotransmitter systems", "autonomic responses", "placebo effects", "suggestibility", "expectation bias"],
 };
 
 export default function CanAlteredStatesBeFakedOrImaginedPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesBeFakedOrImaginedPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states be faked or imagined?"]
+              Altered states involve measurable physiological changes in brain activity, heart rate, and hormone levels that cannot be consciously faked, though subjective experiences can be exaggerated.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesBeFakedOrImaginedPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Neuroimaging studies demonstrate distinct brainwave patterns and neural network changes during genuine altered states that differ markedly from baseline consciousness. These physiological markers occur because altered states involve specific neurotransmitter systems and brain regions that produce observable biological signatures. The autonomic nervous system responses during deep meditative or psychedelic states result in measurable changes that voluntary imagination alone cannot replicate.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesBeFakedOrImaginedPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Mild altered states or brief experiences may be more easily simulated through acting or self-suggestion. Individual differences in suggestibility and expectation can blur the line between genuine and imagined experiences in some cases.
             </p>
           </section>
 

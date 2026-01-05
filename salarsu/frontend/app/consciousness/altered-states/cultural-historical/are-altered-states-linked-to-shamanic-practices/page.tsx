@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "Are altered states linked to shamanic practices? | Salars Consciousness",
-  description: "Are altered states linked to shamanic practices?",
+  description: "Altered states are fundamentally linked to shamanic practices across cultures, serving as the primary method for accessing spiritual realms and communicati",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states linked to shamanic practices?",
-    description: "Are altered states linked to shamanic practices?",
+    description: "Altered states are fundamentally linked to shamanic practices across cultures, serving as the primary method for accessing spiritual realms and communicati",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["shamanic journeying", "plant medicine", "drumming meditation", "spirit communication", "non-ordinary reality", "entheogenic substances", "ritual consciousness", "traditional healing"],
 };
 
 export default function AreAlteredStatesLinkedToShamanicPracticesPage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesLinkedToShamanicPracticesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states linked to shamanic practices?"]
+              Altered states are fundamentally linked to shamanic practices across cultures, serving as the primary method for accessing spiritual realms and communicating with non-ordinary reality.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesLinkedToShamanicPracticesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Shamanic traditions rely on altered states because these consciousness shifts enable practitioners to transcend ordinary perception and access what they consider spiritual dimensions. These states result from various techniques including rhythmic drumming, chanting, fasting, and plant medicines, which alter brainwave patterns and neurotransmitter activity. The altered consciousness leads to experiences interpreted as spirit communication, soul retrieval, and healing work that forms the core of shamanic practice.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesLinkedToShamanicPracticesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity and methods vary significantly between cultures, with some traditions emphasizing plant entheogens while others focus on rhythmic techniques or sensory deprivation. Modern neo-shamanic practices often adapt traditional methods to contemporary contexts, sometimes losing cultural specificity.
             </p>
           </section>
 

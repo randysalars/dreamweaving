@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "Are altered states linked to brainwave changes? | Salars Consciousness",
-  description: "Are altered states linked to brainwave changes?",
+  description: "Yes, altered states of consciousness correlate with distinct brainwave patterns, including increased theta waves during meditation and altered gamma activi",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states linked to brainwave changes?",
-    description: "Are altered states linked to brainwave changes?",
+    description: "Yes, altered states of consciousness correlate with distinct brainwave patterns, including increased theta waves during meditation and altered gamma activi",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["theta waves", "gamma oscillations", "default mode network", "neural synchronization", "EEG patterns", "psychedelic brain activity", "meditation brainwaves", "consciousness neural correlates"],
 };
 
 export default function AreAlteredStatesLinkedToBrainwaveChangesPage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesLinkedToBrainwaveChangesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states linked to brainwave changes?"]
+              Yes, altered states of consciousness correlate with distinct brainwave patterns, including increased theta waves during meditation and altered gamma activity during psychedelic experiences.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesLinkedToBrainwaveChangesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Different brainwave frequencies reflect synchronized neural oscillations that correspond to specific cognitive and perceptual states. Theta waves (4-8 Hz) increase during deep meditation and hypnotic states because they facilitate access to subconscious processes and memory consolidation. Psychedelics alter gamma wave patterns (30-100 Hz) and disrupt the default mode network, which results in the characteristic dissolution of ego boundaries and enhanced connectivity between normally separate brain regions.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesLinkedToBrainwaveChangesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity and type of brainwave changes vary significantly based on the specific altered state, individual neurophysiology, and duration of the experience. Some altered states show minimal EEG changes despite profound subjective effects.
             </p>
           </section>
 

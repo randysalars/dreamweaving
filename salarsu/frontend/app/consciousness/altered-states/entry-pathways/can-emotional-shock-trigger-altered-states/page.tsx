@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can emotional shock trigger altered states? | Salars Consciousness",
-  description: "Can emotional shock trigger altered states?",
+  description: "Emotional shock can trigger altered states by activating stress response systems that disrupt normal consciousness patterns, leading to dissociation, deper",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can emotional shock trigger altered states?",
-    description: "Can emotional shock trigger altered states?",
+    description: "Emotional shock can trigger altered states by activating stress response systems that disrupt normal consciousness patterns, leading to dissociation, deper",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["trauma-induced dissociation", "stress response consciousness", "emotional dissociation", "shock-induced depersonalization", "sympathetic nervous system activation", "cortisol consciousness effects", "protective dissociation", "acute stress reactions"],
 };
 
 export default function CanEmotionalShockTriggerAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanEmotionalShockTriggerAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can emotional shock trigger altered states?"]
+              Emotional shock can trigger altered states by activating stress response systems that disrupt normal consciousness patterns, leading to dissociation, depersonalization, or heightened awareness states.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanEmotionalShockTriggerAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Intense emotional experiences activate the sympathetic nervous system and release stress hormones like cortisol and adrenaline, which alter brain chemistry and neural firing patterns. This neurochemical cascade disrupts the default mode network responsible for ordinary self-awareness, creating conditions where perception, memory processing, and sense of self become temporarily modified. The brain's attempt to protect itself from overwhelming stimuli results in consciousness shifts that can range from mild detachment to profound dissociative episodes.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanEmotionalShockTriggerAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity and type of altered state depends on individual trauma history, baseline stress levels, and the severity of the emotional shock. Some people may experience brief moments of unreality, while others might enter prolonged dissociative states that require therapeutic intervention.
             </p>
           </section>
 

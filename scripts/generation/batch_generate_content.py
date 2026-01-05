@@ -89,7 +89,8 @@ class CostTracker:
         print(f"  - Input: ${costs['input_cost']:.3f}")
         print(f"  - Output: ${costs['output_cost']:.3f}")
         print(f"\nTime elapsed: {elapsed:.1f} seconds")
-        print(f"Average: {elapsed/costs['pages_generated']:.1f} sec/page")
+        if costs['pages_generated'] > 0:
+            print(f"Average: {elapsed/costs['pages_generated']:.1f} sec/page")
         print("="*60 + "\n")
 
 

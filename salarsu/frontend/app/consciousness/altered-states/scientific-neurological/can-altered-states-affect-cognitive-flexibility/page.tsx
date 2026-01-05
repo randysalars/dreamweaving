@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "Can altered states affect cognitive flexibility? | Salars Consciousness",
-  description: "Can altered states affect cognitive flexibility?",
+  description: "Altered states can enhance cognitive flexibility by reducing default mode network activity and increasing novel neural connections, though effects vary sig",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states affect cognitive flexibility?",
-    description: "Can altered states affect cognitive flexibility?",
+    description: "Altered states can enhance cognitive flexibility by reducing default mode network activity and increasing novel neural connections, though effects vary sig",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["default mode network", "neural plasticity", "divergent thinking", "psychedelics", "meditation", "flow states", "executive function", "creative cognition"],
 };
 
 export default function CanAlteredStatesAffectCognitiveFlexibilityPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesAffectCognitiveFlexibilityPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states affect cognitive flexibility?"]
+              Altered states can enhance cognitive flexibility by reducing default mode network activity and increasing novel neural connections, though effects vary significantly across different state types and individuals.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesAffectCognitiveFlexibilityPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              The default mode network typically maintains rigid thought patterns and self-referential processing, which can limit creative problem-solving. Altered states disrupt these established neural pathways, leading to increased cross-communication between brain regions that normally don't interact. This enhanced connectivity allows for more flexible thinking patterns and novel associations because the brain's usual filtering mechanisms become less restrictive. Research demonstrates that psychedelic states, meditation, and flow states can temporarily reorganize neural networks in ways that promote divergent thinking.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesAffectCognitiveFlexibilityPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The degree of flexibility enhancement depends on the specific altered state, with psychedelics showing stronger effects than mild meditative states. Some altered states may actually reduce cognitive flexibility, particularly those involving extreme dissociation or impaired executive function.
             </p>
           </section>
 

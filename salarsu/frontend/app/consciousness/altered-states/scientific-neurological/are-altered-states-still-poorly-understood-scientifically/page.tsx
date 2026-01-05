@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "Are altered states still poorly understood scientifically? | Salars Consciousness",
-  description: "Are altered states still poorly understood scientifically?",
+  description: "Yes, altered states of consciousness remain poorly understood scientifically despite advances in neuroimaging and neuropharmacology research over recent de",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states still poorly understood scientifically?",
-    description: "Are altered states still poorly understood scientifically?",
+    description: "Yes, altered states of consciousness remain poorly understood scientifically despite advances in neuroimaging and neuropharmacology research over recent de",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["consciousness research", "neuroimaging", "psychedelic studies", "meditation research", "brain wave patterns", "subjective experience", "neuropharmacology", "phenomenology"],
 };
 
 export default function AreAlteredStatesStillPoorlyUnderstoodScientificallyPage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesStillPoorlyUnderstoodScientificallyPage(
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states still poorly understood scientifically?"]
+              Yes, altered states of consciousness remain poorly understood scientifically despite advances in neuroimaging and neuropharmacology research over recent decades.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesStillPoorlyUnderstoodScientificallyPage(
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              The subjective nature of consciousness makes altered states difficult to measure objectively, because researchers must rely on self-reports and indirect neural markers rather than direct observation. Current neuroimaging techniques can identify brain activity patterns associated with different altered states, but these correlations don't fully explain the mechanisms that generate subjective experiences. This gap between neural activity and phenomenological experience represents one of the fundamental challenges in consciousness research, leading to ongoing debates about how brain states translate into specific conscious experiences.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesStillPoorlyUnderstoodScientificallyPage(
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some aspects of altered states show more scientific clarity than others, particularly the neurochemical mechanisms underlying drug-induced states and the brain wave patterns during meditation or sleep stages. Research progress varies significantly depending on the specific altered state and available measurement technologies.
             </p>
           </section>
 

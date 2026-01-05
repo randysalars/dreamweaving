@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/w
 
 export const metadata: Metadata = {
   title: "Who should avoid certain altered states? | Salars Consciousness",
-  description: "Who should avoid certain altered states?",
+  description: "Individuals with psychotic disorders, severe depression, heart conditions, seizure disorders, or those taking certain medications should avoid most psyched",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Who should avoid certain altered states?",
-    description: "Who should avoid certain altered states?",
+    description: "Individuals with psychotic disorders, severe depression, heart conditions, seizure disorders, or those taking certain medications should avoid most psyched",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["contraindications", "psychiatric screening", "medical clearance", "drug interactions", "psychotic episodes", "cardiovascular risks", "therapeutic supervision", "harm reduction"],
 };
 
 export default function WhoShouldAvoidCertainAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function WhoShouldAvoidCertainAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Who should avoid certain altered states?"]
+              Individuals with psychotic disorders, severe depression, heart conditions, seizure disorders, or those taking certain medications should avoid most psychedelic and dissociative altered states.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhoShouldAvoidCertainAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states can trigger latent psychiatric conditions because they temporarily disrupt normal brain function and neurotransmitter balance. Psychedelics particularly affect serotonin systems, which can worsen mood disorders or precipitate psychotic episodes in vulnerable individuals. Cardiovascular risks emerge because many consciousness-altering substances increase heart rate and blood pressure. Drug interactions occur because altered state inducers often affect the same liver enzymes that metabolize prescription medications.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhoShouldAvoidCertainAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Risk levels vary significantly based on the specific altered state method, individual medical history, and supervision quality. Some meditative or breathwork-induced states may be safer alternatives under proper guidance, while certain prescription medications can be safely paused temporarily with medical oversight.
             </p>
           </section>
 

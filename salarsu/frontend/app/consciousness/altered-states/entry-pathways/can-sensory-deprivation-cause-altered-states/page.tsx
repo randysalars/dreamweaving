@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can sensory deprivation cause altered states? | Salars Consciousness",
-  description: "Can sensory deprivation cause altered states?",
+  description: "Sensory deprivation reliably triggers altered states by disrupting normal neural input patterns, leading to hallucinations, time distortion, and profound c",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can sensory deprivation cause altered states?",
-    description: "Can sensory deprivation cause altered states?",
+    description: "Sensory deprivation reliably triggers altered states by disrupting normal neural input patterns, leading to hallucinations, time distortion, and profound c",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["float tanks", "isolation chambers", "perceptual distortion", "hallucinations", "consciousness research", "neural plasticity", "meditation states", "sensory gating"],
 };
 
 export default function CanSensoryDeprivationCauseAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanSensoryDeprivationCauseAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can sensory deprivation cause altered states?"]
+              Sensory deprivation reliably triggers altered states by disrupting normal neural input patterns, leading to hallucinations, time distortion, and profound changes in consciousness within hours.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanSensoryDeprivationCauseAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              When the brain receives minimal external stimuli, it compensates by amplifying internal neural activity and generating its own perceptual experiences. This process demonstrates how consciousness depends on the constant interplay between sensory input and neural processing. The phenomenon reveals that our normal waking state requires continuous sensory feedback to maintain stable perception and self-awareness.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanSensoryDeprivationCauseAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Individual sensitivity varies significantly—some people experience effects within 15 minutes while others require several hours. Pre-existing mental health conditions, expectations, and environmental factors influence both the intensity and type of altered states that emerge.
             </p>
           </section>
 

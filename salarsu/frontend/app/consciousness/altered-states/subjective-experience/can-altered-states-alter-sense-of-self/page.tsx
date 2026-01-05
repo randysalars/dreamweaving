@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Can altered states alter sense of self? | Salars Consciousness",
-  description: "Can altered states alter sense of self?",
+  description: "Altered states can dramatically shift sense of self by disrupting the brain's default mode network, which maintains self-referential processing and persona",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states alter sense of self?",
-    description: "Can altered states alter sense of self?",
+    description: "Altered states can dramatically shift sense of self by disrupting the brain's default mode network, which maintains self-referential processing and persona",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["ego dissolution", "default mode network", "self-referential processing", "mystical experiences", "depersonalization", "unity consciousness", "psychedelic ego death", "meditation and identity"],
 };
 
 export default function CanAlteredStatesAlterSenseOfSelfPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesAlterSenseOfSelfPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states alter sense of self?"]
+              Altered states can dramatically shift sense of self by disrupting the brain's default mode network, which maintains self-referential processing and personal identity boundaries.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesAlterSenseOfSelfPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              The default mode network, active during rest and introspection, creates our continuous narrative sense of self through connections between the medial prefrontal cortex and posterior cingulate cortex. Altered states from psychedelics, meditation, or trauma disrupt these neural pathways, leading to experiences of ego dissolution, expanded identity, or complete loss of self-other boundaries. This demonstrates that our sense of self is an active neural construction rather than a fixed entity.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesAlterSenseOfSelfPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity of self-alteration varies with the depth of the altered state and individual neurochemistry. Some people experience subtle shifts in self-perception, while others report complete ego dissolution or mystical unity experiences.
             </p>
           </section>
 

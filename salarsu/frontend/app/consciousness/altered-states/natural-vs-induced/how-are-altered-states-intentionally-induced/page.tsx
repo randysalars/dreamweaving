@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/natural-vs-induced
 
 export const metadata: Metadata = {
   title: "How are altered states intentionally induced? | Salars Consciousness",
-  description: "How are altered states intentionally induced?",
+  description: "Altered states are intentionally induced through meditation, breathwork, sensory deprivation, rhythmic movement, fasting, temperature extremes, and psychoa",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "How are altered states intentionally induced?",
-    description: "How are altered states intentionally induced?",
+    description: "Altered states are intentionally induced through meditation, breathwork, sensory deprivation, rhythmic movement, fasting, temperature extremes, and psychoa",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["meditation techniques", "breathwork methods", "sensory deprivation", "trance induction", "consciousness modification", "brainwave entrainment", "ritual practices", "psychoactive compounds"],
 };
 
 export default function HowAreAlteredStatesIntentionallyInducedPage() {
@@ -46,7 +46,7 @@ export default function HowAreAlteredStatesIntentionallyInducedPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How are altered states intentionally induced?"]
+              Altered states are intentionally induced through meditation, breathwork, sensory deprivation, rhythmic movement, fasting, temperature extremes, and psychoactive substances.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowAreAlteredStatesIntentionallyInducedPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These methods work by disrupting normal brain patterns through specific physiological mechanisms. Meditation alters brainwave activity, breathwork changes blood chemistry and oxygen levels, sensory deprivation reduces external stimuli processing, and rhythmic practices can trigger trance states through repetitive neural firing. Each technique exploits different pathways in the nervous system to shift consciousness away from ordinary waking awareness.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowAreAlteredStatesIntentionallyInducedPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Individual sensitivity varies significantly based on genetics, experience, and mental state. Some people enter altered states easily through light meditation, while others require more intensive practices or longer durations to achieve similar effects.
             </p>
           </section>
 

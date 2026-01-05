@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Do altered states change perception of time? | Salars Consciousness",
-  description: "Do altered states change perception of time?",
+  description: "Altered states significantly distort time perception, typically making minutes feel like hours or hours feel like minutes, depending on the specific state ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states change perception of time?",
-    description: "Do altered states change perception of time?",
+    description: "Altered states significantly distort time perception, typically making minutes feel like hours or hours feel like minutes, depending on the specific state ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["time dilation", "temporal perception", "flow states", "psychedelic time distortion", "chronostasis", "internal clock", "subjective time", "duration perception"],
 };
 
 export default function DoAlteredStatesChangePerceptionOfTimePage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesChangePerceptionOfTimePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states change perception of time?"]
+              Altered states significantly distort time perception, typically making minutes feel like hours or hours feel like minutes, depending on the specific state and neurochemical changes involved.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesChangePerceptionOfTimePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Time perception changes occur because altered states disrupt the brain's internal clock mechanisms, particularly in the prefrontal cortex and basal ganglia regions that process temporal information. Different neurotransmitter systems like dopamine and serotonin directly influence how the brain processes duration and sequence. These distortions demonstrate that our sense of time is an active neural construction rather than passive measurement, revealing fundamental aspects of consciousness and subjective experience.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesChangePerceptionOfTimePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The degree and direction of time distortion varies dramatically between different altered states - psychedelics typically expand perceived time, while flow states compress it. Individual brain chemistry, dosage levels, and environmental context all influence the magnitude of temporal distortions.
             </p>
           </section>
 

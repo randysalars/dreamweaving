@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Can altered states increase vividness of experience? | Salars Consciousness",
-  description: "Can altered states increase vividness of experience?",
+  description: "Altered states can dramatically increase experiential vividness through enhanced sensory processing, heightened emotional intensity, and reduced cognitive ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states increase vividness of experience?",
-    description: "Can altered states increase vividness of experience?",
+    description: "Altered states can dramatically increase experiential vividness through enhanced sensory processing, heightened emotional intensity, and reduced cognitive ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["sensory enhancement", "perceptual filtering", "default mode network", "psychedelic experience", "meditation states", "consciousness spectrum", "neurotransmitter modulation", "subjective intensity"],
 };
 
 export default function CanAlteredStatesIncreaseVividnessOfExperiencePage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesIncreaseVividnessOfExperiencePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states increase vividness of experience?"]
+              Altered states can dramatically increase experiential vividness through enhanced sensory processing, heightened emotional intensity, and reduced cognitive filtering that normally dampens perceptual input.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesIncreaseVividnessOfExperiencePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This occurs because altered states often suppress the brain's default mode network and executive control systems that typically filter and organize sensory information. The reduction in top-down processing allows raw sensory data to reach consciousness with greater intensity, while changes in neurotransmitter activity can amplify emotional and perceptual responses. This demonstrates how consciousness operates on a spectrum rather than a binary state, with filtering mechanisms playing a crucial role in shaping subjective experience.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesIncreaseVividnessOfExperiencePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The degree of vividness enhancement varies significantly across different altered states - meditation may produce subtle increases while psychedelic states can create overwhelming sensory intensity. Some altered states like certain stages of sleep or dissociative episodes may actually reduce experiential vividness despite altered perception.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/misconceptions/are
 
 export const metadata: Metadata = {
   title: "Are altered states spiritual by definition? | Salars Consciousness",
-  description: "Are altered states spiritual by definition?",
+  description: "No, altered states are neurobiological phenomena that can occur through various means including meditation, psychedelics, sleep deprivation, or medical con",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states spiritual by definition?",
-    description: "Are altered states spiritual by definition?",
+    description: "No, altered states are neurobiological phenomena that can occur through various means including meditation, psychedelics, sleep deprivation, or medical con",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["mystical experiences", "psychedelic research", "meditation states", "consciousness research", "neurobiology", "set and setting", "phenomenology", "religious experiences"],
 };
 
 export default function AreAlteredStatesSpiritualByDefinitionPage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesSpiritualByDefinitionPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states spiritual by definition?"]
+              No, altered states are neurobiological phenomena that can occur through various means including meditation, psychedelics, sleep deprivation, or medical conditions, regardless of spiritual context or interpretation.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesSpiritualByDefinitionPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states result from measurable changes in brain activity, neurotransmitter levels, and neural connectivity patterns. These neurobiological shifts occur because the brain's normal filtering and processing mechanisms become disrupted or modified, leading to altered perception, cognition, and awareness. The spiritual interpretation represents one cultural framework among many for understanding these universal human experiences.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesSpiritualByDefinitionPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Individual interpretation varies significantly based on cultural background, personal beliefs, and the specific context in which the altered state occurs. Some people experience identical neurobiological changes but interpret them through secular, psychological, or scientific frameworks rather than spiritual ones.
             </p>
           </section>
 

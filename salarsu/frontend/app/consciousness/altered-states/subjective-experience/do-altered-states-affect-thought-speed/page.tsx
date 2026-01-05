@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Do altered states affect thought speed? | Salars Consciousness",
-  description: "Do altered states affect thought speed?",
+  description: "Altered states can significantly accelerate or decelerate subjective thought speed, while objective cognitive processing may remain unchanged or become imp",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states affect thought speed?",
-    description: "Do altered states affect thought speed?",
+    description: "Altered states can significantly accelerate or decelerate subjective thought speed, while objective cognitive processing may remain unchanged or become imp",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["time perception", "subjective time", "neural oscillations", "cognitive tempo", "temporal processing", "attention networks", "consciousness timing", "psychoactive effects"],
 };
 
 export default function DoAlteredStatesAffectThoughtSpeedPage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesAffectThoughtSpeedPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states affect thought speed?"]
+              Altered states can significantly accelerate or decelerate subjective thought speed, while objective cognitive processing may remain unchanged or become impaired.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesAffectThoughtSpeedPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This occurs because altered states modify neural oscillation patterns and neurotransmitter activity, particularly affecting the brain's internal clock mechanisms and attention networks. Time perception changes result from disrupted communication between the prefrontal cortex and temporal processing regions, leading to dramatic mismatches between subjective experience and actual elapsed time. The phenomenon demonstrates how consciousness creates our sense of temporal flow rather than passively recording it.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesAffectThoughtSpeedPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The direction and intensity of thought speed changes depend on the specific altered state - stimulants typically accelerate subjective time while depressants slow it. Meditation and psychedelics can produce either effect depending on the phase and depth of the experience.
             </p>
           </section>
 

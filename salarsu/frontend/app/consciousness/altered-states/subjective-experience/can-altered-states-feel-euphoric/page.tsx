@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Can altered states feel euphoric? | Salars Consciousness",
-  description: "Can altered states feel euphoric?",
+  description: "Many altered states produce intense euphoria through changes in neurotransmitter activity, particularly dopamine and endorphin release in reward pathways.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states feel euphoric?",
-    description: "Can altered states feel euphoric?",
+    description: "Many altered states produce intense euphoria through changes in neurotransmitter activity, particularly dopamine and endorphin release in reward pathways.",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["euphoria", "dopamine release", "reward pathways", "mystical experiences", "neurotransmitters", "bliss states", "psychedelic effects", "endorphins"],
 };
 
 export default function CanAlteredStatesFeelEuphoricPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesFeelEuphoricPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states feel euphoric?"]
+              Many altered states produce intense euphoria through changes in neurotransmitter activity, particularly dopamine and endorphin release in reward pathways.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesFeelEuphoricPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Euphoric altered states occur because psychoactive substances, meditation, or other triggers stimulate the brain's reward circuitry, flooding areas like the ventral tegmental area and nucleus accumbens with dopamine. This neurochemical cascade creates feelings of bliss, unity, and transcendence that characterize many mystical and drug-induced experiences. The intensity of euphoria often correlates with the degree of normal consciousness disruption, demonstrating how altered brain chemistry directly translates to transformed subjective experience.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesFeelEuphoricPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Not all altered states produce euphoria - some generate anxiety, confusion, or dysphoria depending on the trigger, individual brain chemistry, and environmental context. Euphoric intensity varies widely across different induction methods and individual responses.
             </p>
           </section>
 

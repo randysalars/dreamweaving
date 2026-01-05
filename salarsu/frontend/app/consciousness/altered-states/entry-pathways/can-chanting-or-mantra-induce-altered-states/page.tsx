@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can chanting or mantra induce altered states? | Salars Consciousness",
-  description: "Can chanting or mantra induce altered states?",
+  description: "Repetitive chanting and mantra recitation can induce altered states by synchronizing brainwaves, reducing default mode network activity, and triggering med",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can chanting or mantra induce altered states?",
-    description: "Can chanting or mantra induce altered states?",
+    description: "Repetitive chanting and mantra recitation can induce altered states by synchronizing brainwaves, reducing default mode network activity, and triggering med",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["mantra meditation", "repetitive prayer", "vocal meditation", "sound healing", "alpha waves", "theta states", "default mode network", "vagus nerve stimulation"],
 };
 
 export default function CanChantingOrMantraInduceAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanChantingOrMantraInduceAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can chanting or mantra induce altered states?"]
+              Repetitive chanting and mantra recitation can induce altered states by synchronizing brainwaves, reducing default mode network activity, and triggering meditative consciousness shifts.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanChantingOrMantraInduceAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Rhythmic vocalization activates the vagus nerve and promotes alpha and theta brainwave patterns associated with relaxed awareness. The repetitive nature disrupts ordinary thought processes because it occupies verbal processing centers while simultaneously creating focus. This dual mechanism leads to states characterized by reduced self-referential thinking and heightened present-moment awareness, demonstrating how sound-based practices physically alter neural activity patterns.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanChantingOrMantraInduceAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Effects vary significantly based on familiarity with the practice, duration of chanting, and individual neurological differences. Some people experience minimal shifts while others report profound alterations within minutes.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/a
 
 export const metadata: Metadata = {
   title: "Are some altered states safer than others? | Salars Consciousness",
-  description: "Are some altered states safer than others?",
+  description: "Yes, altered states vary significantly in safety risk. Meditation and breathwork generally pose minimal risks, while psychedelics and extreme practices car",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are some altered states safer than others?",
-    description: "Are some altered states safer than others?",
+    description: "Yes, altered states vary significantly in safety risk. Meditation and breathwork generally pose minimal risks, while psychedelics and extreme practices car",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["psychedelic safety", "meditation risks", "set and setting", "harm reduction", "consciousness safety", "altered state dangers", "breathwork precautions", "psychological vulnerability"],
 };
 
 export default function AreSomeAlteredStatesSaferThanOthersPage() {
@@ -46,7 +46,7 @@ export default function AreSomeAlteredStatesSaferThanOthersPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are some altered states safer than others?"]
+              Yes, altered states vary significantly in safety risk. Meditation and breathwork generally pose minimal risks, while psychedelics and extreme practices carry higher potential for psychological and physical harm.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreSomeAlteredStatesSaferThanOthersPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Safety differences result from how deeply each method disrupts normal brain function and psychological defenses. Gentler practices like meditation work gradually through established neural pathways, while substances like psychedelics create rapid, unpredictable neurochemical changes that can overwhelm coping mechanisms. Set, setting, and individual psychological stability significantly influence outcomes because altered states can amplify existing mental health vulnerabilities or traumatic material.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreSomeAlteredStatesSaferThanOthersPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Risk levels shift based on dosage, duration, supervision, and individual factors like mental health history or medication interactions. Even typically safe practices can become risky when combined with extreme techniques or performed in inappropriate contexts.
             </p>
           </section>
 

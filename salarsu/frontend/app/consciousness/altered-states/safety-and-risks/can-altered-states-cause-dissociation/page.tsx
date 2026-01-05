@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/c
 
 export const metadata: Metadata = {
   title: "Can altered states cause dissociation? | Salars Consciousness",
-  description: "Can altered states cause dissociation?",
+  description: "Yes, altered states can trigger dissociation, particularly during intense psychedelic experiences, deep meditation, sensory deprivation, or trauma-induced ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states cause dissociation?",
-    description: "Can altered states cause dissociation?",
+    description: "Yes, altered states can trigger dissociation, particularly during intense psychedelic experiences, deep meditation, sensory deprivation, or trauma-induced ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["depersonalization", "derealization", "ego dissolution", "psychedelic dissociation", "trauma-induced altered states", "meditation dissociation", "identity fragmentation", "consciousness disruption"],
 };
 
 export default function CanAlteredStatesCauseDissociationPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesCauseDissociationPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states cause dissociation?"]
+              Yes, altered states can trigger dissociation, particularly during intense psychedelic experiences, deep meditation, sensory deprivation, or trauma-induced states where normal self-awareness fragments.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesCauseDissociationPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Dissociation occurs because altered states can disrupt the brain's normal integration of sensory input, memory, and self-awareness. This happens when neurotransmitter systems like glutamate and serotonin are significantly altered, leading to disconnection between different brain regions responsible for maintaining coherent identity and perception. The intensity of the altered state directly correlates with the likelihood and severity of dissociative effects.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesCauseDissociationPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Mild altered states like light meditation typically produce minimal dissociation, while high-dose psychedelics or trauma responses can cause complete ego dissolution. Individual brain chemistry, prior mental health conditions, and environmental factors influence susceptibility to dissociative episodes.
             </p>
           </section>
 

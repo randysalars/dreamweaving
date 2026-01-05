@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/wha
 
 export const metadata: Metadata = {
   title: "What are the most common entry pathways into altered states? | Salars Consciousness",
-  description: "What are the most common entry pathways into altered states?",
+  description: "The most common entry pathways into altered states include breathwork, meditation, sensory deprivation, rhythmic movement, psychoactive substances, and ext",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "What are the most common entry pathways into altered states?",
-    description: "What are the most common entry pathways into altered states?",
+    description: "The most common entry pathways into altered states include breathwork, meditation, sensory deprivation, rhythmic movement, psychoactive substances, and ext",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["breathwork", "meditation", "sensory deprivation", "psychedelics", "flow states", "trance states", "brainwave entrainment", "set and setting"],
 };
 
 export default function WhatAreTheMostCommonEntryPathwaysIntoAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function WhatAreTheMostCommonEntryPathwaysIntoAlteredStatesPage()
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are the most common entry pathways into altered states?"]
+              The most common entry pathways into altered states include breathwork, meditation, sensory deprivation, rhythmic movement, psychoactive substances, and extreme physical or emotional conditions.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreTheMostCommonEntryPathwaysIntoAlteredStatesPage()
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These pathways work by disrupting normal neural patterns and neurotransmitter balance, particularly affecting the default mode network and prefrontal cortex activity. Breathwork alters oxygen and CO2 levels, triggering changes in brain chemistry, while meditation reduces activity in self-referential brain regions. Rhythmic practices synchronize brainwave patterns, and sensory deprivation forces the brain to generate internal experiences because external input decreases.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreTheMostCommonEntryPathwaysIntoAlteredStatesPage()
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Individual sensitivity varies significantly based on neurochemistry, previous experience, and psychological set and setting. Some people access altered states easily through gentle practices, while others require more intensive methods to achieve similar depth of experience.
             </p>
           </section>
 

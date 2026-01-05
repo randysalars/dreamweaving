@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Can altered states create feelings of unity or separation? | Salars Consciousness",
-  description: "Can altered states create feelings of unity or separation?",
+  description: "Altered states can produce both profound unity experiences and intense feelings of separation, depending on the specific state, individual psychology, and ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states create feelings of unity or separation?",
-    description: "Can altered states create feelings of unity or separation?",
+    description: "Altered states can produce both profound unity experiences and intense feelings of separation, depending on the specific state, individual psychology, and ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["ego dissolution", "default mode network", "mystical experiences", "dissociation", "psychedelic therapy", "transcendent states", "self-other boundaries", "unity consciousness"],
 };
 
 export default function CanAlteredStatesCreateFeelingsOfUnityOrSeparationPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesCreateFeelingsOfUnityOrSeparationPage() 
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states create feelings of unity or separation?"]
+              Altered states can produce both profound unity experiences and intense feelings of separation, depending on the specific state, individual psychology, and environmental context.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesCreateFeelingsOfUnityOrSeparationPage() 
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These contrasting experiences result from different alterations in brain connectivity patterns. Unity feelings emerge when the default mode network—responsible for self-other boundaries—becomes less active, leading to dissolution of ego boundaries. Conversely, separation experiences occur when heightened activity in threat-detection systems amplifies the sense of isolation or alienation from others and the environment. This demonstrates how consciousness constructs our fundamental sense of connectedness through specific neural mechanisms.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesCreateFeelingsOfUnityOrSeparationPage() 
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The same substance or technique can produce opposite effects based on dosage, setting, and individual mental state. Low doses of psychedelics typically enhance connection, while higher doses may initially create isolation before unity emerges.
             </p>
           </section>
 

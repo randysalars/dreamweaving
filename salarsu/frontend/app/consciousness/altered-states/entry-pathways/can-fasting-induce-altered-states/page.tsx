@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can fasting induce altered states? | Salars Consciousness",
-  description: "Can fasting induce altered states?",
+  description: "Fasting can induce altered states of consciousness through metabolic changes that affect neurotransmitter production, blood sugar levels, and brain chemist",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can fasting induce altered states?",
-    description: "Can fasting induce altered states?",
+    description: "Fasting can induce altered states of consciousness through metabolic changes that affect neurotransmitter production, blood sugar levels, and brain chemist",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["ketosis", "metabolic states", "neurotransmitter changes", "blood sugar", "dissociation", "meditation", "physiological stress", "neurochemical shifts"],
 };
 
 export default function CanFastingInduceAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanFastingInduceAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can fasting induce altered states?"]
+              Fasting can induce altered states of consciousness through metabolic changes that affect neurotransmitter production, blood sugar levels, and brain chemistry patterns.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanFastingInduceAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Extended fasting triggers ketosis, where the brain shifts from glucose to ketone metabolism, altering neural activity patterns. This metabolic change affects serotonin and dopamine systems, while declining blood sugar levels can produce dissociative experiences and heightened awareness. The combination of physiological stress and neurochemical shifts creates conditions similar to those found in meditation and other consciousness-altering practices.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanFastingInduceAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Effects typically begin after 12-24 hours of fasting and intensify with duration. Individual responses vary significantly based on metabolic health, previous fasting experience, and psychological factors.
             </p>
           </section>
 

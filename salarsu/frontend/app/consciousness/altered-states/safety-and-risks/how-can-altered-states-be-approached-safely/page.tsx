@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/safety-and-risks/h
 
 export const metadata: Metadata = {
   title: "How can altered states be approached safely? | Salars Consciousness",
-  description: "How can altered states be approached safely?",
+  description: "Safe altered state exploration requires preparation, controlled environments, trusted supervision, gradual progression, and integration practices to minimi",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "How can altered states be approached safely?",
-    description: "How can altered states be approached safely?",
+    description: "Safe altered state exploration requires preparation, controlled environments, trusted supervision, gradual progression, and integration practices to minimi",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["set and setting", "harm reduction", "integration practices", "psychological preparation", "supervised exploration", "mental health screening", "grounding techniques", "risk assessment"],
 };
 
 export default function HowCanAlteredStatesBeApproachedSafelyPage() {
@@ -46,7 +46,7 @@ export default function HowCanAlteredStatesBeApproachedSafelyPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How can altered states be approached safely?"]
+              Safe altered state exploration requires preparation, controlled environments, trusted supervision, gradual progression, and integration practices to minimize psychological and physical risks.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowCanAlteredStatesBeApproachedSafelyPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states can produce profound psychological experiences that may overwhelm unprepared individuals, leading to trauma, dissociation, or destabilization of existing mental health conditions. Set and setting profoundly influence outcomes because consciousness becomes more malleable and suggestible during these states. Proper preparation creates psychological anchoring, while supervision provides external safety monitoring when self-awareness becomes compromised. Integration practices help process experiences constructively rather than leaving individuals fragmented or confused.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowCanAlteredStatesBeApproachedSafelyPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Risk tolerance varies significantly based on personal mental health history, particularly trauma or psychotic disorders. Some altered states carry inherently higher risks regardless of precautions, while others remain relatively benign even with minimal preparation.
             </p>
           </section>
 

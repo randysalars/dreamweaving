@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/levels-and-depth/w
 
 export const metadata: Metadata = {
   title: "What factors influence depth of altered states? | Salars Consciousness",
-  description: "What factors influence depth of altered states?",
+  description: "Depth of altered states depends on neurochemical changes, environmental factors, individual physiology, method of induction, dosage or intensity, psycholog",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "What factors influence depth of altered states?",
-    description: "What factors influence depth of altered states?",
+    description: "Depth of altered states depends on neurochemical changes, environmental factors, individual physiology, method of induction, dosage or intensity, psycholog",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["consciousness modification", "default mode network", "set and setting", "neurotransmitter systems", "meditation depth", "psychedelic intensity", "neuroplasticity", "baseline consciousness"],
 };
 
 export default function WhatFactorsInfluenceDepthOfAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function WhatFactorsInfluenceDepthOfAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What factors influence depth of altered states?"]
+              Depth of altered states depends on neurochemical changes, environmental factors, individual physiology, method of induction, dosage or intensity, psychological state, and previous experience with consciousness modification.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatFactorsInfluenceDepthOfAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              These factors modulate brain activity across multiple systems, particularly affecting the default mode network, neurotransmitter balance, and cortical connectivity patterns. Stronger influences typically produce more pronounced departures from baseline consciousness because they create greater disruption to normal neural processing. The interaction between these variables determines whether someone experiences subtle shifts in awareness or profound alterations in perception, cognition, and sense of self.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatFactorsInfluenceDepthOfAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Individual tolerance, genetic variations in metabolism, and neuroplasticity create significant variability in response to identical conditions. Some factors like set and setting can either amplify or diminish the effects of pharmacological or meditative interventions.
             </p>
           </section>
 

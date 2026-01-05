@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/integration-meanin
 
 export const metadata: Metadata = {
   title: "Can altered states change worldview? | Salars Consciousness",
-  description: "Can altered states change worldview?",
+  description: "Altered states can fundamentally shift worldview by disrupting habitual thought patterns and revealing alternative ways of perceiving reality, relationship",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states change worldview?",
-    description: "Can altered states change worldview?",
+    description: "Altered states can fundamentally shift worldview by disrupting habitual thought patterns and revealing alternative ways of perceiving reality, relationship",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["default mode network", "perspective shift", "belief change", "meaning-making", "consciousness expansion", "integration practices", "mystical experience", "paradigm shift"],
 };
 
 export default function CanAlteredStatesChangeWorldviewPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesChangeWorldviewPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states change worldview?"]
+              Altered states can fundamentally shift worldview by disrupting habitual thought patterns and revealing alternative ways of perceiving reality, relationships, and meaning.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesChangeWorldviewPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states temporarily dissolve the brain's default mode network, which maintains our ordinary sense of self and reality. This dissolution allows suppressed or novel perspectives to emerge, often leading to lasting changes in core beliefs about existence, consciousness, and personal identity. The experience demonstrates that our normal waking consciousness represents just one possible way of organizing perception and meaning.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesChangeWorldviewPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Worldview shifts depend on the intensity and integration of the experience. Brief or shallow altered states may produce temporary perspective changes, while profound experiences with proper preparation and integration tend to create more lasting transformations.
             </p>
           </section>
 

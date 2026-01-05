@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/cultural-historica
 
 export const metadata: Metadata = {
   title: "Are altered states universal across cultures? | Salars Consciousness",
-  description: "Are altered states universal across cultures?",
+  description: "Altered states of consciousness appear across all documented cultures, though their interpretation, methods of induction, and cultural significance vary su",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states universal across cultures?",
-    description: "Are altered states universal across cultures?",
+    description: "Altered states of consciousness appear across all documented cultures, though their interpretation, methods of induction, and cultural significance vary su",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["shamanism", "meditation traditions", "ritual consciousness", "cross-cultural psychology", "entheogens", "trance states", "religious experiences", "consciousness anthropology"],
 };
 
 export default function AreAlteredStatesUniversalAcrossCulturesPage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesUniversalAcrossCulturesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states universal across cultures?"]
+              Altered states of consciousness appear across all documented cultures, though their interpretation, methods of induction, and cultural significance vary substantially between societies.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesUniversalAcrossCulturesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This universality suggests that altered states represent fundamental capacities of human consciousness rather than cultural artifacts. The neurological mechanisms underlying these states - including changes in neurotransmitter activity, altered brainwave patterns, and shifts in default mode network activity - remain consistent across populations because they reflect basic properties of the human brain. However, cultural frameworks determine how these experiences are interpreted, valued, and integrated into social and spiritual practices.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesUniversalAcrossCulturesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              While the capacity for altered states appears universal, specific triggering methods, cultural acceptance, and interpretive frameworks differ dramatically. Some cultures actively cultivate these states through ritual practices, while others may discourage or pathologize them.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/levels-and-depth/a
 
 export const metadata: Metadata = {
   title: "Are there levels of altered states of consciousness? | Salars Consciousness",
-  description: "Are there levels of altered states of consciousness?",
+  description: "Altered states of consciousness exist on a spectrum from light changes in awareness to profound shifts in perception, cognition, and self-experience.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are there levels of altered states of consciousness?",
-    description: "Are there levels of altered states of consciousness?",
+    description: "Altered states of consciousness exist on a spectrum from light changes in awareness to profound shifts in perception, cognition, and self-experience.",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["consciousness spectrum", "depth of trance", "awareness levels", "dissociation degrees", "psychedelic intensity", "meditative states", "hypnotic depth", "neural activation patterns"],
 };
 
 export default function AreThereLevelsOfAlteredStatesOfConsciousnessPage() {
@@ -46,7 +46,7 @@ export default function AreThereLevelsOfAlteredStatesOfConsciousnessPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are there levels of altered states of consciousness?"]
+              Altered states of consciousness exist on a spectrum from light changes in awareness to profound shifts in perception, cognition, and self-experience.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreThereLevelsOfAlteredStatesOfConsciousnessPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Different neural mechanisms produce varying depths of consciousness alteration because the brain has multiple systems that can be affected independently or in combination. Light alterations typically involve changes in attention or arousal networks, while deeper states result from more extensive disruption of default mode network activity and thalamo-cortical communication. This spectrum demonstrates how consciousness operates as a dynamic, multi-layered phenomenon rather than a simple on-off state.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreThereLevelsOfAlteredStatesOfConsciousnessPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The boundaries between levels become less distinct during rapid transitions or when multiple factors combine, such as sleep deprivation plus meditation. Individual neurochemistry and tolerance also influence how deeply someone enters altered states from the same stimulus.
             </p>
           </section>
 

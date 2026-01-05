@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can pain induce altered states? | Salars Consciousness",
-  description: "Can pain induce altered states?",
+  description: "Pain can trigger altered states through neurochemical responses, sensory overload, and dissociative mechanisms that shift normal consciousness patterns.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can pain induce altered states?",
-    description: "Can pain induce altered states?",
+    description: "Pain can trigger altered states through neurochemical responses, sensory overload, and dissociative mechanisms that shift normal consciousness patterns.",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["endorphins", "dissociation", "pain tolerance", "sensory overload", "stress response", "endogenous opioids", "trauma consciousness", "nociception"],
 };
 
 export default function CanPainInduceAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanPainInduceAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can pain induce altered states?"]
+              Pain can trigger altered states through neurochemical responses, sensory overload, and dissociative mechanisms that shift normal consciousness patterns.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanPainInduceAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Intense pain activates the body's endogenous opioid system, releasing endorphins and other neurochemicals that alter perception and awareness. Pain also overwhelms sensory processing capacity, which can lead to dissociation as a protective mechanism. These physiological responses demonstrate how extreme physical stress naturally modifies consciousness to help organisms cope with trauma.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanPainInduceAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity and duration of pain determine the depth of altered states, with chronic pain sometimes dulling these responses. Individual pain tolerance and psychological factors significantly influence whether pain leads to transcendent experiences or purely negative states.
             </p>
           </section>
 

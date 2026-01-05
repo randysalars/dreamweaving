@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/duration-aftereffe
 
 export const metadata: Metadata = {
   title: "How long do altered states typically last? | Salars Consciousness",
-  description: "How long do altered states typically last?",
+  description: "Altered states typically last from minutes to several hours, with most induced states ranging from 20 minutes to 8 hours depending on the trigger and indiv",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "How long do altered states typically last?",
-    description: "How long do altered states typically last?",
+    description: "Altered states typically last from minutes to several hours, with most induced states ranging from 20 minutes to 8 hours depending on the trigger and indiv",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["state duration", "consciousness transitions", "neurochemical half-life", "meditation states", "psychedelic duration", "recovery time", "baseline consciousness", "state stability"],
 };
 
 export default function HowLongDoAlteredStatesTypicallyLastPage() {
@@ -46,7 +46,7 @@ export default function HowLongDoAlteredStatesTypicallyLastPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How long do altered states typically last?"]
+              Altered states typically last from minutes to several hours, with most induced states ranging from 20 minutes to 8 hours depending on the trigger and individual factors.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowLongDoAlteredStatesTypicallyLastPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Duration depends on the neurochemical mechanisms involved and how quickly the brain returns to baseline functioning. Pharmacologically-induced states correlate with substance half-lives and metabolism rates, while meditation or sensory deprivation states reflect the time needed for neurotransmitter systems to rebalance. Natural states like REM sleep follow predictable biological cycles because they're regulated by circadian rhythms and sleep architecture.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowLongDoAlteredStatesTypicallyLastPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Duration varies significantly with dosage, individual metabolism, tolerance levels, and the specific method of induction. Some brief states like hypnagogic hallucinations last seconds, while extended meditation retreats can maintain altered awareness for days.
             </p>
           </section>
 

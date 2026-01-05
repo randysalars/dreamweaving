@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/misconceptions/are
 
 export const metadata: Metadata = {
   title: "Are altered states signs of enlightenment? | Salars Consciousness",
-  description: "Are altered states signs of enlightenment?",
+  description: "Altered states are neurological phenomena that can occur through various means and do not inherently indicate enlightenment or spiritual advancement.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states signs of enlightenment?",
-    description: "Are altered states signs of enlightenment?",
+    description: "Altered states are neurological phenomena that can occur through various means and do not inherently indicate enlightenment or spiritual advancement.",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["mystical experiences", "spiritual bypassing", "meditation states", "psychedelic experiences", "consciousness research", "contemplative practice", "peak experiences", "spiritual materialism"],
 };
 
 export default function AreAlteredStatesSignsOfEnlightenmentPage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesSignsOfEnlightenmentPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states signs of enlightenment?"]
+              Altered states are neurological phenomena that can occur through various means and do not inherently indicate enlightenment or spiritual advancement.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesSignsOfEnlightenmentPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states result from changes in brain chemistry and neural activity that can be induced by meditation, psychedelics, sensory deprivation, or sleep deprivation. These neurobiological changes affect perception, cognition, and self-awareness but represent temporary shifts in consciousness rather than permanent spiritual development. The confusion arises because many contemplative traditions involve altered states as part of practice, leading people to conflate the experience with the outcome.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesSignsOfEnlightenmentPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some altered states may facilitate insights or psychological breakthroughs that contribute to personal growth. However, the subjective intensity or unusualness of an experience does not correlate with spiritual progress or wisdom development.
             </p>
           </section>
 

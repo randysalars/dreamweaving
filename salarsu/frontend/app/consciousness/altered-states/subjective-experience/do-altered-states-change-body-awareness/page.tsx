@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Do altered states change body awareness? | Salars Consciousness",
-  description: "Do altered states change body awareness?",
+  description: "Altered states significantly modify body awareness through changes in interoception, proprioception, and the brain's body schema representation, often crea",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states change body awareness?",
-    description: "Do altered states change body awareness?",
+    description: "Altered states significantly modify body awareness through changes in interoception, proprioception, and the brain's body schema representation, often crea",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["interoception", "proprioception", "body schema", "embodiment", "ego dissolution", "out-of-body experiences", "depersonalization", "somatic awareness"],
 };
 
 export default function DoAlteredStatesChangeBodyAwarenessPage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesChangeBodyAwarenessPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states change body awareness?"]
+              Altered states significantly modify body awareness through changes in interoception, proprioception, and the brain's body schema representation, often creating sensations of expansion, dissolution, or disconnection.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesChangeBodyAwarenessPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Body awareness depends on integrated neural networks processing signals from internal organs, muscles, and spatial position. Altered states disrupt this integration because they affect key brain regions like the insula, somatosensory cortex, and parietal lobe that construct our sense of embodiment. This disruption demonstrates how consciousness actively constructs our experience of having and being a body, rather than simply receiving passive sensory data.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesChangeBodyAwarenessPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The degree of body awareness change varies with the type and intensity of the altered state. Light meditative states may enhance body sensitivity, while deep psychedelic experiences can produce complete ego dissolution and loss of body boundaries.
             </p>
           </section>
 

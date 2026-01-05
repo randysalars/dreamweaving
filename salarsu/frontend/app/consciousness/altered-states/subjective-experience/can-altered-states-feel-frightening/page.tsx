@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experie
 
 export const metadata: Metadata = {
   title: "Can altered states feel frightening? | Salars Consciousness",
-  description: "Can altered states feel frightening?",
+  description: "Altered states can feel intensely frightening due to loss of familiar perceptual anchors, ego dissolution, confrontation with suppressed material, or overw",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states feel frightening?",
-    description: "Can altered states feel frightening?",
+    description: "Altered states can feel intensely frightening due to loss of familiar perceptual anchors, ego dissolution, confrontation with suppressed material, or overw",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["bad trip", "ego dissolution", "depersonalization", "set and setting", "challenging psychedelic experience", "anxiety states", "panic attacks", "reality distortion"],
 };
 
 export default function CanAlteredStatesFeelFrighteningPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesFeelFrighteningPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states feel frightening?"]
+              Altered states can feel intensely frightening due to loss of familiar perceptual anchors, ego dissolution, confrontation with suppressed material, or overwhelming sensory distortions that challenge normal reality processing.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesFeelFrighteningPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Fear arises because altered states often involve fundamental shifts in self-awareness, time perception, and sensory processing that can destabilize the brain's predictive models of reality. The default mode network, which maintains our sense of continuous self, may become disrupted, leading to experiences of ego dissolution or depersonalization. Additionally, altered states can bring unconscious fears, traumas, or anxieties into conscious awareness without the usual psychological defenses, creating intense emotional confrontations.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesFeelFrighteningPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Fear intensity varies based on set (mindset), setting (environment), substance or method used, and individual psychological resilience. Some people experience predominantly positive or mystical altered states, while others may be more prone to challenging experiences due to underlying anxiety, trauma history, or neurochemical differences.
             </p>
           </section>
 

@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/entry-pathways/can
 
 export const metadata: Metadata = {
   title: "Can fatigue or sleep deprivation induce altered states? | Salars Consciousness",
-  description: "Can fatigue or sleep deprivation induce altered states?",
+  description: "Sleep deprivation and extreme fatigue can trigger altered states by disrupting normal brain function, creating hypnagogic hallucinations, microsleeps, and ",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can fatigue or sleep deprivation induce altered states?",
-    description: "Can fatigue or sleep deprivation induce altered states?",
+    description: "Sleep deprivation and extreme fatigue can trigger altered states by disrupting normal brain function, creating hypnagogic hallucinations, microsleeps, and ",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["microsleeps", "hypnagogic hallucinations", "sleep deprivation psychosis", "REM intrusion", "cognitive impairment", "reality testing", "circadian disruption", "fatigue hallucinations"],
 };
 
 export default function CanFatigueOrSleepDeprivationInduceAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function CanFatigueOrSleepDeprivationInduceAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can fatigue or sleep deprivation induce altered states?"]
+              Sleep deprivation and extreme fatigue can trigger altered states by disrupting normal brain function, creating hypnagogic hallucinations, microsleeps, and cognitive distortions similar to psychedelic experiences.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanFatigueOrSleepDeprivationInduceAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Fatigue alters consciousness because sleep loss impairs the prefrontal cortex while increasing activity in emotional and sensory processing regions. This neurochemical imbalance results in weakened reality testing, enhanced pattern recognition errors, and spontaneous dream-like intrusions into waking awareness. The brain begins incorporating REM sleep elements during wake periods, leading to visual distortions, time perception changes, and heightened suggestibility that mirror other altered states.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanFatigueOrSleepDeprivationInduceAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The intensity varies with duration and degree of sleep debt, individual tolerance, and environmental factors. Most people experience mild effects after 24 hours awake, while severe alterations typically emerge after 48-72 hours of sleep deprivation.
             </p>
           </section>
 

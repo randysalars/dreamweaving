@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/misconceptions/do-
 
 export const metadata: Metadata = {
   title: "Do altered states mean losing control? | Salars Consciousness",
-  description: "Do altered states mean losing control?",
+  description: "Altered states typically involve shifts in awareness rather than complete loss of control, though the degree of conscious direction varies significantly ac",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Do altered states mean losing control?",
-    description: "Do altered states mean losing control?",
+    description: "Altered states typically involve shifts in awareness rather than complete loss of control, though the degree of conscious direction varies significantly ac",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["executive control", "awareness spectrum", "dissociation", "psychedelic states", "meditation levels", "anesthesia", "neural networks", "consciousness regulation"],
 };
 
 export default function DoAlteredStatesMeanLosingControlPage() {
@@ -46,7 +46,7 @@ export default function DoAlteredStatesMeanLosingControlPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do altered states mean losing control?"]
+              Altered states typically involve shifts in awareness rather than complete loss of control, though the degree of conscious direction varies significantly across different states.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoAlteredStatesMeanLosingControlPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Control exists on a spectrum because consciousness operates through multiple neural networks that can be affected independently. During altered states, executive control regions may be less active while other brain areas become more prominent, resulting in different types of awareness rather than unconsciousness. This demonstrates that control and awareness are distinct processes that can dissociate during consciousness alterations.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoAlteredStatesMeanLosingControlPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Complete loss of control occurs primarily in states like general anesthesia or deep coma. Even in intense altered states like psychedelic experiences or deep meditation, some level of awareness and behavioral choice typically remains intact.
             </p>
           </section>
 

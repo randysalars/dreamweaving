@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/integration-meanin
 
 export const metadata: Metadata = {
   title: "Can altered states influence creativity? | Salars Consciousness",
-  description: "Can altered states influence creativity?",
+  description: "Altered states can enhance creativity by reducing cognitive inhibition, increasing associative thinking, and facilitating novel connections between dispara",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Can altered states influence creativity?",
-    description: "Can altered states influence creativity?",
+    description: "Altered states can enhance creativity by reducing cognitive inhibition, increasing associative thinking, and facilitating novel connections between dispara",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["divergent thinking", "cognitive disinhibition", "default mode network", "associative thinking", "flow states", "psychedelic creativity", "hypnagogic state", "meditation creativity"],
 };
 
 export default function CanAlteredStatesInfluenceCreativityPage() {
@@ -46,7 +46,7 @@ export default function CanAlteredStatesInfluenceCreativityPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can altered states influence creativity?"]
+              Altered states can enhance creativity by reducing cognitive inhibition, increasing associative thinking, and facilitating novel connections between disparate ideas and memories.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesInfluenceCreativityPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states often suppress the default mode network and prefrontal cortex areas responsible for self-criticism and logical constraints. This disinhibition allows more divergent thinking patterns and cross-domain associations that typically get filtered out during normal consciousness. The state changes also increase dopamine and other neurotransmitters that facilitate pattern recognition and reward novel idea formation.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesInfluenceCreativityPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The creativity boost depends heavily on the specific altered state, individual brain chemistry, and creative domain. Some states may impair technical execution or critical evaluation needed to refine creative ideas.
             </p>
           </section>
 

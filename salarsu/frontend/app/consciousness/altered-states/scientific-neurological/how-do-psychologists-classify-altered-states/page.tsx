@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "How do psychologists classify altered states? | Salars Consciousness",
-  description: "How do psychologists classify altered states?",
+  description: "Psychologists classify altered states using dimensional approaches that measure consciousness along continuums of awareness, attention, self-control, and s",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "How do psychologists classify altered states?",
-    description: "How do psychologists classify altered states?",
+    description: "Psychologists classify altered states using dimensional approaches that measure consciousness along continuums of awareness, attention, self-control, and s",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["consciousness spectrum", "awareness levels", "attention states", "sensory processing", "cognitive control", "neural networks", "state induction methods", "phenomenological classification"],
 };
 
 export default function HowDoPsychologistsClassifyAlteredStatesPage() {
@@ -46,7 +46,7 @@ export default function HowDoPsychologistsClassifyAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How do psychologists classify altered states?"]
+              Psychologists classify altered states using dimensional approaches that measure consciousness along continuums of awareness, attention, self-control, and sensory processing rather than discrete categories.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoPsychologistsClassifyAlteredStatesPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This classification system emerges because consciousness exists on multiple spectrums rather than binary states, allowing researchers to map how different factors like drugs, meditation, or sleep deprivation affect specific cognitive functions. Dimensional models enable more precise measurement of consciousness changes and help identify which neural networks become enhanced or suppressed during different experiences. This approach demonstrates that altered states involve predictable patterns of brain activity that can be studied systematically.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoPsychologistsClassifyAlteredStatesPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some researchers still use categorical systems that group states by their induction method (pharmacological, physiological, psychological) or by their primary characteristics. The classification becomes more complex when multiple factors interact, such as combining sensory deprivation with psychoactive substances.
             </p>
           </section>
 

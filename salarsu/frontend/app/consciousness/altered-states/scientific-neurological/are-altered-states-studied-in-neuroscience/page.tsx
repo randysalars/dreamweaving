@@ -7,15 +7,15 @@ const pageUrl = `${getSiteUrl()}/consciousness/altered-states/scientific-neurolo
 
 export const metadata: Metadata = {
   title: "Are altered states studied in neuroscience? | Salars Consciousness",
-  description: "Are altered states studied in neuroscience?",
+  description: "Yes, neuroscience extensively studies altered states using neuroimaging, EEG, and other technologies to map brain changes during meditation, psychedelic ex",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Are altered states studied in neuroscience?",
-    description: "Are altered states studied in neuroscience?",
+    description: "Yes, neuroscience extensively studies altered states using neuroimaging, EEG, and other technologies to map brain changes during meditation, psychedelic ex",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["consciousness", "awareness", "perception"],
+  keywords: ["neuroimaging", "psychedelic research", "meditation neuroscience", "anesthesia consciousness", "sleep states", "neural correlates", "brain connectivity", "consciousness research"],
 };
 
 export default function AreAlteredStatesStudiedInNeurosciencePage() {
@@ -46,7 +46,7 @@ export default function AreAlteredStatesStudiedInNeurosciencePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are altered states studied in neuroscience?"]
+              Yes, neuroscience extensively studies altered states using neuroimaging, EEG, and other technologies to map brain changes during meditation, psychedelic experiences, anesthesia, and sleep states.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreAlteredStatesStudiedInNeurosciencePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Altered states reveal how consciousness can be modified through changes in neural networks, neurotransmitter systems, and brain connectivity patterns. This research demonstrates that normal waking consciousness represents just one configuration of brain activity, while other states show distinct neural signatures. These findings help scientists understand the neural basis of subjective experience and how different brain states produce varying levels of awareness, perception, and self-reflection.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreAlteredStatesStudiedInNeurosciencePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Research quality varies significantly depending on the altered state being studied and available technology. Some states like REM sleep and anesthesia are well-mapped neurologically, while others like mystical experiences or certain drug states remain more challenging to study systematically.
             </p>
           </section>
 
