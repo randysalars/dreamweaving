@@ -1,0 +1,222 @@
+clusters:
+- id: sleep-fundamentals
+  name: Sleep Fundamentals
+  category_slug: sleep-fundamentals
+  description: How sleep works and why we need it
+  questions:
+  - question: What are the stages of sleep and what happens in each?
+    status: pending
+  - question: Why do we need sleep?
+    status: pending
+  - question: How much sleep do adults actually need?
+    status: pending
+  - question: What is the circadian rhythm and how does it affect sleep?
+    status: pending
+  - question: What is REM sleep and why is it important?
+    status: pending
+  - question: What is non-REM sleep?
+    status: pending
+  - question: How does sleep change with age?
+    status: pending
+  - question: What happens in the brain during sleep?
+    status: pending
+  - question: What is the role of melatonin in sleep?
+    status: pending
+  - question: How long is a complete sleep cycle?
+    status: pending
+  - question: What is deep sleep and why is it important?
+    status: pending
+  - question: Can you make up for lost sleep?
+    status: pending
+
+- id: dream-science
+  name: Dream Science & Lucid Dreaming
+  category_slug: dream-science
+  description: Understanding dreams, lucidity, and dream control
+  questions:
+  - question: What are dreams and why do we dream?
+    status: pending
+  - question: What is lucid dreaming?
+    status: pending
+  - question: How can I learn to lucid dream?
+    status: pending
+  - question: What is dream recall and how can I improve it?
+    status: pending
+  - question: Why do some people remember dreams better than others?
+    status: pending
+  - question: What are the techniques for inducing lucid dreams?
+    status: pending
+  - question: Do dreams have meaning?
+    status: pending
+  - question: What causes vivid dreams?
+    status: pending
+  - question: What is the relationship between REM sleep and dreaming?
+    status: pending
+  - question: Can you control your dreams?
+    status: pending
+  - question: What are reality checks for lucid dreaming?
+    status: pending
+  - question: What is the WILD (Wake-Induced Lucid Dream) technique?
+    status: pending
+  - question: What is the MILD (Mnemonic Induction of Lucid Dreams) technique?
+    status: pending
+  - question: Are lucid dreams safe?
+    status: pending
+  - question: What is dream journaling and why is it important?
+    status: pending
+
+- id: sleep-consciousness
+  name: Sleep & Consciousness States
+  category_slug: sleep-consciousness
+  description: Sleep as altered state, hypnagogia, and awareness
+  questions:
+  - question: Is sleep an altered state of consciousness?
+    status: pending
+  - question: What is hypnagogia (the transition to sleep)?
+    status: pending
+  - question: Can you be conscious while sleeping?
+    status: pending
+  - question: What is sleep paralysis and why does it happen?
+    status: pending
+  - question: What is the hypnopompic state (waking from sleep)?
+    status: pending
+  - question: What are false awakenings?
+    status: pending
+  - question: Can meditation help with sleep?
+    status: pending
+  - question: What is the relationship between mindfulness and sleep?
+    status: pending
+  - question: What happens to consciousness during deep sleep?
+    status: pending
+  - question: Can you experience awareness during dreamless sleep?
+    status: pending
+  - question: What is sleep meditation?
+    status: pending
+  - question: How does consciousness differ between waking and dreaming?
+    status: pending
+
+- id: sleep-disorders
+  name: Sleep Disorders & Solutions
+  category_slug: sleep-disorders
+  description: Common problems and evidence-based solutions
+  questions:
+  - question: What is insomnia and how is it treated?
+    status: pending
+  - question: What causes sleep apnea?
+    status: pending
+  - question: What are parasomnias (sleepwalking, night terrors)?
+    status: pending
+  - question: How does shift work affect sleep?
+    status: pending
+  - question: What is restless leg syndrome?
+    status: pending
+  - question: What is narcolepsy?
+    status: pending
+  - question: What are sleep disorders related to circadian rhythm?
+    status: pending
+  - question: What is sleep maintenance insomnia?
+    status: pending
+  - question: What causes nightmares and how can they be reduced?
+    status: pending
+  - question: What is delayed sleep phase syndrome?
+    status: pending
+  - question: Can anxiety cause sleep problems?
+    status: pending
+  - question: What is REM sleep behavior disorder?
+    status: pending
+  - question: How do you know if you have a sleep disorder?
+    status: pending
+  - question: What are non-medication treatments for insomnia?
+    status: pending
+
+- id: sleep-optimization
+  name: Sleep Optimization & Hygiene
+  category_slug: sleep-optimization
+  description: Improving sleep quality and establishing healthy habits
+  questions:
+  - question: What is sleep hygiene?
+    status: pending
+  - question: How does light exposure affect sleep?
+    status: pending
+  - question: What is the best sleeping position?
+    status: pending
+  - question: Do sleep trackers actually work?
+    status: pending
+  - question: What is the ideal bedroom temperature for sleep?
+    status: pending
+  - question: How does exercise affect sleep?
+    status: pending
+  - question: What foods help or hurt sleep?
+    status: pending
+  - question: Should you avoid screens before bed?
+    status: pending
+  - question: What is the best bedtime routine?
+    status: pending
+  - question: How does caffeine affect sleep?
+    status: pending
+  - question: Does alcohol help or hurt sleep?
+    status: pending
+  - question: What role does the mattress and pillow play in sleep quality?
+    status: pending
+  - question: Should you nap during the day?
+    status: pending
+  - question: What is the best time to go to bed?
+    status: pending
+  - question: How can noise affect sleep quality?
+    status: pending
+
+- id: sleep-performance
+  name: Sleep & Performance
+  category_slug: sleep-performance
+  description: How sleep affects memory, learning, and cognition
+  questions:
+  - question: How does sleep affect memory consolidation?
+    status: pending
+  - question: What is the relationship between sleep and learning?
+    status: pending
+  - question: Can you catch up on lost sleep?
+    status: pending
+  - question: What are the effects of sleep deprivation?
+    status: pending
+  - question: How does sleep affect creativity?
+    status: pending
+  - question: What is the relationship between sleep and decision-making?
+    status: pending
+  - question: How does sleep affect athletic performance?
+    status: pending
+  - question: Can you learn while sleeping?
+    status: pending
+  - question: What is the impact of sleep on emotional regulation?
+    status: pending
+  - question: How does sleep deprivation affect reaction time?
+    status: pending
+  - question: What is sleep inertia (grogginess after waking)?
+    status: pending
+  - question: How does sleep affect immune function?
+    status: pending
+
+- id: dream-work
+  name: Dream Work & Interpretation
+  category_slug: dream-work
+  description: Working with dreams for insight and growth
+  questions:
+  - question: How do I interpret my dreams?
+    status: pending
+  - question: What is dream journaling and how do I start?
+    status: pending
+  - question: Do recurring dreams mean something?
+    status: pending
+  - question: What are archetypes in dreams?
+    status: pending
+  - question: What is active imagination in dream work?
+    status: pending
+  - question: Can dreams provide creative insights?
+    status: pending
+  - question: What are common dream symbols and their meanings?
+    status: pending
+  - question: How do I work with nightmares therapeutically?
+    status: pending
+  - question: What is dream incubation?
+    status: pending
+  - question: How can dreams support personal growth?
+    status: pending

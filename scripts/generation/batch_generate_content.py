@@ -413,7 +413,7 @@ Examples:
     )
 
     parser.add_argument('--topic', default='altered_states',
-                       choices=['altered_states', 'meditation', 'memory', 'integration'],
+                       choices=['altered_states', 'meditation', 'memory', 'integration', 'sleep_dreams'],
                        help='Topic to generate pages for')
     parser.add_argument('--concurrent', type=int, default=4,
                        help='Number of concurrent API calls (default: 4)')
