@@ -1,0 +1,140 @@
+clusters:
+- id: fundamentals
+  name: Memory Fundamentals
+  category_slug: fundamentals
+  description: How memory works and core principles
+  questions:
+  - question: What are the different types of memory (short-term, long-term, working)?
+    status: pending
+  - question: How does the brain encode and retrieve memories?
+    status: pending
+  - question: What is the role of repetition in memory formation?
+    status: pending
+  - question: Can memory be improved with practice?
+    status: pending
+  - question: What is working memory and why is it important?
+    status: pending
+  - question: How does attention affect memory formation?
+    status: pending
+  - question: What is the difference between recognition and recall?
+    status: pending
+  - question: How do emotions influence memory?
+    status: pending
+  - question: What causes forgetting and how can it be prevented?
+    status: pending
+  - question: How does sleep affect memory consolidation?
+    status: pending
+
+- id: classic-techniques
+  name: Classic Memory Techniques
+  category_slug: classic-techniques
+  description: Time-tested methods like Memory Palace and mnemonics
+  questions:
+  - question: What is the Method of Loci (Memory Palace) technique?
+    status: pending
+  - question: How do I build and use a Memory Palace effectively?
+    status: pending
+  - question: What are mnemonic devices and how do they work?
+    status: pending
+  - question: How does the peg system work for memorizing lists?
+    status: pending
+  - question: What is chunking and how does it improve memory?
+    status: pending
+  - question: How does the link method work for memorization?
+    status: pending
+  - question: What is the story method for remembering information?
+    status: pending
+  - question: How do acronyms and acrostics help with memory?
+    status: pending
+  - question: What is the substitution method for abstract concepts?
+    status: pending
+  - question: How does the Major System work for numbers?
+    status: pending
+  - question: What is the Dominic System for memory?
+    status: pending
+  - question: How can visualization enhance memory techniques?
+    status: pending
+
+- id: modern-approaches
+  name: Modern Memory Approaches
+  category_slug: modern-approaches
+  description: Spaced repetition, digital tools, and scientific methods
+  questions:
+  - question: What is spaced repetition and why does it work?
+    status: pending
+  - question: How does the Leitner system improve memorization?
+    status: pending
+  - question: What is active recall and how is it different from re-reading?
+    status: pending
+  - question: Which memory apps are most effective (Anki, Quizlet, etc.)?
+    status: pending
+  - question: What is the testing effect in memory science?
+    status: pending
+  - question: How does interleaving improve long-term retention?
+    status: pending
+  - question: What is elaborative interrogation for memory?
+    status: pending
+  - question: How do digital flashcards compare to physical ones?
+    status: pending
+  - question: What is the Feynman Technique for learning and memory?
+    status: pending
+  - question: How does mind mapping enhance memory?
+    status: pending
+
+- id: practical-applications
+  name: Practical Applications
+  category_slug: practical-applications
+  description: Using memory systems for studying, work, and daily life
+  questions:
+  - question: How do I memorize information for exams effectively?
+    status: pending
+  - question: What is the best way to remember names and faces?
+    status: pending
+  - question: How can memory systems help with learning languages?
+    status: pending
+  - question: How do I remember presentations without notes?
+    status: pending
+  - question: What are effective strategies for memorizing speeches?
+    status: pending
+  - question: How can I remember passwords without writing them down?
+    status: pending
+  - question: What is the best way to memorize vocabulary?
+    status: pending
+  - question: How do I remember important dates and appointments?
+    status: pending
+  - question: How can memory techniques help with professional development?
+    status: pending
+  - question: What are strategies for remembering reading material?
+    status: pending
+  - question: How do I memorize mathematical formulas and equations?
+    status: pending
+  - question: How can memory systems improve business networking?
+    status: pending
+
+- id: advanced-practice
+  name: Advanced Practice
+  category_slug: advanced-practice
+  description: Competition techniques, mastery, and optimization
+  questions:
+  - question: How do memory champions memorize decks of cards?
+    status: pending
+  - question: What is the PAO (Person-Action-Object) system?
+    status: pending
+  - question: How do I improve recall speed in memory techniques?
+    status: pending
+  - question: What are advanced linking techniques for complex information?
+    status: pending
+  - question: How do memory athletes train for competitions?
+    status: pending
+  - question: What is the difference between speed cards and marathon cards?
+    status: pending
+  - question: How can I memorize multiple Memory Palaces without confusion?
+    status: pending
+  - question: What are synesthetic encoding techniques?
+    status: pending
+  - question: How do I overcome interference between similar memories?
+    status: pending
+  - question: What are the limits of human memory capacity?
+    status: pending
+  - question: How can I maintain and expand my memory system over time?
+    status: pending

@@ -1,0 +1,114 @@
+clusters:
+- id: getting-started
+  name: Getting Started with Meditation
+  category_slug: getting-started
+  description: Essential guidance for beginners starting a meditation practice
+  questions:
+  - question: What is meditation and how does it work?
+    status: pending
+  - question: How do I start a meditation practice as a complete beginner?
+    status: pending
+  - question: How long should I meditate each day when starting out?
+    status: pending
+  - question: Do I need special equipment or training to meditate?
+    status: pending
+  - question: What is the best time of day to meditate?
+    status: pending
+  - question: Should I meditate sitting, lying down, or walking?
+    status: pending
+  - question: What are the most common beginner mistakes in meditation?
+    status: pending
+  - question: How do I know if I am meditating correctly?
+    status: pending
+
+- id: techniques
+  name: Meditation Techniques
+  category_slug: techniques
+  description: Different meditation methods and how to practice them
+  questions:
+  - question: What is breath awareness meditation and how do I practice it?
+    status: pending
+  - question: What is mindfulness meditation?
+    status: pending
+  - question: What is loving-kindness meditation (Metta)?
+    status: pending
+  - question: What is body scan meditation and how does it work?
+    status: pending
+  - question: What is mantra meditation?
+    status: pending
+  - question: What is walking meditation and how is it different from sitting meditation?
+    status: pending
+  - question: What is guided visualization meditation?
+    status: pending
+  - question: Which meditation technique is best for beginners?
+    status: pending
+  - question: How do I choose the right meditation technique for me?
+    status: pending
+  - question: Can I combine different meditation techniques?
+    status: pending
+
+- id: benefits-science
+  name: Benefits & Science of Meditation
+  category_slug: benefits-science
+  description: Research-backed benefits and neuroscience of meditation
+  questions:
+  - question: What does scientific research say about meditation benefits?
+    status: pending
+  - question: How does meditation change the brain?
+    status: pending
+  - question: Can meditation help with stress and anxiety?
+    status: pending
+  - question: Does meditation improve focus and concentration?
+    status: pending
+  - question: Can meditation help with sleep problems?
+    status: pending
+  - question: How long before I notice benefits from meditation?
+    status: pending
+  - question: Does meditation improve emotional regulation?
+    status: pending
+  - question: Can meditation boost creativity?
+    status: pending
+
+- id: challenges
+  name: Common Challenges
+  category_slug: challenges
+  description: Overcoming obstacles and difficulties in meditation practice
+  questions:
+  - question: How do I deal with a busy or wandering mind during meditation?
+    status: pending
+  - question: What should I do if I feel restless or fidgety during meditation?
+    status: pending
+  - question: Why do I feel sleepy or fall asleep when I meditate?
+    status: pending
+  - question: How do I handle physical discomfort or pain while meditating?
+    status: pending
+  - question: What if I do not have enough time to meditate?
+    status: pending
+  - question: Why does meditation sometimes feel boring or pointless?
+    status: pending
+  - question: Is it normal to feel worse after meditation?
+    status: pending
+  - question: What are difficult meditation experiences and how do I handle them?
+    status: pending
+
+- id: deepening-practice
+  name: Deepening Your Practice
+  category_slug: deepening-practice
+  description: Progressing beyond basics and building a sustainable practice
+  questions:
+  - question: How do I progress from beginner to intermediate meditation?
+    status: pending
+  - question: What are different meditation states (concentration vs insight)?
+    status: pending
+  - question: How do I build consistency in my meditation practice?
+    status: pending
+  - question: When should I seek a meditation teacher or join a group?
+    status: pending
+  - question: How do I integrate meditation into daily life?
+    status: pending
+  - question: What is the difference between formal meditation and mindfulness?
+    status: pending
+  - question: How do I deepen my meditation practice beyond technique?
+    status: pending
+  - question: What are advanced meditation practices?
+    status: pending
