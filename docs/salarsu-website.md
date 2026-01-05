@@ -155,6 +155,12 @@ To add a new page to the website:
 3. Build and test locally with `npm run dev`
 4. Commit and push to deploy
 
+## Money Hub (special case)
+
+Money hub + article pages are registry-driven and live in the Salarsu repo (not this repo). Use:
+
+- `docs/MONEY_HUB_DEPLOYMENT_PLAYBOOK.md`
+
 Example for a new page at `/newpage`:
 
 ```bash
