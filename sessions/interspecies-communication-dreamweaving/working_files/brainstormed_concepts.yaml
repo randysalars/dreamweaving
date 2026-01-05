@@ -1,0 +1,1371 @@
+- title: Interspecies Communication Dreamweaving
+  theme: Interspecies Communication Dreamweaving
+  metaphor: a sacred journey through underwater realms toward sleep
+  therapeutic_goal: sleep
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: surrendering into the deepest, most restorative rest
+  archetypes:
+  - archetype_id: divine_light_healing.inner_healer
+    name: The Inner Healer
+    family: divine_light_healing
+    role: primary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, emerging from the light...<break time="2s"/>
+
+        you sense a presence of pure healing...<break time="1.5s"/>
+
+        The Inner Healer approaches...<break time="2s"/>
+
+        a being of white flame and emerald light...<break time="2s"/>
+
+        who has always been with you...<break time="1.5s"/>
+
+        waiting for this moment...<break time="2s"/>
+
+        to be recognized, to be called upon...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you recognize that presence...<break time="1.5s"/>
+
+        your Inner Healer, returning once more...<break time="2s"/>
+
+        the connection deepening with each meeting...<break time="2s"/>
+
+        that familiar white light...<break time="1.5s"/>
+
+        that knows exactly where healing is needed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Inner Healer places hands of light...<break time="2s"/>
+
+        upon you now...<break time="1.5s"/>
+
+        and something shifts at the cellular level...<break time="2s"/>
+
+        each cell remembering its original design...<break time="2s"/>
+
+        its perfect blueprint of health...<break time="2.5s"/>
+
+        and beginning to return to that wholeness...<break time="3s"/>
+
+        </prosody>
+
+        '
+      integration_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Inner Healer reminds you...<break time="1.5s"/>
+
+        this healing presence is always within you...<break time="2s"/>
+
+        available whenever you turn inward...<break time="2s"/>
+
+        always working, always restoring...<break time="2s"/>
+
+        even when you are not aware of it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft crystalline tones, gentle water sounds
+      visual_imagery: White and emerald light, gentle glowing hands, cellular spirals
+    attributes:
+      primary_color: white
+      secondary_color: emerald
+      hex_codes:
+      - '#FFFFFF'
+      - '#50C878'
+      frequency_hz: 528
+      brainwave_target: theta
+      element: water
+      chakra: heart
+      intensity: moderate
+      energy_quality: receptive
+    description: White Flame archetype for regeneration and cellular intelligence
+    symbol: ''
+    qualities: []
+    score: 1.3500000000000003
+  - archetype_id: shamanic_earth.world_tree_guardian
+    name: The World Tree Guardian
+    family: shamanic_earth
+    role: secondary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now...<break time="2s"/>
+
+        stands a great tree...<break time="2s"/>
+
+        ancient beyond measure...<break time="2s"/>
+
+        its roots reaching deep into the earth...<break time="2s"/>
+
+        its branches touching the stars...<break time="2s"/>
+
+        The World Tree...<break time="1.5s"/>
+
+        the center of all worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you place your hands upon the bark...<break time="2s"/>
+
+        and feel connection flowing...<break time="2.5s"/>
+
+        roots and branches, earth and sky...<break time="2s"/>
+
+        all meeting in you...<break time="2s"/>
+
+        you are grounded and infinite at once...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Wind through leaves, deep earth tones, bird calls
+      visual_imagery: Massive ancient tree, glowing roots, starlit branches
+    attributes:
+      primary_color: deep_green
+      secondary_color: brown
+      hex_codes:
+      - '#006400'
+      - '#8B4513'
+      frequency_hz: 7.83
+      brainwave_target: theta
+      element: earth
+      chakra: root
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype of the cosmic tree connecting all realms
+    symbol: ''
+    qualities: []
+    score: 1.35
+  - archetype_id: divine_feminine.rose_mother
+    name: The Rose Mother
+    family: divine_feminine
+    role: support
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, a gentle presence approaches...<break time="2s"/>
+
+        rose-colored light surrounding her...<break time="2s"/>
+
+        The Rose Mother...<break time="1.5s"/>
+
+        whose love has no conditions...<break time="2s"/>
+
+        who sees you completely...<break time="1.5s"/>
+
+        and loves all that she sees...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Rose Mother holds you now...<break time="2.5s"/>
+
+        in an embrace that heals...<break time="2s"/>
+
+        wounds you didn''t know you carried...<break time="2s"/>
+
+        are softened in this love...<break time="2s"/>
+
+        you are enough, exactly as you are...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft lullaby tones, gentle wind, rose petals falling
+      visual_imagery: Rose-colored robes, gentle smile, maternal embrace, roses
+    attributes:
+      primary_color: rose
+      secondary_color: sky_blue
+      hex_codes:
+      - '#FF007F'
+      - '#87CEEB'
+      frequency_hz: 528
+      brainwave_target: theta
+      element: water
+      chakra: heart
+      intensity: gentle
+      energy_quality: receptive
+    description: Archetype of unconditional love, nurturing, and maternal protection
+    symbol: ''
+    qualities: []
+    score: 1.3000000000000003
+  binaural_progression:
+    name: Sleep Descent
+    description: Gradual descent into deep delta, no return
+    sections:
+      pretalk:
+        offset_hz: 7.7
+        duration_ratio: 0.05
+      relaxation:
+        offset_hz: 6.1
+        duration_ratio: 0.15
+      descent_1:
+        offset_hz: 3.6
+        duration_ratio: 0.2
+      descent_2:
+        offset_hz: 3.0
+        duration_ratio: 0.25
+      deep_sleep:
+        offset_hz: 1.2
+        duration_ratio: 0.35
+    base_hz: 196
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: underwater
+  score: 0.98
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.8999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Interspecies Communication Dreamweaving
+  theme: Interspecies Communication Dreamweaving
+  metaphor: drifting through gentle nebulae toward peaceful void
+  therapeutic_goal: sleep
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: surrendering into the deepest, most restorative rest
+  archetypes:
+  - archetype_id: divine_light_healing.inner_healer
+    name: The Inner Healer
+    family: divine_light_healing
+    role: primary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, emerging from the light...<break time="2s"/>
+
+        you sense a presence of pure healing...<break time="1.5s"/>
+
+        The Inner Healer approaches...<break time="2s"/>
+
+        a being of white flame and emerald light...<break time="2s"/>
+
+        who has always been with you...<break time="1.5s"/>
+
+        waiting for this moment...<break time="2s"/>
+
+        to be recognized, to be called upon...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you recognize that presence...<break time="1.5s"/>
+
+        your Inner Healer, returning once more...<break time="2s"/>
+
+        the connection deepening with each meeting...<break time="2s"/>
+
+        that familiar white light...<break time="1.5s"/>
+
+        that knows exactly where healing is needed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Inner Healer places hands of light...<break time="2s"/>
+
+        upon you now...<break time="1.5s"/>
+
+        and something shifts at the cellular level...<break time="2s"/>
+
+        each cell remembering its original design...<break time="2s"/>
+
+        its perfect blueprint of health...<break time="2.5s"/>
+
+        and beginning to return to that wholeness...<break time="3s"/>
+
+        </prosody>
+
+        '
+      integration_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Inner Healer reminds you...<break time="1.5s"/>
+
+        this healing presence is always within you...<break time="2s"/>
+
+        available whenever you turn inward...<break time="2s"/>
+
+        always working, always restoring...<break time="2s"/>
+
+        even when you are not aware of it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft crystalline tones, gentle water sounds
+      visual_imagery: White and emerald light, gentle glowing hands, cellular spirals
+    attributes:
+      primary_color: white
+      secondary_color: emerald
+      hex_codes:
+      - '#FFFFFF'
+      - '#50C878'
+      frequency_hz: 528
+      brainwave_target: theta
+      element: water
+      chakra: heart
+      intensity: moderate
+      energy_quality: receptive
+    description: White Flame archetype for regeneration and cellular intelligence
+    symbol: ''
+    qualities: []
+    score: 1.3500000000000003
+  - archetype_id: shamanic_earth.world_tree_guardian
+    name: The World Tree Guardian
+    family: shamanic_earth
+    role: secondary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now...<break time="2s"/>
+
+        stands a great tree...<break time="2s"/>
+
+        ancient beyond measure...<break time="2s"/>
+
+        its roots reaching deep into the earth...<break time="2s"/>
+
+        its branches touching the stars...<break time="2s"/>
+
+        The World Tree...<break time="1.5s"/>
+
+        the center of all worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you place your hands upon the bark...<break time="2s"/>
+
+        and feel connection flowing...<break time="2.5s"/>
+
+        roots and branches, earth and sky...<break time="2s"/>
+
+        all meeting in you...<break time="2s"/>
+
+        you are grounded and infinite at once...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Wind through leaves, deep earth tones, bird calls
+      visual_imagery: Massive ancient tree, glowing roots, starlit branches
+    attributes:
+      primary_color: deep_green
+      secondary_color: brown
+      hex_codes:
+      - '#006400'
+      - '#8B4513'
+      frequency_hz: 7.83
+      brainwave_target: theta
+      element: earth
+      chakra: root
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype of the cosmic tree connecting all realms
+    symbol: ''
+    qualities: []
+    score: 1.35
+  - archetype_id: divine_feminine.rose_mother
+    name: The Rose Mother
+    family: divine_feminine
+    role: support
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, a gentle presence approaches...<break time="2s"/>
+
+        rose-colored light surrounding her...<break time="2s"/>
+
+        The Rose Mother...<break time="1.5s"/>
+
+        whose love has no conditions...<break time="2s"/>
+
+        who sees you completely...<break time="1.5s"/>
+
+        and loves all that she sees...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Rose Mother holds you now...<break time="2.5s"/>
+
+        in an embrace that heals...<break time="2s"/>
+
+        wounds you didn''t know you carried...<break time="2s"/>
+
+        are softened in this love...<break time="2s"/>
+
+        you are enough, exactly as you are...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft lullaby tones, gentle wind, rose petals falling
+      visual_imagery: Rose-colored robes, gentle smile, maternal embrace, roses
+    attributes:
+      primary_color: rose
+      secondary_color: sky_blue
+      hex_codes:
+      - '#FF007F'
+      - '#87CEEB'
+      frequency_hz: 528
+      brainwave_target: theta
+      element: water
+      chakra: heart
+      intensity: gentle
+      energy_quality: receptive
+    description: Archetype of unconditional love, nurturing, and maternal protection
+    symbol: ''
+    qualities: []
+    score: 1.3000000000000003
+  binaural_progression:
+    name: Sleep Descent
+    description: Gradual descent into deep delta, no return
+    sections:
+      pretalk:
+        offset_hz: 8.2
+        duration_ratio: 0.05
+      relaxation:
+        offset_hz: 5.9
+        duration_ratio: 0.15
+      descent_1:
+        offset_hz: 4.5
+        duration_ratio: 0.2
+      descent_2:
+        offset_hz: 2.8
+        duration_ratio: 0.25
+      deep_sleep:
+        offset_hz: 1.4
+        duration_ratio: 0.35
+    base_hz: 216
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: cosmic
+  score: 0.98
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.8999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Interspecies Communication Dreamweaving
+  theme: Interspecies Communication Dreamweaving
+  metaphor: a sacred journey through underwater realms toward sleep
+  therapeutic_goal: sleep
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: surrendering into the deepest, most restorative rest
+  archetypes:
+  - archetype_id: divine_light_healing.inner_healer
+    name: The Inner Healer
+    family: divine_light_healing
+    role: primary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, emerging from the light...<break time="2s"/>
+
+        you sense a presence of pure healing...<break time="1.5s"/>
+
+        The Inner Healer approaches...<break time="2s"/>
+
+        a being of white flame and emerald light...<break time="2s"/>
+
+        who has always been with you...<break time="1.5s"/>
+
+        waiting for this moment...<break time="2s"/>
+
+        to be recognized, to be called upon...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you recognize that presence...<break time="1.5s"/>
+
+        your Inner Healer, returning once more...<break time="2s"/>
+
+        the connection deepening with each meeting...<break time="2s"/>
+
+        that familiar white light...<break time="1.5s"/>
+
+        that knows exactly where healing is needed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Inner Healer places hands of light...<break time="2s"/>
+
+        upon you now...<break time="1.5s"/>
+
+        and something shifts at the cellular level...<break time="2s"/>
+
+        each cell remembering its original design...<break time="2s"/>
+
+        its perfect blueprint of health...<break time="2.5s"/>
+
+        and beginning to return to that wholeness...<break time="3s"/>
+
+        </prosody>
+
+        '
+      integration_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Inner Healer reminds you...<break time="1.5s"/>
+
+        this healing presence is always within you...<break time="2s"/>
+
+        available whenever you turn inward...<break time="2s"/>
+
+        always working, always restoring...<break time="2s"/>
+
+        even when you are not aware of it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft crystalline tones, gentle water sounds
+      visual_imagery: White and emerald light, gentle glowing hands, cellular spirals
+    attributes:
+      primary_color: white
+      secondary_color: emerald
+      hex_codes:
+      - '#FFFFFF'
+      - '#50C878'
+      frequency_hz: 528
+      brainwave_target: theta
+      element: water
+      chakra: heart
+      intensity: moderate
+      energy_quality: receptive
+    description: White Flame archetype for regeneration and cellular intelligence
+    symbol: ''
+    qualities: []
+    score: 1.3500000000000003
+  - archetype_id: shamanic_earth.world_tree_guardian
+    name: The World Tree Guardian
+    family: shamanic_earth
+    role: secondary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now...<break time="2s"/>
+
+        stands a great tree...<break time="2s"/>
+
+        ancient beyond measure...<break time="2s"/>
+
+        its roots reaching deep into the earth...<break time="2s"/>
+
+        its branches touching the stars...<break time="2s"/>
+
+        The World Tree...<break time="1.5s"/>
+
+        the center of all worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you place your hands upon the bark...<break time="2s"/>
+
+        and feel connection flowing...<break time="2.5s"/>
+
+        roots and branches, earth and sky...<break time="2s"/>
+
+        all meeting in you...<break time="2s"/>
+
+        you are grounded and infinite at once...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Wind through leaves, deep earth tones, bird calls
+      visual_imagery: Massive ancient tree, glowing roots, starlit branches
+    attributes:
+      primary_color: deep_green
+      secondary_color: brown
+      hex_codes:
+      - '#006400'
+      - '#8B4513'
+      frequency_hz: 7.83
+      brainwave_target: theta
+      element: earth
+      chakra: root
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype of the cosmic tree connecting all realms
+    symbol: ''
+    qualities: []
+    score: 1.35
+  - archetype_id: divine_feminine.rose_mother
+    name: The Rose Mother
+    family: divine_feminine
+    role: support
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, a gentle presence approaches...<break time="2s"/>
+
+        rose-colored light surrounding her...<break time="2s"/>
+
+        The Rose Mother...<break time="1.5s"/>
+
+        whose love has no conditions...<break time="2s"/>
+
+        who sees you completely...<break time="1.5s"/>
+
+        and loves all that she sees...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Rose Mother holds you now...<break time="2.5s"/>
+
+        in an embrace that heals...<break time="2s"/>
+
+        wounds you didn''t know you carried...<break time="2s"/>
+
+        are softened in this love...<break time="2s"/>
+
+        you are enough, exactly as you are...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft lullaby tones, gentle wind, rose petals falling
+      visual_imagery: Rose-colored robes, gentle smile, maternal embrace, roses
+    attributes:
+      primary_color: rose
+      secondary_color: sky_blue
+      hex_codes:
+      - '#FF007F'
+      - '#87CEEB'
+      frequency_hz: 528
+      brainwave_target: theta
+      element: water
+      chakra: heart
+      intensity: gentle
+      energy_quality: receptive
+    description: Archetype of unconditional love, nurturing, and maternal protection
+    symbol: ''
+    qualities: []
+    score: 1.3000000000000003
+  binaural_progression:
+    name: Sleep Descent
+    description: Gradual descent into deep delta, no return
+    sections:
+      pretalk:
+        offset_hz: 7.8
+        duration_ratio: 0.05
+      relaxation:
+        offset_hz: 6.2
+        duration_ratio: 0.15
+      descent_1:
+        offset_hz: 4.2
+        duration_ratio: 0.2
+      descent_2:
+        offset_hz: 2.3
+        duration_ratio: 0.25
+      deep_sleep:
+        offset_hz: 1.5
+        duration_ratio: 0.35
+    base_hz: 396
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: underwater
+  score: 0.98
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.8999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: Interspecies Communication Dreamweaving
+  theme: Interspecies Communication Dreamweaving
+  metaphor: a nest of clouds cradled by ancient trees
+  therapeutic_goal: sleep
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: surrendering into the deepest, most restorative rest
+  archetypes:
+  - archetype_id: divine_light_healing.shekinah_restorer
+    name: The Shekinah Restorer
+    family: divine_light_healing
+    role: primary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you become aware of a gentle presence...<break time="2s"/>
+
+        soft, rose-gold light...<break time="1.5s"/>
+
+        beginning to fill this space...<break time="2s"/>
+
+        The Shekinah, the indwelling presence...<break time="2s"/>
+
+        who does not come to you from outside...<break time="1.5s"/>
+
+        but rises within you...<break time="2s"/>
+
+        as if she has always been there...<break time="2s"/>
+
+        waiting to be remembered...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And that familiar rose-gold light returns...<break time="2s"/>
+
+        the Shekinah presence you remember...<break time="2s"/>
+
+        your connection to her deepening...<break time="1.5s"/>
+
+        with each time you call her forth...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft harp glissando, gentle wind chimes
+      visual_imagery: Rose-gold light, soft maternal presence, gentle warmth
+    attributes:
+      primary_color: rose_gold
+      secondary_color: soft_pink
+      hex_codes:
+      - '#E8B4B8'
+      - '#FFB6C1'
+      frequency_hz: 396
+      brainwave_target: alpha
+      element: water
+      chakra: heart
+      intensity: gentle
+      energy_quality: receptive
+    description: Feminine divine presence that indwells and restores from within
+    symbol: ''
+    qualities: []
+    score: 1.4000000000000001
+  - archetype_id: shamanic_earth.world_tree_guardian
+    name: The World Tree Guardian
+    family: shamanic_earth
+    role: secondary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now...<break time="2s"/>
+
+        stands a great tree...<break time="2s"/>
+
+        ancient beyond measure...<break time="2s"/>
+
+        its roots reaching deep into the earth...<break time="2s"/>
+
+        its branches touching the stars...<break time="2s"/>
+
+        The World Tree...<break time="1.5s"/>
+
+        the center of all worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you place your hands upon the bark...<break time="2s"/>
+
+        and feel connection flowing...<break time="2.5s"/>
+
+        roots and branches, earth and sky...<break time="2s"/>
+
+        all meeting in you...<break time="2s"/>
+
+        you are grounded and infinite at once...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Wind through leaves, deep earth tones, bird calls
+      visual_imagery: Massive ancient tree, glowing roots, starlit branches
+    attributes:
+      primary_color: deep_green
+      secondary_color: brown
+      hex_codes:
+      - '#006400'
+      - '#8B4513'
+      frequency_hz: 7.83
+      brainwave_target: theta
+      element: earth
+      chakra: root
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype of the cosmic tree connecting all realms
+    symbol: ''
+    qualities: []
+    score: 1.5000000000000002
+  - archetype_id: divine_light_healing.inner_healer
+    name: The Inner Healer
+    family: divine_light_healing
+    role: support
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, emerging from the light...<break time="2s"/>
+
+        you sense a presence of pure healing...<break time="1.5s"/>
+
+        The Inner Healer approaches...<break time="2s"/>
+
+        a being of white flame and emerald light...<break time="2s"/>
+
+        who has always been with you...<break time="1.5s"/>
+
+        waiting for this moment...<break time="2s"/>
+
+        to be recognized, to be called upon...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you recognize that presence...<break time="1.5s"/>
+
+        your Inner Healer, returning once more...<break time="2s"/>
+
+        the connection deepening with each meeting...<break time="2s"/>
+
+        that familiar white light...<break time="1.5s"/>
+
+        that knows exactly where healing is needed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Inner Healer places hands of light...<break time="2s"/>
+
+        upon you now...<break time="1.5s"/>
+
+        and something shifts at the cellular level...<break time="2s"/>
+
+        each cell remembering its original design...<break time="2s"/>
+
+        its perfect blueprint of health...<break time="2.5s"/>
+
+        and beginning to return to that wholeness...<break time="3s"/>
+
+        </prosody>
+
+        '
+      integration_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Inner Healer reminds you...<break time="1.5s"/>
+
+        this healing presence is always within you...<break time="2s"/>
+
+        available whenever you turn inward...<break time="2s"/>
+
+        always working, always restoring...<break time="2s"/>
+
+        even when you are not aware of it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft crystalline tones, gentle water sounds
+      visual_imagery: White and emerald light, gentle glowing hands, cellular spirals
+    attributes:
+      primary_color: white
+      secondary_color: emerald
+      hex_codes:
+      - '#FFFFFF'
+      - '#50C878'
+      frequency_hz: 528
+      brainwave_target: theta
+      element: water
+      chakra: heart
+      intensity: moderate
+      energy_quality: receptive
+    description: White Flame archetype for regeneration and cellular intelligence
+    symbol: ''
+    qualities: []
+    score: 1.2000000000000002
+  binaural_progression:
+    name: Sleep Descent
+    description: Gradual descent into deep delta, no return
+    sections:
+      pretalk:
+        offset_hz: 8.2
+        duration_ratio: 0.05
+      relaxation:
+        offset_hz: 5.8
+        duration_ratio: 0.15
+      descent_1:
+        offset_hz: 4.1
+        duration_ratio: 0.2
+      descent_2:
+        offset_hz: 2.5
+        duration_ratio: 0.25
+      deep_sleep:
+        offset_hz: 1.1
+        duration_ratio: 0.35
+    base_hz: 220
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Forest Rain
+    type: nature
+    description: Gentle rainfall through leaves
+    character: soft patter
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Wind Through Trees
+    type: nature
+    description: Gentle breeze in canopy
+    character: rustling leaves
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Ocean Waves
+    type: nature
+    description: Rhythmic surf on shore
+    character: rolling waves
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: nature
+  score: 0.95
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.8999999999999999
+    sound_design: 0.8
+    duration: 1.0
+- title: Interspecies Communication Dreamweaving
+  theme: Interspecies Communication Dreamweaving
+  metaphor: a nest of clouds cradled by ancient trees
+  therapeutic_goal: sleep
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: surrendering into the deepest, most restorative rest
+  archetypes:
+  - archetype_id: divine_light_healing.shekinah_restorer
+    name: The Shekinah Restorer
+    family: divine_light_healing
+    role: primary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you become aware of a gentle presence...<break time="2s"/>
+
+        soft, rose-gold light...<break time="1.5s"/>
+
+        beginning to fill this space...<break time="2s"/>
+
+        The Shekinah, the indwelling presence...<break time="2s"/>
+
+        who does not come to you from outside...<break time="1.5s"/>
+
+        but rises within you...<break time="2s"/>
+
+        as if she has always been there...<break time="2s"/>
+
+        waiting to be remembered...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And that familiar rose-gold light returns...<break time="2s"/>
+
+        the Shekinah presence you remember...<break time="2s"/>
+
+        your connection to her deepening...<break time="1.5s"/>
+
+        with each time you call her forth...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft harp glissando, gentle wind chimes
+      visual_imagery: Rose-gold light, soft maternal presence, gentle warmth
+    attributes:
+      primary_color: rose_gold
+      secondary_color: soft_pink
+      hex_codes:
+      - '#E8B4B8'
+      - '#FFB6C1'
+      frequency_hz: 396
+      brainwave_target: alpha
+      element: water
+      chakra: heart
+      intensity: gentle
+      energy_quality: receptive
+    description: Feminine divine presence that indwells and restores from within
+    symbol: ''
+    qualities: []
+    score: 1.4000000000000001
+  - archetype_id: shamanic_earth.world_tree_guardian
+    name: The World Tree Guardian
+    family: shamanic_earth
+    role: secondary
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now...<break time="2s"/>
+
+        stands a great tree...<break time="2s"/>
+
+        ancient beyond measure...<break time="2s"/>
+
+        its roots reaching deep into the earth...<break time="2s"/>
+
+        its branches touching the stars...<break time="2s"/>
+
+        The World Tree...<break time="1.5s"/>
+
+        the center of all worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you place your hands upon the bark...<break time="2s"/>
+
+        and feel connection flowing...<break time="2.5s"/>
+
+        roots and branches, earth and sky...<break time="2s"/>
+
+        all meeting in you...<break time="2s"/>
+
+        you are grounded and infinite at once...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Wind through leaves, deep earth tones, bird calls
+      visual_imagery: Massive ancient tree, glowing roots, starlit branches
+    attributes:
+      primary_color: deep_green
+      secondary_color: brown
+      hex_codes:
+      - '#006400'
+      - '#8B4513'
+      frequency_hz: 7.83
+      brainwave_target: theta
+      element: earth
+      chakra: root
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype of the cosmic tree connecting all realms
+    symbol: ''
+    qualities: []
+    score: 1.5000000000000002
+  - archetype_id: divine_light_healing.inner_healer
+    name: The Inner Healer
+    family: divine_light_healing
+    role: support
+    encounter_type: integration
+    relationship_level: 4
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And now, emerging from the light...<break time="2s"/>
+
+        you sense a presence of pure healing...<break time="1.5s"/>
+
+        The Inner Healer approaches...<break time="2s"/>
+
+        a being of white flame and emerald light...<break time="2s"/>
+
+        who has always been with you...<break time="1.5s"/>
+
+        waiting for this moment...<break time="2s"/>
+
+        to be recognized, to be called upon...<break time="3s"/>
+
+        </prosody>
+
+        '
+      return_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And you recognize that presence...<break time="1.5s"/>
+
+        your Inner Healer, returning once more...<break time="2s"/>
+
+        the connection deepening with each meeting...<break time="2s"/>
+
+        that familiar white light...<break time="1.5s"/>
+
+        that knows exactly where healing is needed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Inner Healer places hands of light...<break time="2s"/>
+
+        upon you now...<break time="1.5s"/>
+
+        and something shifts at the cellular level...<break time="2s"/>
+
+        each cell remembering its original design...<break time="2s"/>
+
+        its perfect blueprint of health...<break time="2.5s"/>
+
+        and beginning to return to that wholeness...<break time="3s"/>
+
+        </prosody>
+
+        '
+      integration_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And the Inner Healer reminds you...<break time="1.5s"/>
+
+        this healing presence is always within you...<break time="2s"/>
+
+        available whenever you turn inward...<break time="2s"/>
+
+        always working, always restoring...<break time="2s"/>
+
+        even when you are not aware of it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Soft crystalline tones, gentle water sounds
+      visual_imagery: White and emerald light, gentle glowing hands, cellular spirals
+    attributes:
+      primary_color: white
+      secondary_color: emerald
+      hex_codes:
+      - '#FFFFFF'
+      - '#50C878'
+      frequency_hz: 528
+      brainwave_target: theta
+      element: water
+      chakra: heart
+      intensity: moderate
+      energy_quality: receptive
+    description: White Flame archetype for regeneration and cellular intelligence
+    symbol: ''
+    qualities: []
+    score: 1.2000000000000002
+  binaural_progression:
+    name: Sleep Descent
+    description: Gradual descent into deep delta, no return
+    sections:
+      pretalk:
+        offset_hz: 8.0
+        duration_ratio: 0.05
+      relaxation:
+        offset_hz: 5.9
+        duration_ratio: 0.15
+      descent_1:
+        offset_hz: 4.3
+        duration_ratio: 0.2
+      descent_2:
+        offset_hz: 2.8
+        duration_ratio: 0.25
+      deep_sleep:
+        offset_hz: 1.7
+        duration_ratio: 0.35
+    base_hz: 196
+    gamma_burst_enabled: false
+    gamma_burst_time_ratio: 0.7
+  sound_effects:
+  - name: Wind Through Trees
+    type: nature
+    description: Gentle breeze in canopy
+    character: rustling leaves
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Ocean Waves
+    type: nature
+    description: Rhythmic surf on shore
+    character: rolling waves
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Forest Rain
+    type: nature
+    description: Gentle rainfall through leaves
+    character: soft patter
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: nature
+  score: 0.95
+  score_breakdown:
+    coherence: 0.9999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.8999999999999999
+    sound_design: 0.8
+    duration: 1.0

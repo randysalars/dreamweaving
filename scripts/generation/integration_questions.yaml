@@ -1,0 +1,88 @@
+clusters:
+- id: integration-matters
+  name: Why Integration Matters More Than Insight
+  category_slug: integration-matters
+  description: Understanding why integration is more important than insights in consciousness work.
+  questions:
+  - question: Why does integration matter more than insight in consciousness work?
+    status: pending
+  - question: What is the difference between having an insight and integrating it?
+    status: pending
+  - question: How long does integration typically take after a profound experience?
+    status: pending
+  - question: What happens when insights aren't properly integrated?
+    status: pending
+  - question: Can you have too many insights without enough integration time?
+    status: pending
+  - question: Why do some people feel worse after profound consciousness experiences?
+    status: pending
+  - question: What makes integration harder than the initial experience?
+    status: pending
+  - question: How do you know when an insight has been fully integrated?
+    status: pending
+
+- id: staying-functional
+  name: How to Stay Functional While Awareness Changes
+  category_slug: staying-functional
+  description: Practical guidance for maintaining daily function during consciousness shifts.
+  questions:
+  - question: How do you stay functional while your awareness is changing?
+    status: pending
+  - question: What does grounding mean in the context of consciousness shifts?
+    status: pending
+  - question: Why do some people feel disconnected from daily life after consciousness work?
+    status: pending
+  - question: How do you balance spiritual practice with practical responsibilities?
+    status: pending
+  - question: What are signs that you're losing functional grounding?
+    status: pending
+  - question: Can consciousness changes make it harder to work or maintain relationships?
+    status: pending
+  - question: How do you integrate expanded awareness into everyday activities?
+    status: pending
+  - question: What helps you stay present in ordinary tasks after altered states?
+    status: pending
+
+- id: integration-mistakes
+  name: Common Integration Mistakes
+  category_slug: integration-mistakes
+  description: Typical pitfalls and errors people make during the integration process.
+  questions:
+  - question: What are the most common integration mistakes people make?
+    status: pending
+  - question: Why do people rush back into intense practices too quickly?
+    status: pending
+  - question: What happens when you try to force integration to happen faster?
+    status: pending
+  - question: Should you talk about your experiences immediately or wait?
+    status: pending
+  - question: Why is spiritual bypassing a problem in integration?
+    status: pending
+  - question: What's the difference between integration and suppressing the experience?
+    status: pending
+  - question: How do you avoid becoming ungrounded while staying open to change?
+    status: pending
+  - question: When should you seek support during integration instead of going it alone?
+    status: pending
+
+- id: grounding-not-regression
+  name: Why Grounding Is Not Regression
+  category_slug: grounding-not-regression
+  description: Clarifying the difference between healthy grounding and backwards movement.
+  questions:
+  - question: Is grounding the same as going backwards in consciousness development?
+    status: pending
+  - question: Why does grounding sometimes feel like losing progress?
+    status: pending
+  - question: What's the difference between healthy grounding and spiritual bypassing?
+    status: pending
+  - question: Can you be both grounded and spiritually aware at the same time?
+    status: pending
+  - question: Why do some teachers emphasize grounding over transcendence?
+    status: pending
+  - question: What does "embodiment" mean in consciousness work?
+    status: pending
+  - question: How do you ground without losing the benefits of expanded awareness?
+    status: pending
+  - question: Why is it important to return to the body after consciousness exploration?
+    status: pending

@@ -1,0 +1,118 @@
+Generate a complete SSML hypnotic script for the following session:
+
+**Topic:** Interspecies Communication Dreamweaving
+**Target Duration:** 30 minutes
+**Target Word Count:** 2193-2680 words (hypnotic pace ~130 wpm with pauses)
+**Session Name:** interspecies-communication-dreamweaving
+
+**Archetypes to incorporate:** The Inner Healer, The World Tree Guardian, The Rose Mother
+
+**Section Timing:**
+- pretalk: 0 minutes
+- induction: 0 minutes
+- journey: 0 minutes
+- integration: 0 minutes
+- awakening: 0 minutes
+
+
+---
+## CANONICAL DREAMWEAVING KNOWLEDGE (from your knowledge base)
+Use this context to ensure the script aligns with YOUR established definitions, archetypes, and patterns:
+
+### Relevant Knowledge from Your Canon
+- **Build Dreamweaver Business** (relevance: 0.59)
+  Title: Build Dreamweaver Business
+
+If Speaking to One Person
+ 👉 https://www.google.com/search?q=parasocial+voice+connection
+
+ - 🖼️ Why Images Are Chosen for Feeling, Not Accuracy
+ These deepen appreciation and loyalty.
+
+ (table)
+
+ ---
+
+ ## 🛠️ Making-of the Dreamweaving — Article Ideas
+
+ ### 🛠️ How a...
+- **Sacred Digital Dreamweaver** (relevance: 0.57)
+  Title: Sacred Digital Dreamweaver
+
+urreal landscapes.
+ - Sense the balance between chaos and harmony as fields interplay within the system.
+ 1. The Data Stream Rider
+ - Become an avatar surfing along light-speed data streams inside fiber optic cables. See packets of information as glowing orbs and h...
+- **Sacred Digital Dreamweaver** (relevance: 0.57)
+  Title: Sacred Digital Dreamweaver
+
+urreal landscapes.
+ - Sense the balance between chaos and harmony as fields interplay within the system.
+ 1. The Data Stream Rider
+ - Become an avatar surfing along light-speed data streams inside fiber optic cables. See packets of information as glowing orbs and h...
+- **Sacred Digital Dreamweaver** (relevance: 0.57)
+  Title: Sacred Digital Dreamweaver
+
+urreal landscapes.
+ - Sense the balance between chaos and harmony as fields interplay within the system.
+ 1. The Data Stream Rider
+ - Become an avatar surfing along light-speed data streams inside fiber optic cables. See packets of information as glowing orbs and h...
+- **Sacred Digital Dreamweaver** (relevance: 0.57)
+  Title: Sacred Digital Dreamweaver
+
+urreal landscapes.
+ - Sense the balance between chaos and harmony as fields interplay within the system.
+ 1. The Data Stream Rider
+ - Become an avatar surfing along light-speed data streams inside fiber optic cables. See packets of information as glowing orbs and h...
+
+### Related Mythology/Symbols
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+- “Notice any symbol that seems to carry Christ’s peace, and stay with it.”
+ 1. Offer “translation layers” for mult...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+- “Notice any symbol that seems to carry Christ’s peace, and stay with it.”
+ 1. Offer “translation layers” for mult...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+types and previously unintegrated shadow material.
+ - Purposeful Choice Points: Include moments where participants ...
+
+### Binaural/Frequency Guidance
+- Title: Build Dreamweaver Business
+
+e+entrainment+psychology
+
+ - The state must already be possible
+ - Beats as stabilizers, not drivers
+ - Cooperation with the nervous system
+ ---
+
+ ### 🕰️ Why Lower F...
+- Title: Sacred Digital Dreamweaver
+
+equency (e.g., 200 Hz in one ear and 210 Hz in the other).
+ - Assign each tone to left and right channels:
+ - Pan the 200 Hz tone to the left channel.
+ - Pan the 210...
+---
+
+**CRITICAL REQUIREMENTS:**
+1. Match the Section Timing above within ±10%; expand MAIN JOURNEY and INTEGRATION first if you need more time.
+2. Keep total length within 2193-2680 words to land near 30 minutes. If you are short, add sensory detail and deepen the MAIN JOURNEY; if long, trim gently.
+3. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
+4. Use <break time="Xs"/> tags liberally for hypnotic pacing, favoring slightly longer pauses: 2-3s for normal beats, 3-5s for deeper drops, 1s for countdown ticks
+5. Include rich sensory language engaging all 5 senses
+6. Embed hypnotic suggestions naturally throughout
+7. Include 3-5 post-hypnotic anchors in the closing
+
+**SFX MARKERS (REQUIRED):**
+- Embed natural language SFX cues using [SFX: ...] (or [[SFX:...]]). Keep each marker concise (<140 chars) and place it exactly where the sound should trigger.
+- Provide at least 5 markers covering the journey arc: opening/entry tone, induction ambience, deepening texture, main journey accent(s), and integration/return chime.
+- Markers must describe sound character and duration (e.g., "Deep bronze bell, warm, 3s decay"), live on their own line, and avoid SSML tags inside the marker.
+- Keep markers within the <speak> body; they'll be stripped for voice synthesis but used to render the SFX track.
+
+**OUTPUT FORMAT:**
+Output ONLY the SSML script, starting with <?xml version="1.0" encoding="UTF-8"?>
+Do NOT include any explanation or commentary before or after the SSML.

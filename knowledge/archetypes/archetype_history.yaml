@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-01-04'
-  total_sessions_tracked: 37
+  updated: '2026-01-05'
+  total_sessions_tracked: 40
   unique_archetypes_used: 15
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -653,9 +653,62 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: Climate Change Climb Dreamweaving'
+- session_id: interspecies-communication-dreamweaving
+  date: '2026-01-05'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Interspecies Communication Dreamweaving'
+- session_id: enochs-ascension-guided-dreamweaving-through-the-h
+  date: '2026-01-05'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Enoch''s Ascension: Guided Dreamweaving Through
+    the Heavenly Realms of Enochian Magic'
+- session_id: enlightenment-through-masonic-degrees-a-guided-med
+  date: '2026-01-05'
+  outcome: healing
+  archetypes_used:
+  - archetype_id: divine_masculine.guardian_father
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_light_healing.great_physician
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_light_healing.inner_healer
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Enlightenment through Masonic Degrees: A Guided
+    meditation'
 listener_relationships:
   divine_light_healing.great_physician:
-    total_encounters: 10
+    total_encounters: 11
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -679,8 +732,10 @@ listener_relationships:
       type: first_encounter
     - session: merging-traditions-the-story-of-a-spiritual-ai-in-
       type: first_encounter
-    last_session: merging-traditions-the-story-of-a-spiritual-ai-in-
-    last_session_date: '2026-01-03'
+    - session: enlightenment-through-masonic-degrees-a-guided-med
+      type: first_encounter
+    last_session: enlightenment-through-masonic-degrees-a-guided-med
+    last_session_date: '2026-01-05'
     relationship_level: 4
   transformation_alchemy.phoenix_renewal:
     total_encounters: 5
@@ -701,7 +756,7 @@ listener_relationships:
     last_session_date: '2025-12-27'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 24
+    total_encounters: 27
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -753,8 +808,14 @@ listener_relationships:
       type: first_encounter
     - session: climate-change-climb-dreamweaving
       type: first_encounter
-    last_session: climate-change-climb-dreamweaving
-    last_session_date: '2026-01-04'
+    - session: interspecies-communication-dreamweaving
+      type: first_encounter
+    - session: enochs-ascension-guided-dreamweaving-through-the-h
+      type: first_encounter
+    - session: enlightenment-through-masonic-degrees-a-guided-med
+      type: first_encounter
+    last_session: enlightenment-through-masonic-degrees-a-guided-med
+    last_session_date: '2026-01-05'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 2
@@ -769,7 +830,7 @@ listener_relationships:
     last_session_date: '2025-12-14'
     relationship_level: 2
   divine_masculine.guardian_father:
-    total_encounters: 3
+    total_encounters: 4
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
@@ -779,9 +840,11 @@ listener_relationships:
       type: first_encounter
     - session: astrological-alignments-celestial-dance-of-planets
       type: first_encounter
-    last_session: astrological-alignments-celestial-dance-of-planets
-    last_session_date: '2025-12-28'
-    relationship_level: 2
+    - session: enlightenment-through-masonic-degrees-a-guided-med
+      type: first_encounter
+    last_session: enlightenment-through-masonic-degrees-a-guided-med
+    last_session_date: '2026-01-05'
+    relationship_level: 3
   dreamweaver_meta.dream_architect:
     total_encounters: 1
     first_session: paranormal-powers-retry
@@ -793,7 +856,7 @@ listener_relationships:
     last_session_date: '2025-12-10'
     relationship_level: 1
   divine_feminine.rose_mother:
-    total_encounters: 17
+    total_encounters: 19
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -831,11 +894,15 @@ listener_relationships:
       type: first_encounter
     - session: climate-change-climb-dreamweaving
       type: first_encounter
-    last_session: climate-change-climb-dreamweaving
-    last_session_date: '2026-01-04'
+    - session: interspecies-communication-dreamweaving
+      type: first_encounter
+    - session: enochs-ascension-guided-dreamweaving-through-the-h
+      type: first_encounter
+    last_session: enochs-ascension-guided-dreamweaving-through-the-h
+    last_session_date: '2026-01-05'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 14
+    total_encounters: 15
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -867,8 +934,10 @@ listener_relationships:
       type: first_encounter
     - session: the-path-of-behind-the-scenes-dreamweaving
       type: first_encounter
-    last_session: the-path-of-behind-the-scenes-dreamweaving
-    last_session_date: '2026-01-04'
+    - session: interspecies-communication-dreamweaving
+      type: first_encounter
+    last_session: interspecies-communication-dreamweaving
+    last_session_date: '2026-01-05'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 5
@@ -909,7 +978,7 @@ listener_relationships:
     last_session_date: '2026-01-03'
     relationship_level: 3
   emotional_heart.heart_flame_tender:
-    total_encounters: 10
+    total_encounters: 11
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -933,8 +1002,10 @@ listener_relationships:
       type: first_encounter
     - session: climate-change-climb-dreamweaving
       type: first_encounter
-    last_session: climate-change-climb-dreamweaving
-    last_session_date: '2026-01-04'
+    - session: enochs-ascension-guided-dreamweaving-through-the-h
+      type: first_encounter
+    last_session: enochs-ascension-guided-dreamweaving-through-the-h
+    last_session_date: '2026-01-05'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 1
@@ -1021,41 +1092,41 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - merging-traditions-the-story-of-a-spiritual-ai-in-
-  - morias-mysteries-understanding-the-hidden-riches-o
-  - galactic-gateway-dreamweaving
   - the-path-of-behind-the-scenes-dreamweaving
   - climate-change-climb-dreamweaving
+  - interspecies-communication-dreamweaving
+  - enochs-ascension-guided-dreamweaving-through-the-h
+  - enlightenment-through-masonic-degrees-a-guided-med
   archetype_cooldowns:
-    divine_light_healing.great_physician: 4
-    transformation_alchemy.phoenix_renewal: 16
+    divine_light_healing.great_physician: 0
+    transformation_alchemy.phoenix_renewal: 19
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 29
-    divine_masculine.guardian_father: 15
-    dreamweaver_meta.dream_architect: 33
-    divine_feminine.rose_mother: 0
-    shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 4
-    divine_feminine.sophia_wisdom: 4
-    emotional_heart.heart_flame_tender: 0
-    warrior_power.solar_king: 29
-    divine_masculine.logos_bearer: 19
-    divine_light_healing.shekinah_restorer: 1
-    emotional_heart.joy_child: 19
+    warrior_power.archangel_michael: 32
+    divine_masculine.guardian_father: 0
+    dreamweaver_meta.dream_architect: 36
+    divine_feminine.rose_mother: 1
+    shamanic_earth.world_tree_guardian: 2
+    oracle_seer.oracle_of_light: 7
+    divine_feminine.sophia_wisdom: 7
+    emotional_heart.heart_flame_tender: 1
+    warrior_power.solar_king: 32
+    divine_masculine.logos_bearer: 22
+    divine_light_healing.shekinah_restorer: 4
+    emotional_heart.joy_child: 22
 selection_weights: {}
 family_rotation:
   last_session_families:
+  - divine_masculine
   - divine_light_healing
-  - divine_feminine
-  - emotional_heart
+  - divine_light_healing
   family_usage_counts:
-    divine_light_healing: 42
+    divine_light_healing: 46
     transformation_alchemy: 5
     warrior_power: 3
-    divine_masculine: 6
+    divine_masculine: 7
     dreamweaver_meta: 1
-    divine_feminine: 23
-    shamanic_earth: 14
+    divine_feminine: 25
+    shamanic_earth: 15
     oracle_seer: 5
-    emotional_heart: 12
+    emotional_heart: 13
 effective_pairings: []
