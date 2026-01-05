@@ -46,7 +46,7 @@ export default function WhatAreTheTechniquesForInducingLucidDreamsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are the techniques for inducing lucid dreams?"]
+              Common techniques include dream journaling, reality checks, MILD (intention + rehearsal), WBTB (brief wake period), and WILD (maintain awareness into sleep). Mindfulness and good sleep habits support all of them.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreTheTechniquesForInducingLucidDreamsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Technique matters because lucidity is partly trainable: repetition builds habits of noticing, which leads to more “aha, I’m dreaming” moments. Good recall results in better feedback loops—you can see what worked and refine it. A methodical approach also protects sleep by preventing all-night experimentation that leads to fatigue.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreTheTechniquesForInducingLucidDreamsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              What works varies: some people respond best to intention-based methods, while others do better with schedule-based approaches like WBTB. If any method fragments sleep, the tradeoff may not be worth it—lucidity is most beneficial when it doesn’t degrade recovery.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function WhatIsSleepInertiaGrogginessAfterWakingPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is sleep inertia (grogginess after waking)?"]
+              Sleep inertia is the period of grogginess and reduced performance right after waking, when the brain hasn’t fully transitioned to alert wakefulness. It can last minutes to an hour, especially after deep sleep.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsSleepInertiaGrogginessAfterWakingPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Sleep inertia matters because it can make you feel awake while your decision-making and reaction time are still impaired. Waking from slow-wave sleep results in sluggish brain activation, which leads to mistakes if you drive, make calls, or do safety-critical tasks immediately. Planning a buffer after waking reduces risk and stress.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsSleepInertiaGrogginessAfterWakingPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              It tends to be worse after naps longer than ~30 minutes or when you wake early in the night’s deep-sleep-heavy portion. Bright light, movement, a wash of cold water, and timed caffeine can help, but they work best when you can take a few minutes to ramp up.
             </p>
           </section>
 

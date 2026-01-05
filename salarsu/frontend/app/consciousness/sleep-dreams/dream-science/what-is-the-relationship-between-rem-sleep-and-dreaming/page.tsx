@@ -46,7 +46,7 @@ export default function WhatIsTheRelationshipBetweenRemSleepAndDreamingPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the relationship between REM sleep and dreaming?"]
+              REM sleep is strongly linked to vivid, story-like dreaming because the brain is highly active while muscles are inhibited. Dreams can also occur in non-REM sleep, but they’re often less vivid and emotional.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheRelationshipBetweenRemSleepAndDreamingPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because REM is a distinct brain state, not “lighter sleep,” and it results in a characteristic mix of vivid imagery, emotion, and reduced reality testing. REM atonia prevents dream-enactment, which leads to safety most nights. Understanding REM also clarifies why REM suppression or rebound can change mood and dream intensity.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheRelationshipBetweenRemSleepAndDreamingPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some people report rich non-REM dreams, especially later in the night, so REM isn’t the only “dream stage.” If someone physically acts out dreams, that may point to REM sleep behavior disorder, which is different from ordinary vivid dreaming.
             </p>
           </section>
 

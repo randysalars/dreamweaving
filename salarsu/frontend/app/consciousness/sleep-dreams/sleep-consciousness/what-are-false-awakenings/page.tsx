@@ -46,7 +46,7 @@ export default function WhatAreFalseAwakeningsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are false awakenings?"]
+              False awakenings are dreams in which you believe you’ve woken up—often doing ordinary routines—while you’re still asleep. They commonly occur around REM sleep and can repeat in layered “wake-up” sequences.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreFalseAwakeningsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              False awakenings matter because they show how convincingly the brain can simulate reality when external input is muted. That realism can lead to confusion, anxiety, and disrupted sleep if you keep trying to “wake up” inside the dream. Recognizing the pattern can help you stay calm, and for some people it even becomes a doorway into lucid dreaming.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreFalseAwakeningsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              They’re more likely during fragmented sleep, stress, and irregular schedules, when REM periods and awakenings cluster. False awakenings can overlap with sleep paralysis, but paralysis includes being awake and unable to move, not just dreaming of waking.
             </p>
           </section>
 

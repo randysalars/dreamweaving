@@ -46,7 +46,7 @@ export default function HowDoesSleepAffectImmuneFunctionPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does sleep affect immune function?"]
+              Sleep supports immune function by coordinating inflammation, cytokines, and antibody responses. Short or fragmented sleep can increase susceptibility to infections and reduce vaccine responses while promoting chronic, low-grade inflammation.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesSleepAffectImmuneFunctionPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              The immune system relies on timing and coordination, and sleep is one of its main scheduling signals. When sleep is reduced, stress hormones and inflammatory pathways shift, which leads to weaker defense and slower recovery. Over the long term, repeated poor sleep can contribute to systemic inflammation that affects energy, mood, and cardiometabolic health.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesSleepAffectImmuneFunctionPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              When you’re sick, increased sleepiness can be adaptive because the body diverts resources to recovery. Still, “more sleep” isn’t always better if it reflects poor quality sleep (like untreated apnea), so consistency and restorative sleep matter more than raw hours alone.
             </p>
           </section>
 

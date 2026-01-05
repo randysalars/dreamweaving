@@ -46,7 +46,7 @@ export default function WhatIsTheRelationshipBetweenSleepAndLearningPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the relationship between sleep and learning?"]
+              Sleep makes learning stick: it consolidates what you practiced, extracts patterns, and restores attention for the next day. Without enough sleep, both encoding new information and retaining it get worse.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheRelationshipBetweenSleepAndLearningPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Learning requires two phases: taking in information and then stabilizing it, and sleep is a primary driver of the second phase. When sleep is short, the brain’s ability to focus and encode results in weaker initial traces, and consolidation has less time to run. Protecting sleep therefore leads to better grades, skill development, and long-term mastery.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheRelationshipBetweenSleepAndLearningPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Naps can partially boost learning, especially after intense study, but they don’t always substitute for consistent night sleep. Different materials may rely on different stages (deep sleep vs REM), so irregular sleep that disrupts architecture can undermine progress even if total hours seem adequate.
             </p>
           </section>
 

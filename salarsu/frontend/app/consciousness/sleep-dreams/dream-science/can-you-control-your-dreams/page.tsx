@@ -46,7 +46,7 @@ export default function CanYouControlYourDreamsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can you control your dreams?"]
+              Partially, yes. People can influence dreams through intention, rehearsal, and lucid dreaming, but control is usually limited and fluctuates. Many lucid dreams involve steering the plot rather than total command.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanYouControlYourDreamsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Dream control matters because it highlights the difference between awareness and influence: noticing you’re dreaming can lead to better emotion regulation even if the scene doesn’t instantly change. Practicing intention and attention results in more frequent lucidity for some people, which can be used for rehearsal, creativity, or reducing nightmare distress. It also leads to clearer expectations, so you don’t mistake “not controlling it” for failure.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanYouControlYourDreamsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Trying too hard can wake you up or destabilize the dream, so gentle curiosity often works better than force. If you’re sleep deprived or stressed, you may have more vivid dreams but less stable control because sleep becomes more fragmented.
             </p>
           </section>
 

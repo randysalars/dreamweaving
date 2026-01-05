@@ -46,7 +46,7 @@ export default function WhatIsDreamJournalingAndHowDoIStartPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is dream journaling and how do I start?"]
+              Dream journaling is recording your dreams immediately after waking. Start by keeping a notebook by your bed, writing key images and emotions first, then adding details, dates, and any possible waking-life triggers.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsDreamJournalingAndHowDoIStartPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Starting matters because dream memory fades fast; capturing even fragments results in better recall over time. Journaling leads to pattern recognition—recurring themes, people, locations—which supports dream interpretation and lucid dreaming. It also creates a gentle “attention training” habit that can improve how you relate to your inner life.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsDreamJournalingAndHowDoIStartPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If detailed writing wakes you up too much, switch to quick bullet points and expand later. If journaling intensifies distressing dreams, it may help to focus on soothing routines and seek guidance rather than pushing through.
             </p>
           </section>
 

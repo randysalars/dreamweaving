@@ -46,7 +46,7 @@ export default function IsSleepAnAlteredStateOfConsciousnessPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Is sleep an altered state of consciousness?"]
+              Yes. Sleep shifts consciousness away from sustained external awareness toward changing internal states—from minimal experience in deep sleep to vivid dreaming—driven by different brain rhythms and neuromodulators than wakefulness.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function IsSleepAnAlteredStateOfConsciousnessPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Sleep isn’t just “turning off” because the brain remains active, but it reconfigures how information is processed. Changing rhythms and neurotransmitters reduce sensory gating and executive control, which leads to dreams, memory consolidation, and shifts in emotion regulation. Understanding sleep as an altered state clarifies why sleep loss changes perception, judgment, and wellbeing.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function IsSleepAnAlteredStateOfConsciousnessPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              “Altered” varies by stage: deep non-REM usually contains little reportable experience, while REM can be intensely vivid. Brief awakenings, lucid dreams, and sleep disorders can blur boundaries, and sedation or anesthesia aren’t the same as natural sleep.
             </p>
           </section>
 

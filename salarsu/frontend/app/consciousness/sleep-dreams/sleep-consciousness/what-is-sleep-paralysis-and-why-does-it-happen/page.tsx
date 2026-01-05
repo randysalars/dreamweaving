@@ -46,7 +46,7 @@ export default function WhatIsSleepParalysisAndWhyDoesItHappenPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is sleep paralysis and why does it happen?"]
+              Sleep paralysis is a brief episode where you’re conscious but can’t move, typically while falling asleep or waking. It happens when REM muscle atonia persists into wakefulness, sometimes with vivid hallucinations.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsSleepParalysisAndWhyDoesItHappenPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Sleep paralysis can feel terrifying because the brain’s threat system is active while the body remains “locked” in REM immobility. That mismatch leads to panic, chest pressure sensations, and intense interpretations of the experience. Understanding the mechanism reduces fear, which often shortens episodes and prevents a feedback loop of anxiety-driven sleep disruption.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsSleepParalysisAndWhyDoesItHappenPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Episodes are more common with sleep deprivation, irregular schedules, sleeping on your back, and high stress. If paralysis is frequent, includes sudden daytime sleep attacks, or severely disrupts life, it can be worth discussing with a clinician to rule out narcolepsy or other sleep disorders.
             </p>
           </section>
 

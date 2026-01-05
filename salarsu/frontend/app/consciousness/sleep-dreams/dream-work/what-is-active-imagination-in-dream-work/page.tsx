@@ -46,7 +46,7 @@ export default function WhatIsActiveImaginationInDreamWorkPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is active imagination in dream work?"]
+              Active imagination is a technique (often associated with Jung) where you revisit a dream image while awake and dialogue with it through writing, visualization, or art. The goal is to explore meaning and emotion, not to force a single interpretation.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsActiveImaginationInDreamWorkPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because dream images carry emotional charge, and engaging them consciously can lead to integration rather than avoidance. Giving the image a “voice” results in new perspectives and can loosen stuck narratives. Used carefully, it leads to insight that’s actionable in waking life—values, boundaries, and choices.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsActiveImaginationInDreamWorkPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If imagery becomes overwhelming or destabilizing, it’s a sign to stop, ground, and consider doing the work with a therapist. Active imagination is exploration, not proof—keep interpretations flexible and anchored to real-life behavior and feelings.
             </p>
           </section>
 

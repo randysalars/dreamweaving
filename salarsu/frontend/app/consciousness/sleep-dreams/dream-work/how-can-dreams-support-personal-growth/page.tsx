@@ -46,7 +46,7 @@ export default function HowCanDreamsSupportPersonalGrowthPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How can dreams support personal growth?"]
+              Dreams can support growth by revealing emotional themes, rehearsing fears, and highlighting unmet needs or conflicts. Reflecting on them can build self-awareness and compassion, especially when you track patterns over time.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowCanDreamsSupportPersonalGrowthPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Growth happens because attention changes what you learn from experience. Dreams often amplify emotion and symbolism, which results in a clearer signal about what feels unsafe, desired, or unresolved. Working with those themes can lead to better choices, healthier boundaries, and reduced reactivity in waking life.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowCanDreamsSupportPersonalGrowthPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Dreams support growth best when paired with action—reflection alone won’t change patterns. If dream work becomes obsessive or increases anxiety, it can be helpful to step back and focus on sleep quality and grounding practices.
             </p>
           </section>
 

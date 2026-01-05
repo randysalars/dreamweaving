@@ -46,7 +46,7 @@ export default function WhatIsDreamJournalingAndWhyIsItImportantPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is dream journaling and why is it important?"]
+              Dream journaling is writing down dreams as soon as you wake—images, emotions, and key scenes. It’s important because it improves recall, reveals recurring themes, and increases lucid dreaming by training attention to dream patterns.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsDreamJournalingAndWhyIsItImportantPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Journaling matters because dreams fade quickly; capturing them results in better memory traces and more usable reflection later. Over time it leads to pattern recognition—common settings, emotions, or triggers—which can help with self-understanding and nightmare work. It also supports lucidity because remembering dreams is the prerequisite for noticing you were lucid at all.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsDreamJournalingAndWhyIsItImportantPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If journaling becomes obsessive or keeps you awake, it can reduce sleep quality; short notes and a return to sleep may be better. For trauma-related nightmares, journaling can be intense, so a gentler approach or professional guidance can help.
             </p>
           </section>
 

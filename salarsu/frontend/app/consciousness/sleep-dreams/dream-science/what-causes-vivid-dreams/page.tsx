@@ -46,7 +46,7 @@ export default function WhatCausesVividDreamsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What causes vivid dreams?"]
+              Vivid dreams are often driven by REM-rich sleep, frequent awakenings (which improve recall), and heightened emotion. Stress, sleep deprivation with REM rebound, illness/fever, and some medications or substances can intensify dream imagery.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatCausesVividDreamsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Vivid dreaming matters because it’s often a signal about sleep architecture and arousal, not just “weird content.” When you wake more often, you remember more dreams, which results in the impression that you dreamed “all night.” Recognizing common triggers leads to practical adjustments—sleep schedule consistency, stress reduction, and medication review when appropriate.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatCausesVividDreamsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Vivid dreams aren’t always a problem—many people enjoy them—but nightmares that cause distress or avoidance can deserve targeted support. If vivid dreams began abruptly with a new medication, supplement, or substance change, the safest move is often to discuss it with a clinician.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function WhatAreCommonDreamSymbolsAndTheirMeaningsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are common dream symbols and their meanings?"]
+              Common dream themes include falling, being chased, teeth issues, losing a phone, or showing up unprepared. Their “meaning” usually depends on your emotions and context—symbols often represent stress, change, vulnerability, or desire rather than literal events.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreCommonDreamSymbolsAndTheirMeaningsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because people often search for fixed dream dictionaries, which results in overconfident interpretations and unnecessary fear. A healthier approach uses symbols as prompts for reflection, which leads to insight about what you’re processing emotionally. When you track recurring themes, you can connect them to real-life triggers and make changes.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreCommonDreamSymbolsAndTheirMeaningsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some imagery reflects immediate body sensations (temperature, pain, breathing) and may be less “symbolic.” Cultural background and personal experience also change meaning, so your associations should outrank generic lists.
             </p>
           </section>
 

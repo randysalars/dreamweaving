@@ -46,7 +46,7 @@ export default function WhatIsTheHypnopompicStateWakingFromSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the hypnopompic state (waking from sleep)?"]
+              The hypnopompic state is the transition from sleep to wake, when dreams can linger and perception may be distorted. It often includes grogginess, confusion, and vivid imagery as the brain reorients.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheHypnopompicStateWakingFromSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Waking isn’t instant because different brain systems “come online” at different speeds, which results in temporary disorientation and impaired judgment. Residual dream content can blend with real sensory input, leading to misperceptions or strong emotions. Understanding this helps normalize strange morning experiences and explains why critical decisions right after waking can be error-prone.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheHypnopompicStateWakingFromSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Hypnopompic effects are stronger when you wake from deep sleep or are sleep deprived, and they can be amplified by alcohol, sedatives, or shift work. If vivid hallucinations are frequent and distressing, it can be helpful to evaluate sleep quality and schedule consistency.
             </p>
           </section>
 

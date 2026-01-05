@@ -46,7 +46,7 @@ export default function WhyDoSomePeopleRememberDreamsBetterThanOthersPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Why do some people remember dreams better than others?"]
+              Dream recall varies due to sleep fragmentation (more brief awakenings), individual differences in attention and memory, and personality or interest in dreams. Stress, schedules, substances, and genetics can all shift recall.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhyDoSomePeopleRememberDreamsBetterThanOthersPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because “I never dream” usually means “I don’t remember,” which results in unnecessary worry. Recall depends on waking at the right time and paying attention to the memory trace, so habits like journaling lead to measurable changes. Understanding differences also prevents comparing yourself to others and encourages a focus on sleep quality first.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhyDoSomePeopleRememberDreamsBetterThanOthersPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              As sleep becomes more disrupted (stress, parenting, illness), people often report “more dreams” because awakenings increase recall. Conversely, some substances can reduce vivid dreaming or recall; changes in recall after starting/stopping them are common and don’t necessarily signal a deeper psychological shift.
             </p>
           </section>
 

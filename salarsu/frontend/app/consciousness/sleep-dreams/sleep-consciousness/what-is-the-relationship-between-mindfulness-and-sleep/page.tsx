@@ -46,7 +46,7 @@ export default function WhatIsTheRelationshipBetweenMindfulnessAndSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the relationship between mindfulness and sleep?"]
+              Mindfulness supports sleep by training attention away from rumination and toward present-moment sensations, lowering stress reactivity. Over time it can reduce insomnia symptoms by breaking the cycle of worry and hyperarousal.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheRelationshipBetweenMindfulnessAndSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Sleep is sensitive to how the nervous system handles threat and uncertainty, so chronic worry results in shallow, fragmented rest. Mindfulness reduces automatic reactivity, which leads to fewer spirals of “thinking about thinking” at night. That can improve sleep quality and also reshape daytime attention and emotion regulation.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheRelationshipBetweenMindfulnessAndSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Mindfulness isn’t a sedative—at first it can make you more aware of restlessness or discomfort. Benefits are usually gradual and depend on consistency, and severe insomnia may still require structured treatment alongside mindfulness practice.
             </p>
           </section>
 

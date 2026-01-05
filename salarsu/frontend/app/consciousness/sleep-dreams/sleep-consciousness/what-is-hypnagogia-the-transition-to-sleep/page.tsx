@@ -46,7 +46,7 @@ export default function WhatIsHypnagogiaTheTransitionToSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is hypnagogia (the transition to sleep)?"]
+              Hypnagogia is the in-between state as you fall asleep, when attention loosens and dreamlike imagery, sounds, or sensations can arise. It often includes drifting thoughts, brief hallucinations, and hypnic jerks.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsHypnagogiaTheTransitionToSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Hypnagogia matters because it reveals how consciousness changes gradually, not all at once. As sensory input is down-weighted and internal prediction increases, the brain can generate convincing perceptions that feel “real.” Recognizing this state helps explain sleep-onset anxiety, creative flashes, and why some people misinterpret normal sleep phenomena as paranormal or pathological.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsHypnagogiaTheTransitionToSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Hypnagogic experiences become more likely with sleep deprivation, irregular schedules, stress, and some medications. In narcolepsy they can be especially vivid, and they can overlap with sleep paralysis—so context and timing (falling asleep vs waking) matter.
             </p>
           </section>
 

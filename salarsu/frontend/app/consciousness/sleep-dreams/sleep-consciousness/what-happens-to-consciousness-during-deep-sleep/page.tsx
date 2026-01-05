@@ -46,7 +46,7 @@ export default function WhatHappensToConsciousnessDuringDeepSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What happens to consciousness during deep sleep?"]
+              During deep non-REM (slow-wave) sleep, conscious experience usually fades. The brain shows large, synchronized slow waves, reduced sensory processing, and weaker integration across regions that support vivid, reportable awareness.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatHappensToConsciousnessDuringDeepSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Deep sleep is a key recovery state because widespread synchronization allows restorative processes to dominate, including metabolic cleanup and memory stabilization. Reduced responsiveness means the brain protects itself from constant input, which leads to higher arousal thresholds and that “dead asleep” feeling. Understanding deep sleep also explains why waking from it can produce heavy grogginess.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatHappensToConsciousnessDuringDeepSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Not all deep sleep is blank—some people report brief, thought-like dreams in non-REM—and micro-awakenings can be misremembered as continuous awareness. Deep sleep also tends to decrease with age and can be disrupted by pain, alcohol, and untreated sleep disorders.
             </p>
           </section>
 

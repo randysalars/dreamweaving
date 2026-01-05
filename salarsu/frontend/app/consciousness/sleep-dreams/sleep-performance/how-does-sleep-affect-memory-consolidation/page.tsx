@@ -46,7 +46,7 @@ export default function HowDoesSleepAffectMemoryConsolidationPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does sleep affect memory consolidation?"]
+              Sleep consolidates memory by replaying and stabilizing new learning. Slow-wave sleep strengthens facts and integrates knowledge, while REM sleep supports emotional and procedural memories and links them into broader networks.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesSleepAffectMemoryConsolidationPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Learning doesn’t end when you stop studying because the brain continues processing new information offline. Replay and synaptic recalibration result in stronger recall, better pattern extraction, and more efficient skills. Protecting sleep therefore leads to better performance per hour of practice, not just more hours spent grinding.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesSleepAffectMemoryConsolidationPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Alcohol, late-night stress, and irregular schedules can reduce deep sleep or REM, weakening consolidation. Naps can help—especially after learning—but they may not fully replace a full night’s architecture when training is intense or sustained.
             </p>
           </section>
 

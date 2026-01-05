@@ -46,7 +46,7 @@ export default function WhatAreDreamsAndWhyDoWeDreamPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are dreams and why do we dream?"]
+              Dreams are immersive experiences the brain generates during sleep, especially REM. We likely dream because sleep reprocesses memories and emotions, tests predictions, and integrates learning—though no single theory explains all dreams.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreDreamsAndWhyDoWeDreamPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Dreaming matters because it shows the brain keeps building a world-model even when external input is reduced. That internal simulation results in emotional rehearsal, memory integration, and creative association, which can influence mood and problem solving after waking. Understanding dreaming also leads to better interpretation of vivid or frightening experiences without assuming something is “wrong.”
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreDreamsAndWhyDoWeDreamPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Not all dreams are meaningful narratives—many are fragmented and reflect random activation plus recent concerns. Dream intensity and recall change with sleep quality, stress, substances, and medications, so “more dreams” often means more awakenings or REM rebound, not necessarily deeper insight.
             </p>
           </section>
 

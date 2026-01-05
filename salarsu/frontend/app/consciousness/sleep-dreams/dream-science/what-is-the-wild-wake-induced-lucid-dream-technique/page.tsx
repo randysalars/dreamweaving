@@ -46,7 +46,7 @@ export default function WhatIsTheWildWakeInducedLucidDreamTechniquePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the WILD (Wake-Induced Lucid Dream) technique?"]
+              WILD is a lucid dreaming method where you keep awareness as your body falls asleep, entering a dream directly without “blacking out.” It usually involves deep relaxation, steady attention, and noticing hypnagogic imagery.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheWildWakeInducedLucidDreamTechniquePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              WILD matters because it demonstrates that awareness can persist across the sleep onset boundary, which leads to strong lucidity when it works. It can also result in more vivid transitions, making it a useful lens for understanding hypnagogia and sleep paralysis. Knowing what WILD is helps you practice safely and avoid interpreting normal sleep-onset sensations as danger.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheWildWakeInducedLucidDreamTechniquePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              WILD is harder when you’re overtired or anxious because the mind either races or crashes, and both disrupt the transition. It can increase the chance of sleep paralysis sensations for some people, so it’s often best practiced gently (or with guidance) and not when you’re already sleep deprived.
             </p>
           </section>
 

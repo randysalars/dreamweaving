@@ -46,7 +46,7 @@ export default function HowDoesSleepAffectAthleticPerformancePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does sleep affect athletic performance?"]
+              Adequate sleep improves reaction time, coordination, motivation, and recovery. It supports muscle repair and hormone regulation and reduces injury risk; even one short night can measurably degrade speed and accuracy.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesSleepAffectAthleticPerformancePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Athletic output depends on the nervous system as much as the muscles, and sleep loss results in poorer motor learning and slower decision-making. Sleep also supports tissue repair and immune balance, which leads to better training adaptation and fewer setbacks. Over time, consistent sleep becomes a competitive advantage because it compounds recovery and skill refinement.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesSleepAffectAthleticPerformancePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Different sports stress different systems: endurance, strength, and precision skills can be affected in different ways, and travel or early start times can add circadian disruption. Naps and sleep extension often help, but they can’t fully counteract chronic short sleep or overtraining.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function DoDreamsHaveMeaningPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do dreams have meaning?"]
+              Sometimes. Dreams often reflect current emotions, concerns, and memory fragments, so they can feel meaningful—but they don’t follow a universal symbolic code. “Meaning” is usually personal and contextual, not literal prediction.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoDreamsHaveMeaningPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because the way you frame dreams results in very different outcomes: curiosity can lead to insight, while rigid interpretations can create anxiety. Dreams blend memory, emotion, and imagination, which means they can surface what you’re processing even if the story is bizarre. A balanced view supports reflection without turning every image into fate.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoDreamsHaveMeaningPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some dreams are “noise” from stress, fever, alcohol withdrawal, or sleep disruption, and their content may be less interpretable. Repeating themes can be more informative than one-off images, and meaning tends to come from the feelings and associations you can actually connect to waking life.
             </p>
           </section>
 

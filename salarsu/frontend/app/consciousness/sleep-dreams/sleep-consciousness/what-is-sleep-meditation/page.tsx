@@ -46,7 +46,7 @@ export default function WhatIsSleepMeditationPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is sleep meditation?"]
+              Sleep meditation is a guided or self-led practice near bedtime that uses breath, body scanning, and gentle attention to reduce arousal and ease the transition into sleep—without trying to force sleep to happen.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsSleepMeditationPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Insomnia often persists because the bed becomes associated with effort and worry, which leads to hyperarousal right when you want to unwind. Sleep meditation gives the mind a simple, non-judgmental task, which reduces rumination and softens the stress response. That shift can make sleep more likely and improve how restorative it feels.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsSleepMeditationPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If the practice becomes another “performance test” (“I must fall asleep now”), it can backfire by increasing pressure. It’s also not a replacement for treating medical sleep disorders, but it can pair well with good sleep hygiene and cognitive-behavioral approaches.
             </p>
           </section>
 

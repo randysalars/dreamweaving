@@ -46,7 +46,7 @@ export default function DoRecurringDreamsMeanSomethingPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do recurring dreams mean something?"]
+              Often, yes. Recurring dreams commonly repeat an emotional theme—stress, avoidance, loss of control—even if the storyline changes. They can reflect unresolved concerns, repeated triggers, or habits of thinking your brain keeps rehearsing.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoRecurringDreamsMeanSomethingPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Recurrence matters because repetition results in a clearer signal than one random dream. When a theme keeps returning, it often means your brain is repeatedly processing a stressor, fear, or unmet need. Noticing the pattern can lead to practical action—boundary changes, problem solving, or emotion work—which reduces the dream’s intensity over time.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoRecurringDreamsMeanSomethingPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some recurring dreams are driven by ongoing sleep disruption, trauma, or medication effects, not just “symbolic meaning.” If recurring nightmares cause significant distress or daytime impairment, evidence-based approaches like imagery rehearsal therapy can help.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function CanYouExperienceAwarenessDuringDreamlessSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can you experience awareness during dreamless sleep?"]
+              Possibly, but it’s uncommon and hard to verify. Some people report a minimal, contentless awareness during deep sleep, yet most dreamless sleep is experienced as unconscious and only noticed after waking.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanYouExperienceAwarenessDuringDreamlessSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This question matters because it tests what “consciousness” requires—content, memory, or just bare awareness. Deep sleep reduces global integration and sensory processing, which results in few reportable experiences for most people. When rare reports occur, they motivate research into how attention training, arousals, and memory interact with sleep states.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanYouExperienceAwarenessDuringDreamlessSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some “awareness in dreamless sleep” may actually be brief awakenings or very light sleep that’s misclassified subjectively. Meditators sometimes report more stable awareness, but without objective markers it’s difficult to separate experience from recall and interpretation.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function HowDoIWorkWithNightmaresTherapeuticallyPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How do I work with nightmares therapeutically?"]
+              Use calming grounding after waking, then work with the nightmare when you’re safe and alert. A common approach is imagery rehearsal: rewrite the ending in a less threatening way and practice it daily to retrain the brain’s threat script.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoIWorkWithNightmaresTherapeuticallyPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Nightmares matter because they activate threat circuits and result in sleep avoidance, which leads to worse sleep and more nightmares—a reinforcing loop. Therapeutic work aims to change the brain’s prediction that “danger is inevitable,” so repeated rehearsal results in reduced intensity and frequency. This can improve both sleep quality and daytime anxiety.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoIWorkWithNightmaresTherapeuticallyPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If nightmares are linked to trauma, severe anxiety, or PTSD symptoms, working with a qualified clinician is often safer and more effective than going it alone. Substance withdrawal, fever, and some medications can also spike nightmares, so addressing root causes may be necessary.
             </p>
           </section>
 

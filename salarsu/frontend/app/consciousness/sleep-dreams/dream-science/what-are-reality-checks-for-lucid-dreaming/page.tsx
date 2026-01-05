@@ -46,7 +46,7 @@ export default function WhatAreRealityChecksForLucidDreamingPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are reality checks for lucid dreaming?"]
+              Reality checks are small tests you do while awake to confirm you’re not dreaming—then repeat in dreams. Examples include reading text twice, pinching your nose and trying to breathe, or checking a clock.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreRealityChecksForLucidDreamingPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Reality checks work because they build a habit of questioning your state, which leads to lucidity when dream logic gets weird. The “critical reflection” moment results in recognition, and recognition can unlock choice—even simple choices like calming down in a nightmare. They also provide a practical, beginner-friendly bridge between daytime attention and nighttime awareness.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreRealityChecksForLucidDreamingPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Checks work best when paired with genuine curiosity, not rote repetition; otherwise the habit doesn’t transfer into dreams. Some checks fail occasionally even in dreams, so combining multiple cues (and noticing dream signs) is more reliable than any single test.
             </p>
           </section>
 

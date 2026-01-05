@@ -46,7 +46,7 @@ export default function HowDoesSleepDeprivationAffectReactionTimePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does sleep deprivation affect reaction time?"]
+              Sleep deprivation slows reaction time by reducing alertness and impairing sustained attention, causing lapses called microsleeps. Your responses become inconsistent and delayed even if you feel “okay,” especially on monotonous tasks.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesSleepDeprivationAffectReactionTimePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Reaction time depends on stable attention networks, and sleep loss results in moment-to-moment failures of signal processing. Those lapses lead directly to more errors, missed cues, and accidents—especially while driving, operating equipment, or competing in sports. Because impairment can fluctuate, people may overestimate their capability based on short bursts of effort.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesSleepDeprivationAffectReactionTimePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Caffeine can temporarily boost alertness, but it doesn’t eliminate microsleeps or restore fine motor control in the way real sleep does. Circadian timing matters too—reaction time tends to be worst during the biological night, even with the same amount of sleep loss.
             </p>
           </section>
 

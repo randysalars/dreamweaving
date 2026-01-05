@@ -46,7 +46,7 @@ export default function WhatIsLucidDreamingPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is lucid dreaming?"]
+              Lucid dreaming is when you realize you’re dreaming while the dream is happening. That awareness can range from simple recognition to deliberately influencing the dream while your body remains asleep.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsLucidDreamingPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Lucid dreaming matters because it shows that self-awareness and metacognition can reappear during sleep, not only during waking life. That shift results in a unique window for exploring fear, rehearsal, and creativity with reduced real-world consequences. It also leads to clearer conversations about what dreams are (internally generated experiences) and how sleep states can blend.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsLucidDreamingPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Lucidity is often unstable—excitement can wake you up, and control varies widely from person to person. Techniques that increase lucidity may also increase awakenings or sleep fragmentation, so prioritizing overall sleep quality matters. If dreams feel distressing or worsen anxiety, it can help to focus on grounding and sleep health first.
             </p>
           </section>
 

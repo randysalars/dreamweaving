@@ -46,7 +46,7 @@ export default function HowCanILearnToLucidDreamPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How can I learn to lucid dream?"]
+              Improve dream recall, keep a dream journal, and practice reality checks during the day. Techniques like MILD, WBTB (wake-back-to-bed), and gentle mindfulness can increase lucidity while protecting sleep quality.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowCanILearnToLucidDreamPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Learning lucidity matters because it trains prospective memory—remembering to remember—which leads to recognizing dream signs in the moment. Journaling and intention increase recall, which results in more opportunities to notice patterns and become lucid. A skill-based approach keeps it grounded and reduces the chance that “trying to lucid dream” turns into sleep-disrupting pressure.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowCanILearnToLucidDreamPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some methods (especially WILD-style practice) can increase awakenings or sleep paralysis sensations in susceptible people. If you notice worse sleep, anxiety, or daytime fatigue, dial back and prioritize consistent bed/wake times before pushing technique intensity.
             </p>
           </section>
 

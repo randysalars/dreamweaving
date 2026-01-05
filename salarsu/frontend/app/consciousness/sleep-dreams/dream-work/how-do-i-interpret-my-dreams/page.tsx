@@ -46,7 +46,7 @@ export default function HowDoIInterpretMyDreamsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How do I interpret my dreams?"]
+              Start with the emotions and major themes, then connect them to real-life situations, relationships, and stressors. Treat dream images as metaphors or associations, not fixed symbols, and look for patterns over time.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoIInterpretMyDreamsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Interpretation matters because dreams blend memory and emotion, which can surface concerns you don’t articulate during the day. A grounded method results in insight without superstition: you learn what your mind is rehearsing, avoiding, or integrating. Over time, reflecting on themes leads to better emotional awareness and can reduce the power of recurring nightmares.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoIInterpretMyDreamsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some dreams are simply stress or sleep-disruption “noise,” so forcing a deep meaning can backfire. If dreams are trauma-related or highly distressing, structured approaches (like imagery rehearsal) or professional support can be more effective than solo interpretation.
             </p>
           </section>
 

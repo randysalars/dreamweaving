@@ -46,7 +46,7 @@ export default function WhatAreArchetypesInDreamsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are archetypes in dreams?"]
+              Archetypes are recurring character and story patterns—like the hero, shadow, mentor, or trickster—that appear across many cultures and personal dreams. They’re a lens for interpretation, not a fixed dictionary of meanings.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreArchetypesInDreamsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Archetypes matter because they provide a structured way to notice themes, which leads to clearer reflection than chasing random details. Recognizing roles and dynamics results in questions like “What part of me is being protected, challenged, or ignored?” That can lead to insight about identity, relationships, and change.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreArchetypesInDreamsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Cultural context changes symbolism, so an archetype’s expression varies—your personal history matters more than a universal template. If archetype talk feels too abstract, focusing on concrete emotions and life situations can be more useful.
             </p>
           </section>
 

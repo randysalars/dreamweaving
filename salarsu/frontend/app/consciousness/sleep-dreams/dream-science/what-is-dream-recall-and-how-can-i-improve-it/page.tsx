@@ -46,7 +46,7 @@ export default function WhatIsDreamRecallAndHowCanIImproveItPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is dream recall and how can I improve it?"]
+              Dream recall is your ability to remember dreams after waking. You can improve it by getting consistent sleep, setting an intention to remember, avoiding abrupt alarms when possible, and writing quick notes immediately on waking.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsDreamRecallAndHowCanIImproveItPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Recall matters because without it, dream work and lucid practice have nothing to build on. Remembering is more likely when you wake during or near dreaming, which results in stronger access to the content before it dissolves. Improving recall leads to better pattern tracking, emotional processing, and a clearer view of how sleep quality affects inner experience.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsDreamRecallAndHowCanIImproveItPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some “better recall” simply reflects more awakenings, which can mean worse sleep. Alcohol, cannabis, and some medications can suppress or fragment REM and change recall, so shifts in recall may reflect physiology and schedule more than willpower.
             </p>
           </section>
 

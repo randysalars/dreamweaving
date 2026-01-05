@@ -46,7 +46,7 @@ export default function WhatAreTheEffectsOfSleepDeprivationPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are the effects of sleep deprivation?"]
+              Sleep deprivation impairs attention, memory, and emotional control, slows reaction time, and increases accidents. Over time it disrupts hormones, metabolism, and immunity, raising risk for mood disorders and cardiometabolic disease.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreTheEffectsOfSleepDeprivationPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Sleep supports stable brain networks, so losing it results in more “lapses” where attention drops out and errors rise. It also alters stress chemistry and inflammatory signaling, which leads to mood instability and poorer recovery. Because people often underestimate impairment, sleep deprivation can silently increase risk at work, on the road, and in relationships.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreTheEffectsOfSleepDeprivationPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              A single short night is usually recoverable, but chronic restriction accumulates and can take days to normalize. Stimulants can mask sleepiness without restoring performance, and underlying conditions (like sleep apnea) can mimic deprivation even with “enough” time in bed.
             </p>
           </section>
 

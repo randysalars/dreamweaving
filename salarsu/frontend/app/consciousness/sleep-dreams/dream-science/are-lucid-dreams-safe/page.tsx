@@ -46,7 +46,7 @@ export default function AreLucidDreamsSafePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Are lucid dreams safe?"]
+              For most people, lucid dreaming is safe and can be enjoyable. The main risk is disrupted sleep if you chase lucidity too aggressively, and some people may find sleep paralysis or vivid imagery unsettling.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function AreLucidDreamsSafePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Safety matters because the goal of sleep is recovery, and any practice that fragments sleep results in poorer mood, attention, and health. Lucid techniques can increase awakenings, which leads to more recall and the feeling of “more dreams,” but also more fatigue if overdone. A realistic safety frame helps you keep lucidity as a bonus rather than a nightly requirement.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function AreLucidDreamsSafePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If you have insomnia, frequent sleep paralysis, or high anxiety, it’s usually better to stabilize sleep first. If lucid practice triggers distressing dissociation-like feelings or worsens mental health, pause and consider talking with a sleep or mental health professional.
             </p>
           </section>
 

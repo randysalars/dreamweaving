@@ -46,7 +46,7 @@ export default function CanDreamsProvideCreativeInsightsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can dreams provide creative insights?"]
+              Yes, sometimes. Dreams can recombine memories and ideas in novel ways, which may lead to creative insights or solutions. The insight usually needs waking evaluation and refinement to become useful.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanDreamsProvideCreativeInsightsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because sleep supports associative processing, and reduced waking constraints can result in unusual connections that don’t arise during focused effort. Capturing dream fragments leads to more raw material for creativity, especially for writing, design, and problem framing. Understanding this also prevents romanticizing exhaustion: the goal is good sleep that supports both imagination and clear thinking.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanDreamsProvideCreativeInsightsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Not every dream contains a usable idea, and many are emotionally driven rather than solution-oriented. If you’re sleep deprived, you may feel more “loose,” but performance usually drops—so treat dreams as inspiration, not a substitute for disciplined work.
             </p>
           </section>
 

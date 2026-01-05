@@ -46,7 +46,7 @@ export default function WhatIsTheMildMnemonicInductionOfLucidDreamsTechniquePage
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the MILD (Mnemonic Induction of Lucid Dreams) technique?"]
+              MILD is a lucid dreaming technique where you wake briefly, recall a dream, and rehearse the intention “Next time I’m dreaming, I’ll know.” It trains prospective memory and recognition of dream signs.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheMildMnemonicInductionOfLucidDreamsTechniquePage
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              MILD matters because it’s low-risk and skill-based: intention plus rehearsal results in more frequent “remembering” inside dreams for many people. Pairing it with a brief wake period can lead to higher lucidity because the next sleep segment often contains more REM. It also encourages dream recall, which makes progress easier to track.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheMildMnemonicInductionOfLucidDreamsTechniquePage
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If waking up makes it hard to fall back asleep, MILD can backfire by fragmenting sleep. It’s usually better to keep the wake period short and calm, and to stop if you notice worsening insomnia or daytime fatigue.
             </p>
           </section>
 

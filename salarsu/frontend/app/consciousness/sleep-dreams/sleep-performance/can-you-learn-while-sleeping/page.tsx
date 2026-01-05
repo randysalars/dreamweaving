@@ -46,7 +46,7 @@ export default function CanYouLearnWhileSleepingPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can you learn while sleeping?"]
+              Not in the way you learn when awake. Sleep strengthens memories formed earlier and may support simple associations, but complex new knowledge and skills require waking attention, feedback, and practice.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanYouLearnWhileSleepingPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because sleep’s real “learning superpower” is consolidation: the brain replays and stabilizes what you studied, which leads to better recall and skill retention. Marketing claims about absorbing lectures overnight ignore the need for active encoding and error-correction. Using sleep well means studying first, then protecting sleep so the brain can do the offline work.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanYouLearnWhileSleepingPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Researchers can sometimes “cue” existing memories during sleep (targeted memory reactivation) with sounds or smells, modestly shifting what’s consolidated. That’s not the same as learning new facts from scratch, and too much stimulation can disrupt sleep and backfire.
             </p>
           </section>
 

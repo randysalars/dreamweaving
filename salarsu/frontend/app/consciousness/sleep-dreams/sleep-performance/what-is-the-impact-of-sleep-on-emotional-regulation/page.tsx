@@ -46,7 +46,7 @@ export default function WhatIsTheImpactOfSleepOnEmotionalRegulationPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the impact of sleep on emotional regulation?"]
+              Sleep supports emotional regulation by recalibrating stress circuits and helping the brain process feelings. Poor sleep increases emotional reactivity and weakens prefrontal control, making moods more volatile and conflicts more likely.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheImpactOfSleepOnEmotionalRegulationPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Sleep loss results in a brain that’s more threat-sensitive and less able to inhibit impulses, which leads to irritability, negativity bias, and poor coping. During healthy sleep, emotional memories are processed and stress hormones are regulated, supporting steadier mood the next day. This has real consequences for relationships, work, and mental health resilience.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheImpactOfSleepOnEmotionalRegulationPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The relationship is bidirectional: anxiety and depression can also disrupt sleep, creating a reinforcing loop. People vary in sensitivity, and chronic stress or trauma can amplify effects—so improving sleep is helpful, but sometimes not sufficient on its own.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function CanYouCatchUpOnLostSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can you catch up on lost sleep?"]
+              You can recover some lost sleep and performance by sleeping longer for a few nights, but recovery isn’t always immediate. Repeated short sleep builds sleep debt that can linger even after weekend catch-up.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanYouCatchUpOnLostSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              People often rely on “catch-up” strategies because work and life compress sleep during the week, but chronic restriction results in sustained attention and mood problems. Extra sleep can restore some brain and body functions, yet irregular schedules can lead to circadian misalignment and grogginess. Understanding the limits helps you plan recovery without normalizing a cycle that keeps performance below baseline.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanYouCatchUpOnLostSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Short-term loss is usually more recoverable than months of restricted sleep, and some deficits (like reaction-time lapses) can persist for days. Naps can help, but shifting sleep timing too far on weekends can create “social jet lag” that makes Monday harder.
             </p>
           </section>
 

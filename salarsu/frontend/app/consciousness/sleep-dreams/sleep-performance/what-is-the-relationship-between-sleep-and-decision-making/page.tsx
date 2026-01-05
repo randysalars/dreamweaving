@@ -46,7 +46,7 @@ export default function WhatIsTheRelationshipBetweenSleepAndDecisionMakingPage()
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the relationship between sleep and decision-making?"]
+              Sleep improves decision-making by sharpening attention, updating reward learning, and supporting impulse control. Sleep loss biases choices toward short-term rewards, increases risk-taking, and reduces your ability to weigh consequences.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheRelationshipBetweenSleepAndDecisionMakingPage()
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Good decisions require stable attention, working memory, and emotional balance, and sleep loss results in noisy thinking and stronger pull from immediate incentives. That leads to more impulsive spending, poorer conflict handling, and avoidable mistakes at work. Because judgment feels intact even when it’s impaired, sleep is a hidden driver of real-world outcomes.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheRelationshipBetweenSleepAndDecisionMakingPage()
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Effects depend on circadian timing and task type—simple choices may feel fine while complex tradeoffs degrade. Chronic sleep restriction can become a “new normal” subjectively, but objective decision quality can remain reduced until sustained recovery sleep occurs.
             </p>
           </section>
 

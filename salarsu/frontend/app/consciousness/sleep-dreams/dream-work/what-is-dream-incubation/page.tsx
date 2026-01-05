@@ -46,7 +46,7 @@ export default function WhatIsDreamIncubationPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is dream incubation?"]
+              Dream incubation is setting an intention before sleep to dream about a specific question, theme, or problem. You prime the mind with journaling, imagery, or a cue, then review whatever dream material appears.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsDreamIncubationPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Incubation matters because intention shapes attention, which leads to selective processing during sleep and recall after waking. Priming a topic results in dreams that cluster around related memories and emotions, sometimes producing useful associations. It’s a practical way to engage dreams without forcing literal “answers.”
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsDreamIncubationPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Incubation doesn’t guarantee the dream will match your request, and “results” may be symbolic or emotional rather than direct solutions. If focusing on a theme increases anxiety at bedtime, it’s better to incubate something calming or pause the practice.
             </p>
           </section>
 

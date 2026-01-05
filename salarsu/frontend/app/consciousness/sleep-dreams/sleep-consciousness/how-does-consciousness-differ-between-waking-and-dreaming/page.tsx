@@ -46,7 +46,7 @@ export default function HowDoesConsciousnessDifferBetweenWakingAndDreamingPage()
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does consciousness differ between waking and dreaming?"]
+              Waking consciousness is anchored to external sensory input and stable self-monitoring; dreaming is largely internally generated, more associative, and often lacks critical reflection—except in lucid dreams, where metacognition partly returns.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesConsciousnessDifferBetweenWakingAndDreamingPage()
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              The contrast matters because it shows that the brain can produce a coherent world-model without external input, which leads to powerful emotions and narratives in dreams. Differences in neuromodulators and network connectivity reduce reality testing, so improbable scenes feel normal. Mapping these shifts helps explain hallucinations, memory processing, and the role of sleep in creativity and emotional integration.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesConsciousnessDifferBetweenWakingAndDreamingPage()
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Dreaming varies by stage: REM dreams are often vivid and emotional, while non-REM dreams can be more thought-like. Lucid dreaming adds reflective awareness, and nightmares can heighten waking-like fear while still lacking full cognitive control.
             </p>
           </section>
 

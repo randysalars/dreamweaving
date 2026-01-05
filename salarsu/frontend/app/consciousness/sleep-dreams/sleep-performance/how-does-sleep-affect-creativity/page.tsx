@@ -46,7 +46,7 @@ export default function HowDoesSleepAffectCreativityPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does sleep affect creativity?"]
+              Sleep—especially REM-rich late-night sleep—supports creativity by reorganizing memories, strengthening remote associations, and loosening rigid thinking. Good sleep increases the likelihood of insights and flexible problem solving.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesSleepAffectCreativityPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Creativity often depends on connecting distant ideas, and sleep provides offline time for memory networks to reorganize, which leads to novel combinations. Reduced prefrontal “filtering” in REM may also allow unusual associations to surface. Protecting sleep therefore results in better creative output without needing to rely on burnout or last-minute pressure.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesSleepAffectCreativityPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Sleep deprivation can sometimes feel “creative” because inhibition drops, but it usually leads to poorer evaluation and follow-through. Different tasks may benefit from different stages—incubation and association often favor REM, while structured problem solving can benefit from well-rested executive control.
             </p>
           </section>
 
