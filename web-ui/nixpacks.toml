@@ -1,0 +1,4 @@
+[phases.setup]
+# Ensure `python3` exists at runtime for any Node code that spawns Python.
+nixPkgs = ["python3"]
+
