@@ -3,22 +3,22 @@ import Link from "next/link";
 import { ArrowLeft, HelpCircle } from "lucide-react";
 import { getSiteUrl } from "@/lib/siteUrl";
 
-const pageUrl = `${getSiteUrl()}/consciousness/altered-states/subjective-experience/can-altered-states-feel-euphoric`;
+const pageUrl = `${getSiteUrl()}/consciousness/altered-states/definitions-foundations/how-do-altered-states-differ-from-everyday-awareness`;
 
 export const metadata: Metadata = {
-  title: "Can altered states feel euphoric? | Salars Consciousness",
-  description: "Many altered states produce intense euphoria through changes in neurotransmitter activity, particularly dopamine and endorphin release in reward pathways.",
+  title: "How do altered states differ from everyday awareness? | Salars Consciousness",
+  description: "Altered states involve significant changes in perception, cognition, emotion, or self-awareness that deviate from ordinary waking consciousness through neu",
   alternates: { canonical: pageUrl },
   openGraph: {
-    title: "Can altered states feel euphoric?",
-    description: "Many altered states produce intense euphoria through changes in neurotransmitter activity, particularly dopamine and endorphin release in reward pathways.",
+    title: "How do altered states differ from everyday awareness?",
+    description: "Altered states involve significant changes in perception, cognition, emotion, or self-awareness that deviate from ordinary waking consciousness through neu",
     url: pageUrl,
     type: "article",
   },
-  keywords: ["euphoria", "dopamine release", "reward pathways", "mystical experiences", "neurotransmitters", "bliss states", "psychedelic effects", "endorphins"],
+  keywords: ["psychedelic states", "meditation states", "flow states", "hypnosis", "lucid dreaming", "dissociation", "default mode network", "consciousness spectrum"],
 };
 
-export default function CanAlteredStatesFeelEuphoricPage() {
+export default function HowDoAlteredStatesDifferFromEverydayAwarenessPage() {
   return (
     <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-12">
@@ -27,17 +27,17 @@ export default function CanAlteredStatesFeelEuphoricPage() {
           {/* Breadcrumb */}
           <div className="space-y-2">
             <Link
-              href="/consciousness/altered-states/subjective-experience"
+              href="/consciousness/altered-states/definitions-foundations"
               className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Subjective Experience & Perception Changes
+              Back to Core Definitions & Foundations
             </Link>
           </div>
 
           {/* Question Title */}
           <h1 className="text-4xl font-semibold tracking-tight text-foreground">
-            Can altered states feel euphoric?
+            How do altered states differ from everyday awareness?
           </h1>
 
           {/* Short Answer Block */}
@@ -46,7 +46,7 @@ export default function CanAlteredStatesFeelEuphoricPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              Many altered states produce intense feelings of euphoria through changes in neurotransmitter activity, particularly dopamine and endorphin release in reward pathways.
+              Altered states involve significant changes in perception, cognition, emotion, or self-awareness that deviate from ordinary waking consciousness through neurochemical or neurophysiological modifications.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAlteredStatesFeelEuphoricPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              Euphoric altered states occur because psychoactive substances, meditation, or other triggers stimulate the brain's reward circuitry, flooding areas like the ventral tegmental area and nucleus accumbens with dopamine. This neurochemical cascade creates feelings of bliss, unity, and transcendence that characterize many mystical and drug-induced experiences. The intensity of euphoria often correlates with the degree of normal consciousness disruption, demonstrating how altered brain chemistry directly translates to transformed subjective experience.
+              These states occur because various factors—including substances, meditation, sleep deprivation, or sensory isolation—disrupt normal brain network connectivity and neurotransmitter balance. This disruption results in altered temporal perception, modified sensory processing, and changes in the default mode network that typically maintains our sense of self. Understanding these mechanisms demonstrates how flexible and context-dependent human consciousness actually is, revealing that our everyday awareness represents just one possible configuration of brain activity.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAlteredStatesFeelEuphoricPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              Not all altered states produce euphoria - some generate anxiety, confusion, or dysphoria depending on the trigger, individual brain chemistry, and environmental context. Euphoric intensity varies widely across different induction methods and individual responses.
+              The boundary between ordinary and altered consciousness exists on a spectrum, with subtle shifts occurring during daydreaming or mild fatigue. Some individuals experience naturally occurring altered states more frequently due to neurological differences or heightened sensitivity to environmental triggers.
             </p>
           </section>
 
@@ -76,30 +76,6 @@ export default function CanAlteredStatesFeelEuphoricPage() {
               Related Questions
             </h2>
             <div className="grid gap-3">
-              
-              <Link
-                href="/consciousness/altered-states/subjective-experience/how-do-altered-states-feel-subjectively"
-                className="flex items-start gap-3 rounded-lg border border-border bg-card/30 p-4 transition-colors hover:bg-card/50"
-              >
-                <HelpCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">How do altered states feel subjectively?</span>
-              </Link>
-              
-              <Link
-                href="/consciousness/altered-states/subjective-experience/do-altered-states-change-perception-of-time"
-                className="flex items-start gap-3 rounded-lg border border-border bg-card/30 p-4 transition-colors hover:bg-card/50"
-              >
-                <HelpCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Do altered states change perception of time?</span>
-              </Link>
-              
-              <Link
-                href="/consciousness/altered-states/subjective-experience/do-altered-states-affect-sensory-clarity"
-                className="flex items-start gap-3 rounded-lg border border-border bg-card/30 p-4 transition-colors hover:bg-card/50"
-              >
-                <HelpCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Do altered states affect sensory clarity?</span>
-              </Link>
               
               <Link
                 href="/consciousness/altered-states/definitions-foundations/what-is-an-altered-state-of-consciousness"
@@ -117,16 +93,40 @@ export default function CanAlteredStatesFeelEuphoricPage() {
                 <span className="text-foreground">What defines normal waking consciousness?</span>
               </Link>
               
+              <Link
+                href="/consciousness/altered-states/definitions-foundations/are-altered-states-always-intentional"
+                className="flex items-start gap-3 rounded-lg border border-border bg-card/30 p-4 transition-colors hover:bg-card/50"
+              >
+                <HelpCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <span className="text-foreground">Are altered states always intentional?</span>
+              </Link>
+              
+              <Link
+                href="/consciousness/altered-states/natural-vs-induced/what-are-natural-altered-states-of-consciousness"
+                className="flex items-start gap-3 rounded-lg border border-border bg-card/30 p-4 transition-colors hover:bg-card/50"
+              >
+                <HelpCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <span className="text-foreground">What are natural altered states of consciousness?</span>
+              </Link>
+              
+              <Link
+                href="/consciousness/altered-states/natural-vs-induced/what-causes-natural-altered-states-to-occur"
+                className="flex items-start gap-3 rounded-lg border border-border bg-card/30 p-4 transition-colors hover:bg-card/50"
+              >
+                <HelpCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <span className="text-foreground">What causes natural altered states to occur?</span>
+              </Link>
+              
             </div>
           </section>
 
           {/* Back to Category */}
           <section className="pt-6 border-t border-border">
             <Link
-              href="/consciousness/altered-states/subjective-experience"
+              href="/consciousness/altered-states/definitions-foundations"
               className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
             >
-              View all Subjective Experience & Perception Changes questions
+              View all Core Definitions & Foundations questions
               <ArrowLeft className="h-4 w-4 rotate-180" />
             </Link>
           </section>

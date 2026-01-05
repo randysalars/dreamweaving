@@ -46,7 +46,7 @@ export default function AreAlteredStatesStillPoorlyUnderstoodScientificallyPage(
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              Yes, altered states of consciousness remain poorly understood scientifically despite advances in neuroimaging and neuropharmacology research over recent decades.
+              Yes, altered states of consciousness remain poorly understood scientifically despite significant advances in neuroimaging and neuropharmacology research over recent decades.
             </p>
           </section>
 

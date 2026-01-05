@@ -46,7 +46,7 @@ export default function HowAreAlteredStatesIntentionallyInducedPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              Altered states are intentionally induced through meditation, breathwork, sensory deprivation, rhythmic movement, fasting, temperature extremes, and psychoactive substances.
+              Altered states are intentionally induced through practices including meditation, breathwork, sensory deprivation, rhythmic movement, fasting, temperature extremes, and psychoactive substances.
             </p>
           </section>
 

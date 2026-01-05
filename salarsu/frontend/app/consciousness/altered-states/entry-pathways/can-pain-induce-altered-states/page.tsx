@@ -46,7 +46,7 @@ export default function CanPainInduceAlteredStatesPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              Pain can trigger altered states through neurochemical responses, sensory overload, and dissociative mechanisms that shift normal consciousness patterns.
+              Pain can trigger altered states of consciousness through neurochemical responses, sensory overload, and dissociative mechanisms that shift normal awareness patterns.
             </p>
           </section>
 

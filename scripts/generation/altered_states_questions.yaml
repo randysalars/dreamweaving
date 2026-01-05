@@ -1,332 +1,315 @@
-# Altered States of Consciousness - Complete Question Map
-# Total: 124 questions across 12 clusters
-# Status: 10 completed, 114 remaining
-
 clusters:
-  - id: "definitions-foundations"
-    name: "Core Definitions & Foundations"
-    category_slug: "definitions-foundations"
-    description: "Fundamental concepts and definitions about altered states of consciousness."
-    questions:
-      - question: "What is an altered state of consciousness?"
-        status: "complete"  # Already generated
-      - question: "What defines normal waking consciousness?"
-        status: "complete"  # Already generated
-      - question: "How do altered states differ from everyday awareness?"
-        status: "complete"  # Already generated
-      - question: "Are altered states always intentional?"
-        status: "complete"  # Already generated
-      - question: "Can altered states occur spontaneously?"
-        status: "complete"  # Already generated
-      - question: "Are dreams considered altered states?"
-        status: "pending"
-      - question: "Is hypnosis an altered state of consciousness?"
-        status: "pending"
-      - question: "Is flow state an altered state?"
-        status: "pending"
-      - question: "Are emotions altered states of consciousness?"
-        status: "pending"
-      - question: "Is meditation an altered state or a training method?"
-        status: "pending"
-      - question: "Do altered states involve changes in awareness or perception?"
-        status: "pending"
-      - question: "Are altered states subjective or measurable?"
-        status: "pending"
-
-  - id: "natural-vs-induced"
-    name: "Natural vs Induced Altered States"
-    category_slug: "natural-vs-induced"
-    description: "Understanding naturally occurring versus deliberately induced altered states."
-    questions:
-      - question: "What are natural altered states of consciousness?"
-        status: "complete"  # Already generated
-      - question: "What causes natural altered states to occur?"
-        status: "complete"  # Already generated
-      - question: "What are induced altered states?"
-        status: "pending"
-      - question: "How are altered states intentionally induced?"
-        status: "pending"
-      - question: "Are natural altered states safer than induced ones?"
-        status: "pending"
-      - question: "Can daily life trigger altered states?"
-        status: "pending"
-      - question: "Are altered states common in childhood?"
-        status: "pending"
-      - question: "Do altered states occur during illness or fever?"
-        status: "pending"
-      - question: "Can stress induce altered states?"
-        status: "pending"
-      - question: "Are altered states part of normal human functioning?"
-        status: "pending"
-
-  - id: "entry-pathways"
-    name: "Entry Pathways & Triggers"
-    category_slug: "entry-pathways"
-    description: "How altered states begin and the various triggers that induce them."
-    questions:
-      - question: "How do altered states begin?"
-        status: "complete"  # Already generated
-      - question: "What are the most common entry pathways into altered states?"
-        status: "pending"
-      - question: "Can breathing techniques induce altered states?"
-        status: "complete"  # Already generated
-      - question: "Can movement or posture trigger altered states?"
-        status: "pending"
-      - question: "Can sensory deprivation cause altered states?"
-        status: "pending"
-      - question: "Can sensory overload cause altered states?"
-        status: "pending"
-      - question: "Can intense focus create altered states?"
-        status: "pending"
-      - question: "Can emotional shock trigger altered states?"
-        status: "pending"
-      - question: "Can pain induce altered states?"
-        status: "pending"
-      - question: "Can pleasure induce altered states?"
-        status: "pending"
-      - question: "Can fatigue or sleep deprivation induce altered states?"
-        status: "pending"
-      - question: "Can fasting induce altered states?"
-        status: "pending"
-      - question: "Can rhythmic sound or music induce altered states?"
-        status: "pending"
-      - question: "Can chanting or mantra induce altered states?"
-        status: "pending"
-
-  - id: "subjective-experience"
-    name: "Subjective Experience & Perception Changes"
-    category_slug: "subjective-experience"
-    description: "How altered states feel subjectively and affect perception, emotion, and sensation."
-    questions:
-      - question: "How do altered states feel subjectively?"
-        status: "pending"
-      - question: "Do altered states change perception of time?"
-        status: "pending"
-      - question: "Do altered states affect sensory clarity?"
-        status: "pending"
-      - question: "Can altered states increase vividness of experience?"
-        status: "pending"
-      - question: "Can altered states dull sensation?"
-        status: "pending"
-      - question: "Do altered states change emotional intensity?"
-        status: "pending"
-      - question: "Can altered states feel euphoric?"
-        status: "pending"
-      - question: "Can altered states feel frightening?"
-        status: "pending"
-      - question: "Do altered states change body awareness?"
-        status: "pending"
-      - question: "Can altered states alter sense of self?"
-        status: "pending"
-      - question: "Can altered states create feelings of unity or separation?"
-        status: "pending"
-      - question: "Do altered states affect thought speed?"
-        status: "pending"
-      - question: "Can altered states silence internal dialogue?"
-        status: "pending"
-      - question: "Can altered states amplify imagination?"
-        status: "pending"
-
-  - id: "levels-and-depth"
-    name: "Levels, Depths & Intensity"
-    category_slug: "levels-and-depth"
-    description: "Different depths and intensities of altered states and what influences them."
-    questions:
-      - question: "Are there levels of altered states of consciousness?"
-        status: "pending"
-      - question: "What distinguishes shallow vs deep altered states?"
-        status: "pending"
-      - question: "Can altered states deepen over time?"
-        status: "pending"
-      - question: "Can a person control the depth of an altered state?"
-        status: "pending"
-      - question: "Are deeper altered states always better?"
-        status: "pending"
-      - question: "Can altered states fluctuate in intensity?"
-        status: "pending"
-      - question: "Are some altered states brief while others persist?"
-        status: "pending"
-      - question: "What factors influence depth of altered states?"
-        status: "pending"
-      - question: "Can training increase access to deeper states?"
-        status: "pending"
-      - question: "Are extreme altered states rare?"
-        status: "pending"
-
-  - id: "duration-aftereffects"
-    name: "Duration & Aftereffects"
-    category_slug: "duration-aftereffects"
-    description: "How long altered states last and their lingering effects."
-    questions:
-      - question: "How long do altered states typically last?"
-        status: "pending"
-      - question: "Can altered states end suddenly?"
-        status: "pending"
-      - question: "Can altered states fade gradually?"
-        status: "pending"
-      - question: "Do altered states leave lingering effects?"
-        status: "pending"
-      - question: "Can altered states change mood afterward?"
-        status: "pending"
-      - question: "Can altered states affect memory afterward?"
-        status: "pending"
-      - question: "Can altered states alter perception days later?"
-        status: "pending"
-      - question: "Do repeated altered states accumulate effects?"
-        status: "pending"
-
-  - id: "safety-and-risks"
-    name: "Safety, Risks & Stability"
-    category_slug: "safety-and-risks"
-    description: "Understanding the safety considerations and potential risks of altered states."
-    questions:
-      - question: "Are altered states dangerous?"
-        status: "complete"  # Already generated
-      - question: "When can altered states become destabilizing?"
-        status: "pending"
-      - question: "Who should avoid certain altered states?"
-        status: "pending"
-      - question: "Can altered states worsen mental health conditions?"
-        status: "pending"
-      - question: "Can altered states cause dissociation?"
-        status: "pending"
-      - question: "What is the difference between dissociation and altered states?"
-        status: "pending"
-      - question: "Can altered states lead to loss of grounding?"
-        status: "pending"
-      - question: "Are some altered states safer than others?"
-        status: "pending"
-      - question: "How can altered states be approached safely?"
-        status: "pending"
-      - question: "What role does preparation play in safety?"
-        status: "pending"
-      - question: "Can integration reduce risks of altered states?"
-        status: "pending"
-      - question: "When should altered states be avoided entirely?"
-        status: "pending"
-
-  - id: "cultural-historical"
-    name: "Cultural & Historical Perspectives"
-    category_slug: "cultural-historical"
-    description: "How altered states have been viewed across cultures and throughout history."
-    questions:
-      - question: "How have altered states been viewed historically?"
-        status: "pending"
-      - question: "How did ancient cultures interpret altered states?"
-        status: "pending"
-      - question: "Were altered states used in ritual or initiation?"
-        status: "pending"
-      - question: "How do spiritual traditions describe altered states?"
-        status: "pending"
-      - question: "Are altered states universal across cultures?"
-        status: "pending"
-      - question: "How has modern society reframed altered states?"
-        status: "pending"
-      - question: "When did altered states become medicalized?"
-        status: "pending"
-      - question: "How do indigenous traditions approach altered states?"
-        status: "pending"
-      - question: "Are altered states linked to shamanic practices?"
-        status: "pending"
-      - question: "Do cultural beliefs shape altered state experiences?"
-        status: "pending"
-
-  - id: "scientific-neurological"
-    name: "Scientific & Neurological Models"
-    category_slug: "scientific-neurological"
-    description: "What neuroscience and psychology reveal about altered states."
-    questions:
-      - question: "What happens in the brain during altered states?"
-        status: "pending"
-      - question: "Are altered states linked to brainwave changes?"
-        status: "pending"
-      - question: "Do altered states involve neurotransmitter shifts?"
-        status: "pending"
-      - question: "Can altered states be measured scientifically?"
-        status: "pending"
-      - question: "Are altered states studied in neuroscience?"
-        status: "pending"
-      - question: "How do psychologists classify altered states?"
-        status: "pending"
-      - question: "Are altered states considered abnormal by science?"
-        status: "pending"
-      - question: "Do altered states increase neural plasticity?"
-        status: "pending"
-      - question: "Can altered states affect cognitive flexibility?"
-        status: "pending"
-      - question: "Are altered states still poorly understood scientifically?"
-        status: "pending"
-
-  - id: "integration-meaning"
-    name: "Integration, Meaning & Daily Life"
-    category_slug: "integration-meaning"
-    description: "How to integrate altered states and apply insights to everyday life."
-    questions:
-      - question: "What does it mean to integrate an altered state?"
-        status: "pending"
-      - question: "Why is integration important after altered states?"
-        status: "pending"
-      - question: "Can altered states change worldview?"
-        status: "pending"
-      - question: "Can altered states influence creativity?"
-        status: "pending"
-      - question: "Can altered states improve problem-solving?"
-        status: "pending"
-      - question: "Can altered states increase self-understanding?"
-        status: "pending"
-      - question: "Can altered states enhance mindfulness?"
-        status: "pending"
-      - question: "How do altered states relate to personal growth?"
-        status: "pending"
-      - question: "Can altered states be applied practically?"
-        status: "pending"
-      - question: "Do altered states lose value without integration?"
-        status: "pending"
-
-  - id: "misconceptions"
-    name: "Misconceptions & Clarifications"
-    category_slug: "misconceptions"
-    description: "Common myths and misunderstandings about altered states of consciousness."
-    questions:
-      - question: "Are altered states hallucinations?"
-        status: "pending"
-      - question: "Do altered states mean losing control?"
-        status: "pending"
-      - question: "Are altered states escapism?"
-        status: "pending"
-      - question: "Do altered states require substances?"
-        status: "pending"
-      - question: "Are altered states spiritual by definition?"
-        status: "pending"
-      - question: "Are altered states signs of enlightenment?"
-        status: "pending"
-      - question: "Can altered states be faked or imagined?"
-        status: "pending"
-      - question: "Are altered states the goal or a byproduct?"
-        status: "pending"
-
-  - id: "navigational"
-    name: "Navigational & Exploratory Prompts"
-    category_slug: "navigational"
-    description: "Comparative questions helping readers navigate the landscape of altered states."
-    questions:
-      - question: "Which altered states occur most commonly?"
-        status: "pending"
-      - question: "Which altered states are easiest to access?"
-        status: "pending"
-      - question: "Which altered states are hardest to describe?"
-        status: "pending"
-      - question: "Which altered states change identity perception?"
-        status: "pending"
-      - question: "Which altered states feel most meaningful?"
-        status: "pending"
-      - question: "Which altered states require the most care?"
-        status: "pending"
-
-# Summary Statistics
-# Total questions: 124
-# Completed: 10 (8.1%)
-# Pending: 114 (91.9%)
-# Clusters: 12
-# Existing categories: 4
-# New categories needed: 8
+- id: definitions-foundations
+  name: Core Definitions & Foundations
+  category_slug: definitions-foundations
+  description: Fundamental concepts and definitions about altered states of consciousness.
+  questions:
+  - question: What is an altered state of consciousness?
+    status: pending
+  - question: What defines normal waking consciousness?
+    status: pending
+  - question: How do altered states differ from everyday awareness?
+    status: pending
+  - question: Are altered states always intentional?
+    status: pending
+  - question: Can altered states occur spontaneously?
+    status: pending
+  - question: Are dreams considered altered states?
+    status: pending
+  - question: Is hypnosis an altered state of consciousness?
+    status: pending
+  - question: Is flow state an altered state?
+    status: pending
+  - question: Are emotions altered states of consciousness?
+    status: pending
+  - question: Is meditation an altered state or a training method?
+    status: pending
+  - question: Do altered states involve changes in awareness or perception?
+    status: pending
+  - question: Are altered states subjective or measurable?
+    status: pending
+- id: natural-vs-induced
+  name: Natural vs Induced Altered States
+  category_slug: natural-vs-induced
+  description: Understanding naturally occurring versus deliberately induced altered
+    states.
+  questions:
+  - question: What are natural altered states of consciousness?
+    status: pending
+  - question: What causes natural altered states to occur?
+    status: pending
+  - question: What are induced altered states?
+    status: pending
+  - question: How are altered states intentionally induced?
+    status: pending
+  - question: Are natural altered states safer than induced ones?
+    status: pending
+  - question: Can daily life trigger altered states?
+    status: pending
+  - question: Are altered states common in childhood?
+    status: pending
+  - question: Do altered states occur during illness or fever?
+    status: pending
+  - question: Can stress induce altered states?
+    status: pending
+  - question: Are altered states part of normal human functioning?
+    status: pending
+- id: entry-pathways
+  name: Entry Pathways & Triggers
+  category_slug: entry-pathways
+  description: How altered states begin and the various triggers that induce them.
+  questions:
+  - question: How do altered states begin?
+    status: pending
+  - question: What are the most common entry pathways into altered states?
+    status: pending
+  - question: Can breathing techniques induce altered states?
+    status: pending
+  - question: Can movement or posture trigger altered states?
+    status: pending
+  - question: Can sensory deprivation cause altered states?
+    status: pending
+  - question: Can sensory overload cause altered states?
+    status: pending
+  - question: Can intense focus create altered states?
+    status: pending
+  - question: Can emotional shock trigger altered states?
+    status: pending
+  - question: Can pain induce altered states?
+    status: pending
+  - question: Can pleasure induce altered states?
+    status: pending
+  - question: Can fatigue or sleep deprivation induce altered states?
+    status: pending
+  - question: Can fasting induce altered states?
+    status: pending
+  - question: Can rhythmic sound or music induce altered states?
+    status: pending
+  - question: Can chanting or mantra induce altered states?
+    status: pending
+- id: subjective-experience
+  name: Subjective Experience & Perception Changes
+  category_slug: subjective-experience
+  description: How altered states feel subjectively and affect perception, emotion,
+    and sensation.
+  questions:
+  - question: How do altered states feel subjectively?
+    status: pending
+  - question: Do altered states change perception of time?
+    status: pending
+  - question: Do altered states affect sensory clarity?
+    status: pending
+  - question: Can altered states increase vividness of experience?
+    status: pending
+  - question: Can altered states dull sensation?
+    status: pending
+  - question: Do altered states change emotional intensity?
+    status: pending
+  - question: Can altered states feel euphoric?
+    status: pending
+  - question: Can altered states feel frightening?
+    status: pending
+  - question: Do altered states change body awareness?
+    status: pending
+  - question: Can altered states alter sense of self?
+    status: pending
+  - question: Can altered states create feelings of unity or separation?
+    status: pending
+  - question: Do altered states affect thought speed?
+    status: pending
+  - question: Can altered states silence internal dialogue?
+    status: pending
+  - question: Can altered states amplify imagination?
+    status: pending
+- id: levels-and-depth
+  name: Levels, Depths & Intensity
+  category_slug: levels-and-depth
+  description: Different depths and intensities of altered states and what influences
+    them.
+  questions:
+  - question: Are there levels of altered states of consciousness?
+    status: pending
+  - question: What distinguishes shallow vs deep altered states?
+    status: pending
+  - question: Can altered states deepen over time?
+    status: pending
+  - question: Can a person control the depth of an altered state?
+    status: pending
+  - question: Are deeper altered states always better?
+    status: pending
+  - question: Can altered states fluctuate in intensity?
+    status: pending
+  - question: Are some altered states brief while others persist?
+    status: pending
+  - question: What factors influence depth of altered states?
+    status: pending
+  - question: Can training increase access to deeper states?
+    status: pending
+  - question: Are extreme altered states rare?
+    status: pending
+- id: duration-aftereffects
+  name: Duration & Aftereffects
+  category_slug: duration-aftereffects
+  description: How long altered states last and their lingering effects.
+  questions:
+  - question: How long do altered states typically last?
+    status: pending
+  - question: Can altered states end suddenly?
+    status: pending
+  - question: Can altered states fade gradually?
+    status: pending
+  - question: Do altered states leave lingering effects?
+    status: pending
+  - question: Can altered states change mood afterward?
+    status: pending
+  - question: Can altered states affect memory afterward?
+    status: pending
+  - question: Can altered states alter perception days later?
+    status: pending
+  - question: Do repeated altered states accumulate effects?
+    status: pending
+- id: safety-and-risks
+  name: Safety, Risks & Stability
+  category_slug: safety-and-risks
+  description: Understanding the safety considerations and potential risks of altered
+    states.
+  questions:
+  - question: Are altered states dangerous?
+    status: pending
+  - question: When can altered states become destabilizing?
+    status: pending
+  - question: Who should avoid certain altered states?
+    status: pending
+  - question: Can altered states worsen mental health conditions?
+    status: pending
+  - question: Can altered states cause dissociation?
+    status: pending
+  - question: What is the difference between dissociation and altered states?
+    status: pending
+  - question: Can altered states lead to loss of grounding?
+    status: pending
+  - question: Are some altered states safer than others?
+    status: pending
+  - question: How can altered states be approached safely?
+    status: pending
+  - question: What role does preparation play in safety?
+    status: pending
+  - question: Can integration reduce risks of altered states?
+    status: pending
+  - question: When should altered states be avoided entirely?
+    status: pending
+- id: cultural-historical
+  name: Cultural & Historical Perspectives
+  category_slug: cultural-historical
+  description: How altered states have been viewed across cultures and throughout
+    history.
+  questions:
+  - question: How have altered states been viewed historically?
+    status: pending
+  - question: How did ancient cultures interpret altered states?
+    status: pending
+  - question: Were altered states used in ritual or initiation?
+    status: pending
+  - question: How do spiritual traditions describe altered states?
+    status: pending
+  - question: Are altered states universal across cultures?
+    status: pending
+  - question: How has modern society reframed altered states?
+    status: pending
+  - question: When did altered states become medicalized?
+    status: pending
+  - question: How do indigenous traditions approach altered states?
+    status: pending
+  - question: Are altered states linked to shamanic practices?
+    status: pending
+  - question: Do cultural beliefs shape altered state experiences?
+    status: pending
+- id: scientific-neurological
+  name: Scientific & Neurological Models
+  category_slug: scientific-neurological
+  description: What neuroscience and psychology reveal about altered states.
+  questions:
+  - question: What happens in the brain during altered states?
+    status: pending
+  - question: Are altered states linked to brainwave changes?
+    status: pending
+  - question: Do altered states involve neurotransmitter shifts?
+    status: pending
+  - question: Can altered states be measured scientifically?
+    status: pending
+  - question: Are altered states studied in neuroscience?
+    status: pending
+  - question: How do psychologists classify altered states?
+    status: pending
+  - question: Are altered states considered abnormal by science?
+    status: pending
+  - question: Do altered states increase neural plasticity?
+    status: pending
+  - question: Can altered states affect cognitive flexibility?
+    status: pending
+  - question: Are altered states still poorly understood scientifically?
+    status: pending
+- id: integration-meaning
+  name: Integration, Meaning & Daily Life
+  category_slug: integration-meaning
+  description: How to integrate altered states and apply insights to everyday life.
+  questions:
+  - question: What does it mean to integrate an altered state?
+    status: pending
+  - question: Why is integration important after altered states?
+    status: pending
+  - question: Can altered states change worldview?
+    status: pending
+  - question: Can altered states influence creativity?
+    status: pending
+  - question: Can altered states improve problem-solving?
+    status: pending
+  - question: Can altered states increase self-understanding?
+    status: pending
+  - question: Can altered states enhance mindfulness?
+    status: pending
+  - question: How do altered states relate to personal growth?
+    status: pending
+  - question: Can altered states be applied practically?
+    status: pending
+  - question: Do altered states lose value without integration?
+    status: pending
+- id: misconceptions
+  name: Misconceptions & Clarifications
+  category_slug: misconceptions
+  description: Common myths and misunderstandings about altered states of consciousness.
+  questions:
+  - question: Are altered states hallucinations?
+    status: pending
+  - question: Do altered states mean losing control?
+    status: pending
+  - question: Are altered states escapism?
+    status: pending
+  - question: Do altered states require substances?
+    status: pending
+  - question: Are altered states spiritual by definition?
+    status: pending
+  - question: Are altered states signs of enlightenment?
+    status: pending
+  - question: Can altered states be faked or imagined?
+    status: pending
+  - question: Are altered states the goal or a byproduct?
+    status: pending
+- id: navigational
+  name: Navigational & Exploratory Prompts
+  category_slug: navigational
+  description: Comparative questions helping readers navigate the landscape of altered
+    states.
+  questions:
+  - question: Which altered states occur most commonly?
+    status: pending
+  - question: Which altered states are easiest to access?
+    status: pending
+  - question: Which altered states are hardest to describe?
+    status: pending
+  - question: Which altered states change identity perception?
+    status: pending
+  - question: Which altered states feel most meaningful?
+    status: pending
+  - question: Which altered states require the most care?
+    status: pending
