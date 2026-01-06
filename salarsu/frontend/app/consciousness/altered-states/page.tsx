@@ -224,7 +224,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Love, Romance, and Emotional Intensity</strong>: Deep affection, passion, or heartfelt connection with another
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/hills-alternate-states/love-romantic-connection"
+                    className="text-primary hover:underline"
+                  >
+                    Love, Romance, and Emotional Intensity
+                  </Link>
+                </strong>
+                : Deep affection, passion, or heartfelt connection with another
                 person can dramatically shift your state of mind. Hill believed
                 that strong romantic love, when combined with a burning desire,
                 can lift people to higher levels of inspiration, motivation, and
@@ -234,7 +242,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Sexual Transmutation</strong>: Redirecting sexual energy into creative, intellectual, or
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/hills-alternate-states/sexual-transmutation"
+                    className="text-primary hover:underline"
+                  >
+                    Sexual Transmutation
+                  </Link>
+                </strong>
+                : Redirecting sexual energy into creative, intellectual, or
                 spiritual pursuits. Hill argued that history's most successful
                 people often harnessed their sexual energy for "higher" creative
                 or entrepreneurial purposes.
@@ -243,7 +259,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Desire and Passion</strong>: Intense longing or enthusiasm can shift your entire mental
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/hills-alternate-states/intense-desire-passion"
+                    className="text-primary hover:underline"
+                  >
+                    Desire and Passion
+                  </Link>
+                </strong>
+                : Intense longing or enthusiasm can shift your entire mental
                 state. Hill lists desire (especially "white-hot desire") as the
                 starting point of all achievement.
               </span>
@@ -251,7 +275,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Imagination Stimulated by Love, Sex, and Romance</strong>: Heightened emotion from love or romance fires up creativity and
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/hills-alternate-states/imagination-via-emotion"
+                    className="text-primary hover:underline"
+                  >
+                    Imagination Stimulated by Love, Sex, and Romance
+                  </Link>
+                </strong>
+                : Heightened emotion from love or romance fires up creativity and
                 intuition, opening new channels in the brain "not available under
                 ordinary emotions."
               </span>
@@ -335,22 +367,50 @@ export default function AlteredStatesPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Love/Romantic Connection</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/hills-alternate-states/love-romantic-connection"
+                      className="text-primary hover:underline"
+                    >
+                      Love/Romantic Connection
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Emotional and inspirational energy</td>
                   <td className="border border-border p-3 text-foreground">Enhanced creativity, joy, resilience, purpose</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Sexual Transmutation</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/hills-alternate-states/sexual-transmutation"
+                      className="text-primary hover:underline"
+                    >
+                      Sexual Transmutation
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Channeling sexual energy</td>
                   <td className="border border-border p-3 text-foreground">Focus, ambition, charisma, increased life force</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Intense Desire/Passion</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/hills-alternate-states/intense-desire-passion"
+                      className="text-primary hover:underline"
+                    >
+                      Intense Desire/Passion
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Emotional arousal toward any goal</td>
                   <td className="border border-border p-3 text-foreground">Motivation, vision, confidence, resourcefulness</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Imagination via Emotion</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/hills-alternate-states/imagination-via-emotion"
+                      className="text-primary hover:underline"
+                    >
+                      Imagination via Emotion
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Emotionally inspired creativity</td>
                   <td className="border border-border p-3 text-foreground">Innovative ideas, artistic output, intuitive insights</td>
                 </tr>
