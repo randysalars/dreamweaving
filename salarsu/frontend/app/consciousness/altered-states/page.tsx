@@ -127,11 +127,29 @@ export default function AlteredStatesPage() {
           <h2 className="text-3xl font-bold mb-6 text-foreground mt-8">
             Common Methods for Altering Consciousness
           </h2>
+          <p className="text-muted-foreground mb-6">
+            Explore the full hub and detailed method pages:{" "}
+            <Link
+              href="/consciousness/altered-states/common-methods-for-altering-consciousness"
+              className="text-primary hover:underline"
+            >
+              Common Methods for Altering Consciousness
+            </Link>
+            .
+          </p>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Breathwork</strong>: Controlled breathing techniques (like holotropic breathwork,
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/breathwork"
+                    className="text-primary hover:underline"
+                  >
+                    Breathwork
+                  </Link>
+                </strong>
+                : Controlled breathing techniques (like holotropic breathwork,
                 pranayama, Wim Hof Method) use specific breath patterns to induce
                 heightened awareness, deep relaxation, or even visionary states.
                 Studies show breathwork can produce mind-expanding,
@@ -141,7 +159,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Meditation and Mindfulness</strong>: Focusing your mind or quieting your thoughts. Deep or guided
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/meditation-and-mindfulness"
+                    className="text-primary hover:underline"
+                  >
+                    Meditation and Mindfulness
+                  </Link>
+                </strong>
+                : Focusing your mind or quieting your thoughts. Deep or guided
                 meditation can lead to transcendental or mystical experiences.
                 Mindfulness can alter time perception and increase clarity.
               </span>
@@ -149,7 +175,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Sensory Deprivation</strong>: Reducing or eliminating external sensory input (float tanks,
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/sensory-deprivation"
+                    className="text-primary hover:underline"
+                  >
+                    Sensory Deprivation
+                  </Link>
+                </strong>
+                : Reducing or eliminating external sensory input (float tanks,
                 dark retreats, earplugs, blindfolds). This can trigger vivid
                 imagery, deep introspection, and altered realities similar to
                 psychedelic states.
@@ -158,7 +192,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Psychedelics and Entheogens</strong>: Consuming substances like psilocybin, LSD, ayahuasca, peyote, or
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/psychedelics-and-entheogens"
+                    className="text-primary hover:underline"
+                  >
+                    Psychedelics and Entheogens
+                  </Link>
+                </strong>
+                : Consuming substances like psilocybin, LSD, ayahuasca, peyote, or
                 DMT can dramatically change perception, thought, emotion, and
                 spiritual connection.
               </span>
@@ -166,7 +208,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Fasting and Sleep Deprivation</strong>: Altering eating or sleeping habits to affect your mind. Extended
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/fasting-and-sleep-deprivation"
+                    className="text-primary hover:underline"
+                  >
+                    Fasting and Sleep Deprivation
+                  </Link>
+                </strong>
+                : Altering eating or sleeping habits to affect your mind. Extended
                 fasting and sleep deprivation can lead to visions, heightened
                 senses, and unusual thought patterns—used in many spiritual
                 traditions.
@@ -175,7 +225,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Sleep, Dreams, and Hypnagogia</strong>:{" "}
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/sleep-dreams-and-hypnagogia"
+                    className="text-primary hover:underline"
+                  >
+                    Sleep, Dreams, and Hypnagogia
+                  </Link>
+                </strong>
+                :{" "}
                 <Link href="/consciousness/sleep-dreams" className="text-primary hover:underline">
                   Natural altered states during sleep
                 </Link>{" "}
@@ -186,7 +244,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Rituals and Chanting</strong>: Repetitive movements, sounds, or words (drumming, chanting,
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/rituals-and-chanting"
+                    className="text-primary hover:underline"
+                  >
+                    Rituals and Chanting
+                  </Link>
+                </strong>
+                : Repetitive movements, sounds, or words (drumming, chanting,
                 singing bowls, ecstatic dance) can induce trance states and
                 feelings of unity.
               </span>
@@ -194,7 +260,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Physical Extremes</strong>: Using physical stress or exertion (intense exercise, sweat
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/physical-extremes"
+                    className="text-primary hover:underline"
+                  >
+                    Physical Extremes
+                  </Link>
+                </strong>
+                : Using physical stress or exertion (intense exercise, sweat
                 lodges, cold/heat exposure) to produce euphoria, clarity, or
                 spiritual connection.
               </span>
@@ -202,7 +276,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Hypnosis and Visualization</strong>: Guided suggestion, hypnosis, or deep visualization can induce
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/hypnosis-and-visualization"
+                    className="text-primary hover:underline"
+                  >
+                    Hypnosis and Visualization
+                  </Link>
+                </strong>
+                : Guided suggestion, hypnosis, or deep visualization can induce
                 trance-like states where memory, sensation, and perception are
                 altered.
               </span>
@@ -210,7 +292,15 @@ export default function AlteredStatesPage() {
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
               <span className="text-lg text-foreground">
-                <strong>Art, Music, and Creative Flow</strong>: Deep immersion in creativity (painting, music, writing) often
+                <strong>
+                  <Link
+                    href="/consciousness/altered-states/common-methods-for-altering-consciousness/art-music-and-creative-flow"
+                    className="text-primary hover:underline"
+                  >
+                    Art, Music, and Creative Flow
+                  </Link>
+                </strong>
+                : Deep immersion in creativity (painting, music, writing) often
                 causes transformation of time-sense and heightened consciousness.
               </span>
             </div>
@@ -305,47 +395,122 @@ export default function AlteredStatesPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Breathwork</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/breathwork"
+                      className="text-primary hover:underline"
+                    >
+                      Breathwork
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Holotropic, Pranayama, Wim Hof</td>
                   <td className="border border-border p-3 text-foreground">Euphoria, visions, deep relaxation</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Meditation/Mindfulness</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/meditation-and-mindfulness"
+                      className="text-primary hover:underline"
+                    >
+                      Meditation/Mindfulness
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Zen, Transcendental, Mindfulness</td>
                   <td className="border border-border p-3 text-foreground">Calm, unity, altered time perception</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Sensory Deprivation</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/sensory-deprivation"
+                      className="text-primary hover:underline"
+                    >
+                      Sensory Deprivation
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Float tanks, dark retreat</td>
                   <td className="border border-border p-3 text-foreground">Visuals, introspection, deep insight</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Psychedelics/Entheogens</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/psychedelics-and-entheogens"
+                      className="text-primary hover:underline"
+                    >
+                      Psychedelics/Entheogens
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Psilocybin, LSD, Ayahuasca</td>
                   <td className="border border-border p-3 text-foreground">Visions, ego dissolution, bliss</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Fasting/Sleep Deprivation</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/fasting-and-sleep-deprivation"
+                      className="text-primary hover:underline"
+                    >
+                      Fasting/Sleep Deprivation
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Food/sleep abstinence</td>
                   <td className="border border-border p-3 text-foreground">Visions, disorientation, spirituality</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Rituals/Chanting</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/sleep-dreams-and-hypnagogia"
+                      className="text-primary hover:underline"
+                    >
+                      Sleep, Dreams, and Hypnagogia
+                    </Link>
+                  </td>
+                  <td className="border border-border p-3 text-foreground">REM dreaming, lucid dreams, hypnagogia</td>
+                  <td className="border border-border p-3 text-foreground">Dream imagery, insight, time distortion</td>
+                </tr>
+                <tr>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/rituals-and-chanting"
+                      className="text-primary hover:underline"
+                    >
+                      Rituals/Chanting
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Drumming, mantras, dance</td>
                   <td className="border border-border p-3 text-foreground">Trance, unity, ecstasy</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Physical Extremes</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/physical-extremes"
+                      className="text-primary hover:underline"
+                    >
+                      Physical Extremes
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Endurance running, sweat lodge</td>
                   <td className="border border-border p-3 text-foreground">Euphoria, altered perception</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Hypnosis/Visualization</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/hypnosis-and-visualization"
+                      className="text-primary hover:underline"
+                    >
+                      Hypnosis/Visualization
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Guided hypnosis, imagery</td>
                   <td className="border border-border p-3 text-foreground">Trance, altered memory/sensation</td>
                 </tr>
                 <tr>
-                  <td className="border border-border p-3 text-foreground">Creative Flow</td>
+                  <td className="border border-border p-3 text-foreground">
+                    <Link
+                      href="/consciousness/altered-states/common-methods-for-altering-consciousness/art-music-and-creative-flow"
+                      className="text-primary hover:underline"
+                    >
+                      Creative Flow
+                    </Link>
+                  </td>
                   <td className="border border-border p-3 text-foreground">Music, art, writing</td>
                   <td className="border border-border p-3 text-foreground">Timelessness, insight, absorption</td>
                 </tr>
