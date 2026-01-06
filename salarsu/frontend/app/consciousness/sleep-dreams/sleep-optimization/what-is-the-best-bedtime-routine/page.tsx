@@ -46,7 +46,7 @@ export default function WhatIsTheBestBedtimeRoutinePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the best bedtime routine?"]
+              The best bedtime routine is consistent, calming, and screen-light: dim lights, a warm shower, light stretching or reading, and a fixed “last call” for work. Keep it simple and repeatable nightly.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheBestBedtimeRoutinePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because the brain learns associations: a predictable wind-down results in faster relaxation and earlier melatonin signaling. Reducing stimulation and light leads to lower physiological arousal, making sleep onset easier. A routine also protects bedtime from “one more task” creep that gradually reduces sleep.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheBestBedtimeRoutinePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              The best routine is the one you’ll do consistently; fancy supplements or complex steps aren’t required. If you struggle to fall asleep, routines help, but CBT-I strategies (stimulus control, sleep restriction) may be needed for persistent insomnia.
             </p>
           </section>
 

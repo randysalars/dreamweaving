@@ -46,7 +46,7 @@ export default function WhatIsSleepMaintenanceInsomniaPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is sleep maintenance insomnia?"]
+              Sleep maintenance insomnia is waking up during the night and struggling to fall back asleep, leading to fragmented sleep and unrefreshing mornings. It’s often linked to stress, light/sound, aging, or underlying disorders.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsSleepMaintenanceInsomniaPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because repeated awakenings reduce deep and REM sleep, which leads to daytime fatigue, irritability, and poor concentration. Nighttime wakefulness often becomes reinforced by clock-watching and worry, resulting in a conditioned pattern. Identifying triggers and treating root causes leads to more consolidated sleep.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsSleepMaintenanceInsomniaPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If awakenings come with gasping, snoring, reflux, pain, or frequent urination, addressing those causes can matter more than generic sleep tips. CBT-I tools are still effective, but persistent symptoms sometimes require a sleep study or medical workup.
             </p>
           </section>
 

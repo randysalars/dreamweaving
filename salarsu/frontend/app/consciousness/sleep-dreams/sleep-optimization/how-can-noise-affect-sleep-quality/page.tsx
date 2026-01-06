@@ -46,7 +46,7 @@ export default function HowCanNoiseAffectSleepQualityPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How can noise affect sleep quality?"]
+              Noise disrupts sleep by causing micro-arousals even when you don’t fully wake up. Irregular sounds are most disruptive and can reduce deep and REM sleep, leaving you less rested.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowCanNoiseAffectSleepQualityPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because sleep fragmentation results in poorer restoration even if you think you slept “through it.” Sound triggers the brain’s vigilance system, which leads to spikes in heart rate and lighter sleep. Reducing noise variability (earplugs, white noise, better insulation) often leads to immediate improvements in sleep quality.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowCanNoiseAffectSleepQualityPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Some people habituate to consistent background noise, so white noise can help by masking sudden changes. If noise sensitivity is driven by anxiety or hypervigilance, addressing stress and bedtime arousal may matter as much as the environment.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function WhatCausesSleepApneaPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What causes sleep apnea?"]
+              Sleep apnea is usually caused by repeated airway collapse during sleep (obstructive apnea) due to anatomy, reduced muscle tone, and factors like weight, alcohol, and nasal obstruction. Less commonly, the brain’s breathing control is unstable (central apnea).
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatCausesSleepApneaPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because breathing interruptions cause oxygen drops and arousals, which leads to fragmented sleep and strong daytime fatigue even if you slept “all night.” Over time, repeated stress responses result in higher blood pressure, worse metabolic health, and increased cardiovascular risk. Recognizing causes leads to effective treatment (CPAP, oral appliances, positional changes, weight management).
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatCausesSleepApneaPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              People can have apnea at any weight, and symptoms vary—some snore loudly, others don’t. Alcohol and sleeping on your back can worsen apnea, and if you have witnessed apneas or significant sleepiness, a sleep study is the best next step.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function CanYouMakeUpForLostSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can you make up for lost sleep?"]
+              You can recover some lost sleep by sleeping longer for a few nights, but it’s not instant. Chronic sleep restriction accumulates debt and can leave performance impaired even after a weekend of catch-up.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanYouMakeUpForLostSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because “catch-up sleep” can create a false sense of safety while weekday deficits continue. Sleep loss results in attention lapses, mood volatility, and metabolic stress, and partial recovery can take several nights. Understanding the limits leads to better planning—consistent sleep first, then strategic recovery when life interrupts.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanYouMakeUpForLostSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Naps can help reduce sleepiness, but long late-day naps can delay nighttime sleep and worsen the cycle. If you’re constantly “catching up,” an underlying disorder (like apnea) or schedule mismatch may be the real cause.
             </p>
           </section>
 

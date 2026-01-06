@@ -46,7 +46,7 @@ export default function WhatFoodsHelpOrHurtSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What foods help or hurt sleep?"]
+              Heavy, spicy, or high-fat meals close to bedtime can hurt sleep by causing reflux and arousal. Light, balanced evening meals and limiting late sugar, alcohol, and caffeine tend to support better sleep.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatFoodsHelpOrHurtSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because digestion and blood sugar swings can wake the body, which leads to more awakenings and lighter sleep. Late alcohol or caffeine results in delayed sleep timing and disrupted REM. Choosing a steadier evening pattern leads to fewer overnight symptoms and more consistent morning energy.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatFoodsHelpOrHurtSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Individual tolerance varies—reflux, IBS, and medication timing change what “works.” If you wake hungry, a small protein-forward snack may help, but frequent late-night eating can shift your circadian rhythm and reduce sleep quality.
             </p>
           </section>
 

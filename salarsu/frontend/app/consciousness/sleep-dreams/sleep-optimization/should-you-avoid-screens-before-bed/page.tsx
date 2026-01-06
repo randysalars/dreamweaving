@@ -46,7 +46,7 @@ export default function ShouldYouAvoidScreensBeforeBedPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Should you avoid screens before bed?"]
+              Ideally, yes—especially bright, close screens in the last hour or two. Screens can delay melatonin timing and keep the brain stimulated, making it harder to fall asleep and reducing sleep quality.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function ShouldYouAvoidScreensBeforeBedPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because light is a powerful circadian signal, and evening light exposure results in a later internal “night,” which leads to later sleep onset. Content and interaction also increase cognitive arousal, keeping stress and curiosity circuits engaged. Reducing screen intensity and stimulation leads to faster wind-down and more consistent bedtimes.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function ShouldYouAvoidScreensBeforeBedPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If screens help you relax (e.g., a calm audiobook), the bigger issue may be brightness and timing, not screens themselves. Night mode, dimming, and distance help, but they don’t fully replace a real wind-down routine if you’re already prone to insomnia.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function WhatIsTheIdealBedroomTemperatureForSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the ideal bedroom temperature for sleep?"]
+              Most people sleep best in a cool room—roughly 16–19°C (60–67°F). Cooling helps the body’s natural temperature drop at night, which supports faster sleep onset and deeper sleep.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheIdealBedroomTemperatureForSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because thermoregulation is part of the sleep switch: a small drop in core temperature leads to sleepiness. Overheating results in more awakenings and lighter sleep, especially during REM. Adjusting temperature, bedding, and airflow often leads to quick, noticeable improvements.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheIdealBedroomTemperatureForSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Preferences vary with age, body composition, and hormones, and illness can change comfort needs. If you can’t change room temperature, you can often change microclimate with breathable bedding, fans, or cooling/warming mattress toppers.
             </p>
           </section>
 

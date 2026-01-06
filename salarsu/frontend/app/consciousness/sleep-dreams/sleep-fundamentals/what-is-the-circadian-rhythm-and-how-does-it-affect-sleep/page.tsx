@@ -46,7 +46,7 @@ export default function WhatIsTheCircadianRhythmAndHowDoesItAffectSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the circadian rhythm and how does it affect sleep?"]
+              The circadian rhythm is your internal 24-hour clock that regulates sleepiness and alertness. Light is its strongest cue, so morning light advances your schedule and evening light can delay sleep timing.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheCircadianRhythmAndHowDoesItAffectSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because sleep isn’t only about “how tired you are”—it’s also about biological timing. When your schedule conflicts with your clock, it results in insomnia at bedtime and sleepiness during the day. Aligning light, meals, and wake time leads to more consistent sleep onset and better energy.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheCircadianRhythmAndHowDoesItAffectSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Chronotype differs—some people naturally run later or earlier—so the “ideal” bedtime depends on your wake time. Shift work, jet lag, and late-night screens can override cues and create circadian misalignment that needs structured light management to correct.
             </p>
           </section>
 

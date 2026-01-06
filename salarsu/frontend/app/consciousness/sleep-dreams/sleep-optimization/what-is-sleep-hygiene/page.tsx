@@ -46,7 +46,7 @@ export default function WhatIsSleepHygienePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is sleep hygiene?"]
+              Sleep hygiene is a set of habits and environmental choices that make sleep easier—consistent schedule, low evening light, a cool and quiet bedroom, limited late caffeine/alcohol, and a calming wind-down routine.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsSleepHygienePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because sleep is sensitive to cues: light, temperature, timing, and stress. Good hygiene reduces arousal and strengthens circadian signals, which leads to faster sleep onset and fewer awakenings. It also gives you leverage before you reach for medication or supplements.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsSleepHygienePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Hygiene helps many people, but it won’t fix everything if a medical disorder (apnea, restless legs) is the main cause. If your “sleep hygiene” becomes perfectionism (orthosomnia), it can increase anxiety and worsen sleep—keep it practical and flexible.
             </p>
           </section>
 

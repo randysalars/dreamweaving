@@ -46,7 +46,7 @@ export default function WhatIsDelayedSleepPhaseSyndromePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is delayed sleep phase syndrome?"]
+              Delayed sleep phase syndrome is a circadian rhythm disorder where your internal clock runs late, making it hard to fall asleep and wake up at conventional times. Sleep is often normal when allowed on a late schedule.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsDelayedSleepPhaseSyndromePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because people with a delayed clock are often misdiagnosed as having “insomnia” or “poor discipline,” which leads to ineffective advice and chronic sleep debt. Forcing early wake times results in persistent sleep deprivation and worse mood and performance. Proper circadian strategies (morning light, consistent wake time, timed melatonin) can shift the clock and improve functioning.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsDelayedSleepPhaseSyndromePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Treatment is timing-sensitive—getting morning light but staying up late on weekends can undo progress. Teens and young adults are especially prone to delayed timing, and coexisting anxiety or ADHD can complicate sleep onset.
             </p>
           </section>
 

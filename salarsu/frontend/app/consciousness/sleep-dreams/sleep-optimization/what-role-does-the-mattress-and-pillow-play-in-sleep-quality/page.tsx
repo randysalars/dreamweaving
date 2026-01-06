@@ -46,7 +46,7 @@ export default function WhatRoleDoesTheMattressAndPillowPlayInSleepQualityPage()
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What role does the mattress and pillow play in sleep quality?"]
+              Mattress and pillow affect sleep by supporting spinal alignment, reducing pressure points, and regulating temperature. The right setup reduces pain and micro-awakenings, which improves sleep continuity and how rested you feel.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatRoleDoesTheMattressAndPillowPlayInSleepQualityPage()
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because discomfort results in movement and arousals that you may not remember, leading to fragmented sleep. Better alignment reduces muscle tension and joint stress, which leads to fewer wake-ups and better morning recovery. Temperature and material choice also influence sweating and restlessness, affecting overall sleep quality.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatRoleDoesTheMattressAndPillowPlayInSleepQualityPage()
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              No single firmness is “best”—body size, sleep position, and pain conditions change the ideal. If you’re waking with consistent neck/back pain, adjusting pillow loft or adding targeted support can help more than replacing everything at once.
             </p>
           </section>
 

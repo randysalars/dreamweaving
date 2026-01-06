@@ -46,7 +46,7 @@ export default function WhatIsNarcolepsyPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is narcolepsy?"]
+              Narcolepsy is a neurological sleep disorder marked by excessive daytime sleepiness and sudden sleep attacks. Some people also have cataplexy (sudden muscle weakness with emotion), sleep paralysis, and vivid hypnagogic hallucinations.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsNarcolepsyPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because narcolepsy disrupts the boundary between wake and REM sleep, which leads to dangerous sleepiness in daily life. Mislabeling it as “laziness” or depression results in delayed diagnosis and avoidable risk (driving, work accidents). Proper treatment and accommodations lead to safer functioning and better quality of life.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsNarcolepsyPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Daytime sleepiness can also come from apnea, chronic sleep deprivation, or medications, so evaluation matters. If you have cataplexy, frequent sleep paralysis, or irresistible sleep attacks, it’s especially important to discuss symptoms with a sleep specialist.
             </p>
           </section>
 

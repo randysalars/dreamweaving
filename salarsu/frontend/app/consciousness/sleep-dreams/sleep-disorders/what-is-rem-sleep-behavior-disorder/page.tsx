@@ -46,7 +46,7 @@ export default function WhatIsRemSleepBehaviorDisorderPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is REM sleep behavior disorder?"]
+              REM sleep behavior disorder (RBD) is when the normal REM muscle paralysis is reduced, so people act out dreams—talking, punching, or kicking. It can cause injury and may be associated with neurological disease risk in some cases.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsRemSleepBehaviorDisorderPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because dream enactment can be dangerous, leading to injury for the sleeper or partner. Loss of REM atonia results in a clear physiological marker that can be evaluated and treated, often with safety planning and medical management. In some people, RBD can be an early sign of neurodegenerative processes, so recognition leads to appropriate follow-up.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsRemSleepBehaviorDisorderPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Not all movement in sleep is RBD—sleepwalking and periodic limb movements are different and occur in other stages. Because the implications can be important, suspected RBD warrants evaluation by a sleep specialist rather than self-diagnosis.
             </p>
           </section>
 

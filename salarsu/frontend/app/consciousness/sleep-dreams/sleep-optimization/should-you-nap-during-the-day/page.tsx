@@ -46,7 +46,7 @@ export default function ShouldYouNapDuringTheDayPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Should you nap during the day?"]
+              Naps can help if you’re sleep deprived, but timing and length matter. A 10–20 minute early afternoon nap boosts alertness, while long or late naps can disrupt nighttime sleep.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function ShouldYouNapDuringTheDayPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because naps trade off with nighttime sleep: reducing sleep pressure too much leads to delayed bedtime and more insomnia. Short naps restore alertness without deep sleep, which results in less grogginess. Used strategically, naps can improve performance and safety when sleep debt is unavoidable.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function ShouldYouNapDuringTheDayPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If you have insomnia, frequent napping can maintain the problem by lowering nighttime sleep drive. For shift workers, planned naps can be protective, but they work best with light management and a consistent sleep window.
             </p>
           </section>
 

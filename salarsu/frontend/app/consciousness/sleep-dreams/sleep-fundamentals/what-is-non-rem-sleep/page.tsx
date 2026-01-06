@@ -46,7 +46,7 @@ export default function WhatIsNonRemSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is non-REM sleep?"]
+              Non-REM sleep includes stages N1, N2, and N3 (deep sleep) and makes up most of the night. It features slower brain rhythms and supports physical recovery and memory consolidation.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsNonRemSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Non-REM matters because slow waves and spindles help stabilize learning, regulate the nervous system, and reduce arousal, which leads to restorative sleep. Deep non-REM also raises the threshold for waking, resulting in that “dead asleep” feeling. When non-REM is disrupted, people often wake unrefreshed even if total sleep time looks adequate.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsNonRemSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Non-REM tends to dominate early in the night and decreases with age. Alcohol and sleep deprivation can change non-REM depth and timing, and disorders like apnea can fragment it without you fully noticing.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function WhatIsRestlessLegSyndromePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is restless leg syndrome?"]
+              Restless legs syndrome (RLS) is an urge to move the legs—often with uncomfortable sensations—worse at rest and in the evening. It can delay sleep onset and fragment sleep, and is sometimes linked to low iron.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsRestlessLegSyndromePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because RLS causes repeated arousal and movement, which leads to chronic sleep loss and daytime fatigue. It’s also treatable—checking iron status and addressing triggers can result in large improvements. Recognizing RLS prevents mislabeling it as “anxiety” or “restlessness” without a physiological cause.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsRestlessLegSyndromePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Symptoms can worsen with sleep deprivation, caffeine, and some medications, and can increase during pregnancy. If symptoms are frequent or severe, a clinician can help rule out iron deficiency and select appropriate treatments.
             </p>
           </section>
 

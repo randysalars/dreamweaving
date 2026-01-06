@@ -46,7 +46,7 @@ export default function WhatAreParasomniasSleepwalkingNightTerrorsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are parasomnias (sleepwalking, night terrors)?"]
+              Parasomnias are unusual behaviors or experiences during sleep, such as sleepwalking, night terrors, talking, or acting out dreams. Many arise from partial arousals out of deep non-REM sleep and often aren’t remembered.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreParasomniasSleepwalkingNightTerrorsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because parasomnias can look like “waking behavior,” but the brain is partly asleep, which leads to confusion and risky actions without full awareness. Sleep deprivation and stress increase partial arousals, resulting in more episodes. Understanding the mechanism leads to practical safety measures and reduces fear or shame.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreParasomniasSleepwalkingNightTerrorsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Parasomnias are common in children and often fade, but adult-onset or dangerous episodes deserve evaluation. If someone acts out dreams with punching or shouting, that may be REM sleep behavior disorder, which is different from non-REM sleepwalking/night terrors.
             </p>
           </section>
 

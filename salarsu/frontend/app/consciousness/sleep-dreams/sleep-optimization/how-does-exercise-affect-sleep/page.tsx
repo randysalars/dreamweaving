@@ -46,7 +46,7 @@ export default function HowDoesExerciseAffectSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does exercise affect sleep?"]
+              Regular exercise generally improves sleep quality by increasing sleep drive and reducing stress. Intense workouts too close to bedtime can delay sleep for some people, while earlier exercise often helps.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesExerciseAffectSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because movement regulates stress hormones and body temperature, which leads to deeper, more consolidated sleep over time. Exercise also improves mood and anxiety, resulting in less nighttime rumination. Treating exercise as a sleep tool can be more sustainable than relying on supplements or willpower alone.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesExerciseAffectSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Timing is individual: some people sleep better after evening workouts, others get wired. Overtraining, late high-intensity sessions, or insufficient recovery can result in poorer sleep, so balance and consistency matter.
             </p>
           </section>
 

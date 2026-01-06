@@ -46,7 +46,7 @@ export default function DoSleepTrackersActuallyWorkPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Do sleep trackers actually work?"]
+              Sleep trackers can estimate sleep timing and trends, but they’re not very accurate for sleep stages. They’re useful for noticing patterns, yet they can misclassify wakefulness and shouldn’t replace clinical evaluation.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function DoSleepTrackersActuallyWorkPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because data can help behavior change—seeing bedtime drift or short nights leads to better planning. But false precision results in anxiety (“I only got 12% deep sleep”), which can worsen insomnia. Using trackers for big patterns rather than nightly scores leads to better outcomes.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function DoSleepTrackersActuallyWorkPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If you have significant daytime sleepiness, loud snoring, or witnessed apneas, a sleep study is far more informative than a wearable. If tracking makes you obsess or sleep worse, it’s reasonable to take a break and focus on how you feel and function.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function WhatAreNonMedicationTreatmentsForInsomniaPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are non-medication treatments for insomnia?"]
+              The gold standard is CBT-I, which includes stimulus control, sleep restriction, cognitive restructuring, and relaxation training. Good light timing, consistent wake time, and addressing stress and caffeine/alcohol also improve insomnia.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreNonMedicationTreatmentsForInsomniaPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because insomnia is often maintained by behaviors that feel helpful but backfire—staying in bed awake, napping to compensate, and chasing sleep. CBT-I changes those patterns, which leads to stronger sleep drive and a calmer relationship with bedtime. Non-drug approaches also avoid tolerance and rebound effects that can result from long-term sedative use.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreNonMedicationTreatmentsForInsomniaPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If insomnia is driven by apnea, restless legs, pain, or medication side effects, those must be addressed for CBT-I to fully work. Some people need a short-term medication bridge, but it’s usually most effective when paired with CBT-I rather than replacing it.
             </p>
           </section>
 

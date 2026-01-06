@@ -46,7 +46,7 @@ export default function CanAnxietyCauseSleepProblemsPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Can anxiety cause sleep problems?"]
+              Yes. Anxiety increases cognitive and physiological arousal, making it harder to fall asleep and easier to wake up. Poor sleep then raises anxiety sensitivity, creating a reinforcing loop.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function CanAnxietyCauseSleepProblemsPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because the nervous system treats worry like threat, which leads to elevated heart rate, tension, and rumination at bedtime. Fragmented sleep results in lower emotional regulation the next day, making worries feel more convincing. Addressing both sides—sleep habits and anxiety skills—often leads to the fastest improvement.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function CanAnxietyCauseSleepProblemsPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              If sleep is disrupted by a medical cause (apnea, reflux, pain), anxiety may be secondary. If anxiety is severe, panic attacks occur, or sleep loss is prolonged, professional support and structured therapies (CBT, CBT-I) can be especially helpful.
             </p>
           </section>
 

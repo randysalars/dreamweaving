@@ -46,7 +46,7 @@ export default function HowLongIsACompleteSleepCyclePage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How long is a complete sleep cycle?"]
+              A typical sleep cycle lasts about 70–110 minutes and repeats 4–6 times per night. Early cycles contain more deep sleep, while later cycles contain more REM sleep.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowLongIsACompleteSleepCyclePage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because waking mid-cycle often results in more grogginess, while waking near a lighter stage leads to easier alertness. The changing mix of deep sleep and REM across the night also means cutting sleep short disproportionately reduces REM-rich late sleep. Understanding cycles helps with planning naps, wake times, and realistic expectations about “sleep quality.”
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowLongIsACompleteSleepCyclePage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Cycle length varies by person and across the night, so rigid alarms based on “exact cycles” aren’t perfect. Sleep deprivation, alcohol, and fragmented sleep can also change architecture, making cycles less regular.
             </p>
           </section>
 

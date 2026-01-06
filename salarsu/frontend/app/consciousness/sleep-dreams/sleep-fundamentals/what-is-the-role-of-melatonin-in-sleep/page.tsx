@@ -46,7 +46,7 @@ export default function WhatIsTheRoleOfMelatoninInSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the role of melatonin in sleep?"]
+              Melatonin is a hormone that signals darkness and helps shift your circadian clock toward sleep. It’s more of a timing cue than a sedative, and it works best when taken at the right time.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheRoleOfMelatoninInSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because many sleep issues are circadian issues: your body wants sleep later or earlier than your schedule. Melatonin can shift timing, which leads to easier sleep onset when used strategically (often with morning light). Mis-timed use results in grogginess or minimal benefit, and it can mask problems like apnea or poor sleep hygiene.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheRoleOfMelatoninInSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              It’s most useful for jet lag, delayed sleep phase, shift work adjustments, and older adults with lower endogenous melatonin. Dosing and timing matter, and if you’re pregnant, on multiple medications, or have complex health conditions, it’s wise to discuss supplementation with a clinician.
             </p>
           </section>
 

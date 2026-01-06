@@ -46,7 +46,7 @@ export default function WhatIsRemSleepAndWhyIsItImportantPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is REM sleep and why is it important?"]
+              REM (rapid eye movement) sleep is a stage with active brain activity, vivid dreaming, and temporary muscle paralysis. It’s important for emotion regulation, learning integration, and supporting memory—especially late in the night.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsRemSleepAndWhyIsItImportantPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              REM matters because its chemistry and connectivity shift how the brain processes emotion and association, which leads to vivid dreams and memory integration. REM atonia prevents acting out dreams, resulting in safer sleep for most people. When REM is reduced—by alcohol, medications, or short sleep—people often see REM rebound, leading to unusually intense dreaming.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsRemSleepAndWhyIsItImportantPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              REM increases toward morning, so early alarms cut it disproportionately. If someone moves violently or injures a partner during dream enactment, that can indicate REM sleep behavior disorder, which is different from normal REM dreaming.
             </p>
           </section>
 

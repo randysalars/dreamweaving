@@ -46,7 +46,7 @@ export default function WhatAreSleepDisordersRelatedToCircadianRhythmPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are sleep disorders related to circadian rhythm?"]
+              Circadian rhythm sleep-wake disorders are problems with sleep timing, not sleep ability—your internal clock is misaligned with your schedule. Examples include delayed sleep phase, advanced sleep phase, shift work disorder, jet lag, and non-24-hour disorder.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreSleepDisordersRelatedToCircadianRhythmPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because treating a timing disorder like insomnia often fails and results in unnecessary medication use. Misalignment leads to poor sleep at the “wrong” times and sleepiness at the “wrong” times, causing chronic fatigue and mood disruption. Identifying the pattern leads to targeted fixes using light, schedule consistency, and sometimes melatonin timing.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreSleepDisordersRelatedToCircadianRhythmPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Chronotype and environment matter: bright mornings, dim evenings, and consistent wake times can shift many cases. For shift workers, perfect alignment may be impossible, so the goal becomes risk reduction and protected sleep windows.
             </p>
           </section>
 

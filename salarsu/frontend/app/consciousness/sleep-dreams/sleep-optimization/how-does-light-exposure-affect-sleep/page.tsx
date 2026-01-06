@@ -46,7 +46,7 @@ export default function HowDoesLightExposureAffectSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does light exposure affect sleep?"]
+              Light sets your circadian clock. Bright morning light helps you feel sleepy earlier at night, while bright evening light delays melatonin timing and can make it harder to fall asleep.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesLightExposureAffectSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because many “sleep problems” are timing problems: your sleep drive and clock aren’t aligned. Morning light anchors the day, which leads to earlier melatonin release and stronger nighttime sleepiness. Evening light and screens result in a later clock and more insomnia-like symptoms even when you’re tired.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesLightExposureAffectSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Chronotype matters: night owls often benefit most from early bright light and reduced evening light. Shift work and winter darkness can require structured light therapy and consistent schedules to see meaningful changes.
             </p>
           </section>
 

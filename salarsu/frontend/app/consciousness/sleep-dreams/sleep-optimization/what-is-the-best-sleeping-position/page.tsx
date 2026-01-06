@@ -46,7 +46,7 @@ export default function WhatIsTheBestSleepingPositionPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the best sleeping position?"]
+              The best position is one that’s comfortable and keeps your spine aligned. For many people, side sleeping reduces snoring and reflux, while back sleeping can worsen airway collapse in those prone to apnea.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheBestSleepingPositionPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because position changes breathing and muscle tone, which leads to differences in snoring, oxygenation, and sleep fragmentation. Poor alignment results in neck or back pain, increasing awakenings and reducing deep sleep. Small adjustments (pillow height, knee pillow, side-support) often lead to better comfort and continuity.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheBestSleepingPositionPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Pregnancy, shoulder pain, and reflux can make side sleeping especially helpful. If you suspect sleep apnea, position alone may not be sufficient, but avoiding back sleeping can be a useful part of a broader treatment plan.
             </p>
           </section>
 

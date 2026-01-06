@@ -46,7 +46,7 @@ export default function HowDoesShiftWorkAffectSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does shift work affect sleep?"]
+              Shift work disrupts sleep by forcing you to sleep against your circadian rhythm, leading to shorter, lighter sleep and more awakenings. It also reduces alertness at work, especially during overnight biological low points.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesShiftWorkAffectSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because circadian misalignment results in both poor sleep and impaired performance, which leads to higher accident risk and long-term health strain. Light at night and sunlight in the morning can keep shifting the clock, resulting in chronic “jet lag” at home. Structured strategies—protected sleep blocks, light management, naps—lead to safer functioning.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesShiftWorkAffectSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Rotating shifts are usually harder than stable shifts because the clock can’t adapt. If you have significant sleepiness while driving or frequent microsleeps, it’s important to treat this as a safety issue, not a character flaw.
             </p>
           </section>
 

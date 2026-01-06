@@ -46,7 +46,7 @@ export default function WhyDoWeNeedSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "Why do we need sleep?"]
+              We need sleep to restore brain and body function. It stabilizes memory and learning, regulates hormones and immunity, supports cellular repair, and keeps attention and mood networks functioning well.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhyDoWeNeedSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Sleep matters because the brain uses it to rebalance synapses, consolidate memories, and clear metabolic byproducts, which leads to sharper thinking and steadier mood. It also regulates stress hormones and immune signaling, so poor sleep results in higher inflammation and worse resilience. Over time, consistent sleep leads to better performance, recovery, and long-term health.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhyDoWeNeedSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Needs vary by age, genetics, and health, so “enough” is partly individual. Short sleep can be tolerable occasionally, but chronic restriction accumulates and can take days to normalize, and sleep disorders can leave you impaired even with long time in bed.
             </p>
           </section>
 

@@ -46,7 +46,7 @@ export default function WhatAreTheStagesOfSleepAndWhatHappensInEachPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What are the stages of sleep and what happens in each?"]
+              Sleep cycles through non-REM stages (N1, N2, N3/deep sleep) and REM sleep. Non-REM supports physical recovery and memory stabilization; REM supports dreaming, emotion processing, and learning integration.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatAreTheStagesOfSleepAndWhatHappensInEachPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Stages matter because different brain rhythms support different jobs, which leads to different symptoms when a stage is reduced. For example, less deep sleep results in poorer restoration, while less REM can lead to mood instability and more vivid “rebound” dreaming later. Understanding stages helps explain why “8 hours” can still feel unrefreshing if sleep is fragmented.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatAreTheStagesOfSleepAndWhatHappensInEachPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Stage proportions shift with age, stress, alcohol, and medications, and consumer trackers estimate stages imperfectly. If you suspect a disorder like apnea, restless legs, or REM behavior disorder, a clinical evaluation is more informative than stage readouts.
             </p>
           </section>
 

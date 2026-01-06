@@ -46,7 +46,7 @@ export default function WhatIsDeepSleepAndWhyIsItImportantPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is deep sleep and why is it important?"]
+              Deep sleep (N3 slow-wave sleep) is the most physically restorative stage, marked by slow brain waves and high arousal threshold. It’s important for recovery, immune balance, and memory consolidation.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsDeepSleepAndWhyIsItImportantPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              Deep sleep matters because the brain and body shift into “maintenance mode,” which leads to tissue repair, metabolic cleanup, and stabilized learning. It also results in stronger resistance to waking, so interruptions can leave you feeling especially groggy. When deep sleep is chronically reduced, people often notice worse recovery, more pain sensitivity, and poorer mood.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsDeepSleepAndWhyIsItImportantPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Deep sleep is highest earlier in the night and declines with age. Alcohol, late-night stress, and sleep disorders can fragment deep sleep, and more “time in bed” won’t fix it if quality is poor.
             </p>
           </section>
 

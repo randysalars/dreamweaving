@@ -46,7 +46,7 @@ export default function HowDoYouKnowIfYouHaveASleepDisorderPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How do you know if you have a sleep disorder?"]
+              Suspect a sleep disorder if sleep problems persist for weeks and impair daytime function—excessive sleepiness, loud snoring/gasping, insomnia, unusual movements, or waking unrefreshed despite adequate time in bed.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoYouKnowIfYouHaveASleepDisorderPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because untreated disorders fragment sleep architecture and reduce oxygen or stability, which leads to mood changes, attention lapses, and health risk. Many people normalize symptoms for years, resulting in preventable strain on work, relationships, and metabolism. Recognizing patterns early leads to targeted treatment instead of endless “sleep hygiene” tweaks.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoYouKnowIfYouHaveASleepDisorderPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Short-term disruption from stress, travel, illness, or a newborn is common and may resolve without diagnosis. But if symptoms are frequent, worsening, or involve breathing pauses, sudden sleep attacks, or safety risks, it’s worth seeking evaluation.
             </p>
           </section>
 

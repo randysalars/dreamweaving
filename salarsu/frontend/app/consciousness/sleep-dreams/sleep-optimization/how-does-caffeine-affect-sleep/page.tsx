@@ -46,7 +46,7 @@ export default function HowDoesCaffeineAffectSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "How does caffeine affect sleep?"]
+              Caffeine blocks adenosine (sleep pressure), making you feel alert but delaying sleep onset and reducing deep sleep. Because it lasts hours, afternoon or evening caffeine can impair sleep even if you fall asleep.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function HowDoesCaffeineAffectSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because caffeine can mask fatigue without restoring brain function, which leads to a cycle of poorer sleep and more caffeine. Reduced deep sleep results in worse recovery and emotional regulation, even when total sleep time seems similar. Managing timing and dose leads to better sleep quality and more stable daytime energy.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function HowDoesCaffeineAffectSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Sensitivity varies widely: some people can drink coffee at 4pm and sleep, others can’t. Nicotine, stress, and certain medications can amplify stimulation, and “decaf” still contains small amounts that may matter for sensitive sleepers.
             </p>
           </section>
 

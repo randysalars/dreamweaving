@@ -46,7 +46,7 @@ export default function WhatHappensInTheBrainDuringSleepPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What happens in the brain during sleep?"]
+              During sleep, brain activity shifts into distinct rhythms (slow waves, spindles, REM patterns) that support memory replay, synaptic recalibration, emotional processing, and metabolic cleanup—while sensory input and conscious control reduce.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatHappensInTheBrainDuringSleepPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because sleep is active brain work, not shutdown. Specialized rhythms coordinate communication between regions, which results in stronger learning, better regulation of stress circuits, and cleaner “signal-to-noise” in neural networks. When sleep is shortened or fragmented, those processes are interrupted, leading to poorer attention, mood, and health.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatHappensInTheBrainDuringSleepPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Different stages emphasize different functions, so cutting late-night sleep tends to reduce REM and cutting early-night sleep reduces deep sleep. Sedatives and alcohol can make you unconscious without producing normal sleep architecture, so they don’t provide the same benefits.
             </p>
           </section>
 

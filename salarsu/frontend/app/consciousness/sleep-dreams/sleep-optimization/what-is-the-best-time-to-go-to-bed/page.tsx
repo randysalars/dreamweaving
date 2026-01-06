@@ -46,7 +46,7 @@ export default function WhatIsTheBestTimeToGoToBedPage() {
               Short Answer
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              [Claude: Write 20-35 word answer to "What is the best time to go to bed?"]
+              The best bedtime is the one that reliably gives you enough sleep before your wake time. For most people, a consistent schedule aligned with their circadian rhythm matters more than a specific clock time.
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function WhatIsTheBestTimeToGoToBedPage() {
               Why This Matters
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 2-4 sentences explaining WHY this matters, using causal language (because, results in, leads to). Be specific about mechanisms and broader implications.]
+              This matters because consistency strengthens circadian signals, which leads to easier sleep onset and fewer awakenings. Chasing an “ideal” bedtime while ignoring wake time results in frustration and insomnia-like effort. Building bedtime around a stable wake time leads to a stronger sleep drive and better daytime energy.
             </p>
           </section>
 
@@ -66,7 +66,7 @@ export default function WhatIsTheBestTimeToGoToBedPage() {
               Where This Changes
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              [Claude: Write 1-3 sentences addressing when this CHANGES, what the limits are, or what exceptions exist. Add nuance without contradicting the short answer.]
+              Night owls may need earlier morning light and dimmer evenings to shift earlier, while early birds may need the opposite. If your schedule forces a bedtime that your body can’t support, the answer may be circadian treatment strategies rather than more willpower.
             </p>
           </section>
 
