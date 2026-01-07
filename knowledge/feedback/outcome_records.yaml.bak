@@ -1025,4 +1025,58 @@ records:
   comments_sentiment: null
   metrics_complete: false
   youtube_pending: false
-last_updated: '2026-01-06T01:40:59.343401'
+- record_id: outcome-400cb1e5
+  session_name: the-celestial-forge-of-archetypes-dreamweaving
+  created_at: '2026-01-06T02:33:47.310420'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+- record_id: outcome-398666f0
+  session_name: black-hole-breakthrough-dreamweaving
+  created_at: '2026-01-07T00:50:31.074886'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+last_updated: '2026-01-07T00:50:31.112042'

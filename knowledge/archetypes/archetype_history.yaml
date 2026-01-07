@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-01-06'
-  total_sessions_tracked: 43
+  updated: '2026-01-07'
+  total_sessions_tracked: 45
   unique_archetypes_used: 15
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -757,6 +757,41 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: The Celestial Forge Of Archetypes Dreamweaving'
+- session_id: black-hole-breakthrough-dreamweaving
+  date: '2026-01-07'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Black Hole Breakthrough Dreamweaving'
+- session_id: enchanted-herb-garden-tend-to-a-magical-herb-garde
+  date: '2026-01-07'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Enchanted Herb Garden: Tend to a magical herb
+    garden, understanding the mystical properties of each plant Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 11
@@ -807,7 +842,7 @@ listener_relationships:
     last_session_date: '2025-12-27'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 30
+    total_encounters: 32
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -871,8 +906,12 @@ listener_relationships:
       type: first_encounter
     - session: the-celestial-forge-of-archetypes-dreamweaving
       type: first_encounter
-    last_session: the-celestial-forge-of-archetypes-dreamweaving
-    last_session_date: '2026-01-06'
+    - session: black-hole-breakthrough-dreamweaving
+      type: first_encounter
+    - session: enchanted-herb-garden-tend-to-a-magical-herb-garde
+      type: first_encounter
+    last_session: enchanted-herb-garden-tend-to-a-magical-herb-garde
+    last_session_date: '2026-01-07'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 2
@@ -913,7 +952,7 @@ listener_relationships:
     last_session_date: '2025-12-10'
     relationship_level: 1
   divine_feminine.rose_mother:
-    total_encounters: 22
+    total_encounters: 24
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -961,11 +1000,15 @@ listener_relationships:
       type: first_encounter
     - session: the-celestial-forge-of-archetypes-dreamweaving
       type: first_encounter
-    last_session: the-celestial-forge-of-archetypes-dreamweaving
-    last_session_date: '2026-01-06'
+    - session: black-hole-breakthrough-dreamweaving
+      type: first_encounter
+    - session: enchanted-herb-garden-tend-to-a-magical-herb-garde
+      type: first_encounter
+    last_session: enchanted-herb-garden-tend-to-a-magical-herb-garde
+    last_session_date: '2026-01-07'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 17
+    total_encounters: 18
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1003,8 +1046,10 @@ listener_relationships:
       type: first_encounter
     - session: the-celestial-forge-of-archetypes-dreamweaving
       type: first_encounter
-    last_session: the-celestial-forge-of-archetypes-dreamweaving
-    last_session_date: '2026-01-06'
+    - session: enchanted-herb-garden-tend-to-a-magical-herb-garde
+      type: first_encounter
+    last_session: enchanted-herb-garden-tend-to-a-magical-herb-garde
+    last_session_date: '2026-01-07'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 5
@@ -1045,7 +1090,7 @@ listener_relationships:
     last_session_date: '2026-01-03'
     relationship_level: 3
   emotional_heart.heart_flame_tender:
-    total_encounters: 12
+    total_encounters: 13
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -1073,8 +1118,10 @@ listener_relationships:
       type: first_encounter
     - session: dream-reality-dreamweaving
       type: first_encounter
-    last_session: dream-reality-dreamweaving
-    last_session_date: '2026-01-06'
+    - session: black-hole-breakthrough-dreamweaving
+      type: first_encounter
+    last_session: black-hole-breakthrough-dreamweaving
+    last_session_date: '2026-01-07'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 1
@@ -1161,27 +1208,27 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - enochs-ascension-guided-dreamweaving-through-the-h
-  - enlightenment-through-masonic-degrees-a-guided-med
   - fountain-of-fame-dreamweaving
   - dream-reality-dreamweaving
   - the-celestial-forge-of-archetypes-dreamweaving
+  - black-hole-breakthrough-dreamweaving
+  - enchanted-herb-garden-tend-to-a-magical-herb-garde
   archetype_cooldowns:
-    divine_light_healing.great_physician: 3
-    transformation_alchemy.phoenix_renewal: 22
+    divine_light_healing.great_physician: 5
+    transformation_alchemy.phoenix_renewal: 24
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 35
-    divine_masculine.guardian_father: 3
-    dreamweaver_meta.dream_architect: 39
+    warrior_power.archangel_michael: 37
+    divine_masculine.guardian_father: 5
+    dreamweaver_meta.dream_architect: 41
     divine_feminine.rose_mother: 0
     shamanic_earth.world_tree_guardian: 0
-    oracle_seer.oracle_of_light: 10
-    divine_feminine.sophia_wisdom: 10
+    oracle_seer.oracle_of_light: 12
+    divine_feminine.sophia_wisdom: 12
     emotional_heart.heart_flame_tender: 1
-    warrior_power.solar_king: 35
-    divine_masculine.logos_bearer: 25
-    divine_light_healing.shekinah_restorer: 7
-    emotional_heart.joy_child: 25
+    warrior_power.solar_king: 37
+    divine_masculine.logos_bearer: 27
+    divine_light_healing.shekinah_restorer: 9
+    emotional_heart.joy_child: 27
 selection_weights: {}
 family_rotation:
   last_session_families:
@@ -1189,13 +1236,13 @@ family_rotation:
   - shamanic_earth
   - divine_feminine
   family_usage_counts:
-    divine_light_healing: 49
+    divine_light_healing: 51
     transformation_alchemy: 5
     warrior_power: 3
     divine_masculine: 7
     dreamweaver_meta: 1
-    divine_feminine: 28
-    shamanic_earth: 17
+    divine_feminine: 30
+    shamanic_earth: 18
     oracle_seer: 5
-    emotional_heart: 14
+    emotional_heart: 15
 effective_pairings: []

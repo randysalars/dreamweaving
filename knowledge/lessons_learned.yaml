@@ -14,8 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - the-lighthouse-of-commitment-dreamweaving
-  - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
   - galadriels-gaze-exploring-inner-light-and-shadow-t
@@ -34,8 +32,10 @@ lessons:
   - fountain-of-fame-dreamweaving
   - dream-reality-dreamweaving
   - the-celestial-forge-of-archetypes-dreamweaving
-  applied_count: 38
-  last_applied: '2026-01-06'
+  - black-hole-breakthrough-dreamweaving
+  - enchanted-herb-garden-tend-to-a-magical-herb-garde
+  applied_count: 40
+  last_applied: '2026-01-07'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,8 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - the-lighthouse-of-commitment-dreamweaving
-  - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
   - galadriels-gaze-exploring-inner-light-and-shadow-t
@@ -72,8 +70,10 @@ lessons:
   - fountain-of-fame-dreamweaving
   - dream-reality-dreamweaving
   - the-celestial-forge-of-archetypes-dreamweaving
-  applied_count: 38
-  last_applied: '2026-01-06'
+  - black-hole-breakthrough-dreamweaving
+  - enchanted-herb-garden-tend-to-a-magical-herb-garde
+  applied_count: 40
+  last_applied: '2026-01-07'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,8 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - the-lighthouse-of-commitment-dreamweaving
-  - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
   - galadriels-gaze-exploring-inner-light-and-shadow-t
@@ -109,8 +107,10 @@ lessons:
   - fountain-of-fame-dreamweaving
   - dream-reality-dreamweaving
   - the-celestial-forge-of-archetypes-dreamweaving
-  applied_count: 38
-  last_applied: '2026-01-06'
+  - black-hole-breakthrough-dreamweaving
+  - enchanted-herb-garden-tend-to-a-magical-herb-garde
+  applied_count: 40
+  last_applied: '2026-01-07'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,8 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - the-lighthouse-of-commitment-dreamweaving
-  - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
   - galadriels-gaze-exploring-inner-light-and-shadow-t
@@ -147,8 +145,10 @@ lessons:
   - fountain-of-fame-dreamweaving
   - dream-reality-dreamweaving
   - the-celestial-forge-of-archetypes-dreamweaving
-  applied_count: 38
-  last_applied: '2026-01-06'
+  - black-hole-breakthrough-dreamweaving
+  - enchanted-herb-garden-tend-to-a-magical-herb-garde
+  applied_count: 40
+  last_applied: '2026-01-07'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,8 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - the-lighthouse-of-commitment-dreamweaving
-  - forge-of-fortitude-blacksmith-of-your-body
   - the-elysian-fields-of-emotional-harmony-dreamweavi
   - lady-gagas-extravagant-show-dreamweaving
   - galadriels-gaze-exploring-inner-light-and-shadow-t
@@ -183,8 +181,10 @@ lessons:
   - fountain-of-fame-dreamweaving
   - dream-reality-dreamweaving
   - the-celestial-forge-of-archetypes-dreamweaving
-  applied_count: 38
-  last_applied: '2026-01-06'
+  - black-hole-breakthrough-dreamweaving
+  - enchanted-herb-garden-tend-to-a-magical-herb-garde
+  applied_count: 40
+  last_applied: '2026-01-07'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
