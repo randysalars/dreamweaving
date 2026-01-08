@@ -1,0 +1,39 @@
+session_name: the-tower-of-integrated-energy-replacing-stimulant
+topic: The Tower of Integrated Energy (Replacing Stimulant Combinations & Poly-Substance
+  Dependencies)
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2026-01-08T00:00:49.773779'
+  ended: '2026-01-08T00:01:15.454793'
+  duration_seconds: 25.7
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  failed:
+  - generate_script
+  - generate_script failed; aborting pipeline
+  total: 5
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-01-08T00:00:51.318546'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2026-01-08T00:01:05.973858'
+  total_usd: 0.4
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/the-tower-of-integrated-energy-replacing-stimulant
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/the-tower-of-integrated-energy-replacing-stimulant/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/the-tower-of-integrated-energy-replacing-stimulant/working_files/script.ssml
+  files: []

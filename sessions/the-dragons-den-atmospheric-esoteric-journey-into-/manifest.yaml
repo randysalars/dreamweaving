@@ -1,0 +1,122 @@
+session:
+  name: the-dragons-den-atmospheric-esoteric-journey-into-
+  topic: 'The Dragon''s Den: Atmospheric Esoteric Journey into Fire-Breathing Lore
+    Dreamweaving'
+  duration: 1800
+  style: anxiety
+  created: '2026-01-08'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: 'The Dragon''s Den: Atmospheric Esoteric Journey Into Fire-breathing
+    Lore Dreamweaving'
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: 'Welcome and introduction to The Dragon''s Den: Atmospheric Esoteric
+    Journey into Fire-Breathing Lore Dreamweaving'
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into in the realm between waking and dreaming,
+    where consciousness drifts through landscapes of infinite possibility
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a sacred journey through underwater realms toward anxiety'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: resting in unshakeable calm and present-moment peace'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Inner Healer
+  role: primary
+  description: White Flame archetype for regeneration and cellular intelligence
+  symbol: ''
+  qualities: []
+  appearance_section: journey
+- name: The Heart Flame Tender
+  role: secondary
+  description: Archetype that tends and purifies the heart's flame
+  symbol: ''
+  qualities: []
+  appearance_section: helm_deep_trance
+- name: The Rose Mother
+  role: support
+  description: Archetype of unconditional love, nurturing, and maternal protection
+  symbol: ''
+  qualities: []
+  appearance_section: integration
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 196
+    preset: hypnagogic_dream_gate
+    sections:
+    - start: 0
+      end: 180
+      offset_hz: 9.7
+    - start: 180
+      end: 450
+      offset_hz: 7.1
+    - start: 450
+      end: 900
+      offset_hz: 4.4
+    - start: 900
+      end: 1260
+      offset_hz: 2.2
+    - start: 1260
+      end: 1530
+      offset_hz: 5.0
+    - start: 1530
+      end: 1800
+      offset_hz: 8.8
+    multi_layer:
+      enabled: true
+      delta_foundation:
+        frequency: 1.5
+        carrier_offset: 60
+        level_db: -6
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: 'The Dragon''s Den: Atmospheric Esoteric Journey Into Fire-breathing Lore
+    Dreamweaving | Binaural Beats Meditation'
+  subtitle: "432Hz \u2022 Anxiety"
+  description: 'A transformational journey: resting in unshakeable calm and present-moment
+    peace'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - anxiety
+  - underwater
