@@ -1,0 +1,115 @@
+session:
+  name: diamond-dynamism-dreamweaving
+  topic: Diamond Dynamism Dreamweaving
+  duration: 1800
+  style: sleep
+  created: '2026-01-09'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: Diamond Dynamism Dreamweaving
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: Welcome and introduction to Diamond Dynamism Dreamweaving
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into in the realm between waking and dreaming,
+    where consciousness drifts through landscapes of infinite possibility
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a sacred journey through underwater realms toward sleep'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: surrendering into the deepest, most restorative rest'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Inner Healer
+  role: primary
+  description: White Flame archetype for regeneration and cellular intelligence
+  symbol: ''
+  qualities: []
+  appearance_section: journey
+- name: The Heart Flame Tender
+  role: secondary
+  description: Archetype that tends and purifies the heart's flame
+  symbol: ''
+  qualities: []
+  appearance_section: helm_deep_trance
+- name: The Rose Mother
+  role: support
+  description: Archetype of unconditional love, nurturing, and maternal protection
+  symbol: ''
+  qualities: []
+  appearance_section: integration
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 285
+    preset: healing_deep
+    sections:
+    - start: 0
+      end: 90
+      offset_hz: 7.6
+    - start: 90
+      end: 360
+      offset_hz: 5.7
+    - start: 360
+      end: 720
+      offset_hz: 3.5
+    - start: 720
+      end: 1170
+      offset_hz: 2.1
+    - start: 1170
+      end: 1800
+      offset_hz: 1.9
+    multi_layer:
+      enabled: true
+      delta_foundation:
+        frequency: 1.5
+        carrier_offset: 60
+        level_db: -6
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: Diamond Dynamism Dreamweaving | Binaural Beats Meditation
+  subtitle: "432Hz \u2022 Sleep"
+  description: 'A transformational journey: surrendering into the deepest, most restorative
+    rest'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - sleep
+  - underwater
