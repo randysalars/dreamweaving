@@ -23,8 +23,131 @@ The Dreamweavings project produces hypnotic audio/video sessions using multiple 
 ```
 
 ### Configuration Files
-- **Project MCP Config:** `config/mcp_servers.json`
+- **Project MCP Config:** `config/mcp_servers.json` **(CANONICAL)**
+- **CLI MCP Config:** `mcp.json` (CLI overrides only)
 - **Claude Desktop Config:** `~/.config/claude/claude_desktop_config.json`
+- **User Settings:** `~/.claude/settings.json`
+
+---
+
+## Configuration Architecture
+
+MCP servers are configured in multiple locations with this precedence:
+
+1. **config/mcp_servers.json** (CANONICAL)
+   - Project-specific configuration
+   - Includes workflow staging
+   - Tool categories
+   - Single source of truth
+
+2. **mcp.json** (CLI overrides)
+   - Claude Code CLI context
+   - Used for local development
+   - Should defer to project config
+
+3. **~/.claude/settings.json** (user defaults)
+   - Per-user defaults
+   - Serena configuration
+
+4. **~/.config/claude/claude_desktop_config.json** (desktop)
+   - Claude Desktop app only
+
+**Best Practice:** Always edit `config/mcp_servers.json` as the canonical source. Other configs should reference or override it sparingly.
+
+---
+
+## Why Dreamweaving Doesn't Use Standard Development MCPs
+
+This project uses **specialized MCP servers** instead of generic web development ones:
+
+| Standard MCP | Why Not Used | Our Alternative |
+|--------------|--------------|-----------------|
+| **filesystem** | Claude Code has native file tools (Read, Write, Glob, Grep) | Serena MCP (semantic code search, superior to file search) |
+| **Context7** | Generic library docs, not domain-specific | Notion MCP + dreamweaving-rag (our knowledge base) |
+| **Postgres** | No database in Dreamweaving | File-based YAML/JSON configuration |
+| **Shadcn** | React/Next.js UI component library | Not applicable (Python/video project) |
+| **Playwright** | Web browser testing framework | FFmpeg + media-processing skill (video pipelines) |
+| **Terminal** | Claude has native Bash tool | Built-in Bash tool (already available) |
+| **Git/GitHub** | Claude has native git via Bash | Built-in Bash tool + git commands |
+| **Vercel** | Vercel cloud deployment | Coolify (self-hosted deployment) |
+
+**Key Principle:** We use Claude Code's built-in tools (Read, Write, Bash) for generic operations, and specialized MCPs (Serena, Notion, image-gen-sd) for domain-specific capabilities.
+
+**Why This Is Better:**
+- Lower token overhead (specialized tools are more efficient than generic)
+- Domain-optimized (tools designed for creative AI content production)
+- Local-first (reduced API costs with local SD, Coqui TTS)
+- Workflow-aware (staged loading based on production phase)
+
+---
+
+## Important Distinction: Skills vs MCP Servers
+
+**MCP Servers:**
+- External processes that provide tools via Model Context Protocol
+- Examples: Serena, Notion, image-gen-sd
+- Location: Various (npm packages, Python scripts, uvx)
+- Run as separate processes communicating over stdio/HTTP
+- Configured in `config/mcp_servers.json` or `mcp.json`
+
+**Skills (Claude Code Plugins):**
+- Workflow plugins for Claude Code
+- Examples: media-processing, tier1-neural-core
+- Location: `~/.claude/skills/`
+- NOT MCP servers (different technology)
+- Installed via `npx claude-plugins skills install`
+
+**Important:** Do not confuse media-processing (a skill) with an MCP server. It provides FFmpeg/ImageMagick capabilities but runs through Claude Code's plugin system, not MCP.
+
+---
+
+## Workflow-Aware Tool Loading
+
+The project uses **staged tool loading** to optimize context window usage. Tools are loaded dynamically based on production workflow stage:
+
+| Stage | Name | Tools Loaded |
+|-------|------|--------------|
+| 1 | Creative Design | Core only (Serena, Notion, RAG) |
+| 2 | Voice Script | Core only |
+| 3 | Audio Generation | Core + Audio (ElevenLabs) |
+| 4 | Audio Mixing | Core + Audio + Media |
+| 5 | Hypnotic Post-Process | Core + Audio + Media |
+| 5.5 | Scene Images | Core + Image (SD, Stability AI) |
+| 6 | Video Production | Core + Video |
+| 7 | YouTube Packaging | Core + Publishing |
+| 8 | Cleanup | Core only |
+| 9 | Website Upload | Core only |
+
+**Benefits:**
+- Reduces context window consumption (2K-5K vs 20K+ tokens)
+- Loads only relevant tools per workflow phase
+- Prevents tool overload and confusion
+- Optimizes for task-specific operations
+
+**Configuration:** See `config/mcp_servers.json` → `toolCategories` and `stageToolMapping` for full definitions.
+
+---
+
+## MCP Server Inventory
+
+Complete list of all MCP servers available to this project:
+
+| Server | Status | Purpose | Config Location |
+|--------|--------|---------|-----------------|
+| **serena** | ✅ Active | Semantic code tools (find_symbol, refactoring, memories) | config/mcp_servers.json |
+| **image-gen-sd** | ✅ Active | Local Stable Diffusion WebUI | config/mcp_servers.json |
+| **notion** | ✅ Active | Official Notion API (page/DB access) | config/mcp_servers.json |
+| **dreamweaving-rag** | ✅ Active | Notion semantic search (Qdrant) | config/mcp_servers.json |
+| **coin-rag** | ✅ Available | Rare coin knowledge (specialized) | config/mcp_servers.json |
+| **elevenlabs** | ⏸️ Disabled | TTS, voice cloning (needs API key) | config/mcp_servers.json |
+| **stability-ai** | ⏸️ Disabled | Cloud images, SD 3.5 (needs key) | config/mcp_servers.json |
+| **chrome-devtools** | ⏸️ Disabled | Browser inspection (optional) | config/mcp_servers.json |
+| **midjourney** | 🔮 Future | Midjourney API integration | Not installed yet |
+
+**Legend:**
+- ✅ Active - Currently enabled and operational
+- ⏸️ Disabled - Configured but requires setup (API keys, etc.)
+- 🔮 Future - Documented as future enhancement
 
 ---
 
@@ -140,16 +263,20 @@ ls ~/.claude/skills/media-processing/
 1. Get API key: https://platform.stability.ai/account/keys
 2. Set environment variable: `STABILITY_AI_API_KEY`
 
-#### Midjourney MCP Server (CLOUD)
+#### Midjourney MCP Server (FUTURE ENHANCEMENT)
+
+**Status:** 🔮 NOT CURRENTLY INSTALLED
 
 **Purpose:** High-quality image generation through Midjourney API
 
-**Why Beneficial for Dreamweavings:**
+**Current Approach:** Generate Midjourney prompts as markdown files (`midjourney-prompts.md`) and manually create images on Midjourney web interface.
+
+**Why Beneficial for Dreamweavings (when implemented):**
 - Professional quality for YouTube thumbnails
 - Consistent style across sessions
 - Better for marketing materials
 
-**Installation:**
+**Future Installation (when ready):**
 ```bash
 claude mcp add-json midjourney '{
   "command": "uvx",
@@ -229,6 +356,176 @@ claude mcp add-json midjourney '{
 - ElevenLabs TTS
 - OpenAI TTS
 - macOS native `say` command
+
+### 2.3 Code & Knowledge MCP Servers
+
+#### Serena MCP Server (SEMANTIC CODE TOOLS - INSTALLED)
+
+**Status:** ✅ INSTALLED
+**Package:** `serena` (via uvx from GitHub)
+**Repository:** [oraios/serena](https://github.com/oraios/serena)
+
+**Purpose:** Semantic code analysis, refactoring, and memory management
+
+**Why Beneficial for Dreamweavings:**
+- Superior to generic filesystem tools (semantic search > file search)
+- Find symbols across codebase (functions, classes, variables)
+- Refactor code safely with references tracking
+- Store and retrieve project memories
+- Search code patterns intelligently
+
+**Available Tools:**
+| Tool | Description |
+|------|-------------|
+| `find_symbol` | Locate functions, classes, variables by name |
+| `find_referencing_symbols` | Find all references to a symbol |
+| `search_for_pattern` | Regex search across codebase |
+| `get_symbols_overview` | Get file structure and symbols |
+| `replace_symbol_body` | Edit symbol definitions precisely |
+| `insert_before_symbol` / `insert_after_symbol` | Insert code at specific locations |
+| `rename_symbol` | Refactor names across entire codebase |
+| `read_memory` / `write_memory` / `list_memories` | Project memory storage |
+
+**Configuration:**
+```json
+// In config/mcp_servers.json (CANONICAL)
+{
+  "serena": {
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/oraios/serena",
+      "serena",
+      "start-mcp-server",
+      "--context",
+      "ide-assistant"
+    ],
+    "enabled": true
+  }
+}
+```
+
+**Requirements:**
+- Python LSP (for .py files)
+- Bash LSP (for .sh files)
+- YAML LSP (for .yaml files)
+
+**Note:** Serena replaces generic filesystem MCP servers with intelligent, semantic operations optimized for code.
+
+#### Notion MCP Server (OFFICIAL - INSTALLED)
+
+**Status:** ✅ INSTALLED
+**Package:** `@notionhq/notion-mcp-server` (via npx)
+**Repository:** [notionhq/notion-mcp-server](https://github.com/notionhq/notion-mcp-server)
+
+**Purpose:** Read/write Dreamweaver workspace content from Notion
+
+**Why Beneficial for Dreamweavings:**
+- Access project documentation, specs, and roadmaps
+- Read archetypal definitions and journey templates
+- Update session notes and planning docs
+- Sync knowledge base with Notion pages
+
+**Setup:**
+1. Create Notion internal integration: https://www.notion.so/my-integrations
+2. Copy integration secret
+3. Connect integration to Sacred Digital Dreamweaver workspace
+4. Set `NOTION_TOKEN` environment variable
+
+**Configuration:**
+```json
+// In config/mcp_servers.json (CANONICAL)
+{
+  "notion": {
+    "command": "npx",
+    "args": ["-y", "@notionhq/notion-mcp-server"],
+    "env": {
+      "NOTION_TOKEN": "${NOTION_TOKEN}"
+    },
+    "enabled": true
+  }
+}
+```
+
+#### Dreamweaving RAG MCP Server (CUSTOM - INSTALLED)
+
+**Status:** ✅ INSTALLED
+**Location:** `scripts/mcp/dreamweaving_rag_mcp_server.py`
+**Type:** Custom Python MCP server
+
+**Purpose:** Semantic search over Notion export using Qdrant vector index
+
+**Why Beneficial for Dreamweavings:**
+- Faster semantic search than querying Notion API directly
+- Works offline once synced
+- Optimized for dreamweaving domain knowledge
+- Replaces generic Context7 MCP with domain-specific retrieval
+
+**Available Tools:**
+| Tool | Description |
+|------|-------------|
+| `search_notion_content` | Semantic search across exported Notion pages |
+| `get_notion_page` | Retrieve specific page by title or ID |
+| `list_notion_pages` | Browse available pages |
+| `sync_notion_export` | Export Notion and re-index (incremental) |
+
+**Prerequisites:**
+- Qdrant running locally or remotely
+- Notion export in `knowledge/notion_export/`
+
+**Configuration:**
+```json
+// In config/mcp_servers.json (CANONICAL)
+{
+  "dreamweaving-rag": {
+    "command": "bash",
+    "args": ["scripts/mcp/run_dreamweaving_rag_mcp_server.sh"],
+    "enabled": true
+  }
+}
+```
+
+**Note:** Works alongside official Notion MCP. Use Notion MCP for direct page writes, use RAG for fast semantic retrieval.
+
+#### Coin RAG MCP Server (SPECIALIZED - AVAILABLE)
+
+**Status:** ✅ AVAILABLE (specialized tool, not required for Dreamweaving)
+**Location:** `scripts/mcp/coin_rag_mcp_server.py`
+**Type:** Custom Python MCP server
+
+**Purpose:** Semantic search for rare coin knowledge (Morgan/Peace dollars, junk silver, key dates, pricing, grading)
+
+**Why Included:**
+- Demonstrates custom RAG server implementation
+- Example of specialized knowledge MCP
+- Available for numismatic research side projects
+
+**Use Cases:**
+- Researching coin values and key dates
+- Grading standards and condition assessment
+- Historical context for Morgan/Peace dollar designs
+
+**Available Tools:**
+| Tool | Description |
+|------|-------------|
+| `search_coin_knowledge` | Semantic search for coin information |
+| `get_coin_details` | Detailed info on specific coins |
+| `price_lookup` | Market pricing for grades |
+
+**Configuration:**
+```json
+// In config/mcp_servers.json (CANONICAL)
+{
+  "coin-rag": {
+    "command": "bash",
+    "args": ["scripts/mcp/run_coin_rag_mcp_server.sh"],
+    "enabled": true,
+    "notes": "Optional specialized tool for numismatic research. Not required for Dreamweaving workflows."
+  }
+}
+```
+
+**Note:** This server is enabled but specialized. It does not interfere with Dreamweaving workflows and can be disabled if not needed.
 
 ---
 

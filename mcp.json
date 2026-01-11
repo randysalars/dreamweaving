@@ -1,4 +1,5 @@
 {
+  "_comment": "CANONICAL CONFIG IS IN config/mcp_servers.json - This file is for CLI-specific overrides only. See config/mcp_servers.json for comprehensive configuration with staging, tool categories, and full server inventory.",
   "mcpServers": {
     "chrome-devtools": {
       "description": "Inspect a live Chromium browser via Chrome DevTools Protocol (performance/network/console) over MCP",

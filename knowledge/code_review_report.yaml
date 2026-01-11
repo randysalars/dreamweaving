@@ -1,10 +1,10 @@
-timestamp: '2026-01-04T01:00:05.270648'
+timestamp: '2026-01-11T01:00:04.555853'
 summary:
-  total_issues: 5960
+  total_issues: 6007
   errors: 0
-  warnings: 109
-  info: 5851
-  files_reviewed: 202
+  warnings: 110
+  info: 5897
+  files_reviewed: 203
 by_severity:
   errors: []
   warnings:
@@ -286,6 +286,12 @@ by_severity:
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/generation/track_content_progress.py
     line: 208
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/generation/batch_generate_content.py
+    line: 435
     type: hardcoded_path
     description: Hardcoded absolute path detected
     severity: warning
@@ -664,7 +670,7 @@ by_severity:
     suggestion: Consider refactoring to reduce complexity
 by_type:
   print_statement:
-    count: 3805
+    count: 3843
     examples:
     - file: scripts/test_basic_mixing.py
       line: 35
@@ -685,7 +691,7 @@ by_type:
       severity: info
       suggestion: Consider using logging module for production code
   missing_docstring:
-    count: 252
+    count: 254
     examples:
     - file: scripts/test_basic_mixing.py
       line: 104
@@ -706,7 +712,7 @@ by_type:
       severity: info
       suggestion: ''
   magic_number:
-    count: 1303
+    count: 1304
     examples:
     - file: scripts/test_basic_mixing.py
       line: 110
@@ -727,7 +733,7 @@ by_type:
       severity: info
       suggestion: ''
   hardcoded_path:
-    count: 9
+    count: 10
     examples:
     - file: scripts/email/insert_dreamweaver_templates.py
       line: 32
@@ -748,7 +754,7 @@ by_type:
       severity: warning
       suggestion: Use Path.home() or configuration for paths
   line_length:
-    count: 441
+    count: 446
     examples:
     - file: scripts/email/insert_dreamweaver_templates.py
       line: 285
@@ -17770,6 +17776,289 @@ by_file:
     line: 224
     type: missing_docstring
     description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/generation/batch_generate_content.py:
+  - file: scripts/generation/batch_generate_content.py
+    line: 43
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 81
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 82
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 83
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 84
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 85
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 86
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 87
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 88
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 89
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 90
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 91
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 93
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 94
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 113
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 115
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 116
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 118
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 161
+    type: line_length
+    description: Line too long (195 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/batch_generate_content.py
+    line: 164
+    type: line_length
+    description: Line too long (147 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/batch_generate_content.py
+    line: 215
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 219
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 226
+    type: line_length
+    description: Line too long (204 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/batch_generate_content.py
+    line: 227
+    type: line_length
+    description: Line too long (195 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/batch_generate_content.py
+    line: 341
+    type: line_length
+    description: Line too long (129 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/batch_generate_content.py
+    line: 435
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/generation/batch_generate_content.py
+    line: 438
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 458
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 463
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 467
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 470
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 472
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 473
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 475
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 482
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 502
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 505
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 515
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 518
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 525
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 526
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 528
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 530
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 551
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/generation/batch_generate_content.py
+    line: 392
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/generation/batch_generate_content.py
+    line: 55
+    type: missing_docstring
+    description: Function 'add_usage' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/generation/batch_generate_content.py
+    line: 341
+    type: magic_number
+    description: Magic number 155 should be a named constant
     severity: info
     suggestion: ''
   scripts/generation/generate_sample_pages.py:

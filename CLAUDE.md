@@ -789,17 +789,84 @@ python3 scripts/core/build_session.py sessions/{session}
 
 ---
 
+## MCP Server Architecture
+
+This project uses **specialized MCP servers** optimized for creative AI content production, not generic web development MCPs.
+
+### Active MCP Servers
+
+| Server | Purpose | Type |
+|--------|---------|------|
+| **serena** | Semantic code tools (find_symbol, refactoring, memories) | Official (uvx) |
+| **image-gen-sd** | Local Stable Diffusion WebUI integration | Node.js MCP |
+| **notion** | Official Notion API (page/DB access) | Official (@notionhq) |
+| **dreamweaving-rag** | Notion semantic search (Qdrant vector index) | Custom Python |
+| **coin-rag** | Rare coin knowledge (specialized, optional) | Custom Python |
+
+### Disabled MCP Servers (Configured but Need Setup)
+
+| Server | Why Disabled | How to Enable |
+|--------|--------------|---------------|
+| **elevenlabs** | Needs API key | Add `ELEVENLABS_API_KEY` to .env |
+| **stability-ai** | Needs API key | Add `STABILITY_API_KEY` to .env |
+| **chrome-devtools** | Optional browser inspection | Enable in config when needed |
+
+### Configuration Files (Precedence Order)
+
+1. **config/mcp_servers.json** (CANONICAL) - Project-specific, includes staging
+2. **mcp.json** (CLI overrides) - Claude Code CLI context
+3. **~/.claude/settings.json** (user defaults) - Per-user configuration
+4. **~/.config/claude/claude_desktop_config.json** (desktop) - Desktop app only
+
+**Best Practice:** Edit `config/mcp_servers.json` as the single source of truth. Other configs should defer to it.
+
+### Workflow-Aware Tool Loading (Staged MCP)
+
+Tools load dynamically based on production stage to optimize context window:
+
+| Stage | Tools Active |
+|-------|--------------|
+| 1-2 (Creative/Script) | Core only (Serena, Notion, RAG) |
+| 3-5 (Audio) | Core + Audio (ElevenLabs) |
+| 5.5 (Images) | Core + Image (SD, Stability AI) |
+| 6-7 (Video/YouTube) | Core + Video/Publishing |
+| 8-9 (Cleanup/Upload) | Core only |
+
+**See:** [docs/MCP_PLUGINS_GUIDE.md](docs/MCP_PLUGINS_GUIDE.md) for complete MCP documentation.
+
+### Why Not Standard Development MCPs?
+
+We **don't use** generic web development MCPs (filesystem, Context7, Postgres, Shadcn, Playwright, Terminal, Git, Vercel) because:
+
+- **Built-in tools suffice**: Claude Code has native Read/Write/Glob/Grep/Bash tools
+- **Serena is superior**: Semantic code operations > generic file operations
+- **Domain-optimized**: Notion + RAG for our knowledge, not generic docs
+- **No database**: File-based YAML/JSON, not Postgres
+- **Video production**: FFmpeg + media-processing skill, not web testing
+- **Coolify deployment**: Self-hosted, not Vercel
+
+**Result:** Lower token overhead, better domain fit, local-first capabilities.
+
+---
+
 ## Dependencies
 
 - Python 3.8+ with venv (main), Python 3.11 with venv_coqui (TTS)
 - FFmpeg (audio/video processing)
 - Coqui TTS (XTTS v2) - installed in `venv_coqui/`
-- Serena MCP Server (http://127.0.0.1:24283)
+- **Serena MCP** (semantic code tools) - via uvx from GitHub
+- **Stable Diffusion WebUI** (optional, for local image generation)
+- **Qdrant** (optional, for RAG semantic search)
 
 ### Optional (for Google Cloud TTS)
 - Google Cloud SDK (authentication)
 - Google Cloud TTS API enabled
 - `GOOGLE_APPLICATION_CREDENTIALS` environment variable
+
+### Optional (for Enhanced Capabilities)
+- **ElevenLabs API key** (TTS, voice cloning) - 10k free credits/month
+- **Stability AI API key** (cloud image generation) - 25 free credits
+- **Notion API token** (knowledge base integration)
 
 ---
 
@@ -848,6 +915,8 @@ Session Published → Analytics Collected → Lessons Extracted → Applied to N
 8. **Working files** go in `sessions/{name}/working_files/`
 9. **Refer to skills** for detailed procedures
 10. **WEBPAGE GENERATION**: Always read `docs/WEBPAGE_FORMAT_GUIDE.md` BEFORE generating any webpage, landing page, or web content. This ensures consistent dark backgrounds, white text, gold accents, and proper Sacred Digital Dreamweaver branding.
+11. **MCP vs SKILLS**: MCP servers (Serena, Notion, image-gen-sd) are external processes. Skills (media-processing, tier1-neural-core) are Claude Code plugins in `~/.claude/skills/`. Don't confuse them.
+12. **Canonical MCP config**: Always edit `config/mcp_servers.json` for MCP changes, not `mcp.json` or other configs.
 
 ---
 
