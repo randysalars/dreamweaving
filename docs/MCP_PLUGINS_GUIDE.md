@@ -81,6 +81,62 @@ This project uses **specialized MCP servers** instead of generic web development
 
 ---
 
+## Multi-Project MCP Strategy
+
+This project (Dreamweaving) uses **specialized MCPs** because it's a Python/video/AI content production project. However, **other projects need different tools**.
+
+### MCP Servers by Project Type
+
+| Project | Type | MCP Setup | Rationale |
+|---------|------|-----------|-----------|
+| **Dreamweaving** | Python/Video/AI | Serena, Notion, image-gen-sd, dreamweaving-rag, coin-rag | Specialized for creative AI content production |
+| **Salarsu** | Next.js/Postgres | Serena, Context7, Postgres, Shadcn, Playwright, coin-knowledge | Full-stack web development with database operations |
+| **Salars.net** | Next.js Frontend | Serena, Context7, Shadcn, Playwright | Frontend web development with UI components and testing |
+
+### Why Project-Specific Configs?
+
+Different projects have fundamentally different tooling needs:
+
+- **Dreamweaving:** No database, no web UI, Python-based video production pipeline
+- **Salarsu:** Next.js + Postgres + React components + E2E testing for web application
+- **Context Window Optimization:** Only load tools needed for the current project type
+
+### Setting Up Other Projects
+
+For web development projects (salarsu, salars.net), create a project-specific `mcp.json` in the project root:
+
+```bash
+# Example: Setting up salarsu project
+cd ~/Projects/salarsu
+
+# The mcp.json includes:
+# - Serena (shared across all projects)
+# - Context7 (React/Next.js/Tailwind docs)
+# - Postgres (database operations)
+# - Shadcn (UI component scaffolding)
+# - Playwright (E2E testing)
+```
+
+See [Salarsu MCP Setup](../../salarsu/docs/MCP_SETUP.md) for complete configuration and usage examples.
+
+### Project Switching Workflow
+
+When switching between projects, Claude Code automatically loads the appropriate MCP servers:
+
+```bash
+# Working on Dreamweaving (creative AI tools loaded)
+cd ~/Projects/dreamweaving
+# Active: Serena, Notion, image-gen-sd, dreamweaving-rag
+
+# Switching to Salarsu (web dev tools loaded)
+cd ~/Projects/salarsu
+# Active: Serena, Context7, Postgres, Shadcn, Playwright
+```
+
+Each project maintains its own `mcp.json` configuration optimized for its specific workflow.
+
+---
+
 ## Important Distinction: Skills vs MCP Servers
 
 **MCP Servers:**

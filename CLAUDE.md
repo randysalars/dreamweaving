@@ -847,6 +847,24 @@ We **don't use** generic web development MCPs (filesystem, Context7, Postgres, S
 
 **Result:** Lower token overhead, better domain fit, local-first capabilities.
 
+### Multi-Project MCP Strategy
+
+**Important:** This MCP configuration is **project-specific** for Dreamweaving. Other projects use different MCP servers:
+
+| Project | MCP Strategy | Use Case |
+|---------|--------------|----------|
+| **Dreamweaving** (this project) | Specialized AI/Video MCPs | Creative content production, no web dev |
+| **Salarsu** | Standard Web Dev MCPs | Next.js + Postgres + React + Testing |
+| **Salars.net** | Frontend MCPs | React components + E2E testing |
+
+**Why Different Configs?**
+- Each project loads only the MCPs it needs
+- Optimizes context window for project-specific tasks
+- Dreamweaving doesn't need Postgres/Shadcn (no web UI)
+- Salarsu doesn't need image-gen-sd/Notion RAG (no video production)
+
+**See:** [docs/MCP_PLUGINS_GUIDE.md - Multi-Project Strategy](docs/MCP_PLUGINS_GUIDE.md#multi-project-mcp-strategy) for complete explanation and setup guides.
+
 ---
 
 ## Dependencies
@@ -917,6 +935,7 @@ Session Published → Analytics Collected → Lessons Extracted → Applied to N
 10. **WEBPAGE GENERATION**: Always read `docs/WEBPAGE_FORMAT_GUIDE.md` BEFORE generating any webpage, landing page, or web content. This ensures consistent dark backgrounds, white text, gold accents, and proper Sacred Digital Dreamweaver branding.
 11. **MCP vs SKILLS**: MCP servers (Serena, Notion, image-gen-sd) are external processes. Skills (media-processing, tier1-neural-core) are Claude Code plugins in `~/.claude/skills/`. Don't confuse them.
 12. **Canonical MCP config**: Always edit `config/mcp_servers.json` for MCP changes, not `mcp.json` or other configs.
+13. **Multi-Project MCP Strategy**: Dreamweaving uses specialized MCPs (image-gen-sd, Notion RAG). Other projects (Salarsu, Salars.net) use web dev MCPs (Context7, Postgres, Shadcn, Playwright). Each project has its own `mcp.json` optimized for its workflow.
 
 ---
 
