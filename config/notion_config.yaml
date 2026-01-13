@@ -158,6 +158,9 @@ watcher:
 
   # Suppress embedding progress output when running via watcher
   quiet_mode: true
+  # Re-index mode controls (defaults to incremental)
+  force_reindex: false
+  full_reindex: false
 
   # Health check endpoint (disabled by default for security)
   health_endpoint:

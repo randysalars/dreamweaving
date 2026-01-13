@@ -131,6 +131,9 @@ class RAGFileWatcher(FileSystemEventHandler):
 
         # Quiet mode for syncer (suppress embedding progress)
         self.quiet_mode = watcher_config.get("quiet_mode", True)
+        # Re-index mode controls
+        self.force_reindex = watcher_config.get("force_reindex", False)
+        self.full_reindex = watcher_config.get("full_reindex", False)
 
         # State tracking
         self.pending_changes: Set[str] = set()
@@ -273,8 +276,11 @@ class RAGFileWatcher(FileSystemEventHandler):
             if self._health_metrics:
                 self._health_metrics.record_sync_start()
 
-            # Force re-index since we know content changed
-            result = self.syncer.sync(force=True)
+            # Default to incremental sync unless explicitly configured
+            result = self.syncer.sync(
+                force=self.force_reindex,
+                full_reindex=self.full_reindex
+            )
 
             if result.get("status") == "completed":
                 vectors = result.get('vectors', 0)
