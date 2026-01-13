@@ -1,0 +1,5 @@
+# Codex rules for this repo.
+#
+# - Follow the MCP routing policy in AGENTS.md.
+# - Follow project constraints and workflows in CLAUDE.md.
+# - Prefer Serena for codebase navigation and refactors.

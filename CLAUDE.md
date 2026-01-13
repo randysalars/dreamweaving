@@ -8,6 +8,10 @@
 **Execution**: Supports headless/scheduled operation
 **Learning**: Continuously improves from YouTube analytics and feedback
 
+## VS Code MCP Routing
+
+When using the VS Code Codex or Claude extensions, follow the MCP routing policy in `AGENTS.md`.
+
 ---
 
 ## AI Agents

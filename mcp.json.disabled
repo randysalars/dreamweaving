@@ -1,0 +1,52 @@
+{
+  "_comment": "CANONICAL CONFIG IS IN config/mcp_servers.json - This file is for CLI-specific overrides only. See config/mcp_servers.json for comprehensive configuration with staging, tool categories, and full server inventory.",
+  "mcpServers": {
+    "chrome-devtools": {
+      "description": "Inspect a live Chromium browser via Chrome DevTools Protocol (performance/network/console) over MCP",
+      "command": "bash",
+      "args": ["scripts/mcp/run_chrome_devtools_mcp_server.sh"]
+    },
+    "context7": {
+      "description": "Documentation search for React, Next.js, Tailwind, TypeScript, and other web frameworks",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "postgres": {
+      "description": "Database operations for Postgres - schema changes, migrations, queries",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "${DATABASE_URL}"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}"
+      }
+    },
+    "shadcn": {
+      "description": "Shadcn/UI component scaffolding for React/Next.js",
+      "command": "npx",
+      "args": ["-y", "shadcn-mcp"]
+    },
+    "playwright": {
+      "description": "E2E testing for web-ui - write and run browser tests",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"]
+    },
+    "dreamweaving-rag": {
+      "description": "Semantic retrieval + sync for Dreamweaving Notion RAG (local Qdrant index)",
+      "command": "bash",
+      "args": ["scripts/mcp/run_dreamweaving_rag_mcp_server.sh"]
+    },
+    "notion": {
+      "description": "Read/write Sacred Digital Dreamweaver workspace via Notion official MCP server",
+      "command": "bash",
+      "args": ["scripts/mcp/run_notion_mcp_server.sh"]
+    },
+    "coin-rag": {
+      "description": "Specialized semantic search for rare coin knowledge (Morgan/Peace dollars, junk silver, key dates, pricing, grading)",
+      "command": "bash",
+      "args": ["scripts/mcp/run_coin_rag_mcp_server.sh"]
+    },
+    "serena": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context", "ide-assistant"]
+    }
+  }
+}

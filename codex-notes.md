@@ -1,5 +1,7 @@
 # Codex Notes (Dreamweaving)
 
+- VS Code MCP routing policy is defined in `AGENTS.md`.
+
 - Dreamweaving repo: hypnotic audio/video production workflow with SSML scripts, binaural generation, and packaging utilities.
 - Session focus: audit existing Dreamweaver automation, normalize entrypoints, and document stable tooling without breaking current flows.
 
