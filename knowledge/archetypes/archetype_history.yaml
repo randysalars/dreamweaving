@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-01-13'
-  total_sessions_tracked: 57
+  updated: '2026-01-14'
+  total_sessions_tracked: 60
   unique_archetypes_used: 15
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -1001,6 +1001,59 @@ session_history:
     section: integration
   notes: 'Auto-generated from topic: Astral Acceleration: Achieving Supersonic Travel
     and Exploration in Dreamweaving'
+- session_id: tarot-transcendence-understanding-the-arcana-throu
+  date: '2026-01-14'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Tarot Transcendence: Understanding the Arcana
+    through Guided Dreamweaving'
+- session_id: moonlit-melian-discovering-hidden-depths-of-power-
+  date: '2026-01-14'
+  outcome: confidence
+  archetypes_used:
+  - archetype_id: warrior_power.archangel_michael
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_masculine.guardian_father
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: dreamweaver_meta.dream_architect
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Moonlit Melian: Discovering Hidden Depths of
+    Power in Dreamweaving with the Divine Maia'
+- session_id: the-amber-halls-of-serendipity-dreamweaving
+  date: '2026-01-14'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Amber Halls Of Serendipity Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 15
@@ -1061,7 +1114,7 @@ listener_relationships:
     last_session_date: '2026-01-11'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 40
+    total_encounters: 42
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1145,11 +1198,15 @@ listener_relationships:
       type: first_encounter
     - session: astral-acceleration-achieving-supersonic-travel-an
       type: first_encounter
-    last_session: astral-acceleration-achieving-supersonic-travel-an
-    last_session_date: '2026-01-13'
+    - session: tarot-transcendence-understanding-the-arcana-throu
+      type: first_encounter
+    - session: the-amber-halls-of-serendipity-dreamweaving
+      type: first_encounter
+    last_session: the-amber-halls-of-serendipity-dreamweaving
+    last_session_date: '2026-01-14'
     relationship_level: 4
   warrior_power.archangel_michael:
-    total_encounters: 3
+    total_encounters: 4
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1159,11 +1216,13 @@ listener_relationships:
       type: first_encounter
     - session: power-awakening-dreamweaving
       type: first_encounter
-    last_session: power-awakening-dreamweaving
-    last_session_date: '2026-01-12'
-    relationship_level: 2
+    - session: moonlit-melian-discovering-hidden-depths-of-power-
+      type: first_encounter
+    last_session: moonlit-melian-discovering-hidden-depths-of-power-
+    last_session_date: '2026-01-14'
+    relationship_level: 3
   divine_masculine.guardian_father:
-    total_encounters: 6
+    total_encounters: 7
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1179,21 +1238,25 @@ listener_relationships:
       type: first_encounter
     - session: reversing-the-tree-a-uniquely-puzzling-journey-up-
       type: first_encounter
-    last_session: reversing-the-tree-a-uniquely-puzzling-journey-up-
-    last_session_date: '2026-01-12'
-    relationship_level: 3
+    - session: moonlit-melian-discovering-hidden-depths-of-power-
+      type: first_encounter
+    last_session: moonlit-melian-discovering-hidden-depths-of-power-
+    last_session_date: '2026-01-14'
+    relationship_level: 4
   dreamweaver_meta.dream_architect:
-    total_encounters: 1
+    total_encounters: 2
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
     - session: paranormal-powers-retry
       type: first_encounter
-    last_session: paranormal-powers-retry
-    last_session_date: '2025-12-10'
-    relationship_level: 1
+    - session: moonlit-melian-discovering-hidden-depths-of-power-
+      type: first_encounter
+    last_session: moonlit-melian-discovering-hidden-depths-of-power-
+    last_session_date: '2026-01-14'
+    relationship_level: 2
   divine_feminine.rose_mother:
-    total_encounters: 31
+    total_encounters: 33
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1259,11 +1322,15 @@ listener_relationships:
       type: first_encounter
     - session: astral-acceleration-achieving-supersonic-travel-an
       type: first_encounter
-    last_session: astral-acceleration-achieving-supersonic-travel-an
-    last_session_date: '2026-01-13'
+    - session: tarot-transcendence-understanding-the-arcana-throu
+      type: first_encounter
+    - session: the-amber-halls-of-serendipity-dreamweaving
+      type: first_encounter
+    last_session: the-amber-halls-of-serendipity-dreamweaving
+    last_session_date: '2026-01-14'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 22
+    total_encounters: 23
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1311,8 +1378,10 @@ listener_relationships:
       type: first_encounter
     - session: astral-acceleration-achieving-supersonic-travel-an
       type: first_encounter
-    last_session: astral-acceleration-achieving-supersonic-travel-an
-    last_session_date: '2026-01-13'
+    - session: the-amber-halls-of-serendipity-dreamweaving
+      type: first_encounter
+    last_session: the-amber-halls-of-serendipity-dreamweaving
+    last_session_date: '2026-01-14'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 7
@@ -1359,7 +1428,7 @@ listener_relationships:
     last_session_date: '2026-01-10'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
-    total_encounters: 17
+    total_encounters: 18
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -1397,8 +1466,10 @@ listener_relationships:
       type: first_encounter
     - session: the-jungle-expedition-dreamweaving
       type: first_encounter
-    last_session: the-jungle-expedition-dreamweaving
-    last_session_date: '2026-01-13'
+    - session: tarot-transcendence-understanding-the-arcana-throu
+      type: first_encounter
+    last_session: tarot-transcendence-understanding-the-arcana-throu
+    last_session_date: '2026-01-14'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 2
@@ -1489,27 +1560,27 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - dreamweavers-vortex-spinning-astral-tales-in-the-w
-  - reversing-the-tree-a-uniquely-puzzling-journey-up-
-  - horuss-hawk-eye-developing-spiritual-vision-and-ro
   - the-jungle-expedition-dreamweaving
   - astral-acceleration-achieving-supersonic-travel-an
+  - tarot-transcendence-understanding-the-arcana-throu
+  - moonlit-melian-discovering-hidden-depths-of-power-
+  - the-amber-halls-of-serendipity-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 2
-    transformation_alchemy.phoenix_renewal: 8
+    divine_light_healing.great_physician: 5
+    transformation_alchemy.phoenix_renewal: 11
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 5
-    divine_masculine.guardian_father: 3
-    dreamweaver_meta.dream_architect: 53
+    warrior_power.archangel_michael: 1
+    divine_masculine.guardian_father: 1
+    dreamweaver_meta.dream_architect: 1
     divine_feminine.rose_mother: 0
     shamanic_earth.world_tree_guardian: 0
-    oracle_seer.oracle_of_light: 2
-    divine_feminine.sophia_wisdom: 10
-    emotional_heart.heart_flame_tender: 1
-    warrior_power.solar_king: 5
-    divine_masculine.logos_bearer: 2
-    divine_light_healing.shekinah_restorer: 21
-    emotional_heart.joy_child: 39
+    oracle_seer.oracle_of_light: 5
+    divine_feminine.sophia_wisdom: 13
+    emotional_heart.heart_flame_tender: 2
+    warrior_power.solar_king: 8
+    divine_masculine.logos_bearer: 5
+    divine_light_healing.shekinah_restorer: 24
+    emotional_heart.joy_child: 42
 selection_weights: {}
 family_rotation:
   last_session_families:
@@ -1517,13 +1588,13 @@ family_rotation:
   - shamanic_earth
   - divine_feminine
   family_usage_counts:
-    divine_light_healing: 63
+    divine_light_healing: 65
     transformation_alchemy: 6
-    warrior_power: 5
-    divine_masculine: 10
-    dreamweaver_meta: 1
-    divine_feminine: 38
-    shamanic_earth: 22
+    warrior_power: 6
+    divine_masculine: 11
+    dreamweaver_meta: 2
+    divine_feminine: 40
+    shamanic_earth: 23
     oracle_seer: 7
-    emotional_heart: 19
+    emotional_heart: 20
 effective_pairings: []
