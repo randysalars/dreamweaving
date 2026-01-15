@@ -1511,4 +1511,85 @@ records:
   comments_sentiment: null
   metrics_complete: false
   youtube_pending: false
-last_updated: '2026-01-14T01:46:37.736679'
+- record_id: outcome-a833021e
+  session_name: the-confluence-of-all-currents-dreamweaving
+  created_at: '2026-01-15T00:28:12.750274'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+- record_id: outcome-3f7a2351
+  session_name: climbing-the-infinite-beanstalk-a-fairytale-inspir
+  created_at: '2026-01-15T00:53:43.056757'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+- record_id: outcome-ec703fc6
+  session_name: residential-schools-reckoning-path-dreamweaving
+  created_at: '2026-01-15T01:21:58.608453'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+last_updated: '2026-01-15T01:21:58.683009'

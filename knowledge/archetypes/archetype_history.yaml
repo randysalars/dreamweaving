@@ -1,9 +1,9 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-01-14'
-  total_sessions_tracked: 60
-  unique_archetypes_used: 15
+  updated: '2026-01-15'
+  total_sessions_tracked: 63
+  unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
     Manual edits should be avoided unless correcting errors.
@@ -1054,6 +1054,58 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: The Amber Halls Of Serendipity Dreamweaving'
+- session_id: the-confluence-of-all-currents-dreamweaving
+  date: '2026-01-15'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Confluence Of All Currents Dreamweaving'
+- session_id: climbing-the-infinite-beanstalk-a-fairytale-inspir
+  date: '2026-01-15'
+  outcome: abundance
+  archetypes_used:
+  - archetype_id: abundance_destiny.providence_angel
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: dreamweaver_meta.dream_architect
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: dreamweaver_meta.portal_keeper
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Climbing the Infinite Beanstalk: A Fairytale-inspired
+    Journey to Cultivating Wealth'
+- session_id: residential-schools-reckoning-path-dreamweaving
+  date: '2026-01-15'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Residential Schools Reckoning Path Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 15
@@ -1114,7 +1166,7 @@ listener_relationships:
     last_session_date: '2026-01-11'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 42
+    total_encounters: 44
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1202,8 +1254,12 @@ listener_relationships:
       type: first_encounter
     - session: the-amber-halls-of-serendipity-dreamweaving
       type: first_encounter
-    last_session: the-amber-halls-of-serendipity-dreamweaving
-    last_session_date: '2026-01-14'
+    - session: the-confluence-of-all-currents-dreamweaving
+      type: first_encounter
+    - session: residential-schools-reckoning-path-dreamweaving
+      type: first_encounter
+    last_session: residential-schools-reckoning-path-dreamweaving
+    last_session_date: '2026-01-15'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 4
@@ -1244,7 +1300,7 @@ listener_relationships:
     last_session_date: '2026-01-14'
     relationship_level: 4
   dreamweaver_meta.dream_architect:
-    total_encounters: 2
+    total_encounters: 3
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1252,11 +1308,13 @@ listener_relationships:
       type: first_encounter
     - session: moonlit-melian-discovering-hidden-depths-of-power-
       type: first_encounter
-    last_session: moonlit-melian-discovering-hidden-depths-of-power-
-    last_session_date: '2026-01-14'
+    - session: climbing-the-infinite-beanstalk-a-fairytale-inspir
+      type: first_encounter
+    last_session: climbing-the-infinite-beanstalk-a-fairytale-inspir
+    last_session_date: '2026-01-15'
     relationship_level: 2
   divine_feminine.rose_mother:
-    total_encounters: 33
+    total_encounters: 35
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1326,11 +1384,15 @@ listener_relationships:
       type: first_encounter
     - session: the-amber-halls-of-serendipity-dreamweaving
       type: first_encounter
-    last_session: the-amber-halls-of-serendipity-dreamweaving
-    last_session_date: '2026-01-14'
+    - session: the-confluence-of-all-currents-dreamweaving
+      type: first_encounter
+    - session: residential-schools-reckoning-path-dreamweaving
+      type: first_encounter
+    last_session: residential-schools-reckoning-path-dreamweaving
+    last_session_date: '2026-01-15'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 23
+    total_encounters: 24
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1380,8 +1442,10 @@ listener_relationships:
       type: first_encounter
     - session: the-amber-halls-of-serendipity-dreamweaving
       type: first_encounter
-    last_session: the-amber-halls-of-serendipity-dreamweaving
-    last_session_date: '2026-01-14'
+    - session: residential-schools-reckoning-path-dreamweaving
+      type: first_encounter
+    last_session: residential-schools-reckoning-path-dreamweaving
+    last_session_date: '2026-01-15'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 7
@@ -1428,7 +1492,7 @@ listener_relationships:
     last_session_date: '2026-01-10'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
-    total_encounters: 18
+    total_encounters: 19
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -1468,8 +1532,10 @@ listener_relationships:
       type: first_encounter
     - session: tarot-transcendence-understanding-the-arcana-throu
       type: first_encounter
-    last_session: tarot-transcendence-understanding-the-arcana-throu
-    last_session_date: '2026-01-14'
+    - session: the-confluence-of-all-currents-dreamweaving
+      type: first_encounter
+    last_session: the-confluence-of-all-currents-dreamweaving
+    last_session_date: '2026-01-15'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 2
@@ -1535,6 +1601,26 @@ listener_relationships:
     last_session: the-river-where-every-current-leads-to-good-fortun
     last_session_date: '2025-12-26'
     relationship_level: 2
+  abundance_destiny.providence_angel:
+    total_encounters: 1
+    first_session: climbing-the-infinite-beanstalk-a-fairytale-inspir
+    first_session_date: '2026-01-15'
+    encounter_history:
+    - session: climbing-the-infinite-beanstalk-a-fairytale-inspir
+      type: first_encounter
+    last_session: climbing-the-infinite-beanstalk-a-fairytale-inspir
+    last_session_date: '2026-01-15'
+    relationship_level: 1
+  dreamweaver_meta.portal_keeper:
+    total_encounters: 1
+    first_session: climbing-the-infinite-beanstalk-a-fairytale-inspir
+    first_session_date: '2026-01-15'
+    encounter_history:
+    - session: climbing-the-infinite-beanstalk-a-fairytale-inspir
+      type: first_encounter
+    last_session: climbing-the-infinite-beanstalk-a-fairytale-inspir
+    last_session_date: '2026-01-15'
+    relationship_level: 1
 relationship_levels:
   1:
     name: New
@@ -1560,27 +1646,29 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - the-jungle-expedition-dreamweaving
-  - astral-acceleration-achieving-supersonic-travel-an
-  - tarot-transcendence-understanding-the-arcana-throu
   - moonlit-melian-discovering-hidden-depths-of-power-
   - the-amber-halls-of-serendipity-dreamweaving
+  - the-confluence-of-all-currents-dreamweaving
+  - climbing-the-infinite-beanstalk-a-fairytale-inspir
+  - residential-schools-reckoning-path-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 5
-    transformation_alchemy.phoenix_renewal: 11
+    divine_light_healing.great_physician: 8
+    transformation_alchemy.phoenix_renewal: 14
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 1
-    divine_masculine.guardian_father: 1
+    warrior_power.archangel_michael: 4
+    divine_masculine.guardian_father: 4
     dreamweaver_meta.dream_architect: 1
     divine_feminine.rose_mother: 0
     shamanic_earth.world_tree_guardian: 0
-    oracle_seer.oracle_of_light: 5
-    divine_feminine.sophia_wisdom: 13
+    oracle_seer.oracle_of_light: 8
+    divine_feminine.sophia_wisdom: 16
     emotional_heart.heart_flame_tender: 2
-    warrior_power.solar_king: 8
-    divine_masculine.logos_bearer: 5
-    divine_light_healing.shekinah_restorer: 24
-    emotional_heart.joy_child: 42
+    warrior_power.solar_king: 11
+    divine_masculine.logos_bearer: 8
+    divine_light_healing.shekinah_restorer: 27
+    emotional_heart.joy_child: 45
+    abundance_destiny.providence_angel: 1
+    dreamweaver_meta.portal_keeper: 1
 selection_weights: {}
 family_rotation:
   last_session_families:
@@ -1588,13 +1676,14 @@ family_rotation:
   - shamanic_earth
   - divine_feminine
   family_usage_counts:
-    divine_light_healing: 65
+    divine_light_healing: 67
     transformation_alchemy: 6
     warrior_power: 6
     divine_masculine: 11
-    dreamweaver_meta: 2
-    divine_feminine: 40
-    shamanic_earth: 23
+    dreamweaver_meta: 4
+    divine_feminine: 42
+    shamanic_earth: 24
     oracle_seer: 7
-    emotional_heart: 20
+    emotional_heart: 21
+    abundance_destiny: 1
 effective_pairings: []
