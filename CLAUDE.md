@@ -58,6 +58,79 @@ The system uses 8 specialized AI agents that work together:
 |---------|-------------|
 | `/write-article <path>` | Create and deploy an article to salars.net (see below) |
 
+### Strategic & Knowledge
+| Command | Description |
+|---------|-------------|
+| `/board <topic>` | Convene the 7-seat AI Board of Directors for strategic decisions |
+| `/rag <query>` | Query Notion RAG and local knowledge base |
+
+---
+
+## AI Board of Directors (`/board`)
+
+A 7-seat AI boardroom simulation for strategic decision-making.
+
+### Trigger
+```bash
+/board Should we prioritize healing or transformation sessions?
+```
+
+### The 7 Seats
+
+| Seat | Role | Focus |
+|------|------|-------|
+| 1 | **CEO / Integrator** | Execution, priorities, alignment |
+| 2 | **Product Visionary** | User value, UX, roadmap |
+| 3 | **Marketing Strategist** | Growth, channels, messaging |
+| 4 | **Tech Architect** | Systems, reliability, automation |
+| 5 | **Finance Steward** | Budgets, ROI, risk |
+| 6 | **Customer Advocate** | User empathy, support |
+| 7 | **Values Guardian** | Ethics, integrity, mission |
+
+### Protocol
+
+1. **Pre-Meeting**: AI reads `.ai/boardroom/LEDGER.md` for past decisions
+2. **Deliberation**: Each seat provides 3-7 domain-specific bullets
+3. **Synthesis**: CEO concludes with Decision + Why + Next Steps + Risks
+4. **Post-Meeting**: Synthesis is appended to `LEDGER.md`
+
+### Key Files
+
+| File | Purpose |
+|------|---------|
+| `.ai/boardroom/LEDGER.md` | Strategic memory / decision log |
+| `.ai/boardroom/router.md` | Meeting protocol rules |
+| `.ai/boardroom/seats/*.md` | 7 seat role definitions |
+
+---
+
+## Knowledge Query (`/rag`)
+
+Search Notion RAG and local knowledge base.
+
+### Usage
+```bash
+/rag "binaural beat frequencies for theta state"
+/rag "healing sessions best practices"
+```
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `python3 -m scripts.ai.notion_embeddings_pipeline --search "query"` | Semantic search |
+| `python3 -m scripts.ai.notion_knowledge_retriever --page "Title"` | Get specific page |
+| `python3 -m scripts.ai.notion_knowledge_retriever --db archetypes` | Query database |
+
+### Knowledge Locations
+
+| Source | Location |
+|--------|----------|
+| Notion pages | Indexed in Qdrant vector DB |
+| Local exports | `knowledge/notion_export/` |
+| Lessons learned | `knowledge/lessons_learned.yaml` |
+| Best practices | `knowledge/best_practices.md` |
+
 ---
 
 ## Automated Video Generation (NEW)
