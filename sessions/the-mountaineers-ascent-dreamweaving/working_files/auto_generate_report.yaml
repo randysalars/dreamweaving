@@ -1,0 +1,71 @@
+session_name: the-mountaineers-ascent-dreamweaving
+topic: The Mountaineer's Ascent Dreamweaving
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2026-01-17T00:00:03.669878'
+  ended: '2026-01-17T00:29:01.173531'
+  duration_seconds: 1737.5
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - generate_thumbnail
+  - upload_website
+  - self_improvement
+  failed: []
+  total: 16
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-01-17T00:00:05.190708'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2026-01-17T00:00:35.555164'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2026-01-17T00:02:21.050122'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2026-01-17T00:02:21.095998'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-01-17T00:13:17.114734'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/the-mountaineers-ascent-dreamweaving
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/the-mountaineers-ascent-dreamweaving/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/the-mountaineers-ascent-dreamweaving/working_files/script.ssml
+  files:
+  - output/the_mountaineers_ascent_dreamweaving_MASTER.mp3
+  - output/subtitles.vtt
+  - output/voice.mp3
+  - output/sfx.wav
+  - output/seo_metadata.json
+  - output/the_mountaineers_ascent_dreamweaving_MASTER.wav
+  - output/youtube_thumbnail.png
+  - output/session_mixed.wav
+  - output/binaural_dynamic.wav
+  - output/product_schema.json

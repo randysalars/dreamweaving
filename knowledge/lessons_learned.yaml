@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - the-vault-of-silver-wisdom-dreamweaving
-  - unfolding-the-unicorns-mystery-walking-through-the
-  - the-alchemical-crucible-of-the-cosmos
   - shah-jahan-and-mumtaz-mahal-dreamweaving
   - the-angel-of-the-second-horizon-dreamweaving
   - power-awakening-dreamweaving
@@ -34,8 +31,11 @@ lessons:
   - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
-  applied_count: 61
-  last_applied: '2026-01-16'
+  - the-mountaineers-ascent-dreamweaving
+  - the-tower-of-singing-serpents-dreamweaving
+  - the-tarot-constellation-of-masters
+  applied_count: 64
+  last_applied: '2026-01-17'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - the-vault-of-silver-wisdom-dreamweaving
-  - unfolding-the-unicorns-mystery-walking-through-the
-  - the-alchemical-crucible-of-the-cosmos
   - shah-jahan-and-mumtaz-mahal-dreamweaving
   - the-angel-of-the-second-horizon-dreamweaving
   - power-awakening-dreamweaving
@@ -72,8 +69,11 @@ lessons:
   - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
-  applied_count: 61
-  last_applied: '2026-01-16'
+  - the-mountaineers-ascent-dreamweaving
+  - the-tower-of-singing-serpents-dreamweaving
+  - the-tarot-constellation-of-masters
+  applied_count: 64
+  last_applied: '2026-01-17'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - the-vault-of-silver-wisdom-dreamweaving
-  - unfolding-the-unicorns-mystery-walking-through-the
-  - the-alchemical-crucible-of-the-cosmos
   - shah-jahan-and-mumtaz-mahal-dreamweaving
   - the-angel-of-the-second-horizon-dreamweaving
   - power-awakening-dreamweaving
@@ -109,8 +106,11 @@ lessons:
   - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
-  applied_count: 61
-  last_applied: '2026-01-16'
+  - the-mountaineers-ascent-dreamweaving
+  - the-tower-of-singing-serpents-dreamweaving
+  - the-tarot-constellation-of-masters
+  applied_count: 64
+  last_applied: '2026-01-17'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - the-vault-of-silver-wisdom-dreamweaving
-  - unfolding-the-unicorns-mystery-walking-through-the
-  - the-alchemical-crucible-of-the-cosmos
   - shah-jahan-and-mumtaz-mahal-dreamweaving
   - the-angel-of-the-second-horizon-dreamweaving
   - power-awakening-dreamweaving
@@ -147,8 +144,11 @@ lessons:
   - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
-  applied_count: 61
-  last_applied: '2026-01-16'
+  - the-mountaineers-ascent-dreamweaving
+  - the-tower-of-singing-serpents-dreamweaving
+  - the-tarot-constellation-of-masters
+  applied_count: 64
+  last_applied: '2026-01-17'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - the-vault-of-silver-wisdom-dreamweaving
-  - unfolding-the-unicorns-mystery-walking-through-the
-  - the-alchemical-crucible-of-the-cosmos
   - shah-jahan-and-mumtaz-mahal-dreamweaving
   - the-angel-of-the-second-horizon-dreamweaving
   - power-awakening-dreamweaving
@@ -183,8 +180,11 @@ lessons:
   - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
-  applied_count: 61
-  last_applied: '2026-01-16'
+  - the-mountaineers-ascent-dreamweaving
+  - the-tower-of-singing-serpents-dreamweaving
+  - the-tarot-constellation-of-masters
+  applied_count: 64
+  last_applied: '2026-01-17'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3

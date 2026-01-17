@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-01-16'
-  total_sessions_tracked: 66
+  updated: '2026-01-17'
+  total_sessions_tracked: 69
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -1157,6 +1157,57 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: Dimensional Navigator Dreamweaving'
+- session_id: the-mountaineers-ascent-dreamweaving
+  date: '2026-01-17'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Mountaineer''s Ascent Dreamweaving'
+- session_id: the-tower-of-singing-serpents-dreamweaving
+  date: '2026-01-17'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Tower Of Singing Serpents Dreamweaving'
+- session_id: the-tarot-constellation-of-masters
+  date: '2026-01-17'
+  outcome: joy
+  archetypes_used:
+  - archetype_id: divine_masculine.logos_bearer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.sophia_wisdom
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: emotional_heart.joy_child
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Tarot Constellation Of Masters'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 15
@@ -1217,7 +1268,7 @@ listener_relationships:
     last_session_date: '2026-01-11'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 47
+    total_encounters: 49
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1315,8 +1366,12 @@ listener_relationships:
       type: first_encounter
     - session: dimensional-navigator-dreamweaving
       type: first_encounter
-    last_session: dimensional-navigator-dreamweaving
-    last_session_date: '2026-01-16'
+    - session: the-mountaineers-ascent-dreamweaving
+      type: first_encounter
+    - session: the-tower-of-singing-serpents-dreamweaving
+      type: first_encounter
+    last_session: the-tower-of-singing-serpents-dreamweaving
+    last_session_date: '2026-01-17'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 4
@@ -1371,7 +1426,7 @@ listener_relationships:
     last_session_date: '2026-01-15'
     relationship_level: 2
   divine_feminine.rose_mother:
-    total_encounters: 38
+    total_encounters: 40
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1451,11 +1506,15 @@ listener_relationships:
       type: first_encounter
     - session: dimensional-navigator-dreamweaving
       type: first_encounter
-    last_session: dimensional-navigator-dreamweaving
-    last_session_date: '2026-01-16'
+    - session: the-mountaineers-ascent-dreamweaving
+      type: first_encounter
+    - session: the-tower-of-singing-serpents-dreamweaving
+      type: first_encounter
+    last_session: the-tower-of-singing-serpents-dreamweaving
+    last_session_date: '2026-01-17'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 25
+    total_encounters: 26
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1509,8 +1568,10 @@ listener_relationships:
       type: first_encounter
     - session: incan-empire-expedition-dreamweaving
       type: first_encounter
-    last_session: incan-empire-expedition-dreamweaving
-    last_session_date: '2026-01-16'
+    - session: the-mountaineers-ascent-dreamweaving
+      type: first_encounter
+    last_session: the-mountaineers-ascent-dreamweaving
+    last_session_date: '2026-01-17'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 7
@@ -1535,7 +1596,7 @@ listener_relationships:
     last_session_date: '2026-01-13'
     relationship_level: 4
   divine_feminine.sophia_wisdom:
-    total_encounters: 7
+    total_encounters: 8
     first_session: eleven-labs-commands
     first_session_date: '2025-12-12'
     encounter_history:
@@ -1553,11 +1614,13 @@ listener_relationships:
       type: first_encounter
     - session: the-vault-of-silver-wisdom-dreamweaving
       type: first_encounter
-    last_session: the-vault-of-silver-wisdom-dreamweaving
-    last_session_date: '2026-01-10'
+    - session: the-tarot-constellation-of-masters
+      type: first_encounter
+    last_session: the-tarot-constellation-of-masters
+    last_session_date: '2026-01-17'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
-    total_encounters: 21
+    total_encounters: 22
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -1603,8 +1666,10 @@ listener_relationships:
       type: first_encounter
     - session: dimensional-navigator-dreamweaving
       type: first_encounter
-    last_session: dimensional-navigator-dreamweaving
-    last_session_date: '2026-01-16'
+    - session: the-tower-of-singing-serpents-dreamweaving
+      type: first_encounter
+    last_session: the-tower-of-singing-serpents-dreamweaving
+    last_session_date: '2026-01-17'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 2
@@ -1619,7 +1684,7 @@ listener_relationships:
     last_session_date: '2026-01-12'
     relationship_level: 2
   divine_masculine.logos_bearer:
-    total_encounters: 4
+    total_encounters: 5
     first_session: legolas-elven-perspective-pathworking
     first_session_date: '2025-12-15'
     encounter_history:
@@ -1631,8 +1696,10 @@ listener_relationships:
       type: first_encounter
     - session: horuss-hawk-eye-developing-spiritual-vision-and-ro
       type: first_encounter
-    last_session: horuss-hawk-eye-developing-spiritual-vision-and-ro
-    last_session_date: '2026-01-13'
+    - session: the-tarot-constellation-of-masters
+      type: first_encounter
+    last_session: the-tarot-constellation-of-masters
+    last_session_date: '2026-01-17'
     relationship_level: 3
   divine_light_healing.shekinah_restorer:
     total_encounters: 8
@@ -1659,7 +1726,7 @@ listener_relationships:
     last_session_date: '2026-01-04'
     relationship_level: 4
   emotional_heart.joy_child:
-    total_encounters: 2
+    total_encounters: 3
     first_session: symphony-of-shadows-marina-tsvetaevas-concerto-of-
     first_session_date: '2025-12-26'
     encounter_history:
@@ -1667,8 +1734,10 @@ listener_relationships:
       type: first_encounter
     - session: the-river-where-every-current-leads-to-good-fortun
       type: first_encounter
-    last_session: the-river-where-every-current-leads-to-good-fortun
-    last_session_date: '2025-12-26'
+    - session: the-tarot-constellation-of-masters
+      type: first_encounter
+    last_session: the-tarot-constellation-of-masters
+    last_session_date: '2026-01-17'
     relationship_level: 2
   abundance_destiny.providence_angel:
     total_encounters: 1
@@ -1715,44 +1784,44 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - climbing-the-infinite-beanstalk-a-fairytale-inspir
-  - residential-schools-reckoning-path-dreamweaving
-  - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
+  - the-mountaineers-ascent-dreamweaving
+  - the-tower-of-singing-serpents-dreamweaving
+  - the-tarot-constellation-of-masters
   archetype_cooldowns:
-    divine_light_healing.great_physician: 11
-    transformation_alchemy.phoenix_renewal: 17
-    divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 7
-    divine_masculine.guardian_father: 7
-    dreamweaver_meta.dream_architect: 4
-    divine_feminine.rose_mother: 0
-    shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 11
-    divine_feminine.sophia_wisdom: 19
-    emotional_heart.heart_flame_tender: 0
-    warrior_power.solar_king: 14
-    divine_masculine.logos_bearer: 11
-    divine_light_healing.shekinah_restorer: 30
-    emotional_heart.joy_child: 48
-    abundance_destiny.providence_angel: 4
-    dreamweaver_meta.portal_keeper: 4
+    divine_light_healing.great_physician: 14
+    transformation_alchemy.phoenix_renewal: 20
+    divine_light_healing.inner_healer: 1
+    warrior_power.archangel_michael: 10
+    divine_masculine.guardian_father: 10
+    dreamweaver_meta.dream_architect: 7
+    divine_feminine.rose_mother: 1
+    shamanic_earth.world_tree_guardian: 2
+    oracle_seer.oracle_of_light: 14
+    divine_feminine.sophia_wisdom: 0
+    emotional_heart.heart_flame_tender: 1
+    warrior_power.solar_king: 17
+    divine_masculine.logos_bearer: 0
+    divine_light_healing.shekinah_restorer: 33
+    emotional_heart.joy_child: 0
+    abundance_destiny.providence_angel: 7
+    dreamweaver_meta.portal_keeper: 7
 selection_weights: {}
 family_rotation:
   last_session_families:
-  - divine_light_healing
-  - emotional_heart
+  - divine_masculine
   - divine_feminine
+  - emotional_heart
   family_usage_counts:
-    divine_light_healing: 70
+    divine_light_healing: 72
     transformation_alchemy: 6
     warrior_power: 6
-    divine_masculine: 11
+    divine_masculine: 12
     dreamweaver_meta: 4
-    divine_feminine: 45
-    shamanic_earth: 25
+    divine_feminine: 48
+    shamanic_earth: 26
     oracle_seer: 7
-    emotional_heart: 23
+    emotional_heart: 25
     abundance_destiny: 1
 effective_pairings: []
