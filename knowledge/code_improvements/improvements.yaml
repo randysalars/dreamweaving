@@ -25,34 +25,38 @@ reviews:
   total_issues: 6007
   errors: 0
   warnings: 110
+- date: '2026-01-18'
+  total_issues: 6127
+  errors: 0
+  warnings: 117
 patterns:
   print_statement:
-    last_count: 3843
-    last_seen: '2026-01-11'
+    last_count: 3939
+    last_seen: '2026-01-18'
   missing_docstring:
-    last_count: 254
-    last_seen: '2026-01-11'
+    last_count: 261
+    last_seen: '2026-01-18'
   magic_number:
-    last_count: 1304
-    last_seen: '2026-01-11'
+    last_count: 1311
+    last_seen: '2026-01-18'
   hardcoded_path:
-    last_count: 10
-    last_seen: '2026-01-11'
+    last_count: 11
+    last_seen: '2026-01-18'
   line_length:
-    last_count: 446
-    last_seen: '2026-01-11'
+    last_count: 449
+    last_seen: '2026-01-18'
   deep_nesting:
-    last_count: 97
-    last_seen: '2026-01-11'
+    last_count: 103
+    last_seen: '2026-01-18'
   too_many_args:
     last_count: 42
-    last_seen: '2026-01-11'
+    last_seen: '2026-01-18'
   duplicate_import:
     last_count: 7
-    last_seen: '2026-01-11'
+    last_seen: '2026-01-18'
   todo_comment:
     last_count: 1
-    last_seen: '2026-01-11'
+    last_seen: '2026-01-18'
   shell_injection:
     last_count: 3
-    last_seen: '2026-01-11'
+    last_seen: '2026-01-18'

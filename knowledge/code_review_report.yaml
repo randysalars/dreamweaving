@@ -1,19 +1,49 @@
-timestamp: '2026-01-11T01:00:04.555853'
+timestamp: '2026-01-18T01:00:05.098649'
 summary:
-  total_issues: 6007
+  total_issues: 6127
   errors: 0
-  warnings: 110
-  info: 5897
-  files_reviewed: 203
+  warnings: 117
+  info: 6010
+  files_reviewed: 209
 by_severity:
   errors: []
   warnings:
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 36
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 41
+    type: deep_nesting
+    description: Function 'load_yaml_guide' has deep nesting (6 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 156
+    type: deep_nesting
+    description: Function 'sync_knowledge' has deep nesting (6 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 56
+    type: deep_nesting
+    description: Function 'format_section' has deep nesting (6 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
   - file: scripts/email/insert_dreamweaver_templates.py
     line: 32
     type: hardcoded_path
     description: Hardcoded absolute path detected
     severity: warning
     suggestion: Use Path.home() or configuration for paths
+  - file: scripts/email/sync_subscribers.py
+    line: 12
+    type: deep_nesting
+    description: Function 'sync_subscribers' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
   - file: scripts/email/seasonal_scheduler.py
     line: 40
     type: hardcoded_path
@@ -308,6 +338,12 @@ by_severity:
     description: Function 'validate_all_pages' has deep nesting (7 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 28
+    type: deep_nesting
+    description: Function 'yaml_to_markdown' has deep nesting (7 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/youtube_competitor_analyzer.py
     line: 657
     type: deep_nesting
@@ -414,6 +450,12 @@ by_severity:
     line: 386
     type: deep_nesting
     description: Function 'main' has deep nesting (7 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/ai/coin_chat.py
+    line: 363
+    type: deep_nesting
+    description: Function 'chat_loop' has deep nesting (5 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/readiness_tracker.py
@@ -670,7 +712,7 @@ by_severity:
     suggestion: Consider refactoring to reduce complexity
 by_type:
   print_statement:
-    count: 3843
+    count: 3939
     examples:
     - file: scripts/test_basic_mixing.py
       line: 35
@@ -691,7 +733,7 @@ by_type:
       severity: info
       suggestion: Consider using logging module for production code
   missing_docstring:
-    count: 254
+    count: 261
     examples:
     - file: scripts/test_basic_mixing.py
       line: 104
@@ -699,20 +741,20 @@ by_type:
       description: Function 'main' missing docstring
       severity: info
       suggestion: ''
-    - file: scripts/email/insert_dreamweaver_templates.py
-      line: 562
+    - file: scripts/sync_coin_knowledge_to_salarsu.py
+      line: 252
       type: missing_docstring
       description: Function 'main' missing docstring
       severity: info
       suggestion: ''
-    - file: scripts/email/seasonal_scheduler.py
-      line: 380
+    - file: scripts/sync_coin_knowledge_to_salarsu.py
+      line: 56
       type: missing_docstring
-      description: Function 'main' missing docstring
+      description: Function 'format_section' missing docstring
       severity: info
       suggestion: ''
   magic_number:
-    count: 1304
+    count: 1311
     examples:
     - file: scripts/test_basic_mixing.py
       line: 110
@@ -733,8 +775,14 @@ by_type:
       severity: info
       suggestion: ''
   hardcoded_path:
-    count: 10
+    count: 11
     examples:
+    - file: scripts/sync_coin_knowledge_to_salarsu.py
+      line: 36
+      type: hardcoded_path
+      description: Hardcoded absolute path detected
+      severity: warning
+      suggestion: Use Path.home() or configuration for paths
     - file: scripts/email/insert_dreamweaver_templates.py
       line: 32
       type: hardcoded_path
@@ -747,14 +795,29 @@ by_type:
       description: Hardcoded absolute path detected
       severity: warning
       suggestion: Use Path.home() or configuration for paths
-    - file: scripts/core/upload_to_website.py
-      line: 63
-      type: hardcoded_path
-      description: Hardcoded absolute path detected
+  deep_nesting:
+    count: 103
+    examples:
+    - file: scripts/sync_coin_knowledge_to_salarsu.py
+      line: 41
+      type: deep_nesting
+      description: Function 'load_yaml_guide' has deep nesting (6 levels)
       severity: warning
-      suggestion: Use Path.home() or configuration for paths
+      suggestion: Consider refactoring to reduce complexity
+    - file: scripts/sync_coin_knowledge_to_salarsu.py
+      line: 156
+      type: deep_nesting
+      description: Function 'sync_knowledge' has deep nesting (6 levels)
+      severity: warning
+      suggestion: Consider refactoring to reduce complexity
+    - file: scripts/sync_coin_knowledge_to_salarsu.py
+      line: 56
+      type: deep_nesting
+      description: Function 'format_section' has deep nesting (6 levels)
+      severity: warning
+      suggestion: Consider refactoring to reduce complexity
   line_length:
-    count: 446
+    count: 449
     examples:
     - file: scripts/email/insert_dreamweaver_templates.py
       line: 285
@@ -774,27 +837,6 @@ by_type:
       description: Line too long (162 chars)
       severity: info
       suggestion: Consider breaking into multiple lines
-  deep_nesting:
-    count: 97
-    examples:
-    - file: scripts/email/seasonal_scheduler.py
-      line: 380
-      type: deep_nesting
-      description: Function 'main' has deep nesting (5 levels)
-      severity: warning
-      suggestion: Consider refactoring to reduce complexity
-    - file: scripts/core/tts_provider.py
-      line: 188
-      type: deep_nesting
-      description: Function '_smart_chunk_text' has deep nesting (6 levels)
-      severity: warning
-      suggestion: Consider refactoring to reduce complexity
-    - file: scripts/core/generate_dynamic_binaural.py
-      line: 652
-      type: deep_nesting
-      description: Function '_get_sections_from_input' has deep nesting (6 levels)
-      severity: warning
-      suggestion: Consider refactoring to reduce complexity
   too_many_args:
     count: 42
     examples:
@@ -1181,6 +1223,199 @@ by_file:
     description: Magic number 32767 should be a named constant
     severity: info
     suggestion: ''
+  scripts/sync_coin_knowledge_to_salarsu.py:
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 36
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 167
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 169
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 179
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 191
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 195
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 197
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 200
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 221
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 225
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 227
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 235
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 236
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 237
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 238
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 239
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 241
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 242
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 243
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 275
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 277
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 280
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 282
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 285
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 287
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 289
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 41
+    type: deep_nesting
+    description: Function 'load_yaml_guide' has deep nesting (6 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 156
+    type: deep_nesting
+    description: Function 'sync_knowledge' has deep nesting (6 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 252
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 56
+    type: missing_docstring
+    description: Function 'format_section' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 56
+    type: deep_nesting
+    description: Function 'format_section' has deep nesting (6 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/sync_coin_knowledge_to_salarsu.py
+    line: 11
+    type: magic_number
+    description: Magic number 500 should be a named constant
+    severity: info
+    suggestion: ''
   scripts/email/insert_dreamweaver_templates.py:
   - file: scripts/email/insert_dreamweaver_templates.py
     line: 32
@@ -1314,6 +1549,49 @@ by_file:
     description: Function 'main' missing docstring
     severity: info
     suggestion: ''
+  scripts/email/sync_subscribers.py:
+  - file: scripts/email/sync_subscribers.py
+    line: 19
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/email/sync_subscribers.py
+    line: 23
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/email/sync_subscribers.py
+    line: 28
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/email/sync_subscribers.py
+    line: 57
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/email/sync_subscribers.py
+    line: 95
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/email/sync_subscribers.py
+    line: 12
+    type: missing_docstring
+    description: Function 'sync_subscribers' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/email/sync_subscribers.py
+    line: 12
+    type: deep_nesting
+    description: Function 'sync_subscribers' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
   scripts/email/seasonal_scheduler.py:
   - file: scripts/email/seasonal_scheduler.py
     line: 40
@@ -18456,6 +18734,61 @@ by_file:
     description: Function 'main' missing docstring
     severity: info
     suggestion: ''
+  scripts/ai/export_coin_knowledge.py:
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 113
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 121
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 124
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 142
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 145
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 147
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 148
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 28
+    type: deep_nesting
+    description: Function 'yaml_to_markdown' has deep nesting (7 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/ai/export_coin_knowledge.py
+    line: 153
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
   scripts/ai/youtube_competitor_analyzer.py:
   - file: scripts/ai/youtube_competitor_analyzer.py
     line: 54
@@ -21249,19 +21582,19 @@ by_file:
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/ai/rag_file_watcher.py
-    line: 520
+    line: 526
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/rag_file_watcher.py
-    line: 475
+    line: 481
     type: missing_docstring
     description: Function 'main' missing docstring
     severity: info
     suggestion: ''
   - file: scripts/ai/rag_file_watcher.py
-    line: 444
+    line: 450
     type: missing_docstring
     description: Function 'signal_handler' missing docstring
     severity: info
@@ -21273,9 +21606,100 @@ by_file:
     severity: info
     suggestion: ''
   - file: scripts/ai/rag_file_watcher.py
-    line: 436
+    line: 442
     type: magic_number
     description: Magic number 8765 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/ai/index_coin_knowledge.py:
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 39
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 174
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 180
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 183
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 208
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 211
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 214
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 218
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 245
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 256
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 280
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 283
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 284
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 261
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/ai/index_coin_knowledge.py
+    line: 131
+    type: magic_number
+    description: Magic number 2000 should be a named constant
     severity: info
     suggestion: ''
   scripts/ai/thumbnail_style_selector.py:
@@ -22529,6 +22953,265 @@ by_file:
     line: 110
     type: magic_number
     description: Magic number 500 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/ai/coin_chat.py:
+  - file: scripts/ai/coin_chat.py
+    line: 55
+    type: line_length
+    description: Line too long (125 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/ai/coin_chat.py
+    line: 207
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 211
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 214
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 226
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 231
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 244
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 306
+    type: line_length
+    description: Line too long (147 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/ai/coin_chat.py
+    line: 311
+    type: line_length
+    description: Line too long (122 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/ai/coin_chat.py
+    line: 336
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 365
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 366
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 367
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 368
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 369
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 370
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 376
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 383
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 388
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 395
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 397
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 398
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 401
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 405
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 413
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 414
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 417
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 478
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 483
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 485
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 486
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 493
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 495
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 497
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 499
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 500
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/coin_chat.py
+    line: 448
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/ai/coin_chat.py
+    line: 363
+    type: deep_nesting
+    description: Function 'chat_loop' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/ai/coin_chat.py
+    line: 155
+    type: magic_number
+    description: Magic number 500 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/ai/coin_chat.py
+    line: 163
+    type: magic_number
+    description: Magic number 200 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/ai/coin_chat.py
+    line: 164
+    type: magic_number
+    description: Magic number 400 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/ai/coin_chat.py
+    line: 284
+    type: magic_number
+    description: Magic number 1500 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/ai/coin_chat.py
+    line: 285
+    type: magic_number
+    description: Magic number 1500 should be a named constant
     severity: info
     suggestion: ''
   scripts/ai/readiness_tracker.py:
@@ -26627,6 +27310,91 @@ by_file:
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
+  scripts/ops/test_sequences.py:
+  - file: scripts/ops/test_sequences.py
+    line: 12
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 24
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 30
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 32
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 37
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 39
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 42
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 44
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 49
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 51
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 58
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 60
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 66
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ops/test_sequences.py
+    line: 11
+    type: missing_docstring
+    description: Function 'run_test' missing docstring
+    severity: info
+    suggestion: ''
   scripts/shorts/generate_shorts_video.py:
   - file: scripts/shorts/generate_shorts_video.py
     line: 121
