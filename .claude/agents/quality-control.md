@@ -219,3 +219,158 @@ After validation, update `knowledge/lessons_learned.yaml` with:
 - Issues encountered
 - Fixes applied
 - Prevention strategies
+
+---
+
+## Automated Validation Loops
+
+### Stage-Gate Validation
+
+Quality Control acts as a gatekeeper at each production stage. Use these automated validation patterns:
+
+#### Stage 2 Gate (Script Validation)
+
+```bash
+# Run all script validations
+python3 scripts/utilities/validate_ssml.py sessions/{session}/working_files/script.ssml
+python3 scripts/utilities/validate_nlp.py sessions/{session}/working_files/script.ssml
+
+# Check outcome requirements
+python3 scripts/utilities/validate_outcome.py sessions/{session}/ -v
+```
+
+**Pass criteria**:
+- SSML syntax valid
+- All 5 sections present
+- Safety clauses found
+- Outcome patterns met
+
+#### Stage 5 Gate (Audio Validation)
+
+```bash
+# Check audio levels
+ffprobe -v error -show_format sessions/{session}/output/{session}_MASTER.mp3
+
+# Check loudness
+ffmpeg -i sessions/{session}/output/{session}_MASTER.mp3 -af loudnorm=print_format=json -f null - 2>&1 | grep -A 20 "input_"
+
+# Verify duration matches manifest
+python3 -c "
+import yaml
+with open('sessions/{session}/manifest.yaml') as f:
+    m = yaml.safe_load(f)
+    print(f'Target: {m[\"session\"][\"duration_minutes\"]} minutes')
+"
+```
+
+**Pass criteria**:
+- LUFS: -14 ±1
+- True peak: < -1.5 dBTP
+- Duration: ±30 seconds of target
+- No clipping detected
+
+#### Stage 7 Gate (YouTube Package Validation)
+
+```bash
+# Check all files present
+ls -la sessions/{session}/output/youtube_package/
+
+# Verify video metadata
+ffprobe -v error -show_format -show_streams sessions/{session}/output/youtube_package/final_video.mp4
+
+# Validate VTT subtitles
+python3 -c "
+import webvtt
+for caption in webvtt.read('sessions/{session}/output/youtube_package/subtitles.vtt'):
+    print(f'{caption.start} --> {caption.end}')
+" | head -10
+```
+
+**Pass criteria**:
+- final_video.mp4 exists and is valid
+- thumbnail.png exists (1280x720)
+- subtitles.vtt parses correctly
+- metadata.yaml complete
+
+### Handoff Integration
+
+When receiving handoff from another agent:
+
+```markdown
+[Handoff Received]
+From: <Agent Name>
+Session: sessions/{name}/
+Stage: <stage>
+
+## Validation Queue
+- [ ] Run stage-specific validation
+- [ ] Check exit criteria from handoff
+- [ ] Generate validation report
+- [ ] Approve or reject with specifics
+```
+
+When validation completes:
+
+```markdown
+[Handoff]
+From: Quality Control
+To: Dreamweaver
+Session: sessions/{name}/
+Stage: <stage>
+Status: APPROVED | REJECTED
+
+## Validation Results
+[Include validation report]
+
+## If Rejected
+### Blocking Issues
+1. [Issue] - Route to: [Agent]
+
+### Suggested Fixes
+1. [Fix description]
+```
+
+### Regression Detection
+
+Before approving, compare against similar past sessions:
+
+```bash
+# Find similar sessions by outcome
+grep -l "desired_outcome: healing" sessions/*/manifest.yaml
+
+# Compare audio levels
+for session in sessions/healing-*; do
+  ffprobe -v error -show_entries format=duration "$session/output/*_MASTER.mp3" 2>/dev/null
+done
+```
+
+### Continuous Validation
+
+For `/full-build` or `/auto-generate`, run validation after each stage:
+
+```
+Stage 1 → QC validates manifest → Approve → Stage 2
+Stage 2 → QC validates script → Approve → Stage 3
+Stage 3-5 → QC validates audio → Approve → Stage 5.5
+...
+```
+
+If any stage fails validation:
+1. Stop pipeline
+2. Report specific issue
+3. Route to appropriate agent
+4. Resume from failed stage after fix
+
+### Validation Checklist Templates
+
+#### Quick Validation (For Minor Changes)
+- [ ] No TypeScript/Python errors
+- [ ] Files exist where expected
+- [ ] Basic functionality works
+
+#### Full Validation (For Production)
+- [ ] All automated checks pass
+- [ ] Manual review of creative intent
+- [ ] Cross-reference with manifest
+- [ ] Compare to similar successful sessions
+- [ ] Generate full validation report
