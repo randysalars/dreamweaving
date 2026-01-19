@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-01-18'
-  total_sessions_tracked: 72
+  updated: '2026-01-19'
+  total_sessions_tracked: 75
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -1260,9 +1260,62 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: The Garden Of Reclamation Dreamweaving'
+- session_id: the-treasury-of-echoing-gold-dreamweaving
+  date: '2026-01-19'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Treasury Of Echoing Gold Dreamweaving'
+- session_id: glimpses-of-the-masonic-mosaic-pavement-a-meditati
+  date: '2026-01-19'
+  outcome: healing
+  archetypes_used:
+  - archetype_id: divine_light_healing.great_physician
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_masculine.guardian_father
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Glimpses of the Masonic Mosaic Pavement: A Meditative
+    Journey of Duality'
+- session_id: ankh-ascension-discovering-eternal-life-through-th
+  date: '2026-01-19'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Ankh Ascension: Discovering Eternal Life through
+    the Key of the Nile Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
-    total_encounters: 16
+    total_encounters: 17
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1298,8 +1351,10 @@ listener_relationships:
       type: first_encounter
     - session: elemental-excursions-fostering-a-deep-connection-t
       type: first_encounter
-    last_session: elemental-excursions-fostering-a-deep-connection-t
-    last_session_date: '2026-01-18'
+    - session: glimpses-of-the-masonic-mosaic-pavement-a-meditati
+      type: first_encounter
+    last_session: glimpses-of-the-masonic-mosaic-pavement-a-meditati
+    last_session_date: '2026-01-19'
     relationship_level: 4
   transformation_alchemy.phoenix_renewal:
     total_encounters: 6
@@ -1322,7 +1377,7 @@ listener_relationships:
     last_session_date: '2026-01-11'
     relationship_level: 3
   divine_light_healing.inner_healer:
-    total_encounters: 52
+    total_encounters: 54
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1430,8 +1485,12 @@ listener_relationships:
       type: first_encounter
     - session: the-garden-of-reclamation-dreamweaving
       type: first_encounter
-    last_session: the-garden-of-reclamation-dreamweaving
-    last_session_date: '2026-01-18'
+    - session: the-treasury-of-echoing-gold-dreamweaving
+      type: first_encounter
+    - session: ankh-ascension-discovering-eternal-life-through-th
+      type: first_encounter
+    last_session: ankh-ascension-discovering-eternal-life-through-th
+    last_session_date: '2026-01-19'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 4
@@ -1450,7 +1509,7 @@ listener_relationships:
     last_session_date: '2026-01-14'
     relationship_level: 3
   divine_masculine.guardian_father:
-    total_encounters: 8
+    total_encounters: 9
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1470,8 +1529,10 @@ listener_relationships:
       type: first_encounter
     - session: elemental-excursions-fostering-a-deep-connection-t
       type: first_encounter
-    last_session: elemental-excursions-fostering-a-deep-connection-t
-    last_session_date: '2026-01-18'
+    - session: glimpses-of-the-masonic-mosaic-pavement-a-meditati
+      type: first_encounter
+    last_session: glimpses-of-the-masonic-mosaic-pavement-a-meditati
+    last_session_date: '2026-01-19'
     relationship_level: 4
   dreamweaver_meta.dream_architect:
     total_encounters: 3
@@ -1488,7 +1549,7 @@ listener_relationships:
     last_session_date: '2026-01-15'
     relationship_level: 2
   divine_feminine.rose_mother:
-    total_encounters: 42
+    total_encounters: 44
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1576,11 +1637,15 @@ listener_relationships:
       type: first_encounter
     - session: the-garden-of-reclamation-dreamweaving
       type: first_encounter
-    last_session: the-garden-of-reclamation-dreamweaving
-    last_session_date: '2026-01-18'
+    - session: the-treasury-of-echoing-gold-dreamweaving
+      type: first_encounter
+    - session: ankh-ascension-discovering-eternal-life-through-th
+      type: first_encounter
+    last_session: ankh-ascension-discovering-eternal-life-through-th
+    last_session_date: '2026-01-19'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 27
+    total_encounters: 29
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1638,8 +1703,12 @@ listener_relationships:
       type: first_encounter
     - session: the-tower-of-babel-reconciled-dreamweaving
       type: first_encounter
-    last_session: the-tower-of-babel-reconciled-dreamweaving
-    last_session_date: '2026-01-18'
+    - session: the-treasury-of-echoing-gold-dreamweaving
+      type: first_encounter
+    - session: ankh-ascension-discovering-eternal-life-through-th
+      type: first_encounter
+    last_session: ankh-ascension-discovering-eternal-life-through-th
+    last_session_date: '2026-01-19'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 7
@@ -1688,7 +1757,7 @@ listener_relationships:
     last_session_date: '2026-01-17'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
-    total_encounters: 23
+    total_encounters: 24
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -1738,8 +1807,10 @@ listener_relationships:
       type: first_encounter
     - session: the-garden-of-reclamation-dreamweaving
       type: first_encounter
-    last_session: the-garden-of-reclamation-dreamweaving
-    last_session_date: '2026-01-18'
+    - session: glimpses-of-the-masonic-mosaic-pavement-a-meditati
+      type: first_encounter
+    last_session: glimpses-of-the-masonic-mosaic-pavement-a-meditati
+    last_session_date: '2026-01-19'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 2
@@ -1854,44 +1925,44 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - the-tower-of-singing-serpents-dreamweaving
-  - the-tarot-constellation-of-masters
-  - elemental-excursions-fostering-a-deep-connection-t
   - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
+  - the-treasury-of-echoing-gold-dreamweaving
+  - glimpses-of-the-masonic-mosaic-pavement-a-meditati
+  - ankh-ascension-discovering-eternal-life-through-th
   archetype_cooldowns:
-    divine_light_healing.great_physician: 2
-    transformation_alchemy.phoenix_renewal: 23
+    divine_light_healing.great_physician: 1
+    transformation_alchemy.phoenix_renewal: 26
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 13
-    divine_masculine.guardian_father: 2
-    dreamweaver_meta.dream_architect: 10
+    warrior_power.archangel_michael: 16
+    divine_masculine.guardian_father: 1
+    dreamweaver_meta.dream_architect: 13
     divine_feminine.rose_mother: 0
-    shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 17
-    divine_feminine.sophia_wisdom: 3
-    emotional_heart.heart_flame_tender: 0
-    warrior_power.solar_king: 20
-    divine_masculine.logos_bearer: 3
-    divine_light_healing.shekinah_restorer: 36
-    emotional_heart.joy_child: 3
-    abundance_destiny.providence_angel: 10
-    dreamweaver_meta.portal_keeper: 10
+    shamanic_earth.world_tree_guardian: 0
+    oracle_seer.oracle_of_light: 20
+    divine_feminine.sophia_wisdom: 6
+    emotional_heart.heart_flame_tender: 1
+    warrior_power.solar_king: 23
+    divine_masculine.logos_bearer: 6
+    divine_light_healing.shekinah_restorer: 39
+    emotional_heart.joy_child: 6
+    abundance_destiny.providence_angel: 13
+    dreamweaver_meta.portal_keeper: 13
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - emotional_heart
   - divine_feminine
+  - shamanic_earth
   family_usage_counts:
-    divine_light_healing: 76
+    divine_light_healing: 79
     transformation_alchemy: 6
     warrior_power: 6
-    divine_masculine: 13
+    divine_masculine: 14
     dreamweaver_meta: 4
-    divine_feminine: 50
-    shamanic_earth: 27
+    divine_feminine: 52
+    shamanic_earth: 29
     oracle_seer: 7
-    emotional_heart: 26
+    emotional_heart: 27
     abundance_destiny: 1
 effective_pairings: []

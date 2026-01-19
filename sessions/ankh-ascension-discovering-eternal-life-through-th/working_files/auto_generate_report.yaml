@@ -1,0 +1,71 @@
+session_name: ankh-ascension-discovering-eternal-life-through-th
+topic: 'Ankh Ascension: Discovering Eternal Life through the Key of the Nile Dreamweaving'
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2026-01-19T00:54:42.562007'
+  ended: '2026-01-19T01:33:56.856706'
+  duration_seconds: 2354.3
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - generate_thumbnail
+  - upload_website
+  - self_improvement
+  failed: []
+  total: 16
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-01-19T00:54:44.122502'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2026-01-19T00:54:57.330734'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2026-01-19T00:57:00.481664'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2026-01-19T00:57:00.532053'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-01-19T01:11:26.968373'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/ankh-ascension-discovering-eternal-life-through-th
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/ankh-ascension-discovering-eternal-life-through-th/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/ankh-ascension-discovering-eternal-life-through-th/working_files/script.ssml
+  files:
+  - output/ankh_ascension_discovering_eternal_life_through_th_MASTER.wav
+  - output/subtitles.vtt
+  - output/voice.mp3
+  - output/ankh_ascension_discovering_eternal_life_through_th_MASTER.mp3
+  - output/sfx.wav
+  - output/seo_metadata.json
+  - output/youtube_thumbnail.png
+  - output/session_mixed.wav
+  - output/binaural_dynamic.wav
+  - output/product_schema.json
