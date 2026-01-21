@@ -772,6 +772,10 @@ def main():
         help="Get page content by title"
     )
     parser.add_argument(
+        "--id",
+        help="Get page content by UUID"
+    )
+    parser.add_argument(
         "--db",
         help="Query database (archetypes, realms, frequencies, rituals, lore, scripts)"
     )
@@ -839,6 +843,14 @@ def main():
                     print(f"\n{result['content']}")
             else:
                 print(f"Page not found: {args.page}")
+
+        elif args.id:
+            try:
+                content = retriever.get_page_content(args.id)
+                print(f"Retrieving page by ID: {args.id}")
+                print(content)
+            except Exception as e:
+                print(f"Error retrieving page {args.id}: {e}")
 
         elif args.db:
             results = retriever.query_database(args.db, args.filter)
