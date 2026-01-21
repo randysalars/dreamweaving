@@ -4,7 +4,7 @@ import shutil
 from pathlib import Path
 
 # Setup paths
-PROJECT_ROOT = Path(__file__).parent.parent
+PROJECT_ROOT = Path(__file__).parent
 sys.path.append(str(PROJECT_ROOT))
 
 # Mock Imports to avoid external dependencies during dry run
@@ -14,12 +14,17 @@ from agents.product_builder.core.context import ProductContext
 from agents.product_builder.pipeline.session_runner import SessionOrchestrator
 from agents.product_builder.packaging.landing_page import LandingPageAgent
 from agents.product_builder.packaging.marketing import MarketingStrategist
+from agents.product_builder.packaging.publisher import PublisherAgent
 
 def test_pipeline_dry_run():
     print("🚀 Starting Product Builder Pipeline Dry Run...")
     
     # Setup Output
     output_dir = PROJECT_ROOT / "output" / "products"
+    
+    # Setup Salarsu Mock Root for verification
+    salarsu_root = PROJECT_ROOT / "output" / "mock_salarsu"
+    
     test_slug = "test-wealth-codex"
     if (output_dir / test_slug).exists():
         shutil.rmtree(output_dir / test_slug)
@@ -74,6 +79,20 @@ def test_pipeline_dry_run():
     if "launch_emails.md" in bundle:
         print("    ✅ Marketing Bundle generated.")
         
+    # 6. Publishing / Deployment
+    print("\n[6] Running Publisher Agent...")
+    publisher = PublisherAgent(str(salarsu_root))
+    deploy_result = publisher.deploy(blueprint, context.staging_path)
+    
+    manifest_path = Path(deploy_result["manifest_path"])
+    if manifest_path.exists():
+        print(f"    ✅ Manifest created at {manifest_path}")
+        with open(manifest_path, 'r') as f:
+            if "pricing_model" in f.read():
+                 print("    ✅ Manifest contains pricing data.")
+    else:
+        print("    ❌ Manifest failed.")
+
     print("\n🎉 Dry Run Complete. System is operational.")
 
 if __name__ == "__main__":

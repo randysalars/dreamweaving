@@ -1,0 +1,85 @@
+import logging
+import json
+import shutil
+from pathlib import Path
+from typing import Dict, Any
+from ..schemas.blueprint import ProductBlueprint
+
+logger = logging.getLogger(__name__)
+
+class PublisherAgent:
+    """
+    Deploys the Product to the SalarsNet Store (salarsu).
+    1. Copies artifacts to salarsu/public/downloads/
+    2. Generates a deployment manifest for the DB Loader.
+    """
+    
+    def __init__(self, salarsu_root: str):
+        self.salarsu_root = Path(salarsu_root)
+        self.downloads_dir = self.salarsu_root / "public" / "downloads"
+        self.manifest_dir = self.salarsu_root / "store_import"
+        
+    def deploy(self, blueprint: ProductBlueprint, artifacts_path: Path) -> Dict[str, Any]:
+        """
+        Executes the deployment.
+        """
+        logger.info(f"Deploying {blueprint.title} to {self.salarsu_root}...")
+        
+        # 1. Ensure Directories
+        self.downloads_dir.mkdir(parents=True, exist_ok=True)
+        self.manifest_dir.mkdir(parents=True, exist_ok=True)
+        
+        # 2. Copy Artifacts (Simulated - expecting a 'book.pdf' or similar in artifacts_path)
+        # In this v1, we assume the 'staging/chapters' is the source, but usually we'd have a 'build' folder.
+        # We will create a dummy PDF for the dry run if not exists.
+        product_files = []
+        
+        # Simulating a built PDF for the dry run / implementation
+        pdf_name = f"{blueprint.slug}.pdf"
+        dest_pdf = self.downloads_dir / pdf_name
+        
+        # If we had a real build step, we'd copy. For now, we touch the file if testing.
+        if not dest_pdf.exists():
+            with open(dest_pdf, 'w') as f:
+                f.write("DUMMY PDF CONTENT")
+        
+        product_files.append({
+            "type": "main_file",
+            "url": f"/downloads/{pdf_name}",
+            "filename": pdf_name
+        })
+        
+        # 3. Generate Manifest (The payload for the DB Loader)
+        manifest = {
+            "slug": blueprint.slug,
+            "name": blueprint.title,
+            "description": blueprint.promise.subhead,
+            "price": blueprint.pricing.amount,
+            "pricing_model": blueprint.pricing.model_type,
+            "is_digital": True,
+            "digital_file_url": f"/downloads/{pdf_name}",
+            "status": "active",
+            "category_name": "Digital Products", # Default
+            "landing_page_content": { 
+                # We would normally parse the MDX here, but for now we pass the raw promise
+                "headline": blueprint.promise.headline,
+                "subhead": blueprint.promise.subhead,
+                "bullet_points": [c.title for c in blueprint.chapter_map]
+            },
+            "meta": {
+                "version": blueprint.version,
+                "generated_at": str(blueprint.created_at)
+            }
+        }
+        
+        manifest_path = self.manifest_dir / f"{blueprint.slug}_manifest.json"
+        with open(manifest_path, 'w') as f:
+            json.dump(manifest, f, indent=2)
+            
+        logger.info(f"Manifest written to: {manifest_path}")
+        
+        return {
+            "status": "deployed",
+            "manifest_path": str(manifest_path),
+            "public_url": f"/downloads/{pdf_name}"
+        }

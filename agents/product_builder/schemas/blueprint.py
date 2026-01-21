@@ -9,6 +9,12 @@ class ProductPromise(BaseModel):
     target_audience: str = Field(..., description="Specific definition of the primary reader")
     transformation_timeline: str = Field(..., description="Time to value (e.g. '72 hours')")
 
+class PricingModel(BaseModel):
+    amount: float = Field(..., description="The price of the product in USD")
+    currency: str = Field(default="USD")
+    model_type: Literal["fixed", "subscription", "pay_what_you_want"] = "fixed"
+    stripe_price_id: Optional[str] = None
+
 class BuildTarget(BaseModel):
     formats: List[Literal["mdx", "pdf", "epub", "audio", "video"]] = Field(default=["mdx", "pdf"])
     target_page_count: int = Field(default=100, ge=20)
@@ -51,6 +57,7 @@ class ProductBlueprint(BaseModel):
     
     bonuses: List[Dict[str, str]] = Field(default_factory=list, description="List of bonus modules")
     marketing: MarketingHooks
+    pricing: PricingModel
     build_targets: BuildTarget
     
     status: Literal["draft", "locked", "in_progress", "completed"] = "draft"

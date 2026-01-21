@@ -1,5 +1,4 @@
-from typing import List
-from ..schemas.blueprint import ProductBlueprint, ProductPromise, BuildTarget, MarketingHooks, AudiencePersona, ChapterSpec
+from ..schemas.blueprint import ProductBlueprint, ProductPromise, BuildTarget, MarketingHooks, AudiencePersona, ChapterSpec, PricingModel
 from .intelligence import DemandSignal
 
 class ProductArchitect:
@@ -48,6 +47,13 @@ class ProductArchitect:
             core_angles=[f"Why most people fail at {signal.topic}", "The system, not the goal"],
             objections_to_crush=["I don't have time", "I'm not an expert"]
         )
+
+        # 5. Pricing (Default Logic)
+        pricing = PricingModel(
+            amount=49.00,
+            currency="USD",
+            model_type="fixed"
+        )
         
         return ProductBlueprint(
             title=title_override or f"The {signal.topic} Codex",
@@ -57,5 +63,6 @@ class ProductArchitect:
             voice_rules=["Authoritative", "Direct", "No fluff"],
             chapter_map=chapters,
             marketing=marketing,
+            pricing=pricing,
             build_targets=BuildTarget(target_page_count=100, publish_path=f"/products/{(title_override or signal.topic).lower().replace(' ', '-')}")
         )
