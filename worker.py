@@ -197,7 +197,8 @@ def start_worker():
         while True:
             # Blocking pop (wait indefinitely for a job)
             # blpop returns tuple (key, value)
-            result = conn.blpop(QUEUE_NAME, timeout=5)
+            # PRIORITY: dreamweaving_pending (High) > dreamweaving_speculative (Low)
+            result = conn.blpop(['dreamweaving_pending', 'dreamweaving_speculative'], timeout=5)
             
             if result:
                 _, payload = result
