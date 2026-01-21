@@ -1970,4 +1970,85 @@ records:
   comments_sentiment: null
   metrics_complete: false
   youtube_pending: false
-last_updated: '2026-01-20T00:59:56.253905'
+- record_id: outcome-508b0917
+  session_name: eco-echo-conversations-with-nature
+  created_at: '2026-01-20T01:27:07.227094'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+- record_id: outcome-3e86f121
+  session_name: megalithic-meditations-stepping-into-stone-circles
+  created_at: '2026-01-21T00:25:55.547047'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+- record_id: outcome-b040d5f0
+  session_name: hall-of-forgotten-epidemics-dreamweaving
+  created_at: '2026-01-21T00:53:07.490801'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+last_updated: '2026-01-21T00:53:07.594092'

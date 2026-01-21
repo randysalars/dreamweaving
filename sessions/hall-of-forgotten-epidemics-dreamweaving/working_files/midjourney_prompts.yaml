@@ -1,0 +1,61 @@
+session: hall-of-forgotten-epidemics-dreamweaving
+style: abstract
+style_details:
+  base_style: flowing forms, energy patterns, consciousness
+  color_palette: prismatic, shifting gradients
+  mood: meditative, hypnotic, transformative
+  lighting: inner glow, radiant energy
+thumbnail:
+  scene: thumbnail
+  description: YouTube thumbnail for Hypnotic Journey
+  prompt: 'dramatic representation of hypnotic journey, flowing forms, energy patterns,
+    consciousness, centered focal point, dramatic composition, eye-catching, professional,
+    high contrast, readable at small size, negative space on left or right for text
+    overlay, color palette: prismatic, shifting gradients, cinematic, impactful, mysterious,
+    professional youtube thumbnail quality --ar 16:9 --v 6 --style raw --s 500'
+  notes:
+  - Create with text space for title overlay
+  - Should be eye-catching at small size
+  - Consider A/B testing variations
+scenes:
+- scene: opening
+  description: Beginning of Hypnotic Journey
+  prompt: 'gateway or threshold, beginning of a journey, beam of gentle light, flowing
+    forms, energy patterns, consciousness, color palette: prismatic, shifting gradients,
+    mood: inviting, anticipation, safe entry, lighting: inner glow, radiant energy,
+    highly detailed, professional quality, 8k resolution --ar 16:9 --v 6 --style raw
+    --s 250'
+- scene: journey_1
+  description: the Rose Mother’s veil
+  prompt: 'the Rose Mother’s veil, flowing forms, energy patterns, consciousness,
+    color palette: prismatic, shifting gradients, mood: meditative, hypnotic, transformative,
+    lighting: inner glow, radiant energy, highly detailed, professional quality, 8k
+    resolution --ar 16:9 --v 6 --style raw --s 250'
+- scene: journey_2
+  description: single sentence
+  prompt: 'single sentence, flowing forms, energy patterns, consciousness, color palette:
+    prismatic, shifting gradients, mood: meditative, hypnotic, transformative, lighting:
+    inner glow, radiant energy, highly detailed, professional quality, 8k resolution
+    --ar 16:9 --v 6 --style raw --s 250'
+- scene: journey_3
+  description: the spiral of the hall
+  prompt: 'the spiral of the hall, flowing forms, energy patterns, consciousness,
+    color palette: prismatic, shifting gradients, mood: meditative, hypnotic, transformative,
+    lighting: inner glow, radiant energy, highly detailed, professional quality, 8k
+    resolution --ar 16:9 --v 6 --style raw --s 250'
+- scene: closing
+  description: Completion of Hypnotic Journey
+  prompt: 'peaceful return, integration, wholeness, flowing forms, energy patterns,
+    consciousness, color palette: prismatic, shifting gradients, mood: complete, peaceful,
+    integrated, grounded, lighting: inner glow, radiant energy, highly detailed, professional
+    quality, 8k resolution --ar 16:9 --v 6 --style raw --s 250'
+instructions:
+  workflow:
+  - 1. Generate images using Midjourney with these prompts
+  - 2. Download and save to images_uploaded/ folder
+  - '3. Name files: thumbnail.png, scene_01.png, scene_02.png, etc.'
+  - 4. Run video assembly after images are ready
+  tips:
+  - Regenerate if initial results don't match the mood
+  - Use --chaos 20-40 for more variation if needed
+  - Upscale final selections to maximum quality

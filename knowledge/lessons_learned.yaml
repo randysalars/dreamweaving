@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - moonlit-melian-discovering-hidden-depths-of-power-
-  - the-amber-halls-of-serendipity-dreamweaving
-  - the-confluence-of-all-currents-dreamweaving
   - climbing-the-infinite-beanstalk-a-fairytale-inspir
   - residential-schools-reckoning-path-dreamweaving
   - carrying-the-ember-home-dreamweaving
@@ -34,8 +31,11 @@ lessons:
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
   - eco-echo-conversations-with-nature
-  applied_count: 73
-  last_applied: '2026-01-20'
+  - megalithic-meditations-stepping-into-stone-circles
+  - hall-of-forgotten-epidemics-dreamweaving
+  - the-sea-journey-with-the-queen-king-of-cups-explor
+  applied_count: 76
+  last_applied: '2026-01-21'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - moonlit-melian-discovering-hidden-depths-of-power-
-  - the-amber-halls-of-serendipity-dreamweaving
-  - the-confluence-of-all-currents-dreamweaving
   - climbing-the-infinite-beanstalk-a-fairytale-inspir
   - residential-schools-reckoning-path-dreamweaving
   - carrying-the-ember-home-dreamweaving
@@ -72,8 +69,11 @@ lessons:
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
   - eco-echo-conversations-with-nature
-  applied_count: 73
-  last_applied: '2026-01-20'
+  - megalithic-meditations-stepping-into-stone-circles
+  - hall-of-forgotten-epidemics-dreamweaving
+  - the-sea-journey-with-the-queen-king-of-cups-explor
+  applied_count: 76
+  last_applied: '2026-01-21'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - moonlit-melian-discovering-hidden-depths-of-power-
-  - the-amber-halls-of-serendipity-dreamweaving
-  - the-confluence-of-all-currents-dreamweaving
   - climbing-the-infinite-beanstalk-a-fairytale-inspir
   - residential-schools-reckoning-path-dreamweaving
   - carrying-the-ember-home-dreamweaving
@@ -109,8 +106,11 @@ lessons:
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
   - eco-echo-conversations-with-nature
-  applied_count: 73
-  last_applied: '2026-01-20'
+  - megalithic-meditations-stepping-into-stone-circles
+  - hall-of-forgotten-epidemics-dreamweaving
+  - the-sea-journey-with-the-queen-king-of-cups-explor
+  applied_count: 76
+  last_applied: '2026-01-21'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - moonlit-melian-discovering-hidden-depths-of-power-
-  - the-amber-halls-of-serendipity-dreamweaving
-  - the-confluence-of-all-currents-dreamweaving
   - climbing-the-infinite-beanstalk-a-fairytale-inspir
   - residential-schools-reckoning-path-dreamweaving
   - carrying-the-ember-home-dreamweaving
@@ -147,8 +144,11 @@ lessons:
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
   - eco-echo-conversations-with-nature
-  applied_count: 73
-  last_applied: '2026-01-20'
+  - megalithic-meditations-stepping-into-stone-circles
+  - hall-of-forgotten-epidemics-dreamweaving
+  - the-sea-journey-with-the-queen-king-of-cups-explor
+  applied_count: 76
+  last_applied: '2026-01-21'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - moonlit-melian-discovering-hidden-depths-of-power-
-  - the-amber-halls-of-serendipity-dreamweaving
-  - the-confluence-of-all-currents-dreamweaving
   - climbing-the-infinite-beanstalk-a-fairytale-inspir
   - residential-schools-reckoning-path-dreamweaving
   - carrying-the-ember-home-dreamweaving
@@ -183,8 +180,11 @@ lessons:
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
   - eco-echo-conversations-with-nature
-  applied_count: 73
-  last_applied: '2026-01-20'
+  - megalithic-meditations-stepping-into-stone-circles
+  - hall-of-forgotten-epidemics-dreamweaving
+  - the-sea-journey-with-the-queen-king-of-cups-explor
+  applied_count: 76
+  last_applied: '2026-01-21'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
