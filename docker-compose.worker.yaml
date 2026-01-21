@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  dreamweaving-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dreamweaving-worker
+    restart: unless-stopped
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/config/google-service-account.json
+      # Pass through other sensitive env vars
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      # Mount credentials if needed (assuming they are in config/)
+      - ./config:/app/config
+      - ./sessions:/app/sessions
+      - ./output:/app/output
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    container_name: dreamweaving-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
