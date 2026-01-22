@@ -187,6 +187,23 @@ class PublisherAgent:
             json.dump(manifest, f, indent=2)
             
         logger.info(f"Manifest written to: {manifest_path}")
+
+        # 4. Trigger Store Loader (Automated Ingestion)
+        loader_script = self.salarsu_root / "scripts" / "product_loader.js"
+        if loader_script.exists():
+            logger.info("Triggering automated store ingestion...")
+            import subprocess
+            try:
+                cmd = ["node", str(loader_script), str(manifest_path)]
+                # Run in salarsu root so that process.cwd() is correct for 'public' folder resolution
+                subprocess.run(cmd, check=True, cwd=str(self.salarsu_root), capture_output=True)
+                logger.info("✅ Product automatically loaded into Store DB.")
+            except subprocess.CalledProcessError as e:
+                logger.error(f"❌ Auto-loading failed: {e}")
+                if e.stderr:
+                    logger.error(f"Loader Error Output: {e.stderr.decode()}")
+        else:
+            logger.warning(f"Loader script not found at {loader_script}")
         
         return {
             "status": "deployed",
