@@ -225,6 +225,36 @@ def create_command(args):
         promo_package = social_generator.generate_promo_package(args.title, positioning, chapters)
         social_generator.export_to_file(promo_package, output_dir / "social_promo.md")
         logger.info(f"   Social: {len(promo_package.posts)} posts for multiple platforms")
+        
+        # Schedule to Buffer if requested
+        if args.schedule_buffer:
+            logger.info("\n📅 Scheduling posts to Buffer...")
+            from datetime import datetime, timedelta
+            from .marketing.buffer_client import BufferClient
+            
+            # Parse launch date or use default
+            if hasattr(args, 'launch_date') and args.launch_date:
+                try:
+                    launch_date = datetime.strptime(args.launch_date, "%Y-%m-%d")
+                except:
+                    launch_date = datetime.now() + timedelta(days=7)
+            else:
+                launch_date = datetime.now() + timedelta(days=7)
+            
+            buffer_client = BufferClient()
+            result = buffer_client.schedule_from_package(
+                promo_package,
+                launch_date=launch_date,
+                dry_run=args.dry_run if hasattr(args, 'dry_run') else False
+            )
+            
+            if result.success:
+                logger.info(f"   ✅ {result.message}")
+            else:
+                logger.warning(f"   ⚠️  Buffer scheduling: {result.message}")
+                if result.errors:
+                    for err in result.errors[:3]:
+                        logger.warning(f"      - {err}")
     
     # Phase 7: Upsell strategy
     logger.info("\n💰 Phase 7: Creating upsell strategy...")
@@ -323,8 +353,12 @@ Examples:
                                help='Generate social promo content')
     create_parser.add_argument('--register-emails', action='store_true',
                                help='Register generated emails with SalarsNet newsletters')
+    create_parser.add_argument('--schedule-buffer', action='store_true',
+                               help='Schedule social posts to Buffer')
+    create_parser.add_argument('--launch-date',
+                               help='Launch date for Buffer scheduling (YYYY-MM-DD)')
     create_parser.add_argument('--dry-run', action='store_true',
-                               help='Validate without actually registering')
+                               help='Validate without actually registering/scheduling')
     create_parser.add_argument('--all', action='store_true',
                                help='Generate everything')
     create_parser.set_defaults(func=create_command)

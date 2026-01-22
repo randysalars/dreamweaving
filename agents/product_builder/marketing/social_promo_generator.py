@@ -23,6 +23,20 @@ class Platform(Enum):
     TIKTOK = "tiktok"
 
 
+class PostType(Enum):
+    """Type of social post."""
+    LAUNCH = "launch"
+    PROBLEM = "problem"
+    TRANSFORMATION = "transformation"
+    THREAD = "thread"
+    TESTIMONIAL = "testimonial"
+    FAQ = "faq"
+    TIP = "tip"
+    STORY = "story"
+    CTA = "cta"
+    ENGAGEMENT = "engagement"
+
+
 @dataclass
 class SocialPost:
     """Single social media post."""
@@ -31,6 +45,9 @@ class SocialPost:
     hashtags: List[str] = field(default_factory=list)
     media_suggestion: str = ""
     hook: str = ""  # First line / attention grabber
+    post_type: PostType = PostType.LAUNCH
+    scheduled_day: int = 0  # Day relative to launch (0 = launch day)
+    best_time: str = ""  # Recommended posting time
     
     @property
     def character_count(self) -> int:
@@ -45,13 +62,28 @@ class SocialPost:
 
 
 @dataclass
+class ContentCalendar:
+    """Suggested posting schedule."""
+    product_title: str
+    launch_date_note: str = "Set your launch date, then follow this schedule"
+    schedule: List[Dict] = field(default_factory=list)
+
+
+@dataclass
 class SocialPromoPackage:
     """Complete social promo package for a product."""
     product_title: str
     posts: List[SocialPost] = field(default_factory=list)
+    calendar: ContentCalendar = None
     
     def by_platform(self, platform: Platform) -> List[SocialPost]:
         return [p for p in self.posts if p.platform == platform]
+    
+    def by_type(self, post_type: PostType) -> List[SocialPost]:
+        return [p for p in self.posts if p.post_type == post_type]
+    
+    def by_day(self, day: int) -> List[SocialPost]:
+        return [p for p in self.posts if p.scheduled_day == day]
 
 
 class SocialPromoGenerator:
@@ -112,11 +144,23 @@ class SocialPromoGenerator:
         # YouTube descriptions
         posts.extend(self._generate_youtube_content(title, positioning))
         
+        # TikTok hooks
+        posts.extend(self._generate_tiktok_posts(title, positioning))
+        
+        # Additional post types
+        posts.extend(self._generate_testimonial_templates(title, positioning))
+        posts.extend(self._generate_faq_posts(title, positioning))
+        posts.extend(self._generate_engagement_posts(title, positioning))
+        
+        # Generate content calendar
+        calendar = self._generate_content_calendar(title, posts)
+        
         logger.info(f"✅ Generated {len(posts)} social posts")
         
         return SocialPromoPackage(
             product_title=title,
-            posts=posts
+            posts=posts,
+            calendar=calendar
         )
     
     def _generate_twitter_posts(
@@ -363,19 +407,309 @@ If this was helpful, hit the like button and subscribe for more.
         
         return posts
     
+    def _generate_tiktok_posts(
+        self, 
+        title: str, 
+        positioning: PositioningBrief
+    ) -> List[SocialPost]:
+        """Generate TikTok hooks and captions."""
+        posts = []
+        
+        # Hook 1: Problem callout
+        pain = positioning.audience.pain_points[0] if positioning.audience.pain_points else "stuck"
+        posts.append(SocialPost(
+            platform=Platform.TIKTOK,
+            hook="POV:",
+            content=f"""POV: You finally found a system for {positioning.core_promise.lower().split()[-2:]}
+
+Yes, it actually works 🎯
+
+Link in bio""",
+            hashtags=["fyp", "learnontiktok"],
+            post_type=PostType.PROBLEM,
+            scheduled_day=0,
+            best_time="7pm-9pm"
+        ))
+        
+        # Hook 2: Transformation
+        posts.append(SocialPost(
+            platform=Platform.TIKTOK,
+            hook="This changed everything",
+            content=f"""This changed everything for my {positioning.core_promise.split()[-1].lower()} 👀
+
+#storytime #transformation""",
+            hashtags=["storytime", "transformation"],
+            post_type=PostType.TRANSFORMATION,
+            scheduled_day=1,
+            best_time="12pm-2pm"
+        ))
+        
+        # Hook 3: Quick tip
+        posts.append(SocialPost(
+            platform=Platform.TIKTOK,
+            hook="The #1 mistake",
+            content=f"""The #1 mistake people make with {positioning.core_promise.split()[-1].lower()}:
+
+They try too hard 🤦
+
+Here's the fix 👇""",
+            hashtags=["tips", "advice"],
+            post_type=PostType.TIP,
+            scheduled_day=3,
+            best_time="5pm-7pm"
+        ))
+        
+        return posts
+    
+    def _generate_testimonial_templates(
+        self, 
+        title: str, 
+        positioning: PositioningBrief
+    ) -> List[SocialPost]:
+        """Generate testimonial post templates."""
+        posts = []
+        
+        # Twitter testimonial template
+        posts.append(SocialPost(
+            platform=Platform.TWITTER,
+            hook="[TESTIMONIAL TEMPLATE]",
+            content=f""""[Student name] just messaged me this:
+
+'[Specific result they achieved]'
+
+This is what {title} is about.
+
+Not theory. Results.
+
+[Link]""",
+            hashtags=[],
+            post_type=PostType.TESTIMONIAL,
+            scheduled_day=5,
+            best_time="9am-11am",
+            media_suggestion="Screenshot of testimonial"
+        ))
+        
+        # Instagram testimonial
+        posts.append(SocialPost(
+            platform=Platform.INSTAGRAM,
+            hook="[TESTIMONIAL TEMPLATE]",
+            content=f"""Got this message this morning and had to share 🥹
+
+"[Quote from customer about their transformation]"
+
+This is why I do what I do.
+
+Seeing people {positioning.core_promise.lower()} makes every late night worth it.
+
+[Customer name], thank you for trusting me with your journey. 🙏
+
+If you're ready for your own transformation → Link in bio""",
+            hashtags=["testimonial", "results", "clientlove"],
+            post_type=PostType.TESTIMONIAL,
+            scheduled_day=7,
+            best_time="6pm-8pm",
+            media_suggestion="Screenshot or video testimonial"
+        ))
+        
+        return posts
+    
+    def _generate_faq_posts(
+        self, 
+        title: str, 
+        positioning: PositioningBrief
+    ) -> List[SocialPost]:
+        """Generate FAQ-style posts from objections."""
+        posts = []
+        
+        if positioning.objections:
+            for i, obj in enumerate(positioning.objections[:3]):
+                posts.append(SocialPost(
+                    platform=Platform.TWITTER,
+                    hook=f"FAQ: {obj.objection}",
+                    content=f""""{obj.objection}"
+
+I hear this a lot.
+
+Here's my answer:
+
+{obj.preemption}
+
+Does that help?""",
+                    hashtags=[],
+                    post_type=PostType.FAQ,
+                    scheduled_day=4 + i,
+                    best_time="2pm-4pm"
+                ))
+        
+        return posts
+    
+    def _generate_engagement_posts(
+        self, 
+        title: str, 
+        positioning: PositioningBrief
+    ) -> List[SocialPost]:
+        """Generate engagement-focused posts."""
+        posts = []
+        
+        # Question post
+        posts.append(SocialPost(
+            platform=Platform.TWITTER,
+            hook="Quick question:",
+            content=f"""Quick question:
+
+What's the #1 thing holding you back from {positioning.core_promise.lower()}?
+
+Reply below 👇
+
+(I read every response)""",
+            hashtags=[],
+            post_type=PostType.ENGAGEMENT,
+            scheduled_day=-1,  # Pre-launch
+            best_time="10am-12pm"
+        ))
+        
+        # Poll post (LinkedIn)
+        posts.append(SocialPost(
+            platform=Platform.LINKEDIN,
+            hook="Be honest:",
+            content=f"""Be honest: 
+
+What's your biggest challenge with {positioning.core_promise.split()[-1].lower()}?
+
+A) Not enough time
+B) Don't know where to start  
+C) Tried everything, nothing works
+D) Other (comment below)
+
+Vote below and I'll share what's worked for me. 👇""",
+            hashtags=[],
+            post_type=PostType.ENGAGEMENT,
+            scheduled_day=-2,  # Pre-launch
+            best_time="8am-10am"
+        ))
+        
+        # Behind the scenes
+        posts.append(SocialPost(
+            platform=Platform.INSTAGRAM,
+            hook="Behind the scenes 🎬",
+            content=f"""Behind the scenes 🎬
+
+Working on something big...
+
+Can't wait to share it with you.
+
+Drop a 🔥 if you want first access.""",
+            hashtags=["bts", "comingsoon", "sneakpeek"],
+            post_type=PostType.ENGAGEMENT,
+            scheduled_day=-3,
+            best_time="7pm-9pm",
+            media_suggestion="Work-in-progress screenshot or video"
+        ))
+        
+        return posts
+    
+    def _generate_content_calendar(
+        self, 
+        title: str, 
+        posts: List[SocialPost]
+    ) -> ContentCalendar:
+        """Generate a content calendar from posts."""
+        schedule = []
+        
+        # Group by day
+        days = sorted(set(p.scheduled_day for p in posts if p.scheduled_day != 0))
+        
+        # Pre-launch
+        pre_launch = [p for p in posts if p.scheduled_day < 0]
+        if pre_launch:
+            for d in sorted(set(p.scheduled_day for p in pre_launch)):
+                day_posts = [p for p in posts if p.scheduled_day == d]
+                schedule.append({
+                    "day": f"L{d}",  # e.g., L-3, L-2, L-1
+                    "label": f"{abs(d)} days before launch",
+                    "posts": [
+                        {
+                            "platform": p.platform.value,
+                            "type": p.post_type.value,
+                            "best_time": p.best_time or "varies",
+                            "hook": p.hook[:50] + "..." if len(p.hook) > 50 else p.hook
+                        }
+                        for p in day_posts
+                    ]
+                })
+        
+        # Launch day
+        launch_posts = [p for p in posts if p.scheduled_day == 0]
+        if launch_posts:
+            schedule.append({
+                "day": "L0",
+                "label": "🚀 LAUNCH DAY",
+                "posts": [
+                    {
+                        "platform": p.platform.value,
+                        "type": p.post_type.value,
+                        "best_time": p.best_time or "varies",
+                        "hook": p.hook[:50] + "..." if len(p.hook) > 50 else p.hook
+                    }
+                    for p in launch_posts
+                ]
+            })
+        
+        # Post-launch
+        for d in range(1, 8):
+            day_posts = [p for p in posts if p.scheduled_day == d]
+            if day_posts:
+                schedule.append({
+                    "day": f"L+{d}",
+                    "label": f"{d} day{'s' if d > 1 else ''} after launch",
+                    "posts": [
+                        {
+                            "platform": p.platform.value,
+                            "type": p.post_type.value,
+                            "best_time": p.best_time or "varies",
+                            "hook": p.hook[:50] + "..." if len(p.hook) > 50 else p.hook
+                        }
+                        for p in day_posts
+                    ]
+                })
+        
+        return ContentCalendar(
+            product_title=title,
+            schedule=schedule
+        )
+    
     def export_to_file(self, package: SocialPromoPackage, output_path: Path) -> str:
         """Export social package to markdown file."""
         content = f"# Social Promo Package: {package.product_title}\n\n"
         
+        # Content Calendar section
+        if package.calendar and package.calendar.schedule:
+            content += "## 📅 Content Calendar\n\n"
+            content += f"*{package.calendar.launch_date_note}*\n\n"
+            content += "| Day | Platform | Type | Best Time | Hook |\n"
+            content += "|-----|----------|------|-----------|------|\n"
+            for day_entry in package.calendar.schedule:
+                for post in day_entry.get("posts", []):
+                    content += f"| {day_entry['day']} | {post['platform'].title()} | {post['type']} | {post['best_time']} | {post['hook']} |\n"
+            content += "\n---\n\n"
+        
+        # Posts by platform
         for platform in Platform:
             platform_posts = package.by_platform(platform)
             if platform_posts:
                 content += f"## {platform.value.title()}\n\n"
                 
                 for i, post in enumerate(platform_posts, 1):
-                    content += f"### Post {i}\n\n"
+                    content += f"### Post {i}: {post.post_type.value.title()}\n\n"
                     if post.hook:
                         content += f"**Hook:** {post.hook}\n\n"
+                    if post.scheduled_day != 0:
+                        if post.scheduled_day < 0:
+                            content += f"**Schedule:** {abs(post.scheduled_day)} days before launch\n\n"
+                        else:
+                            content += f"**Schedule:** Day {post.scheduled_day} after launch\n\n"
+                    if post.best_time:
+                        content += f"**Best Time:** {post.best_time}\n\n"
                     content += f"**Characters:** {post.character_count}\n\n"
                     content += f"```\n{post.full_content}\n```\n\n"
                     if post.media_suggestion:
@@ -385,3 +719,4 @@ If this was helpful, hit the like button and subscribe for more.
         output_path.write_text(content)
         logger.info(f"✅ Social package exported: {output_path}")
         return str(output_path)
+
