@@ -3,6 +3,10 @@ import { ChapterVideo } from "./compositions/ChapterVideo";
 import { AudioNarration } from "./compositions/AudioNarration";
 import { CourseIntro } from "./compositions/CourseIntro";
 import { ChapterCard } from "./compositions/ChapterCard";
+import { KeyInsight } from "./compositions/KeyInsight";
+import { Checklist } from "./compositions/Checklist";
+import { QuoteCard } from "./compositions/QuoteCard";
+import { ProgressMilestone } from "./compositions/ProgressMilestone";
 
 /**
  * Root component that registers all video/audio compositions.
@@ -15,7 +19,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="ChapterVideo"
         component={ChapterVideo}
-        durationInFrames={900}  // 30 seconds at 30fps
+        durationInFrames={900}
         fps={30}
         width={1920}
         height={1080}
@@ -37,7 +41,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="AudioNarration"
         component={AudioNarration}
-        durationInFrames={1800}  // 60 seconds
+        durationInFrames={1800}
         fps={30}
         width={1}
         height={1}
@@ -52,7 +56,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="CourseIntro"
         component={CourseIntro}
-        durationInFrames={300}  // 10 seconds
+        durationInFrames={300}
         fps={30}
         width={1920}
         height={1080}
@@ -67,7 +71,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="ChapterCard"
         component={ChapterCard}
-        durationInFrames={150}  // 5 seconds
+        durationInFrames={150}
         fps={30}
         width={1200}
         height={630}
@@ -77,6 +81,69 @@ export const RemotionRoot: React.FC = () => {
           keyTakeaway: "The most important insight...",
         }}
       />
+
+      {/* Key Insight highlight */}
+      <Composition
+        id="KeyInsight"
+        component={KeyInsight}
+        durationInFrames={240}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          insightText: "The key insight goes here",
+          context: "Context name",
+          chapterNumber: 1,
+        }}
+      />
+
+      {/* Animated Checklist */}
+      <Composition
+        id="Checklist"
+        component={Checklist}
+        durationInFrames={300}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          title: "Action Steps",
+          items: ["Step one", "Step two", "Step three"],
+        }}
+      />
+
+      {/* Quote Card */}
+      <Composition
+        id="QuoteCard"
+        component={QuoteCard}
+        durationInFrames={240}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          quote: "The quote goes here",
+          author: "Author Name",
+          context: "Book Title",
+        }}
+      />
+
+      {/* Progress Milestone */}
+      <Composition
+        id="ProgressMilestone"
+        component={ProgressMilestone}
+        durationInFrames={360}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          milestones: [
+            { name: "Foundation", description: "Core concepts", completed: true },
+            { name: "Application", description: "First practice", completed: true },
+            { name: "Mastery", description: "Full implementation", completed: false },
+          ],
+          currentMilestone: 2,
+        }}
+      />
     </>
   );
 };
+
