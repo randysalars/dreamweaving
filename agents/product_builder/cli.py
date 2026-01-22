@@ -187,6 +187,36 @@ def create_command(args):
         email_generator.export_to_file(welcome_seq, output_dir / "emails_welcome.md")
         email_generator.export_to_file(launch_seq, output_dir / "emails_launch.md")
         logger.info(f"   Emails: {len(welcome_seq.emails) + len(launch_seq.emails)} emails in 2 sequences")
+        
+        # Register with salarsu if requested
+        if args.register_emails:
+            logger.info("\n📡 Registering emails with SalarsNet...")
+            from .packaging.salarsu_email_client import SalarsuEmailClient, slugify
+            
+            product_slug = slugify(args.title)
+            client = SalarsuEmailClient()
+            
+            # Convert welcome sequence to registration format
+            emails_to_register = [
+                {
+                    "subject": email.subject,
+                    "body": email.body,
+                    "send_delay_hours": email.send_delay_hours
+                }
+                for email in welcome_seq.emails
+            ]
+            
+            result = client.register_sequence(
+                product_slug=product_slug,
+                product_title=args.title,
+                emails=emails_to_register,
+                dry_run=args.dry_run if hasattr(args, 'dry_run') else False
+            )
+            
+            if result.success:
+                logger.info(f"   ✅ Registered {result.templates_registered} templates with SalarsNet")
+            else:
+                logger.warning(f"   ⚠️  Registration failed: {result.error}")
     
     # Phase 6: Social promo
     if args.social:
@@ -291,6 +321,10 @@ Examples:
                                help='Generate email sequences')
     create_parser.add_argument('--social', action='store_true',
                                help='Generate social promo content')
+    create_parser.add_argument('--register-emails', action='store_true',
+                               help='Register generated emails with SalarsNet newsletters')
+    create_parser.add_argument('--dry-run', action='store_true',
+                               help='Validate without actually registering')
     create_parser.add_argument('--all', action='store_true',
                                help='Generate everything')
     create_parser.set_defaults(func=create_command)
