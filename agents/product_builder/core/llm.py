@@ -46,7 +46,11 @@ class LLMClient:
                 check=True
             )
             
-            return result.stdout.strip()
+            
+            output = result.stdout.strip()
+            # Filter out dotenv logs
+            clean_lines = [line for line in output.splitlines() if not line.startswith('[dotenv')]
+            return "\n".join(clean_lines).strip()
             
         except subprocess.CalledProcessError as e:
             logger.error(f"LLM Generation failed: {e.stderr}")

@@ -55,6 +55,24 @@ class PublisherAgent:
             "filename": pdf_name
         })
         
+        # 2a. Handle Image Artifact
+        image_name = f"{blueprint.slug}.png"
+        images_dir = self.salarsu_root / "public" / "images" / "products"
+        images_dir.mkdir(parents=True, exist_ok=True)
+        
+        dest_image = images_dir / image_name
+        source_image = artifacts_path / image_name
+        
+        deployed_image_url = f"/images/products/{image_name}" # Default expected URL
+        
+        if source_image.exists():
+            logger.info(f"Copying image from {source_image} to {dest_image}")
+            shutil.copy(source_image, dest_image)
+        elif (images_dir / image_name).exists():
+             logger.info(f"Image already exists at {dest_image}, using existing.")
+        else:
+             logger.warning(f"No image found at {source_image} or {dest_image}. Manifest will point to default.")
+
         # 3. Generate Manifest (The payload for the DB Loader)
         manifest = {
             "slug": blueprint.slug,
@@ -62,6 +80,10 @@ class PublisherAgent:
             "description": blueprint.promise.subhead,
             "price": blueprint.pricing.amount,
             "pricing_model": blueprint.pricing.model_type,
+            "love_offering_min": blueprint.pricing.love_offering_min,
+            "love_offering_suggested": blueprint.pricing.love_offering_suggested,
+            "love_offering_anchor": blueprint.pricing.love_offering_anchor,
+            "image": deployed_image_url,
             "is_digital": True,
             "digital_file_url": f"/downloads/{pdf_name}",
             "status": "active",

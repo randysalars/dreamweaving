@@ -12,8 +12,11 @@ class ProductPromise(BaseModel):
 class PricingModel(BaseModel):
     amount: float = Field(..., description="The price of the product in USD")
     currency: str = Field(default="USD")
-    model_type: Literal["fixed", "subscription", "pay_what_you_want"] = "fixed"
+    model_type: Literal["fixed", "subscription", "pay_what_you_want", "love_offering"] = "fixed"
     stripe_price_id: Optional[str] = None
+    love_offering_min: Optional[float] = None
+    love_offering_suggested: Optional[float] = None
+    love_offering_anchor: Optional[str] = None
 
 class BuildTarget(BaseModel):
     formats: List[Literal["mdx", "pdf", "epub", "audio", "video"]] = Field(default=["mdx", "pdf"])

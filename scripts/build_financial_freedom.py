@@ -17,6 +17,7 @@ from agents.product_builder.pipeline.session_runner import SessionOrchestrator
 from agents.product_builder.packaging.landing_page import LandingPageAgent
 from agents.product_builder.packaging.marketing import MarketingStrategist
 from agents.product_builder.packaging.publisher import PublisherAgent
+from agents.product_builder.packaging.graphics import GraphicDesigner
 
 def build_financial_freedom():
     print("🚀 Starting Financial Freedom Blueprint Build...")
@@ -57,6 +58,13 @@ def build_financial_freedom():
     blueprint.slug = target_slug 
     print(f"    Blueprint Created: {blueprint.title}")
     
+    # Enforce Love Offering Pricing
+    blueprint.pricing.model_type = "love_offering"
+    blueprint.pricing.love_offering_min = 1.00
+    blueprint.pricing.love_offering_suggested = 49.00
+    blueprint.pricing.love_offering_anchor = "Fair Price"
+    blueprint.pricing.amount = 0.00 # Base price is 0 for PWYW structures usually
+    
     # 3. Context Init
     print("\n[3] Initializing Context & Persistence...")
     context = ProductContext(blueprint.slug, base_output_dir=str(output_dir))
@@ -72,6 +80,12 @@ def build_financial_freedom():
          context.save()
          print("    New context initialized.")
 
+    # FORCE UPDATE PRICING (In case we resumed or just initialized)
+    # The blueprint variable above has the correct pricing, but context might have loaded old state.
+    context.blueprint.pricing = blueprint.pricing
+    context.save()
+    print("    Updated Context with Love Offering Pricing.")
+
     # 4. Pipeline Execution
     print("\n[4] Running Session Orchestrator...")
     runner = SessionOrchestrator(context)
@@ -80,6 +94,24 @@ def build_financial_freedom():
     total_chapters = len(context.blueprint.chapter_map)
     while len(context.state.completed_chapters) < total_chapters:
         current = len(context.state.completed_chapters) + 1
+        
+        # Optimization: If context has chapters but we want to rebuild only if forced?
+        # Actually session runner appends.
+        # But if we clear staging, context persists?
+        # WARNING: We must ensure Context matches disk state.
+        # If disk chapters exist, we can skip.
+        
+        print(f"    Checking Chapter {current}/{total_chapters}...")
+        # Check if chapter file exists on disk
+        chapter_file = context.staging_path / "chapters" / f"{current}.mdx"
+        if chapter_file.exists() and chapter_file.stat().st_size > 0:
+             print(f"    ⏩ Chapter {current} exists. Skipping generation.")
+             # Manually update state in memory if needed, but context.load() should handle it if persisted correctly.
+             # Ideally session runner handles this skipping internally but let's force it here.
+             context.state.completed_chapters.append(current) 
+             # Proceed loop
+             continue
+
         print(f"    Building Chapter {current}/{total_chapters}...")
         runner.run_next_chapter()
         context.load() # Refresh state just in case
@@ -91,6 +123,23 @@ def build_financial_freedom():
     print("\n[5] Generating Packaging...")
     templates_dir = PROJECT_ROOT / "agents" / "product_builder" / "templates"
     
+    # Graphics
+    print("\n[5.1] Designing Graphics...")
+    designer = GraphicDesigner(salarsu_root)
+    cover_path = context.staging_path / f"{context.blueprint.slug}.png"
+    
+    if cover_path.exists():
+        print("    ⏩ Cover image exists. Skipping generation.")
+    else:
+        try:
+            designer.generate_cover(
+                title=context.blueprint.title,
+                vibe_keywords=["Sophisticated", "Navy Blue", "Gold", "Architectural"],
+                output_path=cover_path
+            )
+        except Exception as e:
+             print(f"    ⚠️ Graphic Generation Failed (Non-fatal): {e}")
+
     # Landing Page
     lp_agent = LandingPageAgent(templates_dir)
     lp_content = lp_agent.generate(context.blueprint)
