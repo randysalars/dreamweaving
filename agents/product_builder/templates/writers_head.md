@@ -16,6 +16,8 @@ Focus on **Structure, Voice, and Core Promise**. Don't worry about perfect polis
 **Key Takeaways:**
 {key_takeaways}
 
+{feedback_instruction}
+
 ## Instructions
 1. **The Hook:** Start with a strong statement or question that grabs the {audience_persona}.
 2. **The Spine:** Ensure there is a logical flow from Problem -> Solution -> Application.

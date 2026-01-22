@@ -74,34 +74,42 @@ class SessionOrchestrator:
             "reference_material": "Reference excerpts would allow here..." 
         }
         
-        # 2. Draft (Writer's Room Upgrade)
-        draft_content = self.writers_room.write_chapter(draft_context)
+        # 2. Production Loop (Draft -> Critique -> Verify -> Revise)
+        attempts = 0
+        max_attempts = 2
+        feedback = []
         
-        # 3. Reader Simulation (The Upgrade)
-        focus_group_report = self.simulator.run_focus_group(draft_content, self.context.blueprint.promise.headline)
-        logger.info(f"Focus Group Result: {focus_group_report['summary']}")
+        draft_content = ""
         
-        # 4. Critique
-        critique = self.skeptic.review(draft_content, draft_context)
-        
-        if critique["status"] == "FAIL":
-            logger.info("Critique failed. Redrafting... (Simulated)")
-            # In real system: feed critique back to drafter
-            pass
+        while attempts <= max_attempts:
+            # A. Draft (Writer's Room)
+            if attempts > 0:
+                logger.info(f"🔄 Redrafting Chapter {chapter_id} (Attempt {attempts + 1}/{max_attempts + 1})...")
             
-        # 5. Audio Scripting (The Upgrade)
-        audio_script = self.audio_agent.generate_script(chapter_spec.title, draft_content)
-        
-        # 6. Video Planning (The Upgrade v2)
-        video_plan = self.video_agent.generate_plan(chapter_spec.title, draft_content, audio_script)
+            draft_content = self.writers_room.write_chapter(draft_context, feedback=feedback)
             
-        # 7. Rubric Quality Gate (The Upgrade v3)
-        rubric_assessment = self.rubric_guard.evaluate(draft_content)
-        if rubric_assessment.overall_verdict == "REVISE":
-             logger.warning(f"Rubric Check FAILED: {rubric_assessment.critical_issues}")
-             # In prod, we would loop back to WritersRoom here.
-        else:
-             logger.info("✅ Rubric Check PASSED (SHIP).")
+            # B. Reader Simulation
+            focus_group_report = self.simulator.run_focus_group(draft_content, self.context.blueprint.promise.headline)
+            logger.info(f"Focus Group Result: {focus_group_report['summary']}")
+            
+            # C. Rubric Quality Gate
+            rubric_assessment = self.rubric_guard.evaluate(draft_content)
+            
+            if rubric_assessment.overall_verdict == "SHIP":
+                logger.info("✅ Rubric Check PASSED (SHIP).")
+                break # Exit loop, we have a winner
+            else:
+                logger.warning(f"❌ Rubric Check FAILED: {rubric_assessment.critical_issues}")
+                feedback = rubric_assessment.critical_issues
+                attempts += 1
+                
+                if attempts > max_attempts:
+                    logger.warning("Max retries reached. Shipping best effort (or failing).")
+                    # In strict mode we might raise Error, but for now we ship best effort
+                    break
+
+        # 4. Post-Production (Audio/Video) - Only run on the final draft
+        critique = self.skeptic.review(draft_content, draft_context) # Keeping skeptic for logs, but not blocking
         
         # 8. Save
         self.context.update_chapter(

@@ -16,14 +16,28 @@ class WritersRoom:
         self.roles = ["writers_head", "writers_story", "writers_teacher", "writers_editor"]
         self.llm = LLMClient()
         
-    def write_chapter(self, context: Dict) -> str:
+    def write_chapter(self, context: Dict, feedback: list = None) -> str:
         """
         Runs the full relay:
         Head Writer -> Story Producer -> Teacher -> Line Editor
+        
+        Optional feedback triggers a revision mindset.
         """
         logger.info(f"Writer's Room Assembling for Chapter {context.get('chapter_number')}...")
         
         current_draft = ""
+        
+        # 0. Handle Feedback (If revision)
+        if feedback:
+            logger.info(f"⚠️ REVISION MODE. Feedback: {feedback}")
+            # Inject feedback into the context so the Head Writer knows to fix it
+            feedback_str = "\n".join([f"- {item}" for item in feedback])
+            context["feedback_instruction"] = (
+                f"\n\nCRITICAL FEEDBACK FROM PREVIOUS DRAFT:\n{feedback_str}\n"
+                "You MUST address these issues in this new draft."
+            )
+        else:
+            context["feedback_instruction"] = ""
         
         # 1. Head Writer (Creative Output from scratch)
         logger.info("[1/4] Head Writer drafting...")
