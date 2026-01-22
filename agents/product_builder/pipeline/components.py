@@ -1,6 +1,8 @@
 import logging
 from typing import Dict
+from typing import Dict
 from pathlib import Path
+from ..core.llm import LLMClient
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +50,7 @@ class SkepticAgent:
     """
     def __init__(self, templates_dir: Path):
         self.template_path = templates_dir / "skeptic_review.md"
+        self.llm = LLMClient()
         
     def review(self, draft: str, context: Dict) -> Dict:
         """
@@ -55,9 +58,33 @@ class SkepticAgent:
         """
         logger.info("Skeptic is reviewing the draft...")
         
-        # Placeholder Logic
+        if not self.template_path.exists():
+            return {"status": "ERROR", "issues": ["Template missing"], "suggestions": ""}
+
+        with open(self.template_path, 'r') as f:
+            template_content = f.read()
+
+        # Prepare Prompt (Skeptic needs draft and context)
+        # Assuming template expects {draft} and {context_str}
+        full_context_str = str(context)
+        prompt = template_content.replace("{draft}", draft).replace("{context}", full_context_str)
+        # Also try format if keys exist
+        try:
+             prompt = template_content.format(draft=draft, context=full_context_str, **context)
+        except:
+             pass 
+
+        response = self.llm.generate(prompt)
+
+        # Naive parsing of LLM response (in prod, force JSON schema)
+        # For now, we assume if it generated something, it passed, unless it says "FAIL" explicitly
+        status = "PASS"
+        if "FAIL" in response.upper() and len(response) < 500: # Simple heuristic
+             status = "FAIL"
+             
         return {
-            "status": "PASS",
+            "status": status,
             "issues": [],
-            "suggestions": "No major issues found. Good distinct voice."
+            "suggestions": response, # Return full critique text
+            "raw_response": response
         }

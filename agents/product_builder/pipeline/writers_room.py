@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 from typing import Dict
+from ..core.llm import LLMClient
 
 logger = logging.getLogger(__name__)
 
@@ -13,6 +14,7 @@ class WritersRoom:
     def __init__(self, templates_dir: Path):
         self.templates_dir = templates_dir
         self.roles = ["writers_head", "writers_story", "writers_teacher", "writers_editor"]
+        self.llm = LLMClient()
         
     def write_chapter(self, context: Dict) -> str:
         """
@@ -53,25 +55,20 @@ class WritersRoom:
         if not template_path.exists():
             return f"# Error: Template {role_name} not found"
             
-        # Simulate transformation based on role
-        # Ideally, we call the LLM here.
-        
-        role_label = role_name.replace("writers_", "").title()
-        
-        # Base Draft Simulation (If first pass)
-        if role_name == "writers_head":
-             return f"""# {context.get('chapter_title')}
+        # Load Template
+        with open(template_path, 'r') as f:
+            template_content = f.read()
 
-## The Core Concept
-The Head Writer says: This chapter is about {context.get('chapter_purpose')}.
+        # Prepare Prompt
+        # We assume templates use {variable} syntax for python format
+        try:
+            prompt = template_content.format(**context)
+        except KeyError as e:
+            logger.warning(f"Missing context key for template {role_name}: {e}")
+            # Fallback: Just append the context as a dump if format fails
+            prompt = f"{template_content}\n\nCONTEXT:\n{context}"
 
-## Implementation
-1. Step one
-2. Step two
-"""
-
-        # Refinement Simulation
-        previous_content = context.get("current_draft", "")
-        addition = f"\n> ({role_label} Pass: Enhanced content with specific focus.)"
+        logger.info(f"Generating content for {role_name}...")
+        response = self.llm.generate(prompt)
         
-        return previous_content + addition
+        return response

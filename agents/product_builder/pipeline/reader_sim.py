@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 from typing import List, Dict, Any
+from ..core.llm import LLMClient
 
 logger = logging.getLogger(__name__)
 
@@ -11,6 +12,7 @@ class ReaderSimulator:
     
     def __init__(self, templates_dir: Path):
         self.template_path = templates_dir / "reader_sim.md"
+        self.llm = LLMClient()
         self.personas = [
             {
                 "name": "The Skeptic",
@@ -60,14 +62,28 @@ class ReaderSimulator:
                 "draft_content": draft_content[:2000] # Truncate for simulation/token limits if needed
             }
             
-            # Simulate LLM Call (In prod: call actual generation)
-            # response = llm.generate(template.format(**context))
+            # Prepare prompt
+            prompt = ""
+            try:
+                prompt = template.format(**context)
+            except KeyError:
+                prompt = f"{template}\n\nCONTEXT:\n{context}"
             
-            # Simulated Response
+            # Real LLM Call
+            response = self.llm.generate(prompt)
+            
+            # Simple scoring extraction (heuristic)
+            score = 5
+            if "Score: " in response:
+                try:
+                    score = int(response.split("Score: ")[1].split("/")[0].strip())
+                except:
+                    pass
+            
             results[p["name"]] = {
-                "engagement_score": 8 if p["name"] == "The Novice" else 6,
-                "verdict": "Keep Reading",
-                "commentary": f"As {p['name']}, I thought this was okay, but..."
+                "engagement_score": score,
+                "verdict": "Keep Reading" if score > 5 else "Refund",
+                "commentary": response
             }
             
         return {

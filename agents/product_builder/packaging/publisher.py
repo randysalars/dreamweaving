@@ -19,7 +19,7 @@ class PublisherAgent:
         self.downloads_dir = self.salarsu_root / "public" / "downloads"
         self.manifest_dir = self.salarsu_root / "store_import"
         
-    def deploy(self, blueprint: ProductBlueprint, artifacts_path: Path) -> Dict[str, Any]:
+    def deploy(self, blueprint: ProductBlueprint, artifacts_path: Path, landing_page_content: str = None) -> Dict[str, Any]:
         """
         Executes the deployment.
         """
@@ -38,8 +38,14 @@ class PublisherAgent:
         pdf_name = f"{blueprint.slug}.pdf"
         dest_pdf = self.downloads_dir / pdf_name
         
-        # If we had a real build step, we'd copy. For now, we touch the file if testing.
-        if not dest_pdf.exists():
+        # Copy artifact from staging if it exists
+        source_pdf = artifacts_path / pdf_name
+        if source_pdf.exists():
+            logger.info(f"Copying artifact from {source_pdf} to {dest_pdf}")
+            shutil.copy(source_pdf, dest_pdf)
+        elif not dest_pdf.exists():
+            # Fallback for testing/dry-runs without content
+            logger.warning(f"No source artifact found at {source_pdf}. Creating dummy content.")
             with open(dest_pdf, 'w') as f:
                 f.write("DUMMY PDF CONTENT")
         
@@ -60,7 +66,7 @@ class PublisherAgent:
             "digital_file_url": f"/downloads/{pdf_name}",
             "status": "active",
             "category_name": "Digital Products", # Default
-            "landing_page_content": { 
+            "landing_page_content": landing_page_content if landing_page_content else { 
                 # We would normally parse the MDX here, but for now we pass the raw promise
                 "headline": blueprint.promise.headline,
                 "subhead": blueprint.promise.subhead,
