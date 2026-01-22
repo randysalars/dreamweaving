@@ -6,6 +6,8 @@ from .components import SkepticAgent
 from .writers_room import WritersRoom
 from .reader_sim import ReaderSimulator
 from .rubric_guard import RubricGuard
+from .master_editor import MasterEditor
+from .delight_guard import DelightGuard
 from ..packaging.audio import AudioScriptAgent
 from ..packaging.video import VideoOrchestrator
 import json
@@ -34,9 +36,11 @@ class SessionOrchestrator:
         
         # Upgraded Pipeline Components
         self.writers_room = WritersRoom(self.templates_dir)
+        self.master_editor = MasterEditor(self.templates_dir)  # NEW: Human excellence pass
         self.skeptic = SkepticAgent(self.templates_dir)
         self.simulator = ReaderSimulator(self.templates_dir)
         self.rubric_guard = RubricGuard()
+        self.delight_guard = DelightGuard(self.templates_dir)  # NEW: Final excellence gate
         self.audio_agent = AudioScriptAgent()
         self.video_agent = VideoOrchestrator()
 
@@ -103,7 +107,18 @@ class SessionOrchestrator:
             draft_content = self.writers_room.write_chapter(draft_context, feedback=feedback)
             metrics["draft_duration_sec"] += (time.time() - t0)
             
-            # B. Reader Simulation
+            # B. Master Editor (Human Excellence Pass) - NEW
+            t0 = time.time()
+            edit_context = {
+                "chapter_purpose": draft_context.get("chapter_purpose", ""),
+                "target_emotion": "clarity",  # Could be enhanced with NarrativeSpine
+                "reader_energy": "neutral",
+                "core_insight": draft_context.get("key_takeaways", "").split("\n")[0] if draft_context.get("key_takeaways") else ""
+            }
+            draft_content = self.master_editor.polish(draft_content, edit_context)
+            metrics["edit_duration_sec"] = metrics.get("edit_duration_sec", 0) + (time.time() - t0)
+            
+            # C. Reader Simulation
             t0 = time.time()
             focus_group_report = self.simulator.run_focus_group(draft_content, self.context.blueprint.promise.headline)
             metrics["sim_duration_sec"] += (time.time() - t0)
