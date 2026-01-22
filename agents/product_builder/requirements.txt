@@ -1,0 +1,33 @@
+# Product Builder Requirements
+# Install with: pip install -r requirements.txt
+
+# Core Dependencies (Required)
+pydantic>=2.0.0
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# LLM & AI (Required for content generation)
+openai>=1.0.0
+requests>=2.28.0
+
+# PDF Generation (Pick one)
+# weasyprint>=60.0  # Most feature-rich, requires system deps
+reportlab>=4.0.0    # Pure Python fallback
+
+# Audio/TTS (Optional - edge-tts recommended)
+# edge-tts installed via pipx: pipx install edge-tts
+# TTS>=0.22.0       # Coqui TTS - high quality, slow
+
+# Video (Optional - requires Remotion setup)
+# See remotion_project/package.json for npm dependencies
+
+# Transcription (Optional)
+# openai-whisper>=20231117  # Large install, requires ffmpeg
+
+# Development
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Optional utilities
+# pillow>=10.0.0    # Image processing
+# markdown>=3.4.0   # Markdown rendering
