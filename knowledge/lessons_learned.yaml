@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - climbing-the-infinite-beanstalk-a-fairytale-inspir
-  - residential-schools-reckoning-path-dreamweaving
-  - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
   - the-mountaineers-ascent-dreamweaving
@@ -34,8 +31,11 @@ lessons:
   - megalithic-meditations-stepping-into-stone-circles
   - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
-  applied_count: 76
-  last_applied: '2026-01-21'
+  - ascend-mount-sinai-with-moses
+  - the-future-temple-of-probability-singers
+  - kaleidoscope-kingdom-dreamweaving
+  applied_count: 79
+  last_applied: '2026-01-22'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - climbing-the-infinite-beanstalk-a-fairytale-inspir
-  - residential-schools-reckoning-path-dreamweaving
-  - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
   - the-mountaineers-ascent-dreamweaving
@@ -72,8 +69,11 @@ lessons:
   - megalithic-meditations-stepping-into-stone-circles
   - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
-  applied_count: 76
-  last_applied: '2026-01-21'
+  - ascend-mount-sinai-with-moses
+  - the-future-temple-of-probability-singers
+  - kaleidoscope-kingdom-dreamweaving
+  applied_count: 79
+  last_applied: '2026-01-22'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - climbing-the-infinite-beanstalk-a-fairytale-inspir
-  - residential-schools-reckoning-path-dreamweaving
-  - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
   - the-mountaineers-ascent-dreamweaving
@@ -109,8 +106,11 @@ lessons:
   - megalithic-meditations-stepping-into-stone-circles
   - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
-  applied_count: 76
-  last_applied: '2026-01-21'
+  - ascend-mount-sinai-with-moses
+  - the-future-temple-of-probability-singers
+  - kaleidoscope-kingdom-dreamweaving
+  applied_count: 79
+  last_applied: '2026-01-22'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - climbing-the-infinite-beanstalk-a-fairytale-inspir
-  - residential-schools-reckoning-path-dreamweaving
-  - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
   - the-mountaineers-ascent-dreamweaving
@@ -147,8 +144,11 @@ lessons:
   - megalithic-meditations-stepping-into-stone-circles
   - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
-  applied_count: 76
-  last_applied: '2026-01-21'
+  - ascend-mount-sinai-with-moses
+  - the-future-temple-of-probability-singers
+  - kaleidoscope-kingdom-dreamweaving
+  applied_count: 79
+  last_applied: '2026-01-22'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - climbing-the-infinite-beanstalk-a-fairytale-inspir
-  - residential-schools-reckoning-path-dreamweaving
-  - carrying-the-ember-home-dreamweaving
   - incan-empire-expedition-dreamweaving
   - dimensional-navigator-dreamweaving
   - the-mountaineers-ascent-dreamweaving
@@ -183,8 +180,11 @@ lessons:
   - megalithic-meditations-stepping-into-stone-circles
   - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
-  applied_count: 76
-  last_applied: '2026-01-21'
+  - ascend-mount-sinai-with-moses
+  - the-future-temple-of-probability-singers
+  - kaleidoscope-kingdom-dreamweaving
+  applied_count: 79
+  last_applied: '2026-01-22'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
