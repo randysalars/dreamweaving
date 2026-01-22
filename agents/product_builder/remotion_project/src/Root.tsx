@@ -7,6 +7,10 @@ import { KeyInsight } from "./compositions/KeyInsight";
 import { Checklist } from "./compositions/Checklist";
 import { QuoteCard } from "./compositions/QuoteCard";
 import { ProgressMilestone } from "./compositions/ProgressMilestone";
+import { BeforeAfter } from "./compositions/BeforeAfter";
+import { Statistic } from "./compositions/Statistic";
+import { FrameworkDiagram } from "./compositions/FrameworkDiagram";
+
 
 /**
  * Root component that registers all video/audio compositions.
@@ -141,6 +145,62 @@ export const RemotionRoot: React.FC = () => {
             { name: "Mastery", description: "Full implementation", completed: false },
           ],
           currentMilestone: 2,
+        }}
+      />
+
+      {/* Before/After Transformation */}
+      <Composition
+        id="BeforeAfter"
+        component={BeforeAfter}
+        durationInFrames={360}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          before: {
+            title: "Before",
+            points: ["Confused about next steps", "No clear system", "Overwhelmed"],
+          },
+          after: {
+            title: "After",
+            points: ["Clear roadmap", "Working system", "Confident execution"],
+          },
+        }}
+      />
+
+      {/* Statistic Highlight */}
+      <Composition
+        id="Statistic"
+        component={Statistic}
+        durationInFrames={180}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          value: "10000",
+          label: "Students Transformed",
+          suffix: "+",
+          description: "And counting...",
+        }}
+      />
+
+      {/* Framework Diagram */}
+      <Composition
+        id="FrameworkDiagram"
+        component={FrameworkDiagram}
+        durationInFrames={420}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          title: "The Core Framework",
+          centerLabel: "Your Goal",
+          elements: [
+            { label: "Foundation" },
+            { label: "Strategy" },
+            { label: "Execution" },
+            { label: "Optimization" },
+          ],
         }}
       />
     </>
