@@ -44,10 +44,68 @@ class PublisherAgent:
             logger.info(f"Copying artifact from {source_pdf} to {dest_pdf}")
             shutil.copy(source_pdf, dest_pdf)
         elif not dest_pdf.exists():
-            # Fallback for testing/dry-runs without content
-            logger.warning(f"No source artifact found at {source_pdf}. Creating dummy content.")
-            with open(dest_pdf, 'w') as f:
-                f.write("DUMMY PDF CONTENT")
+            # Real PDF Generation Logic
+            logger.info(f"Artifact not found. Generating PDF from chapters...")
+            
+            # 1. Locate Generator Script
+            # Publisher is in agents/product_builder/packaging/
+            # Project root is parents[3] from here (packaging -> product_builder -> agents -> dreamweaving)
+            # Salarsu is sibling of dreamweaving
+            
+            # Fix path finding:
+            # __file__ = .../dreamweaving/agents/product_builder/packaging/publisher.py
+            # parents[0] = packaging
+            # parents[1] = product_builder
+            # parents[2] = agents
+            # parents[3] = dreamweaving
+            # parents[4] = Projects (root of workspace)
+            
+            project_root = Path(__file__).resolve().parents[4]
+            generator_script = project_root / "salarsu" / "scripts" / "pdf_generator.js"
+            
+            # 2. Collect Chapter Content
+            chapters_dir = artifacts_path / "chapters"
+            full_content = f"# {blueprint.title}\n\n{blueprint.promise.subhead}\n\n"
+            
+            if chapters_dir.exists():
+                # Sort by filename (chapter_01, chapter_02...)
+                chapter_files = sorted(chapters_dir.glob("*.mdx"))
+                for cf in chapter_files:
+                    full_content += f"\n\n--- {cf.stem.replace('_', ' ').title()} ---\n\n"
+                    with open(cf, 'r') as f:
+                        full_content += f.read()
+            else:
+                 full_content += "No chapter content found in staging."
+
+            # 3. Create Temp Input File
+            temp_input = artifacts_path / "temp_full_book.txt"
+            with open(temp_input, 'w') as f:
+                f.write(full_content)
+                
+            # 4. Call Node Script
+            if generator_script.exists():
+                import subprocess
+                try:
+                    cmd = ["node", str(generator_script), str(temp_input), str(dest_pdf)]
+                    # Run in salarsu directory to find node_modules
+                    cwd = generator_script.parent.parent 
+                    
+                    subprocess.run(cmd, check=True, cwd=str(cwd), capture_output=True)
+                    logger.info(f"✅ Generated Real PDF at {dest_pdf}")
+                    
+                except subprocess.CalledProcessError as e:
+                    logger.error(f"PDF Generation Failed: {e}")
+                    # Fallback if generation fails
+                    with open(dest_pdf, 'w') as f:
+                        f.write("PDF GENERATION FAILED. CHECK LOGS.")
+            else:
+                logger.error(f"Generator script not found at {generator_script}")
+                with open(dest_pdf, 'w') as f:
+                    f.write("GENERATOR SCRIPT MISSING")
+            
+            # Cleanup temp
+            if temp_input.exists():
+                temp_input.unlink()
         
         product_files.append({
             "type": "main_file",
