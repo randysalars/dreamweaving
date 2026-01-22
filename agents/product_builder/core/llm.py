@@ -21,7 +21,7 @@ class LLMClient:
         else:
              self.valid = True
 
-    def generate(self, prompt: str) -> str:
+    def generate(self, prompt: str, max_tokens: int = 1000) -> str:
         """
         Generates text content using the Node bridge.
         """
