@@ -9,6 +9,7 @@ from .rubric_guard import RubricGuard
 from ..packaging.audio import AudioScriptAgent
 from ..packaging.video import VideoOrchestrator
 import json
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -74,6 +75,18 @@ class SessionOrchestrator:
             "reference_material": "Reference excerpts would allow here..." 
         }
         
+        # Initialize Metrics
+        metrics = {
+             "chapter_id": chapter_id,
+             "attempts": 0,
+             "draft_duration_sec": 0,
+             "sim_duration_sec": 0,
+             "rubric_duration_sec": 0,
+             "total_duration_sec": 0,
+             "rubric_passed": False
+        }
+        start_time_total = time.time()
+        
         # 2. Production Loop (Draft -> Critique -> Verify -> Revise)
         attempts = 0
         max_attempts = 2
@@ -86,17 +99,25 @@ class SessionOrchestrator:
             if attempts > 0:
                 logger.info(f"🔄 Redrafting Chapter {chapter_id} (Attempt {attempts + 1}/{max_attempts + 1})...")
             
+            t0 = time.time()
             draft_content = self.writers_room.write_chapter(draft_context, feedback=feedback)
+            metrics["draft_duration_sec"] += (time.time() - t0)
             
             # B. Reader Simulation
+            t0 = time.time()
             focus_group_report = self.simulator.run_focus_group(draft_content, self.context.blueprint.promise.headline)
+            metrics["sim_duration_sec"] += (time.time() - t0)
             logger.info(f"Focus Group Result: {focus_group_report['summary']}")
             
             # C. Rubric Quality Gate
+            t0 = time.time()
             rubric_assessment = self.rubric_guard.evaluate(draft_content)
+            metrics["rubric_duration_sec"] += (time.time() - t0)
             
             if rubric_assessment.overall_verdict == "SHIP":
                 logger.info("✅ Rubric Check PASSED (SHIP).")
+                metrics["rubric_passed"] = True
+                metrics["attempts"] = attempts + 1
                 break # Exit loop, we have a winner
             else:
                 logger.warning(f"❌ Rubric Check FAILED: {rubric_assessment.critical_issues}")
@@ -110,6 +131,12 @@ class SessionOrchestrator:
 
         # 4. Post-Production (Audio/Video) - Only run on the final draft
         critique = self.skeptic.review(draft_content, draft_context) # Keeping skeptic for logs, but not blocking
+        
+        # 5. Audio Scripting
+        audio_script = self.audio_agent.generate_script(chapter_spec.title, draft_content)
+        
+        # 6. Video Planning
+        video_plan = self.video_agent.generate_plan(chapter_spec.title, draft_content, audio_script)
         
         # 8. Save
         self.context.update_chapter(
@@ -128,3 +155,6 @@ class SessionOrchestrator:
              f.write(video_plan.model_dump_json(indent=2))
         
         logger.info(f"Chapter {chapter_id} saved (Text + Audio + Video).")
+        
+        metrics["total_duration_sec"] = time.time() - start_time_total
+        logger.info(f"📊 Session Metrics: {json.dumps(metrics)}")

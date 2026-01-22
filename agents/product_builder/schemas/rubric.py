@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 
 class RubricItem(BaseModel):
     criteria: str
-    score: int = Field(..., ge=0, le=5, description="0-5 score")
+    score: int = Field(..., ge=0, le=10, description="0-10 score")
     notes: str
 
 class RubricScore(BaseModel):
