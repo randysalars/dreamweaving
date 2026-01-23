@@ -13,17 +13,21 @@ class LandingPageAgent:
         self.template_path = templates_dir / "landing_page_gen.md"
         self.llm = LLMClient()
         
-    def generate(self, blueprint: ProductBlueprint) -> str:
+    def generate(self, blueprint: ProductBlueprint) -> dict:
         """
-        Populate the landing page template using LLM.
+        Populate the landing page template using LLM, returning a JSON object.
         """
         logger.info(f"Generating Landing Page for {blueprint.title}...")
         
-        if self.template_path.exists():
-            with open(self.template_path, 'r') as f:
+        # Switch to JSON template
+        json_template_path = self.template_path.parent / "landing_page_json.md"
+        
+        if json_template_path.exists():
+            with open(json_template_path, 'r') as f:
                 template = f.read()
         else:
-            return "# Error: Template not found"
+            logger.error(f"Template not found: {json_template_path}")
+            return {"error": "Template not found"}
             
         # Synthesize marketing copy from Blueprint
         context = {
@@ -40,4 +44,30 @@ class LandingPageAgent:
         except Exception as e:
              prompt = f"{template}\n\nCONTEXT:\n{context}"
              
-        return self.llm.generate(prompt)
+        response = self.llm.generate(prompt)
+        
+        # Parse JSON
+        import json
+        import re
+        
+        try:
+            # Strip markdown code blocks if present
+            clean_response = response.strip()
+            if clean_response.startswith("```"):
+                clean_response = re.sub(r"^```(json)?\n", "", clean_response)
+                clean_response = re.sub(r"\n```$", "", clean_response)
+            
+            return json.loads(clean_response)
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse Landing Page JSON: {e}")
+            logger.debug(f"Raw response: {response}")
+            # Fallback structure
+            return {
+                "headline": blueprint.promise.headline,
+                "subheadline": blueprint.promise.subhead,
+                "features": [],
+                "bonuses": [],
+                "faq": [],
+                "testimonial": {},
+                "raw_generated_content": response
+            }
