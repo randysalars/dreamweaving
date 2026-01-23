@@ -1,0 +1,69 @@
+session_name: reclaiming-the-exiled-archetype-dreamweaving
+topic: Reclaiming The Exiled Archetype Dreamweaving
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2026-01-23T00:00:03.632347'
+  ended: '2026-01-23T00:42:07.457414'
+  duration_seconds: 2523.8
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - generate_thumbnail
+  - self_improvement
+  failed:
+  - upload_website
+  total: 16
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-01-23T00:00:05.275825'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2026-01-23T00:00:35.301404'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2026-01-23T00:02:26.709055'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2026-01-23T00:02:26.763893'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-01-23T00:13:09.813468'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/reclaiming-the-exiled-archetype-dreamweaving
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/reclaiming-the-exiled-archetype-dreamweaving/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/reclaiming-the-exiled-archetype-dreamweaving/working_files/script.ssml
+  files:
+  - output/reclaiming_the_exiled_archetype_dreamweaving_MASTER.wav
+  - output/reclaiming_the_exiled_archetype_dreamweaving_MASTER.mp3
+  - output/subtitles.vtt
+  - output/voice.mp3
+  - output/sfx.wav
+  - output/youtube_thumbnail.png
+  - output/session_mixed.wav
+  - output/binaural_dynamic.wav

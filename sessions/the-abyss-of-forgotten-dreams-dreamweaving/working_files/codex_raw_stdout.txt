@@ -1,0 +1,1 @@
+{"result":"I can generate the SSML, but the “Section Timing” list shows 0 minutes for every section. Should I ignore those zeros and use a normal 30‑minute split (pretalk/induction/journey/integration/anchors), or do you want a specific minute breakdown?"}
