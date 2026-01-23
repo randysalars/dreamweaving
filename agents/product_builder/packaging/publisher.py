@@ -179,10 +179,29 @@ class PublisherAgent:
                 "build_id": "v3-production-build", # In real system, generate UUID
                 "agent_version": "1.0.0",
                 "generated_at": datetime.now(timezone.utc).isoformat()
-            }
+            },
+            "support_tiers": blueprint.pricing.support_tiers if hasattr(blueprint.pricing, 'support_tiers') else None
         }
-        
-        manifest_path = self.manifest_dir / f"{blueprint.slug}_manifest.json"
+
+        # Fallback landing page content if not provided or if string
+        if not landing_page_content or isinstance(landing_page_content, str):
+             # Map blueprint chapters to "features" for frontend compatibility
+             features_list = [
+                 {"title": c.title, "description": c.purpose, "icon": "Check"} 
+                 for c in blueprint.chapter_map
+             ]
+             
+             manifest["landing_page_content"] = {
+                "headline": blueprint.promise.headline,
+                "subheadline": blueprint.promise.subhead,
+                "features": features_list, # Frontend expects 'features', not 'bullet_points'
+                "bonuses": [] # Explicit empty list
+             }
+        elif isinstance(landing_page_content, dict):
+             # If passed as dict, ensure features key exists
+             if "bullet_points" in landing_page_content and "features" not in landing_page_content:
+                 landing_page_content["features"] = landing_page_content.pop("bullet_points")
+             manifest["landing_page_content"] = landing_page_content
         with open(manifest_path, 'w') as f:
             json.dump(manifest, f, indent=2)
             
