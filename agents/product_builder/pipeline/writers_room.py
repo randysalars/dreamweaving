@@ -18,19 +18,18 @@ class WritersRoom:
         
     def write_chapter(self, context: Dict, feedback: list = None) -> str:
         """
-        Runs the full relay:
-        Head Writer -> Story Producer -> Teacher -> Line Editor
-        
-        Optional feedback triggers a revision mindset.
+        Runs the Fractal Generation logic:
+        1. Architect: Break chapter into deep sections.
+        2. Fractal Loop: Write each section individually (Head Writer -> Refiners).
+        3. Stitch: Assemble the full chapter.
         """
-        logger.info(f"Writer's Room Assembling for Chapter {context.get('chapter_number')}...")
+        import json
         
-        current_draft = ""
+        logger.info(f"Writer's Room Assembling for Chapter: {context.get('chapter_title')}...")
         
         # 0. Handle Feedback (If revision)
         if feedback:
             logger.info(f"⚠️ REVISION MODE. Feedback: {feedback}")
-            # Inject feedback into the context so the Head Writer knows to fix it
             feedback_str = "\n".join([f"- {item}" for item in feedback])
             context["feedback_instruction"] = (
                 f"\n\nCRITICAL FEEDBACK FROM PREVIOUS DRAFT:\n{feedback_str}\n"
@@ -38,27 +37,77 @@ class WritersRoom:
             )
         else:
             context["feedback_instruction"] = ""
+
+        # ─── FRACTAL STEP 1: STRUCTURE ──────────────────────────────
+        logger.info("📐 Architecting Fractal Structure...")
+        structure_prompt = self._load_template("chapter_structure_architect").format(**context)
+        structure_response = self.llm.generate(structure_prompt)
         
-        # 1. Head Writer (Creative Output from scratch)
-        logger.info("[1/4] Head Writer drafting...")
+        try:
+            # Extract JSON
+            json_start = structure_response.find("{")
+            json_end = structure_response.rfind("}") + 1
+            sections_data = json.loads(structure_response[json_start:json_end])
+            sections = sections_data.get("sections", [])
+            logger.info(f"✅ Fractal Architect parsed {len(sections)} sections.")
+        except Exception as e:
+            logger.warning(f"Failed to parse structure: {e}. Falling back to single-pass.")
+            # Fallback for structure failure
+            sections = [{"title": "Main Content", "north_star": "Cover the chapter purpose in depth."}]
+
+        # ─── FRACTAL STEP 2: DEEP DIVE WRITING ──────────────────────
+        full_chapter_content = []
+        
+        for i, section in enumerate(sections):
+            logger.info(f"✍️ Writing Section {i+1}/{len(sections)}: {section['title']}")
+            
+            # Create Section Context
+            section_context = context.copy()
+            section_context.update({
+                "chapter_title": f"{context.get('chapter_title')}: {section['title']}",
+                "chapter_purpose": f"SECTION GOAL: {section['north_star']}\n\nBROADER CHAPTER CONTEXT: {context.get('chapter_purpose')}",
+                "key_takeaways": f"Section focus: {section['north_star']}" 
+            })
+            
+            # Run the Relay for this SECTION
+            section_draft = self._run_section_relay(section_context)
+            full_chapter_content.append(section_draft)
+        
+        # ─── FRACTAL STEP 3: STITCHING ──────────────────────────────
+        logger.info("🧵 Stitching Fractal components...")
+        final_draft = "\n\n".join(full_chapter_content)
+        
+        return final_draft
+
+    def _run_section_relay(self, context: Dict) -> str:
+        """Run the standard team relay for a single section."""
+        
+        # 1. Head Writer (Creative Output)
+        # logger.info("   [1/4] Head Writer drafting...") 
         current_draft = self._run_agent("writers_head", context)
         
         # 2. Story Producer (Refinement)
-        logger.info("[2/4] Story Producer refining...")
+        # logger.info("   [2/4] Story Producer refining...")
         context["current_draft"] = current_draft
         current_draft = self._run_agent("writers_story", context)
         
         # 3. Teacher (Pedagogy)
-        logger.info("[3/4] Teacher scaffolding...")
+        # logger.info("   [3/4] Teacher scaffolding...")
         context["current_draft"] = current_draft
         current_draft = self._run_agent("writers_teacher", context)
         
         # 4. Line Editor (Polish)
-        logger.info("[4/4] Line Editor polishing...")
+        # logger.info("   [4/4] Line Editor polishing...")
         context["current_draft"] = current_draft
         current_draft = self._run_agent("writers_editor", context)
         
         return current_draft
+
+    def _load_template(self, name: str) -> str:
+        path = self.templates_dir / f"{name}.md"
+        if path.exists():
+            return path.read_text()
+        return ""
 
     def _run_agent(self, role_name: str, context: Dict) -> str:
         """

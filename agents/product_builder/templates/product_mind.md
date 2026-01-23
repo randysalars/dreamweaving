@@ -77,14 +77,14 @@ This prevents scope creep and keeps the product focused.
 Respond with a JSON object matching the `ProductIntelligence` schema:
 
 ```json
-{
-  "avatar": { ... },
-  "transformation": { ... },
+{{
+  "avatar": {{ ... }},
+  "transformation": {{ ... }},
   "emotional_arc": [...],
   "thesis": "...",
   "core_promise": "...",
   "anti_goals": [...]
-}
+}}
 ```
 
 ---

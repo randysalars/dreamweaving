@@ -162,8 +162,8 @@ class StudioOrchestrator:
         
         # Build chapters based on curriculum
         all_content = []
-        for concept in self.artifacts.curriculum.concepts:
-            chapter_content = self._create_chapter(concept)
+        for i, concept in enumerate(self.artifacts.curriculum.concepts):
+            chapter_content = self._create_chapter(concept, i)
             all_content.append(chapter_content)
         
         combined_content = "\n\n".join(all_content)
@@ -236,10 +236,11 @@ class StudioOrchestrator:
             "publishable": self.artifacts.scorecard.publishable
         }
     
-    def _create_chapter(self, concept) -> str:
+    def _create_chapter(self, concept, index: int) -> str:
         """Create a single chapter through the creation pipeline."""
         # Build context
         context = {
+            "chapter_number": index + 1,
             "chapter_title": concept.name,
             "chapter_purpose": concept.description,
             "voice_rules": "\n".join(self.artifacts.voice.sentence_rhythm_rules) if self.artifacts.voice else "",

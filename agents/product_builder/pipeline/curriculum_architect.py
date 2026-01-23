@@ -40,7 +40,7 @@ class CurriculumArchitect:
     def _build_prompt(self, transformation: TransformationMap, title: str) -> str:
         milestones_str = "\n".join([f"- {m.name}: {m.description}" for m in transformation.milestones])
         return f"""
-You are an instructional designer. Create a curriculum graph.
+You are an expert instructional designer creating a "Master Class" curriculum.
 
 ## TransformationMap Context
 - Starting: {transformation.starting_state}
@@ -49,9 +49,15 @@ You are an instructional designer. Create a curriculum graph.
 {milestones_str}
 - Skills to Gain: {', '.join(transformation.skill_gains)}
 
+## Goal
+Design a **comprehensive, deep-dive curriculum** that feels like a $2000 course. 
+We need VOLUME and DEPTH. Do not create a thin outline. 
+Aim for **12-15+ distinct concepts** (Chapters) that rigorously bridge the gap from Start to End.
+
 ## Generate a CurriculumGraph (JSON):
 
-1. **Concepts**: List all teachable concepts (id, name, description, difficulty, estimated_time_minutes)
+1. **Concepts**: List 12-15+ teachable concepts (id, name, description, difficulty, estimated_time_minutes).
+   - The description should be detailed (2-3 sentences).
 2. **Dependencies**: Map concept_id → list of prerequisite concept_ids
 3. **Practice Loops**: Activities to practice concepts (name, concept_ids, type, instructions, success_criteria)
 4. **Assessments**: Ways to verify understanding (name, concept_ids, type, questions_or_tasks)

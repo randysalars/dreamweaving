@@ -108,7 +108,8 @@ class ProductContext:
             
         if self.glossary:
             context.append("\n## Glossary Terms")
-            for term, defn in list(self.glossary.items())[:10]: # Limit context context
+    # Limit glossary context
+            for term, defn in list(self.glossary.items())[:10]: 
                 context.append(f"- {term}: {defn}")
                 
         return "\n".join(context)
