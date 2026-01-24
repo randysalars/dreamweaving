@@ -59,9 +59,72 @@ def create_command(args):
         # 4. Run Full Pipeline
         results = orchestrator.run_full_pipeline(signal, args.title)
         
-        logger.info(f"\n✅ Product Generation Complete!")
-        logger.info(f"   📂 Output: {output_dir}")
+        # 5. Generate Landing Page Content (if requested)
+        landing_content = None
+        if args.landing_page:
+            from .packaging.landing_page import LandingPageAgent
+            from types import SimpleNamespace
+            
+            logger.info("📄 Generating Landing Page Content...")
+            landing_agent = LandingPageAgent(orchestrator.templates_dir)
+            
+            # Construct Mock Blueprint from Artifacts
+            pos = results['artifacts'].positioning
+            curr = results['artifacts'].curriculum
+            
+            # Mock objects to satisfy LandingPageAgent expectation
+            mock_promise = SimpleNamespace(
+                headline=pos.core_promise,
+                subhead=pos.differentiator
+            )
+            mock_audience = SimpleNamespace(
+                current_state=f"{pos.audience.primary_persona} struggling with {', '.join(pos.audience.pain_points[:3])}"
+            )
+            mock_chapters = [
+                SimpleNamespace(title=c.name, purpose=c.description) 
+                for c in curr.concepts
+            ]
+            
+            mock_blueprint = SimpleNamespace(
+                title=args.title,
+                promise=mock_promise,
+                audience=mock_audience,
+                chapter_map=mock_chapters
+            )
+            
+            landing_content = landing_agent.generate(mock_blueprint)
+            logger.info("✅ Landing Page Content Generated")
+
+        # 6. Assemble Final Product (PDF, etc)
+        from .packaging.product_assembler import ProductAssembler, AssemblyConfig
+        
+        logger.info(f"\n✅ Content Generation Complete! Starting Assembly...")
         logger.info(f"   📄 Scorecard: {results.get('scorecard')}")
+        
+        # Configure Assembly
+        assembly_config = AssemblyConfig(
+            title=args.title,
+            output_dir=output_dir / "output", # Use subdirectory for final artifacts
+            generate_pdf=True,
+            generate_audio=args.audio,
+            generate_video=args.video,
+            generate_visuals=True, # Always generate visuals for the PDF
+        )
+        
+        assembler = ProductAssembler()
+        assembly_result = assembler.assemble(
+            chapters=results.get("chapters", []),
+            config=assembly_config,
+            landing_page_content=landing_content
+        )
+        
+        if assembly_result.success:
+            logger.info(f"\n📦 Assembly Complete!")
+            logger.info(f"   📄 PDF: {assembly_result.pdf_path}")
+            logger.info(f"   📊 Stats: {assembly_result.total_words} words, {assembly_result.total_chapters} chapters")
+        else:
+            logger.error(f"❌ Assembly Failed: {assembly_result.errors}")
+            return 1
         
     except Exception as e:
         logger.error(f"❌ Pipeline Failed: {e}", exc_info=True)

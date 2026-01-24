@@ -98,11 +98,56 @@ class PDFGenerator:
         
         if self.has_weasyprint:
             return self._generate_weasyprint(chapters, config, visuals, output_path)
-        elif self.has_reportlab:
+        
+        # Try Puppeteer (Node.js) fallback
+        try:
+            return self._generate_puppeteer(chapters, config, visuals, output_path)
+        except Exception as e:
+            logger.warning(f"Puppeteer generation failed: {e}. Falling back to HTML/ReportLab.")
+            
+        if self.has_reportlab:
             return self._generate_reportlab(chapters, config, visuals, output_path)
         else:
             # Fallback: generate HTML that can be printed to PDF
             return self._generate_html_fallback(chapters, config, visuals, output_path)
+
+    def _generate_puppeteer(
+        self, 
+        chapters: List[Dict], 
+        config: PDFConfig,
+        visuals: Dict[str, str],
+        output_path: str
+    ) -> str:
+        """Generate PDF using Puppeteer script."""
+        import subprocess
+        import os
+        
+        # 1. Generate HTML source
+        html_content = self._build_html(chapters, config, visuals)
+        temp_html_path = output_path.replace(".pdf", ".temp.html")
+        Path(temp_html_path).write_text(html_content, encoding="utf-8")
+        
+        # 2. Locate script
+        script_path = Path(__file__).parent / "generate_pdf.cjs"
+        if not script_path.exists():
+            raise FileNotFoundError(f"Puppeteer script not found at {script_path}")
+            
+        # 3. Call Node.js
+        cmd = ["node", str(script_path), temp_html_path, output_path]
+        logger.info(f"Running Puppeteer: {' '.join(cmd)}")
+        
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        
+        # Cleanup temp HTML if successful
+        if Path(output_path).exists():
+             try:
+                 os.remove(temp_html_path)
+             except:
+                 pass
+             logger.info(f"✅ PDF generated (Puppeteer): {output_path}")
+             return output_path
+        else:
+            raise RuntimeError(f"Puppeteer finished but PDF not found. Output: {result.stdout} {result.stderr}")
     
     def _generate_weasyprint(
         self, 

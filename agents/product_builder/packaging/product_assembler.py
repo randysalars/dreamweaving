@@ -7,7 +7,7 @@ Coordinates PDF generation, media production, and package assembly.
 import logging
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, field
 from datetime import datetime
 
@@ -66,6 +66,7 @@ class AssemblyResult:
     audio_files: List[str] = field(default_factory=list)
     video_files: List[str] = field(default_factory=list)
     visual_files: List[str] = field(default_factory=list)
+    landing_page_content: Optional[Dict[str, Any]] = None
     
     # Metadata
     total_chapters: int = 0
@@ -85,6 +86,7 @@ class AssemblyResult:
                 "video": self.video_files,
                 "visuals": self.visual_files
             },
+            "landing_page_content": self.landing_page_content,
             "stats": {
                 "chapters": self.total_chapters,
                 "words": self.total_words,
@@ -121,7 +123,8 @@ class ProductAssembler:
         self, 
         chapters: List[Dict],
         config: AssemblyConfig,
-        audio_scripts: Dict[str, str] = None
+        audio_scripts: Dict[str, str] = None,
+        landing_page_content: Dict[str, Any] = None
     ) -> AssemblyResult:
         """
         Assemble a complete product.
@@ -145,7 +148,8 @@ class ProductAssembler:
             title=config.title,
             output_dir=str(config.output_dir),
             total_chapters=len(chapters),
-            total_words=sum(len(ch.get("content", "").split()) for ch in chapters)
+            total_words=sum(len(ch.get("content", "").split()) for ch in chapters),
+            landing_page_content=landing_page_content
         )
         
         visuals = {}

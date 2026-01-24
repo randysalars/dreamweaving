@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - the-mountaineers-ascent-dreamweaving
-  - the-tower-of-singing-serpents-dreamweaving
-  - the-tarot-constellation-of-masters
   - elemental-excursions-fostering-a-deep-connection-t
   - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
@@ -34,8 +31,11 @@ lessons:
   - kaleidoscope-kingdom-dreamweaving
   - reclaiming-the-exiled-archetype-dreamweaving
   - body-symphony-tuning-your-physical-instrument
-  applied_count: 81
-  last_applied: '2026-01-23'
+  - goddess-worshipping-dreamweaving
+  - oracle-of-omniverse-dreamweaving
+  - the-lightning-index-of-total-recall
+  applied_count: 84
+  last_applied: '2026-01-24'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - the-mountaineers-ascent-dreamweaving
-  - the-tower-of-singing-serpents-dreamweaving
-  - the-tarot-constellation-of-masters
   - elemental-excursions-fostering-a-deep-connection-t
   - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
@@ -72,8 +69,11 @@ lessons:
   - kaleidoscope-kingdom-dreamweaving
   - reclaiming-the-exiled-archetype-dreamweaving
   - body-symphony-tuning-your-physical-instrument
-  applied_count: 81
-  last_applied: '2026-01-23'
+  - goddess-worshipping-dreamweaving
+  - oracle-of-omniverse-dreamweaving
+  - the-lightning-index-of-total-recall
+  applied_count: 84
+  last_applied: '2026-01-24'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - the-mountaineers-ascent-dreamweaving
-  - the-tower-of-singing-serpents-dreamweaving
-  - the-tarot-constellation-of-masters
   - elemental-excursions-fostering-a-deep-connection-t
   - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
@@ -109,8 +106,11 @@ lessons:
   - kaleidoscope-kingdom-dreamweaving
   - reclaiming-the-exiled-archetype-dreamweaving
   - body-symphony-tuning-your-physical-instrument
-  applied_count: 81
-  last_applied: '2026-01-23'
+  - goddess-worshipping-dreamweaving
+  - oracle-of-omniverse-dreamweaving
+  - the-lightning-index-of-total-recall
+  applied_count: 84
+  last_applied: '2026-01-24'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - the-mountaineers-ascent-dreamweaving
-  - the-tower-of-singing-serpents-dreamweaving
-  - the-tarot-constellation-of-masters
   - elemental-excursions-fostering-a-deep-connection-t
   - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
@@ -147,8 +144,11 @@ lessons:
   - kaleidoscope-kingdom-dreamweaving
   - reclaiming-the-exiled-archetype-dreamweaving
   - body-symphony-tuning-your-physical-instrument
-  applied_count: 81
-  last_applied: '2026-01-23'
+  - goddess-worshipping-dreamweaving
+  - oracle-of-omniverse-dreamweaving
+  - the-lightning-index-of-total-recall
+  applied_count: 84
+  last_applied: '2026-01-24'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - the-mountaineers-ascent-dreamweaving
-  - the-tower-of-singing-serpents-dreamweaving
-  - the-tarot-constellation-of-masters
   - elemental-excursions-fostering-a-deep-connection-t
   - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
@@ -183,8 +180,11 @@ lessons:
   - kaleidoscope-kingdom-dreamweaving
   - reclaiming-the-exiled-archetype-dreamweaving
   - body-symphony-tuning-your-physical-instrument
-  applied_count: 81
-  last_applied: '2026-01-23'
+  - goddess-worshipping-dreamweaving
+  - oracle-of-omniverse-dreamweaving
+  - the-lightning-index-of-total-recall
+  applied_count: 84
+  last_applied: '2026-01-24'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3

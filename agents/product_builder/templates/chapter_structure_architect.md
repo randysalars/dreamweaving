@@ -1,8 +1,7 @@
 # PROMPT: Chapter Structure Architect
 
 ## Role
-You are the **Lead Architect** for Chapter {chapter_number}: "{chapter_title}".
-Your goal is to break this chapter down into **5-8 detailed sections** to ensure we cover the topic with extreme depth and rigor.
+You are the **Lead Architect** for Chapter {chapter_number}: "{chapter_title}"5. Your goal is to break this chapter down into **12-15 detailed sections** to ensure we cover the topic with extreme depth and rigor.
 
 ## Context
 **Orbit:** {chapter_purpose}
@@ -11,11 +10,12 @@ Your goal is to break this chapter down into **5-8 detailed sections** to ensure
 
 ## Instructions
 1.  **Analyze the Purpose**: What specific concepts must be covered to fulfill the promise of this chapter?
-2.  **Fractal Breakdown**: Break the chapter into 5-8 atomic sections. Each section should be substantial enough for a 1000-word deep dive.
+2.  **Fractal Breakdown**: Break the chapter into 12-15 atomic sections. Each section should be substantial enough for a **2000-word deep dive**.
 3.  **Flow**: Ensure logical progression (e.g., Concept -> Theory -> Example -> Application -> Pitfalls).
 
 ## Output (JSON Only)
 Return a valid JSON object with a "sections" key containing a list of objects.
+Do NOT wrap the output in markdown code blocks (```json). Return RAW JSON only.
 Example:
 {{
   "sections": [

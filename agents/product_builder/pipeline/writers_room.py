@@ -45,13 +45,29 @@ class WritersRoom:
         
         try:
             # Extract JSON
-            json_start = structure_response.find("{")
-            json_end = structure_response.rfind("}") + 1
-            sections_data = json.loads(structure_response[json_start:json_end])
-            sections = sections_data.get("sections", [])
-            logger.info(f"✅ Fractal Architect parsed {len(sections)} sections.")
+            clean_response = structure_response.strip()
+            import re
+            
+            # Strip markdown code blocks if present
+            if "```" in clean_response:
+                clean_response = re.sub(r"^```(json)?\n", "", clean_response)
+                clean_response = re.sub(r"\n```$", "", clean_response)
+                clean_response = clean_response.strip()
+            
+            # Find JSON boundaries
+            json_start = clean_response.find("{")
+            json_end = clean_response.rfind("}") + 1
+            
+            if json_start != -1 and json_end > json_start:
+                sections_data = json.loads(clean_response[json_start:json_end])
+                sections = sections_data.get("sections", [])
+                logger.info(f"✅ Fractal Architect parsed {len(sections)} sections.")
+            else:
+                 raise ValueError("No JSON object found")
+
         except Exception as e:
-            logger.warning(f"Failed to parse structure: {e}. Falling back to single-pass.")
+            logger.warning(f"Failed to parse structure: {e}. Raw response: {structure_response[:100]}...")
+            logger.warning("⚠️ Falling back to single-pass mode (Fractal Generation disabled).")
             # Fallback for structure failure
             sections = [{"title": "Main Content", "north_star": "Cover the chapter purpose in depth."}]
 
@@ -101,6 +117,13 @@ class WritersRoom:
         context["current_draft"] = current_draft
         current_draft = self._run_agent("writers_editor", context)
         
+        # Clean output of any markdown wrappers
+        import re
+        if "```" in current_draft:
+            logger.info("🧹 Stripping markdown wrappers from draft...")
+            current_draft = re.sub(r"^```(mdx|markdown)?\n", "", current_draft.strip())
+            current_draft = re.sub(r"\n```$", "", current_draft.strip())
+            
         return current_draft
 
     def _load_template(self, name: str) -> str:

@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-01-23'
-  total_sessions_tracked: 86
+  updated: '2026-01-24'
+  total_sessions_tracked: 89
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -1503,6 +1503,57 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: Body Symphony: Tuning Your Physical Instrument'
+- session_id: goddess-worshipping-dreamweaving
+  date: '2026-01-24'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Goddess-Worshipping Dreamweaving'
+- session_id: oracle-of-omniverse-dreamweaving
+  date: '2026-01-24'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Oracle Of Omniverse Dreamweaving'
+- session_id: the-lightning-index-of-total-recall
+  date: '2026-01-24'
+  outcome: healing
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_masculine.guardian_father
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Lightning Index Of Total Recall'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 20
@@ -1577,7 +1628,7 @@ listener_relationships:
     last_session_date: '2026-01-22'
     relationship_level: 4
   divine_light_healing.inner_healer:
-    total_encounters: 61
+    total_encounters: 64
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1703,8 +1754,14 @@ listener_relationships:
       type: first_encounter
     - session: reclaiming-the-exiled-archetype-dreamweaving
       type: first_encounter
-    last_session: reclaiming-the-exiled-archetype-dreamweaving
-    last_session_date: '2026-01-23'
+    - session: goddess-worshipping-dreamweaving
+      type: first_encounter
+    - session: oracle-of-omniverse-dreamweaving
+      type: first_encounter
+    - session: the-lightning-index-of-total-recall
+      type: first_encounter
+    last_session: the-lightning-index-of-total-recall
+    last_session_date: '2026-01-24'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 5
@@ -1725,7 +1782,7 @@ listener_relationships:
     last_session_date: '2026-01-22'
     relationship_level: 3
   divine_masculine.guardian_father:
-    total_encounters: 11
+    total_encounters: 12
     first_session: paranormal-powers-retry
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1751,8 +1808,10 @@ listener_relationships:
       type: first_encounter
     - session: eco-echo-conversations-with-nature
       type: first_encounter
-    last_session: eco-echo-conversations-with-nature
-    last_session_date: '2026-01-20'
+    - session: the-lightning-index-of-total-recall
+      type: first_encounter
+    last_session: the-lightning-index-of-total-recall
+    last_session_date: '2026-01-24'
     relationship_level: 4
   dreamweaver_meta.dream_architect:
     total_encounters: 3
@@ -1769,7 +1828,7 @@ listener_relationships:
     last_session_date: '2026-01-15'
     relationship_level: 2
   divine_feminine.rose_mother:
-    total_encounters: 49
+    total_encounters: 51
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1871,11 +1930,15 @@ listener_relationships:
       type: first_encounter
     - session: reclaiming-the-exiled-archetype-dreamweaving
       type: first_encounter
-    last_session: reclaiming-the-exiled-archetype-dreamweaving
-    last_session_date: '2026-01-23'
+    - session: goddess-worshipping-dreamweaving
+      type: first_encounter
+    - session: oracle-of-omniverse-dreamweaving
+      type: first_encounter
+    last_session: oracle-of-omniverse-dreamweaving
+    last_session_date: '2026-01-24'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 32
+    total_encounters: 34
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -1943,8 +2006,12 @@ listener_relationships:
       type: first_encounter
     - session: kaleidoscope-kingdom-dreamweaving
       type: first_encounter
-    last_session: kaleidoscope-kingdom-dreamweaving
-    last_session_date: '2026-01-22'
+    - session: goddess-worshipping-dreamweaving
+      type: first_encounter
+    - session: the-lightning-index-of-total-recall
+      type: first_encounter
+    last_session: the-lightning-index-of-total-recall
+    last_session_date: '2026-01-24'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 8
@@ -1999,7 +2066,7 @@ listener_relationships:
     last_session_date: '2026-01-23'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
-    total_encounters: 28
+    total_encounters: 29
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -2059,8 +2126,10 @@ listener_relationships:
       type: first_encounter
     - session: reclaiming-the-exiled-archetype-dreamweaving
       type: first_encounter
-    last_session: reclaiming-the-exiled-archetype-dreamweaving
-    last_session_date: '2026-01-23'
+    - session: oracle-of-omniverse-dreamweaving
+      type: first_encounter
+    last_session: oracle-of-omniverse-dreamweaving
+    last_session_date: '2026-01-24'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 2
@@ -2181,44 +2250,44 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - ascend-mount-sinai-with-moses
-  - the-future-temple-of-probability-singers
-  - kaleidoscope-kingdom-dreamweaving
   - reclaiming-the-exiled-archetype-dreamweaving
   - body-symphony-tuning-your-physical-instrument
+  - goddess-worshipping-dreamweaving
+  - oracle-of-omniverse-dreamweaving
+  - the-lightning-index-of-total-recall
   archetype_cooldowns:
-    divine_light_healing.great_physician: 0
-    transformation_alchemy.phoenix_renewal: 4
-    divine_light_healing.inner_healer: 1
-    warrior_power.archangel_michael: 4
-    divine_masculine.guardian_father: 8
-    dreamweaver_meta.dream_architect: 24
+    divine_light_healing.great_physician: 3
+    transformation_alchemy.phoenix_renewal: 7
+    divine_light_healing.inner_healer: 0
+    warrior_power.archangel_michael: 7
+    divine_masculine.guardian_father: 0
+    dreamweaver_meta.dream_architect: 27
     divine_feminine.rose_mother: 1
-    shamanic_earth.world_tree_guardian: 2
-    oracle_seer.oracle_of_light: 0
-    divine_feminine.sophia_wisdom: 0
+    shamanic_earth.world_tree_guardian: 0
+    oracle_seer.oracle_of_light: 3
+    divine_feminine.sophia_wisdom: 3
     emotional_heart.heart_flame_tender: 1
-    warrior_power.solar_king: 34
-    divine_masculine.logos_bearer: 3
-    divine_light_healing.shekinah_restorer: 50
-    emotional_heart.joy_child: 3
-    abundance_destiny.providence_angel: 24
-    dreamweaver_meta.portal_keeper: 24
+    warrior_power.solar_king: 37
+    divine_masculine.logos_bearer: 6
+    divine_light_healing.shekinah_restorer: 53
+    emotional_heart.joy_child: 6
+    abundance_destiny.providence_angel: 27
+    dreamweaver_meta.portal_keeper: 27
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - oracle_seer
-  - divine_feminine
+  - divine_masculine
+  - shamanic_earth
   family_usage_counts:
-    divine_light_healing: 89
+    divine_light_healing: 92
     transformation_alchemy: 8
     warrior_power: 7
-    divine_masculine: 18
+    divine_masculine: 19
     dreamweaver_meta: 4
-    divine_feminine: 59
-    shamanic_earth: 32
+    divine_feminine: 61
+    shamanic_earth: 34
     oracle_seer: 8
-    emotional_heart: 32
+    emotional_heart: 33
     abundance_destiny: 1
 effective_pairings: []
