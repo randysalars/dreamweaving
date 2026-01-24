@@ -106,16 +106,59 @@ class BonusGenerator:
                 "key_takeaways": self._extract_takeaways(content)
             })
             
+        # 2.5 Generate Visuals for Bonus Chapters
+        visuals = {}
+        # Lazy load visuals generator
+        from .code_visuals import CodeVisualsGenerator
+        visuals_dir = self.output_dir / "visuals"
+        visuals_dir.mkdir(exist_ok=True)
+        cv_gen = CodeVisualsGenerator(visuals_dir)
+        
+        logger.info(f"   📊 Generating Charts/Diagrams for Bonus...")
+        for i, ch in enumerate(full_chapters):
+            # Heuristic: Check content for "Chart:", "Diagram:" or "Visual:"
+            # Or just generate a diagram for every chapter based on purpose
+            
+            # Simple heuristic: If "Visual:" or "Chart:" is in content, extract it?
+            # Or simpler: Ask LLM to define the visual during writing?
+            # For now, let's generate a "Summary Diagram" for every chapter to ensure high value
+            
+            visual_desc = f"Create a simple diagram summarizing: {ch['title']}. Logic: Start -> {ch['title']} -> Goal."
+            # Only do it for charts/diagrams keywords to save time, or force it for "Workbook" styles
+            
+            # Better Strategy: Scan for [Visual: description] tag in content if Writer put it there
+            # Since Writer isn't instructed to do that yet, let's just generate a visual for chapters with "Process" or "Steps"
+            
+            slug = self._slugify(title)
+            section_id = f"{slug}_ch{i+1}_visual"
+            
+            # Generate a process diagram for every chapter to make it "Massive value"
+            # Using the Zero-Cost Diagram Engine logic
+            try:
+                # Deterministic filename logic is in CV Gen now
+                path = cv_gen.generate(section_id, visual_desc, "diagram")
+                visuals[section_id] = str(path)
+                
+                # We need to inject the visual into the content so PDFGenerator picks it up?
+                # PDFGenerator inserts "chapter-visual" at the START of chapter if section_id matches "ch{i}_opener"
+                # But here we have "bonus_ch{i+1}_visual". 
+                # Let's map it to the ID PDFGenerator expects if we want it at the top.
+                opener_id = f"ch{i+1}_opener"
+                visuals[opener_id] = str(path)
+                
+            except Exception as e:
+                logger.warning(f"Failed to generate bonus visual {i}: {e}")
+
         # 3. Compile PDF
         logger.info(f"   🖨️  Compiling Bonus PDF...")
         config = PDFConfig(
             title=title,
             author="SalarsNet",
             output_path=str(self.output_dir / f"{self._slugify(title)}.pdf"),
-            style=PDFStyle(heading_color="#1a202c", accent_color="#3182ce") # Different style for bonuses?
+            style=PDFStyle(heading_color="#1a202c", accent_color="#3182ce") 
         )
         
-        return self.pdf_generator.generate(full_chapters, config)
+        return self.pdf_generator.generate(full_chapters, config, visuals)
 
     def _outline_bonus_chapters(self, title: str, description: str) -> List[Dict[str, str]]:
         """

@@ -4,6 +4,10 @@
 You are the **Line Editor**.
 Your job is **clarity, brevity, and punch**.
 
+## Context
+Product: {product_name}
+Chapter: {chapter_title}
+
 ## Input Draft
 {current_draft}
 

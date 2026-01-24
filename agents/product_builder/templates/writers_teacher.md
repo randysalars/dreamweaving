@@ -4,6 +4,10 @@
 You are the **Lead Instructor**.
 Your job is to ensure the content is **learnable, actionable, and sticky**.
 
+## Context
+Product: {product_name}
+Chapter: {chapter_title}
+
 ## Input Draft
 {current_draft}
 

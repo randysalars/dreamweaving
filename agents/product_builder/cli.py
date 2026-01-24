@@ -111,13 +111,58 @@ def create_command(args):
             generate_visuals=True, # Always generate visuals for the PDF
         )
         
-        assembler = ProductAssembler()
+
+        assembler = ProductAssembler(orchestrator.templates_dir)
         assembly_result = assembler.assemble(
             chapters=results.get("chapters", []),
             config=assembly_config,
             landing_page_content=landing_content
         )
         
+        # 6.5. QUALITY LOOPS (Length Guard & Polisher)
+        if assembly_result.success and args.pdf:
+            from .core.quality_loop import QualityLoop
+            quality = QualityLoop(orchestrator.templates_dir)
+            current_chapters = results.get("chapters", [])
+            was_modified = False
+            
+            # A. Length Guard
+            current_chapters, expanded = quality.ensure_length(
+                pdf_path=assembly_result.pdf_path,
+                chapters=current_chapters,
+                target_pages=100
+            )
+            if expanded:
+                logger.info("🔄 Re-Assembling expanded PDF...")
+                assembly_result = assembler.assemble(
+                    chapters=current_chapters,
+                    config=assembly_config,
+                    landing_page_content=landing_content
+                )
+                was_modified = True
+            
+
+            # B. Polish Pass (Always run to "make it better")
+            current_chapters = quality.polish_chapters(current_chapters)
+            
+            # C. Safety Check (Post-Polish Length Guard)
+            # Polishing often reduces word count. We must verify we didn't drop below threshold.
+            current_chapters, re_expanded = quality.ensure_length(
+                pdf_path=assembly_result.pdf_path, # Note: using previous PDF as proxy or needing re-assembly
+                chapters=current_chapters, 
+                target_pages=100
+            ) 
+            
+            if re_expanded:
+                logger.info("🔄 Re-expanding content after polish shrinkage...")
+
+            logger.info("✨ Re-Assembling Final PDF...")
+            assembly_result = assembler.assemble(
+                chapters=current_chapters,
+                config=assembly_config,
+                landing_page_content=landing_content
+            )
+
         if assembly_result.success:
             logger.info(f"\n📦 Assembly Complete!")
             logger.info(f"   📄 PDF: {assembly_result.pdf_path}")

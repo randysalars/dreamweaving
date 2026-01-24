@@ -6,7 +6,12 @@ const fs = require('fs');
 async function generatePDF() {
   const browser = await puppeteer.launch({
     headless: "new",
-    args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+    args: [
+        '--no-sandbox', 
+        '--disable-setuid-sandbox', 
+        '--allow-file-access-from-files',
+        '--enable-local-file-accesses'
+    ] 
   });
   const page = await browser.newPage();
   
@@ -54,7 +59,12 @@ async function generatePDF() {
   </html>
   `;
 
-  await page.setContent(styledContent, { waitUntil: 'networkidle0' });
+  // Write the styled content back to a temp file so we can load it with file:// protocol
+  // This ensures relative paths (images/) are resolved correctly relative to the file.
+  const finalHtmlPath = htmlPath.replace('.temp.html', '.final.html');
+  fs.writeFileSync(finalHtmlPath, styledContent);
+  
+  await page.goto('file://' + finalHtmlPath, { waitUntil: 'networkidle0' });
 
   await page.pdf({
     path: pdfPath,

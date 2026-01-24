@@ -17,6 +17,7 @@ from .tts_client import TTSClient, TTSConfig
 from ..pipeline.visual_director import VisualDirector
 from ..pipeline.visual_qa import VisualQA
 from .image_generator import ImageGenerator
+from .code_visuals import CodeVisualsGenerator
 from .bonus_generator import BonusGenerator
 from ..schemas.visual_style import VisualStyle, DREAMWEAVING_STYLE
 
@@ -120,7 +121,9 @@ class ProductAssembler:
         self.tts_client = TTSClient()
         self.visual_director = VisualDirector(self.templates_dir)
         self.visual_qa = VisualQA()
+        self.visual_qa = VisualQA()
         self.image_generator = ImageGenerator()
+        self.code_visual_generator = None # initialized with output dir
         
     def assemble(
         self, 
@@ -267,13 +270,41 @@ class ProductAssembler:
             config.visual_style
         )
         
-        # Set output directory
+        # Set output directories
         self.image_generator.output_dir = config.output_dir / "visuals"
         self.image_generator.output_dir.mkdir(exist_ok=True)
+        self.code_visual_generator = CodeVisualsGenerator(config.output_dir / "visuals")
+
+        # Split Prompts
+        ai_prompts = [p for p in prompts if p.get('type') == 'ai_image']
+        code_prompts = [p for p in prompts if p.get('type') != 'ai_image']
         
-        # Generate images
-        results = self.image_generator.generate_batch(prompts, config.visual_style)
+        results = []
         
+        # 1. Run AI Gen
+        if ai_prompts:
+            logger.info(f"🎨 Generating {len(ai_prompts)} AI Images...")
+            results.extend(self.image_generator.generate_batch(ai_prompts, config.visual_style))
+
+        # 2. Run Code Gen
+        if code_prompts:
+            logger.info(f"📊 Generating {len(code_prompts)} Charts/Diagrams...")
+            code_results = self.code_visual_generator.generate_batch(code_prompts)
+            # Normalize result object to match ImageGenerator result (hacky but works)
+            from dataclasses import dataclass
+            @dataclass
+            class SimpleResult:
+                section_id: str
+                path: str
+                success: bool
+            
+            for cr in code_results:
+                results.append(SimpleResult(
+                    section_id=cr['section_id'], 
+                    path=cr['path'], 
+                    success=cr['success']
+                ))
+
         # Return map of section_id -> path
         return {r.section_id: r.path for r in results if r.success}
     
