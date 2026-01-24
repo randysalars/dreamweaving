@@ -214,6 +214,8 @@ class StudioOrchestrator:
             "voice_rules": "\n".join(self.artifacts.voice.sentence_rhythm_rules) if self.artifacts.voice else "",
             "banned_phrases": self.artifacts.voice.banned_phrases if self.artifacts.voice else [],
             "key_takeaways": concept.description,
+            "product_promise": self.artifacts.positioning.core_promise if self.artifacts.positioning else "Transform your life.",
+            "audience_persona": self.artifacts.positioning.target_audience if self.artifacts.positioning else "Ambitious Learners",
         }
         
         # Draft

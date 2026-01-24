@@ -171,6 +171,50 @@ def list_templates_command(args):
     logger.info("  • modern_editorial - Clean, professional")
 
 
+def generate_bonuses_command(args):
+    """Generate bonuses for a product."""
+    from .packaging.bonus_generator import BonusGenerator
+    
+    logger.info(f"🎁 Generating Bonuses for: {args.title}")
+    
+    # Setup paths
+    slug = args.title.replace(" ", "_").lower()
+    product_dir = Path(args.product_dir) if args.product_dir else Path(f"./products/{slug}")
+    output_dir = product_dir / "output" / "bonuses"
+    templates_dir = Path(__file__).parent / "templates"
+    
+    if not product_dir.exists():
+        logger.error(f"Product directory not found: {product_dir}")
+        return 1
+        
+    generate = BonusGenerator(templates_dir, output_dir)
+    
+    bonuses = []
+    
+    # 1. Try to load from existing landing page content
+    lp_path = product_dir / "landing_page_content.json"
+    if lp_path.exists():
+        import json
+        try:
+            data = json.loads(lp_path.read_text())
+            bonuses = data.get("bonuses", [])
+            logger.info(f"   Found {len(bonuses)} bonuses in landing_page_content.json")
+        except Exception as e:
+            logger.warning(f"   Failed to read landing_page_content.json: {e}")
+
+    # 2. If CLI args or explicit list (for testing)
+    # (Future expansion: parsing URL)
+    
+    if not bonuses:
+        logger.warning("   No bonuses found in product config. Nothing to generate.")
+        return 0
+        
+    generated = generate.generate(bonuses)
+    logger.info("\n✅ Bonus Generation Complete!")
+    for p in generated:
+        logger.info(f"   📄 {p}")
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -235,6 +279,13 @@ Examples:
     # List templates command
     list_parser = subparsers.add_parser('list-templates', help='List available templates')
     list_parser.set_defaults(func=list_templates_command)
+
+    # Generate bonuses command
+    bonus_parser = subparsers.add_parser('generate-bonuses', help='Generate bonuses for existing product')
+    bonus_parser.add_argument('--title', '-T', required=True, help='Product title')
+    bonus_parser.add_argument('--product-dir', help='Product directory (default: ./products/slug)')
+    bonus_parser.add_argument('--landing-url', help='URL to fetch bonus info from')
+    bonus_parser.set_defaults(func=generate_bonuses_command)
     
     # Parse and execute
     args = parser.parse_args()

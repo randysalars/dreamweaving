@@ -141,7 +141,8 @@ class PDFGenerator:
         # Cleanup temp HTML if successful
         if Path(output_path).exists():
              try:
-                 os.remove(temp_html_path)
+                 # os.remove(temp_html_path)
+                 logger.info(f"ℹ️ Kept temp HTML for debugging: {temp_html_path}")
              except:
                  pass
              logger.info(f"✅ PDF generated (Puppeteer): {output_path}")
@@ -311,10 +312,18 @@ class PDFGenerator:
             content = chapter.get("content", "")
             takeaways = chapter.get("key_takeaways", [])
             
-            # Convert content to paragraphs
-            paragraphs = "\n".join([
-                f"<p>{p}</p>" for p in content.split("\n\n") if p.strip()
-            ])
+            # Convert content from Markdown to HTML
+            try:
+                from markdown_it import MarkdownIt
+                md = MarkdownIt('commonmark', {'breaks': True, 'html': True})
+                # Add table support if possible or stick to commonmark
+                html_content = md.render(content)
+                paragraphs = html_content
+            except ImportError:
+                logger.warning("Markdown library not found. Falling back to plain text.")
+                paragraphs = "\n".join([
+                    f"<p>{p}</p>" for p in content.split("\n\n") if p.strip()
+                ])
             
             # Key takeaways
             takeaways_html = ""

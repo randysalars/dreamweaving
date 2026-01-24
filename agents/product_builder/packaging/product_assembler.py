@@ -17,6 +17,7 @@ from .tts_client import TTSClient, TTSConfig
 from ..pipeline.visual_director import VisualDirector
 from ..pipeline.visual_qa import VisualQA
 from .image_generator import ImageGenerator
+from .bonus_generator import BonusGenerator
 from ..schemas.visual_style import VisualStyle, DREAMWEAVING_STYLE
 
 logger = logging.getLogger(__name__)
@@ -66,6 +67,7 @@ class AssemblyResult:
     audio_files: List[str] = field(default_factory=list)
     video_files: List[str] = field(default_factory=list)
     visual_files: List[str] = field(default_factory=list)
+    bonus_files: List[str] = field(default_factory=list)
     landing_page_content: Optional[Dict[str, Any]] = None
     
     # Metadata
@@ -84,7 +86,8 @@ class AssemblyResult:
                 "pdf": self.pdf_path,
                 "audio": self.audio_files,
                 "video": self.video_files,
-                "visuals": self.visual_files
+                "visuals": self.visual_files,
+                "bonuses": self.bonus_files
             },
             "landing_page_content": self.landing_page_content,
             "stats": {
@@ -118,7 +121,7 @@ class ProductAssembler:
         self.visual_director = VisualDirector(self.templates_dir)
         self.visual_qa = VisualQA()
         self.image_generator = ImageGenerator()
-    
+        
     def assemble(
         self, 
         chapters: List[Dict],
@@ -143,6 +146,11 @@ class ProductAssembler:
         # Create output directory
         config.output_dir.mkdir(parents=True, exist_ok=True)
         
+        # Initialize Bonus Generator
+        msg = f"Initializing Bonus Generator with templates: {self.templates_dir} and output: {config.output_dir / 'bonuses'}"
+        logger.info(msg)
+        bonus_generator = BonusGenerator(self.templates_dir, config.output_dir / "bonuses")
+
         result = AssemblyResult(
             success=True,
             title=config.title,
@@ -164,6 +172,19 @@ class ProductAssembler:
                 logger.error(f"Visual generation failed: {e}")
                 result.errors.append(f"Visuals: {str(e)}")
         
+        # 1.5 Generate Bonuses
+        if landing_page_content and "bonuses" in landing_page_content:
+            logger.info("🎁 Processing bonuses from Landing Page content...")
+            try:
+                bonuses = landing_page_content.get("bonuses", [])
+                if bonuses:
+                    bonus_files = bonus_generator.generate(bonuses)
+                    result.bonus_files = bonus_files
+                    logger.info(f"✅ Generated {len(bonus_files)} bonuses")
+            except Exception as e:
+                logger.error(f"Bonus generation failed: {e}")
+                result.errors.append(f"Bonuses: {str(e)}")
+
         # 2. Generate PDF
         if config.generate_pdf:
             logger.info("📄 Generating PDF...")
