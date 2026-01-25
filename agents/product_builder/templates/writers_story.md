@@ -20,3 +20,5 @@ Make the reader feel the *cost* of not knowing this.
 
 ## Output
 Return the **Revised Draft** in MDX. Keep the core technical accuracy, but make it *compelling*.
+
+CRITICAL: Output ONLY the revised text. Do NOT repeat the original draft.

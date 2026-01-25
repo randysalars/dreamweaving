@@ -19,3 +19,5 @@ Chapter: {chapter_title}
 
 ## Output
 Return the **Revised Draft** in MDX. Add callout boxes ( > [!NOTE] or similar) for key insights.
+
+CRITICAL: Output ONLY the revised text. Do NOT repeat the original draft.

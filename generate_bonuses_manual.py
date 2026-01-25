@@ -18,21 +18,21 @@ def generate_manual_bonus():
     generator = BonusGenerator(templates_dir, output_dir)
     
     bonuses = [
-        {
-            "title": "The 30-Day Budget Bootcamp",
-            "format": "pdf",
-            "description": "A day-by-day workbook to reset your spending habits. Features daily challenges, tracking sheets, and reflection prompts."
-        },
+        # {
+        #     "title": "The 30-Day Budget Bootcamp",
+        #     "format": "pdf",
+        #     "description": "A day-by-day workbook to reset your spending habits. Features daily challenges, tracking sheets, and reflection prompts."
+        # },
         {
             "title": "The Recession-Proof Investing Guide",
             "format": "pdf",
             "description": "A visual guide to asset allocation, risk management, and how to stay calm when the market crashes. Includes 'The Sleep Well at Night' portfolio model."
         },
-        {
-            "title": "The Salary Negotiation Blackbook",
-            "format": "pdf",
-            "description": "Word-for-word scripts to get paid what you are worth. Covers email templates, in-person scripts, and counter-offer strategies."
-        }
+        # {
+        #     "title": "The Salary Negotiation Blackbook",
+        #     "format": "pdf",
+        #     "description": "Word-for-word scripts to get paid what you are worth. Covers email templates, in-person scripts, and counter-offer strategies."
+        # }
     ]
     
     print("🚀 Starting Manual Bonus Generation...")

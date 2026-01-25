@@ -85,7 +85,7 @@ class BonusGenerator:
                 "chapter_title": chapter_meta['title'],
                 "chapter_number": i + 1,
                 "chapter_purpose": chapter_meta['purpose'],
-                "key_takeaways": "Master the core concepts of this section.", # Dummy takeaways for structure gen
+                "key_takeaways": "Master the key ideas of this section.", # Dummy takeaways for structure gen
                 "audience_state": "Eager to learn", # Generic for bonus
                 "tone_voice": "Authoritative, extremely detailed, actionable, expansive",
                 # Add missing keys for templates
@@ -103,51 +103,46 @@ class BonusGenerator:
             full_chapters.append({
                 "title": chapter_meta['title'],
                 "content": content,
-                "key_takeaways": self._extract_takeaways(content)
+                "key_takeaways": self._extract_takeaways(content, title)
             })
             
-        # 2.5 Generate Visuals for Bonus Chapters
-        visuals = {}
-        # Lazy load visuals generator
-        from .code_visuals import CodeVisualsGenerator
-        visuals_dir = self.output_dir / "visuals"
-        visuals_dir.mkdir(exist_ok=True)
-        cv_gen = CodeVisualsGenerator(visuals_dir)
-        
-        logger.info(f"   📊 Generating Charts/Diagrams for Bonus...")
-        for i, ch in enumerate(full_chapters):
-            # Heuristic: Check content for "Chart:", "Diagram:" or "Visual:"
-            # Or just generate a diagram for every chapter based on purpose
+            # 2.5 Generate Visuals for Bonus Chapters
+            visuals = {}
+            # Lazy load visuals generator
+            from .code_visuals import CodeVisualsGenerator
+            visuals_dir = self.output_dir / "visuals"
+            visuals_dir.mkdir(exist_ok=True)
+            cv_gen = CodeVisualsGenerator(visuals_dir)
             
-            # Simple heuristic: If "Visual:" or "Chart:" is in content, extract it?
-            # Or simpler: Ask LLM to define the visual during writing?
-            # For now, let's generate a "Summary Diagram" for every chapter to ensure high value
-            
-            visual_desc = f"Create a simple diagram summarizing: {ch['title']}. Logic: Start -> {ch['title']} -> Goal."
-            # Only do it for charts/diagrams keywords to save time, or force it for "Workbook" styles
-            
-            # Better Strategy: Scan for [Visual: description] tag in content if Writer put it there
-            # Since Writer isn't instructed to do that yet, let's just generate a visual for chapters with "Process" or "Steps"
-            
+            logger.info(f"   📊 Generating Charts/Diagrams for Bonus...")
             slug = self._slugify(title)
-            section_id = f"{slug}_ch{i+1}_visual"
-            
-            # Generate a process diagram for every chapter to make it "Massive value"
-            # Using the Zero-Cost Diagram Engine logic
-            try:
-                # Deterministic filename logic is in CV Gen now
-                path = cv_gen.generate(section_id, visual_desc, "diagram")
-                visuals[section_id] = str(path)
-                
-                # We need to inject the visual into the content so PDFGenerator picks it up?
-                # PDFGenerator inserts "chapter-visual" at the START of chapter if section_id matches "ch{i}_opener"
-                # But here we have "bonus_ch{i+1}_visual". 
-                # Let's map it to the ID PDFGenerator expects if we want it at the top.
-                opener_id = f"ch{i+1}_opener"
-                visuals[opener_id] = str(path)
-                
-            except Exception as e:
-                logger.warning(f"Failed to generate bonus visual {i}: {e}")
+
+            for i, ch in enumerate(full_chapters):
+                # Ask LLM for a specific process flow for this chapter
+                try:
+                    visual_prompt = f"""
+                    Based on the following chapter content, define a simple process flow (3-5 steps).
+                    Format: "Step 1 -> Step 2 -> Step 3"
+                    Content: {ch['content'][:1500]}...
+                    """
+                    visual_desc = self.llm.generate(visual_prompt).strip()
+                    # Fallback if too verbose
+                    if len(visual_desc) > 100 or "->" not in visual_desc:
+                         visual_desc = f"Start -> {ch['title']} -> Success"
+                    
+                    section_id = f"{slug}_ch{i+1}_visual"
+                    
+                    # Generate deterministically
+                    # Inject Title for Context-Aware Visual Mocking
+                    context_desc = f"Topic: {title} - {ch['title']}. Process: {visual_desc}"
+                    path = cv_gen.generate(section_id, context_desc, "diagram")
+                    
+                    # Map to opener ID for PDF generator
+                    opener_id = f"ch{i+1}_opener"
+                    visuals[opener_id] = str(path)
+                    
+                except Exception as e:
+                    logger.warning(f"Failed to generate bonus visual {i}: {e}")
 
         # 3. Compile PDF
         logger.info(f"   🖨️  Compiling Bonus PDF...")
@@ -221,10 +216,26 @@ class BonusGenerator:
                 {"title": "Action Plan", "purpose": "30 day roadmap"}
             ]
 
-    def _extract_takeaways(self, content: str) -> List[str]:
-        """Simple helper to extract takeaways or generate dummy ones."""
-        # Ideally we'd use LLM, but for speed let's just grab headers or return generic
-        return ["Actionable Insight 1", "Actionable Insight 2", "Actionable Insight 3"]
+    def _extract_takeaways(self, content: str, title: str) -> List[str]:
+        """Extract 3 actionable takeaways from the content."""
+        prompt = f"""
+        Context: {title}
+        Extract 3 short, actionable takeaways (1 sentence each) from this text.
+        Format:
+        - Takeaway 1
+        - Takeaway 2
+        - Takeaway 3
+        
+        Text:
+        {content[:3000]}...
+        """
+        response = self.llm.generate(prompt)
+        takeaways = [
+            line.strip("- *").strip() 
+            for line in response.split("\n") 
+            if line.strip().startswith("-") or line.strip().startswith("*")
+        ]
+        return takeaways[:3] if takeaways else ["Master the core concepts.", "Apply the strategy.", "Review your progress."]
 
     def _slugify(self, text: str) -> str:
         return "".join(c if c.isalnum() or c == " " else "" for c in text).replace(" ", "_").lower()

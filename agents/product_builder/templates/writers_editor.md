@@ -19,3 +19,5 @@ Chapter: {chapter_title}
 
 ## Output
 Return the **Final Polished Draft**, ready for publication.
+
+CRITICAL: Output ONLY the revised text. Do NOT repeat the original draft.
