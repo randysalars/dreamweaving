@@ -8,6 +8,11 @@ This script follows the EXACT same process that created Financial Freedom Bluepr
 - 100+ pages in final PDF
 - Quality checks embedded in prompts
 
+ENHANCED with:
+- Page count validation and expansion prompts
+- Research-backed bonus content generation
+- Complete packaging workflow
+
 Usage:
     python3 generate_wellness_product.py
 
@@ -18,8 +23,17 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).parent))
 
+# Import expansion utilities
+from agents.product_builder.pipeline.content_expander import (
+    validate_page_count, MIN_PAGES_MAIN_PRODUCT, 
+    MIN_WORDS_PER_CHAPTER, TARGET_WORDS_PER_CHAPTER
+)
+
 OUTPUT_DIR = Path("products/holistic_wellness_protocol/output")
 RESPONSES_DIR = OUTPUT_DIR / "responses"
+PROMPTS_DIR = OUTPUT_DIR / "prompts"
+EXPANSION_DIR = OUTPUT_DIR / "expansion_prompts"
+BONUS_PROMPTS_DIR = OUTPUT_DIR / "bonus_prompts"
 
 # ═══════════════════════════════════════════════════════════════
 # PRODUCT CONFIGURATION
@@ -157,6 +171,16 @@ PRODUCT_CONFIG = {
         }
     ],
     
+    # 6 STANDARD BONUSES
+    "bonuses": [
+        {"type": "cookbook", "title": "The Wellness Cookbook", "min_words": 2000},
+        {"type": "worksheet", "title": "Practice Worksheets", "min_words": 1500},
+        {"type": "reference_card", "title": "Quick Reference Cards", "min_words": 1200},
+        {"type": "meditation", "title": "Guided Meditation Scripts", "min_words": 2000},
+        {"type": "journal", "title": "90-Day Transformation Journal", "min_words": 1500},
+        {"type": "checklist", "title": "Action Checklists", "min_words": 1200},
+    ],
+    
     "voice_rules": """
 - Vary sentence length: mix short punchy sentences with longer flowing ones
 - Use fragments for emphasis. Like this.
@@ -256,6 +280,79 @@ Output the complete chapter in Markdown format:
 - Include specific numbers, examples, and stories
 
 BEGIN WRITING THE CHAPTER NOW.
+""",
+
+    # EXPANSION PROMPT TEMPLATE
+    "expansion_template": """## Chapter Expansion Needed
+
+**Chapter:** {chapter_title}
+**Current Words:** {current_words}
+**Target Words:** {target_words}
+**Words to Add:** ~{words_to_add}
+
+## Current Content Summary
+{content_summary}
+
+## Expansion Instructions
+
+Add {words_to_add} words of NEW content to this chapter. You may:
+
+1. **Add More Examples**: Include 2-3 additional worked examples with specific details
+2. **Expand Existing Sections**: Go deeper into concepts that were briefly covered
+3. **Add Case Studies**: Include real-world scenarios showing the concept in action
+4. **Address More Objections**: Cover additional "but what about..." concerns
+5. **Add Action Steps**: More specific implementation guidance
+
+**Quality Requirements:**
+- Every sentence must add value (no fluff or padding)
+- Maintain the existing voice and tone
+- Use specific numbers, examples, and stories
+- Make content immediately actionable
+
+**Output Format:**
+Return ONLY the new content to be added (not the entire chapter).
+Format as markdown that can be inserted after the existing content.
+Begin each new section with ## or ### headers.
+""",
+
+    # BONUS GENERATION TEMPLATE
+    "bonus_template": """## Generate Research-Backed Bonus Content
+
+**Bonus Type:** {bonus_type}
+**Title:** {bonus_title}
+**Minimum Words:** {min_words}
+
+---
+
+## Product Context
+
+**Product Title:** {title}
+**Core Topic:** {topic}
+**Target Audience:** {audience}
+**Core Thesis:** {thesis}
+
+---
+
+## Quality Standards
+
+1. **Substantive Content**: Every section provides genuine value, not padding
+2. **Research-Backed**: Include specific techniques, data, and evidence
+3. **Actionable**: Reader can use this content immediately
+4. **Well-Organized**: Clear heading structure (# for chapters, ## for sections)
+5. **Professional**: Publication-ready quality
+6. **Minimum {min_words} words**: Meet the minimum while maintaining quality
+
+---
+
+## Important
+
+⚠️ Do NOT pad content with empty lines, repetitive phrases, or filler material.
+⚠️ Every paragraph must add value.
+⚠️ Use specific numbers, examples, and actionable details.
+
+---
+
+Write the complete bonus content now. Use # for main chapters (each starts new page in PDF).
 """
 }
 
@@ -263,12 +360,12 @@ BEGIN WRITING THE CHAPTER NOW.
 # GENERATOR FUNCTIONS
 # ═══════════════════════════════════════════════════════════════
 
-def generate_prompts(config: dict, output_dir: Path):
+def generate_chapter_prompts(config: dict, output_dir: Path):
     """Generate all chapter prompts."""
     prompts_dir = output_dir / "prompts"
     prompts_dir.mkdir(parents=True, exist_ok=True)
     
-    print(f"📝 Generating {len(config['chapters'])} chapter prompts...")
+    print(f"\n📝 Generating {len(config['chapters'])} chapter prompts...")
     
     for chapter in config["chapters"]:
         prompt = config["chapter_template"].format(
@@ -289,8 +386,165 @@ def generate_prompts(config: dict, output_dir: Path):
         print(f"   ✅ {filename}")
     
     print(f"\n📂 Prompts saved to: {prompts_dir}")
-    print("\n💡 NEXT STEP: Feed these prompts to your LLM to generate chapter content.")
-    print("   Save responses to: products/holistic_wellness_protocol/output/responses/")
+
+
+def validate_responses(config: dict, responses_dir: Path) -> dict:
+    """Validate chapter responses and identify expansion needs."""
+    print("\n📊 VALIDATING CHAPTER RESPONSES")
+    print("=" * 50)
+    
+    chapters = []
+    for chapter in config["chapters"]:
+        response_file = responses_dir / f"chapter_{chapter['number']:02d}*.response.md"
+        matching = list(responses_dir.glob(f"chapter_{chapter['number']:02d}*.response.md"))
+        
+        if matching:
+            content = matching[0].read_text()
+            chapters.append({
+                "title": chapter["title"],
+                "purpose": chapter["purpose"],
+                "content": content,
+                "key_takeaways": chapter["takeaways"]
+            })
+            word_count = len(content.split())
+            status = "✅" if word_count >= MIN_WORDS_PER_CHAPTER else "⚠️"
+            print(f"   {status} Chapter {chapter['number']}: {word_count} words")
+        else:
+            print(f"   ❌ Chapter {chapter['number']}: MISSING")
+            chapters.append({
+                "title": chapter["title"],
+                "purpose": chapter["purpose"],
+                "content": "",
+                "key_takeaways": chapter["takeaways"]
+            })
+    
+    # Validate page count
+    stats = validate_page_count(chapters, MIN_PAGES_MAIN_PRODUCT)
+    
+    print(f"\n📊 SUMMARY:")
+    print(f"   Total Words: {stats.total_words:,}")
+    print(f"   Estimated Pages: {stats.estimated_pages}")
+    print(f"   Minimum Required: {MIN_PAGES_MAIN_PRODUCT}")
+    print(f"   Status: {'✅ PASSES' if stats.meets_minimum else '❌ NEEDS EXPANSION'}")
+    
+    return {
+        "chapters": chapters,
+        "stats": stats,
+        "needs_expansion": not stats.meets_minimum
+    }
+
+
+def generate_expansion_prompts(config: dict, validation: dict, output_dir: Path):
+    """Generate expansion prompts for thin chapters."""
+    expansion_dir = output_dir / "expansion_prompts"
+    expansion_dir.mkdir(exist_ok=True)
+    
+    stats = validation["stats"]
+    
+    if stats.meets_minimum:
+        print("\n✅ No expansion needed - content meets page minimum.")
+        return
+    
+    print(f"\n📋 GENERATING EXPANSION PROMPTS")
+    print("=" * 50)
+    
+    thin_chapters = [
+        (i, ch_stats) 
+        for i, ch_stats in enumerate(stats.chapter_stats) 
+        if ch_stats['words'] < MIN_WORDS_PER_CHAPTER
+    ]
+    
+    for idx, ch_stats in thin_chapters:
+        chapter = validation["chapters"][idx]
+        words_to_add = TARGET_WORDS_PER_CHAPTER - ch_stats['words']
+        
+        prompt = config["expansion_template"].format(
+            chapter_title=chapter["title"],
+            current_words=ch_stats['words'],
+            target_words=TARGET_WORDS_PER_CHAPTER,
+            words_to_add=words_to_add,
+            content_summary=chapter["content"][:500] + "..." if len(chapter["content"]) > 500 else chapter["content"]
+        )
+        
+        filename = f"expand_ch{idx+1:02d}_{chapter['title'].lower().replace(' ', '_')}.prompt.md"
+        prompt_path = expansion_dir / filename
+        prompt_path.write_text(prompt)
+        print(f"   📋 {filename} (need +{words_to_add} words)")
+    
+    print(f"\n📂 Expansion prompts saved to: {expansion_dir}")
+    print("💡 Generate responses and add them to the chapter files, then re-run validation.")
+
+
+def generate_bonus_prompts(config: dict, output_dir: Path):
+    """Generate prompts for all 6 bonus documents."""
+    bonus_dir = output_dir / "bonus_prompts"
+    bonus_dir.mkdir(exist_ok=True)
+    
+    print(f"\n🎁 GENERATING {len(config['bonuses'])} BONUS PROMPTS")
+    print("=" * 50)
+    
+    for bonus in config["bonuses"]:
+        prompt = config["bonus_template"].format(
+            bonus_type=bonus["type"],
+            bonus_title=bonus["title"],
+            min_words=bonus["min_words"],
+            title=config["title"],
+            topic=config["topic"],
+            audience=config["audience"],
+            thesis=config["thesis"]
+        )
+        
+        filename = f"generate_{bonus['type']}.prompt.md"
+        prompt_path = bonus_dir / filename
+        prompt_path.write_text(prompt)
+        print(f"   📋 {filename} (min {bonus['min_words']} words)")
+    
+    print(f"\n📂 Bonus prompts saved to: {bonus_dir}")
+
+
+def show_workflow_status(config: dict, output_dir: Path):
+    """Show the current workflow status and next steps."""
+    responses_dir = output_dir / "responses"
+    bonuses_dir = output_dir / "bonuses" / "responses"
+    
+    print("\n" + "=" * 60)
+    print("📊 WORKFLOW STATUS")
+    print("=" * 60)
+    
+    # Check chapters
+    chapter_responses = list(responses_dir.glob("*.response.md")) if responses_dir.exists() else []
+    print(f"\n📕 MAIN CHAPTERS: {len(chapter_responses)}/{len(config['chapters'])}")
+    
+    if len(chapter_responses) == len(config["chapters"]):
+        print("   ✅ All chapters generated")
+        # Validate
+        validation = validate_responses(config, responses_dir)
+        if validation["needs_expansion"]:
+            print("   ⚠️ Some chapters need expansion")
+    else:
+        print(f"   ⏳ Generate remaining {len(config['chapters']) - len(chapter_responses)} chapters")
+    
+    # Check bonuses
+    bonus_responses = list(bonuses_dir.glob("*.md")) if bonuses_dir.exists() else []
+    print(f"\n🎁 BONUSES: {len(bonus_responses)}/{len(config['bonuses'])}")
+    
+    if len(bonus_responses) == len(config["bonuses"]):
+        print("   ✅ All bonuses generated")
+    else:
+        print(f"   ⏳ Generate remaining {len(config['bonuses']) - len(bonus_responses)} bonuses")
+    
+    # Show next steps
+    print("\n📋 NEXT STEPS:")
+    if len(chapter_responses) < len(config["chapters"]):
+        print("   1. Feed chapter prompts to LLM → save to responses/")
+    elif validation.get("needs_expansion"):
+        print("   1. Feed expansion prompts to LLM → add to chapters")
+    elif len(bonus_responses) < len(config["bonuses"]):
+        print("   1. Feed bonus prompts to LLM → save to bonuses/responses/")
+    else:
+        print("   1. Run compilation to build PDFs")
+        print("   2. Generate images if not done")
+        print("   3. Package final zip")
 
 
 def main():
@@ -303,17 +557,29 @@ def main():
     print("=" * 60)
     print(f"\n📕 {PRODUCT_CONFIG['title']}")
     print(f"📝 {len(PRODUCT_CONFIG['chapters'])} chapters planned")
-    print(f"🎯 Target: 18,000+ words (100+ pages)")
+    print(f"🎁 {len(PRODUCT_CONFIG['bonuses'])} bonuses planned")
+    print(f"🎯 Target: {MIN_PAGES_MAIN_PRODUCT}+ pages ({MIN_WORDS_PER_CHAPTER}+ words/chapter)")
     
-    # Generate prompts
-    generate_prompts(PRODUCT_CONFIG, OUTPUT_DIR)
+    # Step 1: Generate chapter prompts
+    generate_chapter_prompts(PRODUCT_CONFIG, OUTPUT_DIR)
     
-    # Check if responses already exist
+    # Step 2: Check for existing responses and validate
     existing_responses = list(RESPONSES_DIR.glob("*.response.md"))
     if existing_responses:
-        print(f"\n📄 Found {len(existing_responses)} existing responses!")
-        print("   Run compile step to build PDF.")
+        print(f"\n📄 Found {len(existing_responses)} existing chapter responses")
+        validation = validate_responses(PRODUCT_CONFIG, RESPONSES_DIR)
+        
+        # Step 3: Generate expansion prompts if needed
+        if validation["needs_expansion"]:
+            generate_expansion_prompts(PRODUCT_CONFIG, validation, OUTPUT_DIR)
+    
+    # Step 4: Generate bonus prompts
+    generate_bonus_prompts(PRODUCT_CONFIG, OUTPUT_DIR)
+    
+    # Step 5: Show overall status
+    show_workflow_status(PRODUCT_CONFIG, OUTPUT_DIR)
 
 
 if __name__ == "__main__":
     main()
+

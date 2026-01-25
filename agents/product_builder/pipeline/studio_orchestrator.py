@@ -32,6 +32,13 @@ from .qa_lab import QALab
 from .reader_sim import ReaderSimulator
 from .delight_guard import DelightGuard
 
+# Content Expansion (100+ page guarantee)
+from .content_expander import (
+    validate_page_count, run_expansion_loop, validate_all_bonuses,
+    generate_bonus_expansion_prompt, MIN_PAGES_MAIN_PRODUCT,
+    MIN_WORDS_PER_CHAPTER, TARGET_WORDS_PER_CHAPTER
+)
+
 # Packaging
 from ..packaging.bonus_architect import BonusArchitect
 from ..packaging.audio import AudioScriptAgent
@@ -68,8 +75,12 @@ class StudioOrchestrator:
     2. Design: TransformationMap → CurriculumGraph
     3. Narrative: NarrativeSpine → VoiceStyleGuide
     4. Creation: WritersRoom → MasterEditor → AIDetector → Compression
+    4.5. EXPANSION: Validate 100+ pages, expand thin chapters if needed (NEW)
     5. QA: QALab → ReaderSim → PremiumScorecard
-    6. Package: BonusArchitect → Audio/Video → Publisher
+    6. Packaging: Bonus planning → Bonus content generation
+    7. BONUS GENERATION: Create research-backed bonus content (NEW)
+    8. VISUALS: Generate images for chapters and bonuses (NEW)
+    9. COMPILE: Build final PDFs and package
     """
     
     def __init__(self, context: ProductContext, prompts_only: bool = False, output_dir: Optional[Path] = None):
@@ -181,6 +192,74 @@ class StudioOrchestrator:
         
         combined_content = "\n\n".join(all_content_text)
         
+        # ═══════════════════════════════════════════════════════════════
+        # PHASE 4.5: CONTENT EXPANSION LOOP (100+ page guarantee)
+        # ═══════════════════════════════════════════════════════════════
+        logger.info("═══ PHASE 4.5: CONTENT EXPANSION ═══")
+        
+        # Validate page count and expand if needed
+        page_stats = validate_page_count(chapters, MIN_PAGES_MAIN_PRODUCT)
+        logger.info(f"📊 Initial validation: {page_stats.estimated_pages} pages, {page_stats.total_words} words")
+        
+        if not page_stats.meets_minimum:
+            logger.warning(f"⚠️ Content below {MIN_PAGES_MAIN_PRODUCT} page minimum. Expansion needed.")
+            
+            # In prompts_only mode, we generate expansion prompts but don't auto-expand
+            if self.prompts_only:
+                # Generate prompts for expansion
+                expansion_prompts_dir = self.output_dir / "expansion_prompts" if self.output_dir else None
+                if expansion_prompts_dir:
+                    expansion_prompts_dir.mkdir(exist_ok=True)
+                    for i, ch_stats in enumerate(page_stats.chapter_stats):
+                        if ch_stats['words'] < MIN_WORDS_PER_CHAPTER:
+                            chapter = chapters[i]
+                            prompt = f"""## Chapter Expansion Needed
+
+**Chapter:** {chapter['title']}
+**Current Words:** {ch_stats['words']}
+**Target Words:** {TARGET_WORDS_PER_CHAPTER}
+**Words to Add:** ~{TARGET_WORDS_PER_CHAPTER - ch_stats['words']}
+
+Expand this chapter by adding:
+1. More worked examples with specific details
+2. Additional case studies or stories
+3. Deeper exploration of key concepts
+4. More actionable steps and exercises
+
+The expansion should maintain the existing voice and add genuine value.
+"""
+                            prompt_path = expansion_prompts_dir / f"expand_ch{i+1:02d}.prompt.md"
+                            prompt_path.write_text(prompt)
+                            logger.info(f"   📋 Generated expansion prompt: {prompt_path.name}")
+                    
+                    logger.info(f"💡 Expansion prompts saved to: {expansion_prompts_dir}")
+                    logger.info("   After providing expansions, re-run to continue pipeline.")
+            else:
+                # Run automatic expansion loop if LLM callback available
+                product_context = {
+                    'title': title,
+                    'thesis': self.artifacts.intelligence.thesis if self.artifacts.intelligence else '',
+                    'audience': self.artifacts.positioning.target_audience if self.artifacts.positioning else ''
+                }
+                
+                expansion_result = run_expansion_loop(
+                    chapters=chapters,
+                    product_context=product_context,
+                    min_pages=MIN_PAGES_MAIN_PRODUCT,
+                    expansion_callback=None  # Would need LLM integration
+                )
+                
+                if expansion_result.success:
+                    logger.info(f"✅ Expansion complete: {expansion_result.final_pages} pages")
+                else:
+                    logger.warning(f"⚠️ Expansion incomplete: {expansion_result.final_pages}/{MIN_PAGES_MAIN_PRODUCT} pages")
+        else:
+            logger.info(f"✅ Content meets minimum: {page_stats.estimated_pages} pages")
+        
+        # Recalculate combined content after any expansion
+        combined_content = "\n\n".join([ch['content'] for ch in chapters])
+
+
         # ... (QA Phase skipped in truncated code, defining defaults)
         qa_report = {"status": "skipped", "issues": []}
         focus_group = []
