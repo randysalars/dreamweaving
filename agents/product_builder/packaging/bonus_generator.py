@@ -94,7 +94,7 @@ class BonusGenerator:
                 "audience_pain_points": "Lack of in-depth knowledge, need for actionable steps",
                 "transformation_from": "Novice",
                 "transformation_to": "Expert",
-                "length_instruction": "WRITE AN EXTREMELY LONG, COMPREHENSIVE CHAPTER. Aim for 2000+ words per chapter. Go deep into theory, then practice, then examples. Leave no stone unturned."
+                "length_instruction": "WRITE AN EXTREMELY LONG, COMPREHENSIVE NARRATIVE CHAPTER. Aim for 2000+ words. Go deep into theory, then practice, then examples. Leave no stone unturned.\n\nCRITICAL CONSTRAINTS:\n1. NO CODE BLOCKS.\n2. NO PYTHON SCRIPTS.\n3. WRITE IN PLAIN ENGLISH ONLY."
             }
             
             # Use Writer's Room to generate deep content
@@ -103,7 +103,7 @@ class BonusGenerator:
             full_chapters.append({
                 "title": chapter_meta['title'],
                 "content": content,
-                "key_takeaways": self._extract_takeaways(content, title)
+                "key_takeaways": self._extract_takeaways(content, chapter_meta['title'])
             })
             
             # 2.5 Generate Visuals for Bonus Chapters
@@ -178,49 +178,55 @@ class BonusGenerator:
         }}
         """
         
-        response = self.llm.generate(prompt)
-        
-        import json
-        import re
-        
-        try:
-            # Clean and parse JSON
-            clean = response.strip()
-            if "```" in clean:
-                clean = re.sub(r"^```(json)?\n", "", clean)
-                clean = re.sub(r"\n```$", "", clean)
-            
-            data = json.loads(clean)
-            chapters = data.get("chapters", [])
-            
-            # Fallback if too few chapters
-            if len(chapters) < 5:
-                # If LLM failed to give enough, we duplicate/expand logic or just accept (for now, let's accept but warn)
-                logger.warning(f"   ⚠️  Outline only has {len(chapters)} chapters. Might not reach 50 pages.")
+        # Retry loop for outline generation
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                response = self.llm.generate(prompt)
                 
-            return chapters
-            
-        except Exception as e:
-            logger.error(f"Failed to outline bonus: {e}")
-            # Fallback outline
-            return [
-                {"title": "Introduction", "purpose": "Overview of the strategy"},
-                {"title": "Core Concepts", "purpose": "Deep dive into fundamentals"},
-                {"title": "Strategy Part 1", "purpose": "First phase of execution"},
-                {"title": "Strategy Part 2", "purpose": "Second phase of execution"},
-                {"title": "Strategy Part 3", "purpose": "Final phase of execution"},
-                {"title": "Advanced Tactics", "purpose": "Leveling up"},
-                {"title": "Common Mistakes", "purpose": "What to avoid"},
-                {"title": "Case Studies", "purpose": "Real world examples"},
-                {"title": "Tools and Resources", "purpose": "What you need"},
-                {"title": "Action Plan", "purpose": "30 day roadmap"}
-            ]
+                # Clean and parse JSON
+                clean = response.strip()
+                import re
+                if "```" in clean:
+                    clean = re.sub(r"^```(json)?\n", "", clean)
+                    clean = re.sub(r"\n```$", "", clean)
+                
+                import json
+                data = json.loads(clean)
+                chapters = data.get("chapters", [])
+                
+                # Validation
+                if len(chapters) >= 5:
+                    return chapters
+                
+                logger.warning(f"   ⚠️  Outline attempt {attempt+1} too short ({len(chapters)} chapters). Retrying...")
+                
+            except Exception as e:
+                logger.warning(f"   ⚠️  Outline attempt {attempt+1} failed: {e}")
+        
+        logger.error("❌ All outline attempts failed. Using fallback.")
+        # Fallback outline
+        return [
+            {"title": "Introduction", "purpose": "Overview of the strategy"},
+            {"title": "Core Concepts", "purpose": "Deep dive into fundamentals"},
+            {"title": "Strategy Part 1", "purpose": "First phase of execution"},
+            {"title": "Strategy Part 2", "purpose": "Second phase of execution"},
+            {"title": "Strategy Part 3", "purpose": "Final phase of execution"},
+            {"title": "Advanced Tactics", "purpose": "Leveling up"},
+            {"title": "Common Mistakes", "purpose": "What to avoid"},
+            {"title": "Case Studies", "purpose": "Real world examples"},
+            {"title": "Tools and Resources", "purpose": "What you need"},
+            {"title": "Action Plan", "purpose": "30 day roadmap"}
+        ]
 
-    def _extract_takeaways(self, content: str, title: str) -> List[str]:
+    def _extract_takeaways(self, content: str, chapter_title: str) -> List[str]:
         """Extract 3 actionable takeaways from the content."""
         prompt = f"""
-        Context: {title}
-        Extract 3 short, actionable takeaways (1 sentence each) from this text.
+        Context: Chapter "{chapter_title}"
+        
+        Extract 3 short, actionable takeaways (1 sentence each) specifically from the text below.
+        Do NOT give generic advice. Use the actual content provided.
+        
         Format:
         - Takeaway 1
         - Takeaway 2

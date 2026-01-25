@@ -100,6 +100,34 @@ class LLMClient:
         if "process flow" in prompt_lower and "step 1" in prompt_lower:
             return "Audit -> Plan -> Execute -> Review"
             
+        if "landing page" in prompt_lower and "valid json" in prompt_lower:
+            return """
+```json
+{
+  "headline": "Unlock Your Financial Freedom in 30 Days",
+  "subheadline": "The proven system to automate your money and build wealth without budgeting.",
+  "features": [
+    {"icon": "🚀", "title": "The Automation Engine", "description": "Set it and forget it."},
+    {"icon": "🧠", "title": "Psychology of Spending", "description": "Rewire your brain."}
+  ],
+  "bonuses": [
+    {
+      "title": "The Recession-Proof Investing Guide",
+      "value": "97.00",
+      "description": "How to turn market crashes into wealth events."
+    },
+    {
+      "title": "The Salary Negotiation Blackbook",
+      "value": "197.00",
+      "description": "Scripts to add $10k to your salary."
+    }
+  ],
+  "faq": [{"question": "Is this for me?", "answer": "Yes."}],
+  "testimonial": {"quote": "Changed my life.", "author": "Jane D", "role": "User"}
+}
+```
+"""
+            
         # BLOCK REMOVED: Generic Takeaways (Fixed to allow context-aware logic below)
         # if "extract 3 short" in prompt_lower and "takeaways" in prompt_lower:
         #    return ...
@@ -428,7 +456,48 @@ Instead, we buy the haystack.
 Once a year, you look at your pie chart. If stocks grew to 70%, you sell some stocks and buy bonds to get back to 60/20/20.
 That forces you to "Sell High, Buy Low" automatically.
 """
-            if "common mistake" in prompt_lower or "mistake" in prompt_lower:
+            if "action plan" in prompt_lower or "action" in prompt_lower:
+                return """
+## Step 1: Occam's Razor for Accounts
+We need to put our investments in the right "buckets" to avoid taxes.
+
+**The Order of Operations (The Waterfall):**
+1.  **401k Match:** If your employer offers a match (e.g., 3%), TAKE IT. It is a guaranteed 100% return instantly. Free money.
+2.  **Health Savings Account (HSA):** The Triple Tax Threat. Tax-free in, tax-free growth, tax-free out for medical. It's the best account in existence.
+3.  **Roth IRA:** You pay taxes now, but tax-free FOREVER. When you retire with $2 Million, the government gets $0.
+4.  **Traditional IRA / 401k:** Tax deduction now, pay taxes later. Good for high earners.
+5.  **Taxable Brokerage:** For everything else.
+
+**Execution:**
+1.  Go to Vanguard/Fidelity.
+2.  Open a **Roth IRA**.
+3.  Link your bank.
+4.  Transfer $500.
+5.  **CRITICAL STEP:** search "VTI" and CLICK BUY. (Many people transfer money but leave it in cash!).
+"""
+            if "case stud" in prompt_lower:
+                 return """
+## Case Study: The Tale of Two Investors
+**Bob (The Market Timer):**
+Bob waited for the "perfect moment" to invest. He sat in cash during 2013-2020 because "the market was too high."
+He missed a 200% rally. He finally bought in 2021, right before a dip, got scared, and sold.
+Bob has $10k.
+
+**Alice (The Auto-Buyer):**
+Alice didn't care about the news. She set up a $500 monthly transfer to VTI.
+She bought at the highs. She bought at the lows.
+She has $150k.
+The strategy works if you are boring.
+"""
+            if "tool" in prompt_lower:
+                return """
+## The Investing Tech Stack
+1.  **M1 Finance:** Best for automated pies. You set the percentage (e.g. 80% VTI, 20% VXUS) and it auto-balances every deposit.
+2.  **Vanguard:** The old reliable. Lowest fees, ownership structure means they work for you. Ugly UI, beautiful philosophy.
+3.  **Fidelity:** Great customer service, zero expense ratio funds.
+"""
+            # Moved Mistake check last and made more specific to avoidance/mistake chapters
+            if "title: common mistakes" in prompt_lower or "chapter: common mistakes" in prompt_lower:
                 return """
 ## Mistake: Panic Selling (The Wealth Killer)
 "It's different this time."
@@ -449,26 +518,7 @@ You just destroyed 10 years of compounding in 2 months.
 2.  **Delete the App:** Make it hard to log in.
 3.  **Automate:** If the money leaves your account automatically, you can't emotionally stop it.
 """
-            if "action plan" in prompt_lower or "action" in prompt_lower:
-                return """
-## Step 1: Occam's Razor for Accounts
-We need to put our investments in the right "buckets" to avoid taxes.
-
-**The Order of Operations (The Waterfall):**
-1.  **401k Match:** If your employer offers a match (e.g., 3%), TAKE IT. It is a guaranteed 100% return instantly. Free money.
-2.  **Health Savings Account (HSA):** The Triple Tax Threat. Tax-free in, tax-free growth, tax-free out for medical. It's the best account in existence.
-3.  **Roth IRA:** You pay taxes now, but tax-free FOREVER. When you retire with $2 Million, the government gets $0.
-4.  **Traditional IRA / 401k:** Tax deduction now, pay taxes later. Good for high earners.
-5.  **Taxable Brokerage:** For everything else.
-
-**Execution:**
-1.  Go to Vanguard/Fidelity.
-2.  Open a **Roth IRA**.
-3.  Link your bank.
-4.  Transfer $500.
-5.  **CRITICAL STEP:** search "VTI" and CLICK BUY. (Many people transfer money but leave it in cash!).
-"""
-            return "## The path to wealth is boring..."
+            return "## The path to wealth is boring. Keep buying. Keep holding."
 
         # --- NEGOTIATION BLACKBOOK (Deep Content) ---
         if "negotiat" in prompt_lower or "salary" in prompt_lower:
@@ -534,6 +584,7 @@ Best,
 """
             return "## Never Accept the First Offer\nThe first offer is a test. They expect you to counter. If you don't, you are leaving money on the table."
 
+        # Fallback for misc
         # Fallback for misc
         return """
 ## Deep Dive Section
