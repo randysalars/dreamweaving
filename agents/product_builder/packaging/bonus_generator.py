@@ -54,13 +54,121 @@ class BonusGenerator:
                 if "pdf" in format_type or "ebook" in format_type or "guide" in format_type:
                     path = self._generate_pdf_bonus(title, description)
                     generated_paths.append(path)
+                elif "worksheet" in format_type or "workbook" in format_type:
+                    path = self._generate_worksheet_bonus(title, description)
+                    generated_paths.append(path)
+                elif "audio" in format_type or "mp3" in format_type:
+                    path = self._generate_audio_script_bonus(title, description)
+                    generated_paths.append(path)
                 else:
-                    logger.warning(f"   ⚠️  Skipping non-PDF bonus format '{format_type}' (Not yet implemented)")
+                    logger.warning(f"   ⚠️  Skipping unknown bonus format '{format_type}'")
                     
             except Exception as e:
                 logger.error(f"❌ Failed to generate bonus '{title}': {e}", exc_info=True)
                 
         return generated_paths
+
+    def _generate_worksheet_bonus(self, title: str, description: str) -> str:
+        """
+        Generate a PDF Workbook with exercises.
+        Strategy: 5-7 Exercises with reflection questions.
+        """
+        logger.info(f"   📝 Generating Worksheet Bonus: {title}")
+        
+        # 1. Outline Exercises
+        exercises = [
+            {"title": "Self-Assessment Audit", "purpose": "Understand current state"},
+            {"title": "Goal Visualization", "purpose": "Define the destination"},
+            {"title": "Barrier Identification", "purpose": "Spot obstacles"},
+            {"title": "Action Planning", "purpose": "Define next steps"},
+            {"title": "Accountability Contract", "purpose": "Commit to the plan"}
+        ]
+        
+        # 2. Write Content
+        full_chapters = []
+        for i, exercise in enumerate(exercises):
+            logger.info(f"      ✍️  Exercise {i+1}: {exercise['title']}")
+            
+            context = {
+                "title": title,
+                "chapter_title": exercise['title'],
+                "chapter_purpose": exercise['purpose'],
+                "product_name": title,
+                "length_instruction": "Create a guided worksheet exercise. Include specific questions, fill-in-the-blank statements, and reflection prompts. Use formatting like [TYPE ANSWER HERE] or [CHECKBOX] to simulate a worksheet."
+            }
+            
+            # Use raw LLM for worksheet specific format to avoid writer's room narrative bias
+            prompt = f"""
+            Write a worksheet exercise titled "{exercise['title']}".
+            Purpose: {exercise['purpose']}
+            Context: {description}
+            
+            Format as a professional coaching worksheet. 
+            Include an introduction, 3-5 specific questions or activities, and a closing reflection.
+            Use placeholders like [______________] for user input.
+            """
+            content = self.llm.generate(prompt)
+            
+            full_chapters.append({
+                "title": exercise['title'],
+                "content": content,
+                "key_takeaways": ["Complete the self-audit.", "Be honest with your answers.", "Review quarterly."]
+            })
+
+        # 3. Compile PDF
+        config = PDFConfig(
+            title=title + " (Workbook)",
+            author="SalarsNet",
+            output_path=str(self.output_dir / f"{self._slugify(title)}.pdf"),
+            style=PDFStyle(heading_color="#2c5282", accent_color="#4299e1") 
+        )
+        return self.pdf_generator.generate(full_chapters, config)
+
+    def _generate_audio_script_bonus(self, title: str, description: str) -> str:
+        """
+        Generate a PDF Script for Audio.
+        Strategy: 5 Tracks/Modules script.
+        """
+        logger.info(f"   🎙️  Generating Audio Script Bonus: {title}")
+        
+        tracks = [
+            {"title": "Track 1: Introduction & Intent", "purpose": "Set the stage"},
+            {"title": "Track 2: The Core Shift", "purpose": "Change perspective"},
+            {"title": "Track 3: Guided Visualization", "purpose": "Mental rehearsal"},
+            {"title": "Track 4: Affirmations", "purpose": "Reprogramming"},
+            {"title": "Track 5: Daily Ritual", "purpose": "Integration"}
+        ]
+        
+        full_chapters = []
+        for i, track in enumerate(tracks):
+            logger.info(f"      ✍️  Scripting {track['title']}")
+            
+            prompt = f"""
+            Write a spoken-word script for audio recording.
+            Title: {track['title']}
+            Purpose: {track['purpose']}
+            Context: {description}
+            
+            Tone: Soothing, authoritative, hypnotic, empowering.
+            Include [PAUSE] markers and [EMPHASIZE] directives.
+            Write in a spoken conversational rhythm.
+            """
+            content = self.llm.generate(prompt)
+            
+            full_chapters.append({
+                "title": track['title'],
+                "content": content,
+                "key_takeaways": ["Listen daily.", "Internalize the shift.", "Practice the ritual."]
+            })
+
+        # 3. Compile PDF
+        config = PDFConfig(
+            title=title + " (Audio Transcript)",
+            author="SalarsNet",
+            output_path=str(self.output_dir / f"{self._slugify(title)}.pdf"),
+            style=PDFStyle(heading_color="#276749", accent_color="#48bb78") 
+        )
+        return self.pdf_generator.generate(full_chapters, config)
 
     def _generate_pdf_bonus(self, title: str, description: str) -> str:
         """

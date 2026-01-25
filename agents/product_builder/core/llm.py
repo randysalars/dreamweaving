@@ -114,12 +114,26 @@ class LLMClient:
     {
       "title": "The Recession-Proof Investing Guide",
       "value": "97.00",
+      "format": "pdf",
       "description": "How to turn market crashes into wealth events."
     },
     {
       "title": "The Salary Negotiation Blackbook",
       "value": "197.00",
+      "format": "pdf",
       "description": "Scripts to add $10k to your salary."
+    },
+    {
+      "title": "Action Workbook",
+      "value": "49.00",
+      "format": "worksheet",
+      "description": "Step-by-step exercises to apply each chapter's insights."
+    },
+    {
+      "title": "Guided Reflection Audio",
+      "value": "29.00",
+      "format": "audio",
+      "description": "10-minute guided reflection to internalize the transformation."
     }
   ],
   "faq": [{"question": "Is this for me?", "answer": "Yes."}],
@@ -128,14 +142,62 @@ class LLMClient:
 ```
 """
             
-        # BLOCK REMOVED: Generic Takeaways (Fixed to allow context-aware logic below)
-        # if "extract 3 short" in prompt_lower and "takeaways" in prompt_lower:
-        #    return ...
-
         # 3. Text Content request (e.g. WritersRoom Writer)
         # Content Library for "Smart Mock"
         
-        print(f"DEBUG: Checking prompt: {prompt[:30]}...")
+        # print(f"DEBUG: Checking prompt: {prompt[:30]}...")
+
+        # --- WORKSHEET MOCK ---
+        if "worksheet" in prompt_lower:
+            return """
+## Exercise: Self-Assessment Audit
+**Purpose:** Understand your current financial reality.
+
+**Instructions:**
+Fill out the sections below honestly. There is no judgment here, only data.
+
+**1. What is your current monthly take-home pay?**
+$ [____________________]
+
+**2. List your top 3 biggest expenses last month:**
+1. [____________________] - $ [________]
+2. [____________________] - $ [________]
+3. [____________________] - $ [________]
+
+**3. Reflection:**
+Looking at these numbers, how do you feel? (Excited, Scared, Numb?)
+[_________________________________________________________________]
+[_________________________________________________________________]
+
+**Action Step:**
+[ ] I have logged into my bank account and verified these numbers.
+"""
+
+        # --- AUDIO SCRIPT MOCK ---
+        if "spoken-word script" in prompt_lower or "audio recording" in prompt_lower:
+             # Basic check to see if it's requesting a specific track or the full thing
+             return """
+## Track 1: Introduction & Intent
+
+[PAUSE: 3 seconds of silence]
+
+**Narrator (Soft, commanding voice):**
+Welcome.
+Take a deep breath.
+[PAUSE]
+You are here because you are ready for a shift.
+Not just in your bank account, but in your mind.
+Money is not math. Money is emotion.
+And for too long, that emotion has been fear.
+Today, we replace fear with architecture.
+
+[EMPHASIZE]
+You are the architect of your life.
+And this is your blueprint.
+
+[PAUSE]
+Let's begin.
+"""
         
         # --- SMART VISUALS ---
         if "matplotlib" in prompt_lower or "chart" in prompt_lower:
