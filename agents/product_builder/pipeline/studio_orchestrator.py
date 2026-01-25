@@ -189,7 +189,26 @@ class StudioOrchestrator:
                 delight_voice=8, practicality_actionability=8, bonus_power=8,
                 packaging_quality=8
             )
-            
+
+        # ═══════════════════════════════════════════════════════════════
+        # PHASE 6: PACKAGING (Bonus Design)
+        # ═══════════════════════════════════════════════════════════════
+        logger.info("═══ PHASE 6: PACKAGING (Bonus Design) ═══")
+        
+        # Design high-value bonuses based on curriculum friction
+        bonus_plan = self.bonus_architect.design(
+            self.artifacts.intelligence, 
+            [
+                # Reconstruct ChapterSpecs from curriculum (simplified)
+                type('ChapterSpec', (), {
+                    'title': c.name, 
+                    'purpose': c.description,
+                    'key_takeaways': [c.description]
+                })() for c in self.artifacts.curriculum.concepts
+            ]
+        )
+        logger.info(f"✅ Bonus Plan: {len(bonus_plan.bonuses)} bonuses designed")
+        
         return {
             "title": title,
             "chapters": chapters, # Added list of dicts
@@ -198,7 +217,7 @@ class StudioOrchestrator:
             "qa_report": qa_report,
             "focus_group": focus_group,
             "scorecard": self.artifacts.scorecard,
-            "bonus_plan": bonus_plan,
+            "bonus_plan": bonus_plan, # Return the structured plan
             "executive_summary": executive_summary,
             "quickstart": quickstart,
             "publishable": self.artifacts.scorecard.publishable

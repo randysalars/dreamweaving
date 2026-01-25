@@ -65,6 +65,7 @@ class AssemblyResult:
     
     # Generated files
     pdf_path: Optional[str] = None
+    zip_path: Optional[str] = None
     audio_files: List[str] = field(default_factory=list)
     video_files: List[str] = field(default_factory=list)
     visual_files: List[str] = field(default_factory=list)
@@ -99,7 +100,12 @@ class AssemblyResult:
             "success": self.success,
             "errors": self.errors
         }
-
+@dataclass
+class SimpleResult:
+    """Helper for internal result tracking."""
+    section_id: str
+    path: Optional[str]
+    success: bool
 
 class ProductAssembler:
     """
@@ -218,6 +224,15 @@ class ProductAssembler:
                 logger.error(f"Video generation failed: {e}")
                 result.errors.append(f"Video: {str(e)}")
         
+        # 5. Create Zip Package (Trinity Pack)
+        logger.info("📦 Packaging Trinity Pack...")
+        try:
+            zip_path = self._create_zip_package(config)
+            result.zip_path = zip_path
+        except Exception as e:
+            logger.error(f"Zip packaging failed: {e}")
+            result.errors.append(f"Zip: {str(e)}")
+        
         # Calculate timing
         end_time = datetime.now()
         result.generation_time_seconds = (end_time - start_time).total_seconds()
@@ -252,7 +267,7 @@ class ProductAssembler:
                 title=ch.get("title", f"Chapter {i+1}"),
                 purpose=ch.get("purpose", ""),
                 key_takeaways=ch.get("key_takeaways", []),
-                target_word_count=len(ch.get("content", "").split())
+                estimated_pages=max(1, len(ch.get("content", "").split()) // 250)
             )
             for i, ch in enumerate(chapters)
         ]
@@ -290,18 +305,10 @@ class ProductAssembler:
         if code_prompts:
             logger.info(f"📊 Generating {len(code_prompts)} Charts/Diagrams...")
             code_results = self.code_visual_generator.generate_batch(code_prompts)
-            # Normalize result object to match ImageGenerator result (hacky but works)
-            from dataclasses import dataclass
-            @dataclass
-            class SimpleResult:
-                section_id: str
-                path: str
-                success: bool
-            
             for cr in code_results:
                 results.append(SimpleResult(
                     section_id=cr['section_id'], 
-                    path=cr['path'], 
+                    path=cr.get('path'), 
                     success=cr['success']
                 ))
 
@@ -376,6 +383,28 @@ class ProductAssembler:
         logger.info("Video generation requires Remotion project setup")
         
         return video_files
+    
+    def _create_zip_package(self, config: AssemblyConfig) -> str:
+        """Bundle the output directory into a zip file."""
+        import shutil
+        
+        # Create zip inside the output directory
+        base_name = str(config.output_dir / self._slugify(config.title))
+        
+        # Make archive
+        # format='zip' adds .zip extension automatically
+        logger.info(f"   Compressing artifacts in {config.output_dir}...")
+        
+        zip_path = shutil.make_archive(
+            base_name, 
+            'zip', 
+            root_dir=str(config.output_dir)
+        )
+        
+        return zip_path
+    
+    def _slugify(self, text: str) -> str:
+        return "".join(c if c.isalnum() or c == " " else "" for c in text).replace(" ", "_").lower()
 
 
 # Convenience function for quick assembly

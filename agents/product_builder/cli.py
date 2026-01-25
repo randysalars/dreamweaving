@@ -92,7 +92,29 @@ def create_command(args):
                 chapter_map=mock_chapters
             )
             
-            landing_content = landing_agent.generate(mock_blueprint)
+            # Extract Bonus Plan from Orchestrator Results
+            bonus_plan = results.get('bonus_plan')
+            if bonus_plan:
+                logger.info(f"🎁 Found {len(bonus_plan.bonuses)} designed bonuses in pipeline results.")
+            
+            # Pass Bonus Plan to Landing Page Agent
+            landing_content = landing_agent.generate(mock_blueprint, bonus_plan=bonus_plan)
+            
+            # Enforce persistence of designed bonuses into landing content
+            # (In case LLM hallucinated slightly different titles, we force the structure back in)
+            if bonus_plan:
+                # Convert Bonus objects to dicts for JSON serialization
+                landing_content['bonuses'] = [
+                    {
+                        "title": b.title,
+                        "description": b.description,
+                        "format": b.format,
+                        "target_friction": b.target_friction
+                    }
+                    for b in bonus_plan.bonuses
+                ]
+                logger.info("✅ Enforced Bonus Plan compatibility in Landing Page content")
+
             logger.info("✅ Landing Page Content Generated")
 
         # 6. Assemble Final Product (PDF, etc)
