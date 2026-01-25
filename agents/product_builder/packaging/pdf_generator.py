@@ -221,6 +221,33 @@ class PDFGenerator:
             story.append(Paragraph(f"by {config.author}", body_style))
             story.append(PageBreak())
         
+        # Copyright page
+        copyright_style = ParagraphStyle(
+            'Copyright',
+            parent=styles['Normal'],
+            fontSize=10,
+            leading=14,
+            textColor=HexColor('#666666')
+        )
+        disclaimer_text = self._get_disclaimer(config.title)
+        
+        story.append(Spacer(1, 2*inch))
+        story.append(Paragraph(f"<b>{config.title}</b>", copyright_style))
+        story.append(Spacer(1, 0.1*inch))
+        story.append(Paragraph("By Randy Salars", copyright_style))
+        story.append(Spacer(1, 0.2*inch))
+        story.append(Paragraph(
+            "Copyright 2026 Ranmon Inc<br/>"
+            "31 Bear Mountain Rd<br/>"
+            "Silver City, NM 88061<br/>"
+            "salars.net",
+            copyright_style
+        ))
+        story.append(Spacer(1, 0.5*inch))
+        story.append(Paragraph("<b>Disclaimer</b>", copyright_style))
+        story.append(Paragraph(disclaimer_text, copyright_style))
+        story.append(PageBreak())
+        
         # Chapters
         for i, chapter in enumerate(chapters):
             # Chapter Title

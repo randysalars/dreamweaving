@@ -72,11 +72,13 @@ class StudioOrchestrator:
     6. Package: BonusArchitect → Audio/Video → Publisher
     """
     
-    def __init__(self, context: ProductContext):
+    def __init__(self, context: ProductContext, prompts_only: bool = False, output_dir: Optional[Path] = None):
         self.context = context
         self.templates_dir = Path(__file__).parent.parent / "templates"
         self.artifacts = StudioArtifacts()
         self.library = LibraryManager()
+        self.prompts_only = prompts_only
+        self.output_dir = output_dir
         
         # Phase 1: Research
         self.cartographer = MarketCartographer(self.templates_dir)
@@ -90,8 +92,12 @@ class StudioOrchestrator:
         self.narrative_architect = NarrativeArchitect(self.templates_dir)
         self.voice_stylist = VoiceStylist(self.templates_dir)
         
-        # Phase 4: Creation
-        self.writers_room = WritersRoom(self.templates_dir)
+        # Phase 4: Creation (Antigravity-native mode supported)
+        self.writers_room = WritersRoom(
+            self.templates_dir, 
+            output_dir=output_dir, 
+            prompts_only=prompts_only
+        )
         self.master_editor = MasterEditor(self.templates_dir)
         self.ai_detector = AIDetector()
         self.compression = CompressionPass(self.templates_dir)
@@ -235,9 +241,14 @@ class StudioOrchestrator:
             "key_takeaways": concept.description,
             "product_promise": self.artifacts.positioning.core_promise if self.artifacts.positioning else "Transform your life.",
             "audience_persona": self.artifacts.positioning.audience.primary_persona if self.artifacts.positioning and self.artifacts.positioning.audience else "Ambitious Learners",
+            # MISSING KEYS RESTORED:
+            "product_name": self.context.product_name if hasattr(self.context, 'product_name') else "The Product",
+            "thesis": self.artifacts.intelligence.thesis if self.artifacts.intelligence else "This product changes everything."
         }
         
+        
         # Draft
+        logger.info(f"ORCHESTRATOR CONTEXT KEYS: {list(context.keys())}")
         draft = self.writers_room.write_chapter(context)
         
         # Master Edit

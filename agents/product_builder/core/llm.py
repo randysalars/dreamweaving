@@ -145,7 +145,41 @@ class LLMClient:
         # 3. Text Content request (e.g. WritersRoom Writer)
         # Content Library for "Smart Mock"
         
-        # print(f"DEBUG: Checking prompt: {prompt[:30]}...")
+        # --- HEAD WRITER / STORY PRODUCER (Main Content) ---
+        if "head writer" in prompt_lower or "story producer" in prompt_lower:
+            return """
+## The Core Foundation of Financial Freedom
+Financial freedom is not about being rich; it is about owning your time.
+When you trade hours for dollars, you are a servant to the clock. When your money works for you, you are the master of your destiny.
+
+### The Problem with Traditional Advice
+Most financial advice is designed to keep you poor. "Save $5 on coffee," they say.
+But you cannot save your way to wealth if your income is capped and your investments are stagnant.
+You need a system. A machine. An architecture.
+
+### The 3 Pillars of Wealth
+1.  **Mindset:** You must believe you are a builder, not a consumer.
+2.  **Mechanics:** You need automated systems (Zero-Based Budgeting) that handle your money without your input.
+3.  **Multiplication:** You need your money to make babies (Compound Interest).
+
+### The Strategy
+In this chapter, we will dismantle the lies you have been told about money.
+We will look at why "debt" is not always bad (leverage vs consumption).
+We will explore why "safe" investments like savings accounts are actually the most dangerous place for your money due to inflation.
+
+**Key Insight:**
+Wealth is not an event. It is a process.
+If you are waiting for a lottery ticket, you will wait forever.
+If you build the machine today, you will be free in 10 years.
+
+### Deep Dive: The Mathematics of Freedom
+Let's look at the numbers.
+If you save $500/month at 7% interest, you will have $86,000 in 10 years.
+If you increase that to $1,000/month, you don't just double your money—you accelerate the compounding curve.
+Time is your best friend, or your worst enemy. You decide which one it is today.
+
+(This is a substantial draft designed to fill the PDF with meaningful content for the user. It covers the core concepts of the chapter and provides actionable steps.)
+"""
 
         # --- WORKSHEET MOCK ---
         if "worksheet" in prompt_lower:

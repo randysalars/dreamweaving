@@ -1,6 +1,6 @@
 import logging
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Optional
 from ..core.llm import LLMClient
 
 logger = logging.getLogger(__name__)
@@ -9,12 +9,25 @@ class WritersRoom:
     """
     Orchestrates the multi-agent writing process.
     Replaces the single ChapterDrafter with a team of specialists.
+    
+    In Antigravity-native mode (prompts_only=True), writes prompts to files
+    instead of generating content via an external LLM.
     """
     
-    def __init__(self, templates_dir: Path):
+    def __init__(self, templates_dir: Path, output_dir: Optional[Path] = None, prompts_only: bool = False):
         self.templates_dir = templates_dir
         self.roles = ["writers_head", "writers_story", "writers_teacher", "writers_editor"]
-        self.llm = LLMClient()
+        self.prompts_only = prompts_only
+        self.output_dir = output_dir
+        
+        if prompts_only and output_dir:
+            from ..core.prompt_interface import PromptInterface
+            self.prompt_interface = PromptInterface(output_dir)
+            self.llm = None  # No LLM in prompts-only mode
+            logger.info("📝 WritersRoom: Antigravity-native mode (prompts will be written to files)")
+        else:
+            self.llm = LLMClient()
+            self.prompt_interface = None
         
     def write_chapter(self, context: Dict, feedback: list = None) -> str:
         """
@@ -40,36 +53,41 @@ class WritersRoom:
 
         # ─── FRACTAL STEP 1: STRUCTURE ──────────────────────────────
         logger.info("📐 Architecting Fractal Structure...")
-        structure_prompt = self._load_template("chapter_structure_architect").format(**context)
-        structure_response = self.llm.generate(structure_prompt)
         
-        try:
-            # Extract JSON
-            clean_response = structure_response.strip()
-            import re
+        # In prompts_only mode, skip complex fractal structure and use single section
+        if self.prompts_only:
+            sections = [{"title": "Chapter Content", "north_star": context.get('chapter_purpose', 'Cover the topic in depth.')}]
+            logger.info("✅ Using single-section structure (Antigravity-native mode)")
+        else:
+            structure_prompt = self._load_template("chapter_structure_architect").format(**context)
+            structure_response = self.llm.generate(structure_prompt)
             
-            # Strip markdown code blocks if present
-            if "```" in clean_response:
-                clean_response = re.sub(r"^```(json)?\n", "", clean_response)
-                clean_response = re.sub(r"\n```$", "", clean_response)
-                clean_response = clean_response.strip()
-            
-            # Find JSON boundaries
-            json_start = clean_response.find("{")
-            json_end = clean_response.rfind("}") + 1
-            
-            if json_start != -1 and json_end > json_start:
-                sections_data = json.loads(clean_response[json_start:json_end])
-                sections = sections_data.get("sections", [])
-                logger.info(f"✅ Fractal Architect parsed {len(sections)} sections.")
-            else:
-                 raise ValueError("No JSON object found")
+            try:
+                # Extract JSON
+                clean_response = structure_response.strip()
+                import re
+                
+                # Strip markdown code blocks if present
+                if "```" in clean_response:
+                    clean_response = re.sub(r"^```(json)?\n", "", clean_response)
+                    clean_response = re.sub(r"\n```$", "", clean_response)
+                    clean_response = clean_response.strip()
+                
+                # Find JSON boundaries
+                json_start = clean_response.find("{")
+                json_end = clean_response.rfind("}") + 1
+                
+                if json_start != -1 and json_end > json_start:
+                    sections_data = json.loads(clean_response[json_start:json_end])
+                    sections = sections_data.get("sections", [])
+                    logger.info(f"✅ Fractal Architect parsed {len(sections)} sections.")
+                else:
+                    raise ValueError("No JSON object found")
 
-        except Exception as e:
-            logger.warning(f"Failed to parse structure: {e}. Raw response: {structure_response[:100]}...")
-            logger.warning("⚠️ Falling back to single-pass mode (Fractal Generation disabled).")
-            # Fallback for structure failure
-            sections = [{"title": "Main Content", "north_star": "Cover the chapter purpose in depth."}]
+            except Exception as e:
+                logger.warning(f"Failed to parse structure: {e}. Raw response: {structure_response[:100]}...")
+                logger.warning("⚠️ Falling back to single-pass mode (Fractal Generation disabled).")
+                sections = [{"title": "Main Content", "north_star": "Cover the chapter purpose in depth."}]
 
         # ─── FRACTAL STEP 2: DEEP DIVE WRITING ──────────────────────
         full_chapter_content = []
@@ -134,8 +152,10 @@ class WritersRoom:
 
     def _run_agent(self, role_name: str, context: Dict) -> str:
         """
-        Simulates an LLM call for a specific role.
-        In prod, this would load the template and call the API.
+        Runs an LLM call for a specific role.
+        
+        In prompts_only mode: Writes prompt to file for Antigravity to respond.
+        In normal mode: Calls the LLM client.
         """
         template_path = self.templates_dir / f"{role_name}.md"
         if not template_path.exists():
@@ -146,15 +166,30 @@ class WritersRoom:
             template_content = f.read()
 
         # Prepare Prompt
-        # We assume templates use {variable} syntax for python format
         try:
+            logger.info(f"KEYS AVAILABLE for {role_name}: {list(context.keys())}")
             prompt = template_content.format(**context)
         except KeyError as e:
             logger.warning(f"Missing context key for template {role_name}: {e}")
-            # Fallback: Just append the context as a dump if format fails
             prompt = f"{template_content}\n\nCONTEXT:\n{context}"
 
+        # --- ANTIGRAVITY-NATIVE MODE ---
+        if self.prompts_only and self.prompt_interface:
+            # Generate unique slug from context
+            chapter_title = context.get('chapter_title', 'unknown').replace(' ', '_').lower()
+            slug = f"{chapter_title}_{role_name}"
+            
+            prompt_path = self.prompt_interface.write_prompt(
+                prompt=prompt,
+                slug=slug,
+                metadata={"role": role_name, "chapter": context.get('chapter_title')}
+            )
+            logger.info(f"📝 Prompt written: {prompt_path}")
+            return f"[AWAITING_ANTIGRAVITY: {slug}]"
+        
+        # --- STANDARD LLM MODE ---
         logger.info(f"Generating content for {role_name}...")
         response = self.llm.generate(prompt)
         
         return response
+
