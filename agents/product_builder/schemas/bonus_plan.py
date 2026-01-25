@@ -9,7 +9,7 @@ from typing import Literal, List
 
 class Bonus(BaseModel):
     """A single bonus item designed to enhance the main product."""
-    type: Literal["clarity", "application", "reinforcement"] = Field(
+    type: Literal["clarity", "application", "reinforcement", "deep_dive"] = Field(
         description="The purpose category of this bonus"
     )
     title: str = Field(description="Name of the bonus")

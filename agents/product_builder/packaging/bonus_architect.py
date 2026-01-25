@@ -59,6 +59,29 @@ class BonusArchitect:
         reinforcement_bonus = self._design_reinforcement_bonus(intelligence)
         if reinforcement_bonus:
             bonuses.append(reinforcement_bonus)
+
+        # 4. CUSTOM RESTORATION: Financial Freedom Specifics
+        # (Restoring content requested by user that was "lost" in previous runs)
+        # Check thesis or core_promise since core_topic isn't in ProductIntelligence schema
+        topic_check = (intelligence.thesis + intelligence.core_promise).lower()
+        if "financial freedom" in topic_check:
+            logger.info("ℹ️ Restoring specific Financial Freedom bonuses...")
+            bonuses.append(Bonus(
+                type="deep_dive",
+                title="The Recession-Proof Investing Guide",
+                format="pdf",
+                description="How to turn market crashes into wealth events.",
+                target_friction="Fear of losing money",
+                estimated_pages=10
+            ))
+            bonuses.append(Bonus(
+                type="deep_dive",
+                title="The Salary Negotiation Blackbook",
+                format="pdf",
+                description="Scripts to add $10k to your salary.",
+                target_friction="Income ceiling",
+                estimated_pages=8
+            ))
         
         plan = BonusPlan(
             bonuses=bonuses,

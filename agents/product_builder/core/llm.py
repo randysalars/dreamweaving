@@ -149,6 +149,68 @@ class LLMClient:
 
         # --- WORKSHEET MOCK ---
         if "worksheet" in prompt_lower:
+            if "goal" in prompt_lower:
+                return """
+## Exercise: Goal Visualization
+**Purpose:** Define your financial destination.
+
+**Instructions:**
+Close your eyes and imagine your life 5 years from now. You are debt-free and wealthy.
+
+**1. What does your average Tuesday look like?**
+[_________________________________________________________________]
+[_________________________________________________________________]
+
+**2. How much passive income are you generating monthly?**
+$ [____________________]
+
+**3. Who are you spending your time with?**
+[_________________________________________________________________]
+
+**Action Step:**
+[ ] I have written down my specific financial freedom number.
+"""
+            if "barrier" in prompt_lower:
+                return """
+## Exercise: Barrier Identification
+**Purpose:** Spot the obstacles before they trip you up.
+
+**Instructions:**
+List the 3 biggest things stopping you right now.
+
+**1. Internal Barrier (Mindset):**
+[_________________________________________________________________]
+
+**2. External Barrier (Environment/Debt):**
+[_________________________________________________________________]
+
+**3. Knowledge Barrier (What don't you know?):**
+[_________________________________________________________________]
+
+**Action Step:**
+[ ] I have identified one immediate action to remove Barrier #1.
+"""
+            if "action" in prompt_lower:
+                 return """
+## Exercise: Action Planning
+**Purpose:** Turn strategy into tactics.
+
+**Instructions:**
+What are you doing in the next 24 hours?
+
+**1. The One Thing:**
+What is the single most important financial move you can make today?
+[_________________________________________________________________]
+
+**2. The 7-Day Sprint:**
+- Day 1: [____________________]
+- Day 3: [____________________]
+- Day 7: [____________________]
+
+**Action Step:**
+[ ] I have put these dates in my calendar.
+"""
+            # Default fallback for Self-Assessment
             return """
 ## Exercise: Self-Assessment Audit
 **Purpose:** Understand your current financial reality.

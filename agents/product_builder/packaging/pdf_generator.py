@@ -6,7 +6,7 @@ Supports styled layouts, embedded visuals, and print-ready output.
 
 import logging
 from pathlib import Path
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
@@ -61,19 +61,20 @@ class PDFGenerator:
         try:
             import weasyprint
             self.has_weasyprint = True
-            logger.info("WeasyPrint available")
+            logger.info("✅ WeasyPrint available")
         except ImportError:
             pass
         
         try:
+            import reportlab
             from reportlab.lib.pagesizes import letter
             self.has_reportlab = True
-            logger.info("ReportLab available")
-        except ImportError:
-            pass
+            logger.info("✅ ReportLab available")
+        except ImportError as e:
+            logger.warning(f"⚠️ ReportLab not found ({e}). Install: pip install reportlab")
         
         if not self.has_weasyprint and not self.has_reportlab:
-            logger.warning("No PDF library available. Install: pip install weasyprint")
+            logger.warning("❌ No PDF library available. Falling back to HTML only.")
     
     def generate(
         self, 
@@ -106,8 +107,10 @@ class PDFGenerator:
             logger.warning(f"Puppeteer generation failed: {e}. Falling back to HTML/ReportLab.")
             
         if self.has_reportlab:
+            logger.info("ℹ️ Falling back to ReportLab engine...")
             return self._generate_reportlab(chapters, config, visuals, output_path)
         else:
+            logger.warning("❌ ReportLab not found. Falling back to HTML.")
             # Fallback: generate HTML that can be printed to PDF
             return self._generate_html_fallback(chapters, config, visuals, output_path)
 
@@ -182,7 +185,7 @@ class PDFGenerator:
         from reportlab.lib.pagesizes import letter, A4
         from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
         from reportlab.lib.units import inch
-        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
+        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Image
         from reportlab.lib.colors import HexColor
         
         page_size = A4 if config.page_size == "a4" else letter
@@ -196,15 +199,6 @@ class PDFGenerator:
             parent=styles['Heading1'],
             fontSize=28,
             spaceAfter=30,
-            textColor=HexColor(config.style.heading_color)
-        )
-        
-        heading_style = ParagraphStyle(
-            'CustomHeading',
-            parent=styles['Heading2'],
-            fontSize=18,
-            spaceBefore=20,
-            spaceAfter=12,
             textColor=HexColor(config.style.heading_color)
         )
         
@@ -228,21 +222,103 @@ class PDFGenerator:
             story.append(PageBreak())
         
         # Chapters
-        for chapter in chapters:
-            story.append(Paragraph(chapter.get("title", "Chapter"), heading_style))
+        for i, chapter in enumerate(chapters):
+            # Chapter Title
+            story.append(self._parse_markdown_line(f"# {chapter.get('title', 'Chapter')}", config, styles))
             story.append(Spacer(1, 0.2*inch))
             
+            # Content Parsing
             content = chapter.get("content", "")
-            for paragraph in content.split("\n\n"):
-                if paragraph.strip():
-                    story.append(Paragraph(paragraph, body_style))
-                    story.append(Spacer(1, 0.1*inch))
+            story.extend(self._parse_markdown_to_story(content, config, styles))
             
+            # Key Takeaways
+            takeaways = chapter.get("key_takeaways", [])
+            if takeaways:
+                story.append(Spacer(1, 0.2*inch))
+                story.append(self._parse_markdown_line("### Key Takeaways", config, styles))
+                for t in takeaways:
+                     story.append(self._parse_markdown_line(f"* {t}", config, styles))
+
             story.append(PageBreak())
         
         doc.build(story)
         logger.info(f"✅ PDF generated: {output_path}")
         return output_path
+
+    def _parse_markdown_to_story(self, text: str, config: PDFConfig, styles: Any) -> List[Any]:
+        """Convert Markdown text to ReportLab Flowables."""
+        from reportlab.platypus import Paragraph, Spacer, ListFlowable, ListItem
+        
+        flowables = []
+        lines = text.split('\n')
+        
+        # Simple iterator
+        for line in lines:
+            line = line.strip()
+            if not line:
+                flowables.append(Spacer(1, 0.1 * 72)) # Small spacer
+                continue
+                
+            flowables.append(self._parse_markdown_line(line, config, styles))
+            
+        return flowables
+
+    def _parse_markdown_line(self, line: str, config: PDFConfig, styles: Any) -> Any:
+        """Parse a single line of markdown into a Paragraph."""
+        from reportlab.platypus import Paragraph, Spacer, ListFlowable, ListItem
+        from reportlab.lib.colors import HexColor
+        from reportlab.lib.styles import ParagraphStyle
+        import re
+        
+        # Inline Formatting (Bold, Italic)
+        # Convert **text** to <b>text</b>
+        line = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', line)
+        # Convert *text* to <i>text</i> - handle carefully vs bullets
+        if not line.startswith('* '):
+             line = re.sub(r'\*(.*?)\*', r'<i>\1</i>', line)
+             
+        # Headers
+        if line.startswith('# '):
+            style = ParagraphStyle(
+                'H1', parent=styles['Heading1'], 
+                fontSize=24, spaceAfter=12, textColor=HexColor(config.style.heading_color)
+            )
+            return Paragraph(line[2:], style)
+            
+        if line.startswith('## '):
+            style = ParagraphStyle(
+                'H2', parent=styles['Heading2'], 
+                fontSize=18, spaceAfter=10, textColor=HexColor(config.style.heading_color)
+            )
+            return Paragraph(line[3:], style)
+            
+        if line.startswith('### '):
+            style = ParagraphStyle(
+                'H3', parent=styles['Heading3'],
+                fontSize=14, spaceAfter=8, textColor=HexColor(config.style.accent_color)
+            )
+            return Paragraph(line[4:], style)
+
+        # Lists (Simple Bullet simulation)
+        if line.startswith('* ') or line.startswith('- '):
+            style = ParagraphStyle(
+                'Bullet', parent=styles['Normal'],
+                fontSize=config.style.font_size,
+                textColor=HexColor(config.style.text_color),
+                leftIndent=20,
+                bulletIndent=10
+            )
+            # Use ReportLab's bullet char
+            return Paragraph(f"• {line[2:]}", style)
+            
+        # Normal Text
+        style = ParagraphStyle(
+            'Body', parent=styles['Normal'],
+            fontSize=config.style.font_size,
+            leading=config.style.font_size * config.style.line_height,
+            textColor=HexColor(config.style.text_color)
+        )
+        return Paragraph(line, style)
     
     def _generate_html_fallback(
         self, 
