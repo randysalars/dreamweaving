@@ -54,10 +54,10 @@ class WritersRoom:
         # ─── FRACTAL STEP 1: STRUCTURE ──────────────────────────────
         logger.info("📐 Architecting Fractal Structure...")
         
-        # In prompts_only mode, skip complex fractal structure and use single section
+        # In prompts_only mode, use comprehensive chapter template (all roles + QA embedded)
         if self.prompts_only:
-            sections = [{"title": "Chapter Content", "north_star": context.get('chapter_purpose', 'Cover the topic in depth.')}]
-            logger.info("✅ Using single-section structure (Antigravity-native mode)")
+            logger.info("✅ Using comprehensive chapter template (Antigravity-native mode with quality checks)")
+            return self._generate_comprehensive_chapter_prompt(context)
         else:
             structure_prompt = self._load_template("chapter_structure_architect").format(**context)
             structure_response = self.llm.generate(structure_prompt)
@@ -192,4 +192,58 @@ class WritersRoom:
         response = self.llm.generate(prompt)
         
         return response
+
+    def _generate_comprehensive_chapter_prompt(self, context: Dict) -> str:
+        """
+        Generate a single comprehensive chapter prompt in Antigravity-native mode.
+        Uses chapter_complete.md template with all 4 writer roles and quality checks embedded.
+        """
+        template_path = self.templates_dir / "chapter_complete.md"
+        if not template_path.exists():
+            logger.error(f"Comprehensive template not found: {template_path}")
+            return "[ERROR: chapter_complete.md template not found]"
+        
+        template_content = template_path.read_text()
+        
+        # Prepare prompt with context
+        try:
+            prompt = template_content.format(**context)
+        except KeyError as e:
+            logger.warning(f"Missing context key for chapter_complete: {e}")
+            # Provide defaults for missing keys
+            defaults = {
+                "product_name": context.get("product_name", "Product"),
+                "product_promise": context.get("product_promise", "Transform your life"),
+                "audience_persona": context.get("audience_persona", "Someone seeking improvement"),
+                "thesis": context.get("thesis", "This product will help you succeed"),
+                "chapter_number": context.get("chapter_number", "1"),
+                "chapter_title": context.get("chapter_title", "Introduction"),
+                "chapter_purpose": context.get("chapter_purpose", "Cover the fundamentals"),
+                "key_takeaways": context.get("key_takeaways", "Key concepts explained"),
+                "voice_rules": context.get("voice_rules", "Write in a conversational, engaging tone"),
+                "banned_phrases": context.get("banned_phrases", "leverage, synergy, paradigm shift"),
+                "feedback_instruction": context.get("feedback_instruction", ""),
+            }
+            merged = {**defaults, **context}
+            prompt = template_content.format(**merged)
+        
+        # Generate slug for this chapter
+        chapter_title = context.get("chapter_title", "chapter").replace(" ", "_").lower()
+        slug = f"{chapter_title}_complete"
+        
+        # Write prompt to file
+        prompt_path = self.prompt_interface.write_prompt(
+            prompt=prompt,
+            slug=slug,
+            metadata={
+                "type": "comprehensive_chapter",
+                "chapter": context.get("chapter_title"),
+                "min_words": 1500,
+                "max_words": 3000,
+                "quality_checks": ["story", "teaching", "delight"]
+            }
+        )
+        logger.info(f"📝 Comprehensive chapter prompt written: {prompt_path}")
+        
+        return f"[AWAITING_ANTIGRAVITY: {slug}]"
 
