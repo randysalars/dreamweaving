@@ -79,6 +79,7 @@ class LandingPageHTMLGenerator:
     {self._about_section(about)}
     {self._footer_cta_section(footer)}
     {self._urgency_bar(urgency)}
+    {self._love_offering_popup(content)}
 </body>
 </html>'''
     
@@ -258,6 +259,101 @@ class LandingPageHTMLGenerator:
     <div class="urgency-bar">
         <p>⚡ {urgency.get('message', '')}</p>
     </div>'''
+    
+    def _love_offering_popup(self, content: Dict) -> str:
+        """
+        Generate love offering popup - allows users to get product free or pay what they can.
+        Randy's philosophy: everyone deserves access to education regardless of ability to pay.
+        """
+        price = content.get('price', content.get('footer_cta', {}).get('price', '47'))
+        product_name = content.get('product_title', content.get('page_title', 'this product'))
+        
+        return f'''
+    <!-- Love Offering Popup -->
+    <div id="love-offering-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(4px);">
+        <div style="background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%); padding: 48px; border-radius: 24px; max-width: 520px; margin: 20px; text-align: center; position: relative; box-shadow: 0 25px 80px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);">
+            <button onclick="closeLoveOffering()" style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.1); border: none; font-size: 20px; cursor: pointer; color: #94a3b8; width: 36px; height: 36px; border-radius: 50%; transition: all 0.2s;">×</button>
+            
+            <div style="font-size: 56px; margin-bottom: 24px;">💝</div>
+            
+            <h2 style="color: #f1f5f9; margin-bottom: 16px; font-size: 1.75rem; font-weight: 700;">Wait! You Can Have This Free</h2>
+            
+            <p style="color: #94a3b8; margin-bottom: 28px; line-height: 1.8; font-size: 1.05rem;">
+                I believe everyone deserves access to this knowledge. If ${price} is a barrier right now, 
+                <strong style="color: #22d3ee;">take it for free</strong>. Pay what feels right—or nothing at all.
+            </p>
+            
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <a href="#" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; padding: 18px 36px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.15rem; box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4); transition: all 0.2s;">
+                    🎁 Get It Free (No Strings)
+                </a>
+                
+                <p style="color: #64748b; font-size: 0.9rem; margin: 8px 0;">— or give a love offering —</p>
+                
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" style="background: rgba(255,255,255,0.05); color: #f1f5f9; padding: 14px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); transition: all 0.2s;">
+                        $5 Blessing
+                    </a>
+                    <a href="#" style="background: rgba(255,255,255,0.05); color: #f1f5f9; padding: 14px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); transition: all 0.2s;">
+                        $15 Support
+                    </a>
+                    <a href="#" style="background: rgba(255,255,255,0.05); color: #f1f5f9; padding: 14px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); transition: all 0.2s;">
+                        $27 Gratitude
+                    </a>
+                </div>
+                
+                <a href="#pricing" onclick="closeLoveOffering()" style="color: #64748b; font-size: 0.9rem; margin-top: 12px; text-decoration: none;">
+                    No thanks, I'll pay full price →
+                </a>
+            </div>
+            
+            <p style="color: #475569; font-size: 0.8rem; margin-top: 24px;">
+                Your love offering helps keep this work free for others. Thank you. 🙏
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Love Offering Popup - triggers on exit intent or after delay
+        let lovePopupShown = false;
+        
+        function showLoveOffering() {{
+            if (!lovePopupShown) {{
+                document.getElementById('love-offering-overlay').style.display = 'flex';
+                lovePopupShown = true;
+            }}
+        }}
+        
+        function closeLoveOffering() {{
+            document.getElementById('love-offering-overlay').style.display = 'none';
+        }}
+        
+        // Exit intent detection (mouse leaves viewport at top)
+        document.addEventListener('mouseout', function(e) {{
+            if (e.clientY < 10 && !lovePopupShown) {{
+                showLoveOffering();
+            }}
+        }});
+        
+        // Backup: show after 45 seconds if still on page
+        setTimeout(function() {{
+            showLoveOffering();
+        }}, 45000);
+        
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {{
+            if (e.key === 'Escape') {{
+                closeLoveOffering();
+            }}
+        }});
+        
+        // Close on overlay click (but not popup content)
+        document.getElementById('love-offering-overlay').addEventListener('click', function(e) {{
+            if (e.target === this) {{
+                closeLoveOffering();
+            }}
+        }});
+    </script>'''
     
     def _get_premium_css(self) -> str:
         """Premium CSS with glassmorphism and modern design."""

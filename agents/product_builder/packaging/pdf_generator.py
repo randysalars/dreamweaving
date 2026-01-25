@@ -258,6 +258,31 @@ class PDFGenerator:
             content = chapter.get("content", "")
             story.extend(self._parse_markdown_to_story(content, config, styles))
             
+            # Embed Visual if Available
+            if visuals:
+                # Try multiple key formats
+                chapter_keys = [
+                    f"ch{i+1}",
+                    f"chapter_{i+1}",
+                    chapter.get('title', '').lower().replace(' ', '_'),
+                    f"{config.title.lower().replace(' ', '_')}_ch{i+1}_visual",
+                ]
+                for key in chapter_keys:
+                    if key in visuals:
+                        img_path = visuals[key]
+                        if Path(img_path).exists():
+                            try:
+                                story.append(Spacer(1, 0.3*inch))
+                                # Scale image to fit page width (max 5 inches)
+                                img = Image(img_path, width=5*inch, height=3*inch)
+                                img.hAlign = 'CENTER'
+                                story.append(img)
+                                story.append(Spacer(1, 0.2*inch))
+                                logger.debug(f"📷 Embedded visual for chapter {i+1}")
+                            except Exception as e:
+                                logger.warning(f"Failed to embed image {img_path}: {e}")
+                        break
+            
             # Key Takeaways
             takeaways = chapter.get("key_takeaways", [])
             if takeaways:
@@ -612,11 +637,12 @@ body {{
                 "Past performance is not indicative of future results."
             )
             
-        if "health" in t or "diet" in t or "fitness" in t or "body" in t:
+        if "health" in t or "diet" in t or "fitness" in t or "body" in t or "wellness" in t or "nutrition" in t or "sleep" in t or "mindfulness" in t or "meditation" in t or "holistic" in t:
             return (
                 "The content shared in this book is for informational purposes only and is not a substitute for "
                 "professional medical advice, diagnosis, or treatment. Always seek the advice of your physician "
-                "or other qualified health provider with any questions you may have regarding a medical condition."
+                "or other qualified health provider with any questions you may have regarding a medical condition. "
+                "Never disregard professional medical advice or delay in seeking it because of something you have read here."
             )
             
         # Default Business/General Disclaimer
