@@ -11,8 +11,10 @@ from ..core.llm import LLMClient
 from ..schemas.bonus_plan import Bonus
 from ..pipeline.writers_room import WritersRoom
 from .pdf_generator import PDFGenerator, PDFConfig, PDFStyle
+from .bonus_content_templates import get_bonus_content
 
 logger = logging.getLogger(__name__)
+
 
 class BonusGenerator:
     """
@@ -71,11 +73,32 @@ class BonusGenerator:
     def _generate_worksheet_bonus(self, title: str, description: str) -> str:
         """
         Generate a PDF Workbook with exercises.
-        Strategy: 5-7 Exercises with reflection questions.
+        Strategy: First try pre-defined templates, then fall back to generic exercises.
         """
         logger.info(f"   📝 Generating Worksheet Bonus: {title}")
         
-        # 1. Outline Exercises
+        # 1. Check for pre-defined template content (ensures unique content)
+        template_content = get_bonus_content(title)
+        if template_content:
+            logger.info(f"   ✅ Using pre-defined template for: {title}")
+            full_chapters = []
+            for chapter in template_content.get('chapters', []):
+                full_chapters.append({
+                    "title": chapter['title'],
+                    "content": chapter['content'].strip(),
+                    "key_takeaways": []
+                })
+            
+            # Generate PDF from template content
+            config = PDFConfig(
+                title=template_content.get('title', title),
+                author="Randy Salars",
+                output_path=str(self.output_dir / f"{self._slugify(title)}.pdf"),
+                style=PDFStyle(heading_color="#2c5282", accent_color="#4299e1")
+            )
+            return self.pdf_generator.generate(full_chapters, config)
+        
+        # 2. Fall back to generic exercises
         exercises = [
             {"title": "Self-Assessment Audit", "purpose": "Understand current state"},
             {"title": "Goal Visualization", "purpose": "Define the destination"},
@@ -83,6 +106,7 @@ class BonusGenerator:
             {"title": "Action Planning", "purpose": "Define next steps"},
             {"title": "Accountability Contract", "purpose": "Commit to the plan"}
         ]
+
         
         # 2. Write Content
         full_chapters = []
@@ -173,14 +197,37 @@ class BonusGenerator:
     def _generate_pdf_bonus(self, title: str, description: str) -> str:
         """
         Generate a massive PDF bonus (>50 pages).
-        Strategy: Treat it as a mini-course with 10-12 chapters.
+        Strategy: First try pre-defined templates for known bonus types,
+                  then fall back to LLM-generated content.
         """
         logger.info(f"   📄 Expanding PDF Bonus: {title}")
-        logger.info("   🎯 Goal: 50+ pages (approx 10-12 deep chapters)")
         
-        # 1. Outline the "Mini-Course"
+        # 1. Check for pre-defined template content (ensures unique content per bonus type)
+        template_content = get_bonus_content(title)
+        if template_content:
+            logger.info(f"   ✅ Using pre-defined template for: {title}")
+            full_chapters = []
+            for chapter in template_content.get('chapters', []):
+                full_chapters.append({
+                    "title": chapter['title'],
+                    "content": chapter['content'].strip(),
+                    "key_takeaways": []
+                })
+            
+            # Generate PDF from template content
+            config = PDFConfig(
+                title=template_content.get('title', title),
+                author="Randy Salars",
+                output_path=str(self.output_dir / f"{self._slugify(title)}.pdf"),
+                style=PDFStyle(heading_color="#1e3a5f", accent_color="#2ecc71")
+            )
+            return self.pdf_generator.generate(full_chapters, config)
+        
+        # 2. Fall back to LLM-generated outline (original behavior)
+        logger.info("   🎯 Goal: 50+ pages (approx 10-12 deep chapters)")
         chapters_outline = self._outline_bonus_chapters(title, description)
         logger.info(f"   📝 Outlined {len(chapters_outline)} chapters for bonus.")
+
         
         # 2. Write Content (Fractal Generation Reuse)
         full_chapters = []
