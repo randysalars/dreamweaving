@@ -1,0 +1,150 @@
+session:
+  name: the-temple-of-hidden-names
+  topic: The Temple Of Hidden Names
+  duration: 1800
+  style: empowerment
+  created: '2026-01-25'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: The Temple of Hidden Names
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: Welcome and introduction to The Temple Of Hidden Names
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into within an ancient temple of light, where
+    sacred geometry resonates with cosmic harmony
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a sacred journey through cosmic realms toward empowerment'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: experiencing profound positive transformation'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: The Phoenix of Renewal
+  role: primary
+  description: Archetype of complete destruction and rebirth through sacred fire
+  symbol: ''
+  qualities: []
+  appearance_section: journey
+- name: Archangel Michael
+  role: secondary
+  description: Supreme warrior archetype of protection and righteous power
+  symbol: ''
+  qualities: []
+  appearance_section: helm_deep_trance
+- name: The Solar King
+  role: support
+  description: Archetype of personal sovereignty, leadership, and radiant power
+  symbol: ''
+  qualities: []
+  appearance_section: integration
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 256
+    preset: abundance_magnetic_field
+    sections:
+    - start: 0
+      end: 144
+      offset_hz: 10.1
+    - start: 144
+      end: 360
+      offset_hz: 8.4
+    - start: 360
+      end: 630
+      offset_hz: 5.9
+    - start: 630
+      end: 1080
+      offset_hz: 9.7
+    - start: 1080
+      end: 1440
+      offset_hz: 11.6
+    - start: 1440
+      end: 1800
+      offset_hz: 10.3
+    gamma_burst:
+      enabled: true
+      time: 1175
+      frequency: 44
+      duration_s: 3.145127466387244
+      description: Peak insight activation
+    gamma_burst_secondary:
+      enabled: true
+      time: 1617
+      frequency: 80
+      duration_s: 3.2700295184651007
+      description: Integration activation
+    multi_layer:
+      enabled: true
+      delta_foundation:
+        frequency: 1.5
+        carrier_offset: 60
+        level_db: -6
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: The Temple of Hidden Names | Binaural Beats Meditation
+  subtitle: "432Hz \u2022 Empowerment"
+  description: 'A transformational journey: experiencing profound positive transformation'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - empowerment
+  - cosmic
+fx_timeline:
+- type: gamma_flash
+  time: 1175
+  duration_s: 3.1
+  freq_hz: 44
+  description: Peak insight activation
+- type: gamma_flash
+  time: 1617
+  duration_s: 3.3
+  freq_hz: 80
+  description: Integration activation
+recursive_improvement:
+  applied_lessons:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  lesson_count: 5
+  categories: {}
+  applied_at: '2026-01-25T00:50:39.947823'

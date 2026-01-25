@@ -14,8 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - elemental-excursions-fostering-a-deep-connection-t
-  - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
   - the-treasury-of-echoing-gold-dreamweaving
   - glimpses-of-the-masonic-mosaic-pavement-a-meditati
@@ -34,8 +32,10 @@ lessons:
   - goddess-worshipping-dreamweaving
   - oracle-of-omniverse-dreamweaving
   - the-lightning-index-of-total-recall
-  applied_count: 84
-  last_applied: '2026-01-24'
+  - the-temple-of-hidden-names
+  - the-mountain-of-resolve-dreamweaving
+  applied_count: 86
+  last_applied: '2026-01-25'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,8 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - elemental-excursions-fostering-a-deep-connection-t
-  - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
   - the-treasury-of-echoing-gold-dreamweaving
   - glimpses-of-the-masonic-mosaic-pavement-a-meditati
@@ -72,8 +70,10 @@ lessons:
   - goddess-worshipping-dreamweaving
   - oracle-of-omniverse-dreamweaving
   - the-lightning-index-of-total-recall
-  applied_count: 84
-  last_applied: '2026-01-24'
+  - the-temple-of-hidden-names
+  - the-mountain-of-resolve-dreamweaving
+  applied_count: 86
+  last_applied: '2026-01-25'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,8 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - elemental-excursions-fostering-a-deep-connection-t
-  - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
   - the-treasury-of-echoing-gold-dreamweaving
   - glimpses-of-the-masonic-mosaic-pavement-a-meditati
@@ -109,8 +107,10 @@ lessons:
   - goddess-worshipping-dreamweaving
   - oracle-of-omniverse-dreamweaving
   - the-lightning-index-of-total-recall
-  applied_count: 84
-  last_applied: '2026-01-24'
+  - the-temple-of-hidden-names
+  - the-mountain-of-resolve-dreamweaving
+  applied_count: 86
+  last_applied: '2026-01-25'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,8 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - elemental-excursions-fostering-a-deep-connection-t
-  - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
   - the-treasury-of-echoing-gold-dreamweaving
   - glimpses-of-the-masonic-mosaic-pavement-a-meditati
@@ -147,8 +145,10 @@ lessons:
   - goddess-worshipping-dreamweaving
   - oracle-of-omniverse-dreamweaving
   - the-lightning-index-of-total-recall
-  applied_count: 84
-  last_applied: '2026-01-24'
+  - the-temple-of-hidden-names
+  - the-mountain-of-resolve-dreamweaving
+  applied_count: 86
+  last_applied: '2026-01-25'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,8 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - elemental-excursions-fostering-a-deep-connection-t
-  - the-tower-of-babel-reconciled-dreamweaving
   - the-garden-of-reclamation-dreamweaving
   - the-treasury-of-echoing-gold-dreamweaving
   - glimpses-of-the-masonic-mosaic-pavement-a-meditati
@@ -183,8 +181,10 @@ lessons:
   - goddess-worshipping-dreamweaving
   - oracle-of-omniverse-dreamweaving
   - the-lightning-index-of-total-recall
-  applied_count: 84
-  last_applied: '2026-01-24'
+  - the-temple-of-hidden-names
+  - the-mountain-of-resolve-dreamweaving
+  applied_count: 86
+  last_applied: '2026-01-25'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3

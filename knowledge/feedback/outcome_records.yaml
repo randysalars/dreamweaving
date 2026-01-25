@@ -2294,4 +2294,58 @@ records:
   comments_sentiment: null
   metrics_complete: false
   youtube_pending: false
-last_updated: '2026-01-24T01:24:38.671253'
+- record_id: outcome-fdb23bba
+  session_name: the-temple-of-hidden-names
+  created_at: '2026-01-25T00:50:39.601838'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: false
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 93.33333333333333
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+- record_id: outcome-5273a01a
+  session_name: the-mountain-of-resolve-dreamweaving
+  created_at: '2026-01-25T01:32:12.093770'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: false
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 93.33333333333333
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+last_updated: '2026-01-25T01:32:12.181431'

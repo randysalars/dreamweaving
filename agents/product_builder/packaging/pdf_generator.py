@@ -293,6 +293,24 @@ class PDFGenerator:
 </div>
 """)
         
+        # Copyright Page
+        disclaimer_text = self._get_disclaimer(config.title)
+        html_parts.append(f"""
+<div class="copyright-page">
+    <p><strong>{config.title}</strong></p>
+    <p>By Randy Salars</p>
+    <p>Copyright 2026 Ranmon Inc<br>
+    31 Bear Mountain Rd<br>
+    Silver City, NM 88061<br>
+    <a href="https://salars.net">salars.net</a></p>
+    
+    <div class="disclaimer">
+        <h4>Disclaimer</h4>
+        <p>{disclaimer_text}</p>
+    </div>
+</div>
+""")
+
         # Table of Contents
         if config.include_toc:
             toc_items = "\n".join([
@@ -361,6 +379,21 @@ class PDFGenerator:
 @page {{
     size: letter;
     margin: {style.page_margin}pt;
+}}
+
+.copyright-page {{
+    page-break-after: always;
+    font-size: 10pt;
+    color: #718096;
+    margin-top: 400pt; /* Push to bottom of page */
+}}
+
+.disclaimer {{
+    margin-top: 24pt;
+    font-style: italic;
+    border-top: 1px solid #cbd5e0;
+    padding-top: 12pt;
+    font-size: 9pt;
 }}
 
 body {{
@@ -462,3 +495,31 @@ body {{
     def _slugify(self, text: str) -> str:
         """Convert text to a safe filename."""
         return "".join(c if c.isalnum() or c == " " else "" for c in text).replace(" ", "_").lower()
+
+    def _get_disclaimer(self, title: str) -> str:
+        """Get appropriate disclaimer based on title/topic."""
+        t = title.lower()
+        
+        if "invest" in t or "wealth" in t or "crypto" in t or "budget" in t or "money" in t or "salary" in t:
+            return (
+                "This publication is designed to provide accurate and authoritative information in regard to the "
+                "subject matter covered. It is sold with the understanding that the publisher is not engaged in "
+                "rendering legal, accounting, or other professional services. If legal advice or other expert "
+                "assistance is required, the services of a competent professional should be sought. "
+                "Past performance is not indicative of future results."
+            )
+            
+        if "health" in t or "diet" in t or "fitness" in t or "body" in t:
+            return (
+                "The content shared in this book is for informational purposes only and is not a substitute for "
+                "professional medical advice, diagnosis, or treatment. Always seek the advice of your physician "
+                "or other qualified health provider with any questions you may have regarding a medical condition."
+            )
+            
+        # Default Business/General Disclaimer
+        return (
+            "Every effort has been made to accurately represent this product and its potential. "
+            "There is no guarantee that you will earn any money using the techniques and ideas in these materials. "
+            "Examples in these materials are not to be interpreted as a promise or guarantee of earnings. "
+            "Earning potential is entirely dependent on the person using our product, ideas and techniques."
+        )

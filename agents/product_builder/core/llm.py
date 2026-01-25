@@ -79,9 +79,10 @@ class LLMClient:
         """Return a valid response for testing."""
         prompt_lower = prompt.lower()
         
-        # 1. Visual/Chart request -> Force Error to trigger Template Engine Fallback
-        if "matplotlib" in prompt_lower or "chart" in prompt_lower:
-             return "# Error: Force Template Fallback"
+             
+        # BLOCK REMOVED: Visuals Blocker (Fixed to allow Smart Visuals below)
+        # if "matplotlib" in prompt_lower or "chart" in prompt_lower:
+        #      return "# Error: Force Template Fallback"
              
         # 2. JSON Structure request (e.g. WritersRoom Architect)
         if "json" in prompt_lower and "sections" in prompt_lower:
@@ -99,16 +100,10 @@ class LLMClient:
         if "process flow" in prompt_lower and "step 1" in prompt_lower:
             return "Audit -> Plan -> Execute -> Review"
             
-        if "extract 3 short" in prompt_lower and "takeaways" in prompt_lower:
-            return """
-- Stop spending on things you hate.
-- Automate your savings first.
+        # BLOCK REMOVED: Generic Takeaways (Fixed to allow context-aware logic below)
         # if "extract 3 short" in prompt_lower and "takeaways" in prompt_lower:
-        #     return """
-# - Stop spending on things you hate.
-# - Automate your savings first.
-# - Review your numbers weekly.
-# """
+        #    return ...
+
         # 3. Text Content request (e.g. WritersRoom Writer)
         # Content Library for "Smart Mock"
         

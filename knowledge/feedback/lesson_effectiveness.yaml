@@ -1,92 +1,92 @@
 records:
 - lesson_id: L004
-  times_applied: 85
+  times_applied: 87
   times_successful: 65
-  success_rate: 0.7647058823529411
-  avg_quality_impact: 98.80485901516204
+  success_rate: 0.7471264367816092
+  avg_quality_impact: 96.01438091742939
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 9.54691121304189
-  _quality_m2: 801.9405418955188
+  quality_variance: 9.579046264584797
+  _quality_m2: 823.7979787542926
   first_applied: '2025-12-17T10:50:34.767859'
-  last_applied: '2026-01-24T01:24:38.726234'
+  last_applied: '2026-01-25T01:32:12.236205'
   last_successful: '2026-01-24T01:24:38.726239'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 98.80485901516033
+    general: 96.01438091742855
   effectiveness_score: 50.0
 - lesson_id: L001
-  times_applied: 84
+  times_applied: 86
   times_successful: 64
-  success_rate: 0.7619047619047619
-  avg_quality_impact: 98.80485901516204
+  success_rate: 0.7441860465116279
+  avg_quality_impact: 96.01438091742939
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 9.661934239705046
-  _quality_m2: 801.9405418955188
+  quality_variance: 9.691740926521089
+  _quality_m2: 823.7979787542926
   first_applied: '2025-12-17T10:51:30.508427'
-  last_applied: '2026-01-24T01:24:38.769736'
+  last_applied: '2026-01-25T01:32:12.280315'
   last_successful: '2026-01-24T01:24:38.769741'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 98.8048590151596
+    general: 96.01438091742818
   effectiveness_score: 50.0
 - lesson_id: L002
-  times_applied: 84
+  times_applied: 86
   times_successful: 64
-  success_rate: 0.7619047619047619
-  avg_quality_impact: 98.80485901516204
+  success_rate: 0.7441860465116279
+  avg_quality_impact: 96.01438091742939
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 9.661934239705046
-  _quality_m2: 801.9405418955188
+  quality_variance: 9.691740926521089
+  _quality_m2: 823.7979787542926
   first_applied: '2025-12-17T10:51:30.545092'
-  last_applied: '2026-01-24T01:24:38.812288'
+  last_applied: '2026-01-25T01:32:12.321416'
   last_successful: '2026-01-24T01:24:38.812292'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 98.8048590151596
+    general: 96.01438091742818
   effectiveness_score: 50.0
 - lesson_id: L003
-  times_applied: 84
+  times_applied: 86
   times_successful: 64
-  success_rate: 0.7619047619047619
-  avg_quality_impact: 98.80485901516204
+  success_rate: 0.7441860465116279
+  avg_quality_impact: 96.01438091742939
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 9.661934239705046
-  _quality_m2: 801.9405418955188
+  quality_variance: 9.691740926521089
+  _quality_m2: 823.7979787542926
   first_applied: '2025-12-17T10:51:30.583702'
-  last_applied: '2026-01-24T01:24:38.855213'
+  last_applied: '2026-01-25T01:32:12.362462'
   last_successful: '2026-01-24T01:24:38.855218'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 98.8048590151596
+    general: 96.01438091742818
   effectiveness_score: 50.0
 - lesson_id: L005
-  times_applied: 84
+  times_applied: 86
   times_successful: 64
-  success_rate: 0.7619047619047619
-  avg_quality_impact: 98.80485901516204
+  success_rate: 0.7441860465116279
+  avg_quality_impact: 96.01438091742939
   avg_retention_impact: 0.0
   avg_engagement_impact: 0.0
-  quality_variance: 9.661934239705046
-  _quality_m2: 801.9405418955188
+  quality_variance: 9.691740926521089
+  _quality_m2: 823.7979787542926
   first_applied: '2025-12-17T10:51:30.628100'
-  last_applied: '2026-01-24T01:24:38.898793'
+  last_applied: '2026-01-25T01:32:12.403074'
   last_successful: '2026-01-24T01:24:38.898797'
   best_contexts:
   - general
   worst_contexts: []
   context_effectiveness:
-    general: 98.8048590151596
+    general: 96.01438091742818
   effectiveness_score: 50.0
-last_updated: '2026-01-24T01:24:38.898848'
+last_updated: '2026-01-25T01:32:12.403129'

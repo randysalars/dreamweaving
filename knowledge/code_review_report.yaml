@@ -1,13 +1,67 @@
-timestamp: '2026-01-18T01:00:05.098649'
+timestamp: '2026-01-25T01:00:04.658047'
 summary:
-  total_issues: 6127
+  total_issues: 6214
   errors: 0
-  warnings: 117
-  info: 6010
-  files_reviewed: 209
+  warnings: 129
+  info: 6085
+  files_reviewed: 218
 by_severity:
   errors: []
   warnings:
+  - file: scripts/build_financial_freedom.py
+    line: 27
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/build_financial_freedom.py
+    line: 190
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 204
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 216
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 222
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 233
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 242
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/build_financial_freedom.py
+    line: 244
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/run_quality_loop.py
+    line: 55
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
   - file: scripts/sync_coin_knowledge_to_salarsu.py
     line: 36
     type: hardcoded_path
@@ -32,6 +86,12 @@ by_severity:
     description: Function 'format_section' has deep nesting (6 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
+  - file: scripts/assemble_only.py
+    line: 49
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
   - file: scripts/email/insert_dreamweaver_templates.py
     line: 32
     type: hardcoded_path
@@ -326,6 +386,18 @@ by_severity:
     description: Hardcoded absolute path detected
     severity: warning
     suggestion: Use Path.home() or configuration for paths
+  - file: scripts/generation/rag_client.py
+    line: 16
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/generation/rag_client.py
+    line: 103
+    type: deep_nesting
+    description: Function '_parse_search_output' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
   - file: scripts/generation/validate_content_quality.py
     line: 301
     type: hardcoded_path
@@ -413,7 +485,7 @@ by_severity:
   - file: scripts/ai/notion_knowledge_retriever.py
     line: 762
     type: deep_nesting
-    description: Function 'main' has deep nesting (9 levels)
+    description: Function 'main' has deep nesting (10 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
@@ -712,91 +784,133 @@ by_severity:
     suggestion: Consider refactoring to reduce complexity
 by_type:
   print_statement:
-    count: 3939
+    count: 3995
     examples:
-    - file: scripts/test_basic_mixing.py
-      line: 35
+    - file: scripts/build_financial_freedom.py
+      line: 23
       type: print_statement
       description: Using print() instead of logging
       severity: info
       suggestion: Consider using logging module for production code
-    - file: scripts/test_basic_mixing.py
-      line: 36
+    - file: scripts/build_financial_freedom.py
+      line: 32
       type: print_statement
       description: Using print() instead of logging
       severity: info
       suggestion: Consider using logging module for production code
-    - file: scripts/test_basic_mixing.py
-      line: 37
+    - file: scripts/build_financial_freedom.py
+      line: 51
       type: print_statement
       description: Using print() instead of logging
       severity: info
       suggestion: Consider using logging module for production code
+  hardcoded_path:
+    count: 17
+    examples:
+    - file: scripts/build_financial_freedom.py
+      line: 27
+      type: hardcoded_path
+      description: Hardcoded absolute path detected
+      severity: warning
+      suggestion: Use Path.home() or configuration for paths
+    - file: scripts/build_financial_freedom.py
+      line: 242
+      type: hardcoded_path
+      description: Hardcoded absolute path detected
+      severity: warning
+      suggestion: Use Path.home() or configuration for paths
+    - file: scripts/build_financial_freedom.py
+      line: 244
+      type: hardcoded_path
+      description: Hardcoded absolute path detected
+      severity: warning
+      suggestion: Use Path.home() or configuration for paths
+  shell_injection:
+    count: 8
+    examples:
+    - file: scripts/build_financial_freedom.py
+      line: 190
+      type: shell_injection
+      description: subprocess with shell=True is a security risk
+      severity: warning
+      suggestion: Use shell=False and pass args as list
+    - file: scripts/build_financial_freedom.py
+      line: 204
+      type: shell_injection
+      description: subprocess with shell=True is a security risk
+      severity: warning
+      suggestion: Use shell=False and pass args as list
+    - file: scripts/build_financial_freedom.py
+      line: 216
+      type: shell_injection
+      description: subprocess with shell=True is a security risk
+      severity: warning
+      suggestion: Use shell=False and pass args as list
+  line_length:
+    count: 451
+    examples:
+    - file: scripts/build_financial_freedom.py
+      line: 208
+      type: line_length
+      description: Line too long (132 chars)
+      severity: info
+      suggestion: Consider breaking into multiple lines
+    - file: scripts/email/insert_dreamweaver_templates.py
+      line: 285
+      type: line_length
+      description: Line too long (124 chars)
+      severity: info
+      suggestion: Consider breaking into multiple lines
+    - file: scripts/email/insert_dreamweaver_templates.py
+      line: 322
+      type: line_length
+      description: Line too long (140 chars)
+      severity: info
+      suggestion: Consider breaking into multiple lines
   missing_docstring:
-    count: 261
+    count: 270
     examples:
-    - file: scripts/test_basic_mixing.py
-      line: 104
+    - file: scripts/build_financial_freedom.py
+      line: 22
+      type: missing_docstring
+      description: Function 'build_financial_freedom' missing docstring
+      severity: info
+      suggestion: ''
+    - file: scripts/run_quality_loop.py
+      line: 54
       type: missing_docstring
       description: Function 'main' missing docstring
       severity: info
       suggestion: ''
-    - file: scripts/sync_coin_knowledge_to_salarsu.py
-      line: 252
+    - file: scripts/run_quality_loop.py
+      line: 26
       type: missing_docstring
-      description: Function 'main' missing docstring
-      severity: info
-      suggestion: ''
-    - file: scripts/sync_coin_knowledge_to_salarsu.py
-      line: 56
-      type: missing_docstring
-      description: Function 'format_section' missing docstring
+      description: Function 'extract_number' missing docstring
       severity: info
       suggestion: ''
   magic_number:
-    count: 1311
+    count: 1318
     examples:
+    - file: scripts/build_financial_freedom.py
+      line: 188
+      type: magic_number
+      description: Magic number 3000 should be a named constant
+      severity: info
+      suggestion: ''
+    - file: scripts/build_financial_freedom.py
+      line: 193
+      type: magic_number
+      description: Magic number 3000 should be a named constant
+      severity: info
+      suggestion: ''
     - file: scripts/test_basic_mixing.py
       line: 110
       type: magic_number
       description: Magic number 120 should be a named constant
       severity: info
       suggestion: ''
-    - file: scripts/test_basic_mixing.py
-      line: 124
-      type: magic_number
-      description: Magic number 120 should be a named constant
-      severity: info
-      suggestion: ''
-    - file: scripts/test_basic_mixing.py
-      line: 137
-      type: magic_number
-      description: Magic number 200 should be a named constant
-      severity: info
-      suggestion: ''
-  hardcoded_path:
-    count: 11
-    examples:
-    - file: scripts/sync_coin_knowledge_to_salarsu.py
-      line: 36
-      type: hardcoded_path
-      description: Hardcoded absolute path detected
-      severity: warning
-      suggestion: Use Path.home() or configuration for paths
-    - file: scripts/email/insert_dreamweaver_templates.py
-      line: 32
-      type: hardcoded_path
-      description: Hardcoded absolute path detected
-      severity: warning
-      suggestion: Use Path.home() or configuration for paths
-    - file: scripts/email/seasonal_scheduler.py
-      line: 40
-      type: hardcoded_path
-      description: Hardcoded absolute path detected
-      severity: warning
-      suggestion: Use Path.home() or configuration for paths
   deep_nesting:
-    count: 103
+    count: 104
     examples:
     - file: scripts/sync_coin_knowledge_to_salarsu.py
       line: 41
@@ -816,27 +930,6 @@ by_type:
       description: Function 'format_section' has deep nesting (6 levels)
       severity: warning
       suggestion: Consider refactoring to reduce complexity
-  line_length:
-    count: 449
-    examples:
-    - file: scripts/email/insert_dreamweaver_templates.py
-      line: 285
-      type: line_length
-      description: Line too long (124 chars)
-      severity: info
-      suggestion: Consider breaking into multiple lines
-    - file: scripts/email/insert_dreamweaver_templates.py
-      line: 322
-      type: line_length
-      description: Line too long (140 chars)
-      severity: info
-      suggestion: Consider breaking into multiple lines
-    - file: scripts/core/seo_title_generator.py
-      line: 318
-      type: line_length
-      description: Line too long (162 chars)
-      severity: info
-      suggestion: Consider breaking into multiple lines
   too_many_args:
     count: 42
     examples:
@@ -880,36 +973,354 @@ by_type:
       severity: info
       suggestion: ''
   todo_comment:
-    count: 1
+    count: 2
     examples:
+    - file: scripts/generation/rag_client.py
+      line: 61
+      type: todo_comment
+      description: 'TODO: Robust parsing of the CLI output. '
+      severity: info
+      suggestion: ''
     - file: scripts/ai/youtube_insights_extractor.py
       line: 756
       type: todo_comment
       description: 'TODO: Implement Notion sync'
       severity: info
       suggestion: ''
-  shell_injection:
-    count: 3
-    examples:
-    - file: scripts/ai/learning/code_reviewer.py
-      line: 147
-      type: shell_injection
-      description: subprocess with shell=True is a security risk
-      severity: warning
-      suggestion: Use shell=False and pass args as list
-    - file: scripts/ai/learning/code_reviewer.py
-      line: 148
-      type: shell_injection
-      description: subprocess with shell=True is a security risk
-      severity: warning
-      suggestion: Use shell=False and pass args as list
-    - file: scripts/ai/learning/code_reviewer.py
-      line: 151
-      type: shell_injection
-      description: subprocess with shell=True is a security risk
-      severity: warning
-      suggestion: Use shell=False and pass args as list
 by_file:
+  scripts/build_financial_freedom.py:
+  - file: scripts/build_financial_freedom.py
+    line: 23
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 27
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/build_financial_freedom.py
+    line: 32
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 51
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 59
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 69
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 77
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 81
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 87
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 90
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 104
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 108
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 115
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 120
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 123
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 127
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 132
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 141
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 152
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 167
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 174
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 175
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 177
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 184
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 190
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 193
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 196
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 204
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 205
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 208
+    type: line_length
+    description: Line too long (132 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/build_financial_freedom.py
+    line: 216
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 220
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 222
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 225
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 226
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 228
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 229
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 230
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 233
+    type: shell_injection
+    description: subprocess with shell=True is a security risk
+    severity: warning
+    suggestion: Use shell=False and pass args as list
+  - file: scripts/build_financial_freedom.py
+    line: 236
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/build_financial_freedom.py
+    line: 242
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/build_financial_freedom.py
+    line: 244
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/build_financial_freedom.py
+    line: 22
+    type: missing_docstring
+    description: Function 'build_financial_freedom' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/build_financial_freedom.py
+    line: 188
+    type: magic_number
+    description: Magic number 3000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/build_financial_freedom.py
+    line: 193
+    type: magic_number
+    description: Magic number 3000 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/run_quality_loop.py:
+  - file: scripts/run_quality_loop.py
+    line: 55
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/run_quality_loop.py
+    line: 54
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/run_quality_loop.py
+    line: 26
+    type: missing_docstring
+    description: Function 'extract_number' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/reprocess_pdf.py:
+  - file: scripts/reprocess_pdf.py
+    line: 14
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/reprocess_pdf.py
+    line: 17
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/reprocess_pdf.py
+    line: 21
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/reprocess_pdf.py
+    line: 53
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/reprocess_pdf.py
+    line: 57
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/reprocess_pdf.py
+    line: 61
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/reprocess_pdf.py
+    line: 63
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
   scripts/test_basic_mixing.py:
   - file: scripts/test_basic_mixing.py
     line: 35
@@ -1414,6 +1825,161 @@ by_file:
     line: 11
     type: magic_number
     description: Magic number 500 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/analyze_book_depth.py:
+  - file: scripts/analyze_book_depth.py
+    line: 10
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/analyze_book_depth.py
+    line: 56
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/analyze_book_depth.py
+    line: 57
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/analyze_book_depth.py
+    line: 6
+    type: missing_docstring
+    description: Function 'analyze_depth' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/analyze_book_depth.py
+    line: 28
+    type: magic_number
+    description: Magic number 2000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/analyze_book_depth.py
+    line: 45
+    type: magic_number
+    description: Magic number 300 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/analyze_book_depth.py
+    line: 46
+    type: magic_number
+    description: Magic number 0 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/assemble_manual_pdf.py:
+  - file: scripts/assemble_manual_pdf.py
+    line: 70
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/assemble_manual_pdf.py
+    line: 15
+    type: missing_docstring
+    description: Function 'assemble' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/test_bonus_generation.py:
+  - file: scripts/test_bonus_generation.py
+    line: 32
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/test_bonus_generation.py
+    line: 35
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/test_bonus_generation.py
+    line: 37
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/test_bonus_generation.py
+    line: 12
+    type: missing_docstring
+    description: Function 'test_bonus_generation' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/assemble_only.py:
+  - file: scripts/assemble_only.py
+    line: 49
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/assemble_only.py
+    line: 48
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/assemble_only.py
+    line: 22
+    type: missing_docstring
+    description: Function 'extract_number' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/test_bonus_fast.py:
+  - file: scripts/test_bonus_fast.py
+    line: 37
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/test_bonus_fast.py
+    line: 40
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/test_bonus_fast.py
+    line: 42
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/test_bonus_fast.py
+    line: 45
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/test_bonus_fast.py
+    line: 47
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/test_bonus_fast.py
+    line: 49
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/test_bonus_fast.py
+    line: 13
+    type: missing_docstring
+    description: Function 'test_bonus_generation_fast' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/test_bonus_fast.py
+    line: 22
+    type: magic_number
+    description: Magic number 2000 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/test_bonus_fast.py
+    line: 23
+    type: magic_number
+    description: Magic number 200 should be a named constant
     severity: info
     suggestion: ''
   scripts/email/insert_dreamweaver_templates.py:
@@ -18431,6 +18997,31 @@ by_file:
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
+  scripts/generation/rag_client.py:
+  - file: scripts/generation/rag_client.py
+    line: 16
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/generation/rag_client.py
+    line: 47
+    type: line_length
+    description: Line too long (123 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/generation/rag_client.py
+    line: 61
+    type: todo_comment
+    description: 'TODO: Robust parsing of the CLI output. '
+    severity: info
+    suggestion: ''
+  - file: scripts/generation/rag_client.py
+    line: 103
+    type: deep_nesting
+    description: Function '_parse_search_output' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
   scripts/generation/validate_content_quality.py:
   - file: scripts/generation/validate_content_quality.py
     line: 247
@@ -21154,31 +21745,19 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 810
+    line: 814
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 811
+    line: 815
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 817
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 824
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 826
+    line: 821
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -21190,25 +21769,19 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 829
+    line: 830
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 835
+    line: 832
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 837
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
-    line: 838
+    line: 833
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -21226,13 +21799,19 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 846
+    line: 842
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 848
+    line: 843
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 845
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -21244,13 +21823,19 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 855
+    line: 851
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 856
+    line: 853
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 858
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -21262,43 +21847,67 @@ by_file:
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 861
-    type: print_statement
-    description: Using print() instead of logging
-    severity: info
-    suggestion: Consider using logging module for production code
-  - file: scripts/ai/notion_knowledge_retriever.py
     line: 862
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 863
+    line: 867
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 864
+    line: 868
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 871
+    line: 872
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 879
+    line: 873
     type: print_statement
     description: Using print() instead of logging
     severity: info
     suggestion: Consider using logging module for production code
   - file: scripts/ai/notion_knowledge_retriever.py
-    line: 885
+    line: 874
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 875
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 876
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 883
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 891
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/ai/notion_knowledge_retriever.py
+    line: 897
     type: print_statement
     description: Using print() instead of logging
     severity: info
@@ -21312,7 +21921,7 @@ by_file:
   - file: scripts/ai/notion_knowledge_retriever.py
     line: 762
     type: deep_nesting
-    description: Function 'main' has deep nesting (9 levels)
+    description: Function 'main' has deep nesting (10 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/ai/notion_knowledge_retriever.py
