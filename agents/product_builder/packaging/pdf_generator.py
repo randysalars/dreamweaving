@@ -193,12 +193,12 @@ class PDFGenerator:
         
         styles = getSampleStyleSheet()
         
-        # Custom styles
+        # Custom styles - compact font sizes
         title_style = ParagraphStyle(
             'CustomTitle',
             parent=styles['Heading1'],
-            fontSize=28,
-            spaceAfter=30,
+            fontSize=22,
+            spaceAfter=20,
             textColor=HexColor(config.style.heading_color)
         )
         
@@ -333,21 +333,21 @@ class PDFGenerator:
         if line.startswith('# '):
             style = ParagraphStyle(
                 'H1', parent=styles['Heading1'], 
-                fontSize=24, spaceAfter=12, textColor=HexColor(config.style.heading_color)
+                fontSize=18, spaceAfter=10, textColor=HexColor(config.style.heading_color)
             )
             return Paragraph(line[2:], style)
             
         if line.startswith('## '):
             style = ParagraphStyle(
                 'H2', parent=styles['Heading2'], 
-                fontSize=18, spaceAfter=10, textColor=HexColor(config.style.heading_color)
+                fontSize=14, spaceAfter=8, textColor=HexColor(config.style.heading_color)
             )
             return Paragraph(line[3:], style)
             
         if line.startswith('### '):
             style = ParagraphStyle(
                 'H3', parent=styles['Heading3'],
-                fontSize=14, spaceAfter=8, textColor=HexColor(config.style.accent_color)
+                fontSize=12, spaceAfter=6, textColor=HexColor(config.style.accent_color)
             )
             return Paragraph(line[4:], style)
 
