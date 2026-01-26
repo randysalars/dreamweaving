@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - the-garden-of-reclamation-dreamweaving
-  - the-treasury-of-echoing-gold-dreamweaving
-  - glimpses-of-the-masonic-mosaic-pavement-a-meditati
   - ankh-ascension-discovering-eternal-life-through-th
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
@@ -34,8 +31,11 @@ lessons:
   - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
-  applied_count: 86
-  last_applied: '2026-01-25'
+  - virtual-game-avatar-leveling-up-fitness
+  - the-mount-calvary-passage-dreamweaving
+  - the-candle-of-mitochondrial-repair
+  applied_count: 89
+  last_applied: '2026-01-26'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - the-garden-of-reclamation-dreamweaving
-  - the-treasury-of-echoing-gold-dreamweaving
-  - glimpses-of-the-masonic-mosaic-pavement-a-meditati
   - ankh-ascension-discovering-eternal-life-through-th
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
@@ -72,8 +69,11 @@ lessons:
   - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
-  applied_count: 86
-  last_applied: '2026-01-25'
+  - virtual-game-avatar-leveling-up-fitness
+  - the-mount-calvary-passage-dreamweaving
+  - the-candle-of-mitochondrial-repair
+  applied_count: 89
+  last_applied: '2026-01-26'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - the-garden-of-reclamation-dreamweaving
-  - the-treasury-of-echoing-gold-dreamweaving
-  - glimpses-of-the-masonic-mosaic-pavement-a-meditati
   - ankh-ascension-discovering-eternal-life-through-th
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
@@ -109,8 +106,11 @@ lessons:
   - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
-  applied_count: 86
-  last_applied: '2026-01-25'
+  - virtual-game-avatar-leveling-up-fitness
+  - the-mount-calvary-passage-dreamweaving
+  - the-candle-of-mitochondrial-repair
+  applied_count: 89
+  last_applied: '2026-01-26'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - the-garden-of-reclamation-dreamweaving
-  - the-treasury-of-echoing-gold-dreamweaving
-  - glimpses-of-the-masonic-mosaic-pavement-a-meditati
   - ankh-ascension-discovering-eternal-life-through-th
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
@@ -147,8 +144,11 @@ lessons:
   - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
-  applied_count: 86
-  last_applied: '2026-01-25'
+  - virtual-game-avatar-leveling-up-fitness
+  - the-mount-calvary-passage-dreamweaving
+  - the-candle-of-mitochondrial-repair
+  applied_count: 89
+  last_applied: '2026-01-26'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - the-garden-of-reclamation-dreamweaving
-  - the-treasury-of-echoing-gold-dreamweaving
-  - glimpses-of-the-masonic-mosaic-pavement-a-meditati
   - ankh-ascension-discovering-eternal-life-through-th
   - the-nordic-forge-of-auspicious-fate
   - crystal-creation-shaping-and-savoring-astral-const
@@ -183,8 +180,11 @@ lessons:
   - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
-  applied_count: 86
-  last_applied: '2026-01-25'
+  - virtual-game-avatar-leveling-up-fitness
+  - the-mount-calvary-passage-dreamweaving
+  - the-candle-of-mitochondrial-repair
+  applied_count: 89
+  last_applied: '2026-01-26'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
