@@ -3,8 +3,9 @@ Salarsu Deployer - Deploys digital products to the SalarsNet store
 
 Handles:
 1. Copy ZIP to content/lead-magnets/ (served via /api/files/lead-magnets/[filename])
-2. Generate SQL INSERT for PostgreSQL database
-3. Optionally commit and push to git
+2. Generate product cover image (via DALL-E or placeholder)
+3. Generate SQL INSERT for PostgreSQL database
+4. Optionally commit and push to git
 
 Usage:
     from packaging.salarsu_deployer import SalarsuDeployer
@@ -17,6 +18,7 @@ Usage:
         description="Product description...",
         price=47.00,
         sale_price=27.00,
+        generate_cover_image=True,  # Auto-generate cover image
         landing_page_content={...}
     )
 """
@@ -25,6 +27,7 @@ import logging
 import shutil
 import subprocess
 import json
+import os
 from pathlib import Path
 from typing import Dict, Any, Optional
 from datetime import datetime
@@ -38,13 +41,15 @@ class SalarsuDeployer:
     
     Digital products are:
     1. Copied to content/lead-magnets/ for serving via /api/files/lead-magnets/
-    2. SQL INSERT generated for the products table
-    3. Optionally git committed and pushed
+    2. Cover image generated (if requested) and saved to public/images/products/
+    3. SQL INSERT generated for the products table
+    4. Optionally git committed and pushed
     """
     
     def __init__(self, salarsu_root: str):
         self.salarsu_root = Path(salarsu_root)
         self.content_dir = self.salarsu_root / "content" / "lead-magnets"
+        self.images_dir = self.salarsu_root / "public" / "images" / "products"
         self.sql_dir = self.salarsu_root  # SQL files go in repo root
         
     def deploy(
@@ -59,6 +64,7 @@ class SalarsuDeployer:
         landing_page_content: Optional[Dict[str, Any]] = None,
         image_url: Optional[str] = None,
         image_alt: Optional[str] = None,
+        generate_cover_image: bool = True,
         auto_commit: bool = False,
         auto_push: bool = False
     ) -> Dict[str, Any]:
@@ -74,8 +80,9 @@ class SalarsuDeployer:
             sale_price: Optional sale price in USD
             sku: Optional SKU (auto-generated if not provided)
             landing_page_content: Optional landing page JSON content
-            image_url: Optional product image URL
+            image_url: Optional product image URL (skips generation if provided)
             image_alt: Optional image alt text
+            generate_cover_image: If True, generate cover image via DALL-E
             auto_commit: If True, git add and commit the files
             auto_push: If True, also push to origin (requires auto_commit)
             
@@ -89,8 +96,9 @@ class SalarsuDeployer:
         if not zip_file.exists():
             raise FileNotFoundError(f"ZIP file not found: {zip_path}")
         
-        # 1. Ensure content directory exists
+        # 1. Ensure directories exist
         self.content_dir.mkdir(parents=True, exist_ok=True)
+        self.images_dir.mkdir(parents=True, exist_ok=True)
         
         # 2. Copy ZIP to content/lead-magnets/
         dest_filename = zip_file.name
@@ -98,7 +106,17 @@ class SalarsuDeployer:
         logger.info(f"📦 Copying {zip_file.name} to {dest_path}")
         shutil.copy(zip_file, dest_path)
         
-        # 3. Generate SQL INSERT
+        # 3. Generate cover image (if not provided)
+        image_path = None
+        if not image_url and generate_cover_image:
+            logger.info(f"🎨 Generating cover image for {product_name}...")
+            image_path = self._generate_cover_image(product_name, product_slug, description)
+            if image_path:
+                image_url = f"/images/products/{product_slug}.png"
+                image_alt = image_alt or f"{product_name} cover"
+                logger.info(f"   ✅ Image saved: {image_path}")
+        
+        # 4. Generate SQL INSERT
         sql_filename = f"{product_slug}.sql"
         sql_path = self.sql_dir / sql_filename
         
@@ -121,9 +139,13 @@ class SalarsuDeployer:
         with open(sql_path, 'w') as f:
             f.write(sql_content)
         
-        # 4. Git operations (optional)
+        # 5. Git operations (optional)
+        files_to_commit = [dest_path, sql_path]
+        if image_path:
+            files_to_commit.append(Path(image_path))
+            
         if auto_commit:
-            self._git_commit(dest_path, sql_path, product_name)
+            self._git_commit_files(files_to_commit, product_name)
             
             if auto_push:
                 self._git_push()
@@ -132,7 +154,9 @@ class SalarsuDeployer:
             "status": "deployed",
             "zip_path": str(dest_path),
             "sql_path": str(sql_path),
+            "image_path": str(image_path) if image_path else None,
             "download_url": download_url,
+            "image_url": image_url,
             "product_slug": product_slug,
             "product_page_url": f"/store/product/{product_slug}"
         }
@@ -140,9 +164,74 @@ class SalarsuDeployer:
         logger.info(f"✅ Deployment complete!")
         logger.info(f"   ZIP: {dest_path}")
         logger.info(f"   SQL: {sql_path}")
+        if image_path:
+            logger.info(f"   Image: {image_path}")
         logger.info(f"   Download URL: {download_url}")
         
         return result
+    
+    def _generate_cover_image(
+        self, 
+        product_name: str, 
+        product_slug: str, 
+        description: str
+    ) -> Optional[str]:
+        """
+        Generate a product cover image using DALL-E.
+        
+        Returns the path to the generated image, or None if generation failed.
+        """
+        output_path = self.images_dir / f"{product_slug}.png"
+        
+        # Create a cover image prompt based on product details
+        prompt = self._create_cover_prompt(product_name, description)
+        
+        try:
+            import openai
+            
+            client = openai.OpenAI()
+            response = client.images.generate(
+                model="dall-e-3",
+                prompt=prompt,
+                size="1024x1024",
+                quality="standard",
+                n=1
+            )
+            
+            # Download the image
+            import requests
+            image_url = response.data[0].url
+            img_data = requests.get(image_url).content
+            
+            with open(output_path, 'wb') as f:
+                f.write(img_data)
+            
+            logger.info(f"✅ Cover image generated via DALL-E: {product_slug}")
+            return str(output_path)
+            
+        except ImportError:
+            logger.warning("OpenAI not available, skipping cover image generation")
+            return None
+        except Exception as e:
+            logger.warning(f"Cover image generation failed: {e}")
+            return None
+    
+    def _create_cover_prompt(self, product_name: str, description: str) -> str:
+        """Create a DALL-E prompt for the product cover image."""
+        # Extract key themes from description
+        desc_short = description[:200] if len(description) > 200 else description
+        
+        return f"""A professional, modern book cover design for "{product_name}". 
+        
+Theme based on: {desc_short}
+
+Style requirements:
+- Clean, premium aesthetic suitable for a digital product
+- Warm, inviting color palette
+- Symbolic imagery representing the product theme
+- No text, just visual imagery
+- Professional book or product cover composition
+- High quality, polished look"""
     
     def _generate_sku(self, slug: str) -> str:
         """Generate a SKU from the product slug."""
@@ -231,14 +320,15 @@ RETURNING id, name, slug, digital_file_url;
 """
         return sql
     
-    def _git_commit(self, zip_path: Path, sql_path: Path, product_name: str):
+    def _git_commit_files(self, files: list, product_name: str):
         """Git add and commit the deployed files."""
         logger.info("📝 Committing to git...")
         
         try:
-            # Git add
+            # Git add all files
+            file_paths = [str(f) for f in files]
             subprocess.run(
-                ["git", "add", str(zip_path), str(sql_path)],
+                ["git", "add"] + file_paths,
                 cwd=self.salarsu_root,
                 check=True,
                 capture_output=True
