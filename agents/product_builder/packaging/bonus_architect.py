@@ -129,40 +129,51 @@ class BonusArchitect:
         bonuses = []
         topic = intelligence.thesis if intelligence else "the main topic"
         
+        # Map internal types to schema-allowed Bonus.type literals
+        # Schema allows: 'clarity', 'application', 'reinforcement', 'deep_dive'
+        TYPE_MAPPING = {
+            'cookbook': 'application',
+            'worksheet': 'application', 
+            'reference_card': 'clarity',
+            'meditation': 'reinforcement',
+            'journal': 'deep_dive',
+            'checklist': 'application'
+        }
+        
         # Map bonus types to specific designs
         bonus_designs = [
             {
-                'type': 'cookbook',
+                'internal_type': 'cookbook',
                 'title': self._generate_bonus_title('cookbook', topic),
                 'description': 'Complete recipes, meal plans, and examples',
                 'friction': 'Practical implementation'
             },
             {
-                'type': 'worksheet',
+                'internal_type': 'worksheet',
                 'title': self._generate_bonus_title('worksheet', topic),
                 'description': 'Self-assessment and planning exercises',
                 'friction': friction_points[0] if friction_points else 'Application'
             },
             {
-                'type': 'reference_card',
+                'internal_type': 'reference_card',
                 'title': self._generate_bonus_title('reference_card', topic),
                 'description': 'Quick-reference summaries of key protocols',
                 'friction': 'Daily reference needs'
             },
             {
-                'type': 'meditation',
+                'internal_type': 'meditation',
                 'title': self._generate_bonus_title('meditation', topic),
                 'description': 'Complete guided practice scripts',
                 'friction': 'Practice guidance'
             },
             {
-                'type': 'journal',
+                'internal_type': 'journal',
                 'title': self._generate_bonus_title('journal', topic),
                 'description': '90-day prompted journal for transformation tracking',
                 'friction': 'Sustaining momentum'
             },
             {
-                'type': 'checklist',
+                'internal_type': 'checklist',
                 'title': self._generate_bonus_title('checklist', topic),
                 'description': 'Phase-based action checklists',
                 'friction': 'Tracking progress'
@@ -170,9 +181,11 @@ class BonusArchitect:
         ]
         
         for design in bonus_designs:
-            type_config = STANDARD_BONUS_TYPES.get(design['type'], {})
+            internal_type = design['internal_type']
+            schema_type = TYPE_MAPPING.get(internal_type, 'application')
+            type_config = STANDARD_BONUS_TYPES.get(internal_type, {})
             bonuses.append(Bonus(
-                type=design['type'],
+                type=schema_type,
                 title=design['title'],
                 format='pdf',
                 description=design['description'],
@@ -181,6 +194,7 @@ class BonusArchitect:
             ))
         
         return bonuses
+
     
     def _generate_bonus_title(self, bonus_type: str, topic: str) -> str:
         """Generate an appropriate title for a bonus type."""

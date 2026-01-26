@@ -28,7 +28,7 @@ class BonusPlan(BaseModel):
     bonuses: List[Bonus] = Field(
         description="List of strategically designed bonuses",
         min_length=1,
-        max_length=5
+        max_length=6
     )
     total_value_narrative: str = Field(
         description="How to present the combined value of bonuses"
