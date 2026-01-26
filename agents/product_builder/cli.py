@@ -368,6 +368,53 @@ def compile_command(args):
         return 1
 
 
+def deploy_command(args):
+    """Deploy product to SalarsNet store."""
+    from pathlib import Path
+    from .packaging.salarsu_deployer import SalarsuDeployer
+    
+    product_dir = Path(args.product_dir)
+    output_dir = product_dir / "output"
+    
+    logger.info(f"🚀 Deploying to SalarsNet...")
+    logger.info(f"   Product: {args.name}")
+    logger.info(f"   Slug: {args.slug}")
+    
+    # Find the ZIP file
+    zip_files = list(output_dir.glob("*.zip"))
+    if not zip_files:
+        logger.error(f"❌ No ZIP file found in {output_dir}")
+        return 1
+    
+    zip_path = zip_files[0]
+    logger.info(f"   ZIP: {zip_path}")
+    
+    # Get description from args or generate a default
+    description = args.description or f"Premium digital product: {args.name}"
+    
+    # Deploy
+    deployer = SalarsuDeployer(args.salarsu_root)
+    result = deployer.deploy(
+        zip_path=str(zip_path),
+        product_name=args.name,
+        product_slug=args.slug,
+        description=description,
+        price=args.price,
+        sale_price=args.sale_price,
+        auto_commit=args.commit,
+        auto_push=args.push
+    )
+    
+    logger.info(f"\n✅ Deployment Complete!")
+    logger.info(f"   📦 ZIP: {result['zip_path']}")
+    logger.info(f"   📝 SQL: {result['sql_path']}")
+    logger.info(f"   🔗 Download URL: {result['download_url']}")
+    logger.info(f"   🌐 Product Page: {result['product_page_url']}")
+    
+    if not args.commit:
+        logger.info(f"\n   💡 Run SQL against your database:")
+        logger.info(f"      psql $DATABASE_URL -f {result['sql_path']}")
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -447,6 +494,20 @@ Examples:
     compile_parser.add_argument('--product-dir', '-d', required=True, help='Product directory with responses/')
     compile_parser.add_argument('--title', '-T', required=True, help='Product title')
     compile_parser.set_defaults(func=compile_command)
+    
+    # Deploy command - deploys to SalarsNet store
+    deploy_parser = subparsers.add_parser('deploy', help='Deploy product to SalarsNet store')
+    deploy_parser.add_argument('--product-dir', '-d', required=True, help='Product directory with output/')
+    deploy_parser.add_argument('--name', '-n', required=True, help='Product name')
+    deploy_parser.add_argument('--slug', '-s', required=True, help='Product URL slug')
+    deploy_parser.add_argument('--description', help='Product description')
+    deploy_parser.add_argument('--price', type=float, default=47.00, help='Regular price (default: 47.00)')
+    deploy_parser.add_argument('--sale-price', type=float, help='Sale price')
+    deploy_parser.add_argument('--salarsu-root', default='/home/rsalars/Projects/salarsu', 
+                               help='Path to salarsu repo')
+    deploy_parser.add_argument('--commit', action='store_true', help='Git commit the files')
+    deploy_parser.add_argument('--push', action='store_true', help='Git push to origin (requires --commit)')
+    deploy_parser.set_defaults(func=deploy_command)
     
     # Parse and execute
     args = parser.parse_args()
