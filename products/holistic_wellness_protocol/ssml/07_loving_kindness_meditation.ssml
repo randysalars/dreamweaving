@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xml:lang="en-US">
+
+<prosody rate="0.85" pitch="-1st">
+
+<!-- Phase 1: Welcome (2 mins) -->
+<p>
+<s>Welcome to the Loving-Kindness Meditation, also known as Metta.</s>
+<break time="2500ms"/>
+<s>This ancient practice cultivates unconditional love, compassion, and goodwill, first for yourself, then extending outward to others and eventually to all beings.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Find a comfortable seated position.</s>
+<break time="2000ms"/>
+<s>Sit with dignity, spine gently upright.</s>
+<break time="2000ms"/>
+<s>Let your shoulders relax.</s>
+<break time="2000ms"/>
+<s>Rest your hands on your thighs or in your lap.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Close your eyes.</s>
+<break time="2500ms"/>
+<s>Take a deep breath in.</s>
+<break time="3500ms"/>
+<s>And exhale slowly.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Place one or both hands over your heart if that feels comfortable.</s>
+<break time="3000ms"/>
+<s>Feel the warmth of your own touch.</s>
+<break time="2500ms"/>
+<s>Your heart beating steadily beneath your palm.</s>
+</p>
+
+<break time="4000ms"/>
+
+<!-- Phase 2: Self-Compassion (4 mins) -->
+<p>
+<s>We begin by sending loving-kindness to ourselves.</s>
+<break time="3000ms"/>
+<s>This can be the most challenging step for many people.</s>
+<break time="2500ms"/>
+<s>But you cannot pour from an empty cup.</s>
+<break time="2500ms"/>
+<s>Self-love is the foundation.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Visualize yourself sitting peacefully.</s>
+<break time="3500ms"/>
+<s>See yourself with compassionate eyes.</s>
+<break time="3000ms"/>
+<s>You are worthy of love and kindness.</s>
+<break time="2500ms"/>
+<s>Simply because you exist.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Now, silently repeat these phrases, directing them toward yourself.</s>
+<break time="3000ms"/>
+<s>May I be happy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May I be healthy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May I be safe.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May I live with ease.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Let's repeat them again, feeling each word.</s>
+<break time="3000ms"/>
+<s>May I be happy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May I be healthy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May I be safe.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May I live with ease.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Allow yourself to receive these wishes.</s>
+<break time="3000ms"/>
+<s>You deserve this kindness from yourself.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 3: Loved One (3 mins) -->
+<p>
+<s>Now bring to mind someone you love dearly.</s>
+<break time="3500ms"/>
+<s>A person who makes you smile just thinking of them.</s>
+<break time="3000ms"/>
+<s>A family member, close friend, partner, or mentor.</s>
+<break time="3000ms"/>
+<s>See their face clearly in your mind.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Direct these wishes to them.</s>
+<break time="3000ms"/>
+<s>May you be happy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May you be healthy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May you be safe.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May you live with ease.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Feel the love flowing from your heart to theirs.</s>
+<break time="3500ms"/>
+<s>This is natural.</s>
+<break time="2500ms"/>
+<s>This is what love does.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 4: Neutral Person (3 mins) -->
+<p>
+<s>Now think of someone neutral in your life.</s>
+<break time="3500ms"/>
+<s>Perhaps a neighbor you barely know.</s>
+<break time="2500ms"/>
+<s>A cashier at your local store.</s>
+<break time="2500ms"/>
+<s>Someone you neither like nor dislike.</s>
+<break time="3000ms"/>
+<s>They have hopes, fears, joys, and sorrows just like you.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Extend loving-kindness to this person.</s>
+<break time="3000ms"/>
+<s>May you be happy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May you be healthy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May you be safe.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May you live with ease.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Notice how it feels to offer love to someone you barely know.</s>
+<break time="3500ms"/>
+<s>The heart has unlimited capacity.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 5: Difficult Person (3 mins) -->
+<p>
+<s>This next part can be challenging.</s>
+<break time="3000ms"/>
+<s>Bring to mind someone you find difficult.</s>
+<break time="3000ms"/>
+<s>Not your greatest enemy, but someone who irritates or frustrates you.</s>
+<break time="3000ms"/>
+<s>Remember, this person, like you, wants to be happy.</s>
+<break time="2500ms"/>
+<s>They act from their own wounds and confusion.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>As best you can, extend these wishes to them.</s>
+<break time="3000ms"/>
+<s>May you be happy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May you be healthy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May you be safe.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May you live with ease.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>This is not about condoning harmful behavior.</s>
+<break time="3000ms"/>
+<s>It's about freeing your own heart from resentment.</s>
+<break time="3000ms"/>
+<s>If this feels too difficult, simply wish them peace and return to sending love to yourself.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 6: All Beings (3 mins) -->
+<p>
+<s>Now expand your awareness outward.</s>
+<break time="3500ms"/>
+<s>Imagine your loving-kindness radiating like light from your heart.</s>
+<break time="3000ms"/>
+<s>Reaching out in all directions.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>First to everyone in this room or building with you.</s>
+<break time="3500ms"/>
+<s>Then to your neighborhood.</s>
+<break time="3000ms"/>
+<s>Your city.</s>
+<break time="2500ms"/>
+<s>Your country.</s>
+<break time="2500ms"/>
+<s>Across the oceans to every continent.</s>
+<break time="3000ms"/>
+<s>To all beings on Earth.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>May all beings be happy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May all beings be healthy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May all beings be safe.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May all beings live with ease.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Feel yourself as part of this vast web of life.</s>
+<break time="3500ms"/>
+<s>Connected to every other being through the simple wish for happiness.</s>
+</p>
+
+<break time="6000ms"/>
+
+<!-- Phase 7: Return to Self (2 mins) -->
+<p>
+<s>Gently bring your awareness back to yourself.</s>
+<break time="4000ms"/>
+<s>Feel your heart, still warm with the love you've been cultivating.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Once more, offer yourself loving-kindness.</s>
+<break time="3000ms"/>
+<s>May I be happy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May I be healthy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May I be safe.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>May I live with ease.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 8: Close (2 mins) -->
+<p>
+<s>Rest in this feeling of expansive love.</s>
+<break time="4000ms"/>
+<s>It is always available to you.</s>
+<break time="3000ms"/>
+<s>With practice, you can access it at any moment.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Take a deeper breath.</s>
+<break time="3500ms"/>
+<s>Begin to gently wiggle your fingers and toes.</s>
+<break time="3500ms"/>
+<s>Slowly open your eyes.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Carry this loving-kindness with you.</s>
+<break time="2500ms"/>
+<s>Let it inform how you treat yourself and others.</s>
+<break time="2500ms"/>
+<s>The more you give, the more you have.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Thank you for practicing with me today.</s>
+</p>
+
+</prosody>
+
+</speak>
