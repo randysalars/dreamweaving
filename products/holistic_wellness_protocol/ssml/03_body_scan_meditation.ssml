@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xml:lang="en-US">
+
+<prosody rate="0.86" pitch="-1st">
+
+<!-- Phase 1: Welcome & Setup (2 mins) -->
+<p>
+<s>Welcome to the Body Scan Meditation.</s>
+<break time="2000ms"/>
+<s>This practice will guide your awareness through every part of your body, releasing tension, increasing circulation, and deepening your connection to your physical self.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Find a comfortable position.</s>
+<break time="2500ms"/>
+<s>You may lie down on your back with your arms slightly away from your body, palms facing up.</s>
+<break time="2000ms"/>
+<s>Or you may sit in a chair with your feet flat on the floor.</s>
+<break time="2000ms"/>
+<s>Choose whatever position allows you to be fully relaxed and fully aware.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Close your eyes gently.</s>
+<break time="2500ms"/>
+<s>Take three deep breaths to arrive in this moment.</s>
+</p>
+
+<break time="2500ms"/>
+
+<p>
+<s>Breathe in deeply.</s>
+<break time="3500ms"/>
+<s>And exhale fully.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Breathe in.</s>
+<break time="3500ms"/>
+<s>And release.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>One more time, breathe in.</s>
+<break time="3500ms"/>
+<s>And let everything go.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 2: Instruction (1 min) -->
+<p>
+<s>We will now travel through your body, from the crown of your head to the tips of your toes, bringing conscious awareness to each area.</s>
+<break time="2500ms"/>
+<s>There's nothing to fix or change.</s>
+<break time="2000ms"/>
+<s>Simply notice, observe, and allow.</s>
+</p>
+
+<break time="4000ms"/>
+
+<!-- Phase 3: Head & Face (3 mins) -->
+<p>
+<s>Begin at the top of your head.</s>
+<break time="3000ms"/>
+<s>Bring your attention to your scalp.</s>
+<break time="3000ms"/>
+<s>Notice any sensations there.</s>
+<break time="2500ms"/>
+<s>Perhaps a subtle tingling.</s>
+<break time="2000ms"/>
+<s>Perhaps warmth.</s>
+<break time="2000ms"/>
+<s>Perhaps nothing at all.</s>
+<break time="2000ms"/>
+<s>All observations are valid.</s>
+<break time="2000ms"/>
+<s>Simply notice.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Move your awareness to your forehead.</s>
+<break time="3000ms"/>
+<s>Feel the space between your eyebrows.</s>
+<break time="3000ms"/>
+<s>Allow this area to soften completely.</s>
+<break time="2500ms"/>
+<s>Let go of any furrowing or concentration.</s>
+<break time="2500ms"/>
+<s>Smooth.</s>
+<break time="1500ms"/>
+<s>Relaxed.</s>
+<break time="1500ms"/>
+<s>Open.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Bring attention to your eyes.</s>
+<break time="3000ms"/>
+<s>Even closed, they may hold tension.</s>
+<break time="2500ms"/>
+<s>Let them rest deeply in their sockets.</s>
+<break time="3000ms"/>
+<s>The muscles around your eyes release.</s>
+<break time="2500ms"/>
+<s>Your eyelids become soft and heavy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Notice your cheeks.</s>
+<break time="2500ms"/>
+<s>Your nose.</s>
+<break time="2500ms"/>
+<s>The sensation of air flowing through your nostrils with each breath.</s>
+<break time="3000ms"/>
+<s>Cool on the inhale.</s>
+<break time="2500ms"/>
+<s>Warm on the exhale.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Bring awareness to your mouth.</s>
+<break time="2500ms"/>
+<s>Your lips.</s>
+<break time="2500ms"/>
+<s>Allow them to part slightly.</s>
+<break time="3000ms"/>
+<s>Feel your jaw release.</s>
+<break time="2500ms"/>
+<s>Create a small space between your upper and lower teeth.</s>
+<break time="3000ms"/>
+<s>Your tongue relaxes, falling away from the roof of your mouth.</s>
+<break time="3000ms"/>
+<s>This is where we hold so much tension.</s>
+<break time="2500ms"/>
+<s>Let it all go.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Move to your ears.</s>
+<break time="3000ms"/>
+<s>Notice any sounds around you without judging them.</s>
+<break time="3000ms"/>
+<s>They are simply sounds.</s>
+<break time="2000ms"/>
+<s>Part of this moment.</s>
+</p>
+
+<break time="4000ms"/>
+
+<!-- Phase 4: Neck & Shoulders (2 mins) -->
+<p>
+<s>Bring attention to your neck.</s>
+<break time="3000ms"/>
+<s>This bridge between your head and body.</s>
+<break time="3000ms"/>
+<s>Feel the muscles on each side.</s>
+<break time="2500ms"/>
+<s>The back of your neck.</s>
+<break time="3000ms"/>
+<s>Any tension here begins to melt.</s>
+<break time="2500ms"/>
+<s>Softening.</s>
+<break time="2000ms"/>
+<s>Releasing.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Expand your awareness to your shoulders.</s>
+<break time="3000ms"/>
+<s>These carry so much for us.</s>
+<break time="2500ms"/>
+<s>Worries.</s>
+<break time="2000ms"/>
+<s>Responsibilities.</s>
+<break time="3000ms"/>
+<s>Let them drop away from your ears.</s>
+<break time="3000ms"/>
+<s>Feel them sink toward the floor or the chair.</s>
+<break time="3000ms"/>
+<s>Heavy.</s>
+<break time="2000ms"/>
+<s>Relaxed.</s>
+<break time="2000ms"/>
+<s>Free.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 5: Arms & Hands (2 mins) -->
+<p>
+<s>Travel down your right arm.</s>
+<break time="3000ms"/>
+<s>Your upper arm.</s>
+<break time="2500ms"/>
+<s>Your elbow.</s>
+<break time="2500ms"/>
+<s>Your forearm.</s>
+<break time="3000ms"/>
+<s>Notice any sensations.</s>
+<break time="2000ms"/>
+<s>Warmth.</s>
+<break time="1500ms"/>
+<s>Tingling.</s>
+<break time="1500ms"/>
+<s>Weight.</s>
+<break time="3000ms"/>
+<s>Continue to your wrist.</s>
+<break time="2500ms"/>
+<s>Your palm.</s>
+<break time="2500ms"/>
+<s>Each finger, from thumb to pinky.</s>
+<break time="3000ms"/>
+<s>Feel the energy in your fingertips.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Now your left arm.</s>
+<break time="3000ms"/>
+<s>Upper arm.</s>
+<break time="2500ms"/>
+<s>Elbow.</s>
+<break time="2500ms"/>
+<s>Forearm.</s>
+<break time="2500ms"/>
+<s>Wrist.</s>
+<break time="2500ms"/>
+<s>Palm.</s>
+<break time="3000ms"/>
+<s>Each finger, one by one.</s>
+<break time="2000ms"/>
+<s>Thumb.</s>
+<break time="1500ms"/>
+<s>Index.</s>
+<break time="1500ms"/>
+<s>Middle.</s>
+<break time="1500ms"/>
+<s>Ring.</s>
+<break time="1500ms"/>
+<s>Pinky.</s>
+<break time="3000ms"/>
+<s>Both arms now completely relaxed.</s>
+<break time="2000ms"/>
+<s>Heavy and warm.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 6: Torso (3 mins) -->
+<p>
+<s>Bring your attention to your upper back.</s>
+<break time="3000ms"/>
+<s>The muscles between your shoulder blades.</s>
+<break time="3000ms"/>
+<s>Let them soften and spread.</s>
+<break time="3000ms"/>
+<s>Feel your ribcage expand with each breath.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Move to your chest.</s>
+<break time="3000ms"/>
+<s>Notice your heartbeat.</s>
+<break time="4000ms"/>
+<s>That steady rhythm that has been with you since before you were born.</s>
+<break time="3000ms"/>
+<s>Thank your heart for its tireless work.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Expand awareness to your belly.</s>
+<break time="3000ms"/>
+<s>Let it be soft.</s>
+<break time="2500ms"/>
+<s>No need to hold it in.</s>
+<break time="3000ms"/>
+<s>Allow it to rise and fall freely with your breath.</s>
+<break time="3000ms"/>
+<s>Feel the organs within, performing their miraculous functions without any conscious effort from you.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Bring attention to your lower back.</s>
+<break time="3000ms"/>
+<s>This area supports you in everything you do.</s>
+<break time="3000ms"/>
+<s>Acknowledge any sensations here.</s>
+<break time="2500ms"/>
+<s>Send it gratitude.</s>
+<break time="2500ms"/>
+<s>Let tension dissolve.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Move to your hips.</s>
+<break time="2500ms"/>
+<s>Your pelvis.</s>
+<break time="2500ms"/>
+<s>This bowl that holds your core.</s>
+<break time="3000ms"/>
+<s>Allow it to be heavy and settled.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 7: Legs & Feet (3 mins) -->
+<p>
+<s>Travel down your right leg.</s>
+<break time="3000ms"/>
+<s>Your thigh.</s>
+<break time="2500ms"/>
+<s>Strong muscles that carry you through the world.</s>
+<break time="3000ms"/>
+<s>Your knee.</s>
+<break time="2500ms"/>
+<s>Your calf.</s>
+<break time="2500ms"/>
+<s>Your ankle.</s>
+<break time="3000ms"/>
+<s>The top of your foot.</s>
+<break time="2500ms"/>
+<s>The sole of your foot.</s>
+<break time="3000ms"/>
+<s>Each toe, from big toe to little toe.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Now your left leg.</s>
+<break time="3000ms"/>
+<s>Thigh.</s>
+<break time="2500ms"/>
+<s>Knee.</s>
+<break time="2500ms"/>
+<s>Calf.</s>
+<break time="2500ms"/>
+<s>Ankle.</s>
+<break time="2500ms"/>
+<s>Top of foot.</s>
+<break time="2500ms"/>
+<s>Sole.</s>
+<break time="3000ms"/>
+<s>Each toe.</s>
+<break time="2000ms"/>
+<s>Big toe to little toe.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 8: Whole Body Integration (3 mins) -->
+<p>
+<s>Your entire body has been acknowledged.</s>
+<break time="3000ms"/>
+<s>Every part of you has received attention and care.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Now expand your awareness to your body as a whole.</s>
+<break time="4000ms"/>
+<s>Feel it as one unified field of sensation.</s>
+<break time="4000ms"/>
+<s>Notice the boundary where your body meets the air.</s>
+<break time="4000ms"/>
+<s>Feel the Life Force that animates every cell.</s>
+<break time="3000ms"/>
+<s>This is you.</s>
+<break time="2000ms"/>
+<s>Present.</s>
+<break time="2000ms"/>
+<s>Alive.</s>
+<break time="2000ms"/>
+<s>Whole.</s>
+</p>
+
+<break time="6000ms"/>
+
+<p>
+<s>Rest in this awareness for a few breaths.</s>
+<break time="5000ms"/>
+<s>There is nothing to do.</s>
+<break time="3000ms"/>
+<s>Nowhere to go.</s>
+<break time="3000ms"/>
+<s>Simply be.</s>
+</p>
+
+<break time="8000ms"/>
+
+<!-- Phase 9: Return (2 mins) -->
+<p>
+<s>When you're ready to return, begin by deepening your breath.</s>
+<break time="4000ms"/>
+<s>Feel the expansion in your chest and belly.</s>
+<break time="4000ms"/>
+<s>Gently wiggle your fingers and toes.</s>
+<break time="4000ms"/>
+<s>Roll your wrists and ankles.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Take a stretch if your body wants one.</s>
+<break time="4000ms"/>
+<s>Arms overhead.</s>
+<break time="3000ms"/>
+<s>A gentle twist.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Slowly open your eyes, seeing the world with fresh clarity.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>You are grounded.</s>
+<break time="2000ms"/>
+<s>You are present.</s>
+<break time="2000ms"/>
+<s>You are connected to your body.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Carry this awareness with you.</s>
+<break time="2500ms"/>
+<s>Notice how your body feels as you move through your day.</s>
+<break time="2500ms"/>
+<s>It is always communicating with you.</s>
+<break time="2000ms"/>
+<s>Now you know how to listen.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Thank you for practicing with me today.</s>
+</p>
+
+</prosody>
+
+</speak>

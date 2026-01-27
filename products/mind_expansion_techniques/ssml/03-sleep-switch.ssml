@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak xmlns="http://www.w3.org/2001/10/synthesis" version="1.0" xml:lang="en-US">
+
+<!-- Session 3: The 4-7-8 Sleep Switch -->
+<!-- Duration Target: 20 minutes -->
+<!-- Designed for pre-sleep relaxation -->
+
+<!-- Opening - Very calm, slow delivery -->
+<p>
+<s>Welcome to your sleep preparation session.</s>
+<break time="2000ms"/>
+<s>Tonight, you will learn a technique that can become your natural sleep switch.</s>
+<break time="1500ms"/>
+<s>A simple pattern of breathing that tells your body and mind: it's time to rest.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Make yourself comfortable now.</s>
+<break time="2000ms"/>
+<s>If you're in bed, that's perfect.</s>
+<break time="1500ms"/>
+<s>Let your body sink into the mattress.</s>
+<break time="2000ms"/>
+<s>Feel how the bed rises to meet you, supporting every part of your body.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Close your eyes if they aren't already closed.</s>
+<break time="2000ms"/>
+<s>Let your eyelids become heavy.</s>
+<break time="1500ms"/>
+<s>Let them rest.</s>
+<break time="2000ms"/>
+<s>There's nothing you need to see right now.</s>
+<break time="1500ms"/>
+<s>There's nothing you need to do.</s>
+</p>
+
+<break time="3000ms"/>
+
+<!-- Progressive Relaxation -->
+<p>
+<s>Let's begin with a gentle body scan.</s>
+<break time="2000ms"/>
+<s>I'll guide you to release tension from each area of your body.</s>
+<break time="1500ms"/>
+<s>Simply notice what I mention, and let it soften.</s>
+</p>
+
+<break time="2500ms"/>
+
+<p>
+<s>Your forehead.</s>
+<break time="2000ms"/>
+<s>Notice any tension there. The furrows. The tightness.</s>
+<break time="1500ms"/>
+<s>And let it smooth. Let it release.</s>
+<break time="3000ms"/>
+<s>Your eyes and the muscles around them.</s>
+<break time="1500ms"/>
+<s>Softening.</s>
+<break time="2500ms"/>
+<s>Your jaw.</s>
+<break time="1500ms"/>
+<s>Let your mouth open slightly. Tongue resting. Jaw unclenched.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Your neck and shoulders.</s>
+<break time="2000ms"/>
+<s>Where so much tension lives.</s>
+<break time="1500ms"/>
+<s>Let them drop. Let them release toward the earth.</s>
+<break time="3000ms"/>
+<s>Your arms.</s>
+<break time="1500ms"/>
+<s>Heavy now. Resting wherever they are.</s>
+<break time="2500ms"/>
+<s>Your hands.</s>
+<break time="1500ms"/>
+<s>Fingers uncurling. Palms open.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Your chest.</s>
+<break time="1500ms"/>
+<s>Notice how it rises and falls with each breath.</s>
+<break time="2000ms"/>
+<s>No effort needed. Breathing happens on its own.</s>
+<break time="3000ms"/>
+<s>Your belly.</s>
+<break time="1500ms"/>
+<s>Soft. No holding. No tension.</s>
+<break time="2500ms"/>
+<s>Your lower back, hips, and pelvis.</s>
+<break time="1500ms"/>
+<s>Releasing into the bed.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Your legs.</s>
+<break time="1500ms"/>
+<s>Heavy. Sinking.</s>
+<break time="2000ms"/>
+<s>Your feet.</s>
+<break time="1500ms"/>
+<s>Toes uncurling. All tension draining away.</s>
+<break time="3000ms"/>
+<s>Your whole body now.</s>
+<break time="1500ms"/>
+<s>Soft. Heavy. At rest.</s>
+</p>
+
+<break time="4000ms"/>
+
+<!-- Introduction to 4-7-8 -->
+<p>
+<s>Now I'll teach you the four-seven-eight breath.</s>
+<break time="2000ms"/>
+<s>This technique was developed by Dr. Andrew Weil, based on ancient yogic breathing practices.</s>
+<break time="1500ms"/>
+<s>He calls it a natural tranquilizer for the nervous system.</s>
+</p>
+
+<break time="2500ms"/>
+
+<p>
+<s>The pattern is simple.</s>
+<break time="1500ms"/>
+<s>Inhale quietly through your nose for four counts.</s>
+<break time="1500ms"/>
+<s>Hold your breath gently for seven counts.</s>
+<break time="1500ms"/>
+<s>Exhale completely through your mouth, making a soft whoosh sound, for eight counts.</s>
+<break time="2000ms"/>
+<s>That's one cycle.</s>
+</p>
+
+<break time="2500ms"/>
+
+<p>
+<s>The exhale is longer than the inhale.</s>
+<break time="1500ms"/>
+<s>This is the key.</s>
+<break time="1500ms"/>
+<s>The extended exhale activates your parasympathetic nervous system.</s>
+<break time="1500ms"/>
+<s>It sends a signal to your brain: we are safe. We can rest.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Before we begin, place the tip of your tongue against the ridge of tissue just behind your upper front teeth.</s>
+<break time="2000ms"/>
+<s>Keep it there throughout the practice.</s>
+<break time="2000ms"/>
+<s>This is a subtle but important detail from the traditional technique.</s>
+</p>
+
+<break time="3000ms"/>
+
+<!-- Round 1 - Fully Guided -->
+<p>
+<s>Let's do the first breath together.</s>
+<break time="2000ms"/>
+<s>Exhale completely first, emptying your lungs.</s>
+<break time="3000ms"/>
+<s>Now, inhale quietly through your nose.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s>
+</p>
+
+<break time="500ms"/>
+
+<p>
+<s>Hold.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s><break time="900ms"/>
+<s>Five.</s><break time="900ms"/>
+<s>Six.</s><break time="900ms"/>
+<s>Seven.</s>
+</p>
+
+<break time="500ms"/>
+
+<p>
+<s>Exhale with a soft whoosh.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s><break time="900ms"/>
+<s>Five.</s><break time="900ms"/>
+<s>Six.</s><break time="900ms"/>
+<s>Seven.</s><break time="900ms"/>
+<s>Eight.</s>
+</p>
+
+<break time="2500ms"/>
+
+<!-- Round 2 -->
+<p>
+<s>Again.</s>
+<break time="1500ms"/>
+<s>Inhale.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s>
+</p>
+
+<break time="500ms"/>
+
+<p>
+<s>Hold.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s><break time="900ms"/>
+<s>Five.</s><break time="900ms"/>
+<s>Six.</s><break time="900ms"/>
+<s>Seven.</s>
+</p>
+
+<break time="500ms"/>
+
+<p>
+<s>Exhale slowly.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s><break time="900ms"/>
+<s>Five.</s><break time="900ms"/>
+<s>Six.</s><break time="900ms"/>
+<s>Seven.</s><break time="900ms"/>
+<s>Eight.</s>
+</p>
+
+<break time="2500ms"/>
+
+<!-- Round 3 -->
+<p>
+<s>You're doing well.</s>
+<break time="1500ms"/>
+<s>Third breath.</s>
+<break time="1500ms"/>
+<s>Inhale.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s>
+</p>
+
+<break time="500ms"/>
+
+<p>
+<s>Hold.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s><break time="900ms"/>
+<s>Five.</s><break time="900ms"/>
+<s>Six.</s><break time="900ms"/>
+<s>Seven.</s>
+</p>
+
+<break time="500ms"/>
+
+<p>
+<s>Exhale.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s><break time="900ms"/>
+<s>Five.</s><break time="900ms"/>
+<s>Six.</s><break time="900ms"/>
+<s>Seven.</s><break time="900ms"/>
+<s>Eight.</s>
+</p>
+
+<break time="2500ms"/>
+
+<!-- Round 4 -->
+<p>
+<s>Last guided breath.</s>
+<break time="1500ms"/>
+<s>Inhale.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s>
+</p>
+
+<break time="500ms"/>
+
+<p>
+<s>Hold.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s><break time="900ms"/>
+<s>Five.</s><break time="900ms"/>
+<s>Six.</s><break time="900ms"/>
+<s>Seven.</s>
+</p>
+
+<break time="500ms"/>
+
+<p>
+<s>Exhale completely.</s>
+<break time="500ms"/>
+<s>One.</s><break time="900ms"/>
+<s>Two.</s><break time="900ms"/>
+<s>Three.</s><break time="900ms"/>
+<s>Four.</s><break time="900ms"/>
+<s>Five.</s><break time="900ms"/>
+<s>Six.</s><break time="900ms"/>
+<s>Seven.</s><break time="900ms"/>
+<s>Eight.</s>
+</p>
+
+<break time="3000ms"/>
+
+<!-- Transition to Self-Guided -->
+<p>
+<s>Beautiful.</s>
+<break time="2000ms"/>
+<s>You've completed four cycles.</s>
+<break time="1500ms"/>
+<s>Notice how your body feels now.</s>
+<break time="2000ms"/>
+<s>Heavier, perhaps. Softer. Calmer.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Now, let's continue with four more cycles.</s>
+<break time="1500ms"/>
+<s>This time, I'll guide you with fewer words.</s>
+<break time="1500ms"/>
+<s>Just follow the rhythm.</s>
+</p>
+
+<break time="3000ms"/>
+
+<!-- Rounds 5-8 with minimal guidance -->
+<p>
+<s>Inhale.</s>
+<break time="4500ms"/>
+<s>Hold.</s>
+<break time="7000ms"/>
+<s>Exhale.</s>
+</p>
+
+<break time="8500ms"/>
+
+<p>
+<s>Inhale.</s>
+<break time="4500ms"/>
+<s>Hold.</s>
+<break time="7000ms"/>
+<s>Exhale.</s>
+</p>
+
+<break time="8500ms"/>
+
+<p>
+<s>Inhale.</s>
+<break time="4500ms"/>
+<s>Hold.</s>
+<break time="7000ms"/>
+<s>Exhale.</s>
+</p>
+
+<break time="8500ms"/>
+
+<p>
+<s>Inhale.</s>
+<break time="4500ms"/>
+<s>Hold.</s>
+<break time="7000ms"/>
+<s>Exhale.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Deepening -->
+<p>
+<s>Let your breathing return to normal now.</s>
+<break time="3000ms"/>
+<s>There's nothing more to do.</s>
+<break time="2000ms"/>
+<s>Nothing to fix. Nothing to figure out.</s>
+<break time="2000ms"/>
+<s>Just rest.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Your nervous system knows what to do from here.</s>
+<break time="2000ms"/>
+<s>You've given it the signal.</s>
+<break time="1500ms"/>
+<s>The extended exhales have activated your parasympathetic system.</s>
+<break time="2000ms"/>
+<s>Your heart rate is slowing.</s>
+<break time="1500ms"/>
+<s>Your muscles are releasing.</s>
+<break time="1500ms"/>
+<s>Your brain waves are shifting toward sleep.</s>
+</p>
+
+<break time="4000ms"/>
+
+<!-- Sleep Transition -->
+<p>
+<s>From here, you can simply drift.</s>
+<break time="3000ms"/>
+<s>There's no effort required.</s>
+<break time="2000ms"/>
+<s>Sleep will find you when you're ready.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>If thoughts arise, let them pass.</s>
+<break time="2000ms"/>
+<s>Like clouds drifting through a night sky.</s>
+<break time="2000ms"/>
+<s>You don't need to chase them.</s>
+<break time="1500ms"/>
+<s>You don't need to solve anything.</s>
+<break time="2000ms"/>
+<s>Just let them float by.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Your only job now is to rest.</s>
+<break time="3000ms"/>
+<s>To receive the gift of sleep.</s>
+<break time="2000ms"/>
+<s>To surrender into the dark, soft comfort of the night.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Final Suggestions -->
+<p>
+<s>In a moment, my voice will fade away.</s>
+<break time="2500ms"/>
+<s>What remains is silence.</s>
+<break time="2000ms"/>
+<s>And within that silence, peace.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Remember, you can use the four-seven-eight breath anytime you need to calm your mind.</s>
+<break time="2500ms"/>
+<s>Before falling asleep.</s>
+<break time="1500ms"/>
+<s>If you wake in the night.</s>
+<break time="1500ms"/>
+<s>In moments of stress or anxiety.</s>
+<break time="2500ms"/>
+<s>It's your natural tranquilizer. Always available.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Now, let go completely.</s>
+<break time="3000ms"/>
+<s>Let sleep take you.</s>
+<break time="3000ms"/>
+<s>Let your dreams be soft and kind.</s>
+<break time="3000ms"/>
+<s>Good night.</s>
+</p>
+
+<break time="5000ms"/>
+
+</speak>

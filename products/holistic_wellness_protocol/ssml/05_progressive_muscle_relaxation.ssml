@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xml:lang="en-US">
+
+<prosody rate="0.85" pitch="-1st">
+
+<!-- Phase 1: Welcome & Setup (2 mins) -->
+<p>
+<s>Welcome to the Progressive Muscle Relaxation session.</s>
+<break time="2000ms"/>
+<s>This technique systematically releases tension stored in your muscles, teaching your body the difference between tension and relaxation.</s>
+<break time="2000ms"/>
+<s>It's a powerful tool for reducing stress, anxiety, and physical discomfort.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Find a comfortable position, either lying down or sitting in a supportive chair.</s>
+<break time="2500ms"/>
+<s>Loosen any tight clothing.</s>
+<break time="2000ms"/>
+<s>Remove your shoes if you can.</s>
+<break time="2000ms"/>
+<s>Allow yourself to settle in.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Close your eyes.</s>
+<break time="2500ms"/>
+<s>Take three slow, deep breaths to begin.</s>
+</p>
+
+<break time="2000ms"/>
+
+<p>
+<s>Breathe in.</s>
+<break time="3500ms"/>
+<s>And out.</s>
+</p>
+
+<break time="3500ms"/>
+
+<p>
+<s>Breathe in.</s>
+<break time="3500ms"/>
+<s>And out.</s>
+</p>
+
+<break time="3500ms"/>
+
+<p>
+<s>Breathe in.</s>
+<break time="3500ms"/>
+<s>And let everything go.</s>
+</p>
+
+<break time="4000ms"/>
+
+<!-- Phase 2: Instruction (1 min) -->
+<p>
+<s>We will work through each muscle group in your body.</s>
+<break time="2000ms"/>
+<s>For each group, you'll tense the muscles for about five seconds, then release and notice the difference.</s>
+<break time="2500ms"/>
+<s>The key is paying attention to how relaxation feels compared to tension.</s>
+<break time="2000ms"/>
+<s>Never strain or cause pain. Gentle tension is enough.</s>
+</p>
+
+<break time="4000ms"/>
+
+<!-- Phase 3: Hands & Arms (3 mins) -->
+<p>
+<s>Let's begin with your hands.</s>
+<break time="2500ms"/>
+<s>Make fists with both hands.</s>
+<break time="1500ms"/>
+<s>Squeeze tightly.</s>
+<break time="1500ms"/>
+<s>Feel the tension in your fingers, your palms, your wrists.</s>
+<break time="3000ms"/>
+<s>Hold.</s>
+<break time="2000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your hands fall open.</s>
+<break time="2500ms"/>
+<s>Notice the warmth flowing in.</s>
+<break time="2000ms"/>
+<s>The tingling sensation of relaxation.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Now your forearms.</s>
+<break time="2000ms"/>
+<s>Bend your wrists back, fingers pointing toward the ceiling.</s>
+<break time="1500ms"/>
+<s>Feel the tension along your forearms.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your hands drop.</s>
+<break time="2500ms"/>
+<s>Your forearms soften.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Your upper arms.</s>
+<break time="2000ms"/>
+<s>Bend your elbows and flex your biceps like you're showing your muscles.</s>
+<break time="1500ms"/>
+<s>Feel the tightness in your upper arms.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your arms fall heavy.</s>
+<break time="2500ms"/>
+<s>They sink into relaxation.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 4: Face & Neck (3 mins) -->
+<p>
+<s>Moving to your face.</s>
+<break time="2500ms"/>
+<s>Raise your eyebrows as high as you can.</s>
+<break time="1500ms"/>
+<s>Feel your forehead wrinkle and tighten.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your forehead become smooth and calm.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Now squeeze your eyes shut tightly.</s>
+<break time="1500ms"/>
+<s>Scrunch up your nose.</s>
+<break time="2000ms"/>
+<s>Feel the tension around your eyes and nose.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your face become soft and peaceful.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Clench your jaw tightly.</s>
+<break time="1500ms"/>
+<s>Push your tongue against the roof of your mouth.</s>
+<break time="2000ms"/>
+<s>Feel the tension in your jaw and throat.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your jaw drop slightly open.</s>
+<break time="2000ms"/>
+<s>Your tongue relaxes.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Your neck.</s>
+<break time="2000ms"/>
+<s>Gently push your head back against the pillow or chair.</s>
+<break time="1500ms"/>
+<s>Feel the muscles at the back of your neck engage.</s>
+<break time="2500ms"/>
+<s>Hold gently.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your head rest naturally.</s>
+<break time="2500ms"/>
+<s>Neck muscles softening.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 5: Shoulders & Back (3 mins) -->
+<p>
+<s>Your shoulders.</s>
+<break time="2500ms"/>
+<s>Raise them up toward your ears like you're shrugging.</s>
+<break time="1500ms"/>
+<s>Feel the tension pile up in your shoulders and upper back.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your shoulders drop away from your ears.</s>
+<break time="2500ms"/>
+<s>Feel them sink down.</s>
+<break time="2000ms"/>
+<s>Heavy and relaxed.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Your upper back.</s>
+<break time="2000ms"/>
+<s>Pull your shoulder blades together like you're squeezing a pencil between them.</s>
+<break time="1500ms"/>
+<s>Feel your chest open and your back muscles engage.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your back spread wide and soft.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Your lower back.</s>
+<break time="2000ms"/>
+<s>Gently arch your back, creating a small curve.</s>
+<break time="1500ms"/>
+<s>Feel the muscles along your spine activate.</s>
+<break time="2500ms"/>
+<s>Hold gently.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your back melt into the surface beneath you.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 6: Chest & Stomach (2 mins) -->
+<p>
+<s>Your chest.</s>
+<break time="2500ms"/>
+<s>Take a deep breath and hold it.</s>
+<break time="1500ms"/>
+<s>Feel your chest expand and your ribs stretch.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And exhale slowly.</s>
+<break time="2500ms"/>
+<s>Let your chest relax.</s>
+<break time="2000ms"/>
+<s>Breathing returns to natural rhythm.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Your stomach.</s>
+<break time="2500ms"/>
+<s>Tighten your abdominal muscles like you're bracing for impact.</s>
+<break time="1500ms"/>
+<s>Feel your core engage.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your belly become soft and relaxed.</s>
+<break time="2500ms"/>
+<s>Rising and falling gently with each breath.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 7: Hips & Legs (3 mins) -->
+<p>
+<s>Moving to your hips and buttocks.</s>
+<break time="2500ms"/>
+<s>Squeeze your glutes tightly.</s>
+<break time="1500ms"/>
+<s>Feel the tension in your hips and pelvis.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your hips sink heavy and relaxed.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Your thighs.</s>
+<break time="2000ms"/>
+<s>Press your knees together and tighten your thigh muscles.</s>
+<break time="1500ms"/>
+<s>Feel the tension from hip to knee.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your legs fall apart slightly.</s>
+<break time="2500ms"/>
+<s>Thighs warm and heavy.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Your calves.</s>
+<break time="2000ms"/>
+<s>Point your toes away from your body.</s>
+<break time="1500ms"/>
+<s>Feel your calf muscles engage.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your feet fall naturally.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Now flex your feet, pulling your toes toward your shins.</s>
+<break time="1500ms"/>
+<s>Feel the stretch along the back of your calves.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your feet relax completely.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 8: Feet (1 min) -->
+<p>
+<s>Finally, your feet.</s>
+<break time="2500ms"/>
+<s>Curl your toes under, making fists with your feet.</s>
+<break time="1500ms"/>
+<s>Feel the tension in your arches and toes.</s>
+<break time="2500ms"/>
+<s>Hold.</s>
+<break time="3000ms"/>
+<s>And release.</s>
+<break time="1000ms"/>
+<s>Let your feet spread soft and relaxed.</s>
+<break time="2500ms"/>
+<s>Feel the relaxation seep through every toe.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 9: Full Body Integration (2 mins) -->
+<p>
+<s>Your entire body has now been systematically relaxed.</s>
+<break time="3000ms"/>
+<s>Take a moment to scan through.</s>
+<break time="3000ms"/>
+<s>From the top of your head.</s>
+<break time="2500ms"/>
+<s>Through your face.</s>
+<break time="2000ms"/>
+<s>Your neck and shoulders.</s>
+<break time="2000ms"/>
+<s>Your arms and hands.</s>
+<break time="2000ms"/>
+<s>Your back and chest.</s>
+<break time="2000ms"/>
+<s>Your stomach.</s>
+<break time="2000ms"/>
+<s>Your hips and legs.</s>
+<break time="2000ms"/>
+<s>All the way down to your feet.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>If you notice any remaining tension, imagine it dissolving.</s>
+<break time="3000ms"/>
+<s>Your body knows how to release.</s>
+<break time="2500ms"/>
+<s>You've just taught it.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Rest in this state of deep relaxation.</s>
+<break time="4000ms"/>
+<s>Your muscles are loose and warm.</s>
+<break time="3000ms"/>
+<s>Your breathing is calm and steady.</s>
+<break time="3000ms"/>
+<s>Your mind is peaceful.</s>
+</p>
+
+<break time="6000ms"/>
+
+<!-- Phase 10: Return (1 min) -->
+<p>
+<s>When you're ready to return, begin by deepening your breath.</s>
+<break time="4000ms"/>
+<s>Gently wiggle your fingers and toes.</s>
+<break time="4000ms"/>
+<s>Roll your wrists and ankles in small circles.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Take a stretch if your body wants one.</s>
+<break time="4000ms"/>
+<s>Slowly open your eyes.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>You are relaxed.</s>
+<break time="2000ms"/>
+<s>You are refreshed.</s>
+<break time="2000ms"/>
+<s>You carry this calm with you.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>The more you practice progressive muscle relaxation, the faster your body learns to let go.</s>
+<break time="2500ms"/>
+<s>Eventually, you'll be able to release tension with just a thought.</s>
+</p>
+
+<break time="2500ms"/>
+
+<p>
+<s>Thank you for practicing with me today.</s>
+</p>
+
+</prosody>
+
+</speak>
