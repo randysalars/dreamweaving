@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-01-26'
-  total_sessions_tracked: 94
+  updated: '2026-01-27'
+  total_sessions_tracked: 97
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -1639,6 +1639,57 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: The Candle Of Mitochondrial Repair'
+- session_id: the-time-machine-of-future-visions-dreamweaving
+  date: '2026-01-27'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_feminine.rose_mother
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Time Machine Of Future Visions Dreamweaving'
+- session_id: the-sanctuary-of-cosmic-synthesis-dreamweaving
+  date: '2026-01-27'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Sanctuary Of Cosmic Synthesis Dreamweaving'
+- session_id: the-agni-heart-of-the-universe-dreamweaving
+  date: '2026-01-27'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: The Agni-Heart of the Universe Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 21
@@ -1717,7 +1768,7 @@ listener_relationships:
     last_session_date: '2026-01-25'
     relationship_level: 4
   divine_light_healing.inner_healer:
-    total_encounters: 66
+    total_encounters: 69
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -1853,8 +1904,14 @@ listener_relationships:
       type: first_encounter
     - session: the-mount-calvary-passage-dreamweaving
       type: first_encounter
-    last_session: the-mount-calvary-passage-dreamweaving
-    last_session_date: '2026-01-26'
+    - session: the-time-machine-of-future-visions-dreamweaving
+      type: first_encounter
+    - session: the-sanctuary-of-cosmic-synthesis-dreamweaving
+      type: first_encounter
+    - session: the-agni-heart-of-the-universe-dreamweaving
+      type: first_encounter
+    last_session: the-agni-heart-of-the-universe-dreamweaving
+    last_session_date: '2026-01-27'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 6
@@ -1925,7 +1982,7 @@ listener_relationships:
     last_session_date: '2026-01-15'
     relationship_level: 2
   divine_feminine.rose_mother:
-    total_encounters: 53
+    total_encounters: 56
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2035,11 +2092,17 @@ listener_relationships:
       type: first_encounter
     - session: the-mount-calvary-passage-dreamweaving
       type: first_encounter
-    last_session: the-mount-calvary-passage-dreamweaving
-    last_session_date: '2026-01-26'
+    - session: the-time-machine-of-future-visions-dreamweaving
+      type: first_encounter
+    - session: the-sanctuary-of-cosmic-synthesis-dreamweaving
+      type: first_encounter
+    - session: the-agni-heart-of-the-universe-dreamweaving
+      type: first_encounter
+    last_session: the-agni-heart-of-the-universe-dreamweaving
+    last_session_date: '2026-01-27'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 35
+    total_encounters: 37
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2113,8 +2176,12 @@ listener_relationships:
       type: first_encounter
     - session: the-mount-calvary-passage-dreamweaving
       type: first_encounter
-    last_session: the-mount-calvary-passage-dreamweaving
-    last_session_date: '2026-01-26'
+    - session: the-time-machine-of-future-visions-dreamweaving
+      type: first_encounter
+    - session: the-agni-heart-of-the-universe-dreamweaving
+      type: first_encounter
+    last_session: the-agni-heart-of-the-universe-dreamweaving
+    last_session_date: '2026-01-27'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 8
@@ -2171,7 +2238,7 @@ listener_relationships:
     last_session_date: '2026-01-26'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
-    total_encounters: 31
+    total_encounters: 32
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -2237,8 +2304,10 @@ listener_relationships:
       type: first_encounter
     - session: the-candle-of-mitochondrial-repair
       type: first_encounter
-    last_session: the-candle-of-mitochondrial-repair
-    last_session_date: '2026-01-26'
+    - session: the-sanctuary-of-cosmic-synthesis-dreamweaving
+      type: first_encounter
+    last_session: the-sanctuary-of-cosmic-synthesis-dreamweaving
+    last_session_date: '2026-01-27'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 3
@@ -2365,44 +2434,44 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - the-temple-of-hidden-names
-  - the-mountain-of-resolve-dreamweaving
-  - virtual-game-avatar-leveling-up-fitness
   - the-mount-calvary-passage-dreamweaving
   - the-candle-of-mitochondrial-repair
+  - the-time-machine-of-future-visions-dreamweaving
+  - the-sanctuary-of-cosmic-synthesis-dreamweaving
+  - the-agni-heart-of-the-universe-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 0
-    transformation_alchemy.phoenix_renewal: 4
-    divine_light_healing.inner_healer: 1
-    warrior_power.archangel_michael: 4
-    divine_masculine.guardian_father: 0
-    dreamweaver_meta.dream_architect: 32
-    divine_feminine.rose_mother: 1
-    shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 8
-    divine_feminine.sophia_wisdom: 2
-    emotional_heart.heart_flame_tender: 0
-    warrior_power.solar_king: 4
-    divine_masculine.logos_bearer: 2
-    divine_light_healing.shekinah_restorer: 58
-    emotional_heart.joy_child: 2
-    abundance_destiny.providence_angel: 32
-    dreamweaver_meta.portal_keeper: 32
+    divine_light_healing.great_physician: 3
+    transformation_alchemy.phoenix_renewal: 7
+    divine_light_healing.inner_healer: 0
+    warrior_power.archangel_michael: 7
+    divine_masculine.guardian_father: 3
+    dreamweaver_meta.dream_architect: 35
+    divine_feminine.rose_mother: 0
+    shamanic_earth.world_tree_guardian: 0
+    oracle_seer.oracle_of_light: 11
+    divine_feminine.sophia_wisdom: 5
+    emotional_heart.heart_flame_tender: 1
+    warrior_power.solar_king: 7
+    divine_masculine.logos_bearer: 5
+    divine_light_healing.shekinah_restorer: 61
+    emotional_heart.joy_child: 5
+    abundance_destiny.providence_angel: 35
+    dreamweaver_meta.portal_keeper: 35
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - divine_masculine
-  - emotional_heart
+  - shamanic_earth
+  - divine_feminine
   family_usage_counts:
-    divine_light_healing: 95
+    divine_light_healing: 98
     transformation_alchemy: 9
     warrior_power: 9
     divine_masculine: 21
     dreamweaver_meta: 4
-    divine_feminine: 64
-    shamanic_earth: 35
+    divine_feminine: 67
+    shamanic_earth: 37
     oracle_seer: 8
-    emotional_heart: 36
+    emotional_heart: 37
     abundance_destiny: 1
 effective_pairings: []
