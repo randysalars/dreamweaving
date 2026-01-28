@@ -2286,8 +2286,129 @@ def deploy_product_command(args):
     return 0
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# STEP 3D ENHANCEMENTS: SEO, OG IMAGES, PREFLIGHT
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def generate_seo_command(args):
+    """Generate SEO metadata for a product."""
+    from pathlib import Path
+    import json
+    from .core.antigravity import (
+        generate_seo_metadata, format_seo_metadata, export_seo_metadata
+    )
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    # Load product info
+    config_file = product_dir / "product.json"
+    if not config_file.exists():
+        logger.error(f"❌ product.json not found in {product_dir}")
+        return 1
+    
+    config = json.loads(config_file.read_text())
+    
+    seo = generate_seo_metadata(
+        product_title=config.get("title", product_dir.name),
+        product_description=config.get("description", ""),
+        category=config.get("category", "wealth"),
+        slug=config.get("slug", product_dir.name),
+        price=config.get("price", 0),
+    )
+    
+    logger.info(format_seo_metadata(seo))
+    
+    # Export to files
+    output_dir = product_dir / "output"
+    success, message = export_seo_metadata(seo, output_dir)
+    
+    if success:
+        logger.info(f"\n✅ {message}")
+    else:
+        logger.error(f"\n❌ {message}")
+    
+    return 0
+
+
+def list_og_styles_command(args):
+    """List OG image style presets."""
+    from .core.antigravity import list_og_styles
+    logger.info(list_og_styles())
+    return 0
+
+
+def generate_og_command(args):
+    """Generate OG images for a product."""
+    from pathlib import Path
+    from .core.antigravity import generate_product_og_images, generate_og_image
+    
+    if args.product_dir:
+        # Batch mode
+        product_dir = Path(args.product_dir)
+        
+        if not product_dir.exists():
+            logger.error(f"❌ Product directory not found: {product_dir}")
+            return 1
+        
+        success_count, results = generate_product_og_images(product_dir)
+        
+        logger.info(f"\n🖼️  Generated {success_count} OG images:")
+        for result in results:
+            logger.info(f"   {result}")
+        
+        return 0 if success_count > 0 else 1
+    
+    elif args.title:
+        # Single image mode
+        from pathlib import Path
+        output_path = Path(args.output) if args.output else Path(f"og_{args.style}.png")
+        
+        success, message = generate_og_image(
+            title=args.title,
+            output_path=output_path,
+            subtitle=args.subtitle,
+            price=args.price,
+            style=args.style,
+            sale_badge=args.sale
+        )
+        
+        if success:
+            logger.info(f"✅ {message}")
+            return 0
+        else:
+            logger.error(f"❌ {message}")
+            return 1
+    
+    else:
+        logger.error("❌ Specify --product-dir or --title")
+        return 1
+
+
+def preflight_check_command(args):
+    """Run preflight checks before deployment."""
+    from pathlib import Path
+    from .core.antigravity import run_preflight_checks, format_preflight_results
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    checks = run_preflight_checks(product_dir)
+    logger.info(format_preflight_results(checks))
+    
+    # Return error if any critical failures
+    critical_failures = [c for c in checks if not c.passed and c.severity == "error"]
+    return 1 if critical_failures else 0
+
+
 def main():
-    """Main CLI entry point."""
     parser = argparse.ArgumentParser(
         prog='product-builder',
         description='🏭 Dreamweaving Product Builder - Create premium digital products',
@@ -2714,6 +2835,41 @@ Examples:
     deploy_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
     deploy_parser.add_argument('--salarsu-path', help='Path to SalarsNet repo (default: ~/Projects/salarsu)')
     deploy_parser.set_defaults(func=deploy_product_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STEP 3D ENHANCEMENTS SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Generate-seo command
+    gen_seo_parser = subparsers.add_parser('generate-seo',
+                                            help='Generate SEO metadata for a product')
+    gen_seo_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    gen_seo_parser.set_defaults(func=generate_seo_command)
+    
+    # List-og-styles command
+    list_og_parser = subparsers.add_parser('list-og-styles',
+                                            help='List OG image style presets')
+    list_og_parser.set_defaults(func=list_og_styles_command)
+    
+    # Generate-og command
+    gen_og_parser = subparsers.add_parser('generate-og',
+                                           help='Generate OG images for social sharing')
+    gen_og_parser.add_argument('--product-dir', '-d', help='Product directory (batch mode)')
+    gen_og_parser.add_argument('--title', '-t', help='Image title (single mode)')
+    gen_og_parser.add_argument('--subtitle', help='Subtitle (single mode)')
+    gen_og_parser.add_argument('--price', type=float, help='Price to display')
+    gen_og_parser.add_argument('--output', '-o', help='Output path (single mode)')
+    gen_og_parser.add_argument('--style', '-s', default='default',
+                               choices=['default', 'minimal', 'promo', 'dreamweaving'],
+                               help='Style preset (default: default)')
+    gen_og_parser.add_argument('--sale', action='store_true', help='Add sale badge')
+    gen_og_parser.set_defaults(func=generate_og_command)
+    
+    # Preflight-check command
+    preflight_parser = subparsers.add_parser('preflight-check',
+                                              help='Run pre-deployment verification')
+    preflight_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    preflight_parser.set_defaults(func=preflight_check_command)
     
     # Parse and execute
     args = parser.parse_args()
