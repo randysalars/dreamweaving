@@ -2408,6 +2408,95 @@ def preflight_check_command(args):
     return 1 if critical_failures else 0
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# STEP 4 ENHANCEMENTS: COMPILE STATS, VERIFY, TOC
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def compile_stats_command(args):
+    """Show compilation statistics for a product."""
+    from pathlib import Path
+    from .core.antigravity import (
+        analyze_compiled_content, format_compilation_stats
+    )
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    stats = analyze_compiled_content(product_dir)
+    
+    if stats:
+        logger.info(format_compilation_stats(stats))
+        return 0
+    else:
+        logger.error("❌ No compiled content found. Run 'compile' first.")
+        return 1
+
+
+def compile_verify_command(args):
+    """Verify compilation integrity."""
+    from pathlib import Path
+    from .core.antigravity import (
+        verify_compilation, format_compile_verification
+    )
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    checks = verify_compilation(product_dir)
+    logger.info(format_compile_verification(checks))
+    
+    # Return error if critical failures
+    critical = [c for c in checks if not c.passed and c.severity == "error"]
+    return 1 if critical else 0
+
+
+def generate_toc_command(args):
+    """Generate table of contents for a product."""
+    from pathlib import Path
+    import json
+    from .core.antigravity import (
+        extract_toc_from_responses, format_toc, save_toc_to_file
+    )
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    # Get product title
+    config_file = product_dir / "product.json"
+    if config_file.exists():
+        config = json.loads(config_file.read_text())
+        title = config.get("title", "Product")
+    else:
+        title = args.title or "Product"
+    
+    entries = extract_toc_from_responses(product_dir)
+    
+    if not entries:
+        logger.error("❌ No chapters found. Generate responses first.")
+        return 1
+    
+    logger.info(format_toc(entries, include_sections=not args.chapters_only))
+    
+    if args.save:
+        success, message = save_toc_to_file(product_dir, entries, title)
+        if success:
+            logger.info(f"\n✅ {message}")
+        else:
+            logger.error(f"\n❌ {message}")
+    
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog='product-builder',
@@ -2870,6 +2959,31 @@ Examples:
                                               help='Run pre-deployment verification')
     preflight_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
     preflight_parser.set_defaults(func=preflight_check_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STEP 4 ENHANCEMENTS SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Compile-stats command
+    compile_stats_parser = subparsers.add_parser('compile-stats',
+                                                  help='Show compilation statistics')
+    compile_stats_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    compile_stats_parser.set_defaults(func=compile_stats_command)
+    
+    # Compile-verify command
+    compile_verify_parser = subparsers.add_parser('compile-verify',
+                                                   help='Verify compilation integrity')
+    compile_verify_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    compile_verify_parser.set_defaults(func=compile_verify_command)
+    
+    # Generate-toc command
+    gen_toc_parser = subparsers.add_parser('generate-toc',
+                                            help='Generate table of contents')
+    gen_toc_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    gen_toc_parser.add_argument('--title', '-t', help='Product title (if not in product.json)')
+    gen_toc_parser.add_argument('--save', '-s', action='store_true', help='Save TOC to output/')
+    gen_toc_parser.add_argument('--chapters-only', action='store_true', help='Chapters only (no sections)')
+    gen_toc_parser.set_defaults(func=generate_toc_command)
     
     # Parse and execute
     args = parser.parse_args()

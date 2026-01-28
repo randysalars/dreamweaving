@@ -4127,3 +4127,466 @@ def format_preflight_results(checks: List[PreflightCheck]) -> str:
     lines.append("╚" + "═" * 70 + "╝")
     
     return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 4 ENHANCEMENTS: COMPILE VERIFICATION, STATS, TOC
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class CompilationStats:
+    """Statistics for a compiled product."""
+    total_chapters: int
+    total_words: int
+    total_pages: int  # Estimated
+    total_images: int
+    reading_time_mins: int
+    pdf_size_mb: float
+    zip_size_mb: float
+    complexity_score: int  # 1-10
+    has_pdf: bool
+    has_audio: bool
+    has_video: bool
+    has_bonuses: bool
+
+
+@dataclass
+class CompileVerification:
+    """Verification result for compilation."""
+    name: str
+    passed: bool
+    message: str
+    severity: str  # "error", "warning", "info"
+
+
+def analyze_compiled_content(product_dir: Path) -> Optional[CompilationStats]:
+    """Analyze a compiled product and gather statistics."""
+    import json
+    import re
+    
+    output_dir = product_dir / "output"
+    responses_dir = output_dir / "responses"
+    
+    if not output_dir.exists():
+        return None
+    
+    # Count chapters
+    chapter_files = list(responses_dir.glob("*.response.md")) if responses_dir.exists() else []
+    total_chapters = len(chapter_files)
+    
+    # Count words
+    total_words = 0
+    for chapter in chapter_files:
+        content = chapter.read_text()
+        words = len(content.split())
+        total_words += words
+    
+    # Estimate pages (250 words per page)
+    total_pages = max(1, total_words // 250)
+    
+    # Count images
+    images_dir = output_dir / "images"
+    total_images = len(list(images_dir.glob("*.png"))) + len(list(images_dir.glob("*.jpg"))) if images_dir.exists() else 0
+    
+    # Reading time (200 WPM average)
+    reading_time_mins = max(1, total_words // 200)
+    
+    # PDF size
+    pdf_files = list(output_dir.glob("*.pdf"))
+    pdf_size_mb = pdf_files[0].stat().st_size / (1024 * 1024) if pdf_files else 0
+    
+    # ZIP size
+    zip_files = list(output_dir.glob("*.zip"))
+    zip_size_mb = zip_files[0].stat().st_size / (1024 * 1024) if zip_files else 0
+    
+    # Check for audio/video/bonuses
+    audio_dir = output_dir / "audio"
+    video_dir = output_dir / "video"
+    bonus_dir = output_dir / "bonuses"
+    
+    has_audio = audio_dir.exists() and any(audio_dir.glob("*.mp3"))
+    has_video = video_dir.exists() and any(video_dir.glob("*.mp4"))
+    has_bonuses = bonus_dir.exists() and any(bonus_dir.iterdir())
+    has_pdf = len(pdf_files) > 0
+    
+    # Complexity score based on content
+    complexity = 5  # Base
+    if total_words > 20000:
+        complexity += 2
+    if total_images > 10:
+        complexity += 1
+    if has_audio:
+        complexity += 1
+    if has_video:
+        complexity += 1
+    complexity = min(10, complexity)
+    
+    return CompilationStats(
+        total_chapters=total_chapters,
+        total_words=total_words,
+        total_pages=total_pages,
+        total_images=total_images,
+        reading_time_mins=reading_time_mins,
+        pdf_size_mb=pdf_size_mb,
+        zip_size_mb=zip_size_mb,
+        complexity_score=complexity,
+        has_pdf=has_pdf,
+        has_audio=has_audio,
+        has_video=has_video,
+        has_bonuses=has_bonuses
+    )
+
+
+def format_compilation_stats(stats: CompilationStats) -> str:
+    """Format compilation stats for display."""
+    lines = [
+        "",
+        "╔" + "═" * 60 + "╗",
+        "║" + " " * 18 + "COMPILATION STATS" + " " * 25 + "║",
+        "╠" + "═" * 60 + "╣",
+        f"║ 📚 Chapters: {stats.total_chapters}".ljust(61) + "║",
+        f"║ 📝 Words: {stats.total_words:,}".ljust(61) + "║",
+        f"║ 📄 Pages (est): {stats.total_pages}".ljust(61) + "║",
+        f"║ 🖼️  Images: {stats.total_images}".ljust(61) + "║",
+        f"║ ⏱️  Reading Time: ~{stats.reading_time_mins} minutes".ljust(61) + "║",
+        "╠" + "─" * 60 + "╣",
+    ]
+    
+    # File sizes
+    if stats.pdf_size_mb > 0:
+        lines.append(f"║ 📄 PDF Size: {stats.pdf_size_mb:.1f} MB".ljust(61) + "║")
+    if stats.zip_size_mb > 0:
+        lines.append(f"║ 📦 ZIP Size: {stats.zip_size_mb:.1f} MB".ljust(61) + "║")
+    
+    # Content flags
+    content_flags = []
+    if stats.has_pdf:
+        content_flags.append("PDF")
+    if stats.has_audio:
+        content_flags.append("Audio")
+    if stats.has_video:
+        content_flags.append("Video")
+    if stats.has_bonuses:
+        content_flags.append("Bonuses")
+    
+    lines.append(f"║ 📋 Contains: {', '.join(content_flags)}".ljust(61) + "║")
+    lines.append(f"║ 🎯 Complexity: {'⭐' * stats.complexity_score}{'☆' * (10 - stats.complexity_score)}".ljust(61) + "║")
+    
+    lines.append("╚" + "═" * 60 + "╝")
+    return "\n".join(lines)
+
+
+def verify_compilation(product_dir: Path) -> List[CompileVerification]:
+    """Verify compilation integrity."""
+    import json
+    
+    checks = []
+    output_dir = product_dir / "output"
+    responses_dir = output_dir / "responses"
+    
+    # 1. Check responses directory exists
+    if responses_dir.exists():
+        response_files = list(responses_dir.glob("*.response.md"))
+        if len(response_files) > 0:
+            checks.append(CompileVerification(
+                "Response Files", True,
+                f"Found {len(response_files)} chapters",
+                "info"
+            ))
+        else:
+            checks.append(CompileVerification(
+                "Response Files", False,
+                "No response files found",
+                "error"
+            ))
+    else:
+        checks.append(CompileVerification(
+            "Response Files", False,
+            "responses/ directory not found",
+            "error"
+        ))
+    
+    # 2. Check for empty chapters
+    empty_chapters = []
+    if responses_dir.exists():
+        for resp in responses_dir.glob("*.response.md"):
+            content = resp.read_text().strip()
+            if len(content) < 100:
+                empty_chapters.append(resp.name)
+    
+    if empty_chapters:
+        checks.append(CompileVerification(
+            "Chapter Content", False,
+            f"Empty chapters: {', '.join(empty_chapters[:3])}",
+            "warning"
+        ))
+    else:
+        checks.append(CompileVerification(
+            "Chapter Content", True,
+            "All chapters have content",
+            "info"
+        ))
+    
+    # 3. Check PDF exists
+    pdf_files = list(output_dir.glob("*.pdf")) if output_dir.exists() else []
+    if pdf_files:
+        size_mb = pdf_files[0].stat().st_size / (1024 * 1024)
+        if size_mb < 0.1:
+            checks.append(CompileVerification(
+                "PDF Output", False,
+                f"PDF too small: {size_mb:.2f}MB",
+                "warning"
+            ))
+        elif size_mb > 50:
+            checks.append(CompileVerification(
+                "PDF Output", True,
+                f"PDF large: {size_mb:.1f}MB (consider optimizing)",
+                "warning"
+            ))
+        else:
+            checks.append(CompileVerification(
+                "PDF Output", True,
+                f"PDF created: {size_mb:.1f}MB",
+                "info"
+            ))
+    else:
+        checks.append(CompileVerification(
+            "PDF Output", False,
+            "No PDF file found",
+            "error"
+        ))
+    
+    # 4. Check ZIP exists
+    zip_files = list(output_dir.glob("*.zip")) if output_dir.exists() else []
+    if zip_files:
+        size_mb = zip_files[0].stat().st_size / (1024 * 1024)
+        checks.append(CompileVerification(
+            "ZIP Package", True,
+            f"ZIP created: {size_mb:.1f}MB",
+            "info"
+        ))
+    else:
+        checks.append(CompileVerification(
+            "ZIP Package", False,
+            "No ZIP file found (run compile first)",
+            "warning"
+        ))
+    
+    # 5. Check images
+    images_dir = output_dir / "images"
+    if images_dir.exists():
+        img_count = len(list(images_dir.glob("*.png"))) + len(list(images_dir.glob("*.jpg")))
+        if img_count > 0:
+            checks.append(CompileVerification(
+                "Images", True,
+                f"Found {img_count} images",
+                "info"
+            ))
+        else:
+            checks.append(CompileVerification(
+                "Images", False,
+                "No images in output/images/",
+                "warning"
+            ))
+    
+    # 6. Word count check
+    total_words = 0
+    if responses_dir.exists():
+        for resp in responses_dir.glob("*.response.md"):
+            total_words += len(resp.read_text().split())
+    
+    if total_words < 5000:
+        checks.append(CompileVerification(
+            "Word Count", False,
+            f"Low word count: {total_words:,} (consider adding content)",
+            "warning"
+        ))
+    else:
+        checks.append(CompileVerification(
+            "Word Count", True,
+            f"Total: {total_words:,} words",
+            "info"
+        ))
+    
+    return checks
+
+
+def format_compile_verification(checks: List[CompileVerification]) -> str:
+    """Format verification results for display."""
+    lines = [
+        "",
+        "╔" + "═" * 65 + "╗",
+        "║" + " " * 20 + "COMPILE VERIFICATION" + " " * 25 + "║",
+        "╠" + "═" * 65 + "╣",
+    ]
+    
+    passed = 0
+    failed = 0
+    warnings = 0
+    
+    for check in checks:
+        if check.passed:
+            icon = "✅"
+            passed += 1
+        elif check.severity == "warning":
+            icon = "⚠️"
+            warnings += 1
+        else:
+            icon = "❌"
+            failed += 1
+        
+        lines.append(f"║ {icon} {check.name:18} │ {check.message[:40]:<40} ║")
+    
+    lines.append("╠" + "═" * 65 + "╣")
+    
+    status_line = f"║ Passed: {passed} │ Warnings: {warnings} │ Failed: {failed}"
+    lines.append(status_line.ljust(66) + "║")
+    
+    if failed == 0:
+        lines.append("║ ✅ Compilation verified! Ready to package.".ljust(66) + "║")
+    else:
+        lines.append("║ ❌ Compilation issues found. Review errors above.".ljust(66) + "║")
+    
+    lines.append("╚" + "═" * 65 + "╝")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# TABLE OF CONTENTS GENERATOR
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class TOCEntry:
+    """A table of contents entry."""
+    title: str
+    page: int
+    level: int  # 1 = chapter, 2 = section
+    slug: str
+
+
+def extract_toc_from_responses(product_dir: Path) -> List[TOCEntry]:
+    """Extract table of contents from response files."""
+    import re
+    
+    responses_dir = product_dir / "output" / "responses"
+    
+    if not responses_dir.exists():
+        return []
+    
+    entries = []
+    page = 1
+    
+    for idx, resp_file in enumerate(sorted(responses_dir.glob("*.response.md")), 1):
+        content = resp_file.read_text()
+        slug = resp_file.stem.replace(".response", "")
+        
+        # Extract chapter title from first heading
+        lines = content.split('\n')
+        title = slug.replace("_", " ").title()
+        
+        for line in lines[:10]:
+            if line.startswith("# "):
+                title = line[2:].strip()
+                break
+            elif line.startswith("## "):
+                title = line[3:].strip()
+                break
+        
+        entries.append(TOCEntry(
+            title=title,
+            page=page,
+            level=1,
+            slug=slug
+        ))
+        
+        # Estimate pages for this chapter (250 words/page)
+        words = len(content.split())
+        pages = max(1, words // 250)
+        page += pages
+        
+        # Extract sections (## headings)
+        for line in lines:
+            if line.startswith("## "):
+                section_title = line[3:].strip()
+                if section_title and len(section_title) < 80:
+                    entries.append(TOCEntry(
+                        title=section_title,
+                        page=page - pages + 1,
+                        level=2,
+                        slug=f"{slug}_{section_title.lower().replace(' ', '-')[:20]}"
+                    ))
+    
+    return entries
+
+
+def format_toc(entries: List[TOCEntry], include_sections: bool = True) -> str:
+    """Format table of contents for display/output."""
+    lines = [
+        "",
+        "═" * 60,
+        "TABLE OF CONTENTS".center(60),
+        "═" * 60,
+        "",
+    ]
+    
+    for entry in entries:
+        if entry.level == 1:
+            # Chapter
+            title_part = entry.title[:45]
+            page_part = str(entry.page)
+            dots = "." * (55 - len(title_part) - len(page_part))
+            lines.append(f"{title_part}{dots}{page_part}")
+        elif entry.level == 2 and include_sections:
+            # Section (indented)
+            title_part = f"  {entry.title[:40]}"
+            page_part = str(entry.page)
+            dots = "." * (55 - len(title_part) - len(page_part))
+            lines.append(f"{title_part}{dots}{page_part}")
+    
+    lines.append("")
+    lines.append("═" * 60)
+    
+    return "\n".join(lines)
+
+
+def generate_toc_markdown(entries: List[TOCEntry], product_title: str) -> str:
+    """Generate markdown TOC for inclusion in PDF."""
+    lines = [
+        f"# {product_title}",
+        "",
+        "## Table of Contents",
+        "",
+    ]
+    
+    for entry in entries:
+        if entry.level == 1:
+            lines.append(f"- **[{entry.title}](#{entry.slug})** — Page {entry.page}")
+        elif entry.level == 2:
+            lines.append(f"  - [{entry.title}](#{entry.slug})")
+    
+    lines.append("")
+    lines.append("---")
+    lines.append("")
+    
+    return "\n".join(lines)
+
+
+def save_toc_to_file(product_dir: Path, entries: List[TOCEntry], product_title: str) -> Tuple[bool, str]:
+    """Save TOC to output directory."""
+    output_dir = product_dir / "output"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Save as markdown
+    md_content = generate_toc_markdown(entries, product_title)
+    md_file = output_dir / "table_of_contents.md"
+    md_file.write_text(md_content)
+    
+    # Save as plain text
+    txt_content = format_toc(entries)
+    txt_file = output_dir / "table_of_contents.txt"
+    txt_file.write_text(txt_content)
+    
+    return True, f"Saved TOC to {md_file} and {txt_file}"
