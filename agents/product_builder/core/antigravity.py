@@ -1443,3 +1443,224 @@ def get_next_audio_session(product_dir: Path) -> Optional[dict]:
             return {"type": "needs_audio", "session": session}
     
     return None  # All done!
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# XTTS-v2 VOICE CLONING INTEGRATION
+# ═══════════════════════════════════════════════════════════════════════
+
+
+def convert_script_to_ssml(script_path: Path, output_path: Path) -> Tuple[bool, str, int]:
+    """
+    Convert a markdown script to SSML format for TTS processing.
+    Returns (success, message, segment_count).
+    """
+    import re
+    
+    if not script_path.exists():
+        return False, f"Script not found: {script_path}", 0
+    
+    content = script_path.read_text()
+    
+    # Process TTS markers into SSML breaks
+    # [PAUSE] -> 2 seconds
+    # [LONG PAUSE] -> 5 seconds
+    # [BREATHE] -> 3 seconds
+    content = content.replace("[PAUSE]", '<break time="2s"/>')
+    content = content.replace("[LONG PAUSE]", '<break time="5s"/>')
+    content = content.replace("[BREATHE]", '<break time="3s"/>')
+    
+    # Convert ellipses to short pauses
+    content = re.sub(r'\.{3,}', '<break time="1s"/>', content)
+    
+    # Remove markdown headers but keep text
+    content = re.sub(r'^#+\s+', '', content, flags=re.MULTILINE)
+    
+    # Remove bold/italic markers
+    content = re.sub(r'\*\*([^*]+)\*\*', r'\1', content)
+    content = re.sub(r'\*([^*]+)\*', r'\1', content)
+    
+    # Remove bullet points
+    content = re.sub(r'^[-*]\s+', '', content, flags=re.MULTILINE)
+    
+    # Remove code blocks
+    content = re.sub(r'```[^`]*```', '', content, flags=re.DOTALL)
+    
+    # Split into sentences for natural segment breaks
+    sentences = re.split(r'(?<=[.!?])\s+', content)
+    
+    # Build SSML
+    ssml_lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<speak>']
+    segment_count = 0
+    
+    for sentence in sentences:
+        sentence = sentence.strip()
+        if sentence and len(sentence) > 3:
+            # Add sentence with small natural pause
+            ssml_lines.append(f'  {sentence}')
+            if '<break' not in sentence:
+                ssml_lines.append('  <break time="500ms"/>')
+            segment_count += 1
+    
+    ssml_lines.append('</speak>')
+    
+    ssml_content = '\n'.join(ssml_lines)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(ssml_content)
+    
+    return True, f"Created SSML with {segment_count} segments", segment_count
+
+
+def find_voice_sample(product_dir: Path) -> Optional[Path]:
+    """Find a voice sample file for cloning."""
+    # Check common locations
+    voice_locations = [
+        product_dir / "voice_sample.wav",
+        product_dir / "voice_sample.mp3",
+        product_dir / "assets" / "voice_sample.wav",
+        product_dir / "assets" / "voice_sample.mp3",
+        Path.home() / "Projects/dreamweaving/assets/voices/ava_sample.wav",
+        Path.home() / "Projects/dreamweaving/assets/voices/default.wav",
+    ]
+    
+    for path in voice_locations:
+        if path.exists():
+            return path
+    
+    return None
+
+
+def generate_audio_xtts(script_path: Path, output_path: Path,
+                        voice_sample: Path = None,
+                        speed: float = 0.88,
+                        progress_callback = None) -> Tuple[bool, str]:
+    """
+    Generate audio using XTTS-v2 with voice cloning.
+    
+    Args:
+        script_path: Path to the response script (.response.md)
+        output_path: Path for output audio file (.mp3)
+        voice_sample: Path to voice sample for cloning
+        speed: Speed adjustment (0.88 = slightly slower for meditations)
+        progress_callback: Optional callback(current, total, message)
+    
+    Returns (success, message).
+    """
+    import subprocess
+    import tempfile
+    
+    # Find the XTTS script
+    xtts_script = Path.home() / "Projects/dreamweaving/scripts/core/generate_voice_xtts_custom.py"
+    
+    if not xtts_script.exists():
+        return False, f"XTTS script not found: {xtts_script}"
+    
+    # Find voice sample
+    if voice_sample is None:
+        voice_sample = find_voice_sample(script_path.parent.parent.parent)
+    
+    if voice_sample is None:
+        return False, "No voice sample found. Create voice_sample.wav in product directory."
+    
+    # Create temp SSML file
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.ssml', delete=False) as tmp:
+        ssml_path = Path(tmp.name)
+    
+    try:
+        # Convert script to SSML
+        success, message, segment_count = convert_script_to_ssml(script_path, ssml_path)
+        if not success:
+            return False, message
+        
+        if progress_callback:
+            progress_callback(0, segment_count, f"Converted script to {segment_count} segments")
+        
+        # Run XTTS generator
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        cmd = [
+            str(Path.home() / "Projects/dreamweaving/venv_coqui/bin/python"),
+            str(xtts_script),
+            str(ssml_path),
+            str(output_path.parent),
+            "--voice", str(voice_sample),
+            "--speed", str(speed)
+        ]
+        
+        # Run with real-time progress output
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            universal_newlines=True
+        )
+        
+        current_segment = 0
+        for line in process.stdout:
+            line = line.strip()
+            if line:
+                # Parse progress from output like "[60/88]"
+                import re
+                match = re.search(r'\[(\d+)/(\d+)\]', line)
+                if match:
+                    current_segment = int(match.group(1))
+                    total = int(match.group(2))
+                    if progress_callback:
+                        progress_callback(current_segment, total, line[:60])
+                print(f"   {line}")
+        
+        process.wait()
+        
+        if process.returncode != 0:
+            return False, "XTTS generation failed"
+        
+        # Rename output file
+        generated_file = output_path.parent / "voice_xtts.mp3"
+        if generated_file.exists():
+            generated_file.rename(output_path)
+        
+        if output_path.exists():
+            size_mb = output_path.stat().st_size / (1024 * 1024)
+            return True, f"Created: {output_path} ({size_mb:.1f}MB)"
+        else:
+            return False, "Output file not created"
+        
+    finally:
+        if ssml_path.exists():
+            ssml_path.unlink()
+
+
+def get_xtts_status() -> dict:
+    """Check if XTTS-v2 is available and configured."""
+    import shutil
+    
+    status = {
+        "available": False,
+        "script_exists": False,
+        "venv_exists": False,
+        "model_exists": False,
+        "message": ""
+    }
+    
+    xtts_script = Path.home() / "Projects/dreamweaving/scripts/core/generate_voice_xtts_custom.py"
+    venv_python = Path.home() / "Projects/dreamweaving/venv_coqui/bin/python"
+    model_dir = Path.home() / ".local/share/tts/tts_models--multilingual--multi-dataset--xtts_v2"
+    
+    status["script_exists"] = xtts_script.exists()
+    status["venv_exists"] = venv_python.exists()
+    status["model_exists"] = model_dir.exists()
+    
+    if all([status["script_exists"], status["venv_exists"], status["model_exists"]]):
+        status["available"] = True
+        status["message"] = "XTTS-v2 ready with voice cloning"
+    else:
+        missing = []
+        if not status["script_exists"]:
+            missing.append("script")
+        if not status["venv_exists"]:
+            missing.append("venv_coqui environment")
+        if not status["model_exists"]:
+            missing.append("XTTS model")
+        status["message"] = f"Missing: {', '.join(missing)}"
+    
+    return status

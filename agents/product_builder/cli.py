@@ -1673,13 +1673,41 @@ def generate_audio_command(args):
         output_path = audio_dir / f"{session['slug']}.mp3"
         
         logger.info(f"\n   Processing: {session['slug']}")
+        logger.info(f"   Words: {session.get('word_count', '?')}")
+        logger.info(f"   ~{session.get('estimated_minutes', '?')} minutes estimated")
         
-        success, message = generate_audio_from_script(
-            script_path=script_path,
-            output_path=output_path,
-            voice=args.voice,
-            engine=args.engine
-        )
+        # Use XTTS-v2 if available and requested, else fallback
+        if args.engine == "xtts":
+            from .core.antigravity import generate_audio_xtts, get_xtts_status
+            
+            xtts_status = get_xtts_status()
+            if not xtts_status["available"]:
+                logger.error(f"   ❌ XTTS-v2 not available: {xtts_status['message']}")
+                logger.info("   Use --engine piper or --engine espeak as fallback")
+                continue
+            
+            logger.info(f"   🎤 Using XTTS-v2 with voice cloning...")
+            
+            voice_sample = Path(args.voice) if args.voice and args.voice != "en_US-amy-medium" else None
+            
+            def progress_callback(current, total, msg):
+                if current % 20 == 0 or current == total:
+                    logger.info(f"   📊 Progress: [{current}/{total}] {msg[:40]}...")
+            
+            success, message = generate_audio_xtts(
+                script_path=script_path,
+                output_path=output_path,
+                voice_sample=voice_sample,
+                speed=args.speed if hasattr(args, 'speed') else 0.88,
+                progress_callback=progress_callback
+            )
+        else:
+            success, message = generate_audio_from_script(
+                script_path=script_path,
+                output_path=output_path,
+                voice=args.voice,
+                engine=args.engine
+            )
         
         if success:
             logger.info(f"   ✅ {message}")
@@ -1965,9 +1993,12 @@ Examples:
     gen_audio_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
     gen_audio_parser.add_argument('--session', '-s', help='Specific session slug to generate')
     gen_audio_parser.add_argument('--all', '-a', action='store_true', help='Generate all ready sessions')
-    gen_audio_parser.add_argument('--voice', default='en_US-amy-medium', help='TTS voice model')
-    gen_audio_parser.add_argument('--engine', default='piper', choices=['piper', 'espeak'], 
-                                  help='TTS engine (default: piper)')
+    gen_audio_parser.add_argument('--voice', default='en_US-amy-medium', 
+                                  help='Voice model or path to voice sample for XTTS')
+    gen_audio_parser.add_argument('--engine', default='xtts', choices=['xtts', 'piper', 'espeak'], 
+                                  help='TTS engine: xtts (best quality), piper, espeak (default: xtts)')
+    gen_audio_parser.add_argument('--speed', type=float, default=0.88,
+                                  help='Speed adjustment for XTTS (0.88 = slightly slower, good for meditations)')
     gen_audio_parser.set_defaults(func=generate_audio_command)
     
     # Parse and execute
