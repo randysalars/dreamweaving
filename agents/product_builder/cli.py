@@ -2497,6 +2497,66 @@ def generate_toc_command(args):
     return 0
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# STEP 5 ENHANCEMENTS: DRY-RUN, VERIFY, HISTORY
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def deploy_dry_run_command(args):
+    """Preview deployment without making changes."""
+    from pathlib import Path
+    from .core.antigravity import dry_run_deploy, format_dry_run
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    salarsu_path = Path(args.salarsu_path) if args.salarsu_path else None
+    
+    success, dry_run = dry_run_deploy(product_dir, salarsu_path)
+    
+    if success:
+        logger.info(format_dry_run(dry_run))
+        return 0
+    else:
+        logger.error("❌ Could not generate dry-run preview. Check product.json exists.")
+        return 1
+
+
+def deploy_verify_command(args):
+    """Verify deployment was successful."""
+    from pathlib import Path
+    from .core.antigravity import (
+        verify_deployment, format_deploy_verification
+    )
+    
+    salarsu_path = Path(args.salarsu_path) if args.salarsu_path else None
+    
+    checks = verify_deployment(args.slug, salarsu_path)
+    logger.info(format_deploy_verification(checks))
+    
+    # Return error if critical failures
+    critical = [c for c in checks if not c.passed and c.severity == "error"]
+    return 1 if critical else 0
+
+
+def deploy_history_command(args):
+    """Show deployment history for a product."""
+    from pathlib import Path
+    from .core.antigravity import (
+        load_deployment_history, format_deployment_history
+    )
+    
+    salarsu_path = Path(args.salarsu_path) if args.salarsu_path else None
+    
+    records = load_deployment_history(args.slug, salarsu_path)
+    logger.info(format_deployment_history(records))
+    
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog='product-builder',
@@ -2984,6 +3044,31 @@ Examples:
     gen_toc_parser.add_argument('--save', '-s', action='store_true', help='Save TOC to output/')
     gen_toc_parser.add_argument('--chapters-only', action='store_true', help='Chapters only (no sections)')
     gen_toc_parser.set_defaults(func=generate_toc_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STEP 5 ENHANCEMENTS SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Deploy-dry-run command
+    deploy_dry_parser = subparsers.add_parser('deploy-dry-run',
+                                               help='Preview deployment without changes')
+    deploy_dry_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    deploy_dry_parser.add_argument('--salarsu-path', help='Path to SalarsNet repo')
+    deploy_dry_parser.set_defaults(func=deploy_dry_run_command)
+    
+    # Deploy-verify command
+    deploy_verify_parser = subparsers.add_parser('deploy-verify',
+                                                  help='Verify deployment was successful')
+    deploy_verify_parser.add_argument('--slug', '-s', required=True, help='Product slug')
+    deploy_verify_parser.add_argument('--salarsu-path', help='Path to SalarsNet repo')
+    deploy_verify_parser.set_defaults(func=deploy_verify_command)
+    
+    # Deploy-history command
+    deploy_history_parser = subparsers.add_parser('deploy-history',
+                                                   help='Show deployment history')
+    deploy_history_parser.add_argument('--slug', '-s', required=True, help='Product slug')
+    deploy_history_parser.add_argument('--salarsu-path', help='Path to SalarsNet repo')
+    deploy_history_parser.set_defaults(func=deploy_history_command)
     
     # Parse and execute
     args = parser.parse_args()

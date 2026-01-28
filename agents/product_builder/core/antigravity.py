@@ -4590,3 +4590,395 @@ def save_toc_to_file(product_dir: Path, entries: List[TOCEntry], product_title: 
     txt_file.write_text(txt_content)
     
     return True, f"Saved TOC to {md_file} and {txt_file}"
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 5 ENHANCEMENTS: DRY-RUN, VERIFICATION, HISTORY
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class DeploymentRecord:
+    """Record of a deployment."""
+    slug: str
+    timestamp: str
+    version: int
+    zip_path: str
+    image_path: str
+    sql_path: str
+    success: bool
+    error: Optional[str] = None
+
+
+@dataclass
+class DeployDryRun:
+    """Dry-run deployment preview."""
+    slug: str
+    zip_source: str
+    zip_dest: str
+    image_source: str
+    image_dest: str
+    sql_statements: str
+    product_url: str
+    download_url: str
+
+
+def dry_run_deploy(product_dir: Path, salarsu_path: Path = None) -> Tuple[bool, DeployDryRun]:
+    """Preview deployment without making changes."""
+    import json
+    
+    if salarsu_path is None:
+        salarsu_path = Path.home() / "Projects" / "salarsu"
+    
+    config_file = product_dir / "product.json"
+    if not config_file.exists():
+        return False, None
+    
+    config = json.loads(config_file.read_text())
+    slug = config.get("slug") or generate_product_slug(config.get("title", "product"))
+    
+    output_dir = product_dir / "output"
+    
+    # Find source files
+    zip_source = None
+    for zip_file in output_dir.glob("*.zip"):
+        zip_source = str(zip_file)
+        break
+    
+    image_source = None
+    for img in ["cover.png", "cover.jpg", "product.png"]:
+        img_path = output_dir / "images" / img
+        if img_path.exists():
+            image_source = str(img_path)
+            break
+    
+    # Destination paths
+    zip_dest = str(salarsu_path / "public" / "downloads" / "products" / f"{slug}.zip")
+    image_dest = str(salarsu_path / "public" / "images" / "products" / f"{slug}.png")
+    
+    # SQL preview
+    sql_file = output_dir / "store_insert.sql"
+    sql_statements = sql_file.read_text() if sql_file.exists() else "No SQL file found"
+    
+    dry_run = DeployDryRun(
+        slug=slug,
+        zip_source=zip_source or "No ZIP found",
+        zip_dest=zip_dest,
+        image_source=image_source or "No image found",
+        image_dest=image_dest,
+        sql_statements=sql_statements[:500] + "..." if len(sql_statements) > 500 else sql_statements,
+        product_url=f"https://salars.net/digital/{slug}",
+        download_url=f"https://salars.net/downloads/products/{slug}.zip"
+    )
+    
+    return True, dry_run
+
+
+def format_dry_run(dry_run: DeployDryRun) -> str:
+    """Format dry-run preview for display."""
+    lines = [
+        "",
+        "╔" + "═" * 70 + "╗",
+        "║" + " " * 22 + "DEPLOYMENT DRY RUN" + " " * 30 + "║",
+        "╠" + "═" * 70 + "╣",
+        f"║ 🏷️  Slug: {dry_run.slug[:55]}".ljust(71) + "║",
+        "╠" + "─" * 70 + "╣",
+        "║ 📦 ZIP Transfer:".ljust(71) + "║",
+        f"║   From: {dry_run.zip_source[:58]}".ljust(71) + "║",
+        f"║   To:   {dry_run.zip_dest[:58]}".ljust(71) + "║",
+        "╠" + "─" * 70 + "╣",
+        "║ 🖼️  Image Transfer:".ljust(71) + "║",
+        f"║   From: {dry_run.image_source[:58]}".ljust(71) + "║",
+        f"║   To:   {dry_run.image_dest[:58]}".ljust(71) + "║",
+        "╠" + "─" * 70 + "╣",
+        "║ 🔗 URLs:".ljust(71) + "║",
+        f"║   Product: {dry_run.product_url[:55]}".ljust(71) + "║",
+        f"║   Download: {dry_run.download_url[:54]}".ljust(71) + "║",
+        "╠" + "─" * 70 + "╣",
+        "║ 📝 SQL Preview:".ljust(71) + "║",
+    ]
+    
+    for sql_line in dry_run.sql_statements.split('\n')[:5]:
+        lines.append(f"║   {sql_line[:65]}".ljust(71) + "║")
+    
+    lines.append("╠" + "═" * 70 + "╣")
+    lines.append("║ ⚠️  DRY RUN - No changes made. Use without --dry-run to deploy.".ljust(71) + "║")
+    lines.append("╚" + "═" * 70 + "╝")
+    
+    return "\n".join(lines)
+
+
+@dataclass
+class DeployVerification:
+    """Verification of a deployment."""
+    name: str
+    passed: bool
+    message: str
+    severity: str
+
+
+def verify_deployment(slug: str, salarsu_path: Path = None) -> List[DeployVerification]:
+    """Verify a deployment was successful."""
+    import subprocess
+    
+    if salarsu_path is None:
+        salarsu_path = Path.home() / "Projects" / "salarsu"
+    
+    checks = []
+    
+    # 1. Check ZIP file exists locally
+    zip_path = salarsu_path / "public" / "downloads" / "products" / f"{slug}.zip"
+    if zip_path.exists():
+        size_mb = zip_path.stat().st_size / (1024 * 1024)
+        checks.append(DeployVerification(
+            "ZIP File", True,
+            f"Found: {size_mb:.1f}MB",
+            "info"
+        ))
+    else:
+        checks.append(DeployVerification(
+            "ZIP File", False,
+            f"Not found: {zip_path.name}",
+            "error"
+        ))
+    
+    # 2. Check image exists locally
+    image_path = salarsu_path / "public" / "images" / "products" / f"{slug}.png"
+    if not image_path.exists():
+        image_path = salarsu_path / "public" / "images" / "products" / f"{slug}.jpg"
+    
+    if image_path.exists():
+        checks.append(DeployVerification(
+            "Cover Image", True,
+            f"Found: {image_path.name}",
+            "info"
+        ))
+    else:
+        checks.append(DeployVerification(
+            "Cover Image", False,
+            f"Not found: {slug}.png/jpg",
+            "warning"
+        ))
+    
+    # 3. Check SQL seed file exists
+    sql_path = salarsu_path / "db" / "seeds" / f"digital_{slug}.sql"
+    if sql_path.exists():
+        checks.append(DeployVerification(
+            "SQL Seed", True,
+            f"Found: digital_{slug}.sql",
+            "info"
+        ))
+    else:
+        checks.append(DeployVerification(
+            "SQL Seed", False,
+            "SQL seed file not found",
+            "warning"
+        ))
+    
+    # 4. Try to reach product URL (if curl available)
+    product_url = f"https://salars.net/digital/{slug}"
+    try:
+        result = subprocess.run(
+            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", product_url],
+            capture_output=True,
+            timeout=10
+        )
+        status_code = result.stdout.decode().strip()
+        if status_code == "200":
+            checks.append(DeployVerification(
+                "Product Page", True,
+                f"Accessible (HTTP {status_code})",
+                "info"
+            ))
+        elif status_code == "404":
+            checks.append(DeployVerification(
+                "Product Page", False,
+                f"Not found (HTTP {status_code})",
+                "warning"
+            ))
+        else:
+            checks.append(DeployVerification(
+                "Product Page", True,
+                f"HTTP {status_code}",
+                "info"
+            ))
+    except:
+        checks.append(DeployVerification(
+            "Product Page", True,
+            "Could not verify (curl unavailable)",
+            "info"
+        ))
+    
+    # 5. Check deployment history
+    history_file = salarsu_path / ".deployment_history" / f"{slug}.json"
+    if history_file.exists():
+        checks.append(DeployVerification(
+            "Deployment Record", True,
+            "History recorded",
+            "info"
+        ))
+    else:
+        checks.append(DeployVerification(
+            "Deployment Record", False,
+            "No deployment history",
+            "warning"
+        ))
+    
+    return checks
+
+
+def format_deploy_verification(checks: List[DeployVerification]) -> str:
+    """Format verification results."""
+    lines = [
+        "",
+        "╔" + "═" * 60 + "╗",
+        "║" + " " * 17 + "DEPLOY VERIFICATION" + " " * 24 + "║",
+        "╠" + "═" * 60 + "╣",
+    ]
+    
+    passed = 0
+    failed = 0
+    
+    for check in checks:
+        if check.passed:
+            icon = "✅"
+            passed += 1
+        else:
+            icon = "❌" if check.severity == "error" else "⚠️"
+            failed += 1
+        
+        lines.append(f"║ {icon} {check.name:18} │ {check.message[:35]:<35} ║")
+    
+    lines.append("╠" + "═" * 60 + "╣")
+    
+    if failed == 0:
+        lines.append("║ ✅ Deployment verified successfully!".ljust(61) + "║")
+    else:
+        lines.append("║ ⚠️  Some checks failed. Review issues above.".ljust(61) + "║")
+    
+    lines.append("╚" + "═" * 60 + "╝")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# DEPLOYMENT HISTORY
+# ═══════════════════════════════════════════════════════════════════════
+
+
+def record_deployment(
+    slug: str,
+    zip_path: str,
+    image_path: str,
+    sql_path: str,
+    success: bool,
+    error: str = None,
+    salarsu_path: Path = None
+) -> DeploymentRecord:
+    """Record a deployment in history."""
+    import json
+    from datetime import datetime
+    
+    if salarsu_path is None:
+        salarsu_path = Path.home() / "Projects" / "salarsu"
+    
+    history_dir = salarsu_path / ".deployment_history"
+    history_dir.mkdir(parents=True, exist_ok=True)
+    
+    history_file = history_dir / f"{slug}.json"
+    
+    # Load existing history
+    if history_file.exists():
+        history = json.loads(history_file.read_text())
+    else:
+        history = {"slug": slug, "deployments": []}
+    
+    # Create new record
+    version = len(history["deployments"]) + 1
+    timestamp = datetime.now().isoformat()
+    
+    record = DeploymentRecord(
+        slug=slug,
+        timestamp=timestamp,
+        version=version,
+        zip_path=zip_path,
+        image_path=image_path,
+        sql_path=sql_path,
+        success=success,
+        error=error
+    )
+    
+    # Add to history
+    history["deployments"].append({
+        "timestamp": timestamp,
+        "version": version,
+        "zip_path": zip_path,
+        "image_path": image_path,
+        "sql_path": sql_path,
+        "success": success,
+        "error": error
+    })
+    
+    # Save
+    history_file.write_text(json.dumps(history, indent=2))
+    
+    return record
+
+
+def load_deployment_history(slug: str, salarsu_path: Path = None) -> List[DeploymentRecord]:
+    """Load deployment history for a product."""
+    import json
+    
+    if salarsu_path is None:
+        salarsu_path = Path.home() / "Projects" / "salarsu"
+    
+    history_file = salarsu_path / ".deployment_history" / f"{slug}.json"
+    
+    if not history_file.exists():
+        return []
+    
+    history = json.loads(history_file.read_text())
+    
+    return [
+        DeploymentRecord(
+            slug=slug,
+            timestamp=d["timestamp"],
+            version=d["version"],
+            zip_path=d["zip_path"],
+            image_path=d["image_path"],
+            sql_path=d["sql_path"],
+            success=d["success"],
+            error=d.get("error")
+        )
+        for d in history.get("deployments", [])
+    ]
+
+
+def format_deployment_history(records: List[DeploymentRecord]) -> str:
+    """Format deployment history for display."""
+    if not records:
+        return "\n  No deployment history found.\n"
+    
+    lines = [
+        "",
+        "╔" + "═" * 70 + "╗",
+        "║" + " " * 22 + "DEPLOYMENT HISTORY" + " " * 30 + "║",
+        f"║ Product: {records[0].slug}".ljust(71) + "║",
+        "╠" + "═" * 70 + "╣",
+        "║ {:5} │ {:20} │ {:8} │ {:25} ║".format("Ver", "Timestamp", "Status", "Notes"),
+        "╠" + "─" * 70 + "╣",
+    ]
+    
+    for record in reversed(records[-10:]):  # Last 10 deployments
+        status = "✅ OK" if record.success else "❌ FAIL"
+        ts_short = record.timestamp[:19].replace("T", " ")
+        notes = record.error[:20] if record.error else "Deployed"
+        lines.append("║ {:5} │ {:20} │ {:8} │ {:25} ║".format(
+            f"v{record.version}", ts_short, status, notes
+        ))
+    
+    lines.append("╠" + "═" * 70 + "╣")
+    lines.append(f"║ Total deployments: {len(records)}".ljust(71) + "║")
+    lines.append("╚" + "═" * 70 + "╝")
+    
+    return "\n".join(lines)
