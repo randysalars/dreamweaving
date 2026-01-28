@@ -5838,3 +5838,386 @@ def format_launch_countdown(countdown: LaunchCountdown) -> str:
     lines.append("╚" + "═" * 60 + "╝")
     
     return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# PIPELINE AUTOMATION: PRESETS, PROGRESS, VERIFICATION
+# ═══════════════════════════════════════════════════════════════════════
+
+
+PIPELINE_PRESETS = {
+    "quick": {
+        "name": "Quick",
+        "description": "Fast product, no media",
+        "audio": False,
+        "video": False,
+        "deploy": False,
+        "schedule": False,
+        "price": 27.00,
+        "sale_price": None,
+    },
+    "standard": {
+        "name": "Standard",
+        "description": "Full product with audio and deploy",
+        "audio": True,
+        "video": False,
+        "deploy": True,
+        "schedule": False,
+        "price": 47.00,
+        "sale_price": None,
+    },
+    "premium": {
+        "name": "Premium",
+        "description": "Complete product with all media and scheduling",
+        "audio": True,
+        "video": True,
+        "deploy": True,
+        "schedule": True,
+        "price": 97.00,
+        "sale_price": 67.00,
+    },
+    "enterprise": {
+        "name": "Enterprise",
+        "description": "Maximum value with extended content",
+        "audio": True,
+        "video": True,
+        "deploy": True,
+        "schedule": True,
+        "price": 197.00,
+        "sale_price": 147.00,
+    },
+}
+
+
+@dataclass
+class PipelinePreset:
+    """A pipeline configuration preset."""
+    name: str
+    description: str
+    audio: bool
+    video: bool
+    deploy: bool
+    schedule: bool
+    price: float
+    sale_price: Optional[float]
+
+
+def get_pipeline_preset(name: str) -> Optional[PipelinePreset]:
+    """Get a pipeline preset by name."""
+    if name not in PIPELINE_PRESETS:
+        return None
+    
+    preset = PIPELINE_PRESETS[name]
+    return PipelinePreset(
+        name=preset["name"],
+        description=preset["description"],
+        audio=preset["audio"],
+        video=preset["video"],
+        deploy=preset["deploy"],
+        schedule=preset["schedule"],
+        price=preset["price"],
+        sale_price=preset["sale_price"],
+    )
+
+
+def format_pipeline_presets() -> str:
+    """Format pipeline presets for display."""
+    lines = [
+        "",
+        "╔" + "═" * 80 + "╗",
+        "║" + " " * 28 + "PIPELINE PRESETS" + " " * 36 + "║",
+        "╠" + "═" * 80 + "╣",
+        "║ {:12} │ {:30} │ {:6} │ {:6} │ {:8} ║".format(
+            "Preset", "Description", "Audio", "Video", "Price"
+        ),
+        "╠" + "─" * 80 + "╣",
+    ]
+    
+    for key, preset in PIPELINE_PRESETS.items():
+        audio = "✅" if preset["audio"] else "❌"
+        video = "✅" if preset["video"] else "❌"
+        price = f"${preset['price']:.0f}"
+        lines.append("║ {:12} │ {:30} │ {:6} │ {:6} │ {:8} ║".format(
+            key, preset["description"][:30], audio, video, price
+        ))
+    
+    lines.append("╠" + "═" * 80 + "╣")
+    lines.append("║ Usage: product-builder auto-launch --preset <name>".ljust(81) + "║")
+    lines.append("╚" + "═" * 80 + "╝")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# PIPELINE PROGRESS TRACKING
+# ═══════════════════════════════════════════════════════════════════════
+
+
+PIPELINE_PHASES = [
+    ("create", "Creating product content"),
+    ("audio", "Generating audio"),
+    ("video", "Generating video"),
+    ("seo", "Creating SEO metadata"),
+    ("deploy", "Deploying to store"),
+    ("marketing", "Generating marketing"),
+    ("schedule", "Scheduling content"),
+]
+
+
+@dataclass
+class PipelineProgress:
+    """Track pipeline execution progress."""
+    current_phase: str
+    current_index: int
+    total_phases: int
+    phase_results: Dict[str, bool]
+    start_time: str
+    errors: List[str]
+
+
+def create_pipeline_progress(enabled_phases: List[str]) -> PipelineProgress:
+    """Create a new pipeline progress tracker."""
+    from datetime import datetime
+    
+    return PipelineProgress(
+        current_phase="",
+        current_index=0,
+        total_phases=len(enabled_phases),
+        phase_results={},
+        start_time=datetime.now().isoformat(),
+        errors=[]
+    )
+
+
+def format_progress_bar(progress: PipelineProgress, status: str) -> str:
+    """Format a progress bar for display."""
+    if progress.total_phases == 0:
+        return ""
+    
+    percentage = int((progress.current_index / progress.total_phases) * 100)
+    filled = percentage // 5
+    empty = 20 - filled
+    bar = "█" * filled + "░" * empty
+    
+    return f"[{bar}] {percentage:3d}%  {status}"
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# PHASE VERIFICATION
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class PhaseVerification:
+    """Result of verifying a pipeline phase."""
+    phase: str
+    passed: bool
+    checks: List[Tuple[str, bool, str]]
+
+
+def verify_create_phase(output_dir: Path) -> PhaseVerification:
+    """Verify the create phase completed successfully."""
+    checks = []
+    
+    # Check for PDF
+    pdfs = list(output_dir.glob("*.pdf"))
+    checks.append(("PDF exists", len(pdfs) > 0, f"Found {len(pdfs)} PDF(s)"))
+    
+    # Check for cover image
+    images_dir = output_dir / "images"
+    has_cover = images_dir.exists() and any(images_dir.glob("*"))
+    checks.append(("Cover image", has_cover, "Image found" if has_cover else "No image"))
+    
+    # Check for landing page
+    lp_file = output_dir / "landing_page_content.json"
+    checks.append(("Landing page", lp_file.exists(), "Content ready" if lp_file.exists() else "Missing"))
+    
+    # Check for product.json
+    config_file = output_dir.parent / "product.json"
+    if not config_file.exists():
+        config_file = output_dir / "product.json"
+    checks.append(("Product config", config_file.exists(), "Config found" if config_file.exists() else "Missing"))
+    
+    passed = all(check[1] for check in checks)
+    return PhaseVerification("create", passed, checks)
+
+
+def verify_deploy_phase(slug: str, salarsu_path: Path = None) -> PhaseVerification:
+    """Verify the deploy phase completed successfully."""
+    if salarsu_path is None:
+        salarsu_path = Path.home() / "Projects" / "salarsu"
+    
+    checks = []
+    
+    # Check ZIP file
+    zip_path = salarsu_path / "public" / "downloads" / "products" / f"{slug}.zip"
+    checks.append(("ZIP deployed", zip_path.exists(), "Found" if zip_path.exists() else "Missing"))
+    
+    # Check image
+    image_path = salarsu_path / "public" / "images" / "products" / f"{slug}.png"
+    checks.append(("Image deployed", image_path.exists(), "Found" if image_path.exists() else "Missing"))
+    
+    passed = all(check[1] for check in checks)
+    return PhaseVerification("deploy", passed, checks)
+
+
+def format_phase_verification(verification: PhaseVerification) -> str:
+    """Format phase verification for display."""
+    icon = "✅" if verification.passed else "❌"
+    status = "PASSED" if verification.passed else "FAILED"
+    
+    lines = [f"   {icon} {verification.phase.upper()}: {status}"]
+    for check_name, passed, message in verification.checks:
+        check_icon = "✓" if passed else "✗"
+        lines.append(f"      {check_icon} {check_name}: {message}")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# PIPELINE SUMMARY
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class PipelineSummary:
+    """Summary of a completed pipeline run."""
+    title: str
+    slug: str
+    output_dir: str
+    phases_completed: List[str]
+    phases_failed: List[str]
+    pdf_pages: int
+    pdf_size_mb: float
+    audio_count: int
+    audio_duration_min: int
+    video_count: int
+    store_url: Optional[str]
+    download_url: Optional[str]
+    posts_scheduled: int
+    emails_registered: int
+    launch_date: Optional[str]
+    days_until_launch: int
+    total_duration_sec: int
+
+
+def generate_pipeline_summary(
+    title: str,
+    slug: str,
+    output_dir: Path,
+    progress: PipelineProgress,
+    launch_date: str = None
+) -> PipelineSummary:
+    """Generate a summary of the pipeline run."""
+    from datetime import datetime
+    import os
+    
+    # Calculate duration
+    try:
+        start = datetime.fromisoformat(progress.start_time)
+        duration = int((datetime.now() - start).total_seconds())
+    except:
+        duration = 0
+    
+    # Collect stats
+    phases_completed = [p for p, success in progress.phase_results.items() if success]
+    phases_failed = [p for p, success in progress.phase_results.items() if not success]
+    
+    # PDF stats
+    pdf_pages = 0
+    pdf_size = 0
+    for pdf in output_dir.glob("*.pdf"):
+        pdf_size += pdf.stat().st_size / (1024 * 1024)
+        # Rough page estimate
+        pdf_pages = max(pdf_pages, int(pdf.stat().st_size / 50000))
+    
+    # Audio stats
+    audio_dir = output_dir / "audio"
+    audio_count = len(list(audio_dir.glob("*.mp3"))) if audio_dir.exists() else 0
+    audio_duration = audio_count * 15  # Estimate 15 min per track
+    
+    # Video stats
+    video_dir = output_dir / "video"
+    video_count = len(list(video_dir.glob("*.mp4"))) if video_dir.exists() else 0
+    
+    # Launch date
+    days_until = 0
+    if launch_date:
+        try:
+            launch = datetime.strptime(launch_date, "%Y-%m-%d")
+            days_until = (launch - datetime.now()).days
+        except:
+            pass
+    
+    return PipelineSummary(
+        title=title,
+        slug=slug,
+        output_dir=str(output_dir),
+        phases_completed=phases_completed,
+        phases_failed=phases_failed,
+        pdf_pages=pdf_pages,
+        pdf_size_mb=pdf_size,
+        audio_count=audio_count,
+        audio_duration_min=audio_duration,
+        video_count=video_count,
+        store_url=f"https://salars.net/digital/{slug}" if "deploy" in phases_completed else None,
+        download_url=f"https://salars.net/downloads/products/{slug}.zip" if "deploy" in phases_completed else None,
+        posts_scheduled=0,  # Would need to check markers
+        emails_registered=0,  # Would need to check markers
+        launch_date=launch_date,
+        days_until_launch=days_until,
+        total_duration_sec=duration
+    )
+
+
+def format_pipeline_summary(summary: PipelineSummary) -> str:
+    """Format pipeline summary for display."""
+    lines = [
+        "",
+        "═" * 70,
+        "🎉 PRODUCT LAUNCH COMPLETE!",
+        "═" * 70,
+        f"   📁 Product: {summary.output_dir}",
+        f"   🏷️  Title: {summary.title}",
+        "",
+    ]
+    
+    # Assets
+    lines.append("   📦 Assets Created:")
+    if summary.pdf_pages > 0:
+        lines.append(f"      • PDF: ~{summary.pdf_pages} pages, {summary.pdf_size_mb:.1f}MB")
+    if summary.audio_count > 0:
+        lines.append(f"      • Audio: {summary.audio_count} tracks, ~{summary.audio_duration_min}m")
+    if summary.video_count > 0:
+        lines.append(f"      • Video: {summary.video_count} videos")
+    
+    lines.append("")
+    
+    # URLs
+    if summary.store_url:
+        lines.append("   🌐 Live URLs:")
+        lines.append(f"      • Store: {summary.store_url}")
+        lines.append(f"      • Download: {summary.download_url}")
+        lines.append("")
+    
+    # Launch date
+    if summary.launch_date:
+        lines.append(f"   📅 Launch: {summary.launch_date} ({summary.days_until_launch} days away)")
+        lines.append("")
+    
+    # Duration
+    mins = summary.total_duration_sec // 60
+    secs = summary.total_duration_sec % 60
+    lines.append(f"   ⏱️  Duration: {mins}m {secs}s")
+    
+    # Phase summary
+    completed = len(summary.phases_completed)
+    total = completed + len(summary.phases_failed)
+    lines.append(f"   ✅ Phases: {completed}/{total} completed")
+    
+    if summary.phases_failed:
+        lines.append(f"   ⚠️  Failed: {', '.join(summary.phases_failed)}")
+    
+    lines.append("═" * 70)
+    
+    return "\n".join(lines)

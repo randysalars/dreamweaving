@@ -2692,6 +2692,324 @@ def launch_countdown_command(args):
         return 1
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# PIPELINE AUTOMATION: AUTO-LAUNCH, PRESETS
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def list_presets_command(args):
+    """List available pipeline presets."""
+    from .core.antigravity import format_pipeline_presets
+    
+    logger.info(format_pipeline_presets())
+    return 0
+
+
+def auto_launch_command(args):
+    """
+    Complete product from topic to live in one command.
+    
+    Runs: create → audio → video → seo → deploy → marketing → schedule
+    """
+    from pathlib import Path
+    from argparse import Namespace
+    from .core.antigravity import (
+        get_pipeline_preset, create_pipeline_progress, format_progress_bar,
+        verify_create_phase, verify_deploy_phase, format_phase_verification,
+        generate_pipeline_summary, format_pipeline_summary
+    )
+    from .core.product_state import ProductState
+    
+    # Apply preset if provided
+    preset = None
+    if args.preset:
+        preset = get_pipeline_preset(args.preset)
+        if not preset:
+            logger.error(f"❌ Unknown preset: {args.preset}")
+            logger.info("   Use 'product-builder list-presets' to see available presets")
+            return 1
+        logger.info(f"📋 Using preset: {preset.name}")
+    
+    # Determine settings (preset -> args -> defaults)
+    audio = getattr(args, 'audio', False) or (preset and preset.audio) or False
+    video = getattr(args, 'video', False) or (preset and preset.video) or False
+    deploy = getattr(args, 'deploy', False) or (preset and preset.deploy) or False
+    schedule = getattr(args, 'schedule', False) or (preset and preset.schedule) or False
+    price = args.price or (preset and preset.price) or 47.00
+    sale_price = getattr(args, 'sale_price', None) or (preset and preset.sale_price)
+    
+    slug = args.title.replace(" ", "-").lower()
+    output_dir = Path(args.output) if args.output else Path(f"./products/{slug}")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Build phase list
+    enabled_phases = ["create"]
+    if audio:
+        enabled_phases.append("audio")
+    if video:
+        enabled_phases.append("video")
+    enabled_phases.append("seo")
+    if deploy:
+        enabled_phases.append("deploy")
+    enabled_phases.append("marketing")
+    if schedule and args.launch_date:
+        enabled_phases.append("schedule")
+    
+    progress = create_pipeline_progress(enabled_phases)
+    
+    logger.info("═" * 70)
+    logger.info("🚀 AUTO-LAUNCH: COMPLETE PRODUCT PIPELINE")
+    logger.info("═" * 70)
+    logger.info(f"   Topic: {args.topic}")
+    logger.info(f"   Title: {args.title}")
+    logger.info(f"   Preset: {args.preset or 'custom'}")
+    logger.info(f"   Phases: {' → '.join(enabled_phases)}")
+    logger.info("═" * 70)
+    
+    # Initialize state
+    state = ProductState.create(
+        output_dir, 
+        title=args.title, 
+        topic=args.topic,
+        price=price,
+        launch_date=args.launch_date
+    )
+    
+    phase_idx = 0
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 1: CREATE
+    # ═══════════════════════════════════════════════════════════════
+    progress.current_phase = "create"
+    progress.current_index = phase_idx
+    logger.info(f"\n{format_progress_bar(progress, 'Creating product content...')}")
+    logger.info("═══ PHASE 1: CREATE ═══")
+    
+    create_args = Namespace(
+        topic=args.topic,
+        title=args.title,
+        output=str(output_dir),
+        style='dreamweaving',
+        pdf=True,
+        audio=False,  # We'll do audio separately
+        video=False,  # We'll do video separately
+        landing_page=True,
+        emails=True,
+        social=True,
+        register_emails=False,
+        schedule_buffer=False,
+        launch_date=None,
+        dry_run=False,
+        generate_prompts_only=getattr(args, 'prompts_only', False),
+        all=False
+    )
+    
+    result = create_command(create_args)
+    if result != 0:
+        progress.phase_results["create"] = False
+        progress.errors.append("Create failed")
+        state.mark_complete("create", success=False, error="Create failed")
+        logger.error("❌ Create phase failed")
+        return result
+    
+    progress.phase_results["create"] = True
+    state.mark_complete("create", success=True)
+    phase_idx += 1
+    
+    # Verify create phase
+    output_subdir = output_dir / "output"
+    verification = verify_create_phase(output_subdir)
+    logger.info(format_phase_verification(verification))
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 2: AUDIO (if enabled)
+    # ═══════════════════════════════════════════════════════════════
+    if audio and "audio" in enabled_phases:
+        progress.current_phase = "audio"
+        progress.current_index = phase_idx
+        logger.info(f"\n{format_progress_bar(progress, 'Generating audio...')}")
+        logger.info("═══ PHASE 2: AUDIO ═══")
+        
+        try:
+            audio_args = Namespace(
+                product_dir=str(output_dir),
+                voice="shimmer",
+                output=str(output_subdir / "audio"),
+                list_voices=False,
+                dry_run=getattr(args, 'dry_run', False)
+            )
+            result = audio_generate_command(audio_args)
+            progress.phase_results["audio"] = result == 0
+        except Exception as e:
+            logger.warning(f"   ⚠️ Audio generation skipped: {e}")
+            progress.phase_results["audio"] = False
+        
+        phase_idx += 1
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 3: VIDEO (if enabled)
+    # ═══════════════════════════════════════════════════════════════
+    if video and "video" in enabled_phases:
+        progress.current_phase = "video"
+        progress.current_index = phase_idx
+        logger.info(f"\n{format_progress_bar(progress, 'Generating video...')}")
+        logger.info("═══ PHASE 3: VIDEO ═══")
+        
+        try:
+            video_args = Namespace(
+                product_dir=str(output_dir),
+                style="professional",
+                output=str(output_subdir / "video"),
+                dry_run=getattr(args, 'dry_run', False)
+            )
+            result = video_generate_command(video_args)
+            progress.phase_results["video"] = result == 0
+        except Exception as e:
+            logger.warning(f"   ⚠️ Video generation skipped: {e}")
+            progress.phase_results["video"] = False
+        
+        phase_idx += 1
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 4: SEO
+    # ═══════════════════════════════════════════════════════════════
+    progress.current_phase = "seo"
+    progress.current_index = phase_idx
+    logger.info(f"\n{format_progress_bar(progress, 'Creating SEO metadata...')}")
+    logger.info("═══ PHASE 4: SEO & METADATA ═══")
+    
+    try:
+        from .core.antigravity import generate_seo_metadata, generate_utm_links
+        
+        # Generate SEO
+        import json
+        seo = generate_seo_metadata(args.title, args.topic)
+        seo_file = output_subdir / "seo_metadata.json"
+        seo_file.write_text(json.dumps({
+            "meta_title": seo.meta_title,
+            "meta_description": seo.meta_description,
+            "keywords": seo.keywords,
+            "og_title": seo.og_title,
+            "og_description": seo.og_description,
+        }, indent=2))
+        logger.info(f"   ✅ SEO metadata: {seo_file.name}")
+        
+        # Generate UTM links
+        utm = generate_utm_links(slug)
+        utm_file = output_subdir / "utm_links.json"
+        utm_file.write_text(json.dumps({
+            "twitter": utm.twitter,
+            "linkedin": utm.linkedin,
+            "instagram": utm.instagram,
+            "email": utm.email,
+            "newsletter": utm.newsletter,
+        }, indent=2))
+        logger.info(f"   ✅ UTM links: {utm_file.name}")
+        
+        progress.phase_results["seo"] = True
+    except Exception as e:
+        logger.warning(f"   ⚠️ SEO generation error: {e}")
+        progress.phase_results["seo"] = False
+    
+    phase_idx += 1
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 5: DEPLOY (if enabled)
+    # ═══════════════════════════════════════════════════════════════
+    if deploy and "deploy" in enabled_phases:
+        progress.current_phase = "deploy"
+        progress.current_index = phase_idx
+        logger.info(f"\n{format_progress_bar(progress, 'Deploying to store...')}")
+        logger.info("═══ PHASE 5: DEPLOY ═══")
+        
+        deploy_args = Namespace(
+            product_dir=str(output_dir),
+            name=args.title,
+            slug=slug,
+            description=f"Premium digital product: {args.title}",
+            price=price,
+            sale_price=sale_price,
+            salarsu_root=getattr(args, 'salarsu_root', '/home/rsalars/Projects/salarsu'),
+            commit=True,
+            push=True
+        )
+        
+        result = deploy_command(deploy_args)
+        progress.phase_results["deploy"] = result == 0
+        
+        if result == 0:
+            verification = verify_deploy_phase(slug)
+            logger.info(format_phase_verification(verification))
+        
+        phase_idx += 1
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 6: MARKETING
+    # ═══════════════════════════════════════════════════════════════
+    progress.current_phase = "marketing"
+    progress.current_index = phase_idx
+    logger.info(f"\n{format_progress_bar(progress, 'Generating marketing content...')}")
+    logger.info("═══ PHASE 6: MARKETING ═══")
+    
+    marketing_args = Namespace(
+        product_dir=str(output_dir),
+        title=args.title,
+        emails=True,
+        social=True,
+        register_emails=False,
+        schedule_buffer=False,
+        launch_date=None,
+        dry_run=False,
+        all=False
+    )
+    
+    result = marketing_command(marketing_args)
+    progress.phase_results["marketing"] = result == 0
+    phase_idx += 1
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 7: SCHEDULE (if enabled)
+    # ═══════════════════════════════════════════════════════════════
+    if schedule and args.launch_date and "schedule" in enabled_phases:
+        progress.current_phase = "schedule"
+        progress.current_index = phase_idx
+        logger.info(f"\n{format_progress_bar(progress, 'Scheduling content...')}")
+        logger.info("═══ PHASE 7: REGISTER & SCHEDULE ═══")
+        
+        schedule_args = Namespace(
+            product_dir=str(output_dir),
+            title=args.title,
+            emails=False,
+            social=False,
+            register_emails=True,
+            schedule_buffer=True,
+            launch_date=args.launch_date,
+            dry_run=getattr(args, 'dry_run', False),
+            all=False
+        )
+        
+        result = marketing_command(schedule_args)
+        progress.phase_results["schedule"] = result == 0
+        phase_idx += 1
+    
+    # ═══════════════════════════════════════════════════════════════
+    # COMPLETE - GENERATE SUMMARY
+    # ═══════════════════════════════════════════════════════════════
+    progress.current_index = phase_idx
+    
+    summary = generate_pipeline_summary(
+        title=args.title,
+        slug=slug,
+        output_dir=output_subdir,
+        progress=progress,
+        launch_date=args.launch_date
+    )
+    
+    logger.info(format_pipeline_summary(summary))
+    
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog='product-builder',
@@ -3255,6 +3573,34 @@ Examples:
     countdown_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
     countdown_parser.add_argument('--launch-date', '-l', required=True, help='Launch date (YYYY-MM-DD)')
     countdown_parser.set_defaults(func=launch_countdown_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PIPELINE AUTOMATION SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # List-presets command
+    presets_parser = subparsers.add_parser('list-presets',
+                                            help='List available pipeline presets')
+    presets_parser.set_defaults(func=list_presets_command)
+    
+    # Auto-launch command
+    launch_parser = subparsers.add_parser('auto-launch',
+                                           help='Complete product from topic to live in one command')
+    launch_parser.add_argument('--topic', '-t', required=True, help='Main topic')
+    launch_parser.add_argument('--title', '-T', required=True, help='Product title')
+    launch_parser.add_argument('--preset', '-p', help='Pipeline preset (quick, standard, premium, enterprise)')
+    launch_parser.add_argument('--output', '-o', help='Output directory')
+    launch_parser.add_argument('--price', type=float, help='Product price')
+    launch_parser.add_argument('--sale-price', type=float, help='Sale price')
+    launch_parser.add_argument('--launch-date', '-l', help='Launch date (YYYY-MM-DD)')
+    launch_parser.add_argument('--audio', action='store_true', help='Generate audio')
+    launch_parser.add_argument('--video', action='store_true', help='Generate video')
+    launch_parser.add_argument('--deploy', action='store_true', help='Deploy to store')
+    launch_parser.add_argument('--schedule', action='store_true', help='Register and schedule')
+    launch_parser.add_argument('--salarsu-root', default='/home/rsalars/Projects/salarsu', help='SalarsNet path')
+    launch_parser.add_argument('--prompts-only', action='store_true', help='Generate prompts only')
+    launch_parser.add_argument('--dry-run', action='store_true', help='Validate only')
+    launch_parser.set_defaults(func=auto_launch_command)
     
     # Parse and execute
     args = parser.parse_args()
