@@ -1538,6 +1538,161 @@ def bonus_prompts_command(args):
     return 0
 
 
+def audio_prompts_command(args):
+    """Generate prompts for audio sessions (Antigravity-native)."""
+    from pathlib import Path
+    from .core.antigravity import generate_audio_prompts
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    # Parse session topics if provided
+    session_topics = None
+    if args.topics:
+        session_topics = [t.strip() for t in args.topics.split(",")]
+    
+    created_prompts = generate_audio_prompts(
+        product_dir=product_dir,
+        session_count=args.sessions,
+        product_title=args.title,
+        session_topics=session_topics
+    )
+    
+    logger.info(f"\n✅ Generated {len(created_prompts)} audio prompts!")
+    for prompt_file in created_prompts:
+        logger.info(f"   🎤 {prompt_file.name}")
+    
+    logger.info(f"\n📋 Step 3b Workflow:")
+    logger.info(f"   1. Read each prompt in: {product_dir}/output/prompts/audio_*.prompt.md")
+    logger.info(f"   2. Write scripts to: {product_dir}/output/responses/audio_*.response.md")
+    logger.info(f"   3. Check status: product-builder audio-status --product-dir {product_dir}")
+    logger.info(f"   4. Generate audio: product-builder generate-audio --product-dir {product_dir} --all")
+    
+    return 0
+
+
+def audio_status_command(args):
+    """Show status of audio sessions."""
+    from pathlib import Path
+    from .core.antigravity import list_audio_sessions, format_audio_sessions
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    sessions = list_audio_sessions(product_dir)
+    logger.info(format_audio_sessions(sessions))
+    
+    return 0
+
+
+def next_audio_command(args):
+    """Show the next audio session that needs work."""
+    from pathlib import Path
+    from .core.antigravity import get_next_audio_session
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    result = get_next_audio_session(product_dir)
+    
+    if result is None:
+        logger.info("🎉 All audio sessions complete!")
+        return 0
+    
+    session = result["session"]
+    
+    if result["type"] == "needs_script":
+        logger.info(f"\n📝 Next: Write script for '{session['slug']}'")
+        logger.info(f"\n   Prompt: {session['prompt_file']}")
+        logger.info(f"   Save to: output/responses/{session['slug']}.response.md")
+        
+        # Show the prompt content
+        if session['prompt_file'].exists():
+            logger.info("\n" + "─" * 60)
+            logger.info(session['prompt_file'].read_text()[:500] + "...")
+            logger.info("─" * 60)
+    
+    elif result["type"] == "needs_audio":
+        logger.info(f"\n🎵 Next: Generate audio for '{session['slug']}'")
+        logger.info(f"\n   Script: {session['response_file']}")
+        logger.info(f"   Words: {session.get('word_count', '?')}")
+        logger.info(f"   ~{session.get('estimated_minutes', '?')} minutes")
+        logger.info(f"\n   Generate: product-builder generate-audio --product-dir {product_dir} --session {session['slug']}")
+    
+    return 0
+
+
+def generate_audio_command(args):
+    """Generate audio from script using TTS."""
+    from pathlib import Path
+    from .core.antigravity import generate_audio_from_script, list_audio_sessions
+    
+    product_dir = Path(args.product_dir)
+    audio_dir = product_dir / "output" / "audio"
+    responses_dir = product_dir / "output" / "responses"
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    # Get sessions to process
+    sessions = list_audio_sessions(product_dir)
+    
+    if args.all:
+        # Generate all that have scripts but no audio
+        to_generate = [s for s in sessions if s.get("has_script") and not s.get("has_audio")]
+    elif args.session:
+        # Generate specific session
+        to_generate = [s for s in sessions if s["slug"] == args.session]
+        if not to_generate:
+            logger.error(f"❌ Session not found: {args.session}")
+            return 1
+    else:
+        logger.error("❌ Specify --session <slug> or --all")
+        return 1
+    
+    if not to_generate:
+        logger.info("📭 No sessions ready for audio generation.")
+        logger.info("   Scripts need to be written first.")
+        return 0
+    
+    logger.info(f"\n🎵 Generating audio for {len(to_generate)} session(s)...")
+    
+    success_count = 0
+    for session in to_generate:
+        script_path = session["response_file"]
+        output_path = audio_dir / f"{session['slug']}.mp3"
+        
+        logger.info(f"\n   Processing: {session['slug']}")
+        
+        success, message = generate_audio_from_script(
+            script_path=script_path,
+            output_path=output_path,
+            voice=args.voice,
+            engine=args.engine
+        )
+        
+        if success:
+            logger.info(f"   ✅ {message}")
+            success_count += 1
+        else:
+            logger.error(f"   ❌ {message}")
+    
+    logger.info(f"\n📊 Generated {success_count}/{len(to_generate)} audio files")
+    logger.info(f"   Output: {audio_dir}")
+    
+    return 0 if success_count == len(to_generate) else 1
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -1786,6 +1941,34 @@ Examples:
                                       help='Comma-separated bonus types or "all"')
     bonus_prompts_parser.add_argument('--title', help='Product title (auto-detected if not provided)')
     bonus_prompts_parser.set_defaults(func=bonus_prompts_command)
+    
+    # Audio-prompts command - generate prompts for audio sessions
+    audio_prompts_parser = subparsers.add_parser('audio-prompts', help='Generate prompts for audio sessions')
+    audio_prompts_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    audio_prompts_parser.add_argument('--sessions', '-n', type=int, required=True, help='Number of audio sessions')
+    audio_prompts_parser.add_argument('--title', help='Product title')
+    audio_prompts_parser.add_argument('--topics', help='Comma-separated session topics (optional)')
+    audio_prompts_parser.set_defaults(func=audio_prompts_command)
+    
+    # Audio-status command - show status of audio sessions
+    audio_status_parser = subparsers.add_parser('audio-status', help='Show status of audio sessions')
+    audio_status_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    audio_status_parser.set_defaults(func=audio_status_command)
+    
+    # Next-audio command - show next audio session needing work
+    next_audio_parser = subparsers.add_parser('next-audio', help='Show next audio session needing work')
+    next_audio_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    next_audio_parser.set_defaults(func=next_audio_command)
+    
+    # Generate-audio command - generate audio from scripts
+    gen_audio_parser = subparsers.add_parser('generate-audio', help='Generate audio from scripts using TTS')
+    gen_audio_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    gen_audio_parser.add_argument('--session', '-s', help='Specific session slug to generate')
+    gen_audio_parser.add_argument('--all', '-a', action='store_true', help='Generate all ready sessions')
+    gen_audio_parser.add_argument('--voice', default='en_US-amy-medium', help='TTS voice model')
+    gen_audio_parser.add_argument('--engine', default='piper', choices=['piper', 'espeak'], 
+                                  help='TTS engine (default: piper)')
+    gen_audio_parser.set_defaults(func=generate_audio_command)
     
     # Parse and execute
     args = parser.parse_args()

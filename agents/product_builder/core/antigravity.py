@@ -1143,3 +1143,303 @@ Save your response to: `output/responses/bonus_journal.response.md`
     return prompts.get(bonus.id, f"# {bonus.name}\n\nGenerate content for this bonus.\n")
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 3B: AUDIO GENERATION HELPERS
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class AudioSession:
+    """An audio session to be recorded."""
+    id: str
+    title: str
+    duration_minutes: int
+    script_prompt: str
+    output_filename: str
+
+
+@dataclass
+class AudioProject:
+    """Configuration for an audio product."""
+    product_title: str
+    sessions: List[AudioSession]
+    voice: str = "en_US-amy-medium"
+    output_format: str = "mp3"
+
+
+def generate_audio_script_prompt(session_num: int, total_sessions: int,
+                                  session_title: str, session_topic: str,
+                                  product_title: str, duration_minutes: int = 15) -> str:
+    """Generate a prompt for an audio script/meditation."""
+    
+    return f"""# Audio Session {session_num}/{total_sessions}: {session_title}
+
+## Product: {product_title}
+
+Create a {duration_minutes}-minute audio script for "{session_title}".
+
+## Requirements:
+
+### Structure:
+1. **Opening** (~2 min) - Welcoming, grounding, setting intention
+2. **Core Content** (~{duration_minutes - 5} min) - Main teaching/practice for: {session_topic}
+3. **Closing** (~3 min) - Integration, gentle return, next steps
+
+### Formatting for TTS:
+- Use [PAUSE] for 2-second pauses
+- Use [LONG PAUSE] for 5-second pauses
+- Use [BREATHE] for breathing space (3 seconds)
+- Write phonetically for unusual words
+- Use ellipses (...) for gentle transitions
+- Write numbers as words (two, three, not 2, 3)
+
+### Tone:
+- Warm, calm, and present
+- Conversational but focused
+- Appropriate pacing for the content type
+- Guide without commanding
+
+### Word Count:
+- ~150 words per minute of audio
+- Target: {duration_minutes * 150} words
+
+## Output Format:
+
+```
+# Session {session_num}: {session_title}
+
+[Session script here with all TTS markers]
+```
+
+Save your response to: `output/responses/audio_{session_num:02d}_{session_title.lower().replace(' ', '_')}.response.md`
+"""
+
+
+def list_audio_sessions(product_dir: Path) -> List[dict]:
+    """List all audio sessions for a product."""
+    audio_dir = product_dir / "output" / "audio"
+    prompts_dir = product_dir / "output" / "prompts"
+    responses_dir = product_dir / "output" / "responses"
+    
+    sessions = []
+    
+    # Find audio-related prompts
+    if prompts_dir.exists():
+        for prompt_file in sorted(prompts_dir.glob("audio_*.prompt.md")):
+            slug = prompt_file.stem.replace(".prompt", "")
+            response_file = responses_dir / f"{slug}.response.md"
+            audio_file = audio_dir / f"{slug}.mp3"
+            
+            session = {
+                "slug": slug,
+                "prompt_file": prompt_file,
+                "has_script": response_file.exists(),
+                "has_audio": audio_file.exists(),
+                "response_file": response_file if response_file.exists() else None,
+                "audio_file": audio_file if audio_file.exists() else None,
+            }
+            
+            if response_file.exists():
+                content = response_file.read_text()
+                session["word_count"] = len(content.split())
+                session["estimated_minutes"] = session["word_count"] // 150
+            
+            sessions.append(session)
+    
+    return sessions
+
+
+def format_audio_sessions(sessions: List[dict]) -> str:
+    """Format audio sessions for display."""
+    if not sessions:
+        return "\n📭 No audio sessions found. Generate prompts first with:\n   product-builder audio-prompts --product-dir ./product --sessions 8\n"
+    
+    lines = [
+        "",
+        "╔" + "═" * 78 + "╗",
+        "║" + " " * 28 + "AUDIO SESSIONS" + " " * 36 + "║",
+        "╠" + "═" * 78 + "╣",
+        "║ {:20} │ {:8} │ {:8} │ {:8} │ {:20} ║".format(
+            "Session", "Script", "Audio", "~Minutes", "Status"),
+        "╠" + "─" * 78 + "╣",
+    ]
+    
+    for s in sessions:
+        script_icon = "✅" if s.get("has_script") else "⏳"
+        audio_icon = "🎵" if s.get("has_audio") else "⏳"
+        minutes = str(s.get("estimated_minutes", "-"))
+        
+        if s.get("has_audio"):
+            status = "Complete"
+        elif s.get("has_script"):
+            status = "Ready for TTS"
+        else:
+            status = "Needs script"
+        
+        lines.append("║ {:20} │ {:8} │ {:8} │ {:8} │ {:20} ║".format(
+            s["slug"][:20], script_icon, audio_icon, minutes, status
+        ))
+    
+    total_with_audio = sum(1 for s in sessions if s.get("has_audio"))
+    total_with_script = sum(1 for s in sessions if s.get("has_script"))
+    
+    lines.append("╠" + "═" * 78 + "╣")
+    lines.append("║ Scripts: {}/{:3} │ Audio files: {}/{:3}{:40}║".format(
+        total_with_script, len(sessions), total_with_audio, len(sessions), ""
+    ))
+    lines.append("╚" + "═" * 78 + "╝")
+    
+    return "\n".join(lines)
+
+
+def generate_audio_prompts(product_dir: Path, session_count: int,
+                           product_title: str = None, 
+                           session_topics: List[str] = None) -> List[Path]:
+    """Generate prompts for audio sessions."""
+    prompts_dir = product_dir / "output" / "prompts"
+    prompts_dir.mkdir(parents=True, exist_ok=True)
+    
+    if not product_title:
+        product_title = product_dir.name.replace("_", " ").title()
+    
+    # Default session topics if not provided
+    if not session_topics:
+        session_topics = [
+            "Foundation and Getting Started",
+            "Core Technique Introduction",
+            "Deepening the Practice",
+            "Working with Challenges",
+            "Building Consistency",
+            "Advanced Applications",
+            "Integration and Daily Life",
+            "Mastery and Beyond",
+            "Special Focus Session",
+            "Complete Practice Session",
+        ]
+    
+    created_prompts = []
+    
+    for i in range(1, session_count + 1):
+        topic = session_topics[(i - 1) % len(session_topics)]
+        title = f"Session {i}: {topic}"
+        
+        prompt_content = generate_audio_script_prompt(
+            session_num=i,
+            total_sessions=session_count,
+            session_title=title,
+            session_topic=topic,
+            product_title=product_title,
+            duration_minutes=15
+        )
+        
+        slug = f"audio_{i:02d}_{topic.lower().replace(' ', '_')[:20]}"
+        prompt_file = prompts_dir / f"{slug}.prompt.md"
+        prompt_file.write_text(prompt_content)
+        created_prompts.append(prompt_file)
+    
+    return created_prompts
+
+
+def generate_audio_from_script(script_path: Path, output_path: Path,
+                               voice: str = "en_US-amy-medium",
+                               engine: str = "piper") -> Tuple[bool, str]:
+    """
+    Generate audio from a script file using TTS.
+    
+    Returns (success, message).
+    """
+    import subprocess
+    import shutil
+    
+    if not script_path.exists():
+        return False, f"Script not found: {script_path}"
+    
+    # Ensure output directory exists
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Read and clean the script
+    raw_content = script_path.read_text()
+    
+    # Process TTS markers
+    content = raw_content
+    content = content.replace("[PAUSE]", "... ...")
+    content = content.replace("[LONG PAUSE]", "... ... ... ... ...")
+    content = content.replace("[BREATHE]", "... ... ...")
+    
+    # Remove markdown formatting
+    import re
+    content = re.sub(r'^#+\s+', '', content, flags=re.MULTILINE)  # Remove headers
+    content = re.sub(r'\*\*([^*]+)\*\*', r'\1', content)  # Remove bold
+    content = re.sub(r'\*([^*]+)\*', r'\1', content)  # Remove italic
+    content = re.sub(r'^-\s+', '', content, flags=re.MULTILINE)  # Remove bullets
+    content = re.sub(r'```[^`]*```', '', content, flags=re.DOTALL)  # Remove code blocks
+    
+    # Try different TTS engines
+    if engine == "piper" and shutil.which("piper"):
+        # Use Piper TTS
+        temp_wav = output_path.with_suffix(".wav")
+        try:
+            process = subprocess.run(
+                ["piper", "--model", voice, "--output_file", str(temp_wav)],
+                input=content.encode(),
+                capture_output=True,
+                timeout=300
+            )
+            
+            if process.returncode != 0:
+                return False, f"Piper error: {process.stderr.decode()}"
+            
+            # Convert to MP3 if ffmpeg available
+            if shutil.which("ffmpeg") and output_path.suffix == ".mp3":
+                subprocess.run([
+                    "ffmpeg", "-y", "-i", str(temp_wav),
+                    "-codec:a", "libmp3lame", "-qscale:a", "2",
+                    str(output_path)
+                ], capture_output=True)
+                temp_wav.unlink()  # Remove temp WAV
+            else:
+                # Just use WAV
+                shutil.move(temp_wav, output_path.with_suffix(".wav"))
+                return True, f"Created: {output_path.with_suffix('.wav')} (install ffmpeg for MP3)"
+            
+            return True, f"Created: {output_path}"
+            
+        except subprocess.TimeoutExpired:
+            return False, "TTS generation timed out"
+        except Exception as e:
+            return False, f"TTS error: {str(e)}"
+    
+    elif engine == "espeak" and shutil.which("espeak-ng"):
+        # Use espeak-ng as fallback
+        try:
+            temp_wav = output_path.with_suffix(".wav")
+            process = subprocess.run(
+                ["espeak-ng", "-w", str(temp_wav), "-s", "140"],
+                input=content.encode(),
+                capture_output=True,
+                timeout=300
+            )
+            
+            if process.returncode != 0:
+                return False, f"espeak error: {process.stderr.decode()}"
+            
+            return True, f"Created: {temp_wav}"
+            
+        except Exception as e:
+            return False, f"espeak error: {str(e)}"
+    
+    else:
+        return False, "No TTS engine available. Install 'piper' or 'espeak-ng'"
+
+
+def get_next_audio_session(product_dir: Path) -> Optional[dict]:
+    """Get the next audio session that needs work."""
+    sessions = list_audio_sessions(product_dir)
+    
+    for session in sessions:
+        if not session.get("has_script"):
+            return {"type": "needs_script", "session": session}
+        elif not session.get("has_audio"):
+            return {"type": "needs_audio", "session": session}
+    
+    return None  # All done!
