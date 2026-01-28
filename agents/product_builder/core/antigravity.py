@@ -5426,3 +5426,415 @@ def format_content_preview(preview: ContentPreview) -> str:
     lines.append("╚" + "═" * 65 + "╝")
     
     return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 7 ENHANCEMENTS: SCHEDULE PREVIEW, REGISTRATION STATUS, COUNTDOWN
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# Optimal posting times by platform (UTC)
+OPTIMAL_POSTING_TIMES = {
+    "twitter": ["09:00", "12:00", "17:00"],
+    "linkedin": ["08:00", "12:00"],
+    "instagram": ["11:00", "19:00"],
+}
+
+
+@dataclass
+class ScheduledPost:
+    """A scheduled social media post."""
+    date: str
+    time: str
+    platform: str
+    content_preview: str
+
+
+@dataclass
+class SchedulePreview:
+    """Preview of scheduled posts."""
+    launch_date: str
+    total_posts: int
+    posts_by_day: Dict[str, List[ScheduledPost]]
+    platforms: List[str]
+
+
+def generate_schedule_preview(
+    product_dir: Path,
+    launch_date: str,
+    posts_per_day: int = 3,
+    duration_days: int = 7
+) -> Optional[SchedulePreview]:
+    """Generate a preview of scheduled posts."""
+    from datetime import datetime, timedelta
+    
+    output_dir = product_dir / "output"
+    social_file = output_dir / "social_promo.md"
+    
+    if not social_file.exists():
+        return None
+    
+    # Parse social content
+    content = social_file.read_text()
+    posts = [p.strip() for p in content.split("---") if p.strip()]
+    
+    # Generate schedule
+    posts_by_day = {}
+    platforms_used = set()
+    
+    try:
+        launch = datetime.strptime(launch_date, "%Y-%m-%d")
+    except:
+        return None
+    
+    post_index = 0
+    for day in range(duration_days):
+        date = launch + timedelta(days=day)
+        date_str = date.strftime("%Y-%m-%d")
+        posts_by_day[date_str] = []
+        
+        for post_num in range(min(posts_per_day, len(posts) - post_index)):
+            if post_index >= len(posts):
+                break
+            
+            post_content = posts[post_index]
+            
+            # Detect platform
+            if "Twitter" in post_content or "X:" in post_content:
+                platform = "twitter"
+            elif "LinkedIn" in post_content:
+                platform = "linkedin"
+            elif "Instagram" in post_content:
+                platform = "instagram"
+            else:
+                platform = "twitter"
+            
+            platforms_used.add(platform)
+            times = OPTIMAL_POSTING_TIMES.get(platform, ["12:00"])
+            time = times[post_num % len(times)]
+            
+            # Get content preview
+            lines = [l for l in post_content.split('\n') if l.strip() and not l.startswith('#')]
+            preview = lines[-1][:50] + "..." if lines else "Post content"
+            
+            posts_by_day[date_str].append(ScheduledPost(
+                date=date_str,
+                time=time,
+                platform=platform,
+                content_preview=preview
+            ))
+            
+            post_index += 1
+    
+    return SchedulePreview(
+        launch_date=launch_date,
+        total_posts=post_index,
+        posts_by_day=posts_by_day,
+        platforms=list(platforms_used)
+    )
+
+
+def format_schedule_preview(preview: SchedulePreview) -> str:
+    """Format schedule preview for display."""
+    lines = [
+        "",
+        "╔" + "═" * 75 + "╗",
+        "║" + " " * 25 + "SCHEDULE PREVIEW" + " " * 34 + "║",
+        "╠" + "═" * 75 + "╣",
+        f"║ 🚀 Launch Date: {preview.launch_date}".ljust(76) + "║",
+        f"║ 📱 Platforms: {', '.join(preview.platforms)}".ljust(76) + "║",
+        f"║ 📊 Total Posts: {preview.total_posts}".ljust(76) + "║",
+        "╠" + "═" * 75 + "╣",
+    ]
+    
+    for date_str, day_posts in list(preview.posts_by_day.items())[:7]:
+        if day_posts:
+            lines.append(f"║ 📅 {date_str}:".ljust(76) + "║")
+            for post in day_posts:
+                icon = "🐦" if post.platform == "twitter" else "💼" if post.platform == "linkedin" else "📷"
+                lines.append(f"║   {icon} {post.time} - {post.content_preview[:50]}".ljust(76) + "║")
+            lines.append("╠" + "─" * 75 + "╣")
+    
+    lines.append("║ 💡 Use --launch-date YYYY-MM-DD to schedule for real".ljust(76) + "║")
+    lines.append("╚" + "═" * 75 + "╝")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# REGISTRATION STATUS
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class RegistrationItem:
+    """A registered item (email or post)."""
+    item_type: str
+    name: str
+    status: str
+    scheduled_time: Optional[str] = None
+
+
+@dataclass
+class RegistrationStatus:
+    """Status of registered emails and posts."""
+    slug: str
+    emails_registered: int
+    posts_scheduled: int
+    items: List[RegistrationItem]
+    next_scheduled: Optional[str]
+
+
+def check_registration_status(slug: str, salarsu_path: Path = None) -> RegistrationStatus:
+    """Check registration status for a product."""
+    if salarsu_path is None:
+        salarsu_path = Path.home() / "Projects" / "salarsu"
+    
+    items = []
+    emails_registered = 0
+    posts_scheduled = 0
+    next_scheduled = None
+    
+    # Check for email registration markers
+    email_marker = salarsu_path / ".email_registry" / f"{slug}.json"
+    if email_marker.exists():
+        import json
+        try:
+            data = json.loads(email_marker.read_text())
+            emails_registered = data.get("count", 0)
+            for email in data.get("emails", []):
+                items.append(RegistrationItem(
+                    item_type="email",
+                    name=email.get("name", "Email"),
+                    status="registered"
+                ))
+        except:
+            pass
+    
+    # Check for Buffer schedule markers
+    buffer_marker = salarsu_path / ".buffer_schedule" / f"{slug}.json"
+    if buffer_marker.exists():
+        import json
+        try:
+            data = json.loads(buffer_marker.read_text())
+            posts_scheduled = data.get("count", 0)
+            for post in data.get("posts", [])[:5]:
+                items.append(RegistrationItem(
+                    item_type="social",
+                    name=post.get("platform", "Social"),
+                    status="scheduled",
+                    scheduled_time=post.get("time")
+                ))
+            next_scheduled = data.get("next_scheduled")
+        except:
+            pass
+    
+    # If no markers, check output files
+    if not items:
+        output_dir = salarsu_path.parent / "dreamweaving" / "products" / slug / "output"
+        
+        if (output_dir / "emails_welcome.md").exists():
+            items.append(RegistrationItem("email", "Welcome Sequence", "generated"))
+        if (output_dir / "emails_launch.md").exists():
+            items.append(RegistrationItem("email", "Launch Sequence", "generated"))
+        if (output_dir / "social_promo.md").exists():
+            items.append(RegistrationItem("social", "Social Package", "generated"))
+    
+    return RegistrationStatus(
+        slug=slug,
+        emails_registered=emails_registered,
+        posts_scheduled=posts_scheduled,
+        items=items,
+        next_scheduled=next_scheduled
+    )
+
+
+def format_registration_status(status: RegistrationStatus) -> str:
+    """Format registration status for display."""
+    lines = [
+        "",
+        "╔" + "═" * 60 + "╗",
+        "║" + " " * 17 + "REGISTRATION STATUS" + " " * 24 + "║",
+        "╠" + "═" * 60 + "╣",
+        f"║ 🏷️  Product: {status.slug}".ljust(61) + "║",
+        f"║ 📧 Emails Registered: {status.emails_registered}".ljust(61) + "║",
+        f"║ 📱 Posts Scheduled: {status.posts_scheduled}".ljust(61) + "║",
+    ]
+    
+    if status.next_scheduled:
+        lines.append(f"║ ⏰ Next Post: {status.next_scheduled}".ljust(61) + "║")
+    
+    lines.append("╠" + "─" * 60 + "╣")
+    
+    if status.items:
+        for item in status.items[:8]:
+            icon = "📧" if item.item_type == "email" else "📱"
+            status_icon = "✅" if item.status in ["registered", "scheduled"] else "⏳"
+            time_str = f" @ {item.scheduled_time}" if item.scheduled_time else ""
+            lines.append(f"║ {icon} {status_icon} {item.name:25} │ {item.status}{time_str}".ljust(61) + "║")
+    else:
+        lines.append("║ ⚠️  No registrations found.".ljust(61) + "║")
+        lines.append("║    Run with --register-emails or --schedule-buffer".ljust(61) + "║")
+    
+    lines.append("╚" + "═" * 60 + "╝")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# LAUNCH COUNTDOWN
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class LaunchCheckItem:
+    """A launch checklist item."""
+    name: str
+    completed: bool
+    category: str
+
+
+@dataclass
+class LaunchCountdown:
+    """Launch countdown with checklist."""
+    launch_date: str
+    days_until: int
+    hours_until: int
+    checklist: List[LaunchCheckItem]
+    ready_percentage: int
+
+
+def generate_launch_countdown(product_dir: Path, launch_date: str) -> Optional[LaunchCountdown]:
+    """Generate launch countdown with checklist."""
+    from datetime import datetime
+    
+    output_dir = product_dir / "output"
+    
+    if not output_dir.exists():
+        return None
+    
+    # Calculate time until launch
+    try:
+        launch = datetime.strptime(launch_date, "%Y-%m-%d")
+        now = datetime.now()
+        diff = launch - now
+        days_until = diff.days
+        hours_until = diff.seconds // 3600
+    except:
+        days_until = 0
+        hours_until = 0
+    
+    checklist = []
+    
+    # Product checklist
+    checklist.append(LaunchCheckItem(
+        "Product PDF", 
+        (output_dir / "product.pdf").exists() or any(output_dir.glob("*.pdf")),
+        "Product"
+    ))
+    checklist.append(LaunchCheckItem(
+        "Product ZIP",
+        any(output_dir.glob("*.zip")),
+        "Product"
+    ))
+    checklist.append(LaunchCheckItem(
+        "Cover Image",
+        (output_dir / "images").exists() and any((output_dir / "images").glob("*")),
+        "Product"
+    ))
+    
+    # Marketing checklist
+    checklist.append(LaunchCheckItem(
+        "Landing Page",
+        (output_dir / "landing_page_content.json").exists(),
+        "Marketing"
+    ))
+    checklist.append(LaunchCheckItem(
+        "Email Sequences",
+        any(output_dir.glob("emails_*.md")),
+        "Marketing"
+    ))
+    checklist.append(LaunchCheckItem(
+        "Social Posts",
+        (output_dir / "social_promo.md").exists(),
+        "Marketing"
+    ))
+    
+    # Deployment checklist
+    checklist.append(LaunchCheckItem(
+        "SQL Export",
+        (output_dir / "store_insert.sql").exists(),
+        "Deployment"
+    ))
+    checklist.append(LaunchCheckItem(
+        "SEO Metadata",
+        (output_dir / "seo_metadata.json").exists(),
+        "Deployment"
+    ))
+    checklist.append(LaunchCheckItem(
+        "UTM Links",
+        (output_dir / "utm_links.json").exists(),
+        "Deployment"
+    ))
+    
+    completed = sum(1 for item in checklist if item.completed)
+    ready_percentage = int((completed / len(checklist)) * 100)
+    
+    return LaunchCountdown(
+        launch_date=launch_date,
+        days_until=days_until,
+        hours_until=hours_until,
+        checklist=checklist,
+        ready_percentage=ready_percentage
+    )
+
+
+def format_launch_countdown(countdown: LaunchCountdown) -> str:
+    """Format launch countdown for display."""
+    lines = [
+        "",
+        "╔" + "═" * 60 + "╗",
+        "║" + " " * 18 + "LAUNCH COUNTDOWN" + " " * 26 + "║",
+        "╠" + "═" * 60 + "╣",
+    ]
+    
+    # Big countdown display
+    if countdown.days_until > 0:
+        lines.append(f"║ 🚀 {countdown.days_until} DAYS, {countdown.hours_until} HOURS until launch!".ljust(61) + "║")
+    elif countdown.days_until == 0:
+        lines.append(f"║ 🚀 LAUNCH DAY! {countdown.hours_until} hours remaining".ljust(61) + "║")
+    else:
+        lines.append(f"║ ⚠️  Launch date has passed ({countdown.launch_date})".ljust(61) + "║")
+    
+    lines.append(f"║ 📅 Launch: {countdown.launch_date}".ljust(61) + "║")
+    lines.append("╠" + "═" * 60 + "╣")
+    
+    # Progress bar
+    filled = countdown.ready_percentage // 5
+    empty = 20 - filled
+    progress = "█" * filled + "░" * empty
+    lines.append(f"║ READINESS: [{progress}] {countdown.ready_percentage}%".ljust(61) + "║")
+    lines.append("╠" + "─" * 60 + "╣")
+    
+    # Checklist by category
+    current_category = None
+    for item in countdown.checklist:
+        if item.category != current_category:
+            current_category = item.category
+            lines.append(f"║ 📋 {current_category}:".ljust(61) + "║")
+        
+        icon = "✅" if item.completed else "⏳"
+        lines.append(f"║   {icon} {item.name}".ljust(61) + "║")
+    
+    lines.append("╠" + "═" * 60 + "╣")
+    
+    if countdown.ready_percentage == 100:
+        lines.append("║ 🎉 ALL SYSTEMS GO! Ready for launch!".ljust(61) + "║")
+    elif countdown.ready_percentage >= 70:
+        lines.append("║ 👍 Almost ready! Complete remaining items.".ljust(61) + "║")
+    else:
+        lines.append("║ ⚠️  Not ready yet. Complete checklist items.".ljust(61) + "║")
+    
+    lines.append("╚" + "═" * 60 + "╝")
+    
+    return "\n".join(lines)

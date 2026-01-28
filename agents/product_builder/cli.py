@@ -2621,6 +2621,77 @@ def marketing_preview_command(args):
         return 1
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# STEP 7 ENHANCEMENTS: SCHEDULE PREVIEW, REGISTRATION STATUS, COUNTDOWN
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def schedule_preview_command(args):
+    """Preview scheduled posts before committing."""
+    from pathlib import Path
+    from .core.antigravity import (
+        generate_schedule_preview, format_schedule_preview
+    )
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    preview = generate_schedule_preview(
+        product_dir,
+        args.launch_date,
+        posts_per_day=args.posts_per_day,
+        duration_days=args.duration
+    )
+    
+    if preview:
+        logger.info(format_schedule_preview(preview))
+        return 0
+    else:
+        logger.error("❌ No social content found. Generate with 'marketing --social' first.")
+        return 1
+
+
+def registration_status_command(args):
+    """Check registration status for emails and social."""
+    from pathlib import Path
+    from .core.antigravity import (
+        check_registration_status, format_registration_status
+    )
+    
+    salarsu_path = Path(args.salarsu_path) if args.salarsu_path else None
+    
+    status = check_registration_status(args.slug, salarsu_path)
+    logger.info(format_registration_status(status))
+    
+    return 0
+
+
+def launch_countdown_command(args):
+    """Show launch countdown with checklist."""
+    from pathlib import Path
+    from .core.antigravity import (
+        generate_launch_countdown, format_launch_countdown
+    )
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    countdown = generate_launch_countdown(product_dir, args.launch_date)
+    
+    if countdown:
+        logger.info(format_launch_countdown(countdown))
+        return 1 if countdown.ready_percentage < 70 else 0
+    else:
+        logger.error("❌ Product output not found.")
+        return 1
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog='product-builder',
@@ -3157,6 +3228,33 @@ Examples:
                                                 help='Preview and validate marketing content')
     mkt_preview_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
     mkt_preview_parser.set_defaults(func=marketing_preview_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STEP 7 ENHANCEMENTS SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Schedule-preview command
+    sched_preview_parser = subparsers.add_parser('schedule-preview',
+                                                  help='Preview scheduled posts')
+    sched_preview_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    sched_preview_parser.add_argument('--launch-date', '-l', required=True, help='Launch date (YYYY-MM-DD)')
+    sched_preview_parser.add_argument('--posts-per-day', '-p', type=int, default=3, help='Posts per day')
+    sched_preview_parser.add_argument('--duration', type=int, default=7, help='Duration in days')
+    sched_preview_parser.set_defaults(func=schedule_preview_command)
+    
+    # Registration-status command
+    reg_status_parser = subparsers.add_parser('registration-status',
+                                               help='Check email/social registration status')
+    reg_status_parser.add_argument('--slug', '-s', required=True, help='Product slug')
+    reg_status_parser.add_argument('--salarsu-path', help='Path to SalarsNet repo')
+    reg_status_parser.set_defaults(func=registration_status_command)
+    
+    # Launch-countdown command
+    countdown_parser = subparsers.add_parser('launch-countdown',
+                                              help='Show launch countdown with checklist')
+    countdown_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    countdown_parser.add_argument('--launch-date', '-l', required=True, help='Launch date (YYYY-MM-DD)')
+    countdown_parser.set_defaults(func=launch_countdown_command)
     
     # Parse and execute
     args = parser.parse_args()
