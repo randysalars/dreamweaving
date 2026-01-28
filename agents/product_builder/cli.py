@@ -953,6 +953,108 @@ def full_pipeline_command(args):
     return 0
 
 
+def dashboard_command(args):
+    """Show a dashboard of all products and their status."""
+    from pathlib import Path
+    from .core.product_state import get_product_state
+    
+    products_dir = Path(args.products_dir)
+    
+    if not products_dir.exists():
+        logger.error(f"❌ Products directory not found: {products_dir}")
+        return 1
+    
+    # Find all product directories
+    product_dirs = [d for d in products_dir.iterdir() if d.is_dir() and not d.name.startswith('.')]
+    
+    if not product_dirs:
+        logger.info("📭 No products found.")
+        return 0
+    
+    # Gather product info
+    products = []
+    for pdir in sorted(product_dirs):
+        output_dir = pdir / "output"
+        
+        # Get state if available
+        state = get_product_state(pdir)
+        
+        # Count files
+        pdf_count = len(list(output_dir.glob("*.pdf"))) if output_dir.exists() else 0
+        zip_count = len(list(output_dir.glob("*.zip"))) if output_dir.exists() else 0
+        email_count = len(list(output_dir.glob("emails_*.md"))) if output_dir.exists() else 0
+        social_file = output_dir / "social_promo.md" if output_dir.exists() else None
+        has_social = social_file.exists() if social_file else False
+        
+        # Determine status
+        if state:
+            phases_done = sum(1 for p in state.phases.values() if p.get("success"))
+            total_phases = len(state.PIPELINE_PHASES)
+            if phases_done == total_phases:
+                status = "✅ Complete"
+            elif phases_done > 0:
+                next_phase = state.get_next_phase() or "unknown"
+                status = f"🔄 {next_phase.title()}"
+            else:
+                status = "⏳ Started"
+        else:
+            # Infer from files
+            if zip_count > 0:
+                status = "✅ Packaged"
+            elif pdf_count > 0:
+                status = "📄 Compiled"
+            else:
+                status = "⏳ In Progress"
+        
+        products.append({
+            "name": pdir.name.replace("_", " ").title(),
+            "slug": pdir.name,
+            "status": status,
+            "pdf": pdf_count,
+            "zip": zip_count,
+            "emails": email_count,
+            "social": "✓" if has_social else "-",
+        })
+    
+    # Print dashboard
+    logger.info("")
+    logger.info("╔" + "═" * 78 + "╗")
+    logger.info("║" + " " * 25 + "EPISTEMIC FACTORY DASHBOARD" + " " * 26 + "║")
+    logger.info("╠" + "═" * 78 + "╣")
+    logger.info("║ {:35} │ {:12} │ {:4} │ {:4} │ {:6} │ {:6} ║".format(
+        "Product", "Status", "PDFs", "ZIPs", "Emails", "Social"
+    ))
+    logger.info("╠" + "─" * 78 + "╣")
+    
+    live_count = 0
+    for p in products:
+        if "Complete" in p["status"] or "Packaged" in p["status"]:
+            live_count += 1
+        logger.info("║ {:35} │ {:12} │ {:4} │ {:4} │ {:6} │ {:6} ║".format(
+            p["name"][:35],
+            p["status"][:12],
+            p["pdf"],
+            p["zip"],
+            p["emails"] if p["emails"] else "-",
+            p["social"]
+        ))
+    
+    logger.info("╠" + "═" * 78 + "╣")
+    logger.info("║ Total: {:3} products │ Complete: {:3} │ In Progress: {:3}{}║".format(
+        len(products), live_count, len(products) - live_count, " " * 30
+    ))
+    logger.info("╚" + "═" * 78 + "╝")
+    
+    return 0
+
+
+def templates_command(args):
+    """List all available product templates."""
+    from .core.templates import format_template_list
+    logger.info(format_template_list())
+    return 0
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -979,6 +1081,8 @@ Examples:
     create_parser.add_argument('--style', '-s', default='dreamweaving', 
                                choices=['dreamweaving', 'modern_editorial'],
                                help='Visual style')
+    create_parser.add_argument('--template', 
+                               help='Product template (ebook, audio-pack, video-course, lead-magnet, etc.)')
     create_parser.add_argument('--pdf', action='store_true', default=True,
                                help='Generate PDF (default: true)')
     create_parser.add_argument('--audio', action='store_true',
@@ -1090,12 +1194,41 @@ Examples:
     pipeline_parser.add_argument('--dry-run', action='store_true', help='Validate without scheduling')
     pipeline_parser.set_defaults(func=full_pipeline_command)
     
+    # Dashboard command - show all products and status
+    dashboard_parser = subparsers.add_parser('dashboard', help='Show dashboard of all products')
+    dashboard_parser.add_argument('--products-dir', '-d', default='./products', 
+                                   help='Products directory (default: ./products)')
+    dashboard_parser.set_defaults(func=dashboard_command)
+    
+    # Templates command - list available product templates
+    templates_parser = subparsers.add_parser('templates', help='List available product templates')
+    templates_parser.set_defaults(func=templates_command)
+    
     # Parse and execute
     args = parser.parse_args()
     
     if not args.command:
         parser.print_help()
         return 1
+    
+    # Handle --template flag (apply template defaults)
+    if hasattr(args, 'template') and args.template:
+        from .core.templates import get_template
+        template = get_template(args.template)
+        if template:
+            logger.info(f"📋 Using template: {template.name}")
+            # Apply template defaults (don't override explicit args)
+            if not getattr(args, 'audio', False):
+                args.audio = template.audio
+            if not getattr(args, 'video', False):
+                args.video = template.video
+            # Always apply these from template
+            args.landing_page = True
+            args.emails = template.email_sequences
+            args.social = template.social_posts
+        else:
+            logger.warning(f"⚠️ Unknown template: {args.template}")
+            logger.info("   Use 'product-builder templates' to see available templates")
     
     # Handle --all flag
     if hasattr(args, 'all') and args.all:
