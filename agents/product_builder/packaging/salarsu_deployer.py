@@ -2,10 +2,16 @@
 Salarsu Deployer - Deploys digital products to the SalarsNet store
 
 Handles:
-1. Copy ZIP to content/lead-magnets/ (served via /api/files/lead-magnets/[filename])
+1. Copy ZIP to public/downloads/products/ (served as static file)
 2. Generate product cover image (via DALL-E or placeholder)
-3. Generate SQL INSERT for PostgreSQL database
+3. Generate SQL INSERT for PostgreSQL database (BOTH products AND dreamweavings tables!)
 4. Optionally commit and push to git
+
+⚠️ CRITICAL: Digital products require BOTH database tables to be updated:
+   - products.digital_file_url - Product catalog URL
+   - dreamweavings.audio_url - Love Offering download system URL
+   
+The download URL pattern is: https://salars.net/downloads/products/{ZipFilename}
 
 Usage:
     from packaging.salarsu_deployer import SalarsuDeployer
@@ -18,7 +24,7 @@ Usage:
         description="Product description...",
         price=47.00,
         sale_price=27.00,
-        generate_cover_image=True,  # Auto-generate cover image
+        generate_cover_image=True,
         landing_page_content={...}
     )
 """
@@ -40,15 +46,22 @@ class SalarsuDeployer:
     Deploys digital products to the SalarsNet store (salarsu repo).
     
     Digital products are:
-    1. Copied to content/lead-magnets/ for serving via /api/files/lead-magnets/
+    1. Copied to public/downloads/products/ for static file serving
     2. Cover image generated (if requested) and saved to public/images/products/
-    3. SQL INSERT generated for the products table
+    3. SQL INSERT generated for BOTH products AND dreamweavings tables
+       (Critical: Love Offering downloads use dreamweavings.audio_url)
     4. Optionally git committed and pushed
+    
+    Download URL pattern: https://salars.net/downloads/products/{ZipFilename}
     """
+    
+    # Production base URL for download links
+    DOWNLOAD_BASE_URL = "https://salars.net/downloads/products"
     
     def __init__(self, salarsu_root: str):
         self.salarsu_root = Path(salarsu_root)
-        self.content_dir = self.salarsu_root / "content" / "lead-magnets"
+        # FIXED: Use public/downloads/products/ for static file serving
+        self.downloads_dir = self.salarsu_root / "public" / "downloads" / "products"
         self.images_dir = self.salarsu_root / "public" / "images" / "products"
         self.sql_dir = self.salarsu_root  # SQL files go in repo root
         
@@ -97,12 +110,12 @@ class SalarsuDeployer:
             raise FileNotFoundError(f"ZIP file not found: {zip_path}")
         
         # 1. Ensure directories exist
-        self.content_dir.mkdir(parents=True, exist_ok=True)
+        self.downloads_dir.mkdir(parents=True, exist_ok=True)
         self.images_dir.mkdir(parents=True, exist_ok=True)
         
-        # 2. Copy ZIP to content/lead-magnets/
+        # 2. Copy ZIP to public/downloads/products/ (static serving)
         dest_filename = zip_file.name
-        dest_path = self.content_dir / dest_filename
+        dest_path = self.downloads_dir / dest_filename
         logger.info(f"📦 Copying {zip_file.name} to {dest_path}")
         shutil.copy(zip_file, dest_path)
         
@@ -116,11 +129,12 @@ class SalarsuDeployer:
                 image_alt = image_alt or f"{product_name} cover"
                 logger.info(f"   ✅ Image saved: {image_path}")
         
-        # 4. Generate SQL INSERT
+        # 4. Generate SQL INSERT (for BOTH products AND dreamweavings tables!)
         sql_filename = f"{product_slug}.sql"
         sql_path = self.sql_dir / sql_filename
         
-        download_url = f"/api/files/lead-magnets/{dest_filename}"
+        # FIXED: Use absolute URL for static file serving
+        download_url = f"{self.DOWNLOAD_BASE_URL}/{dest_filename}"
         
         sql_content = self._generate_sql(
             product_name=product_name,
@@ -268,14 +282,22 @@ Style requirements:
         else:
             lpc_sql = "NULL"
         
-        # Build SQL
-        sql = f"""-- {product_name} Product Insert
+        # Build SQL for BOTH tables (discovered Jan 28, 2026)
+        # The system uses TWO tables for digital products:
+        # 1. products.digital_file_url - Product catalog
+        # 2. dreamweavings.audio_url - Love Offering download system
+        sql = f"""-- {product_name} Product Deployment
 -- Generated: {datetime.now().isoformat()}
--- Run this in your Coolify PostgreSQL database
+-- Run this in your Coolify PostgreSQL database (10.0.1.7, database: postgres)
 -- 
--- The ZIP file has been copied to: content/lead-magnets/
--- It will be served via: {download_url}
+-- The ZIP file has been copied to: public/downloads/products/
+-- Download URL: {download_url}
+--
+-- ⚠️ CRITICAL: You MUST update BOTH tables for downloads to work!
 
+-- =============================================================================
+-- STEP 1: Insert into products table (Product Catalog)
+-- =============================================================================
 INSERT INTO products (
   name,
   slug,
@@ -313,10 +335,48 @@ INSERT INTO products (
   NOW(),
   NOW()
 )
+ON CONFLICT (slug) DO UPDATE SET
+  digital_file_url = EXCLUDED.digital_file_url,
+  description = EXCLUDED.description,
+  updated_at = NOW()
 RETURNING id, name, slug, digital_file_url;
 
--- Verify with:
+-- =============================================================================
+-- STEP 2: Insert/Update dreamweavings table (Love Offering Downloads)
+-- This is REQUIRED for the Love Offering download flow to work!
+-- =============================================================================
+INSERT INTO dreamweavings (
+  id,
+  slug,
+  title,
+  description,
+  audio_url,
+  created_at
+) VALUES (
+  nextval('dreamweavings_id_seq')::text,
+  {escape_sql(product_slug)},
+  {escape_sql(product_name)},
+  {escape_sql(description)},
+  {escape_sql(download_url)},
+  NOW()
+)
+ON CONFLICT (slug) DO UPDATE SET
+  audio_url = EXCLUDED.audio_url,
+  title = EXCLUDED.title,
+  description = EXCLUDED.description
+RETURNING id, slug, audio_url;
+
+-- =============================================================================
+-- VERIFICATION QUERIES
+-- =============================================================================
+-- Check products table:
 -- SELECT id, name, slug, is_digital, digital_file_url FROM products WHERE slug = {escape_sql(product_slug)};
+
+-- Check dreamweavings table:
+-- SELECT id, slug, audio_url FROM dreamweavings WHERE slug = {escape_sql(product_slug)};
+
+-- Test download URL (should return HTTP 200):
+-- curl -sI "{download_url}" | head -3
 """
         return sql
     
