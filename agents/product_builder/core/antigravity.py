@@ -765,3 +765,381 @@ def generate_response_template(prompt_file: Path) -> str:
     
     return "\n".join(lines)
 
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 3A: BONUS GENERATION HELPERS
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class BonusType:
+    """A type of bonus that can be generated."""
+    id: str
+    name: str
+    description: str
+    word_count: int
+    format: str  # pdf, checklist, worksheet, audio_script
+    estimated_time: str
+
+
+# Available bonus types
+BONUS_TYPES = {
+    "quick_start": BonusType(
+        id="quick_start",
+        name="Quick Start Guide",
+        description="A condensed guide to get readers started immediately",
+        word_count=1500,
+        format="pdf",
+        estimated_time="2-3 hours"
+    ),
+    "checklist": BonusType(
+        id="checklist",
+        name="Action Checklist",
+        description="Step-by-step checklist to track progress",
+        word_count=500,
+        format="checklist",
+        estimated_time="1 hour"
+    ),
+    "workbook": BonusType(
+        id="workbook",
+        name="Interactive Workbook",
+        description="Exercises and reflection prompts for deeper learning",
+        word_count=3000,
+        format="worksheet",
+        estimated_time="4-5 hours"
+    ),
+    "cheat_sheet": BonusType(
+        id="cheat_sheet",
+        name="Cheat Sheet",
+        description="One-page reference with key concepts and formulas",
+        word_count=800,
+        format="pdf",
+        estimated_time="1-2 hours"
+    ),
+    "templates": BonusType(
+        id="templates",
+        name="Templates Pack",
+        description="Ready-to-use templates for common tasks",
+        word_count=1000,
+        format="pdf",
+        estimated_time="2-3 hours"
+    ),
+    "resource_guide": BonusType(
+        id="resource_guide",
+        name="Resource Guide",
+        description="Curated list of tools, books, and resources",
+        word_count=2000,
+        format="pdf",
+        estimated_time="2-3 hours"
+    ),
+    "case_studies": BonusType(
+        id="case_studies",
+        name="Case Studies",
+        description="Real-world examples and success stories",
+        word_count=2500,
+        format="pdf",
+        estimated_time="3-4 hours"
+    ),
+    "faq": BonusType(
+        id="faq",
+        name="FAQ Guide",
+        description="Common questions and detailed answers",
+        word_count=1500,
+        format="pdf",
+        estimated_time="2 hours"
+    ),
+    "audio_companion": BonusType(
+        id="audio_companion",
+        name="Audio Companion Script",
+        description="Script for audio narration of key concepts",
+        word_count=3000,
+        format="audio_script",
+        estimated_time="4-5 hours"
+    ),
+    "journal": BonusType(
+        id="journal",
+        name="Practice Journal",
+        description="90-day journal with prompts and tracking",
+        word_count=2000,
+        format="worksheet",
+        estimated_time="3-4 hours"
+    ),
+}
+
+
+def list_bonus_types() -> str:
+    """List all available bonus types."""
+    lines = [
+        "",
+        "╔" + "═" * 78 + "╗",
+        "║" + " " * 25 + "AVAILABLE BONUS TYPES" + " " * 32 + "║",
+        "╠" + "═" * 78 + "╣",
+    ]
+    
+    for bonus in BONUS_TYPES.values():
+        lines.append(f"║ {bonus.id:15} │ {bonus.name:25} │ ~{bonus.word_count:,} words │ {bonus.estimated_time:10} ║")
+    
+    lines.append("╠" + "═" * 78 + "╣")
+    lines.append("║ Use: product-builder bonus-prompts --product-dir ./my-product --types quick_start,checklist   ║")
+    lines.append("╚" + "═" * 78 + "╝")
+    
+    return "\n".join(lines)
+
+
+def generate_bonus_prompts(product_dir: Path, bonus_types: List[str], 
+                           product_title: str = None) -> List[Path]:
+    """Generate prompts for bonus content (Antigravity-native workflow)."""
+    prompts_dir = product_dir / "output" / "prompts"
+    prompts_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Try to get context from the product
+    context = ""
+    lp_path = product_dir / "landing_page_content.json"
+    if lp_path.exists():
+        try:
+            import json
+            data = json.loads(lp_path.read_text())
+            product_title = product_title or data.get("title", "Product")
+            target_audience = data.get("target_audience", "readers")
+            context = f"""
+Product: {product_title}
+Target Audience: {target_audience}
+"""
+        except Exception:
+            pass
+    
+    if not product_title:
+        product_title = product_dir.name.replace("_", " ").title()
+    
+    created_prompts = []
+    
+    for bonus_id in bonus_types:
+        bonus = BONUS_TYPES.get(bonus_id.strip())
+        if not bonus:
+            continue
+        
+        prompt_content = _generate_bonus_prompt_content(bonus, product_title, context)
+        
+        prompt_file = prompts_dir / f"bonus_{bonus.id}.prompt.md"
+        prompt_file.write_text(prompt_content)
+        created_prompts.append(prompt_file)
+    
+    return created_prompts
+
+
+def _generate_bonus_prompt_content(bonus: BonusType, product_title: str, context: str) -> str:
+    """Generate the content for a bonus prompt."""
+    
+    prompts = {
+        "quick_start": f"""# Quick Start Guide for "{product_title}"
+
+{context}
+
+Create a Quick Start Guide (~1,500 words) that gives readers immediate value:
+
+## Requirements:
+1. **Introduction** (100 words) - What this guide covers and who it's for
+2. **The 3 Essential Steps** (900 words) - The core actions to get started
+3. **Common Mistakes to Avoid** (200 words) - What NOT to do
+4. **Your First Week Plan** (200 words) - Day-by-day getting started plan
+5. **Quick Reference** (100 words) - Key points summarized
+
+## Tone:
+- Action-oriented and encouraging
+- Simple, clear language
+- Immediate practical value
+
+Save your response to: `output/responses/bonus_quick_start.response.md`
+""",
+        "checklist": f"""# Action Checklist for "{product_title}"
+
+{context}
+
+Create a comprehensive Action Checklist (~500 words) with:
+
+## Requirements:
+1. **Getting Started Checklist** (10-15 items)
+2. **Daily Practice Checklist** (5-10 items)
+3. **Weekly Review Checklist** (5-8 items)
+4. **Progress Milestones** (5-10 milestone markers)
+
+## Format:
+- [ ] Checkbox style items
+- Clear, actionable statements
+- Grouped by phase or topic
+- Include time estimates where relevant
+
+Save your response to: `output/responses/bonus_checklist.response.md`
+""",
+        "workbook": f"""# Interactive Workbook for "{product_title}"
+
+{context}
+
+Create an Interactive Workbook (~3,000 words) with:
+
+## Requirements:
+1. **Introduction** (200 words) - How to use this workbook
+2. **Self-Assessment** (400 words) - Where are you now? (questions + scoring)
+3. **Goal Setting Section** (400 words) - Define your objectives
+4. **Chapter Exercises** (1,200 words) - 6-8 exercises tied to main content
+5. **Reflection Prompts** (400 words) - Deep thinking questions
+6. **Action Planning** (400 words) - Convert insights into action
+
+## Format:
+- Leave space for writing (indicate with [Your answer here])
+- Include scales and checkboxes
+- Progressive difficulty
+
+Save your response to: `output/responses/bonus_workbook.response.md`
+""",
+        "cheat_sheet": f"""# Cheat Sheet for "{product_title}"
+
+{context}
+
+Create a One-Page Cheat Sheet (~800 words) with:
+
+## Requirements:
+1. **Core Concepts** - The 5-7 most important ideas
+2. **Key Formulas/Frameworks** - Visual frameworks if applicable
+3. **Quick Reference Table** - Common scenarios and solutions
+4. **Do's and Don'ts** - Quick tips
+5. **Emergency Fixes** - What to do when things go wrong
+
+## Format:
+- Dense, scannable content
+- Bullet points and tables
+- Designed for quick reference
+- Printable one-page format
+
+Save your response to: `output/responses/bonus_cheat_sheet.response.md`
+""",
+        "templates": f"""# Templates Pack for "{product_title}"
+
+{context}
+
+Create a Templates Pack (~1,000 words) with 4-6 ready-to-use templates:
+
+## Requirements:
+1. **Planning Template** - Help readers plan their approach
+2. **Tracking Template** - Monitor progress and results
+3. **Daily/Weekly Template** - Routine structure
+4. **Review Template** - Evaluate what's working
+
+## Format:
+- Each template should be copy-paste ready
+- Include instructions for using each template
+- Provide examples of completed templates
+
+Save your response to: `output/responses/bonus_templates.response.md`
+""",
+        "resource_guide": f"""# Resource Guide for "{product_title}"
+
+{context}
+
+Create a Curated Resource Guide (~2,000 words) with:
+
+## Requirements:
+1. **Books** (5-10 recommendations) - With why each matters
+2. **Tools & Apps** (5-10) - Free and paid options
+3. **Websites & Communities** (5-10) - Online resources
+4. **Courses & Learning** (3-5) - Further education
+5. **Podcasts/Videos** (3-5) - Media recommendations
+
+## Format:
+- Brief description of each resource
+- Why it's valuable
+- Skill level (beginner/intermediate/advanced)
+- Cost (free/paid)
+
+Save your response to: `output/responses/bonus_resource_guide.response.md`
+""",
+        "case_studies": f"""# Case Studies for "{product_title}"
+
+{context}
+
+Create 3 Detailed Case Studies (~2,500 words total):
+
+## Requirements for each case study:
+1. **Background** - Who they were before
+2. **Challenge** - What problem they faced
+3. **Solution** - What they did (using concepts from the product)
+4. **Results** - Specific outcomes and transformations
+5. **Key Lessons** - What readers can learn from this
+
+## Format:
+- Make stories relatable but inspiring
+- Include specific details and timeframes
+- Vary the demographics/situations
+- Extract actionable lessons
+
+Save your response to: `output/responses/bonus_case_studies.response.md`
+""",
+        "faq": f"""# FAQ Guide for "{product_title}"
+
+{context}
+
+Create a comprehensive FAQ Guide (~1,500 words) with:
+
+## Requirements:
+1. **Getting Started FAQs** (5-7 questions)
+2. **Common Challenges FAQs** (5-7 questions)
+3. **Advanced Questions** (3-5 questions)
+4. **Troubleshooting** (3-5 questions)
+
+## Format:
+- Real questions readers would ask
+- Thorough but concise answers
+- Link concepts to main product content
+- Address objections and concerns
+
+Save your response to: `output/responses/bonus_faq.response.md`
+""",
+        "audio_companion": f"""# Audio Companion Script for "{product_title}"
+
+{context}
+
+Create an Audio Script (~3,000 words) designed for narration:
+
+## Requirements:
+1. **Welcome & Overview** (300 words) - Set the stage
+2. **Core Concept 1** (500 words) - Key teaching #1
+3. **Core Concept 2** (500 words) - Key teaching #2
+4. **Core Concept 3** (500 words) - Key teaching #3
+5. **Guided Practice** (700 words) - Interactive exercise for listener
+6. **Closing & Next Steps** (500 words) - Wrap up and motivation
+
+## Format:
+- Written for speaking (conversational)
+- Include [PAUSE] markers for breathing
+- Natural flow between sections
+- Engaging and personal tone
+
+Save your response to: `output/responses/bonus_audio_companion.response.md`
+""",
+        "journal": f"""# 90-Day Practice Journal for "{product_title}"
+
+{context}
+
+Create a Practice Journal template (~2,000 words) with:
+
+## Requirements:
+1. **Introduction** (200 words) - How to use this journal
+2. **Week 1-4: Foundation Phase** (500 words) - Daily prompts template
+3. **Week 5-8: Building Phase** (500 words) - Daily prompts template
+4. **Week 9-12: Integration Phase** (500 words) - Daily prompts template
+5. **Weekly Review Template** (200 words) - Reflection questions
+6. **Monthly Milestone Check** (100 words) - Progress markers
+
+## Format:
+- Daily entry structure
+- Mix of checkboxes and writing prompts
+- Space for notes [Your notes here]
+- Progressive challenge
+
+Save your response to: `output/responses/bonus_journal.response.md`
+""",
+    }
+    
+    return prompts.get(bonus.id, f"# {bonus.name}\n\nGenerate content for this bonus.\n")
+
+

@@ -1488,6 +1488,56 @@ def scaffold_command(args):
     return 0
 
 
+def list_bonuses_command(args):
+    """List all available bonus types."""
+    from .core.antigravity import list_bonus_types
+    
+    logger.info(list_bonus_types())
+    return 0
+
+
+def bonus_prompts_command(args):
+    """Generate prompts for bonus content (Antigravity-native)."""
+    from pathlib import Path
+    from .core.antigravity import generate_bonus_prompts, BONUS_TYPES
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    # Parse bonus types
+    if args.types == "all":
+        bonus_types = list(BONUS_TYPES.keys())
+    else:
+        bonus_types = [t.strip() for t in args.types.split(",")]
+    
+    # Validate types
+    invalid_types = [t for t in bonus_types if t not in BONUS_TYPES]
+    if invalid_types:
+        logger.error(f"❌ Unknown bonus types: {', '.join(invalid_types)}")
+        logger.info(f"   Available: {', '.join(BONUS_TYPES.keys())}")
+        return 1
+    
+    created_prompts = generate_bonus_prompts(
+        product_dir=product_dir,
+        bonus_types=bonus_types,
+        product_title=args.title
+    )
+    
+    logger.info(f"\n✅ Generated {len(created_prompts)} bonus prompts!")
+    for prompt_file in created_prompts:
+        logger.info(f"   📝 {prompt_file.name}")
+    
+    logger.info(f"\n📋 Next steps:")
+    logger.info(f"   1. Read prompts in: {product_dir}/output/prompts/")
+    logger.info(f"   2. Write responses to: {product_dir}/output/responses/")
+    logger.info(f"   3. Check status: product-builder responses --product-dir {product_dir}")
+    
+    return 0
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -1724,6 +1774,18 @@ Examples:
     scaffold_parser.add_argument('--slug', '-s', required=True, help='Prompt slug (e.g., chapter_01)')
     scaffold_parser.add_argument('--force', '-f', action='store_true', help='Overwrite existing file')
     scaffold_parser.set_defaults(func=scaffold_command)
+    
+    # List-bonuses command - show available bonus types
+    list_bonus_parser = subparsers.add_parser('list-bonuses', help='List available bonus types')
+    list_bonus_parser.set_defaults(func=list_bonuses_command)
+    
+    # Bonus-prompts command - generate prompts for bonuses
+    bonus_prompts_parser = subparsers.add_parser('bonus-prompts', help='Generate prompts for bonus content')
+    bonus_prompts_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    bonus_prompts_parser.add_argument('--types', '-t', required=True, 
+                                      help='Comma-separated bonus types or "all"')
+    bonus_prompts_parser.add_argument('--title', help='Product title (auto-detected if not provided)')
+    bonus_prompts_parser.set_defaults(func=bonus_prompts_command)
     
     # Parse and execute
     args = parser.parse_args()
