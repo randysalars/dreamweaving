@@ -215,6 +215,140 @@ def create_command(args):
             logger.error(f"❌ Assembly Failed: {assembly_result.errors}")
             return 1
         
+        # ═══════════════════════════════════════════════════════════════
+        # PHASE 7: EMAIL SEQUENCES (if requested)
+        # ═══════════════════════════════════════════════════════════════
+        email_welcome = None
+        email_launch = None
+        
+        if getattr(args, 'emails', False) or getattr(args, 'all', False):
+            from .marketing.email_sequence_generator import EmailSequenceGenerator
+            
+            logger.info("\n═══ PHASE 7: EMAIL SEQUENCES ═══")
+            email_gen = EmailSequenceGenerator(orchestrator.templates_dir)
+            
+            positioning = results['artifacts'].positioning
+            
+            # Welcome sequence (5 emails)
+            email_welcome = email_gen.generate_welcome_sequence(
+                args.title,
+                positioning
+            )
+            welcome_path = output_dir / "output" / "emails_welcome.md"
+            email_gen.export_to_file(email_welcome, welcome_path)
+            logger.info(f"   ✅ Welcome Sequence: {len(email_welcome.emails)} emails → {welcome_path.name}")
+            
+            # Launch sequence (7 emails)
+            email_launch = email_gen.generate_launch_sequence(
+                args.title,
+                positioning
+            )
+            launch_path = output_dir / "output" / "emails_launch.md"
+            email_gen.export_to_file(email_launch, launch_path)
+            logger.info(f"   ✅ Launch Sequence: {len(email_launch.emails)} emails → {launch_path.name}")
+        
+        # 7.5. Register Emails with SalarsNet (if requested)
+        if getattr(args, 'register_emails', False):
+            from .packaging.salarsu_email_client import SalarsuEmailClient
+            
+            logger.info("\n📬 Registering Email Sequences with SalarsNet...")
+            email_client = SalarsuEmailClient()
+            
+            slug = args.title.replace(" ", "-").lower()
+            welcome_path = output_dir / "output" / "emails_welcome.md"
+            
+            if welcome_path.exists():
+                result = email_client.register_from_file(
+                    product_slug=slug,
+                    product_title=args.title,
+                    email_file=welcome_path,
+                    dry_run=getattr(args, 'dry_run', False)
+                )
+                
+                if result.success:
+                    logger.info(f"   ✅ Registered {result.templates_registered} email templates")
+                else:
+                    logger.warning(f"   ⚠️ Registration failed: {result.error}")
+            else:
+                logger.warning(f"   ⚠️ No email file found. Run with --emails first.")
+        
+        # ═══════════════════════════════════════════════════════════════
+        # PHASE 8: SOCIAL MEDIA CONTENT (if requested)
+        # ═══════════════════════════════════════════════════════════════
+        social_package = None
+        
+        if getattr(args, 'social', False) or getattr(args, 'all', False):
+            from .marketing.social_promo_generator import SocialPromoGenerator
+            
+            logger.info("\n═══ PHASE 8: SOCIAL MEDIA CONTENT ═══")
+            social_gen = SocialPromoGenerator(orchestrator.templates_dir)
+            
+            positioning = results['artifacts'].positioning
+            chapters = results.get('chapters', [])
+            
+            social_package = social_gen.generate_promo_package(
+                title=args.title,
+                positioning=positioning,
+                chapters=chapters
+            )
+            
+            social_path = output_dir / "output" / "social_promo.md"
+            social_gen.export_to_file(social_package, social_path)
+            
+            # Count by platform
+            from .marketing.social_promo_generator import Platform
+            twitter_count = len(social_package.by_platform(Platform.TWITTER))
+            linkedin_count = len(social_package.by_platform(Platform.LINKEDIN))
+            insta_count = len(social_package.by_platform(Platform.INSTAGRAM))
+            
+            logger.info(f"   ✅ Social Package: {len(social_package.posts)} posts → {social_path.name}")
+            logger.info(f"      Twitter/X: {twitter_count} | LinkedIn: {linkedin_count} | Instagram: {insta_count}")
+        
+        # 8.5. Schedule to Buffer (if requested)
+        if getattr(args, 'schedule_buffer', False):
+            from .marketing.buffer_client import schedule_to_buffer
+            from datetime import datetime
+            
+            logger.info("\n📅 Scheduling to Buffer...")
+            
+            launch_date_str = getattr(args, 'launch_date', None)
+            if not launch_date_str:
+                logger.warning("   ⚠️ --launch-date required for Buffer scheduling (format: YYYY-MM-DD)")
+            elif social_package is None:
+                logger.warning("   ⚠️ No social package. Run with --social first.")
+            else:
+                try:
+                    launch_date = datetime.strptime(launch_date_str, "%Y-%m-%d")
+                    
+                    result = schedule_to_buffer(
+                        social_package=social_package,
+                        launch_date=launch_date,
+                        dry_run=getattr(args, 'dry_run', False)
+                    )
+                    
+                    if result.success:
+                        logger.info(f"   ✅ Scheduled {result.scheduled_count} posts to Buffer")
+                        if getattr(args, 'dry_run', False):
+                            logger.info("      (dry-run mode - nothing actually scheduled)")
+                    else:
+                        logger.warning(f"   ⚠️ Buffer scheduling failed: {result.message}")
+                except ValueError:
+                    logger.error(f"   ❌ Invalid date format. Use YYYY-MM-DD")
+        
+        # ═══════════════════════════════════════════════════════════════
+        # FINAL SUMMARY
+        # ═══════════════════════════════════════════════════════════════
+        logger.info("\n" + "═" * 60)
+        logger.info("🎉 PRODUCT GENERATION COMPLETE!")
+        logger.info("═" * 60)
+        logger.info(f"   📁 Output: {output_dir / 'output'}")
+        logger.info(f"   📄 PDF: {assembly_result.pdf_path}")
+        if email_welcome:
+            logger.info(f"   📧 Emails: {len(email_welcome.emails) + (len(email_launch.emails) if email_launch else 0)} templates")
+        if social_package:
+            logger.info(f"   📱 Social: {len(social_package.posts)} posts")
+        logger.info("")
+        
     except Exception as e:
         logger.error(f"❌ Pipeline Failed: {e}", exc_info=True)
         return 1
@@ -415,6 +549,152 @@ def deploy_command(args):
         logger.info(f"\n   💡 Run SQL against your database:")
         logger.info(f"      psql $DATABASE_URL -f {result['sql_path']}")
 
+
+def marketing_command(args):
+    """Generate marketing content (emails, social) for an existing product."""
+    from pathlib import Path
+    import json
+    
+    product_dir = Path(args.product_dir)
+    output_dir = product_dir / "output"
+    templates_dir = Path(__file__).parent / "templates"
+    
+    logger.info(f"📣 Generating Marketing Content...")
+    logger.info(f"   Product: {args.title}")
+    logger.info(f"   Directory: {product_dir}")
+    
+    # Try to load positioning from landing page content
+    positioning = None
+    lp_path = output_dir / "landing_page_content.json"
+    if lp_path.exists():
+        try:
+            data = json.loads(lp_path.read_text())
+            # Create a mock positioning from landing page data
+            from types import SimpleNamespace
+            positioning = SimpleNamespace(
+                core_promise=data.get('headline', args.title),
+                differentiator=data.get('subheadline', ''),
+                audience=SimpleNamespace(
+                    primary_persona="Your target reader",
+                    pain_points=[f.get('description', '') for f in data.get('features', [])[:3]]
+                ),
+                key_benefits=[f.get('title', '') for f in data.get('features', [])]
+            )
+            logger.info(f"   ✅ Loaded positioning from landing_page_content.json")
+        except Exception as e:
+            logger.warning(f"   ⚠️ Could not load positioning: {e}")
+    
+    if positioning is None:
+        # Create minimal positioning
+        from types import SimpleNamespace
+        positioning = SimpleNamespace(
+            core_promise=args.title,
+            differentiator="Premium digital product",
+            audience=SimpleNamespace(
+                primary_persona="Motivated learners",
+                pain_points=["Needs guidance", "Wants transformation", "Seeks mastery"]
+            ),
+            key_benefits=["Expert knowledge", "Actionable steps", "Lasting results"]
+        )
+        logger.info(f"   ⚠️ Using default positioning (no landing_page_content.json)")
+    
+    # Email generation
+    if args.emails:
+        from .marketing.email_sequence_generator import EmailSequenceGenerator
+        
+        logger.info("\n═══ EMAIL SEQUENCES ═══")
+        email_gen = EmailSequenceGenerator(templates_dir)
+        
+        # Welcome sequence
+        welcome = email_gen.generate_welcome_sequence(args.title, positioning)
+        welcome_path = output_dir / "emails_welcome.md"
+        email_gen.export_to_file(welcome, welcome_path)
+        logger.info(f"   ✅ Welcome Sequence: {len(welcome.emails)} emails → {welcome_path.name}")
+        
+        # Launch sequence
+        launch = email_gen.generate_launch_sequence(args.title, positioning)
+        launch_path = output_dir / "emails_launch.md"
+        email_gen.export_to_file(launch, launch_path)
+        logger.info(f"   ✅ Launch Sequence: {len(launch.emails)} emails → {launch_path.name}")
+    
+    # Email registration
+    if args.register_emails:
+        from .packaging.salarsu_email_client import SalarsuEmailClient
+        
+        logger.info("\n📬 Registering with SalarsNet...")
+        email_client = SalarsuEmailClient()
+        
+        slug = args.title.replace(" ", "-").lower()
+        welcome_path = output_dir / "emails_welcome.md"
+        
+        if welcome_path.exists():
+            result = email_client.register_from_file(
+                product_slug=slug,
+                product_title=args.title,
+                email_file=welcome_path,
+                dry_run=args.dry_run
+            )
+            if result.success:
+                logger.info(f"   ✅ Registered {result.templates_registered} templates")
+            else:
+                logger.warning(f"   ⚠️ Failed: {result.error}")
+        else:
+            logger.warning("   ⚠️ No email file. Run with --emails first.")
+    
+    # Social media generation
+    social_package = None
+    if args.social:
+        from .marketing.social_promo_generator import SocialPromoGenerator, Platform
+        
+        logger.info("\n═══ SOCIAL MEDIA CONTENT ═══")
+        social_gen = SocialPromoGenerator(templates_dir)
+        
+        social_package = social_gen.generate_promo_package(
+            title=args.title,
+            positioning=positioning,
+            chapters=[]
+        )
+        
+        social_path = output_dir / "social_promo.md"
+        social_gen.export_to_file(social_package, social_path)
+        
+        twitter_count = len(social_package.by_platform(Platform.TWITTER))
+        linkedin_count = len(social_package.by_platform(Platform.LINKEDIN))
+        insta_count = len(social_package.by_platform(Platform.INSTAGRAM))
+        
+        logger.info(f"   ✅ Social Package: {len(social_package.posts)} posts")
+        logger.info(f"      Twitter/X: {twitter_count} | LinkedIn: {linkedin_count} | Instagram: {insta_count}")
+    
+    # Buffer scheduling
+    if args.schedule_buffer:
+        from .marketing.buffer_client import schedule_to_buffer
+        from datetime import datetime
+        
+        logger.info("\n📅 Scheduling to Buffer...")
+        
+        if not args.launch_date:
+            logger.warning("   ⚠️ --launch-date required (format: YYYY-MM-DD)")
+        elif social_package is None:
+            logger.warning("   ⚠️ No social package. Run with --social first.")
+        else:
+            try:
+                launch_date = datetime.strptime(args.launch_date, "%Y-%m-%d")
+                result = schedule_to_buffer(
+                    social_package=social_package,
+                    launch_date=launch_date,
+                    dry_run=args.dry_run
+                )
+                if result.success:
+                    logger.info(f"   ✅ Scheduled {result.scheduled_count} posts")
+                else:
+                    logger.warning(f"   ⚠️ Failed: {result.message}")
+            except ValueError:
+                logger.error("   ❌ Invalid date format. Use YYYY-MM-DD")
+    
+    logger.info("\n✅ Marketing generation complete!")
+    return 0
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -508,6 +788,19 @@ Examples:
     deploy_parser.add_argument('--commit', action='store_true', help='Git commit the files')
     deploy_parser.add_argument('--push', action='store_true', help='Git push to origin (requires --commit)')
     deploy_parser.set_defaults(func=deploy_command)
+    
+    # Marketing command - generate emails and social for existing products
+    marketing_parser = subparsers.add_parser('marketing', help='Generate marketing content for existing product')
+    marketing_parser.add_argument('--product-dir', '-d', required=True, help='Product directory with output/')
+    marketing_parser.add_argument('--title', '-T', required=True, help='Product title')
+    marketing_parser.add_argument('--emails', action='store_true', help='Generate email sequences')
+    marketing_parser.add_argument('--social', action='store_true', help='Generate social media posts')
+    marketing_parser.add_argument('--register-emails', action='store_true', help='Register emails with SalarsNet')
+    marketing_parser.add_argument('--schedule-buffer', action='store_true', help='Schedule social posts to Buffer')
+    marketing_parser.add_argument('--launch-date', help='Launch date for scheduling (YYYY-MM-DD)')
+    marketing_parser.add_argument('--dry-run', action='store_true', help='Validate without registering/scheduling')
+    marketing_parser.add_argument('--all', action='store_true', help='Generate all marketing content')
+    marketing_parser.set_defaults(func=marketing_command)
     
     # Parse and execute
     args = parser.parse_args()
