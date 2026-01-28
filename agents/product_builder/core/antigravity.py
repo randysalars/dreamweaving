@@ -4982,3 +4982,447 @@ def format_deployment_history(records: List[DeploymentRecord]) -> str:
     lines.append("╚" + "═" * 70 + "╝")
     
     return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 6 ENHANCEMENTS: MARKETING TEMPLATES, UTM, PREVIEW
+# ═══════════════════════════════════════════════════════════════════════
+
+
+MARKETING_TEMPLATES = {
+    "launch-week": {
+        "name": "Launch Week",
+        "description": "7-day intensive launch campaign",
+        "emails": ["teaser", "launch", "reminder", "last-chance", "closed"],
+        "social_posts_per_day": 3,
+        "platforms": ["twitter", "linkedin", "instagram"],
+        "duration_days": 7,
+    },
+    "evergreen": {
+        "name": "Evergreen",
+        "description": "Ongoing promotional content",
+        "emails": ["welcome", "value-1", "value-2", "offer"],
+        "social_posts_per_day": 1,
+        "platforms": ["twitter", "linkedin"],
+        "duration_days": 30,
+    },
+    "flash-sale": {
+        "name": "Flash Sale",
+        "description": "24-48 hour urgency campaign",
+        "emails": ["announcement", "reminder", "final-hours"],
+        "social_posts_per_day": 5,
+        "platforms": ["twitter", "instagram"],
+        "duration_days": 2,
+    },
+    "testimonial": {
+        "name": "Testimonial",
+        "description": "Social proof focused campaign",
+        "emails": ["story-1", "story-2", "results"],
+        "social_posts_per_day": 2,
+        "platforms": ["linkedin", "instagram"],
+        "duration_days": 14,
+    },
+    "educational": {
+        "name": "Educational",
+        "description": "Value-first content marketing",
+        "emails": ["lesson-1", "lesson-2", "lesson-3", "offer"],
+        "social_posts_per_day": 2,
+        "platforms": ["twitter", "linkedin"],
+        "duration_days": 7,
+    },
+}
+
+
+@dataclass
+class MarketingTemplate:
+    """A marketing template with campaign details."""
+    name: str
+    description: str
+    emails: List[str]
+    social_posts_per_day: int
+    platforms: List[str]
+    duration_days: int
+
+
+def list_marketing_templates() -> Dict[str, MarketingTemplate]:
+    """List available marketing templates."""
+    return {
+        key: MarketingTemplate(
+            name=val["name"],
+            description=val["description"],
+            emails=val["emails"],
+            social_posts_per_day=val["social_posts_per_day"],
+            platforms=val["platforms"],
+            duration_days=val["duration_days"],
+        )
+        for key, val in MARKETING_TEMPLATES.items()
+    }
+
+
+def format_marketing_templates() -> str:
+    """Format marketing templates for display."""
+    lines = [
+        "",
+        "╔" + "═" * 75 + "╗",
+        "║" + " " * 25 + "MARKETING TEMPLATES" + " " * 31 + "║",
+        "╠" + "═" * 75 + "╣",
+        "║ {:15} │ {:30} │ {:8} │ {:12} ║".format("Template", "Description", "Duration", "Posts/Day"),
+        "╠" + "─" * 75 + "╣",
+    ]
+    
+    for key, template in MARKETING_TEMPLATES.items():
+        lines.append("║ {:15} │ {:30} │ {:8} │ {:12} ║".format(
+            key,
+            template["description"][:30],
+            f"{template['duration_days']} days",
+            str(template["social_posts_per_day"])
+        ))
+    
+    lines.append("╠" + "═" * 75 + "╣")
+    lines.append("║ Usage: product-builder marketing --template <name>".ljust(76) + "║")
+    lines.append("╚" + "═" * 75 + "╝")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# UTM LINK GENERATOR
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class UTMLinks:
+    """Generated UTM links for a product."""
+    product_slug: str
+    campaign: str
+    base_url: str
+    product_link: str
+    twitter_link: str
+    linkedin_link: str
+    instagram_link: str
+    email_link: str
+    newsletter_link: str
+
+
+def generate_utm_links(
+    slug: str,
+    campaign: str = None,
+    base_url: str = "https://salars.net"
+) -> UTMLinks:
+    """Generate UTM-tagged links for all channels."""
+    from urllib.parse import urlencode
+    
+    if campaign is None:
+        from datetime import datetime
+        campaign = f"launch-{datetime.now().strftime('%b%Y').lower()}"
+    
+    product_path = f"/digital/{slug}"
+    
+    def make_utm(source: str, medium: str) -> str:
+        params = urlencode({
+            "utm_source": source,
+            "utm_medium": medium,
+            "utm_campaign": campaign,
+            "utm_content": slug,
+        })
+        return f"{base_url}{product_path}?{params}"
+    
+    return UTMLinks(
+        product_slug=slug,
+        campaign=campaign,
+        base_url=base_url,
+        product_link=f"{base_url}{product_path}",
+        twitter_link=make_utm("twitter", "social"),
+        linkedin_link=make_utm("linkedin", "social"),
+        instagram_link=make_utm("instagram", "social"),
+        email_link=make_utm("email", "email"),
+        newsletter_link=make_utm("newsletter", "email"),
+    )
+
+
+def format_utm_links(links: UTMLinks) -> str:
+    """Format UTM links for display."""
+    lines = [
+        "",
+        "╔" + "═" * 80 + "╗",
+        "║" + " " * 30 + "UTM LINKS" + " " * 41 + "║",
+        "╠" + "═" * 80 + "╣",
+        f"║ 🏷️  Product: {links.product_slug}".ljust(81) + "║",
+        f"║ 📊 Campaign: {links.campaign}".ljust(81) + "║",
+        "╠" + "─" * 80 + "╣",
+        "║ 🔗 Direct Link:".ljust(81) + "║",
+        f"║    {links.product_link[:75]}".ljust(81) + "║",
+        "╠" + "─" * 80 + "╣",
+        "║ 📱 Social Media:".ljust(81) + "║",
+        f"║    Twitter:   {links.twitter_link[:60]}".ljust(81) + "║",
+        f"║    LinkedIn:  {links.linkedin_link[:60]}".ljust(81) + "║",
+        f"║    Instagram: {links.instagram_link[:60]}".ljust(81) + "║",
+        "╠" + "─" * 80 + "╣",
+        "║ 📧 Email:".ljust(81) + "║",
+        f"║    Email:      {links.email_link[:60]}".ljust(81) + "║",
+        f"║    Newsletter: {links.newsletter_link[:60]}".ljust(81) + "║",
+        "╚" + "═" * 80 + "╝",
+    ]
+    
+    return "\n".join(lines)
+
+
+def export_utm_links(links: UTMLinks, output_dir: Path) -> Tuple[bool, str]:
+    """Export UTM links to file."""
+    import json
+    
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Export as JSON
+    json_file = output_dir / "utm_links.json"
+    json_file.write_text(json.dumps({
+        "product_slug": links.product_slug,
+        "campaign": links.campaign,
+        "links": {
+            "direct": links.product_link,
+            "twitter": links.twitter_link,
+            "linkedin": links.linkedin_link,
+            "instagram": links.instagram_link,
+            "email": links.email_link,
+            "newsletter": links.newsletter_link,
+        }
+    }, indent=2))
+    
+    # Export as markdown
+    md_file = output_dir / "utm_links.md"
+    md_content = f"""# UTM Links: {links.product_slug}
+
+**Campaign:** {links.campaign}
+
+## Social Media
+
+- **Twitter:** {links.twitter_link}
+- **LinkedIn:** {links.linkedin_link}  
+- **Instagram:** {links.instagram_link}
+
+## Email
+
+- **Email Campaign:** {links.email_link}
+- **Newsletter:** {links.newsletter_link}
+
+## Direct
+
+- **Product Page:** {links.product_link}
+"""
+    md_file.write_text(md_content)
+    
+    return True, f"Exported UTM links to {json_file} and {md_file}"
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONTENT PREVIEW
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class ContentCheck:
+    """A content validation check."""
+    name: str
+    passed: bool
+    message: str
+    value: str
+
+
+@dataclass
+class ContentPreview:
+    """Preview of marketing content with validation."""
+    emails_count: int
+    social_posts_count: int
+    twitter_chars_avg: int
+    linkedin_chars_avg: int
+    subject_lines: List[str]
+    checks: List[ContentCheck]
+
+
+def preview_marketing_content(product_dir: Path) -> Optional[ContentPreview]:
+    """Preview and validate marketing content."""
+    output_dir = product_dir / "output"
+    
+    if not output_dir.exists():
+        return None
+    
+    checks = []
+    emails_count = 0
+    social_posts_count = 0
+    subject_lines = []
+    twitter_chars = []
+    linkedin_chars = []
+    
+    # Check email files
+    for email_file in output_dir.glob("emails_*.md"):
+        content = email_file.read_text()
+        
+        # Count emails (separated by ---)
+        emails = content.split("---")
+        emails_count += len([e for e in emails if e.strip()])
+        
+        # Extract subject lines
+        for line in content.split('\n'):
+            if line.startswith("Subject:") or line.startswith("**Subject:**"):
+                subject = line.split(":", 1)[-1].strip()
+                subject_lines.append(subject)
+    
+    # Check social content
+    social_file = output_dir / "social_promo.md"
+    if social_file.exists():
+        content = social_file.read_text()
+        
+        # Parse posts
+        posts = content.split("---")
+        for post in posts:
+            if "Twitter" in post or "X:" in post:
+                text = post.split('\n')[-1].strip()
+                if text:
+                    twitter_chars.append(len(text))
+                    social_posts_count += 1
+            elif "LinkedIn" in post:
+                text = post.split('\n')[-1].strip()
+                if text:
+                    linkedin_chars.append(len(text))
+                    social_posts_count += 1
+            elif post.strip():
+                social_posts_count += 1
+    
+    # Validation checks
+    
+    # 1. Email subject line length
+    long_subjects = [s for s in subject_lines if len(s) > 50]
+    if long_subjects:
+        checks.append(ContentCheck(
+            "Email Subjects", False,
+            f"{len(long_subjects)} subjects over 50 chars",
+            str(len(long_subjects))
+        ))
+    elif subject_lines:
+        checks.append(ContentCheck(
+            "Email Subjects", True,
+            f"All {len(subject_lines)} subjects under 50 chars",
+            str(len(subject_lines))
+        ))
+    
+    # 2. Twitter post length
+    long_tweets = [c for c in twitter_chars if c > 280]
+    if long_tweets:
+        checks.append(ContentCheck(
+            "Twitter Length", False,
+            f"{len(long_tweets)} posts over 280 chars",
+            str(len(long_tweets))
+        ))
+    elif twitter_chars:
+        avg = sum(twitter_chars) // len(twitter_chars)
+        checks.append(ContentCheck(
+            "Twitter Length", True,
+            f"Avg: {avg} chars (max 280)",
+            str(avg)
+        ))
+    
+    # 3. LinkedIn post length
+    if linkedin_chars:
+        avg = sum(linkedin_chars) // len(linkedin_chars)
+        if avg < 100:
+            checks.append(ContentCheck(
+                "LinkedIn Length", False,
+                f"Posts too short: avg {avg} chars",
+                str(avg)
+            ))
+        else:
+            checks.append(ContentCheck(
+                "LinkedIn Length", True,
+                f"Good length: avg {avg} chars",
+                str(avg)
+            ))
+    
+    # 4. Content quantity
+    if emails_count < 3:
+        checks.append(ContentCheck(
+            "Email Quantity", False,
+            f"Only {emails_count} emails (recommend 5+)",
+            str(emails_count)
+        ))
+    else:
+        checks.append(ContentCheck(
+            "Email Quantity", True,
+            f"{emails_count} emails ready",
+            str(emails_count)
+        ))
+    
+    if social_posts_count < 5:
+        checks.append(ContentCheck(
+            "Social Quantity", False,
+            f"Only {social_posts_count} posts (recommend 10+)",
+            str(social_posts_count)
+        ))
+    else:
+        checks.append(ContentCheck(
+            "Social Quantity", True,
+            f"{social_posts_count} social posts ready",
+            str(social_posts_count)
+        ))
+    
+    return ContentPreview(
+        emails_count=emails_count,
+        social_posts_count=social_posts_count,
+        twitter_chars_avg=sum(twitter_chars) // len(twitter_chars) if twitter_chars else 0,
+        linkedin_chars_avg=sum(linkedin_chars) // len(linkedin_chars) if linkedin_chars else 0,
+        subject_lines=subject_lines,
+        checks=checks
+    )
+
+
+def format_content_preview(preview: ContentPreview) -> str:
+    """Format content preview for display."""
+    lines = [
+        "",
+        "╔" + "═" * 65 + "╗",
+        "║" + " " * 20 + "MARKETING CONTENT PREVIEW" + " " * 20 + "║",
+        "╠" + "═" * 65 + "╣",
+        f"║ 📧 Emails: {preview.emails_count}".ljust(66) + "║",
+        f"║ 📱 Social Posts: {preview.social_posts_count}".ljust(66) + "║",
+    ]
+    
+    if preview.twitter_chars_avg > 0:
+        lines.append(f"║ 🐦 Twitter Avg: {preview.twitter_chars_avg} chars".ljust(66) + "║")
+    if preview.linkedin_chars_avg > 0:
+        lines.append(f"║ 💼 LinkedIn Avg: {preview.linkedin_chars_avg} chars".ljust(66) + "║")
+    
+    lines.append("╠" + "─" * 65 + "╣")
+    lines.append("║ 📝 Subject Lines:".ljust(66) + "║")
+    
+    for subject in preview.subject_lines[:5]:
+        lines.append(f"║   • {subject[:55]}".ljust(66) + "║")
+    
+    if len(preview.subject_lines) > 5:
+        lines.append(f"║   ... and {len(preview.subject_lines) - 5} more".ljust(66) + "║")
+    
+    lines.append("╠" + "═" * 65 + "╣")
+    lines.append("║ VALIDATION CHECKS:".ljust(66) + "║")
+    lines.append("╠" + "─" * 65 + "╣")
+    
+    passed = 0
+    failed = 0
+    
+    for check in preview.checks:
+        if check.passed:
+            icon = "✅"
+            passed += 1
+        else:
+            icon = "⚠️"
+            failed += 1
+        
+        lines.append(f"║ {icon} {check.name:18} │ {check.message[:40]:<40} ║")
+    
+    lines.append("╠" + "═" * 65 + "╣")
+    
+    if failed == 0:
+        lines.append("║ ✅ All content validated! Ready to publish.".ljust(66) + "║")
+    else:
+        lines.append(f"║ ⚠️  {failed} issues to review before publishing.".ljust(66) + "║")
+    
+    lines.append("╚" + "═" * 65 + "╝")
+    
+    return "\n".join(lines)

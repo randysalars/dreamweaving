@@ -2557,6 +2557,70 @@ def deploy_history_command(args):
     return 0
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# STEP 6 ENHANCEMENTS: TEMPLATES, UTM, PREVIEW
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def list_marketing_templates_command(args):
+    """List available marketing templates."""
+    from .core.antigravity import format_marketing_templates
+    
+    logger.info(format_marketing_templates())
+    return 0
+
+
+def generate_utm_command(args):
+    """Generate UTM links for a product."""
+    from pathlib import Path
+    from .core.antigravity import (
+        generate_utm_links, format_utm_links, export_utm_links
+    )
+    
+    links = generate_utm_links(
+        slug=args.slug,
+        campaign=args.campaign
+    )
+    
+    logger.info(format_utm_links(links))
+    
+    if args.save:
+        output_dir = Path(args.output) if args.output else Path.cwd()
+        success, message = export_utm_links(links, output_dir)
+        if success:
+            logger.info(f"\n✅ {message}")
+        else:
+            logger.error(f"\n❌ {message}")
+    
+    return 0
+
+
+def marketing_preview_command(args):
+    """Preview and validate marketing content."""
+    from pathlib import Path
+    from .core.antigravity import (
+        preview_marketing_content, format_content_preview
+    )
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    preview = preview_marketing_content(product_dir)
+    
+    if preview:
+        logger.info(format_content_preview(preview))
+        
+        # Return error if issues found
+        failed = [c for c in preview.checks if not c.passed]
+        return 1 if failed else 0
+    else:
+        logger.error("❌ No marketing content found. Generate with 'marketing --emails --social' first.")
+        return 1
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog='product-builder',
@@ -3069,6 +3133,30 @@ Examples:
     deploy_history_parser.add_argument('--slug', '-s', required=True, help='Product slug')
     deploy_history_parser.add_argument('--salarsu-path', help='Path to SalarsNet repo')
     deploy_history_parser.set_defaults(func=deploy_history_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STEP 6 ENHANCEMENTS SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # List-marketing-templates command
+    mkt_templates_parser = subparsers.add_parser('list-marketing-templates',
+                                                  help='List available marketing templates')
+    mkt_templates_parser.set_defaults(func=list_marketing_templates_command)
+    
+    # Generate-utm command
+    gen_utm_parser = subparsers.add_parser('generate-utm',
+                                            help='Generate UTM links for tracking')
+    gen_utm_parser.add_argument('--slug', '-s', required=True, help='Product slug')
+    gen_utm_parser.add_argument('--campaign', '-c', help='Campaign name (default: launch-MMYYYY)')
+    gen_utm_parser.add_argument('--save', action='store_true', help='Save to files')
+    gen_utm_parser.add_argument('--output', '-o', help='Output directory')
+    gen_utm_parser.set_defaults(func=generate_utm_command)
+    
+    # Marketing-preview command
+    mkt_preview_parser = subparsers.add_parser('marketing-preview',
+                                                help='Preview and validate marketing content')
+    mkt_preview_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    mkt_preview_parser.set_defaults(func=marketing_preview_command)
     
     # Parse and execute
     args = parser.parse_args()
