@@ -1055,6 +1055,71 @@ def templates_command(args):
     return 0
 
 
+def batch_command(args):
+    """Create multiple products from a YAML configuration file."""
+    from pathlib import Path
+    from .core.batch import parse_batch_config, run_batch, generate_batch_report
+    
+    config_path = Path(args.config)
+    
+    if not config_path.exists():
+        logger.error(f"❌ Config file not found: {config_path}")
+        return 1
+    
+    logger.info(f"📋 Loading batch config: {config_path}")
+    
+    try:
+        config = parse_batch_config(config_path)
+    except Exception as e:
+        logger.error(f"❌ Failed to parse config: {e}")
+        return 1
+    
+    if args.parallel:
+        config.parallel = args.parallel
+    
+    logger.info(f"   Found {len(config.products)} products to create")
+    
+    if args.dry_run:
+        logger.info("\n📋 Products to create (dry-run):")
+        for p in config.products:
+            template = f" ({p.template})" if p.template else ""
+            logger.info(f"   - {p.title}{template}: ${p.price:.0f}")
+        return 0
+    
+    # Run the batch
+    results = run_batch(config, create_command)
+    
+    # Generate report
+    report_path = Path(config.output_dir) / "batch_report.md"
+    generate_batch_report(results, report_path)
+    
+    # Summary
+    success = sum(1 for r in results if r.get('success'))
+    logger.info(f"\n🎉 Batch complete: {success}/{len(results)} successful")
+    
+    return 0 if success == len(results) else 1
+
+
+def init_batch_command(args):
+    """Generate an example batch configuration file."""
+    from pathlib import Path
+    from .core.batch import EXAMPLE_BATCH_YAML
+    
+    output_path = Path(args.output)
+    
+    if output_path.exists() and not args.force:
+        logger.error(f"❌ File already exists: {output_path}")
+        logger.info("   Use --force to overwrite")
+        return 1
+    
+    output_path.write_text(EXAMPLE_BATCH_YAML)
+    logger.info(f"✅ Created batch config: {output_path}")
+    logger.info(f"\nEdit the file, then run:")
+    logger.info(f"   product-builder batch --config {output_path}")
+    
+    return 0
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -1203,6 +1268,20 @@ Examples:
     # Templates command - list available product templates
     templates_parser = subparsers.add_parser('templates', help='List available product templates')
     templates_parser.set_defaults(func=templates_command)
+    
+    # Batch command - create multiple products from YAML
+    batch_parser = subparsers.add_parser('batch', help='Create multiple products from YAML config')
+    batch_parser.add_argument('--config', '-c', required=True, help='Path to YAML config file')
+    batch_parser.add_argument('--parallel', '-p', type=int, help='Number of parallel workers')
+    batch_parser.add_argument('--dry-run', action='store_true', help='Show what would be created')
+    batch_parser.set_defaults(func=batch_command)
+    
+    # Init-batch command - generate example batch config
+    init_batch_parser = subparsers.add_parser('init-batch', help='Generate example batch config file')
+    init_batch_parser.add_argument('--output', '-o', default='products.yaml', 
+                                    help='Output file path (default: products.yaml)')
+    init_batch_parser.add_argument('--force', '-f', action='store_true', help='Overwrite existing file')
+    init_batch_parser.set_defaults(func=init_batch_command)
     
     # Parse and execute
     args = parser.parse_args()
