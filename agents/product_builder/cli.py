@@ -1721,6 +1721,206 @@ def generate_audio_command(args):
     return 0 if success_count == len(to_generate) else 1
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# STEP 3C: VIDEO GENERATION COMMANDS
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def list_video_templates_command(args):
+    """List available video templates."""
+    from .core.antigravity import list_video_templates
+    logger.info(list_video_templates())
+    return 0
+
+
+def video_prompts_command(args):
+    """Generate prompts for video sessions."""
+    from pathlib import Path
+    from .core.antigravity import generate_video_prompts
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    video_topics = None
+    if args.topics:
+        video_topics = [t.strip() for t in args.topics.split(",")]
+    
+    created_prompts = generate_video_prompts(
+        product_dir=product_dir,
+        video_count=args.videos,
+        product_title=args.title,
+        video_topics=video_topics,
+        template=args.template
+    )
+    
+    logger.info(f"\n✅ Generated {len(created_prompts)} video prompts!")
+    for prompt_file in created_prompts:
+        logger.info(f"   🎬 {prompt_file.name}")
+    
+    logger.info(f"\n📋 Step 3c Workflow:")
+    logger.info(f"   1. Read prompts in: {product_dir}/output/prompts/video_*.prompt.md")
+    logger.info(f"   2. Write scripts to: {product_dir}/output/responses/video_*.response.md")
+    logger.info(f"   3. Check: product-builder video-status -d {product_dir}")
+    logger.info(f"   4. Audio: product-builder generate-audio -d {product_dir} --all")
+    logger.info(f"   5. Images: product-builder fetch-images -d {product_dir}")
+    logger.info(f"   6. Render: product-builder render-video -d {product_dir} --all")
+    
+    return 0
+
+
+def video_status_command(args):
+    """Show status of video sessions."""
+    from pathlib import Path
+    from .core.antigravity import list_video_sessions, format_video_sessions
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    sessions = list_video_sessions(product_dir)
+    logger.info(format_video_sessions(sessions))
+    return 0
+
+
+def next_video_command(args):
+    """Show the next video session needing work."""
+    from pathlib import Path
+    from .core.antigravity import get_next_video_session
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    result = get_next_video_session(product_dir)
+    
+    if result is None:
+        logger.info("🎉 All video sessions complete!")
+        return 0
+    
+    session = result["session"]
+    
+    if result["type"] == "needs_script":
+        logger.info(f"\n📝 Write script for '{session['slug']}'")
+        logger.info(f"   Prompt: {session['prompt_file']}")
+    elif result["type"] == "needs_audio":
+        logger.info(f"\n🎵 Generate audio for '{session['slug']}'")
+        logger.info(f"   Run: product-builder generate-audio -d {product_dir} --session {session['slug']}")
+    elif result["type"] == "needs_render":
+        logger.info(f"\n🎬 Render video for '{session['slug']}'")
+        logger.info(f"   Run: product-builder render-video -d {product_dir} --session {session['slug']}")
+    
+    return 0
+
+
+def fetch_images_command(args):
+    """Fetch stock images for video production."""
+    from pathlib import Path
+    from .core.antigravity import fetch_stock_image, list_video_sessions
+    import re
+    
+    product_dir = Path(args.product_dir)
+    images_dir = product_dir / "output" / "images"
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    sessions = list_video_sessions(product_dir)
+    search_terms = []
+    
+    for session in sessions:
+        if session.get("response_file") and session["response_file"].exists():
+            content = session["response_file"].read_text()
+            matches = re.findall(r'Search:\s*\[([^\]]+)\]', content)
+            for match in matches:
+                search_terms.append({"term": match, "session": session["slug"]})
+    
+    if not search_terms:
+        logger.info("📭 No image search terms found. Add 'Search: [term]' in scripts.")
+        return 0
+    
+    logger.info(f"\n📷 Fetching {len(search_terms)} images...")
+    success_count = 0
+    
+    for i, item in enumerate(search_terms, 1):
+        output_path = images_dir / f"{item['session']}_{i:02d}.jpg"
+        logger.info(f"   [{i}/{len(search_terms)}] {item['term'][:40]}...")
+        
+        success, _ = fetch_stock_image(item["term"], output_path, "unsplash")
+        if success:
+            success_count += 1
+    
+    logger.info(f"\n📊 Fetched {success_count}/{len(search_terms)} images → {images_dir}")
+    return 0
+
+
+def render_video_command(args):
+    """Render video using Remotion."""
+    from pathlib import Path
+    from .core.antigravity import render_video_with_remotion, list_video_sessions, get_remotion_status
+    
+    product_dir = Path(args.product_dir)
+    video_dir = product_dir / "output" / "video"
+    images_dir = product_dir / "output" / "images"
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    remotion_status = get_remotion_status()
+    if not remotion_status["available"]:
+        logger.error(f"❌ Remotion not available: {remotion_status['message']}")
+        return 1
+    
+    sessions = list_video_sessions(product_dir)
+    
+    if args.all:
+        to_render = [s for s in sessions if s.get("has_audio") and not s.get("has_video")]
+    elif args.session:
+        to_render = [s for s in sessions if s["slug"] == args.session]
+        if not to_render:
+            logger.error(f"❌ Session not found: {args.session}")
+            return 1
+    else:
+        logger.error("❌ Specify --session <slug> or --all")
+        return 1
+    
+    if not to_render:
+        logger.info("📭 No sessions ready for video rendering.")
+        return 0
+    
+    logger.info(f"\n🎬 Rendering {len(to_render)} video(s) with Remotion...")
+    success_count = 0
+    
+    for session in to_render:
+        output_path = video_dir / f"{session['slug']}.mp4"
+        logger.info(f"\n   Processing: {session['slug']}")
+        
+        success, message = render_video_with_remotion(
+            script_path=session["response_file"],
+            audio_path=session["audio_file"],
+            output_path=output_path,
+            composition=args.template,
+            images_dir=images_dir if images_dir.exists() else None
+        )
+        
+        if success:
+            logger.info(f"   ✅ {message}")
+            success_count += 1
+        else:
+            logger.error(f"   ❌ {message}")
+    
+    logger.info(f"\n📊 Rendered {success_count}/{len(to_render)} videos → {video_dir}")
+    return 0 if success_count == len(to_render) else 1
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -2000,6 +2200,52 @@ Examples:
     gen_audio_parser.add_argument('--speed', type=float, default=0.88,
                                   help='Speed adjustment for XTTS (0.88 = slightly slower, good for meditations)')
     gen_audio_parser.set_defaults(func=generate_audio_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STEP 3C: VIDEO GENERATION SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # List-video-templates command
+    list_vid_tmpl_parser = subparsers.add_parser('list-video-templates', 
+                                                  help='List available video templates')
+    list_vid_tmpl_parser.set_defaults(func=list_video_templates_command)
+    
+    # Video-prompts command
+    video_prompts_parser = subparsers.add_parser('video-prompts', 
+                                                  help='Generate prompts for video sessions')
+    video_prompts_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    video_prompts_parser.add_argument('--videos', '-n', type=int, required=True, help='Number of videos')
+    video_prompts_parser.add_argument('--title', help='Product title')
+    video_prompts_parser.add_argument('--topics', help='Comma-separated video topics')
+    video_prompts_parser.add_argument('--template', default='chapter_video',
+                                      help='Video template (default: chapter_video)')
+    video_prompts_parser.set_defaults(func=video_prompts_command)
+    
+    # Video-status command
+    video_status_parser = subparsers.add_parser('video-status', help='Show video session status')
+    video_status_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    video_status_parser.set_defaults(func=video_status_command)
+    
+    # Next-video command
+    next_video_parser = subparsers.add_parser('next-video', help='Show next video needing work')
+    next_video_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    next_video_parser.set_defaults(func=next_video_command)
+    
+    # Fetch-images command
+    fetch_images_parser = subparsers.add_parser('fetch-images', 
+                                                 help='Fetch stock images from Unsplash')
+    fetch_images_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    fetch_images_parser.set_defaults(func=fetch_images_command)
+    
+    # Render-video command
+    render_video_parser = subparsers.add_parser('render-video', 
+                                                 help='Render video using Remotion')
+    render_video_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    render_video_parser.add_argument('--session', '-s', help='Specific session slug to render')
+    render_video_parser.add_argument('--all', '-a', action='store_true', help='Render all ready sessions')
+    render_video_parser.add_argument('--template', default='ChapterVideo',
+                                     help='Remotion composition to use (default: ChapterVideo)')
+    render_video_parser.set_defaults(func=render_video_command)
     
     # Parse and execute
     args = parser.parse_args()

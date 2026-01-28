@@ -1664,3 +1664,435 @@ def get_xtts_status() -> dict:
         status["message"] = f"Missing: {', '.join(missing)}"
     
     return status
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 3C: VIDEO GENERATION HELPERS
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class VideoScene:
+    """A scene in a video."""
+    scene_id: str
+    title: str
+    narration: str
+    duration_seconds: float
+    visual_type: str  # "text", "image", "diagram", "quote", "statistics"
+    visual_content: dict
+    caption_text: str = ""
+
+
+@dataclass
+class VideoProject:
+    """Configuration for a video project."""
+    title: str
+    scenes: List[VideoScene]
+    style: dict = None
+    audio_path: Optional[str] = None
+    output_path: Optional[str] = None
+
+
+# Video templates available
+VIDEO_TEMPLATES = {
+    "course_intro": {
+        "name": "Course Introduction",
+        "composition": "CourseIntro",
+        "description": "Animated course title with key benefits",
+        "duration": "30-60 seconds"
+    },
+    "chapter_video": {
+        "name": "Chapter Video",
+        "composition": "ChapterVideo", 
+        "description": "Multi-scene chapter with narration and visuals",
+        "duration": "5-15 minutes"
+    },
+    "key_insight": {
+        "name": "Key Insight",
+        "composition": "KeyInsight",
+        "description": "Single powerful insight with visual emphasis",
+        "duration": "30-60 seconds"
+    },
+    "before_after": {
+        "name": "Before/After",
+        "composition": "BeforeAfter",
+        "description": "Transformation comparison",
+        "duration": "20-40 seconds"
+    },
+    "checklist": {
+        "name": "Checklist",
+        "composition": "Checklist",
+        "description": "Animated checklist with progress",
+        "duration": "30-60 seconds"
+    },
+    "quote_card": {
+        "name": "Quote Card",
+        "composition": "QuoteCard",
+        "description": "Inspirational quote with attribution",
+        "duration": "15-30 seconds"
+    },
+    "framework_diagram": {
+        "name": "Framework Diagram",
+        "composition": "FrameworkDiagram",
+        "description": "Animated diagram or framework visualization",
+        "duration": "45-90 seconds"
+    },
+    "statistic": {
+        "name": "Statistic",
+        "composition": "Statistic",
+        "description": "Animated number or statistic reveal",
+        "duration": "15-30 seconds"
+    },
+    "progress_milestone": {
+        "name": "Progress Milestone",
+        "composition": "ProgressMilestone",
+        "description": "Celebrates achievement with animation",
+        "duration": "20-40 seconds"
+    },
+}
+
+
+def list_video_templates() -> str:
+    """List all available video templates."""
+    lines = [
+        "",
+        "╔" + "═" * 78 + "╗",
+        "║" + " " * 25 + "VIDEO TEMPLATES" + " " * 38 + "║",
+        "╠" + "═" * 78 + "╣",
+    ]
+    
+    for key, tmpl in VIDEO_TEMPLATES.items():
+        lines.append(f"║ {key:20} │ {tmpl['name']:25} │ {tmpl['duration']:15} ║")
+    
+    lines.append("╠" + "═" * 78 + "╣")
+    lines.append("║ Use: product-builder video-prompts --product-dir ./product --template chapter_video    ║")
+    lines.append("╚" + "═" * 78 + "╝")
+    
+    return "\n".join(lines)
+
+
+def generate_video_script_prompt(video_num: int, total_videos: int,
+                                  video_title: str, video_topic: str,
+                                  product_title: str, template: str = "chapter_video") -> str:
+    """Generate a prompt for a video script."""
+    
+    template_info = VIDEO_TEMPLATES.get(template, VIDEO_TEMPLATES["chapter_video"])
+    
+    return f"""# Video {video_num}/{total_videos}: {video_title}
+
+## Product: {product_title}
+## Template: {template_info['name']} ({template_info['duration']})
+
+Create a video script for "{video_title}" on the topic: {video_topic}
+
+## Video Structure:
+
+### 1. NARRATION SCRIPT
+Write the spoken narration in segments, using TTS markers:
+- [PAUSE] for 2-second pauses
+- [LONG PAUSE] for 5-second pauses  
+- [BREATHE] for 3-second breathing space
+
+### 2. SCENE BREAKDOWN
+For each segment of narration, describe the visual:
+
+```
+SCENE 1 (0:00-0:15)
+Narration: "Welcome to [topic]..."
+Visual: [TYPE: text/image/diagram/quote/statistic]
+Description: [Describe what appears on screen]
+Caption: [On-screen text/subtitle]
+---
+SCENE 2 (0:15-0:45)
+...
+```
+
+### 3. VISUAL ASSETS NEEDED
+List any images or graphics needed:
+- Image 1: [description] - Search: [Unsplash/Pexels search term]
+- Image 2: [description] - Generate: [AI image prompt]
+- Diagram: [description of diagram to create]
+
+## Requirements:
+- Target duration: {template_info['duration']}
+- Include captions for all spoken words
+- Suggest Unsplash/Pexels search terms for stock images
+- Include AI image generation prompts for custom graphics
+- Word count: ~150 words per minute of narration
+
+Save your response to: `output/responses/video_{video_num:02d}_{video_title.lower().replace(' ', '_')[:20]}.response.md`
+"""
+
+
+def list_video_sessions(product_dir: Path) -> List[dict]:
+    """List all video sessions for a product."""
+    video_dir = product_dir / "output" / "video"
+    prompts_dir = product_dir / "output" / "prompts"
+    responses_dir = product_dir / "output" / "responses"
+    
+    sessions = []
+    
+    if prompts_dir.exists():
+        for prompt_file in sorted(prompts_dir.glob("video_*.prompt.md")):
+            slug = prompt_file.stem.replace(".prompt", "")
+            response_file = responses_dir / f"{slug}.response.md"
+            video_file = video_dir / f"{slug}.mp4"
+            audio_file = video_dir / f"{slug}_audio.mp3"
+            
+            session = {
+                "slug": slug,
+                "prompt_file": prompt_file,
+                "has_script": response_file.exists(),
+                "has_audio": audio_file.exists(),
+                "has_video": video_file.exists(),
+                "response_file": response_file if response_file.exists() else None,
+                "audio_file": audio_file if audio_file.exists() else None,
+                "video_file": video_file if video_file.exists() else None,
+            }
+            
+            if response_file.exists():
+                content = response_file.read_text()
+                session["word_count"] = len(content.split())
+            
+            sessions.append(session)
+    
+    return sessions
+
+
+def format_video_sessions(sessions: List[dict]) -> str:
+    """Format video sessions for display."""
+    if not sessions:
+        return "\n📭 No video sessions found. Generate prompts first with:\n   product-builder video-prompts --product-dir ./product --videos 5\n"
+    
+    lines = [
+        "",
+        "╔" + "═" * 88 + "╗",
+        "║" + " " * 35 + "VIDEO SESSIONS" + " " * 39 + "║",
+        "╠" + "═" * 88 + "╣",
+        "║ {:25} │ {:8} │ {:8} │ {:8} │ {:25} ║".format(
+            "Session", "Script", "Audio", "Video", "Status"),
+        "╠" + "─" * 88 + "╣",
+    ]
+    
+    for s in sessions:
+        script_icon = "✅" if s.get("has_script") else "⏳"
+        audio_icon = "🎵" if s.get("has_audio") else "⏳"
+        video_icon = "🎬" if s.get("has_video") else "⏳"
+        
+        if s.get("has_video"):
+            status = "Complete"
+        elif s.get("has_audio"):
+            status = "Ready for render"
+        elif s.get("has_script"):
+            status = "Ready for audio"
+        else:
+            status = "Needs script"
+        
+        lines.append("║ {:25} │ {:8} │ {:8} │ {:8} │ {:25} ║".format(
+            s["slug"][:25], script_icon, audio_icon, video_icon, status
+        ))
+    
+    total_complete = sum(1 for s in sessions if s.get("has_video"))
+    
+    lines.append("╠" + "═" * 88 + "╣")
+    lines.append("║ Complete: {}/{}{}║".format(
+        total_complete, len(sessions), " " * 72
+    ))
+    lines.append("╚" + "═" * 88 + "╝")
+    
+    return "\n".join(lines)
+
+
+def generate_video_prompts(product_dir: Path, video_count: int,
+                           product_title: str = None,
+                           video_topics: List[str] = None,
+                           template: str = "chapter_video") -> List[Path]:
+    """Generate prompts for video sessions."""
+    prompts_dir = product_dir / "output" / "prompts"
+    prompts_dir.mkdir(parents=True, exist_ok=True)
+    
+    if not product_title:
+        product_title = product_dir.name.replace("_", " ").title()
+    
+    # Default video topics if not provided
+    if not video_topics:
+        video_topics = [
+            "Introduction and Overview",
+            "Core Concepts Explained",
+            "Step-by-Step Process",
+            "Common Mistakes to Avoid",
+            "Advanced Techniques",
+            "Real-World Examples",
+            "Quick Reference Guide",
+            "Summary and Next Steps",
+        ]
+    
+    created_prompts = []
+    
+    for i in range(1, video_count + 1):
+        topic = video_topics[(i - 1) % len(video_topics)]
+        title = f"Video {i}: {topic}"
+        
+        prompt_content = generate_video_script_prompt(
+            video_num=i,
+            total_videos=video_count,
+            video_title=title,
+            video_topic=topic,
+            product_title=product_title,
+            template=template
+        )
+        
+        slug = f"video_{i:02d}_{topic.lower().replace(' ', '_')[:20]}"
+        prompt_file = prompts_dir / f"{slug}.prompt.md"
+        prompt_file.write_text(prompt_content)
+        created_prompts.append(prompt_file)
+    
+    return created_prompts
+
+
+def fetch_stock_image(search_term: str, output_path: Path,
+                      source: str = "unsplash") -> Tuple[bool, str]:
+    """
+    Fetch a stock image from Unsplash or Pexels.
+    
+    Returns (success, message_or_path).
+    """
+    import subprocess
+    import urllib.request
+    import json
+    
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Use Unsplash Source API (no API key needed for random images)
+    if source == "unsplash":
+        # Unsplash Source API for random images by search
+        url = f"https://source.unsplash.com/1920x1080/?{search_term.replace(' ', ',')}"
+        
+        try:
+            urllib.request.urlretrieve(url, str(output_path))
+            if output_path.exists() and output_path.stat().st_size > 1000:
+                return True, str(output_path)
+            else:
+                return False, "Downloaded file too small or empty"
+        except Exception as e:
+            return False, f"Download failed: {str(e)}"
+    
+    return False, f"Unknown source: {source}"
+
+
+def get_remotion_status() -> dict:
+    """Check if Remotion is available and configured."""
+    import shutil
+    
+    status = {
+        "available": False,
+        "npx_exists": shutil.which("npx") is not None,
+        "project_exists": False,
+        "message": ""
+    }
+    
+    project_dir = Path(__file__).parent.parent / "remotion_project"
+    status["project_exists"] = (project_dir / "package.json").exists()
+    
+    if status["npx_exists"] and status["project_exists"]:
+        status["available"] = True
+        status["message"] = "Remotion ready for video rendering"
+    else:
+        missing = []
+        if not status["npx_exists"]:
+            missing.append("Node.js/npx")
+        if not status["project_exists"]:
+            missing.append("remotion_project")
+        status["message"] = f"Missing: {', '.join(missing)}"
+    
+    return status
+
+
+def get_next_video_session(product_dir: Path) -> Optional[dict]:
+    """Get the next video session that needs work."""
+    sessions = list_video_sessions(product_dir)
+    
+    for session in sessions:
+        if not session.get("has_script"):
+            return {"type": "needs_script", "session": session}
+        elif not session.get("has_audio"):
+            return {"type": "needs_audio", "session": session}
+        elif not session.get("has_video"):
+            return {"type": "needs_render", "session": session}
+    
+    return None  # All done!
+
+
+def render_video_with_remotion(
+    script_path: Path,
+    audio_path: Path,
+    output_path: Path,
+    composition: str = "ChapterVideo",
+    images_dir: Path = None
+) -> Tuple[bool, str]:
+    """
+    Render video using Remotion with audio and captions.
+    
+    Returns (success, message).
+    """
+    import subprocess
+    import json
+    
+    project_dir = Path(__file__).parent.parent / "remotion_project"
+    
+    if not project_dir.exists():
+        return False, f"Remotion project not found: {project_dir}"
+    
+    if not script_path.exists():
+        return False, f"Script not found: {script_path}"
+    
+    if not audio_path.exists():
+        return False, f"Audio not found: {audio_path}"
+    
+    # Parse script for scenes
+    content = script_path.read_text()
+    
+    # Build props for Remotion
+    props = {
+        "audioUrl": str(audio_path.absolute()),
+        "title": script_path.stem.replace("_", " ").title(),
+        "scenes": [],  # Would parse from script
+        "captionsEnabled": True,
+    }
+    
+    if images_dir and images_dir.exists():
+        props["imagesDir"] = str(images_dir.absolute())
+    
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    cmd = [
+        "npx", "remotion", "render",
+        composition,
+        str(output_path),
+        "--props", json.dumps(props),
+        "--width", "1920",
+        "--height", "1080",
+        "--codec", "h264",
+    ]
+    
+    try:
+        result = subprocess.run(
+            cmd,
+            cwd=str(project_dir),
+            capture_output=True,
+            timeout=1200  # 20 minute timeout
+        )
+        
+        if result.returncode == 0:
+            if output_path.exists():
+                size_mb = output_path.stat().st_size / (1024 * 1024)
+                return True, f"Created: {output_path} ({size_mb:.1f}MB)"
+            else:
+                return False, "Render completed but output not found"
+        else:
+            return False, f"Render failed: {result.stderr.decode()[:200]}"
+            
+    except subprocess.TimeoutExpired:
+        return False, "Render timed out after 20 minutes"
+    except Exception as e:
+        return False, f"Render error: {str(e)}"
