@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - eco-echo-conversations-with-nature
-  - megalithic-meditations-stepping-into-stone-circles
-  - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
   - ascend-mount-sinai-with-moses
   - the-future-temple-of-probability-singers
@@ -34,8 +31,11 @@ lessons:
   - the-time-machine-of-future-visions-dreamweaving
   - the-sanctuary-of-cosmic-synthesis-dreamweaving
   - the-agni-heart-of-the-universe-dreamweaving
-  applied_count: 92
-  last_applied: '2026-01-27'
+  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
+  - the-vault-of-starborn-giants-dreamweaving
+  - clockwork-of-the-unconscious-dreamweaving
+  applied_count: 95
+  last_applied: '2026-01-28'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - eco-echo-conversations-with-nature
-  - megalithic-meditations-stepping-into-stone-circles
-  - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
   - ascend-mount-sinai-with-moses
   - the-future-temple-of-probability-singers
@@ -72,8 +69,11 @@ lessons:
   - the-time-machine-of-future-visions-dreamweaving
   - the-sanctuary-of-cosmic-synthesis-dreamweaving
   - the-agni-heart-of-the-universe-dreamweaving
-  applied_count: 92
-  last_applied: '2026-01-27'
+  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
+  - the-vault-of-starborn-giants-dreamweaving
+  - clockwork-of-the-unconscious-dreamweaving
+  applied_count: 95
+  last_applied: '2026-01-28'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - eco-echo-conversations-with-nature
-  - megalithic-meditations-stepping-into-stone-circles
-  - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
   - ascend-mount-sinai-with-moses
   - the-future-temple-of-probability-singers
@@ -109,8 +106,11 @@ lessons:
   - the-time-machine-of-future-visions-dreamweaving
   - the-sanctuary-of-cosmic-synthesis-dreamweaving
   - the-agni-heart-of-the-universe-dreamweaving
-  applied_count: 92
-  last_applied: '2026-01-27'
+  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
+  - the-vault-of-starborn-giants-dreamweaving
+  - clockwork-of-the-unconscious-dreamweaving
+  applied_count: 95
+  last_applied: '2026-01-28'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - eco-echo-conversations-with-nature
-  - megalithic-meditations-stepping-into-stone-circles
-  - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
   - ascend-mount-sinai-with-moses
   - the-future-temple-of-probability-singers
@@ -147,8 +144,11 @@ lessons:
   - the-time-machine-of-future-visions-dreamweaving
   - the-sanctuary-of-cosmic-synthesis-dreamweaving
   - the-agni-heart-of-the-universe-dreamweaving
-  applied_count: 92
-  last_applied: '2026-01-27'
+  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
+  - the-vault-of-starborn-giants-dreamweaving
+  - clockwork-of-the-unconscious-dreamweaving
+  applied_count: 95
+  last_applied: '2026-01-28'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - eco-echo-conversations-with-nature
-  - megalithic-meditations-stepping-into-stone-circles
-  - hall-of-forgotten-epidemics-dreamweaving
   - the-sea-journey-with-the-queen-king-of-cups-explor
   - ascend-mount-sinai-with-moses
   - the-future-temple-of-probability-singers
@@ -183,8 +180,11 @@ lessons:
   - the-time-machine-of-future-visions-dreamweaving
   - the-sanctuary-of-cosmic-synthesis-dreamweaving
   - the-agni-heart-of-the-universe-dreamweaving
-  applied_count: 92
-  last_applied: '2026-01-27'
+  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
+  - the-vault-of-starborn-giants-dreamweaving
+  - clockwork-of-the-unconscious-dreamweaving
+  applied_count: 95
+  last_applied: '2026-01-28'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
