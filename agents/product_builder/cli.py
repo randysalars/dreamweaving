@@ -3010,6 +3010,130 @@ def auto_launch_command(args):
     return 0
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY INTELLIGENCE: CLI COMMANDS
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def quality_check_command(args):
+    """Run comprehensive quality check on a product."""
+    from pathlib import Path
+    from .core.antigravity import generate_quality_report, format_quality_report
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    report = generate_quality_report(product_dir)
+    
+    if report:
+        logger.info(format_quality_report(report))
+        return 0 if report.passed else 1
+    else:
+        logger.error("❌ No product content found.")
+        return 1
+
+
+def readability_score_command(args):
+    """Analyze readability of content."""
+    from pathlib import Path
+    from .core.antigravity import calculate_readability, format_readability_score
+    
+    # Handle file or directory
+    path = Path(args.path)
+    
+    if path.is_file():
+        text = path.read_text()
+    elif path.is_dir():
+        # Collect all markdown files
+        text = ""
+        output_dir = path / "output"
+        search_dir = output_dir if output_dir.exists() else path
+        for md_file in search_dir.glob("**/*.md"):
+            text += md_file.read_text() + "\n\n"
+    else:
+        logger.error(f"❌ Path not found: {path}")
+        return 1
+    
+    if not text.strip():
+        logger.error("❌ No text content found.")
+        return 1
+    
+    score = calculate_readability(text)
+    logger.info(format_readability_score(score))
+    
+    return 0
+
+
+def content_density_command(args):
+    """Analyze content density and value metrics."""
+    from pathlib import Path
+    from .core.antigravity import analyze_content_density, format_content_density
+    
+    # Handle file or directory
+    path = Path(args.path)
+    
+    if path.is_file():
+        text = path.read_text()
+    elif path.is_dir():
+        # Collect all markdown files
+        text = ""
+        output_dir = path / "output"
+        search_dir = output_dir if output_dir.exists() else path
+        for md_file in search_dir.glob("**/*.md"):
+            text += md_file.read_text() + "\n\n"
+    else:
+        logger.error(f"❌ Path not found: {path}")
+        return 1
+    
+    if not text.strip():
+        logger.error("❌ No text content found.")
+        return 1
+    
+    density = analyze_content_density(text)
+    logger.info(format_content_density(density))
+    
+    return 0
+
+
+def completeness_check_command(args):
+    """Check product completeness."""
+    from pathlib import Path
+    from .core.antigravity import check_product_completeness, format_completeness_check
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    check = check_product_completeness(product_dir)
+    logger.info(format_completeness_check(check))
+    
+    return 0 if check.completeness_score >= 70 else 1
+
+
+def quality_gate_command(args):
+    """Check if product passes quality gate for deployment."""
+    from pathlib import Path
+    from .core.antigravity import check_quality_gate, format_quality_gate
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    threshold = args.threshold if hasattr(args, 'threshold') else None
+    gate = check_quality_gate(product_dir, threshold)
+    logger.info(format_quality_gate(gate))
+    
+    # Return 0 if passed, 1 if failed (for CI/CD integration)
+    return 0 if gate.passed else 1
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog='product-builder',
@@ -3601,6 +3725,41 @@ Examples:
     launch_parser.add_argument('--prompts-only', action='store_true', help='Generate prompts only')
     launch_parser.add_argument('--dry-run', action='store_true', help='Validate only')
     launch_parser.set_defaults(func=auto_launch_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # QUALITY INTELLIGENCE SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # Quality-check command (comprehensive)
+    quality_parser = subparsers.add_parser('quality-check',
+                                            help='Run comprehensive quality analysis')
+    quality_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    quality_parser.set_defaults(func=quality_check_command)
+    
+    # Readability-score command
+    readability_parser = subparsers.add_parser('readability-score',
+                                                help='Analyze text readability')
+    readability_parser.add_argument('--path', '-p', required=True, help='File or directory to analyze')
+    readability_parser.set_defaults(func=readability_score_command)
+    
+    # Content-density command
+    density_parser = subparsers.add_parser('content-density',
+                                            help='Analyze content value density')
+    density_parser.add_argument('--path', '-p', required=True, help='File or directory to analyze')
+    density_parser.set_defaults(func=content_density_command)
+    
+    # Completeness-check command
+    completeness_parser = subparsers.add_parser('completeness-check',
+                                                 help='Check product completeness')
+    completeness_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    completeness_parser.set_defaults(func=completeness_check_command)
+    
+    # Quality-gate command (deploy blocker)
+    gate_parser = subparsers.add_parser('quality-gate',
+                                         help='Check quality gate for deployment')
+    gate_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    gate_parser.add_argument('--threshold', '-t', type=float, default=70, help='Minimum score (0-100)')
+    gate_parser.set_defaults(func=quality_gate_command)
     
     # Parse and execute
     args = parser.parse_args()

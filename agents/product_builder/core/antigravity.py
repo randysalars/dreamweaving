@@ -6221,3 +6221,590 @@ def format_pipeline_summary(summary: PipelineSummary) -> str:
     lines.append("═" * 70)
     
     return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# QUALITY INTELLIGENCE SYSTEM
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# Quality thresholds
+QUALITY_THRESHOLDS = {
+    "readability_min": 40,       # Flesch Reading Ease minimum
+    "readability_max": 80,       # Flesch Reading Ease maximum (not too simple)
+    "word_count_min": 5000,      # Minimum words for a product
+    "page_count_min": 20,        # Minimum pages
+    "actionable_ratio_min": 0.15, # 15% actionable content
+    "overall_score_min": 70,     # Minimum overall quality score
+}
+
+
+@dataclass
+class ReadabilityScore:
+    """Text readability analysis."""
+    flesch_reading_ease: float
+    flesch_kincaid_grade: float
+    avg_sentence_length: float
+    avg_word_length: float
+    complex_word_ratio: float
+    reading_level: str
+    target_audience: str
+
+
+def calculate_readability(text: str) -> ReadabilityScore:
+    """Calculate readability metrics for text."""
+    import re
+    
+    # Clean text
+    text = re.sub(r'[#*_\[\]()]', '', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    
+    # Count elements
+    sentences = re.split(r'[.!?]+', text)
+    sentences = [s.strip() for s in sentences if s.strip()]
+    sentence_count = max(len(sentences), 1)
+    
+    words = text.split()
+    word_count = max(len(words), 1)
+    
+    # Count syllables (approximation)
+    def count_syllables(word):
+        word = word.lower()
+        vowels = 'aeiouy'
+        count = 0
+        prev_vowel = False
+        for char in word:
+            is_vowel = char in vowels
+            if is_vowel and not prev_vowel:
+                count += 1
+            prev_vowel = is_vowel
+        if word.endswith('e'):
+            count -= 1
+        return max(count, 1)
+    
+    syllable_count = sum(count_syllables(w) for w in words)
+    
+    # Complex words (3+ syllables)
+    complex_words = sum(1 for w in words if count_syllables(w) >= 3)
+    complex_ratio = complex_words / word_count
+    
+    # Averages
+    avg_sentence_length = word_count / sentence_count
+    avg_word_length = sum(len(w) for w in words) / word_count
+    
+    # Flesch Reading Ease: 206.835 - 1.015 * ASL - 84.6 * ASW
+    asl = avg_sentence_length
+    asw = syllable_count / word_count
+    flesch_ease = 206.835 - (1.015 * asl) - (84.6 * asw)
+    flesch_ease = max(0, min(100, flesch_ease))
+    
+    # Flesch-Kincaid Grade Level
+    fk_grade = (0.39 * asl) + (11.8 * asw) - 15.59
+    fk_grade = max(0, min(20, fk_grade))
+    
+    # Determine reading level
+    if flesch_ease >= 80:
+        reading_level = "Easy"
+        target_audience = "General public, casual readers"
+    elif flesch_ease >= 60:
+        reading_level = "Standard"
+        target_audience = "High school to college level"
+    elif flesch_ease >= 40:
+        reading_level = "Moderate"
+        target_audience = "College educated professionals"
+    elif flesch_ease >= 20:
+        reading_level = "Difficult"
+        target_audience = "Advanced readers, experts"
+    else:
+        reading_level = "Very Difficult"
+        target_audience = "Specialists, academics"
+    
+    return ReadabilityScore(
+        flesch_reading_ease=round(flesch_ease, 1),
+        flesch_kincaid_grade=round(fk_grade, 1),
+        avg_sentence_length=round(avg_sentence_length, 1),
+        avg_word_length=round(avg_word_length, 2),
+        complex_word_ratio=round(complex_ratio, 3),
+        reading_level=reading_level,
+        target_audience=target_audience
+    )
+
+
+def format_readability_score(score: ReadabilityScore) -> str:
+    """Format readability score for display."""
+    lines = [
+        "",
+        "╔" + "═" * 60 + "╗",
+        "║" + " " * 18 + "READABILITY SCORE" + " " * 25 + "║",
+        "╠" + "═" * 60 + "╣",
+        f"║ 📊 Flesch Reading Ease: {score.flesch_reading_ease}/100".ljust(61) + "║",
+        f"║ 📚 Flesch-Kincaid Grade: {score.flesch_kincaid_grade}".ljust(61) + "║",
+        f"║ 📝 Reading Level: {score.reading_level}".ljust(61) + "║",
+        f"║ 🎯 Target Audience: {score.target_audience}".ljust(61) + "║",
+        "╠" + "─" * 60 + "╣",
+        f"║ Avg Sentence Length: {score.avg_sentence_length} words".ljust(61) + "║",
+        f"║ Avg Word Length: {score.avg_word_length} chars".ljust(61) + "║",
+        f"║ Complex Word Ratio: {score.complex_word_ratio * 100:.1f}%".ljust(61) + "║",
+        "╚" + "═" * 60 + "╝",
+    ]
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONTENT DENSITY ANALYSIS
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class ContentDensity:
+    """Content value density analysis."""
+    total_words: int
+    total_pages: int
+    words_per_page: int
+    actionable_items: int
+    actionable_ratio: float
+    examples_count: int
+    lists_count: int
+    headers_count: int
+    value_score: float
+
+
+def analyze_content_density(text: str) -> ContentDensity:
+    """Analyze content density and value metrics."""
+    import re
+    
+    # Word and page counts
+    words = text.split()
+    total_words = len(words)
+    total_pages = max(1, total_words // 250)  # ~250 words per page
+    words_per_page = total_words // total_pages
+    
+    # Actionable items (imperatives, numbered steps)
+    actionable_patterns = [
+        r'\d+\.\s+\w+',           # Numbered steps
+        r'(?:Step|Action|Do|Try|Start|Create|Build|Make|Write|Set|Add|Remove)\s',
+        r'(?:First|Next|Then|Finally|Now)\,?\s',
+        r'\[\s*\]\s+\w+',          # Checkboxes
+    ]
+    actionable_items = 0
+    for pattern in actionable_patterns:
+        actionable_items += len(re.findall(pattern, text, re.IGNORECASE))
+    
+    actionable_ratio = actionable_items / max(total_words, 1)
+    
+    # Examples and lists
+    examples_count = len(re.findall(r'(?:Example|Case Study|For instance|e\.g\.)', text, re.IGNORECASE))
+    lists_count = len(re.findall(r'^[-*•]\s+', text, re.MULTILINE))
+    headers_count = len(re.findall(r'^#{1,6}\s+', text, re.MULTILINE))
+    
+    # Value score (0-100)
+    value_score = min(100, (
+        (min(actionable_ratio * 100, 30)) +                    # Up to 30 for actionability
+        (min(examples_count * 5, 20)) +                         # Up to 20 for examples
+        (min(lists_count * 2, 20)) +                            # Up to 20 for structure
+        (min(headers_count * 2, 20)) +                          # Up to 20 for organization
+        (10 if words_per_page >= 200 else 5)                    # Density bonus
+    ))
+    
+    return ContentDensity(
+        total_words=total_words,
+        total_pages=total_pages,
+        words_per_page=words_per_page,
+        actionable_items=actionable_items,
+        actionable_ratio=round(actionable_ratio, 4),
+        examples_count=examples_count,
+        lists_count=lists_count,
+        headers_count=headers_count,
+        value_score=round(value_score, 1)
+    )
+
+
+def format_content_density(density: ContentDensity) -> str:
+    """Format content density for display."""
+    lines = [
+        "",
+        "╔" + "═" * 60 + "╗",
+        "║" + " " * 18 + "CONTENT DENSITY" + " " * 27 + "║",
+        "╠" + "═" * 60 + "╣",
+        f"║ 📊 Value Score: {density.value_score}/100".ljust(61) + "║",
+        "╠" + "─" * 60 + "╣",
+        f"║ 📝 Total Words: {density.total_words:,}".ljust(61) + "║",
+        f"║ 📄 Estimated Pages: {density.total_pages}".ljust(61) + "║",
+        f"║ 📐 Words/Page: {density.words_per_page}".ljust(61) + "║",
+        "╠" + "─" * 60 + "╣",
+        f"║ ✅ Actionable Items: {density.actionable_items}".ljust(61) + "║",
+        f"║ 📚 Examples: {density.examples_count}".ljust(61) + "║",
+        f"║ 📋 Lists: {density.lists_count}".ljust(61) + "║",
+        f"║ 🏷️  Headers: {density.headers_count}".ljust(61) + "║",
+        "╚" + "═" * 60 + "╝",
+    ]
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# COMPLETENESS CHECK
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class CompletenessCheck:
+    """Product completeness analysis."""
+    has_pdf: bool
+    has_cover: bool
+    has_landing_page: bool
+    has_emails: bool
+    has_social: bool
+    has_seo: bool
+    has_utm: bool
+    has_audio: bool
+    has_video: bool
+    completeness_score: int
+    missing_items: List[str]
+
+
+def check_product_completeness(product_dir: Path) -> CompletenessCheck:
+    """Check completeness of a product."""
+    output_dir = product_dir / "output"
+    
+    # Check each component
+    has_pdf = any(output_dir.glob("*.pdf"))
+    
+    images_dir = output_dir / "images"
+    has_cover = images_dir.exists() and any(images_dir.glob("*"))
+    
+    has_landing_page = (output_dir / "landing_page_content.json").exists()
+    has_emails = any(output_dir.glob("emails_*.md"))
+    has_social = (output_dir / "social_promo.md").exists()
+    has_seo = (output_dir / "seo_metadata.json").exists()
+    has_utm = (output_dir / "utm_links.json").exists()
+    
+    audio_dir = output_dir / "audio"
+    has_audio = audio_dir.exists() and any(audio_dir.glob("*.mp3"))
+    
+    video_dir = output_dir / "video"
+    has_video = video_dir.exists() and any(video_dir.glob("*.mp4"))
+    
+    # Calculate score
+    items = [
+        (has_pdf, "PDF", 20),
+        (has_cover, "Cover Image", 10),
+        (has_landing_page, "Landing Page", 15),
+        (has_emails, "Email Sequences", 15),
+        (has_social, "Social Posts", 10),
+        (has_seo, "SEO Metadata", 10),
+        (has_utm, "UTM Links", 5),
+        (has_audio, "Audio", 10),
+        (has_video, "Video", 5),
+    ]
+    
+    completeness_score = sum(weight for has, _, weight in items if has)
+    missing_items = [name for has, name, _ in items if not has]
+    
+    return CompletenessCheck(
+        has_pdf=has_pdf,
+        has_cover=has_cover,
+        has_landing_page=has_landing_page,
+        has_emails=has_emails,
+        has_social=has_social,
+        has_seo=has_seo,
+        has_utm=has_utm,
+        has_audio=has_audio,
+        has_video=has_video,
+        completeness_score=completeness_score,
+        missing_items=missing_items
+    )
+
+
+def format_completeness_check(check: CompletenessCheck) -> str:
+    """Format completeness check for display."""
+    lines = [
+        "",
+        "╔" + "═" * 60 + "╗",
+        "║" + " " * 17 + "COMPLETENESS CHECK" + " " * 25 + "║",
+        "╠" + "═" * 60 + "╣",
+        f"║ 📊 Completeness Score: {check.completeness_score}/100".ljust(61) + "║",
+        "╠" + "─" * 60 + "╣",
+    ]
+    
+    items = [
+        ("PDF", check.has_pdf),
+        ("Cover Image", check.has_cover),
+        ("Landing Page", check.has_landing_page),
+        ("Email Sequences", check.has_emails),
+        ("Social Posts", check.has_social),
+        ("SEO Metadata", check.has_seo),
+        ("UTM Links", check.has_utm),
+        ("Audio", check.has_audio),
+        ("Video", check.has_video),
+    ]
+    
+    for name, has in items:
+        icon = "✅" if has else "⏳"
+        lines.append(f"║ {icon} {name}".ljust(61) + "║")
+    
+    if check.missing_items:
+        lines.append("╠" + "═" * 60 + "╣")
+        lines.append(f"║ ⚠️  Missing: {', '.join(check.missing_items[:3])}".ljust(61) + "║")
+    
+    lines.append("╚" + "═" * 60 + "╝")
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# OVERALL QUALITY SCORE
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class QualityReport:
+    """Comprehensive quality analysis report."""
+    product_name: str
+    readability: ReadabilityScore
+    density: ContentDensity
+    completeness: CompletenessCheck
+    overall_score: float
+    grade: str
+    passed: bool
+    recommendations: List[str]
+
+
+def generate_quality_report(product_dir: Path) -> Optional[QualityReport]:
+    """Generate comprehensive quality report for a product."""
+    output_dir = product_dir / "output"
+    
+    if not output_dir.exists():
+        return None
+    
+    # Load product name
+    config_file = product_dir / "product.json"
+    if config_file.exists():
+        import json
+        config = json.loads(config_file.read_text())
+        product_name = config.get("title", product_dir.name)
+    else:
+        product_name = product_dir.name
+    
+    # Collect all text content
+    text_content = ""
+    for md_file in output_dir.glob("*.md"):
+        text_content += md_file.read_text() + "\n\n"
+    
+    # If no markdown, try to get from prompts/responses
+    if len(text_content.strip()) < 100:
+        prompts_dir = output_dir / "prompts"
+        if prompts_dir.exists():
+            for prompt_file in prompts_dir.glob("*.md"):
+                text_content += prompt_file.read_text() + "\n\n"
+    
+    # Analyze readability
+    readability = calculate_readability(text_content) if text_content else ReadabilityScore(
+        flesch_reading_ease=0, flesch_kincaid_grade=0, avg_sentence_length=0,
+        avg_word_length=0, complex_word_ratio=0, reading_level="N/A", target_audience="N/A"
+    )
+    
+    # Analyze density
+    density = analyze_content_density(text_content) if text_content else ContentDensity(
+        total_words=0, total_pages=0, words_per_page=0, actionable_items=0,
+        actionable_ratio=0, examples_count=0, lists_count=0, headers_count=0, value_score=0
+    )
+    
+    # Check completeness
+    completeness = check_product_completeness(product_dir)
+    
+    # Calculate overall score (weighted average)
+    readability_score = min(100, max(0, readability.flesch_reading_ease))
+    overall_score = (
+        readability_score * 0.25 +
+        density.value_score * 0.35 +
+        completeness.completeness_score * 0.40
+    )
+    
+    # Determine grade
+    if overall_score >= 90:
+        grade = "A+"
+    elif overall_score >= 80:
+        grade = "A"
+    elif overall_score >= 70:
+        grade = "B"
+    elif overall_score >= 60:
+        grade = "C"
+    elif overall_score >= 50:
+        grade = "D"
+    else:
+        grade = "F"
+    
+    passed = overall_score >= QUALITY_THRESHOLDS["overall_score_min"]
+    
+    # Generate recommendations
+    recommendations = []
+    if readability.flesch_reading_ease < 40:
+        recommendations.append("Simplify language - current text is too difficult")
+    elif readability.flesch_reading_ease > 80:
+        recommendations.append("Add more depth - content may be too simple")
+    
+    if density.actionable_items < 10:
+        recommendations.append("Add more actionable steps and exercises")
+    
+    if density.examples_count < 5:
+        recommendations.append("Include more examples and case studies")
+    
+    if not completeness.has_pdf:
+        recommendations.append("Generate PDF - essential for product delivery")
+    
+    if not completeness.has_cover:
+        recommendations.append("Add cover image - increases perceived value")
+    
+    if not completeness.has_audio:
+        recommendations.append("Consider audio version - increases accessibility")
+    
+    return QualityReport(
+        product_name=product_name,
+        readability=readability,
+        density=density,
+        completeness=completeness,
+        overall_score=round(overall_score, 1),
+        grade=grade,
+        passed=passed,
+        recommendations=recommendations[:5]  # Top 5
+    )
+
+
+def format_quality_report(report: QualityReport) -> str:
+    """Format comprehensive quality report for display."""
+    passed_icon = "✅ PASSED" if report.passed else "❌ FAILED"
+    
+    lines = [
+        "",
+        "╔" + "═" * 70 + "╗",
+        "║" + " " * 23 + "QUALITY INTELLIGENCE REPORT" + " " * 20 + "║",
+        "╠" + "═" * 70 + "╣",
+        f"║ 📦 Product: {report.product_name[:50]}".ljust(71) + "║",
+        "╠" + "═" * 70 + "╣",
+    ]
+    
+    # Overall score with visual
+    filled = int(report.overall_score // 5)
+    empty = 20 - filled
+    bar = "█" * filled + "░" * empty
+    lines.append(f"║ OVERALL SCORE: [{bar}] {report.overall_score:.0f}%".ljust(71) + "║")
+    lines.append(f"║ GRADE: {report.grade}  |  STATUS: {passed_icon}".ljust(71) + "║")
+    lines.append("╠" + "═" * 70 + "╣")
+    
+    # Component scores
+    lines.append("║ COMPONENT SCORES:".ljust(71) + "║")
+    lines.append(f"║   📖 Readability: {report.readability.flesch_reading_ease}/100 ({report.readability.reading_level})".ljust(71) + "║")
+    lines.append(f"║   💎 Content Value: {report.density.value_score}/100".ljust(71) + "║")
+    lines.append(f"║   ✅ Completeness: {report.completeness.completeness_score}/100".ljust(71) + "║")
+    lines.append("╠" + "─" * 70 + "╣")
+    
+    # Stats
+    lines.append("║ CONTENT STATS:".ljust(71) + "║")
+    lines.append(f"║   📝 Words: {report.density.total_words:,}  |  📄 Pages: ~{report.density.total_pages}".ljust(71) + "║")
+    lines.append(f"║   ✅ Actionable Items: {report.density.actionable_items}  |  📚 Examples: {report.density.examples_count}".ljust(71) + "║")
+    
+    # Recommendations
+    if report.recommendations:
+        lines.append("╠" + "═" * 70 + "╣")
+        lines.append("║ 💡 RECOMMENDATIONS:".ljust(71) + "║")
+        for rec in report.recommendations[:4]:
+            lines.append(f"║   • {rec[:60]}".ljust(71) + "║")
+    
+    lines.append("╚" + "═" * 70 + "╝")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# QUALITY GATE (DEPLOY BLOCKER)
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class QualityGate:
+    """Quality gate result for deploy blocking."""
+    passed: bool
+    score: float
+    threshold: float
+    blocking_issues: List[str]
+    warnings: List[str]
+
+
+def check_quality_gate(product_dir: Path, threshold: float = None) -> QualityGate:
+    """Check if product passes quality gate for deployment."""
+    if threshold is None:
+        threshold = QUALITY_THRESHOLDS["overall_score_min"]
+    
+    report = generate_quality_report(product_dir)
+    
+    if not report:
+        return QualityGate(
+            passed=False,
+            score=0,
+            threshold=threshold,
+            blocking_issues=["No product found"],
+            warnings=[]
+        )
+    
+    blocking_issues = []
+    warnings = []
+    
+    # Check overall score
+    if report.overall_score < threshold:
+        blocking_issues.append(f"Overall score {report.overall_score:.0f}% below threshold {threshold:.0f}%")
+    
+    # Check critical components
+    if not report.completeness.has_pdf:
+        blocking_issues.append("No PDF generated - cannot deploy")
+    
+    # Warnings (non-blocking)
+    if report.readability.flesch_reading_ease < 30:
+        warnings.append("Very difficult to read - may limit audience")
+    
+    if report.density.total_words < QUALITY_THRESHOLDS["word_count_min"]:
+        warnings.append(f"Content under {QUALITY_THRESHOLDS['word_count_min']:,} words")
+    
+    if not report.completeness.has_cover:
+        warnings.append("No cover image - consider adding one")
+    
+    if report.density.actionable_items < 5:
+        warnings.append("Low actionable content - add exercises")
+    
+    return QualityGate(
+        passed=len(blocking_issues) == 0,
+        score=report.overall_score,
+        threshold=threshold,
+        blocking_issues=blocking_issues,
+        warnings=warnings
+    )
+
+
+def format_quality_gate(gate: QualityGate) -> str:
+    """Format quality gate result for display."""
+    icon = "✅ GATE PASSED" if gate.passed else "❌ GATE FAILED"
+    
+    lines = [
+        "",
+        "╔" + "═" * 60 + "╗",
+        "║" + " " * 20 + "QUALITY GATE" + " " * 28 + "║",
+        "╠" + "═" * 60 + "╣",
+        f"║ {icon}".ljust(61) + "║",
+        f"║ Score: {gate.score:.0f}%  |  Threshold: {gate.threshold:.0f}%".ljust(61) + "║",
+        "╠" + "─" * 60 + "╣",
+    ]
+    
+    if gate.blocking_issues:
+        lines.append("║ 🚫 BLOCKING ISSUES:".ljust(61) + "║")
+        for issue in gate.blocking_issues:
+            lines.append(f"║   ❌ {issue[:50]}".ljust(61) + "║")
+    
+    if gate.warnings:
+        lines.append("║ ⚠️  WARNINGS:".ljust(61) + "║")
+        for warning in gate.warnings[:3]:
+            lines.append(f"║   ⚠️ {warning[:50]}".ljust(61) + "║")
+    
+    if gate.passed and not gate.warnings:
+        lines.append("║ 🎉 All checks passed! Ready for deployment.".ljust(61) + "║")
+    
+    lines.append("╚" + "═" * 60 + "╝")
+    
+    return "\n".join(lines)
