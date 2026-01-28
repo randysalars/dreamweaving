@@ -2014,6 +2014,94 @@ def render_video_command(args):
 
 
 # ═══════════════════════════════════════════════════════════════════════════
+# STEP 3C ENHANCEMENTS: STYLES, QUALITY, THUMBNAILS
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def list_video_styles_command(args):
+    """List available video style presets."""
+    from .core.antigravity import list_video_styles
+    logger.info(list_video_styles())
+    return 0
+
+
+def video_quality_command(args):
+    """Analyze video quality for a product."""
+    from pathlib import Path
+    from .core.antigravity import analyze_product_videos, format_video_quality_report
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    reports, message = analyze_product_videos(product_dir)
+    logger.info(f"\n📊 {message}")
+    logger.info(format_video_quality_report(reports))
+    
+    return 0
+
+
+def list_thumbnail_sizes_command(args):
+    """List thumbnail size presets."""
+    from .core.antigravity import list_thumbnail_sizes
+    logger.info(list_thumbnail_sizes())
+    return 0
+
+
+def generate_thumbnail_command(args):
+    """Generate thumbnail from video."""
+    from pathlib import Path
+    from .core.antigravity import generate_video_thumbnail, generate_all_thumbnails
+    
+    if args.product_dir:
+        # Batch mode: generate thumbnails for all videos
+        product_dir = Path(args.product_dir)
+        
+        if not product_dir.exists():
+            logger.error(f"❌ Product directory not found: {product_dir}")
+            return 1
+        
+        success_count, results = generate_all_thumbnails(product_dir, args.size)
+        
+        logger.info(f"\n🖼️  Generated {success_count} thumbnails:")
+        for result in results:
+            logger.info(f"   {result}")
+        
+        return 0 if success_count > 0 else 1
+    
+    elif args.video:
+        # Single video mode
+        video_path = Path(args.video)
+        
+        if not video_path.exists():
+            logger.error(f"❌ Video not found: {video_path}")
+            return 1
+        
+        output_path = Path(args.output) if args.output else None
+        
+        success, message = generate_video_thumbnail(
+            video_path,
+            output_path,
+            text_overlay=args.text,
+            size_preset=args.size,
+            timestamp=args.timestamp
+        )
+        
+        if success:
+            logger.info(f"✅ {message}")
+            return 0
+        else:
+            logger.error(f"❌ {message}")
+            return 1
+    
+    else:
+        logger.error("❌ Specify --video or --product-dir")
+        return 1
+
+
+# ═══════════════════════════════════════════════════════════════════════════
 # STEP 3D: LANDING PAGE & STORE INTEGRATION COMMANDS
 # ═══════════════════════════════════════════════════════════════════════════
 
@@ -2550,6 +2638,39 @@ Examples:
     render_video_parser.add_argument('--template', default='ChapterVideo',
                                      help='Remotion composition to use (default: ChapterVideo)')
     render_video_parser.set_defaults(func=render_video_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STEP 3C ENHANCEMENTS SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # List-video-styles command
+    list_styles_parser = subparsers.add_parser('list-video-styles',
+                                                help='List video style presets')
+    list_styles_parser.set_defaults(func=list_video_styles_command)
+    
+    # Video-quality command
+    video_quality_parser = subparsers.add_parser('video-quality',
+                                                  help='Analyze video quality for a product')
+    video_quality_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    video_quality_parser.set_defaults(func=video_quality_command)
+    
+    # List-thumbnail-sizes command
+    list_thumb_parser = subparsers.add_parser('list-thumbnail-sizes',
+                                               help='List thumbnail size presets')
+    list_thumb_parser.set_defaults(func=list_thumbnail_sizes_command)
+    
+    # Generate-thumbnail command
+    gen_thumb_parser = subparsers.add_parser('generate-thumbnail',
+                                              help='Generate thumbnails from videos')
+    gen_thumb_parser.add_argument('--product-dir', '-d', help='Product directory (batch mode)')
+    gen_thumb_parser.add_argument('--video', '-v', help='Single video file')
+    gen_thumb_parser.add_argument('--output', '-o', help='Output path (single video mode)')
+    gen_thumb_parser.add_argument('--size', '-s', default='youtube',
+                                  choices=['youtube', 'social', 'square', 'story', 'twitter'],
+                                  help='Size preset (default: youtube)')
+    gen_thumb_parser.add_argument('--text', '-t', help='Text overlay on thumbnail')
+    gen_thumb_parser.add_argument('--timestamp', type=float, help='Timestamp to capture (seconds)')
+    gen_thumb_parser.set_defaults(func=generate_thumbnail_command)
     
     # ═══════════════════════════════════════════════════════════════════════════
     # STEP 3D: LANDING PAGE & STORE INTEGRATION SUBPARSERS

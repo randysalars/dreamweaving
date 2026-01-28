@@ -2559,6 +2559,522 @@ def render_video_with_remotion(
 
 
 # ═══════════════════════════════════════════════════════════════════════
+# STEP 3C ENHANCEMENTS: STYLES, QUALITY ANALYZER, THUMBNAIL GENERATOR
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# Video style presets for consistent branding
+VIDEO_STYLES = {
+    "dreamweaving": {
+        "name": "Dreamweaving",
+        "description": "Mystical purple/teal with starfield background",
+        "primary_color": "#9b59b6",
+        "secondary_color": "#1abc9c",
+        "background": "starfield",
+        "font_family": "Playfair Display",
+        "animation_style": "smooth_fades",
+        "overlay_opacity": 0.3,
+    },
+    "professional": {
+        "name": "Professional",
+        "description": "Clean navy/white with minimal design",
+        "primary_color": "#2c3e50",
+        "secondary_color": "#ecf0f1",
+        "background": "gradient",
+        "font_family": "Inter",
+        "animation_style": "minimal",
+        "overlay_opacity": 0.1,
+    },
+    "energetic": {
+        "name": "Energetic",
+        "description": "Vibrant colors with dynamic motion",
+        "primary_color": "#e74c3c",
+        "secondary_color": "#f1c40f",
+        "background": "particles",
+        "font_family": "Poppins",
+        "animation_style": "dynamic",
+        "overlay_opacity": 0.2,
+    },
+    "calming": {
+        "name": "Calming",
+        "description": "Soft pastels with nature imagery",
+        "primary_color": "#74b9ff",
+        "secondary_color": "#a29bfe",
+        "background": "nature",
+        "font_family": "Lora",
+        "animation_style": "slow_dissolves",
+        "overlay_opacity": 0.4,
+    },
+    "dark_mode": {
+        "name": "Dark Mode",
+        "description": "Dark background with accent glow",
+        "primary_color": "#00d2d3",
+        "secondary_color": "#ff6b6b",
+        "background": "dark_minimal",
+        "font_family": "Space Grotesk",
+        "animation_style": "subtle_glow",
+        "overlay_opacity": 0.15,
+    },
+    "educational": {
+        "name": "Educational",
+        "description": "Clean whiteboard style for teaching",
+        "primary_color": "#3498db",
+        "secondary_color": "#2ecc71",
+        "background": "whiteboard",
+        "font_family": "Open Sans",
+        "animation_style": "draw_in",
+        "overlay_opacity": 0.05,
+    },
+}
+
+
+def list_video_styles() -> str:
+    """List all available video style presets."""
+    lines = [
+        "",
+        "╔" + "═" * 78 + "╗",
+        "║" + " " * 26 + "VIDEO STYLE PRESETS" + " " * 33 + "║",
+        "╠" + "═" * 78 + "╣",
+        "║ {:15} │ {:12} │ {:45} ║".format(
+            "Style", "Font", "Description"),
+        "╠" + "─" * 78 + "╣",
+    ]
+    
+    for key, style in VIDEO_STYLES.items():
+        lines.append("║ {:15} │ {:12} │ {:45} ║".format(
+            key,
+            style['font_family'][:12],
+            style['description'][:45]
+        ))
+    
+    lines.append("╠" + "═" * 78 + "╣")
+    lines.append("║ Usage: product-builder render-video --style dreamweaving --all" + " " * 14 + "║")
+    lines.append("╚" + "═" * 78 + "╝")
+    
+    return "\n".join(lines)
+
+
+def get_video_style(style_name: str) -> Optional[dict]:
+    """Get a video style by name."""
+    return VIDEO_STYLES.get(style_name)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# VIDEO QUALITY ANALYZER
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class VideoQualityReport:
+    """Quality analysis results for a video file."""
+    file_path: Path
+    duration_seconds: float
+    width: int
+    height: int
+    fps: float
+    bitrate_kbps: int
+    file_size_mb: float
+    has_audio: bool
+    audio_bitrate: int
+    codec: str
+    issues: List[str]
+    quality_score: int  # 0-100
+
+
+def analyze_video_file(video_path: Path, expected_duration: float = 0) -> Optional[VideoQualityReport]:
+    """Analyze a video file for quality issues."""
+    import subprocess
+    import json
+    
+    if not video_path.exists():
+        return None
+    
+    try:
+        # Use ffprobe to get video info
+        result = subprocess.run([
+            "ffprobe", "-v", "quiet", "-print_format", "json",
+            "-show_format", "-show_streams", str(video_path)
+        ], capture_output=True, text=True, timeout=30)
+        
+        if result.returncode != 0:
+            return None
+        
+        info = json.loads(result.stdout)
+        
+        # Find video and audio streams
+        video_stream = None
+        audio_stream = None
+        for stream in info.get("streams", []):
+            if stream.get("codec_type") == "video" and not video_stream:
+                video_stream = stream
+            elif stream.get("codec_type") == "audio" and not audio_stream:
+                audio_stream = stream
+        
+        if not video_stream:
+            return None
+        
+        # Extract info
+        duration = float(info.get("format", {}).get("duration", 0))
+        width = int(video_stream.get("width", 0))
+        height = int(video_stream.get("height", 0))
+        
+        # Calculate FPS
+        fps_str = video_stream.get("r_frame_rate", "30/1")
+        if "/" in fps_str:
+            num, denom = fps_str.split("/")
+            fps = float(num) / float(denom) if float(denom) > 0 else 30
+        else:
+            fps = float(fps_str)
+        
+        # Bitrate
+        bitrate = int(info.get("format", {}).get("bit_rate", 0)) // 1000
+        
+        # File size
+        file_size_mb = video_path.stat().st_size / (1024 * 1024)
+        
+        # Audio info
+        has_audio = audio_stream is not None
+        audio_bitrate = int(audio_stream.get("bit_rate", 0)) // 1000 if audio_stream else 0
+        
+        # Codec
+        codec = video_stream.get("codec_name", "unknown")
+        
+        # Detect quality issues
+        issues = []
+        quality_score = 100
+        
+        # Resolution check
+        if width < 1280 or height < 720:
+            issues.append(f"Low resolution: {width}x{height} (recommend 1920x1080)")
+            quality_score -= 15
+        
+        # Aspect ratio check
+        aspect = width / height if height > 0 else 0
+        if abs(aspect - 16/9) > 0.1 and abs(aspect - 9/16) > 0.1:
+            issues.append(f"Non-standard aspect ratio: {aspect:.2f}")
+            quality_score -= 5
+        
+        # FPS check
+        if fps < 24:
+            issues.append(f"Low frame rate: {fps:.1f} fps (recommend 30+)")
+            quality_score -= 10
+        
+        # Bitrate check
+        if bitrate > 0 and bitrate < 2000:
+            issues.append(f"Low bitrate: {bitrate} kbps (may look blocky)")
+            quality_score -= 10
+        
+        # Audio check
+        if not has_audio:
+            issues.append("No audio track detected")
+            quality_score -= 20
+        elif audio_bitrate < 96:
+            issues.append(f"Low audio bitrate: {audio_bitrate} kbps")
+            quality_score -= 5
+        
+        # Duration check
+        if expected_duration > 0:
+            duration_diff = abs(duration - expected_duration) / expected_duration
+            if duration_diff > 0.2:
+                issues.append(f"Duration differs from expected by {duration_diff*100:.0f}%")
+                quality_score -= 10
+        
+        # File size check (suspicious if too small or too large)
+        minutes = duration / 60
+        if minutes > 0:
+            mb_per_minute = file_size_mb / minutes
+            if mb_per_minute < 5:
+                issues.append(f"Very low file size: {mb_per_minute:.1f} MB/min")
+                quality_score -= 10
+        
+        return VideoQualityReport(
+            file_path=video_path,
+            duration_seconds=duration,
+            width=width,
+            height=height,
+            fps=fps,
+            bitrate_kbps=bitrate,
+            file_size_mb=file_size_mb,
+            has_audio=has_audio,
+            audio_bitrate=audio_bitrate,
+            codec=codec,
+            issues=issues,
+            quality_score=max(0, quality_score)
+        )
+        
+    except Exception as e:
+        return None
+
+
+def analyze_product_videos(product_dir: Path) -> Tuple[List[VideoQualityReport], str]:
+    """Analyze all video files in a product directory."""
+    video_dir = product_dir / "output" / "video"
+    
+    if not video_dir.exists():
+        return [], "No video directory found"
+    
+    reports = []
+    
+    for video_file in sorted(video_dir.glob("*.mp4")):
+        report = analyze_video_file(video_file)
+        if report:
+            reports.append(report)
+    
+    # Also check for webm files
+    for video_file in sorted(video_dir.glob("*.webm")):
+        report = analyze_video_file(video_file)
+        if report:
+            reports.append(report)
+    
+    return reports, f"Analyzed {len(reports)} video files"
+
+
+def format_video_quality_report(reports: List[VideoQualityReport]) -> str:
+    """Format video quality reports for display."""
+    if not reports:
+        return "\n📭 No video files found to analyze.\n"
+    
+    lines = [
+        "",
+        "╔" + "═" * 88 + "╗",
+        "║" + " " * 30 + "VIDEO QUALITY REPORT" + " " * 38 + "║",
+        "╠" + "═" * 88 + "╣",
+        "║ {:25} │ {:10} │ {:10} │ {:8} │ {:6} │ {:15} ║".format(
+            "File", "Resolution", "Duration", "FPS", "Score", "Status"),
+        "╠" + "─" * 88 + "╣",
+    ]
+    
+    total_duration = 0
+    total_score = 0
+    total_size = 0
+    
+    for r in reports:
+        duration_str = f"{int(r.duration_seconds // 60)}:{int(r.duration_seconds % 60):02d}"
+        resolution = f"{r.width}x{r.height}"
+        fps_str = f"{r.fps:.0f}"
+        score_str = f"{r.quality_score}%"
+        
+        if r.quality_score >= 90:
+            status = "✅ Excellent"
+        elif r.quality_score >= 70:
+            status = "✅ Good"
+        elif r.quality_score >= 50:
+            status = "⚠️  Fair"
+        else:
+            status = "❌ Issues"
+        
+        total_duration += r.duration_seconds
+        total_score += r.quality_score
+        total_size += r.file_size_mb
+        
+        lines.append("║ {:25} │ {:10} │ {:10} │ {:8} │ {:6} │ {:15} ║".format(
+            r.file_path.name[:25],
+            resolution,
+            duration_str,
+            fps_str,
+            score_str,
+            status
+        ))
+        
+        # Show issues if any
+        for issue in r.issues[:2]:
+            lines.append(f"║   ⚠️  {issue[:80]:<80} ║")
+    
+    # Summary
+    avg_score = total_score / len(reports) if reports else 0
+    total_mins = int(total_duration // 60)
+    total_secs = int(total_duration % 60)
+    
+    lines.append("╠" + "═" * 88 + "╣")
+    lines.append(f"║ Total: {total_mins}:{total_secs:02d} │ {total_size:.1f} MB │ Avg Quality: {avg_score:.0f}%" + " " * 43 + "║")
+    
+    if avg_score >= 80:
+        lines.append("║ 🎬 Video quality is good! Ready for publishing." + " " * 38 + "║")
+    else:
+        lines.append("║ ⚠️  Some quality issues detected. Review before publishing." + " " * 26 + "║")
+    
+    lines.append("╚" + "═" * 88 + "╝")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# THUMBNAIL GENERATOR
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# Thumbnail size presets
+THUMBNAIL_SIZES = {
+    "youtube": {"width": 1280, "height": 720, "name": "YouTube"},
+    "social": {"width": 1200, "height": 630, "name": "Social Media"},
+    "square": {"width": 1080, "height": 1080, "name": "Square (IG)"},
+    "story": {"width": 1080, "height": 1920, "name": "Vertical Story"},
+    "twitter": {"width": 1600, "height": 900, "name": "Twitter"},
+}
+
+
+def list_thumbnail_sizes() -> str:
+    """List thumbnail size presets."""
+    lines = [
+        "",
+        "╔" + "═" * 60 + "╗",
+        "║" + " " * 18 + "THUMBNAIL SIZES" + " " * 27 + "║",
+        "╠" + "═" * 60 + "╣",
+        "║ {:12} │ {:15} │ {:25} ║".format("Preset", "Dimensions", "Use Case"),
+        "╠" + "─" * 60 + "╣",
+    ]
+    
+    for key, size in THUMBNAIL_SIZES.items():
+        dims = f"{size['width']}x{size['height']}"
+        lines.append("║ {:12} │ {:15} │ {:25} ║".format(
+            key, dims, size['name']
+        ))
+    
+    lines.append("╚" + "═" * 60 + "╝")
+    return "\n".join(lines)
+
+
+def extract_frame_from_video(
+    video_path: Path,
+    output_path: Path,
+    timestamp: float = 5.0,
+    size_preset: str = "youtube"
+) -> Tuple[bool, str]:
+    """Extract a frame from video as thumbnail."""
+    import subprocess
+    
+    if not video_path.exists():
+        return False, f"Video not found: {video_path}"
+    
+    size = THUMBNAIL_SIZES.get(size_preset, THUMBNAIL_SIZES["youtube"])
+    
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    cmd = [
+        "ffmpeg", "-y",
+        "-ss", str(timestamp),
+        "-i", str(video_path),
+        "-vframes", "1",
+        "-vf", f"scale={size['width']}:{size['height']}:force_original_aspect_ratio=decrease,pad={size['width']}:{size['height']}:(ow-iw)/2:(oh-ih)/2",
+        str(output_path)
+    ]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, timeout=30)
+        
+        if result.returncode == 0 and output_path.exists():
+            return True, f"Created thumbnail: {output_path}"
+        else:
+            return False, f"Failed: {result.stderr.decode()[:100]}"
+    except Exception as e:
+        return False, f"Error: {str(e)}"
+
+
+def generate_video_thumbnail(
+    video_path: Path,
+    output_path: Path = None,
+    text_overlay: str = None,
+    size_preset: str = "youtube",
+    timestamp: float = None
+) -> Tuple[bool, str]:
+    """
+    Generate a thumbnail from video with optional text overlay.
+    
+    If timestamp is None, tries multiple points to find a good frame.
+    """
+    import subprocess
+    
+    if not video_path.exists():
+        return False, f"Video not found: {video_path}"
+    
+    if output_path is None:
+        output_path = video_path.parent / f"{video_path.stem}_thumb.jpg"
+    
+    size = THUMBNAIL_SIZES.get(size_preset, THUMBNAIL_SIZES["youtube"])
+    
+    # If no timestamp specified, try to find a good frame
+    if timestamp is None:
+        # Get video duration first
+        probe_cmd = [
+            "ffprobe", "-v", "quiet", "-show_entries", "format=duration",
+            "-of", "default=noprint_wrappers=1:nokey=1", str(video_path)
+        ]
+        try:
+            result = subprocess.run(probe_cmd, capture_output=True, text=True, timeout=10)
+            duration = float(result.stdout.strip()) if result.stdout.strip() else 30
+            # Pick a point about 20% into the video
+            timestamp = min(duration * 0.2, 10)
+        except:
+            timestamp = 5.0
+    
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Build filter chain
+    filters = [
+        f"scale={size['width']}:{size['height']}:force_original_aspect_ratio=decrease",
+        f"pad={size['width']}:{size['height']}:(ow-iw)/2:(oh-ih)/2"
+    ]
+    
+    # Add text overlay if provided
+    if text_overlay:
+        # Escape special characters for ffmpeg
+        safe_text = text_overlay.replace("'", "'\\''").replace(":", "\\:")
+        filters.append(
+            f"drawtext=text='{safe_text}':fontsize=64:fontcolor=white:"
+            f"x=(w-text_w)/2:y=h-100:shadowcolor=black:shadowx=2:shadowy=2"
+        )
+    
+    cmd = [
+        "ffmpeg", "-y",
+        "-ss", str(timestamp),
+        "-i", str(video_path),
+        "-vframes", "1",
+        "-vf", ",".join(filters),
+        "-q:v", "2",  # High quality JPEG
+        str(output_path)
+    ]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, timeout=30)
+        
+        if result.returncode == 0 and output_path.exists():
+            size_kb = output_path.stat().st_size // 1024
+            return True, f"Created: {output_path} ({size_kb}KB)"
+        else:
+            return False, f"Failed: {result.stderr.decode()[:100]}"
+    except Exception as e:
+        return False, f"Error: {str(e)}"
+
+
+def generate_all_thumbnails(
+    product_dir: Path,
+    size_preset: str = "youtube"
+) -> Tuple[int, List[str]]:
+    """Generate thumbnails for all videos in a product."""
+    video_dir = product_dir / "output" / "video"
+    thumb_dir = product_dir / "output" / "thumbnails"
+    
+    if not video_dir.exists():
+        return 0, ["No video directory found"]
+    
+    thumb_dir.mkdir(parents=True, exist_ok=True)
+    
+    results = []
+    success_count = 0
+    
+    for video_file in sorted(video_dir.glob("*.mp4")):
+        output_path = thumb_dir / f"{video_file.stem}.jpg"
+        success, message = generate_video_thumbnail(
+            video_file, output_path, size_preset=size_preset
+        )
+        results.append(f"{video_file.name}: {message}")
+        if success:
+            success_count += 1
+    
+    return success_count, results
+
+
+# ═══════════════════════════════════════════════════════════════════════
 # STEP 3D: LANDING PAGE & STORE INTEGRATION HELPERS
 # ═══════════════════════════════════════════════════════════════════════
 
