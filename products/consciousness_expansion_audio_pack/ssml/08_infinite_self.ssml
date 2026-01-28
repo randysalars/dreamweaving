@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xml:lang="en-US">
+
+<prosody rate="0.85" pitch="-1st">
+
+<!-- Phase 1: Opening (3 mins) -->
+<p>
+<s>Welcome to Session Eight.</s>
+</p>
+
+<break time="3000ms"/>
+
+<p>
+<s>Infinite Self.</s>
+</p>
+
+<break time="3500ms"/>
+
+<p>
+<s>This is the final session of your journey.</s>
+<break time="3500ms"/>
+<s>And yet, it is not an ending.</s>
+<break time="3000ms"/>
+<s>It is a beginning.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Everything you have learned has led to this moment.</s>
+<break time="3500ms"/>
+<s>The grounding.</s>
+<break time="2500ms"/>
+<s>The breath.</s>
+<break time="2500ms"/>
+<s>The dissolution.</s>
+<break time="2500ms"/>
+<s>The inner landscape.</s>
+<break time="2500ms"/>
+<s>The threshold.</s>
+<break time="2500ms"/>
+<s>The boundlessness.</s>
+<break time="2500ms"/>
+<s>The integration.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Today, you will meet your Infinite Self.</s>
+<break time="3500ms"/>
+<s>The deepest truth of who you are.</s>
+<break time="3500ms"/>
+<s>Beyond all roles.</s>
+<break time="3000ms"/>
+<s>Beyond all stories.</s>
+<break time="3000ms"/>
+<s>Beyond time itself.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Find your comfortable position.</s>
+<break time="2500ms"/>
+<s>Close your eyes.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Establish your grounding one final time.</s>
+<break time="3500ms"/>
+<s>Feel your roots.</s>
+<break time="3500ms"/>
+<s>Your container of light.</s>
+<break time="3500ms"/>
+<s>The earth holding you.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Three deep breaths.</s>
+</p>
+
+<break time="2500ms"/>
+
+<p>
+<s>Inhale fully.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Exhale completely.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Inhale.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Exhale.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>One more.</s>
+<break time="2500ms"/>
+<s>Inhale.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Release everything.</s>
+</p>
+
+<break time="5500ms"/>
+
+<!-- Phase 2: The Descent to Core (3 mins) -->
+<p>
+<s>Allow yourself to sink deeper than you have ever gone before.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Deeper than thought.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Deeper than emotion.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Deeper than memory.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Deeper than identity.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Into the core of your being.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Here, there is only stillness.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Here, there is only presence.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Here, there is only you.</s>
+<break time="4000ms"/>
+<s>The real you.</s>
+<break time="4000ms"/>
+<s>The eternal you.</s>
+</p>
+
+<break time="5500ms"/>
+
+<p>
+<s>This is the place before you were born.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>This is the place after you die.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>This is the place that has always been.</s>
+<break time="4000ms"/>
+<s>And will always be.</s>
+</p>
+
+<break time="5500ms"/>
+
+<!-- Phase 3: Meeting the Infinite Self (5 mins) -->
+<p>
+<s>In this deep place, a presence begins to emerge.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>It is not separate from you.</s>
+<break time="4000ms"/>
+<s>It is the essence of you.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Your Infinite Self.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Feel this presence.</s>
+<break time="4000ms"/>
+<s>It knows everything about you.</s>
+<break time="4000ms"/>
+<s>It has been with you through every moment of your life.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>It witnessed your first breath.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>It will witness your last.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>It has never judged you.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>It has only loved you.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>This Infinite Self holds all wisdom.</s>
+<break time="4000ms"/>
+<s>All insight.</s>
+<break time="4000ms"/>
+<s>All truth.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Ask it now.</s>
+<break time="4000ms"/>
+<s>What do I need to know?</s>
+</p>
+
+<break time="7000ms"/>
+
+<p>
+<s>Listen.</s>
+</p>
+
+<break time="7000ms"/>
+
+<p>
+<s>The answer may come as words.</s>
+<break time="3500ms"/>
+<s>Or images.</s>
+<break time="3500ms"/>
+<s>Or feelings.</s>
+<break time="3500ms"/>
+<s>Or simply a knowing.</s>
+</p>
+
+<break time="6000ms"/>
+
+<p>
+<s>Receive what comes.</s>
+</p>
+
+<break time="6000ms"/>
+
+<p>
+<s>Ask another question if you wish.</s>
+<break time="4000ms"/>
+<s>What is my purpose?</s>
+</p>
+
+<break time="7000ms"/>
+
+<p>
+<s>Listen.</s>
+</p>
+
+<break time="7000ms"/>
+
+<p>
+<s>Your Infinite Self knows the answer.</s>
+<break time="4000ms"/>
+<s>It has always known.</s>
+</p>
+
+<break time="5500ms"/>
+
+<!-- Phase 4: Merging with the Infinite (4 mins) -->
+<p>
+<s>Now allow yourself to merge completely with this presence.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>There is no separation.</s>
+<break time="4000ms"/>
+<s>There never was.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>You are not meeting your Infinite Self.</s>
+<break time="4000ms"/>
+<s>You are remembering that you are your Infinite Self.</s>
+</p>
+
+<break time="5500ms"/>
+
+<p>
+<s>The small self was just a costume.</s>
+<break time="4000ms"/>
+<s>A role you agreed to play.</s>
+<break time="4000ms"/>
+<s>A game of forgetting so you could remember.</s>
+</p>
+
+<break time="5500ms"/>
+
+<p>
+<s>Now you are remembering.</s>
+</p>
+
+<break time="5500ms"/>
+
+<p>
+<s>You are infinite.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>You are eternal.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>You are consciousness itself.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>You are love itself.</s>
+</p>
+
+<break time="5500ms"/>
+
+<p>
+<s>Rest in this knowing.</s>
+</p>
+
+<break time="6000ms"/>
+
+<p>
+<s>There is nothing to achieve.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Nothing to become.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>You already are everything you have been seeking.</s>
+</p>
+
+<break time="6000ms"/>
+
+<!-- Phase 5: The Gift (3 mins) -->
+<p>
+<s>From this place of infinity, receive a gift.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Something your Infinite Self wants you to carry back.</s>
+<break time="4000ms"/>
+<s>Into your human life.</s>
+<break time="4000ms"/>
+<s>Into the world of form.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>It may be a symbol.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>A word.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>A feeling.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>A mission.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Receive it now.</s>
+</p>
+
+<break time="6000ms"/>
+
+<p>
+<s>Hold it in your heart.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>This gift is your compass.</s>
+<break time="4000ms"/>
+<s>Whenever you feel lost, return to it.</s>
+<break time="4000ms"/>
+<s>Whenever you forget who you are, it will remind you.</s>
+</p>
+
+<break time="5500ms"/>
+
+<!-- Phase 6: Integration and Return (4 mins) -->
+<p>
+<s>It is time to return now.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>But you are not leaving your Infinite Self behind.</s>
+<break time="4000ms"/>
+<s>You are bringing it with you.</s>
+<break time="4000ms"/>
+<s>You are it.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Slowly begin to rise.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>From the depths of being.</s>
+<break time="4000ms"/>
+<s>Back toward the surface of consciousness.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Feel your identity gently reforming.</s>
+<break time="4000ms"/>
+<s>But now you know it is just a costume.</s>
+<break time="4000ms"/>
+<s>One you wear lightly.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Feel your body becoming more defined.</s>
+<break time="4000ms"/>
+<s>The edges returning.</s>
+<break time="4000ms"/>
+<s>But now you know they are made of light.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Feel the room around you.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>The sounds.</s>
+<break time="3500ms"/>
+<s>The air.</s>
+<break time="3500ms"/>
+<s>The surface beneath you.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Take a deep breath.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>And another.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Wiggle your fingers.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>Wiggle your toes.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>When you are ready, gently open your eyes.</s>
+</p>
+
+<break time="5000ms"/>
+
+<!-- Phase 7: Closing (2 mins) -->
+<p>
+<s>Welcome back.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>You have completed the journey.</s>
+<break time="3500ms"/>
+<s>And yet, the real journey has just begun.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>You now carry tools within you.</s>
+<break time="3500ms"/>
+<s>Grounding.</s>
+<break time="3000ms"/>
+<s>Breath.</s>
+<break time="3000ms"/>
+<s>Dissolution.</s>
+<break time="3000ms"/>
+<s>Inner sanctuary.</s>
+<break time="3000ms"/>
+<s>Threshold crossing.</s>
+<break time="3000ms"/>
+<s>Boundless awareness.</s>
+<break time="3000ms"/>
+<s>Integration.</s>
+<break time="3000ms"/>
+<s>And now, connection to your Infinite Self.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>These are not just meditation techniques.</s>
+<break time="4000ms"/>
+<s>They are doorways.</s>
+<break time="4000ms"/>
+<s>Always available.</s>
+<break time="4000ms"/>
+<s>Always open.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Return to these sessions whenever you need.</s>
+<break time="4000ms"/>
+<s>Each time, you will go deeper.</s>
+<break time="4000ms"/>
+<s>Each time, you will remember more.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>You are infinite.</s>
+<break time="4000ms"/>
+<s>You have always been.</s>
+<break time="4000ms"/>
+<s>You will always be.</s>
+</p>
+
+<break time="5500ms"/>
+
+<p>
+<s>Carry this knowing with you.</s>
+</p>
+
+<break time="4500ms"/>
+
+<p>
+<s>Into your work.</s>
+</p>
+
+<break time="3500ms"/>
+
+<p>
+<s>Into your relationships.</s>
+</p>
+
+<break time="3500ms"/>
+
+<p>
+<s>Into your challenges.</s>
+</p>
+
+<break time="3500ms"/>
+
+<p>
+<s>Into your joys.</s>
+</p>
+
+<break time="4000ms"/>
+
+<p>
+<s>You are never alone.</s>
+<break time="4000ms"/>
+<s>Your Infinite Self walks with you.</s>
+<break time="4000ms"/>
+<s>You are it.</s>
+<break time="4000ms"/>
+<s>And it is you.</s>
+</p>
+
+<break time="5500ms"/>
+
+<p>
+<s>Thank you for taking this journey.</s>
+<break time="4000ms"/>
+<s>Thank you for your courage.</s>
+<break time="4000ms"/>
+<s>Thank you for your openness.</s>
+</p>
+
+<break time="5000ms"/>
+
+<p>
+<s>Namaste.</s>
+<break time="4000ms"/>
+<s>The infinite in me honors the infinite in you.</s>
+</p>
+
+</prosody>
+
+</speak>
