@@ -1722,8 +1722,100 @@ def generate_audio_command(args):
 
 
 # ═══════════════════════════════════════════════════════════════════════════
+# STEP 3B ENHANCEMENTS: TEMPLATES, VOICES, QUALITY
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def list_audio_templates_command(args):
+    """List available audio generation templates/presets."""
+    from .core.antigravity import list_audio_templates
+    logger.info(list_audio_templates())
+    return 0
+
+
+def list_voices_command(args):
+    """List available TTS voices."""
+    from .core.antigravity import list_voices
+    logger.info(list_voices())
+    return 0
+
+
+def audio_quality_command(args):
+    """Analyze audio quality for a product."""
+    from pathlib import Path
+    from .core.antigravity import analyze_product_audio, format_audio_quality_report
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    reports, message = analyze_product_audio(product_dir)
+    logger.info(f"\n📊 {message}")
+    logger.info(format_audio_quality_report(reports))
+    
+    return 0
+
+
+def preview_voice_command(args):
+    """Preview a voice with sample text."""
+    from pathlib import Path
+    import subprocess
+    import tempfile
+    from .core.antigravity import get_voice_by_name, generate_audio_from_script
+    
+    voice = get_voice_by_name(args.voice)
+    
+    if not voice:
+        logger.error(f"❌ Voice not found: {args.voice}")
+        logger.info("   Run: product-builder list-voices")
+        return 1
+    
+    text = args.text or "Welcome to your audio experience. This is a preview of the selected voice."
+    
+    # Create temp file for preview
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False) as f:
+        f.write(text)
+        script_path = Path(f.name)
+    
+    output_path = Path(tempfile.mktemp(suffix='.wav'))
+    
+    logger.info(f"\n🎤 Previewing voice: {voice.name} ({voice.engine})")
+    logger.info(f"   Text: \"{text[:50]}...\"")
+    
+    if voice.engine == "xtts":
+        from .core.antigravity import generate_audio_xtts
+        success, message = generate_audio_xtts(script_path, output_path, voice.path)
+    else:
+        success, message = generate_audio_from_script(
+            script_path, output_path,
+            voice=voice.name,
+            engine=voice.engine
+        )
+    
+    if success:
+        logger.info(f"   ✅ Preview saved: {output_path}")
+        
+        # Try to play audio if available
+        import shutil
+        if shutil.which("mpv"):
+            subprocess.run(["mpv", "--no-video", str(output_path)], capture_output=True)
+        elif shutil.which("aplay"):
+            subprocess.run(["aplay", str(output_path)], capture_output=True)
+    else:
+        logger.error(f"   ❌ {message}")
+    
+    # Cleanup
+    script_path.unlink(missing_ok=True)
+    
+    return 0 if success else 1
+
+
+# ═══════════════════════════════════════════════════════════════════════════
 # STEP 3C: VIDEO GENERATION COMMANDS
 # ═══════════════════════════════════════════════════════════════════════════
+
 
 
 def list_video_templates_command(args):
@@ -2385,6 +2477,33 @@ Examples:
     gen_audio_parser.add_argument('--speed', type=float, default=0.88,
                                   help='Speed adjustment for XTTS (0.88 = slightly slower, good for meditations)')
     gen_audio_parser.set_defaults(func=generate_audio_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STEP 3B ENHANCEMENTS SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # List-audio-templates command
+    list_templates_parser = subparsers.add_parser('list-audio-templates',
+                                                   help='List audio generation templates/presets')
+    list_templates_parser.set_defaults(func=list_audio_templates_command)
+    
+    # List-voices command
+    list_voices_parser = subparsers.add_parser('list-voices',
+                                                help='List available TTS voices')
+    list_voices_parser.set_defaults(func=list_voices_command)
+    
+    # Audio-quality command
+    audio_quality_parser = subparsers.add_parser('audio-quality',
+                                                  help='Analyze audio quality for a product')
+    audio_quality_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    audio_quality_parser.set_defaults(func=audio_quality_command)
+    
+    # Preview-voice command
+    preview_voice_parser = subparsers.add_parser('preview-voice',
+                                                  help='Preview a voice with sample text')
+    preview_voice_parser.add_argument('--voice', '-v', required=True, help='Voice name to preview')
+    preview_voice_parser.add_argument('--text', '-t', help='Text to speak (default: sample text)')
+    preview_voice_parser.set_defaults(func=preview_voice_command)
     
     # ═══════════════════════════════════════════════════════════════════════════
     # STEP 3C: VIDEO GENERATION SUBPARSERS

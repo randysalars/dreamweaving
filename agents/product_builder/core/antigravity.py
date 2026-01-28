@@ -1667,8 +1667,468 @@ def get_xtts_status() -> dict:
 
 
 # ═══════════════════════════════════════════════════════════════════════
+# STEP 3B ENHANCEMENTS: AUDIO TEMPLATES, VOICE LIBRARY, QUALITY ANALYZER
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# Audio generation presets for different content types
+AUDIO_TEMPLATES = {
+    "meditation": {
+        "name": "Meditation",
+        "description": "Slow, calming pace for guided meditations",
+        "speed": 0.85,
+        "pause_multiplier": 1.5,  # 50% longer pauses
+        "word_rate": 120,  # words per minute
+        "background_music": "ambient",
+        "fade_in": 5,
+        "fade_out": 10,
+    },
+    "narration": {
+        "name": "Narration",
+        "description": "Clear storytelling pace for audiobooks",
+        "speed": 0.95,
+        "pause_multiplier": 1.0,
+        "word_rate": 150,
+        "background_music": None,
+        "fade_in": 2,
+        "fade_out": 3,
+    },
+    "teaching": {
+        "name": "Teaching",
+        "description": "Natural pace for educational content",
+        "speed": 1.0,
+        "pause_multiplier": 0.8,  # Shorter pauses
+        "word_rate": 160,
+        "background_music": None,
+        "fade_in": 1,
+        "fade_out": 2,
+    },
+    "hypnosis": {
+        "name": "Hypnosis",
+        "description": "Very slow, rhythmic pace for inductions",
+        "speed": 0.80,
+        "pause_multiplier": 2.0,  # Double pauses
+        "word_rate": 100,
+        "background_music": "theta_binaural",
+        "fade_in": 10,
+        "fade_out": 15,
+    },
+    "podcast": {
+        "name": "Podcast",
+        "description": "Conversational pace for dynamic content",
+        "speed": 1.05,
+        "pause_multiplier": 0.7,  # Minimal pauses
+        "word_rate": 170,
+        "background_music": None,
+        "fade_in": 0,
+        "fade_out": 1,
+    },
+    "affirmation": {
+        "name": "Affirmation",
+        "description": "Clear, empowering pace for affirmations",
+        "speed": 0.90,
+        "pause_multiplier": 1.3,
+        "word_rate": 130,
+        "background_music": "432hz",
+        "fade_in": 3,
+        "fade_out": 5,
+    },
+}
+
+
+def list_audio_templates() -> str:
+    """List all available audio templates/presets."""
+    lines = [
+        "",
+        "╔" + "═" * 72 + "╗",
+        "║" + " " * 22 + "AUDIO TEMPLATES / PRESETS" + " " * 25 + "║",
+        "╠" + "═" * 72 + "╣",
+        "║ {:12} │ {:10} │ {:8} │ {:35} ║".format(
+            "Template", "Speed", "WPM", "Description"),
+        "╠" + "─" * 72 + "╣",
+    ]
+    
+    for key, template in AUDIO_TEMPLATES.items():
+        lines.append("║ {:12} │ {:10} │ {:8} │ {:35} ║".format(
+            key,
+            f"{template['speed']:.2f}x",
+            str(template['word_rate']),
+            template['description'][:35]
+        ))
+    
+    lines.append("╠" + "═" * 72 + "╣")
+    lines.append("║ Usage: product-builder generate-audio --preset meditation --all" + " " * 7 + "║")
+    lines.append("╚" + "═" * 72 + "╝")
+    
+    return "\n".join(lines)
+
+
+def get_audio_template(template_name: str) -> Optional[dict]:
+    """Get an audio template by name."""
+    return AUDIO_TEMPLATES.get(template_name)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# VOICE LIBRARY MANAGER
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class VoiceInfo:
+    """Information about an available voice."""
+    name: str
+    engine: str  # xtts, piper, espeak
+    path: Optional[Path]
+    language: str
+    gender: str
+    description: str
+
+
+def discover_voices() -> List[VoiceInfo]:
+    """Discover all available voices across engines."""
+    import shutil
+    
+    voices = []
+    
+    # 1. Discover XTTS voice samples
+    voice_dirs = [
+        Path.home() / "Projects/dreamweaving/assets/voices",
+        Path.home() / "Projects/dreamweaving/voice_samples",
+    ]
+    
+    for voice_dir in voice_dirs:
+        if voice_dir.exists():
+            for voice_file in voice_dir.glob("*.wav"):
+                voices.append(VoiceInfo(
+                    name=voice_file.stem,
+                    engine="xtts",
+                    path=voice_file,
+                    language="en",
+                    gender="unknown",
+                    description=f"Custom XTTS voice: {voice_file.name}"
+                ))
+            for voice_file in voice_dir.glob("*.mp3"):
+                voices.append(VoiceInfo(
+                    name=voice_file.stem,
+                    engine="xtts",
+                    path=voice_file,
+                    language="en",
+                    gender="unknown",
+                    description=f"Custom XTTS voice: {voice_file.name}"
+                ))
+    
+    # 2. Discover Piper voices
+    piper_models_dir = Path.home() / ".local/share/piper/voices"
+    if piper_models_dir.exists():
+        for model_file in piper_models_dir.glob("*.onnx"):
+            name = model_file.stem
+            parts = name.split("-")
+            lang = parts[0] if parts else "en"
+            voices.append(VoiceInfo(
+                name=name,
+                engine="piper",
+                path=model_file,
+                language=lang,
+                gender="unknown",
+                description=f"Piper model: {name}"
+            ))
+    
+    # 3. Check for espeak-ng
+    if shutil.which("espeak-ng"):
+        # Add common espeak voices
+        for voice_id, desc in [
+            ("en-us", "American English"),
+            ("en-gb", "British English"),
+            ("en-au", "Australian English"),
+        ]:
+            voices.append(VoiceInfo(
+                name=voice_id,
+                engine="espeak",
+                path=None,
+                language="en",
+                gender="neutral",
+                description=f"espeak-ng: {desc}"
+            ))
+    
+    return voices
+
+
+def list_voices() -> str:
+    """List all available voices in a formatted table."""
+    voices = discover_voices()
+    
+    if not voices:
+        return "\n📭 No voices found. Install Piper, espeak-ng, or add XTTS voice samples.\n"
+    
+    lines = [
+        "",
+        "╔" + "═" * 78 + "╗",
+        "║" + " " * 28 + "VOICE LIBRARY" + " " * 37 + "║",
+        "╠" + "═" * 78 + "╣",
+        "║ {:20} │ {:8} │ {:6} │ {:35} ║".format(
+            "Voice Name", "Engine", "Lang", "Description"),
+        "╠" + "─" * 78 + "╣",
+    ]
+    
+    # Group by engine
+    by_engine = {}
+    for v in voices:
+        by_engine.setdefault(v.engine, []).append(v)
+    
+    for engine in ["xtts", "piper", "espeak"]:
+        if engine in by_engine:
+            lines.append(f"║ {'─' * 76} ║")
+            lines.append(f"║ {engine.upper()} VOICES:{'':68} ║")
+            for v in by_engine[engine]:
+                lines.append("║ {:20} │ {:8} │ {:6} │ {:35} ║".format(
+                    v.name[:20],
+                    v.engine,
+                    v.language,
+                    v.description[:35]
+                ))
+    
+    lines.append("╠" + "═" * 78 + "╣")
+    lines.append(f"║ Total: {len(voices)} voices available" + " " * 55 + "║")
+    lines.append("╚" + "═" * 78 + "╝")
+    
+    return "\n".join(lines)
+
+
+def get_voice_by_name(name: str) -> Optional[VoiceInfo]:
+    """Find a voice by name."""
+    voices = discover_voices()
+    for v in voices:
+        if v.name.lower() == name.lower():
+            return v
+    return None
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# AUDIO QUALITY ANALYZER
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class AudioQualityReport:
+    """Quality analysis results for an audio file."""
+    file_path: Path
+    duration_seconds: float
+    expected_duration: float  # Based on word count
+    sample_rate: int
+    channels: int
+    bit_depth: int
+    peak_level: float  # 0.0 to 1.0
+    rms_level: float  # Average loudness
+    silence_ratio: float  # Proportion of silence
+    issues: List[str]
+    quality_score: int  # 0-100
+
+
+def analyze_audio_file(audio_path: Path, expected_words: int = 0) -> Optional[AudioQualityReport]:
+    """Analyze an audio file for quality issues."""
+    import subprocess
+    import json
+    
+    if not audio_path.exists():
+        return None
+    
+    try:
+        # Use ffprobe to get audio info
+        result = subprocess.run([
+            "ffprobe", "-v", "quiet", "-print_format", "json",
+            "-show_format", "-show_streams", str(audio_path)
+        ], capture_output=True, text=True, timeout=30)
+        
+        if result.returncode != 0:
+            return None
+        
+        info = json.loads(result.stdout)
+        audio_stream = None
+        for stream in info.get("streams", []):
+            if stream.get("codec_type") == "audio":
+                audio_stream = stream
+                break
+        
+        if not audio_stream:
+            return None
+        
+        duration = float(info.get("format", {}).get("duration", 0))
+        sample_rate = int(audio_stream.get("sample_rate", 44100))
+        channels = int(audio_stream.get("channels", 2))
+        
+        # Expected duration based on word count (150 wpm default)
+        expected_duration = (expected_words / 150) * 60 if expected_words > 0 else duration
+        
+        # Analyze audio levels with ffmpeg
+        level_result = subprocess.run([
+            "ffmpeg", "-i", str(audio_path), "-af", 
+            "volumedetect", "-f", "null", "-"
+        ], capture_output=True, text=True, timeout=60)
+        
+        # Parse volume levels from stderr
+        peak_level = 0.5
+        rms_level = 0.3
+        for line in level_result.stderr.split("\n"):
+            if "max_volume" in line:
+                try:
+                    val = float(line.split(":")[1].strip().replace(" dB", ""))
+                    peak_level = min(1.0, 10 ** (val / 20))
+                except:
+                    pass
+            elif "mean_volume" in line:
+                try:
+                    val = float(line.split(":")[1].strip().replace(" dB", ""))
+                    rms_level = min(1.0, 10 ** (val / 20))
+                except:
+                    pass
+        
+        # Detect quality issues
+        issues = []
+        quality_score = 100
+        
+        # Duration check
+        duration_diff = abs(duration - expected_duration) / max(expected_duration, 1)
+        if duration_diff > 0.3:  # More than 30% off
+            issues.append(f"Duration differs from expected by {duration_diff*100:.0f}%")
+            quality_score -= 15
+        
+        # Clipping check
+        if peak_level > 0.98:
+            issues.append("Audio may be clipping (peak > 98%)")
+            quality_score -= 20
+        
+        # Too quiet
+        if rms_level < 0.1:
+            issues.append("Audio may be too quiet (RMS < 10%)")
+            quality_score -= 10
+        
+        # Sample rate check
+        if sample_rate < 22050:
+            issues.append(f"Low sample rate: {sample_rate}Hz")
+            quality_score -= 10
+        
+        # Estimate silence ratio (rough approximation)
+        silence_ratio = max(0, 1 - (rms_level * 5))  # Very rough estimate
+        
+        return AudioQualityReport(
+            file_path=audio_path,
+            duration_seconds=duration,
+            expected_duration=expected_duration,
+            sample_rate=sample_rate,
+            channels=channels,
+            bit_depth=16,  # Assume 16-bit
+            peak_level=peak_level,
+            rms_level=rms_level,
+            silence_ratio=silence_ratio,
+            issues=issues,
+            quality_score=max(0, quality_score)
+        )
+        
+    except Exception as e:
+        return None
+
+
+def analyze_product_audio(product_dir: Path) -> Tuple[List[AudioQualityReport], str]:
+    """Analyze all audio files in a product directory."""
+    audio_dir = product_dir / "output" / "audio"
+    responses_dir = product_dir / "output" / "responses"
+    
+    if not audio_dir.exists():
+        return [], "No audio directory found"
+    
+    reports = []
+    
+    for audio_file in sorted(audio_dir.glob("*.mp3")):
+        # Try to find matching response for word count
+        slug = audio_file.stem
+        response_file = responses_dir / f"{slug}.response.md"
+        word_count = 0
+        
+        if response_file.exists():
+            word_count = len(response_file.read_text().split())
+        
+        report = analyze_audio_file(audio_file, word_count)
+        if report:
+            reports.append(report)
+    
+    # Also check WAV files
+    for audio_file in sorted(audio_dir.glob("*.wav")):
+        report = analyze_audio_file(audio_file, 0)
+        if report:
+            reports.append(report)
+    
+    return reports, f"Analyzed {len(reports)} audio files"
+
+
+def format_audio_quality_report(reports: List[AudioQualityReport]) -> str:
+    """Format audio quality reports for display."""
+    if not reports:
+        return "\n📭 No audio files found to analyze.\n"
+    
+    lines = [
+        "",
+        "╔" + "═" * 78 + "╗",
+        "║" + " " * 24 + "AUDIO QUALITY REPORT" + " " * 34 + "║",
+        "╠" + "═" * 78 + "╣",
+        "║ {:25} │ {:8} │ {:6} │ {:6} │ {:20} ║".format(
+            "File", "Duration", "Peak", "Score", "Status"),
+        "╠" + "─" * 78 + "╣",
+    ]
+    
+    total_duration = 0
+    total_score = 0
+    
+    for r in reports:
+        duration_str = f"{int(r.duration_seconds // 60)}:{int(r.duration_seconds % 60):02d}"
+        peak_str = f"{r.peak_level * 100:.0f}%"
+        score_str = f"{r.quality_score}%"
+        
+        if r.quality_score >= 90:
+            status = "✅ Excellent"
+        elif r.quality_score >= 70:
+            status = "✅ Good"
+        elif r.quality_score >= 50:
+            status = "⚠️  Fair"
+        else:
+            status = "❌ Issues"
+        
+        total_duration += r.duration_seconds
+        total_score += r.quality_score
+        
+        lines.append("║ {:25} │ {:8} │ {:6} │ {:6} │ {:20} ║".format(
+            r.file_path.name[:25],
+            duration_str,
+            peak_str,
+            score_str,
+            status
+        ))
+        
+        # Show issues if any
+        for issue in r.issues[:2]:  # Max 2 issues per file
+            lines.append(f"║   ⚠️  {issue[:70]:<70} ║")
+    
+    # Summary
+    avg_score = total_score / len(reports) if reports else 0
+    total_mins = int(total_duration // 60)
+    total_secs = int(total_duration % 60)
+    
+    lines.append("╠" + "═" * 78 + "╣")
+    lines.append(f"║ Total Duration: {total_mins}:{total_secs:02d} │ Average Quality: {avg_score:.0f}%" + " " * 32 + "║")
+    
+    if avg_score >= 80:
+        lines.append("║ 🎵 Audio quality is good! Ready for publishing." + " " * 28 + "║")
+    else:
+        lines.append("║ ⚠️  Some quality issues detected. Review before publishing." + " " * 16 + "║")
+    
+    lines.append("╚" + "═" * 78 + "╝")
+    
+    return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
 # STEP 3C: VIDEO GENERATION HELPERS
 # ═══════════════════════════════════════════════════════════════════════
+
 
 
 @dataclass
