@@ -1120,6 +1120,88 @@ def init_batch_command(args):
     return 0
 
 
+def doctor_command(args):
+    """Run health checks and diagnose environment issues."""
+    from .core.setup import run_doctor
+    
+    logger.info("🔍 Running health checks...")
+    report = run_doctor()
+    logger.info(report.format())
+    
+    if report.failures > 0:
+        logger.info("\n💡 Run the fix commands above to resolve issues.")
+        return 1
+    elif report.warnings > 0:
+        logger.info("\n💡 Warnings are optional but recommended to fix.")
+        return 0
+    else:
+        logger.info("\n✨ Everything looks great! You're ready to create products.")
+        return 0
+
+
+def init_command(args):
+    """Initialize a new product project with scaffolding."""
+    from pathlib import Path
+    from .core.setup import init_project
+    
+    output_dir = Path(args.output) if args.output else None
+    
+    success, project_path = init_project(
+        name=args.name,
+        template=getattr(args, 'template', None),
+        output_dir=output_dir
+    )
+    
+    if success:
+        logger.info(f"✅ Created project: {project_path}")
+        logger.info("")
+        logger.info("📁 Project structure:")
+        logger.info(f"   {project_path}/")
+        logger.info(f"   ├── project.json")
+        logger.info(f"   ├── README.md")
+        logger.info(f"   ├── assets/")
+        logger.info(f"   └── output/")
+        logger.info(f"       ├── prompts/")
+        logger.info(f"       ├── responses/")
+        logger.info(f"       ├── visuals/")
+        logger.info(f"       └── bonuses/")
+        logger.info("")
+        logger.info("📋 Next steps:")
+        logger.info(f"   1. cd {project_path}")
+        logger.info(f"   2. product-builder create --topic \"your topic\" --title \"{args.name}\" --generate-prompts-only")
+        logger.info(f"   3. Read prompts in output/prompts/")
+        logger.info(f"   4. Write responses to output/responses/")
+        logger.info(f"   5. product-builder compile --product-dir . --title \"{args.name}\"")
+        return 0
+    else:
+        logger.error(f"❌ Project already exists: {project_path}")
+        logger.info("   Use --output to specify a different location")
+        return 1
+
+
+def env_command(args):
+    """Generate environment template file."""
+    from pathlib import Path
+    from .core.setup import generate_env_template
+    
+    output_path = Path(args.output)
+    
+    if output_path.exists() and not args.force:
+        logger.error(f"❌ File already exists: {output_path}")
+        logger.info("   Use --force to overwrite")
+        return 1
+    
+    generate_env_template(output_path)
+    logger.info(f"✅ Created environment template: {output_path}")
+    logger.info("")
+    logger.info("📋 Next steps:")
+    logger.info(f"   1. cp {output_path} .env")
+    logger.info(f"   2. Fill in your API keys and paths")
+    logger.info(f"   3. source .env (or add to your shell profile)")
+    
+    return 0
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -1282,6 +1364,24 @@ Examples:
                                     help='Output file path (default: products.yaml)')
     init_batch_parser.add_argument('--force', '-f', action='store_true', help='Overwrite existing file')
     init_batch_parser.set_defaults(func=init_batch_command)
+    
+    # Doctor command - run health checks
+    doctor_parser = subparsers.add_parser('doctor', help='Check environment health and diagnose issues')
+    doctor_parser.set_defaults(func=doctor_command)
+    
+    # Init command - initialize new project
+    init_parser = subparsers.add_parser('init', help='Initialize a new product project')
+    init_parser.add_argument('name', help='Product name')
+    init_parser.add_argument('--template', '-t', help='Product template to use')
+    init_parser.add_argument('--output', '-o', help='Output directory (default: ./products/<slug>)')
+    init_parser.set_defaults(func=init_command)
+    
+    # Env command - generate environment template
+    env_parser = subparsers.add_parser('env', help='Generate environment variables template')
+    env_parser.add_argument('--output', '-o', default='.env.template', 
+                            help='Output file path (default: .env.template)')
+    env_parser.add_argument('--force', '-f', action='store_true', help='Overwrite existing file')
+    env_parser.set_defaults(func=env_command)
     
     # Parse and execute
     args = parser.parse_args()
