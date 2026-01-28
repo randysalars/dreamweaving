@@ -695,6 +695,264 @@ def marketing_command(args):
     return 0
 
 
+def status_command(args):
+    """Show the status of a product in the pipeline."""
+    from pathlib import Path
+    from .core.product_state import get_product_state
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    state = get_product_state(product_dir)
+    
+    if state is None:
+        # No state file, try to detect status from files
+        logger.info(f"📊 Product Status: {product_dir.name}")
+        logger.info("   (No state file found - checking files...)")
+        
+        output_dir = product_dir / "output"
+        prompts_dir = output_dir / "prompts"
+        responses_dir = output_dir / "responses"
+        
+        if prompts_dir.exists():
+            prompt_count = len(list(prompts_dir.glob("*.prompt.md")))
+            logger.info(f"   📝 Prompts: {prompt_count} files")
+        
+        if responses_dir.exists():
+            response_count = len(list(responses_dir.glob("*.response.md")))
+            logger.info(f"   ✍️ Responses: {response_count} files")
+        
+        pdf_files = list(output_dir.glob("*.pdf")) if output_dir.exists() else []
+        if pdf_files:
+            logger.info(f"   📄 PDFs: {len(pdf_files)} files")
+        
+        zip_files = list(output_dir.glob("*.zip")) if output_dir.exists() else []
+        if zip_files:
+            logger.info(f"   📦 ZIPs: {len(zip_files)} files")
+        
+        email_files = list(output_dir.glob("emails_*.md")) if output_dir.exists() else []
+        if email_files:
+            logger.info(f"   📧 Emails: {len(email_files)} files")
+        
+        social_file = output_dir / "social_promo.md" if output_dir.exists() else None
+        if social_file and social_file.exists():
+            logger.info(f"   📱 Social: social_promo.md")
+    else:
+        # Have state file, show rich status
+        logger.info(state.get_status_summary())
+    
+    return 0
+
+
+def resume_command(args):
+    """Resume an interrupted pipeline from where it left off."""
+    from pathlib import Path
+    from .core.product_state import get_product_state
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    state = get_product_state(product_dir)
+    
+    if state is None:
+        logger.error("❌ No product state found. Cannot resume.")
+        logger.info("   Use 'product-builder create' to start a new product.")
+        return 1
+    
+    next_phase = state.get_next_phase()
+    
+    if next_phase is None:
+        logger.info("🎉 All phases already complete!")
+        return 0
+    
+    logger.info(f"🔄 Resuming from phase: {next_phase}")
+    logger.info(f"   Product: {state.title}")
+    
+    # Route to appropriate command based on next phase
+    from argparse import Namespace
+    
+    if next_phase == "responses":
+        logger.info("\n⏳ Waiting for Antigravity responses...")
+        logger.info(f"   Write responses to: {product_dir}/output/responses/")
+        logger.info("   Run 'product-builder resume' again when complete.")
+        return 0
+    
+    elif next_phase == "compile":
+        compile_args = Namespace(
+            product_dir=str(product_dir),
+            title=state.title
+        )
+        result = compile_command(compile_args)
+        if result == 0:
+            state.mark_complete("compile", success=True)
+        return result
+    
+    elif next_phase == "deploy":
+        logger.info("   Ready to deploy. Run:")
+        logger.info(f"   product-builder deploy --product-dir {product_dir} --name \"{state.title}\" --slug \"{state.product_slug}\"")
+        return 0
+    
+    elif next_phase in ["emails", "social"]:
+        marketing_args = Namespace(
+            product_dir=str(product_dir),
+            title=state.title,
+            emails=(next_phase == "emails"),
+            social=(next_phase == "social"),
+            register_emails=False,
+            schedule_buffer=False,
+            launch_date=None,
+            dry_run=False
+        )
+        result = marketing_command(marketing_args)
+        if result == 0:
+            state.mark_complete(next_phase, success=True)
+        return result
+    
+    else:
+        logger.info(f"   Next phase '{next_phase}' requires manual action.")
+        return 0
+
+
+def full_pipeline_command(args):
+    """
+    Run the complete product lifecycle in one command.
+    
+    Phases: create → compile → deploy → marketing → schedule
+    """
+    from pathlib import Path
+    from argparse import Namespace
+    from .core.product_state import ProductState
+    
+    logger.info("═" * 60)
+    logger.info("🏭 EPISTEMIC FACTORY: FULL PIPELINE")
+    logger.info("═" * 60)
+    logger.info(f"   Topic: {args.topic}")
+    logger.info(f"   Title: {args.title}")
+    
+    output_dir = Path(args.output) if args.output else Path(f"./products/{args.title.replace(' ', '_').lower()}")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Initialize state
+    state = ProductState.create(
+        output_dir, 
+        title=args.title, 
+        topic=args.topic,
+        price=args.price,
+        launch_date=args.launch_date
+    )
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 1: CREATE
+    # ═══════════════════════════════════════════════════════════════
+    logger.info("\n═══ PHASE 1: CREATE ═══")
+    
+    create_args = Namespace(
+        topic=args.topic,
+        title=args.title,
+        output=str(output_dir),
+        style='dreamweaving',
+        pdf=True,
+        audio=getattr(args, 'audio', False),
+        video=getattr(args, 'video', False),
+        landing_page=True,
+        emails=True,
+        social=True,
+        register_emails=False,
+        schedule_buffer=False,
+        launch_date=None,
+        dry_run=False,
+        generate_prompts_only=getattr(args, 'prompts_only', False),
+        all=False
+    )
+    
+    result = create_command(create_args)
+    if result != 0:
+        state.mark_complete("create", success=False, error="Create failed")
+        return result
+    
+    state.mark_complete("create", success=True, mode="prompts_only" if args.prompts_only else "full")
+    
+    # If prompts only, stop here and wait
+    if getattr(args, 'prompts_only', False):
+        logger.info("\n" + "═" * 60)
+        logger.info("⏳ ANTIGRAVITY-NATIVE MODE")
+        logger.info("═" * 60)
+        logger.info("   Prompts generated. Next steps:")
+        logger.info(f"   1. Read prompts in: {output_dir}/output/prompts/")
+        logger.info("   2. Write responses to: responses/<slug>.response.md")
+        logger.info(f"   3. Run: product-builder resume --product-dir {output_dir}")
+        return 0
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 2: DEPLOY (if requested)
+    # ═══════════════════════════════════════════════════════════════
+    if getattr(args, 'deploy', False):
+        logger.info("\n═══ PHASE 2: DEPLOY ═══")
+        
+        deploy_args = Namespace(
+            product_dir=str(output_dir),
+            name=args.title,
+            slug=args.title.replace(" ", "-").lower(),
+            description=f"Premium digital product: {args.title}",
+            price=args.price,
+            sale_price=getattr(args, 'sale_price', None),
+            salarsu_root=args.salarsu_root,
+            commit=True,
+            push=True
+        )
+        
+        result = deploy_command(deploy_args)
+        if result != 0:
+            state.mark_complete("deploy", success=False, error="Deploy failed")
+            logger.warning("   ⚠️ Deploy failed, continuing with marketing...")
+        else:
+            state.mark_complete("deploy", success=True)
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 3: REGISTER & SCHEDULE (if requested)
+    # ═══════════════════════════════════════════════════════════════
+    if getattr(args, 'schedule', False) and args.launch_date:
+        logger.info("\n═══ PHASE 3: REGISTER & SCHEDULE ═══")
+        
+        marketing_args = Namespace(
+            product_dir=str(output_dir),
+            title=args.title,
+            emails=False,  # Already generated in create
+            social=False,  # Already generated in create
+            register_emails=True,
+            schedule_buffer=True,
+            launch_date=args.launch_date,
+            dry_run=getattr(args, 'dry_run', False),
+            all=False
+        )
+        
+        result = marketing_command(marketing_args)
+        if result == 0:
+            state.mark_complete("register", success=True)
+            state.mark_complete("schedule", success=True)
+    
+    # ═══════════════════════════════════════════════════════════════
+    # COMPLETE!
+    # ═══════════════════════════════════════════════════════════════
+    logger.info("\n" + "═" * 60)
+    logger.info("🎉 FULL PIPELINE COMPLETE!")
+    logger.info("═" * 60)
+    logger.info(f"   📁 Product: {output_dir}")
+    logger.info(f"   📊 Status: product-builder status --product-dir {output_dir}")
+    
+    if getattr(args, 'deploy', False):
+        slug = args.title.replace(" ", "-").lower()
+        logger.info(f"   🌐 Store: https://salars.net/digital/{slug}")
+    
+    return 0
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -801,6 +1059,36 @@ Examples:
     marketing_parser.add_argument('--dry-run', action='store_true', help='Validate without registering/scheduling')
     marketing_parser.add_argument('--all', action='store_true', help='Generate all marketing content')
     marketing_parser.set_defaults(func=marketing_command)
+    
+    # Status command - show pipeline status for a product
+    status_parser = subparsers.add_parser('status', help='Show pipeline status for a product')
+    status_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    status_parser.set_defaults(func=status_command)
+    
+    # Resume command - continue interrupted pipeline
+    resume_parser = subparsers.add_parser('resume', help='Resume an interrupted pipeline')
+    resume_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    resume_parser.set_defaults(func=resume_command)
+    
+    # Full Pipeline command - run everything end-to-end
+    pipeline_parser = subparsers.add_parser('full-pipeline', help='Run complete product lifecycle')
+    pipeline_parser.add_argument('--topic', '-t', required=True, help='Main topic')
+    pipeline_parser.add_argument('--title', '-T', required=True, help='Product title')
+    pipeline_parser.add_argument('--output', '-o', help='Output directory (default: ./products/<slug>)')
+    pipeline_parser.add_argument('--price', type=float, default=47.00, help='Product price (default: 47.00)')
+    pipeline_parser.add_argument('--sale-price', type=float, help='Sale price')
+    pipeline_parser.add_argument('--launch-date', help='Launch date for scheduling (YYYY-MM-DD)')
+    pipeline_parser.add_argument('--salarsu-root', default='/home/rsalars/Projects/salarsu', 
+                                 help='Path to salarsu repo')
+    pipeline_parser.add_argument('--prompts-only', action='store_true', 
+                                 help='Generate prompts only (Antigravity-native mode)')
+    pipeline_parser.add_argument('--deploy', action='store_true', help='Deploy to SalarsNet store')
+    pipeline_parser.add_argument('--schedule', action='store_true', 
+                                 help='Register emails and schedule social posts')
+    pipeline_parser.add_argument('--audio', action='store_true', help='Generate audio narration')
+    pipeline_parser.add_argument('--video', action='store_true', help='Generate video content')
+    pipeline_parser.add_argument('--dry-run', action='store_true', help='Validate without scheduling')
+    pipeline_parser.set_defaults(func=full_pipeline_command)
     
     # Parse and execute
     args = parser.parse_args()
