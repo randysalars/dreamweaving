@@ -1921,6 +1921,191 @@ def render_video_command(args):
     return 0 if success_count == len(to_render) else 1
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# STEP 3D: LANDING PAGE & STORE INTEGRATION COMMANDS
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def list_categories_command(args):
+    """List available digital product categories."""
+    from .core.antigravity import list_store_categories
+    logger.info(list_store_categories())
+    return 0
+
+
+def landing_prompt_command(args):
+    """Generate prompt for landing page content."""
+    from pathlib import Path
+    import json
+    from .core.antigravity import generate_landing_page_prompt
+    
+    product_dir = Path(args.product_dir)
+    config_file = product_dir / "product.json"
+    
+    if not config_file.exists():
+        logger.error(f"❌ product.json not found in {product_dir}")
+        return 1
+    
+    config = json.loads(config_file.read_text())
+    
+    prompt = generate_landing_page_prompt(
+        product_title=config.get("title", product_dir.name),
+        product_description=config.get("description", ""),
+        category=config.get("category", "wealth"),
+        target_price=float(config.get("price", 14.99))
+    )
+    
+    prompts_dir = product_dir / "output" / "prompts"
+    prompts_dir.mkdir(parents=True, exist_ok=True)
+    prompt_file = prompts_dir / "landing_page.prompt.md"
+    prompt_file.write_text(prompt)
+    
+    logger.info(f"\n✅ Generated landing page prompt: {prompt_file}")
+    logger.info(f"\n📋 Step 3d Workflow:")
+    logger.info(f"   1. Read prompt: {prompt_file}")
+    logger.info(f"   2. Write JSON to: output/responses/landing_page.response.md")
+    logger.info(f"   3. Create cover image: output/images/cover.png")
+    logger.info(f"   4. Check status: product-builder store-status -d {product_dir}")
+    logger.info(f"   5. Generate SQL: product-builder generate-sql -d {product_dir}")
+    logger.info(f"   6. Deploy: product-builder deploy-product -d {product_dir}")
+    
+    return 0
+
+
+def image_prompt_command(args):
+    """Generate prompt for product cover image."""
+    from pathlib import Path
+    import json
+    from .core.antigravity import generate_product_image_prompt
+    
+    product_dir = Path(args.product_dir)
+    config_file = product_dir / "product.json"
+    
+    if not config_file.exists():
+        logger.error(f"❌ product.json not found in {product_dir}")
+        return 1
+    
+    config = json.loads(config_file.read_text())
+    
+    prompt = generate_product_image_prompt(
+        product_title=config.get("title", product_dir.name),
+        category=config.get("category", "wealth"),
+        style=args.style
+    )
+    
+    prompts_dir = product_dir / "output" / "prompts"
+    prompts_dir.mkdir(parents=True, exist_ok=True)
+    prompt_file = prompts_dir / "cover_image.prompt.md"
+    prompt_file.write_text(prompt)
+    
+    logger.info(f"\n✅ Generated image prompt: {prompt_file}")
+    logger.info(f"\n💡 Use this prompt with Antigravity's generate_image tool")
+    logger.info(f"   Save result to: {product_dir}/output/images/cover.png")
+    
+    return 0
+
+
+def store_status_command(args):
+    """Show store integration status."""
+    from pathlib import Path
+    from .core.antigravity import get_store_integration_status, format_store_status
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    status = get_store_integration_status(product_dir)
+    logger.info(format_store_status(status))
+    
+    return 0
+
+
+def generate_sql_command(args):
+    """Generate SQL for store integration."""
+    from pathlib import Path
+    from .core.antigravity import create_product_manifest, generate_store_sql
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    success, manifest = create_product_manifest(product_dir)
+    
+    if not success:
+        logger.error(f"❌ Failed to create manifest: {manifest}")
+        return 1
+    
+    sql = generate_store_sql(manifest)
+    
+    output_file = product_dir / "output" / "store_insert.sql"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    output_file.write_text(sql)
+    
+    logger.info(f"\n✅ Generated SQL: {output_file}")
+    logger.info(f"\n📦 Product Manifest:")
+    logger.info(f"   Name: {manifest.name}")
+    logger.info(f"   Slug: {manifest.slug}")
+    logger.info(f"   SKU: {manifest.sku}")
+    logger.info(f"   Price: ${manifest.price:.2f}")
+    logger.info(f"   Category: {manifest.category}")
+    logger.info(f"   Download: {manifest.download_url}")
+    
+    return 0
+
+
+def deploy_product_command(args):
+    """Deploy product to SalarsNet store."""
+    from pathlib import Path
+    from .core.antigravity import (
+        get_store_integration_status,
+        copy_assets_for_deployment,
+        create_product_manifest
+    )
+    
+    product_dir = Path(args.product_dir)
+    salarsu_path = Path(args.salarsu_path) if args.salarsu_path else Path.home() / "Projects/salarsu"
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    if not salarsu_path.exists():
+        logger.error(f"❌ SalarsNet directory not found: {salarsu_path}")
+        return 1
+    
+    # Check status
+    status = get_store_integration_status(product_dir)
+    
+    if not status["ready_for_store"]:
+        logger.error(f"❌ Product not ready for store. Missing: {', '.join(status['missing'])}")
+        return 1
+    
+    # Copy assets
+    success, actions = copy_assets_for_deployment(product_dir, salarsu_path)
+    
+    if not success:
+        logger.error(f"❌ Failed to copy assets: {actions}")
+        return 1
+    
+    logger.info(f"\n✅ Deployed product to SalarsNet!")
+    for action in actions:
+        logger.info(f"   📄 {action}")
+    
+    # Get manifest for final instructions
+    _, manifest = create_product_manifest(product_dir)
+    
+    logger.info(f"\n📋 Next Steps:")
+    logger.info(f"   1. Run SQL: psql -f db/seeds/digital_{manifest.slug}.sql")
+    logger.info(f"   2. Verify: https://www.salars.net/digital/{manifest.slug}")
+    logger.info(f"   3. Deploy: vercel --prod")
+    
+    return 0
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -2246,6 +2431,49 @@ Examples:
     render_video_parser.add_argument('--template', default='ChapterVideo',
                                      help='Remotion composition to use (default: ChapterVideo)')
     render_video_parser.set_defaults(func=render_video_command)
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # STEP 3D: LANDING PAGE & STORE INTEGRATION SUBPARSERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    # List-categories command
+    list_cat_parser = subparsers.add_parser('list-categories', 
+                                             help='List digital product categories')
+    list_cat_parser.set_defaults(func=list_categories_command)
+    
+    # Landing-prompt command
+    landing_prompt_parser = subparsers.add_parser('landing-prompt',
+                                                   help='Generate landing page content prompt')
+    landing_prompt_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    landing_prompt_parser.set_defaults(func=landing_prompt_command)
+    
+    # Image-prompt command
+    image_prompt_parser = subparsers.add_parser('image-prompt',
+                                                 help='Generate cover image prompt')
+    image_prompt_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    image_prompt_parser.add_argument('--style', default='premium_digital',
+                                     choices=['premium_digital', 'minimalist', 'mystical', 'practical', 'vibrant'],
+                                     help='Image style (default: premium_digital)')
+    image_prompt_parser.set_defaults(func=image_prompt_command)
+    
+    # Store-status command
+    store_status_parser = subparsers.add_parser('store-status',
+                                                 help='Show store integration status')
+    store_status_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    store_status_parser.set_defaults(func=store_status_command)
+    
+    # Generate-sql command
+    gen_sql_parser = subparsers.add_parser('generate-sql',
+                                            help='Generate SQL for store integration')
+    gen_sql_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    gen_sql_parser.set_defaults(func=generate_sql_command)
+    
+    # Deploy-product command
+    deploy_parser = subparsers.add_parser('deploy-product',
+                                           help='Deploy product to SalarsNet store')
+    deploy_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    deploy_parser.add_argument('--salarsu-path', help='Path to SalarsNet repo (default: ~/Projects/salarsu)')
+    deploy_parser.set_defaults(func=deploy_product_command)
     
     # Parse and execute
     args = parser.parse_args()

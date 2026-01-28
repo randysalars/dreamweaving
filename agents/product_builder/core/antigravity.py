@@ -2096,3 +2096,461 @@ def render_video_with_remotion(
         return False, "Render timed out after 20 minutes"
     except Exception as e:
         return False, f"Render error: {str(e)}"
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 3D: LANDING PAGE & STORE INTEGRATION HELPERS
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# Digital product categories for SalarsNet store
+DIGITAL_CATEGORIES = {
+    "wealth": {"name": "Wealth Building", "icon": "💰"},
+    "health": {"name": "Holistic Health", "icon": "🌿"},
+    "dreamweavings": {"name": "Dreamweaving", "icon": "🌀"},
+    "consciousness": {"name": "Consciousness", "icon": "🧠"},
+    "ai": {"name": "AI Integration", "icon": "🤖"},
+    "spirituality": {"name": "Spirituality", "icon": "🙏"},
+    "survival": {"name": "Preparedness", "icon": "🏕️"},
+    "poetry": {"name": "Poetry & Writing", "icon": "✍️"},
+    "treasure": {"name": "Treasure Hunting", "icon": "🗺️"},
+    "old-west": {"name": "Old West", "icon": "🤠"},
+    "love": {"name": "Love & Relationships", "icon": "💝"},
+    "happiness": {"name": "Happiness", "icon": "☀️"},
+}
+
+
+@dataclass
+class ProductManifest:
+    """Complete product information for store integration."""
+    name: str
+    slug: str
+    description: str
+    price: float
+    sku: str
+    category: str  # subcategory_slug
+    image_path: str
+    download_url: str
+    download_type: str  # pdf, zip
+    landing_page_content: dict
+    sale_price: Optional[float] = None
+
+
+def generate_product_slug(title: str) -> str:
+    """Generate a URL-safe slug from title."""
+    import re
+    slug = title.lower()
+    slug = re.sub(r'[^a-z0-9\s-]', '', slug)
+    slug = re.sub(r'[\s_]+', '-', slug)
+    slug = re.sub(r'-+', '-', slug)
+    return slug.strip('-')
+
+
+def generate_sku(category: str, sequence: int = 1) -> str:
+    """Generate SKU in DIG-CATEGORY-XXX format."""
+    cat_map = {
+        "wealth": "WEALTH",
+        "health": "HEALTH",
+        "dreamweavings": "DREAMWEAVINGS",
+        "consciousness": "CONSCIOUSNESS",
+        "ai": "AI",
+        "spirituality": "SPIRITUALITY",
+        "survival": "SURVIVAL",
+        "poetry": "POETRY",
+        "treasure": "TREASURE",
+        "old-west": "OLDWEST",
+        "love": "LOVE",
+        "happiness": "HAPPINESS",
+    }
+    cat_code = cat_map.get(category, category.upper()[:10])
+    return f"DIG-{cat_code}-{sequence:03d}"
+
+
+def generate_landing_page_prompt(product_title: str, product_description: str,
+                                  category: str, target_price: float) -> str:
+    """Generate a prompt for creating landing page content."""
+    cat_info = DIGITAL_CATEGORIES.get(category, {"name": category, "icon": "📦"})
+    
+    return f"""# Landing Page Content: {product_title}
+
+## Product: {product_title}
+## Category: {cat_info['name']} {cat_info['icon']}
+## Target Price: ${target_price:.2f}
+
+Create compelling landing page content for this digital product.
+
+**Product Description:**
+{product_description}
+
+---
+
+## Required Output Structure (JSON format):
+
+```json
+{{
+  "headline": "Short, powerful hook (5-8 words)",
+  "subheadline": "2-3 sentence value proposition that expands the headline",
+  "features": [
+    {{
+      "icon": "emoji icon",
+      "title": "Feature Title (3-5 words)",
+      "description": "1-2 sentence benefit-focused description"
+    }}
+    // Include 6 features
+  ],
+  "bonuses": [
+    {{
+      "title": "Bonus Name",
+      "value": "$XX",
+      "description": "What they get and why it's valuable"
+    }}
+    // Include 3 bonuses
+  ],
+  "testimonial": {{
+    "quote": "Detailed, specific testimonial (2-3 sentences)",
+    "author": "First Name L.",
+    "role": "Relatable role/profession"
+  }},
+  "faq": [
+    {{
+      "question": "Common objection or question",
+      "answer": "Clear, concise answer (2-3 sentences)"
+    }}
+    // Include 3-4 FAQs
+  ]
+}}
+```
+
+## Guidelines:
+- **Headline**: Focus on the transformation, not the product
+- **Features**: Lead with benefits, support with deliverables  
+- **Bonuses**: Make them feel substantial ($10-$35 value each)
+- **Testimonial**: Specific results, relatable author
+- **FAQ**: Address objections (time, skill level, applicability)
+
+Save your response to: `output/responses/landing_page.response.md`
+"""
+
+
+def generate_product_image_prompt(product_title: str, category: str,
+                                   style: str = "premium_digital") -> str:
+    """Generate a prompt for creating the product cover image."""
+    styles = {
+        "premium_digital": "premium app icon style, high-end digital product, dark background with subtle gradients, professional, modern, elegant, centered composition",
+        "minimalist": "clean minimalist design, white space, elegant typography, single focal point, sophisticated",
+        "mystical": "mystical ethereal glow, cosmic vibes, soft purple and blue gradients, dreamy, consciousness-expanding",
+        "practical": "clean and professional, organized, trustworthy, practical feel, warm neutrals",
+        "vibrant": "bold colors, energetic, dynamic, inspirational, motivating"
+    }
+    
+    style_desc = styles.get(style, styles["premium_digital"])
+    
+    return f"""Create a digital product cover image for: "{product_title}"
+
+Style: {style_desc}
+
+Requirements:
+- 1200x1200 pixels (square format)
+- No text or typography (text will be overlaid)
+- Abstract or symbolic representation of the topic
+- High contrast for visibility
+- Dark theme preferred to match SalarsNet aesthetic
+- Should convey transformation and premium quality
+
+Category context: {DIGITAL_CATEGORIES.get(category, {}).get('name', category)}
+"""
+
+
+def parse_landing_page_response(response_path: Path) -> Tuple[bool, dict]:
+    """Parse landing page content from a response file."""
+    import json
+    import re
+    
+    if not response_path.exists():
+        return False, {"error": f"Response file not found: {response_path}"}
+    
+    content = response_path.read_text()
+    
+    # Try to extract JSON from markdown code block
+    json_match = re.search(r'```json\s*(\{.*?\})\s*```', content, re.DOTALL)
+    if json_match:
+        try:
+            data = json.loads(json_match.group(1))
+            return True, data
+        except json.JSONDecodeError as e:
+            return False, {"error": f"Invalid JSON: {e}"}
+    
+    # Try to parse entire content as JSON
+    try:
+        data = json.loads(content)
+        return True, data
+    except json.JSONDecodeError:
+        return False, {"error": "Could not find valid JSON in response"}
+
+
+def create_product_manifest(product_dir: Path) -> Tuple[bool, ProductManifest]:
+    """Create product manifest from product directory contents."""
+    import json
+    
+    # Check for required files
+    config_file = product_dir / "product.json"
+    landing_response = product_dir / "output" / "responses" / "landing_page.response.md"
+    
+    if not config_file.exists():
+        return False, {"error": "product.json not found"}
+    
+    try:
+        config = json.loads(config_file.read_text())
+    except json.JSONDecodeError as e:
+        return False, {"error": f"Invalid product.json: {e}"}
+    
+    # Parse landing page content if available
+    landing_content = {}
+    if landing_response.exists():
+        success, result = parse_landing_page_response(landing_response)
+        if success:
+            landing_content = result
+    
+    # Find product image
+    image_path = None
+    for img_name in ["cover.png", "cover.jpg", "product.png", "product.jpg"]:
+        if (product_dir / "output" / "images" / img_name).exists():
+            image_path = f"/images/products/{config.get('slug', 'product')}.png"
+            break
+    
+    if not image_path:
+        image_path = f"/images/store/digital/{config.get('category', 'digital')}.png"
+    
+    # Build manifest
+    manifest = ProductManifest(
+        name=config.get("title", product_dir.name.replace("_", " ").title()),
+        slug=config.get("slug") or generate_product_slug(config.get("title", product_dir.name)),
+        description=config.get("description", ""),
+        price=float(config.get("price", 14.99)),
+        sku=config.get("sku") or generate_sku(config.get("category", "digital")),
+        category=config.get("category", "wealth"),
+        image_path=image_path,
+        download_url=f"/downloads/products/{config.get('slug', 'product')}.zip",
+        download_type=config.get("download_type", "zip"),
+        landing_page_content=landing_content,
+        sale_price=config.get("sale_price"),
+    )
+    
+    return True, manifest
+
+
+def generate_store_sql(manifest: ProductManifest) -> str:
+    """Generate SQL for inserting/updating product in store."""
+    import json
+    
+    landing_json = json.dumps(manifest.landing_page_content).replace("'", "''")
+    
+    return f"""-- Insert/Update product: {manifest.name}
+-- Generated by Epistemic Factory Step 3d
+
+INSERT INTO products (
+    name, slug, description, price, sku,
+    image, image_1, category_name, subcategory_name, status,
+    stock_quantity, on_hand, is_digital, digital_file_url, digital_file_type,
+    landing_page_content
+) VALUES (
+    '{manifest.name.replace("'", "''")}',
+    '{manifest.slug}',
+    '{manifest.description.replace("'", "''")}',
+    {manifest.price},
+    '{manifest.sku}',
+    '{manifest.image_path}',
+    '{manifest.image_path}',
+    'digital',
+    '{manifest.category}',
+    'active',
+    9999,
+    true,
+    true,
+    '{manifest.download_url}',
+    '{manifest.download_type}',
+    '{landing_json}'::jsonb
+)
+ON CONFLICT (slug) DO UPDATE SET
+    name = EXCLUDED.name,
+    description = EXCLUDED.description,
+    price = EXCLUDED.price,
+    image = EXCLUDED.image,
+    landing_page_content = EXCLUDED.landing_page_content,
+    digital_file_url = EXCLUDED.digital_file_url;
+
+-- Also insert into dreamweavings table for dual-table pattern
+INSERT INTO dreamweavings (
+    title, slug, description, price, sku,
+    image, category, status, is_digital, download_url
+) VALUES (
+    '{manifest.name.replace("'", "''")}',
+    '{manifest.slug}',
+    '{manifest.description.replace("'", "''")}',
+    {manifest.price},
+    '{manifest.sku}',
+    '{manifest.image_path}',
+    '{manifest.category}',
+    'active',
+    true,
+    '{manifest.download_url}'
+)
+ON CONFLICT (slug) DO UPDATE SET
+    title = EXCLUDED.title,
+    description = EXCLUDED.description,
+    price = EXCLUDED.price,
+    image = EXCLUDED.image,
+    download_url = EXCLUDED.download_url;
+"""
+
+
+def list_store_categories() -> str:
+    """List all available digital product categories."""
+    lines = [
+        "",
+        "╔" + "═" * 58 + "╗",
+        "║" + " " * 15 + "DIGITAL PRODUCT CATEGORIES" + " " * 17 + "║",
+        "╠" + "═" * 58 + "╣",
+    ]
+    
+    for slug, info in DIGITAL_CATEGORIES.items():
+        lines.append(f"║  {info['icon']} {slug:15} │ {info['name']:30} ║")
+    
+    lines.append("╚" + "═" * 58 + "╝")
+    return "\n".join(lines)
+
+
+def get_store_integration_status(product_dir: Path) -> dict:
+    """Check store integration status for a product."""
+    import json
+    
+    status = {
+        "has_product_json": False,
+        "has_landing_content": False,
+        "has_cover_image": False,
+        "has_download_zip": False,
+        "has_sql_export": False,
+        "ready_for_store": False,
+        "missing": [],
+    }
+    
+    # Check product.json
+    config_file = product_dir / "product.json"
+    if config_file.exists():
+        status["has_product_json"] = True
+    else:
+        status["missing"].append("product.json")
+    
+    # Check landing page content
+    landing_response = product_dir / "output" / "responses" / "landing_page.response.md"
+    if landing_response.exists():
+        success, _ = parse_landing_page_response(landing_response)
+        status["has_landing_content"] = success
+    if not status["has_landing_content"]:
+        status["missing"].append("landing_page.response.md")
+    
+    # Check cover image
+    for img in ["cover.png", "cover.jpg", "product.png", "product.jpg"]:
+        if (product_dir / "output" / "images" / img).exists():
+            status["has_cover_image"] = True
+            break
+    if not status["has_cover_image"]:
+        status["missing"].append("cover image")
+    
+    # Check download ZIP
+    output_dir = product_dir / "output"
+    for zip_file in output_dir.glob("*.zip"):
+        status["has_download_zip"] = True
+        break
+    if not status["has_download_zip"]:
+        status["missing"].append("download ZIP")
+    
+    # Check SQL export
+    if (product_dir / "output" / "store_insert.sql").exists():
+        status["has_sql_export"] = True
+    
+    # Overall ready status
+    status["ready_for_store"] = (
+        status["has_product_json"] and
+        status["has_landing_content"] and
+        status["has_cover_image"] and
+        status["has_download_zip"]
+    )
+    
+    return status
+
+
+def format_store_status(status: dict) -> str:
+    """Format store integration status for display."""
+    lines = [
+        "",
+        "╔" + "═" * 50 + "╗",
+        "║" + " " * 12 + "STORE INTEGRATION STATUS" + " " * 14 + "║",
+        "╠" + "═" * 50 + "╣",
+    ]
+    
+    items = [
+        ("product.json", status["has_product_json"]),
+        ("Landing page content", status["has_landing_content"]),
+        ("Cover image", status["has_cover_image"]),
+        ("Download ZIP", status["has_download_zip"]),
+        ("SQL export", status["has_sql_export"]),
+    ]
+    
+    for label, ready in items:
+        icon = "✅" if ready else "⏳"
+        lines.append(f"║  {icon} {label:40} ║")
+    
+    lines.append("╠" + "═" * 50 + "╣")
+    
+    if status["ready_for_store"]:
+        lines.append("║  🚀 READY FOR STORE INTEGRATION!               ║")
+    else:
+        lines.append("║  ⚠️  Missing: " + ", ".join(status["missing"])[:32] + " " * (32 - len(", ".join(status["missing"])[:32])) + " ║")
+    
+    lines.append("╚" + "═" * 50 + "╝")
+    return "\n".join(lines)
+
+
+def copy_assets_for_deployment(product_dir: Path, salarsu_path: Path) -> Tuple[bool, List[str]]:
+    """Copy product assets to SalarsNet for deployment."""
+    import shutil
+    import json
+    
+    actions = []
+    
+    # Get product config
+    config_file = product_dir / "product.json"
+    if not config_file.exists():
+        return False, ["product.json not found"]
+    
+    config = json.loads(config_file.read_text())
+    slug = config.get("slug") or generate_product_slug(config.get("title", "product"))
+    
+    # Copy cover image
+    for img_name in ["cover.png", "cover.jpg", "product.png"]:
+        src_img = product_dir / "output" / "images" / img_name
+        if src_img.exists():
+            dest_img = salarsu_path / "public" / "images" / "products" / f"{slug}.png"
+            dest_img.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src_img, dest_img)
+            actions.append(f"Copied: {dest_img}")
+            break
+    
+    # Copy download ZIP
+    for zip_file in (product_dir / "output").glob("*.zip"):
+        dest_zip = salarsu_path / "public" / "downloads" / "products" / f"{slug}.zip"
+        dest_zip.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(zip_file, dest_zip)
+        actions.append(f"Copied: {dest_zip}")
+        break
+    
+    # Copy SQL export
+    sql_file = product_dir / "output" / "store_insert.sql"
+    if sql_file.exists():
+        dest_sql = salarsu_path / "db" / "seeds" / f"digital_{slug}.sql"
+        dest_sql.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(sql_file, dest_sql)
+        actions.append(f"Copied: {dest_sql}")
+    
+    return len(actions) > 0, actions
