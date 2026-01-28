@@ -1202,6 +1202,125 @@ def env_command(args):
     return 0
 
 
+def wizard_command(args):
+    """Interactive wizard to create a product specification."""
+    from pathlib import Path
+    from .core.antigravity import run_wizard, ProductSpec
+    from .core.setup import init_project
+    
+    spec = run_wizard()
+    
+    if spec is None:
+        return 1
+    
+    # Save spec and create project
+    output_dir = Path(args.output) if args.output else None
+    
+    success, project_path = init_project(
+        name=spec.title,
+        template=None,
+        output_dir=output_dir
+    )
+    
+    if not success:
+        logger.error(f"❌ Failed to create project (may already exist)")
+        return 1
+    
+    # Save the product spec
+    spec_path = project_path / "product_spec.json"
+    import json
+    spec_path.write_text(json.dumps(spec.to_dict(), indent=2))
+    
+    logger.info(f"\n✅ Product spec saved: {spec_path}")
+    logger.info(f"\n📋 Next: Generate prompts with:")
+    logger.info(f"   product-builder create \\")
+    logger.info(f"     --topic \"{spec.topic}\" \\")
+    logger.info(f"     --title \"{spec.title}\" \\")
+    logger.info(f"     --output {project_path} \\")
+    logger.info(f"     --generate-prompts-only")
+    
+    return 0
+
+
+def responses_command(args):
+    """Check the status of responses for prompts."""
+    from pathlib import Path
+    from .core.antigravity import check_responses, format_response_status
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    statuses = check_responses(product_dir)
+    
+    if not statuses:
+        logger.info("📭 No prompts found in this product.")
+        return 0
+    
+    logger.info(format_response_status(statuses))
+    
+    # Summary advice
+    complete = sum(1 for s in statuses if s.status == "complete")
+    pending = sum(1 for s in statuses if s.status == "pending")
+    
+    if pending == 0 and complete == len(statuses):
+        logger.info("\n✨ All responses complete! Ready to compile:")
+        logger.info(f"   product-builder compile --product-dir {product_dir} --title \"Your Title\"")
+    elif pending > 0:
+        logger.info(f"\n📝 {pending} prompts still need responses.")
+        logger.info(f"   Export prompts: product-builder export --product-dir {product_dir}")
+    
+    return 0
+
+
+def preview_prompts_command(args):
+    """Preview what prompts would be generated without creating files."""
+    from .core.antigravity import preview_prompts, format_prompt_preview
+    
+    prompts = preview_prompts(
+        topic=args.topic,
+        title=args.title,
+        template=getattr(args, 'template', None),
+        chapter_count=args.chapters
+    )
+    
+    logger.info(format_prompt_preview(prompts))
+    
+    logger.info(f"\n💡 To generate these prompts:")
+    logger.info(f"   product-builder create \\")
+    logger.info(f"     --topic \"{args.topic}\" \\")
+    logger.info(f"     --title \"{args.title}\" \\")
+    logger.info(f"     --generate-prompts-only")
+    
+    return 0
+
+
+def export_command(args):
+    """Export all prompts in a format ready for Antigravity."""
+    from pathlib import Path
+    from .core.antigravity import generate_antigravity_export
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    export_content = generate_antigravity_export(product_dir)
+    
+    if args.output:
+        output_path = Path(args.output)
+        output_path.write_text(export_content)
+        logger.info(f"✅ Exported prompts to: {output_path}")
+    else:
+        # Print to stdout for easy copy
+        print(export_content)
+    
+    return 0
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -1382,6 +1501,30 @@ Examples:
                             help='Output file path (default: .env.template)')
     env_parser.add_argument('--force', '-f', action='store_true', help='Overwrite existing file')
     env_parser.set_defaults(func=env_command)
+    
+    # Wizard command - interactive product creation wizard
+    wizard_parser = subparsers.add_parser('wizard', help='Interactive product creation wizard')
+    wizard_parser.add_argument('--output', '-o', help='Output directory for new project')
+    wizard_parser.set_defaults(func=wizard_command)
+    
+    # Responses command - check status of prompt responses
+    responses_parser = subparsers.add_parser('responses', help='Check status of responses to prompts')
+    responses_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    responses_parser.set_defaults(func=responses_command)
+    
+    # Preview-prompts command - preview prompts before creating
+    preview_parser = subparsers.add_parser('preview-prompts', help='Preview prompts before generating')
+    preview_parser.add_argument('--topic', '-t', required=True, help='Product topic')
+    preview_parser.add_argument('--title', '-T', required=True, help='Product title')
+    preview_parser.add_argument('--template', help='Product template')
+    preview_parser.add_argument('--chapters', type=int, default=10, help='Number of chapters (default: 10)')
+    preview_parser.set_defaults(func=preview_prompts_command)
+    
+    # Export command - export prompts for Antigravity
+    export_parser = subparsers.add_parser('export', help='Export prompts for Antigravity (copy-paste ready)')
+    export_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    export_parser.add_argument('--output', '-o', help='Output file (default: print to stdout)')
+    export_parser.set_defaults(func=export_command)
     
     # Parse and execute
     args = parser.parse_args()
