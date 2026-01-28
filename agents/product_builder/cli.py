@@ -1321,6 +1321,173 @@ def export_command(args):
     return 0
 
 
+def next_prompt_command(args):
+    """Show the next prompt that needs a response."""
+    from pathlib import Path
+    from .core.antigravity import get_next_prompt, format_next_prompt
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    result = get_next_prompt(product_dir)
+    
+    if result is None:
+        logger.info("🎉 All prompts have responses! Ready to compile:")
+        logger.info(f"   product-builder compile --product-dir {product_dir} --title \"Your Title\"")
+        return 0
+    
+    print(format_next_prompt(result))
+    
+    if args.copy:
+        # Try to copy prompt to clipboard
+        try:
+            import subprocess
+            process = subprocess.Popen(['xclip', '-selection', 'clipboard'], 
+                                        stdin=subprocess.PIPE)
+            process.communicate(result.prompt_content.encode())
+            logger.info("📋 Prompt copied to clipboard!")
+        except Exception:
+            logger.info("💡 Tip: Install xclip to enable --copy functionality")
+    
+    return 0
+
+
+def validate_command(args):
+    """Validate a response file for quality."""
+    from pathlib import Path
+    from .core.antigravity import validate_response, format_validation_result
+    
+    response_path = Path(args.file)
+    
+    if not response_path.exists():
+        logger.error(f"❌ File not found: {response_path}")
+        return 1
+    
+    result = validate_response(response_path, min_words=args.min_words)
+    logger.info(format_validation_result(result, response_path.name))
+    
+    return 0 if result.is_valid else 1
+
+
+def validate_all_command(args):
+    """Validate all responses in a product."""
+    from pathlib import Path
+    from .core.antigravity import validate_response, ValidationResult
+    
+    product_dir = Path(args.product_dir)
+    responses_dir = product_dir / "output" / "responses"
+    
+    if not responses_dir.exists():
+        logger.error(f"❌ No responses directory found: {responses_dir}")
+        return 1
+    
+    response_files = sorted(responses_dir.glob("*.response.md"))
+    
+    if not response_files:
+        logger.info("📭 No response files found.")
+        return 0
+    
+    valid_count = 0
+    invalid_count = 0
+    total_words = 0
+    
+    logger.info("\n" + "═" * 68)
+    logger.info("                    VALIDATING ALL RESPONSES")
+    logger.info("═" * 68 + "\n")
+    
+    for response_file in response_files:
+        result = validate_response(response_file, min_words=args.min_words)
+        total_words += result.word_count
+        
+        status = "✅" if result.is_valid else "❌"
+        issues = f"({len(result.issues)} issues)" if result.issues else ""
+        logger.info(f"  {status} {response_file.name[:40]:40} {result.word_count:,} words {issues}")
+        
+        if result.is_valid:
+            valid_count += 1
+        else:
+            invalid_count += 1
+    
+    logger.info("\n" + "═" * 68)
+    logger.info(f"  Valid: {valid_count}  |  Invalid: {invalid_count}  |  Total words: {total_words:,}")
+    logger.info("═" * 68)
+    
+    if invalid_count == 0:
+        logger.info("\n✨ All responses valid! Ready to compile.")
+    else:
+        logger.info(f"\n⚠️ {invalid_count} responses need attention.")
+    
+    return 0 if invalid_count == 0 else 1
+
+
+def import_command(args):
+    """Import a response from a file."""
+    from pathlib import Path
+    from .core.antigravity import import_response
+    
+    product_dir = Path(args.product_dir)
+    source_file = Path(args.source) if args.source else None
+    
+    success, message = import_response(
+        product_dir=product_dir,
+        prompt_slug=args.slug,
+        source_file=source_file,
+    )
+    
+    if success:
+        logger.info(f"✅ {message}")
+        return 0
+    else:
+        logger.error(f"❌ {message}")
+        return 1
+
+
+def scaffold_command(args):
+    """Create a response template for a prompt."""
+    from pathlib import Path
+    from .core.antigravity import generate_response_template
+    
+    product_dir = Path(args.product_dir)
+    prompts_dir = product_dir / "output" / "prompts"
+    responses_dir = product_dir / "output" / "responses"
+    
+    # Find the prompt file
+    prompt_file = prompts_dir / f"{args.slug}.prompt.md"
+    
+    if not prompt_file.exists():
+        logger.error(f"❌ Prompt not found: {prompt_file}")
+        logger.info(f"   Available prompts:")
+        for pf in sorted(prompts_dir.glob("*.prompt.md")):
+            slug = pf.stem.replace(".prompt", "")
+            logger.info(f"   - {slug}")
+        return 1
+    
+    # Generate template
+    template = generate_response_template(prompt_file)
+    
+    # Save to responses directory
+    responses_dir.mkdir(parents=True, exist_ok=True)
+    response_file = responses_dir / f"{args.slug}.response.md"
+    
+    if response_file.exists() and not args.force:
+        logger.error(f"❌ Response file already exists: {response_file}")
+        logger.info("   Use --force to overwrite")
+        return 1
+    
+    response_file.write_text(template)
+    logger.info(f"✅ Created response template: {response_file}")
+    logger.info("")
+    logger.info("📝 Next steps:")
+    logger.info(f"   1. Open {response_file}")
+    logger.info("   2. Replace [placeholder] text with your content")
+    logger.info("   3. Run: product-builder validate --file {response_file}")
+    
+    return 0
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -1525,6 +1692,38 @@ Examples:
     export_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
     export_parser.add_argument('--output', '-o', help='Output file (default: print to stdout)')
     export_parser.set_defaults(func=export_command)
+    
+    # Next-prompt command - show next prompt needing response
+    next_parser = subparsers.add_parser('next-prompt', help='Show next prompt needing a response')
+    next_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    next_parser.add_argument('--copy', '-c', action='store_true', help='Copy prompt to clipboard')
+    next_parser.set_defaults(func=next_prompt_command)
+    
+    # Validate command - validate a single response
+    validate_parser = subparsers.add_parser('validate', help='Validate a response file')
+    validate_parser.add_argument('--file', '-f', required=True, help='Response file to validate')
+    validate_parser.add_argument('--min-words', type=int, default=1500, help='Minimum word count (default: 1500)')
+    validate_parser.set_defaults(func=validate_command)
+    
+    # Validate-all command - validate all responses in a product
+    validate_all_parser = subparsers.add_parser('validate-all', help='Validate all responses in a product')
+    validate_all_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    validate_all_parser.add_argument('--min-words', type=int, default=1500, help='Min word count (default: 1500)')
+    validate_all_parser.set_defaults(func=validate_all_command)
+    
+    # Import command - import a response from a file
+    import_parser = subparsers.add_parser('import', help='Import a response from a file')
+    import_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    import_parser.add_argument('--slug', '-s', required=True, help='Prompt slug (e.g., chapter_01)')
+    import_parser.add_argument('--source', required=True, help='Source file to import')
+    import_parser.set_defaults(func=import_command)
+    
+    # Scaffold command - create response template
+    scaffold_parser = subparsers.add_parser('scaffold', help='Create a response template for a prompt')
+    scaffold_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    scaffold_parser.add_argument('--slug', '-s', required=True, help='Prompt slug (e.g., chapter_01)')
+    scaffold_parser.add_argument('--force', '-f', action='store_true', help='Overwrite existing file')
+    scaffold_parser.set_defaults(func=scaffold_command)
     
     # Parse and execute
     args = parser.parse_args()

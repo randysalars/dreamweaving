@@ -451,3 +451,317 @@ def format_prompt_preview(prompts: List[PromptSpec]) -> str:
     lines.append("╚" + "═" * 68 + "╝")
     
     return "\n".join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 3: CONTENT GENERATION HELPERS
+# ═══════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class NextPromptResult:
+    """Result of finding the next prompt to work on."""
+    prompt_file: Path
+    prompt_content: str
+    prompt_number: int
+    total_prompts: int
+    response_file: Path
+    previous_completed: int
+    estimated_words: int
+
+
+def get_next_prompt(product_dir: Path) -> Optional[NextPromptResult]:
+    """Find the next prompt that needs a response."""
+    prompts_dir = product_dir / "output" / "prompts"
+    responses_dir = product_dir / "output" / "responses"
+    
+    if not prompts_dir.exists():
+        return None
+    
+    # Ensure responses directory exists
+    responses_dir.mkdir(parents=True, exist_ok=True)
+    
+    prompt_files = sorted(prompts_dir.glob("*.prompt.md"))
+    
+    if not prompt_files:
+        return None
+    
+    completed = 0
+    for i, prompt_file in enumerate(prompt_files):
+        slug = prompt_file.stem.replace(".prompt", "")
+        response_file = responses_dir / f"{slug}.response.md"
+        
+        if response_file.exists():
+            content = response_file.read_text()
+            word_count = len(content.split())
+            if word_count >= 1500:
+                completed += 1
+                continue
+        
+        # This is the next prompt to work on
+        return NextPromptResult(
+            prompt_file=prompt_file,
+            prompt_content=prompt_file.read_text(),
+            prompt_number=i + 1,
+            total_prompts=len(prompt_files),
+            response_file=response_file,
+            previous_completed=completed,
+            estimated_words=2000,
+        )
+    
+    # All done!
+    return None
+
+
+def format_next_prompt(result: NextPromptResult) -> str:
+    """Format next prompt for display."""
+    lines = [
+        "",
+        "╔" + "═" * 68 + "╗",
+        "║" + " " * 15 + f"PROMPT {result.prompt_number}/{result.total_prompts}" + " " * 36 + "║",
+        "╠" + "═" * 68 + "╣",
+        "",
+    ]
+    
+    # Show progress bar
+    progress = result.previous_completed / result.total_prompts
+    bar_width = 50
+    filled = int(bar_width * progress)
+    bar = "█" * filled + "░" * (bar_width - filled)
+    lines.append(f"  Progress: [{bar}] {result.previous_completed}/{result.total_prompts}")
+    lines.append("")
+    lines.append("─" * 68)
+    lines.append("")
+    
+    # Show the prompt
+    lines.append(result.prompt_content.strip())
+    lines.append("")
+    lines.append("─" * 68)
+    lines.append("")
+    lines.append(f"📝 Save your response to:")
+    lines.append(f"   {result.response_file}")
+    lines.append("")
+    lines.append(f"💡 Target: ~{result.estimated_words} words")
+    lines.append("")
+    
+    return "\n".join(lines)
+
+
+@dataclass
+class ValidationResult:
+    """Result of validating a response."""
+    is_valid: bool
+    word_count: int
+    issues: List[str]
+    warnings: List[str]
+    suggestions: List[str]
+
+
+def validate_response(response_path: Path, min_words: int = 1500) -> ValidationResult:
+    """Validate a response file for quality."""
+    issues = []
+    warnings = []
+    suggestions = []
+    
+    if not response_path.exists():
+        return ValidationResult(
+            is_valid=False,
+            word_count=0,
+            issues=["File does not exist"],
+            warnings=[],
+            suggestions=["Create the response file first"],
+        )
+    
+    content = response_path.read_text()
+    word_count = len(content.split())
+    
+    # Check word count
+    if word_count < min_words * 0.5:
+        issues.append(f"Too short: {word_count} words (need at least {min_words})")
+    elif word_count < min_words:
+        warnings.append(f"Slightly short: {word_count}/{min_words} words")
+    
+    # Check for placeholder text
+    placeholders = ["TODO", "FIXME", "TBD", "[placeholder]", "lorem ipsum", "xxx"]
+    for ph in placeholders:
+        if ph.lower() in content.lower():
+            issues.append(f"Contains placeholder text: '{ph}'")
+    
+    # Check for markdown headers
+    if not any(line.startswith("#") for line in content.split("\n")):
+        warnings.append("No markdown headers found")
+        suggestions.append("Add a # Title and ## Section headers")
+    
+    # Check for very short paragraphs
+    paragraphs = [p for p in content.split("\n\n") if p.strip()]
+    short_paras = [p for p in paragraphs if len(p.split()) < 20]
+    if len(short_paras) > len(paragraphs) * 0.5:
+        warnings.append("Many very short paragraphs")
+        suggestions.append("Consider expanding paragraphs with more detail")
+    
+    # Check for repetitive starts
+    sentences = [s.strip() for s in content.replace("\n", " ").split(".") if s.strip()]
+    if len(sentences) >= 5:
+        first_words = [s.split()[0].lower() if s.split() else "" for s in sentences[:10]]
+        most_common = max(set(first_words), key=first_words.count)
+        if first_words.count(most_common) >= 4:
+            suggestions.append(f"Vary sentence openers ('{most_common}' used frequently)")
+    
+    is_valid = len(issues) == 0 and word_count >= min_words * 0.7
+    
+    return ValidationResult(
+        is_valid=is_valid,
+        word_count=word_count,
+        issues=issues,
+        warnings=warnings,
+        suggestions=suggestions,
+    )
+
+
+def format_validation_result(result: ValidationResult, filename: str) -> str:
+    """Format validation result for display."""
+    lines = [
+        "",
+        "╔" + "═" * 68 + "╗",
+        "║" + " " * 20 + "RESPONSE VALIDATION" + " " * 29 + "║",
+        "╠" + "═" * 68 + "╣",
+    ]
+    
+    status = "✅ VALID" if result.is_valid else "❌ NEEDS WORK"
+    lines.append(f"║ File: {filename[:40]:40} │ {status:14} ║")
+    lines.append(f"║ Word Count: {result.word_count:5,}" + " " * 46 + "║")
+    lines.append("╠" + "─" * 68 + "╣")
+    
+    if result.issues:
+        lines.append("║ ❌ ISSUES:" + " " * 57 + "║")
+        for issue in result.issues:
+            lines.append(f"║    • {issue[:60]:60} ║")
+    
+    if result.warnings:
+        lines.append("║ ⚠️ WARNINGS:" + " " * 55 + "║")
+        for warning in result.warnings:
+            lines.append(f"║    • {warning[:60]:60} ║")
+    
+    if result.suggestions:
+        lines.append("║ 💡 SUGGESTIONS:" + " " * 52 + "║")
+        for suggestion in result.suggestions:
+            lines.append(f"║    • {suggestion[:60]:60} ║")
+    
+    if not result.issues and not result.warnings and not result.suggestions:
+        lines.append("║ ✨ Looking great! No issues found." + " " * 33 + "║")
+    
+    lines.append("╚" + "═" * 68 + "╝")
+    
+    return "\n".join(lines)
+
+
+def import_response(product_dir: Path, prompt_slug: str, 
+                    content: str = None, source_file: Path = None) -> Tuple[bool, str]:
+    """
+    Import a response from content or a file.
+    Returns (success, message).
+    """
+    responses_dir = product_dir / "output" / "responses"
+    responses_dir.mkdir(parents=True, exist_ok=True)
+    
+    response_file = responses_dir / f"{prompt_slug}.response.md"
+    
+    if source_file:
+        if not source_file.exists():
+            return False, f"Source file not found: {source_file}"
+        content = source_file.read_text()
+    
+    if not content:
+        return False, "No content provided"
+    
+    # Validate content has reasonable length
+    word_count = len(content.split())
+    if word_count < 100:
+        return False, f"Content too short ({word_count} words, need at least 100)"
+    
+    # Write the response
+    response_file.write_text(content)
+    
+    return True, f"Saved {word_count} words to {response_file}"
+
+
+def generate_response_template(prompt_file: Path) -> str:
+    """Generate a response template with structure from the prompt."""
+    prompt_content = prompt_file.read_text()
+    slug = prompt_file.stem.replace(".prompt", "")
+    
+    lines = [
+        f"# Response: {slug.replace('_', ' ').title()}",
+        "",
+        f"*Generated: {datetime.now().strftime('%Y-%m-%d')}*",
+        "",
+        "---",
+        "",
+    ]
+    
+    # Try to extract sections from the prompt
+    if "chapter" in slug.lower():
+        lines.extend([
+            "## Introduction",
+            "",
+            "[Opening hook that draws the reader in...]",
+            "",
+            "## Main Content",
+            "",
+            "[Core teaching and concepts...]",
+            "",
+            "## Practical Application",
+            "",
+            "[How to apply this in real life...]",
+            "",
+            "## Key Takeaways",
+            "",
+            "- [Key point 1]",
+            "- [Key point 2]",
+            "- [Key point 3]",
+            "",
+            "## Action Step",
+            "",
+            "[One specific thing the reader should do next...]",
+            "",
+        ])
+    elif "bonus" in slug.lower():
+        lines.extend([
+            "## Overview",
+            "",
+            "[What this bonus covers...]",
+            "",
+            "## Content",
+            "",
+            "[Main bonus content...]",
+            "",
+            "## How to Use",
+            "",
+            "[Instructions for getting the most value...]",
+            "",
+        ])
+    else:
+        lines.extend([
+            "## Section 1",
+            "",
+            "[Content here...]",
+            "",
+            "## Section 2",
+            "",
+            "[Content here...]",
+            "",
+            "## Section 3",
+            "",
+            "[Content here...]",
+            "",
+        ])
+    
+    lines.extend([
+        "---",
+        "",
+        f"*Word count target: ~2000 words*",
+        "",
+    ])
+    
+    return "\n".join(lines)
+
