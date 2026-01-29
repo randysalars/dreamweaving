@@ -446,6 +446,7 @@ def compile_command(args):
     from pathlib import Path
     from .core.prompt_interface import PromptInterface
     from .packaging.product_assembler import ProductAssembler, AssemblyConfig
+    from .core.pipeline_checklist import PipelineVerifier
     
     product_dir = Path(args.product_dir)
     output_dir = product_dir / "output"
@@ -469,6 +470,31 @@ def compile_command(args):
         return 1
     
     logger.info(f"   Found {len(response_files)} response files")
+    
+    # ═══════════════════════════════════════════════════════════════
+    # AUTOMATED VERIFICATION GATE: Phase 2 must be complete
+    # ═══════════════════════════════════════════════════════════════
+    skip_verify = getattr(args, 'skip_verify', False)
+    if not skip_verify:
+        logger.info("\n📋 Running Phase 2 verification...")
+        verifier = PipelineVerifier(product_dir)
+        phase2_checks = verifier.verify_phase_2_generation()
+        
+        failed_checks = [c for c in phase2_checks if not c.passed]
+        if failed_checks:
+            logger.warning("⚠️  Phase 2 verification issues:")
+            for check in failed_checks:
+                logger.warning(f"   ✗ {check.message}")
+                if check.details.get('short_responses'):
+                    for sr in check.details['short_responses'][:3]:
+                        logger.warning(f"      - {sr}")
+            logger.info("   💡 Use --skip-verify to proceed anyway")
+            if not getattr(args, 'force', False):
+                proceed = input("   Continue anyway? (y/N): ").strip().lower()
+                if proceed != 'y':
+                    return 1
+        else:
+            logger.info("   ✅ Phase 2 verified - all responses complete")
     
     # Smart sorting function: extracts chapter numbers and puts bonuses at end
     def get_chapter_sort_key(filepath):
@@ -597,6 +623,7 @@ def deploy_command(args):
     """Deploy product to SalarsNet store."""
     from pathlib import Path
     from .packaging.salarsu_deployer import SalarsuDeployer
+    from .core.pipeline_checklist import PipelineVerifier
     
     product_dir = Path(args.product_dir)
     output_dir = product_dir / "output"
@@ -613,6 +640,28 @@ def deploy_command(args):
     
     zip_path = zip_files[0]
     logger.info(f"   ZIP: {zip_path}")
+    
+    # ═══════════════════════════════════════════════════════════════
+    # AUTOMATED VERIFICATION GATE: Phase 3 must be complete
+    # ═══════════════════════════════════════════════════════════════
+    skip_verify = getattr(args, 'skip_verify', False)
+    if not skip_verify:
+        logger.info("\n📋 Running Phase 3 verification...")
+        verifier = PipelineVerifier(product_dir)
+        phase3_checks = verifier.verify_phase_3_compilation()
+        
+        failed_checks = [c for c in phase3_checks if not c.passed]
+        if failed_checks:
+            logger.warning("⚠️  Phase 3 verification issues:")
+            for check in failed_checks:
+                logger.warning(f"   ✗ {check.message}")
+            logger.info("   💡 Use --skip-verify to proceed anyway")
+            if not getattr(args, 'force', False):
+                proceed = input("   Continue anyway? (y/N): ").strip().lower()
+                if proceed != 'y':
+                    return 1
+        else:
+            logger.info("   ✅ Phase 3 verified - compilation complete")
     
     # Get description from args or generate a default
     description = args.description or f"Premium digital product: {args.name}"
@@ -3485,6 +3534,8 @@ Examples:
     compile_parser = subparsers.add_parser('compile', help='Compile product from Antigravity responses')
     compile_parser.add_argument('--product-dir', '-d', required=True, help='Product directory with responses/')
     compile_parser.add_argument('--title', '-T', required=True, help='Product title')
+    compile_parser.add_argument('--skip-verify', action='store_true', help='Skip Phase 2 verification')
+    compile_parser.add_argument('--force', '-f', action='store_true', help='Force continue on verification failures')
     compile_parser.set_defaults(func=compile_command)
     
     # Deploy command - deploys to SalarsNet store
@@ -3503,6 +3554,8 @@ Examples:
                                help='Auto-post Twitter launch thread after deployment')
     deploy_parser.add_argument('--dry-run', action='store_true', 
                                help='Validate Twitter posts without actually posting')
+    deploy_parser.add_argument('--skip-verify', action='store_true', help='Skip Phase 3 verification')
+    deploy_parser.add_argument('--force', '-f', action='store_true', help='Force continue on verification failures')
     deploy_parser.set_defaults(func=deploy_command)
     
     # Marketing command - generate emails and social for existing products
