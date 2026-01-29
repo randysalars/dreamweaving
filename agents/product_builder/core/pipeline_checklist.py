@@ -314,7 +314,7 @@ class PipelineVerifier:
         return results
     
     def verify_phase_4_deployment(self) -> List[VerificationResult]:
-        """Verify Phase 4: Deployment (files in salarsu)."""
+        """Verify Phase 4: Deployment (files in salarsu + database)."""
         results = []
         
         salarsu_path = Path("/home/rsalars/Projects/salarsu")
@@ -341,10 +341,58 @@ class PipelineVerifier:
             details={"sql_path": str(sql_files[0]) if sql_files else None}
         ))
         
-        # Check 3: Git committed (check recent commits)
-        # This would require git inspection - simplified check
+        # Check 3: Database URL updated (check if products table has correct URL)
+        db_url_correct = False
+        db_message = "Database check skipped (manual verification required)"
+        expected_url = f"https://salars.net/downloads/products/{product_slug}.zip"
+        
+        try:
+            import subprocess
+            import os
+            
+            # Try to query the database
+            pg_password = os.environ.get("PGPASSWORD", "")
+            if not pg_password:
+                # Try to read from common locations
+                env_file = salarsu_path / ".env.local"
+                if env_file.exists():
+                    for line in env_file.read_text().splitlines():
+                        if "POSTGRES_PASSWORD" in line or "DATABASE_PASSWORD" in line:
+                            pg_password = line.split("=", 1)[-1].strip().strip('"').strip("'")
+                            break
+            
+            if pg_password:
+                slug_dashed = self.product_dir.name  # e.g., "treasure-hunters-research-guide"
+                cmd = f'PGPASSWORD="{pg_password}" psql -h 10.0.1.7 -U postgres -d postgres -t -c "SELECT digital_file_url FROM products WHERE slug = \'{slug_dashed}\' LIMIT 1;"'
+                result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=10)
+                
+                if result.returncode == 0:
+                    current_url = result.stdout.strip()
+                    if current_url:
+                        if "downloads/products/" in current_url and product_slug in current_url:
+                            db_url_correct = True
+                            db_message = f"Database URL correct: .../{product_slug}.zip"
+                        else:
+                            db_message = f"Database URL WRONG: {current_url[:50]}..."
+                    else:
+                        db_message = "Product not found in database"
+                else:
+                    db_message = "Could not connect to database"
+            else:
+                db_message = "Database password not available (set PGPASSWORD)"
+        except Exception as e:
+            db_message = f"Database check failed: {str(e)[:30]}"
+        
         results.append(VerificationResult(
-            passed=True,  # Assume true if ZIP exists
+            passed=db_url_correct,
+            check_name="database_url",
+            message=db_message,
+            details={"expected_url": expected_url}
+        ))
+        
+        # Check 4: Git committed (check recent commits)
+        results.append(VerificationResult(
+            passed=zip_deployed,  # Assume committed if ZIP deployed
             check_name="git_committed",
             message="Git commit check (manual verification)" if zip_deployed else "Not applicable",
         ))
