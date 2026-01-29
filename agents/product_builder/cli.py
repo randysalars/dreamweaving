@@ -983,6 +983,40 @@ def status_command(args):
     return 0
 
 
+def checklist_command(args):
+    """Run comprehensive verification checklist for all pipeline phases."""
+    from pathlib import Path
+    from .core.pipeline_checklist import PipelineVerifier
+    import json
+    
+    product_dir = Path(args.product_dir)
+    
+    if not product_dir.exists():
+        logger.error(f"❌ Product directory not found: {product_dir}")
+        return 1
+    
+    verifier = PipelineVerifier(product_dir)
+    
+    if getattr(args, 'json', False):
+        # JSON output
+        results = verifier.run_full_verification()
+        output = {}
+        for phase, checks in results.items():
+            output[phase] = {
+                "passed": all(c.passed for c in checks),
+                "checks": [
+                    {"name": c.check_name, "passed": c.passed, "message": c.message}
+                    for c in checks
+                ]
+            }
+        print(json.dumps(output, indent=2))
+        return 0 if all(output[p]["passed"] for p in output) else 1
+    else:
+        # Pretty printed status
+        all_passed = verifier.print_status()
+        return 0 if all_passed else 1
+
+
 def resume_command(args):
     """Resume an interrupted pipeline from where it left off."""
     from pathlib import Path
@@ -3497,6 +3531,12 @@ Examples:
     status_parser = subparsers.add_parser('status', help='Show pipeline status for a product')
     status_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
     status_parser.set_defaults(func=status_command)
+    
+    # Checklist command - comprehensive phase-by-phase verification
+    checklist_parser = subparsers.add_parser('checklist', help='Verify all pipeline phases with detailed checklist')
+    checklist_parser.add_argument('--product-dir', '-d', required=True, help='Product directory')
+    checklist_parser.add_argument('--json', action='store_true', help='Output as JSON')
+    checklist_parser.set_defaults(func=checklist_command)
     
     # Resume command - continue interrupted pipeline
     resume_parser = subparsers.add_parser('resume', help='Resume an interrupted pipeline')
