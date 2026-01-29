@@ -1,27 +1,27 @@
 """
-Code Visuals Generator
+Code Visuals Generator (Simplified)
 Generates charts, diagrams, and data visualizations using local Python libraries.
-Uses LLM to write the generation code, then executes it in a sandbox.
+Template-based only - no LLM dependency.
 """
 
 import logging
-import uuid
+import re
 import sys
 import subprocess
 from pathlib import Path
-from typing import Dict, Optional, List
-from ..core.llm import LLMClient
+from typing import Dict, List
 
 logger = logging.getLogger(__name__)
 
+
 class CodeVisualsGenerator:
     """
-    Generates PNGs from text descriptions using Matplotlib/Seaborn/Graphviz.
+    Generates PNGs from text descriptions using Matplotlib/Seaborn.
+    Uses template-based generation only (no LLM/API calls).
     """
     
     def __init__(self, output_dir: Path):
         self.output_dir = output_dir.resolve()
-        self.llm = LLMClient()
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
     def generate_batch(self, visuals: List[Dict]) -> List[Dict]:
@@ -48,198 +48,74 @@ class CodeVisualsGenerator:
         return results
 
     def generate(self, section_id: str, description: str, visual_type: str) -> Path:
-        """
-        Generate a single visual.
-        """
-        # Deterministic filename (Overwrite existing) to ensure Markdown links stay valid
+        """Generate a single visual using templates."""
         filename = f"{section_id}.png"
         output_path = self.output_dir / filename
         
-        logger.info(f"📊 Generating Code Visual: {section_id} ({visual_type})")
+        logger.info(f"📊 Generating visual: {section_id} ({visual_type})")
         
-        # 1. Generate Python Code
-        code = self._generate_code(description, visual_type, str(output_path))
+        # Select template based on visual type
+        if visual_type in ['flowchart', 'process', 'diagram']:
+            code = self._flowchart_template(description, str(output_path))
+        elif visual_type in ['timeline', 'journey_map', 'roadmap']:
+            code = self._timeline_template(description, str(output_path))
+        elif visual_type in ['comparison', 'table']:
+            code = self._comparison_template(description, str(output_path))
+        elif visual_type in ['concept', 'framework']:
+            code = self._concept_template(description, str(output_path))
+        else:
+            # Skip generic charts - they add noise, not value
+            logger.info(f"⏭️ Skipping generic visual: {section_id} (type: {visual_type})")
+            return self._create_skip_marker(section_id, description)
         
-        # 2. Write Temp Script
+        # Write and execute script
         script_path = self.output_dir / f"temp_{section_id}.py"
         script_path.write_text(code)
         
-        logger.info(f"🐛 EXEC SCRIPT: {script_path}")
-        logger.info(f"🐛 CODE PREVIEW:\n{code[:300]}...\n(Saving to: {output_path})")
-
-        # 3. Execute
         try:
-            # Run in current venv
-            python_exe = sys.executable
             result = subprocess.run(
-                [python_exe, str(script_path)],
+                [sys.executable, str(script_path)],
                 capture_output=True,
                 text=True,
-                timeout=30 # 30s timeout
+                timeout=30
             )
             
-            if result.stdout:
-                logger.info(f"📜 STDOUT: {result.stdout}")
-            if result.stderr:
-                logger.warning(f"⚠️ STDERR: {result.stderr}")
-            
             if result.returncode != 0:
-                raise Exception(f"Script failed: {result.stderr}")
+                logger.warning(f"⚠️ Visual generation failed: {result.stderr[:200]}")
+                return self._create_skip_marker(section_id, description)
                 
             if not output_path.exists():
-                raise Exception(f"Script ran (RC=0) but did not generate image file at {output_path}")
+                return self._create_skip_marker(section_id, description)
                 
-            logger.info(f"✅ Generated: {output_path}")
+            logger.info(f"✅ Generated: {output_path.name}")
             return output_path
             
         finally:
-            # Cleanup temp script
             if script_path.exists():
                 script_path.unlink()
+    
+    def _create_skip_marker(self, section_id: str, description: str) -> Path:
+        """Create a marker file for skipped visuals (not included in PDF)."""
+        marker_path = self.output_dir / f"{section_id}_skipped.txt"
+        marker_path.write_text(f"SKIPPED: {section_id}\n\n{description[:200]}")
+        return marker_path
 
-    def _generate_code(self, description: str, visual_type: str, output_path: str) -> str:
-        """
-        Ask LLM to write the matplotlib/graphviz code.
-        """
-        prompt = f"""
-        You are a Data Visualization Engineer.
-        Write a COMPLETE, STANDALONE Python script to generate a high-quality PNG image based on the request below.
+    def _flowchart_template(self, description: str, output_path: str) -> str:
+        """Generate a flowchart/process diagram."""
+        # Extract steps from description
+        steps = re.findall(r'(\w+[\s\w]*)->\\s*(\w+[\s\w]*)', description)
         
-        **Request:** {description}
-        **Type:** {visual_type}
-        **Output Path:** {output_path}
+        nodes = []
+        for s in steps:
+            u, v = s[0].strip(), s[1].strip()
+            if u not in nodes: nodes.append(u)
+            if v not in nodes: nodes.append(v)
         
-        **Constraints:**
-        1. Use 'matplotlib', 'seaborn', 'pandas', or 'graphviz'.
-        2. Set style to 'seaborn-v0_8-whitegrid' or similar clean style.
-        3. Use professional colors (Slate Blue, Dark Grey, Gold). NO basic Red/Green/Blue.
-        4. DPI must be 300.
-        5. Figure size: 10x6 inches.
-        6. Font size: 12+. Title size: 16+.
-        7. The script must save the file to `output_path`.
-        8. Handle any data generation within the script (create dummy data that matches the concept).
-        9. NO `plt.show()`. ONLY `plt.savefig(output_path, bbox_inches='tight')`.
-        10. Do not wrap in markdown blocks. Return PURE LOCAL PYTHON CODE.
-        
-        **Example Code Structure:**
-        import matplotlib.pyplot as plt
-        import pandas as pd
-        import seaborn as sns
-        
-        # Data
-        data = {{ ... }}
-        df = pd.DataFrame(data)
-        
-        # Plot
-        plt.figure(figsize=(10,6))
-        sns.barplot(...)
-        plt.title("...")
-        
-        # Save
-        plt.savefig("{output_path}", dpi=300, bbox_inches='tight')
-        """
-        
-        response = self.llm.generate(prompt)
-        
-        # Strip markdown if present
-        if "```python" in response:
-            response = response.split("```python")[1].split("```")[0]
-        elif "```" in response:
-            response = response.split("```")[1].split("```")[0]
+        if not nodes:
+            # Default nodes based on description keywords
+            nodes = ['Start', 'Process', 'Result']
             
-        # Try to generate via LLM first (if configured/valid)
-        if not self.llm.mock_mode and self.llm.valid:
-            try:
-                response = self.llm.generate(prompt)
-                # Strip markdown
-                if "```python" in response:
-                    response = response.split("```python")[1].split("```")[0]
-                elif "```" in response:
-                    response = response.split("```")[1].split("```")[0]
-                
-                # Check for explicit error or empty response
-                if response.strip().startswith("# Error") or not response.strip():
-                    raise ValueError("LLM returned error")
-
-                # Support Mock Templates
-                if "{output_path}" in response:
-                    container_path = output_path
-                    response = response.replace("{output_path}", container_path)
-
-                # Force Headless Backend (Crucial for Server/CI)
-                if "matplotlib" in response and "use('Agg')" not in response:
-                    response = "import matplotlib\nmatplotlib.use('Agg')\n" + response
-
-                return response.strip()
-            except Exception:
-                pass # Fallback to templates
-
-        # --- ZERO COST TEMPLATE ENGINE (Fallback) ---
-        logger.info("⚡ Using Zero-Cost Template Engine")
-        return self._generate_from_template(description, output_path)
-
-    def _generate_from_template(self, description: str, output_path: str) -> str:
-        """
-        Parses description to select a chart template and inject data.
-        Heuristic-based (Free).
-        """
-        import re
-        
-        # 1. Parse Numbers and Labels
-        # Look for patterns like "Apple: 100", "Start 25: $1M", "Year 1: 50%"
-        # Regex: (Word/Phrase): (Currency/Number)
-        matches = re.findall(r'([\w\s]+)[:]\s?[\$]?([\d,]+[\.]?[\d]?[%]?)', description)
-        
-        labels = []
-        values = []
-        
-        for m in matches:
-            label = m[0].strip()
-            val_str = m[1].replace(',', '').replace('$', '').replace('%', '')
-            try:
-                # Handle suffixes
-                mult = 1.0
-                if 'k' in val_str.lower():
-                    mult = 1000.0
-                    val_str = val_str.lower().replace('k', '')
-                elif 'm' in val_str.lower():
-                    mult = 1000000.0
-                    val_str = val_str.lower().replace('m', '')
-                    
-                val = float(val_str) * mult
-                labels.append(label)
-                values.append(val)
-            except:
-                continue
-                
-        # Defaults if no data found
-        if not labels:
-            labels = ['A', 'B', 'C']
-            values = [10, 20, 30]
-
-        # 2. Select Template based on Keywords
-        desc_lower = description.lower()
-        
-        # --- GRAPHVIZ / FLOWCHART TEMPLATE ---
-        if "flow" in desc_lower or "diagram" in desc_lower or "process" in desc_lower:
-            # Extract steps: "Earn -> Save -> Invest"
-            steps = re.findall(r'(\w+[\s\w]*)->\s*(\w+[\s\w]*)', description)
-            if not steps:
-                 # Try single word regex if phrase regex failed
-                 steps = re.findall(r'(\w+)\s*->\s*(\w+)', description)
-            
-            # Build unique node list and edges preserving order
-            nodes = []
-            for s in steps:
-                u, v = s[0].strip(), s[1].strip()
-                if u not in nodes: nodes.append(u)
-                if v not in nodes: nodes.append(v)
-            
-            if not nodes:
-                nodes = ['Start', 'Action', 'Result']
-            
-            # Simple Matplotlib Flowchart Layout (Horizontal)
-            code = f"""
+        return f'''
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -248,78 +124,174 @@ import matplotlib.patches as patches
 nodes = {nodes}
 n = len(nodes)
 
-plt.figure(figsize=(10, 4))
-ax = plt.gca()
-ax.set_xlim(0, n * 2)
+fig, ax = plt.subplots(figsize=(12, 4))
+ax.set_xlim(0, n * 2.5)
 ax.set_ylim(0, 2)
 ax.axis('off')
 
-# Draw Nodes
-box_width = 1.2
-box_height = 0.8
+# Dreamweaving color palette
+colors = ['#6B46C1', '#805AD5', '#9F7AEA', '#B794F4', '#D6BCFA']
+
+box_width = 1.8
+box_height = 0.9
 y_center = 1.0
 
 for i, label in enumerate(nodes):
-    x_center = i * 2 + 1
-    # Box
+    x_center = i * 2.5 + 1.25
+    color = colors[i % len(colors)]
+    
     rect = patches.FancyBboxPatch(
         (x_center - box_width/2, y_center - box_height/2),
         box_width, box_height,
         boxstyle="round,pad=0.1",
-        linewidth=2, edgecolor='#4B0082', facecolor='#E6E6FA'
+        linewidth=2, edgecolor=color, facecolor='white'
     )
     ax.add_patch(rect)
-    # Text
-    ax.text(x_center, y_center, label, ha='center', va='center', fontsize=11, fontweight='bold', color='#333', wrap=True)
+    ax.text(x_center, y_center, label, ha='center', va='center', 
+            fontsize=11, fontweight='bold', color='#2D3748', wrap=True)
 
-    # Arrow to next (if not last)
     if i < n - 1:
-        next_x = (i + 1) * 2 + 1
-        # Start at right edge of current, End at left edge of next
-        start = (x_center + box_width/2 + 0.1, y_center)
-        end = (next_x - box_width/2 - 0.1, y_center)
-        
-        ax.annotate("", xy=end, xytext=start, 
-                    arrowprops=dict(arrowstyle="->", lw=2, color='#666'))
+        next_x = (i + 1) * 2.5 + 1.25
+        ax.annotate("", xy=(next_x - box_width/2 - 0.1, y_center), 
+                    xytext=(x_center + box_width/2 + 0.1, y_center),
+                    arrowprops=dict(arrowstyle="->", lw=2, color='#718096'))
 
-plt.title("Process Flow", fontsize=14, pad=10)
-plt.savefig("{output_path}", dpi=300, bbox_inches='tight')
-"""
-            return code
+plt.savefig("{output_path}", dpi=150, bbox_inches='tight', facecolor='white')
+plt.close()
+'''
 
-        # --- MATPLOTLIB BAR CHART TEMPLATE (Default) ---
-        title = "Chart"
-        if "title" in desc_lower:
-            # Try to extract title (simple heuristic)
-            pass 
-        
-        # Basic Bar Chart Template
-        code = f"""
+    def _timeline_template(self, description: str, output_path: str) -> str:
+        """Generate a timeline/journey visualization."""
+        return f'''
 import matplotlib
-matplotlib.use('Agg') # Force headless
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import seaborn as sns
 
-labels = {labels}
-values = {values}
+steps = ['Foundation', 'Practice', 'Mastery', 'Expression']
+colors = ['#E9D5FF', '#C4B5FD', '#A78BFA', '#8B5CF6']
 
-plt.figure(figsize=(10,6))
-plt.style.use('seaborn-v0_8-whitegrid')
+fig, ax = plt.subplots(figsize=(12, 3))
+ax.set_xlim(0, 10)
+ax.set_ylim(0, 2)
+ax.axis('off')
 
-# Color palette based on Dreamweaving (Gold/Purple/Slate)
-colors = sns.color_palette("mako", n_colors=len(labels))
+# Draw timeline
+ax.plot([0.5, 9.5], [1, 1], 'k-', lw=2, alpha=0.3)
 
-ax = sns.barplot(x=labels, y=values, palette=colors)
+for i, (step, color) in enumerate(zip(steps, colors)):
+    x = 0.5 + i * 2.5
+    ax.scatter(x, 1, s=400, c=color, zorder=3, edgecolor='#4C1D95', linewidth=2)
+    ax.text(x, 0.5, step, ha='center', fontsize=11, fontweight='bold', color='#2D3748')
+    ax.text(x, 1.5, f"Phase {{i+1}}", ha='center', fontsize=9, color='#718096')
 
-plt.title("{title}", fontsize=16, fontweight='bold', pad=20)
-plt.ylabel("Value", fontsize=12)
-plt.xticks(rotation=45 if len(labels) > 4 else 0)
-plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.savefig("{output_path}", dpi=150, bbox_inches='tight', facecolor='white')
+plt.close()
+'''
 
-# Add value labels
-for i, v in enumerate(values):
-    ax.text(i, v, str(v), color='black', ha="center", va="bottom")
+    def _comparison_template(self, description: str, output_path: str) -> str:
+        """Generate a comparison/table visualization."""
+        return f'''
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
-plt.savefig("{output_path}", dpi=300, bbox_inches='tight')
-"""
-        return code
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.axis('off')
+
+# Simple comparison layout
+items = [
+    ('Before', ['Basic understanding', 'Inconsistent practice', 'Limited vocabulary']),
+    ('After', ['Deep mastery', 'Daily discipline', 'Rich expression'])
+]
+
+for col, (title, points) in enumerate(items):
+    x = 0.25 + col * 0.5
+    color = '#E9D5FF' if col == 0 else '#8B5CF6'
+    
+    ax.text(x, 0.95, title, ha='center', fontsize=16, fontweight='bold', 
+            color='#2D3748', transform=ax.transAxes)
+    
+    for i, point in enumerate(points):
+        y = 0.8 - i * 0.15
+        ax.text(x, y, f"• {{point}}", ha='center', fontsize=11, 
+                color='#4A5568', transform=ax.transAxes)
+
+plt.savefig("{output_path}", dpi=150, bbox_inches='tight', facecolor='white')
+plt.close()
+'''
+
+    def _concept_template(self, description: str, output_path: str) -> str:
+        """Generate a concept/framework diagram."""
+        return f'''
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+fig, ax = plt.subplots(figsize=(10, 8))
+ax.set_xlim(0, 10)
+ax.set_ylim(0, 10)
+ax.axis('off')
+
+# Central concept
+center = patches.Circle((5, 5), 1.5, facecolor='#8B5CF6', edgecolor='#4C1D95', linewidth=3)
+ax.add_patch(center)
+ax.text(5, 5, 'Core\\nConcept', ha='center', va='center', fontsize=12, 
+        fontweight='bold', color='white')
+
+# Surrounding elements
+concepts = ['Element 1', 'Element 2', 'Element 3', 'Element 4']
+positions = [(2, 8), (8, 8), (2, 2), (8, 2)]
+colors = ['#E9D5FF', '#C4B5FD', '#A78BFA', '#DDD6FE']
+
+for (x, y), concept, color in zip(positions, concepts, colors):
+    rect = patches.FancyBboxPatch((x-1, y-0.5), 2, 1, boxstyle="round,pad=0.1",
+                                   facecolor=color, edgecolor='#6B46C1', linewidth=2)
+    ax.add_patch(rect)
+    ax.text(x, y, concept, ha='center', va='center', fontsize=10, color='#2D3748')
+    
+    # Connection line
+    ax.plot([x, 5], [y, 5], '--', color='#A78BFA', alpha=0.5, lw=1.5)
+
+plt.savefig("{output_path}", dpi=150, bbox_inches='tight', facecolor='white')
+plt.close()
+'''
+
+
+# Export visual prompts for Antigravity generation
+def create_visual_prompts(title: str, chapters: list, output_path: Path) -> dict:
+    """
+    Create a visual_prompts.json file for Antigravity/manual image generation.
+    
+    This creates descriptions for contextual images that should be generated
+    via Antigravity's generate_image tool or manually sourced.
+    """
+    prompts = {
+        "cover": {
+            "type": "illustration",
+            "prompt": f"A beautiful, professional product cover image for '{title}'. "
+                      f"Use warm, inviting colors. Style: premium digital product, modern and elegant.",
+            "dimensions": "1024x1024",
+            "priority": "required"
+        }
+    }
+    
+    # Add chapter illustrations only for key chapters (first 3, last 1)
+    key_chapters = chapters[:3] + chapters[-1:] if len(chapters) > 3 else chapters
+    
+    for i, ch in enumerate(key_chapters):
+        ch_title = ch.get('title', f'Chapter {i+1}')
+        prompts[f"ch{i+1}_illustration"] = {
+            "type": "illustration",
+            "prompt": f"An artistic illustration representing the concept of '{ch_title}'. "
+                      f"Abstract, inspirational, matching the theme of personal growth and mastery.",
+            "dimensions": "1024x768",
+            "priority": "optional"
+        }
+    
+    # Save prompts file
+    import json
+    output_path.write_text(json.dumps(prompts, indent=2))
+    logger.info(f"📝 Visual prompts saved: {output_path}")
+    
+    return prompts

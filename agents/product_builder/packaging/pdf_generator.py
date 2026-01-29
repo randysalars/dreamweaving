@@ -33,6 +33,7 @@ class PDFConfig:
     style: PDFStyle = None
     include_toc: bool = True
     include_cover: bool = True
+    cover_image: str = None  # Path to cover image
     page_size: str = "letter"  # letter, a4
     output_path: str = None
     
@@ -181,11 +182,11 @@ class PDFGenerator:
         visuals: Dict[str, str],
         output_path: str
     ) -> str:
-        """Generate PDF using ReportLab."""
+        """Generate PDF using ReportLab with proper structure."""
         from reportlab.lib.pagesizes import letter, A4
         from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
         from reportlab.lib.units import inch
-        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Image
+        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Image, Table, TableStyle
         from reportlab.lib.colors import HexColor
         
         page_size = A4 if config.page_size == "a4" else letter
@@ -193,7 +194,16 @@ class PDFGenerator:
         
         styles = getSampleStyleSheet()
         
-        # Custom styles - compact font sizes
+        # Custom styles
+        cover_title_style = ParagraphStyle(
+            'CoverTitle',
+            parent=styles['Heading1'],
+            fontSize=32,
+            spaceAfter=20,
+            alignment=1,  # Center
+            textColor=HexColor(config.style.heading_color)
+        )
+        
         title_style = ParagraphStyle(
             'CustomTitle',
             parent=styles['Heading1'],
@@ -210,18 +220,80 @@ class PDFGenerator:
             textColor=HexColor(config.style.text_color)
         )
         
+        toc_style = ParagraphStyle(
+            'TOCItem',
+            parent=styles['Normal'],
+            fontSize=12,
+            leading=18,
+            leftIndent=20,
+            textColor=HexColor(config.style.text_color)
+        )
+        
+        toc_section_style = ParagraphStyle(
+            'TOCSection',
+            parent=styles['Heading2'],
+            fontSize=14,
+            spaceBefore=12,
+            spaceAfter=6,
+            textColor=HexColor(config.style.accent_color)
+        )
+        
+        # Separate main chapters from bonuses/appendices
+        main_chapters = []
+        bonus_chapters = []
+        
+        for ch in chapters:
+            title_lower = ch.get('title', '').lower()
+            # Detect bonus/appendix content by title
+            if any(kw in title_lower for kw in ['bonus', 'appendix', 'reference', 'checklist', 'template', 'worksheet', 'supplement', 'resource', 'glossary', 'index']):
+                bonus_chapters.append(ch)
+            else:
+                main_chapters.append(ch)
+        
         # Build content
         story = []
         
-        # Cover page
+        # ===== COVER PAGE WITH IMAGE =====
         if config.include_cover:
-            story.append(Spacer(1, 3*inch))
-            story.append(Paragraph(config.title, title_style))
-            story.append(Spacer(1, 0.5*inch))
-            story.append(Paragraph(f"by {config.author}", body_style))
+            # Cover image at top if available
+            if config.cover_image and Path(config.cover_image).exists():
+                try:
+                    # Center the cover image - max width 6 inches
+                    cover_img = Image(config.cover_image, width=6*inch, height=6*inch, kind='proportional')
+                    cover_img.hAlign = 'CENTER'
+                    story.append(Spacer(1, 0.5*inch))
+                    story.append(cover_img)
+                    story.append(Spacer(1, 0.5*inch))
+                except Exception as e:
+                    logger.warning(f"Failed to embed cover image: {e}")
+                    story.append(Spacer(1, 2.5*inch))
+            else:
+                # If no cover image, find one in visuals
+                cover_found = False
+                for key in ['cover', 'cover_image', 'product_cover', 'title_image']:
+                    if visuals and key in visuals and Path(visuals[key]).exists():
+                        try:
+                            cover_img = Image(visuals[key], width=6*inch, height=6*inch, kind='proportional')
+                            cover_img.hAlign = 'CENTER'
+                            story.append(Spacer(1, 0.5*inch))
+                            story.append(cover_img)
+                            story.append(Spacer(1, 0.5*inch))
+                            cover_found = True
+                            break
+                        except Exception as e:
+                            logger.warning(f"Failed to embed cover from visuals: {e}")
+                
+                if not cover_found:
+                    story.append(Spacer(1, 2.5*inch))
+            
+            story.append(Paragraph(config.title, cover_title_style))
+            story.append(Spacer(1, 0.3*inch))
+            
+            author_style = ParagraphStyle('Author', parent=body_style, alignment=1, fontSize=16)
+            story.append(Paragraph(f"by {config.author}", author_style))
             story.append(PageBreak())
         
-        # Copyright page
+        # ===== COPYRIGHT PAGE =====
         copyright_style = ParagraphStyle(
             'Copyright',
             parent=styles['Normal'],
@@ -248,10 +320,32 @@ class PDFGenerator:
         story.append(Paragraph(disclaimer_text, copyright_style))
         story.append(PageBreak())
         
-        # Chapters
-        for i, chapter in enumerate(chapters):
+        # ===== TABLE OF CONTENTS =====
+        if config.include_toc:
+            story.append(Paragraph("Table of Contents", title_style))
+            story.append(Spacer(1, 0.3*inch))
+            
+            # Main Chapters
+            if main_chapters:
+                story.append(Paragraph("Chapters", toc_section_style))
+                for i, ch in enumerate(main_chapters):
+                    ch_title = ch.get('title', f'Chapter {i+1}')
+                    story.append(Paragraph(f"{i+1}. {ch_title}", toc_style))
+            
+            # Bonus/Appendix sections
+            if bonus_chapters:
+                story.append(Spacer(1, 0.2*inch))
+                story.append(Paragraph("Appendices & Bonus Materials", toc_section_style))
+                for i, ch in enumerate(bonus_chapters):
+                    ch_title = ch.get('title', f'Appendix {i+1}')
+                    story.append(Paragraph(f"{ch_title}", toc_style))
+            
+            story.append(PageBreak())
+        
+        # ===== MAIN CHAPTERS =====
+        for i, chapter in enumerate(main_chapters):
             # Chapter Title
-            story.append(self._parse_markdown_line(f"# {chapter.get('title', 'Chapter')}", config, styles))
+            story.append(self._parse_markdown_line(f"# Chapter {i+1}: {chapter.get('title', 'Chapter')}", config, styles))
             story.append(Spacer(1, 0.2*inch))
             
             # Content Parsing
@@ -260,27 +354,22 @@ class PDFGenerator:
             
             # Embed Visual if Available
             if visuals:
-                # Try multiple key formats
                 chapter_keys = [
                     f"ch{i+1}",
+                    f"ch{i+1}_opener",
                     f"chapter_{i+1}",
                     chapter.get('title', '').lower().replace(' ', '_'),
-                    f"{config.title.lower().replace(' ', '_')}_ch{i+1}_visual",
                 ]
                 for key in chapter_keys:
-                    if key in visuals:
-                        img_path = visuals[key]
-                        if Path(img_path).exists():
-                            try:
-                                story.append(Spacer(1, 0.3*inch))
-                                # Scale image to fit page width (max 5 inches)
-                                img = Image(img_path, width=5*inch, height=3*inch)
-                                img.hAlign = 'CENTER'
-                                story.append(img)
-                                story.append(Spacer(1, 0.2*inch))
-                                logger.debug(f"📷 Embedded visual for chapter {i+1}")
-                            except Exception as e:
-                                logger.warning(f"Failed to embed image {img_path}: {e}")
+                    if key in visuals and Path(visuals[key]).exists():
+                        try:
+                            story.append(Spacer(1, 0.3*inch))
+                            img = Image(visuals[key], width=5*inch, height=3*inch)
+                            img.hAlign = 'CENTER'
+                            story.append(img)
+                            story.append(Spacer(1, 0.2*inch))
+                        except Exception as e:
+                            logger.warning(f"Failed to embed image {visuals[key]}: {e}")
                         break
             
             # Key Takeaways
@@ -289,9 +378,35 @@ class PDFGenerator:
                 story.append(Spacer(1, 0.2*inch))
                 story.append(self._parse_markdown_line("### Key Takeaways", config, styles))
                 for t in takeaways:
-                     story.append(self._parse_markdown_line(f"* {t}", config, styles))
+                    story.append(self._parse_markdown_line(f"* {t}", config, styles))
 
             story.append(PageBreak())
+        
+        # ===== APPENDICES & BONUS MATERIALS =====
+        if bonus_chapters:
+            # Section divider
+            divider_style = ParagraphStyle(
+                'SectionDivider',
+                parent=styles['Heading1'],
+                fontSize=28,
+                alignment=1,
+                spaceBefore=200,
+                spaceAfter=50,
+                textColor=HexColor(config.style.accent_color)
+            )
+            story.append(Paragraph("Appendices & Bonus Materials", divider_style))
+            story.append(PageBreak())
+            
+            for i, chapter in enumerate(bonus_chapters):
+                # Appendix Title
+                story.append(self._parse_markdown_line(f"# {chapter.get('title', 'Appendix')}", config, styles))
+                story.append(Spacer(1, 0.2*inch))
+                
+                # Content
+                content = chapter.get("content", "")
+                story.extend(self._parse_markdown_to_story(content, config, styles))
+                
+                story.append(PageBreak())
         
         doc.build(story)
         logger.info(f"✅ PDF generated: {output_path}")
@@ -409,13 +524,37 @@ class PDFGenerator:
         config: PDFConfig,
         visuals: Dict[str, str]
     ) -> str:
-        """Build HTML content from chapters."""
+        """Build HTML content from chapters with proper structure."""
         html_parts = []
         
-        # Cover
+        # Separate main chapters from bonuses/appendices
+        main_chapters = []
+        bonus_chapters = []
+        
+        for ch in chapters:
+            title_lower = ch.get('title', '').lower()
+            if any(kw in title_lower for kw in ['bonus', 'appendix', 'reference', 'checklist', 'template', 'worksheet', 'supplement', 'resource', 'glossary', 'index']):
+                bonus_chapters.append(ch)
+            else:
+                main_chapters.append(ch)
+        
+        # Cover with image
         if config.include_cover:
+            cover_img_html = ""
+            # Try to find cover image
+            if config.cover_image and Path(config.cover_image).exists():
+                abs_path = Path(config.cover_image).resolve()
+                cover_img_html = f'<img src="file://{abs_path}" class="cover-image" />'
+            elif visuals:
+                for key in ['cover', 'cover_image', 'product_cover', 'title_image']:
+                    if key in visuals and Path(visuals[key]).exists():
+                        abs_path = Path(visuals[key]).resolve()
+                        cover_img_html = f'<img src="file://{abs_path}" class="cover-image" />'
+                        break
+            
             html_parts.append(f"""
 <div class="cover">
+    {cover_img_html}
     <h1 class="cover-title">{config.title}</h1>
     <p class="cover-author">by {config.author}</p>
 </div>
@@ -441,19 +580,35 @@ class PDFGenerator:
 
         # Table of Contents
         if config.include_toc:
-            toc_items = "\n".join([
-                f'<li><a href="#ch-{i}">{ch.get("title", f"Chapter {i+1}")}</a></li>'
-                for i, ch in enumerate(chapters)
+            # Main chapters
+            main_toc = "\n".join([
+                f'<li><a href="#ch-{i}">Chapter {i+1}: {ch.get("title", f"Chapter {i+1}")}</a></li>'
+                for i, ch in enumerate(main_chapters)
             ])
+            
+            # Bonus/Appendix items  
+            bonus_toc = ""
+            if bonus_chapters:
+                bonus_items = "\n".join([
+                    f'<li><a href="#appendix-{i}">{ch.get("title", f"Appendix {i+1}")}</a></li>'
+                    for i, ch in enumerate(bonus_chapters)
+                ])
+                bonus_toc = f"""
+    <h3 class="toc-section">Appendices & Bonus Materials</h3>
+    <ul class="toc-bonus">{bonus_items}</ul>
+"""
+            
             html_parts.append(f"""
 <div class="toc">
-    <h2>Contents</h2>
-    <ol>{toc_items}</ol>
+    <h2>Table of Contents</h2>
+    <h3 class="toc-section">Chapters</h3>
+    <ol>{main_toc}</ol>
+    {bonus_toc}
 </div>
 """)
         
-        # Chapters
-        for i, chapter in enumerate(chapters):
+        # Main Chapters
+        for i, chapter in enumerate(main_chapters):
             title = chapter.get("title", f"Chapter {i+1}")
             content = chapter.get("content", "")
             takeaways = chapter.get("key_takeaways", [])
@@ -462,7 +617,6 @@ class PDFGenerator:
             try:
                 from markdown_it import MarkdownIt
                 md = MarkdownIt('commonmark', {'breaks': True, 'html': True})
-                # Add table support if possible or stick to commonmark
                 html_content = md.render(content)
                 paragraphs = html_content
             except ImportError:
@@ -484,18 +638,49 @@ class PDFGenerator:
             
             # Visual if available
             visual_html = ""
-            section_id = f"ch{i+1}_opener"
-            if visuals and section_id in visuals:
-                visual_html = f'<img src="{visuals[section_id]}" class="chapter-visual" />'
+            for key in [f"ch{i+1}_opener", f"ch{i+1}", f"chapter_{i+1}"]:
+                if visuals and key in visuals and Path(visuals[key]).exists():
+                    abs_path = Path(visuals[key]).resolve()
+                    visual_html = f'<img src="file://{abs_path}" class="chapter-visual" />'
+                    break
             
             html_parts.append(f"""
 <div class="chapter" id="ch-{i}">
-    <h2 class="chapter-title">{title}</h2>
+    <h2 class="chapter-title">Chapter {i+1}: {title}</h2>
     {visual_html}
     <div class="chapter-content">
         {paragraphs}
     </div>
     {takeaways_html}
+</div>
+""")
+        
+        # Appendices & Bonus Materials
+        if bonus_chapters:
+            html_parts.append("""
+<div class="section-divider">
+    <h2>Appendices & Bonus Materials</h2>
+</div>
+""")
+            for i, chapter in enumerate(bonus_chapters):
+                title = chapter.get("title", f"Appendix {i+1}")
+                content = chapter.get("content", "")
+                
+                try:
+                    from markdown_it import MarkdownIt
+                    md = MarkdownIt('commonmark', {'breaks': True, 'html': True})
+                    paragraphs = md.render(content)
+                except ImportError:
+                    paragraphs = "\n".join([
+                        f"<p>{p}</p>" for p in content.split("\n\n") if p.strip()
+                    ])
+                
+                html_parts.append(f"""
+<div class="appendix" id="appendix-{i}">
+    <h2 class="appendix-title">{title}</h2>
+    <div class="chapter-content">
+        {paragraphs}
+    </div>
 </div>
 """)
         
@@ -617,6 +802,53 @@ body {{
 
 .takeaways li {{
     margin-bottom: 8pt;
+}}
+
+.cover-image {{
+    max-width: 80%;
+    max-height: 50vh;
+    margin: 0 auto 24pt auto;
+    display: block;
+    border-radius: 8pt;
+}}
+
+.toc-section {{
+    font-size: 14pt;
+    color: {style.accent_color};
+    margin-top: 18pt;
+    margin-bottom: 8pt;
+}}
+
+.toc-bonus {{
+    list-style-type: disc;
+    padding-left: 24pt;
+}}
+
+.section-divider {{
+    page-break-before: always;
+    text-align: center;
+    padding-top: 40%;
+}}
+
+.section-divider h2 {{
+    font-size: 28pt;
+    color: {style.accent_color};
+    border-bottom: 3px solid {style.accent_color};
+    display: inline-block;
+    padding-bottom: 12pt;
+}}
+
+.appendix {{
+    page-break-before: always;
+}}
+
+.appendix-title {{
+    font-size: 22pt;
+    font-weight: 600;
+    color: {style.accent_color};
+    margin-bottom: 24pt;
+    border-bottom: 2px solid {style.heading_color};
+    padding-bottom: 12pt;
 }}
 """
     

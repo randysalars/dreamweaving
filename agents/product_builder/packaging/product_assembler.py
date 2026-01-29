@@ -313,7 +313,54 @@ class ProductAssembler:
                 ))
 
         # Return map of section_id -> path
-        return {r.section_id: r.path for r in results if r.success}
+        visuals_dict = {r.section_id: r.path for r in results if r.success}
+        
+        # Discover existing images that may have been manually added
+        # This includes covers AND chapter openers - override placeholders with real images
+        visuals_dir = config.output_dir / "visuals"
+        
+        # 1. Discover cover images
+        cover_patterns = ['cover.png', 'cover.jpg', 'cover.jpeg', 'cover.webp', 
+                          'product_cover.png', 'product_cover.jpg']
+        current_cover = visuals_dict.get('cover', '')
+        is_placeholder = not current_cover or current_cover.endswith('.txt') or 'placeholder' in str(current_cover).lower()
+        
+        if is_placeholder:
+            for pattern in cover_patterns:
+                cover_path = visuals_dir / pattern
+                if cover_path.exists() and cover_path.suffix.lower() in ['.png', '.jpg', '.jpeg', '.webp']:
+                    visuals_dict['cover'] = str(cover_path)
+                    logger.info(f"📷 Discovered existing cover image: {cover_path.name}")
+                    break
+        
+        # 2. Discover chapter opener images (ch1_opener.png, ch2_opener.png, etc.)
+        for i in range(1, 20):  # Support up to 20 chapters
+            section_id = f"ch{i}_opener"
+            current_path = visuals_dict.get(section_id, '')
+            is_placeholder = not current_path or current_path.endswith('.txt') or 'placeholder' in str(current_path).lower()
+            
+            if is_placeholder:
+                for ext in ['.png', '.jpg', '.jpeg', '.webp']:
+                    opener_path = visuals_dir / f"ch{i}_opener{ext}"
+                    if opener_path.exists():
+                        visuals_dict[section_id] = str(opener_path)
+                        logger.info(f"📷 Discovered existing chapter opener: {opener_path.name}")
+                        break
+        
+        # 3. Discover journey map
+        journey_id = 'journey_map'
+        current_journey = visuals_dict.get(journey_id, '')
+        is_placeholder = not current_journey or current_journey.endswith('.txt') or 'placeholder' in str(current_journey).lower()
+        
+        if is_placeholder:
+            for ext in ['.png', '.jpg', '.jpeg', '.webp']:
+                journey_path = visuals_dir / f"journey_map{ext}"
+                if journey_path.exists():
+                    visuals_dict[journey_id] = str(journey_path)
+                    logger.info(f"📷 Discovered existing journey map: {journey_path.name}")
+                    break
+        
+        return visuals_dict
     
     def _generate_pdf(
         self, 
@@ -385,23 +432,44 @@ class ProductAssembler:
         return video_files
     
     def _create_zip_package(self, config: AssemblyConfig) -> str:
-        """Bundle the output directory into a zip file."""
-        import shutil
+        """Bundle only deliverables into a zip file (PDF + bonuses)."""
+        import zipfile
         
-        # Create zip inside the output directory
-        base_name = str(config.output_dir / self._slugify(config.title))
+        zip_filename = f"{self._slugify(config.title)}.zip"
+        zip_path = config.output_dir / zip_filename
         
-        # Make archive
-        # format='zip' adds .zip extension automatically
-        logger.info(f"   Compressing artifacts in {config.output_dir}...")
+        logger.info(f"   📦 Creating deliverables ZIP: {zip_filename}")
         
-        zip_path = shutil.make_archive(
-            base_name, 
-            'zip', 
-            root_dir=str(config.output_dir)
-        )
+        # List of file patterns to include as deliverables
+        deliverable_patterns = [
+            "*.pdf",           # Main PDF and bonus PDFs
+            "*.mp3",           # Audio files
+            "*.wav",           # Audio files
+        ]
         
-        return zip_path
+        # Bonus directory if exists
+        bonuses_dir = config.output_dir / "bonuses"
+        
+        with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
+            # Add main PDF(s) from output directory
+            for pattern in deliverable_patterns:
+                for file_path in config.output_dir.glob(pattern):
+                    if file_path.is_file():
+                        arcname = file_path.name
+                        zf.write(file_path, arcname)
+                        logger.info(f"      + {arcname}")
+            
+            # Add bonus PDFs from bonuses subdirectory
+            if bonuses_dir.exists():
+                for pattern in deliverable_patterns:
+                    for file_path in bonuses_dir.glob(pattern):
+                        if file_path.is_file():
+                            arcname = f"bonuses/{file_path.name}"
+                            zf.write(file_path, arcname)
+                            logger.info(f"      + {arcname}")
+        
+        logger.info(f"   ✅ ZIP created: {zip_path}")
+        return str(zip_path)
     
     def _slugify(self, text: str) -> str:
         return "".join(c if c.isalnum() or c == " " else "" for c in text).replace(" ", "_").lower()

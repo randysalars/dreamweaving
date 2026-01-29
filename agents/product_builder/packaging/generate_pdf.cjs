@@ -2,17 +2,74 @@
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
+const { execSync } = require('child_process');
+
+/**
+ * Find Chrome/Chromium executable on the system
+ */
+function findSystemChrome() {
+  const candidates = [
+    '/usr/bin/google-chrome',
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/chromium',
+    '/snap/bin/chromium',
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  ];
+  
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      console.log(`Found system Chrome at: ${candidate}`);
+      return candidate;
+    }
+  }
+  
+  // Try 'which' command as fallback
+  try {
+    const result = execSync('which google-chrome chromium-browser chromium 2>/dev/null | head -1', { encoding: 'utf8' }).trim();
+    if (result && fs.existsSync(result)) {
+      console.log(`Found Chrome via 'which': ${result}`);
+      return result;
+    }
+  } catch (e) {
+    // Ignore errors from which command
+  }
+  
+  return null;
+}
 
 async function generatePDF() {
-  const browser = await puppeteer.launch({
+  const systemChrome = findSystemChrome();
+  
+  const launchOptions = {
     headless: "new",
     args: [
         '--no-sandbox', 
         '--disable-setuid-sandbox', 
         '--allow-file-access-from-files',
-        '--enable-local-file-accesses'
+        '--enable-local-file-accesses',
+        '--disable-gpu',
+        '--disable-dev-shm-usage'
     ] 
-  });
+  };
+  
+  // Use system Chrome if Puppeteer's bundled Chrome isn't available
+  if (systemChrome) {
+    launchOptions.executablePath = systemChrome;
+  }
+  
+  let browser;
+  try {
+    browser = await puppeteer.launch(launchOptions);
+  } catch (err) {
+    console.error(`Failed to launch browser: ${err.message}`);
+    // If system Chrome path was provided but failed, try without it
+    if (systemChrome && !launchOptions.executablePath) {
+      throw err;
+    }
+    // Rethrow to trigger Python fallback
+    throw err;
+  }
   const page = await browser.newPage();
   
   // Arguments: node generate_pdf.cjs <input_html> <output_pdf>
