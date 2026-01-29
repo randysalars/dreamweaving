@@ -89,21 +89,98 @@ class XClient:
             access_token_secret=self.access_token_secret
         )
     
-    def post_tweet(self, text: str, reply_to: str = None) -> Dict:
+    # Twitter URL shortening: all URLs count as 23 characters
+    TWITTER_URL_LENGTH = 23
+    TWITTER_MAX_CHARS = 280
+    
+    @staticmethod
+    def count_twitter_chars(text: str) -> int:
+        """
+        Count characters as Twitter does.
+        
+        Twitter Rules:
+        - All URLs (http/https) count as 23 characters regardless of actual length
+        - Emojis count as 2 characters each
+        - Everything else counts as 1 character
+        
+        Returns:
+            Effective character count for Twitter
+        """
+        import re
+        
+        # Find all URLs
+        url_pattern = r'https?://[^\s]+'
+        urls = re.findall(url_pattern, text)
+        
+        # Remove URLs from text for counting
+        text_without_urls = re.sub(url_pattern, '', text)
+        
+        # Count remaining characters (emojis = 2 chars each, but Python len handles this)
+        char_count = len(text_without_urls)
+        
+        # Add 23 chars per URL
+        char_count += len(urls) * XClient.TWITTER_URL_LENGTH
+        
+        return char_count
+    
+    def validate_tweet(self, text: str) -> tuple[bool, str, int]:
+        """
+        Validate tweet content before posting.
+        
+        Returns:
+            (is_valid, error_message, char_count)
+        """
+        char_count = self.count_twitter_chars(text)
+        
+        if char_count > self.TWITTER_MAX_CHARS:
+            return (
+                False, 
+                f"Tweet exceeds {self.TWITTER_MAX_CHARS} chars ({char_count} chars). "
+                f"Content will be truncated or rejected.",
+                char_count
+            )
+        
+        return (True, "", char_count)
+    
+    def post_tweet(self, text: str, reply_to: str = None, allow_truncate: bool = False) -> Dict:
         """
         Post a single tweet.
         
         Args:
-            text: Tweet content (max 280 chars)
+            text: Tweet content (max 280 chars, URLs count as 23)
             reply_to: Tweet ID to reply to (for threads)
+            allow_truncate: If True, truncate long tweets; if False, error on over-limit
             
         Returns:
             Dict with tweet_id or error
         """
         try:
-            if len(text) > 280:
-                logger.warning(f"Tweet truncated from {len(text)} to 280 chars")
-                text = text[:277] + "..."
+            is_valid, error_msg, char_count = self.validate_tweet(text)
+            
+            if not is_valid:
+                if allow_truncate:
+                    # Smart truncation: preserve URLs at the end
+                    import re
+                    url_pattern = r'https?://[^\s]+$'
+                    url_match = re.search(url_pattern, text)
+                    
+                    if url_match:
+                        # URL at end - truncate before it
+                        url = url_match.group()
+                        text_before = text[:url_match.start()].rstrip()
+                        # Calculate how much space we have: 280 - 23 (url) - 3 (...)
+                        max_text = self.TWITTER_MAX_CHARS - self.TWITTER_URL_LENGTH - 4
+                        if len(text_before) > max_text:
+                            text_before = text_before[:max_text] + "..."
+                        text = f"{text_before} {url}"
+                    else:
+                        # No URL at end - simple truncation
+                        text = text[:277] + "..."
+                    
+                    logger.warning(f"Tweet truncated from {char_count} to {self.count_twitter_chars(text)} chars")
+                else:
+                    logger.error(f"❌ Tweet rejected: {error_msg}")
+                    return {"success": False, "error": error_msg, "char_count": char_count}
             
             response = self.client.create_tweet(
                 text=text,
@@ -111,8 +188,8 @@ class XClient:
             )
             
             tweet_id = response.data['id']
-            logger.info(f"✅ Posted tweet: {tweet_id}")
-            return {"success": True, "tweet_id": tweet_id}
+            logger.info(f"✅ Posted tweet: {tweet_id} ({char_count} chars)")
+            return {"success": True, "tweet_id": tweet_id, "char_count": char_count}
             
         except tweepy.TweepyException as e:
             logger.error(f"❌ Tweet failed: {e}")

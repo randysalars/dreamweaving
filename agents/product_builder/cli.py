@@ -548,6 +548,46 @@ def deploy_command(args):
     if not args.commit:
         logger.info(f"\n   💡 Run SQL against your database:")
         logger.info(f"      psql $DATABASE_URL -f {result['sql_path']}")
+    
+    # ═══════════════════════════════════════════════════════════════
+    # AUTO-POST TWITTER LAUNCH THREAD (if requested)
+    # ═══════════════════════════════════════════════════════════════
+    if getattr(args, 'post_twitter', False):
+        logger.info("\n═══ AUTO-POST: TWITTER LAUNCH THREAD ═══")
+        
+        # Look for social posts JSON
+        social_json = output_dir / "marketing" / "zapier_social_posts.json"
+        if not social_json.exists():
+            social_json = output_dir / "zapier_social_posts.json"
+        
+        if not social_json.exists():
+            logger.warning("   ⚠️ No social media content found. Run 'marketing --social' first.")
+        else:
+            try:
+                from .marketing.x_client import XClient
+                
+                client = XClient()
+                
+                if getattr(args, 'dry_run', False):
+                    post_result = client.post_from_json(social_json, post_now=True, dry_run=True)
+                    logger.info(f"   🧪 [DRY RUN] Would post {post_result.posted_count} tweets")
+                else:
+                    post_result = client.post_from_json(social_json, post_now=True, dry_run=False)
+                    
+                    if post_result.success:
+                        logger.info(f"   ✅ Posted {post_result.posted_count} tweets!")
+                        if post_result.tweet_ids:
+                            first_tweet = post_result.tweet_ids[0]
+                            logger.info(f"   🔗 View thread: https://twitter.com/i/status/{first_tweet}")
+                    else:
+                        logger.warning(f"   ⚠️ Some posts failed: {post_result.errors}")
+                        
+            except ImportError:
+                logger.warning("   ⚠️ tweepy not installed. Run: pip install tweepy")
+            except ValueError as e:
+                logger.warning(f"   ⚠️ X API credentials missing: {e}")
+            except Exception as e:
+                logger.warning(f"   ⚠️ Twitter posting failed: {e}")
 
 
 def marketing_command(args):
@@ -664,6 +704,18 @@ def marketing_command(args):
         
         logger.info(f"   ✅ Social Package: {len(social_package.posts)} posts")
         logger.info(f"      Twitter/X: {twitter_count} | LinkedIn: {linkedin_count} | Instagram: {insta_count}")
+        
+        # Auto-schedule Twitter post for 6 hours later
+        if twitter_count > 0 and not getattr(args, 'no_schedule', False):
+            try:
+                import sys
+                sys.path.insert(0, str(Path(__file__).parent.parent.parent / "scripts"))
+                from scheduled_twitter_poster import create_schedule_for_product
+                
+                schedule_time = create_schedule_for_product(product_dir, delay_hours=6)
+                logger.info(f"   📅 Twitter auto-post scheduled for {schedule_time.strftime('%Y-%m-%d %H:%M')}")
+            except Exception as e:
+                logger.warning(f"   ⚠️ Could not schedule Twitter post: {e}")
     
     # Buffer scheduling
     if args.schedule_buffer:
@@ -693,6 +745,99 @@ def marketing_command(args):
     
     logger.info("\n✅ Marketing generation complete!")
     return 0
+
+
+def post_twitter_command(args):
+    """
+    Post Twitter launch thread for a product.
+    
+    This is a standalone command that can be run independently after:
+    1. Marketing content has been generated (marketing --social)
+    2. Product has been deployed to production (via Coolify)
+    
+    Usage:
+        product-builder post-twitter --product-dir ./products/my-product
+        product-builder post-twitter --product-dir ./products/my-product --dry-run
+    """
+    from pathlib import Path
+    
+    product_dir = Path(args.product_dir)
+    output_dir = product_dir / "output"
+    
+    logger.info("🐦 TWITTER LAUNCH THREAD")
+    logger.info("=" * 50)
+    logger.info(f"   Product: {product_dir.name}")
+    
+    # Look for social posts JSON
+    social_json = output_dir / "marketing" / "zapier_social_posts.json"
+    if not social_json.exists():
+        social_json = output_dir / "zapier_social_posts.json"
+    
+    if not social_json.exists():
+        logger.error(f"❌ No social media content found!")
+        logger.info(f"   Expected: {output_dir}/marketing/zapier_social_posts.json")
+        logger.info(f"   Generate with: product-builder marketing --product-dir {product_dir} --social")
+        return 1
+    
+    logger.info(f"   📄 Posts file: {social_json}")
+    
+    try:
+        from .marketing.x_client import XClient
+        
+        # Initialize client (validates credentials)
+        client = XClient()
+        logger.info("   ✅ X API credentials loaded")
+        
+        # Load and preview posts
+        import json
+        with open(social_json) as f:
+            all_posts = json.load(f)
+        
+        twitter_posts = [p for p in all_posts if p.get('platform') == 'twitter']
+        logger.info(f"   📝 Found {len(twitter_posts)} Twitter posts")
+        
+        # Show preview
+        for i, post in enumerate(twitter_posts[:3]):
+            content = post.get('content', '')[:60]
+            char_count = client.count_twitter_chars(post.get('content', ''))
+            logger.info(f"      {i+1}. ({char_count} chars) {content}...")
+        if len(twitter_posts) > 3:
+            logger.info(f"      ... and {len(twitter_posts) - 3} more")
+        
+        if args.dry_run:
+            logger.info(f"\n🧪 [DRY RUN] Validating posts...")
+            result = client.post_from_json(social_json, post_now=True, dry_run=True)
+            logger.info(f"   ✅ Would post {result.posted_count} tweets")
+            logger.info(f"   All posts validated. Run without --dry-run to post for real.")
+        else:
+            logger.info(f"\n🚀 Posting to X/Twitter...")
+            result = client.post_from_json(social_json, post_now=True, dry_run=False)
+            
+            if result.success:
+                logger.info(f"\n✅ SUCCESS! Posted {result.posted_count} tweets")
+                if result.tweet_ids:
+                    first_tweet = result.tweet_ids[0]
+                    logger.info(f"   🔗 View thread: https://twitter.com/i/status/{first_tweet}")
+            else:
+                logger.warning(f"\n⚠️ Partial success: {result.posted_count} posted, {result.failed_count} failed")
+                if result.errors:
+                    for error in result.errors[:3]:
+                        logger.error(f"   ❌ {error}")
+                return 1
+        
+        return 0
+        
+    except ImportError:
+        logger.error("❌ tweepy not installed. Run: pip install tweepy")
+        return 1
+    except ValueError as e:
+        logger.error(f"❌ X API credentials missing: {e}")
+        logger.info("   Set these in your .env file:")
+        logger.info("   X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET")
+        return 1
+    except Exception as e:
+        logger.error(f"❌ Twitter posting failed: {e}")
+        return 1
 
 
 def status_command(args):
@@ -3227,6 +3372,10 @@ Examples:
                                help='Path to salarsu repo')
     deploy_parser.add_argument('--commit', action='store_true', help='Git commit the files')
     deploy_parser.add_argument('--push', action='store_true', help='Git push to origin (requires --commit)')
+    deploy_parser.add_argument('--post-twitter', action='store_true', 
+                               help='Auto-post Twitter launch thread after deployment')
+    deploy_parser.add_argument('--dry-run', action='store_true', 
+                               help='Validate Twitter posts without actually posting')
     deploy_parser.set_defaults(func=deploy_command)
     
     # Marketing command - generate emails and social for existing products
@@ -3241,6 +3390,15 @@ Examples:
     marketing_parser.add_argument('--dry-run', action='store_true', help='Validate without registering/scheduling')
     marketing_parser.add_argument('--all', action='store_true', help='Generate all marketing content')
     marketing_parser.set_defaults(func=marketing_command)
+    
+    # Post Twitter command - standalone Twitter/X posting (independent of deploy)
+    twitter_parser = subparsers.add_parser('post-twitter', 
+        help='Post Twitter launch thread (run after Coolify deployment)')
+    twitter_parser.add_argument('--product-dir', '-d', required=True, 
+                                help='Product directory with marketing content')
+    twitter_parser.add_argument('--dry-run', action='store_true', 
+                                help='Validate and preview without actually posting')
+    twitter_parser.set_defaults(func=post_twitter_command)
     
     # Status command - show pipeline status for a product
     status_parser = subparsers.add_parser('status', help='Show pipeline status for a product')
