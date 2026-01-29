@@ -116,11 +116,12 @@ class EmailSequenceGenerator:
         ))
         
         # Email 4: Objection Handling
-        if positioning.objections:
-            main_objection = positioning.objections[0]
+        objections = getattr(positioning, 'objections', None)
+        if objections:
+            main_objection = objections[0]
             emails.append(Email(
                 type=EmailType.OBJECTION,
-                subject=f'"{main_objection.objection}" — Let me address that',
+                subject=f'"{getattr(main_objection, "objection", str(main_objection))}" — Let me address that',
                 preview_text="Because I hear this a lot...",
                 body=self._generate_objection_email(main_objection),
                 send_delay_hours=120
@@ -200,7 +201,7 @@ Talk soon,
             body=f"""
 Hey,
 
-Quick question: {positioning.objections[0].objection if positioning.objections else "Have you been burned by courses before?"}
+Quick question: {self._get_first_objection_text(positioning)}
 
 I get it.
 
@@ -316,6 +317,19 @@ See you inside (I hope),
         if len(words) > 3:
             return " ".join(words[-3:])
         return positioning.core_promise
+    
+    def _get_first_objection_text(self, positioning: PositioningBrief) -> str:
+        """Safely get the first objection text."""
+        objections = getattr(positioning, 'objections', None)
+        if objections and len(objections) > 0:
+            obj = objections[0]
+            # Handle both dict-like and object-like access
+            if hasattr(obj, 'objection'):
+                return obj.objection
+            elif isinstance(obj, dict):
+                return obj.get('objection', str(obj))
+            return str(obj)
+        return "Have you been burned by courses before?"
     
     def _generate_welcome_email(self, positioning: PositioningBrief) -> str:
         """Generate welcome email body."""

@@ -163,6 +163,16 @@ class SocialPromoGenerator:
             calendar=calendar
         )
     
+    def _get_current_solutions(self, positioning: PositioningBrief) -> List[str]:
+        """Safely get current solutions from positioning audience."""
+        audience = getattr(positioning, 'audience', None)
+        if audience:
+            solutions = getattr(audience, 'current_solutions', None)
+            if solutions:
+                return solutions[:3]
+        # Default fallback
+        return ["Books", "Online courses", "YouTube tutorials"]
+    
     def _generate_twitter_posts(
         self, 
         title: str, 
@@ -253,7 +263,7 @@ Here's why I built it:
 I kept seeing people struggle with {positioning.audience.pain_points[0].lower() if positioning.audience.pain_points else 'the same problems'}.
 
 They'd try everything:
-{chr(10).join(f'• {sol}' for sol in positioning.audience.current_solutions[:3])}
+{chr(10).join(f'• {sol}' for sol in self._get_current_solutions(positioning))}
 
 But nothing stuck.
 
@@ -521,18 +531,21 @@ If you're ready for your own transformation → Link in bio""",
         """Generate FAQ-style posts from objections."""
         posts = []
         
-        if positioning.objections:
-            for i, obj in enumerate(positioning.objections[:3]):
+        objections = getattr(positioning, 'objections', None)
+        if objections:
+            for i, obj in enumerate(objections[:3]):
+                obj_text = getattr(obj, 'objection', str(obj)) if hasattr(obj, 'objection') else (obj.get('objection', str(obj)) if isinstance(obj, dict) else str(obj))
+                preemption = getattr(obj, 'preemption', 'I totally understand.') if hasattr(obj, 'preemption') else (obj.get('preemption', 'I totally understand.') if isinstance(obj, dict) else 'I totally understand.')
                 posts.append(SocialPost(
                     platform=Platform.TWITTER,
-                    hook=f"FAQ: {obj.objection}",
-                    content=f""""{obj.objection}"
+                    hook=f"FAQ: {obj_text}",
+                    content=f""""{obj_text}"
 
 I hear this a lot.
 
 Here's my answer:
 
-{obj.preemption}
+{preemption}
 
 Does that help?""",
                     hashtags=[],
