@@ -216,12 +216,15 @@ def create_command(args):
             return 1
         
         # ═══════════════════════════════════════════════════════════════
-        # PHASE 7: EMAIL SEQUENCES (if requested)
+        # PHASE 7: EMAIL SEQUENCES (automatic unless --no-marketing)
         # ═══════════════════════════════════════════════════════════════
         email_welcome = None
         email_launch = None
         
-        if getattr(args, 'emails', False) or getattr(args, 'all', False):
+        # Marketing runs by default after successful compilation
+        run_marketing = not getattr(args, 'no_marketing', False)
+        
+        if run_marketing or getattr(args, 'emails', False) or getattr(args, 'all', False):
             from .marketing.email_sequence_generator import EmailSequenceGenerator
             
             logger.info("\n═══ PHASE 7: EMAIL SEQUENCES ═══")
@@ -273,11 +276,11 @@ def create_command(args):
                 logger.warning(f"   ⚠️ No email file found. Run with --emails first.")
         
         # ═══════════════════════════════════════════════════════════════
-        # PHASE 8: SOCIAL MEDIA CONTENT (if requested)
+        # PHASE 8: SOCIAL MEDIA CONTENT (automatic unless --no-marketing)
         # ═══════════════════════════════════════════════════════════════
         social_package = None
         
-        if getattr(args, 'social', False) or getattr(args, 'all', False):
+        if run_marketing or getattr(args, 'social', False) or getattr(args, 'all', False):
             from .marketing.social_promo_generator import SocialPromoGenerator
             
             logger.info("\n═══ PHASE 8: SOCIAL MEDIA CONTENT ═══")
@@ -3328,6 +3331,8 @@ Examples:
                                help='Validate without actually registering/scheduling')
     create_parser.add_argument('--generate-prompts-only', action='store_true',
                                help='Generate prompt files for Antigravity instead of content')
+    create_parser.add_argument('--no-marketing', action='store_true',
+                               help='Skip automatic marketing generation (emails + social)')
     create_parser.add_argument('--all', action='store_true',
                                help='Generate everything')
     create_parser.set_defaults(func=create_command)
