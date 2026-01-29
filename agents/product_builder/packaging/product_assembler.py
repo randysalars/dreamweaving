@@ -171,7 +171,7 @@ class ProductAssembler:
         
         visuals = {}
         
-        # 1. Generate Visuals
+        # 1. Generate Visuals (BEFORE PDF so they can be embedded)
         if config.generate_visuals:
             logger.info("🎨 Generating visuals...")
             try:
@@ -180,21 +180,8 @@ class ProductAssembler:
             except Exception as e:
                 logger.error(f"Visual generation failed: {e}")
                 result.errors.append(f"Visuals: {str(e)}")
-        
-        # 1.5 Generate Bonuses
-        if landing_page_content and "bonuses" in landing_page_content:
-            logger.info("🎁 Processing bonuses from Landing Page content...")
-            try:
-                bonuses = landing_page_content.get("bonuses", [])
-                if bonuses:
-                    bonus_files = bonus_generator.generate(bonuses)
-                    result.bonus_files = bonus_files
-                    logger.info(f"✅ Generated {len(bonus_files)} bonuses")
-            except Exception as e:
-                logger.error(f"Bonus generation failed: {e}")
-                result.errors.append(f"Bonuses: {str(e)}")
 
-        # 2. Generate PDF
+        # 2. Generate PDF (BEFORE bonuses - main product first)
         if config.generate_pdf:
             logger.info("📄 Generating PDF...")
             try:
@@ -203,6 +190,19 @@ class ProductAssembler:
             except Exception as e:
                 logger.error(f"PDF generation failed: {e}")
                 result.errors.append(f"PDF: {str(e)}")
+        
+        # 2.5 Generate Bonus PDFs (AFTER main PDF)
+        if landing_page_content and "bonuses" in landing_page_content:
+            logger.info("🎁 Generating bonus PDFs...")
+            try:
+                bonuses = landing_page_content.get("bonuses", [])
+                if bonuses:
+                    bonus_files = bonus_generator.generate(bonuses)
+                    result.bonus_files = bonus_files
+                    logger.info(f"✅ Generated {len(bonus_files)} bonus PDFs")
+            except Exception as e:
+                logger.error(f"Bonus generation failed: {e}")
+                result.errors.append(f"Bonuses: {str(e)}")
         
         # 3. Generate Audio
         if config.generate_audio:
