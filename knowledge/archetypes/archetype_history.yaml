@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-01-29'
-  total_sessions_tracked: 103
+  updated: '2026-01-30'
+  total_sessions_tracked: 106
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -1794,6 +1794,59 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: The Volcano Ascent Dreamweaving'
+- session_id: astral-artisan-crafting-manipulating-ethereal-matt
+  date: '2026-01-30'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Astral Artisan: Crafting & Manipulating Ethereal
+    Matter in the Astral Plane Dreamweaving'
+- session_id: wormhole-whisper-dreamweaving
+  date: '2026-01-30'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Wormhole Whisper Dreamweaving'
+- session_id: tiamats-tide-surfing-the-primordial-chaos-in-cosmi
+  date: '2026-01-30'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Tiamat''s Tide: Surfing the Primordial Chaos
+    in Cosmic Babylonian Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 21
@@ -1872,7 +1925,7 @@ listener_relationships:
     last_session_date: '2026-01-25'
     relationship_level: 4
   divine_light_healing.inner_healer:
-    total_encounters: 75
+    total_encounters: 78
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -2026,8 +2079,14 @@ listener_relationships:
       type: first_encounter
     - session: the-volcano-ascent-dreamweaving
       type: first_encounter
-    last_session: the-volcano-ascent-dreamweaving
-    last_session_date: '2026-01-29'
+    - session: astral-artisan-crafting-manipulating-ethereal-matt
+      type: first_encounter
+    - session: wormhole-whisper-dreamweaving
+      type: first_encounter
+    - session: tiamats-tide-surfing-the-primordial-chaos-in-cosmi
+      type: first_encounter
+    last_session: tiamats-tide-surfing-the-primordial-chaos-in-cosmi
+    last_session_date: '2026-01-30'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 6
@@ -2098,7 +2157,7 @@ listener_relationships:
     last_session_date: '2026-01-15'
     relationship_level: 2
   divine_feminine.rose_mother:
-    total_encounters: 62
+    total_encounters: 65
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2226,11 +2285,17 @@ listener_relationships:
       type: first_encounter
     - session: the-volcano-ascent-dreamweaving
       type: first_encounter
-    last_session: the-volcano-ascent-dreamweaving
-    last_session_date: '2026-01-29'
+    - session: astral-artisan-crafting-manipulating-ethereal-matt
+      type: first_encounter
+    - session: wormhole-whisper-dreamweaving
+      type: first_encounter
+    - session: tiamats-tide-surfing-the-primordial-chaos-in-cosmi
+      type: first_encounter
+    last_session: tiamats-tide-surfing-the-primordial-chaos-in-cosmi
+    last_session_date: '2026-01-30'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 40
+    total_encounters: 41
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2314,8 +2379,10 @@ listener_relationships:
       type: first_encounter
     - session: the-volcano-ascent-dreamweaving
       type: first_encounter
-    last_session: the-volcano-ascent-dreamweaving
-    last_session_date: '2026-01-29'
+    - session: wormhole-whisper-dreamweaving
+      type: first_encounter
+    last_session: wormhole-whisper-dreamweaving
+    last_session_date: '2026-01-30'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 8
@@ -2372,7 +2439,7 @@ listener_relationships:
     last_session_date: '2026-01-26'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
-    total_encounters: 35
+    total_encounters: 37
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -2446,8 +2513,12 @@ listener_relationships:
       type: first_encounter
     - session: the-leviathans-labyrinth-navigating-the-depths-of-
       type: first_encounter
-    last_session: the-leviathans-labyrinth-navigating-the-depths-of-
-    last_session_date: '2026-01-29'
+    - session: astral-artisan-crafting-manipulating-ethereal-matt
+      type: first_encounter
+    - session: tiamats-tide-surfing-the-primordial-chaos-in-cosmi
+      type: first_encounter
+    last_session: tiamats-tide-surfing-the-primordial-chaos-in-cosmi
+    last_session_date: '2026-01-30'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 3
@@ -2574,44 +2645,44 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - the-vault-of-starborn-giants-dreamweaving
-  - clockwork-of-the-unconscious-dreamweaving
-  - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
+  - astral-artisan-crafting-manipulating-ethereal-matt
+  - wormhole-whisper-dreamweaving
+  - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   archetype_cooldowns:
-    divine_light_healing.great_physician: 9
-    transformation_alchemy.phoenix_renewal: 13
+    divine_light_healing.great_physician: 12
+    transformation_alchemy.phoenix_renewal: 16
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 13
-    divine_masculine.guardian_father: 9
-    dreamweaver_meta.dream_architect: 41
+    warrior_power.archangel_michael: 16
+    divine_masculine.guardian_father: 12
+    dreamweaver_meta.dream_architect: 44
     divine_feminine.rose_mother: 0
-    shamanic_earth.world_tree_guardian: 0
-    oracle_seer.oracle_of_light: 17
-    divine_feminine.sophia_wisdom: 11
-    emotional_heart.heart_flame_tender: 1
-    warrior_power.solar_king: 13
-    divine_masculine.logos_bearer: 11
-    divine_light_healing.shekinah_restorer: 67
-    emotional_heart.joy_child: 11
-    abundance_destiny.providence_angel: 41
-    dreamweaver_meta.portal_keeper: 41
+    shamanic_earth.world_tree_guardian: 1
+    oracle_seer.oracle_of_light: 20
+    divine_feminine.sophia_wisdom: 14
+    emotional_heart.heart_flame_tender: 0
+    warrior_power.solar_king: 16
+    divine_masculine.logos_bearer: 14
+    divine_light_healing.shekinah_restorer: 70
+    emotional_heart.joy_child: 14
+    abundance_destiny.providence_angel: 44
+    dreamweaver_meta.portal_keeper: 44
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - shamanic_earth
+  - emotional_heart
   - divine_feminine
   family_usage_counts:
-    divine_light_healing: 104
+    divine_light_healing: 107
     transformation_alchemy: 9
     warrior_power: 9
     divine_masculine: 21
     dreamweaver_meta: 4
-    divine_feminine: 73
-    shamanic_earth: 40
+    divine_feminine: 76
+    shamanic_earth: 41
     oracle_seer: 8
-    emotional_heart: 40
+    emotional_heart: 42
     abundance_destiny: 1
 effective_pairings: []
