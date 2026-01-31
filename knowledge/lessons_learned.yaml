@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - goddess-worshipping-dreamweaving
-  - oracle-of-omniverse-dreamweaving
-  - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
   - virtual-game-avatar-leveling-up-fitness
@@ -34,8 +31,11 @@ lessons:
   - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
-  applied_count: 101
-  last_applied: '2026-01-30'
+  - mindful-dreamweaving
+  - herblore-haven-dreamweaving
+  - reincarnation-journeys-dreamweaving
+  applied_count: 104
+  last_applied: '2026-01-31'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - goddess-worshipping-dreamweaving
-  - oracle-of-omniverse-dreamweaving
-  - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
   - virtual-game-avatar-leveling-up-fitness
@@ -72,8 +69,11 @@ lessons:
   - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
-  applied_count: 101
-  last_applied: '2026-01-30'
+  - mindful-dreamweaving
+  - herblore-haven-dreamweaving
+  - reincarnation-journeys-dreamweaving
+  applied_count: 104
+  last_applied: '2026-01-31'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - goddess-worshipping-dreamweaving
-  - oracle-of-omniverse-dreamweaving
-  - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
   - virtual-game-avatar-leveling-up-fitness
@@ -109,8 +106,11 @@ lessons:
   - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
-  applied_count: 101
-  last_applied: '2026-01-30'
+  - mindful-dreamweaving
+  - herblore-haven-dreamweaving
+  - reincarnation-journeys-dreamweaving
+  applied_count: 104
+  last_applied: '2026-01-31'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - goddess-worshipping-dreamweaving
-  - oracle-of-omniverse-dreamweaving
-  - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
   - virtual-game-avatar-leveling-up-fitness
@@ -147,8 +144,11 @@ lessons:
   - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
-  applied_count: 101
-  last_applied: '2026-01-30'
+  - mindful-dreamweaving
+  - herblore-haven-dreamweaving
+  - reincarnation-journeys-dreamweaving
+  applied_count: 104
+  last_applied: '2026-01-31'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - goddess-worshipping-dreamweaving
-  - oracle-of-omniverse-dreamweaving
-  - the-lightning-index-of-total-recall
   - the-temple-of-hidden-names
   - the-mountain-of-resolve-dreamweaving
   - virtual-game-avatar-leveling-up-fitness
@@ -183,8 +180,11 @@ lessons:
   - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
-  applied_count: 101
-  last_applied: '2026-01-30'
+  - mindful-dreamweaving
+  - herblore-haven-dreamweaving
+  - reincarnation-journeys-dreamweaving
+  applied_count: 104
+  last_applied: '2026-01-31'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3

@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: PRE-TALK -->
+<!-- Duration: 2.5 minutes | Pitch: 0st | Purpose: Welcome, safety, preparation -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="0st">
+Welcome...<break time="2s"/>
+to the Herblore Haven Dreamweaving...<break time="2.5s"/>
+a sacred journey into the garden of healing wisdom...<break time="2s"/>
+where every leaf...<break time="1s"/>
+every root...<break time="1s"/>
+every petal...<break time="1.5s"/>
+holds the memory of earth's oldest medicine...<break time="3s"/>
+
+In the next thirty minutes...<break time="1.5s"/>
+you are invited to walk the pathways of an ancient garden...<break time="2s"/>
+to meet the spirits of the healing plants...<break time="2s"/>
+and to remember the healer that lives within you...<break time="3s"/>
+
+You remain completely safe...<break time="2s"/>
+fully aware...<break time="1.5s"/>
+and in complete control throughout this experience...<break time="2.5s"/>
+At any time...<break time="1s"/>
+you can return to full waking awareness...<break time="1.5s"/>
+simply by opening your eyes...<break time="3s"/>
+
+Find a comfortable position now...<break time="2s"/>
+perhaps sitting with your spine gently supported...<break time="1.5s"/>
+or lying down with your body fully relaxed...<break time="2.5s"/>
+Allow your hands to rest softly...<break time="1.5s"/>
+palms open...<break time="1s"/>
+ready to receive...<break time="3s"/>
+
+Ensure you will not be disturbed for the next half hour...<break time="2s"/>
+Headphones will deepen your experience...<break time="1.5s"/>
+though they are not required...<break time="3s"/>
+
+And as you settle in...<break time="2s"/>
+allow yourself to trust...<break time="1.5s"/>
+that the garden knows you...<break time="2s"/>
+that healing already lives within you...<break time="2s"/>
+and that you need only remember...<break time="3.5s"/>
+
+When you are ready...<break time="2s"/>
+allow your eyes to gently close...<break time="4s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: INDUCTION -->
+<!-- Duration: 5 minutes | Pitch: -2st | Purpose: Progressive relaxation, trance entry -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="-2st">
+And with your eyes closed...<break time="2.5s"/>
+take a deep...<break time="1s"/>
+nourishing breath in...<break time="3s"/>
+filling your lungs with life...<break time="2s"/>
+and as you exhale...<break time="2s"/>
+release anything you no longer need...<break time="4s"/>
+
+Breathe in again...<break time="1s"/>
+slowly...<break time="1s"/>
+for a count of four...<break time="4s"/>
+hold gently at the top...<break time="4s"/>
+and exhale for six...<break time="1s"/>
+letting go...<break time="6s"/>
+
+And again...<break time="1.5s"/>
+breathing in calm...<break time="4s"/>
+holding with ease...<break time="4s"/>
+breathing out tension...<break time="6s"/>
+
+Perfect...<break time="3s"/>
+
+Now bring your awareness to your forehead...<break time="2s"/>
+and notice any tightness there...<break time="2s"/>
+any holding...<break time="2s"/>
+and as you breathe...<break time="1.5s"/>
+let that tightness <emphasis level="moderate">soften</emphasis>...<break time="3s"/>
+let it <emphasis level="moderate">melt</emphasis>...<break time="3.5s"/>
+
+Feel that softening move down...<break time="2s"/>
+into your temples...<break time="1.5s"/>
+around your eyes...<break time="1.5s"/>
+across your cheeks...<break time="2s"/>
+your jaw releasing...<break time="2s"/>
+tongue resting gently in your mouth...<break time="3s"/>
+
+And the deeper you relax...<break time="2s"/>
+the more natural it feels...<break time="2s"/>
+and the more natural it feels...<break time="2s"/>
+the deeper you <emphasis level="moderate">allow</emphasis> yourself to go...<break time="4s"/>
+
+That wave of relaxation moves down now...<break time="2s"/>
+into your neck...<break time="1.5s"/>
+across your shoulders...<break time="2s"/>
+feeling the weight drop away...<break time="2.5s"/>
+as your shoulders settle...<break time="2s"/>
+heavy...<break time="1.5s"/>
+soft...<break time="1.5s"/>
+safe...<break time="3.5s"/>
+
+Down your arms now...<break time="2s"/>
+into your elbows...<break time="1.5s"/>
+forearms...<break time="1.5s"/>
+wrists...<break time="1.5s"/>
+all the way to the tips of your fingers...<break time="2s"/>
+feeling warmth...<break time="2s"/>
+or perhaps a gentle tingling...<break time="3s"/>
+
+Your chest rises and falls...<break time="2s"/>
+in its own rhythm...<break time="2s"/>
+each breath carrying you deeper...<break time="3s"/>
+
+And down into your belly...<break time="2s"/>
+your lower back...<break time="2s"/>
+hips releasing...<break time="2s"/>
+thighs growing heavy...<break time="2.5s"/>
+
+Down through your knees...<break time="1.5s"/>
+calves...<break time="1.5s"/>
+ankles...<break time="1.5s"/>
+all the way to the soles of your feet...<break time="3s"/>
+
+And now your whole body...<break time="2s"/>
+from the crown of your head...<break time="2s"/>
+to the tips of your toes...<break time="2s"/>
+is deeply...<break time="1.5s"/>
+completely...<break time="1.5s"/>
+<emphasis level="moderate">relaxed</emphasis>...<break time="4s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: DEEPENING -->
+<!-- Duration: 3 minutes | Pitch: -2st | Purpose: Deepen trance, threshold crossing -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="-2st">
+And as you rest here...<break time="2.5s"/>
+so beautifully relaxed...<break time="2s"/>
+I invite you now to imagine...<break time="2s"/>
+or simply sense...<break time="2s"/>
+that you are standing at the edge of a garden...<break time="3s"/>
+
+Before you...<break time="2s"/>
+a gentle path unfolds...<break time="2s"/>
+made of smooth stone...<break time="2s"/>
+warm beneath your feet...<break time="3s"/>
+
+And as I count down from ten to one...<break time="2s"/>
+with each number...<break time="1.5s"/>
+you will take one step forward...<break time="2s"/>
+down this path...<break time="2s"/>
+deeper into the garden...<break time="2s"/>
+deeper into relaxation...<break time="2s"/>
+deeper into the healing space within you...<break time="4s"/>
+
+Ten...<break time="1.5s"/>
+stepping forward...<break time="2s"/>
+the air grows sweeter...<break time="3s"/>
+
+Nine...<break time="1.5s"/>
+deeper now...<break time="2s"/>
+warmth on your skin...<break time="3s"/>
+
+Eight...<break time="1.5s"/>
+letting go even more...<break time="2.5s"/>
+birdsong in the distance...<break time="3s"/>
+
+Seven...<break time="1.5s"/>
+half way down...<break time="2s"/>
+the scent of earth and green...<break time="3s"/>
+
+Six...<break time="1.5s"/>
+sinking deeper...<break time="2s"/>
+safe and held...<break time="3s"/>
+
+Five...<break time="1.5s"/>
+the path glows softly...<break time="2.5s"/>
+guiding you...<break time="3s"/>
+
+Four...<break time="1.5s"/>
+almost there...<break time="2s"/>
+peace washing over you...<break time="3.5s"/>
+
+Three...<break time="1.5s"/>
+so deeply relaxed...<break time="2.5s"/>
+body and mind at ease...<break time="3.5s"/>
+
+Two...<break time="1.5s"/>
+one more step...<break time="2.5s"/>
+the garden gate appears...<break time="3.5s"/>
+
+And one...<break time="2s"/>
+you have <emphasis level="moderate">arrived</emphasis>...<break time="4s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: MAIN JOURNEY -->
+<!-- Duration: 14 minutes | Pitch: -1st | Purpose: Core experience, archetype encounters -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="-1st">
+And here you are...<break time="2.5s"/>
+standing at the entrance to the Herblore Haven...<break time="3s"/>
+
+Before you...<break time="2s"/>
+an arched gateway of living wood...<break time="2s"/>
+roses twining up the posts...<break time="2s"/>
+their petals the color of dawn...<break time="2.5s"/>
+their fragrance...<break time="1.5s"/>
+sweet...<break time="1s"/>
+honeyed...<break time="1s"/>
+opening something in your heart...<break time="4s"/>
+
+You step through the gate...<break time="2.5s"/>
+and the garden unfolds before you...<break time="3s"/>
+
+Rows of raised beds stretch out in graceful curves...<break time="2s"/>
+each one bursting with life...<break time="2.5s"/>
+Lavender...<break time="1s"/>
+its purple spikes swaying...<break time="2s"/>
+Rosemary...<break time="1s"/>
+woody and ancient...<break time="2s"/>
+Thyme carpeting the edges in soft silver-green...<break time="3s"/>
+
+The air here is alive...<break time="2s"/>
+humming with the quiet song of growing things...<break time="3s"/>
+You can feel it on your skin...<break time="2s"/>
+warm...<break time="1s"/>
+golden...<break time="1s"/>
+like sunlight filtered through leaves...<break time="3.5s"/>
+
+And as you walk deeper into the garden...<break time="2.5s"/>
+you notice a figure...<break time="2s"/>
+kneeling beside a bed of calendula...<break time="3s"/>
+
+She looks up...<break time="2s"/>
+and her eyes are kind...<break time="2s"/>
+ancient...<break time="2s"/>
+yet soft as spring...<break time="3s"/>
+
+This is the <emphasis level="moderate">Rose Mother</emphasis>...<break time="3s"/>
+the keeper of this haven...<break time="2s"/>
+the one who knows every root...<break time="2s"/>
+every leaf...<break time="2s"/>
+every secret the soil holds...<break time="4s"/>
+
+She rises...<break time="2s"/>
+brushing earth from her hands...<break time="2s"/>
+and she smiles at you...<break time="2.5s"/>
+as if she has been expecting you...<break time="3.5s"/>
+
+"Welcome, beloved,"<break time="2s"/>
+she says...<break time="2s"/>
+her voice like honey and rain...<break time="3s"/>
+"You have come to remember...<break time="2s"/>
+what your body already knows...<break time="3s"/>
+that you are made of the same earth...<break time="2s"/>
+the same medicine...<break time="2s"/>
+the same healing light...<break time="3.5s"/>
+as everything that grows here."<break time="4s"/>
+
+She gestures...<break time="2s"/>
+and you notice three paths leading deeper into the garden...<break time="3s"/>
+
+The first...<break time="2s"/>
+lined with chamomile and lemon balm...<break time="2s"/>
+glows with a soft golden light...<break time="3s"/>
+
+The second...<break time="2s"/>
+bordered by hawthorn and yarrow...<break time="2s"/>
+pulses with a gentle rose-red warmth...<break time="3s"/>
+
+The third...<break time="2s"/>
+framed by elder and mugwort...<break time="2s"/>
+shimmers with silver and violet...<break time="3.5s"/>
+
+"Choose the path that calls to you,"<break time="2s"/>
+the Rose Mother whispers...<break time="3s"/>
+"and meet the healer who waits there...<break time="3s"/>
+a part of yourself...<break time="2s"/>
+you have always known."<break time="4s"/>
+
+And now...<break time="2s"/>
+without effort...<break time="2s"/>
+you find yourself drawn...<break time="2s"/>
+toward one of the paths...<break time="3s"/>
+Your feet move naturally...<break time="2s"/>
+as if the path itself is guiding you...<break time="4s"/>
+
+As you walk...<break time="2s"/>
+you feel the plants around you responding...<break time="2.5s"/>
+Their leaves brush your hands...<break time="2s"/>
+soft...<break time="1s"/>
+welcoming...<break time="2s"/>
+and with each touch...<break time="2s"/>
+you feel something <emphasis level="moderate">release</emphasis>...<break time="2.5s"/>
+something <emphasis level="moderate">open</emphasis>...<break time="3.5s"/>
+
+The fragrance here is rich...<break time="2s"/>
+layered...<break time="2s"/>
+Mint and sage...<break time="1.5s"/>
+earth and honey...<break time="1.5s"/>
+wood smoke and rose...<break time="3s"/>
+
+And then...<break time="2s"/>
+you arrive...<break time="3s"/>
+
+At the heart of the path...<break time="2s"/>
+a clearing...<break time="2s"/>
+and in the center...<break time="2s"/>
+a figure of light...<break time="3.5s"/>
+
+This is the <emphasis level="moderate">Inner Healer</emphasis>...<break time="3s"/>
+radiant...<break time="2s"/>
+whole...<break time="2s"/>
+clothed in robes woven from living vines...<break time="3s"/>
+
+They extend their hands to you...<break time="2.5s"/>
+and in their palms...<break time="2s"/>
+you see a small flame...<break time="2.5s"/>
+golden...<break time="1.5s"/>
+steady...<break time="1.5s"/>
+warm...<break time="3s"/>
+
+"This is your heart flame,"<break time="2s"/>
+the Inner Healer says softly...<break time="3s"/>
+"It has never gone out...<break time="2.5s"/>
+even when you thought you were lost...<break time="3s"/>
+This flame remembers...<break time="2s"/>
+how to heal...<break time="2s"/>
+how to restore...<break time="2s"/>
+how to make whole."<break time="4s"/>
+
+And as you gaze at the flame...<break time="2.5s"/>
+you feel it <emphasis level="moderate">resonate</emphasis>...<break time="2s"/>
+in your own chest...<break time="2.5s"/>
+A warmth begins to glow...<break time="2s"/>
+just beneath your heart...<break time="2.5s"/>
+spreading outward...<break time="2s"/>
+filling you with light...<break time="4s"/>
+
+The Inner Healer places a hand over your heart...<break time="3s"/>
+and you feel the flame grow brighter...<break time="2.5s"/>
+warmer...<break time="2s"/>
+stronger...<break time="3.5s"/>
+
+"You are the <emphasis level="moderate">Heart Flame Tender</emphasis>,"<break time="3s"/>
+they whisper...<break time="2.5s"/>
+"You tend this light...<break time="2s"/>
+not only for yourself...<break time="2s"/>
+but for all those who will walk this garden after you...<break time="3.5s"/>
+Your healing...<break time="2s"/>
+becomes their healing...<break time="3s"/>
+Your wholeness...<break time="2s"/>
+becomes their path."<break time="4s"/>
+
+And you understand...<break time="3s"/>
+
+The plants around you...<break time="2s"/>
+the herbs and flowers...<break time="2s"/>
+are not separate from you...<break time="3s"/>
+They are allies...<break time="2s"/>
+teachers...<break time="2s"/>
+mirrors of the medicine already within you...<break time="4s"/>
+
+Each leaf...<break time="2s"/>
+a memory of resilience...<break time="3s"/>
+Each root...<break time="2s"/>
+a reminder of grounding...<break time="3s"/>
+Each bloom...<break time="2s"/>
+a celebration of beauty rising from soil...<break time="4s"/>
+
+The Rose Mother appears beside you once more...<break time="3s"/>
+and she places a small bundle in your hands...<break time="3s"/>
+
+"These are seeds,"<break time="2s"/>
+she says...<break time="2.5s"/>
+"Plant them in your life...<break time="2s"/>
+in your thoughts...<break time="2s"/>
+in your choices...<break time="3s"/>
+They will grow...<break time="2s"/>
+and remind you...<break time="2s"/>
+that you are a gardener of your own healing."<break time="4.5s"/>
+
+You hold the seeds...<break time="2s"/>
+and they are warm...<break time="2s"/>
+alive...<break time="2s"/>
+full of promise...<break time="3.5s"/>
+
+And now...<break time="2s"/>
+the Inner Healer and the Rose Mother...<break time="2s"/>
+both place their hands gently on your shoulders...<break time="3s"/>
+and you feel a wave of love...<break time="2.5s"/>
+so vast...<break time="2s"/>
+so complete...<break time="2s"/>
+that tears may come...<break time="3s"/>
+and that is perfect...<break time="3.5s"/>
+
+"You are never alone in your healing,"<break time="3s"/>
+they say together...<break time="3s"/>
+"We are always here...<break time="2s"/>
+in the garden of your heart...<break time="3s"/>
+tending the flame with you."<break time="4.5s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: INTEGRATION & RETURN -->
+<!-- Duration: 4 minutes | Pitch: -1st | Purpose: Anchor insights, gentle return -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="-1st">
+And now...<break time="2.5s"/>
+the Inner Healer and the Rose Mother step back...<break time="2.5s"/>
+bowing gently to you...<break time="3s"/>
+honoring the healer that you are...<break time="3.5s"/>
+
+The garden around you...<break time="2s"/>
+begins to soften...<break time="2s"/>
+shimmering at the edges...<break time="3s"/>
+
+But the warmth in your heart remains...<break time="3s"/>
+the seeds in your hand remain...<break time="3s"/>
+the knowing remains...<break time="4s"/>
+
+And you understand...<break time="2.5s"/>
+that this garden is not a place you leave...<break time="3s"/>
+It lives within you...<break time="2.5s"/>
+always accessible...<break time="2s"/>
+always tended...<break time="2s"/>
+always blooming...<break time="4s"/>
+
+Take a moment now...<break time="2.5s"/>
+to breathe deeply...<break time="3s"/>
+and as you breathe...<break time="2s"/>
+let the essence of this experience...<break time="2s"/>
+settle into your body...<break time="2.5s"/>
+into your bones...<break time="2s"/>
+into your cells...<break time="3.5s"/>
+
+Feel the heart flame glowing steady...<break time="3s"/>
+Feel the seeds resting in your awareness...<break time="3s"/>
+Feel the love of the Rose Mother and the Inner Healer...<break time="2.5s"/>
+woven into the fabric of who you are...<break time="4s"/>
+
+And in the days ahead...<break time="2s"/>
+you will notice...<break time="2s"/>
+that healing comes more naturally...<break time="3s"/>
+That self-compassion flows more easily...<break time="3s"/>
+That you remember to tend your own heart flame...<break time="2.5s"/>
+with the same care you would give to a sacred garden...<break time="4s"/>
+
+And whenever you wish to return...<break time="2.5s"/>
+all you need to do...<break time="2s"/>
+is close your eyes...<break time="2s"/>
+take three deep breaths...<break time="3s"/>
+and imagine the scent of roses...<break time="2.5s"/>
+or the warmth of your heart flame...<break time="3s"/>
+and you will find yourself here...<break time="2.5s"/>
+in the Herblore Haven...<break time="2.5s"/>
+where you are always welcome...<break time="4s"/>
+</prosody>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION: AWAKENING & POST-HYPNOTIC ANCHORS -->
+<!-- Duration: 3.5 minutes | Pitch: 0st | Purpose: Gentle return, anchors, empowerment -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<prosody rate="1.0" pitch="0st">
+And now...<break time="2s"/>
+it is time to return...<break time="2.5s"/>
+bringing all of this healing...<break time="2s"/>
+all of this wisdom...<break time="2s"/>
+all of this light...<break time="2s"/>
+back with you...<break time="3.5s"/>
+
+In a moment...<break time="2s"/>
+I will count from one to five...<break time="2.5s"/>
+and with each number...<break time="2s"/>
+you will become more alert...<break time="2s"/>
+more refreshed...<break time="2s"/>
+more fully present in your body...<break time="3s"/>
+
+One...<break time="1.5s"/>
+beginning to return now...<break time="2s"/>
+feeling your breath deepen...<break time="2.5s"/>
+energy flowing back into your limbs...<break time="3s"/>
+
+Two...<break time="1.5s"/>
+becoming more aware of the room around you...<break time="2s"/>
+the surface beneath you...<break time="2s"/>
+sounds in the distance...<break time="3s"/>
+
+Three...<break time="1.5s"/>
+half way back...<break time="2s"/>
+your mind clear...<break time="2s"/>
+your heart open...<break time="2.5s"/>
+the flame still glowing within you...<break time="3s"/>
+
+Four...<break time="1.5s"/>
+almost fully returned...<break time="2s"/>
+feeling refreshed...<break time="2s"/>
+renewed...<break time="2s"/>
+ready...<break time="3s"/>
+
+And five...<break time="2s"/>
+eyes opening gently...<break time="2s"/>
+fully awake...<break time="2s"/>
+fully present...<break time="2.5s"/>
+carrying the garden within you...<break time="4s"/>
+
+And as you return to your day...<break time="2.5s"/>
+remember these anchors...<break time="3s"/>
+
+Whenever you take three deep breaths...<break time="2s"/>
+and imagine the scent of roses...<break time="2s"/>
+you will feel the Rose Mother's love...<break time="2.5s"/>
+and remember that you are always held...<break time="3.5s"/>
+
+Whenever you place your hand over your heart...<break time="2s"/>
+and feel the warmth there...<break time="2s"/>
+you will connect to your heart flame...<break time="2.5s"/>
+the Inner Healer who never sleeps...<break time="3.5s"/>
+
+Whenever you touch a plant...<break time="2s"/>
+or walk on earth...<break time="2s"/>
+or breathe in green growing things...<break time="2.5s"/>
+you will remember the Herblore Haven...<break time="2.5s"/>
+and know that healing is your birthright...<break time="4s"/>
+
+And whenever you feel lost...<break time="2.5s"/>
+or uncertain...<break time="2s"/>
+simply whisper to yourself...<break time="2s"/>
+"I am the Heart Flame Tender"...<break time="3s"/>
+and you will feel your strength return...<break time="3.5s"/>
+
+You are a healer...<break time="2.5s"/>
+You are whole...<break time="2.5s"/>
+You are rooted in love...<break time="3.5s"/>
+
+Thank you for walking this path today...<break time="2.5s"/>
+May the seeds you carry...<break time="2s"/>
+bloom beautifully in your life...<break time="3.5s"/>
+
+And so it is...<break time="4s"/>
+</prosody>
+
+</speak>
