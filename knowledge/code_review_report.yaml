@@ -1,10 +1,10 @@
-timestamp: '2026-01-25T01:00:04.658047'
+timestamp: '2026-02-01T01:00:05.641564'
 summary:
-  total_issues: 6214
+  total_issues: 6307
   errors: 0
-  warnings: 129
-  info: 6085
-  files_reviewed: 218
+  warnings: 134
+  info: 6173
+  files_reviewed: 221
 by_severity:
   errors: []
   warnings:
@@ -84,6 +84,36 @@ by_severity:
     line: 56
     type: deep_nesting
     description: Function 'format_section' has deep nesting (6 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/pdf_quality_audit.py
+    line: 45
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/pdf_quality_audit.py
+    line: 46
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/pdf_quality_audit.py
+    line: 97
+    type: deep_nesting
+    description: Function 'analyze_pdf' has deep nesting (6 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/pdf_quality_audit.py
+    line: 246
+    type: deep_nesting
+    description: Function 'rebuild_zip' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/scheduled_twitter_poster.py
+    line: 180
+    type: deep_nesting
+    description: Function 'main' has deep nesting (7 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/assemble_only.py
@@ -784,7 +814,7 @@ by_severity:
     suggestion: Consider refactoring to reduce complexity
 by_type:
   print_statement:
-    count: 3995
+    count: 4067
     examples:
     - file: scripts/build_financial_freedom.py
       line: 23
@@ -805,7 +835,7 @@ by_type:
       severity: info
       suggestion: Consider using logging module for production code
   hardcoded_path:
-    count: 17
+    count: 19
     examples:
     - file: scripts/build_financial_freedom.py
       line: 27
@@ -847,7 +877,7 @@ by_type:
       severity: warning
       suggestion: Use shell=False and pass args as list
   line_length:
-    count: 451
+    count: 453
     examples:
     - file: scripts/build_financial_freedom.py
       line: 208
@@ -855,20 +885,20 @@ by_type:
       description: Line too long (132 chars)
       severity: info
       suggestion: Consider breaking into multiple lines
-    - file: scripts/email/insert_dreamweaver_templates.py
-      line: 285
+    - file: scripts/scheduled_twitter_poster.py
+      line: 13
       type: line_length
-      description: Line too long (124 chars)
+      description: Line too long (182 chars)
       severity: info
       suggestion: Consider breaking into multiple lines
-    - file: scripts/email/insert_dreamweaver_templates.py
-      line: 322
+    - file: scripts/scheduled_twitter_poster.py
+      line: 16
       type: line_length
-      description: Line too long (140 chars)
+      description: Line too long (179 chars)
       severity: info
       suggestion: Consider breaking into multiple lines
   missing_docstring:
-    count: 270
+    count: 274
     examples:
     - file: scripts/build_financial_freedom.py
       line: 22
@@ -889,7 +919,7 @@ by_type:
       severity: info
       suggestion: ''
   magic_number:
-    count: 1318
+    count: 1328
     examples:
     - file: scripts/build_financial_freedom.py
       line: 188
@@ -910,7 +940,7 @@ by_type:
       severity: info
       suggestion: ''
   deep_nesting:
-    count: 104
+    count: 107
     examples:
     - file: scripts/sync_coin_knowledge_to_salarsu.py
       line: 41
@@ -1906,6 +1936,440 @@ by_file:
     line: 12
     type: missing_docstring
     description: Function 'test_bonus_generation' missing docstring
+    severity: info
+    suggestion: ''
+  scripts/pdf_quality_audit.py:
+  - file: scripts/pdf_quality_audit.py
+    line: 36
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 45
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/pdf_quality_audit.py
+    line: 46
+    type: hardcoded_path
+    description: Hardcoded absolute path detected
+    severity: warning
+    suggestion: Use Path.home() or configuration for paths
+  - file: scripts/pdf_quality_audit.py
+    line: 214
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 232
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 235
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 239
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 242
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 261
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 274
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 280
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 288
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 291
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 295
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 315
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 321
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 331
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 332
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 333
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 334
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 335
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 336
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 344
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 353
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 354
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 364
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 373
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 385
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 394
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 406
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 414
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 417
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 418
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 419
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 423
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 444
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 449
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 450
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 451
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 457
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 458
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 459
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 460
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 463
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 465
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 468
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 469
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 470
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 472
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 476
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 478
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 494
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 495
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 496
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 508
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 511
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 544
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 551
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/pdf_quality_audit.py
+    line: 69
+    type: missing_docstring
+    description: Class 'PDFIssue' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/pdf_quality_audit.py
+    line: 78
+    type: missing_docstring
+    description: Class 'ProductAuditResult' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/pdf_quality_audit.py
+    line: 97
+    type: deep_nesting
+    description: Function 'analyze_pdf' has deep nesting (6 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/pdf_quality_audit.py
+    line: 246
+    type: deep_nesting
+    description: Function 'rebuild_zip' has deep nesting (5 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/pdf_quality_audit.py
+    line: 520
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/pdf_quality_audit.py
+    line: 228
+    type: magic_number
+    description: Magic number 300 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/pdf_quality_audit.py
+    line: 235
+    type: magic_number
+    description: Magic number 200 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/scheduled_twitter_poster.py:
+  - file: scripts/scheduled_twitter_poster.py
+    line: 13
+    type: line_length
+    description: Line too long (182 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/scheduled_twitter_poster.py
+    line: 16
+    type: line_length
+    description: Line too long (179 chars)
+    severity: info
+    suggestion: Consider breaking into multiple lines
+  - file: scripts/scheduled_twitter_poster.py
+    line: 180
+    type: deep_nesting
+    description: Function 'main' has deep nesting (7 levels)
+    severity: warning
+    suggestion: Consider refactoring to reduce complexity
+  - file: scripts/scheduled_twitter_poster.py
+    line: 170
+    type: magic_number
+    description: Magic number 3600 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/scheduled_twitter_poster.py
+    line: 171
+    type: magic_number
+    description: Magic number 3600 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/scheduled_twitter_poster.py
+    line: 232
+    type: magic_number
+    description: Magic number 3600 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/scheduled_twitter_poster.py
+    line: 233
+    type: magic_number
+    description: Magic number 3600 should be a named constant
     severity: info
     suggestion: ''
   scripts/assemble_only.py:
@@ -10075,6 +10539,133 @@ by_file:
     line: 1739
     type: magic_number
     description: Magic number 200 should be a named constant
+    severity: info
+    suggestion: ''
+  scripts/core/generate_voice_xtts_custom.py:
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 112
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 113
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 114
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 121
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 122
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 125
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 133
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 136
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 141
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 150
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 158
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 185
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 193
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 199
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 207
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 208
+    type: print_statement
+    description: Using print() instead of logging
+    severity: info
+    suggestion: Consider using logging module for production code
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 104
+    type: missing_docstring
+    description: Function 'main' missing docstring
+    severity: info
+    suggestion: ''
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 99
+    type: magic_number
+    description: Magic number 500 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 139
+    type: magic_number
+    description: Magic number 22050 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 147
+    type: magic_number
+    description: Magic number 200 should be a named constant
+    severity: info
+    suggestion: ''
+  - file: scripts/core/generate_voice_xtts_custom.py
+    line: 177
+    type: magic_number
+    description: Magic number 24000 should be a named constant
     severity: info
     suggestion: ''
   scripts/core/generate_scene_images.py:

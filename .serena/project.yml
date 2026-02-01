@@ -24,7 +24,10 @@
 
 # Languages for which language servers are started
 # Python for the audio/video scripts, bash for shell scripts, yaml for manifests
-languages: ["python", "bash", "yaml"]
+languages:
+- python
+- bash
+- yaml
 
 # Text file encoding
 encoding: "utf-8"
@@ -34,17 +37,19 @@ ignore_all_files_in_gitignore: true
 
 # Additional paths to ignore
 ignored_paths:
-  - "temp_audio/**"
-  - "test_output/**"
-  - "**/*.wav"
-  - "**/*.mp3"
-  - "**/*.mp4"
-  - "**/*.aac"
-  - "**/*.png"
-  - "**/*.jpg"
-  - "**/*.jpeg"
+- "temp_audio/**"
+- "test_output/**"
+- "**/*.wav"
+- "**/*.mp3"
+- "**/*.mp4"
+- "**/*.aac"
+- "**/*.png"
+- "**/*.jpg"
+- "**/*.jpeg"
 
-# Not read-only - we want to edit files
+# whether the project is in read-only mode
+# If set to true, all editing tools will be disabled and attempts to use them will result in an error
+# Added on 2025-04-18
 read_only: false
 
 # No tools excluded
@@ -66,7 +71,7 @@ initial_prompt: |
   - Voice scripts use SSML format
   - Audio layers include binaural beats, pink noise, nature sounds, and voice
   - Voice enhancement applies psychoacoustic processing (warmth, de-essing, whisper overlay, etc.)
-
+# the name by which the project can be referenced within Serena
 project_name: "dreamweaving"
 
 # ==============================================================================
@@ -153,3 +158,25 @@ project_name: "dreamweaving"
 # 4. Validate SSML before TTS generation
 # 5. Check venv is activated before running Python scripts
 # 6. Read relevant Serena memories before starting work
+
+# list of mode names to that are always to be included in the set of active modes
+# The full set of modes to be activated is base_modes + default_modes.
+# If the setting is undefined, the base_modes from the global configuration (serena_config.yml) apply.
+# Otherwise, this setting overrides the global configuration.
+# Set this to [] to disable base modes for this project.
+# Set this to a list of mode names to always include the respective modes for this project.
+base_modes:
+
+# list of mode names that are to be activated by default.
+# The full set of modes to be activated is base_modes + default_modes.
+# If the setting is undefined, the default_modes from the global configuration (serena_config.yml) apply.
+# Otherwise, this overrides the setting from the global configuration (serena_config.yml).
+# This setting can, in turn, be overridden by CLI parameters (--mode).
+default_modes:
+
+# list of tools to include that would otherwise be disabled (particularly optional tools that are disabled by default)
+included_optional_tools: []
+
+# fixed set of tools to use as the base tool set (if non-empty), replacing Serena's default set of tools.
+# This cannot be combined with non-empty excluded_tools or included_optional_tools.
+fixed_tools: []

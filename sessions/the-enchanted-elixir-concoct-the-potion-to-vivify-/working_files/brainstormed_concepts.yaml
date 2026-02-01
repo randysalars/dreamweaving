@@ -1,0 +1,1208 @@
+- title: 'The Enchanted Elixir: Concoct the Potion to Vivify Your Deepest Desires
+    Symbolizing Manifestation of Goals Dreamweaving'
+  theme: 'The Enchanted Elixir: Concoct the potion to vivify your deepest desires
+    symbolizing manifestation of goals Dreamweaving'
+  metaphor: a sacred journey through cosmic realms toward manifestation
+  therapeutic_goal: manifestation
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: abundance_destiny.providence_angel
+    name: The Providence Angel
+    family: abundance_destiny
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now appears a doorway...<break time="2s"/>
+
+        and beside it, the Providence Angel...<break time="2s"/>
+
+        holding keys of gold...<break time="2s"/>
+
+        ready to open doors...<break time="1.5s"/>
+
+        you didn''t even know existed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Angel hands you a golden key...<break time="2s"/>
+
+        and you understand...<break time="2s"/>
+
+        abundance flows toward you naturally...<break time="2s"/>
+
+        doors open at the right time...<break time="2s"/>
+
+        you are provided for, always...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Key in lock, door opening, abundant tones
+      visual_imagery: Angel with golden keys, opening doorways, golden light flowing
+    attributes:
+      primary_color: gold
+      secondary_color: green
+      hex_codes:
+      - '#FFD700'
+      - '#228B22'
+      frequency_hz: 417
+      brainwave_target: alpha
+      element: earth
+      chakra: solar
+      intensity: moderate
+      energy_quality: active
+    description: Archetype that opens doors and brings providential opportunities
+    symbol: ''
+    qualities: []
+    score: 1.15
+  - archetype_id: dreamweaver_meta.dream_architect
+    name: The Dream Architect
+    family: dreamweaver_meta
+    role: secondary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And behind all these worlds...<break time="2s"/>
+
+        you sense the presence of the architect...<break time="2s"/>
+
+        the Dream Architect...<break time="1.5s"/>
+
+        who builds realities from consciousness...<break time="2s"/>
+
+        and who whispers to you now...<break time="2s"/>
+
+        that you too can build worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Dream Architect hands you the tools...<break time="2s"/>
+
+        of reality creation...<break time="2s"/>
+
+        and you understand...<break time="1.5s"/>
+
+        you are not merely in the dream...<break time="2s"/>
+
+        you are dreaming it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Cosmic tones, reality shifting sounds, geometric harmonics
+      visual_imagery: Figure drawing worlds, sacred geometry, reality unfolding
+    attributes:
+      primary_color: iridescent
+      secondary_color: cosmic_purple
+      hex_codes:
+      - '#E6E6FA'
+      - '#483D8B'
+      frequency_hz: 963
+      brainwave_target: gamma
+      element: spirit
+      chakra: crown
+      intensity: strong
+      energy_quality: balanced
+    description: Archetype that designs and constructs inner worlds
+    symbol: ''
+    qualities: []
+    score: 1.1
+  - archetype_id: dreamweaver_meta.portal_keeper
+    name: The Portal Keeper
+    family: dreamweaver_meta
+    role: support
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And at the threshold...<break time="2s"/>
+
+        you see the Portal Keeper waiting...<break time="2s"/>
+
+        guardian of all gateways...<break time="2s"/>
+
+        who opens doors safely...<break time="1.5s"/>
+
+        and ensures your return...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Portal Keeper gestures...<break time="2s"/>
+
+        and a doorway opens...<break time="2s"/>
+
+        between this world and the next...<break time="2s"/>
+
+        you may pass safely...<break time="2s"/>
+
+        guided and protected...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Portal opening, dimensional shift, guardian tones
+      visual_imagery: Robed figure at gateway, shimmering portal, threshold light
+    attributes:
+      primary_color: silver
+      secondary_color: deep_blue
+      hex_codes:
+      - '#C0C0C0'
+      - '#00008B'
+      frequency_hz: 852
+      brainwave_target: theta
+      element: air
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype that opens and guards portals between realms
+    symbol: ''
+    qualities: []
+    score: 0.8
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 10.5
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 7.8
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 5.5
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 4.0
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.6
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 6.5
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 10.0
+        duration_ratio: 0.13
+    base_hz: 216
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.7260812101233319
+  sound_effects:
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: cosmic
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: 'The Enchanted Elixir: Concoct the Potion to Vivify Your Deepest Desires
+    Symbolizing Manifestation of Goals Dreamweaving'
+  theme: 'The Enchanted Elixir: Concoct the potion to vivify your deepest desires
+    symbolizing manifestation of goals Dreamweaving'
+  metaphor: a sacred journey through mystical realms toward manifestation
+  therapeutic_goal: manifestation
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: abundance_destiny.providence_angel
+    name: The Providence Angel
+    family: abundance_destiny
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now appears a doorway...<break time="2s"/>
+
+        and beside it, the Providence Angel...<break time="2s"/>
+
+        holding keys of gold...<break time="2s"/>
+
+        ready to open doors...<break time="1.5s"/>
+
+        you didn''t even know existed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Angel hands you a golden key...<break time="2s"/>
+
+        and you understand...<break time="2s"/>
+
+        abundance flows toward you naturally...<break time="2s"/>
+
+        doors open at the right time...<break time="2s"/>
+
+        you are provided for, always...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Key in lock, door opening, abundant tones
+      visual_imagery: Angel with golden keys, opening doorways, golden light flowing
+    attributes:
+      primary_color: gold
+      secondary_color: green
+      hex_codes:
+      - '#FFD700'
+      - '#228B22'
+      frequency_hz: 417
+      brainwave_target: alpha
+      element: earth
+      chakra: solar
+      intensity: moderate
+      energy_quality: active
+    description: Archetype that opens doors and brings providential opportunities
+    symbol: ''
+    qualities: []
+    score: 1.3
+  - archetype_id: dreamweaver_meta.dream_architect
+    name: The Dream Architect
+    family: dreamweaver_meta
+    role: secondary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And behind all these worlds...<break time="2s"/>
+
+        you sense the presence of the architect...<break time="2s"/>
+
+        the Dream Architect...<break time="1.5s"/>
+
+        who builds realities from consciousness...<break time="2s"/>
+
+        and who whispers to you now...<break time="2s"/>
+
+        that you too can build worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Dream Architect hands you the tools...<break time="2s"/>
+
+        of reality creation...<break time="2s"/>
+
+        and you understand...<break time="1.5s"/>
+
+        you are not merely in the dream...<break time="2s"/>
+
+        you are dreaming it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Cosmic tones, reality shifting sounds, geometric harmonics
+      visual_imagery: Figure drawing worlds, sacred geometry, reality unfolding
+    attributes:
+      primary_color: iridescent
+      secondary_color: cosmic_purple
+      hex_codes:
+      - '#E6E6FA'
+      - '#483D8B'
+      frequency_hz: 963
+      brainwave_target: gamma
+      element: spirit
+      chakra: crown
+      intensity: strong
+      energy_quality: balanced
+    description: Archetype that designs and constructs inner worlds
+    symbol: ''
+    qualities: []
+    score: 1.1
+  - archetype_id: dreamweaver_meta.portal_keeper
+    name: The Portal Keeper
+    family: dreamweaver_meta
+    role: support
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And at the threshold...<break time="2s"/>
+
+        you see the Portal Keeper waiting...<break time="2s"/>
+
+        guardian of all gateways...<break time="2s"/>
+
+        who opens doors safely...<break time="1.5s"/>
+
+        and ensures your return...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Portal Keeper gestures...<break time="2s"/>
+
+        and a doorway opens...<break time="2s"/>
+
+        between this world and the next...<break time="2s"/>
+
+        you may pass safely...<break time="2s"/>
+
+        guided and protected...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Portal opening, dimensional shift, guardian tones
+      visual_imagery: Robed figure at gateway, shimmering portal, threshold light
+    attributes:
+      primary_color: silver
+      secondary_color: deep_blue
+      hex_codes:
+      - '#C0C0C0'
+      - '#00008B'
+      frequency_hz: 852
+      brainwave_target: theta
+      element: air
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype that opens and guards portals between realms
+    symbol: ''
+    qualities: []
+    score: 0.9500000000000001
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 10.4
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.4
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 6.2
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 4.0
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.2
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.9
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 9.9
+        duration_ratio: 0.13
+    base_hz: 432
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6846983897578378
+  sound_effects:
+  - name: Singing Bowls
+    type: tone
+    description: Tibetan bowl harmonics
+    character: rich overtones
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
+  - name: Angelic Choir
+    type: texture
+    description: Ethereal voices
+    character: wordless harmony
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: mystical
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: 'The Enchanted Elixir: Concoct the Potion to Vivify Your Deepest Desires
+    Symbolizing Manifestation of Goals Dreamweaving'
+  theme: 'The Enchanted Elixir: Concoct the potion to vivify your deepest desires
+    symbolizing manifestation of goals Dreamweaving'
+  metaphor: a sacred journey through cosmic realms toward manifestation
+  therapeutic_goal: manifestation
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: abundance_destiny.providence_angel
+    name: The Providence Angel
+    family: abundance_destiny
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now appears a doorway...<break time="2s"/>
+
+        and beside it, the Providence Angel...<break time="2s"/>
+
+        holding keys of gold...<break time="2s"/>
+
+        ready to open doors...<break time="1.5s"/>
+
+        you didn''t even know existed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Angel hands you a golden key...<break time="2s"/>
+
+        and you understand...<break time="2s"/>
+
+        abundance flows toward you naturally...<break time="2s"/>
+
+        doors open at the right time...<break time="2s"/>
+
+        you are provided for, always...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Key in lock, door opening, abundant tones
+      visual_imagery: Angel with golden keys, opening doorways, golden light flowing
+    attributes:
+      primary_color: gold
+      secondary_color: green
+      hex_codes:
+      - '#FFD700'
+      - '#228B22'
+      frequency_hz: 417
+      brainwave_target: alpha
+      element: earth
+      chakra: solar
+      intensity: moderate
+      energy_quality: active
+    description: Archetype that opens doors and brings providential opportunities
+    symbol: ''
+    qualities: []
+    score: 1.15
+  - archetype_id: dreamweaver_meta.dream_architect
+    name: The Dream Architect
+    family: dreamweaver_meta
+    role: secondary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And behind all these worlds...<break time="2s"/>
+
+        you sense the presence of the architect...<break time="2s"/>
+
+        the Dream Architect...<break time="1.5s"/>
+
+        who builds realities from consciousness...<break time="2s"/>
+
+        and who whispers to you now...<break time="2s"/>
+
+        that you too can build worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Dream Architect hands you the tools...<break time="2s"/>
+
+        of reality creation...<break time="2s"/>
+
+        and you understand...<break time="1.5s"/>
+
+        you are not merely in the dream...<break time="2s"/>
+
+        you are dreaming it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Cosmic tones, reality shifting sounds, geometric harmonics
+      visual_imagery: Figure drawing worlds, sacred geometry, reality unfolding
+    attributes:
+      primary_color: iridescent
+      secondary_color: cosmic_purple
+      hex_codes:
+      - '#E6E6FA'
+      - '#483D8B'
+      frequency_hz: 963
+      brainwave_target: gamma
+      element: spirit
+      chakra: crown
+      intensity: strong
+      energy_quality: balanced
+    description: Archetype that designs and constructs inner worlds
+    symbol: ''
+    qualities: []
+    score: 1.1
+  - archetype_id: dreamweaver_meta.portal_keeper
+    name: The Portal Keeper
+    family: dreamweaver_meta
+    role: support
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And at the threshold...<break time="2s"/>
+
+        you see the Portal Keeper waiting...<break time="2s"/>
+
+        guardian of all gateways...<break time="2s"/>
+
+        who opens doors safely...<break time="1.5s"/>
+
+        and ensures your return...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Portal Keeper gestures...<break time="2s"/>
+
+        and a doorway opens...<break time="2s"/>
+
+        between this world and the next...<break time="2s"/>
+
+        you may pass safely...<break time="2s"/>
+
+        guided and protected...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Portal opening, dimensional shift, guardian tones
+      visual_imagery: Robed figure at gateway, shimmering portal, threshold light
+    attributes:
+      primary_color: silver
+      secondary_color: deep_blue
+      hex_codes:
+      - '#C0C0C0'
+      - '#00008B'
+      frequency_hz: 852
+      brainwave_target: theta
+      element: air
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype that opens and guards portals between realms
+    symbol: ''
+    qualities: []
+    score: 0.8
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 9.5
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.4
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 5.8
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 3.7
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.1
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 6.3
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 9.5
+        duration_ratio: 0.13
+    base_hz: 200
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.6926720729124772
+  sound_effects:
+  - name: Cosmic Hum
+    type: tone
+    description: Deep resonance of space
+    character: ethereal drone
+    sections:
+    - journey
+    intensity: 0.4
+  - name: Star Whispers
+    type: texture
+    description: Distant stellar communication
+    character: shimmering pulses
+    sections:
+    - journey
+    intensity: 0.3
+  - name: Nebula Drift
+    type: texture
+    description: Swirling cosmic gases
+    character: slow movement
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: cosmic
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: 'The Enchanted Elixir: Concoct the Potion to Vivify Your Deepest Desires
+    Symbolizing Manifestation of Goals Dreamweaving'
+  theme: 'The Enchanted Elixir: Concoct the potion to vivify your deepest desires
+    symbolizing manifestation of goals Dreamweaving'
+  metaphor: a sacred journey through mystical realms toward manifestation
+  therapeutic_goal: manifestation
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: abundance_destiny.providence_angel
+    name: The Providence Angel
+    family: abundance_destiny
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now appears a doorway...<break time="2s"/>
+
+        and beside it, the Providence Angel...<break time="2s"/>
+
+        holding keys of gold...<break time="2s"/>
+
+        ready to open doors...<break time="1.5s"/>
+
+        you didn''t even know existed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Angel hands you a golden key...<break time="2s"/>
+
+        and you understand...<break time="2s"/>
+
+        abundance flows toward you naturally...<break time="2s"/>
+
+        doors open at the right time...<break time="2s"/>
+
+        you are provided for, always...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Key in lock, door opening, abundant tones
+      visual_imagery: Angel with golden keys, opening doorways, golden light flowing
+    attributes:
+      primary_color: gold
+      secondary_color: green
+      hex_codes:
+      - '#FFD700'
+      - '#228B22'
+      frequency_hz: 417
+      brainwave_target: alpha
+      element: earth
+      chakra: solar
+      intensity: moderate
+      energy_quality: active
+    description: Archetype that opens doors and brings providential opportunities
+    symbol: ''
+    qualities: []
+    score: 1.3
+  - archetype_id: dreamweaver_meta.dream_architect
+    name: The Dream Architect
+    family: dreamweaver_meta
+    role: secondary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And behind all these worlds...<break time="2s"/>
+
+        you sense the presence of the architect...<break time="2s"/>
+
+        the Dream Architect...<break time="1.5s"/>
+
+        who builds realities from consciousness...<break time="2s"/>
+
+        and who whispers to you now...<break time="2s"/>
+
+        that you too can build worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Dream Architect hands you the tools...<break time="2s"/>
+
+        of reality creation...<break time="2s"/>
+
+        and you understand...<break time="1.5s"/>
+
+        you are not merely in the dream...<break time="2s"/>
+
+        you are dreaming it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Cosmic tones, reality shifting sounds, geometric harmonics
+      visual_imagery: Figure drawing worlds, sacred geometry, reality unfolding
+    attributes:
+      primary_color: iridescent
+      secondary_color: cosmic_purple
+      hex_codes:
+      - '#E6E6FA'
+      - '#483D8B'
+      frequency_hz: 963
+      brainwave_target: gamma
+      element: spirit
+      chakra: crown
+      intensity: strong
+      energy_quality: balanced
+    description: Archetype that designs and constructs inner worlds
+    symbol: ''
+    qualities: []
+    score: 1.1
+  - archetype_id: dreamweaver_meta.portal_keeper
+    name: The Portal Keeper
+    family: dreamweaver_meta
+    role: support
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And at the threshold...<break time="2s"/>
+
+        you see the Portal Keeper waiting...<break time="2s"/>
+
+        guardian of all gateways...<break time="2s"/>
+
+        who opens doors safely...<break time="1.5s"/>
+
+        and ensures your return...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Portal Keeper gestures...<break time="2s"/>
+
+        and a doorway opens...<break time="2s"/>
+
+        between this world and the next...<break time="2s"/>
+
+        you may pass safely...<break time="2s"/>
+
+        guided and protected...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Portal opening, dimensional shift, guardian tones
+      visual_imagery: Robed figure at gateway, shimmering portal, threshold light
+    attributes:
+      primary_color: silver
+      secondary_color: deep_blue
+      hex_codes:
+      - '#C0C0C0'
+      - '#00008B'
+      frequency_hz: 852
+      brainwave_target: theta
+      element: air
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype that opens and guards portals between realms
+    symbol: ''
+    qualities: []
+    score: 0.9500000000000001
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 10.1
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 7.6
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 5.6
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 3.7
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.7
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 6.5
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 9.7
+        duration_ratio: 0.13
+    base_hz: 432
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.667118180886876
+  sound_effects:
+  - name: Temple Bells
+    type: special
+    description: Distant sacred resonance
+    character: crystalline tones
+    sections:
+    - journey
+    - integration
+    intensity: 0.3
+  - name: Singing Bowls
+    type: tone
+    description: Tibetan bowl harmonics
+    character: rich overtones
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Angelic Choir
+    type: texture
+    description: Ethereal voices
+    character: wordless harmony
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: mystical
+  score: 0.8999999999999999
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 1.0
+    duration: 1.0
+- title: 'The Enchanted Elixir: Concoct the Potion to Vivify Your Deepest Desires
+    Symbolizing Manifestation of Goals Dreamweaving'
+  theme: 'The Enchanted Elixir: Concoct the potion to vivify your deepest desires
+    symbolizing manifestation of goals Dreamweaving'
+  metaphor: a sacred journey through nature realms toward manifestation
+  therapeutic_goal: manifestation
+  setting: in the realm between waking and dreaming, where consciousness drifts through
+    landscapes of infinite possibility
+  key_transformation: experiencing profound positive transformation
+  archetypes:
+  - archetype_id: abundance_destiny.providence_angel
+    name: The Providence Angel
+    family: abundance_destiny
+    role: primary
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: journey
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And before you now appears a doorway...<break time="2s"/>
+
+        and beside it, the Providence Angel...<break time="2s"/>
+
+        holding keys of gold...<break time="2s"/>
+
+        ready to open doors...<break time="1.5s"/>
+
+        you didn''t even know existed...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Angel hands you a golden key...<break time="2s"/>
+
+        and you understand...<break time="2s"/>
+
+        abundance flows toward you naturally...<break time="2s"/>
+
+        doors open at the right time...<break time="2s"/>
+
+        you are provided for, always...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Key in lock, door opening, abundant tones
+      visual_imagery: Angel with golden keys, opening doorways, golden light flowing
+    attributes:
+      primary_color: gold
+      secondary_color: green
+      hex_codes:
+      - '#FFD700'
+      - '#228B22'
+      frequency_hz: 417
+      brainwave_target: alpha
+      element: earth
+      chakra: solar
+      intensity: moderate
+      energy_quality: active
+    description: Archetype that opens doors and brings providential opportunities
+    symbol: ''
+    qualities: []
+    score: 1.15
+  - archetype_id: dreamweaver_meta.dream_architect
+    name: The Dream Architect
+    family: dreamweaver_meta
+    role: secondary
+    encounter_type: return_encounter
+    relationship_level: 2
+    appearance_section: helm_deep_trance
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And behind all these worlds...<break time="2s"/>
+
+        you sense the presence of the architect...<break time="2s"/>
+
+        the Dream Architect...<break time="1.5s"/>
+
+        who builds realities from consciousness...<break time="2s"/>
+
+        and who whispers to you now...<break time="2s"/>
+
+        that you too can build worlds...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-2st">
+
+        The Dream Architect hands you the tools...<break time="2s"/>
+
+        of reality creation...<break time="2s"/>
+
+        and you understand...<break time="1.5s"/>
+
+        you are not merely in the dream...<break time="2s"/>
+
+        you are dreaming it...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Cosmic tones, reality shifting sounds, geometric harmonics
+      visual_imagery: Figure drawing worlds, sacred geometry, reality unfolding
+    attributes:
+      primary_color: iridescent
+      secondary_color: cosmic_purple
+      hex_codes:
+      - '#E6E6FA'
+      - '#483D8B'
+      frequency_hz: 963
+      brainwave_target: gamma
+      element: spirit
+      chakra: crown
+      intensity: strong
+      energy_quality: balanced
+    description: Archetype that designs and constructs inner worlds
+    symbol: ''
+    qualities: []
+    score: 1.1
+  - archetype_id: dreamweaver_meta.portal_keeper
+    name: The Portal Keeper
+    family: dreamweaver_meta
+    role: support
+    encounter_type: return_encounter
+    relationship_level: 1
+    appearance_section: integration
+    templates:
+      first_encounter_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        And at the threshold...<break time="2s"/>
+
+        you see the Portal Keeper waiting...<break time="2s"/>
+
+        guardian of all gateways...<break time="2s"/>
+
+        who opens doors safely...<break time="1.5s"/>
+
+        and ensures your return...<break time="3s"/>
+
+        </prosody>
+
+        '
+      transformation_ssml: '<prosody rate="1.0" pitch="-1st">
+
+        The Portal Keeper gestures...<break time="2s"/>
+
+        and a doorway opens...<break time="2s"/>
+
+        between this world and the next...<break time="2s"/>
+
+        you may pass safely...<break time="2s"/>
+
+        guided and protected...<break time="3s"/>
+
+        </prosody>
+
+        '
+      sfx_cue: Portal opening, dimensional shift, guardian tones
+      visual_imagery: Robed figure at gateway, shimmering portal, threshold light
+    attributes:
+      primary_color: silver
+      secondary_color: deep_blue
+      hex_codes:
+      - '#C0C0C0'
+      - '#00008B'
+      frequency_hz: 852
+      brainwave_target: theta
+      element: air
+      chakra: third_eye
+      intensity: moderate
+      energy_quality: balanced
+    description: Archetype that opens and guards portals between realms
+    symbol: ''
+    qualities: []
+    score: 0.9500000000000001
+  binaural_progression:
+    name: Deep Journey Arc
+    description: Classic descent into theta/delta and return
+    sections:
+      pretalk:
+        offset_hz: 9.9
+        duration_ratio: 0.08
+      induction:
+        offset_hz: 8.3
+        duration_ratio: 0.15
+      deepening:
+        offset_hz: 5.6
+        duration_ratio: 0.12
+      journey_1:
+        offset_hz: 3.8
+        duration_ratio: 0.2
+      journey_2:
+        offset_hz: 2.3
+        duration_ratio: 0.2
+      integration:
+        offset_hz: 5.8
+        duration_ratio: 0.12
+      awakening:
+        offset_hz: 10.4
+        duration_ratio: 0.13
+    base_hz: 285
+    gamma_burst_enabled: true
+    gamma_burst_time_ratio: 0.7032774333503821
+  sound_effects:
+  - name: Forest Rain
+    type: nature
+    description: Gentle rainfall through leaves
+    character: soft patter
+    sections:
+    - induction
+    - journey
+    intensity: 0.4
+  - name: Ocean Waves
+    type: nature
+    description: Rhythmic surf on shore
+    character: rolling waves
+    sections:
+    - induction
+    - journey
+    intensity: 0.5
+  - name: Wind Through Trees
+    type: nature
+    description: Gentle breeze in canopy
+    character: rustling leaves
+    sections:
+    - journey
+    intensity: 0.3
+  target_duration_minutes: 30
+  voice_recommendation: default
+  imagery_style: nature
+  score: 0.87
+  score_breakdown:
+    coherence: 0.7999999999999999
+    archetype_depth: 1.0
+    binaural_match: 0.7999999999999999
+    sound_design: 0.8
+    duration: 1.0

@@ -1,0 +1,72 @@
+session_name: lucid-lightworker-manifesting-light-and-energy-for
+topic: 'Lucid Lightworker: Manifesting Light and Energy for Healing in the Dream Realm
+  Dreamweaving'
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2026-02-01T00:23:16.053625'
+  ended: '2026-02-01T00:50:51.614390'
+  duration_seconds: 1655.6
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - generate_thumbnail
+  - upload_website
+  - self_improvement
+  failed: []
+  total: 16
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-02-01T00:23:17.571124'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2026-02-01T00:23:30.715886'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2026-02-01T00:25:26.602524'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2026-02-01T00:25:26.656254'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-02-01T00:37:58.513639'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/lucid-lightworker-manifesting-light-and-energy-for
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/lucid-lightworker-manifesting-light-and-energy-for/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/lucid-lightworker-manifesting-light-and-energy-for/working_files/script.ssml
+  files:
+  - output/lucid_lightworker_manifesting_light_and_energy_for_MASTER.mp3
+  - output/subtitles.vtt
+  - output/voice.mp3
+  - output/sfx.wav
+  - output/seo_metadata.json
+  - output/youtube_thumbnail.png
+  - output/lucid_lightworker_manifesting_light_and_energy_for_MASTER.wav
+  - output/session_mixed.wav
+  - output/binaural_dynamic.wav
+  - output/product_schema.json

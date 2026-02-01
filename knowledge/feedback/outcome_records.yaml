@@ -2834,4 +2834,85 @@ records:
   comments_sentiment: null
   metrics_complete: false
   youtube_pending: false
-last_updated: '2026-01-31T01:53:31.660360'
+- record_id: outcome-5048cc0a
+  session_name: the-shadow-market-dreamweaving
+  created_at: '2026-02-01T00:23:01.674026'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+- record_id: outcome-db99eded
+  session_name: lucid-lightworker-manifesting-light-and-energy-for
+  created_at: '2026-02-01T00:50:50.768682'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+- record_id: outcome-4e220d02
+  session_name: the-enchanted-elixir-concoct-the-potion-to-vivify-
+  created_at: '2026-02-01T01:16:21.460084'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+last_updated: '2026-02-01T01:16:21.699901'

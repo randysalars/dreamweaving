@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - the-temple-of-hidden-names
-  - the-mountain-of-resolve-dreamweaving
-  - virtual-game-avatar-leveling-up-fitness
   - the-mount-calvary-passage-dreamweaving
   - the-candle-of-mitochondrial-repair
   - the-time-machine-of-future-visions-dreamweaving
@@ -34,8 +31,11 @@ lessons:
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
-  applied_count: 104
-  last_applied: '2026-01-31'
+  - the-shadow-market-dreamweaving
+  - lucid-lightworker-manifesting-light-and-energy-for
+  - the-enchanted-elixir-concoct-the-potion-to-vivify-
+  applied_count: 107
+  last_applied: '2026-02-01'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - the-temple-of-hidden-names
-  - the-mountain-of-resolve-dreamweaving
-  - virtual-game-avatar-leveling-up-fitness
   - the-mount-calvary-passage-dreamweaving
   - the-candle-of-mitochondrial-repair
   - the-time-machine-of-future-visions-dreamweaving
@@ -72,8 +69,11 @@ lessons:
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
-  applied_count: 104
-  last_applied: '2026-01-31'
+  - the-shadow-market-dreamweaving
+  - lucid-lightworker-manifesting-light-and-energy-for
+  - the-enchanted-elixir-concoct-the-potion-to-vivify-
+  applied_count: 107
+  last_applied: '2026-02-01'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - the-temple-of-hidden-names
-  - the-mountain-of-resolve-dreamweaving
-  - virtual-game-avatar-leveling-up-fitness
   - the-mount-calvary-passage-dreamweaving
   - the-candle-of-mitochondrial-repair
   - the-time-machine-of-future-visions-dreamweaving
@@ -109,8 +106,11 @@ lessons:
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
-  applied_count: 104
-  last_applied: '2026-01-31'
+  - the-shadow-market-dreamweaving
+  - lucid-lightworker-manifesting-light-and-energy-for
+  - the-enchanted-elixir-concoct-the-potion-to-vivify-
+  applied_count: 107
+  last_applied: '2026-02-01'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - the-temple-of-hidden-names
-  - the-mountain-of-resolve-dreamweaving
-  - virtual-game-avatar-leveling-up-fitness
   - the-mount-calvary-passage-dreamweaving
   - the-candle-of-mitochondrial-repair
   - the-time-machine-of-future-visions-dreamweaving
@@ -147,8 +144,11 @@ lessons:
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
-  applied_count: 104
-  last_applied: '2026-01-31'
+  - the-shadow-market-dreamweaving
+  - lucid-lightworker-manifesting-light-and-energy-for
+  - the-enchanted-elixir-concoct-the-potion-to-vivify-
+  applied_count: 107
+  last_applied: '2026-02-01'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - the-temple-of-hidden-names
-  - the-mountain-of-resolve-dreamweaving
-  - virtual-game-avatar-leveling-up-fitness
   - the-mount-calvary-passage-dreamweaving
   - the-candle-of-mitochondrial-repair
   - the-time-machine-of-future-visions-dreamweaving
@@ -183,8 +180,11 @@ lessons:
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
-  applied_count: 104
-  last_applied: '2026-01-31'
+  - the-shadow-market-dreamweaving
+  - lucid-lightworker-manifesting-light-and-energy-for
+  - the-enchanted-elixir-concoct-the-potion-to-vivify-
+  applied_count: 107
+  last_applied: '2026-02-01'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
