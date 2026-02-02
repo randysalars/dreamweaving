@@ -191,43 +191,58 @@ class SalarsuDeployer:
         description: str
     ) -> Optional[str]:
         """
-        Generate a product cover image using DALL-E.
+        Generate a cover image prompt for Antigravity processing.
         
-        Returns the path to the generated image, or None if generation failed.
+        Creates a .cover_prompt.md file that can be processed by 
+        Antigravity's generate_image tool via the text interface.
+        
+        Returns the path to the generated prompt file, or None if generation failed.
         """
-        output_path = self.images_dir / f"{product_slug}.png"
+        prompt_path = self.images_dir / f"{product_slug}.cover_prompt.md"
         
         # Create a cover image prompt based on product details
         prompt = self._create_cover_prompt(product_name, description)
         
+        prompt_content = f"""# Cover Image Generation Prompt: {product_slug}
+
+## Instructions for Antigravity
+
+Use the `generate_image` tool to create this product cover image.
+
+**Image Name:** {product_slug}_cover
+**Save To:** {self.images_dir}/{product_slug}.png
+
+---
+
+## Prompt
+
+{prompt}
+
+---
+
+## After Generation
+
+Once the image is generated:
+1. It will be saved to: `{self.images_dir}/{product_slug}.png`
+2. The product SQL already references this image path
+3. Delete this prompt file after successful generation
+"""
+        
         try:
-            import openai
+            # Ensure the images directory exists
+            self.images_dir.mkdir(parents=True, exist_ok=True)
             
-            client = openai.OpenAI()
-            response = client.images.generate(
-                model="dall-e-3",
-                prompt=prompt,
-                size="1024x1024",
-                quality="standard",
-                n=1
-            )
+            # Write the prompt file
+            prompt_path.write_text(prompt_content)
+            logger.info(f"📝 Cover image prompt created: {prompt_path}")
+            logger.info(f"   → Run Antigravity generate_image for: {product_slug}_cover")
             
-            # Download the image
-            import requests
-            image_url = response.data[0].url
-            img_data = requests.get(image_url).content
-            
-            with open(output_path, 'wb') as f:
-                f.write(img_data)
-            
-            logger.info(f"✅ Cover image generated via DALL-E: {product_slug}")
-            return str(output_path)
-            
-        except ImportError:
-            logger.warning("OpenAI not available, skipping cover image generation")
+            # Return None since we don't have the actual image yet
+            # The prompt file is created for Antigravity to process later
             return None
+            
         except Exception as e:
-            logger.warning(f"Cover image generation failed: {e}")
+            logger.warning(f"Cover image prompt generation failed: {e}")
             return None
     
     def _create_cover_prompt(self, product_name: str, description: str) -> str:

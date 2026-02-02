@@ -98,44 +98,73 @@ class ImageGenerator:
         style: VisualStyle
     ) -> Path:
         """
-        Generate an AI image using available providers.
+        Generate an image prompt for Antigravity processing.
         
-        Currently supports:
-        - OpenAI DALL-E 3 (requires OPENAI_API_KEY)
-        - Placeholder fallback
+        This creates a .image_prompt.md file that can be processed by 
+        Antigravity's generate_image tool via the text interface.
+        
+        Args:
+            section_id: Identifier for this image
+            prompt: Base prompt describing the image
+            style: Visual style to apply
+            
+        Returns:
+            Path to the generated prompt file or placeholder
         """
-        output_path = self.output_dir / f"{section_id}.png"
+        prompt_path = self.output_dir / f"{section_id}.image_prompt.md"
+        placeholder_path = self.output_dir / f"{section_id}_placeholder.txt"
         
-        # Try OpenAI DALL-E
-        try:
-            import openai
-            
-            client = openai.OpenAI()
-            response = client.images.generate(
-                model="dall-e-3",
-                prompt=prompt,
-                size="1024x1024",
-                quality="standard",
-                n=1
-            )
-            
-            # Download the image
-            import requests
-            image_url = response.data[0].url
-            img_data = requests.get(image_url).content
-            
-            with open(output_path, 'wb') as f:
-                f.write(img_data)
-            
-            logger.info(f"✅ AI image generated: {section_id}")
-            return output_path
-            
-        except ImportError:
-            logger.warning("OpenAI not available, using placeholder")
-            return self.generate_placeholder(section_id, prompt)
-        except Exception as e:
-            logger.warning(f"AI generation failed: {e}, using placeholder")
-            return self.generate_placeholder(section_id, prompt)
+        # Build enhanced prompt with style information
+        style_additions = []
+        if style and hasattr(style, 'color_scheme'):
+            style_additions.append(f"Color scheme: {style.color_scheme}")
+        if style and hasattr(style, 'mood'):
+            style_additions.append(f"Mood: {style.mood}")
+        
+        enhanced_prompt = f"""# Image Generation Prompt: {section_id}
+
+## Instructions for Antigravity
+
+Use the `generate_image` tool to create this image.
+
+**Image Name:** {section_id}
+**Save To:** {self.output_dir}/{section_id}.png
+
+---
+
+## Prompt
+
+{prompt}
+
+{chr(10).join(style_additions) if style_additions else ''}
+
+## Style Guidelines
+
+- Professional, clean design
+- Suitable for digital product materials
+- Abstract or conceptual preferred over photorealistic
+- Modern, minimalist aesthetic
+
+---
+
+## After Generation
+
+Once the image is generated, it will be saved to:
+`{self.output_dir}/{section_id}.png`
+
+The compilation pipeline will automatically detect and include this image.
+"""
+        
+        # Save the prompt file
+        prompt_path.write_text(enhanced_prompt)
+        logger.info(f"📝 Image prompt created: {section_id}")
+        logger.info(f"   → Run Antigravity with: generate_image for {section_id}")
+        
+        # Also create a placeholder to show the prompt is ready
+        placeholder_path.write_text(f"PENDING: {section_id}\n\nPrompt file: {prompt_path}\n\nDescription:\n{prompt}")
+        
+        return prompt_path
+
     
     def generate_mermaid_diagram(self, section_id: str, description: str) -> Path:
         """
