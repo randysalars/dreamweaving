@@ -14,9 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - the-sanctuary-of-cosmic-synthesis-dreamweaving
-  - the-agni-heart-of-the-universe-dreamweaving
-  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
   - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
@@ -34,8 +31,11 @@ lessons:
   - the-tapestry-of-shared-moments-dreamweaving
   - the-hermetic-solar-furnace-dreamweaving
   - mystic-marys-odyssey-embracing-the-miraculous-life
-  applied_count: 110
-  last_applied: '2026-02-02'
+  - the-floating-isles-of-arcane-mists-dreamweaving
+  - echos-from-the-ten-of-pentacles-vault-an-inherited
+  - the-echoing-vault-of-watchers-dreamweaving
+  applied_count: 113
+  last_applied: '2026-02-03'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,9 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - the-sanctuary-of-cosmic-synthesis-dreamweaving
-  - the-agni-heart-of-the-universe-dreamweaving
-  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
   - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
@@ -72,8 +69,11 @@ lessons:
   - the-tapestry-of-shared-moments-dreamweaving
   - the-hermetic-solar-furnace-dreamweaving
   - mystic-marys-odyssey-embracing-the-miraculous-life
-  applied_count: 110
-  last_applied: '2026-02-02'
+  - the-floating-isles-of-arcane-mists-dreamweaving
+  - echos-from-the-ten-of-pentacles-vault-an-inherited
+  - the-echoing-vault-of-watchers-dreamweaving
+  applied_count: 113
+  last_applied: '2026-02-03'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,9 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - the-sanctuary-of-cosmic-synthesis-dreamweaving
-  - the-agni-heart-of-the-universe-dreamweaving
-  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
   - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
@@ -109,8 +106,11 @@ lessons:
   - the-tapestry-of-shared-moments-dreamweaving
   - the-hermetic-solar-furnace-dreamweaving
   - mystic-marys-odyssey-embracing-the-miraculous-life
-  applied_count: 110
-  last_applied: '2026-02-02'
+  - the-floating-isles-of-arcane-mists-dreamweaving
+  - echos-from-the-ten-of-pentacles-vault-an-inherited
+  - the-echoing-vault-of-watchers-dreamweaving
+  applied_count: 113
+  last_applied: '2026-02-03'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,9 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - the-sanctuary-of-cosmic-synthesis-dreamweaving
-  - the-agni-heart-of-the-universe-dreamweaving
-  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
   - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
@@ -147,8 +144,11 @@ lessons:
   - the-tapestry-of-shared-moments-dreamweaving
   - the-hermetic-solar-furnace-dreamweaving
   - mystic-marys-odyssey-embracing-the-miraculous-life
-  applied_count: 110
-  last_applied: '2026-02-02'
+  - the-floating-isles-of-arcane-mists-dreamweaving
+  - echos-from-the-ten-of-pentacles-vault-an-inherited
+  - the-echoing-vault-of-watchers-dreamweaving
+  applied_count: 113
+  last_applied: '2026-02-03'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,9 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - the-sanctuary-of-cosmic-synthesis-dreamweaving
-  - the-agni-heart-of-the-universe-dreamweaving
-  - the-obsidian-spire-of-forgotten-aeons-dreamweaving
   - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
@@ -183,8 +180,11 @@ lessons:
   - the-tapestry-of-shared-moments-dreamweaving
   - the-hermetic-solar-furnace-dreamweaving
   - mystic-marys-odyssey-embracing-the-miraculous-life
-  applied_count: 110
-  last_applied: '2026-02-02'
+  - the-floating-isles-of-arcane-mists-dreamweaving
+  - echos-from-the-ten-of-pentacles-vault-an-inherited
+  - the-echoing-vault-of-watchers-dreamweaving
+  applied_count: 113
+  last_applied: '2026-02-03'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
