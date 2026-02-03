@@ -5,7 +5,7 @@
 
 generation:
   # Number of sessions to generate each day (12am MST)
-  target_sessions_per_night: 3
+  target_sessions_per_night: 1
 
   # Cost optimization mode: budget | standard | premium
   # - budget:   Minimal AI usage, ~$0.70 per session
