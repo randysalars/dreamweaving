@@ -589,8 +589,12 @@ def compile_command(args):
         # Extract actual key takeaways from content
         takeaways = extract_key_takeaways(content)
         
+        # Strip chapter prefixes (ch01_, ch00a_, etc) from display title
+        import re
+        clean_slug = re.sub(r'^ch\d+[a-z]?_', '', slug)
+        
         chapters.append({
-            "title": slug.replace("_", " ").title(),
+            "title": clean_slug.replace("_", " ").title(),
             "purpose": f"Content from Antigravity response: {slug}",
             "content": content,
             "key_takeaways": takeaways
