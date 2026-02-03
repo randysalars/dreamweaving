@@ -876,6 +876,18 @@ body {{
                 "or other qualified health provider with any questions you may have regarding a medical condition. "
                 "Never disregard professional medical advice or delay in seeking it because of something you have read here."
             )
+        
+        # Emergency Preparedness / Survival Disclaimer
+        if "emergency" in t or "preparedness" in t or "survival" in t or "prepper" in t or "disaster" in t or "safety" in t:
+            return (
+                "This publication provides general information about emergency preparedness for educational purposes. "
+                "The author and publisher are not responsible for any specific actions taken based on this information. "
+                "Emergency situations are inherently unpredictable, and outcomes depend on many factors beyond anyone's control. "
+                "Always follow official guidance from local emergency management authorities, first responders, and "
+                "qualified professionals. Check local regulations regarding water collection, food storage, and "
+                "emergency equipment. The information provided here should supplement—not replace—professional emergency "
+                "planning and training."
+            )
             
         # Default Business/General Disclaimer
         return (

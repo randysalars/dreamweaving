@@ -109,10 +109,15 @@ class ImageGenerator:
             style: Visual style to apply
             
         Returns:
-            Path to the generated prompt file or placeholder
+            Path to the expected PNG file (may not exist yet if not generated)
         """
         prompt_path = self.output_dir / f"{section_id}.image_prompt.md"
-        placeholder_path = self.output_dir / f"{section_id}_placeholder.txt"
+        expected_png_path = self.output_dir / f"{section_id}.png"
+        
+        # If PNG already exists, skip prompt generation and return it
+        if expected_png_path.exists():
+            logger.info(f"✅ Image already exists: {section_id}")
+            return expected_png_path
         
         # Build enhanced prompt with style information
         style_additions = []
@@ -160,10 +165,8 @@ The compilation pipeline will automatically detect and include this image.
         logger.info(f"📝 Image prompt created: {section_id}")
         logger.info(f"   → Run Antigravity with: generate_image for {section_id}")
         
-        # Also create a placeholder to show the prompt is ready
-        placeholder_path.write_text(f"PENDING: {section_id}\n\nPrompt file: {prompt_path}\n\nDescription:\n{prompt}")
-        
-        return prompt_path
+        # Return the expected PNG path - assembler will check if it exists
+        return expected_png_path
 
     
     def generate_mermaid_diagram(self, section_id: str, description: str) -> Path:
