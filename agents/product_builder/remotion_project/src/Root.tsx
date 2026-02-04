@@ -10,7 +10,8 @@ import { ProgressMilestone } from "./compositions/ProgressMilestone";
 import { BeforeAfter } from "./compositions/BeforeAfter";
 import { Statistic } from "./compositions/Statistic";
 import { FrameworkDiagram } from "./compositions/FrameworkDiagram";
-
+// Video Framework components (7-part anatomy)
+import { LessonVideo, calculateTotalDuration } from "./compositions/LessonVideo";
 
 /**
  * Root component that registers all video/audio compositions.
@@ -201,6 +202,71 @@ export const RemotionRoot: React.FC = () => {
             { label: "Execution" },
             { label: "Optimization" },
           ],
+        }}
+      />
+
+      {/* Educational Lesson Video - 7-part anatomy */}
+      <Composition
+        id="LessonVideo"
+        component={LessonVideo}
+        durationInFrames={3600}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          video: {
+            id: "sample-lesson-01",
+            title: "Sample Lesson",
+            fps: 30,
+            theme: "salars_clean_01",
+          },
+          scenes: [
+            {
+              id: "s01_preview",
+              learning_role: "visual_preview",
+              template: "VisualPreview",
+              duration_sec: 6,
+              visuals: [
+                { type: "icon", key: "menu" },
+                { type: "icon", key: "plate" },
+                { type: "icon", key: "cash" },
+              ],
+            },
+            {
+              id: "s02_goal",
+              learning_role: "goal_statement",
+              template: "GoalStatement",
+              duration_sec: 8,
+              narration: { text: "In this lesson, you will learn three key words." },
+              visuals: [{ type: "text", headline: "Goal", subhead: "Learn 3 key words" }],
+            },
+            {
+              id: "s03_explain",
+              learning_role: "core_explanation",
+              template: "CoreExplanation",
+              duration_sec: 60,
+              visuals: [{ type: "deck", bullets: ["Menu", "Order", "Pay"] }],
+            },
+            {
+              id: "s04_pause",
+              learning_role: "guided_pause",
+              template: "GuidedPause",
+              duration_sec: 8,
+              visuals: [{ type: "text", headline: "Pause. Think. Repeat." }],
+            },
+            {
+              id: "s05_check",
+              learning_role: "check_understanding",
+              template: "MiniCheck",
+              duration_sec: 20,
+              visuals: [{ type: "quiz", prompt: "Which word means the list of food?", answer: "menu" }],
+            },
+          ],
+          style_tokens: {
+            primary_color: "#9F7AEA",
+            background_color: "#1a1a2e",
+            accent_color: "#9F7AEA",
+          },
         }}
       />
     </>

@@ -1,0 +1,12 @@
+1
+00:00:00,000 --> 00:01:00,000
+
+        Word one: Menu. A menu shows the food you can order. 
+        When you arrive at a restaurant, you can ask: Can I see the menu?
+        
+        Word two: Order. To order means to ask for food or drinks.
+        You can say: I would like to order, please.
+        
+        Word three: Pay. Pay means to give money for your food.
+        At the end, you can ask: Can I pay now?
+        
