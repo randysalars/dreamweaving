@@ -14,7 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
@@ -34,8 +33,9 @@ lessons:
   - the-floating-isles-of-arcane-mists-dreamweaving
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
-  applied_count: 113
-  last_applied: '2026-02-03'
+  - epic-of-gilgamesh-embarking-on-heroic-adventures-i
+  applied_count: 114
+  last_applied: '2026-02-04'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,7 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
@@ -72,8 +71,9 @@ lessons:
   - the-floating-isles-of-arcane-mists-dreamweaving
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
-  applied_count: 113
-  last_applied: '2026-02-03'
+  - epic-of-gilgamesh-embarking-on-heroic-adventures-i
+  applied_count: 114
+  last_applied: '2026-02-04'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,7 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
@@ -109,8 +108,9 @@ lessons:
   - the-floating-isles-of-arcane-mists-dreamweaving
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
-  applied_count: 113
-  last_applied: '2026-02-03'
+  - epic-of-gilgamesh-embarking-on-heroic-adventures-i
+  applied_count: 114
+  last_applied: '2026-02-04'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,7 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
@@ -147,8 +146,9 @@ lessons:
   - the-floating-isles-of-arcane-mists-dreamweaving
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
-  applied_count: 113
-  last_applied: '2026-02-03'
+  - epic-of-gilgamesh-embarking-on-heroic-adventures-i
+  applied_count: 114
+  last_applied: '2026-02-04'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,7 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - the-vault-of-starborn-giants-dreamweaving
   - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
@@ -183,8 +182,9 @@ lessons:
   - the-floating-isles-of-arcane-mists-dreamweaving
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
-  applied_count: 113
-  last_applied: '2026-02-03'
+  - epic-of-gilgamesh-embarking-on-heroic-adventures-i
+  applied_count: 114
+  last_applied: '2026-02-04'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
