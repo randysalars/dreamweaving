@@ -14,7 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
@@ -34,8 +33,9 @@ lessons:
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
-  applied_count: 114
-  last_applied: '2026-02-04'
+  - hexagonal-harmony-hive-dreamweaving
+  applied_count: 115
+  last_applied: '2026-02-05'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,7 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
@@ -72,8 +71,9 @@ lessons:
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
-  applied_count: 114
-  last_applied: '2026-02-04'
+  - hexagonal-harmony-hive-dreamweaving
+  applied_count: 115
+  last_applied: '2026-02-05'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,7 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
@@ -109,8 +108,9 @@ lessons:
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
-  applied_count: 114
-  last_applied: '2026-02-04'
+  - hexagonal-harmony-hive-dreamweaving
+  applied_count: 115
+  last_applied: '2026-02-05'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,7 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
@@ -147,8 +146,9 @@ lessons:
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
-  applied_count: 114
-  last_applied: '2026-02-04'
+  - hexagonal-harmony-hive-dreamweaving
+  applied_count: 115
+  last_applied: '2026-02-05'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,7 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - clockwork-of-the-unconscious-dreamweaving
   - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
@@ -183,8 +182,9 @@ lessons:
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
-  applied_count: 114
-  last_applied: '2026-02-04'
+  - hexagonal-harmony-hive-dreamweaving
+  applied_count: 115
+  last_applied: '2026-02-05'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3

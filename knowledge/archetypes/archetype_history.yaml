@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-02-04'
-  total_sessions_tracked: 119
+  updated: '2026-02-05'
+  total_sessions_tracked: 120
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -2073,6 +2073,23 @@ session_history:
     section: integration
   notes: 'Auto-generated from topic: Epic of Gilgamesh: Embarking on Heroic Adventures
     in Babylonian Guided Dreamweaving'
+- session_id: hexagonal-harmony-hive-dreamweaving
+  date: '2026-02-05'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Hexagonal Harmony Hive Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 23
@@ -2155,7 +2172,7 @@ listener_relationships:
     last_session_date: '2026-01-25'
     relationship_level: 4
   divine_light_healing.inner_healer:
-    total_encounters: 88
+    total_encounters: 89
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -2335,8 +2352,10 @@ listener_relationships:
       type: first_encounter
     - session: epic-of-gilgamesh-embarking-on-heroic-adventures-i
       type: first_encounter
-    last_session: epic-of-gilgamesh-embarking-on-heroic-adventures-i
-    last_session_date: '2026-02-04'
+    - session: hexagonal-harmony-hive-dreamweaving
+      type: first_encounter
+    last_session: hexagonal-harmony-hive-dreamweaving
+    last_session_date: '2026-02-05'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 6
@@ -2411,7 +2430,7 @@ listener_relationships:
     last_session_date: '2026-02-01'
     relationship_level: 3
   divine_feminine.rose_mother:
-    total_encounters: 75
+    total_encounters: 76
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2565,8 +2584,10 @@ listener_relationships:
       type: first_encounter
     - session: epic-of-gilgamesh-embarking-on-heroic-adventures-i
       type: first_encounter
-    last_session: epic-of-gilgamesh-embarking-on-heroic-adventures-i
-    last_session_date: '2026-02-04'
+    - session: hexagonal-harmony-hive-dreamweaving
+      type: first_encounter
+    last_session: hexagonal-harmony-hive-dreamweaving
+    last_session_date: '2026-02-05'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
     total_encounters: 47
@@ -2727,7 +2748,7 @@ listener_relationships:
     last_session_date: '2026-01-26'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
-    total_encounters: 42
+    total_encounters: 43
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -2815,8 +2836,10 @@ listener_relationships:
       type: first_encounter
     - session: the-echoing-vault-of-watchers-dreamweaving
       type: first_encounter
-    last_session: the-echoing-vault-of-watchers-dreamweaving
-    last_session_date: '2026-02-03'
+    - session: hexagonal-harmony-hive-dreamweaving
+      type: first_encounter
+    last_session: hexagonal-harmony-hive-dreamweaving
+    last_session_date: '2026-02-05'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 3
@@ -2949,44 +2972,44 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - mystic-marys-odyssey-embracing-the-miraculous-life
   - the-floating-isles-of-arcane-mists-dreamweaving
   - echos-from-the-ten-of-pentacles-vault-an-inherited
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
+  - hexagonal-harmony-hive-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 2
-    transformation_alchemy.phoenix_renewal: 29
+    divine_light_healing.great_physician: 3
+    transformation_alchemy.phoenix_renewal: 30
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 29
-    divine_masculine.guardian_father: 8
-    dreamweaver_meta.dream_architect: 7
+    warrior_power.archangel_michael: 30
+    divine_masculine.guardian_father: 9
+    dreamweaver_meta.dream_architect: 8
     divine_feminine.rose_mother: 0
-    shamanic_earth.world_tree_guardian: 0
-    oracle_seer.oracle_of_light: 2
-    divine_feminine.sophia_wisdom: 27
-    emotional_heart.heart_flame_tender: 1
-    warrior_power.solar_king: 29
-    divine_masculine.logos_bearer: 27
-    divine_light_healing.shekinah_restorer: 83
-    emotional_heart.joy_child: 27
-    abundance_destiny.providence_angel: 2
-    dreamweaver_meta.portal_keeper: 7
+    shamanic_earth.world_tree_guardian: 1
+    oracle_seer.oracle_of_light: 3
+    divine_feminine.sophia_wisdom: 28
+    emotional_heart.heart_flame_tender: 0
+    warrior_power.solar_king: 30
+    divine_masculine.logos_bearer: 28
+    divine_light_healing.shekinah_restorer: 84
+    emotional_heart.joy_child: 28
+    abundance_destiny.providence_angel: 3
+    dreamweaver_meta.portal_keeper: 8
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - shamanic_earth
+  - emotional_heart
   - divine_feminine
   family_usage_counts:
-    divine_light_healing: 119
+    divine_light_healing: 120
     transformation_alchemy: 9
     warrior_power: 9
     divine_masculine: 22
     dreamweaver_meta: 6
-    divine_feminine: 86
+    divine_feminine: 87
     shamanic_earth: 47
     oracle_seer: 9
-    emotional_heart: 47
+    emotional_heart: 48
     abundance_destiny: 3
 effective_pairings: []
