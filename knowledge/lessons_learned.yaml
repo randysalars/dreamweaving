@@ -14,7 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
   - astral-artisan-crafting-manipulating-ethereal-matt
@@ -34,8 +33,9 @@ lessons:
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
   - hexagonal-harmony-hive-dreamweaving
-  applied_count: 115
-  last_applied: '2026-02-05'
+  - hyperborean-hover-encountering-the-mystical-lands-
+  applied_count: 116
+  last_applied: '2026-02-06'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,7 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
   - astral-artisan-crafting-manipulating-ethereal-matt
@@ -72,8 +71,9 @@ lessons:
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
   - hexagonal-harmony-hive-dreamweaving
-  applied_count: 115
-  last_applied: '2026-02-05'
+  - hyperborean-hover-encountering-the-mystical-lands-
+  applied_count: 116
+  last_applied: '2026-02-06'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,7 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
   - astral-artisan-crafting-manipulating-ethereal-matt
@@ -109,8 +108,9 @@ lessons:
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
   - hexagonal-harmony-hive-dreamweaving
-  applied_count: 115
-  last_applied: '2026-02-05'
+  - hyperborean-hover-encountering-the-mystical-lands-
+  applied_count: 116
+  last_applied: '2026-02-06'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,7 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
   - astral-artisan-crafting-manipulating-ethereal-matt
@@ -147,8 +146,9 @@ lessons:
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
   - hexagonal-harmony-hive-dreamweaving
-  applied_count: 115
-  last_applied: '2026-02-05'
+  - hyperborean-hover-encountering-the-mystical-lands-
+  applied_count: 116
+  last_applied: '2026-02-06'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,7 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - astral-antigravity-embracing-the-freedom-and-fluid
   - the-leviathans-labyrinth-navigating-the-depths-of-
   - the-volcano-ascent-dreamweaving
   - astral-artisan-crafting-manipulating-ethereal-matt
@@ -183,8 +182,9 @@ lessons:
   - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
   - hexagonal-harmony-hive-dreamweaving
-  applied_count: 115
-  last_applied: '2026-02-05'
+  - hyperborean-hover-encountering-the-mystical-lands-
+  applied_count: 116
+  last_applied: '2026-02-06'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
