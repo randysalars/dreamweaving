@@ -3158,4 +3158,31 @@ records:
   comments_sentiment: null
   metrics_complete: false
   youtube_pending: false
-last_updated: '2026-02-06T00:31:17.645900'
+- record_id: outcome-f8d44bf3
+  session_name: triple-goddess-tribute-experience-the-phases-of-th
+  created_at: '2026-02-07T00:27:15.195863'
+  lesson_ids:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  topic: ''
+  duration_target: 25
+  mode: standard
+  desired_outcome: ''
+  generation_success: true
+  audio_duration_actual: 0.0
+  duration_deviation_pct: 0.0
+  quality_score: 100.0
+  youtube_video_id: null
+  measured_at: null
+  views_7_day: null
+  avg_retention_pct: null
+  engagement_rate: null
+  likes: null
+  comments_count: null
+  comments_sentiment: null
+  metrics_complete: false
+  youtube_pending: false
+last_updated: '2026-02-07T00:27:15.309264'
