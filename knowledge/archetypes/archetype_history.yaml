@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-02-07'
-  total_sessions_tracked: 122
+  updated: '2026-02-08'
+  total_sessions_tracked: 123
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -2126,6 +2126,23 @@ session_history:
     section: integration
   notes: 'Auto-generated from topic: Triple Goddess Tribute: Experience the phases
     of the Maiden, the Mother, and the Crone Dreamweaving'
+- session_id: cleopatra-and-mark-antony-dreamweaving
+  date: '2026-02-08'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Cleopatra And Mark Antony Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 23
@@ -2208,7 +2225,7 @@ listener_relationships:
     last_session_date: '2026-01-25'
     relationship_level: 4
   divine_light_healing.inner_healer:
-    total_encounters: 91
+    total_encounters: 92
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -2394,8 +2411,10 @@ listener_relationships:
       type: first_encounter
     - session: triple-goddess-tribute-experience-the-phases-of-th
       type: first_encounter
-    last_session: triple-goddess-tribute-experience-the-phases-of-th
-    last_session_date: '2026-02-07'
+    - session: cleopatra-and-mark-antony-dreamweaving
+      type: first_encounter
+    last_session: cleopatra-and-mark-antony-dreamweaving
+    last_session_date: '2026-02-08'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 6
@@ -2470,7 +2489,7 @@ listener_relationships:
     last_session_date: '2026-02-01'
     relationship_level: 3
   divine_feminine.rose_mother:
-    total_encounters: 78
+    total_encounters: 79
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2630,11 +2649,13 @@ listener_relationships:
       type: first_encounter
     - session: triple-goddess-tribute-experience-the-phases-of-th
       type: first_encounter
-    last_session: triple-goddess-tribute-experience-the-phases-of-th
-    last_session_date: '2026-02-07'
+    - session: cleopatra-and-mark-antony-dreamweaving
+      type: first_encounter
+    last_session: cleopatra-and-mark-antony-dreamweaving
+    last_session_date: '2026-02-08'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 48
+    total_encounters: 49
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2734,8 +2755,10 @@ listener_relationships:
       type: first_encounter
     - session: hyperborean-hover-encountering-the-mystical-lands-
       type: first_encounter
-    last_session: hyperborean-hover-encountering-the-mystical-lands-
-    last_session_date: '2026-02-06'
+    - session: cleopatra-and-mark-antony-dreamweaving
+      type: first_encounter
+    last_session: cleopatra-and-mark-antony-dreamweaving
+    last_session_date: '2026-02-08'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 9
@@ -3020,43 +3043,43 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - the-echoing-vault-of-watchers-dreamweaving
   - epic-of-gilgamesh-embarking-on-heroic-adventures-i
   - hexagonal-harmony-hive-dreamweaving
   - hyperborean-hover-encountering-the-mystical-lands-
   - triple-goddess-tribute-experience-the-phases-of-th
+  - cleopatra-and-mark-antony-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 5
-    transformation_alchemy.phoenix_renewal: 32
+    divine_light_healing.great_physician: 6
+    transformation_alchemy.phoenix_renewal: 33
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 32
-    divine_masculine.guardian_father: 11
-    dreamweaver_meta.dream_architect: 10
+    warrior_power.archangel_michael: 33
+    divine_masculine.guardian_father: 12
+    dreamweaver_meta.dream_architect: 11
     divine_feminine.rose_mother: 0
-    shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 5
-    divine_feminine.sophia_wisdom: 30
-    emotional_heart.heart_flame_tender: 0
-    warrior_power.solar_king: 32
-    divine_masculine.logos_bearer: 30
-    divine_light_healing.shekinah_restorer: 86
-    emotional_heart.joy_child: 30
-    abundance_destiny.providence_angel: 5
-    dreamweaver_meta.portal_keeper: 10
+    shamanic_earth.world_tree_guardian: 0
+    oracle_seer.oracle_of_light: 6
+    divine_feminine.sophia_wisdom: 31
+    emotional_heart.heart_flame_tender: 1
+    warrior_power.solar_king: 33
+    divine_masculine.logos_bearer: 31
+    divine_light_healing.shekinah_restorer: 87
+    emotional_heart.joy_child: 31
+    abundance_destiny.providence_angel: 6
+    dreamweaver_meta.portal_keeper: 11
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - emotional_heart
+  - shamanic_earth
   - divine_feminine
   family_usage_counts:
-    divine_light_healing: 122
+    divine_light_healing: 123
     transformation_alchemy: 9
     warrior_power: 9
     divine_masculine: 22
     dreamweaver_meta: 6
-    divine_feminine: 89
-    shamanic_earth: 48
+    divine_feminine: 90
+    shamanic_earth: 49
     oracle_seer: 9
     emotional_heart: 49
     abundance_destiny: 3
