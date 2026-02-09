@@ -1,0 +1,71 @@
+session_name: the-tarot-constellation-of-masters-0000
+topic: The Tarot Constellation Of Masters
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2026-02-09T00:00:04.141255'
+  ended: '2026-02-09T00:38:29.413430'
+  duration_seconds: 2305.3
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - generate_thumbnail
+  - upload_website
+  - self_improvement
+  failed: []
+  total: 16
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-02-09T00:00:05.730170'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2026-02-09T00:00:39.758479'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2026-02-09T00:05:49.505171'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2026-02-09T00:05:49.641174'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-02-09T00:21:14.586971'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/the-tarot-constellation-of-masters-0000
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/the-tarot-constellation-of-masters-0000/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/the-tarot-constellation-of-masters-0000/working_files/script.ssml
+  files:
+  - output/subtitles.vtt
+  - output/voice.mp3
+  - output/the_tarot_constellation_of_masters_0000_MASTER.wav
+  - output/sfx.wav
+  - output/seo_metadata.json
+  - output/the_tarot_constellation_of_masters_0000_MASTER.mp3
+  - output/youtube_thumbnail.png
+  - output/session_mixed.wav
+  - output/binaural_dynamic.wav
+  - output/product_schema.json

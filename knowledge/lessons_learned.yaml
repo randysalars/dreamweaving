@@ -14,7 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
@@ -34,8 +33,9 @@ lessons:
   - hyperborean-hover-encountering-the-mystical-lands-
   - triple-goddess-tribute-experience-the-phases-of-th
   - cleopatra-and-mark-antony-dreamweaving
-  applied_count: 118
-  last_applied: '2026-02-08'
+  - the-tarot-constellation-of-masters-0000
+  applied_count: 119
+  last_applied: '2026-02-09'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,7 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
@@ -72,8 +71,9 @@ lessons:
   - hyperborean-hover-encountering-the-mystical-lands-
   - triple-goddess-tribute-experience-the-phases-of-th
   - cleopatra-and-mark-antony-dreamweaving
-  applied_count: 118
-  last_applied: '2026-02-08'
+  - the-tarot-constellation-of-masters-0000
+  applied_count: 119
+  last_applied: '2026-02-09'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,7 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
@@ -109,8 +108,9 @@ lessons:
   - hyperborean-hover-encountering-the-mystical-lands-
   - triple-goddess-tribute-experience-the-phases-of-th
   - cleopatra-and-mark-antony-dreamweaving
-  applied_count: 118
-  last_applied: '2026-02-08'
+  - the-tarot-constellation-of-masters-0000
+  applied_count: 119
+  last_applied: '2026-02-09'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,7 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
@@ -147,8 +146,9 @@ lessons:
   - hyperborean-hover-encountering-the-mystical-lands-
   - triple-goddess-tribute-experience-the-phases-of-th
   - cleopatra-and-mark-antony-dreamweaving
-  applied_count: 118
-  last_applied: '2026-02-08'
+  - the-tarot-constellation-of-masters-0000
+  applied_count: 119
+  last_applied: '2026-02-09'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,7 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - astral-artisan-crafting-manipulating-ethereal-matt
   - wormhole-whisper-dreamweaving
   - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
@@ -183,8 +182,9 @@ lessons:
   - hyperborean-hover-encountering-the-mystical-lands-
   - triple-goddess-tribute-experience-the-phases-of-th
   - cleopatra-and-mark-antony-dreamweaving
-  applied_count: 118
-  last_applied: '2026-02-08'
+  - the-tarot-constellation-of-masters-0000
+  applied_count: 119
+  last_applied: '2026-02-09'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
