@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-02-09'
-  total_sessions_tracked: 124
+  updated: '2026-02-10'
+  total_sessions_tracked: 125
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -2160,6 +2160,24 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: The Tarot Constellation Of Masters'
+- session_id: the-knights-charge-following-will-and-action-in-ta
+  date: '2026-02-10'
+  outcome: joy
+  archetypes_used:
+  - archetype_id: divine_feminine.sophia_wisdom
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: divine_masculine.logos_bearer
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: emotional_heart.joy_child
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: - The Knights'' Charge: Following Will and Action
+    in Tarot Meditation'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 24
@@ -2810,7 +2828,7 @@ listener_relationships:
     last_session_date: '2026-02-03'
     relationship_level: 4
   divine_feminine.sophia_wisdom:
-    total_encounters: 11
+    total_encounters: 12
     first_session: eleven-labs-commands
     first_session_date: '2025-12-12'
     encounter_history:
@@ -2836,8 +2854,10 @@ listener_relationships:
       type: first_encounter
     - session: virtual-game-avatar-leveling-up-fitness
       type: first_encounter
-    last_session: virtual-game-avatar-leveling-up-fitness
-    last_session_date: '2026-01-26'
+    - session: the-knights-charge-following-will-and-action-in-ta
+      type: first_encounter
+    last_session: the-knights-charge-following-will-and-action-in-ta
+    last_session_date: '2026-02-10'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
     total_encounters: 44
@@ -2950,7 +2970,7 @@ listener_relationships:
     last_session_date: '2026-01-25'
     relationship_level: 2
   divine_masculine.logos_bearer:
-    total_encounters: 8
+    total_encounters: 9
     first_session: legolas-elven-perspective-pathworking
     first_session_date: '2025-12-15'
     encounter_history:
@@ -2970,8 +2990,10 @@ listener_relationships:
       type: first_encounter
     - session: virtual-game-avatar-leveling-up-fitness
       type: first_encounter
-    last_session: virtual-game-avatar-leveling-up-fitness
-    last_session_date: '2026-01-26'
+    - session: the-knights-charge-following-will-and-action-in-ta
+      type: first_encounter
+    last_session: the-knights-charge-following-will-and-action-in-ta
+    last_session_date: '2026-02-10'
     relationship_level: 4
   divine_light_healing.shekinah_restorer:
     total_encounters: 8
@@ -2998,7 +3020,7 @@ listener_relationships:
     last_session_date: '2026-01-04'
     relationship_level: 4
   emotional_heart.joy_child:
-    total_encounters: 5
+    total_encounters: 6
     first_session: symphony-of-shadows-marina-tsvetaevas-concerto-of-
     first_session_date: '2025-12-26'
     encounter_history:
@@ -3012,8 +3034,10 @@ listener_relationships:
       type: first_encounter
     - session: virtual-game-avatar-leveling-up-fitness
       type: first_encounter
-    last_session: virtual-game-avatar-leveling-up-fitness
-    last_session_date: '2026-01-26'
+    - session: the-knights-charge-following-will-and-action-in-ta
+      type: first_encounter
+    last_session: the-knights-charge-following-will-and-action-in-ta
+    last_session_date: '2026-02-10'
     relationship_level: 3
   abundance_destiny.providence_angel:
     total_encounters: 3
@@ -3066,44 +3090,44 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - hexagonal-harmony-hive-dreamweaving
   - hyperborean-hover-encountering-the-mystical-lands-
   - triple-goddess-tribute-experience-the-phases-of-th
   - cleopatra-and-mark-antony-dreamweaving
   - the-tarot-constellation-of-masters-0000
+  - the-knights-charge-following-will-and-action-in-ta
   archetype_cooldowns:
-    divine_light_healing.great_physician: 0
-    transformation_alchemy.phoenix_renewal: 0
-    divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 34
-    divine_masculine.guardian_father: 13
-    dreamweaver_meta.dream_architect: 12
-    divine_feminine.rose_mother: 1
-    shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 7
-    divine_feminine.sophia_wisdom: 32
-    emotional_heart.heart_flame_tender: 2
-    warrior_power.solar_king: 34
-    divine_masculine.logos_bearer: 32
-    divine_light_healing.shekinah_restorer: 88
-    emotional_heart.joy_child: 32
-    abundance_destiny.providence_angel: 7
-    dreamweaver_meta.portal_keeper: 12
+    divine_light_healing.great_physician: 1
+    transformation_alchemy.phoenix_renewal: 1
+    divine_light_healing.inner_healer: 1
+    warrior_power.archangel_michael: 35
+    divine_masculine.guardian_father: 14
+    dreamweaver_meta.dream_architect: 13
+    divine_feminine.rose_mother: 2
+    shamanic_earth.world_tree_guardian: 2
+    oracle_seer.oracle_of_light: 8
+    divine_feminine.sophia_wisdom: 0
+    emotional_heart.heart_flame_tender: 3
+    warrior_power.solar_king: 35
+    divine_masculine.logos_bearer: 0
+    divine_light_healing.shekinah_restorer: 89
+    emotional_heart.joy_child: 0
+    abundance_destiny.providence_angel: 8
+    dreamweaver_meta.portal_keeper: 13
 selection_weights: {}
 family_rotation:
   last_session_families:
-  - divine_light_healing
-  - transformation_alchemy
-  - divine_light_healing
+  - divine_feminine
+  - divine_masculine
+  - emotional_heart
   family_usage_counts:
     divine_light_healing: 125
     transformation_alchemy: 10
     warrior_power: 9
-    divine_masculine: 22
+    divine_masculine: 23
     dreamweaver_meta: 6
-    divine_feminine: 90
+    divine_feminine: 91
     shamanic_earth: 49
     oracle_seer: 9
-    emotional_heart: 49
+    emotional_heart: 50
     abundance_destiny: 3
 effective_pairings: []

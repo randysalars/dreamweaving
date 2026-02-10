@@ -1,0 +1,141 @@
+session:
+  name: the-knights-charge-following-will-and-action-in-ta
+  topic: '- The Knights'' Charge: Following Will and Action in Tarot Meditation'
+  duration: 1800
+  style: joy
+  created: '2026-02-10'
+voice:
+  provider: google
+  voice_name: en-US-Neural2-F
+  description: '- the Knights'' Charge: Following Will and Action in Tarot Meditation'
+  rate: 0.85
+  pitch: -2st
+sections:
+- name: pretalk
+  start: 0
+  end: 144
+  brainwave_target: alpha
+  description: 'Welcome and introduction to - The Knights'' Charge: Following Will
+    and Action in Tarot Meditation'
+- name: induction
+  start: 144
+  end: 414
+  brainwave_target: alpha_to_theta
+  description: Relaxation and descent into in the realm between waking and dreaming,
+    where consciousness drifts through landscapes of infinite possibility
+- name: journey
+  start: 414
+  end: 1314
+  brainwave_target: theta_delta
+  description: 'Main journey: a sacred journey through cosmic realms toward joy'
+- name: integration
+  start: 1314
+  end: 1584
+  brainwave_target: theta_to_alpha
+  description: 'Integration: experiencing profound positive transformation'
+- name: awakening
+  start: 1584
+  end: 1800
+  brainwave_target: alpha
+  description: Gentle return to full waking awareness
+archetypes:
+- name: Sophia - Divine Wisdom
+  role: primary
+  description: Feminine archetype of divine wisdom and sacred knowledge
+  symbol: ''
+  qualities: []
+  appearance_section: journey
+- name: The Logos Bearer
+  role: secondary
+  description: Archetype of divine word, creative speech, and reality-shaping power
+  symbol: ''
+  qualities: []
+  appearance_section: helm_deep_trance
+- name: The Joy Child
+  role: support
+  description: Archetype of pure joy, play, and creative innocence
+  symbol: ''
+  qualities: []
+  appearance_section: integration
+sound_bed:
+  binaural:
+    enabled: true
+    base_hz: 216
+    preset: healing_deep
+    sections:
+    - start: 0
+      end: 144
+      offset_hz: 10.4
+    - start: 144
+      end: 360
+      offset_hz: 8.2
+    - start: 360
+      end: 630
+      offset_hz: 6.1
+    - start: 630
+      end: 1080
+      offset_hz: 10.3
+    - start: 1080
+      end: 1440
+      offset_hz: 12.5
+    - start: 1440
+      end: 1800
+      offset_hz: 9.8
+    gamma_burst:
+      enabled: true
+      time: 1285
+      frequency: 44
+      duration_s: 3.0975259646381677
+      description: Peak insight activation
+    multi_layer:
+      enabled: true
+      delta_foundation:
+        frequency: 1.5
+        carrier_offset: 60
+        level_db: -6
+  pink_noise:
+    enabled: false
+  nature:
+    enabled: false
+mixing:
+  voice_lufs: -16
+  binaural_lufs: -26
+  sidechain:
+    enabled: true
+mastering:
+  target_lufs: -14
+  true_peak_dbtp: -1.5
+  sample_rate_hz: 48000
+  bit_depth: 24
+outputs:
+  formats:
+  - wav
+  - mp3
+youtube:
+  title: '- the Knights'' Charge: Following Will and Action in Tarot Meditation |
+    Binaural Beats Meditation'
+  subtitle: "432Hz \u2022 Joy"
+  description: 'A transformational journey: experiencing profound positive transformation'
+  tags:
+  - binaural beats
+  - meditation
+  - 432hz
+  - guided meditation
+  - joy
+  - cosmic
+fx_timeline:
+- type: gamma_flash
+  time: 1285
+  duration_s: 3.1
+  freq_hz: 44
+  description: Peak insight activation
+recursive_improvement:
+  applied_lessons:
+  - L004
+  - L001
+  - L002
+  - L003
+  - L005
+  lesson_count: 5
+  categories: {}
+  applied_at: '2026-02-10T00:30:35.259599'
