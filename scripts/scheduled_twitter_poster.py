@@ -71,23 +71,35 @@ def mark_as_posted(product_dir: Path, tweet_ids: list[str]):
 
 def has_social_content(product_dir: Path) -> bool:
     """Check if the product has social media content ready."""
+    return get_social_content_path(product_dir) is not None
+
+
+def get_social_content_path(product_dir: Path) -> Path | None:
+    """Find the social content JSON file for a product."""
     output_dir = product_dir / "output"
-    social_json = output_dir / "marketing" / "zapier_social_posts.json"
-    if not social_json.exists():
-        social_json = output_dir / "zapier_social_posts.json"
-    return social_json.exists()
+    # Check all known filenames in priority order
+    candidates = [
+        output_dir / "marketing" / "zapier_social_posts.json",
+        output_dir / "zapier_social_posts.json",
+        output_dir / "marketing" / "twitter_thread.json",
+        output_dir / "twitter_thread.json",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return None
 
 
 def post_for_product(product_dir: Path) -> bool:
     """Post Twitter thread for a product."""
     from agents.product_builder.marketing.x_client import XClient
     
-    output_dir = product_dir / "output"
-    social_json = output_dir / "marketing" / "zapier_social_posts.json"
-    if not social_json.exists():
-        social_json = output_dir / "zapier_social_posts.json"
+    social_json = get_social_content_path(product_dir)
+    if social_json is None:
+        logger.error(f"No social content found for {product_dir.name}")
+        return False
     
-    logger.info(f"Posting Twitter thread for: {product_dir.name}")
+    logger.info(f"Posting Twitter thread for: {product_dir.name} (using {social_json.name})")
     
     try:
         client = XClient()
