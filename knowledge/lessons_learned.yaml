@@ -14,7 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
@@ -34,8 +33,9 @@ lessons:
   - cleopatra-and-mark-antony-dreamweaving
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
-  applied_count: 120
-  last_applied: '2026-02-10'
+  - ancient-archives-dreamweaving
+  applied_count: 121
+  last_applied: '2026-02-11'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,7 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
@@ -72,8 +71,9 @@ lessons:
   - cleopatra-and-mark-antony-dreamweaving
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
-  applied_count: 120
-  last_applied: '2026-02-10'
+  - ancient-archives-dreamweaving
+  applied_count: 121
+  last_applied: '2026-02-11'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,7 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
@@ -109,8 +108,9 @@ lessons:
   - cleopatra-and-mark-antony-dreamweaving
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
-  applied_count: 120
-  last_applied: '2026-02-10'
+  - ancient-archives-dreamweaving
+  applied_count: 121
+  last_applied: '2026-02-11'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,7 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
@@ -147,8 +146,9 @@ lessons:
   - cleopatra-and-mark-antony-dreamweaving
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
-  applied_count: 120
-  last_applied: '2026-02-10'
+  - ancient-archives-dreamweaving
+  applied_count: 121
+  last_applied: '2026-02-11'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,7 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - tiamats-tide-surfing-the-primordial-chaos-in-cosmi
   - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
@@ -183,8 +182,9 @@ lessons:
   - cleopatra-and-mark-antony-dreamweaving
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
-  applied_count: 120
-  last_applied: '2026-02-10'
+  - ancient-archives-dreamweaving
+  applied_count: 121
+  last_applied: '2026-02-11'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3

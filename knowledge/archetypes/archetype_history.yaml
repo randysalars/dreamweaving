@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-02-10'
-  total_sessions_tracked: 125
+  updated: '2026-02-11'
+  total_sessions_tracked: 126
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -2178,6 +2178,23 @@ session_history:
     section: integration
   notes: 'Auto-generated from topic: - The Knights'' Charge: Following Will and Action
     in Tarot Meditation'
+- session_id: ancient-archives-dreamweaving
+  date: '2026-02-11'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: emotional_heart.heart_flame_tender
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Ancient Archives Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 24
@@ -2264,7 +2281,7 @@ listener_relationships:
     last_session_date: '2026-02-09'
     relationship_level: 4
   divine_light_healing.inner_healer:
-    total_encounters: 93
+    total_encounters: 94
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -2454,8 +2471,10 @@ listener_relationships:
       type: first_encounter
     - session: the-tarot-constellation-of-masters-0000
       type: first_encounter
-    last_session: the-tarot-constellation-of-masters-0000
-    last_session_date: '2026-02-09'
+    - session: ancient-archives-dreamweaving
+      type: first_encounter
+    last_session: ancient-archives-dreamweaving
+    last_session_date: '2026-02-11'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 6
@@ -2530,7 +2549,7 @@ listener_relationships:
     last_session_date: '2026-02-01'
     relationship_level: 3
   divine_feminine.rose_mother:
-    total_encounters: 79
+    total_encounters: 80
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2692,8 +2711,10 @@ listener_relationships:
       type: first_encounter
     - session: cleopatra-and-mark-antony-dreamweaving
       type: first_encounter
-    last_session: cleopatra-and-mark-antony-dreamweaving
-    last_session_date: '2026-02-08'
+    - session: ancient-archives-dreamweaving
+      type: first_encounter
+    last_session: ancient-archives-dreamweaving
+    last_session_date: '2026-02-11'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
     total_encounters: 49
@@ -2860,7 +2881,7 @@ listener_relationships:
     last_session_date: '2026-02-10'
     relationship_level: 4
   emotional_heart.heart_flame_tender:
-    total_encounters: 44
+    total_encounters: 45
     first_session: life-of-presidents-of-us
     first_session_date: '2025-12-13'
     encounter_history:
@@ -2952,8 +2973,10 @@ listener_relationships:
       type: first_encounter
     - session: triple-goddess-tribute-experience-the-phases-of-th
       type: first_encounter
-    last_session: triple-goddess-tribute-experience-the-phases-of-th
-    last_session_date: '2026-02-07'
+    - session: ancient-archives-dreamweaving
+      type: first_encounter
+    last_session: ancient-archives-dreamweaving
+    last_session_date: '2026-02-11'
     relationship_level: 4
   warrior_power.solar_king:
     total_encounters: 3
@@ -3090,44 +3113,44 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - hyperborean-hover-encountering-the-mystical-lands-
   - triple-goddess-tribute-experience-the-phases-of-th
   - cleopatra-and-mark-antony-dreamweaving
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
+  - ancient-archives-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 1
-    transformation_alchemy.phoenix_renewal: 1
-    divine_light_healing.inner_healer: 1
-    warrior_power.archangel_michael: 35
-    divine_masculine.guardian_father: 14
-    dreamweaver_meta.dream_architect: 13
-    divine_feminine.rose_mother: 2
-    shamanic_earth.world_tree_guardian: 2
-    oracle_seer.oracle_of_light: 8
-    divine_feminine.sophia_wisdom: 0
-    emotional_heart.heart_flame_tender: 3
-    warrior_power.solar_king: 35
-    divine_masculine.logos_bearer: 0
-    divine_light_healing.shekinah_restorer: 89
-    emotional_heart.joy_child: 0
-    abundance_destiny.providence_angel: 8
-    dreamweaver_meta.portal_keeper: 13
+    divine_light_healing.great_physician: 2
+    transformation_alchemy.phoenix_renewal: 2
+    divine_light_healing.inner_healer: 0
+    warrior_power.archangel_michael: 36
+    divine_masculine.guardian_father: 15
+    dreamweaver_meta.dream_architect: 14
+    divine_feminine.rose_mother: 0
+    shamanic_earth.world_tree_guardian: 3
+    oracle_seer.oracle_of_light: 9
+    divine_feminine.sophia_wisdom: 1
+    emotional_heart.heart_flame_tender: 0
+    warrior_power.solar_king: 36
+    divine_masculine.logos_bearer: 1
+    divine_light_healing.shekinah_restorer: 90
+    emotional_heart.joy_child: 1
+    abundance_destiny.providence_angel: 9
+    dreamweaver_meta.portal_keeper: 14
 selection_weights: {}
 family_rotation:
   last_session_families:
-  - divine_feminine
-  - divine_masculine
+  - divine_light_healing
   - emotional_heart
+  - divine_feminine
   family_usage_counts:
-    divine_light_healing: 125
+    divine_light_healing: 126
     transformation_alchemy: 10
     warrior_power: 9
     divine_masculine: 23
     dreamweaver_meta: 6
-    divine_feminine: 91
+    divine_feminine: 92
     shamanic_earth: 49
     oracle_seer: 9
-    emotional_heart: 50
+    emotional_heart: 51
     abundance_destiny: 3
 effective_pairings: []
