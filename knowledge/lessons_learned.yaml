@@ -14,7 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
   - the-shadow-market-dreamweaving
@@ -34,8 +33,9 @@ lessons:
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
   - ancient-archives-dreamweaving
-  applied_count: 121
-  last_applied: '2026-02-11'
+  - cosmic-inflation-expanding-personal-horizon
+  applied_count: 122
+  last_applied: '2026-02-12'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,7 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
   - the-shadow-market-dreamweaving
@@ -72,8 +71,9 @@ lessons:
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
   - ancient-archives-dreamweaving
-  applied_count: 121
-  last_applied: '2026-02-11'
+  - cosmic-inflation-expanding-personal-horizon
+  applied_count: 122
+  last_applied: '2026-02-12'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,7 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
   - the-shadow-market-dreamweaving
@@ -109,8 +108,9 @@ lessons:
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
   - ancient-archives-dreamweaving
-  applied_count: 121
-  last_applied: '2026-02-11'
+  - cosmic-inflation-expanding-personal-horizon
+  applied_count: 122
+  last_applied: '2026-02-12'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,7 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
   - the-shadow-market-dreamweaving
@@ -147,8 +146,9 @@ lessons:
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
   - ancient-archives-dreamweaving
-  applied_count: 121
-  last_applied: '2026-02-11'
+  - cosmic-inflation-expanding-personal-horizon
+  applied_count: 122
+  last_applied: '2026-02-12'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,7 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - mindful-dreamweaving
   - herblore-haven-dreamweaving
   - reincarnation-journeys-dreamweaving
   - the-shadow-market-dreamweaving
@@ -183,8 +182,9 @@ lessons:
   - the-tarot-constellation-of-masters-0000
   - the-knights-charge-following-will-and-action-in-ta
   - ancient-archives-dreamweaving
-  applied_count: 121
-  last_applied: '2026-02-11'
+  - cosmic-inflation-expanding-personal-horizon
+  applied_count: 122
+  last_applied: '2026-02-12'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3
