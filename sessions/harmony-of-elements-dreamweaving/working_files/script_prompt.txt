@@ -1,0 +1,125 @@
+Generate a complete SSML hypnotic script for the following session:
+
+**Topic:** Harmony Of Elements Dreamweaving
+**Target Duration:** 30 minutes
+**Target Word Count:** 2193-2680 words (hypnotic pace ~130 wpm with pauses)
+**Session Name:** harmony-of-elements-dreamweaving
+
+**Archetypes to incorporate:** The Inner Healer, The Heart Flame Tender, The Rose Mother
+
+**Section Timing:**
+- pretalk: 0 minutes
+- induction: 0 minutes
+- journey: 0 minutes
+- integration: 0 minutes
+- awakening: 0 minutes
+
+
+---
+## CANONICAL DREAMWEAVING KNOWLEDGE (from your knowledge base)
+Use this context to ensure the script aligns with YOUR established definitions, archetypes, and patterns:
+
+### Relevant Knowledge from Your Canon
+- **Dreamweaving Script Writer** (relevance: 0.58)
+  Title: Dreamweaving Script Writer
+
+r inner drive, burning away doubt.”
+ - Transformation Goal: Tailor outcomes to elemental qualities—Earth for stability, Water for emotional release, Fire for motivation, Air for perspective, Spirit for unity. Anchor each with a unique gesture (e.g., clenching a fis...
+- **Witchcraft and Nature Magick** (relevance: 0.57)
+  Title: Witchcraft and Nature Magick
+
+rder / Wildness
+ - Order: circles, altars, structured ritual, geometry.
+ - Wildness: tangled forest, storms, animal voices, intuitive wandering.
+In dreamweavings, you can explicitly move the listener:
+
+- From ordinary → liminal → sacred space
+- Along light ↔ dark...
+- **Sacred Digital Dreamweaver** (relevance: 0.56)
+  Title: Sacred Digital Dreamweaver
+
+r inner drive, burning away doubt.”
+ - Transformation Goal: Tailor outcomes to elemental qualities—Earth for stability, Water for emotional release, Fire for motivation, Air for perspective, Spirit for unity. Anchor each with a unique gesture (e.g., clenching a fis...
+- **Sacred Digital Dreamweaver** (relevance: 0.56)
+  Title: Sacred Digital Dreamweaver
+
+r inner drive, burning away doubt.”
+ - Transformation Goal: Tailor outcomes to elemental qualities—Earth for stability, Water for emotional release, Fire for motivation, Air for perspective, Spirit for unity. Anchor each with a unique gesture (e.g., clenching a fis...
+- **Sacred Digital Dreamweaver** (relevance: 0.56)
+  Title: Sacred Digital Dreamweaver
+
+r inner drive, burning away doubt.”
+ - Transformation Goal: Tailor outcomes to elemental qualities—Earth for stability, Water for emotional release, Fire for motivation, Air for perspective, Spirit for unity. Anchor each with a unique gesture (e.g., clenching a fis...
+
+### Related Mythology/Symbols
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+h symbol as a “callable function” in your scripts.
+
+ ---
+
+ ## 1. Core Cosmology Layer
+
+ Use this as the invisible b...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+h symbol as a “callable function” in your scripts.
+
+ ---
+
+ ## 1. Core Cosmology Layer
+
+ Use this as the invisible b...
+- **Sacred Digital Dreamweaver**: Title: Sacred Digital Dreamweaver
+
+h symbol as a “callable function” in your scripts.
+
+ ---
+
+ ## 1. Core Cosmology Layer
+
+ Use this as the invisible b...
+
+### Binaural/Frequency Guidance
+- Title: Dreamweaving Ideas
+
+nances / health / calling.”).
+
+ ---
+
+ ## 3. Sound Design: Binaural Beats & Effects
+
+ Here’s a practical layout you can give to a sound designer or use to hunt for tracks.
+
+ ...
+- Title: Dreamweaving Ideas
+
+nances / health / calling.”).
+
+ ---
+
+ ## 3. Sound Design: Binaural Beats & Effects
+
+ Here’s a practical layout you can give to a sound designer or use to hunt for tracks.
+
+ ...
+---
+
+**CRITICAL REQUIREMENTS:**
+1. Match the Section Timing above within ±10%; expand MAIN JOURNEY and INTEGRATION first if you need more time.
+2. Keep total length within 2193-2680 words to land near 30 minutes. If you are short, add sensory detail and deepen the MAIN JOURNEY; if long, trim gently.
+3. Use rate="1.0" for ALL prosody tags (never use slow rates like 0.85)
+4. Use <break time="Xs"/> tags liberally for hypnotic pacing, favoring slightly longer pauses: 2-3s for normal beats, 3-5s for deeper drops, 1s for countdown ticks
+5. Include rich sensory language engaging all 5 senses
+6. Embed hypnotic suggestions naturally throughout
+7. Include 3-5 post-hypnotic anchors in the closing
+
+**SFX MARKERS (REQUIRED):**
+- Embed natural language SFX cues using [SFX: ...] (or [[SFX:...]]). Keep each marker concise (<140 chars) and place it exactly where the sound should trigger.
+- Provide at least 5 markers covering the journey arc: opening/entry tone, induction ambience, deepening texture, main journey accent(s), and integration/return chime.
+- Markers must describe sound character and duration (e.g., "Deep bronze bell, warm, 3s decay"), live on their own line, and avoid SSML tags inside the marker.
+- Keep markers within the <speak> body; they'll be stripped for voice synthesis but used to render the SFX track.
+
+**OUTPUT FORMAT:**
+Output ONLY the SSML script, starting with <?xml version="1.0" encoding="UTF-8"?>
+Do NOT include any explanation or commentary before or after the SSML.

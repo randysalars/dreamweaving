@@ -12,7 +12,7 @@ Setup:
    X_ACCESS_TOKEN="..."
    X_ACCESS_TOKEN_SECRET="..."
 
-Free tier: 1,500 tweets/month
+Free tier: 500 tweets/month
 """
 
 import os
@@ -96,11 +96,11 @@ class XClient:
     @staticmethod
     def count_twitter_chars(text: str) -> int:
         """
-        Count characters as Twitter does.
+        Count characters as Twitter does (weighted char counting).
         
         Twitter Rules:
         - All URLs (http/https) count as 23 characters regardless of actual length
-        - Emojis count as 2 characters each
+        - Characters outside the BMP (emojis, etc.) count as 2 characters
         - Everything else counts as 1 character
         
         Returns:
@@ -115,8 +115,13 @@ class XClient:
         # Remove URLs from text for counting
         text_without_urls = re.sub(url_pattern, '', text)
         
-        # Count remaining characters (emojis = 2 chars each, but Python len handles this)
-        char_count = len(text_without_urls)
+        # Twitter counts non-BMP characters (emojis, etc.) as 2 chars
+        char_count = 0
+        for ch in text_without_urls:
+            if ord(ch) > 0xFFFF:
+                char_count += 2  # Non-BMP (most emojis)
+            else:
+                char_count += 1
         
         # Add 23 chars per URL
         char_count += len(urls) * XClient.TWITTER_URL_LENGTH
@@ -239,7 +244,11 @@ class XClient:
         dry_run: bool = False
     ) -> PostResult:
         """
-        Post Twitter content from zapier_social_posts.json.
+        Post Twitter content from a JSON file.
+        
+        Supports two formats:
+        1. Flat list: [{"platform": "twitter", "content": "..."}]
+        2. Thread object: {"platform": "twitter", "thread": [{"tweet": "..."}]}
         
         Args:
             json_path: Path to JSON file
@@ -250,10 +259,64 @@ class XClient:
             PostResult
         """
         with open(json_path, 'r') as f:
-            all_posts = json.load(f)
+            raw = json.load(f)
         
-        # Filter to Twitter posts only
-        twitter_posts = [p for p in all_posts if p.get('platform') == 'twitter']
+        # Normalize: handle both flat list and nested thread formats
+        if isinstance(raw, dict):
+            # Nested thread format: {"platform": "twitter", "thread": [{"tweet": "..."}]}
+            if 'thread' in raw and isinstance(raw['thread'], list):
+                texts = []
+                for item in raw['thread']:
+                    if isinstance(item, dict):
+                        texts.append(item.get('tweet', item.get('content', '')))
+                    elif isinstance(item, str):
+                        texts.append(item)
+                
+                if not texts:
+                    return PostResult(
+                        success=True,
+                        posted_count=0,
+                        failed_count=0,
+                        message="Thread found but no tweet content"
+                    )
+                
+                logger.info(f"Found thread with {len(texts)} tweets")
+                
+                if dry_run:
+                    for i, text in enumerate(texts):
+                        logger.info(f"[DRY RUN] Tweet {i+1}/{len(texts)}: {text[:80]}...")
+                    return PostResult(
+                        success=True,
+                        posted_count=len(texts),
+                        failed_count=0,
+                        message=f"[DRY RUN] Would post thread of {len(texts)} tweets",
+                        tweet_ids=[f"dry_run_{i}" for i in range(len(texts))]
+                    )
+                
+                return self.post_thread(texts)
+            
+            # Single post object: {"platform": "twitter", "content": "..."}
+            elif 'content' in raw:
+                all_posts = [raw]
+            else:
+                return PostResult(
+                    success=False,
+                    posted_count=0,
+                    failed_count=0,
+                    message=f"Unrecognized JSON format in {json_path}"
+                )
+        elif isinstance(raw, list):
+            all_posts = raw
+        else:
+            return PostResult(
+                success=False,
+                posted_count=0,
+                failed_count=0,
+                message=f"Unexpected JSON type in {json_path}: {type(raw).__name__}"
+            )
+        
+        # Process flat list format
+        twitter_posts = [p for p in all_posts if isinstance(p, dict) and p.get('platform') == 'twitter']
         
         if not twitter_posts:
             return PostResult(
