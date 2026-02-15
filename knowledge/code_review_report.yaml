@@ -1,4 +1,4 @@
-timestamp: '2026-02-08T01:00:03.369772'
+timestamp: '2026-02-15T01:00:03.119895'
 summary:
   total_issues: 6307
   errors: 0
@@ -111,7 +111,7 @@ by_severity:
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/scheduled_twitter_poster.py
-    line: 180
+    line: 192
     type: deep_nesting
     description: Function 'main' has deep nesting (7 levels)
     severity: warning
@@ -2343,31 +2343,31 @@ by_file:
     severity: info
     suggestion: Consider breaking into multiple lines
   - file: scripts/scheduled_twitter_poster.py
-    line: 180
+    line: 192
     type: deep_nesting
     description: Function 'main' has deep nesting (7 levels)
     severity: warning
     suggestion: Consider refactoring to reduce complexity
   - file: scripts/scheduled_twitter_poster.py
-    line: 170
+    line: 182
     type: magic_number
     description: Magic number 3600 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/scheduled_twitter_poster.py
-    line: 171
+    line: 183
     type: magic_number
     description: Magic number 3600 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/scheduled_twitter_poster.py
-    line: 232
+    line: 244
     type: magic_number
     description: Magic number 3600 should be a named constant
     severity: info
     suggestion: ''
   - file: scripts/scheduled_twitter_poster.py
-    line: 233
+    line: 245
     type: magic_number
     description: Magic number 3600 should be a named constant
     severity: info

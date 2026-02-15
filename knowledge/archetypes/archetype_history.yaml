@@ -1,8 +1,8 @@
 metadata:
   version: '1.0'
   created: '2025-12-09'
-  updated: '2026-02-14'
-  total_sessions_tracked: 129
+  updated: '2026-02-15'
+  total_sessions_tracked: 130
   unique_archetypes_used: 17
   notes: 'This file is automatically updated by archetype_selector.py after each session.
 
@@ -2246,6 +2246,23 @@ session_history:
     encounter_type: first_encounter
     section: integration
   notes: 'Auto-generated from topic: Harmony Of Elements Dreamweaving'
+- session_id: mindful-metacognition-dreamweaving
+  date: '2026-02-15'
+  outcome: sleep
+  archetypes_used:
+  - archetype_id: divine_light_healing.inner_healer
+    role: primary
+    encounter_type: first_encounter
+    section: journey
+  - archetype_id: shamanic_earth.world_tree_guardian
+    role: secondary
+    encounter_type: first_encounter
+    section: helm_deep_trance
+  - archetype_id: divine_feminine.rose_mother
+    role: support
+    encounter_type: first_encounter
+    section: integration
+  notes: 'Auto-generated from topic: Mindful Metacognition Dreamweaving'
 listener_relationships:
   divine_light_healing.great_physician:
     total_encounters: 25
@@ -2336,7 +2353,7 @@ listener_relationships:
     last_session_date: '2026-02-12'
     relationship_level: 4
   divine_light_healing.inner_healer:
-    total_encounters: 97
+    total_encounters: 98
     first_session: humor-and-laughter
     first_session_date: '2025-12-10'
     encounter_history:
@@ -2534,8 +2551,10 @@ listener_relationships:
       type: first_encounter
     - session: harmony-of-elements-dreamweaving
       type: first_encounter
-    last_session: harmony-of-elements-dreamweaving
-    last_session_date: '2026-02-14'
+    - session: mindful-metacognition-dreamweaving
+      type: first_encounter
+    last_session: mindful-metacognition-dreamweaving
+    last_session_date: '2026-02-15'
     relationship_level: 4
   warrior_power.archangel_michael:
     total_encounters: 6
@@ -2610,7 +2629,7 @@ listener_relationships:
     last_session_date: '2026-02-01'
     relationship_level: 3
   divine_feminine.rose_mother:
-    total_encounters: 82
+    total_encounters: 83
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2778,11 +2797,13 @@ listener_relationships:
       type: first_encounter
     - session: harmony-of-elements-dreamweaving
       type: first_encounter
-    last_session: harmony-of-elements-dreamweaving
-    last_session_date: '2026-02-14'
+    - session: mindful-metacognition-dreamweaving
+      type: first_encounter
+    last_session: mindful-metacognition-dreamweaving
+    last_session_date: '2026-02-15'
     relationship_level: 4
   shamanic_earth.world_tree_guardian:
-    total_encounters: 50
+    total_encounters: 51
     first_session: eastern-religious-dreamweavings
     first_session_date: '2025-12-11'
     encounter_history:
@@ -2886,8 +2907,10 @@ listener_relationships:
       type: first_encounter
     - session: the-star-heart-ignition-dreamweaving
       type: first_encounter
-    last_session: the-star-heart-ignition-dreamweaving
-    last_session_date: '2026-02-13'
+    - session: mindful-metacognition-dreamweaving
+      type: first_encounter
+    last_session: mindful-metacognition-dreamweaving
+    last_session_date: '2026-02-15'
     relationship_level: 4
   oracle_seer.oracle_of_light:
     total_encounters: 9
@@ -3182,43 +3205,43 @@ relationship_levels:
     notes: Archetype can be invoked with minimal guidance
 recency_data:
   last_5_sessions:
-  - the-knights-charge-following-will-and-action-in-ta
   - ancient-archives-dreamweaving
   - cosmic-inflation-expanding-personal-horizon
   - the-star-heart-ignition-dreamweaving
   - harmony-of-elements-dreamweaving
+  - mindful-metacognition-dreamweaving
   archetype_cooldowns:
-    divine_light_healing.great_physician: 2
-    transformation_alchemy.phoenix_renewal: 2
+    divine_light_healing.great_physician: 3
+    transformation_alchemy.phoenix_renewal: 3
     divine_light_healing.inner_healer: 0
-    warrior_power.archangel_michael: 39
-    divine_masculine.guardian_father: 18
-    dreamweaver_meta.dream_architect: 17
+    warrior_power.archangel_michael: 40
+    divine_masculine.guardian_father: 19
+    dreamweaver_meta.dream_architect: 18
     divine_feminine.rose_mother: 0
-    shamanic_earth.world_tree_guardian: 1
-    oracle_seer.oracle_of_light: 12
-    divine_feminine.sophia_wisdom: 4
-    emotional_heart.heart_flame_tender: 0
-    warrior_power.solar_king: 39
-    divine_masculine.logos_bearer: 4
-    divine_light_healing.shekinah_restorer: 93
-    emotional_heart.joy_child: 4
-    abundance_destiny.providence_angel: 12
-    dreamweaver_meta.portal_keeper: 17
+    shamanic_earth.world_tree_guardian: 0
+    oracle_seer.oracle_of_light: 13
+    divine_feminine.sophia_wisdom: 5
+    emotional_heart.heart_flame_tender: 1
+    warrior_power.solar_king: 40
+    divine_masculine.logos_bearer: 5
+    divine_light_healing.shekinah_restorer: 94
+    emotional_heart.joy_child: 5
+    abundance_destiny.providence_angel: 13
+    dreamweaver_meta.portal_keeper: 18
 selection_weights: {}
 family_rotation:
   last_session_families:
   - divine_light_healing
-  - emotional_heart
+  - shamanic_earth
   - divine_feminine
   family_usage_counts:
-    divine_light_healing: 130
+    divine_light_healing: 131
     transformation_alchemy: 11
     warrior_power: 9
     divine_masculine: 23
     dreamweaver_meta: 6
-    divine_feminine: 94
-    shamanic_earth: 50
+    divine_feminine: 95
+    shamanic_earth: 51
     oracle_seer: 9
     emotional_heart: 52
     abundance_destiny: 3

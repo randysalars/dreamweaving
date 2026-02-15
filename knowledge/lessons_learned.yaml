@@ -14,7 +14,6 @@ lessons:
   - critical
   priority: critical
   applied_to:
-  - the-shadow-market-dreamweaving
   - lucid-lightworker-manifesting-light-and-energy-for
   - the-enchanted-elixir-concoct-the-potion-to-vivify-
   - the-tapestry-of-shared-moments-dreamweaving
@@ -34,8 +33,9 @@ lessons:
   - cosmic-inflation-expanding-personal-horizon
   - the-star-heart-ignition-dreamweaving
   - harmony-of-elements-dreamweaving
-  applied_count: 124
-  last_applied: '2026-02-14'
+  - mindful-metacognition-dreamweaving
+  applied_count: 125
+  last_applied: '2026-02-15'
 - id: L002
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -52,7 +52,6 @@ lessons:
   - integration
   priority: high
   applied_to:
-  - the-shadow-market-dreamweaving
   - lucid-lightworker-manifesting-light-and-energy-for
   - the-enchanted-elixir-concoct-the-potion-to-vivify-
   - the-tapestry-of-shared-moments-dreamweaving
@@ -72,8 +71,9 @@ lessons:
   - cosmic-inflation-expanding-personal-horizon
   - the-star-heart-ignition-dreamweaving
   - harmony-of-elements-dreamweaving
-  applied_count: 124
-  last_applied: '2026-02-14'
+  - mindful-metacognition-dreamweaving
+  applied_count: 125
+  last_applied: '2026-02-15'
 - id: L003
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -89,7 +89,6 @@ lessons:
   - enhancement
   priority: medium
   applied_to:
-  - the-shadow-market-dreamweaving
   - lucid-lightworker-manifesting-light-and-energy-for
   - the-enchanted-elixir-concoct-the-potion-to-vivify-
   - the-tapestry-of-shared-moments-dreamweaving
@@ -109,8 +108,9 @@ lessons:
   - cosmic-inflation-expanding-personal-horizon
   - the-star-heart-ignition-dreamweaving
   - harmony-of-elements-dreamweaving
-  applied_count: 124
-  last_applied: '2026-02-14'
+  - mindful-metacognition-dreamweaving
+  applied_count: 125
+  last_applied: '2026-02-15'
 - id: L004
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -127,7 +127,6 @@ lessons:
   - workflow
   priority: high
   applied_to:
-  - the-shadow-market-dreamweaving
   - lucid-lightworker-manifesting-light-and-energy-for
   - the-enchanted-elixir-concoct-the-potion-to-vivify-
   - the-tapestry-of-shared-moments-dreamweaving
@@ -147,8 +146,9 @@ lessons:
   - cosmic-inflation-expanding-personal-horizon
   - the-star-heart-ignition-dreamweaving
   - harmony-of-elements-dreamweaving
-  applied_count: 124
-  last_applied: '2026-02-14'
+  - mindful-metacognition-dreamweaving
+  applied_count: 125
+  last_applied: '2026-02-15'
 - id: L005
   date: 2024-12-01
   session: neural-network-navigator-v3
@@ -163,7 +163,6 @@ lessons:
   - documentation
   priority: low
   applied_to:
-  - the-shadow-market-dreamweaving
   - lucid-lightworker-manifesting-light-and-energy-for
   - the-enchanted-elixir-concoct-the-potion-to-vivify-
   - the-tapestry-of-shared-moments-dreamweaving
@@ -183,8 +182,9 @@ lessons:
   - cosmic-inflation-expanding-personal-horizon
   - the-star-heart-ignition-dreamweaving
   - harmony-of-elements-dreamweaving
-  applied_count: 124
-  last_applied: '2026-02-14'
+  - mindful-metacognition-dreamweaving
+  applied_count: 125
+  last_applied: '2026-02-15'
 - id: L006
   date: 2024-12-01
   session: neural-network-navigator-v3

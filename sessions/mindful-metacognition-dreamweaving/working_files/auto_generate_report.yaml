@@ -1,0 +1,69 @@
+session_name: mindful-metacognition-dreamweaving
+topic: Mindful Metacognition Dreamweaving
+topic_source: manual
+mode: standard
+duration_minutes: 30
+audio_only: false
+dry_run: false
+execution:
+  started: '2026-02-15T00:00:04.428878'
+  ended: '2026-02-15T00:27:46.737156'
+  duration_seconds: 1662.3
+stages:
+  completed:
+  - create_plan
+  - create_session
+  - generate_manifest
+  - generate_script
+  - generate_prompts
+  - generate_voice
+  - generate_binaural
+  - generate_sfx
+  - mix_audio
+  - hypnotic_post_process
+  - generate_vtt
+  - generate_images
+  - assemble_video
+  - generate_thumbnail
+  - self_improvement
+  failed:
+  - upload_website
+  total: 16
+costs:
+  mode: standard
+  multiplier: 1.0
+  operations:
+  - name: manifest_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-02-15T00:00:06.073821'
+  - name: script_generation
+    estimated: 0.35
+    actual: 0.35
+    timestamp: '2026-02-15T00:00:40.505467'
+  - name: image_prompts
+    estimated: 0.1
+    actual: 0.1
+    timestamp: '2026-02-15T00:02:25.195379'
+  - name: voice_synthesis
+    estimated: 0.15
+    actual: 0.15
+    timestamp: '2026-02-15T00:02:25.258197'
+  - name: vtt_generation
+    estimated: 0.05
+    actual: 0.05
+    timestamp: '2026-02-15T00:14:49.081545'
+  total_usd: 0.7
+outputs:
+  session_path: /home/rsalars/Projects/dreamweaving/sessions/mindful-metacognition-dreamweaving
+  manifest: /home/rsalars/Projects/dreamweaving/sessions/mindful-metacognition-dreamweaving/manifest.yaml
+  script: /home/rsalars/Projects/dreamweaving/sessions/mindful-metacognition-dreamweaving/working_files/script.ssml
+  files:
+  - output/subtitles.vtt
+  - output/voice.mp3
+  - output/mindful_metacognition_dreamweaving_MASTER.mp3
+  - output/sfx.wav
+  - output/youtube_thumbnail.png
+  - output/mindful_metacognition_dreamweaving_MASTER.wav
+  - output/session_mixed.wav
+  - output/binaural_dynamic.wav
